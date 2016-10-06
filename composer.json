@@ -1,0 +1,24 @@
+{
+	"name" : "gs2/gs2-php-sdk-auth",
+	"license" : "Apache-2.0",
+	"require" : {
+		"gs2/gs2-php-sdk-core" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-auth" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-identifier" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-inbox" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-matchmaking" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-notification" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-ranking" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-realtime" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-timer" : ">= 0.0.1",
+		"gs2/gs2-php-sdk-watch" : ">= 0.0.1"
+	},
+	"config": {
+        "secure-http": false
+	},
+	"autoload" : {
+		"psr-4" : {
+			"GS2\\Auth\\" : "src"
+		}
+	}
+}

@@ -1,2 +1,2 @@
-gs2-php-sdk-auth
+gs2-php-sdk
 ===============

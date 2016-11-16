@@ -8,9 +8,8 @@ checkout:
     - aws s3 cp s3://gs2-repos/python/publish/${PUBLISH_VERSION}/publish-${PUBLISH_VERSION}.tar.gz ~/ && tar -zxvf ~/publish-${PUBLISH_VERSION}.tar.gz -C ~/
 
 test:
-  post:
-    - cp -rf reports $CIRCLE_ARTIFACTS
-    - cp coverage.xml $CIRCLE_ARTIFACTS
+  override:
+    - echo "test"
     
 deployment:
   maven:

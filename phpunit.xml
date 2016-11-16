@@ -1,0 +1,28 @@
+<phpunit
+        bootstrap="./tests/bootstrap.php"
+        colors="true"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        verbose="true"
+        stopOnFailure="true"
+        processIsolation="false"
+        backupGlobals="false"
+        syntaxCheck="true"
+        >
+    <testsuite name="tests">
+        <directory>./tests/</directory>
+    </testsuite>
+    <logging>
+    	<log type="coverage-html" target="./reports" />
+	    <log type="coverage-clover" target="./coverage.xml" />
+    </logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+        <blacklist>
+            <directory suffix=".php">./vendor</directory>
+        </blacklist>
+    </filter>
+</phpunit>

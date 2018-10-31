@@ -15,6 +15,10 @@ jobs:
         command: |
           aws s3 cp s3://gs2-repos/python/publish/${PUBLISH_VERSION}/publish-${PUBLISH_VERSION}.tar.gz ~/ && tar -zxvf ~/publish-${PUBLISH_VERSION}.tar.gz -C ~/
     -
+    test:
+      command: |
+        echo 'skip test'
+    -
       deploy:
         command: |
           bash ~/publish-${PUBLISH_VERSION}/php/publish_packagist.sh ~/publish-${PUBLISH_VERSION}/

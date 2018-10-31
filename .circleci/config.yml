@@ -12,7 +12,7 @@ jobs:
           name: OSの初期設定
           command: |
             apt update && apt -y install python
-            curl "https://bootstrap.pypa.io/get-pip.py" | bash
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py | python
             pip install awscli
       -
         run:

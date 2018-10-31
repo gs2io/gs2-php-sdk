@@ -11,7 +11,7 @@ jobs:
         run:
           name: OSの初期設定
           command: |
-            apt-get -y install python3-dev
+            apt update && apt -y install python3-dev
             curl "https://bootstrap.pypa.io/get-pip.py" | tac | python
             pip install awscli
       -

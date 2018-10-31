@@ -18,8 +18,8 @@ jobs:
             mkdir ~/.ssh
             echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
             export PRODUCT_VERSION=`cat composer.json | jq -r ".version"`
-            git push origin :${PRODUCT_VERSION}
             set +e
+            git push origin :${PRODUCT_VERSION}
             git tag -d ${PRODUCT_VERSION}
             set -e
             git tag ${PRODUCT_VERSION}

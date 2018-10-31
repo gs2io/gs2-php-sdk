@@ -11,15 +11,12 @@ jobs:
         run:
           name: OSの初期設定
           command: |
-            apt update && apt -y install python jq git
-            curl https://bootstrap.pypa.io/get-pip.py | python
-            pip install awscli
-      -
-        run:
-          name: publishスクリプトを取得
-          command: |
-            aws s3 cp s3://gs2-repos/python/publish/${PUBLISH_VERSION}/publish-${PUBLISH_VERSION}.tar.gz ~/ && tar -zxvf ~/publish-${PUBLISH_VERSION}.tar.gz -C ~/
+            apt update && apt -y install jq git
       -
         run:
           command: |
-            bash ~/publish-${PUBLISH_VERSION}/php/publish_packagist.sh ~/publish-${PUBLISH_VERSION}/
+            export PRODUCT_VERSION=`cat composer.json | jq -r ".version"`
+            git push origin :${PRODUCT_VERSION}
+            git tag -d ${PRODUCT_VERSION}
+            git tag ${PRODUCT_VERSION}
+            git push origin ${PRODUCT_VERSION}

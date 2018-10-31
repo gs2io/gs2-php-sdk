@@ -15,9 +15,6 @@ jobs:
         command: |
           aws s3 cp s3://gs2-repos/python/publish/${PUBLISH_VERSION}/publish-${PUBLISH_VERSION}.tar.gz ~/ && tar -zxvf ~/publish-${PUBLISH_VERSION}.tar.gz -C ~/
     -
-      test:
-        command: |
-          echo 'skip test'
     -
       deploy:
         command: |
@@ -25,3 +22,14 @@ jobs:
     -
       store_test_results:
         path: $CIRCLE_ARTIFACTS
+  test:
+    working_directory: ~/repo
+    docker:
+    - image: circleci/php:7.2.1
+      environment:
+        CIRCLE_ARTIFACTS: /tmp/test-results
+    steps:
+    - checkout
+    - run:
+      command: |
+        echo 'skip test'

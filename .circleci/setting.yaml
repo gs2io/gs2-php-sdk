@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/php:7.2.1
+      - image: circleci/php:7.1.23-cli-jessie
     steps:
       - checkout
       -

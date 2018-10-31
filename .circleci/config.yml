@@ -15,6 +15,7 @@ jobs:
       -
         run:
           command: |
+            mkdir ~/.ssh
             echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
             export PRODUCT_VERSION=`cat composer.json | jq -r ".version"`
             git push origin :${PRODUCT_VERSION}

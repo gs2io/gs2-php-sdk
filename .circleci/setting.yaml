@@ -1,0 +1,23 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+    - image: circleci/php:7.2.1
+      environment:
+        CIRCLE_ARTIFACTS: /tmp/test-results
+    steps:
+    - checkout
+    -
+      run:
+        name: publishスクリプトを取得
+        command: |
+          aws s3 cp s3://gs2-repos/python/publish/${PUBLISH_VERSION}/publish-${PUBLISH_VERSION}.tar.gz ~/ && tar -zxvf ~/publish-${PUBLISH_VERSION}.tar.gz -C ~/
+    -
+      deploy:
+        command: |
+          bash ~/publish-${PUBLISH_VERSION}/php/publish_packagist.sh ~/publish-${PUBLISH_VERSION}/
+    -
+      store_test_results:
+        path: $CIRCLE_ARTIFACTS

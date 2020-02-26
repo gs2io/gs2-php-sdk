@@ -1,7 +1,4 @@
+*-private/
+.idea
+*.iml
 vendor
-.DS_Store
-composer.lock
-composer.phar
-.buildpath
-.project
-.settings/

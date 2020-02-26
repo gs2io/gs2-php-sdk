@@ -1,39 +1,20 @@
 {
-	"name": "gs2/gs2-php-sdk",
-	"version": "0.2.0",
-	"license": "Apache-2.0",
-	"require" : {
-		"php" : ">= 7.1.0",
-		"guzzlehttp/guzzle" : "5.3.1"
-	},
-	"autoload": {
-		"psr-4": {
-			"Gs2\\Core\\" : "core/src",
-			"Gs2\\Account\\" : "account/src",
-			"Gs2\\Auth\\" : "auth/src",
-			"Gs2\\Chat\\" : "chat/src",
-			"Gs2\\ConsumableItem\\" : "consumable_item/src",
-			"Gs2\\Gacha\\" : "gacha/src",
-			"Gs2\\Gold\\" : "gold/src",
-			"Gs2\\Identifier\\" : "identifier/src",
-			"Gs2\\InGamePushNotification\\" : "in_game_push_notification/src",
-			"Gs2\\Inbox\\" : "inbox/src",
-			"Gs2\\JobQueue\\" : "job_queue/src",
-			"Gs2\\Key\\" : "key/src",
-			"Gs2\\Level\\" : "level/src",
-			"Gs2\\Lock\\" : "lock/src",
-			"Gs2\\Matchmaking\\" : "matchmaking/src",
-			"Gs2\\Money\\" : "money/src",
-			"Gs2\\Notification\\" : "notification/src",
-			"Gs2\\Ranking\\" : "ranking/src",
-			"Gs2\\Realtime\\" : "realtime/src",
-			"Gs2\\Schedule\\" : "schedule/src",
-			"Gs2\\Script\\" : "script/src",
-			"Gs2\\Showcase\\" : "showcase/src",
-			"Gs2\\Stamina\\" : "stamina/src",
-			"Gs2\\Timer\\" : "timer/src",
-			"Gs2\\Variable\\" : "variable/src",
-			"Gs2\\Watch\\" : "watch/src"
-		}
-	}
+  "name": "gs2/gs2-php-sdk",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "require" : {
+    "php" : ">= 7.1.0",
+    "guzzlehttp/guzzle" : "^6",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Gs2\\Core\\" : "gs2-php-sdk-core/src",
+      "Gs2\\Account\\" : "gs2-php-sdk-account/src",
+      "Gs2\\Auth\\" : "gs2-php-sdk-auth/src"
+    }
+  }
 }

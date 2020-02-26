@@ -1,0 +1,214 @@
+<?php
+/*
+ * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+namespace Gs2\Stamina\Model;
+
+use Gs2\Core\Model\IModel;
+
+/**
+ * スタミナの最大値テーブル
+ *
+ * @author Game Server Services, Inc.
+ *
+ */
+class MaxStaminaTable implements IModel {
+	/**
+     * @var string スタミナの最大値テーブルマスター
+	 */
+	protected $maxStaminaTableId;
+
+	/**
+	 * スタミナの最大値テーブルマスターを取得
+	 *
+	 * @return string|null スタミナの最大値テーブルマスター
+	 */
+	public function getMaxStaminaTableId(): ?string {
+		return $this->maxStaminaTableId;
+	}
+
+	/**
+	 * スタミナの最大値テーブルマスターを設定
+	 *
+	 * @param string|null $maxStaminaTableId スタミナの最大値テーブルマスター
+	 */
+	public function setMaxStaminaTableId(?string $maxStaminaTableId) {
+		$this->maxStaminaTableId = $maxStaminaTableId;
+	}
+
+	/**
+	 * スタミナの最大値テーブルマスターを設定
+	 *
+	 * @param string|null $maxStaminaTableId スタミナの最大値テーブルマスター
+	 * @return MaxStaminaTable $this
+	 */
+	public function withMaxStaminaTableId(?string $maxStaminaTableId): MaxStaminaTable {
+		$this->maxStaminaTableId = $maxStaminaTableId;
+		return $this;
+	}
+	/**
+     * @var string 最大スタミナ値テーブル名
+	 */
+	protected $name;
+
+	/**
+	 * 最大スタミナ値テーブル名を取得
+	 *
+	 * @return string|null 最大スタミナ値テーブル名
+	 */
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	/**
+	 * 最大スタミナ値テーブル名を設定
+	 *
+	 * @param string|null $name 最大スタミナ値テーブル名
+	 */
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	/**
+	 * 最大スタミナ値テーブル名を設定
+	 *
+	 * @param string|null $name 最大スタミナ値テーブル名
+	 * @return MaxStaminaTable $this
+	 */
+	public function withName(?string $name): MaxStaminaTable {
+		$this->name = $name;
+		return $this;
+	}
+	/**
+     * @var string 最大スタミナ値テーブルのメタデータ
+	 */
+	protected $metadata;
+
+	/**
+	 * 最大スタミナ値テーブルのメタデータを取得
+	 *
+	 * @return string|null 最大スタミナ値テーブルのメタデータ
+	 */
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	/**
+	 * 最大スタミナ値テーブルのメタデータを設定
+	 *
+	 * @param string|null $metadata 最大スタミナ値テーブルのメタデータ
+	 */
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	/**
+	 * 最大スタミナ値テーブルのメタデータを設定
+	 *
+	 * @param string|null $metadata 最大スタミナ値テーブルのメタデータ
+	 * @return MaxStaminaTable $this
+	 */
+	public function withMetadata(?string $metadata): MaxStaminaTable {
+		$this->metadata = $metadata;
+		return $this;
+	}
+	/**
+     * @var string 経験値の種類マスター のGRN
+	 */
+	protected $experienceModelId;
+
+	/**
+	 * 経験値の種類マスター のGRNを取得
+	 *
+	 * @return string|null 経験値の種類マスター のGRN
+	 */
+	public function getExperienceModelId(): ?string {
+		return $this->experienceModelId;
+	}
+
+	/**
+	 * 経験値の種類マスター のGRNを設定
+	 *
+	 * @param string|null $experienceModelId 経験値の種類マスター のGRN
+	 */
+	public function setExperienceModelId(?string $experienceModelId) {
+		$this->experienceModelId = $experienceModelId;
+	}
+
+	/**
+	 * 経験値の種類マスター のGRNを設定
+	 *
+	 * @param string|null $experienceModelId 経験値の種類マスター のGRN
+	 * @return MaxStaminaTable $this
+	 */
+	public function withExperienceModelId(?string $experienceModelId): MaxStaminaTable {
+		$this->experienceModelId = $experienceModelId;
+		return $this;
+	}
+	/**
+     * @var int[] ランク毎のスタミナの最大値テーブル
+	 */
+	protected $values;
+
+	/**
+	 * ランク毎のスタミナの最大値テーブルを取得
+	 *
+	 * @return int[]|null ランク毎のスタミナの最大値テーブル
+	 */
+	public function getValues(): ?array {
+		return $this->values;
+	}
+
+	/**
+	 * ランク毎のスタミナの最大値テーブルを設定
+	 *
+	 * @param int[]|null $values ランク毎のスタミナの最大値テーブル
+	 */
+	public function setValues(?array $values) {
+		$this->values = $values;
+	}
+
+	/**
+	 * ランク毎のスタミナの最大値テーブルを設定
+	 *
+	 * @param int[]|null $values ランク毎のスタミナの最大値テーブル
+	 * @return MaxStaminaTable $this
+	 */
+	public function withValues(?array $values): MaxStaminaTable {
+		$this->values = $values;
+		return $this;
+	}
+
+    public function toJson(): array {
+        return array(
+            "maxStaminaTableId" => $this->maxStaminaTableId,
+            "name" => $this->name,
+            "metadata" => $this->metadata,
+            "experienceModelId" => $this->experienceModelId,
+            "values" => $this->values,
+        );
+    }
+
+    public static function fromJson(array $data): MaxStaminaTable {
+        $model = new MaxStaminaTable();
+        $model->setMaxStaminaTableId(isset($data["maxStaminaTableId"]) ? $data["maxStaminaTableId"] : null);
+        $model->setName(isset($data["name"]) ? $data["name"] : null);
+        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
+        $model->setExperienceModelId(isset($data["experienceModelId"]) ? $data["experienceModelId"] : null);
+        $model->setValues(isset($data["values"]) ? $data["values"] : null);
+        return $model;
+    }
+}

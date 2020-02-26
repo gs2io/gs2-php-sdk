@@ -81,7 +81,8 @@ use Gs2\Account\Result\CreateNamespaceResult;
 use Gs2\Core\Exception\Gs2Exception;
 use PHPUnit\Framework\Assert;
 
-$client->createNamespaceAsync(
+// 非同期処理をハンドリングするための Promise が返る
+$promise = $client->createNamespaceAsync(
     (new CreateNamespaceRequest())
         ->withName('namespace-0001')
         ->withAuthenticationScript(
@@ -90,15 +91,29 @@ $client->createNamespaceAsync(
         )
 )->then(
     function (CreateNamespaceResult $result) {
+        // コールバック形式でハンドリングしたい場合は成功時のハンドラーをここに記述
         Assert::assertNotNull($result->getItem());
         Assert::assertEquals('namespace-0001', $result->getItem()->getName());
         Assert::assertEquals('script-0001', $result->getItem()->getAuthenticationScript()->getTriggerScriptId());
     },
     function (Gs2Exception $e) {
+        // コールバック形式でハンドリングしたい場合は失敗時のハンドラーをここに記述
         Assert::fail($e->getMessage());
     }
-)->wait();
+);
+
+try {
+    // Promise を wait することで処理が実行される。戻り値には成功時の結果が返り、失敗時には例外が発生する。
+    $result = $promise->wait();
+    Assert::assertNotNull($result->getItem());
+    Assert::assertEquals('namespace-0001', $result->getItem()->getName());
+    Assert::assertEquals('script-0001', $result->getItem()->getAuthenticationScript()->getTriggerScriptId());
+} catch (Gs2Exception $e) {
+    Assert::fail($e->getMessage());
+}
 ```
+
+Promise に関するドキュメントは https://github.com/guzzle/promises こちらをご確認ください。
 
 その他のサービス・通信方式の初期化処理は [ドキュメント](https://app.gs2.io/docs/index.html?java#gs2-sdk-account-initialize) を参照ください
 

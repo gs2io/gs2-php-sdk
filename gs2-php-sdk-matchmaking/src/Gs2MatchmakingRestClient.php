@@ -1223,30 +1223,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1275,30 +1254,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1327,30 +1285,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1379,30 +1316,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1431,30 +1347,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1483,30 +1378,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1535,30 +1409,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function describeGatherings (
             DescribeGatheringsRequest $request
     ): DescribeGatheringsResult {
-
-        $resultAsyncResult = [];
-        $this->describeGatheringsAsync(
+        return $this->describeGatheringsAsync(
             $request
-        )->then(
-            function (DescribeGatheringsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1635,30 +1488,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function createGathering (
             CreateGatheringRequest $request
     ): CreateGatheringResult {
-
-        $resultAsyncResult = [];
-        $this->createGatheringAsync(
+        return $this->createGatheringAsync(
             $request
-        )->then(
-            function (CreateGatheringResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1735,30 +1567,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function createGatheringByUserId (
             CreateGatheringByUserIdRequest $request
     ): CreateGatheringByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->createGatheringByUserIdAsync(
+        return $this->createGatheringByUserIdAsync(
             $request
-        )->then(
-            function (CreateGatheringByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1787,30 +1598,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function updateGathering (
             UpdateGatheringRequest $request
     ): UpdateGatheringResult {
-
-        $resultAsyncResult = [];
-        $this->updateGatheringAsync(
+        return $this->updateGatheringAsync(
             $request
-        )->then(
-            function (UpdateGatheringResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1839,30 +1629,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function updateGatheringByUserId (
             UpdateGatheringByUserIdRequest $request
     ): UpdateGatheringByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->updateGatheringByUserIdAsync(
+        return $this->updateGatheringByUserIdAsync(
             $request
-        )->then(
-            function (UpdateGatheringByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1899,30 +1668,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function doMatchmakingByPlayer (
             DoMatchmakingByPlayerRequest $request
     ): DoMatchmakingByPlayerResult {
-
-        $resultAsyncResult = [];
-        $this->doMatchmakingByPlayerAsync(
+        return $this->doMatchmakingByPlayerAsync(
             $request
-        )->then(
-            function (DoMatchmakingByPlayerResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1959,30 +1707,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function doMatchmaking (
             DoMatchmakingRequest $request
     ): DoMatchmakingResult {
-
-        $resultAsyncResult = [];
-        $this->doMatchmakingAsync(
+        return $this->doMatchmakingAsync(
             $request
-        )->then(
-            function (DoMatchmakingResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2011,30 +1738,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function getGathering (
             GetGatheringRequest $request
     ): GetGatheringResult {
-
-        $resultAsyncResult = [];
-        $this->getGatheringAsync(
+        return $this->getGatheringAsync(
             $request
-        )->then(
-            function (GetGatheringResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2067,30 +1773,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function cancelMatchmaking (
             CancelMatchmakingRequest $request
     ): CancelMatchmakingResult {
-
-        $resultAsyncResult = [];
-        $this->cancelMatchmakingAsync(
+        return $this->cancelMatchmakingAsync(
             $request
-        )->then(
-            function (CancelMatchmakingResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2123,30 +1808,9 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function cancelMatchmakingByUserId (
             CancelMatchmakingByUserIdRequest $request
     ): CancelMatchmakingByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->cancelMatchmakingByUserIdAsync(
+        return $this->cancelMatchmakingByUserIdAsync(
             $request
-        )->then(
-            function (CancelMatchmakingByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2175,29 +1839,8 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     public function deleteGathering (
             DeleteGatheringRequest $request
     ): DeleteGatheringResult {
-
-        $resultAsyncResult = [];
-        $this->deleteGatheringAsync(
+        return $this->deleteGatheringAsync(
             $request
-        )->then(
-            function (DeleteGatheringResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

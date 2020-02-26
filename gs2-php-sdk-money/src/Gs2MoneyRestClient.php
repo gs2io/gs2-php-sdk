@@ -1392,30 +1392,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1444,30 +1423,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1496,30 +1454,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1548,30 +1485,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1600,30 +1516,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1652,30 +1547,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1704,30 +1578,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function describeWallets (
             DescribeWalletsRequest $request
     ): DescribeWalletsResult {
-
-        $resultAsyncResult = [];
-        $this->describeWalletsAsync(
+        return $this->describeWalletsAsync(
             $request
-        )->then(
-            function (DescribeWalletsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1756,30 +1609,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function describeWalletsByUserId (
             DescribeWalletsByUserIdRequest $request
     ): DescribeWalletsByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeWalletsByUserIdAsync(
+        return $this->describeWalletsByUserIdAsync(
             $request
-        )->then(
-            function (DescribeWalletsByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1808,30 +1640,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function queryWallets (
             QueryWalletsRequest $request
     ): QueryWalletsResult {
-
-        $resultAsyncResult = [];
-        $this->queryWalletsAsync(
+        return $this->queryWalletsAsync(
             $request
-        )->then(
-            function (QueryWalletsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1860,30 +1671,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function getWallet (
             GetWalletRequest $request
     ): GetWalletResult {
-
-        $resultAsyncResult = [];
-        $this->getWalletAsync(
+        return $this->getWalletAsync(
             $request
-        )->then(
-            function (GetWalletResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1912,30 +1702,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function getWalletByUserId (
             GetWalletByUserIdRequest $request
     ): GetWalletByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getWalletByUserIdAsync(
+        return $this->getWalletByUserIdAsync(
             $request
-        )->then(
-            function (GetWalletByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1964,30 +1733,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function depositByUserId (
             DepositByUserIdRequest $request
     ): DepositByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->depositByUserIdAsync(
+        return $this->depositByUserIdAsync(
             $request
-        )->then(
-            function (DepositByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2016,30 +1764,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function withdraw (
             WithdrawRequest $request
     ): WithdrawResult {
-
-        $resultAsyncResult = [];
-        $this->withdrawAsync(
+        return $this->withdrawAsync(
             $request
-        )->then(
-            function (WithdrawResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2068,30 +1795,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function withdrawByUserId (
             WithdrawByUserIdRequest $request
     ): WithdrawByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->withdrawByUserIdAsync(
+        return $this->withdrawByUserIdAsync(
             $request
-        )->then(
-            function (WithdrawByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2120,30 +1826,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function depositByStampSheet (
             DepositByStampSheetRequest $request
     ): DepositByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->depositByStampSheetAsync(
+        return $this->depositByStampSheetAsync(
             $request
-        )->then(
-            function (DepositByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2172,30 +1857,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function withdrawByStampTask (
             WithdrawByStampTaskRequest $request
     ): WithdrawByStampTaskResult {
-
-        $resultAsyncResult = [];
-        $this->withdrawByStampTaskAsync(
+        return $this->withdrawByStampTaskAsync(
             $request
-        )->then(
-            function (WithdrawByStampTaskResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2224,30 +1888,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function describeReceipts (
             DescribeReceiptsRequest $request
     ): DescribeReceiptsResult {
-
-        $resultAsyncResult = [];
-        $this->describeReceiptsAsync(
+        return $this->describeReceiptsAsync(
             $request
-        )->then(
-            function (DescribeReceiptsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2276,30 +1919,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function getByUserIdAndTransactionId (
             GetByUserIdAndTransactionIdRequest $request
     ): GetByUserIdAndTransactionIdResult {
-
-        $resultAsyncResult = [];
-        $this->getByUserIdAndTransactionIdAsync(
+        return $this->getByUserIdAndTransactionIdAsync(
             $request
-        )->then(
-            function (GetByUserIdAndTransactionIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2328,30 +1950,9 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function recordReceipt (
             RecordReceiptRequest $request
     ): RecordReceiptResult {
-
-        $resultAsyncResult = [];
-        $this->recordReceiptAsync(
+        return $this->recordReceiptAsync(
             $request
-        )->then(
-            function (RecordReceiptResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2380,29 +1981,8 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     public function recordReceiptByStampTask (
             RecordReceiptByStampTaskRequest $request
     ): RecordReceiptByStampTaskResult {
-
-        $resultAsyncResult = [];
-        $this->recordReceiptByStampTaskAsync(
+        return $this->recordReceiptByStampTaskAsync(
             $request
-        )->then(
-            function (RecordReceiptByStampTaskResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

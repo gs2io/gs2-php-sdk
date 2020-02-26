@@ -1931,30 +1931,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1983,30 +1962,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2035,30 +1993,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2087,30 +2024,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2139,30 +2055,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2191,30 +2086,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2243,30 +2117,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function describeCategoryModels (
             DescribeCategoryModelsRequest $request
     ): DescribeCategoryModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeCategoryModelsAsync(
+        return $this->describeCategoryModelsAsync(
             $request
-        )->then(
-            function (DescribeCategoryModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2295,30 +2148,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function getCategoryModel (
             GetCategoryModelRequest $request
     ): GetCategoryModelResult {
-
-        $resultAsyncResult = [];
-        $this->getCategoryModelAsync(
+        return $this->getCategoryModelAsync(
             $request
-        )->then(
-            function (GetCategoryModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2347,30 +2179,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function describeCategoryModelMasters (
             DescribeCategoryModelMastersRequest $request
     ): DescribeCategoryModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeCategoryModelMastersAsync(
+        return $this->describeCategoryModelMastersAsync(
             $request
-        )->then(
-            function (DescribeCategoryModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2399,30 +2210,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function createCategoryModelMaster (
             CreateCategoryModelMasterRequest $request
     ): CreateCategoryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createCategoryModelMasterAsync(
+        return $this->createCategoryModelMasterAsync(
             $request
-        )->then(
-            function (CreateCategoryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2451,30 +2241,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function getCategoryModelMaster (
             GetCategoryModelMasterRequest $request
     ): GetCategoryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCategoryModelMasterAsync(
+        return $this->getCategoryModelMasterAsync(
             $request
-        )->then(
-            function (GetCategoryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2503,30 +2272,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function updateCategoryModelMaster (
             UpdateCategoryModelMasterRequest $request
     ): UpdateCategoryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCategoryModelMasterAsync(
+        return $this->updateCategoryModelMasterAsync(
             $request
-        )->then(
-            function (UpdateCategoryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2555,30 +2303,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function deleteCategoryModelMaster (
             DeleteCategoryModelMasterRequest $request
     ): DeleteCategoryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteCategoryModelMasterAsync(
+        return $this->deleteCategoryModelMasterAsync(
             $request
-        )->then(
-            function (DeleteCategoryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2607,30 +2334,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function describeSubscribesByCategoryName (
             DescribeSubscribesByCategoryNameRequest $request
     ): DescribeSubscribesByCategoryNameResult {
-
-        $resultAsyncResult = [];
-        $this->describeSubscribesByCategoryNameAsync(
+        return $this->describeSubscribesByCategoryNameAsync(
             $request
-        )->then(
-            function (DescribeSubscribesByCategoryNameResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2659,30 +2365,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function describeSubscribesByCategoryNameAndUserId (
             DescribeSubscribesByCategoryNameAndUserIdRequest $request
     ): DescribeSubscribesByCategoryNameAndUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeSubscribesByCategoryNameAndUserIdAsync(
+        return $this->describeSubscribesByCategoryNameAndUserIdAsync(
             $request
-        )->then(
-            function (DescribeSubscribesByCategoryNameAndUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2711,30 +2396,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function subscribe (
             SubscribeRequest $request
     ): SubscribeResult {
-
-        $resultAsyncResult = [];
-        $this->subscribeAsync(
+        return $this->subscribeAsync(
             $request
-        )->then(
-            function (SubscribeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2763,30 +2427,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function subscribeByUserId (
             SubscribeByUserIdRequest $request
     ): SubscribeByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->subscribeByUserIdAsync(
+        return $this->subscribeByUserIdAsync(
             $request
-        )->then(
-            function (SubscribeByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2815,30 +2458,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function getSubscribe (
             GetSubscribeRequest $request
     ): GetSubscribeResult {
-
-        $resultAsyncResult = [];
-        $this->getSubscribeAsync(
+        return $this->getSubscribeAsync(
             $request
-        )->then(
-            function (GetSubscribeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2867,30 +2489,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function getSubscribeByUserId (
             GetSubscribeByUserIdRequest $request
     ): GetSubscribeByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getSubscribeByUserIdAsync(
+        return $this->getSubscribeByUserIdAsync(
             $request
-        )->then(
-            function (GetSubscribeByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2919,30 +2520,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function unsubscribe (
             UnsubscribeRequest $request
     ): UnsubscribeResult {
-
-        $resultAsyncResult = [];
-        $this->unsubscribeAsync(
+        return $this->unsubscribeAsync(
             $request
-        )->then(
-            function (UnsubscribeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2971,30 +2551,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function unsubscribeByUserId (
             UnsubscribeByUserIdRequest $request
     ): UnsubscribeByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->unsubscribeByUserIdAsync(
+        return $this->unsubscribeByUserIdAsync(
             $request
-        )->then(
-            function (UnsubscribeByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3023,30 +2582,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function describeRankings (
             DescribeRankingsRequest $request
     ): DescribeRankingsResult {
-
-        $resultAsyncResult = [];
-        $this->describeRankingsAsync(
+        return $this->describeRankingsAsync(
             $request
-        )->then(
-            function (DescribeRankingsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3075,30 +2613,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function describeRankingssByUserId (
             DescribeRankingssByUserIdRequest $request
     ): DescribeRankingssByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeRankingssByUserIdAsync(
+        return $this->describeRankingssByUserIdAsync(
             $request
-        )->then(
-            function (DescribeRankingssByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3131,30 +2648,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function describeNearRankings (
             DescribeNearRankingsRequest $request
     ): DescribeNearRankingsResult {
-
-        $resultAsyncResult = [];
-        $this->describeNearRankingsAsync(
+        return $this->describeNearRankingsAsync(
             $request
-        )->then(
-            function (DescribeNearRankingsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3183,30 +2679,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function putScore (
             PutScoreRequest $request
     ): PutScoreResult {
-
-        $resultAsyncResult = [];
-        $this->putScoreAsync(
+        return $this->putScoreAsync(
             $request
-        )->then(
-            function (PutScoreResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3235,30 +2710,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function putScoreByUserId (
             PutScoreByUserIdRequest $request
     ): PutScoreByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->putScoreByUserIdAsync(
+        return $this->putScoreByUserIdAsync(
             $request
-        )->then(
-            function (PutScoreByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3287,30 +2741,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3339,30 +2772,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function getCurrentRankingMaster (
             GetCurrentRankingMasterRequest $request
     ): GetCurrentRankingMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentRankingMasterAsync(
+        return $this->getCurrentRankingMasterAsync(
             $request
-        )->then(
-            function (GetCurrentRankingMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3391,30 +2803,9 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function updateCurrentRankingMaster (
             UpdateCurrentRankingMasterRequest $request
     ): UpdateCurrentRankingMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentRankingMasterAsync(
+        return $this->updateCurrentRankingMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentRankingMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3443,29 +2834,8 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     public function updateCurrentRankingMasterFromGitHub (
             UpdateCurrentRankingMasterFromGitHubRequest $request
     ): UpdateCurrentRankingMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentRankingMasterFromGitHubAsync(
+        return $this->updateCurrentRankingMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentRankingMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

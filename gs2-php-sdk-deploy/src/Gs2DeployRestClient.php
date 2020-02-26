@@ -1123,30 +1123,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function describeStacks (
             DescribeStacksRequest $request
     ): DescribeStacksResult {
-
-        $resultAsyncResult = [];
-        $this->describeStacksAsync(
+        return $this->describeStacksAsync(
             $request
-        )->then(
-            function (DescribeStacksResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1175,30 +1154,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function createStack (
             CreateStackRequest $request
     ): CreateStackResult {
-
-        $resultAsyncResult = [];
-        $this->createStackAsync(
+        return $this->createStackAsync(
             $request
-        )->then(
-            function (CreateStackResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1227,30 +1185,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function createStackFromGitHub (
             CreateStackFromGitHubRequest $request
     ): CreateStackFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->createStackFromGitHubAsync(
+        return $this->createStackFromGitHubAsync(
             $request
-        )->then(
-            function (CreateStackFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1285,30 +1222,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function validate (
             ValidateRequest $request
     ): ValidateResult {
-
-        $resultAsyncResult = [];
-        $this->validateAsync(
+        return $this->validateAsync(
             $request
-        )->then(
-            function (ValidateResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1337,30 +1253,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function getStackStatus (
             GetStackStatusRequest $request
     ): GetStackStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getStackStatusAsync(
+        return $this->getStackStatusAsync(
             $request
-        )->then(
-            function (GetStackStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1389,30 +1284,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function getStack (
             GetStackRequest $request
     ): GetStackResult {
-
-        $resultAsyncResult = [];
-        $this->getStackAsync(
+        return $this->getStackAsync(
             $request
-        )->then(
-            function (GetStackResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1441,30 +1315,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function updateStack (
             UpdateStackRequest $request
     ): UpdateStackResult {
-
-        $resultAsyncResult = [];
-        $this->updateStackAsync(
+        return $this->updateStackAsync(
             $request
-        )->then(
-            function (UpdateStackResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1493,30 +1346,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function updateStackFromGitHub (
             UpdateStackFromGitHubRequest $request
     ): UpdateStackFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateStackFromGitHubAsync(
+        return $this->updateStackFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateStackFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1551,30 +1383,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function deleteStack (
             DeleteStackRequest $request
     ): DeleteStackResult {
-
-        $resultAsyncResult = [];
-        $this->deleteStackAsync(
+        return $this->deleteStackAsync(
             $request
-        )->then(
-            function (DeleteStackResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1609,30 +1420,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function forceDeleteStack (
             ForceDeleteStackRequest $request
     ): ForceDeleteStackResult {
-
-        $resultAsyncResult = [];
-        $this->forceDeleteStackAsync(
+        return $this->forceDeleteStackAsync(
             $request
-        )->then(
-            function (ForceDeleteStackResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1667,30 +1457,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function deleteStackResources (
             DeleteStackResourcesRequest $request
     ): DeleteStackResourcesResult {
-
-        $resultAsyncResult = [];
-        $this->deleteStackResourcesAsync(
+        return $this->deleteStackResourcesAsync(
             $request
-        )->then(
-            function (DeleteStackResourcesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1725,30 +1494,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function deleteStackEntity (
             DeleteStackEntityRequest $request
     ): DeleteStackEntityResult {
-
-        $resultAsyncResult = [];
-        $this->deleteStackEntityAsync(
+        return $this->deleteStackEntityAsync(
             $request
-        )->then(
-            function (DeleteStackEntityResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1777,30 +1525,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function describeResources (
             DescribeResourcesRequest $request
     ): DescribeResourcesResult {
-
-        $resultAsyncResult = [];
-        $this->describeResourcesAsync(
+        return $this->describeResourcesAsync(
             $request
-        )->then(
-            function (DescribeResourcesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1829,30 +1556,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function getResource (
             GetResourceRequest $request
     ): GetResourceResult {
-
-        $resultAsyncResult = [];
-        $this->getResourceAsync(
+        return $this->getResourceAsync(
             $request
-        )->then(
-            function (GetResourceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1881,30 +1587,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function describeEvents (
             DescribeEventsRequest $request
     ): DescribeEventsResult {
-
-        $resultAsyncResult = [];
-        $this->describeEventsAsync(
+        return $this->describeEventsAsync(
             $request
-        )->then(
-            function (DescribeEventsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1933,30 +1618,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function getEvent (
             GetEventRequest $request
     ): GetEventResult {
-
-        $resultAsyncResult = [];
-        $this->getEventAsync(
+        return $this->getEventAsync(
             $request
-        )->then(
-            function (GetEventResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1985,30 +1649,9 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function describeOutputs (
             DescribeOutputsRequest $request
     ): DescribeOutputsResult {
-
-        $resultAsyncResult = [];
-        $this->describeOutputsAsync(
+        return $this->describeOutputsAsync(
             $request
-        )->then(
-            function (DescribeOutputsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2037,29 +1680,8 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     public function getOutput (
             GetOutputRequest $request
     ): GetOutputResult {
-
-        $resultAsyncResult = [];
-        $this->getOutputAsync(
+        return $this->getOutputAsync(
             $request
-        )->then(
-            function (GetOutputResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

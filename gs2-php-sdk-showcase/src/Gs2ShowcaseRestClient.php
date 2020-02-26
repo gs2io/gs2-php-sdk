@@ -2029,30 +2029,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2081,30 +2060,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2133,30 +2091,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2185,30 +2122,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2237,30 +2153,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2289,30 +2184,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2341,30 +2215,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function describeSalesItemMasters (
             DescribeSalesItemMastersRequest $request
     ): DescribeSalesItemMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeSalesItemMastersAsync(
+        return $this->describeSalesItemMastersAsync(
             $request
-        )->then(
-            function (DescribeSalesItemMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2393,30 +2246,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function createSalesItemMaster (
             CreateSalesItemMasterRequest $request
     ): CreateSalesItemMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createSalesItemMasterAsync(
+        return $this->createSalesItemMasterAsync(
             $request
-        )->then(
-            function (CreateSalesItemMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2445,30 +2277,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function getSalesItemMaster (
             GetSalesItemMasterRequest $request
     ): GetSalesItemMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getSalesItemMasterAsync(
+        return $this->getSalesItemMasterAsync(
             $request
-        )->then(
-            function (GetSalesItemMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2497,30 +2308,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function updateSalesItemMaster (
             UpdateSalesItemMasterRequest $request
     ): UpdateSalesItemMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateSalesItemMasterAsync(
+        return $this->updateSalesItemMasterAsync(
             $request
-        )->then(
-            function (UpdateSalesItemMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2549,30 +2339,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function deleteSalesItemMaster (
             DeleteSalesItemMasterRequest $request
     ): DeleteSalesItemMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteSalesItemMasterAsync(
+        return $this->deleteSalesItemMasterAsync(
             $request
-        )->then(
-            function (DeleteSalesItemMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2601,30 +2370,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function describeSalesItemGroupMasters (
             DescribeSalesItemGroupMastersRequest $request
     ): DescribeSalesItemGroupMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeSalesItemGroupMastersAsync(
+        return $this->describeSalesItemGroupMastersAsync(
             $request
-        )->then(
-            function (DescribeSalesItemGroupMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2653,30 +2401,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function createSalesItemGroupMaster (
             CreateSalesItemGroupMasterRequest $request
     ): CreateSalesItemGroupMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createSalesItemGroupMasterAsync(
+        return $this->createSalesItemGroupMasterAsync(
             $request
-        )->then(
-            function (CreateSalesItemGroupMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2705,30 +2432,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function getSalesItemGroupMaster (
             GetSalesItemGroupMasterRequest $request
     ): GetSalesItemGroupMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getSalesItemGroupMasterAsync(
+        return $this->getSalesItemGroupMasterAsync(
             $request
-        )->then(
-            function (GetSalesItemGroupMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2757,30 +2463,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function updateSalesItemGroupMaster (
             UpdateSalesItemGroupMasterRequest $request
     ): UpdateSalesItemGroupMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateSalesItemGroupMasterAsync(
+        return $this->updateSalesItemGroupMasterAsync(
             $request
-        )->then(
-            function (UpdateSalesItemGroupMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2809,30 +2494,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function deleteSalesItemGroupMaster (
             DeleteSalesItemGroupMasterRequest $request
     ): DeleteSalesItemGroupMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteSalesItemGroupMasterAsync(
+        return $this->deleteSalesItemGroupMasterAsync(
             $request
-        )->then(
-            function (DeleteSalesItemGroupMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2861,30 +2525,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function describeShowcaseMasters (
             DescribeShowcaseMastersRequest $request
     ): DescribeShowcaseMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeShowcaseMastersAsync(
+        return $this->describeShowcaseMastersAsync(
             $request
-        )->then(
-            function (DescribeShowcaseMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2913,30 +2556,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function createShowcaseMaster (
             CreateShowcaseMasterRequest $request
     ): CreateShowcaseMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createShowcaseMasterAsync(
+        return $this->createShowcaseMasterAsync(
             $request
-        )->then(
-            function (CreateShowcaseMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2965,30 +2587,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function getShowcaseMaster (
             GetShowcaseMasterRequest $request
     ): GetShowcaseMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getShowcaseMasterAsync(
+        return $this->getShowcaseMasterAsync(
             $request
-        )->then(
-            function (GetShowcaseMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3017,30 +2618,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function updateShowcaseMaster (
             UpdateShowcaseMasterRequest $request
     ): UpdateShowcaseMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateShowcaseMasterAsync(
+        return $this->updateShowcaseMasterAsync(
             $request
-        )->then(
-            function (UpdateShowcaseMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3069,30 +2649,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function deleteShowcaseMaster (
             DeleteShowcaseMasterRequest $request
     ): DeleteShowcaseMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteShowcaseMasterAsync(
+        return $this->deleteShowcaseMasterAsync(
             $request
-        )->then(
-            function (DeleteShowcaseMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3121,30 +2680,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3173,30 +2711,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function getCurrentShowcaseMaster (
             GetCurrentShowcaseMasterRequest $request
     ): GetCurrentShowcaseMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentShowcaseMasterAsync(
+        return $this->getCurrentShowcaseMasterAsync(
             $request
-        )->then(
-            function (GetCurrentShowcaseMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3225,30 +2742,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function updateCurrentShowcaseMaster (
             UpdateCurrentShowcaseMasterRequest $request
     ): UpdateCurrentShowcaseMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentShowcaseMasterAsync(
+        return $this->updateCurrentShowcaseMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentShowcaseMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3277,30 +2773,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function updateCurrentShowcaseMasterFromGitHub (
             UpdateCurrentShowcaseMasterFromGitHubRequest $request
     ): UpdateCurrentShowcaseMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentShowcaseMasterFromGitHubAsync(
+        return $this->updateCurrentShowcaseMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentShowcaseMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3329,30 +2804,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function describeShowcases (
             DescribeShowcasesRequest $request
     ): DescribeShowcasesResult {
-
-        $resultAsyncResult = [];
-        $this->describeShowcasesAsync(
+        return $this->describeShowcasesAsync(
             $request
-        )->then(
-            function (DescribeShowcasesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3381,30 +2835,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function describeShowcasesByUserId (
             DescribeShowcasesByUserIdRequest $request
     ): DescribeShowcasesByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeShowcasesByUserIdAsync(
+        return $this->describeShowcasesByUserIdAsync(
             $request
-        )->then(
-            function (DescribeShowcasesByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3433,30 +2866,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function getShowcase (
             GetShowcaseRequest $request
     ): GetShowcaseResult {
-
-        $resultAsyncResult = [];
-        $this->getShowcaseAsync(
+        return $this->getShowcaseAsync(
             $request
-        )->then(
-            function (GetShowcaseResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3485,30 +2897,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function getShowcaseByUserId (
             GetShowcaseByUserIdRequest $request
     ): GetShowcaseByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getShowcaseByUserIdAsync(
+        return $this->getShowcaseByUserIdAsync(
             $request
-        )->then(
-            function (GetShowcaseByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3537,30 +2928,9 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function buy (
             BuyRequest $request
     ): BuyResult {
-
-        $resultAsyncResult = [];
-        $this->buyAsync(
+        return $this->buyAsync(
             $request
-        )->then(
-            function (BuyResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3589,29 +2959,8 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     public function buyByUserId (
             BuyByUserIdRequest $request
     ): BuyByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->buyByUserIdAsync(
+        return $this->buyByUserIdAsync(
             $request
-        )->then(
-            function (BuyByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

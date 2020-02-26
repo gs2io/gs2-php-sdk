@@ -1824,30 +1824,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1876,30 +1855,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1928,30 +1886,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1980,30 +1917,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2032,30 +1948,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2084,30 +1979,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2136,30 +2010,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function describeEventMasters (
             DescribeEventMastersRequest $request
     ): DescribeEventMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeEventMastersAsync(
+        return $this->describeEventMastersAsync(
             $request
-        )->then(
-            function (DescribeEventMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2188,30 +2041,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function createEventMaster (
             CreateEventMasterRequest $request
     ): CreateEventMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createEventMasterAsync(
+        return $this->createEventMasterAsync(
             $request
-        )->then(
-            function (CreateEventMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2240,30 +2072,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getEventMaster (
             GetEventMasterRequest $request
     ): GetEventMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getEventMasterAsync(
+        return $this->getEventMasterAsync(
             $request
-        )->then(
-            function (GetEventMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2292,30 +2103,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function updateEventMaster (
             UpdateEventMasterRequest $request
     ): UpdateEventMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateEventMasterAsync(
+        return $this->updateEventMasterAsync(
             $request
-        )->then(
-            function (UpdateEventMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2344,30 +2134,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function deleteEventMaster (
             DeleteEventMasterRequest $request
     ): DeleteEventMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteEventMasterAsync(
+        return $this->deleteEventMasterAsync(
             $request
-        )->then(
-            function (DeleteEventMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2396,30 +2165,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function describeTriggers (
             DescribeTriggersRequest $request
     ): DescribeTriggersResult {
-
-        $resultAsyncResult = [];
-        $this->describeTriggersAsync(
+        return $this->describeTriggersAsync(
             $request
-        )->then(
-            function (DescribeTriggersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2448,30 +2196,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function describeTriggersByUserId (
             DescribeTriggersByUserIdRequest $request
     ): DescribeTriggersByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeTriggersByUserIdAsync(
+        return $this->describeTriggersByUserIdAsync(
             $request
-        )->then(
-            function (DescribeTriggersByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2500,30 +2227,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getTrigger (
             GetTriggerRequest $request
     ): GetTriggerResult {
-
-        $resultAsyncResult = [];
-        $this->getTriggerAsync(
+        return $this->getTriggerAsync(
             $request
-        )->then(
-            function (GetTriggerResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2552,30 +2258,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getTriggerByUserId (
             GetTriggerByUserIdRequest $request
     ): GetTriggerByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getTriggerByUserIdAsync(
+        return $this->getTriggerByUserIdAsync(
             $request
-        )->then(
-            function (GetTriggerByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2604,30 +2289,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function triggerByUserId (
             TriggerByUserIdRequest $request
     ): TriggerByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->triggerByUserIdAsync(
+        return $this->triggerByUserIdAsync(
             $request
-        )->then(
-            function (TriggerByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2656,30 +2320,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function deleteTrigger (
             DeleteTriggerRequest $request
     ): DeleteTriggerResult {
-
-        $resultAsyncResult = [];
-        $this->deleteTriggerAsync(
+        return $this->deleteTriggerAsync(
             $request
-        )->then(
-            function (DeleteTriggerResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2708,30 +2351,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function deleteTriggerByUserId (
             DeleteTriggerByUserIdRequest $request
     ): DeleteTriggerByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->deleteTriggerByUserIdAsync(
+        return $this->deleteTriggerByUserIdAsync(
             $request
-        )->then(
-            function (DeleteTriggerByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2760,30 +2382,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function describeEvents (
             DescribeEventsRequest $request
     ): DescribeEventsResult {
-
-        $resultAsyncResult = [];
-        $this->describeEventsAsync(
+        return $this->describeEventsAsync(
             $request
-        )->then(
-            function (DescribeEventsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2812,30 +2413,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function describeEventsByUserId (
             DescribeEventsByUserIdRequest $request
     ): DescribeEventsByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeEventsByUserIdAsync(
+        return $this->describeEventsByUserIdAsync(
             $request
-        )->then(
-            function (DescribeEventsByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2864,30 +2444,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function describeRawEvents (
             DescribeRawEventsRequest $request
     ): DescribeRawEventsResult {
-
-        $resultAsyncResult = [];
-        $this->describeRawEventsAsync(
+        return $this->describeRawEventsAsync(
             $request
-        )->then(
-            function (DescribeRawEventsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2916,30 +2475,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getEvent (
             GetEventRequest $request
     ): GetEventResult {
-
-        $resultAsyncResult = [];
-        $this->getEventAsync(
+        return $this->getEventAsync(
             $request
-        )->then(
-            function (GetEventResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2968,30 +2506,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getEventByUserId (
             GetEventByUserIdRequest $request
     ): GetEventByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getEventByUserIdAsync(
+        return $this->getEventByUserIdAsync(
             $request
-        )->then(
-            function (GetEventByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3020,30 +2537,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getRawEvent (
             GetRawEventRequest $request
     ): GetRawEventResult {
-
-        $resultAsyncResult = [];
-        $this->getRawEventAsync(
+        return $this->getRawEventAsync(
             $request
-        )->then(
-            function (GetRawEventResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3072,30 +2568,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3124,30 +2599,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function getCurrentEventMaster (
             GetCurrentEventMasterRequest $request
     ): GetCurrentEventMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentEventMasterAsync(
+        return $this->getCurrentEventMasterAsync(
             $request
-        )->then(
-            function (GetCurrentEventMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3176,30 +2630,9 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function updateCurrentEventMaster (
             UpdateCurrentEventMasterRequest $request
     ): UpdateCurrentEventMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentEventMasterAsync(
+        return $this->updateCurrentEventMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentEventMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3228,29 +2661,8 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     public function updateCurrentEventMasterFromGitHub (
             UpdateCurrentEventMasterFromGitHubRequest $request
     ): UpdateCurrentEventMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentEventMasterFromGitHubAsync(
+        return $this->updateCurrentEventMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentEventMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

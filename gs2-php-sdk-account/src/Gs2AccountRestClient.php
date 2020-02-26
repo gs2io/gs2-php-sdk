@@ -1542,30 +1542,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1594,30 +1573,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1646,30 +1604,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1698,30 +1635,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1750,30 +1666,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1802,30 +1697,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1854,30 +1728,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function describeAccounts (
             DescribeAccountsRequest $request
     ): DescribeAccountsResult {
-
-        $resultAsyncResult = [];
-        $this->describeAccountsAsync(
+        return $this->describeAccountsAsync(
             $request
-        )->then(
-            function (DescribeAccountsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1906,30 +1759,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function createAccount (
             CreateAccountRequest $request
     ): CreateAccountResult {
-
-        $resultAsyncResult = [];
-        $this->createAccountAsync(
+        return $this->createAccountAsync(
             $request
-        )->then(
-            function (CreateAccountResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1958,30 +1790,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function updateTimeOffset (
             UpdateTimeOffsetRequest $request
     ): UpdateTimeOffsetResult {
-
-        $resultAsyncResult = [];
-        $this->updateTimeOffsetAsync(
+        return $this->updateTimeOffsetAsync(
             $request
-        )->then(
-            function (UpdateTimeOffsetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2010,30 +1821,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function getAccount (
             GetAccountRequest $request
     ): GetAccountResult {
-
-        $resultAsyncResult = [];
-        $this->getAccountAsync(
+        return $this->getAccountAsync(
             $request
-        )->then(
-            function (GetAccountResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2062,30 +1852,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function deleteAccount (
             DeleteAccountRequest $request
     ): DeleteAccountResult {
-
-        $resultAsyncResult = [];
-        $this->deleteAccountAsync(
+        return $this->deleteAccountAsync(
             $request
-        )->then(
-            function (DeleteAccountResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2114,30 +1883,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function authentication (
             AuthenticationRequest $request
     ): AuthenticationResult {
-
-        $resultAsyncResult = [];
-        $this->authenticationAsync(
+        return $this->authenticationAsync(
             $request
-        )->then(
-            function (AuthenticationResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2166,30 +1914,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function describeTakeOvers (
             DescribeTakeOversRequest $request
     ): DescribeTakeOversResult {
-
-        $resultAsyncResult = [];
-        $this->describeTakeOversAsync(
+        return $this->describeTakeOversAsync(
             $request
-        )->then(
-            function (DescribeTakeOversResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2218,30 +1945,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function describeTakeOversByUserId (
             DescribeTakeOversByUserIdRequest $request
     ): DescribeTakeOversByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeTakeOversByUserIdAsync(
+        return $this->describeTakeOversByUserIdAsync(
             $request
-        )->then(
-            function (DescribeTakeOversByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2270,30 +1976,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function createTakeOver (
             CreateTakeOverRequest $request
     ): CreateTakeOverResult {
-
-        $resultAsyncResult = [];
-        $this->createTakeOverAsync(
+        return $this->createTakeOverAsync(
             $request
-        )->then(
-            function (CreateTakeOverResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2322,30 +2007,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function createTakeOverByUserId (
             CreateTakeOverByUserIdRequest $request
     ): CreateTakeOverByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->createTakeOverByUserIdAsync(
+        return $this->createTakeOverByUserIdAsync(
             $request
-        )->then(
-            function (CreateTakeOverByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2374,30 +2038,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function getTakeOver (
             GetTakeOverRequest $request
     ): GetTakeOverResult {
-
-        $resultAsyncResult = [];
-        $this->getTakeOverAsync(
+        return $this->getTakeOverAsync(
             $request
-        )->then(
-            function (GetTakeOverResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2426,30 +2069,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function getTakeOverByUserId (
             GetTakeOverByUserIdRequest $request
     ): GetTakeOverByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getTakeOverByUserIdAsync(
+        return $this->getTakeOverByUserIdAsync(
             $request
-        )->then(
-            function (GetTakeOverByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2478,30 +2100,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function updateTakeOver (
             UpdateTakeOverRequest $request
     ): UpdateTakeOverResult {
-
-        $resultAsyncResult = [];
-        $this->updateTakeOverAsync(
+        return $this->updateTakeOverAsync(
             $request
-        )->then(
-            function (UpdateTakeOverResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2530,30 +2131,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function updateTakeOverByUserId (
             UpdateTakeOverByUserIdRequest $request
     ): UpdateTakeOverByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->updateTakeOverByUserIdAsync(
+        return $this->updateTakeOverByUserIdAsync(
             $request
-        )->then(
-            function (UpdateTakeOverByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2582,30 +2162,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function deleteTakeOver (
             DeleteTakeOverRequest $request
     ): DeleteTakeOverResult {
-
-        $resultAsyncResult = [];
-        $this->deleteTakeOverAsync(
+        return $this->deleteTakeOverAsync(
             $request
-        )->then(
-            function (DeleteTakeOverResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2634,30 +2193,9 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function deleteTakeOverByUserIdentifier (
             DeleteTakeOverByUserIdentifierRequest $request
     ): DeleteTakeOverByUserIdentifierResult {
-
-        $resultAsyncResult = [];
-        $this->deleteTakeOverByUserIdentifierAsync(
+        return $this->deleteTakeOverByUserIdentifierAsync(
             $request
-        )->then(
-            function (DeleteTakeOverByUserIdentifierResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2686,29 +2224,8 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     public function doTakeOver (
             DoTakeOverRequest $request
     ): DoTakeOverResult {
-
-        $resultAsyncResult = [];
-        $this->doTakeOverAsync(
+        return $this->doTakeOverAsync(
             $request
-        )->then(
-            function (DoTakeOverResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

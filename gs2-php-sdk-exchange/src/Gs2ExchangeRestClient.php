@@ -1258,30 +1258,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1310,30 +1289,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1362,30 +1320,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1414,30 +1351,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1466,30 +1382,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1518,30 +1413,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1570,30 +1444,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function describeRateModels (
             DescribeRateModelsRequest $request
     ): DescribeRateModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeRateModelsAsync(
+        return $this->describeRateModelsAsync(
             $request
-        )->then(
-            function (DescribeRateModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1622,30 +1475,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function getRateModel (
             GetRateModelRequest $request
     ): GetRateModelResult {
-
-        $resultAsyncResult = [];
-        $this->getRateModelAsync(
+        return $this->getRateModelAsync(
             $request
-        )->then(
-            function (GetRateModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1674,30 +1506,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function describeRateModelMasters (
             DescribeRateModelMastersRequest $request
     ): DescribeRateModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeRateModelMastersAsync(
+        return $this->describeRateModelMastersAsync(
             $request
-        )->then(
-            function (DescribeRateModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1726,30 +1537,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function createRateModelMaster (
             CreateRateModelMasterRequest $request
     ): CreateRateModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createRateModelMasterAsync(
+        return $this->createRateModelMasterAsync(
             $request
-        )->then(
-            function (CreateRateModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1778,30 +1568,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function getRateModelMaster (
             GetRateModelMasterRequest $request
     ): GetRateModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getRateModelMasterAsync(
+        return $this->getRateModelMasterAsync(
             $request
-        )->then(
-            function (GetRateModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1830,30 +1599,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function updateRateModelMaster (
             UpdateRateModelMasterRequest $request
     ): UpdateRateModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateRateModelMasterAsync(
+        return $this->updateRateModelMasterAsync(
             $request
-        )->then(
-            function (UpdateRateModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1882,30 +1630,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function deleteRateModelMaster (
             DeleteRateModelMasterRequest $request
     ): DeleteRateModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteRateModelMasterAsync(
+        return $this->deleteRateModelMasterAsync(
             $request
-        )->then(
-            function (DeleteRateModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1934,30 +1661,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function exchange (
             ExchangeRequest $request
     ): ExchangeResult {
-
-        $resultAsyncResult = [];
-        $this->exchangeAsync(
+        return $this->exchangeAsync(
             $request
-        )->then(
-            function (ExchangeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1986,30 +1692,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function exchangeByUserId (
             ExchangeByUserIdRequest $request
     ): ExchangeByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->exchangeByUserIdAsync(
+        return $this->exchangeByUserIdAsync(
             $request
-        )->then(
-            function (ExchangeByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2038,30 +1723,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2090,30 +1754,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function getCurrentRateMaster (
             GetCurrentRateMasterRequest $request
     ): GetCurrentRateMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentRateMasterAsync(
+        return $this->getCurrentRateMasterAsync(
             $request
-        )->then(
-            function (GetCurrentRateMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2142,30 +1785,9 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function updateCurrentRateMaster (
             UpdateCurrentRateMasterRequest $request
     ): UpdateCurrentRateMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentRateMasterAsync(
+        return $this->updateCurrentRateMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentRateMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2194,29 +1816,8 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     public function updateCurrentRateMasterFromGitHub (
             UpdateCurrentRateMasterFromGitHubRequest $request
     ): UpdateCurrentRateMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentRateMasterFromGitHubAsync(
+        return $this->updateCurrentRateMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentRateMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

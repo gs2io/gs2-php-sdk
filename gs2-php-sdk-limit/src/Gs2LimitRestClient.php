@@ -1681,30 +1681,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1733,30 +1712,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1785,30 +1743,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1837,30 +1774,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1889,30 +1805,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1941,30 +1836,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1993,30 +1867,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function describeCounters (
             DescribeCountersRequest $request
     ): DescribeCountersResult {
-
-        $resultAsyncResult = [];
-        $this->describeCountersAsync(
+        return $this->describeCountersAsync(
             $request
-        )->then(
-            function (DescribeCountersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2045,30 +1898,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function describeCountersByUserId (
             DescribeCountersByUserIdRequest $request
     ): DescribeCountersByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeCountersByUserIdAsync(
+        return $this->describeCountersByUserIdAsync(
             $request
-        )->then(
-            function (DescribeCountersByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2097,30 +1929,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function getCounter (
             GetCounterRequest $request
     ): GetCounterResult {
-
-        $resultAsyncResult = [];
-        $this->getCounterAsync(
+        return $this->getCounterAsync(
             $request
-        )->then(
-            function (GetCounterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2149,30 +1960,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function getCounterByUserId (
             GetCounterByUserIdRequest $request
     ): GetCounterByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getCounterByUserIdAsync(
+        return $this->getCounterByUserIdAsync(
             $request
-        )->then(
-            function (GetCounterByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2201,30 +1991,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function countUp (
             CountUpRequest $request
     ): CountUpResult {
-
-        $resultAsyncResult = [];
-        $this->countUpAsync(
+        return $this->countUpAsync(
             $request
-        )->then(
-            function (CountUpResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2253,30 +2022,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function countUpByUserId (
             CountUpByUserIdRequest $request
     ): CountUpByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->countUpByUserIdAsync(
+        return $this->countUpByUserIdAsync(
             $request
-        )->then(
-            function (CountUpByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2305,30 +2053,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function deleteCounterByUserId (
             DeleteCounterByUserIdRequest $request
     ): DeleteCounterByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->deleteCounterByUserIdAsync(
+        return $this->deleteCounterByUserIdAsync(
             $request
-        )->then(
-            function (DeleteCounterByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2357,30 +2084,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function countUpByStampTask (
             CountUpByStampTaskRequest $request
     ): CountUpByStampTaskResult {
-
-        $resultAsyncResult = [];
-        $this->countUpByStampTaskAsync(
+        return $this->countUpByStampTaskAsync(
             $request
-        )->then(
-            function (CountUpByStampTaskResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2409,30 +2115,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function deleteByStampSheet (
             DeleteByStampSheetRequest $request
     ): DeleteByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->deleteByStampSheetAsync(
+        return $this->deleteByStampSheetAsync(
             $request
-        )->then(
-            function (DeleteByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2461,30 +2146,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function describeLimitModelMasters (
             DescribeLimitModelMastersRequest $request
     ): DescribeLimitModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeLimitModelMastersAsync(
+        return $this->describeLimitModelMastersAsync(
             $request
-        )->then(
-            function (DescribeLimitModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2513,30 +2177,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function createLimitModelMaster (
             CreateLimitModelMasterRequest $request
     ): CreateLimitModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createLimitModelMasterAsync(
+        return $this->createLimitModelMasterAsync(
             $request
-        )->then(
-            function (CreateLimitModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2565,30 +2208,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function getLimitModelMaster (
             GetLimitModelMasterRequest $request
     ): GetLimitModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getLimitModelMasterAsync(
+        return $this->getLimitModelMasterAsync(
             $request
-        )->then(
-            function (GetLimitModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2617,30 +2239,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function updateLimitModelMaster (
             UpdateLimitModelMasterRequest $request
     ): UpdateLimitModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateLimitModelMasterAsync(
+        return $this->updateLimitModelMasterAsync(
             $request
-        )->then(
-            function (UpdateLimitModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2669,30 +2270,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function deleteLimitModelMaster (
             DeleteLimitModelMasterRequest $request
     ): DeleteLimitModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteLimitModelMasterAsync(
+        return $this->deleteLimitModelMasterAsync(
             $request
-        )->then(
-            function (DeleteLimitModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2721,30 +2301,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2773,30 +2332,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function getCurrentLimitMaster (
             GetCurrentLimitMasterRequest $request
     ): GetCurrentLimitMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentLimitMasterAsync(
+        return $this->getCurrentLimitMasterAsync(
             $request
-        )->then(
-            function (GetCurrentLimitMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2825,30 +2363,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function updateCurrentLimitMaster (
             UpdateCurrentLimitMasterRequest $request
     ): UpdateCurrentLimitMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentLimitMasterAsync(
+        return $this->updateCurrentLimitMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentLimitMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2877,30 +2394,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function updateCurrentLimitMasterFromGitHub (
             UpdateCurrentLimitMasterFromGitHubRequest $request
     ): UpdateCurrentLimitMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentLimitMasterFromGitHubAsync(
+        return $this->updateCurrentLimitMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentLimitMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2929,30 +2425,9 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function describeLimitModels (
             DescribeLimitModelsRequest $request
     ): DescribeLimitModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeLimitModelsAsync(
+        return $this->describeLimitModelsAsync(
             $request
-        )->then(
-            function (DescribeLimitModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2981,29 +2456,8 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     public function getLimitModel (
             GetLimitModelRequest $request
     ): GetLimitModelResult {
-
-        $resultAsyncResult = [];
-        $this->getLimitModelAsync(
+        return $this->getLimitModelAsync(
             $request
-        )->then(
-            function (GetLimitModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

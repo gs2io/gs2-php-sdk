@@ -345,30 +345,9 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     public function getChart (
             GetChartRequest $request
     ): GetChartResult {
-
-        $resultAsyncResult = [];
-        $this->getChartAsync(
+        return $this->getChartAsync(
             $request
-        )->then(
-            function (GetChartResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -397,30 +376,9 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     public function getCumulative (
             GetCumulativeRequest $request
     ): GetCumulativeResult {
-
-        $resultAsyncResult = [];
-        $this->getCumulativeAsync(
+        return $this->getCumulativeAsync(
             $request
-        )->then(
-            function (GetCumulativeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -449,30 +407,9 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     public function describeBillingActivities (
             DescribeBillingActivitiesRequest $request
     ): DescribeBillingActivitiesResult {
-
-        $resultAsyncResult = [];
-        $this->describeBillingActivitiesAsync(
+        return $this->describeBillingActivitiesAsync(
             $request
-        )->then(
-            function (DescribeBillingActivitiesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -501,29 +438,8 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     public function getBillingActivity (
             GetBillingActivityRequest $request
     ): GetBillingActivityResult {
-
-        $resultAsyncResult = [];
-        $this->getBillingActivityAsync(
+        return $this->getBillingActivityAsync(
             $request
-        )->then(
-            function (GetBillingActivityResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

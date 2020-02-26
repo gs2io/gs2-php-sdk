@@ -1178,30 +1178,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function describeUsers (
             DescribeUsersRequest $request
     ): DescribeUsersResult {
-
-        $resultAsyncResult = [];
-        $this->describeUsersAsync(
+        return $this->describeUsersAsync(
             $request
-        )->then(
-            function (DescribeUsersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1230,30 +1209,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function createUser (
             CreateUserRequest $request
     ): CreateUserResult {
-
-        $resultAsyncResult = [];
-        $this->createUserAsync(
+        return $this->createUserAsync(
             $request
-        )->then(
-            function (CreateUserResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1282,30 +1240,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function updateUser (
             UpdateUserRequest $request
     ): UpdateUserResult {
-
-        $resultAsyncResult = [];
-        $this->updateUserAsync(
+        return $this->updateUserAsync(
             $request
-        )->then(
-            function (UpdateUserResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1334,30 +1271,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function getUser (
             GetUserRequest $request
     ): GetUserResult {
-
-        $resultAsyncResult = [];
-        $this->getUserAsync(
+        return $this->getUserAsync(
             $request
-        )->then(
-            function (GetUserResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1386,30 +1302,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function deleteUser (
             DeleteUserRequest $request
     ): DeleteUserResult {
-
-        $resultAsyncResult = [];
-        $this->deleteUserAsync(
+        return $this->deleteUserAsync(
             $request
-        )->then(
-            function (DeleteUserResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1438,30 +1333,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function describeSecurityPolicies (
             DescribeSecurityPoliciesRequest $request
     ): DescribeSecurityPoliciesResult {
-
-        $resultAsyncResult = [];
-        $this->describeSecurityPoliciesAsync(
+        return $this->describeSecurityPoliciesAsync(
             $request
-        )->then(
-            function (DescribeSecurityPoliciesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1490,30 +1364,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function describeCommonSecurityPolicies (
             DescribeCommonSecurityPoliciesRequest $request
     ): DescribeCommonSecurityPoliciesResult {
-
-        $resultAsyncResult = [];
-        $this->describeCommonSecurityPoliciesAsync(
+        return $this->describeCommonSecurityPoliciesAsync(
             $request
-        )->then(
-            function (DescribeCommonSecurityPoliciesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1542,30 +1395,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function createSecurityPolicy (
             CreateSecurityPolicyRequest $request
     ): CreateSecurityPolicyResult {
-
-        $resultAsyncResult = [];
-        $this->createSecurityPolicyAsync(
+        return $this->createSecurityPolicyAsync(
             $request
-        )->then(
-            function (CreateSecurityPolicyResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1594,30 +1426,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function updateSecurityPolicy (
             UpdateSecurityPolicyRequest $request
     ): UpdateSecurityPolicyResult {
-
-        $resultAsyncResult = [];
-        $this->updateSecurityPolicyAsync(
+        return $this->updateSecurityPolicyAsync(
             $request
-        )->then(
-            function (UpdateSecurityPolicyResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1646,30 +1457,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function getSecurityPolicy (
             GetSecurityPolicyRequest $request
     ): GetSecurityPolicyResult {
-
-        $resultAsyncResult = [];
-        $this->getSecurityPolicyAsync(
+        return $this->getSecurityPolicyAsync(
             $request
-        )->then(
-            function (GetSecurityPolicyResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1698,30 +1488,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function deleteSecurityPolicy (
             DeleteSecurityPolicyRequest $request
     ): DeleteSecurityPolicyResult {
-
-        $resultAsyncResult = [];
-        $this->deleteSecurityPolicyAsync(
+        return $this->deleteSecurityPolicyAsync(
             $request
-        )->then(
-            function (DeleteSecurityPolicyResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1750,30 +1519,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function describeIdentifiers (
             DescribeIdentifiersRequest $request
     ): DescribeIdentifiersResult {
-
-        $resultAsyncResult = [];
-        $this->describeIdentifiersAsync(
+        return $this->describeIdentifiersAsync(
             $request
-        )->then(
-            function (DescribeIdentifiersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1802,30 +1550,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function createIdentifier (
             CreateIdentifierRequest $request
     ): CreateIdentifierResult {
-
-        $resultAsyncResult = [];
-        $this->createIdentifierAsync(
+        return $this->createIdentifierAsync(
             $request
-        )->then(
-            function (CreateIdentifierResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1854,30 +1581,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function getIdentifier (
             GetIdentifierRequest $request
     ): GetIdentifierResult {
-
-        $resultAsyncResult = [];
-        $this->getIdentifierAsync(
+        return $this->getIdentifierAsync(
             $request
-        )->then(
-            function (GetIdentifierResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1906,30 +1612,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function deleteIdentifier (
             DeleteIdentifierRequest $request
     ): DeleteIdentifierResult {
-
-        $resultAsyncResult = [];
-        $this->deleteIdentifierAsync(
+        return $this->deleteIdentifierAsync(
             $request
-        )->then(
-            function (DeleteIdentifierResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1958,30 +1643,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function getHasSecurityPolicy (
             GetHasSecurityPolicyRequest $request
     ): GetHasSecurityPolicyResult {
-
-        $resultAsyncResult = [];
-        $this->getHasSecurityPolicyAsync(
+        return $this->getHasSecurityPolicyAsync(
             $request
-        )->then(
-            function (GetHasSecurityPolicyResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2010,30 +1674,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function attachSecurityPolicy (
             AttachSecurityPolicyRequest $request
     ): AttachSecurityPolicyResult {
-
-        $resultAsyncResult = [];
-        $this->attachSecurityPolicyAsync(
+        return $this->attachSecurityPolicyAsync(
             $request
-        )->then(
-            function (AttachSecurityPolicyResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2062,30 +1705,9 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function detachSecurityPolicy (
             DetachSecurityPolicyRequest $request
     ): DetachSecurityPolicyResult {
-
-        $resultAsyncResult = [];
-        $this->detachSecurityPolicyAsync(
+        return $this->detachSecurityPolicyAsync(
             $request
-        )->then(
-            function (DetachSecurityPolicyResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2114,29 +1736,8 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     public function login (
             LoginRequest $request
     ): LoginResult {
-
-        $resultAsyncResult = [];
-        $this->loginAsync(
+        return $this->loginAsync(
             $request
-        )->then(
-            function (LoginResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

@@ -1485,30 +1485,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1537,30 +1516,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1589,30 +1547,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1641,30 +1578,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1693,30 +1609,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1745,30 +1640,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1797,30 +1671,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function describeDistributorModelMasters (
             DescribeDistributorModelMastersRequest $request
     ): DescribeDistributorModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeDistributorModelMastersAsync(
+        return $this->describeDistributorModelMastersAsync(
             $request
-        )->then(
-            function (DescribeDistributorModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1849,30 +1702,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function createDistributorModelMaster (
             CreateDistributorModelMasterRequest $request
     ): CreateDistributorModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createDistributorModelMasterAsync(
+        return $this->createDistributorModelMasterAsync(
             $request
-        )->then(
-            function (CreateDistributorModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1901,30 +1733,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function getDistributorModelMaster (
             GetDistributorModelMasterRequest $request
     ): GetDistributorModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getDistributorModelMasterAsync(
+        return $this->getDistributorModelMasterAsync(
             $request
-        )->then(
-            function (GetDistributorModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1953,30 +1764,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function updateDistributorModelMaster (
             UpdateDistributorModelMasterRequest $request
     ): UpdateDistributorModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateDistributorModelMasterAsync(
+        return $this->updateDistributorModelMasterAsync(
             $request
-        )->then(
-            function (UpdateDistributorModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2005,30 +1795,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function deleteDistributorModelMaster (
             DeleteDistributorModelMasterRequest $request
     ): DeleteDistributorModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteDistributorModelMasterAsync(
+        return $this->deleteDistributorModelMasterAsync(
             $request
-        )->then(
-            function (DeleteDistributorModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2057,30 +1826,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function describeDistributorModels (
             DescribeDistributorModelsRequest $request
     ): DescribeDistributorModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeDistributorModelsAsync(
+        return $this->describeDistributorModelsAsync(
             $request
-        )->then(
-            function (DescribeDistributorModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2109,30 +1857,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function getDistributorModel (
             GetDistributorModelRequest $request
     ): GetDistributorModelResult {
-
-        $resultAsyncResult = [];
-        $this->getDistributorModelAsync(
+        return $this->getDistributorModelAsync(
             $request
-        )->then(
-            function (GetDistributorModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2161,30 +1888,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2213,30 +1919,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function getCurrentDistributorMaster (
             GetCurrentDistributorMasterRequest $request
     ): GetCurrentDistributorMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentDistributorMasterAsync(
+        return $this->getCurrentDistributorMasterAsync(
             $request
-        )->then(
-            function (GetCurrentDistributorMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2265,30 +1950,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function updateCurrentDistributorMaster (
             UpdateCurrentDistributorMasterRequest $request
     ): UpdateCurrentDistributorMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentDistributorMasterAsync(
+        return $this->updateCurrentDistributorMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentDistributorMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2317,30 +1981,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function updateCurrentDistributorMasterFromGitHub (
             UpdateCurrentDistributorMasterFromGitHubRequest $request
     ): UpdateCurrentDistributorMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentDistributorMasterFromGitHubAsync(
+        return $this->updateCurrentDistributorMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentDistributorMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2369,30 +2012,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function distribute (
             DistributeRequest $request
     ): DistributeResult {
-
-        $resultAsyncResult = [];
-        $this->distributeAsync(
+        return $this->distributeAsync(
             $request
-        )->then(
-            function (DistributeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2421,30 +2043,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function distributeWithoutOverflowProcess (
             DistributeWithoutOverflowProcessRequest $request
     ): DistributeWithoutOverflowProcessResult {
-
-        $resultAsyncResult = [];
-        $this->distributeWithoutOverflowProcessAsync(
+        return $this->distributeWithoutOverflowProcessAsync(
             $request
-        )->then(
-            function (DistributeWithoutOverflowProcessResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2473,30 +2074,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function runStampTask (
             RunStampTaskRequest $request
     ): RunStampTaskResult {
-
-        $resultAsyncResult = [];
-        $this->runStampTaskAsync(
+        return $this->runStampTaskAsync(
             $request
-        )->then(
-            function (RunStampTaskResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2525,30 +2105,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function runStampSheet (
             RunStampSheetRequest $request
     ): RunStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->runStampSheetAsync(
+        return $this->runStampSheetAsync(
             $request
-        )->then(
-            function (RunStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2583,30 +2142,9 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function runStampTaskWithoutNamespace (
             RunStampTaskWithoutNamespaceRequest $request
     ): RunStampTaskWithoutNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->runStampTaskWithoutNamespaceAsync(
+        return $this->runStampTaskWithoutNamespaceAsync(
             $request
-        )->then(
-            function (RunStampTaskWithoutNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2641,29 +2179,8 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     public function runStampSheetWithoutNamespace (
             RunStampSheetWithoutNamespaceRequest $request
     ): RunStampSheetWithoutNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->runStampSheetWithoutNamespaceAsync(
+        return $this->runStampSheetWithoutNamespaceAsync(
             $request
-        )->then(
-            function (RunStampSheetWithoutNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

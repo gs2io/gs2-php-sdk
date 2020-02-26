@@ -2914,30 +2914,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2966,30 +2945,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3018,30 +2976,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3070,30 +3007,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3122,30 +3038,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3174,30 +3069,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3226,30 +3100,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeInventoryModelMasters (
             DescribeInventoryModelMastersRequest $request
     ): DescribeInventoryModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeInventoryModelMastersAsync(
+        return $this->describeInventoryModelMastersAsync(
             $request
-        )->then(
-            function (DescribeInventoryModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3278,30 +3131,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function createInventoryModelMaster (
             CreateInventoryModelMasterRequest $request
     ): CreateInventoryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createInventoryModelMasterAsync(
+        return $this->createInventoryModelMasterAsync(
             $request
-        )->then(
-            function (CreateInventoryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3330,30 +3162,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getInventoryModelMaster (
             GetInventoryModelMasterRequest $request
     ): GetInventoryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getInventoryModelMasterAsync(
+        return $this->getInventoryModelMasterAsync(
             $request
-        )->then(
-            function (GetInventoryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3382,30 +3193,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function updateInventoryModelMaster (
             UpdateInventoryModelMasterRequest $request
     ): UpdateInventoryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateInventoryModelMasterAsync(
+        return $this->updateInventoryModelMasterAsync(
             $request
-        )->then(
-            function (UpdateInventoryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3434,30 +3224,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function deleteInventoryModelMaster (
             DeleteInventoryModelMasterRequest $request
     ): DeleteInventoryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteInventoryModelMasterAsync(
+        return $this->deleteInventoryModelMasterAsync(
             $request
-        )->then(
-            function (DeleteInventoryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3486,30 +3255,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeInventoryModels (
             DescribeInventoryModelsRequest $request
     ): DescribeInventoryModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeInventoryModelsAsync(
+        return $this->describeInventoryModelsAsync(
             $request
-        )->then(
-            function (DescribeInventoryModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3538,30 +3286,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getInventoryModel (
             GetInventoryModelRequest $request
     ): GetInventoryModelResult {
-
-        $resultAsyncResult = [];
-        $this->getInventoryModelAsync(
+        return $this->getInventoryModelAsync(
             $request
-        )->then(
-            function (GetInventoryModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3590,30 +3317,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeItemModelMasters (
             DescribeItemModelMastersRequest $request
     ): DescribeItemModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeItemModelMastersAsync(
+        return $this->describeItemModelMastersAsync(
             $request
-        )->then(
-            function (DescribeItemModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3642,30 +3348,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function createItemModelMaster (
             CreateItemModelMasterRequest $request
     ): CreateItemModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createItemModelMasterAsync(
+        return $this->createItemModelMasterAsync(
             $request
-        )->then(
-            function (CreateItemModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3694,30 +3379,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getItemModelMaster (
             GetItemModelMasterRequest $request
     ): GetItemModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getItemModelMasterAsync(
+        return $this->getItemModelMasterAsync(
             $request
-        )->then(
-            function (GetItemModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3746,30 +3410,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function updateItemModelMaster (
             UpdateItemModelMasterRequest $request
     ): UpdateItemModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateItemModelMasterAsync(
+        return $this->updateItemModelMasterAsync(
             $request
-        )->then(
-            function (UpdateItemModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3798,30 +3441,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function deleteItemModelMaster (
             DeleteItemModelMasterRequest $request
     ): DeleteItemModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteItemModelMasterAsync(
+        return $this->deleteItemModelMasterAsync(
             $request
-        )->then(
-            function (DeleteItemModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3850,30 +3472,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeItemModels (
             DescribeItemModelsRequest $request
     ): DescribeItemModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeItemModelsAsync(
+        return $this->describeItemModelsAsync(
             $request
-        )->then(
-            function (DescribeItemModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3902,30 +3503,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getItemModel (
             GetItemModelRequest $request
     ): GetItemModelResult {
-
-        $resultAsyncResult = [];
-        $this->getItemModelAsync(
+        return $this->getItemModelAsync(
             $request
-        )->then(
-            function (GetItemModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3954,30 +3534,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4006,30 +3565,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getCurrentItemModelMaster (
             GetCurrentItemModelMasterRequest $request
     ): GetCurrentItemModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentItemModelMasterAsync(
+        return $this->getCurrentItemModelMasterAsync(
             $request
-        )->then(
-            function (GetCurrentItemModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4058,30 +3596,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function updateCurrentItemModelMaster (
             UpdateCurrentItemModelMasterRequest $request
     ): UpdateCurrentItemModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentItemModelMasterAsync(
+        return $this->updateCurrentItemModelMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentItemModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4110,30 +3627,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function updateCurrentItemModelMasterFromGitHub (
             UpdateCurrentItemModelMasterFromGitHubRequest $request
     ): UpdateCurrentItemModelMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentItemModelMasterFromGitHubAsync(
+        return $this->updateCurrentItemModelMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentItemModelMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4162,30 +3658,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeInventories (
             DescribeInventoriesRequest $request
     ): DescribeInventoriesResult {
-
-        $resultAsyncResult = [];
-        $this->describeInventoriesAsync(
+        return $this->describeInventoriesAsync(
             $request
-        )->then(
-            function (DescribeInventoriesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4214,30 +3689,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeInventoriesByUserId (
             DescribeInventoriesByUserIdRequest $request
     ): DescribeInventoriesByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeInventoriesByUserIdAsync(
+        return $this->describeInventoriesByUserIdAsync(
             $request
-        )->then(
-            function (DescribeInventoriesByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4266,30 +3720,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getInventory (
             GetInventoryRequest $request
     ): GetInventoryResult {
-
-        $resultAsyncResult = [];
-        $this->getInventoryAsync(
+        return $this->getInventoryAsync(
             $request
-        )->then(
-            function (GetInventoryResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4318,30 +3751,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getInventoryByUserId (
             GetInventoryByUserIdRequest $request
     ): GetInventoryByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getInventoryByUserIdAsync(
+        return $this->getInventoryByUserIdAsync(
             $request
-        )->then(
-            function (GetInventoryByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4370,30 +3782,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function addCapacityByUserId (
             AddCapacityByUserIdRequest $request
     ): AddCapacityByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->addCapacityByUserIdAsync(
+        return $this->addCapacityByUserIdAsync(
             $request
-        )->then(
-            function (AddCapacityByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4422,30 +3813,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function setCapacityByUserId (
             SetCapacityByUserIdRequest $request
     ): SetCapacityByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->setCapacityByUserIdAsync(
+        return $this->setCapacityByUserIdAsync(
             $request
-        )->then(
-            function (SetCapacityByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4474,30 +3844,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function deleteInventoryByUserId (
             DeleteInventoryByUserIdRequest $request
     ): DeleteInventoryByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->deleteInventoryByUserIdAsync(
+        return $this->deleteInventoryByUserIdAsync(
             $request
-        )->then(
-            function (DeleteInventoryByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4526,30 +3875,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function addCapacityByStampSheet (
             AddCapacityByStampSheetRequest $request
     ): AddCapacityByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->addCapacityByStampSheetAsync(
+        return $this->addCapacityByStampSheetAsync(
             $request
-        )->then(
-            function (AddCapacityByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4578,30 +3906,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function setCapacityByStampSheet (
             SetCapacityByStampSheetRequest $request
     ): SetCapacityByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->setCapacityByStampSheetAsync(
+        return $this->setCapacityByStampSheetAsync(
             $request
-        )->then(
-            function (SetCapacityByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4630,30 +3937,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeItemSets (
             DescribeItemSetsRequest $request
     ): DescribeItemSetsResult {
-
-        $resultAsyncResult = [];
-        $this->describeItemSetsAsync(
+        return $this->describeItemSetsAsync(
             $request
-        )->then(
-            function (DescribeItemSetsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4682,30 +3968,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function describeItemSetsByUserId (
             DescribeItemSetsByUserIdRequest $request
     ): DescribeItemSetsByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeItemSetsByUserIdAsync(
+        return $this->describeItemSetsByUserIdAsync(
             $request
-        )->then(
-            function (DescribeItemSetsByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4734,30 +3999,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getItemSet (
             GetItemSetRequest $request
     ): GetItemSetResult {
-
-        $resultAsyncResult = [];
-        $this->getItemSetAsync(
+        return $this->getItemSetAsync(
             $request
-        )->then(
-            function (GetItemSetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4786,30 +4030,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getItemSetByUserId (
             GetItemSetByUserIdRequest $request
     ): GetItemSetByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getItemSetByUserIdAsync(
+        return $this->getItemSetByUserIdAsync(
             $request
-        )->then(
-            function (GetItemSetByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4838,30 +4061,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getItemWithSignature (
             GetItemWithSignatureRequest $request
     ): GetItemWithSignatureResult {
-
-        $resultAsyncResult = [];
-        $this->getItemWithSignatureAsync(
+        return $this->getItemWithSignatureAsync(
             $request
-        )->then(
-            function (GetItemWithSignatureResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4890,30 +4092,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function getItemWithSignatureByUserId (
             GetItemWithSignatureByUserIdRequest $request
     ): GetItemWithSignatureByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getItemWithSignatureByUserIdAsync(
+        return $this->getItemWithSignatureByUserIdAsync(
             $request
-        )->then(
-            function (GetItemWithSignatureByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4942,30 +4123,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function acquireItemSetByUserId (
             AcquireItemSetByUserIdRequest $request
     ): AcquireItemSetByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->acquireItemSetByUserIdAsync(
+        return $this->acquireItemSetByUserIdAsync(
             $request
-        )->then(
-            function (AcquireItemSetByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4994,30 +4154,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function consumeItemSet (
             ConsumeItemSetRequest $request
     ): ConsumeItemSetResult {
-
-        $resultAsyncResult = [];
-        $this->consumeItemSetAsync(
+        return $this->consumeItemSetAsync(
             $request
-        )->then(
-            function (ConsumeItemSetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5046,30 +4185,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function consumeItemSetByUserId (
             ConsumeItemSetByUserIdRequest $request
     ): ConsumeItemSetByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->consumeItemSetByUserIdAsync(
+        return $this->consumeItemSetByUserIdAsync(
             $request
-        )->then(
-            function (ConsumeItemSetByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5098,30 +4216,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function deleteItemSetByUserId (
             DeleteItemSetByUserIdRequest $request
     ): DeleteItemSetByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->deleteItemSetByUserIdAsync(
+        return $this->deleteItemSetByUserIdAsync(
             $request
-        )->then(
-            function (DeleteItemSetByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5150,30 +4247,9 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function acquireItemSetByStampSheet (
             AcquireItemSetByStampSheetRequest $request
     ): AcquireItemSetByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->acquireItemSetByStampSheetAsync(
+        return $this->acquireItemSetByStampSheetAsync(
             $request
-        )->then(
-            function (AcquireItemSetByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5202,29 +4278,8 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     public function consumeItemSetByStampTask (
             ConsumeItemSetByStampTaskRequest $request
     ): ConsumeItemSetByStampTaskResult {
-
-        $resultAsyncResult = [];
-        $this->consumeItemSetByStampTaskAsync(
+        return $this->consumeItemSetByStampTaskAsync(
             $request
-        )->then(
-            function (ConsumeItemSetByStampTaskResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

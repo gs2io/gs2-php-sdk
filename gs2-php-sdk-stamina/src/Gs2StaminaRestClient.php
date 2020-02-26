@@ -3549,30 +3549,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3601,30 +3580,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3653,30 +3611,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3705,30 +3642,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3757,30 +3673,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3809,30 +3704,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3861,30 +3735,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function describeStaminaModelMasters (
             DescribeStaminaModelMastersRequest $request
     ): DescribeStaminaModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeStaminaModelMastersAsync(
+        return $this->describeStaminaModelMastersAsync(
             $request
-        )->then(
-            function (DescribeStaminaModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3913,30 +3766,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function createStaminaModelMaster (
             CreateStaminaModelMasterRequest $request
     ): CreateStaminaModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createStaminaModelMasterAsync(
+        return $this->createStaminaModelMasterAsync(
             $request
-        )->then(
-            function (CreateStaminaModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3965,30 +3797,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getStaminaModelMaster (
             GetStaminaModelMasterRequest $request
     ): GetStaminaModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getStaminaModelMasterAsync(
+        return $this->getStaminaModelMasterAsync(
             $request
-        )->then(
-            function (GetStaminaModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4017,30 +3828,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function updateStaminaModelMaster (
             UpdateStaminaModelMasterRequest $request
     ): UpdateStaminaModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateStaminaModelMasterAsync(
+        return $this->updateStaminaModelMasterAsync(
             $request
-        )->then(
-            function (UpdateStaminaModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4069,30 +3859,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function deleteStaminaModelMaster (
             DeleteStaminaModelMasterRequest $request
     ): DeleteStaminaModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteStaminaModelMasterAsync(
+        return $this->deleteStaminaModelMasterAsync(
             $request
-        )->then(
-            function (DeleteStaminaModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4121,30 +3890,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function describeMaxStaminaTableMasters (
             DescribeMaxStaminaTableMastersRequest $request
     ): DescribeMaxStaminaTableMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeMaxStaminaTableMastersAsync(
+        return $this->describeMaxStaminaTableMastersAsync(
             $request
-        )->then(
-            function (DescribeMaxStaminaTableMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4173,30 +3921,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function createMaxStaminaTableMaster (
             CreateMaxStaminaTableMasterRequest $request
     ): CreateMaxStaminaTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createMaxStaminaTableMasterAsync(
+        return $this->createMaxStaminaTableMasterAsync(
             $request
-        )->then(
-            function (CreateMaxStaminaTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4225,30 +3952,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getMaxStaminaTableMaster (
             GetMaxStaminaTableMasterRequest $request
     ): GetMaxStaminaTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getMaxStaminaTableMasterAsync(
+        return $this->getMaxStaminaTableMasterAsync(
             $request
-        )->then(
-            function (GetMaxStaminaTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4277,30 +3983,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function updateMaxStaminaTableMaster (
             UpdateMaxStaminaTableMasterRequest $request
     ): UpdateMaxStaminaTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateMaxStaminaTableMasterAsync(
+        return $this->updateMaxStaminaTableMasterAsync(
             $request
-        )->then(
-            function (UpdateMaxStaminaTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4329,30 +4014,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function deleteMaxStaminaTableMaster (
             DeleteMaxStaminaTableMasterRequest $request
     ): DeleteMaxStaminaTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteMaxStaminaTableMasterAsync(
+        return $this->deleteMaxStaminaTableMasterAsync(
             $request
-        )->then(
-            function (DeleteMaxStaminaTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4381,30 +4045,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function describeRecoverIntervalTableMasters (
             DescribeRecoverIntervalTableMastersRequest $request
     ): DescribeRecoverIntervalTableMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeRecoverIntervalTableMastersAsync(
+        return $this->describeRecoverIntervalTableMastersAsync(
             $request
-        )->then(
-            function (DescribeRecoverIntervalTableMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4433,30 +4076,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function createRecoverIntervalTableMaster (
             CreateRecoverIntervalTableMasterRequest $request
     ): CreateRecoverIntervalTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createRecoverIntervalTableMasterAsync(
+        return $this->createRecoverIntervalTableMasterAsync(
             $request
-        )->then(
-            function (CreateRecoverIntervalTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4485,30 +4107,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getRecoverIntervalTableMaster (
             GetRecoverIntervalTableMasterRequest $request
     ): GetRecoverIntervalTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getRecoverIntervalTableMasterAsync(
+        return $this->getRecoverIntervalTableMasterAsync(
             $request
-        )->then(
-            function (GetRecoverIntervalTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4537,30 +4138,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function updateRecoverIntervalTableMaster (
             UpdateRecoverIntervalTableMasterRequest $request
     ): UpdateRecoverIntervalTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateRecoverIntervalTableMasterAsync(
+        return $this->updateRecoverIntervalTableMasterAsync(
             $request
-        )->then(
-            function (UpdateRecoverIntervalTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4589,30 +4169,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function deleteRecoverIntervalTableMaster (
             DeleteRecoverIntervalTableMasterRequest $request
     ): DeleteRecoverIntervalTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteRecoverIntervalTableMasterAsync(
+        return $this->deleteRecoverIntervalTableMasterAsync(
             $request
-        )->then(
-            function (DeleteRecoverIntervalTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4641,30 +4200,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function describeRecoverValueTableMasters (
             DescribeRecoverValueTableMastersRequest $request
     ): DescribeRecoverValueTableMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeRecoverValueTableMastersAsync(
+        return $this->describeRecoverValueTableMastersAsync(
             $request
-        )->then(
-            function (DescribeRecoverValueTableMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4693,30 +4231,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function createRecoverValueTableMaster (
             CreateRecoverValueTableMasterRequest $request
     ): CreateRecoverValueTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createRecoverValueTableMasterAsync(
+        return $this->createRecoverValueTableMasterAsync(
             $request
-        )->then(
-            function (CreateRecoverValueTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4745,30 +4262,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getRecoverValueTableMaster (
             GetRecoverValueTableMasterRequest $request
     ): GetRecoverValueTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getRecoverValueTableMasterAsync(
+        return $this->getRecoverValueTableMasterAsync(
             $request
-        )->then(
-            function (GetRecoverValueTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4797,30 +4293,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function updateRecoverValueTableMaster (
             UpdateRecoverValueTableMasterRequest $request
     ): UpdateRecoverValueTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateRecoverValueTableMasterAsync(
+        return $this->updateRecoverValueTableMasterAsync(
             $request
-        )->then(
-            function (UpdateRecoverValueTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4849,30 +4324,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function deleteRecoverValueTableMaster (
             DeleteRecoverValueTableMasterRequest $request
     ): DeleteRecoverValueTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteRecoverValueTableMasterAsync(
+        return $this->deleteRecoverValueTableMasterAsync(
             $request
-        )->then(
-            function (DeleteRecoverValueTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4901,30 +4355,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4953,30 +4386,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getCurrentStaminaMaster (
             GetCurrentStaminaMasterRequest $request
     ): GetCurrentStaminaMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentStaminaMasterAsync(
+        return $this->getCurrentStaminaMasterAsync(
             $request
-        )->then(
-            function (GetCurrentStaminaMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5005,30 +4417,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function updateCurrentStaminaMaster (
             UpdateCurrentStaminaMasterRequest $request
     ): UpdateCurrentStaminaMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentStaminaMasterAsync(
+        return $this->updateCurrentStaminaMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentStaminaMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5057,30 +4448,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function updateCurrentStaminaMasterFromGitHub (
             UpdateCurrentStaminaMasterFromGitHubRequest $request
     ): UpdateCurrentStaminaMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentStaminaMasterFromGitHubAsync(
+        return $this->updateCurrentStaminaMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentStaminaMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5109,30 +4479,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function describeStaminaModels (
             DescribeStaminaModelsRequest $request
     ): DescribeStaminaModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeStaminaModelsAsync(
+        return $this->describeStaminaModelsAsync(
             $request
-        )->then(
-            function (DescribeStaminaModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5161,30 +4510,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getStaminaModel (
             GetStaminaModelRequest $request
     ): GetStaminaModelResult {
-
-        $resultAsyncResult = [];
-        $this->getStaminaModelAsync(
+        return $this->getStaminaModelAsync(
             $request
-        )->then(
-            function (GetStaminaModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5213,30 +4541,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function describeStaminas (
             DescribeStaminasRequest $request
     ): DescribeStaminasResult {
-
-        $resultAsyncResult = [];
-        $this->describeStaminasAsync(
+        return $this->describeStaminasAsync(
             $request
-        )->then(
-            function (DescribeStaminasResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5265,30 +4572,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function describeStaminasByUserId (
             DescribeStaminasByUserIdRequest $request
     ): DescribeStaminasByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeStaminasByUserIdAsync(
+        return $this->describeStaminasByUserIdAsync(
             $request
-        )->then(
-            function (DescribeStaminasByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5317,30 +4603,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getStamina (
             GetStaminaRequest $request
     ): GetStaminaResult {
-
-        $resultAsyncResult = [];
-        $this->getStaminaAsync(
+        return $this->getStaminaAsync(
             $request
-        )->then(
-            function (GetStaminaResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5369,30 +4634,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function getStaminaByUserId (
             GetStaminaByUserIdRequest $request
     ): GetStaminaByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getStaminaByUserIdAsync(
+        return $this->getStaminaByUserIdAsync(
             $request
-        )->then(
-            function (GetStaminaByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5421,30 +4665,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function updateStaminaByUserId (
             UpdateStaminaByUserIdRequest $request
     ): UpdateStaminaByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->updateStaminaByUserIdAsync(
+        return $this->updateStaminaByUserIdAsync(
             $request
-        )->then(
-            function (UpdateStaminaByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5473,30 +4696,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function consumeStamina (
             ConsumeStaminaRequest $request
     ): ConsumeStaminaResult {
-
-        $resultAsyncResult = [];
-        $this->consumeStaminaAsync(
+        return $this->consumeStaminaAsync(
             $request
-        )->then(
-            function (ConsumeStaminaResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5525,30 +4727,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function consumeStaminaByUserId (
             ConsumeStaminaByUserIdRequest $request
     ): ConsumeStaminaByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->consumeStaminaByUserIdAsync(
+        return $this->consumeStaminaByUserIdAsync(
             $request
-        )->then(
-            function (ConsumeStaminaByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5577,30 +4758,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function recoverStaminaByUserId (
             RecoverStaminaByUserIdRequest $request
     ): RecoverStaminaByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->recoverStaminaByUserIdAsync(
+        return $this->recoverStaminaByUserIdAsync(
             $request
-        )->then(
-            function (RecoverStaminaByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5629,30 +4789,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function raiseMaxValueByUserId (
             RaiseMaxValueByUserIdRequest $request
     ): RaiseMaxValueByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->raiseMaxValueByUserIdAsync(
+        return $this->raiseMaxValueByUserIdAsync(
             $request
-        )->then(
-            function (RaiseMaxValueByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5681,30 +4820,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setMaxValueByUserId (
             SetMaxValueByUserIdRequest $request
     ): SetMaxValueByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->setMaxValueByUserIdAsync(
+        return $this->setMaxValueByUserIdAsync(
             $request
-        )->then(
-            function (SetMaxValueByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5733,30 +4851,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setRecoverIntervalByUserId (
             SetRecoverIntervalByUserIdRequest $request
     ): SetRecoverIntervalByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->setRecoverIntervalByUserIdAsync(
+        return $this->setRecoverIntervalByUserIdAsync(
             $request
-        )->then(
-            function (SetRecoverIntervalByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5785,30 +4882,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setRecoverValueByUserId (
             SetRecoverValueByUserIdRequest $request
     ): SetRecoverValueByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->setRecoverValueByUserIdAsync(
+        return $this->setRecoverValueByUserIdAsync(
             $request
-        )->then(
-            function (SetRecoverValueByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5837,30 +4913,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setMaxValueByStatus (
             SetMaxValueByStatusRequest $request
     ): SetMaxValueByStatusResult {
-
-        $resultAsyncResult = [];
-        $this->setMaxValueByStatusAsync(
+        return $this->setMaxValueByStatusAsync(
             $request
-        )->then(
-            function (SetMaxValueByStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5889,30 +4944,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setRecoverIntervalByStatus (
             SetRecoverIntervalByStatusRequest $request
     ): SetRecoverIntervalByStatusResult {
-
-        $resultAsyncResult = [];
-        $this->setRecoverIntervalByStatusAsync(
+        return $this->setRecoverIntervalByStatusAsync(
             $request
-        )->then(
-            function (SetRecoverIntervalByStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5941,30 +4975,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setRecoverValueByStatus (
             SetRecoverValueByStatusRequest $request
     ): SetRecoverValueByStatusResult {
-
-        $resultAsyncResult = [];
-        $this->setRecoverValueByStatusAsync(
+        return $this->setRecoverValueByStatusAsync(
             $request
-        )->then(
-            function (SetRecoverValueByStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -5993,30 +5006,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function deleteStaminaByUserId (
             DeleteStaminaByUserIdRequest $request
     ): DeleteStaminaByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->deleteStaminaByUserIdAsync(
+        return $this->deleteStaminaByUserIdAsync(
             $request
-        )->then(
-            function (DeleteStaminaByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -6045,30 +5037,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function recoverStaminaByStampSheet (
             RecoverStaminaByStampSheetRequest $request
     ): RecoverStaminaByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->recoverStaminaByStampSheetAsync(
+        return $this->recoverStaminaByStampSheetAsync(
             $request
-        )->then(
-            function (RecoverStaminaByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -6097,30 +5068,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function raiseMaxValueByStampSheet (
             RaiseMaxValueByStampSheetRequest $request
     ): RaiseMaxValueByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->raiseMaxValueByStampSheetAsync(
+        return $this->raiseMaxValueByStampSheetAsync(
             $request
-        )->then(
-            function (RaiseMaxValueByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -6149,30 +5099,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setMaxValueByStampSheet (
             SetMaxValueByStampSheetRequest $request
     ): SetMaxValueByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->setMaxValueByStampSheetAsync(
+        return $this->setMaxValueByStampSheetAsync(
             $request
-        )->then(
-            function (SetMaxValueByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -6201,30 +5130,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setRecoverIntervalByStampSheet (
             SetRecoverIntervalByStampSheetRequest $request
     ): SetRecoverIntervalByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->setRecoverIntervalByStampSheetAsync(
+        return $this->setRecoverIntervalByStampSheetAsync(
             $request
-        )->then(
-            function (SetRecoverIntervalByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -6253,30 +5161,9 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function setRecoverValueByStampSheet (
             SetRecoverValueByStampSheetRequest $request
     ): SetRecoverValueByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->setRecoverValueByStampSheetAsync(
+        return $this->setRecoverValueByStampSheetAsync(
             $request
-        )->then(
-            function (SetRecoverValueByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -6305,29 +5192,8 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     public function consumeStaminaByStampTask (
             ConsumeStaminaByStampTaskRequest $request
     ): ConsumeStaminaByStampTaskResult {
-
-        $resultAsyncResult = [];
-        $this->consumeStaminaByStampTaskAsync(
+        return $this->consumeStaminaByStampTaskAsync(
             $request
-        )->then(
-            function (ConsumeStaminaByStampTaskResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

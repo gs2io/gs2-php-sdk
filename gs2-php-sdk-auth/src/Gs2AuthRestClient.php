@@ -209,30 +209,9 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     public function login (
             LoginRequest $request
     ): LoginResult {
-
-        $resultAsyncResult = [];
-        $this->loginAsync(
+        return $this->loginAsync(
             $request
-        )->then(
-            function (LoginResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -263,29 +242,8 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     public function loginBySignature (
             LoginBySignatureRequest $request
     ): LoginBySignatureResult {
-
-        $resultAsyncResult = [];
-        $this->loginBySignatureAsync(
+        return $this->loginBySignatureAsync(
             $request
-        )->then(
-            function (LoginBySignatureResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

@@ -2278,30 +2278,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2330,30 +2309,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2382,30 +2340,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2434,30 +2371,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2486,30 +2402,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2538,30 +2433,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2590,30 +2464,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function describeExperienceModelMasters (
             DescribeExperienceModelMastersRequest $request
     ): DescribeExperienceModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeExperienceModelMastersAsync(
+        return $this->describeExperienceModelMastersAsync(
             $request
-        )->then(
-            function (DescribeExperienceModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2642,30 +2495,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function createExperienceModelMaster (
             CreateExperienceModelMasterRequest $request
     ): CreateExperienceModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createExperienceModelMasterAsync(
+        return $this->createExperienceModelMasterAsync(
             $request
-        )->then(
-            function (CreateExperienceModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2694,30 +2526,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getExperienceModelMaster (
             GetExperienceModelMasterRequest $request
     ): GetExperienceModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getExperienceModelMasterAsync(
+        return $this->getExperienceModelMasterAsync(
             $request
-        )->then(
-            function (GetExperienceModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2746,30 +2557,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function updateExperienceModelMaster (
             UpdateExperienceModelMasterRequest $request
     ): UpdateExperienceModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateExperienceModelMasterAsync(
+        return $this->updateExperienceModelMasterAsync(
             $request
-        )->then(
-            function (UpdateExperienceModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2798,30 +2588,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function deleteExperienceModelMaster (
             DeleteExperienceModelMasterRequest $request
     ): DeleteExperienceModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteExperienceModelMasterAsync(
+        return $this->deleteExperienceModelMasterAsync(
             $request
-        )->then(
-            function (DeleteExperienceModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2850,30 +2619,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function describeExperienceModels (
             DescribeExperienceModelsRequest $request
     ): DescribeExperienceModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeExperienceModelsAsync(
+        return $this->describeExperienceModelsAsync(
             $request
-        )->then(
-            function (DescribeExperienceModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2902,30 +2650,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getExperienceModel (
             GetExperienceModelRequest $request
     ): GetExperienceModelResult {
-
-        $resultAsyncResult = [];
-        $this->getExperienceModelAsync(
+        return $this->getExperienceModelAsync(
             $request
-        )->then(
-            function (GetExperienceModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2954,30 +2681,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function describeThresholdMasters (
             DescribeThresholdMastersRequest $request
     ): DescribeThresholdMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeThresholdMastersAsync(
+        return $this->describeThresholdMastersAsync(
             $request
-        )->then(
-            function (DescribeThresholdMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3006,30 +2712,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function createThresholdMaster (
             CreateThresholdMasterRequest $request
     ): CreateThresholdMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createThresholdMasterAsync(
+        return $this->createThresholdMasterAsync(
             $request
-        )->then(
-            function (CreateThresholdMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3058,30 +2743,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getThresholdMaster (
             GetThresholdMasterRequest $request
     ): GetThresholdMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getThresholdMasterAsync(
+        return $this->getThresholdMasterAsync(
             $request
-        )->then(
-            function (GetThresholdMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3110,30 +2774,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function updateThresholdMaster (
             UpdateThresholdMasterRequest $request
     ): UpdateThresholdMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateThresholdMasterAsync(
+        return $this->updateThresholdMasterAsync(
             $request
-        )->then(
-            function (UpdateThresholdMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3162,30 +2805,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function deleteThresholdMaster (
             DeleteThresholdMasterRequest $request
     ): DeleteThresholdMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteThresholdMasterAsync(
+        return $this->deleteThresholdMasterAsync(
             $request
-        )->then(
-            function (DeleteThresholdMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3214,30 +2836,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3266,30 +2867,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getCurrentExperienceMaster (
             GetCurrentExperienceMasterRequest $request
     ): GetCurrentExperienceMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentExperienceMasterAsync(
+        return $this->getCurrentExperienceMasterAsync(
             $request
-        )->then(
-            function (GetCurrentExperienceMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3318,30 +2898,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function updateCurrentExperienceMaster (
             UpdateCurrentExperienceMasterRequest $request
     ): UpdateCurrentExperienceMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentExperienceMasterAsync(
+        return $this->updateCurrentExperienceMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentExperienceMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3370,30 +2929,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function updateCurrentExperienceMasterFromGitHub (
             UpdateCurrentExperienceMasterFromGitHubRequest $request
     ): UpdateCurrentExperienceMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentExperienceMasterFromGitHubAsync(
+        return $this->updateCurrentExperienceMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentExperienceMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3422,30 +2960,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function describeStatuses (
             DescribeStatusesRequest $request
     ): DescribeStatusesResult {
-
-        $resultAsyncResult = [];
-        $this->describeStatusesAsync(
+        return $this->describeStatusesAsync(
             $request
-        )->then(
-            function (DescribeStatusesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3474,30 +2991,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function describeStatusesByUserId (
             DescribeStatusesByUserIdRequest $request
     ): DescribeStatusesByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeStatusesByUserIdAsync(
+        return $this->describeStatusesByUserIdAsync(
             $request
-        )->then(
-            function (DescribeStatusesByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3526,30 +3022,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getStatus (
             GetStatusRequest $request
     ): GetStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getStatusAsync(
+        return $this->getStatusAsync(
             $request
-        )->then(
-            function (GetStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3578,30 +3053,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getStatusByUserId (
             GetStatusByUserIdRequest $request
     ): GetStatusByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getStatusByUserIdAsync(
+        return $this->getStatusByUserIdAsync(
             $request
-        )->then(
-            function (GetStatusByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3630,30 +3084,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function getStatusWithSignature (
             GetStatusWithSignatureRequest $request
     ): GetStatusWithSignatureResult {
-
-        $resultAsyncResult = [];
-        $this->getStatusWithSignatureAsync(
+        return $this->getStatusWithSignatureAsync(
             $request
-        )->then(
-            function (GetStatusWithSignatureResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3682,30 +3115,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function addExperienceByUserId (
             AddExperienceByUserIdRequest $request
     ): AddExperienceByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->addExperienceByUserIdAsync(
+        return $this->addExperienceByUserIdAsync(
             $request
-        )->then(
-            function (AddExperienceByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3734,30 +3146,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function setExperienceByUserId (
             SetExperienceByUserIdRequest $request
     ): SetExperienceByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->setExperienceByUserIdAsync(
+        return $this->setExperienceByUserIdAsync(
             $request
-        )->then(
-            function (SetExperienceByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3786,30 +3177,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function addRankCapByUserId (
             AddRankCapByUserIdRequest $request
     ): AddRankCapByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->addRankCapByUserIdAsync(
+        return $this->addRankCapByUserIdAsync(
             $request
-        )->then(
-            function (AddRankCapByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3838,30 +3208,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function setRankCapByUserId (
             SetRankCapByUserIdRequest $request
     ): SetRankCapByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->setRankCapByUserIdAsync(
+        return $this->setRankCapByUserIdAsync(
             $request
-        )->then(
-            function (SetRankCapByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3890,30 +3239,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function deleteStatusByUserId (
             DeleteStatusByUserIdRequest $request
     ): DeleteStatusByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->deleteStatusByUserIdAsync(
+        return $this->deleteStatusByUserIdAsync(
             $request
-        )->then(
-            function (DeleteStatusByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3942,30 +3270,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function addExperienceByStampSheet (
             AddExperienceByStampSheetRequest $request
     ): AddExperienceByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->addExperienceByStampSheetAsync(
+        return $this->addExperienceByStampSheetAsync(
             $request
-        )->then(
-            function (AddExperienceByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3994,30 +3301,9 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function addRankCapByStampSheet (
             AddRankCapByStampSheetRequest $request
     ): AddRankCapByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->addRankCapByStampSheetAsync(
+        return $this->addRankCapByStampSheetAsync(
             $request
-        )->then(
-            function (AddRankCapByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4046,29 +3332,8 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     public function setRankCapByStampSheet (
             SetRankCapByStampSheetRequest $request
     ): SetRankCapByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->setRankCapByStampSheetAsync(
+        return $this->setRankCapByStampSheetAsync(
             $request
-        )->then(
-            function (SetRankCapByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

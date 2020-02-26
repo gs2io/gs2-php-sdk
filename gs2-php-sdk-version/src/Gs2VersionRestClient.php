@@ -1819,30 +1819,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1871,30 +1850,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1923,30 +1881,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1975,30 +1912,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2027,30 +1943,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2079,30 +1974,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2131,30 +2005,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function describeVersionModelMasters (
             DescribeVersionModelMastersRequest $request
     ): DescribeVersionModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeVersionModelMastersAsync(
+        return $this->describeVersionModelMastersAsync(
             $request
-        )->then(
-            function (DescribeVersionModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2183,30 +2036,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function createVersionModelMaster (
             CreateVersionModelMasterRequest $request
     ): CreateVersionModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createVersionModelMasterAsync(
+        return $this->createVersionModelMasterAsync(
             $request
-        )->then(
-            function (CreateVersionModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2235,30 +2067,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function getVersionModelMaster (
             GetVersionModelMasterRequest $request
     ): GetVersionModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getVersionModelMasterAsync(
+        return $this->getVersionModelMasterAsync(
             $request
-        )->then(
-            function (GetVersionModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2287,30 +2098,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function updateVersionModelMaster (
             UpdateVersionModelMasterRequest $request
     ): UpdateVersionModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateVersionModelMasterAsync(
+        return $this->updateVersionModelMasterAsync(
             $request
-        )->then(
-            function (UpdateVersionModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2339,30 +2129,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function deleteVersionModelMaster (
             DeleteVersionModelMasterRequest $request
     ): DeleteVersionModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteVersionModelMasterAsync(
+        return $this->deleteVersionModelMasterAsync(
             $request
-        )->then(
-            function (DeleteVersionModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2391,30 +2160,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function describeVersionModels (
             DescribeVersionModelsRequest $request
     ): DescribeVersionModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeVersionModelsAsync(
+        return $this->describeVersionModelsAsync(
             $request
-        )->then(
-            function (DescribeVersionModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2443,30 +2191,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function getVersionModel (
             GetVersionModelRequest $request
     ): GetVersionModelResult {
-
-        $resultAsyncResult = [];
-        $this->getVersionModelAsync(
+        return $this->getVersionModelAsync(
             $request
-        )->then(
-            function (GetVersionModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2495,30 +2222,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function describeAcceptVersions (
             DescribeAcceptVersionsRequest $request
     ): DescribeAcceptVersionsResult {
-
-        $resultAsyncResult = [];
-        $this->describeAcceptVersionsAsync(
+        return $this->describeAcceptVersionsAsync(
             $request
-        )->then(
-            function (DescribeAcceptVersionsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2547,30 +2253,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function describeAcceptVersionsByUserId (
             DescribeAcceptVersionsByUserIdRequest $request
     ): DescribeAcceptVersionsByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeAcceptVersionsByUserIdAsync(
+        return $this->describeAcceptVersionsByUserIdAsync(
             $request
-        )->then(
-            function (DescribeAcceptVersionsByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2599,30 +2284,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function accept (
             AcceptRequest $request
     ): AcceptResult {
-
-        $resultAsyncResult = [];
-        $this->acceptAsync(
+        return $this->acceptAsync(
             $request
-        )->then(
-            function (AcceptResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2651,30 +2315,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function acceptByUserId (
             AcceptByUserIdRequest $request
     ): AcceptByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->acceptByUserIdAsync(
+        return $this->acceptByUserIdAsync(
             $request
-        )->then(
-            function (AcceptByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2703,30 +2346,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function getAcceptVersion (
             GetAcceptVersionRequest $request
     ): GetAcceptVersionResult {
-
-        $resultAsyncResult = [];
-        $this->getAcceptVersionAsync(
+        return $this->getAcceptVersionAsync(
             $request
-        )->then(
-            function (GetAcceptVersionResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2755,30 +2377,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function getAcceptVersionByUserId (
             GetAcceptVersionByUserIdRequest $request
     ): GetAcceptVersionByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getAcceptVersionByUserIdAsync(
+        return $this->getAcceptVersionByUserIdAsync(
             $request
-        )->then(
-            function (GetAcceptVersionByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2807,30 +2408,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function deleteAcceptVersion (
             DeleteAcceptVersionRequest $request
     ): DeleteAcceptVersionResult {
-
-        $resultAsyncResult = [];
-        $this->deleteAcceptVersionAsync(
+        return $this->deleteAcceptVersionAsync(
             $request
-        )->then(
-            function (DeleteAcceptVersionResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2859,30 +2439,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function deleteAcceptVersionByUserId (
             DeleteAcceptVersionByUserIdRequest $request
     ): DeleteAcceptVersionByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->deleteAcceptVersionByUserIdAsync(
+        return $this->deleteAcceptVersionByUserIdAsync(
             $request
-        )->then(
-            function (DeleteAcceptVersionByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2911,30 +2470,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function checkVersion (
             CheckVersionRequest $request
     ): CheckVersionResult {
-
-        $resultAsyncResult = [];
-        $this->checkVersionAsync(
+        return $this->checkVersionAsync(
             $request
-        )->then(
-            function (CheckVersionResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2963,30 +2501,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function checkVersionByUserId (
             CheckVersionByUserIdRequest $request
     ): CheckVersionByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->checkVersionByUserIdAsync(
+        return $this->checkVersionByUserIdAsync(
             $request
-        )->then(
-            function (CheckVersionByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3015,30 +2532,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function calculateSignature (
             CalculateSignatureRequest $request
     ): CalculateSignatureResult {
-
-        $resultAsyncResult = [];
-        $this->calculateSignatureAsync(
+        return $this->calculateSignatureAsync(
             $request
-        )->then(
-            function (CalculateSignatureResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3067,30 +2563,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3119,30 +2594,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function getCurrentVersionMaster (
             GetCurrentVersionMasterRequest $request
     ): GetCurrentVersionMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentVersionMasterAsync(
+        return $this->getCurrentVersionMasterAsync(
             $request
-        )->then(
-            function (GetCurrentVersionMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3171,30 +2625,9 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function updateCurrentVersionMaster (
             UpdateCurrentVersionMasterRequest $request
     ): UpdateCurrentVersionMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentVersionMasterAsync(
+        return $this->updateCurrentVersionMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentVersionMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3223,29 +2656,8 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     public function updateCurrentVersionMasterFromGitHub (
             UpdateCurrentVersionMasterFromGitHubRequest $request
     ): UpdateCurrentVersionMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentVersionMasterFromGitHubAsync(
+        return $this->updateCurrentVersionMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentVersionMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

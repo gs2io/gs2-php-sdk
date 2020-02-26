@@ -1982,30 +1982,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2034,30 +2013,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2086,30 +2044,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2138,30 +2075,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2190,30 +2106,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2242,30 +2137,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2294,30 +2168,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function describeRooms (
             DescribeRoomsRequest $request
     ): DescribeRoomsResult {
-
-        $resultAsyncResult = [];
-        $this->describeRoomsAsync(
+        return $this->describeRoomsAsync(
             $request
-        )->then(
-            function (DescribeRoomsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2346,30 +2199,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function createRoom (
             CreateRoomRequest $request
     ): CreateRoomResult {
-
-        $resultAsyncResult = [];
-        $this->createRoomAsync(
+        return $this->createRoomAsync(
             $request
-        )->then(
-            function (CreateRoomResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2398,30 +2230,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function createRoomFromBackend (
             CreateRoomFromBackendRequest $request
     ): CreateRoomFromBackendResult {
-
-        $resultAsyncResult = [];
-        $this->createRoomFromBackendAsync(
+        return $this->createRoomFromBackendAsync(
             $request
-        )->then(
-            function (CreateRoomFromBackendResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2450,30 +2261,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function getRoom (
             GetRoomRequest $request
     ): GetRoomResult {
-
-        $resultAsyncResult = [];
-        $this->getRoomAsync(
+        return $this->getRoomAsync(
             $request
-        )->then(
-            function (GetRoomResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2502,30 +2292,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function updateRoom (
             UpdateRoomRequest $request
     ): UpdateRoomResult {
-
-        $resultAsyncResult = [];
-        $this->updateRoomAsync(
+        return $this->updateRoomAsync(
             $request
-        )->then(
-            function (UpdateRoomResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2554,30 +2323,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function deleteRoom (
             DeleteRoomRequest $request
     ): DeleteRoomResult {
-
-        $resultAsyncResult = [];
-        $this->deleteRoomAsync(
+        return $this->deleteRoomAsync(
             $request
-        )->then(
-            function (DeleteRoomResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2606,30 +2354,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function deleteRoomFromBackend (
             DeleteRoomFromBackendRequest $request
     ): DeleteRoomFromBackendResult {
-
-        $resultAsyncResult = [];
-        $this->deleteRoomFromBackendAsync(
+        return $this->deleteRoomFromBackendAsync(
             $request
-        )->then(
-            function (DeleteRoomFromBackendResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2658,30 +2385,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function describeMessages (
             DescribeMessagesRequest $request
     ): DescribeMessagesResult {
-
-        $resultAsyncResult = [];
-        $this->describeMessagesAsync(
+        return $this->describeMessagesAsync(
             $request
-        )->then(
-            function (DescribeMessagesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2710,30 +2416,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function post (
             PostRequest $request
     ): PostResult {
-
-        $resultAsyncResult = [];
-        $this->postAsync(
+        return $this->postAsync(
             $request
-        )->then(
-            function (PostResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2762,30 +2447,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function postByUserId (
             PostByUserIdRequest $request
     ): PostByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->postByUserIdAsync(
+        return $this->postByUserIdAsync(
             $request
-        )->then(
-            function (PostByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2814,30 +2478,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function getMessage (
             GetMessageRequest $request
     ): GetMessageResult {
-
-        $resultAsyncResult = [];
-        $this->getMessageAsync(
+        return $this->getMessageAsync(
             $request
-        )->then(
-            function (GetMessageResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2866,30 +2509,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function deleteMessage (
             DeleteMessageRequest $request
     ): DeleteMessageResult {
-
-        $resultAsyncResult = [];
-        $this->deleteMessageAsync(
+        return $this->deleteMessageAsync(
             $request
-        )->then(
-            function (DeleteMessageResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2918,30 +2540,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function describeSubscribes (
             DescribeSubscribesRequest $request
     ): DescribeSubscribesResult {
-
-        $resultAsyncResult = [];
-        $this->describeSubscribesAsync(
+        return $this->describeSubscribesAsync(
             $request
-        )->then(
-            function (DescribeSubscribesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2970,30 +2571,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function describeSubscribesByUserId (
             DescribeSubscribesByUserIdRequest $request
     ): DescribeSubscribesByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeSubscribesByUserIdAsync(
+        return $this->describeSubscribesByUserIdAsync(
             $request
-        )->then(
-            function (DescribeSubscribesByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3022,30 +2602,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function describeSubscribesByRoomName (
             DescribeSubscribesByRoomNameRequest $request
     ): DescribeSubscribesByRoomNameResult {
-
-        $resultAsyncResult = [];
-        $this->describeSubscribesByRoomNameAsync(
+        return $this->describeSubscribesByRoomNameAsync(
             $request
-        )->then(
-            function (DescribeSubscribesByRoomNameResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3074,30 +2633,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function subscribe (
             SubscribeRequest $request
     ): SubscribeResult {
-
-        $resultAsyncResult = [];
-        $this->subscribeAsync(
+        return $this->subscribeAsync(
             $request
-        )->then(
-            function (SubscribeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3126,30 +2664,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function subscribeByUserId (
             SubscribeByUserIdRequest $request
     ): SubscribeByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->subscribeByUserIdAsync(
+        return $this->subscribeByUserIdAsync(
             $request
-        )->then(
-            function (SubscribeByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3178,30 +2695,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function getSubscribe (
             GetSubscribeRequest $request
     ): GetSubscribeResult {
-
-        $resultAsyncResult = [];
-        $this->getSubscribeAsync(
+        return $this->getSubscribeAsync(
             $request
-        )->then(
-            function (GetSubscribeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3230,30 +2726,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function getSubscribeByUserId (
             GetSubscribeByUserIdRequest $request
     ): GetSubscribeByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getSubscribeByUserIdAsync(
+        return $this->getSubscribeByUserIdAsync(
             $request
-        )->then(
-            function (GetSubscribeByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3282,30 +2757,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function updateNotificationType (
             UpdateNotificationTypeRequest $request
     ): UpdateNotificationTypeResult {
-
-        $resultAsyncResult = [];
-        $this->updateNotificationTypeAsync(
+        return $this->updateNotificationTypeAsync(
             $request
-        )->then(
-            function (UpdateNotificationTypeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3334,30 +2788,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function updateNotificationTypeByUserId (
             UpdateNotificationTypeByUserIdRequest $request
     ): UpdateNotificationTypeByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->updateNotificationTypeByUserIdAsync(
+        return $this->updateNotificationTypeByUserIdAsync(
             $request
-        )->then(
-            function (UpdateNotificationTypeByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3386,30 +2819,9 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function unsubscribe (
             UnsubscribeRequest $request
     ): UnsubscribeResult {
-
-        $resultAsyncResult = [];
-        $this->unsubscribeAsync(
+        return $this->unsubscribeAsync(
             $request
-        )->then(
-            function (UnsubscribeResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3438,29 +2850,8 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     public function unsubscribeByUserId (
             UnsubscribeByUserIdRequest $request
     ): UnsubscribeByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->unsubscribeByUserIdAsync(
+        return $this->unsubscribeByUserIdAsync(
             $request
-        )->then(
-            function (UnsubscribeByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

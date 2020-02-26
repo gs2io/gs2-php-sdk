@@ -1760,30 +1760,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1812,30 +1791,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1864,30 +1822,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1916,30 +1853,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -1968,30 +1884,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2020,30 +1915,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2072,30 +1946,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function describeDataObjects (
             DescribeDataObjectsRequest $request
     ): DescribeDataObjectsResult {
-
-        $resultAsyncResult = [];
-        $this->describeDataObjectsAsync(
+        return $this->describeDataObjectsAsync(
             $request
-        )->then(
-            function (DescribeDataObjectsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2124,30 +1977,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function describeDataObjectsByUserId (
             DescribeDataObjectsByUserIdRequest $request
     ): DescribeDataObjectsByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeDataObjectsByUserIdAsync(
+        return $this->describeDataObjectsByUserIdAsync(
             $request
-        )->then(
-            function (DescribeDataObjectsByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2176,30 +2008,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function prepareUpload (
             PrepareUploadRequest $request
     ): PrepareUploadResult {
-
-        $resultAsyncResult = [];
-        $this->prepareUploadAsync(
+        return $this->prepareUploadAsync(
             $request
-        )->then(
-            function (PrepareUploadResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2228,30 +2039,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function prepareUploadByUserId (
             PrepareUploadByUserIdRequest $request
     ): PrepareUploadByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->prepareUploadByUserIdAsync(
+        return $this->prepareUploadByUserIdAsync(
             $request
-        )->then(
-            function (PrepareUploadByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2280,30 +2070,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function updateDataObject (
             UpdateDataObjectRequest $request
     ): UpdateDataObjectResult {
-
-        $resultAsyncResult = [];
-        $this->updateDataObjectAsync(
+        return $this->updateDataObjectAsync(
             $request
-        )->then(
-            function (UpdateDataObjectResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2332,30 +2101,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function updateDataObjectByUserId (
             UpdateDataObjectByUserIdRequest $request
     ): UpdateDataObjectByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->updateDataObjectByUserIdAsync(
+        return $this->updateDataObjectByUserIdAsync(
             $request
-        )->then(
-            function (UpdateDataObjectByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2384,30 +2132,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function prepareReUpload (
             PrepareReUploadRequest $request
     ): PrepareReUploadResult {
-
-        $resultAsyncResult = [];
-        $this->prepareReUploadAsync(
+        return $this->prepareReUploadAsync(
             $request
-        )->then(
-            function (PrepareReUploadResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2436,30 +2163,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function prepareReUploadByUserId (
             PrepareReUploadByUserIdRequest $request
     ): PrepareReUploadByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->prepareReUploadByUserIdAsync(
+        return $this->prepareReUploadByUserIdAsync(
             $request
-        )->then(
-            function (PrepareReUploadByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2488,30 +2194,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function doneUpload (
             DoneUploadRequest $request
     ): DoneUploadResult {
-
-        $resultAsyncResult = [];
-        $this->doneUploadAsync(
+        return $this->doneUploadAsync(
             $request
-        )->then(
-            function (DoneUploadResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2540,30 +2225,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function doneUploadByUserId (
             DoneUploadByUserIdRequest $request
     ): DoneUploadByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->doneUploadByUserIdAsync(
+        return $this->doneUploadByUserIdAsync(
             $request
-        )->then(
-            function (DoneUploadByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2592,30 +2256,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function deleteDataObject (
             DeleteDataObjectRequest $request
     ): DeleteDataObjectResult {
-
-        $resultAsyncResult = [];
-        $this->deleteDataObjectAsync(
+        return $this->deleteDataObjectAsync(
             $request
-        )->then(
-            function (DeleteDataObjectResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2644,30 +2287,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function deleteDataObjectByUserId (
             DeleteDataObjectByUserIdRequest $request
     ): DeleteDataObjectByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->deleteDataObjectByUserIdAsync(
+        return $this->deleteDataObjectByUserIdAsync(
             $request
-        )->then(
-            function (DeleteDataObjectByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2696,30 +2318,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function prepareDownload (
             PrepareDownloadRequest $request
     ): PrepareDownloadResult {
-
-        $resultAsyncResult = [];
-        $this->prepareDownloadAsync(
+        return $this->prepareDownloadAsync(
             $request
-        )->then(
-            function (PrepareDownloadResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2748,30 +2349,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function prepareDownloadByUserId (
             PrepareDownloadByUserIdRequest $request
     ): PrepareDownloadByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->prepareDownloadByUserIdAsync(
+        return $this->prepareDownloadByUserIdAsync(
             $request
-        )->then(
-            function (PrepareDownloadByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2800,30 +2380,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function prepareDownloadByGeneration (
             PrepareDownloadByGenerationRequest $request
     ): PrepareDownloadByGenerationResult {
-
-        $resultAsyncResult = [];
-        $this->prepareDownloadByGenerationAsync(
+        return $this->prepareDownloadByGenerationAsync(
             $request
-        )->then(
-            function (PrepareDownloadByGenerationResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2852,30 +2411,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function prepareDownloadByGenerationAndUserId (
             PrepareDownloadByGenerationAndUserIdRequest $request
     ): PrepareDownloadByGenerationAndUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->prepareDownloadByGenerationAndUserIdAsync(
+        return $this->prepareDownloadByGenerationAndUserIdAsync(
             $request
-        )->then(
-            function (PrepareDownloadByGenerationAndUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2904,30 +2442,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function describeDataObjectHistories (
             DescribeDataObjectHistoriesRequest $request
     ): DescribeDataObjectHistoriesResult {
-
-        $resultAsyncResult = [];
-        $this->describeDataObjectHistoriesAsync(
+        return $this->describeDataObjectHistoriesAsync(
             $request
-        )->then(
-            function (DescribeDataObjectHistoriesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2956,30 +2473,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function describeDataObjectHistoriesByUserId (
             DescribeDataObjectHistoriesByUserIdRequest $request
     ): DescribeDataObjectHistoriesByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeDataObjectHistoriesByUserIdAsync(
+        return $this->describeDataObjectHistoriesByUserIdAsync(
             $request
-        )->then(
-            function (DescribeDataObjectHistoriesByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3008,30 +2504,9 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function getDataObjectHistory (
             GetDataObjectHistoryRequest $request
     ): GetDataObjectHistoryResult {
-
-        $resultAsyncResult = [];
-        $this->getDataObjectHistoryAsync(
+        return $this->getDataObjectHistoryAsync(
             $request
-        )->then(
-            function (GetDataObjectHistoryResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3060,29 +2535,8 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     public function getDataObjectHistoryByUserId (
             GetDataObjectHistoryByUserIdRequest $request
     ): GetDataObjectHistoryByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getDataObjectHistoryByUserIdAsync(
+        return $this->getDataObjectHistoryByUserIdAsync(
             $request
-        )->then(
-            function (GetDataObjectHistoryByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

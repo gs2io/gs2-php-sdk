@@ -2239,30 +2239,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describeNamespaces (
             DescribeNamespacesRequest $request
     ): DescribeNamespacesResult {
-
-        $resultAsyncResult = [];
-        $this->describeNamespacesAsync(
+        return $this->describeNamespacesAsync(
             $request
-        )->then(
-            function (DescribeNamespacesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2291,30 +2270,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function createNamespace (
             CreateNamespaceRequest $request
     ): CreateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->createNamespaceAsync(
+        return $this->createNamespaceAsync(
             $request
-        )->then(
-            function (CreateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2343,30 +2301,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
     ): GetNamespaceStatusResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceStatusAsync(
+        return $this->getNamespaceStatusAsync(
             $request
-        )->then(
-            function (GetNamespaceStatusResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2395,30 +2332,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getNamespace (
             GetNamespaceRequest $request
     ): GetNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->getNamespaceAsync(
+        return $this->getNamespaceAsync(
             $request
-        )->then(
-            function (GetNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2447,30 +2363,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function updateNamespace (
             UpdateNamespaceRequest $request
     ): UpdateNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->updateNamespaceAsync(
+        return $this->updateNamespaceAsync(
             $request
-        )->then(
-            function (UpdateNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2499,30 +2394,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function deleteNamespace (
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
-
-        $resultAsyncResult = [];
-        $this->deleteNamespaceAsync(
+        return $this->deleteNamespaceAsync(
             $request
-        )->then(
-            function (DeleteNamespaceResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2551,30 +2425,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describeLotteryModelMasters (
             DescribeLotteryModelMastersRequest $request
     ): DescribeLotteryModelMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describeLotteryModelMastersAsync(
+        return $this->describeLotteryModelMastersAsync(
             $request
-        )->then(
-            function (DescribeLotteryModelMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2603,30 +2456,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function createLotteryModelMaster (
             CreateLotteryModelMasterRequest $request
     ): CreateLotteryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createLotteryModelMasterAsync(
+        return $this->createLotteryModelMasterAsync(
             $request
-        )->then(
-            function (CreateLotteryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2655,30 +2487,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getLotteryModelMaster (
             GetLotteryModelMasterRequest $request
     ): GetLotteryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getLotteryModelMasterAsync(
+        return $this->getLotteryModelMasterAsync(
             $request
-        )->then(
-            function (GetLotteryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2707,30 +2518,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function updateLotteryModelMaster (
             UpdateLotteryModelMasterRequest $request
     ): UpdateLotteryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateLotteryModelMasterAsync(
+        return $this->updateLotteryModelMasterAsync(
             $request
-        )->then(
-            function (UpdateLotteryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2759,30 +2549,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function deleteLotteryModelMaster (
             DeleteLotteryModelMasterRequest $request
     ): DeleteLotteryModelMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deleteLotteryModelMasterAsync(
+        return $this->deleteLotteryModelMasterAsync(
             $request
-        )->then(
-            function (DeleteLotteryModelMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2811,30 +2580,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describePrizeTableMasters (
             DescribePrizeTableMastersRequest $request
     ): DescribePrizeTableMastersResult {
-
-        $resultAsyncResult = [];
-        $this->describePrizeTableMastersAsync(
+        return $this->describePrizeTableMastersAsync(
             $request
-        )->then(
-            function (DescribePrizeTableMastersResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2863,30 +2611,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function createPrizeTableMaster (
             CreatePrizeTableMasterRequest $request
     ): CreatePrizeTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->createPrizeTableMasterAsync(
+        return $this->createPrizeTableMasterAsync(
             $request
-        )->then(
-            function (CreatePrizeTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2915,30 +2642,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getPrizeTableMaster (
             GetPrizeTableMasterRequest $request
     ): GetPrizeTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getPrizeTableMasterAsync(
+        return $this->getPrizeTableMasterAsync(
             $request
-        )->then(
-            function (GetPrizeTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -2967,30 +2673,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function updatePrizeTableMaster (
             UpdatePrizeTableMasterRequest $request
     ): UpdatePrizeTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updatePrizeTableMasterAsync(
+        return $this->updatePrizeTableMasterAsync(
             $request
-        )->then(
-            function (UpdatePrizeTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3019,30 +2704,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function deletePrizeTableMaster (
             DeletePrizeTableMasterRequest $request
     ): DeletePrizeTableMasterResult {
-
-        $resultAsyncResult = [];
-        $this->deletePrizeTableMasterAsync(
+        return $this->deletePrizeTableMasterAsync(
             $request
-        )->then(
-            function (DeletePrizeTableMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3071,30 +2735,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describeBoxes (
             DescribeBoxesRequest $request
     ): DescribeBoxesResult {
-
-        $resultAsyncResult = [];
-        $this->describeBoxesAsync(
+        return $this->describeBoxesAsync(
             $request
-        )->then(
-            function (DescribeBoxesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3123,30 +2766,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describeBoxesByUserId (
             DescribeBoxesByUserIdRequest $request
     ): DescribeBoxesByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeBoxesByUserIdAsync(
+        return $this->describeBoxesByUserIdAsync(
             $request
-        )->then(
-            function (DescribeBoxesByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3175,30 +2797,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getBox (
             GetBoxRequest $request
     ): GetBoxResult {
-
-        $resultAsyncResult = [];
-        $this->getBoxAsync(
+        return $this->getBoxAsync(
             $request
-        )->then(
-            function (GetBoxResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3227,30 +2828,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getBoxByUserId (
             GetBoxByUserIdRequest $request
     ): GetBoxByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getBoxByUserIdAsync(
+        return $this->getBoxByUserIdAsync(
             $request
-        )->then(
-            function (GetBoxByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3279,30 +2859,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getRawBoxByUserId (
             GetRawBoxByUserIdRequest $request
     ): GetRawBoxByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->getRawBoxByUserIdAsync(
+        return $this->getRawBoxByUserIdAsync(
             $request
-        )->then(
-            function (GetRawBoxByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3331,30 +2890,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function resetBox (
             ResetBoxRequest $request
     ): ResetBoxResult {
-
-        $resultAsyncResult = [];
-        $this->resetBoxAsync(
+        return $this->resetBoxAsync(
             $request
-        )->then(
-            function (ResetBoxResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3383,30 +2921,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function resetBoxByUserId (
             ResetBoxByUserIdRequest $request
     ): ResetBoxByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->resetBoxByUserIdAsync(
+        return $this->resetBoxByUserIdAsync(
             $request
-        )->then(
-            function (ResetBoxByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3435,30 +2952,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describeLotteryModels (
             DescribeLotteryModelsRequest $request
     ): DescribeLotteryModelsResult {
-
-        $resultAsyncResult = [];
-        $this->describeLotteryModelsAsync(
+        return $this->describeLotteryModelsAsync(
             $request
-        )->then(
-            function (DescribeLotteryModelsResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3487,30 +2983,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getLotteryModel (
             GetLotteryModelRequest $request
     ): GetLotteryModelResult {
-
-        $resultAsyncResult = [];
-        $this->getLotteryModelAsync(
+        return $this->getLotteryModelAsync(
             $request
-        )->then(
-            function (GetLotteryModelResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3539,30 +3014,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describePrizeTables (
             DescribePrizeTablesRequest $request
     ): DescribePrizeTablesResult {
-
-        $resultAsyncResult = [];
-        $this->describePrizeTablesAsync(
+        return $this->describePrizeTablesAsync(
             $request
-        )->then(
-            function (DescribePrizeTablesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3591,30 +3045,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getPrizeTable (
             GetPrizeTableRequest $request
     ): GetPrizeTableResult {
-
-        $resultAsyncResult = [];
-        $this->getPrizeTableAsync(
+        return $this->getPrizeTableAsync(
             $request
-        )->then(
-            function (GetPrizeTableResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3643,30 +3076,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function drawByUserId (
             DrawByUserIdRequest $request
     ): DrawByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->drawByUserIdAsync(
+        return $this->drawByUserIdAsync(
             $request
-        )->then(
-            function (DrawByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3701,30 +3113,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describeProbabilities (
             DescribeProbabilitiesRequest $request
     ): DescribeProbabilitiesResult {
-
-        $resultAsyncResult = [];
-        $this->describeProbabilitiesAsync(
+        return $this->describeProbabilitiesAsync(
             $request
-        )->then(
-            function (DescribeProbabilitiesResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3759,30 +3150,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function describeProbabilitiesByUserId (
             DescribeProbabilitiesByUserIdRequest $request
     ): DescribeProbabilitiesByUserIdResult {
-
-        $resultAsyncResult = [];
-        $this->describeProbabilitiesByUserIdAsync(
+        return $this->describeProbabilitiesByUserIdAsync(
             $request
-        )->then(
-            function (DescribeProbabilitiesByUserIdResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3811,30 +3181,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function drawByStampSheet (
             DrawByStampSheetRequest $request
     ): DrawByStampSheetResult {
-
-        $resultAsyncResult = [];
-        $this->drawByStampSheetAsync(
+        return $this->drawByStampSheetAsync(
             $request
-        )->then(
-            function (DrawByStampSheetResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3863,30 +3212,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function exportMaster (
             ExportMasterRequest $request
     ): ExportMasterResult {
-
-        $resultAsyncResult = [];
-        $this->exportMasterAsync(
+        return $this->exportMasterAsync(
             $request
-        )->then(
-            function (ExportMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3915,30 +3243,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function getCurrentLotteryMaster (
             GetCurrentLotteryMasterRequest $request
     ): GetCurrentLotteryMasterResult {
-
-        $resultAsyncResult = [];
-        $this->getCurrentLotteryMasterAsync(
+        return $this->getCurrentLotteryMasterAsync(
             $request
-        )->then(
-            function (GetCurrentLotteryMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -3967,30 +3274,9 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function updateCurrentLotteryMaster (
             UpdateCurrentLotteryMasterRequest $request
     ): UpdateCurrentLotteryMasterResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentLotteryMasterAsync(
+        return $this->updateCurrentLotteryMasterAsync(
             $request
-        )->then(
-            function (UpdateCurrentLotteryMasterResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 
     /**
@@ -4019,29 +3305,8 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     public function updateCurrentLotteryMasterFromGitHub (
             UpdateCurrentLotteryMasterFromGitHubRequest $request
     ): UpdateCurrentLotteryMasterFromGitHubResult {
-
-        $resultAsyncResult = [];
-        $this->updateCurrentLotteryMasterFromGitHubAsync(
+        return $this->updateCurrentLotteryMasterFromGitHubAsync(
             $request
-        )->then(
-            function (UpdateCurrentLotteryMasterFromGitHubResult $result) use (&$resultAsyncResult) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult($result, null)
-                );
-            },
-            function (Gs2Exception $e) {
-                array_push(
-                    $resultAsyncResult,
-                    new AsyncResult(null, $e)
-                );
-            }
         )->wait();
-
-        if($resultAsyncResult[0]->getError() != null) {
-            throw $resultAsyncResult[0]->getError();
-        }
-
-        return $resultAsyncResult[0]->getResult();
     }
 }

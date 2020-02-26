@@ -106,7 +106,7 @@ $client->createNamespaceAsync(
 
 フィードバックは [GS2-Feedback](https://github.com/gs2io/gs2-feedback/issues) にお願いします。
 
-*本プロジェクトのコードは gs2-java-sdk-core 以外は全て自動生成されているため、個別に Pull-Request を頂いても対応できません。*
+*本プロジェクトのコードは gs2-php-sdk-core 以外は全て自動生成されているため、個別に Pull-Request を頂いても対応できません。*
 
 ## SDK の詳細仕様
 

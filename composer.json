@@ -1,20 +1,15 @@
 {
   "name": "gs2/gs2-php-sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "Apache-2.0",
-  "require" : {
-    "php" : ">= 7.1.0",
-    "guzzlehttp/guzzle" : "^6",
+  "require": {
+    "php": ">= 7.1.0",
+    "guzzlehttp/guzzle": "^6",
     "ext-json": "*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9"
   },
   "autoload": {
     "psr-4": {
-      "Gs2\\Core\\" : "gs2-php-sdk-core/src",
-      "Gs2\\Account\\" : "gs2-php-sdk-account/src",
-      "Gs2\\Auth\\" : "gs2-php-sdk-auth/src"
+      "Gs2\\": "src/"
     }
   }
 }

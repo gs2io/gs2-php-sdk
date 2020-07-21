@@ -159,6 +159,39 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
+     * @var bool レーティング計算機能を使用するか
+	 */
+	protected $enableRating;
+
+	/**
+	 * レーティング計算機能を使用するかを取得
+	 *
+	 * @return bool|null レーティング計算機能を使用するか
+	 */
+	public function getEnableRating(): ?bool {
+		return $this->enableRating;
+	}
+
+	/**
+	 * レーティング計算機能を使用するかを設定
+	 *
+	 * @param bool|null $enableRating レーティング計算機能を使用するか
+	 */
+	public function setEnableRating(?bool $enableRating) {
+		$this->enableRating = $enableRating;
+	}
+
+	/**
+	 * レーティング計算機能を使用するかを設定
+	 *
+	 * @param bool|null $enableRating レーティング計算機能を使用するか
+	 * @return Namespace_ $this
+	 */
+	public function withEnableRating(?bool $enableRating): Namespace_ {
+		$this->enableRating = $enableRating;
+		return $this;
+	}
+	/**
      * @var string ギャザリング新規作成時のアクション
 	 */
 	protected $createGatheringTriggerType;
@@ -561,6 +594,7 @@ class Namespace_ implements IModel {
             "ownerId" => $this->ownerId,
             "name" => $this->name,
             "description" => $this->description,
+            "enableRating" => $this->enableRating,
             "createGatheringTriggerType" => $this->createGatheringTriggerType,
             "createGatheringTriggerRealtimeNamespaceId" => $this->createGatheringTriggerRealtimeNamespaceId,
             "createGatheringTriggerScriptId" => $this->createGatheringTriggerScriptId,
@@ -582,6 +616,7 @@ class Namespace_ implements IModel {
         $model->setOwnerId(isset($data["ownerId"]) ? $data["ownerId"] : null);
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
+        $model->setEnableRating(isset($data["enableRating"]) ? $data["enableRating"] : null);
         $model->setCreateGatheringTriggerType(isset($data["createGatheringTriggerType"]) ? $data["createGatheringTriggerType"] : null);
         $model->setCreateGatheringTriggerRealtimeNamespaceId(isset($data["createGatheringTriggerRealtimeNamespaceId"]) ? $data["createGatheringTriggerRealtimeNamespaceId"] : null);
         $model->setCreateGatheringTriggerScriptId(isset($data["createGatheringTriggerScriptId"]) ? $data["createGatheringTriggerScriptId"] : null);

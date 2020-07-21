@@ -225,6 +225,39 @@ class InventoryModelMaster implements IModel {
 		return $this;
 	}
 	/**
+     * @var bool 参照元が登録されているアイテムセットは削除できなくする
+	 */
+	protected $protectReferencedItem;
+
+	/**
+	 * 参照元が登録されているアイテムセットは削除できなくするを取得
+	 *
+	 * @return bool|null 参照元が登録されているアイテムセットは削除できなくする
+	 */
+	public function getProtectReferencedItem(): ?bool {
+		return $this->protectReferencedItem;
+	}
+
+	/**
+	 * 参照元が登録されているアイテムセットは削除できなくするを設定
+	 *
+	 * @param bool|null $protectReferencedItem 参照元が登録されているアイテムセットは削除できなくする
+	 */
+	public function setProtectReferencedItem(?bool $protectReferencedItem) {
+		$this->protectReferencedItem = $protectReferencedItem;
+	}
+
+	/**
+	 * 参照元が登録されているアイテムセットは削除できなくするを設定
+	 *
+	 * @param bool|null $protectReferencedItem 参照元が登録されているアイテムセットは削除できなくする
+	 * @return InventoryModelMaster $this
+	 */
+	public function withProtectReferencedItem(?bool $protectReferencedItem): InventoryModelMaster {
+		$this->protectReferencedItem = $protectReferencedItem;
+		return $this;
+	}
+	/**
      * @var int 作成日時
 	 */
 	protected $createdAt;
@@ -299,6 +332,7 @@ class InventoryModelMaster implements IModel {
             "description" => $this->description,
             "initialCapacity" => $this->initialCapacity,
             "maxCapacity" => $this->maxCapacity,
+            "protectReferencedItem" => $this->protectReferencedItem,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -312,6 +346,7 @@ class InventoryModelMaster implements IModel {
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
         $model->setInitialCapacity(isset($data["initialCapacity"]) ? $data["initialCapacity"] : null);
         $model->setMaxCapacity(isset($data["maxCapacity"]) ? $data["maxCapacity"] : null);
+        $model->setProtectReferencedItem(isset($data["protectReferencedItem"]) ? $data["protectReferencedItem"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

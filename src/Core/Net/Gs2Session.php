@@ -279,7 +279,8 @@ abstract class Gs2Session {
             $this->gs2SessionTaskList,
             array($gs2SessionTask),
             function (Gs2SessionTask $a, Gs2SessionTask $b) {
-                return $a->gs2SessionTaskId - $b->gs2SessionTaskId;
+                // 一致判定にしか使われないので -1 が返らなくても大丈夫
+                return $a->gs2SessionTaskId->equals($b->gs2SessionTaskId) ? 0 : 1;
             }
         );
         $this->gs2SessionTaskList = array_values($this->gs2SessionTaskList);

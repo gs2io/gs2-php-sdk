@@ -73,10 +73,12 @@ use Gs2\Datastore\Request\PrepareDownloadByGenerationAndUserIdRequest;
 use Gs2\Datastore\Result\PrepareDownloadByGenerationAndUserIdResult;
 use Gs2\Datastore\Request\PrepareDownloadOwnDataRequest;
 use Gs2\Datastore\Result\PrepareDownloadOwnDataResult;
+use Gs2\Datastore\Request\PrepareDownloadByUserIdAndDataObjectNameRequest;
+use Gs2\Datastore\Result\PrepareDownloadByUserIdAndDataObjectNameResult;
 use Gs2\Datastore\Request\PrepareDownloadOwnDataByGenerationRequest;
 use Gs2\Datastore\Result\PrepareDownloadOwnDataByGenerationResult;
-use Gs2\Datastore\Request\PrepareDownloadOwnDataByGenerationAndUserIdRequest;
-use Gs2\Datastore\Result\PrepareDownloadOwnDataByGenerationAndUserIdResult;
+use Gs2\Datastore\Request\PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest;
+use Gs2\Datastore\Result\PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult;
 use Gs2\Datastore\Request\DescribeDataObjectHistoriesRequest;
 use Gs2\Datastore\Result\DescribeDataObjectHistoriesResult;
 use Gs2\Datastore\Request\DescribeDataObjectHistoriesByUserIdRequest;
@@ -1579,6 +1581,68 @@ class PrepareDownloadOwnDataTask extends Gs2RestSessionTask {
     }
 }
 
+class PrepareDownloadByUserIdAndDataObjectNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PrepareDownloadByUserIdAndDataObjectNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PrepareDownloadByUserIdAndDataObjectNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PrepareDownloadByUserIdAndDataObjectNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PrepareDownloadByUserIdAndDataObjectNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "datastore", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/data/{dataObjectName}/file";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{dataObjectName}", $this->request->getDataObjectName() === null|| strlen($this->request->getDataObjectName()) == 0 ? "null" : $this->request->getDataObjectName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class PrepareDownloadOwnDataByGenerationTask extends Gs2RestSessionTask {
 
     /**
@@ -1642,10 +1706,10 @@ class PrepareDownloadOwnDataByGenerationTask extends Gs2RestSessionTask {
     }
 }
 
-class PrepareDownloadOwnDataByGenerationAndUserIdTask extends Gs2RestSessionTask {
+class PrepareDownloadByUserIdAndDataObjectNameAndGenerationTask extends Gs2RestSessionTask {
 
     /**
-     * @var PrepareDownloadOwnDataByGenerationAndUserIdRequest
+     * @var PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest
      */
     private $request;
 
@@ -1655,17 +1719,17 @@ class PrepareDownloadOwnDataByGenerationAndUserIdTask extends Gs2RestSessionTask
     private $session;
 
     /**
-     * PrepareDownloadOwnDataByGenerationAndUserIdTask constructor.
+     * PrepareDownloadByUserIdAndDataObjectNameAndGenerationTask constructor.
      * @param Gs2RestSession $session
-     * @param PrepareDownloadOwnDataByGenerationAndUserIdRequest $request
+     * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        PrepareDownloadOwnDataByGenerationAndUserIdRequest $request
+        PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
     ) {
         parent::__construct(
             $session,
-            PrepareDownloadOwnDataByGenerationAndUserIdResult::class
+            PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2696,6 +2760,37 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する<br>
+     *
+     * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function prepareDownloadByUserIdAndDataObjectNameAsync(
+            PrepareDownloadByUserIdAndDataObjectNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PrepareDownloadByUserIdAndDataObjectNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する<br>
+     *
+     * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request リクエストパラメータ
+     * @return PrepareDownloadByUserIdAndDataObjectNameResult
+     */
+    public function prepareDownloadByUserIdAndDataObjectName (
+            PrepareDownloadByUserIdAndDataObjectNameRequest $request
+    ): PrepareDownloadByUserIdAndDataObjectNameResult {
+        return $this->prepareDownloadByUserIdAndDataObjectNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * データオブジェクトを世代を指定してダウンロード準備する<br>
      *
      * @param PrepareDownloadOwnDataByGenerationRequest $request リクエストパラメータ
@@ -2729,14 +2824,14 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     /**
      * ユーザIDを指定してデータオブジェクトを世代を指定してダウンロード準備する<br>
      *
-     * @param PrepareDownloadOwnDataByGenerationAndUserIdRequest $request リクエストパラメータ
+     * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request リクエストパラメータ
      * @return PromiseInterface
      */
-    public function prepareDownloadOwnDataByGenerationAndUserIdAsync(
-            PrepareDownloadOwnDataByGenerationAndUserIdRequest $request
+    public function prepareDownloadByUserIdAndDataObjectNameAndGenerationAsync(
+            PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new PrepareDownloadOwnDataByGenerationAndUserIdTask(
+        $task = new PrepareDownloadByUserIdAndDataObjectNameAndGenerationTask(
             $this->session,
             $request
         );
@@ -2746,13 +2841,13 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     /**
      * ユーザIDを指定してデータオブジェクトを世代を指定してダウンロード準備する<br>
      *
-     * @param PrepareDownloadOwnDataByGenerationAndUserIdRequest $request リクエストパラメータ
-     * @return PrepareDownloadOwnDataByGenerationAndUserIdResult
+     * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request リクエストパラメータ
+     * @return PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult
      */
-    public function prepareDownloadOwnDataByGenerationAndUserId (
-            PrepareDownloadOwnDataByGenerationAndUserIdRequest $request
-    ): PrepareDownloadOwnDataByGenerationAndUserIdResult {
-        return $this->prepareDownloadOwnDataByGenerationAndUserIdAsync(
+    public function prepareDownloadByUserIdAndDataObjectNameAndGeneration (
+            PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
+    ): PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult {
+        return $this->prepareDownloadByUserIdAndDataObjectNameAndGenerationAsync(
             $request
         )->wait();
     }

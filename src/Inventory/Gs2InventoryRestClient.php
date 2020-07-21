@@ -111,12 +111,38 @@ use Gs2\Inventory\Request\ConsumeItemSetRequest;
 use Gs2\Inventory\Result\ConsumeItemSetResult;
 use Gs2\Inventory\Request\ConsumeItemSetByUserIdRequest;
 use Gs2\Inventory\Result\ConsumeItemSetByUserIdResult;
+use Gs2\Inventory\Request\DescribeReferenceOfRequest;
+use Gs2\Inventory\Result\DescribeReferenceOfResult;
+use Gs2\Inventory\Request\DescribeReferenceOfByUserIdRequest;
+use Gs2\Inventory\Result\DescribeReferenceOfByUserIdResult;
+use Gs2\Inventory\Request\GetReferenceOfRequest;
+use Gs2\Inventory\Result\GetReferenceOfResult;
+use Gs2\Inventory\Request\GetReferenceOfByUserIdRequest;
+use Gs2\Inventory\Result\GetReferenceOfByUserIdResult;
+use Gs2\Inventory\Request\VerifyReferenceOfRequest;
+use Gs2\Inventory\Result\VerifyReferenceOfResult;
+use Gs2\Inventory\Request\VerifyReferenceOfByUserIdRequest;
+use Gs2\Inventory\Result\VerifyReferenceOfByUserIdResult;
+use Gs2\Inventory\Request\AddReferenceOfRequest;
+use Gs2\Inventory\Result\AddReferenceOfResult;
+use Gs2\Inventory\Request\AddReferenceOfByUserIdRequest;
+use Gs2\Inventory\Result\AddReferenceOfByUserIdResult;
+use Gs2\Inventory\Request\DeleteReferenceOfRequest;
+use Gs2\Inventory\Result\DeleteReferenceOfResult;
+use Gs2\Inventory\Request\DeleteReferenceOfByUserIdRequest;
+use Gs2\Inventory\Result\DeleteReferenceOfByUserIdResult;
 use Gs2\Inventory\Request\DeleteItemSetByUserIdRequest;
 use Gs2\Inventory\Result\DeleteItemSetByUserIdResult;
 use Gs2\Inventory\Request\AcquireItemSetByStampSheetRequest;
 use Gs2\Inventory\Result\AcquireItemSetByStampSheetResult;
+use Gs2\Inventory\Request\AddReferenceOfItemSetByStampSheetRequest;
+use Gs2\Inventory\Result\AddReferenceOfItemSetByStampSheetResult;
+use Gs2\Inventory\Request\DeleteReferenceOfItemSetByStampSheetRequest;
+use Gs2\Inventory\Result\DeleteReferenceOfItemSetByStampSheetResult;
 use Gs2\Inventory\Request\ConsumeItemSetByStampTaskRequest;
 use Gs2\Inventory\Result\ConsumeItemSetByStampTaskResult;
+use Gs2\Inventory\Request\VerifyReferenceOfByStampTaskRequest;
+use Gs2\Inventory\Result\VerifyReferenceOfByStampTaskResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -605,6 +631,9 @@ class CreateInventoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMaxCapacity() !== null) {
             $json["maxCapacity"] = $this->request->getMaxCapacity();
         }
+        if ($this->request->getProtectReferencedItem() !== null) {
+            $json["protectReferencedItem"] = $this->request->getProtectReferencedItem();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -730,6 +759,9 @@ class UpdateInventoryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMaxCapacity() !== null) {
             $json["maxCapacity"] = $this->request->getMaxCapacity();
+        }
+        if ($this->request->getProtectReferencedItem() !== null) {
+            $json["protectReferencedItem"] = $this->request->getProtectReferencedItem();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2793,6 +2825,660 @@ class ConsumeItemSetByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeReferenceOfTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeReferenceOfRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeReferenceOfTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeReferenceOfRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeReferenceOfRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeReferenceOfResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeReferenceOfByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeReferenceOfByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeReferenceOfByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeReferenceOfByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeReferenceOfByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeReferenceOfByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetReferenceOfTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetReferenceOfRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetReferenceOfTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetReferenceOfRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetReferenceOfRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetReferenceOfResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/{referenceOf}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+        $url = str_replace("{referenceOf}", $this->request->getReferenceOf() === null|| strlen($this->request->getReferenceOf()) == 0 ? "null" : $this->request->getReferenceOf(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetReferenceOfByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetReferenceOfByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetReferenceOfByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetReferenceOfByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetReferenceOfByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetReferenceOfByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/{referenceOf}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+        $url = str_replace("{referenceOf}", $this->request->getReferenceOf() === null|| strlen($this->request->getReferenceOf()) == 0 ? "null" : $this->request->getReferenceOf(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyReferenceOfTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyReferenceOfRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyReferenceOfTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyReferenceOfRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyReferenceOfRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyReferenceOfResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+        $url = str_replace("{referenceOf}", $this->request->getReferenceOf() === null|| strlen($this->request->getReferenceOf()) == 0 ? "null" : $this->request->getReferenceOf(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyReferenceOfByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyReferenceOfByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyReferenceOfByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyReferenceOfByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyReferenceOfByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyReferenceOfByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+        $url = str_replace("{referenceOf}", $this->request->getReferenceOf() === null|| strlen($this->request->getReferenceOf()) == 0 ? "null" : $this->request->getReferenceOf(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AddReferenceOfTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddReferenceOfRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddReferenceOfTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddReferenceOfRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddReferenceOfRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddReferenceOfResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+
+        $json = [];
+        if ($this->request->getReferenceOf() !== null) {
+            $json["referenceOf"] = $this->request->getReferenceOf();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AddReferenceOfByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddReferenceOfByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddReferenceOfByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddReferenceOfByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddReferenceOfByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddReferenceOfByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+
+        $json = [];
+        if ($this->request->getReferenceOf() !== null) {
+            $json["referenceOf"] = $this->request->getReferenceOf();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteReferenceOfTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteReferenceOfRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteReferenceOfTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteReferenceOfRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteReferenceOfRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteReferenceOfResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteReferenceOfByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteReferenceOfByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteReferenceOfByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteReferenceOfByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteReferenceOfByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteReferenceOfByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteItemSetByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -2921,6 +3607,130 @@ class AcquireItemSetByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class AddReferenceOfItemSetByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddReferenceOfItemSetByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddReferenceOfItemSetByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddReferenceOfItemSetByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddReferenceOfItemSetByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddReferenceOfItemSetByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stamp/item/reference/add";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteReferenceOfItemSetByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteReferenceOfItemSetByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteReferenceOfItemSetByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteReferenceOfItemSetByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteReferenceOfItemSetByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteReferenceOfItemSetByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stamp/item/reference/delete";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ConsumeItemSetByStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -2953,6 +3763,68 @@ class ConsumeItemSetByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stamp/item/consume";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyReferenceOfByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyReferenceOfByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyReferenceOfByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyReferenceOfByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyReferenceOfByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyReferenceOfByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stamp/item/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -4303,6 +5175,316 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * 参照元の一覧を取得<br>
+     *
+     * @param DescribeReferenceOfRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeReferenceOfAsync(
+            DescribeReferenceOfRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeReferenceOfTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元の一覧を取得<br>
+     *
+     * @param DescribeReferenceOfRequest $request リクエストパラメータ
+     * @return DescribeReferenceOfResult
+     */
+    public function describeReferenceOf (
+            DescribeReferenceOfRequest $request
+    ): DescribeReferenceOfResult {
+        return $this->describeReferenceOfAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元の一覧を取得<br>
+     *
+     * @param DescribeReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeReferenceOfByUserIdAsync(
+            DescribeReferenceOfByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeReferenceOfByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元の一覧を取得<br>
+     *
+     * @param DescribeReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return DescribeReferenceOfByUserIdResult
+     */
+    public function describeReferenceOfByUserId (
+            DescribeReferenceOfByUserIdRequest $request
+    ): DescribeReferenceOfByUserIdResult {
+        return $this->describeReferenceOfByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元を取得<br>
+     *
+     * @param GetReferenceOfRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getReferenceOfAsync(
+            GetReferenceOfRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetReferenceOfTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元を取得<br>
+     *
+     * @param GetReferenceOfRequest $request リクエストパラメータ
+     * @return GetReferenceOfResult
+     */
+    public function getReferenceOf (
+            GetReferenceOfRequest $request
+    ): GetReferenceOfResult {
+        return $this->getReferenceOfAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元を取得<br>
+     *
+     * @param GetReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getReferenceOfByUserIdAsync(
+            GetReferenceOfByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetReferenceOfByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元を取得<br>
+     *
+     * @param GetReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return GetReferenceOfByUserIdResult
+     */
+    public function getReferenceOfByUserId (
+            GetReferenceOfByUserIdRequest $request
+    ): GetReferenceOfByUserIdResult {
+        return $this->getReferenceOfByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元に関する検証<br>
+     *
+     * @param VerifyReferenceOfRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function verifyReferenceOfAsync(
+            VerifyReferenceOfRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyReferenceOfTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元に関する検証<br>
+     *
+     * @param VerifyReferenceOfRequest $request リクエストパラメータ
+     * @return VerifyReferenceOfResult
+     */
+    public function verifyReferenceOf (
+            VerifyReferenceOfRequest $request
+    ): VerifyReferenceOfResult {
+        return $this->verifyReferenceOfAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元に関する検証<br>
+     *
+     * @param VerifyReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function verifyReferenceOfByUserIdAsync(
+            VerifyReferenceOfByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyReferenceOfByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元に関する検証<br>
+     *
+     * @param VerifyReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return VerifyReferenceOfByUserIdResult
+     */
+    public function verifyReferenceOfByUserId (
+            VerifyReferenceOfByUserIdRequest $request
+    ): VerifyReferenceOfByUserIdResult {
+        return $this->verifyReferenceOfByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元を追加<br>
+     *
+     * @param AddReferenceOfRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function addReferenceOfAsync(
+            AddReferenceOfRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddReferenceOfTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元を追加<br>
+     *
+     * @param AddReferenceOfRequest $request リクエストパラメータ
+     * @return AddReferenceOfResult
+     */
+    public function addReferenceOf (
+            AddReferenceOfRequest $request
+    ): AddReferenceOfResult {
+        return $this->addReferenceOfAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元を追加<br>
+     *
+     * @param AddReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function addReferenceOfByUserIdAsync(
+            AddReferenceOfByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddReferenceOfByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元を追加<br>
+     *
+     * @param AddReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return AddReferenceOfByUserIdResult
+     */
+    public function addReferenceOfByUserId (
+            AddReferenceOfByUserIdRequest $request
+    ): AddReferenceOfByUserIdResult {
+        return $this->addReferenceOfByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元を削除<br>
+     *
+     * @param DeleteReferenceOfRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deleteReferenceOfAsync(
+            DeleteReferenceOfRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteReferenceOfTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元を削除<br>
+     *
+     * @param DeleteReferenceOfRequest $request リクエストパラメータ
+     * @return DeleteReferenceOfResult
+     */
+    public function deleteReferenceOf (
+            DeleteReferenceOfRequest $request
+    ): DeleteReferenceOfResult {
+        return $this->deleteReferenceOfAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 参照元を削除<br>
+     *
+     * @param DeleteReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deleteReferenceOfByUserIdAsync(
+            DeleteReferenceOfByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteReferenceOfByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 参照元を削除<br>
+     *
+     * @param DeleteReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @return DeleteReferenceOfByUserIdResult
+     */
+    public function deleteReferenceOfByUserId (
+            DeleteReferenceOfByUserIdRequest $request
+    ): DeleteReferenceOfByUserIdResult {
+        return $this->deleteReferenceOfByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * 有効期限ごとのアイテム所持数量を削除<br>
      *
      * @param DeleteItemSetByUserIdRequest $request リクエストパラメータ
@@ -4365,6 +5547,68 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * スタンプシートでアイテムに参照元を追加<br>
+     *
+     * @param AddReferenceOfItemSetByStampSheetRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function addReferenceOfItemSetByStampSheetAsync(
+            AddReferenceOfItemSetByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddReferenceOfItemSetByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スタンプシートでアイテムに参照元を追加<br>
+     *
+     * @param AddReferenceOfItemSetByStampSheetRequest $request リクエストパラメータ
+     * @return AddReferenceOfItemSetByStampSheetResult
+     */
+    public function addReferenceOfItemSetByStampSheet (
+            AddReferenceOfItemSetByStampSheetRequest $request
+    ): AddReferenceOfItemSetByStampSheetResult {
+        return $this->addReferenceOfItemSetByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * スタンプシートでアイテムの参照元を削除<br>
+     *
+     * @param DeleteReferenceOfItemSetByStampSheetRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deleteReferenceOfItemSetByStampSheetAsync(
+            DeleteReferenceOfItemSetByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteReferenceOfItemSetByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スタンプシートでアイテムの参照元を削除<br>
+     *
+     * @param DeleteReferenceOfItemSetByStampSheetRequest $request リクエストパラメータ
+     * @return DeleteReferenceOfItemSetByStampSheetResult
+     */
+    public function deleteReferenceOfItemSetByStampSheet (
+            DeleteReferenceOfItemSetByStampSheetRequest $request
+    ): DeleteReferenceOfItemSetByStampSheetResult {
+        return $this->deleteReferenceOfItemSetByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * スタンプシートでインベントリのアイテムを消費<br>
      *
      * @param ConsumeItemSetByStampTaskRequest $request リクエストパラメータ
@@ -4391,6 +5635,37 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             ConsumeItemSetByStampTaskRequest $request
     ): ConsumeItemSetByStampTaskResult {
         return $this->consumeItemSetByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * スタンプシートでインベントリのアイテムを検証<br>
+     *
+     * @param VerifyReferenceOfByStampTaskRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function verifyReferenceOfByStampTaskAsync(
+            VerifyReferenceOfByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyReferenceOfByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スタンプシートでインベントリのアイテムを検証<br>
+     *
+     * @param VerifyReferenceOfByStampTaskRequest $request リクエストパラメータ
+     * @return VerifyReferenceOfByStampTaskResult
+     */
+    public function verifyReferenceOfByStampTask (
+            VerifyReferenceOfByStampTaskRequest $request
+    ): VerifyReferenceOfByStampTaskResult {
+        return $this->verifyReferenceOfByStampTaskAsync(
             $request
         )->wait();
     }

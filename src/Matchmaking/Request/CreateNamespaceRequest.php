@@ -92,6 +92,38 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return $this;
     }
 
+    /** @var bool レーティング計算機能を使用するか */
+    private $enableRating;
+
+    /**
+     * レーティング計算機能を使用するかを取得
+     *
+     * @return bool|null ネームスペースを新規作成
+     */
+    public function getEnableRating(): ?bool {
+        return $this->enableRating;
+    }
+
+    /**
+     * レーティング計算機能を使用するかを設定
+     *
+     * @param bool $enableRating ネームスペースを新規作成
+     */
+    public function setEnableRating(bool $enableRating = null) {
+        $this->enableRating = $enableRating;
+    }
+
+    /**
+     * レーティング計算機能を使用するかを設定
+     *
+     * @param bool $enableRating ネームスペースを新規作成
+     * @return CreateNamespaceRequest $this
+     */
+    public function withEnableRating(bool $enableRating = null): CreateNamespaceRequest {
+        $this->setEnableRating($enableRating);
+        return $this;
+    }
+
     /** @var string ギャザリング新規作成時のアクション */
     private $createGatheringTriggerType;
 

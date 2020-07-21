@@ -225,6 +225,39 @@ class ItemSet implements IModel {
 		return $this;
 	}
 	/**
+     * @var string[] この所持品の参照元リスト
+	 */
+	protected $referenceOf;
+
+	/**
+	 * この所持品の参照元リストを取得
+	 *
+	 * @return string[]|null この所持品の参照元リスト
+	 */
+	public function getReferenceOf(): ?array {
+		return $this->referenceOf;
+	}
+
+	/**
+	 * この所持品の参照元リストを設定
+	 *
+	 * @param string[]|null $referenceOf この所持品の参照元リスト
+	 */
+	public function setReferenceOf(?array $referenceOf) {
+		$this->referenceOf = $referenceOf;
+	}
+
+	/**
+	 * この所持品の参照元リストを設定
+	 *
+	 * @param string[]|null $referenceOf この所持品の参照元リスト
+	 * @return ItemSet $this
+	 */
+	public function withReferenceOf(?array $referenceOf): ItemSet {
+		$this->referenceOf = $referenceOf;
+		return $this;
+	}
+	/**
      * @var int 表示順番
 	 */
 	protected $sortValue;
@@ -365,6 +398,7 @@ class ItemSet implements IModel {
             "userId" => $this->userId,
             "itemName" => $this->itemName,
             "count" => $this->count,
+            "referenceOf" => $this->referenceOf,
             "sortValue" => $this->sortValue,
             "expiresAt" => $this->expiresAt,
             "createdAt" => $this->createdAt,
@@ -380,6 +414,7 @@ class ItemSet implements IModel {
         $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
         $model->setItemName(isset($data["itemName"]) ? $data["itemName"] : null);
         $model->setCount(isset($data["count"]) ? $data["count"] : null);
+        $model->setReferenceOf(isset($data["referenceOf"]) ? $data["referenceOf"] : null);
         $model->setSortValue(isset($data["sortValue"]) ? $data["sortValue"] : null);
         $model->setExpiresAt(isset($data["expiresAt"]) ? $data["expiresAt"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);

@@ -291,6 +291,39 @@ class ItemSetGroup implements IModel {
 		return $this;
 	}
 	/**
+     * @var string[][] 参照元のリストのリスト
+	 */
+	protected $itemSetReferenceOfList;
+
+	/**
+	 * 参照元のリストのリストを取得
+	 *
+	 * @return string[][]|null 参照元のリストのリスト
+	 */
+	public function getItemSetReferenceOfList(): ?array {
+		return $this->itemSetReferenceOfList;
+	}
+
+	/**
+	 * 参照元のリストのリストを設定
+	 *
+	 * @param string[][]|null $itemSetReferenceOfList 参照元のリストのリスト
+	 */
+	public function setItemSetReferenceOfList(?array $itemSetReferenceOfList) {
+		$this->itemSetReferenceOfList = $itemSetReferenceOfList;
+	}
+
+	/**
+	 * 参照元のリストのリストを設定
+	 *
+	 * @param string[][]|null $itemSetReferenceOfList 参照元のリストのリスト
+	 * @return ItemSetGroup $this
+	 */
+	public function withItemSetReferenceOfList(?array $itemSetReferenceOfList): ItemSetGroup {
+		$this->itemSetReferenceOfList = $itemSetReferenceOfList;
+		return $this;
+	}
+	/**
      * @var int[] 有効期限のリスト
 	 */
 	protected $itemSetExpiresAtList;
@@ -466,6 +499,7 @@ class ItemSetGroup implements IModel {
             "itemSetItemSetIdList" => $this->itemSetItemSetIdList,
             "itemSetNameList" => $this->itemSetNameList,
             "itemSetCountList" => $this->itemSetCountList,
+            "itemSetReferenceOfList" => $this->itemSetReferenceOfList,
             "itemSetExpiresAtList" => $this->itemSetExpiresAtList,
             "itemSetCreatedAtList" => $this->itemSetCreatedAtList,
             "itemSetUpdatedAtList" => $this->itemSetUpdatedAtList,
@@ -484,6 +518,7 @@ class ItemSetGroup implements IModel {
         $model->setItemSetItemSetIdList(isset($data["itemSetItemSetIdList"]) ? $data["itemSetItemSetIdList"] : null);
         $model->setItemSetNameList(isset($data["itemSetNameList"]) ? $data["itemSetNameList"] : null);
         $model->setItemSetCountList(isset($data["itemSetCountList"]) ? $data["itemSetCountList"] : null);
+        $model->setItemSetReferenceOfList(isset($data["itemSetReferenceOfList"]) ? $data["itemSetReferenceOfList"] : null);
         $model->setItemSetExpiresAtList(isset($data["itemSetExpiresAtList"]) ? $data["itemSetExpiresAtList"] : null);
         $model->setItemSetCreatedAtList(isset($data["itemSetCreatedAtList"]) ? $data["itemSetCreatedAtList"] : null);
         $model->setItemSetUpdatedAtList(isset($data["itemSetUpdatedAtList"]) ? $data["itemSetUpdatedAtList"] : null);

@@ -192,6 +192,39 @@ class InventoryModel implements IModel {
 		return $this;
 	}
 	/**
+     * @var bool 参照元が登録されているアイテムセットは削除できなくする
+	 */
+	protected $protectReferencedItem;
+
+	/**
+	 * 参照元が登録されているアイテムセットは削除できなくするを取得
+	 *
+	 * @return bool|null 参照元が登録されているアイテムセットは削除できなくする
+	 */
+	public function getProtectReferencedItem(): ?bool {
+		return $this->protectReferencedItem;
+	}
+
+	/**
+	 * 参照元が登録されているアイテムセットは削除できなくするを設定
+	 *
+	 * @param bool|null $protectReferencedItem 参照元が登録されているアイテムセットは削除できなくする
+	 */
+	public function setProtectReferencedItem(?bool $protectReferencedItem) {
+		$this->protectReferencedItem = $protectReferencedItem;
+	}
+
+	/**
+	 * 参照元が登録されているアイテムセットは削除できなくするを設定
+	 *
+	 * @param bool|null $protectReferencedItem 参照元が登録されているアイテムセットは削除できなくする
+	 * @return InventoryModel $this
+	 */
+	public function withProtectReferencedItem(?bool $protectReferencedItem): InventoryModel {
+		$this->protectReferencedItem = $protectReferencedItem;
+		return $this;
+	}
+	/**
      * @var ItemModel[] インベントリに格納可能なアイテムモデル一覧
 	 */
 	protected $itemModels;
@@ -232,6 +265,7 @@ class InventoryModel implements IModel {
             "metadata" => $this->metadata,
             "initialCapacity" => $this->initialCapacity,
             "maxCapacity" => $this->maxCapacity,
+            "protectReferencedItem" => $this->protectReferencedItem,
             "itemModels" => array_map(
                 function (ItemModel $v) {
                     return $v->toJson();
@@ -248,6 +282,7 @@ class InventoryModel implements IModel {
         $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
         $model->setInitialCapacity(isset($data["initialCapacity"]) ? $data["initialCapacity"] : null);
         $model->setMaxCapacity(isset($data["maxCapacity"]) ? $data["maxCapacity"] : null);
+        $model->setProtectReferencedItem(isset($data["protectReferencedItem"]) ? $data["protectReferencedItem"] : null);
         $model->setItemModels(array_map(
                 function ($v) {
                     return ItemModel::fromJson($v);

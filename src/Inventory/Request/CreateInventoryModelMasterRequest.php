@@ -218,4 +218,36 @@ class CreateInventoryModelMasterRequest extends Gs2BasicRequest {
         return $this;
     }
 
+    /** @var bool 参照元が登録されているアイテムセットは削除できなくする */
+    private $protectReferencedItem;
+
+    /**
+     * 参照元が登録されているアイテムセットは削除できなくするを取得
+     *
+     * @return bool|null インベントリモデルマスターを新規作成
+     */
+    public function getProtectReferencedItem(): ?bool {
+        return $this->protectReferencedItem;
+    }
+
+    /**
+     * 参照元が登録されているアイテムセットは削除できなくするを設定
+     *
+     * @param bool $protectReferencedItem インベントリモデルマスターを新規作成
+     */
+    public function setProtectReferencedItem(bool $protectReferencedItem = null) {
+        $this->protectReferencedItem = $protectReferencedItem;
+    }
+
+    /**
+     * 参照元が登録されているアイテムセットは削除できなくするを設定
+     *
+     * @param bool $protectReferencedItem インベントリモデルマスターを新規作成
+     * @return CreateInventoryModelMasterRequest $this
+     */
+    public function withProtectReferencedItem(bool $protectReferencedItem = null): CreateInventoryModelMasterRequest {
+        $this->setProtectReferencedItem($protectReferencedItem);
+        return $this;
+    }
+
 }

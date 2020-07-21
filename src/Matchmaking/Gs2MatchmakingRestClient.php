@@ -61,6 +61,50 @@ use Gs2\Matchmaking\Request\CancelMatchmakingByUserIdRequest;
 use Gs2\Matchmaking\Result\CancelMatchmakingByUserIdResult;
 use Gs2\Matchmaking\Request\DeleteGatheringRequest;
 use Gs2\Matchmaking\Result\DeleteGatheringResult;
+use Gs2\Matchmaking\Request\DescribeRatingModelMastersRequest;
+use Gs2\Matchmaking\Result\DescribeRatingModelMastersResult;
+use Gs2\Matchmaking\Request\CreateRatingModelMasterRequest;
+use Gs2\Matchmaking\Result\CreateRatingModelMasterResult;
+use Gs2\Matchmaking\Request\GetRatingModelMasterRequest;
+use Gs2\Matchmaking\Result\GetRatingModelMasterResult;
+use Gs2\Matchmaking\Request\UpdateRatingModelMasterRequest;
+use Gs2\Matchmaking\Result\UpdateRatingModelMasterResult;
+use Gs2\Matchmaking\Request\DeleteRatingModelMasterRequest;
+use Gs2\Matchmaking\Result\DeleteRatingModelMasterResult;
+use Gs2\Matchmaking\Request\DescribeRatingModelsRequest;
+use Gs2\Matchmaking\Result\DescribeRatingModelsResult;
+use Gs2\Matchmaking\Request\GetRatingModelRequest;
+use Gs2\Matchmaking\Result\GetRatingModelResult;
+use Gs2\Matchmaking\Request\ExportMasterRequest;
+use Gs2\Matchmaking\Result\ExportMasterResult;
+use Gs2\Matchmaking\Request\GetCurrentRatingModelMasterRequest;
+use Gs2\Matchmaking\Result\GetCurrentRatingModelMasterResult;
+use Gs2\Matchmaking\Request\UpdateCurrentRatingModelMasterRequest;
+use Gs2\Matchmaking\Result\UpdateCurrentRatingModelMasterResult;
+use Gs2\Matchmaking\Request\UpdateCurrentRatingModelMasterFromGitHubRequest;
+use Gs2\Matchmaking\Result\UpdateCurrentRatingModelMasterFromGitHubResult;
+use Gs2\Matchmaking\Request\DescribeRatingsRequest;
+use Gs2\Matchmaking\Result\DescribeRatingsResult;
+use Gs2\Matchmaking\Request\DescribeRatingsByUserIdRequest;
+use Gs2\Matchmaking\Result\DescribeRatingsByUserIdResult;
+use Gs2\Matchmaking\Request\GetRatingRequest;
+use Gs2\Matchmaking\Result\GetRatingResult;
+use Gs2\Matchmaking\Request\GetRatingByUserIdRequest;
+use Gs2\Matchmaking\Result\GetRatingByUserIdResult;
+use Gs2\Matchmaking\Request\PutResultRequest;
+use Gs2\Matchmaking\Result\PutResultResult;
+use Gs2\Matchmaking\Request\DeleteRatingRequest;
+use Gs2\Matchmaking\Result\DeleteRatingResult;
+use Gs2\Matchmaking\Request\GetBallotRequest;
+use Gs2\Matchmaking\Result\GetBallotResult;
+use Gs2\Matchmaking\Request\GetBallotByUserIdRequest;
+use Gs2\Matchmaking\Result\GetBallotByUserIdResult;
+use Gs2\Matchmaking\Request\VoteRequest;
+use Gs2\Matchmaking\Result\VoteResult;
+use Gs2\Matchmaking\Request\VoteMultipleRequest;
+use Gs2\Matchmaking\Result\VoteMultipleResult;
+use Gs2\Matchmaking\Request\CommitVoteRequest;
+use Gs2\Matchmaking\Result\CommitVoteResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -162,6 +206,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getEnableRating() !== null) {
+            $json["enableRating"] = $this->request->getEnableRating();
         }
         if ($this->request->getCreateGatheringTriggerType() !== null) {
             $json["createGatheringTriggerType"] = $this->request->getCreateGatheringTriggerType();
@@ -364,6 +411,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getEnableRating() !== null) {
+            $json["enableRating"] = $this->request->getEnableRating();
         }
         if ($this->request->getCreateGatheringTriggerType() !== null) {
             $json["createGatheringTriggerType"] = $this->request->getCreateGatheringTriggerType();
@@ -1222,6 +1272,1393 @@ class DeleteGatheringTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeRatingModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRatingModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRatingModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRatingModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRatingModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRatingModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/rating";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateRatingModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateRatingModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateRatingModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateRatingModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateRatingModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateRatingModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/rating";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getVolatility() !== null) {
+            $json["volatility"] = $this->request->getVolatility();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRatingModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRatingModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRatingModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRatingModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRatingModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRatingModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/rating/{ratingName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateRatingModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateRatingModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateRatingModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateRatingModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateRatingModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateRatingModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/rating/{ratingName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getVolatility() !== null) {
+            $json["volatility"] = $this->request->getVolatility();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteRatingModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteRatingModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteRatingModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteRatingModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteRatingModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteRatingModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/rating/{ratingName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeRatingModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRatingModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRatingModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRatingModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRatingModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRatingModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/rating";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRatingModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRatingModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRatingModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRatingModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRatingModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRatingModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/rating/{ratingName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ExportMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ExportMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ExportMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param ExportMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ExportMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ExportMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/export";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetCurrentRatingModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetCurrentRatingModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetCurrentRatingModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetCurrentRatingModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetCurrentRatingModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetCurrentRatingModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateCurrentRatingModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateCurrentRatingModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateCurrentRatingModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateCurrentRatingModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateCurrentRatingModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateCurrentRatingModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getSettings() !== null) {
+            $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateCurrentRatingModelMasterFromGitHubTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateCurrentRatingModelMasterFromGitHubRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateCurrentRatingModelMasterFromGitHubTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateCurrentRatingModelMasterFromGitHubRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateCurrentRatingModelMasterFromGitHubResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/from_git_hub";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getCheckoutSetting() !== null) {
+            $json["checkoutSetting"] = $this->request->getCheckoutSetting()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeRatingsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRatingsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRatingsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRatingsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRatingsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRatingsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/rating";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeRatingsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRatingsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRatingsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRatingsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRatingsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRatingsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/rating";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRatingTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRatingRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRatingTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRatingRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRatingRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRatingResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/rating/{ratingName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRatingByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRatingByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRatingByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRatingByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRatingByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRatingByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/rating/{ratingName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PutResultTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PutResultRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PutResultTask constructor.
+     * @param Gs2RestSession $session
+     * @param PutResultRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PutResultRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PutResultResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/rating/{ratingName}/vote";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+
+        $json = [];
+        if ($this->request->getGameResults() !== null) {
+            $array = [];
+            foreach ($this->request->getGameResults() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["gameResults"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteRatingTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteRatingRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteRatingTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteRatingRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteRatingRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteRatingResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/rating/{ratingName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetBallotTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetBallotRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetBallotTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetBallotRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetBallotRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetBallotResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/vote/{ratingName}/{gatheringName}/ballot";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+        $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
+
+        $json = [];
+        if ($this->request->getGatheringId() !== null) {
+            $json["gatheringId"] = $this->request->getGatheringId();
+        }
+        if ($this->request->getNumberOfPlayer() !== null) {
+            $json["numberOfPlayer"] = $this->request->getNumberOfPlayer();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetBallotByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetBallotByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetBallotByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetBallotByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetBallotByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetBallotByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/vote/{ratingName}/{gatheringName}/ballot";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+        $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getGatheringId() !== null) {
+            $json["gatheringId"] = $this->request->getGatheringId();
+        }
+        if ($this->request->getNumberOfPlayer() !== null) {
+            $json["numberOfPlayer"] = $this->request->getNumberOfPlayer();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VoteTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VoteRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VoteTask constructor.
+     * @param Gs2RestSession $session
+     * @param VoteRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VoteRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VoteResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/action/vote";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getBallotBody() !== null) {
+            $json["ballotBody"] = $this->request->getBallotBody();
+        }
+        if ($this->request->getBallotSignature() !== null) {
+            $json["ballotSignature"] = $this->request->getBallotSignature();
+        }
+        if ($this->request->getGameResults() !== null) {
+            $array = [];
+            foreach ($this->request->getGameResults() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["gameResults"] = $array;
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VoteMultipleTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VoteMultipleRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VoteMultipleTask constructor.
+     * @param Gs2RestSession $session
+     * @param VoteMultipleRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VoteMultipleRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VoteMultipleResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/action/vote/multiple";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getSignedBallots() !== null) {
+            $array = [];
+            foreach ($this->request->getSignedBallots() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["signedBallots"] = $array;
+        }
+        if ($this->request->getGameResults() !== null) {
+            $array = [];
+            foreach ($this->request->getGameResults() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["gameResults"] = $array;
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CommitVoteTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CommitVoteRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CommitVoteTask constructor.
+     * @param Gs2RestSession $session
+     * @param CommitVoteRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CommitVoteRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CommitVoteResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/action/vote/commit";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Matchmaking API クライアント
  *
@@ -1882,6 +3319,724 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
             DeleteGatheringRequest $request
     ): DeleteGatheringResult {
         return $this->deleteGatheringAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングモデルマスターの一覧を取得<br>
+     *
+     * @param DescribeRatingModelMastersRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeRatingModelMastersAsync(
+            DescribeRatingModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRatingModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングモデルマスターの一覧を取得<br>
+     *
+     * @param DescribeRatingModelMastersRequest $request リクエストパラメータ
+     * @return DescribeRatingModelMastersResult
+     */
+    public function describeRatingModelMasters (
+            DescribeRatingModelMastersRequest $request
+    ): DescribeRatingModelMastersResult {
+        return $this->describeRatingModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングモデルマスターを新規作成<br>
+     *
+     * @param CreateRatingModelMasterRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function createRatingModelMasterAsync(
+            CreateRatingModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateRatingModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングモデルマスターを新規作成<br>
+     *
+     * @param CreateRatingModelMasterRequest $request リクエストパラメータ
+     * @return CreateRatingModelMasterResult
+     */
+    public function createRatingModelMaster (
+            CreateRatingModelMasterRequest $request
+    ): CreateRatingModelMasterResult {
+        return $this->createRatingModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングモデルマスターを取得<br>
+     *
+     * @param GetRatingModelMasterRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getRatingModelMasterAsync(
+            GetRatingModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRatingModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングモデルマスターを取得<br>
+     *
+     * @param GetRatingModelMasterRequest $request リクエストパラメータ
+     * @return GetRatingModelMasterResult
+     */
+    public function getRatingModelMaster (
+            GetRatingModelMasterRequest $request
+    ): GetRatingModelMasterResult {
+        return $this->getRatingModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングモデルマスターを更新<br>
+     *
+     * @param UpdateRatingModelMasterRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function updateRatingModelMasterAsync(
+            UpdateRatingModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateRatingModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングモデルマスターを更新<br>
+     *
+     * @param UpdateRatingModelMasterRequest $request リクエストパラメータ
+     * @return UpdateRatingModelMasterResult
+     */
+    public function updateRatingModelMaster (
+            UpdateRatingModelMasterRequest $request
+    ): UpdateRatingModelMasterResult {
+        return $this->updateRatingModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングモデルマスターを削除<br>
+     *
+     * @param DeleteRatingModelMasterRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deleteRatingModelMasterAsync(
+            DeleteRatingModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteRatingModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングモデルマスターを削除<br>
+     *
+     * @param DeleteRatingModelMasterRequest $request リクエストパラメータ
+     * @return DeleteRatingModelMasterResult
+     */
+    public function deleteRatingModelMaster (
+            DeleteRatingModelMasterRequest $request
+    ): DeleteRatingModelMasterResult {
+        return $this->deleteRatingModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングモデルの一覧を取得<br>
+     *
+     * @param DescribeRatingModelsRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeRatingModelsAsync(
+            DescribeRatingModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRatingModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングモデルの一覧を取得<br>
+     *
+     * @param DescribeRatingModelsRequest $request リクエストパラメータ
+     * @return DescribeRatingModelsResult
+     */
+    public function describeRatingModels (
+            DescribeRatingModelsRequest $request
+    ): DescribeRatingModelsResult {
+        return $this->describeRatingModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングモデルを取得<br>
+     *
+     * @param GetRatingModelRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getRatingModelAsync(
+            GetRatingModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRatingModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングモデルを取得<br>
+     *
+     * @param GetRatingModelRequest $request リクエストパラメータ
+     * @return GetRatingModelResult
+     */
+    public function getRatingModel (
+            GetRatingModelRequest $request
+    ): GetRatingModelResult {
+        return $this->getRatingModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 現在有効なレーティングマスターのマスターデータをエクスポートします<br>
+     *
+     * @param ExportMasterRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function exportMasterAsync(
+            ExportMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ExportMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 現在有効なレーティングマスターのマスターデータをエクスポートします<br>
+     *
+     * @param ExportMasterRequest $request リクエストパラメータ
+     * @return ExportMasterResult
+     */
+    public function exportMaster (
+            ExportMasterRequest $request
+    ): ExportMasterResult {
+        return $this->exportMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 現在有効なレーティングマスターを取得します<br>
+     *
+     * @param GetCurrentRatingModelMasterRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getCurrentRatingModelMasterAsync(
+            GetCurrentRatingModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetCurrentRatingModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 現在有効なレーティングマスターを取得します<br>
+     *
+     * @param GetCurrentRatingModelMasterRequest $request リクエストパラメータ
+     * @return GetCurrentRatingModelMasterResult
+     */
+    public function getCurrentRatingModelMaster (
+            GetCurrentRatingModelMasterRequest $request
+    ): GetCurrentRatingModelMasterResult {
+        return $this->getCurrentRatingModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 現在有効なレーティングマスターを更新します<br>
+     *
+     * @param UpdateCurrentRatingModelMasterRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function updateCurrentRatingModelMasterAsync(
+            UpdateCurrentRatingModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCurrentRatingModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 現在有効なレーティングマスターを更新します<br>
+     *
+     * @param UpdateCurrentRatingModelMasterRequest $request リクエストパラメータ
+     * @return UpdateCurrentRatingModelMasterResult
+     */
+    public function updateCurrentRatingModelMaster (
+            UpdateCurrentRatingModelMasterRequest $request
+    ): UpdateCurrentRatingModelMasterResult {
+        return $this->updateCurrentRatingModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 現在有効なレーティングマスターを更新します<br>
+     *
+     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function updateCurrentRatingModelMasterFromGitHubAsync(
+            UpdateCurrentRatingModelMasterFromGitHubRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCurrentRatingModelMasterFromGitHubTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 現在有効なレーティングマスターを更新します<br>
+     *
+     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request リクエストパラメータ
+     * @return UpdateCurrentRatingModelMasterFromGitHubResult
+     */
+    public function updateCurrentRatingModelMasterFromGitHub (
+            UpdateCurrentRatingModelMasterFromGitHubRequest $request
+    ): UpdateCurrentRatingModelMasterFromGitHubResult {
+        return $this->updateCurrentRatingModelMasterFromGitHubAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングの一覧を取得<br>
+     *
+     * @param DescribeRatingsRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeRatingsAsync(
+            DescribeRatingsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRatingsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングの一覧を取得<br>
+     *
+     * @param DescribeRatingsRequest $request リクエストパラメータ
+     * @return DescribeRatingsResult
+     */
+    public function describeRatings (
+            DescribeRatingsRequest $request
+    ): DescribeRatingsResult {
+        return $this->describeRatingsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * ユーザIDを指定してレーティングの一覧を取得<br>
+     *
+     * @param DescribeRatingsByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeRatingsByUserIdAsync(
+            DescribeRatingsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRatingsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * ユーザIDを指定してレーティングの一覧を取得<br>
+     *
+     * @param DescribeRatingsByUserIdRequest $request リクエストパラメータ
+     * @return DescribeRatingsByUserIdResult
+     */
+    public function describeRatingsByUserId (
+            DescribeRatingsByUserIdRequest $request
+    ): DescribeRatingsByUserIdResult {
+        return $this->describeRatingsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングを取得<br>
+     *
+     * @param GetRatingRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getRatingAsync(
+            GetRatingRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRatingTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングを取得<br>
+     *
+     * @param GetRatingRequest $request リクエストパラメータ
+     * @return GetRatingResult
+     */
+    public function getRating (
+            GetRatingRequest $request
+    ): GetRatingResult {
+        return $this->getRatingAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングを取得<br>
+     *
+     * @param GetRatingByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getRatingByUserIdAsync(
+            GetRatingByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRatingByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングを取得<br>
+     *
+     * @param GetRatingByUserIdRequest $request リクエストパラメータ
+     * @return GetRatingByUserIdResult
+     */
+    public function getRatingByUserId (
+            GetRatingByUserIdRequest $request
+    ): GetRatingByUserIdResult {
+        return $this->getRatingByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティング値の再計算を実行<br>
+     *   <br>
+     *   レーティングの計算処理には Glicko-2 rating system をベースとした計算アルゴリズムを採用しています。<br>
+     *   レーティング値の初期値は1500で、レーティングの値が離れた相手に勝利するほど上昇幅は大きく、同じく負けた側は減少幅は大きくなります。<br>
+     *   <br>
+     *   レーティングの計算には参加したユーザIDのリストが必要となります。<br>
+     *   そのため、クライアントから直接このAPIを呼び出すのは適切ではありません。ゲームの勝敗を判断できるゲームサーバから呼び出すようにしてください。<br>
+     *   P2P 対戦など、クライアント主導で対戦を実現している場合は、投票機能を利用して勝敗を決定するようにしてください。<br>
+     *
+     * @param PutResultRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function putResultAsync(
+            PutResultRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PutResultTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティング値の再計算を実行<br>
+     *   <br>
+     *   レーティングの計算処理には Glicko-2 rating system をベースとした計算アルゴリズムを採用しています。<br>
+     *   レーティング値の初期値は1500で、レーティングの値が離れた相手に勝利するほど上昇幅は大きく、同じく負けた側は減少幅は大きくなります。<br>
+     *   <br>
+     *   レーティングの計算には参加したユーザIDのリストが必要となります。<br>
+     *   そのため、クライアントから直接このAPIを呼び出すのは適切ではありません。ゲームの勝敗を判断できるゲームサーバから呼び出すようにしてください。<br>
+     *   P2P 対戦など、クライアント主導で対戦を実現している場合は、投票機能を利用して勝敗を決定するようにしてください。<br>
+     *
+     * @param PutResultRequest $request リクエストパラメータ
+     * @return PutResultResult
+     */
+    public function putResult (
+            PutResultRequest $request
+    ): PutResultResult {
+        return $this->putResultAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * レーティングを削除<br>
+     *
+     * @param DeleteRatingRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deleteRatingAsync(
+            DeleteRatingRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteRatingTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * レーティングを削除<br>
+     *
+     * @param DeleteRatingRequest $request リクエストパラメータ
+     * @return DeleteRatingResult
+     */
+    public function deleteRating (
+            DeleteRatingRequest $request
+    ): DeleteRatingResult {
+        return $this->deleteRatingAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 投票用紙を取得します。<br>
+     *
+     * @param GetBallotRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getBallotAsync(
+            GetBallotRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetBallotTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 投票用紙を取得します。<br>
+     *
+     * @param GetBallotRequest $request リクエストパラメータ
+     * @return GetBallotResult
+     */
+    public function getBallot (
+            GetBallotRequest $request
+    ): GetBallotResult {
+        return $this->getBallotAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 投票用紙を取得します。<br>
+     *
+     * @param GetBallotByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getBallotByUserIdAsync(
+            GetBallotByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetBallotByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 投票用紙を取得します。<br>
+     *
+     * @param GetBallotByUserIdRequest $request リクエストパラメータ
+     * @return GetBallotByUserIdResult
+     */
+    public function getBallotByUserId (
+            GetBallotByUserIdRequest $request
+    ): GetBallotByUserIdResult {
+        return $this->getBallotByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 対戦結果を投票します。<br>
+     *   <br>
+     *   投票は最初の投票が行われてから5分以内に行う必要があります。<br>
+     *   つまり、結果は即座に反映されず、投票開始からおよそ5分後または全てのプレイヤーが投票を行った際に結果が反映されます。<br>
+     *   5分以内に全ての投票用紙を回収できなかった場合はその時点の投票内容で多数決をとって結果を決定します。<br>
+     *   各結果の投票数が同一だった場合は結果は捨てられます（スクリプトで挙動を変更可）。<br>
+     *   <br>
+     *   結果を即座に反映したい場合は、勝利した側の代表プレイヤーが投票用紙を各プレイヤーから集めて voteMultiple を呼び出すことで結果を即座に反映できます。<br>
+     *
+     * @param VoteRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function voteAsync(
+            VoteRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VoteTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 対戦結果を投票します。<br>
+     *   <br>
+     *   投票は最初の投票が行われてから5分以内に行う必要があります。<br>
+     *   つまり、結果は即座に反映されず、投票開始からおよそ5分後または全てのプレイヤーが投票を行った際に結果が反映されます。<br>
+     *   5分以内に全ての投票用紙を回収できなかった場合はその時点の投票内容で多数決をとって結果を決定します。<br>
+     *   各結果の投票数が同一だった場合は結果は捨てられます（スクリプトで挙動を変更可）。<br>
+     *   <br>
+     *   結果を即座に反映したい場合は、勝利した側の代表プレイヤーが投票用紙を各プレイヤーから集めて voteMultiple を呼び出すことで結果を即座に反映できます。<br>
+     *
+     * @param VoteRequest $request リクエストパラメータ
+     * @return VoteResult
+     */
+    public function vote (
+            VoteRequest $request
+    ): VoteResult {
+        return $this->voteAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 対戦結果をまとめて投票します。<br>
+     *   <br>
+     *   ゲームに勝利した側が他プレイヤーの投票用紙を集めてまとめて投票するのに使用します。<br>
+     *   『勝利した側』としているのは、敗北した側が自分たちが勝ったことにして報告することにインセンティブはありますが、その逆はないためです。<br>
+     *   負けた側が投票用紙を渡してこない可能性がありますが、その場合も過半数の投票用紙があれば結果を通すことができます。<br>
+     *
+     * @param VoteMultipleRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function voteMultipleAsync(
+            VoteMultipleRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VoteMultipleTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 対戦結果をまとめて投票します。<br>
+     *   <br>
+     *   ゲームに勝利した側が他プレイヤーの投票用紙を集めてまとめて投票するのに使用します。<br>
+     *   『勝利した側』としているのは、敗北した側が自分たちが勝ったことにして報告することにインセンティブはありますが、その逆はないためです。<br>
+     *   負けた側が投票用紙を渡してこない可能性がありますが、その場合も過半数の投票用紙があれば結果を通すことができます。<br>
+     *
+     * @param VoteMultipleRequest $request リクエストパラメータ
+     * @return VoteMultipleResult
+     */
+    public function voteMultiple (
+            VoteMultipleRequest $request
+    ): VoteMultipleResult {
+        return $this->voteMultipleAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 投票状況を強制確定<br>
+     *
+     * @param CommitVoteRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function commitVoteAsync(
+            CommitVoteRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CommitVoteTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 投票状況を強制確定<br>
+     *
+     * @param CommitVoteRequest $request リクエストパラメータ
+     * @return CommitVoteResult
+     */
+    public function commitVote (
+            CommitVoteRequest $request
+    ): CommitVoteResult {
+        return $this->commitVoteAsync(
             $request
         )->wait();
     }

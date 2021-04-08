@@ -18,8 +18,8 @@
 namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\ConsumeAction;
+use Gs2\Exchange\Model\AcquireAction;
 
 /**
  * 交換レートマスターを新規作成 のリクエストモデル
@@ -153,6 +153,134 @@ class CreateRateModelMasterRequest extends Gs2BasicRequest {
      */
     public function withMetadata(string $metadata = null): CreateRateModelMasterRequest {
         $this->setMetadata($metadata);
+        return $this;
+    }
+
+    /** @var string 交換の種類 */
+    private $timingType;
+
+    /**
+     * 交換の種類を取得
+     *
+     * @return string|null 交換レートマスターを新規作成
+     */
+    public function getTimingType(): ?string {
+        return $this->timingType;
+    }
+
+    /**
+     * 交換の種類を設定
+     *
+     * @param string $timingType 交換レートマスターを新規作成
+     */
+    public function setTimingType(string $timingType = null) {
+        $this->timingType = $timingType;
+    }
+
+    /**
+     * 交換の種類を設定
+     *
+     * @param string $timingType 交換レートマスターを新規作成
+     * @return CreateRateModelMasterRequest $this
+     */
+    public function withTimingType(string $timingType = null): CreateRateModelMasterRequest {
+        $this->setTimingType($timingType);
+        return $this;
+    }
+
+    /** @var int 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分） */
+    private $lockTime;
+
+    /**
+     * 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）を取得
+     *
+     * @return int|null 交換レートマスターを新規作成
+     */
+    public function getLockTime(): ?int {
+        return $this->lockTime;
+    }
+
+    /**
+     * 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）を設定
+     *
+     * @param int $lockTime 交換レートマスターを新規作成
+     */
+    public function setLockTime(int $lockTime = null) {
+        $this->lockTime = $lockTime;
+    }
+
+    /**
+     * 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）を設定
+     *
+     * @param int $lockTime 交換レートマスターを新規作成
+     * @return CreateRateModelMasterRequest $this
+     */
+    public function withLockTime(int $lockTime = null): CreateRateModelMasterRequest {
+        $this->setLockTime($lockTime);
+        return $this;
+    }
+
+    /** @var bool スキップをすることができるか */
+    private $enableSkip;
+
+    /**
+     * スキップをすることができるかを取得
+     *
+     * @return bool|null 交換レートマスターを新規作成
+     */
+    public function getEnableSkip(): ?bool {
+        return $this->enableSkip;
+    }
+
+    /**
+     * スキップをすることができるかを設定
+     *
+     * @param bool $enableSkip 交換レートマスターを新規作成
+     */
+    public function setEnableSkip(bool $enableSkip = null) {
+        $this->enableSkip = $enableSkip;
+    }
+
+    /**
+     * スキップをすることができるかを設定
+     *
+     * @param bool $enableSkip 交換レートマスターを新規作成
+     * @return CreateRateModelMasterRequest $this
+     */
+    public function withEnableSkip(bool $enableSkip = null): CreateRateModelMasterRequest {
+        $this->setEnableSkip($enableSkip);
+        return $this;
+    }
+
+    /** @var ConsumeAction[] 時短消費アクションリスト */
+    private $skipConsumeActions;
+
+    /**
+     * 時短消費アクションリストを取得
+     *
+     * @return ConsumeAction[]|null 交換レートマスターを新規作成
+     */
+    public function getSkipConsumeActions(): ?array {
+        return $this->skipConsumeActions;
+    }
+
+    /**
+     * 時短消費アクションリストを設定
+     *
+     * @param ConsumeAction[] $skipConsumeActions 交換レートマスターを新規作成
+     */
+    public function setSkipConsumeActions(array $skipConsumeActions = null) {
+        $this->skipConsumeActions = $skipConsumeActions;
+    }
+
+    /**
+     * 時短消費アクションリストを設定
+     *
+     * @param ConsumeAction[] $skipConsumeActions 交換レートマスターを新規作成
+     * @return CreateRateModelMasterRequest $this
+     */
+    public function withSkipConsumeActions(array $skipConsumeActions = null): CreateRateModelMasterRequest {
+        $this->setSkipConsumeActions($skipConsumeActions);
         return $this;
     }
 

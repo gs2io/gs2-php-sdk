@@ -19,6 +19,7 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\StaminaModel;
 
 /**
  * ユーザIDを指定してスタミナを回復 のレスポンスモデル
@@ -28,6 +29,8 @@ use Gs2\Stamina\Model\Stamina;
 class RecoverStaminaByUserIdResult implements IResult {
 	/** @var Stamina スタミナ */
 	private $item;
+	/** @var StaminaModel スタミナモデル */
+	private $staminaModel;
 	/** @var int スタミナ値の上限を超えて受け取れずに GS2-Inbox に転送したスタミナ値 */
 	private $overflowValue;
 
@@ -47,6 +50,24 @@ class RecoverStaminaByUserIdResult implements IResult {
 	 */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
+	}
+
+	/**
+	 * スタミナモデルを取得
+	 *
+	 * @return StaminaModel|null ユーザIDを指定してスタミナを回復
+	 */
+	public function getStaminaModel(): ?StaminaModel {
+		return $this->staminaModel;
+	}
+
+	/**
+	 * スタミナモデルを設定
+	 *
+	 * @param StaminaModel|null $staminaModel ユーザIDを指定してスタミナを回復
+	 */
+	public function setStaminaModel(?StaminaModel $staminaModel) {
+		$this->staminaModel = $staminaModel;
 	}
 
 	/**
@@ -70,6 +91,7 @@ class RecoverStaminaByUserIdResult implements IResult {
     public static function fromJson(array $data): RecoverStaminaByUserIdResult {
         $result = new RecoverStaminaByUserIdResult();
         $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
+        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
         $result->setOverflowValue(isset($data["overflowValue"]) ? $data["overflowValue"] : null);
         return $result;
     }

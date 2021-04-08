@@ -69,10 +69,14 @@ use Gs2\Distributor\Request\RunStampTaskRequest;
 use Gs2\Distributor\Result\RunStampTaskResult;
 use Gs2\Distributor\Request\RunStampSheetRequest;
 use Gs2\Distributor\Result\RunStampSheetResult;
+use Gs2\Distributor\Request\RunStampSheetExpressRequest;
+use Gs2\Distributor\Result\RunStampSheetExpressResult;
 use Gs2\Distributor\Request\RunStampTaskWithoutNamespaceRequest;
 use Gs2\Distributor\Result\RunStampTaskWithoutNamespaceResult;
 use Gs2\Distributor\Request\RunStampSheetWithoutNamespaceRequest;
 use Gs2\Distributor\Result\RunStampSheetWithoutNamespaceResult;
+use Gs2\Distributor\Request\RunStampSheetExpressWithoutNamespaceRequest;
+use Gs2\Distributor\Result\RunStampSheetExpressWithoutNamespaceResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -105,7 +109,7 @@ class DescribeNamespacesTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -166,7 +170,7 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/";
 
         $json = [];
         if ($this->request->getName() !== null) {
@@ -231,7 +235,7 @@ class GetNamespaceStatusTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/status";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/status";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -288,7 +292,7 @@ class GetNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -345,7 +349,7 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -409,7 +413,7 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -466,7 +470,7 @@ class DescribeDistributorModelMastersTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/distributor";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/distributor";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -529,7 +533,7 @@ class CreateDistributorModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/distributor";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/distributor";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -604,7 +608,7 @@ class GetDistributorModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/distributor/{distributorName}";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/distributor/{distributorName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{distributorName}", $this->request->getDistributorName() === null|| strlen($this->request->getDistributorName()) == 0 ? "null" : $this->request->getDistributorName(), $url);
@@ -662,7 +666,7 @@ class UpdateDistributorModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/distributor/{distributorName}";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/distributor/{distributorName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{distributorName}", $this->request->getDistributorName() === null|| strlen($this->request->getDistributorName()) == 0 ? "null" : $this->request->getDistributorName(), $url);
@@ -735,7 +739,7 @@ class DeleteDistributorModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/distributor/{distributorName}";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/distributor/{distributorName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{distributorName}", $this->request->getDistributorName() === null|| strlen($this->request->getDistributorName()) == 0 ? "null" : $this->request->getDistributorName(), $url);
@@ -793,7 +797,7 @@ class DescribeDistributorModelsTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/distributor";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distributor";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -850,7 +854,7 @@ class GetDistributorModelTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/distributor/{distributorName}";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distributor/{distributorName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{distributorName}", $this->request->getDistributorName() === null|| strlen($this->request->getDistributorName()) == 0 ? "null" : $this->request->getDistributorName(), $url);
@@ -908,7 +912,7 @@ class ExportMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/export";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/export";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -965,7 +969,7 @@ class GetCurrentDistributorMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1022,7 +1026,7 @@ class UpdateCurrentDistributorMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1080,7 +1084,7 @@ class UpdateCurrentDistributorMasterFromGitHubTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/from_git_hub";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/from_git_hub";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1138,7 +1142,7 @@ class DistributeTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/distribute";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{distributorName}", $this->request->getDistributorName() === null|| strlen($this->request->getDistributorName()) == 0 ? "null" : $this->request->getDistributorName(), $url);
@@ -1203,7 +1207,7 @@ class DistributeWithoutOverflowProcessTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/distribute";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/distribute";
 
         $json = [];
         if ($this->request->getDistributeResource() !== null) {
@@ -1265,7 +1269,7 @@ class RunStampTaskTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/distribute/stamp/task/run";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/stamp/task/run";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1329,7 +1333,71 @@ class RunStampSheetTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/distribute/stamp/sheet/run";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/stamp/sheet/run";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RunStampSheetExpressTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RunStampSheetExpressRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RunStampSheetExpressTask constructor.
+     * @param Gs2RestSession $session
+     * @param RunStampSheetExpressRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RunStampSheetExpressRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RunStampSheetExpressResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/stamp/run";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1393,7 +1461,7 @@ class RunStampTaskWithoutNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stamp/task/run";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/task/run";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -1455,7 +1523,69 @@ class RunStampSheetWithoutNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/distribute/stamp/sheet/run";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/stamp/sheet/run";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RunStampSheetExpressWithoutNamespaceTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RunStampSheetExpressWithoutNamespaceRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RunStampSheetExpressWithoutNamespaceTask constructor.
+     * @param Gs2RestSession $session
+     * @param RunStampSheetExpressWithoutNamespaceRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RunStampSheetExpressWithoutNamespaceRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RunStampSheetExpressWithoutNamespaceResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/stamp/run";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {
@@ -2155,6 +2285,37 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * スタンプタスクおよびスタンプシートを実行する<br>
+     *
+     * @param RunStampSheetExpressRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function runStampSheetExpressAsync(
+            RunStampSheetExpressRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RunStampSheetExpressTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スタンプタスクおよびスタンプシートを実行する<br>
+     *
+     * @param RunStampSheetExpressRequest $request リクエストパラメータ
+     * @return RunStampSheetExpressResult
+     */
+    public function runStampSheetExpress (
+            RunStampSheetExpressRequest $request
+    ): RunStampSheetExpressResult {
+        return $this->runStampSheetExpressAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * スタンプシートのタスクを実行する<br>
      *   <br>
      *   ネームスペースの指定を省略することで、<br>
@@ -2224,6 +2385,37 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             RunStampSheetWithoutNamespaceRequest $request
     ): RunStampSheetWithoutNamespaceResult {
         return $this->runStampSheetWithoutNamespaceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * スタンプタスクおよびスタンプシートを実行する<br>
+     *
+     * @param RunStampSheetExpressWithoutNamespaceRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function runStampSheetExpressWithoutNamespaceAsync(
+            RunStampSheetExpressWithoutNamespaceRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RunStampSheetExpressWithoutNamespaceTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スタンプタスクおよびスタンプシートを実行する<br>
+     *
+     * @param RunStampSheetExpressWithoutNamespaceRequest $request リクエストパラメータ
+     * @return RunStampSheetExpressWithoutNamespaceResult
+     */
+    public function runStampSheetExpressWithoutNamespace (
+            RunStampSheetExpressWithoutNamespaceRequest $request
+    ): RunStampSheetExpressWithoutNamespaceResult {
+        return $this->runStampSheetExpressWithoutNamespaceAsync(
             $request
         )->wait();
     }

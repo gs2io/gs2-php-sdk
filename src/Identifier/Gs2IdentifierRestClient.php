@@ -57,6 +57,14 @@ use Gs2\Identifier\Request\GetIdentifierRequest;
 use Gs2\Identifier\Result\GetIdentifierResult;
 use Gs2\Identifier\Request\DeleteIdentifierRequest;
 use Gs2\Identifier\Result\DeleteIdentifierResult;
+use Gs2\Identifier\Request\DescribePasswordsRequest;
+use Gs2\Identifier\Result\DescribePasswordsResult;
+use Gs2\Identifier\Request\CreatePasswordRequest;
+use Gs2\Identifier\Result\CreatePasswordResult;
+use Gs2\Identifier\Request\GetPasswordRequest;
+use Gs2\Identifier\Result\GetPasswordResult;
+use Gs2\Identifier\Request\DeletePasswordRequest;
+use Gs2\Identifier\Result\DeletePasswordResult;
 use Gs2\Identifier\Request\GetHasSecurityPolicyRequest;
 use Gs2\Identifier\Result\GetHasSecurityPolicyResult;
 use Gs2\Identifier\Request\AttachSecurityPolicyRequest;
@@ -65,6 +73,8 @@ use Gs2\Identifier\Request\DetachSecurityPolicyRequest;
 use Gs2\Identifier\Result\DetachSecurityPolicyResult;
 use Gs2\Identifier\Request\LoginRequest;
 use Gs2\Identifier\Result\LoginResult;
+use Gs2\Identifier\Request\LoginByUserRequest;
+use Gs2\Identifier\Result\LoginByUserResult;
 
 class DescribeUsersTask extends Gs2RestSessionTask {
 
@@ -97,7 +107,7 @@ class DescribeUsersTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -158,7 +168,7 @@ class CreateUserTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user";
 
         $json = [];
         if ($this->request->getName() !== null) {
@@ -217,7 +227,7 @@ class UpdateUserTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
 
@@ -275,7 +285,7 @@ class GetUserTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
 
@@ -332,7 +342,7 @@ class DeleteUserTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
 
@@ -389,7 +399,7 @@ class DescribeSecurityPoliciesTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/securityPolicy";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/securityPolicy";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -450,7 +460,7 @@ class DescribeCommonSecurityPoliciesTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/securityPolicy/common";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/securityPolicy/common";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -511,7 +521,7 @@ class CreateSecurityPolicyTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/securityPolicy";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/securityPolicy";
 
         $json = [];
         if ($this->request->getName() !== null) {
@@ -573,7 +583,7 @@ class UpdateSecurityPolicyTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/securityPolicy/{securityPolicyName}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/securityPolicy/{securityPolicyName}";
 
         $url = str_replace("{securityPolicyName}", $this->request->getSecurityPolicyName() === null|| strlen($this->request->getSecurityPolicyName()) == 0 ? "null" : $this->request->getSecurityPolicyName(), $url);
 
@@ -634,7 +644,7 @@ class GetSecurityPolicyTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/securityPolicy/{securityPolicyName}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/securityPolicy/{securityPolicyName}";
 
         $url = str_replace("{securityPolicyName}", $this->request->getSecurityPolicyName() === null|| strlen($this->request->getSecurityPolicyName()) == 0 ? "null" : $this->request->getSecurityPolicyName(), $url);
 
@@ -691,7 +701,7 @@ class DeleteSecurityPolicyTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/securityPolicy/{securityPolicyName}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/securityPolicy/{securityPolicyName}";
 
         $url = str_replace("{securityPolicyName}", $this->request->getSecurityPolicyName() === null|| strlen($this->request->getSecurityPolicyName()) == 0 ? "null" : $this->request->getSecurityPolicyName(), $url);
 
@@ -748,7 +758,7 @@ class DescribeIdentifiersTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}/identifier";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/identifier";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
 
@@ -811,7 +821,7 @@ class CreateIdentifierTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}/identifier";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/identifier";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
 
@@ -866,7 +876,7 @@ class GetIdentifierTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}/identifier/{clientId}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/identifier/{clientId}";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
         $url = str_replace("{clientId}", $this->request->getClientId() === null|| strlen($this->request->getClientId()) == 0 ? "null" : $this->request->getClientId(), $url);
@@ -924,10 +934,245 @@ class DeleteIdentifierTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}/identifier/{clientId}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/identifier/{clientId}";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
         $url = str_replace("{clientId}", $this->request->getClientId() === null|| strlen($this->request->getClientId()) == 0 ? "null" : $this->request->getClientId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribePasswordsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribePasswordsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribePasswordsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribePasswordsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribePasswordsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribePasswordsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/password";
+
+        $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreatePasswordTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreatePasswordRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreatePasswordTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreatePasswordRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreatePasswordRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreatePasswordResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/password";
+
+        $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
+
+        $json = [];
+        if ($this->request->getPassword() !== null) {
+            $json["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetPasswordTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetPasswordRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetPasswordTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetPasswordRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetPasswordRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetPasswordResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/password/entity";
+
+        $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeletePasswordTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeletePasswordRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeletePasswordTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeletePasswordRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeletePasswordRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeletePasswordResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/password/entity";
+
+        $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -982,7 +1227,7 @@ class GetHasSecurityPolicyTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}/securityPolicy";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/securityPolicy";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
 
@@ -1039,7 +1284,7 @@ class AttachSecurityPolicyTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}/securityPolicy";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/securityPolicy";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
 
@@ -1097,7 +1342,7 @@ class DetachSecurityPolicyTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/user/{userName}/securityPolicy/{securityPolicyId}";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userName}/securityPolicy/{securityPolicyId}";
 
         $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
         $url = str_replace("{securityPolicyId}", $this->request->getSecurityPolicyId() === null|| strlen($this->request->getSecurityPolicyId()) == 0 ? "null" : $this->request->getSecurityPolicyId(), $url);
@@ -1155,7 +1400,7 @@ class LoginTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/projectToken/login";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/projectToken/login";
 
         $json = [];
         if ($this->request->getClientId() !== null) {
@@ -1163,6 +1408,65 @@ class LoginTask extends Gs2RestSessionTask {
         }
         if ($this->request->getClientSecret() !== null) {
             $json["clientSecret"] = $this->request->getClientSecret();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class LoginByUserTask extends Gs2RestSessionTask {
+
+    /**
+     * @var LoginByUserRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * LoginByUserTask constructor.
+     * @param Gs2RestSession $session
+     * @param LoginByUserRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        LoginByUserRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            LoginByUserResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/projectToken/login/user";
+
+        $json = [];
+        if ($this->request->getUserName() !== null) {
+            $json["userName"] = $this->request->getUserName();
+        }
+        if ($this->request->getPassword() !== null) {
+            $json["password"] = $this->request->getPassword();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1666,6 +1970,130 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
+     * パスワードの一覧を取得します<br>
+     *
+     * @param DescribePasswordsRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describePasswordsAsync(
+            DescribePasswordsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribePasswordsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * パスワードの一覧を取得します<br>
+     *
+     * @param DescribePasswordsRequest $request リクエストパラメータ
+     * @return DescribePasswordsResult
+     */
+    public function describePasswords (
+            DescribePasswordsRequest $request
+    ): DescribePasswordsResult {
+        return $this->describePasswordsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * パスワードを新規作成します<br>
+     *
+     * @param CreatePasswordRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function createPasswordAsync(
+            CreatePasswordRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreatePasswordTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * パスワードを新規作成します<br>
+     *
+     * @param CreatePasswordRequest $request リクエストパラメータ
+     * @return CreatePasswordResult
+     */
+    public function createPassword (
+            CreatePasswordRequest $request
+    ): CreatePasswordResult {
+        return $this->createPasswordAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * パスワードを取得します<br>
+     *
+     * @param GetPasswordRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getPasswordAsync(
+            GetPasswordRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetPasswordTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * パスワードを取得します<br>
+     *
+     * @param GetPasswordRequest $request リクエストパラメータ
+     * @return GetPasswordResult
+     */
+    public function getPassword (
+            GetPasswordRequest $request
+    ): GetPasswordResult {
+        return $this->getPasswordAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * パスワードを削除します<br>
+     *
+     * @param DeletePasswordRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deletePasswordAsync(
+            DeletePasswordRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeletePasswordTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * パスワードを削除します<br>
+     *
+     * @param DeletePasswordRequest $request リクエストパラメータ
+     * @return DeletePasswordResult
+     */
+    public function deletePassword (
+            DeletePasswordRequest $request
+    ): DeletePasswordResult {
+        return $this->deletePasswordAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * 割り当てられたセキュリティポリシーの一覧を取得します<br>
      *
      * @param GetHasSecurityPolicyRequest $request リクエストパラメータ
@@ -1785,6 +2213,37 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
             LoginRequest $request
     ): LoginResult {
         return $this->loginAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * プロジェクトトークン を取得します<br>
+     *
+     * @param LoginByUserRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function loginByUserAsync(
+            LoginByUserRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new LoginByUserTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * プロジェクトトークン を取得します<br>
+     *
+     * @param LoginByUserRequest $request リクエストパラメータ
+     * @return LoginByUserResult
+     */
+    public function loginByUser (
+            LoginByUserRequest $request
+    ): LoginByUserResult {
+        return $this->loginByUserAsync(
             $request
         )->wait();
     }

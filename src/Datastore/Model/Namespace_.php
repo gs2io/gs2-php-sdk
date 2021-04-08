@@ -159,6 +159,39 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
+     * @var ScriptSetting アップロード完了報告時に実行するスクリプト
+	 */
+	protected $doneUploadScript;
+
+	/**
+	 * アップロード完了報告時に実行するスクリプトを取得
+	 *
+	 * @return ScriptSetting|null アップロード完了報告時に実行するスクリプト
+	 */
+	public function getDoneUploadScript(): ?ScriptSetting {
+		return $this->doneUploadScript;
+	}
+
+	/**
+	 * アップロード完了報告時に実行するスクリプトを設定
+	 *
+	 * @param ScriptSetting|null $doneUploadScript アップロード完了報告時に実行するスクリプト
+	 */
+	public function setDoneUploadScript(?ScriptSetting $doneUploadScript) {
+		$this->doneUploadScript = $doneUploadScript;
+	}
+
+	/**
+	 * アップロード完了報告時に実行するスクリプトを設定
+	 *
+	 * @param ScriptSetting|null $doneUploadScript アップロード完了報告時に実行するスクリプト
+	 * @return Namespace_ $this
+	 */
+	public function withDoneUploadScript(?ScriptSetting $doneUploadScript): Namespace_ {
+		$this->doneUploadScript = $doneUploadScript;
+		return $this;
+	}
+	/**
      * @var LogSetting ログの出力設定
 	 */
 	protected $logSetting;
@@ -189,6 +222,39 @@ class Namespace_ implements IModel {
 	 */
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
+		return $this;
+	}
+	/**
+     * @var string None
+	 */
+	protected $status;
+
+	/**
+	 * Noneを取得
+	 *
+	 * @return string|null None
+	 */
+	public function getStatus(): ?string {
+		return $this->status;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param string|null $status None
+	 */
+	public function setStatus(?string $status) {
+		$this->status = $status;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param string|null $status None
+	 * @return Namespace_ $this
+	 */
+	public function withStatus(?string $status): Namespace_ {
+		$this->status = $status;
 		return $this;
 	}
 	/**
@@ -264,7 +330,9 @@ class Namespace_ implements IModel {
             "ownerId" => $this->ownerId,
             "name" => $this->name,
             "description" => $this->description,
+            "doneUploadScript" => $this->doneUploadScript->toJson(),
             "logSetting" => $this->logSetting->toJson(),
+            "status" => $this->status,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -276,7 +344,9 @@ class Namespace_ implements IModel {
         $model->setOwnerId(isset($data["ownerId"]) ? $data["ownerId"] : null);
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
+        $model->setDoneUploadScript(isset($data["doneUploadScript"]) ? ScriptSetting::fromJson($data["doneUploadScript"]) : null);
         $model->setLogSetting(isset($data["logSetting"]) ? LogSetting::fromJson($data["logSetting"]) : null);
+        $model->setStatus(isset($data["status"]) ? $data["status"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

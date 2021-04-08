@@ -51,6 +51,8 @@ use Gs2\Project\Request\GetProjectRequest;
 use Gs2\Project\Result\GetProjectResult;
 use Gs2\Project\Request\GetProjectTokenRequest;
 use Gs2\Project\Result\GetProjectTokenResult;
+use Gs2\Project\Request\GetProjectTokenByIdentifierRequest;
+use Gs2\Project\Result\GetProjectTokenByIdentifierResult;
 use Gs2\Project\Request\UpdateProjectRequest;
 use Gs2\Project\Result\UpdateProjectResult;
 use Gs2\Project\Request\DeleteProjectRequest;
@@ -101,7 +103,7 @@ class CreateAccountTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account";
 
         $json = [];
         if ($this->request->getEmail() !== null) {
@@ -166,7 +168,7 @@ class VerifyTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/verify";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/verify";
 
         $json = [];
         if ($this->request->getVerifyToken() !== null) {
@@ -222,7 +224,7 @@ class SignInTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/signIn";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/signIn";
 
         $json = [];
         if ($this->request->getEmail() !== null) {
@@ -281,7 +283,7 @@ class IssueAccountTokenTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/accountToken";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/accountToken";
 
         $json = [];
         if ($this->request->getAccountName() !== null) {
@@ -337,7 +339,7 @@ class ForgetTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/forget";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/forget";
 
         $json = [];
         if ($this->request->getEmail() !== null) {
@@ -393,7 +395,7 @@ class IssuePasswordTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/password/issue";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/password/issue";
 
         $json = [];
         if ($this->request->getIssuePasswordToken() !== null) {
@@ -449,7 +451,7 @@ class UpdateAccountTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account";
 
         $json = [];
         if ($this->request->getEmail() !== null) {
@@ -517,7 +519,7 @@ class DeleteAccountTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -572,7 +574,7 @@ class DescribeProjectsTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/project";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -636,7 +638,7 @@ class CreateProjectTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/project";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project";
 
         $json = [];
         if ($this->request->getAccountToken() !== null) {
@@ -713,7 +715,7 @@ class GetProjectTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/project/{projectName}";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project/{projectName}";
 
         $url = str_replace("{projectName}", $this->request->getProjectName() === null|| strlen($this->request->getProjectName()) == 0 ? "null" : $this->request->getProjectName(), $url);
 
@@ -773,13 +775,73 @@ class GetProjectTokenTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/project/{projectName}/projectToken";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/project/{projectName}/projectToken";
 
         $url = str_replace("{projectName}", $this->request->getProjectName() === null|| strlen($this->request->getProjectName()) == 0 ? "null" : $this->request->getProjectName(), $url);
 
         $json = [];
         if ($this->request->getAccountToken() !== null) {
             $json["accountToken"] = $this->request->getAccountToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetProjectTokenByIdentifierTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetProjectTokenByIdentifierRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetProjectTokenByIdentifierTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetProjectTokenByIdentifierRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetProjectTokenByIdentifierRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetProjectTokenByIdentifierResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/{accountName}/project/{projectName}/user/{userName}/projectToken";
+
+        $url = str_replace("{accountName}", $this->request->getAccountName() === null|| strlen($this->request->getAccountName()) == 0 ? "null" : $this->request->getAccountName(), $url);
+        $url = str_replace("{projectName}", $this->request->getProjectName() === null|| strlen($this->request->getProjectName()) == 0 ? "null" : $this->request->getProjectName(), $url);
+        $url = str_replace("{userName}", $this->request->getUserName() === null|| strlen($this->request->getUserName()) == 0 ? "null" : $this->request->getUserName(), $url);
+
+        $json = [];
+        if ($this->request->getPassword() !== null) {
+            $json["password"] = $this->request->getPassword();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -831,7 +893,7 @@ class UpdateProjectTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/project/{projectName}";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project/{projectName}";
 
         $url = str_replace("{projectName}", $this->request->getProjectName() === null|| strlen($this->request->getProjectName()) == 0 ? "null" : $this->request->getProjectName(), $url);
 
@@ -907,7 +969,7 @@ class DeleteProjectTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/project/{projectName}";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project/{projectName}";
 
         $url = str_replace("{projectName}", $this->request->getProjectName() === null|| strlen($this->request->getProjectName()) == 0 ? "null" : $this->request->getProjectName(), $url);
 
@@ -967,7 +1029,7 @@ class DescribeBillingMethodsTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/billingMethod";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/billingMethod";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -1031,7 +1093,7 @@ class CreateBillingMethodTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/billingMethod";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/billingMethod";
 
         $json = [];
         if ($this->request->getAccountToken() !== null) {
@@ -1099,7 +1161,7 @@ class GetBillingMethodTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/billingMethod/{billingMethodName}";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/billingMethod/{billingMethodName}";
 
         $url = str_replace("{billingMethodName}", $this->request->getBillingMethodName() === null|| strlen($this->request->getBillingMethodName()) == 0 ? "null" : $this->request->getBillingMethodName(), $url);
 
@@ -1159,7 +1221,7 @@ class UpdateBillingMethodTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/billingMethod/{billingMethodName}";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/billingMethod/{billingMethodName}";
 
         $url = str_replace("{billingMethodName}", $this->request->getBillingMethodName() === null|| strlen($this->request->getBillingMethodName()) == 0 ? "null" : $this->request->getBillingMethodName(), $url);
 
@@ -1220,7 +1282,7 @@ class DeleteBillingMethodTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/billingMethod/{billingMethodName}";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/billingMethod/{billingMethodName}";
 
         $url = str_replace("{billingMethodName}", $this->request->getBillingMethodName() === null|| strlen($this->request->getBillingMethodName()) == 0 ? "null" : $this->request->getBillingMethodName(), $url);
 
@@ -1280,7 +1342,7 @@ class DescribeReceiptsTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/receipt";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/receipt";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -1344,7 +1406,7 @@ class DescribeBillingsTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/account/me/billing/{projectName}/{year}/{month}";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/billing/{projectName}/{year}/{month}";
 
         $url = str_replace("{projectName}", $this->request->getProjectName() === null|| strlen($this->request->getProjectName()) == 0 ? "null" : $this->request->getProjectName(), $url);
         $url = str_replace("{year}", $this->request->getYear() === null ? "null" : $this->request->getYear(), $url);
@@ -1766,6 +1828,37 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
             GetProjectTokenRequest $request
     ): GetProjectTokenResult {
         return $this->getProjectTokenAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * プロジェクトトークンを発行します<br>
+     *
+     * @param GetProjectTokenByIdentifierRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getProjectTokenByIdentifierAsync(
+            GetProjectTokenByIdentifierRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetProjectTokenByIdentifierTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * プロジェクトトークンを発行します<br>
+     *
+     * @param GetProjectTokenByIdentifierRequest $request リクエストパラメータ
+     * @return GetProjectTokenByIdentifierResult
+     */
+    public function getProjectTokenByIdentifier (
+            GetProjectTokenByIdentifierRequest $request
+    ): GetProjectTokenByIdentifierResult {
+        return $this->getProjectTokenByIdentifierAsync(
             $request
         )->wait();
     }

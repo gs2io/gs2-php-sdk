@@ -67,7 +67,7 @@ class GetChartTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "watch", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/chart/{metrics}";
+        $url = str_replace('{service}', "watch", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/chart/{metrics}";
 
         $url = str_replace("{metrics}", $this->request->getMetrics() === null|| strlen($this->request->getMetrics()) == 0 ? "null" : $this->request->getMetrics(), $url);
 
@@ -154,7 +154,7 @@ class GetCumulativeTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "watch", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/cumulative/{name}";
+        $url = str_replace('{service}', "watch", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/cumulative/{name}";
 
         $url = str_replace("{name}", $this->request->getName() === null|| strlen($this->request->getName()) == 0 ? "null" : $this->request->getName(), $url);
 
@@ -212,7 +212,7 @@ class DescribeBillingActivitiesTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "watch", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/billingActivity/{year}/{month}";
+        $url = str_replace('{service}', "watch", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/billingActivity/{year}/{month}";
 
         $url = str_replace("{year}", $this->request->getYear() === null ? "null" : $this->request->getYear(), $url);
         $url = str_replace("{month}", $this->request->getMonth() === null ? "null" : $this->request->getMonth(), $url);
@@ -279,7 +279,7 @@ class GetBillingActivityTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "watch", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/billingActivity/{year}/{month}/{service}/{activityType}";
+        $url = str_replace('{service}', "watch", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/billingActivity/{year}/{month}/{service}/{activityType}";
 
         $url = str_replace("{year}", $this->request->getYear() === null ? "null" : $this->request->getYear(), $url);
         $url = str_replace("{month}", $this->request->getMonth() === null ? "null" : $this->request->getMonth(), $url);

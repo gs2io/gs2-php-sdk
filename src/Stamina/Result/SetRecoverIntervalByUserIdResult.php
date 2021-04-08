@@ -19,6 +19,7 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\StaminaModel;
 
 /**
  * ユーザIDを指定してスタミナの回復間隔(分)を更新 のレスポンスモデル
@@ -28,6 +29,8 @@ use Gs2\Stamina\Model\Stamina;
 class SetRecoverIntervalByUserIdResult implements IResult {
 	/** @var Stamina スタミナ */
 	private $item;
+	/** @var StaminaModel スタミナモデル */
+	private $staminaModel;
 
 	/**
 	 * スタミナを取得
@@ -47,9 +50,28 @@ class SetRecoverIntervalByUserIdResult implements IResult {
 		$this->item = $item;
 	}
 
+	/**
+	 * スタミナモデルを取得
+	 *
+	 * @return StaminaModel|null ユーザIDを指定してスタミナの回復間隔(分)を更新
+	 */
+	public function getStaminaModel(): ?StaminaModel {
+		return $this->staminaModel;
+	}
+
+	/**
+	 * スタミナモデルを設定
+	 *
+	 * @param StaminaModel|null $staminaModel ユーザIDを指定してスタミナの回復間隔(分)を更新
+	 */
+	public function setStaminaModel(?StaminaModel $staminaModel) {
+		$this->staminaModel = $staminaModel;
+	}
+
     public static function fromJson(array $data): SetRecoverIntervalByUserIdResult {
         $result = new SetRecoverIntervalByUserIdResult();
         $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
+        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
         return $result;
     }
 }

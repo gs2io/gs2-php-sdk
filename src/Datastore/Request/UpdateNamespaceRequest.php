@@ -19,6 +19,7 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Datastore\Model\LogSetting;
+use Gs2\Datastore\Model\ScriptSetting;
 
 /**
  * ネームスペースを更新 のリクエストモデル
@@ -120,6 +121,38 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
      */
     public function withLogSetting(LogSetting $logSetting = null): UpdateNamespaceRequest {
         $this->setLogSetting($logSetting);
+        return $this;
+    }
+
+    /** @var ScriptSetting アップロード完了報告時に実行するスクリプト */
+    private $doneUploadScript;
+
+    /**
+     * アップロード完了報告時に実行するスクリプトを取得
+     *
+     * @return ScriptSetting|null ネームスペースを更新
+     */
+    public function getDoneUploadScript(): ?ScriptSetting {
+        return $this->doneUploadScript;
+    }
+
+    /**
+     * アップロード完了報告時に実行するスクリプトを設定
+     *
+     * @param ScriptSetting $doneUploadScript ネームスペースを更新
+     */
+    public function setDoneUploadScript(ScriptSetting $doneUploadScript = null) {
+        $this->doneUploadScript = $doneUploadScript;
+    }
+
+    /**
+     * アップロード完了報告時に実行するスクリプトを設定
+     *
+     * @param ScriptSetting $doneUploadScript ネームスペースを更新
+     * @return UpdateNamespaceRequest $this
+     */
+    public function withDoneUploadScript(ScriptSetting $doneUploadScript = null): UpdateNamespaceRequest {
+        $this->setDoneUploadScript($doneUploadScript);
         return $this;
     }
 

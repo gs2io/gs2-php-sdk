@@ -19,6 +19,7 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\StaminaModel;
 
 /**
  * スタミナを取得 のレスポンスモデル
@@ -28,6 +29,8 @@ use Gs2\Stamina\Model\Stamina;
 class GetStaminaResult implements IResult {
 	/** @var Stamina スタミナ */
 	private $item;
+	/** @var StaminaModel スタミナモデル */
+	private $staminaModel;
 
 	/**
 	 * スタミナを取得
@@ -47,9 +50,28 @@ class GetStaminaResult implements IResult {
 		$this->item = $item;
 	}
 
+	/**
+	 * スタミナモデルを取得
+	 *
+	 * @return StaminaModel|null スタミナを取得
+	 */
+	public function getStaminaModel(): ?StaminaModel {
+		return $this->staminaModel;
+	}
+
+	/**
+	 * スタミナモデルを設定
+	 *
+	 * @param StaminaModel|null $staminaModel スタミナを取得
+	 */
+	public function setStaminaModel(?StaminaModel $staminaModel) {
+		$this->staminaModel = $staminaModel;
+	}
+
     public static function fromJson(array $data): GetStaminaResult {
         $result = new GetStaminaResult();
         $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
+        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
         return $result;
     }
 }

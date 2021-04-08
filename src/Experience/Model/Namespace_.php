@@ -324,6 +324,39 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
+     * @var string None
+	 */
+	protected $status;
+
+	/**
+	 * Noneを取得
+	 *
+	 * @return string|null None
+	 */
+	public function getStatus(): ?string {
+		return $this->status;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param string|null $status None
+	 */
+	public function setStatus(?string $status) {
+		$this->status = $status;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param string|null $status None
+	 * @return Namespace_ $this
+	 */
+	public function withStatus(?string $status): Namespace_ {
+		$this->status = $status;
+		return $this;
+	}
+	/**
      * @var int 作成日時
 	 */
 	protected $createdAt;
@@ -401,6 +434,7 @@ class Namespace_ implements IModel {
             "changeRankScript" => $this->changeRankScript->toJson(),
             "changeRankCapScript" => $this->changeRankCapScript->toJson(),
             "logSetting" => $this->logSetting->toJson(),
+            "status" => $this->status,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -417,6 +451,7 @@ class Namespace_ implements IModel {
         $model->setChangeRankScript(isset($data["changeRankScript"]) ? ScriptSetting::fromJson($data["changeRankScript"]) : null);
         $model->setChangeRankCapScript(isset($data["changeRankCapScript"]) ? ScriptSetting::fromJson($data["changeRankCapScript"]) : null);
         $model->setLogSetting(isset($data["logSetting"]) ? LogSetting::fromJson($data["logSetting"]) : null);
+        $model->setStatus(isset($data["status"]) ? $data["status"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

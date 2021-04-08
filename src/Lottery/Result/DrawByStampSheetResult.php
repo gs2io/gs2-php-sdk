@@ -31,6 +31,8 @@ class DrawByStampSheetResult implements IResult {
 	private $items;
 	/** @var string 排出された景品を入手するスタンプシート */
 	private $stampSheet;
+	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
+	private $stampSheetEncryptionKeyId;
 	/** @var BoxItems ボックスから取り出したアイテムのリスト */
 	private $boxItems;
 
@@ -71,6 +73,24 @@ class DrawByStampSheetResult implements IResult {
 	}
 
 	/**
+	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
+	 *
+	 * @return string|null スタンプシートを使用して抽選処理を実行
+	 */
+	public function getStampSheetEncryptionKeyId(): ?string {
+		return $this->stampSheetEncryptionKeyId;
+	}
+
+	/**
+	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
+	 *
+	 * @param string|null $stampSheetEncryptionKeyId スタンプシートを使用して抽選処理を実行
+	 */
+	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+	}
+
+	/**
 	 * ボックスから取り出したアイテムのリストを取得
 	 *
 	 * @return BoxItems|null スタンプシートを使用して抽選処理を実行
@@ -98,6 +118,7 @@ class DrawByStampSheetResult implements IResult {
             )
         );
         $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
+        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
         $result->setBoxItems(isset($data["boxItems"]) ? BoxItems::fromJson($data["boxItems"]) : null);
         return $result;
     }

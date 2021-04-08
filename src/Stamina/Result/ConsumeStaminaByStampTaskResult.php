@@ -19,6 +19,7 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\StaminaModel;
 
 /**
  * スタンプタスクを使用してスタミナを消費 のレスポンスモデル
@@ -28,6 +29,8 @@ use Gs2\Stamina\Model\Stamina;
 class ConsumeStaminaByStampTaskResult implements IResult {
 	/** @var Stamina スタミナ */
 	private $item;
+	/** @var StaminaModel スタミナモデル */
+	private $staminaModel;
 	/** @var string スタンプタスクの実行結果を記録したコンテキスト */
 	private $newContextStack;
 
@@ -47,6 +50,24 @@ class ConsumeStaminaByStampTaskResult implements IResult {
 	 */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
+	}
+
+	/**
+	 * スタミナモデルを取得
+	 *
+	 * @return StaminaModel|null スタンプタスクを使用してスタミナを消費
+	 */
+	public function getStaminaModel(): ?StaminaModel {
+		return $this->staminaModel;
+	}
+
+	/**
+	 * スタミナモデルを設定
+	 *
+	 * @param StaminaModel|null $staminaModel スタンプタスクを使用してスタミナを消費
+	 */
+	public function setStaminaModel(?StaminaModel $staminaModel) {
+		$this->staminaModel = $staminaModel;
 	}
 
 	/**
@@ -70,6 +91,7 @@ class ConsumeStaminaByStampTaskResult implements IResult {
     public static function fromJson(array $data): ConsumeStaminaByStampTaskResult {
         $result = new ConsumeStaminaByStampTaskResult();
         $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
+        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
         $result->setNewContextStack(isset($data["newContextStack"]) ? $data["newContextStack"] : null);
         return $result;
     }

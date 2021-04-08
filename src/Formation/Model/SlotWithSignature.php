@@ -158,6 +158,39 @@ class SlotWithSignature implements IModel {
 		$this->signature = $signature;
 		return $this;
 	}
+	/**
+     * @var string メタデータ
+	 */
+	protected $metadata;
+
+	/**
+	 * メタデータを取得
+	 *
+	 * @return string|null メタデータ
+	 */
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	/**
+	 * メタデータを設定
+	 *
+	 * @param string|null $metadata メタデータ
+	 */
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	/**
+	 * メタデータを設定
+	 *
+	 * @param string|null $metadata メタデータ
+	 * @return SlotWithSignature $this
+	 */
+	public function withMetadata(?string $metadata): SlotWithSignature {
+		$this->metadata = $metadata;
+		return $this;
+	}
 
     public function toJson(): array {
         return array(
@@ -165,6 +198,7 @@ class SlotWithSignature implements IModel {
             "propertyType" => $this->propertyType,
             "body" => $this->body,
             "signature" => $this->signature,
+            "metadata" => $this->metadata,
         );
     }
 
@@ -174,6 +208,7 @@ class SlotWithSignature implements IModel {
         $model->setPropertyType(isset($data["propertyType"]) ? $data["propertyType"] : null);
         $model->setBody(isset($data["body"]) ? $data["body"] : null);
         $model->setSignature(isset($data["signature"]) ? $data["signature"] : null);
+        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
         return $model;
     }
 }

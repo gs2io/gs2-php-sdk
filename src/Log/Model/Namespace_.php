@@ -423,6 +423,39 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
+     * @var string None
+	 */
+	protected $status;
+
+	/**
+	 * Noneを取得
+	 *
+	 * @return string|null None
+	 */
+	public function getStatus(): ?string {
+		return $this->status;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param string|null $status None
+	 */
+	public function setStatus(?string $status) {
+		$this->status = $status;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param string|null $status None
+	 * @return Namespace_ $this
+	 */
+	public function withStatus(?string $status): Namespace_ {
+		$this->status = $status;
+		return $this;
+	}
+	/**
      * @var int 作成日時
 	 */
 	protected $createdAt;
@@ -503,6 +536,7 @@ class Namespace_ implements IModel {
             "awsAccessKeyId" => $this->awsAccessKeyId,
             "awsSecretAccessKey" => $this->awsSecretAccessKey,
             "firehoseStreamName" => $this->firehoseStreamName,
+            "status" => $this->status,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -522,6 +556,7 @@ class Namespace_ implements IModel {
         $model->setAwsAccessKeyId(isset($data["awsAccessKeyId"]) ? $data["awsAccessKeyId"] : null);
         $model->setAwsSecretAccessKey(isset($data["awsSecretAccessKey"]) ? $data["awsSecretAccessKey"] : null);
         $model->setFirehoseStreamName(isset($data["firehoseStreamName"]) ? $data["firehoseStreamName"] : null);
+        $model->setStatus(isset($data["status"]) ? $data["status"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

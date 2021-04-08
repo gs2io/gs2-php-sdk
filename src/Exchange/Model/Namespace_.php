@@ -159,6 +159,72 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
+     * @var bool 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できない
+	 */
+	protected $enableDirectExchange;
+
+	/**
+	 * 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できないを取得
+	 *
+	 * @return bool|null 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できない
+	 */
+	public function getEnableDirectExchange(): ?bool {
+		return $this->enableDirectExchange;
+	}
+
+	/**
+	 * 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できないを設定
+	 *
+	 * @param bool|null $enableDirectExchange 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できない
+	 */
+	public function setEnableDirectExchange(?bool $enableDirectExchange) {
+		$this->enableDirectExchange = $enableDirectExchange;
+	}
+
+	/**
+	 * 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できないを設定
+	 *
+	 * @param bool|null $enableDirectExchange 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できない
+	 * @return Namespace_ $this
+	 */
+	public function withEnableDirectExchange(?bool $enableDirectExchange): Namespace_ {
+		$this->enableDirectExchange = $enableDirectExchange;
+		return $this;
+	}
+	/**
+     * @var bool 交換結果の受け取りに待ち時間の発生する交換機能を利用するか
+	 */
+	protected $enableAwaitExchange;
+
+	/**
+	 * 交換結果の受け取りに待ち時間の発生する交換機能を利用するかを取得
+	 *
+	 * @return bool|null 交換結果の受け取りに待ち時間の発生する交換機能を利用するか
+	 */
+	public function getEnableAwaitExchange(): ?bool {
+		return $this->enableAwaitExchange;
+	}
+
+	/**
+	 * 交換結果の受け取りに待ち時間の発生する交換機能を利用するかを設定
+	 *
+	 * @param bool|null $enableAwaitExchange 交換結果の受け取りに待ち時間の発生する交換機能を利用するか
+	 */
+	public function setEnableAwaitExchange(?bool $enableAwaitExchange) {
+		$this->enableAwaitExchange = $enableAwaitExchange;
+	}
+
+	/**
+	 * 交換結果の受け取りに待ち時間の発生する交換機能を利用するかを設定
+	 *
+	 * @param bool|null $enableAwaitExchange 交換結果の受け取りに待ち時間の発生する交換機能を利用するか
+	 * @return Namespace_ $this
+	 */
+	public function withEnableAwaitExchange(?bool $enableAwaitExchange): Namespace_ {
+		$this->enableAwaitExchange = $enableAwaitExchange;
+		return $this;
+	}
+	/**
      * @var string 交換処理をジョブとして追加するキューのネームスペース のGRN
 	 */
 	protected $queueNamespaceId;
@@ -258,6 +324,39 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
+     * @var string None
+	 */
+	protected $status;
+
+	/**
+	 * Noneを取得
+	 *
+	 * @return string|null None
+	 */
+	public function getStatus(): ?string {
+		return $this->status;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param string|null $status None
+	 */
+	public function setStatus(?string $status) {
+		$this->status = $status;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param string|null $status None
+	 * @return Namespace_ $this
+	 */
+	public function withStatus(?string $status): Namespace_ {
+		$this->status = $status;
+		return $this;
+	}
+	/**
      * @var int 作成日時
 	 */
 	protected $createdAt;
@@ -330,9 +429,12 @@ class Namespace_ implements IModel {
             "ownerId" => $this->ownerId,
             "name" => $this->name,
             "description" => $this->description,
+            "enableDirectExchange" => $this->enableDirectExchange,
+            "enableAwaitExchange" => $this->enableAwaitExchange,
             "queueNamespaceId" => $this->queueNamespaceId,
             "keyId" => $this->keyId,
             "logSetting" => $this->logSetting->toJson(),
+            "status" => $this->status,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -344,9 +446,12 @@ class Namespace_ implements IModel {
         $model->setOwnerId(isset($data["ownerId"]) ? $data["ownerId"] : null);
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
+        $model->setEnableDirectExchange(isset($data["enableDirectExchange"]) ? $data["enableDirectExchange"] : null);
+        $model->setEnableAwaitExchange(isset($data["enableAwaitExchange"]) ? $data["enableAwaitExchange"] : null);
         $model->setQueueNamespaceId(isset($data["queueNamespaceId"]) ? $data["queueNamespaceId"] : null);
         $model->setKeyId(isset($data["keyId"]) ? $data["keyId"] : null);
         $model->setLogSetting(isset($data["logSetting"]) ? LogSetting::fromJson($data["logSetting"]) : null);
+        $model->setStatus(isset($data["status"]) ? $data["status"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

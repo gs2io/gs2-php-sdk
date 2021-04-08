@@ -63,7 +63,7 @@ class LoginTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "auth", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/login";
+        $url = str_replace('{service}', "auth", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/login";
 
         $json = [];
         if ($this->request->getUserId() !== null) {
@@ -125,7 +125,7 @@ class LoginBySignatureTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "auth", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/login/signed";
+        $url = str_replace('{service}', "auth", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/login/signed";
 
         $json = [];
         if ($this->request->getUserId() !== null) {

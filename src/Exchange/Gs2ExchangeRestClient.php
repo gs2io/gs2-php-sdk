@@ -57,6 +57,8 @@ use Gs2\Exchange\Request\ExchangeRequest;
 use Gs2\Exchange\Result\ExchangeResult;
 use Gs2\Exchange\Request\ExchangeByUserIdRequest;
 use Gs2\Exchange\Result\ExchangeByUserIdResult;
+use Gs2\Exchange\Request\ExchangeByStampSheetRequest;
+use Gs2\Exchange\Result\ExchangeByStampSheetResult;
 use Gs2\Exchange\Request\ExportMasterRequest;
 use Gs2\Exchange\Result\ExportMasterResult;
 use Gs2\Exchange\Request\GetCurrentRateMasterRequest;
@@ -65,6 +67,34 @@ use Gs2\Exchange\Request\UpdateCurrentRateMasterRequest;
 use Gs2\Exchange\Result\UpdateCurrentRateMasterResult;
 use Gs2\Exchange\Request\UpdateCurrentRateMasterFromGitHubRequest;
 use Gs2\Exchange\Result\UpdateCurrentRateMasterFromGitHubResult;
+use Gs2\Exchange\Request\CreateAwaitByUserIdRequest;
+use Gs2\Exchange\Result\CreateAwaitByUserIdResult;
+use Gs2\Exchange\Request\DescribeAwaitsRequest;
+use Gs2\Exchange\Result\DescribeAwaitsResult;
+use Gs2\Exchange\Request\DescribeAwaitsByUserIdRequest;
+use Gs2\Exchange\Result\DescribeAwaitsByUserIdResult;
+use Gs2\Exchange\Request\GetAwaitRequest;
+use Gs2\Exchange\Result\GetAwaitResult;
+use Gs2\Exchange\Request\GetAwaitByUserIdRequest;
+use Gs2\Exchange\Result\GetAwaitByUserIdResult;
+use Gs2\Exchange\Request\AcquireRequest;
+use Gs2\Exchange\Result\AcquireResult;
+use Gs2\Exchange\Request\AcquireByUserIdRequest;
+use Gs2\Exchange\Result\AcquireByUserIdResult;
+use Gs2\Exchange\Request\AcquireForceByUserIdRequest;
+use Gs2\Exchange\Result\AcquireForceByUserIdResult;
+use Gs2\Exchange\Request\SkipRequest;
+use Gs2\Exchange\Result\SkipResult;
+use Gs2\Exchange\Request\SkipByUserIdRequest;
+use Gs2\Exchange\Result\SkipByUserIdResult;
+use Gs2\Exchange\Request\DeleteAwaitRequest;
+use Gs2\Exchange\Result\DeleteAwaitResult;
+use Gs2\Exchange\Request\DeleteAwaitByUserIdRequest;
+use Gs2\Exchange\Result\DeleteAwaitByUserIdResult;
+use Gs2\Exchange\Request\CreateAwaitByStampSheetRequest;
+use Gs2\Exchange\Result\CreateAwaitByStampSheetResult;
+use Gs2\Exchange\Request\DeleteAwaitByStampTaskRequest;
+use Gs2\Exchange\Result\DeleteAwaitByStampTaskResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -97,7 +127,7 @@ class DescribeNamespacesTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -158,7 +188,7 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/";
 
         $json = [];
         if ($this->request->getName() !== null) {
@@ -166,6 +196,12 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getEnableAwaitExchange() !== null) {
+            $json["enableAwaitExchange"] = $this->request->getEnableAwaitExchange();
+        }
+        if ($this->request->getEnableDirectExchange() !== null) {
+            $json["enableDirectExchange"] = $this->request->getEnableDirectExchange();
         }
         if ($this->request->getQueueNamespaceId() !== null) {
             $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
@@ -226,7 +262,7 @@ class GetNamespaceStatusTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/status";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/status";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -283,7 +319,7 @@ class GetNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -340,13 +376,19 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getEnableAwaitExchange() !== null) {
+            $json["enableAwaitExchange"] = $this->request->getEnableAwaitExchange();
+        }
+        if ($this->request->getEnableDirectExchange() !== null) {
+            $json["enableDirectExchange"] = $this->request->getEnableDirectExchange();
         }
         if ($this->request->getQueueNamespaceId() !== null) {
             $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
@@ -407,7 +449,7 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -464,7 +506,7 @@ class DescribeRateModelsTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/model";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -521,7 +563,7 @@ class GetRateModelTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/model/{rateName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/{rateName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
@@ -579,7 +621,7 @@ class DescribeRateModelMastersTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/model";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -642,7 +684,7 @@ class CreateRateModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/model";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -655,6 +697,23 @@ class CreateRateModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getTimingType() !== null) {
+            $json["timingType"] = $this->request->getTimingType();
+        }
+        if ($this->request->getLockTime() !== null) {
+            $json["lockTime"] = $this->request->getLockTime();
+        }
+        if ($this->request->getEnableSkip() !== null) {
+            $json["enableSkip"] = $this->request->getEnableSkip();
+        }
+        if ($this->request->getSkipConsumeActions() !== null) {
+            $array = [];
+            foreach ($this->request->getSkipConsumeActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["skipConsumeActions"] = $array;
         }
         if ($this->request->getAcquireActions() !== null) {
             $array = [];
@@ -722,7 +781,7 @@ class GetRateModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/model/{rateName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{rateName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
@@ -780,7 +839,7 @@ class UpdateRateModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/model/{rateName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{rateName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
@@ -791,6 +850,23 @@ class UpdateRateModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getTimingType() !== null) {
+            $json["timingType"] = $this->request->getTimingType();
+        }
+        if ($this->request->getLockTime() !== null) {
+            $json["lockTime"] = $this->request->getLockTime();
+        }
+        if ($this->request->getEnableSkip() !== null) {
+            $json["enableSkip"] = $this->request->getEnableSkip();
+        }
+        if ($this->request->getSkipConsumeActions() !== null) {
+            $array = [];
+            foreach ($this->request->getSkipConsumeActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["skipConsumeActions"] = $array;
         }
         if ($this->request->getAcquireActions() !== null) {
             $array = [];
@@ -858,7 +934,7 @@ class DeleteRateModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/model/{rateName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{rateName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
@@ -916,7 +992,7 @@ class ExchangeTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
@@ -989,7 +1065,7 @@ class ExchangeByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
@@ -1006,6 +1082,68 @@ class ExchangeByUserIdTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ExchangeByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ExchangeByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ExchangeByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param ExchangeByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ExchangeByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ExchangeByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/exchange";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1060,7 +1198,7 @@ class ExportMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/export";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/export";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1117,7 +1255,7 @@ class GetCurrentRateMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1174,7 +1312,7 @@ class UpdateCurrentRateMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1232,7 +1370,7 @@ class UpdateCurrentRateMasterFromGitHubTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/{namespaceName}/master/from_git_hub";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/from_git_hub";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1253,6 +1391,940 @@ class UpdateCurrentRateMasterFromGitHubTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateAwaitByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateAwaitByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateAwaitByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateAwaitByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateAwaitByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateAwaitByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeAwaitsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeAwaitsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeAwaitsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeAwaitsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeAwaitsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeAwaitsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/await";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getRateName() !== null) {
+            $queryStrings["rateName"] = $this->request->getRateName();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeAwaitsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeAwaitsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeAwaitsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeAwaitsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeAwaitsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeAwaitsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/await";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getRateName() !== null) {
+            $queryStrings["rateName"] = $this->request->getRateName();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetAwaitTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetAwaitRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetAwaitTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetAwaitRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetAwaitRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetAwaitResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}/await/{awaitName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetAwaitByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetAwaitByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetAwaitByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetAwaitByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetAwaitByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetAwaitByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}/await/{awaitName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $json = [];
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $json = [];
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireForceByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireForceByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireForceByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireForceByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireForceByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireForceByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}/force";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $json = [];
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SkipTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SkipRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SkipTask constructor.
+     * @param Gs2RestSession $session
+     * @param SkipRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SkipRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SkipResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}/await/{awaitName}/skip";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $json = [];
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SkipByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SkipByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SkipByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SkipByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SkipByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SkipByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}/skip";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $json = [];
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteAwaitTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteAwaitRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteAwaitTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteAwaitRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteAwaitRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteAwaitResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}/await/{awaitName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteAwaitByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteAwaitByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteAwaitByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteAwaitByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteAwaitByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteAwaitByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateAwaitByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateAwaitByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateAwaitByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateAwaitByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateAwaitByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateAwaitByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/await/create";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteAwaitByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteAwaitByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteAwaitByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteAwaitByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteAwaitByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteAwaitByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/await/delete";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1742,6 +2814,37 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * スタンプシートで交換を実行<br>
+     *
+     * @param ExchangeByStampSheetRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function exchangeByStampSheetAsync(
+            ExchangeByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ExchangeByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スタンプシートで交換を実行<br>
+     *
+     * @param ExchangeByStampSheetRequest $request リクエストパラメータ
+     * @return ExchangeByStampSheetResult
+     */
+    public function exchangeByStampSheet (
+            ExchangeByStampSheetRequest $request
+    ): ExchangeByStampSheetResult {
+        return $this->exchangeByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * 現在有効な交換レート設定のマスターデータをエクスポートします<br>
      *
      * @param ExportMasterRequest $request リクエストパラメータ
@@ -1861,6 +2964,440 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
             UpdateCurrentRateMasterFromGitHubRequest $request
     ): UpdateCurrentRateMasterFromGitHubResult {
         return $this->updateCurrentRateMasterFromGitHubAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機を作成<br>
+     *
+     * @param CreateAwaitByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function createAwaitByUserIdAsync(
+            CreateAwaitByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateAwaitByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機を作成<br>
+     *
+     * @param CreateAwaitByUserIdRequest $request リクエストパラメータ
+     * @return CreateAwaitByUserIdResult
+     */
+    public function createAwaitByUserId (
+            CreateAwaitByUserIdRequest $request
+    ): CreateAwaitByUserIdResult {
+        return $this->createAwaitByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機の一覧を取得<br>
+     *
+     * @param DescribeAwaitsRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeAwaitsAsync(
+            DescribeAwaitsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeAwaitsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機の一覧を取得<br>
+     *
+     * @param DescribeAwaitsRequest $request リクエストパラメータ
+     * @return DescribeAwaitsResult
+     */
+    public function describeAwaits (
+            DescribeAwaitsRequest $request
+    ): DescribeAwaitsResult {
+        return $this->describeAwaitsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機の一覧を取得<br>
+     *
+     * @param DescribeAwaitsByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeAwaitsByUserIdAsync(
+            DescribeAwaitsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeAwaitsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機の一覧を取得<br>
+     *
+     * @param DescribeAwaitsByUserIdRequest $request リクエストパラメータ
+     * @return DescribeAwaitsByUserIdResult
+     */
+    public function describeAwaitsByUserId (
+            DescribeAwaitsByUserIdRequest $request
+    ): DescribeAwaitsByUserIdResult {
+        return $this->describeAwaitsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機を取得<br>
+     *
+     * @param GetAwaitRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getAwaitAsync(
+            GetAwaitRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetAwaitTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機を取得<br>
+     *
+     * @param GetAwaitRequest $request リクエストパラメータ
+     * @return GetAwaitResult
+     */
+    public function getAwait (
+            GetAwaitRequest $request
+    ): GetAwaitResult {
+        return $this->getAwaitAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機を取得<br>
+     *
+     * @param GetAwaitByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getAwaitByUserIdAsync(
+            GetAwaitByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetAwaitByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機を取得<br>
+     *
+     * @param GetAwaitByUserIdRequest $request リクエストパラメータ
+     * @return GetAwaitByUserIdResult
+     */
+    public function getAwaitByUserId (
+            GetAwaitByUserIdRequest $request
+    ): GetAwaitByUserIdResult {
+        return $this->getAwaitByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機の報酬を取得<br>
+     *
+     * @param AcquireRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function acquireAsync(
+            AcquireRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機の報酬を取得<br>
+     *
+     * @param AcquireRequest $request リクエストパラメータ
+     * @return AcquireResult
+     */
+    public function acquire (
+            AcquireRequest $request
+    ): AcquireResult {
+        return $this->acquireAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機の報酬を取得<br>
+     *
+     * @param AcquireByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function acquireByUserIdAsync(
+            AcquireByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機の報酬を取得<br>
+     *
+     * @param AcquireByUserIdRequest $request リクエストパラメータ
+     * @return AcquireByUserIdResult
+     */
+    public function acquireByUserId (
+            AcquireByUserIdRequest $request
+    ): AcquireByUserIdResult {
+        return $this->acquireByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機の報酬を取得<br>
+     *
+     * @param AcquireForceByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function acquireForceByUserIdAsync(
+            AcquireForceByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireForceByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機の報酬を取得<br>
+     *
+     * @param AcquireForceByUserIdRequest $request リクエストパラメータ
+     * @return AcquireForceByUserIdResult
+     */
+    public function acquireForceByUserId (
+            AcquireForceByUserIdRequest $request
+    ): AcquireForceByUserIdResult {
+        return $this->acquireForceByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機を対価を払ってスキップ<br>
+     *
+     * @param SkipRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function skipAsync(
+            SkipRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SkipTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機を対価を払ってスキップ<br>
+     *
+     * @param SkipRequest $request リクエストパラメータ
+     * @return SkipResult
+     */
+    public function skip (
+            SkipRequest $request
+    ): SkipResult {
+        return $this->skipAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機を対価を払ってスキップ<br>
+     *
+     * @param SkipByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function skipByUserIdAsync(
+            SkipByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SkipByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機を対価を払ってスキップ<br>
+     *
+     * @param SkipByUserIdRequest $request リクエストパラメータ
+     * @return SkipByUserIdResult
+     */
+    public function skipByUserId (
+            SkipByUserIdRequest $request
+    ): SkipByUserIdResult {
+        return $this->skipByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機を削除<br>
+     *
+     * @param DeleteAwaitRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deleteAwaitAsync(
+            DeleteAwaitRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteAwaitTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機を削除<br>
+     *
+     * @param DeleteAwaitRequest $request リクエストパラメータ
+     * @return DeleteAwaitResult
+     */
+    public function deleteAwait (
+            DeleteAwaitRequest $request
+    ): DeleteAwaitResult {
+        return $this->deleteAwaitAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * 交換待機を削除<br>
+     *
+     * @param DeleteAwaitByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deleteAwaitByUserIdAsync(
+            DeleteAwaitByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteAwaitByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * 交換待機を削除<br>
+     *
+     * @param DeleteAwaitByUserIdRequest $request リクエストパラメータ
+     * @return DeleteAwaitByUserIdResult
+     */
+    public function deleteAwaitByUserId (
+            DeleteAwaitByUserIdRequest $request
+    ): DeleteAwaitByUserIdResult {
+        return $this->deleteAwaitByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * スタンプシートで交換待機 を作成<br>
+     *
+     * @param CreateAwaitByStampSheetRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function createAwaitByStampSheetAsync(
+            CreateAwaitByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateAwaitByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スタンプシートで交換待機 を作成<br>
+     *
+     * @param CreateAwaitByStampSheetRequest $request リクエストパラメータ
+     * @return CreateAwaitByStampSheetResult
+     */
+    public function createAwaitByStampSheet (
+            CreateAwaitByStampSheetRequest $request
+    ): CreateAwaitByStampSheetResult {
+        return $this->createAwaitByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * スタンプタスクで 交換待機 を削除<br>
+     *
+     * @param DeleteAwaitByStampTaskRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function deleteAwaitByStampTaskAsync(
+            DeleteAwaitByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteAwaitByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スタンプタスクで 交換待機 を削除<br>
+     *
+     * @param DeleteAwaitByStampTaskRequest $request リクエストパラメータ
+     * @return DeleteAwaitByStampTaskResult
+     */
+    public function deleteAwaitByStampTask (
+            DeleteAwaitByStampTaskRequest $request
+    ): DeleteAwaitByStampTaskResult {
+        return $this->deleteAwaitByStampTaskAsync(
             $request
         )->wait();
     }

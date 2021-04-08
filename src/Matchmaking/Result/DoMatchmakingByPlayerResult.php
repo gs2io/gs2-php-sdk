@@ -29,7 +29,7 @@ class DoMatchmakingByPlayerResult implements IResult {
 	/** @var Gathering ギャザリング */
 	private $item;
 	/** @var string マッチメイキングの状態を保持するトークン */
-	private $matchmaking_context_token;
+	private $matchmakingContextToken;
 
 	/**
 	 * ギャザリングを取得
@@ -55,7 +55,7 @@ class DoMatchmakingByPlayerResult implements IResult {
 	 * @return string|null Player が参加できるギャザリングを探して参加する
 	 */
 	public function getMatchmakingContextToken(): ?string {
-		return $this->matchmaking_context_token;
+		return $this->matchmakingContextToken;
 	}
 
 	/**
@@ -64,7 +64,7 @@ class DoMatchmakingByPlayerResult implements IResult {
 	 * @param string|null $matchmakingContextToken Player が参加できるギャザリングを探して参加する
 	 */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
-		$this->matchmaking_context_token = $matchmakingContextToken;
+		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
 
     public static function fromJson(array $data): DoMatchmakingByPlayerResult {

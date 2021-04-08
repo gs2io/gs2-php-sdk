@@ -42,7 +42,7 @@ class Gs2LoginTask
 
     function execute(): PromiseInterface
     {
-        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->gs2RestSession->getRegion(), Gs2RestSession::EndpointHost)). "/projectToken/login";
+        $url = str_replace('{service}', "identifier", str_replace('{region}', $this->gs2RestSession->getRegion(), Gs2RestSession::$endpointHost)). "/projectToken/login";
         $params = [
             'timeout' => 60,
             'json' => [
@@ -77,7 +77,7 @@ class Gs2LoginTask
 
 class Gs2RestSession extends Gs2Session {
 
-    const EndpointHost = "https://{service}.{region}.gen2.gs2io.com";
+    static $endpointHost = "https://{service}.{region}.gen2.gs2io.com";
 
     /**
      * @var bool

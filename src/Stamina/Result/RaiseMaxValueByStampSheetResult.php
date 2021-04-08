@@ -19,6 +19,7 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\StaminaModel;
 
 /**
  * スタンプシートでスタミナの最大値を加算 のレスポンスモデル
@@ -28,6 +29,8 @@ use Gs2\Stamina\Model\Stamina;
 class RaiseMaxValueByStampSheetResult implements IResult {
 	/** @var Stamina スタミナ */
 	private $item;
+	/** @var StaminaModel スタミナモデル */
+	private $staminaModel;
 
 	/**
 	 * スタミナを取得
@@ -47,9 +50,28 @@ class RaiseMaxValueByStampSheetResult implements IResult {
 		$this->item = $item;
 	}
 
+	/**
+	 * スタミナモデルを取得
+	 *
+	 * @return StaminaModel|null スタンプシートでスタミナの最大値を加算
+	 */
+	public function getStaminaModel(): ?StaminaModel {
+		return $this->staminaModel;
+	}
+
+	/**
+	 * スタミナモデルを設定
+	 *
+	 * @param StaminaModel|null $staminaModel スタンプシートでスタミナの最大値を加算
+	 */
+	public function setStaminaModel(?StaminaModel $staminaModel) {
+		$this->staminaModel = $staminaModel;
+	}
+
     public static function fromJson(array $data): RaiseMaxValueByStampSheetResult {
         $result = new RaiseMaxValueByStampSheetResult();
         $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
+        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
         return $result;
     }
 }

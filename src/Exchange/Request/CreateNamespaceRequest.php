@@ -91,6 +91,70 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return $this;
     }
 
+    /** @var bool 交換結果の受け取りに待ち時間の発生する交換機能を利用するか */
+    private $enableAwaitExchange;
+
+    /**
+     * 交換結果の受け取りに待ち時間の発生する交換機能を利用するかを取得
+     *
+     * @return bool|null ネームスペースを新規作成
+     */
+    public function getEnableAwaitExchange(): ?bool {
+        return $this->enableAwaitExchange;
+    }
+
+    /**
+     * 交換結果の受け取りに待ち時間の発生する交換機能を利用するかを設定
+     *
+     * @param bool $enableAwaitExchange ネームスペースを新規作成
+     */
+    public function setEnableAwaitExchange(bool $enableAwaitExchange = null) {
+        $this->enableAwaitExchange = $enableAwaitExchange;
+    }
+
+    /**
+     * 交換結果の受け取りに待ち時間の発生する交換機能を利用するかを設定
+     *
+     * @param bool $enableAwaitExchange ネームスペースを新規作成
+     * @return CreateNamespaceRequest $this
+     */
+    public function withEnableAwaitExchange(bool $enableAwaitExchange = null): CreateNamespaceRequest {
+        $this->setEnableAwaitExchange($enableAwaitExchange);
+        return $this;
+    }
+
+    /** @var bool 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できない */
+    private $enableDirectExchange;
+
+    /**
+     * 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できないを取得
+     *
+     * @return bool|null ネームスペースを新規作成
+     */
+    public function getEnableDirectExchange(): ?bool {
+        return $this->enableDirectExchange;
+    }
+
+    /**
+     * 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できないを設定
+     *
+     * @param bool $enableDirectExchange ネームスペースを新規作成
+     */
+    public function setEnableDirectExchange(bool $enableDirectExchange = null) {
+        $this->enableDirectExchange = $enableDirectExchange;
+    }
+
+    /**
+     * 直接交換APIの呼び出しを許可する。許可しない場合はスタンプシート経由でしか交換できないを設定
+     *
+     * @param bool $enableDirectExchange ネームスペースを新規作成
+     * @return CreateNamespaceRequest $this
+     */
+    public function withEnableDirectExchange(bool $enableDirectExchange = null): CreateNamespaceRequest {
+        $this->setEnableDirectExchange($enableDirectExchange);
+        return $this;
+    }
+
     /** @var string 交換処理をジョブとして追加するキューのネームスペース のGRN */
     private $queueNamespaceId;
 

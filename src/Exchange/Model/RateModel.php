@@ -159,6 +159,138 @@ class RateModel implements IModel {
 		return $this;
 	}
 	/**
+     * @var string 交換の種類
+	 */
+	protected $timingType;
+
+	/**
+	 * 交換の種類を取得
+	 *
+	 * @return string|null 交換の種類
+	 */
+	public function getTimingType(): ?string {
+		return $this->timingType;
+	}
+
+	/**
+	 * 交換の種類を設定
+	 *
+	 * @param string|null $timingType 交換の種類
+	 */
+	public function setTimingType(?string $timingType) {
+		$this->timingType = $timingType;
+	}
+
+	/**
+	 * 交換の種類を設定
+	 *
+	 * @param string|null $timingType 交換の種類
+	 * @return RateModel $this
+	 */
+	public function withTimingType(?string $timingType): RateModel {
+		$this->timingType = $timingType;
+		return $this;
+	}
+	/**
+     * @var int 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）
+	 */
+	protected $lockTime;
+
+	/**
+	 * 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）を取得
+	 *
+	 * @return int|null 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）
+	 */
+	public function getLockTime(): ?int {
+		return $this->lockTime;
+	}
+
+	/**
+	 * 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）を設定
+	 *
+	 * @param int|null $lockTime 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）
+	 */
+	public function setLockTime(?int $lockTime) {
+		$this->lockTime = $lockTime;
+	}
+
+	/**
+	 * 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）を設定
+	 *
+	 * @param int|null $lockTime 交換実行から実際に報酬を受け取れるようになるまでの待ち時間（分）
+	 * @return RateModel $this
+	 */
+	public function withLockTime(?int $lockTime): RateModel {
+		$this->lockTime = $lockTime;
+		return $this;
+	}
+	/**
+     * @var bool スキップをすることができるか
+	 */
+	protected $enableSkip;
+
+	/**
+	 * スキップをすることができるかを取得
+	 *
+	 * @return bool|null スキップをすることができるか
+	 */
+	public function getEnableSkip(): ?bool {
+		return $this->enableSkip;
+	}
+
+	/**
+	 * スキップをすることができるかを設定
+	 *
+	 * @param bool|null $enableSkip スキップをすることができるか
+	 */
+	public function setEnableSkip(?bool $enableSkip) {
+		$this->enableSkip = $enableSkip;
+	}
+
+	/**
+	 * スキップをすることができるかを設定
+	 *
+	 * @param bool|null $enableSkip スキップをすることができるか
+	 * @return RateModel $this
+	 */
+	public function withEnableSkip(?bool $enableSkip): RateModel {
+		$this->enableSkip = $enableSkip;
+		return $this;
+	}
+	/**
+     * @var ConsumeAction[] 時短消費アクションリスト
+	 */
+	protected $skipConsumeActions;
+
+	/**
+	 * 時短消費アクションリストを取得
+	 *
+	 * @return ConsumeAction[]|null 時短消費アクションリスト
+	 */
+	public function getSkipConsumeActions(): ?array {
+		return $this->skipConsumeActions;
+	}
+
+	/**
+	 * 時短消費アクションリストを設定
+	 *
+	 * @param ConsumeAction[]|null $skipConsumeActions 時短消費アクションリスト
+	 */
+	public function setSkipConsumeActions(?array $skipConsumeActions) {
+		$this->skipConsumeActions = $skipConsumeActions;
+	}
+
+	/**
+	 * 時短消費アクションリストを設定
+	 *
+	 * @param ConsumeAction[]|null $skipConsumeActions 時短消費アクションリスト
+	 * @return RateModel $this
+	 */
+	public function withSkipConsumeActions(?array $skipConsumeActions): RateModel {
+		$this->skipConsumeActions = $skipConsumeActions;
+		return $this;
+	}
+	/**
      * @var AcquireAction[] 入手アクションリスト
 	 */
 	protected $acquireActions;
@@ -203,6 +335,15 @@ class RateModel implements IModel {
                 },
                 $this->consumeActions == null ? [] : $this->consumeActions
             ),
+            "timingType" => $this->timingType,
+            "lockTime" => $this->lockTime,
+            "enableSkip" => $this->enableSkip,
+            "skipConsumeActions" => array_map(
+                function (ConsumeAction $v) {
+                    return $v->toJson();
+                },
+                $this->skipConsumeActions == null ? [] : $this->skipConsumeActions
+            ),
             "acquireActions" => array_map(
                 function (AcquireAction $v) {
                     return $v->toJson();
@@ -222,6 +363,16 @@ class RateModel implements IModel {
                     return ConsumeAction::fromJson($v);
                 },
                 isset($data["consumeActions"]) ? $data["consumeActions"] : []
+            )
+        );
+        $model->setTimingType(isset($data["timingType"]) ? $data["timingType"] : null);
+        $model->setLockTime(isset($data["lockTime"]) ? $data["lockTime"] : null);
+        $model->setEnableSkip(isset($data["enableSkip"]) ? $data["enableSkip"] : null);
+        $model->setSkipConsumeActions(array_map(
+                function ($v) {
+                    return ConsumeAction::fromJson($v);
+                },
+                isset($data["skipConsumeActions"]) ? $data["skipConsumeActions"] : []
             )
         );
         $model->setAcquireActions(array_map(

@@ -95,7 +95,7 @@ class DescribeStacksTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack";
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -156,7 +156,7 @@ class CreateStackTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack";
 
         $json = [];
         if ($this->request->getName() !== null) {
@@ -218,7 +218,7 @@ class CreateStackFromGitHubTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/from_git_hub";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/from_git_hub";
 
         $json = [];
         if ($this->request->getName() !== null) {
@@ -280,7 +280,7 @@ class ValidateTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/validate";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/validate";
 
         $json = [];
         if ($this->request->getTemplate() !== null) {
@@ -336,7 +336,7 @@ class GetStackStatusTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/status";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/status";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -393,7 +393,7 @@ class GetStackTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -450,7 +450,7 @@ class UpdateStackTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -511,7 +511,7 @@ class UpdateStackFromGitHubTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/from_git_hub";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/from_git_hub";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -572,7 +572,7 @@ class DeleteStackTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -629,7 +629,7 @@ class ForceDeleteStackTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/force";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/force";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -686,7 +686,7 @@ class DeleteStackResourcesTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/resources";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/resources";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -743,7 +743,7 @@ class DeleteStackEntityTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/entity";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/entity";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -800,7 +800,7 @@ class DescribeResourcesTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/resource";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/resource";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -863,7 +863,7 @@ class GetResourceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/resource/{resourceName}";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/resource/{resourceName}";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
         $url = str_replace("{resourceName}", $this->request->getResourceName() === null|| strlen($this->request->getResourceName()) == 0 ? "null" : $this->request->getResourceName(), $url);
@@ -921,7 +921,7 @@ class DescribeEventsTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/event";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/event";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -984,7 +984,7 @@ class GetEventTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/event/{eventName}";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/event/{eventName}";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
         $url = str_replace("{eventName}", $this->request->getEventName() === null|| strlen($this->request->getEventName()) == 0 ? "null" : $this->request->getEventName(), $url);
@@ -1042,7 +1042,7 @@ class DescribeOutputsTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/output";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/output";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
@@ -1105,7 +1105,7 @@ class GetOutputTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::EndpointHost)) . "/stack/{stackName}/output/{outputName}";
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/output/{outputName}";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
         $url = str_replace("{outputName}", $this->request->getOutputName() === null|| strlen($this->request->getOutputName()) == 0 ? "null" : $this->request->getOutputName(), $url);

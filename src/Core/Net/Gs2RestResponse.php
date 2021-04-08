@@ -29,7 +29,12 @@ class Gs2RestResponse extends Gs2Response {
         $errorMessage = null;
         try
         {
-            $errorMessage = json_decode(json_decode($message, true)["message"], true);
+            $errorMessageJson = json_decode($message, true)["message"];
+            if ($errorMessageJson == null) {
+                $errorMessage = $message;
+            } else {
+                $errorMessage = json_decode($errorMessageJson, true);
+            }
         }
         catch (Exception $e)
         {

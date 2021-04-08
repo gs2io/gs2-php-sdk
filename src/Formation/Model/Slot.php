@@ -92,11 +92,45 @@ class Slot implements IModel {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+	/**
+     * @var string メタデータ
+	 */
+	protected $metadata;
+
+	/**
+	 * メタデータを取得
+	 *
+	 * @return string|null メタデータ
+	 */
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	/**
+	 * メタデータを設定
+	 *
+	 * @param string|null $metadata メタデータ
+	 */
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	/**
+	 * メタデータを設定
+	 *
+	 * @param string|null $metadata メタデータ
+	 * @return Slot $this
+	 */
+	public function withMetadata(?string $metadata): Slot {
+		$this->metadata = $metadata;
+		return $this;
+	}
 
     public function toJson(): array {
         return array(
             "name" => $this->name,
             "propertyId" => $this->propertyId,
+            "metadata" => $this->metadata,
         );
     }
 
@@ -104,6 +138,7 @@ class Slot implements IModel {
         $model = new Slot();
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setPropertyId(isset($data["propertyId"]) ? $data["propertyId"] : null);
+        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
         return $model;
     }
 }

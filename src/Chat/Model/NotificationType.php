@@ -20,7 +20,7 @@ namespace Gs2\Chat\Model;
 use Gs2\Core\Model\IModel;
 
 /**
- * フォローしているユーザー
+ * 購読
  *
  * @author Game Server Services, Inc.
  *

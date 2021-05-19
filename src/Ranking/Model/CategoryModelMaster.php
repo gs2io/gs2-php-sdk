@@ -324,6 +324,72 @@ class CategoryModelMaster implements IModel {
 		return $this;
 	}
 	/**
+     * @var int スコアの固定集計開始時刻(時)
+	 */
+	protected $calculateFixedTimingHour;
+
+	/**
+	 * スコアの固定集計開始時刻(時)を取得
+	 *
+	 * @return int|null スコアの固定集計開始時刻(時)
+	 */
+	public function getCalculateFixedTimingHour(): ?int {
+		return $this->calculateFixedTimingHour;
+	}
+
+	/**
+	 * スコアの固定集計開始時刻(時)を設定
+	 *
+	 * @param int|null $calculateFixedTimingHour スコアの固定集計開始時刻(時)
+	 */
+	public function setCalculateFixedTimingHour(?int $calculateFixedTimingHour) {
+		$this->calculateFixedTimingHour = $calculateFixedTimingHour;
+	}
+
+	/**
+	 * スコアの固定集計開始時刻(時)を設定
+	 *
+	 * @param int|null $calculateFixedTimingHour スコアの固定集計開始時刻(時)
+	 * @return CategoryModelMaster $this
+	 */
+	public function withCalculateFixedTimingHour(?int $calculateFixedTimingHour): CategoryModelMaster {
+		$this->calculateFixedTimingHour = $calculateFixedTimingHour;
+		return $this;
+	}
+	/**
+     * @var int スコアの固定集計開始時刻(分)
+	 */
+	protected $calculateFixedTimingMinute;
+
+	/**
+	 * スコアの固定集計開始時刻(分)を取得
+	 *
+	 * @return int|null スコアの固定集計開始時刻(分)
+	 */
+	public function getCalculateFixedTimingMinute(): ?int {
+		return $this->calculateFixedTimingMinute;
+	}
+
+	/**
+	 * スコアの固定集計開始時刻(分)を設定
+	 *
+	 * @param int|null $calculateFixedTimingMinute スコアの固定集計開始時刻(分)
+	 */
+	public function setCalculateFixedTimingMinute(?int $calculateFixedTimingMinute) {
+		$this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
+	}
+
+	/**
+	 * スコアの固定集計開始時刻(分)を設定
+	 *
+	 * @param int|null $calculateFixedTimingMinute スコアの固定集計開始時刻(分)
+	 * @return CategoryModelMaster $this
+	 */
+	public function withCalculateFixedTimingMinute(?int $calculateFixedTimingMinute): CategoryModelMaster {
+		$this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
+		return $this;
+	}
+	/**
      * @var int スコアの集計間隔(分)
 	 */
 	protected $calculateIntervalMinutes;
@@ -423,6 +489,39 @@ class CategoryModelMaster implements IModel {
 		return $this;
 	}
 	/**
+     * @var string ランキングの世代
+	 */
+	protected $generation;
+
+	/**
+	 * ランキングの世代を取得
+	 *
+	 * @return string|null ランキングの世代
+	 */
+	public function getGeneration(): ?string {
+		return $this->generation;
+	}
+
+	/**
+	 * ランキングの世代を設定
+	 *
+	 * @param string|null $generation ランキングの世代
+	 */
+	public function setGeneration(?string $generation) {
+		$this->generation = $generation;
+	}
+
+	/**
+	 * ランキングの世代を設定
+	 *
+	 * @param string|null $generation ランキングの世代
+	 * @return CategoryModelMaster $this
+	 */
+	public function withGeneration(?string $generation): CategoryModelMaster {
+		$this->generation = $generation;
+		return $this;
+	}
+	/**
      * @var int 作成日時
 	 */
 	protected $createdAt;
@@ -500,9 +599,12 @@ class CategoryModelMaster implements IModel {
             "orderDirection" => $this->orderDirection,
             "scope" => $this->scope,
             "uniqueByUserId" => $this->uniqueByUserId,
+            "calculateFixedTimingHour" => $this->calculateFixedTimingHour,
+            "calculateFixedTimingMinute" => $this->calculateFixedTimingMinute,
             "calculateIntervalMinutes" => $this->calculateIntervalMinutes,
             "entryPeriodEventId" => $this->entryPeriodEventId,
             "accessPeriodEventId" => $this->accessPeriodEventId,
+            "generation" => $this->generation,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -519,9 +621,12 @@ class CategoryModelMaster implements IModel {
         $model->setOrderDirection(isset($data["orderDirection"]) ? $data["orderDirection"] : null);
         $model->setScope(isset($data["scope"]) ? $data["scope"] : null);
         $model->setUniqueByUserId(isset($data["uniqueByUserId"]) ? $data["uniqueByUserId"] : null);
+        $model->setCalculateFixedTimingHour(isset($data["calculateFixedTimingHour"]) ? $data["calculateFixedTimingHour"] : null);
+        $model->setCalculateFixedTimingMinute(isset($data["calculateFixedTimingMinute"]) ? $data["calculateFixedTimingMinute"] : null);
         $model->setCalculateIntervalMinutes(isset($data["calculateIntervalMinutes"]) ? $data["calculateIntervalMinutes"] : null);
         $model->setEntryPeriodEventId(isset($data["entryPeriodEventId"]) ? $data["entryPeriodEventId"] : null);
         $model->setAccessPeriodEventId(isset($data["accessPeriodEventId"]) ? $data["accessPeriodEventId"] : null);
+        $model->setGeneration(isset($data["generation"]) ? $data["generation"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

@@ -28,7 +28,7 @@ use Gs2\Inventory\Model\Inventory;
  * @author Game Server Services, Inc.
  */
 class AddReferenceOfItemSetByStampSheetResult implements IResult {
-	/** @var string この所持品の参照元 */
+	/** @var string[] この所持品の参照元リスト */
 	private $item;
 	/** @var ItemSet 参照元追加後の有効期限ごとのアイテム所持数量 */
 	private $itemSet;
@@ -38,20 +38,20 @@ class AddReferenceOfItemSetByStampSheetResult implements IResult {
 	private $inventory;
 
 	/**
-	 * この所持品の参照元を取得
+	 * この所持品の参照元リストを取得
 	 *
-	 * @return string|null スタンプシートでアイテムに参照元を追加
+	 * @return string[]|null スタンプシートでアイテムに参照元を追加
 	 */
-	public function getItem(): ?string {
+	public function getItem(): ?array {
 		return $this->item;
 	}
 
 	/**
-	 * この所持品の参照元を設定
+	 * この所持品の参照元リストを設定
 	 *
-	 * @param string|null $item スタンプシートでアイテムに参照元を追加
+	 * @param string[]|null $item スタンプシートでアイテムに参照元を追加
 	 */
-	public function setItem(?string $item) {
+	public function setItem(?array $item) {
 		$this->item = $item;
 	}
 

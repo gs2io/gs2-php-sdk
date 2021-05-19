@@ -13,8 +13,6 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
- *
- * deny overwrite
  */
 
 namespace Gs2\Ranking\Request;
@@ -228,7 +226,7 @@ class DescribeRankingsRequest extends Gs2BasicRequest {
      *
      * @return string アクセストークン
      */
-    public function getAccessToken(): ?string {
+    public function getAccessToken(): string {
         return $this->accessToken;
     }
 

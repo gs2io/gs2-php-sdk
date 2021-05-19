@@ -220,6 +220,38 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return $this;
     }
 
+    /** @var ScriptSetting 経験値あふれしたときに実行するスクリプト */
+    private $overflowExperienceScript;
+
+    /**
+     * 経験値あふれしたときに実行するスクリプトを取得
+     *
+     * @return ScriptSetting|null ネームスペースを新規作成
+     */
+    public function getOverflowExperienceScript(): ?ScriptSetting {
+        return $this->overflowExperienceScript;
+    }
+
+    /**
+     * 経験値あふれしたときに実行するスクリプトを設定
+     *
+     * @param ScriptSetting $overflowExperienceScript ネームスペースを新規作成
+     */
+    public function setOverflowExperienceScript(ScriptSetting $overflowExperienceScript = null) {
+        $this->overflowExperienceScript = $overflowExperienceScript;
+    }
+
+    /**
+     * 経験値あふれしたときに実行するスクリプトを設定
+     *
+     * @param ScriptSetting $overflowExperienceScript ネームスペースを新規作成
+     * @return CreateNamespaceRequest $this
+     */
+    public function withOverflowExperienceScript(ScriptSetting $overflowExperienceScript = null): CreateNamespaceRequest {
+        $this->setOverflowExperienceScript($overflowExperienceScript);
+        return $this;
+    }
+
     /** @var LogSetting ログの出力設定 */
     private $logSetting;
 

@@ -79,6 +79,8 @@ use Gs2\Datastore\Request\PrepareDownloadOwnDataByGenerationRequest;
 use Gs2\Datastore\Result\PrepareDownloadOwnDataByGenerationResult;
 use Gs2\Datastore\Request\PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest;
 use Gs2\Datastore\Result\PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult;
+use Gs2\Datastore\Request\RestoreDataObjectRequest;
+use Gs2\Datastore\Result\RestoreDataObjectResult;
 use Gs2\Datastore\Request\DescribeDataObjectHistoriesRequest;
 use Gs2\Datastore\Result\DescribeDataObjectHistoriesResult;
 use Gs2\Datastore\Request\DescribeDataObjectHistoriesByUserIdRequest;
@@ -1773,6 +1775,64 @@ class PrepareDownloadByUserIdAndDataObjectNameAndGenerationTask extends Gs2RestS
     }
 }
 
+class RestoreDataObjectTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RestoreDataObjectRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RestoreDataObjectTask constructor.
+     * @param Gs2RestSession $session
+     * @param RestoreDataObjectRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RestoreDataObjectRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RestoreDataObjectResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "datastore", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/file/restore";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getDataObjectId() !== null) {
+            $json["dataObjectId"] = $this->request->getDataObjectId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeDataObjectHistoriesTask extends Gs2RestSessionTask {
 
     /**
@@ -2854,6 +2914,37 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
             PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
     ): PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult {
         return $this->prepareDownloadByUserIdAndDataObjectNameAndGenerationAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * データオブジェクトの管理情報を修復する<br>
+     *
+     * @param RestoreDataObjectRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function restoreDataObjectAsync(
+            RestoreDataObjectRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RestoreDataObjectTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * データオブジェクトの管理情報を修復する<br>
+     *
+     * @param RestoreDataObjectRequest $request リクエストパラメータ
+     * @return RestoreDataObjectResult
+     */
+    public function restoreDataObject (
+            RestoreDataObjectRequest $request
+    ): RestoreDataObjectResult {
+        return $this->restoreDataObjectAsync(
             $request
         )->wait();
     }

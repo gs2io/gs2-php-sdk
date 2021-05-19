@@ -159,39 +159,6 @@ class MoldModelMaster implements IModel {
 		return $this;
 	}
 	/**
-     * @var string フォーム名
-	 */
-	protected $formModelName;
-
-	/**
-	 * フォーム名を取得
-	 *
-	 * @return string|null フォーム名
-	 */
-	public function getFormModelName(): ?string {
-		return $this->formModelName;
-	}
-
-	/**
-	 * フォーム名を設定
-	 *
-	 * @param string|null $formModelName フォーム名
-	 */
-	public function setFormModelName(?string $formModelName) {
-		$this->formModelName = $formModelName;
-	}
-
-	/**
-	 * フォーム名を設定
-	 *
-	 * @param string|null $formModelName フォーム名
-	 * @return MoldModelMaster $this
-	 */
-	public function withFormModelName(?string $formModelName): MoldModelMaster {
-		$this->formModelName = $formModelName;
-		return $this;
-	}
-	/**
      * @var int フォームを保存できる初期キャパシティ
 	 */
 	protected $initialMaxCapacity;
@@ -255,6 +222,39 @@ class MoldModelMaster implements IModel {
 	 */
 	public function withMaxCapacity(?int $maxCapacity): MoldModelMaster {
 		$this->maxCapacity = $maxCapacity;
+		return $this;
+	}
+	/**
+     * @var string フォーム名
+	 */
+	protected $formModelName;
+
+	/**
+	 * フォーム名を取得
+	 *
+	 * @return string|null フォーム名
+	 */
+	public function getFormModelName(): ?string {
+		return $this->formModelName;
+	}
+
+	/**
+	 * フォーム名を設定
+	 *
+	 * @param string|null $formModelName フォーム名
+	 */
+	public function setFormModelName(?string $formModelName) {
+		$this->formModelName = $formModelName;
+	}
+
+	/**
+	 * フォーム名を設定
+	 *
+	 * @param string|null $formModelName フォーム名
+	 * @return MoldModelMaster $this
+	 */
+	public function withFormModelName(?string $formModelName): MoldModelMaster {
+		$this->formModelName = $formModelName;
 		return $this;
 	}
 	/**
@@ -330,9 +330,9 @@ class MoldModelMaster implements IModel {
             "name" => $this->name,
             "description" => $this->description,
             "metadata" => $this->metadata,
-            "formModelName" => $this->formModelName,
             "initialMaxCapacity" => $this->initialMaxCapacity,
             "maxCapacity" => $this->maxCapacity,
+            "formModelName" => $this->formModelName,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -344,9 +344,9 @@ class MoldModelMaster implements IModel {
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
         $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setFormModelName(isset($data["formModelName"]) ? $data["formModelName"] : null);
         $model->setInitialMaxCapacity(isset($data["initialMaxCapacity"]) ? $data["initialMaxCapacity"] : null);
         $model->setMaxCapacity(isset($data["maxCapacity"]) ? $data["maxCapacity"] : null);
+        $model->setFormModelName(isset($data["formModelName"]) ? $data["formModelName"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

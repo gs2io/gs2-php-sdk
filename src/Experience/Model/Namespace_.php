@@ -291,6 +291,39 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
+     * @var ScriptSetting 経験値あふれしたときに実行するスクリプト
+	 */
+	protected $overflowExperienceScript;
+
+	/**
+	 * 経験値あふれしたときに実行するスクリプトを取得
+	 *
+	 * @return ScriptSetting|null 経験値あふれしたときに実行するスクリプト
+	 */
+	public function getOverflowExperienceScript(): ?ScriptSetting {
+		return $this->overflowExperienceScript;
+	}
+
+	/**
+	 * 経験値あふれしたときに実行するスクリプトを設定
+	 *
+	 * @param ScriptSetting|null $overflowExperienceScript 経験値あふれしたときに実行するスクリプト
+	 */
+	public function setOverflowExperienceScript(?ScriptSetting $overflowExperienceScript) {
+		$this->overflowExperienceScript = $overflowExperienceScript;
+	}
+
+	/**
+	 * 経験値あふれしたときに実行するスクリプトを設定
+	 *
+	 * @param ScriptSetting|null $overflowExperienceScript 経験値あふれしたときに実行するスクリプト
+	 * @return Namespace_ $this
+	 */
+	public function withOverflowExperienceScript(?ScriptSetting $overflowExperienceScript): Namespace_ {
+		$this->overflowExperienceScript = $overflowExperienceScript;
+		return $this;
+	}
+	/**
      * @var LogSetting ログの出力設定
 	 */
 	protected $logSetting;
@@ -321,39 +354,6 @@ class Namespace_ implements IModel {
 	 */
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
-		return $this;
-	}
-	/**
-     * @var string None
-	 */
-	protected $status;
-
-	/**
-	 * Noneを取得
-	 *
-	 * @return string|null None
-	 */
-	public function getStatus(): ?string {
-		return $this->status;
-	}
-
-	/**
-	 * Noneを設定
-	 *
-	 * @param string|null $status None
-	 */
-	public function setStatus(?string $status) {
-		$this->status = $status;
-	}
-
-	/**
-	 * Noneを設定
-	 *
-	 * @param string|null $status None
-	 * @return Namespace_ $this
-	 */
-	public function withStatus(?string $status): Namespace_ {
-		$this->status = $status;
 		return $this;
 	}
 	/**
@@ -433,8 +433,8 @@ class Namespace_ implements IModel {
             "changeExperienceScript" => $this->changeExperienceScript->toJson(),
             "changeRankScript" => $this->changeRankScript->toJson(),
             "changeRankCapScript" => $this->changeRankCapScript->toJson(),
+            "overflowExperienceScript" => $this->overflowExperienceScript->toJson(),
             "logSetting" => $this->logSetting->toJson(),
-            "status" => $this->status,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -450,8 +450,8 @@ class Namespace_ implements IModel {
         $model->setChangeExperienceScript(isset($data["changeExperienceScript"]) ? ScriptSetting::fromJson($data["changeExperienceScript"]) : null);
         $model->setChangeRankScript(isset($data["changeRankScript"]) ? ScriptSetting::fromJson($data["changeRankScript"]) : null);
         $model->setChangeRankCapScript(isset($data["changeRankCapScript"]) ? ScriptSetting::fromJson($data["changeRankCapScript"]) : null);
+        $model->setOverflowExperienceScript(isset($data["overflowExperienceScript"]) ? ScriptSetting::fromJson($data["overflowExperienceScript"]) : null);
         $model->setLogSetting(isset($data["logSetting"]) ? LogSetting::fromJson($data["logSetting"]) : null);
-        $model->setStatus(isset($data["status"]) ? $data["status"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

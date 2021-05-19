@@ -225,6 +225,39 @@ class Progress implements IModel {
 		return $this;
 	}
 	/**
+     * @var string クエストモデルのメタデータ
+	 */
+	protected $metadata;
+
+	/**
+	 * クエストモデルのメタデータを取得
+	 *
+	 * @return string|null クエストモデルのメタデータ
+	 */
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	/**
+	 * クエストモデルのメタデータを設定
+	 *
+	 * @param string|null $metadata クエストモデルのメタデータ
+	 */
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	/**
+	 * クエストモデルのメタデータを設定
+	 *
+	 * @param string|null $metadata クエストモデルのメタデータ
+	 * @return Progress $this
+	 */
+	public function withMetadata(?string $metadata): Progress {
+		$this->metadata = $metadata;
+		return $this;
+	}
+	/**
      * @var int 作成日時
 	 */
 	protected $createdAt;
@@ -304,6 +337,7 @@ class Progress implements IModel {
                 },
                 $this->rewards == null ? [] : $this->rewards
             ),
+            "metadata" => $this->metadata,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -323,6 +357,7 @@ class Progress implements IModel {
                 isset($data["rewards"]) ? $data["rewards"] : []
             )
         );
+        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

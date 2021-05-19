@@ -33,6 +33,8 @@ class AcquireActionToFormPropertiesByStampSheetResult implements IResult {
 	private $mold;
 	/** @var string スタンプシート */
 	private $stampSheet;
+	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
+	private $stampSheetEncryptionKeyId;
 
 	/**
 	 * フォームを取得
@@ -88,11 +90,30 @@ class AcquireActionToFormPropertiesByStampSheetResult implements IResult {
 		$this->stampSheet = $stampSheet;
 	}
 
+	/**
+	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
+	 *
+	 * @return string|null スタンプシートでアイテムをインベントリに追加
+	 */
+	public function getStampSheetEncryptionKeyId(): ?string {
+		return $this->stampSheetEncryptionKeyId;
+	}
+
+	/**
+	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
+	 *
+	 * @param string|null $stampSheetEncryptionKeyId スタンプシートでアイテムをインベントリに追加
+	 */
+	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+	}
+
     public static function fromJson(array $data): AcquireActionToFormPropertiesByStampSheetResult {
         $result = new AcquireActionToFormPropertiesByStampSheetResult();
         $result->setItem(isset($data["item"]) ? Form::fromJson($data["item"]) : null);
         $result->setMold(isset($data["mold"]) ? Mold::fromJson($data["mold"]) : null);
         $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
+        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
         return $result;
     }
 }

@@ -314,6 +314,70 @@ class CreateCategoryModelMasterRequest extends Gs2BasicRequest {
         return $this;
     }
 
+    /** @var int スコアの固定集計開始時刻(時) */
+    private $calculateFixedTimingHour;
+
+    /**
+     * スコアの固定集計開始時刻(時)を取得
+     *
+     * @return int|null カテゴリマスターを新規作成
+     */
+    public function getCalculateFixedTimingHour(): ?int {
+        return $this->calculateFixedTimingHour;
+    }
+
+    /**
+     * スコアの固定集計開始時刻(時)を設定
+     *
+     * @param int $calculateFixedTimingHour カテゴリマスターを新規作成
+     */
+    public function setCalculateFixedTimingHour(int $calculateFixedTimingHour = null) {
+        $this->calculateFixedTimingHour = $calculateFixedTimingHour;
+    }
+
+    /**
+     * スコアの固定集計開始時刻(時)を設定
+     *
+     * @param int $calculateFixedTimingHour カテゴリマスターを新規作成
+     * @return CreateCategoryModelMasterRequest $this
+     */
+    public function withCalculateFixedTimingHour(int $calculateFixedTimingHour = null): CreateCategoryModelMasterRequest {
+        $this->setCalculateFixedTimingHour($calculateFixedTimingHour);
+        return $this;
+    }
+
+    /** @var int スコアの固定集計開始時刻(分) */
+    private $calculateFixedTimingMinute;
+
+    /**
+     * スコアの固定集計開始時刻(分)を取得
+     *
+     * @return int|null カテゴリマスターを新規作成
+     */
+    public function getCalculateFixedTimingMinute(): ?int {
+        return $this->calculateFixedTimingMinute;
+    }
+
+    /**
+     * スコアの固定集計開始時刻(分)を設定
+     *
+     * @param int $calculateFixedTimingMinute カテゴリマスターを新規作成
+     */
+    public function setCalculateFixedTimingMinute(int $calculateFixedTimingMinute = null) {
+        $this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
+    }
+
+    /**
+     * スコアの固定集計開始時刻(分)を設定
+     *
+     * @param int $calculateFixedTimingMinute カテゴリマスターを新規作成
+     * @return CreateCategoryModelMasterRequest $this
+     */
+    public function withCalculateFixedTimingMinute(int $calculateFixedTimingMinute = null): CreateCategoryModelMasterRequest {
+        $this->setCalculateFixedTimingMinute($calculateFixedTimingMinute);
+        return $this;
+    }
+
     /** @var int スコアの集計間隔(分) */
     private $calculateIntervalMinutes;
 
@@ -407,6 +471,38 @@ class CreateCategoryModelMasterRequest extends Gs2BasicRequest {
      */
     public function withAccessPeriodEventId(string $accessPeriodEventId = null): CreateCategoryModelMasterRequest {
         $this->setAccessPeriodEventId($accessPeriodEventId);
+        return $this;
+    }
+
+    /** @var string ランキングの世代 */
+    private $generation;
+
+    /**
+     * ランキングの世代を取得
+     *
+     * @return string|null カテゴリマスターを新規作成
+     */
+    public function getGeneration(): ?string {
+        return $this->generation;
+    }
+
+    /**
+     * ランキングの世代を設定
+     *
+     * @param string $generation カテゴリマスターを新規作成
+     */
+    public function setGeneration(string $generation = null) {
+        $this->generation = $generation;
+    }
+
+    /**
+     * ランキングの世代を設定
+     *
+     * @param string $generation カテゴリマスターを新規作成
+     * @return CreateCategoryModelMasterRequest $this
+     */
+    public function withGeneration(string $generation = null): CreateCategoryModelMasterRequest {
+        $this->setGeneration($generation);
         return $this;
     }
 

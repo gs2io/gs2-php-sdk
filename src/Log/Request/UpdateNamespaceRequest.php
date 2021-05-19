@@ -26,11 +26,11 @@ use Gs2\Core\Control\Gs2BasicRequest;
  */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
 
-    /** @var string カテゴリー名 */
+    /** @var string ネームスペース名 */
     private $namespaceName;
 
     /**
-     * カテゴリー名を取得
+     * ネームスペース名を取得
      *
      * @return string|null ネームスペースを更新
      */
@@ -39,7 +39,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     }
 
     /**
-     * カテゴリー名を設定
+     * ネームスペース名を設定
      *
      * @param string $namespaceName ネームスペースを更新
      */
@@ -48,7 +48,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     }
 
     /**
-     * カテゴリー名を設定
+     * ネームスペース名を設定
      *
      * @param string $namespaceName ネームスペースを更新
      * @return UpdateNamespaceRequest $this

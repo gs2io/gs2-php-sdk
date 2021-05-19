@@ -188,6 +188,12 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getAssumeUserId() !== null) {
             $json["assumeUserId"] = $this->request->getAssumeUserId();
         }
+        if ($this->request->getAcceptVersionScript() !== null) {
+            $json["acceptVersionScript"] = $this->request->getAcceptVersionScript()->toJson();
+        }
+        if ($this->request->getCheckVersionTriggerScriptId() !== null) {
+            $json["checkVersionTriggerScriptId"] = $this->request->getCheckVersionTriggerScriptId();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -365,6 +371,12 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAssumeUserId() !== null) {
             $json["assumeUserId"] = $this->request->getAssumeUserId();
+        }
+        if ($this->request->getAcceptVersionScript() !== null) {
+            $json["acceptVersionScript"] = $this->request->getAcceptVersionScript()->toJson();
+        }
+        if ($this->request->getCheckVersionTriggerScriptId() !== null) {
+            $json["checkVersionTriggerScriptId"] = $this->request->getCheckVersionTriggerScriptId();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -1586,7 +1598,7 @@ class CalculateSignatureTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/calculate/signature";
+        $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/version/{versionName}/calculate/signature";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{versionName}", $this->request->getVersionName() === null|| strlen($this->request->getVersionName()) == 0 ? "null" : $this->request->getVersionName(), $url);

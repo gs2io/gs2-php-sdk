@@ -49,6 +49,10 @@ class HttpTask {
      * @param array $body
      */
     public function setBody(array $body) {
-        $this->request = $this->request->withBody(stream_for(json_encode($body)));
+        if (count($body) == 0) {
+            $this->request = $this->request->withBody(stream_for("{}"));
+        } else {
+            $this->request = $this->request->withBody(stream_for(json_encode($body)));
+        }
     }
 }

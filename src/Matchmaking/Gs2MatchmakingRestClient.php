@@ -2354,9 +2354,6 @@ class GetBallotTask extends Gs2RestSessionTask {
         $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
 
         $json = [];
-        if ($this->request->getGatheringId() !== null) {
-            $json["gatheringId"] = $this->request->getGatheringId();
-        }
         if ($this->request->getNumberOfPlayer() !== null) {
             $json["numberOfPlayer"] = $this->request->getNumberOfPlayer();
         }
@@ -2427,9 +2424,6 @@ class GetBallotByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
-        if ($this->request->getGatheringId() !== null) {
-            $json["gatheringId"] = $this->request->getGatheringId();
-        }
         if ($this->request->getNumberOfPlayer() !== null) {
             $json["numberOfPlayer"] = $this->request->getNumberOfPlayer();
         }
@@ -2635,9 +2629,11 @@ class CommitVoteTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/action/vote/commit";
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/vote/{ratingName}/{gatheringName}/action/vote/commit";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+        $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
 
         $json = [];
         if ($this->request->getContextStack() !== null) {

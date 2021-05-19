@@ -28,7 +28,7 @@ use Gs2\Inventory\Model\Inventory;
  * @author Game Server Services, Inc.
  */
 class VerifyReferenceOfByStampTaskResult implements IResult {
-	/** @var string この所持品の参照元 */
+	/** @var string[] この所持品の参照元のリスト */
 	private $item;
 	/** @var ItemSet 有効期限ごとのアイテム所持数量 */
 	private $itemSet;
@@ -40,20 +40,20 @@ class VerifyReferenceOfByStampTaskResult implements IResult {
 	private $newContextStack;
 
 	/**
-	 * この所持品の参照元を取得
+	 * この所持品の参照元のリストを取得
 	 *
-	 * @return string|null スタンプシートでインベントリのアイテムを検証
+	 * @return string[]|null スタンプシートでインベントリのアイテムを検証
 	 */
-	public function getItem(): ?string {
+	public function getItem(): ?array {
 		return $this->item;
 	}
 
 	/**
-	 * この所持品の参照元を設定
+	 * この所持品の参照元のリストを設定
 	 *
-	 * @param string|null $item スタンプシートでインベントリのアイテムを検証
+	 * @param string[]|null $item スタンプシートでインベントリのアイテムを検証
 	 */
-	public function setItem(?string $item) {
+	public function setItem(?array $item) {
 		$this->item = $item;
 	}
 

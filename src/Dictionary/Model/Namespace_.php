@@ -159,6 +159,72 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
+     * @var ScriptSetting エントリー登録時に実行するスクリプト
+	 */
+	protected $entryScript;
+
+	/**
+	 * エントリー登録時に実行するスクリプトを取得
+	 *
+	 * @return ScriptSetting|null エントリー登録時に実行するスクリプト
+	 */
+	public function getEntryScript(): ?ScriptSetting {
+		return $this->entryScript;
+	}
+
+	/**
+	 * エントリー登録時に実行するスクリプトを設定
+	 *
+	 * @param ScriptSetting|null $entryScript エントリー登録時に実行するスクリプト
+	 */
+	public function setEntryScript(?ScriptSetting $entryScript) {
+		$this->entryScript = $entryScript;
+	}
+
+	/**
+	 * エントリー登録時に実行するスクリプトを設定
+	 *
+	 * @param ScriptSetting|null $entryScript エントリー登録時に実行するスクリプト
+	 * @return Namespace_ $this
+	 */
+	public function withEntryScript(?ScriptSetting $entryScript): Namespace_ {
+		$this->entryScript = $entryScript;
+		return $this;
+	}
+	/**
+     * @var ScriptSetting 登録済みのエントリーを再度登録しようとした時に実行するスクリプト
+	 */
+	protected $duplicateEntryScript;
+
+	/**
+	 * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを取得
+	 *
+	 * @return ScriptSetting|null 登録済みのエントリーを再度登録しようとした時に実行するスクリプト
+	 */
+	public function getDuplicateEntryScript(): ?ScriptSetting {
+		return $this->duplicateEntryScript;
+	}
+
+	/**
+	 * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを設定
+	 *
+	 * @param ScriptSetting|null $duplicateEntryScript 登録済みのエントリーを再度登録しようとした時に実行するスクリプト
+	 */
+	public function setDuplicateEntryScript(?ScriptSetting $duplicateEntryScript) {
+		$this->duplicateEntryScript = $duplicateEntryScript;
+	}
+
+	/**
+	 * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを設定
+	 *
+	 * @param ScriptSetting|null $duplicateEntryScript 登録済みのエントリーを再度登録しようとした時に実行するスクリプト
+	 * @return Namespace_ $this
+	 */
+	public function withDuplicateEntryScript(?ScriptSetting $duplicateEntryScript): Namespace_ {
+		$this->duplicateEntryScript = $duplicateEntryScript;
+		return $this;
+	}
+	/**
      * @var LogSetting ログの出力設定
 	 */
 	protected $logSetting;
@@ -189,39 +255,6 @@ class Namespace_ implements IModel {
 	 */
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
-		return $this;
-	}
-	/**
-     * @var string None
-	 */
-	protected $status;
-
-	/**
-	 * Noneを取得
-	 *
-	 * @return string|null None
-	 */
-	public function getStatus(): ?string {
-		return $this->status;
-	}
-
-	/**
-	 * Noneを設定
-	 *
-	 * @param string|null $status None
-	 */
-	public function setStatus(?string $status) {
-		$this->status = $status;
-	}
-
-	/**
-	 * Noneを設定
-	 *
-	 * @param string|null $status None
-	 * @return Namespace_ $this
-	 */
-	public function withStatus(?string $status): Namespace_ {
-		$this->status = $status;
 		return $this;
 	}
 	/**
@@ -297,8 +330,9 @@ class Namespace_ implements IModel {
             "ownerId" => $this->ownerId,
             "name" => $this->name,
             "description" => $this->description,
+            "entryScript" => $this->entryScript->toJson(),
+            "duplicateEntryScript" => $this->duplicateEntryScript->toJson(),
             "logSetting" => $this->logSetting->toJson(),
-            "status" => $this->status,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -310,8 +344,9 @@ class Namespace_ implements IModel {
         $model->setOwnerId(isset($data["ownerId"]) ? $data["ownerId"] : null);
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
+        $model->setEntryScript(isset($data["entryScript"]) ? ScriptSetting::fromJson($data["entryScript"]) : null);
+        $model->setDuplicateEntryScript(isset($data["duplicateEntryScript"]) ? ScriptSetting::fromJson($data["duplicateEntryScript"]) : null);
         $model->setLogSetting(isset($data["logSetting"]) ? LogSetting::fromJson($data["logSetting"]) : null);
-        $model->setStatus(isset($data["status"]) ? $data["status"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

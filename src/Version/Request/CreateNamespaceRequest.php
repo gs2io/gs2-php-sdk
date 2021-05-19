@@ -18,6 +18,7 @@
 namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Version\Model\ScriptSetting;
 use Gs2\Version\Model\LogSetting;
 
 /**
@@ -120,6 +121,70 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
      */
     public function withAssumeUserId(string $assumeUserId = null): CreateNamespaceRequest {
         $this->setAssumeUserId($assumeUserId);
+        return $this;
+    }
+
+    /** @var ScriptSetting バージョンを承認したときに実行するスクリプト */
+    private $acceptVersionScript;
+
+    /**
+     * バージョンを承認したときに実行するスクリプトを取得
+     *
+     * @return ScriptSetting|null ネームスペースを新規作成
+     */
+    public function getAcceptVersionScript(): ?ScriptSetting {
+        return $this->acceptVersionScript;
+    }
+
+    /**
+     * バージョンを承認したときに実行するスクリプトを設定
+     *
+     * @param ScriptSetting $acceptVersionScript ネームスペースを新規作成
+     */
+    public function setAcceptVersionScript(ScriptSetting $acceptVersionScript = null) {
+        $this->acceptVersionScript = $acceptVersionScript;
+    }
+
+    /**
+     * バージョンを承認したときに実行するスクリプトを設定
+     *
+     * @param ScriptSetting $acceptVersionScript ネームスペースを新規作成
+     * @return CreateNamespaceRequest $this
+     */
+    public function withAcceptVersionScript(ScriptSetting $acceptVersionScript = null): CreateNamespaceRequest {
+        $this->setAcceptVersionScript($acceptVersionScript);
+        return $this;
+    }
+
+    /** @var string バージョンチェック時 に実行されるスクリプト のGRN */
+    private $checkVersionTriggerScriptId;
+
+    /**
+     * バージョンチェック時 に実行されるスクリプト のGRNを取得
+     *
+     * @return string|null ネームスペースを新規作成
+     */
+    public function getCheckVersionTriggerScriptId(): ?string {
+        return $this->checkVersionTriggerScriptId;
+    }
+
+    /**
+     * バージョンチェック時 に実行されるスクリプト のGRNを設定
+     *
+     * @param string $checkVersionTriggerScriptId ネームスペースを新規作成
+     */
+    public function setCheckVersionTriggerScriptId(string $checkVersionTriggerScriptId = null) {
+        $this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
+    }
+
+    /**
+     * バージョンチェック時 に実行されるスクリプト のGRNを設定
+     *
+     * @param string $checkVersionTriggerScriptId ネームスペースを新規作成
+     * @return CreateNamespaceRequest $this
+     */
+    public function withCheckVersionTriggerScriptId(string $checkVersionTriggerScriptId = null): CreateNamespaceRequest {
+        $this->setCheckVersionTriggerScriptId($checkVersionTriggerScriptId);
         return $this;
     }
 

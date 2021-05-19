@@ -191,72 +191,6 @@ class ResponseCache implements IModel {
 		$this->result = $result;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
-
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
-	public function getCreatedAt(): ?int {
-		return $this->createdAt;
-	}
-
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
-	public function setCreatedAt(?int $createdAt) {
-		$this->createdAt = $createdAt;
-	}
-
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return ResponseCache $this
-	 */
-	public function withCreatedAt(?int $createdAt): ResponseCache {
-		$this->createdAt = $createdAt;
-		return $this;
-	}
-	/**
-     * @var int None
-	 */
-	protected $expiredAt;
-
-	/**
-	 * Noneを取得
-	 *
-	 * @return int|null None
-	 */
-	public function getExpiredAt(): ?int {
-		return $this->expiredAt;
-	}
-
-	/**
-	 * Noneを設定
-	 *
-	 * @param int|null $expiredAt None
-	 */
-	public function setExpiredAt(?int $expiredAt) {
-		$this->expiredAt = $expiredAt;
-	}
-
-	/**
-	 * Noneを設定
-	 *
-	 * @param int|null $expiredAt None
-	 * @return ResponseCache $this
-	 */
-	public function withExpiredAt(?int $expiredAt): ResponseCache {
-		$this->expiredAt = $expiredAt;
-		return $this;
-	}
 
     public function toJson(): array {
         return array(
@@ -265,8 +199,6 @@ class ResponseCache implements IModel {
             "responseCacheId" => $this->responseCacheId,
             "requestHash" => $this->requestHash,
             "result" => $this->result,
-            "createdAt" => $this->createdAt,
-            "expiredAt" => $this->expiredAt,
         );
     }
 
@@ -277,8 +209,6 @@ class ResponseCache implements IModel {
         $model->setResponseCacheId(isset($data["responseCacheId"]) ? $data["responseCacheId"] : null);
         $model->setRequestHash(isset($data["requestHash"]) ? $data["requestHash"] : null);
         $model->setResult(isset($data["result"]) ? $data["result"] : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setExpiredAt(isset($data["expiredAt"]) ? $data["expiredAt"] : null);
         return $model;
     }
 }

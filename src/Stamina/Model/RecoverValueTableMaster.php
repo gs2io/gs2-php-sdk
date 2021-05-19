@@ -224,6 +224,72 @@ class RecoverValueTableMaster implements IModel {
 		$this->values = $values;
 		return $this;
 	}
+	/**
+     * @var int 作成日時
+	 */
+	protected $createdAt;
+
+	/**
+	 * 作成日時を取得
+	 *
+	 * @return int|null 作成日時
+	 */
+	public function getCreatedAt(): ?int {
+		return $this->createdAt;
+	}
+
+	/**
+	 * 作成日時を設定
+	 *
+	 * @param int|null $createdAt 作成日時
+	 */
+	public function setCreatedAt(?int $createdAt) {
+		$this->createdAt = $createdAt;
+	}
+
+	/**
+	 * 作成日時を設定
+	 *
+	 * @param int|null $createdAt 作成日時
+	 * @return RecoverValueTableMaster $this
+	 */
+	public function withCreatedAt(?int $createdAt): RecoverValueTableMaster {
+		$this->createdAt = $createdAt;
+		return $this;
+	}
+	/**
+     * @var int 最終更新日時
+	 */
+	protected $updatedAt;
+
+	/**
+	 * 最終更新日時を取得
+	 *
+	 * @return int|null 最終更新日時
+	 */
+	public function getUpdatedAt(): ?int {
+		return $this->updatedAt;
+	}
+
+	/**
+	 * 最終更新日時を設定
+	 *
+	 * @param int|null $updatedAt 最終更新日時
+	 */
+	public function setUpdatedAt(?int $updatedAt) {
+		$this->updatedAt = $updatedAt;
+	}
+
+	/**
+	 * 最終更新日時を設定
+	 *
+	 * @param int|null $updatedAt 最終更新日時
+	 * @return RecoverValueTableMaster $this
+	 */
+	public function withUpdatedAt(?int $updatedAt): RecoverValueTableMaster {
+		$this->updatedAt = $updatedAt;
+		return $this;
+	}
 
     public function toJson(): array {
         return array(
@@ -233,6 +299,8 @@ class RecoverValueTableMaster implements IModel {
             "description" => $this->description,
             "experienceModelId" => $this->experienceModelId,
             "values" => $this->values,
+            "createdAt" => $this->createdAt,
+            "updatedAt" => $this->updatedAt,
         );
     }
 
@@ -244,6 +312,8 @@ class RecoverValueTableMaster implements IModel {
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
         $model->setExperienceModelId(isset($data["experienceModelId"]) ? $data["experienceModelId"] : null);
         $model->setValues(isset($data["values"]) ? $data["values"] : null);
+        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
+        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;
     }
 }

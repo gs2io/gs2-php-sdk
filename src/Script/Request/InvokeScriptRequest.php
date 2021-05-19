@@ -58,34 +58,34 @@ class InvokeScriptRequest extends Gs2BasicRequest {
         return $this;
     }
 
-    /** @var array None */
+    /** @var string None */
     private $args;
 
     /**
      * Noneを取得
      *
-     * @return array|null スクリプトを実行します
+     * @return string|null スクリプトを実行します
      */
-    public function getArgs(): ?array {
+    public function getArgs(): ?string {
         return $this->args;
     }
 
     /**
      * Noneを設定
      *
-     * @param array $args スクリプトを実行します
+     * @param string $args スクリプトを実行します
      */
-    public function setArgs(array $args = null) {
+    public function setArgs(string $args = null) {
         $this->args = $args;
     }
 
     /**
      * Noneを設定
      *
-     * @param array $args スクリプトを実行します
+     * @param string $args スクリプトを実行します
      * @return InvokeScriptRequest $this
      */
-    public function withArgs(array $args = null): InvokeScriptRequest {
+    public function withArgs(string $args = null): InvokeScriptRequest {
         $this->setArgs($args);
         return $this;
     }

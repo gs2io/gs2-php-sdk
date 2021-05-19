@@ -126,39 +126,6 @@ class Showcase implements IModel {
 		return $this;
 	}
 	/**
-     * @var DisplayItem[] インベントリに格納可能なアイテムモデル一覧
-	 */
-	protected $displayItems;
-
-	/**
-	 * インベントリに格納可能なアイテムモデル一覧を取得
-	 *
-	 * @return DisplayItem[]|null インベントリに格納可能なアイテムモデル一覧
-	 */
-	public function getDisplayItems(): ?array {
-		return $this->displayItems;
-	}
-
-	/**
-	 * インベントリに格納可能なアイテムモデル一覧を設定
-	 *
-	 * @param DisplayItem[]|null $displayItems インベントリに格納可能なアイテムモデル一覧
-	 */
-	public function setDisplayItems(?array $displayItems) {
-		$this->displayItems = $displayItems;
-	}
-
-	/**
-	 * インベントリに格納可能なアイテムモデル一覧を設定
-	 *
-	 * @param DisplayItem[]|null $displayItems インベントリに格納可能なアイテムモデル一覧
-	 * @return Showcase $this
-	 */
-	public function withDisplayItems(?array $displayItems): Showcase {
-		$this->displayItems = $displayItems;
-		return $this;
-	}
-	/**
      * @var string 販売期間とするイベントマスター のGRN
 	 */
 	protected $salesPeriodEventId;
@@ -191,19 +158,52 @@ class Showcase implements IModel {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;
 	}
+	/**
+     * @var DisplayItem[] インベントリに格納可能なアイテムモデル一覧
+	 */
+	protected $displayItems;
+
+	/**
+	 * インベントリに格納可能なアイテムモデル一覧を取得
+	 *
+	 * @return DisplayItem[]|null インベントリに格納可能なアイテムモデル一覧
+	 */
+	public function getDisplayItems(): ?array {
+		return $this->displayItems;
+	}
+
+	/**
+	 * インベントリに格納可能なアイテムモデル一覧を設定
+	 *
+	 * @param DisplayItem[]|null $displayItems インベントリに格納可能なアイテムモデル一覧
+	 */
+	public function setDisplayItems(?array $displayItems) {
+		$this->displayItems = $displayItems;
+	}
+
+	/**
+	 * インベントリに格納可能なアイテムモデル一覧を設定
+	 *
+	 * @param DisplayItem[]|null $displayItems インベントリに格納可能なアイテムモデル一覧
+	 * @return Showcase $this
+	 */
+	public function withDisplayItems(?array $displayItems): Showcase {
+		$this->displayItems = $displayItems;
+		return $this;
+	}
 
     public function toJson(): array {
         return array(
             "showcaseId" => $this->showcaseId,
             "name" => $this->name,
             "metadata" => $this->metadata,
+            "salesPeriodEventId" => $this->salesPeriodEventId,
             "displayItems" => array_map(
                 function (DisplayItem $v) {
                     return $v->toJson();
                 },
                 $this->displayItems == null ? [] : $this->displayItems
             ),
-            "salesPeriodEventId" => $this->salesPeriodEventId,
         );
     }
 
@@ -212,6 +212,7 @@ class Showcase implements IModel {
         $model->setShowcaseId(isset($data["showcaseId"]) ? $data["showcaseId"] : null);
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
+        $model->setSalesPeriodEventId(isset($data["salesPeriodEventId"]) ? $data["salesPeriodEventId"] : null);
         $model->setDisplayItems(array_map(
                 function ($v) {
                     return DisplayItem::fromJson($v);
@@ -219,7 +220,6 @@ class Showcase implements IModel {
                 isset($data["displayItems"]) ? $data["displayItems"] : []
             )
         );
-        $model->setSalesPeriodEventId(isset($data["salesPeriodEventId"]) ? $data["salesPeriodEventId"] : null);
         return $model;
     }
 }

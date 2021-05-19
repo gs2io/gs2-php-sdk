@@ -18,6 +18,7 @@
 namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Dictionary\Model\ScriptSetting;
 use Gs2\Dictionary\Model\LogSetting;
 
 /**
@@ -88,6 +89,70 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
      */
     public function withDescription(string $description = null): CreateNamespaceRequest {
         $this->setDescription($description);
+        return $this;
+    }
+
+    /** @var ScriptSetting エントリー登録時に実行するスクリプト */
+    private $entryScript;
+
+    /**
+     * エントリー登録時に実行するスクリプトを取得
+     *
+     * @return ScriptSetting|null ネームスペースを新規作成
+     */
+    public function getEntryScript(): ?ScriptSetting {
+        return $this->entryScript;
+    }
+
+    /**
+     * エントリー登録時に実行するスクリプトを設定
+     *
+     * @param ScriptSetting $entryScript ネームスペースを新規作成
+     */
+    public function setEntryScript(ScriptSetting $entryScript = null) {
+        $this->entryScript = $entryScript;
+    }
+
+    /**
+     * エントリー登録時に実行するスクリプトを設定
+     *
+     * @param ScriptSetting $entryScript ネームスペースを新規作成
+     * @return CreateNamespaceRequest $this
+     */
+    public function withEntryScript(ScriptSetting $entryScript = null): CreateNamespaceRequest {
+        $this->setEntryScript($entryScript);
+        return $this;
+    }
+
+    /** @var ScriptSetting 登録済みのエントリーを再度登録しようとした時に実行するスクリプト */
+    private $duplicateEntryScript;
+
+    /**
+     * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを取得
+     *
+     * @return ScriptSetting|null ネームスペースを新規作成
+     */
+    public function getDuplicateEntryScript(): ?ScriptSetting {
+        return $this->duplicateEntryScript;
+    }
+
+    /**
+     * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを設定
+     *
+     * @param ScriptSetting $duplicateEntryScript ネームスペースを新規作成
+     */
+    public function setDuplicateEntryScript(ScriptSetting $duplicateEntryScript = null) {
+        $this->duplicateEntryScript = $duplicateEntryScript;
+    }
+
+    /**
+     * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを設定
+     *
+     * @param ScriptSetting $duplicateEntryScript ネームスペースを新規作成
+     * @return CreateNamespaceRequest $this
+     */
+    public function withDuplicateEntryScript(ScriptSetting $duplicateEntryScript = null): CreateNamespaceRequest {
+        $this->setDuplicateEntryScript($duplicateEntryScript);
         return $this;
     }
 

@@ -26,11 +26,11 @@ use Gs2\Core\Control\Gs2BasicRequest;
  */
 class CountExecuteStampSheetLogRequest extends Gs2BasicRequest {
 
-    /** @var string カテゴリー名 */
+    /** @var string ネームスペース名 */
     private $namespaceName;
 
     /**
-     * カテゴリー名を取得
+     * ネームスペース名を取得
      *
      * @return string|null スタンプシート実行ログの一覧を取得
      */
@@ -39,7 +39,7 @@ class CountExecuteStampSheetLogRequest extends Gs2BasicRequest {
     }
 
     /**
-     * カテゴリー名を設定
+     * ネームスペース名を設定
      *
      * @param string $namespaceName スタンプシート実行ログの一覧を取得
      */
@@ -48,7 +48,7 @@ class CountExecuteStampSheetLogRequest extends Gs2BasicRequest {
     }
 
     /**
-     * カテゴリー名を設定
+     * ネームスペース名を設定
      *
      * @param string $namespaceName スタンプシート実行ログの一覧を取得
      * @return CountExecuteStampSheetLogRequest $this

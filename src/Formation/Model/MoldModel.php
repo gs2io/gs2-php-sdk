@@ -126,39 +126,6 @@ class MoldModel implements IModel {
 		return $this;
 	}
 	/**
-     * @var FormModel None
-	 */
-	protected $formModel;
-
-	/**
-	 * Noneを取得
-	 *
-	 * @return FormModel|null None
-	 */
-	public function getFormModel(): ?FormModel {
-		return $this->formModel;
-	}
-
-	/**
-	 * Noneを設定
-	 *
-	 * @param FormModel|null $formModel None
-	 */
-	public function setFormModel(?FormModel $formModel) {
-		$this->formModel = $formModel;
-	}
-
-	/**
-	 * Noneを設定
-	 *
-	 * @param FormModel|null $formModel None
-	 * @return MoldModel $this
-	 */
-	public function withFormModel(?FormModel $formModel): MoldModel {
-		$this->formModel = $formModel;
-		return $this;
-	}
-	/**
      * @var int フォームを保存できる初期キャパシティ
 	 */
 	protected $initialMaxCapacity;
@@ -224,15 +191,48 @@ class MoldModel implements IModel {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
+	/**
+     * @var FormModel None
+	 */
+	protected $formModel;
+
+	/**
+	 * Noneを取得
+	 *
+	 * @return FormModel|null None
+	 */
+	public function getFormModel(): ?FormModel {
+		return $this->formModel;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param FormModel|null $formModel None
+	 */
+	public function setFormModel(?FormModel $formModel) {
+		$this->formModel = $formModel;
+	}
+
+	/**
+	 * Noneを設定
+	 *
+	 * @param FormModel|null $formModel None
+	 * @return MoldModel $this
+	 */
+	public function withFormModel(?FormModel $formModel): MoldModel {
+		$this->formModel = $formModel;
+		return $this;
+	}
 
     public function toJson(): array {
         return array(
             "moldModelId" => $this->moldModelId,
             "name" => $this->name,
             "metadata" => $this->metadata,
-            "formModel" => $this->formModel->toJson(),
             "initialMaxCapacity" => $this->initialMaxCapacity,
             "maxCapacity" => $this->maxCapacity,
+            "formModel" => $this->formModel->toJson(),
         );
     }
 
@@ -241,9 +241,9 @@ class MoldModel implements IModel {
         $model->setMoldModelId(isset($data["moldModelId"]) ? $data["moldModelId"] : null);
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setFormModel(isset($data["formModel"]) ? FormModel::fromJson($data["formModel"]) : null);
         $model->setInitialMaxCapacity(isset($data["initialMaxCapacity"]) ? $data["initialMaxCapacity"] : null);
         $model->setMaxCapacity(isset($data["maxCapacity"]) ? $data["maxCapacity"] : null);
+        $model->setFormModel(isset($data["formModel"]) ? FormModel::fromJson($data["formModel"]) : null);
         return $model;
     }
 }

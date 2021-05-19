@@ -60,6 +60,39 @@ class WebSocketSession implements IModel {
 		return $this;
 	}
 	/**
+     * @var string API ID
+	 */
+	protected $apiId;
+
+	/**
+	 * API IDを取得
+	 *
+	 * @return string|null API ID
+	 */
+	public function getApiId(): ?string {
+		return $this->apiId;
+	}
+
+	/**
+	 * API IDを設定
+	 *
+	 * @param string|null $apiId API ID
+	 */
+	public function setApiId(?string $apiId) {
+		$this->apiId = $apiId;
+	}
+
+	/**
+	 * API IDを設定
+	 *
+	 * @param string|null $apiId API ID
+	 * @return WebSocketSession $this
+	 */
+	public function withApiId(?string $apiId): WebSocketSession {
+		$this->apiId = $apiId;
+		return $this;
+	}
+	/**
      * @var string オーナーID
 	 */
 	protected $ownerId;
@@ -228,6 +261,7 @@ class WebSocketSession implements IModel {
     public function toJson(): array {
         return array(
             "connectionId" => $this->connectionId,
+            "apiId" => $this->apiId,
             "ownerId" => $this->ownerId,
             "namespaceName" => $this->namespaceName,
             "userId" => $this->userId,
@@ -239,6 +273,7 @@ class WebSocketSession implements IModel {
     public static function fromJson(array $data): WebSocketSession {
         $model = new WebSocketSession();
         $model->setConnectionId(isset($data["connectionId"]) ? $data["connectionId"] : null);
+        $model->setApiId(isset($data["apiId"]) ? $data["apiId"] : null);
         $model->setOwnerId(isset($data["ownerId"]) ? $data["ownerId"] : null);
         $model->setNamespaceName(isset($data["namespaceName"]) ? $data["namespaceName"] : null);
         $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);

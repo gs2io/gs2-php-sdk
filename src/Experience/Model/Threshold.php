@@ -27,39 +27,6 @@ use Gs2\Core\Model\IModel;
  */
 class Threshold implements IModel {
 	/**
-     * @var string しきい値ID
-	 */
-	protected $thresholdId;
-
-	/**
-	 * しきい値IDを取得
-	 *
-	 * @return string|null しきい値ID
-	 */
-	public function getThresholdId(): ?string {
-		return $this->thresholdId;
-	}
-
-	/**
-	 * しきい値IDを設定
-	 *
-	 * @param string|null $thresholdId しきい値ID
-	 */
-	public function setThresholdId(?string $thresholdId) {
-		$this->thresholdId = $thresholdId;
-	}
-
-	/**
-	 * しきい値IDを設定
-	 *
-	 * @param string|null $thresholdId しきい値ID
-	 * @return Threshold $this
-	 */
-	public function withThresholdId(?string $thresholdId): Threshold {
-		$this->thresholdId = $thresholdId;
-		return $this;
-	}
-	/**
      * @var string ランクアップ閾値のメタデータ
 	 */
 	protected $metadata;
@@ -128,7 +95,6 @@ class Threshold implements IModel {
 
     public function toJson(): array {
         return array(
-            "thresholdId" => $this->thresholdId,
             "metadata" => $this->metadata,
             "values" => $this->values,
         );
@@ -136,7 +102,6 @@ class Threshold implements IModel {
 
     public static function fromJson(array $data): Threshold {
         $model = new Threshold();
-        $model->setThresholdId(isset($data["thresholdId"]) ? $data["thresholdId"] : null);
         $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
         $model->setValues(isset($data["values"]) ? $data["values"] : null);
         return $model;

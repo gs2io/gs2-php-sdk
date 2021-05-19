@@ -159,39 +159,6 @@ class ShowcaseMaster implements IModel {
 		return $this;
 	}
 	/**
-     * @var DisplayItemMaster[] 陳列する商品モデル一覧
-	 */
-	protected $displayItems;
-
-	/**
-	 * 陳列する商品モデル一覧を取得
-	 *
-	 * @return DisplayItemMaster[]|null 陳列する商品モデル一覧
-	 */
-	public function getDisplayItems(): ?array {
-		return $this->displayItems;
-	}
-
-	/**
-	 * 陳列する商品モデル一覧を設定
-	 *
-	 * @param DisplayItemMaster[]|null $displayItems 陳列する商品モデル一覧
-	 */
-	public function setDisplayItems(?array $displayItems) {
-		$this->displayItems = $displayItems;
-	}
-
-	/**
-	 * 陳列する商品モデル一覧を設定
-	 *
-	 * @param DisplayItemMaster[]|null $displayItems 陳列する商品モデル一覧
-	 * @return ShowcaseMaster $this
-	 */
-	public function withDisplayItems(?array $displayItems): ShowcaseMaster {
-		$this->displayItems = $displayItems;
-		return $this;
-	}
-	/**
      * @var string 販売期間とするイベントマスター のGRN
 	 */
 	protected $salesPeriodEventId;
@@ -222,6 +189,39 @@ class ShowcaseMaster implements IModel {
 	 */
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): ShowcaseMaster {
 		$this->salesPeriodEventId = $salesPeriodEventId;
+		return $this;
+	}
+	/**
+     * @var DisplayItemMaster[] 陳列する商品モデル一覧
+	 */
+	protected $displayItems;
+
+	/**
+	 * 陳列する商品モデル一覧を取得
+	 *
+	 * @return DisplayItemMaster[]|null 陳列する商品モデル一覧
+	 */
+	public function getDisplayItems(): ?array {
+		return $this->displayItems;
+	}
+
+	/**
+	 * 陳列する商品モデル一覧を設定
+	 *
+	 * @param DisplayItemMaster[]|null $displayItems 陳列する商品モデル一覧
+	 */
+	public function setDisplayItems(?array $displayItems) {
+		$this->displayItems = $displayItems;
+	}
+
+	/**
+	 * 陳列する商品モデル一覧を設定
+	 *
+	 * @param DisplayItemMaster[]|null $displayItems 陳列する商品モデル一覧
+	 * @return ShowcaseMaster $this
+	 */
+	public function withDisplayItems(?array $displayItems): ShowcaseMaster {
+		$this->displayItems = $displayItems;
 		return $this;
 	}
 	/**
@@ -297,13 +297,13 @@ class ShowcaseMaster implements IModel {
             "name" => $this->name,
             "description" => $this->description,
             "metadata" => $this->metadata,
+            "salesPeriodEventId" => $this->salesPeriodEventId,
             "displayItems" => array_map(
                 function (DisplayItemMaster $v) {
                     return $v->toJson();
                 },
                 $this->displayItems == null ? [] : $this->displayItems
             ),
-            "salesPeriodEventId" => $this->salesPeriodEventId,
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
         );
@@ -315,6 +315,7 @@ class ShowcaseMaster implements IModel {
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
         $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
+        $model->setSalesPeriodEventId(isset($data["salesPeriodEventId"]) ? $data["salesPeriodEventId"] : null);
         $model->setDisplayItems(array_map(
                 function ($v) {
                     return DisplayItemMaster::fromJson($v);
@@ -322,7 +323,6 @@ class ShowcaseMaster implements IModel {
                 isset($data["displayItems"]) ? $data["displayItems"] : []
             )
         );
-        $model->setSalesPeriodEventId(isset($data["salesPeriodEventId"]) ? $data["salesPeriodEventId"] : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
         return $model;

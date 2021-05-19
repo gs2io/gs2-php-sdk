@@ -30,6 +30,8 @@ class ExchangeByUserIdResult implements IResult {
 	private $item;
 	/** @var string 交換処理の実行に使用するスタンプシート */
 	private $stampSheet;
+	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
+	private $stampSheetEncryptionKeyId;
 
 	/**
 	 * 交換レートモデルを取得
@@ -67,10 +69,29 @@ class ExchangeByUserIdResult implements IResult {
 		$this->stampSheet = $stampSheet;
 	}
 
+	/**
+	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
+	 *
+	 * @return string|null ユーザIDを指定して交換を実行
+	 */
+	public function getStampSheetEncryptionKeyId(): ?string {
+		return $this->stampSheetEncryptionKeyId;
+	}
+
+	/**
+	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
+	 *
+	 * @param string|null $stampSheetEncryptionKeyId ユーザIDを指定して交換を実行
+	 */
+	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+	}
+
     public static function fromJson(array $data): ExchangeByUserIdResult {
         $result = new ExchangeByUserIdResult();
         $result->setItem(isset($data["item"]) ? RateModel::fromJson($data["item"]) : null);
         $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
+        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
         return $result;
     }
 }

@@ -69,12 +69,24 @@ use Gs2\Ranking\Request\UnsubscribeRequest;
 use Gs2\Ranking\Result\UnsubscribeResult;
 use Gs2\Ranking\Request\UnsubscribeByUserIdRequest;
 use Gs2\Ranking\Result\UnsubscribeByUserIdResult;
+use Gs2\Ranking\Request\DescribeScoresRequest;
+use Gs2\Ranking\Result\DescribeScoresResult;
+use Gs2\Ranking\Request\DescribeScoresByUserIdRequest;
+use Gs2\Ranking\Result\DescribeScoresByUserIdResult;
+use Gs2\Ranking\Request\GetScoreRequest;
+use Gs2\Ranking\Result\GetScoreResult;
+use Gs2\Ranking\Request\GetScoreByUserIdRequest;
+use Gs2\Ranking\Result\GetScoreByUserIdResult;
 use Gs2\Ranking\Request\DescribeRankingsRequest;
 use Gs2\Ranking\Result\DescribeRankingsResult;
 use Gs2\Ranking\Request\DescribeRankingssByUserIdRequest;
 use Gs2\Ranking\Result\DescribeRankingssByUserIdResult;
 use Gs2\Ranking\Request\DescribeNearRankingsRequest;
 use Gs2\Ranking\Result\DescribeNearRankingsResult;
+use Gs2\Ranking\Request\GetRankingRequest;
+use Gs2\Ranking\Result\GetRankingResult;
+use Gs2\Ranking\Request\GetRankingByUserIdRequest;
+use Gs2\Ranking\Result\GetRankingByUserIdResult;
 use Gs2\Ranking\Request\PutScoreRequest;
 use Gs2\Ranking\Result\PutScoreResult;
 use Gs2\Ranking\Request\PutScoreByUserIdRequest;
@@ -681,6 +693,12 @@ class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getUniqueByUserId() !== null) {
             $json["uniqueByUserId"] = $this->request->getUniqueByUserId();
         }
+        if ($this->request->getCalculateFixedTimingHour() !== null) {
+            $json["calculateFixedTimingHour"] = $this->request->getCalculateFixedTimingHour();
+        }
+        if ($this->request->getCalculateFixedTimingMinute() !== null) {
+            $json["calculateFixedTimingMinute"] = $this->request->getCalculateFixedTimingMinute();
+        }
         if ($this->request->getCalculateIntervalMinutes() !== null) {
             $json["calculateIntervalMinutes"] = $this->request->getCalculateIntervalMinutes();
         }
@@ -689,6 +707,9 @@ class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessPeriodEventId() !== null) {
             $json["accessPeriodEventId"] = $this->request->getAccessPeriodEventId();
+        }
+        if ($this->request->getGeneration() !== null) {
+            $json["generation"] = $this->request->getGeneration();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -825,6 +846,12 @@ class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getUniqueByUserId() !== null) {
             $json["uniqueByUserId"] = $this->request->getUniqueByUserId();
         }
+        if ($this->request->getCalculateFixedTimingHour() !== null) {
+            $json["calculateFixedTimingHour"] = $this->request->getCalculateFixedTimingHour();
+        }
+        if ($this->request->getCalculateFixedTimingMinute() !== null) {
+            $json["calculateFixedTimingMinute"] = $this->request->getCalculateFixedTimingMinute();
+        }
         if ($this->request->getCalculateIntervalMinutes() !== null) {
             $json["calculateIntervalMinutes"] = $this->request->getCalculateIntervalMinutes();
         }
@@ -833,6 +860,9 @@ class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessPeriodEventId() !== null) {
             $json["accessPeriodEventId"] = $this->request->getAccessPeriodEventId();
+        }
+        if ($this->request->getGeneration() !== null) {
+            $json["generation"] = $this->request->getGeneration();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1417,6 +1447,276 @@ class UnsubscribeByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeScoresTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeScoresRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeScoresTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeScoresRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeScoresRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeScoresResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/category/{categoryName}/scorer/{scorerUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{scorerUserId}", $this->request->getScorerUserId() === null|| strlen($this->request->getScorerUserId()) == 0 ? "null" : $this->request->getScorerUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeScoresByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeScoresByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeScoresByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeScoresByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeScoresByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeScoresByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/category/{categoryName}/scorer/{scorerUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{scorerUserId}", $this->request->getScorerUserId() === null|| strlen($this->request->getScorerUserId()) == 0 ? "null" : $this->request->getScorerUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetScoreTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetScoreRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetScoreTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetScoreRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetScoreRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetScoreResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/category/{categoryName}/scorer/{scorerUserId}/score/{uniqueId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{scorerUserId}", $this->request->getScorerUserId() === null|| strlen($this->request->getScorerUserId()) == 0 ? "null" : $this->request->getScorerUserId(), $url);
+        $url = str_replace("{uniqueId}", $this->request->getUniqueId() === null|| strlen($this->request->getUniqueId()) == 0 ? "null" : $this->request->getUniqueId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetScoreByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetScoreByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetScoreByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetScoreByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetScoreByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetScoreByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/category/{categoryName}/scorer/{scorerUserId}/score/{uniqueId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{scorerUserId}", $this->request->getScorerUserId() === null|| strlen($this->request->getScorerUserId()) == 0 ? "null" : $this->request->getScorerUserId(), $url);
+        $url = str_replace("{uniqueId}", $this->request->getUniqueId() === null|| strlen($this->request->getUniqueId()) == 0 ? "null" : $this->request->getUniqueId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeRankingsTask extends Gs2RestSessionTask {
 
     /**
@@ -1616,6 +1916,136 @@ class DescribeNearRankingsTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRankingTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRankingRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRankingTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRankingRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRankingRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRankingResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/category/{categoryName}/ranking/scorer/{scorerUserId}/score/{uniqueId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{scorerUserId}", $this->request->getScorerUserId() === null|| strlen($this->request->getScorerUserId()) == 0 ? "null" : $this->request->getScorerUserId(), $url);
+        $url = str_replace("{uniqueId}", $this->request->getUniqueId() === null|| strlen($this->request->getUniqueId()) == 0 ? "null" : $this->request->getUniqueId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRankingByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRankingByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRankingByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRankingByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRankingByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRankingByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/category/{categoryName}/ranking/scorer/{scorerUserId}/score/{uniqueId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{scorerUserId}", $this->request->getScorerUserId() === null|| strlen($this->request->getScorerUserId()) == 0 ? "null" : $this->request->getScorerUserId(), $url);
+        $url = str_replace("{uniqueId}", $this->request->getUniqueId() === null|| strlen($this->request->getUniqueId()) == 0 ? "null" : $this->request->getUniqueId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2655,6 +3085,130 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * スコアの一覧を取得<br>
+     *
+     * @param DescribeScoresRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeScoresAsync(
+            DescribeScoresRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeScoresTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スコアの一覧を取得<br>
+     *
+     * @param DescribeScoresRequest $request リクエストパラメータ
+     * @return DescribeScoresResult
+     */
+    public function describeScores (
+            DescribeScoresRequest $request
+    ): DescribeScoresResult {
+        return $this->describeScoresAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * スコアの一覧を取得<br>
+     *
+     * @param DescribeScoresByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function describeScoresByUserIdAsync(
+            DescribeScoresByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeScoresByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スコアの一覧を取得<br>
+     *
+     * @param DescribeScoresByUserIdRequest $request リクエストパラメータ
+     * @return DescribeScoresByUserIdResult
+     */
+    public function describeScoresByUserId (
+            DescribeScoresByUserIdRequest $request
+    ): DescribeScoresByUserIdResult {
+        return $this->describeScoresByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * スコアを取得<br>
+     *
+     * @param GetScoreRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getScoreAsync(
+            GetScoreRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetScoreTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スコアを取得<br>
+     *
+     * @param GetScoreRequest $request リクエストパラメータ
+     * @return GetScoreResult
+     */
+    public function getScore (
+            GetScoreRequest $request
+    ): GetScoreResult {
+        return $this->getScoreAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * スコアを取得<br>
+     *
+     * @param GetScoreByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getScoreByUserIdAsync(
+            GetScoreByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetScoreByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * スコアを取得<br>
+     *
+     * @param GetScoreByUserIdRequest $request リクエストパラメータ
+     * @return GetScoreByUserIdResult
+     */
+    public function getScoreByUserId (
+            GetScoreByUserIdRequest $request
+    ): GetScoreByUserIdResult {
+        return $this->getScoreByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * ランキングを取得<br>
      *
      * @param DescribeRankingsRequest $request リクエストパラメータ
@@ -2747,6 +3301,68 @@ class Gs2RankingRestClient extends AbstractGs2Client {
             DescribeNearRankingsRequest $request
     ): DescribeNearRankingsResult {
         return $this->describeNearRankingsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * ランキングを取得<br>
+     *
+     * @param GetRankingRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getRankingAsync(
+            GetRankingRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRankingTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * ランキングを取得<br>
+     *
+     * @param GetRankingRequest $request リクエストパラメータ
+     * @return GetRankingResult
+     */
+    public function getRanking (
+            GetRankingRequest $request
+    ): GetRankingResult {
+        return $this->getRankingAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * ランキングを取得<br>
+     *
+     * @param GetRankingByUserIdRequest $request リクエストパラメータ
+     * @return PromiseInterface
+     */
+    public function getRankingByUserIdAsync(
+            GetRankingByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRankingByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * ランキングを取得<br>
+     *
+     * @param GetRankingByUserIdRequest $request リクエストパラメータ
+     * @return GetRankingByUserIdResult
+     */
+    public function getRankingByUserId (
+            GetRankingByUserIdRequest $request
+    ): GetRankingByUserIdResult {
+        return $this->getRankingByUserIdAsync(
             $request
         )->wait();
     }

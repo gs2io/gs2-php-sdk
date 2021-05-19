@@ -58,4 +58,68 @@ class CommitVoteRequest extends Gs2BasicRequest {
         return $this;
     }
 
+    /** @var string レーティング名 */
+    private $ratingName;
+
+    /**
+     * レーティング名を取得
+     *
+     * @return string|null 投票状況を強制確定
+     */
+    public function getRatingName(): ?string {
+        return $this->ratingName;
+    }
+
+    /**
+     * レーティング名を設定
+     *
+     * @param string $ratingName 投票状況を強制確定
+     */
+    public function setRatingName(string $ratingName = null) {
+        $this->ratingName = $ratingName;
+    }
+
+    /**
+     * レーティング名を設定
+     *
+     * @param string $ratingName 投票状況を強制確定
+     * @return CommitVoteRequest $this
+     */
+    public function withRatingName(string $ratingName = null): CommitVoteRequest {
+        $this->setRatingName($ratingName);
+        return $this;
+    }
+
+    /** @var string 投票対象のギャザリング名 */
+    private $gatheringName;
+
+    /**
+     * 投票対象のギャザリング名を取得
+     *
+     * @return string|null 投票状況を強制確定
+     */
+    public function getGatheringName(): ?string {
+        return $this->gatheringName;
+    }
+
+    /**
+     * 投票対象のギャザリング名を設定
+     *
+     * @param string $gatheringName 投票状況を強制確定
+     */
+    public function setGatheringName(string $gatheringName = null) {
+        $this->gatheringName = $gatheringName;
+    }
+
+    /**
+     * 投票対象のギャザリング名を設定
+     *
+     * @param string $gatheringName 投票状況を強制確定
+     * @return CommitVoteRequest $this
+     */
+    public function withGatheringName(string $gatheringName = null): CommitVoteRequest {
+        $this->setGatheringName($gatheringName);
+        return $this;
+    }
+
 }

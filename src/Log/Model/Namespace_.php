@@ -93,32 +93,32 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 	/**
-     * @var string カテゴリー名
+     * @var string ネームスペース名
 	 */
 	protected $name;
 
 	/**
-	 * カテゴリー名を取得
+	 * ネームスペース名を取得
 	 *
-	 * @return string|null カテゴリー名
+	 * @return string|null ネームスペース名
 	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
 	/**
-	 * カテゴリー名を設定
+	 * ネームスペース名を設定
 	 *
-	 * @param string|null $name カテゴリー名
+	 * @param string|null $name ネームスペース名
 	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
 	/**
-	 * カテゴリー名を設定
+	 * ネームスペース名を設定
 	 *
-	 * @param string|null $name カテゴリー名
+	 * @param string|null $name ネームスペース名
 	 * @return Namespace_ $this
 	 */
 	public function withName(?string $name): Namespace_ {

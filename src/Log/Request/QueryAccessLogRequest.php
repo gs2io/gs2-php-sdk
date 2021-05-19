@@ -26,11 +26,11 @@ use Gs2\Core\Control\Gs2BasicRequest;
  */
 class QueryAccessLogRequest extends Gs2BasicRequest {
 
-    /** @var string カテゴリー名 */
+    /** @var string ネームスペース名 */
     private $namespaceName;
 
     /**
-     * カテゴリー名を取得
+     * ネームスペース名を取得
      *
      * @return string|null アクセスログの一覧を取得
      */
@@ -39,7 +39,7 @@ class QueryAccessLogRequest extends Gs2BasicRequest {
     }
 
     /**
-     * カテゴリー名を設定
+     * ネームスペース名を設定
      *
      * @param string $namespaceName アクセスログの一覧を取得
      */
@@ -48,7 +48,7 @@ class QueryAccessLogRequest extends Gs2BasicRequest {
     }
 
     /**
-     * カテゴリー名を設定
+     * ネームスペース名を設定
      *
      * @param string $namespaceName アクセスログの一覧を取得
      * @return QueryAccessLogRequest $this

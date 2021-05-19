@@ -154,38 +154,6 @@ class GetBallotByUserIdRequest extends Gs2BasicRequest {
         return $this;
     }
 
-    /** @var string 投票対象となる */
-    private $gatheringId;
-
-    /**
-     * 投票対象となるを取得
-     *
-     * @return string|null 投票用紙を取得します。
-     */
-    public function getGatheringId(): ?string {
-        return $this->gatheringId;
-    }
-
-    /**
-     * 投票対象となるを設定
-     *
-     * @param string $gatheringId 投票用紙を取得します。
-     */
-    public function setGatheringId(string $gatheringId = null) {
-        $this->gatheringId = $gatheringId;
-    }
-
-    /**
-     * 投票対象となるを設定
-     *
-     * @param string $gatheringId 投票用紙を取得します。
-     * @return GetBallotByUserIdRequest $this
-     */
-    public function withGatheringId(string $gatheringId = null): GetBallotByUserIdRequest {
-        $this->setGatheringId($gatheringId);
-        return $this;
-    }
-
     /** @var int 参加人数 */
     private $numberOfPlayer;
 

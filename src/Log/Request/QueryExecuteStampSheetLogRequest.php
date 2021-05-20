@@ -186,6 +186,102 @@ class QueryExecuteStampSheetLogRequest extends Gs2BasicRequest {
         return $this;
     }
 
+    /** @var int 検索範囲開始日時 */
+    private $begin;
+
+    /**
+     * 検索範囲開始日時を取得
+     *
+     * @return int|null スタンプシート実行ログの一覧を取得
+     */
+    public function getBegin(): ?int {
+        return $this->begin;
+    }
+
+    /**
+     * 検索範囲開始日時を設定
+     *
+     * @param int $begin スタンプシート実行ログの一覧を取得
+     */
+    public function setBegin(int $begin = null) {
+        $this->begin = $begin;
+    }
+
+    /**
+     * 検索範囲開始日時を設定
+     *
+     * @param int $begin スタンプシート実行ログの一覧を取得
+     * @return QueryExecuteStampSheetLogRequest $this
+     */
+    public function withBegin(int $begin = null): QueryExecuteStampSheetLogRequest {
+        $this->setBegin($begin);
+        return $this;
+    }
+
+    /** @var int 検索範囲終了日時 */
+    private $end;
+
+    /**
+     * 検索範囲終了日時を取得
+     *
+     * @return int|null スタンプシート実行ログの一覧を取得
+     */
+    public function getEnd(): ?int {
+        return $this->end;
+    }
+
+    /**
+     * 検索範囲終了日時を設定
+     *
+     * @param int $end スタンプシート実行ログの一覧を取得
+     */
+    public function setEnd(int $end = null) {
+        $this->end = $end;
+    }
+
+    /**
+     * 検索範囲終了日時を設定
+     *
+     * @param int $end スタンプシート実行ログの一覧を取得
+     * @return QueryExecuteStampSheetLogRequest $this
+     */
+    public function withEnd(int $end = null): QueryExecuteStampSheetLogRequest {
+        $this->setEnd($end);
+        return $this;
+    }
+
+    /** @var bool 7日より長い期間のログを検索対象とするか */
+    private $longTerm;
+
+    /**
+     * 7日より長い期間のログを検索対象とするかを取得
+     *
+     * @return bool|null スタンプシート実行ログの一覧を取得
+     */
+    public function getLongTerm(): ?bool {
+        return $this->longTerm;
+    }
+
+    /**
+     * 7日より長い期間のログを検索対象とするかを設定
+     *
+     * @param bool $longTerm スタンプシート実行ログの一覧を取得
+     */
+    public function setLongTerm(bool $longTerm = null) {
+        $this->longTerm = $longTerm;
+    }
+
+    /**
+     * 7日より長い期間のログを検索対象とするかを設定
+     *
+     * @param bool $longTerm スタンプシート実行ログの一覧を取得
+     * @return QueryExecuteStampSheetLogRequest $this
+     */
+    public function withLongTerm(bool $longTerm = null): QueryExecuteStampSheetLogRequest {
+        $this->setLongTerm($longTerm);
+        return $this;
+    }
+
     /** @var string データの取得を開始する位置を指定するトークン */
     private $pageToken;
 

@@ -501,6 +501,15 @@ class QueryAccessLogTask extends Gs2RestSessionTask {
         if ($this->request->getUserId() !== null) {
             $queryStrings["userId"] = $this->request->getUserId();
         }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm();
+        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -575,6 +584,15 @@ class CountAccessLogTask extends Gs2RestSessionTask {
         }
         if ($this->request->getUserId() !== null) {
             $queryStrings["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -654,6 +672,15 @@ class QueryIssueStampSheetLogTask extends Gs2RestSessionTask {
         if ($this->request->getAction() !== null) {
             $queryStrings["action"] = $this->request->getAction();
         }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm();
+        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -731,6 +758,15 @@ class CountIssueStampSheetLogTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAction() !== null) {
             $queryStrings["action"] = $this->request->getAction();
+        }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -810,6 +846,15 @@ class QueryExecuteStampSheetLogTask extends Gs2RestSessionTask {
         if ($this->request->getAction() !== null) {
             $queryStrings["action"] = $this->request->getAction();
         }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm();
+        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -887,6 +932,15 @@ class CountExecuteStampSheetLogTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAction() !== null) {
             $queryStrings["action"] = $this->request->getAction();
+        }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -966,6 +1020,15 @@ class QueryExecuteStampTaskLogTask extends Gs2RestSessionTask {
         if ($this->request->getAction() !== null) {
             $queryStrings["action"] = $this->request->getAction();
         }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm();
+        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -1043,6 +1106,15 @@ class CountExecuteStampTaskLogTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAction() !== null) {
             $queryStrings["action"] = $this->request->getAction();
+        }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();

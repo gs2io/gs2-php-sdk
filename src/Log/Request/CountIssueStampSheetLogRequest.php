@@ -58,131 +58,227 @@ class CountIssueStampSheetLogRequest extends Gs2BasicRequest {
         return $this;
     }
 
-    /** @var bool マイクロサービスの種類を集計軸に使用するか */
+    /** @var string マイクロサービスの種類 */
     private $service;
 
     /**
-     * マイクロサービスの種類を集計軸に使用するかを取得
+     * マイクロサービスの種類を取得
      *
-     * @return bool|null スタンプシート発行ログの一覧を取得
+     * @return string|null スタンプシート発行ログの一覧を取得
      */
-    public function getService(): ?bool {
+    public function getService(): ?string {
         return $this->service;
     }
 
     /**
-     * マイクロサービスの種類を集計軸に使用するかを設定
+     * マイクロサービスの種類を設定
      *
-     * @param bool $service スタンプシート発行ログの一覧を取得
+     * @param string $service スタンプシート発行ログの一覧を取得
      */
-    public function setService(bool $service = null) {
+    public function setService(string $service = null) {
         $this->service = $service;
     }
 
     /**
-     * マイクロサービスの種類を集計軸に使用するかを設定
+     * マイクロサービスの種類を設定
      *
-     * @param bool $service スタンプシート発行ログの一覧を取得
+     * @param string $service スタンプシート発行ログの一覧を取得
      * @return CountIssueStampSheetLogRequest $this
      */
-    public function withService(bool $service = null): CountIssueStampSheetLogRequest {
+    public function withService(string $service = null): CountIssueStampSheetLogRequest {
         $this->setService($service);
         return $this;
     }
 
-    /** @var bool マイクロサービスのメソッドを集計軸に使用するか */
+    /** @var string マイクロサービスのメソッド */
     private $method;
 
     /**
-     * マイクロサービスのメソッドを集計軸に使用するかを取得
+     * マイクロサービスのメソッドを取得
      *
-     * @return bool|null スタンプシート発行ログの一覧を取得
+     * @return string|null スタンプシート発行ログの一覧を取得
      */
-    public function getMethod(): ?bool {
+    public function getMethod(): ?string {
         return $this->method;
     }
 
     /**
-     * マイクロサービスのメソッドを集計軸に使用するかを設定
+     * マイクロサービスのメソッドを設定
      *
-     * @param bool $method スタンプシート発行ログの一覧を取得
+     * @param string $method スタンプシート発行ログの一覧を取得
      */
-    public function setMethod(bool $method = null) {
+    public function setMethod(string $method = null) {
         $this->method = $method;
     }
 
     /**
-     * マイクロサービスのメソッドを集計軸に使用するかを設定
+     * マイクロサービスのメソッドを設定
      *
-     * @param bool $method スタンプシート発行ログの一覧を取得
+     * @param string $method スタンプシート発行ログの一覧を取得
      * @return CountIssueStampSheetLogRequest $this
      */
-    public function withMethod(bool $method = null): CountIssueStampSheetLogRequest {
+    public function withMethod(string $method = null): CountIssueStampSheetLogRequest {
         $this->setMethod($method);
         return $this;
     }
 
-    /** @var bool ユーザIDを集計軸に使用するか */
+    /** @var string ユーザーID */
     private $userId;
 
     /**
-     * ユーザIDを集計軸に使用するかを取得
+     * ユーザーIDを取得
      *
-     * @return bool|null スタンプシート発行ログの一覧を取得
+     * @return string|null スタンプシート発行ログの一覧を取得
      */
-    public function getUserId(): ?bool {
+    public function getUserId(): ?string {
         return $this->userId;
     }
 
     /**
-     * ユーザIDを集計軸に使用するかを設定
+     * ユーザーIDを設定
      *
-     * @param bool $userId スタンプシート発行ログの一覧を取得
+     * @param string $userId スタンプシート発行ログの一覧を取得
      */
-    public function setUserId(bool $userId = null) {
+    public function setUserId(string $userId = null) {
         $this->userId = $userId;
     }
 
     /**
-     * ユーザIDを集計軸に使用するかを設定
+     * ユーザーIDを設定
      *
-     * @param bool $userId スタンプシート発行ログの一覧を取得
+     * @param string $userId スタンプシート発行ログの一覧を取得
      * @return CountIssueStampSheetLogRequest $this
      */
-    public function withUserId(bool $userId = null): CountIssueStampSheetLogRequest {
+    public function withUserId(string $userId = null): CountIssueStampSheetLogRequest {
         $this->setUserId($userId);
         return $this;
     }
 
-    /** @var bool 報酬アクションの種類を集計軸に使用するか */
+    /** @var string 報酬アクション */
     private $action;
 
     /**
-     * 報酬アクションの種類を集計軸に使用するかを取得
+     * 報酬アクションを取得
      *
-     * @return bool|null スタンプシート発行ログの一覧を取得
+     * @return string|null スタンプシート発行ログの一覧を取得
      */
-    public function getAction(): ?bool {
+    public function getAction(): ?string {
         return $this->action;
     }
 
     /**
-     * 報酬アクションの種類を集計軸に使用するかを設定
+     * 報酬アクションを設定
      *
-     * @param bool $action スタンプシート発行ログの一覧を取得
+     * @param string $action スタンプシート発行ログの一覧を取得
      */
-    public function setAction(bool $action = null) {
+    public function setAction(string $action = null) {
         $this->action = $action;
     }
 
     /**
-     * 報酬アクションの種類を集計軸に使用するかを設定
+     * 報酬アクションを設定
      *
-     * @param bool $action スタンプシート発行ログの一覧を取得
+     * @param string $action スタンプシート発行ログの一覧を取得
      * @return CountIssueStampSheetLogRequest $this
      */
-    public function withAction(bool $action = null): CountIssueStampSheetLogRequest {
+    public function withAction(string $action = null): CountIssueStampSheetLogRequest {
         $this->setAction($action);
+        return $this;
+    }
+
+    /** @var int 検索範囲開始日時 */
+    private $begin;
+
+    /**
+     * 検索範囲開始日時を取得
+     *
+     * @return int|null スタンプシート発行ログの一覧を取得
+     */
+    public function getBegin(): ?int {
+        return $this->begin;
+    }
+
+    /**
+     * 検索範囲開始日時を設定
+     *
+     * @param int $begin スタンプシート発行ログの一覧を取得
+     */
+    public function setBegin(int $begin = null) {
+        $this->begin = $begin;
+    }
+
+    /**
+     * 検索範囲開始日時を設定
+     *
+     * @param int $begin スタンプシート発行ログの一覧を取得
+     * @return CountIssueStampSheetLogRequest $this
+     */
+    public function withBegin(int $begin = null): CountIssueStampSheetLogRequest {
+        $this->setBegin($begin);
+        return $this;
+    }
+
+    /** @var int 検索範囲終了日時 */
+    private $end;
+
+    /**
+     * 検索範囲終了日時を取得
+     *
+     * @return int|null スタンプシート発行ログの一覧を取得
+     */
+    public function getEnd(): ?int {
+        return $this->end;
+    }
+
+    /**
+     * 検索範囲終了日時を設定
+     *
+     * @param int $end スタンプシート発行ログの一覧を取得
+     */
+    public function setEnd(int $end = null) {
+        $this->end = $end;
+    }
+
+    /**
+     * 検索範囲終了日時を設定
+     *
+     * @param int $end スタンプシート発行ログの一覧を取得
+     * @return CountIssueStampSheetLogRequest $this
+     */
+    public function withEnd(int $end = null): CountIssueStampSheetLogRequest {
+        $this->setEnd($end);
+        return $this;
+    }
+
+    /** @var bool 7日より長い期間のログを検索対象とするか */
+    private $longTerm;
+
+    /**
+     * 7日より長い期間のログを検索対象とするかを取得
+     *
+     * @return bool|null スタンプシート発行ログの一覧を取得
+     */
+    public function getLongTerm(): ?bool {
+        return $this->longTerm;
+    }
+
+    /**
+     * 7日より長い期間のログを検索対象とするかを設定
+     *
+     * @param bool $longTerm スタンプシート発行ログの一覧を取得
+     */
+    public function setLongTerm(bool $longTerm = null) {
+        $this->longTerm = $longTerm;
+    }
+
+    /**
+     * 7日より長い期間のログを検索対象とするかを設定
+     *
+     * @param bool $longTerm スタンプシート発行ログの一覧を取得
+     * @return CountIssueStampSheetLogRequest $this
+     */
+    public function withLongTerm(bool $longTerm = null): CountIssueStampSheetLogRequest {
+        $this->setLongTerm($longTerm);
         return $this;
     }
 

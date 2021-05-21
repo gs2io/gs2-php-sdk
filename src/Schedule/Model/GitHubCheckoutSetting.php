@@ -29,34 +29,34 @@ class GitHubCheckoutSetting implements IModel {
 	/**
      * @var string リソースの取得に使用するGitHub のAPIキー のGRN
 	 */
-	protected $gitHubApiKeyId;
+	protected $apiKeyId;
 
 	/**
 	 * リソースの取得に使用するGitHub のAPIキー のGRNを取得
 	 *
 	 * @return string|null リソースの取得に使用するGitHub のAPIキー のGRN
 	 */
-	public function getGitHubApiKeyId(): ?string {
-		return $this->gitHubApiKeyId;
+	public function getApiKeyId(): ?string {
+		return $this->apiKeyId;
 	}
 
 	/**
 	 * リソースの取得に使用するGitHub のAPIキー のGRNを設定
 	 *
-	 * @param string|null $gitHubApiKeyId リソースの取得に使用するGitHub のAPIキー のGRN
+	 * @param string|null $apiKeyId リソースの取得に使用するGitHub のAPIキー のGRN
 	 */
-	public function setGitHubApiKeyId(?string $gitHubApiKeyId) {
-		$this->gitHubApiKeyId = $gitHubApiKeyId;
+	public function setApiKeyId(?string $apiKeyId) {
+		$this->apiKeyId = $apiKeyId;
 	}
 
 	/**
 	 * リソースの取得に使用するGitHub のAPIキー のGRNを設定
 	 *
-	 * @param string|null $gitHubApiKeyId リソースの取得に使用するGitHub のAPIキー のGRN
+	 * @param string|null $apiKeyId リソースの取得に使用するGitHub のAPIキー のGRN
 	 * @return GitHubCheckoutSetting $this
 	 */
-	public function withGitHubApiKeyId(?string $gitHubApiKeyId): GitHubCheckoutSetting {
-		$this->gitHubApiKeyId = $gitHubApiKeyId;
+	public function withApiKeyId(?string $apiKeyId): GitHubCheckoutSetting {
+		$this->apiKeyId = $apiKeyId;
 		return $this;
 	}
 	/**
@@ -260,7 +260,7 @@ class GitHubCheckoutSetting implements IModel {
 
     public function toJson(): array {
         return array(
-            "gitHubApiKeyId" => $this->gitHubApiKeyId,
+            "apiKeyId" => $this->apiKeyId,
             "repositoryName" => $this->repositoryName,
             "sourcePath" => $this->sourcePath,
             "referenceType" => $this->referenceType,
@@ -272,7 +272,7 @@ class GitHubCheckoutSetting implements IModel {
 
     public static function fromJson(array $data): GitHubCheckoutSetting {
         $model = new GitHubCheckoutSetting();
-        $model->setGitHubApiKeyId(isset($data["gitHubApiKeyId"]) ? $data["gitHubApiKeyId"] : null);
+        $model->setApiKeyId(isset($data["apiKeyId"]) ? $data["apiKeyId"] : null);
         $model->setRepositoryName(isset($data["repositoryName"]) ? $data["repositoryName"] : null);
         $model->setSourcePath(isset($data["sourcePath"]) ? $data["sourcePath"] : null);
         $model->setReferenceType(isset($data["referenceType"]) ? $data["referenceType"] : null);

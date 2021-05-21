@@ -27,36 +27,36 @@ use Gs2\Core\Model\IModel;
  */
 class CurrentExperienceMaster implements IModel {
 	/**
-     * @var string ネームスペース名
+     * @var string ネームスペース
 	 */
-	protected $namespaceName;
+	protected $namespaceId;
 
 	/**
-	 * ネームスペース名を取得
+	 * ネームスペースを取得
 	 *
-	 * @return string|null ネームスペース名
+	 * @return string|null ネームスペース
 	 */
-	public function getNamespaceName(): ?string {
-		return $this->namespaceName;
+	public function getNamespaceId(): ?string {
+		return $this->namespaceId;
 	}
 
 	/**
-	 * ネームスペース名を設定
+	 * ネームスペースを設定
 	 *
-	 * @param string|null $namespaceName ネームスペース名
+	 * @param string|null $namespaceId ネームスペース
 	 */
-	public function setNamespaceName(?string $namespaceName) {
-		$this->namespaceName = $namespaceName;
+	public function setNamespaceId(?string $namespaceId) {
+		$this->namespaceId = $namespaceId;
 	}
 
 	/**
-	 * ネームスペース名を設定
+	 * ネームスペースを設定
 	 *
-	 * @param string|null $namespaceName ネームスペース名
+	 * @param string|null $namespaceId ネームスペース
 	 * @return CurrentExperienceMaster $this
 	 */
-	public function withNamespaceName(?string $namespaceName): CurrentExperienceMaster {
-		$this->namespaceName = $namespaceName;
+	public function withNamespaceId(?string $namespaceId): CurrentExperienceMaster {
+		$this->namespaceId = $namespaceId;
 		return $this;
 	}
 	/**
@@ -95,14 +95,14 @@ class CurrentExperienceMaster implements IModel {
 
     public function toJson(): array {
         return array(
-            "namespaceName" => $this->namespaceName,
+            "namespaceId" => $this->namespaceId,
             "settings" => $this->settings,
         );
     }
 
     public static function fromJson(array $data): CurrentExperienceMaster {
         $model = new CurrentExperienceMaster();
-        $model->setNamespaceName(isset($data["namespaceName"]) ? $data["namespaceName"] : null);
+        $model->setNamespaceId(isset($data["namespaceId"]) ? $data["namespaceId"] : null);
         $model->setSettings(isset($data["settings"]) ? $data["settings"] : null);
         return $model;
     }

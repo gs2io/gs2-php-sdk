@@ -194,34 +194,34 @@ class Namespace_ implements IModel {
 	/**
      * @var string スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRN
 	 */
-	protected $overflowTriggerNamespaceId;
+	protected $overflowTriggerQueueId;
 
 	/**
 	 * スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRNを取得
 	 *
 	 * @return string|null スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRN
 	 */
-	public function getOverflowTriggerNamespaceId(): ?string {
-		return $this->overflowTriggerNamespaceId;
+	public function getOverflowTriggerQueueId(): ?string {
+		return $this->overflowTriggerQueueId;
 	}
 
 	/**
 	 * スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRNを設定
 	 *
-	 * @param string|null $overflowTriggerNamespaceId スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRN
+	 * @param string|null $overflowTriggerQueueId スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRN
 	 */
-	public function setOverflowTriggerNamespaceId(?string $overflowTriggerNamespaceId) {
-		$this->overflowTriggerNamespaceId = $overflowTriggerNamespaceId;
+	public function setOverflowTriggerQueueId(?string $overflowTriggerQueueId) {
+		$this->overflowTriggerQueueId = $overflowTriggerQueueId;
 	}
 
 	/**
 	 * スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRNを設定
 	 *
-	 * @param string|null $overflowTriggerNamespaceId スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRN
+	 * @param string|null $overflowTriggerQueueId スタミナオーバーフロー上限に当たって回復できなかったスタミナを追加する ネームスペース のGRN
 	 * @return Namespace_ $this
 	 */
-	public function withOverflowTriggerNamespaceId(?string $overflowTriggerNamespaceId): Namespace_ {
-		$this->overflowTriggerNamespaceId = $overflowTriggerNamespaceId;
+	public function withOverflowTriggerQueueId(?string $overflowTriggerQueueId): Namespace_ {
+		$this->overflowTriggerQueueId = $overflowTriggerQueueId;
 		return $this;
 	}
 	/**
@@ -331,7 +331,7 @@ class Namespace_ implements IModel {
             "name" => $this->name,
             "description" => $this->description,
             "overflowTriggerScriptId" => $this->overflowTriggerScriptId,
-            "overflowTriggerNamespaceId" => $this->overflowTriggerNamespaceId,
+            "overflowTriggerQueueId" => $this->overflowTriggerQueueId,
             "logSetting" => $this->logSetting->toJson(),
             "createdAt" => $this->createdAt,
             "updatedAt" => $this->updatedAt,
@@ -345,7 +345,7 @@ class Namespace_ implements IModel {
         $model->setName(isset($data["name"]) ? $data["name"] : null);
         $model->setDescription(isset($data["description"]) ? $data["description"] : null);
         $model->setOverflowTriggerScriptId(isset($data["overflowTriggerScriptId"]) ? $data["overflowTriggerScriptId"] : null);
-        $model->setOverflowTriggerNamespaceId(isset($data["overflowTriggerNamespaceId"]) ? $data["overflowTriggerNamespaceId"] : null);
+        $model->setOverflowTriggerQueueId(isset($data["overflowTriggerQueueId"]) ? $data["overflowTriggerQueueId"] : null);
         $model->setLogSetting(isset($data["logSetting"]) ? LogSetting::fromJson($data["logSetting"]) : null);
         $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
         $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);

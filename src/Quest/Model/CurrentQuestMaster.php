@@ -27,36 +27,36 @@ use Gs2\Core\Model\IModel;
  */
 class CurrentQuestMaster implements IModel {
 	/**
-     * @var string カテゴリ名
+     * @var string クエストを分類するカテゴリー
 	 */
-	protected $namespaceName;
+	protected $namespaceId;
 
 	/**
-	 * カテゴリ名を取得
+	 * クエストを分類するカテゴリーを取得
 	 *
-	 * @return string|null カテゴリ名
+	 * @return string|null クエストを分類するカテゴリー
 	 */
-	public function getNamespaceName(): ?string {
-		return $this->namespaceName;
+	public function getNamespaceId(): ?string {
+		return $this->namespaceId;
 	}
 
 	/**
-	 * カテゴリ名を設定
+	 * クエストを分類するカテゴリーを設定
 	 *
-	 * @param string|null $namespaceName カテゴリ名
+	 * @param string|null $namespaceId クエストを分類するカテゴリー
 	 */
-	public function setNamespaceName(?string $namespaceName) {
-		$this->namespaceName = $namespaceName;
+	public function setNamespaceId(?string $namespaceId) {
+		$this->namespaceId = $namespaceId;
 	}
 
 	/**
-	 * カテゴリ名を設定
+	 * クエストを分類するカテゴリーを設定
 	 *
-	 * @param string|null $namespaceName カテゴリ名
+	 * @param string|null $namespaceId クエストを分類するカテゴリー
 	 * @return CurrentQuestMaster $this
 	 */
-	public function withNamespaceName(?string $namespaceName): CurrentQuestMaster {
-		$this->namespaceName = $namespaceName;
+	public function withNamespaceId(?string $namespaceId): CurrentQuestMaster {
+		$this->namespaceId = $namespaceId;
 		return $this;
 	}
 	/**
@@ -95,14 +95,14 @@ class CurrentQuestMaster implements IModel {
 
     public function toJson(): array {
         return array(
-            "namespaceName" => $this->namespaceName,
+            "namespaceId" => $this->namespaceId,
             "settings" => $this->settings,
         );
     }
 
     public static function fromJson(array $data): CurrentQuestMaster {
         $model = new CurrentQuestMaster();
-        $model->setNamespaceName(isset($data["namespaceName"]) ? $data["namespaceName"] : null);
+        $model->setNamespaceId(isset($data["namespaceId"]) ? $data["namespaceId"] : null);
         $model->setSettings(isset($data["settings"]) ? $data["settings"] : null);
         return $model;
     }

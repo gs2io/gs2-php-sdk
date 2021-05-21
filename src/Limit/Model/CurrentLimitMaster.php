@@ -27,36 +27,36 @@ use Gs2\Core\Model\IModel;
  */
 class CurrentLimitMaster implements IModel {
 	/**
-     * @var string ネームスペース名
+     * @var string 現在有効な回数制限設定
 	 */
-	protected $namespaceName;
+	protected $namespaceId;
 
 	/**
-	 * ネームスペース名を取得
+	 * 現在有効な回数制限設定を取得
 	 *
-	 * @return string|null ネームスペース名
+	 * @return string|null 現在有効な回数制限設定
 	 */
-	public function getNamespaceName(): ?string {
-		return $this->namespaceName;
+	public function getNamespaceId(): ?string {
+		return $this->namespaceId;
 	}
 
 	/**
-	 * ネームスペース名を設定
+	 * 現在有効な回数制限設定を設定
 	 *
-	 * @param string|null $namespaceName ネームスペース名
+	 * @param string|null $namespaceId 現在有効な回数制限設定
 	 */
-	public function setNamespaceName(?string $namespaceName) {
-		$this->namespaceName = $namespaceName;
+	public function setNamespaceId(?string $namespaceId) {
+		$this->namespaceId = $namespaceId;
 	}
 
 	/**
-	 * ネームスペース名を設定
+	 * 現在有効な回数制限設定を設定
 	 *
-	 * @param string|null $namespaceName ネームスペース名
+	 * @param string|null $namespaceId 現在有効な回数制限設定
 	 * @return CurrentLimitMaster $this
 	 */
-	public function withNamespaceName(?string $namespaceName): CurrentLimitMaster {
-		$this->namespaceName = $namespaceName;
+	public function withNamespaceId(?string $namespaceId): CurrentLimitMaster {
+		$this->namespaceId = $namespaceId;
 		return $this;
 	}
 	/**
@@ -95,14 +95,14 @@ class CurrentLimitMaster implements IModel {
 
     public function toJson(): array {
         return array(
-            "namespaceName" => $this->namespaceName,
+            "namespaceId" => $this->namespaceId,
             "settings" => $this->settings,
         );
     }
 
     public static function fromJson(array $data): CurrentLimitMaster {
         $model = new CurrentLimitMaster();
-        $model->setNamespaceName(isset($data["namespaceName"]) ? $data["namespaceName"] : null);
+        $model->setNamespaceId(isset($data["namespaceId"]) ? $data["namespaceId"] : null);
         $model->setSettings(isset($data["settings"]) ? $data["settings"] : null);
         return $model;
     }

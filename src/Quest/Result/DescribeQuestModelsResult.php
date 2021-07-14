@@ -18,44 +18,49 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\AcquireAction;
+use Gs2\Quest\Model\Contents;
+use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModel;
 
-/**
- * クエストモデルの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeQuestModelsResult implements IResult {
-	/** @var QuestModel[] Noneのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * Noneのリストを取得
-	 *
-	 * @return QuestModel[]|null クエストモデルの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * Noneのリストを設定
-	 *
-	 * @param QuestModel[]|null $items クエストモデルの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeQuestModelsResult {
-        $result = new DescribeQuestModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return QuestModel::fromJson($v);
+	public function withItems(?array $items): DescribeQuestModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeQuestModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeQuestModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return QuestModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

@@ -22,299 +22,170 @@ use Gs2\Mission\Model\ScriptSetting;
 use Gs2\Mission\Model\NotificationSetting;
 use Gs2\Mission\Model\LogSetting;
 
-/**
- * ネームスペースを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $name;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withName(string $name = null): CreateNamespaceRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): CreateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var ScriptSetting ミッションを達成したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $missionCompleteScript;
-
-    /**
-     * ミッションを達成したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getMissionCompleteScript(): ?ScriptSetting {
-        return $this->missionCompleteScript;
-    }
-
-    /**
-     * ミッションを達成したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $missionCompleteScript ネームスペースを新規作成
-     */
-    public function setMissionCompleteScript(ScriptSetting $missionCompleteScript = null) {
-        $this->missionCompleteScript = $missionCompleteScript;
-    }
-
-    /**
-     * ミッションを達成したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $missionCompleteScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withMissionCompleteScript(ScriptSetting $missionCompleteScript = null): CreateNamespaceRequest {
-        $this->setMissionCompleteScript($missionCompleteScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting カウンターを上昇したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $counterIncrementScript;
-
-    /**
-     * カウンターを上昇したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getCounterIncrementScript(): ?ScriptSetting {
-        return $this->counterIncrementScript;
-    }
-
-    /**
-     * カウンターを上昇したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $counterIncrementScript ネームスペースを新規作成
-     */
-    public function setCounterIncrementScript(ScriptSetting $counterIncrementScript = null) {
-        $this->counterIncrementScript = $counterIncrementScript;
-    }
-
-    /**
-     * カウンターを上昇したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $counterIncrementScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCounterIncrementScript(ScriptSetting $counterIncrementScript = null): CreateNamespaceRequest {
-        $this->setCounterIncrementScript($counterIncrementScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting 報酬を受け取ったときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $receiveRewardsScript;
-
-    /**
-     * 報酬を受け取ったときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getReceiveRewardsScript(): ?ScriptSetting {
-        return $this->receiveRewardsScript;
-    }
-
-    /**
-     * 報酬を受け取ったときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $receiveRewardsScript ネームスペースを新規作成
-     */
-    public function setReceiveRewardsScript(ScriptSetting $receiveRewardsScript = null) {
-        $this->receiveRewardsScript = $receiveRewardsScript;
-    }
-
-    /**
-     * 報酬を受け取ったときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $receiveRewardsScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withReceiveRewardsScript(ScriptSetting $receiveRewardsScript = null): CreateNamespaceRequest {
-        $this->setReceiveRewardsScript($receiveRewardsScript);
-        return $this;
-    }
-
-    /** @var string 報酬付与処理をジョブとして追加するキューネームスペース のGRN */
+    /** @var string */
     private $queueNamespaceId;
-
-    /**
-     * 報酬付与処理をジョブとして追加するキューネームスペース のGRNを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getQueueNamespaceId(): ?string {
-        return $this->queueNamespaceId;
-    }
-
-    /**
-     * 報酬付与処理をジョブとして追加するキューネームスペース のGRNを設定
-     *
-     * @param string $queueNamespaceId ネームスペースを新規作成
-     */
-    public function setQueueNamespaceId(string $queueNamespaceId = null) {
-        $this->queueNamespaceId = $queueNamespaceId;
-    }
-
-    /**
-     * 報酬付与処理をジョブとして追加するキューネームスペース のGRNを設定
-     *
-     * @param string $queueNamespaceId ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withQueueNamespaceId(string $queueNamespaceId = null): CreateNamespaceRequest {
-        $this->setQueueNamespaceId($queueNamespaceId);
-        return $this;
-    }
-
-    /** @var string 報酬付与処理のスタンプシートで使用する暗号鍵GRN */
+    /** @var string */
     private $keyId;
-
-    /**
-     * 報酬付与処理のスタンプシートで使用する暗号鍵GRNを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
-    }
-
-    /**
-     * 報酬付与処理のスタンプシートで使用する暗号鍵GRNを設定
-     *
-     * @param string $keyId ネームスペースを新規作成
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
-    }
-
-    /**
-     * 報酬付与処理のスタンプシートで使用する暗号鍵GRNを設定
-     *
-     * @param string $keyId ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withKeyId(string $keyId = null): CreateNamespaceRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var NotificationSetting ミッションのタスクを達成したときのプッシュ通知 */
+    /** @var NotificationSetting */
     private $completeNotification;
-
-    /**
-     * ミッションのタスクを達成したときのプッシュ通知を取得
-     *
-     * @return NotificationSetting|null ネームスペースを新規作成
-     */
-    public function getCompleteNotification(): ?NotificationSetting {
-        return $this->completeNotification;
-    }
-
-    /**
-     * ミッションのタスクを達成したときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $completeNotification ネームスペースを新規作成
-     */
-    public function setCompleteNotification(NotificationSetting $completeNotification = null) {
-        $this->completeNotification = $completeNotification;
-    }
-
-    /**
-     * ミッションのタスクを達成したときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $completeNotification ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCompleteNotification(NotificationSetting $completeNotification = null): CreateNamespaceRequest {
-        $this->setCompleteNotification($completeNotification);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを新規作成
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateNamespaceRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMissionCompleteScript(): ?ScriptSetting {
+		return $this->missionCompleteScript;
+	}
+
+	public function setMissionCompleteScript(?ScriptSetting $missionCompleteScript) {
+		$this->missionCompleteScript = $missionCompleteScript;
+	}
+
+	public function withMissionCompleteScript(?ScriptSetting $missionCompleteScript): CreateNamespaceRequest {
+		$this->missionCompleteScript = $missionCompleteScript;
+		return $this;
+	}
+
+	public function getCounterIncrementScript(): ?ScriptSetting {
+		return $this->counterIncrementScript;
+	}
+
+	public function setCounterIncrementScript(?ScriptSetting $counterIncrementScript) {
+		$this->counterIncrementScript = $counterIncrementScript;
+	}
+
+	public function withCounterIncrementScript(?ScriptSetting $counterIncrementScript): CreateNamespaceRequest {
+		$this->counterIncrementScript = $counterIncrementScript;
+		return $this;
+	}
+
+	public function getReceiveRewardsScript(): ?ScriptSetting {
+		return $this->receiveRewardsScript;
+	}
+
+	public function setReceiveRewardsScript(?ScriptSetting $receiveRewardsScript) {
+		$this->receiveRewardsScript = $receiveRewardsScript;
+	}
+
+	public function withReceiveRewardsScript(?ScriptSetting $receiveRewardsScript): CreateNamespaceRequest {
+		$this->receiveRewardsScript = $receiveRewardsScript;
+		return $this;
+	}
+
+	public function getQueueNamespaceId(): ?string {
+		return $this->queueNamespaceId;
+	}
+
+	public function setQueueNamespaceId(?string $queueNamespaceId) {
+		$this->queueNamespaceId = $queueNamespaceId;
+	}
+
+	public function withQueueNamespaceId(?string $queueNamespaceId): CreateNamespaceRequest {
+		$this->queueNamespaceId = $queueNamespaceId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): CreateNamespaceRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+	public function getCompleteNotification(): ?NotificationSetting {
+		return $this->completeNotification;
+	}
+
+	public function setCompleteNotification(?NotificationSetting $completeNotification) {
+		$this->completeNotification = $completeNotification;
+	}
+
+	public function withCompleteNotification(?NotificationSetting $completeNotification): CreateNamespaceRequest {
+		$this->completeNotification = $completeNotification;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMissionCompleteScript(empty($data['missionCompleteScript']) ? null : ScriptSetting::fromJson($data['missionCompleteScript']))
+            ->withCounterIncrementScript(empty($data['counterIncrementScript']) ? null : ScriptSetting::fromJson($data['counterIncrementScript']))
+            ->withReceiveRewardsScript(empty($data['receiveRewardsScript']) ? null : ScriptSetting::fromJson($data['receiveRewardsScript']))
+            ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withCompleteNotification(empty($data['completeNotification']) ? null : NotificationSetting::fromJson($data['completeNotification']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "missionCompleteScript" => $this->getMissionCompleteScript() !== null ? $this->getMissionCompleteScript()->toJson() : null,
+            "counterIncrementScript" => $this->getCounterIncrementScript() !== null ? $this->getCounterIncrementScript()->toJson() : null,
+            "receiveRewardsScript" => $this->getReceiveRewardsScript() !== null ? $this->getReceiveRewardsScript()->toJson() : null,
+            "queueNamespaceId" => $this->getQueueNamespaceId(),
+            "keyId" => $this->getKeyId(),
+            "completeNotification" => $this->getCompleteNotification() !== null ? $this->getCompleteNotification()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): CreateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

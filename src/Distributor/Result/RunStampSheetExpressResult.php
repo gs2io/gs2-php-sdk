@@ -19,57 +19,61 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * スタンプタスクおよびスタンプシートを実行する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RunStampSheetExpressResult implements IResult {
-	/** @var string[] スタンプタスクの実行結果 */
-	private $taskResults;
-	/** @var string スタンプシートの実行結果レスポンス内容 */
-	private $sheetResult;
+    /** @var array */
+    private $taskResults;
+    /** @var string */
+    private $sheetResult;
 
-	/**
-	 * スタンプタスクの実行結果を取得
-	 *
-	 * @return string[]|null スタンプタスクおよびスタンプシートを実行する
-	 */
 	public function getTaskResults(): ?array {
 		return $this->taskResults;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を設定
-	 *
-	 * @param string[]|null $taskResults スタンプタスクおよびスタンプシートを実行する
-	 */
 	public function setTaskResults(?array $taskResults) {
 		$this->taskResults = $taskResults;
 	}
 
-	/**
-	 * スタンプシートの実行結果レスポンス内容を取得
-	 *
-	 * @return string|null スタンプタスクおよびスタンプシートを実行する
-	 */
+	public function withTaskResults(?array $taskResults): RunStampSheetExpressResult {
+		$this->taskResults = $taskResults;
+		return $this;
+	}
+
 	public function getSheetResult(): ?string {
 		return $this->sheetResult;
 	}
 
-	/**
-	 * スタンプシートの実行結果レスポンス内容を設定
-	 *
-	 * @param string|null $sheetResult スタンプタスクおよびスタンプシートを実行する
-	 */
 	public function setSheetResult(?string $sheetResult) {
 		$this->sheetResult = $sheetResult;
 	}
 
-    public static function fromJson(array $data): RunStampSheetExpressResult {
-        $result = new RunStampSheetExpressResult();
-        $result->setTaskResults(isset($data["taskResults"]) ? $data["taskResults"] : null);
-        $result->setSheetResult(isset($data["sheetResult"]) ? $data["sheetResult"] : null);
-        return $result;
+	public function withSheetResult(?string $sheetResult): RunStampSheetExpressResult {
+		$this->sheetResult = $sheetResult;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RunStampSheetExpressResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RunStampSheetExpressResult())
+            ->withTaskResults(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('taskResults', $data) && $data['taskResults'] !== null ? $data['taskResults'] : []
+            ))
+            ->withSheetResult(empty($data['sheetResult']) ? null : $data['sheetResult']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "taskResults" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getTaskResults() !== null && $this->getTaskResults() !== null ? $this->getTaskResults() : []
+            ),
+            "sheetResult" => $this->getSheetResult(),
+        );
     }
 }

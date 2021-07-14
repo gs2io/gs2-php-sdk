@@ -18,38 +18,38 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\AcquireAction;
+use Gs2\Lottery\Model\BoxItem;
 use Gs2\Lottery\Model\BoxItems;
 
-/**
- * ボックスを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetBoxResult implements IResult {
-	/** @var BoxItems ボックスから取り出したアイテムのリスト */
-	private $item;
+    /** @var BoxItems */
+    private $item;
 
-	/**
-	 * ボックスから取り出したアイテムのリストを取得
-	 *
-	 * @return BoxItems|null ボックスを取得
-	 */
 	public function getItem(): ?BoxItems {
 		return $this->item;
 	}
 
-	/**
-	 * ボックスから取り出したアイテムのリストを設定
-	 *
-	 * @param BoxItems|null $item ボックスを取得
-	 */
 	public function setItem(?BoxItems $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetBoxResult {
-        $result = new GetBoxResult();
-        $result->setItem(isset($data["item"]) ? BoxItems::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?BoxItems $item): GetBoxResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetBoxResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetBoxResult())
+            ->withItem(empty($data['item']) ? null : BoxItems::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

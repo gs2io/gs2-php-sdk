@@ -20,171 +20,95 @@ namespace Gs2\Matchmaking\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\AttributeRange;
 
-/**
- * ギャザリングを更新する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ギャザリングを更新する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ギャザリングを更新する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ギャザリングを更新する
-     * @return UpdateGatheringByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateGatheringByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ギャザリング名 */
+    /** @var string */
     private $gatheringName;
-
-    /**
-     * ギャザリング名を取得
-     *
-     * @return string|null ギャザリングを更新する
-     */
-    public function getGatheringName(): ?string {
-        return $this->gatheringName;
-    }
-
-    /**
-     * ギャザリング名を設定
-     *
-     * @param string $gatheringName ギャザリングを更新する
-     */
-    public function setGatheringName(string $gatheringName = null) {
-        $this->gatheringName = $gatheringName;
-    }
-
-    /**
-     * ギャザリング名を設定
-     *
-     * @param string $gatheringName ギャザリングを更新する
-     * @return UpdateGatheringByUserIdRequest $this
-     */
-    public function withGatheringName(string $gatheringName = null): UpdateGatheringByUserIdRequest {
-        $this->setGatheringName($gatheringName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ギャザリングを更新する
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ギャザリングを更新する
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ギャザリングを更新する
-     * @return UpdateGatheringByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): UpdateGatheringByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var AttributeRange[] 募集条件 */
+    /** @var array */
     private $attributeRanges;
 
-    /**
-     * 募集条件を取得
-     *
-     * @return AttributeRange[]|null ギャザリングを更新する
-     */
-    public function getAttributeRanges(): ?array {
-        return $this->attributeRanges;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateGatheringByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getGatheringName(): ?string {
+		return $this->gatheringName;
+	}
+
+	public function setGatheringName(?string $gatheringName) {
+		$this->gatheringName = $gatheringName;
+	}
+
+	public function withGatheringName(?string $gatheringName): UpdateGatheringByUserIdRequest {
+		$this->gatheringName = $gatheringName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): UpdateGatheringByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getAttributeRanges(): ?array {
+		return $this->attributeRanges;
+	}
+
+	public function setAttributeRanges(?array $attributeRanges) {
+		$this->attributeRanges = $attributeRanges;
+	}
+
+	public function withAttributeRanges(?array $attributeRanges): UpdateGatheringByUserIdRequest {
+		$this->attributeRanges = $attributeRanges;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateGatheringByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateGatheringByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withAttributeRanges(array_map(
+                function ($item) {
+                    return AttributeRange::fromJson($item);
+                },
+                array_key_exists('attributeRanges', $data) && $data['attributeRanges'] !== null ? $data['attributeRanges'] : []
+            ));
     }
 
-    /**
-     * 募集条件を設定
-     *
-     * @param AttributeRange[] $attributeRanges ギャザリングを更新する
-     */
-    public function setAttributeRanges(array $attributeRanges = null) {
-        $this->attributeRanges = $attributeRanges;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "gatheringName" => $this->getGatheringName(),
+            "userId" => $this->getUserId(),
+            "attributeRanges" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAttributeRanges() !== null && $this->getAttributeRanges() !== null ? $this->getAttributeRanges() : []
+            ),
+        );
     }
-
-    /**
-     * 募集条件を設定
-     *
-     * @param AttributeRange[] $attributeRanges ギャザリングを更新する
-     * @return UpdateGatheringByUserIdRequest $this
-     */
-    public function withAttributeRanges(array $attributeRanges = null): UpdateGatheringByUserIdRequest {
-        $this->setAttributeRanges($attributeRanges);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ギャザリングを更新する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ギャザリングを更新する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ギャザリングを更新する
-     * @return UpdateGatheringByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateGatheringByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

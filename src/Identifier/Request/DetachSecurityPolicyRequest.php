@@ -19,75 +19,51 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 割り当てられたセキュリティポリシーをユーザーから外します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DetachSecurityPolicyRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
-
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null 割り当てられたセキュリティポリシーをユーザーから外します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName 割り当てられたセキュリティポリシーをユーザーから外します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName 割り当てられたセキュリティポリシーをユーザーから外します
-     * @return DetachSecurityPolicyRequest $this
-     */
-    public function withUserName(string $userName = null): DetachSecurityPolicyRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
-    /** @var string 剥奪するセキュリティポリシーのGRN */
+    /** @var string */
     private $securityPolicyId;
 
-    /**
-     * 剥奪するセキュリティポリシーのGRNを取得
-     *
-     * @return string|null 割り当てられたセキュリティポリシーをユーザーから外します
-     */
-    public function getSecurityPolicyId(): ?string {
-        return $this->securityPolicyId;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): DetachSecurityPolicyRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+	public function getSecurityPolicyId(): ?string {
+		return $this->securityPolicyId;
+	}
+
+	public function setSecurityPolicyId(?string $securityPolicyId) {
+		$this->securityPolicyId = $securityPolicyId;
+	}
+
+	public function withSecurityPolicyId(?string $securityPolicyId): DetachSecurityPolicyRequest {
+		$this->securityPolicyId = $securityPolicyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DetachSecurityPolicyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DetachSecurityPolicyRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName'])
+            ->withSecurityPolicyId(empty($data['securityPolicyId']) ? null : $data['securityPolicyId']);
     }
 
-    /**
-     * 剥奪するセキュリティポリシーのGRNを設定
-     *
-     * @param string $securityPolicyId 割り当てられたセキュリティポリシーをユーザーから外します
-     */
-    public function setSecurityPolicyId(string $securityPolicyId = null) {
-        $this->securityPolicyId = $securityPolicyId;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+            "securityPolicyId" => $this->getSecurityPolicyId(),
+        );
     }
-
-    /**
-     * 剥奪するセキュリティポリシーのGRNを設定
-     *
-     * @param string $securityPolicyId 割り当てられたセキュリティポリシーをユーザーから外します
-     * @return DetachSecurityPolicyRequest $this
-     */
-    public function withSecurityPolicyId(string $securityPolicyId = null): DetachSecurityPolicyRequest {
-        $this->setSecurityPolicyId($securityPolicyId);
-        return $this;
-    }
-
 }

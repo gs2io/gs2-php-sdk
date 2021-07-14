@@ -20,36 +20,34 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModelMaster;
 
-/**
- * 配信設定マスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteDistributorModelMasterResult implements IResult {
-	/** @var DistributorModelMaster 削除した配信設定マスター */
-	private $item;
+    /** @var DistributorModelMaster */
+    private $item;
 
-	/**
-	 * 削除した配信設定マスターを取得
-	 *
-	 * @return DistributorModelMaster|null 配信設定マスターを削除
-	 */
 	public function getItem(): ?DistributorModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除した配信設定マスターを設定
-	 *
-	 * @param DistributorModelMaster|null $item 配信設定マスターを削除
-	 */
 	public function setItem(?DistributorModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteDistributorModelMasterResult {
-        $result = new DeleteDistributorModelMasterResult();
-        $result->setItem(isset($data["item"]) ? DistributorModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?DistributorModelMaster $item): DeleteDistributorModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteDistributorModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteDistributorModelMasterResult())
+            ->withItem(empty($data['item']) ? null : DistributorModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

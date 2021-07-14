@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Inbox\Request\DescribeNamespacesRequest;
 use Gs2\Inbox\Result\DescribeNamespacesResult;
 use Gs2\Inbox\Request\CreateNamespaceRequest;
@@ -554,9 +556,6 @@ class DescribeMessagesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -622,9 +621,6 @@ class DescribeMessagesByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -699,9 +695,6 @@ class SendMessageByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -763,9 +756,6 @@ class GetMessageTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -825,9 +815,6 @@ class GetMessageByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -864,7 +851,7 @@ class ReceiveGlobalMessageTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/{messageName}/globalMessage/receive";
+        $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/message/globalMessage/receive";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -885,9 +872,6 @@ class ReceiveGlobalMessageTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -925,7 +909,7 @@ class ReceiveGlobalMessageByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/{messageName}/globalMessage/receive";
+        $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/message/globalMessage/receive";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
@@ -944,9 +928,6 @@ class ReceiveGlobalMessageByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1007,9 +988,6 @@ class OpenMessageTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1066,9 +1044,6 @@ class OpenMessageByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1137,9 +1112,6 @@ class ReadMessageTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1205,9 +1177,6 @@ class ReadMessageByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1269,9 +1238,6 @@ class DeleteMessageTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1331,9 +1297,6 @@ class DeleteMessageByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1392,9 +1355,6 @@ class OpenByStampTaskTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2126,9 +2086,6 @@ class GetReceivedByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2193,9 +2150,6 @@ class UpdateReceivedByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2254,9 +2208,6 @@ class DeleteReceivedByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2280,9 +2231,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2297,9 +2246,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2311,9 +2258,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2328,9 +2273,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2342,9 +2285,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2359,9 +2300,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2373,9 +2312,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2390,9 +2327,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2404,9 +2339,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2421,9 +2354,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2435,9 +2366,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2452,9 +2381,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2466,9 +2393,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージの一覧を取得<br>
-     *
-     * @param DescribeMessagesRequest $request リクエストパラメータ
+     * @param DescribeMessagesRequest $request
      * @return PromiseInterface
      */
     public function describeMessagesAsync(
@@ -2483,9 +2408,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージの一覧を取得<br>
-     *
-     * @param DescribeMessagesRequest $request リクエストパラメータ
+     * @param DescribeMessagesRequest $request
      * @return DescribeMessagesResult
      */
     public function describeMessages (
@@ -2497,9 +2420,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージの一覧を取得<br>
-     *
-     * @param DescribeMessagesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeMessagesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeMessagesByUserIdAsync(
@@ -2514,9 +2435,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージの一覧を取得<br>
-     *
-     * @param DescribeMessagesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeMessagesByUserIdRequest $request
      * @return DescribeMessagesByUserIdResult
      */
     public function describeMessagesByUserId (
@@ -2528,9 +2447,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを新規作成<br>
-     *
-     * @param SendMessageByUserIdRequest $request リクエストパラメータ
+     * @param SendMessageByUserIdRequest $request
      * @return PromiseInterface
      */
     public function sendMessageByUserIdAsync(
@@ -2545,9 +2462,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを新規作成<br>
-     *
-     * @param SendMessageByUserIdRequest $request リクエストパラメータ
+     * @param SendMessageByUserIdRequest $request
      * @return SendMessageByUserIdResult
      */
     public function sendMessageByUserId (
@@ -2559,9 +2474,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを取得<br>
-     *
-     * @param GetMessageRequest $request リクエストパラメータ
+     * @param GetMessageRequest $request
      * @return PromiseInterface
      */
     public function getMessageAsync(
@@ -2576,9 +2489,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを取得<br>
-     *
-     * @param GetMessageRequest $request リクエストパラメータ
+     * @param GetMessageRequest $request
      * @return GetMessageResult
      */
     public function getMessage (
@@ -2590,9 +2501,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してメッセージを取得<br>
-     *
-     * @param GetMessageByUserIdRequest $request リクエストパラメータ
+     * @param GetMessageByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getMessageByUserIdAsync(
@@ -2607,9 +2516,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してメッセージを取得<br>
-     *
-     * @param GetMessageByUserIdRequest $request リクエストパラメータ
+     * @param GetMessageByUserIdRequest $request
      * @return GetMessageByUserIdResult
      */
     public function getMessageByUserId (
@@ -2621,9 +2528,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * グローバルメッセージのうちまだ受け取っていないメッセージを受信<br>
-     *
-     * @param ReceiveGlobalMessageRequest $request リクエストパラメータ
+     * @param ReceiveGlobalMessageRequest $request
      * @return PromiseInterface
      */
     public function receiveGlobalMessageAsync(
@@ -2638,9 +2543,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * グローバルメッセージのうちまだ受け取っていないメッセージを受信<br>
-     *
-     * @param ReceiveGlobalMessageRequest $request リクエストパラメータ
+     * @param ReceiveGlobalMessageRequest $request
      * @return ReceiveGlobalMessageResult
      */
     public function receiveGlobalMessage (
@@ -2652,9 +2555,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してグローバルメッセージのうちまだ受け取っていないメッセージを受信<br>
-     *
-     * @param ReceiveGlobalMessageByUserIdRequest $request リクエストパラメータ
+     * @param ReceiveGlobalMessageByUserIdRequest $request
      * @return PromiseInterface
      */
     public function receiveGlobalMessageByUserIdAsync(
@@ -2669,9 +2570,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してグローバルメッセージのうちまだ受け取っていないメッセージを受信<br>
-     *
-     * @param ReceiveGlobalMessageByUserIdRequest $request リクエストパラメータ
+     * @param ReceiveGlobalMessageByUserIdRequest $request
      * @return ReceiveGlobalMessageByUserIdResult
      */
     public function receiveGlobalMessageByUserId (
@@ -2683,9 +2582,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを開封<br>
-     *
-     * @param OpenMessageRequest $request リクエストパラメータ
+     * @param OpenMessageRequest $request
      * @return PromiseInterface
      */
     public function openMessageAsync(
@@ -2700,9 +2597,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを開封<br>
-     *
-     * @param OpenMessageRequest $request リクエストパラメータ
+     * @param OpenMessageRequest $request
      * @return OpenMessageResult
      */
     public function openMessage (
@@ -2714,9 +2609,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してメッセージを開封<br>
-     *
-     * @param OpenMessageByUserIdRequest $request リクエストパラメータ
+     * @param OpenMessageByUserIdRequest $request
      * @return PromiseInterface
      */
     public function openMessageByUserIdAsync(
@@ -2731,9 +2624,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してメッセージを開封<br>
-     *
-     * @param OpenMessageByUserIdRequest $request リクエストパラメータ
+     * @param OpenMessageByUserIdRequest $request
      * @return OpenMessageByUserIdResult
      */
     public function openMessageByUserId (
@@ -2745,9 +2636,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを開封<br>
-     *
-     * @param ReadMessageRequest $request リクエストパラメータ
+     * @param ReadMessageRequest $request
      * @return PromiseInterface
      */
     public function readMessageAsync(
@@ -2762,9 +2651,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを開封<br>
-     *
-     * @param ReadMessageRequest $request リクエストパラメータ
+     * @param ReadMessageRequest $request
      * @return ReadMessageResult
      */
     public function readMessage (
@@ -2776,9 +2663,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してメッセージを開封<br>
-     *
-     * @param ReadMessageByUserIdRequest $request リクエストパラメータ
+     * @param ReadMessageByUserIdRequest $request
      * @return PromiseInterface
      */
     public function readMessageByUserIdAsync(
@@ -2793,9 +2678,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してメッセージを開封<br>
-     *
-     * @param ReadMessageByUserIdRequest $request リクエストパラメータ
+     * @param ReadMessageByUserIdRequest $request
      * @return ReadMessageByUserIdResult
      */
     public function readMessageByUserId (
@@ -2807,9 +2690,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを削除<br>
-     *
-     * @param DeleteMessageRequest $request リクエストパラメータ
+     * @param DeleteMessageRequest $request
      * @return PromiseInterface
      */
     public function deleteMessageAsync(
@@ -2824,9 +2705,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを削除<br>
-     *
-     * @param DeleteMessageRequest $request リクエストパラメータ
+     * @param DeleteMessageRequest $request
      * @return DeleteMessageResult
      */
     public function deleteMessage (
@@ -2838,9 +2717,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してメッセージを削除<br>
-     *
-     * @param DeleteMessageByUserIdRequest $request リクエストパラメータ
+     * @param DeleteMessageByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteMessageByUserIdAsync(
@@ -2855,9 +2732,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してメッセージを削除<br>
-     *
-     * @param DeleteMessageByUserIdRequest $request リクエストパラメータ
+     * @param DeleteMessageByUserIdRequest $request
      * @return DeleteMessageByUserIdResult
      */
     public function deleteMessageByUserId (
@@ -2869,9 +2744,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを作成<br>
-     *
-     * @param OpenByStampTaskRequest $request リクエストパラメータ
+     * @param OpenByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function openByStampTaskAsync(
@@ -2886,9 +2759,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを作成<br>
-     *
-     * @param OpenByStampTaskRequest $request リクエストパラメータ
+     * @param OpenByStampTaskRequest $request
      * @return OpenByStampTaskResult
      */
     public function openByStampTask (
@@ -2900,9 +2771,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なグローバルメッセージ設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2917,9 +2786,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なグローバルメッセージ設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2931,9 +2798,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なグローバルメッセージ設定を取得します<br>
-     *
-     * @param GetCurrentMessageMasterRequest $request リクエストパラメータ
+     * @param GetCurrentMessageMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentMessageMasterAsync(
@@ -2948,9 +2813,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なグローバルメッセージ設定を取得します<br>
-     *
-     * @param GetCurrentMessageMasterRequest $request リクエストパラメータ
+     * @param GetCurrentMessageMasterRequest $request
      * @return GetCurrentMessageMasterResult
      */
     public function getCurrentMessageMaster (
@@ -2962,9 +2825,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なグローバルメッセージ設定を更新します<br>
-     *
-     * @param UpdateCurrentMessageMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentMessageMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentMessageMasterAsync(
@@ -2979,9 +2840,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なグローバルメッセージ設定を更新します<br>
-     *
-     * @param UpdateCurrentMessageMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentMessageMasterRequest $request
      * @return UpdateCurrentMessageMasterResult
      */
     public function updateCurrentMessageMaster (
@@ -2993,9 +2852,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なグローバルメッセージ設定を更新します<br>
-     *
-     * @param UpdateCurrentMessageMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentMessageMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentMessageMasterFromGitHubAsync(
@@ -3010,9 +2867,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なグローバルメッセージ設定を更新します<br>
-     *
-     * @param UpdateCurrentMessageMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentMessageMasterFromGitHubRequest $request
      * @return UpdateCurrentMessageMasterFromGitHubResult
      */
     public function updateCurrentMessageMasterFromGitHub (
@@ -3024,9 +2879,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージの一覧を取得<br>
-     *
-     * @param DescribeGlobalMessageMastersRequest $request リクエストパラメータ
+     * @param DescribeGlobalMessageMastersRequest $request
      * @return PromiseInterface
      */
     public function describeGlobalMessageMastersAsync(
@@ -3041,9 +2894,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージの一覧を取得<br>
-     *
-     * @param DescribeGlobalMessageMastersRequest $request リクエストパラメータ
+     * @param DescribeGlobalMessageMastersRequest $request
      * @return DescribeGlobalMessageMastersResult
      */
     public function describeGlobalMessageMasters (
@@ -3055,9 +2906,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを新規作成<br>
-     *
-     * @param CreateGlobalMessageMasterRequest $request リクエストパラメータ
+     * @param CreateGlobalMessageMasterRequest $request
      * @return PromiseInterface
      */
     public function createGlobalMessageMasterAsync(
@@ -3072,9 +2921,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを新規作成<br>
-     *
-     * @param CreateGlobalMessageMasterRequest $request リクエストパラメータ
+     * @param CreateGlobalMessageMasterRequest $request
      * @return CreateGlobalMessageMasterResult
      */
     public function createGlobalMessageMaster (
@@ -3086,9 +2933,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを取得<br>
-     *
-     * @param GetGlobalMessageMasterRequest $request リクエストパラメータ
+     * @param GetGlobalMessageMasterRequest $request
      * @return PromiseInterface
      */
     public function getGlobalMessageMasterAsync(
@@ -3103,9 +2948,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを取得<br>
-     *
-     * @param GetGlobalMessageMasterRequest $request リクエストパラメータ
+     * @param GetGlobalMessageMasterRequest $request
      * @return GetGlobalMessageMasterResult
      */
     public function getGlobalMessageMaster (
@@ -3117,9 +2960,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを開封<br>
-     *
-     * @param UpdateGlobalMessageMasterRequest $request リクエストパラメータ
+     * @param UpdateGlobalMessageMasterRequest $request
      * @return PromiseInterface
      */
     public function updateGlobalMessageMasterAsync(
@@ -3134,9 +2975,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを開封<br>
-     *
-     * @param UpdateGlobalMessageMasterRequest $request リクエストパラメータ
+     * @param UpdateGlobalMessageMasterRequest $request
      * @return UpdateGlobalMessageMasterResult
      */
     public function updateGlobalMessageMaster (
@@ -3148,9 +2987,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを削除<br>
-     *
-     * @param DeleteGlobalMessageMasterRequest $request リクエストパラメータ
+     * @param DeleteGlobalMessageMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteGlobalMessageMasterAsync(
@@ -3165,9 +3002,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを削除<br>
-     *
-     * @param DeleteGlobalMessageMasterRequest $request リクエストパラメータ
+     * @param DeleteGlobalMessageMasterRequest $request
      * @return DeleteGlobalMessageMasterResult
      */
     public function deleteGlobalMessageMaster (
@@ -3179,9 +3014,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージの一覧を取得<br>
-     *
-     * @param DescribeGlobalMessagesRequest $request リクエストパラメータ
+     * @param DescribeGlobalMessagesRequest $request
      * @return PromiseInterface
      */
     public function describeGlobalMessagesAsync(
@@ -3196,9 +3029,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージの一覧を取得<br>
-     *
-     * @param DescribeGlobalMessagesRequest $request リクエストパラメータ
+     * @param DescribeGlobalMessagesRequest $request
      * @return DescribeGlobalMessagesResult
      */
     public function describeGlobalMessages (
@@ -3210,9 +3041,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを取得<br>
-     *
-     * @param GetGlobalMessageRequest $request リクエストパラメータ
+     * @param GetGlobalMessageRequest $request
      * @return PromiseInterface
      */
     public function getGlobalMessageAsync(
@@ -3227,9 +3056,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 全ユーザに向けたメッセージを取得<br>
-     *
-     * @param GetGlobalMessageRequest $request リクエストパラメータ
+     * @param GetGlobalMessageRequest $request
      * @return GetGlobalMessageResult
      */
     public function getGlobalMessage (
@@ -3241,9 +3068,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信済みグローバルメッセージ名を取得<br>
-     *
-     * @param GetReceivedByUserIdRequest $request リクエストパラメータ
+     * @param GetReceivedByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getReceivedByUserIdAsync(
@@ -3258,9 +3083,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信済みグローバルメッセージ名を取得<br>
-     *
-     * @param GetReceivedByUserIdRequest $request リクエストパラメータ
+     * @param GetReceivedByUserIdRequest $request
      * @return GetReceivedByUserIdResult
      */
     public function getReceivedByUserId (
@@ -3272,9 +3095,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信済みグローバルメッセージ名を削除<br>
-     *
-     * @param UpdateReceivedByUserIdRequest $request リクエストパラメータ
+     * @param UpdateReceivedByUserIdRequest $request
      * @return PromiseInterface
      */
     public function updateReceivedByUserIdAsync(
@@ -3289,9 +3110,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信済みグローバルメッセージ名を削除<br>
-     *
-     * @param UpdateReceivedByUserIdRequest $request リクエストパラメータ
+     * @param UpdateReceivedByUserIdRequest $request
      * @return UpdateReceivedByUserIdResult
      */
     public function updateReceivedByUserId (
@@ -3303,9 +3122,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信済みグローバルメッセージ名を削除<br>
-     *
-     * @param DeleteReceivedByUserIdRequest $request リクエストパラメータ
+     * @param DeleteReceivedByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteReceivedByUserIdAsync(
@@ -3320,9 +3137,7 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信済みグローバルメッセージ名を削除<br>
-     *
-     * @param DeleteReceivedByUserIdRequest $request リクエストパラメータ
+     * @param DeleteReceivedByUserIdRequest $request
      * @return DeleteReceivedByUserIdResult
      */
     public function deleteReceivedByUserId (

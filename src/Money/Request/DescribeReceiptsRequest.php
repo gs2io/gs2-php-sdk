@@ -19,267 +19,136 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * レシートの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeReceiptsRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null レシートの一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName レシートの一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName レシートの一覧を取得
-     * @return DescribeReceiptsRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeReceiptsRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null レシートの一覧を取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId レシートの一覧を取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId レシートの一覧を取得
-     * @return DescribeReceiptsRequest $this
-     */
-    public function withUserId(string $userId = null): DescribeReceiptsRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int None */
+    /** @var int */
     private $slot;
-
-    /**
-     * Noneを取得
-     *
-     * @return int|null レシートの一覧を取得
-     */
-    public function getSlot(): ?int {
-        return $this->slot;
-    }
-
-    /**
-     * Noneを設定
-     *
-     * @param int $slot レシートの一覧を取得
-     */
-    public function setSlot(int $slot = null) {
-        $this->slot = $slot;
-    }
-
-    /**
-     * Noneを設定
-     *
-     * @param int $slot レシートの一覧を取得
-     * @return DescribeReceiptsRequest $this
-     */
-    public function withSlot(int $slot = null): DescribeReceiptsRequest {
-        $this->setSlot($slot);
-        return $this;
-    }
-
-    /** @var int None */
+    /** @var int */
     private $begin;
-
-    /**
-     * Noneを取得
-     *
-     * @return int|null レシートの一覧を取得
-     */
-    public function getBegin(): ?int {
-        return $this->begin;
-    }
-
-    /**
-     * Noneを設定
-     *
-     * @param int $begin レシートの一覧を取得
-     */
-    public function setBegin(int $begin = null) {
-        $this->begin = $begin;
-    }
-
-    /**
-     * Noneを設定
-     *
-     * @param int $begin レシートの一覧を取得
-     * @return DescribeReceiptsRequest $this
-     */
-    public function withBegin(int $begin = null): DescribeReceiptsRequest {
-        $this->setBegin($begin);
-        return $this;
-    }
-
-    /** @var int None */
+    /** @var int */
     private $end;
-
-    /**
-     * Noneを取得
-     *
-     * @return int|null レシートの一覧を取得
-     */
-    public function getEnd(): ?int {
-        return $this->end;
-    }
-
-    /**
-     * Noneを設定
-     *
-     * @param int $end レシートの一覧を取得
-     */
-    public function setEnd(int $end = null) {
-        $this->end = $end;
-    }
-
-    /**
-     * Noneを設定
-     *
-     * @param int $end レシートの一覧を取得
-     * @return DescribeReceiptsRequest $this
-     */
-    public function withEnd(int $end = null): DescribeReceiptsRequest {
-        $this->setEnd($end);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null レシートの一覧を取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken レシートの一覧を取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken レシートの一覧を取得
-     * @return DescribeReceiptsRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeReceiptsRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null レシートの一覧を取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeReceiptsRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DescribeReceiptsRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getSlot(): ?int {
+		return $this->slot;
+	}
+
+	public function setSlot(?int $slot) {
+		$this->slot = $slot;
+	}
+
+	public function withSlot(?int $slot): DescribeReceiptsRequest {
+		$this->slot = $slot;
+		return $this;
+	}
+
+	public function getBegin(): ?int {
+		return $this->begin;
+	}
+
+	public function setBegin(?int $begin) {
+		$this->begin = $begin;
+	}
+
+	public function withBegin(?int $begin): DescribeReceiptsRequest {
+		$this->begin = $begin;
+		return $this;
+	}
+
+	public function getEnd(): ?int {
+		return $this->end;
+	}
+
+	public function setEnd(?int $end) {
+		$this->end = $end;
+	}
+
+	public function withEnd(?int $end): DescribeReceiptsRequest {
+		$this->end = $end;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeReceiptsRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeReceiptsRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeReceiptsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeReceiptsRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withSlot(empty($data['slot']) ? null : $data['slot'])
+            ->withBegin(empty($data['begin']) ? null : $data['begin'])
+            ->withEnd(empty($data['end']) ? null : $data['end'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit レシートの一覧を取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "slot" => $this->getSlot(),
+            "begin" => $this->getBegin(),
+            "end" => $this->getEnd(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit レシートの一覧を取得
-     * @return DescribeReceiptsRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeReceiptsRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null レシートの一覧を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider レシートの一覧を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider レシートの一覧を取得
-     * @return DescribeReceiptsRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DescribeReceiptsRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

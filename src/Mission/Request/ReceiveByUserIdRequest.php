@@ -19,171 +19,85 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ミッション達成報酬を受領する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class ReceiveByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ミッション達成報酬を受領する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ミッション達成報酬を受領する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ミッション達成報酬を受領する
-     * @return ReceiveByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): ReceiveByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ミッショングループ名 */
+    /** @var string */
     private $missionGroupName;
-
-    /**
-     * ミッショングループ名を取得
-     *
-     * @return string|null ミッション達成報酬を受領する
-     */
-    public function getMissionGroupName(): ?string {
-        return $this->missionGroupName;
-    }
-
-    /**
-     * ミッショングループ名を設定
-     *
-     * @param string $missionGroupName ミッション達成報酬を受領する
-     */
-    public function setMissionGroupName(string $missionGroupName = null) {
-        $this->missionGroupName = $missionGroupName;
-    }
-
-    /**
-     * ミッショングループ名を設定
-     *
-     * @param string $missionGroupName ミッション達成報酬を受領する
-     * @return ReceiveByUserIdRequest $this
-     */
-    public function withMissionGroupName(string $missionGroupName = null): ReceiveByUserIdRequest {
-        $this->setMissionGroupName($missionGroupName);
-        return $this;
-    }
-
-    /** @var string タスク名 */
+    /** @var string */
     private $missionTaskName;
-
-    /**
-     * タスク名を取得
-     *
-     * @return string|null ミッション達成報酬を受領する
-     */
-    public function getMissionTaskName(): ?string {
-        return $this->missionTaskName;
-    }
-
-    /**
-     * タスク名を設定
-     *
-     * @param string $missionTaskName ミッション達成報酬を受領する
-     */
-    public function setMissionTaskName(string $missionTaskName = null) {
-        $this->missionTaskName = $missionTaskName;
-    }
-
-    /**
-     * タスク名を設定
-     *
-     * @param string $missionTaskName ミッション達成報酬を受領する
-     * @return ReceiveByUserIdRequest $this
-     */
-    public function withMissionTaskName(string $missionTaskName = null): ReceiveByUserIdRequest {
-        $this->setMissionTaskName($missionTaskName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
 
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ミッション達成報酬を受領する
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): ReceiveByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getMissionGroupName(): ?string {
+		return $this->missionGroupName;
+	}
+
+	public function setMissionGroupName(?string $missionGroupName) {
+		$this->missionGroupName = $missionGroupName;
+	}
+
+	public function withMissionGroupName(?string $missionGroupName): ReceiveByUserIdRequest {
+		$this->missionGroupName = $missionGroupName;
+		return $this;
+	}
+
+	public function getMissionTaskName(): ?string {
+		return $this->missionTaskName;
+	}
+
+	public function setMissionTaskName(?string $missionTaskName) {
+		$this->missionTaskName = $missionTaskName;
+	}
+
+	public function withMissionTaskName(?string $missionTaskName): ReceiveByUserIdRequest {
+		$this->missionTaskName = $missionTaskName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): ReceiveByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ReceiveByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new ReceiveByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName'])
+            ->withMissionTaskName(empty($data['missionTaskName']) ? null : $data['missionTaskName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ミッション達成報酬を受領する
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "missionGroupName" => $this->getMissionGroupName(),
+            "missionTaskName" => $this->getMissionTaskName(),
+            "userId" => $this->getUserId(),
+        );
     }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ミッション達成報酬を受領する
-     * @return ReceiveByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): ReceiveByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ミッション達成報酬を受領する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ミッション達成報酬を受領する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ミッション達成報酬を受領する
-     * @return ReceiveByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): ReceiveByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

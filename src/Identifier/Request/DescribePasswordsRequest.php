@@ -19,107 +19,68 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * パスワードの一覧を取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribePasswordsRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
-
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null パスワードの一覧を取得します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName パスワードの一覧を取得します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName パスワードの一覧を取得します
-     * @return DescribePasswordsRequest $this
-     */
-    public function withUserName(string $userName = null): DescribePasswordsRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null パスワードの一覧を取得します
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken パスワードの一覧を取得します
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken パスワードの一覧を取得します
-     * @return DescribePasswordsRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribePasswordsRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null パスワードの一覧を取得します
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): DescribePasswordsRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribePasswordsRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribePasswordsRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribePasswordsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribePasswordsRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit パスワードの一覧を取得します
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit パスワードの一覧を取得します
-     * @return DescribePasswordsRequest $this
-     */
-    public function withLimit(int $limit = null): DescribePasswordsRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
 }

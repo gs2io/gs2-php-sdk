@@ -19,242 +19,142 @@ namespace Gs2\Matchmaking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 投票状況
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Vote implements IModel {
 	/**
-     * @var string 投票状況
+     * @var string
 	 */
-	protected $voteId;
-
+	private $voteId;
 	/**
-	 * 投票状況を取得
-	 *
-	 * @return string|null 投票状況
+     * @var string
 	 */
+	private $ratingName;
+	/**
+     * @var string
+	 */
+	private $gatheringName;
+	/**
+     * @var array
+	 */
+	private $writtenBallots;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getVoteId(): ?string {
 		return $this->voteId;
 	}
 
-	/**
-	 * 投票状況を設定
-	 *
-	 * @param string|null $voteId 投票状況
-	 */
 	public function setVoteId(?string $voteId) {
 		$this->voteId = $voteId;
 	}
 
-	/**
-	 * 投票状況を設定
-	 *
-	 * @param string|null $voteId 投票状況
-	 * @return Vote $this
-	 */
 	public function withVoteId(?string $voteId): Vote {
 		$this->voteId = $voteId;
 		return $this;
 	}
-	/**
-     * @var string レーティング名
-	 */
-	protected $ratingName;
 
-	/**
-	 * レーティング名を取得
-	 *
-	 * @return string|null レーティング名
-	 */
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
 
-	/**
-	 * レーティング名を設定
-	 *
-	 * @param string|null $ratingName レーティング名
-	 */
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
 
-	/**
-	 * レーティング名を設定
-	 *
-	 * @param string|null $ratingName レーティング名
-	 * @return Vote $this
-	 */
 	public function withRatingName(?string $ratingName): Vote {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
-	/**
-     * @var string 投票対象のギャザリング名
-	 */
-	protected $gatheringName;
 
-	/**
-	 * 投票対象のギャザリング名を取得
-	 *
-	 * @return string|null 投票対象のギャザリング名
-	 */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
 
-	/**
-	 * 投票対象のギャザリング名を設定
-	 *
-	 * @param string|null $gatheringName 投票対象のギャザリング名
-	 */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
 
-	/**
-	 * 投票対象のギャザリング名を設定
-	 *
-	 * @param string|null $gatheringName 投票対象のギャザリング名
-	 * @return Vote $this
-	 */
 	public function withGatheringName(?string $gatheringName): Vote {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
-	/**
-     * @var WrittenBallot[] 投票用紙のリスト
-	 */
-	protected $writtenBallots;
 
-	/**
-	 * 投票用紙のリストを取得
-	 *
-	 * @return WrittenBallot[]|null 投票用紙のリスト
-	 */
 	public function getWrittenBallots(): ?array {
 		return $this->writtenBallots;
 	}
 
-	/**
-	 * 投票用紙のリストを設定
-	 *
-	 * @param WrittenBallot[]|null $writtenBallots 投票用紙のリスト
-	 */
 	public function setWrittenBallots(?array $writtenBallots) {
 		$this->writtenBallots = $writtenBallots;
 	}
 
-	/**
-	 * 投票用紙のリストを設定
-	 *
-	 * @param WrittenBallot[]|null $writtenBallots 投票用紙のリスト
-	 * @return Vote $this
-	 */
 	public function withWrittenBallots(?array $writtenBallots): Vote {
 		$this->writtenBallots = $writtenBallots;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return Vote $this
-	 */
 	public function withCreatedAt(?int $createdAt): Vote {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return Vote $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): Vote {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "voteId" => $this->voteId,
-            "ratingName" => $this->ratingName,
-            "gatheringName" => $this->gatheringName,
-            "writtenBallots" => array_map(
-                function (WrittenBallot $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?Vote {
+        if ($data === null) {
+            return null;
+        }
+        return (new Vote())
+            ->withVoteId(empty($data['voteId']) ? null : $data['voteId'])
+            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
+            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName'])
+            ->withWrittenBallots(array_map(
+                function ($item) {
+                    return WrittenBallot::fromJson($item);
                 },
-                $this->writtenBallots == null ? [] : $this->writtenBallots
-            ),
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+                array_key_exists('writtenBallots', $data) && $data['writtenBallots'] !== null ? $data['writtenBallots'] : []
+            ))
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): Vote {
-        $model = new Vote();
-        $model->setVoteId(isset($data["voteId"]) ? $data["voteId"] : null);
-        $model->setRatingName(isset($data["ratingName"]) ? $data["ratingName"] : null);
-        $model->setGatheringName(isset($data["gatheringName"]) ? $data["gatheringName"] : null);
-        $model->setWrittenBallots(array_map(
-                function ($v) {
-                    return WrittenBallot::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "voteId" => $this->getVoteId(),
+            "ratingName" => $this->getRatingName(),
+            "gatheringName" => $this->getGatheringName(),
+            "writtenBallots" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["writtenBallots"]) ? $data["writtenBallots"] : []
-            )
+                $this->getWrittenBallots() !== null && $this->getWrittenBallots() !== null ? $this->getWrittenBallots() : []
+            ),
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
         );
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
     }
 }

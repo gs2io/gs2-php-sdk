@@ -19,299 +19,153 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * アイテムをインベントリに追加 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class AcquireItemSetByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null アイテムをインベントリに追加
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName アイテムをインベントリに追加
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): AcquireItemSetByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリの種類名 */
+    /** @var string */
     private $inventoryName;
-
-    /**
-     * インベントリの種類名を取得
-     *
-     * @return string|null アイテムをインベントリに追加
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName アイテムをインベントリに追加
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): AcquireItemSetByUserIdRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
-    /** @var string アイテムマスターの名前 */
+    /** @var string */
     private $itemName;
-
-    /**
-     * アイテムマスターの名前を取得
-     *
-     * @return string|null アイテムをインベントリに追加
-     */
-    public function getItemName(): ?string {
-        return $this->itemName;
-    }
-
-    /**
-     * アイテムマスターの名前を設定
-     *
-     * @param string $itemName アイテムをインベントリに追加
-     */
-    public function setItemName(string $itemName = null) {
-        $this->itemName = $itemName;
-    }
-
-    /**
-     * アイテムマスターの名前を設定
-     *
-     * @param string $itemName アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withItemName(string $itemName = null): AcquireItemSetByUserIdRequest {
-        $this->setItemName($itemName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null アイテムをインベントリに追加
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId アイテムをインベントリに追加
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): AcquireItemSetByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int 入手する量 */
+    /** @var int */
     private $acquireCount;
-
-    /**
-     * 入手する量を取得
-     *
-     * @return int|null アイテムをインベントリに追加
-     */
-    public function getAcquireCount(): ?int {
-        return $this->acquireCount;
-    }
-
-    /**
-     * 入手する量を設定
-     *
-     * @param int $acquireCount アイテムをインベントリに追加
-     */
-    public function setAcquireCount(int $acquireCount = null) {
-        $this->acquireCount = $acquireCount;
-    }
-
-    /**
-     * 入手する量を設定
-     *
-     * @param int $acquireCount アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withAcquireCount(int $acquireCount = null): AcquireItemSetByUserIdRequest {
-        $this->setAcquireCount($acquireCount);
-        return $this;
-    }
-
-    /** @var int 有効期限 */
+    /** @var int */
     private $expiresAt;
-
-    /**
-     * 有効期限を取得
-     *
-     * @return int|null アイテムをインベントリに追加
-     */
-    public function getExpiresAt(): ?int {
-        return $this->expiresAt;
-    }
-
-    /**
-     * 有効期限を設定
-     *
-     * @param int $expiresAt アイテムをインベントリに追加
-     */
-    public function setExpiresAt(int $expiresAt = null) {
-        $this->expiresAt = $expiresAt;
-    }
-
-    /**
-     * 有効期限を設定
-     *
-     * @param int $expiresAt アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withExpiresAt(int $expiresAt = null): AcquireItemSetByUserIdRequest {
-        $this->setExpiresAt($expiresAt);
-        return $this;
-    }
-
-    /** @var bool 既存の ItemSet に空きがあったとしても、新しい ItemSet を作成するか */
+    /** @var bool */
     private $createNewItemSet;
-
-    /**
-     * 既存の ItemSet に空きがあったとしても、新しい ItemSet を作成するかを取得
-     *
-     * @return bool|null アイテムをインベントリに追加
-     */
-    public function getCreateNewItemSet(): ?bool {
-        return $this->createNewItemSet;
-    }
-
-    /**
-     * 既存の ItemSet に空きがあったとしても、新しい ItemSet を作成するかを設定
-     *
-     * @param bool $createNewItemSet アイテムをインベントリに追加
-     */
-    public function setCreateNewItemSet(bool $createNewItemSet = null) {
-        $this->createNewItemSet = $createNewItemSet;
-    }
-
-    /**
-     * 既存の ItemSet に空きがあったとしても、新しい ItemSet を作成するかを設定
-     *
-     * @param bool $createNewItemSet アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withCreateNewItemSet(bool $createNewItemSet = null): AcquireItemSetByUserIdRequest {
-        $this->setCreateNewItemSet($createNewItemSet);
-        return $this;
-    }
-
-    /** @var string 追加先のアイテムセットの名前 */
+    /** @var string */
     private $itemSetName;
 
-    /**
-     * 追加先のアイテムセットの名前を取得
-     *
-     * @return string|null アイテムをインベントリに追加
-     */
-    public function getItemSetName(): ?string {
-        return $this->itemSetName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): AcquireItemSetByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): AcquireItemSetByUserIdRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+	public function getItemName(): ?string {
+		return $this->itemName;
+	}
+
+	public function setItemName(?string $itemName) {
+		$this->itemName = $itemName;
+	}
+
+	public function withItemName(?string $itemName): AcquireItemSetByUserIdRequest {
+		$this->itemName = $itemName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): AcquireItemSetByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getAcquireCount(): ?int {
+		return $this->acquireCount;
+	}
+
+	public function setAcquireCount(?int $acquireCount) {
+		$this->acquireCount = $acquireCount;
+	}
+
+	public function withAcquireCount(?int $acquireCount): AcquireItemSetByUserIdRequest {
+		$this->acquireCount = $acquireCount;
+		return $this;
+	}
+
+	public function getExpiresAt(): ?int {
+		return $this->expiresAt;
+	}
+
+	public function setExpiresAt(?int $expiresAt) {
+		$this->expiresAt = $expiresAt;
+	}
+
+	public function withExpiresAt(?int $expiresAt): AcquireItemSetByUserIdRequest {
+		$this->expiresAt = $expiresAt;
+		return $this;
+	}
+
+	public function getCreateNewItemSet(): ?bool {
+		return $this->createNewItemSet;
+	}
+
+	public function setCreateNewItemSet(?bool $createNewItemSet) {
+		$this->createNewItemSet = $createNewItemSet;
+	}
+
+	public function withCreateNewItemSet(?bool $createNewItemSet): AcquireItemSetByUserIdRequest {
+		$this->createNewItemSet = $createNewItemSet;
+		return $this;
+	}
+
+	public function getItemSetName(): ?string {
+		return $this->itemSetName;
+	}
+
+	public function setItemSetName(?string $itemSetName) {
+		$this->itemSetName = $itemSetName;
+	}
+
+	public function withItemSetName(?string $itemSetName): AcquireItemSetByUserIdRequest {
+		$this->itemSetName = $itemSetName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AcquireItemSetByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new AcquireItemSetByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
+            ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withAcquireCount(empty($data['acquireCount']) ? null : $data['acquireCount'])
+            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt'])
+            ->withCreateNewItemSet(empty($data['createNewItemSet']) ? null : $data['createNewItemSet'])
+            ->withItemSetName(empty($data['itemSetName']) ? null : $data['itemSetName']);
     }
 
-    /**
-     * 追加先のアイテムセットの名前を設定
-     *
-     * @param string $itemSetName アイテムをインベントリに追加
-     */
-    public function setItemSetName(string $itemSetName = null) {
-        $this->itemSetName = $itemSetName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+            "itemName" => $this->getItemName(),
+            "userId" => $this->getUserId(),
+            "acquireCount" => $this->getAcquireCount(),
+            "expiresAt" => $this->getExpiresAt(),
+            "createNewItemSet" => $this->getCreateNewItemSet(),
+            "itemSetName" => $this->getItemSetName(),
+        );
     }
-
-    /**
-     * 追加先のアイテムセットの名前を設定
-     *
-     * @param string $itemSetName アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withItemSetName(string $itemSetName = null): AcquireItemSetByUserIdRequest {
-        $this->setItemSetName($itemSetName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null アイテムをインベントリに追加
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider アイテムをインベントリに追加
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider アイテムをインベントリに追加
-     * @return AcquireItemSetByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): AcquireItemSetByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

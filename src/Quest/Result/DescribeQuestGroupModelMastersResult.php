@@ -20,63 +20,61 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\QuestGroupModelMaster;
 
-/**
- * クエストグループマスターの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeQuestGroupModelMastersResult implements IResult {
-	/** @var QuestGroupModelMaster[] クエストグループマスターのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * クエストグループマスターのリストを取得
-	 *
-	 * @return QuestGroupModelMaster[]|null クエストグループマスターの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * クエストグループマスターのリストを設定
-	 *
-	 * @param QuestGroupModelMaster[]|null $items クエストグループマスターの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null クエストグループマスターの一覧を取得
-	 */
+	public function withItems(?array $items): DescribeQuestGroupModelMastersResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken クエストグループマスターの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeQuestGroupModelMastersResult {
-        $result = new DescribeQuestGroupModelMastersResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return QuestGroupModelMaster::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeQuestGroupModelMastersResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeQuestGroupModelMastersResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeQuestGroupModelMastersResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return QuestGroupModelMaster::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

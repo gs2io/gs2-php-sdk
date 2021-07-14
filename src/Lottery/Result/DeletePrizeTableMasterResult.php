@@ -18,38 +18,38 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\AcquireAction;
+use Gs2\Lottery\Model\Prize;
 use Gs2\Lottery\Model\PrizeTableMaster;
 
-/**
- * 排出確率テーブルマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeletePrizeTableMasterResult implements IResult {
-	/** @var PrizeTableMaster 削除した排出確率テーブルマスター */
-	private $item;
+    /** @var PrizeTableMaster */
+    private $item;
 
-	/**
-	 * 削除した排出確率テーブルマスターを取得
-	 *
-	 * @return PrizeTableMaster|null 排出確率テーブルマスターを削除
-	 */
 	public function getItem(): ?PrizeTableMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除した排出確率テーブルマスターを設定
-	 *
-	 * @param PrizeTableMaster|null $item 排出確率テーブルマスターを削除
-	 */
 	public function setItem(?PrizeTableMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeletePrizeTableMasterResult {
-        $result = new DeletePrizeTableMasterResult();
-        $result->setItem(isset($data["item"]) ? PrizeTableMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?PrizeTableMaster $item): DeletePrizeTableMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeletePrizeTableMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeletePrizeTableMasterResult())
+            ->withItem(empty($data['item']) ? null : PrizeTableMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

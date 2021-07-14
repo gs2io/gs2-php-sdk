@@ -20,84 +20,78 @@ namespace Gs2\News\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\News\Model\News;
 
-/**
- * ユーザIDを指定してお知らせ記事の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeNewsByUserIdResult implements IResult {
-	/** @var News[] お知らせ記事のリスト */
-	private $items;
-	/** @var string お知らせ記事データのハッシュ値 */
-	private $contentHash;
-	/** @var string テンプレートデータのハッシュ値 */
-	private $templateHash;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $contentHash;
+    /** @var string */
+    private $templateHash;
 
-	/**
-	 * お知らせ記事のリストを取得
-	 *
-	 * @return News[]|null ユーザIDを指定してお知らせ記事の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * お知らせ記事のリストを設定
-	 *
-	 * @param News[]|null $items ユーザIDを指定してお知らせ記事の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * お知らせ記事データのハッシュ値を取得
-	 *
-	 * @return string|null ユーザIDを指定してお知らせ記事の一覧を取得
-	 */
+	public function withItems(?array $items): DescribeNewsByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getContentHash(): ?string {
 		return $this->contentHash;
 	}
 
-	/**
-	 * お知らせ記事データのハッシュ値を設定
-	 *
-	 * @param string|null $contentHash ユーザIDを指定してお知らせ記事の一覧を取得
-	 */
 	public function setContentHash(?string $contentHash) {
 		$this->contentHash = $contentHash;
 	}
 
-	/**
-	 * テンプレートデータのハッシュ値を取得
-	 *
-	 * @return string|null ユーザIDを指定してお知らせ記事の一覧を取得
-	 */
+	public function withContentHash(?string $contentHash): DescribeNewsByUserIdResult {
+		$this->contentHash = $contentHash;
+		return $this;
+	}
+
 	public function getTemplateHash(): ?string {
 		return $this->templateHash;
 	}
 
-	/**
-	 * テンプレートデータのハッシュ値を設定
-	 *
-	 * @param string|null $templateHash ユーザIDを指定してお知らせ記事の一覧を取得
-	 */
 	public function setTemplateHash(?string $templateHash) {
 		$this->templateHash = $templateHash;
 	}
 
-    public static function fromJson(array $data): DescribeNewsByUserIdResult {
-        $result = new DescribeNewsByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return News::fromJson($v);
+	public function withTemplateHash(?string $templateHash): DescribeNewsByUserIdResult {
+		$this->templateHash = $templateHash;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeNewsByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeNewsByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return News::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withContentHash(empty($data['contentHash']) ? null : $data['contentHash'])
+            ->withTemplateHash(empty($data['templateHash']) ? null : $data['templateHash']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "contentHash" => $this->getContentHash(),
+            "templateHash" => $this->getTemplateHash(),
         );
-        $result->setContentHash(isset($data["contentHash"]) ? $data["contentHash"] : null);
-        $result->setTemplateHash(isset($data["templateHash"]) ? $data["templateHash"] : null);
-        return $result;
     }
 }

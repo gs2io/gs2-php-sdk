@@ -18,44 +18,47 @@
 namespace Gs2\Experience\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Experience\Model\Threshold;
 use Gs2\Experience\Model\ExperienceModel;
 
-/**
- * 経験値・ランクアップ閾値モデルの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeExperienceModelsResult implements IResult {
-	/** @var ExperienceModel[] 経験値・ランクアップ閾値モデルのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 経験値・ランクアップ閾値モデルのリストを取得
-	 *
-	 * @return ExperienceModel[]|null 経験値・ランクアップ閾値モデルの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 経験値・ランクアップ閾値モデルのリストを設定
-	 *
-	 * @param ExperienceModel[]|null $items 経験値・ランクアップ閾値モデルの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeExperienceModelsResult {
-        $result = new DescribeExperienceModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return ExperienceModel::fromJson($v);
+	public function withItems(?array $items): DescribeExperienceModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeExperienceModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeExperienceModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return ExperienceModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

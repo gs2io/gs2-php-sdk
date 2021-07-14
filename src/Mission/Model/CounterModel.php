@@ -19,207 +19,123 @@ namespace Gs2\Mission\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * カウンターの種類
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class CounterModel implements IModel {
 	/**
-     * @var string カウンターの種類
+     * @var string
 	 */
-	protected $counterId;
-
+	private $counterId;
 	/**
-	 * カウンターの種類を取得
-	 *
-	 * @return string|null カウンターの種類
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
+     * @var array
+	 */
+	private $scopes;
+	/**
+     * @var string
+	 */
+	private $challengePeriodEventId;
+
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
 
-	/**
-	 * カウンターの種類を設定
-	 *
-	 * @param string|null $counterId カウンターの種類
-	 */
 	public function setCounterId(?string $counterId) {
 		$this->counterId = $counterId;
 	}
 
-	/**
-	 * カウンターの種類を設定
-	 *
-	 * @param string|null $counterId カウンターの種類
-	 * @return CounterModel $this
-	 */
 	public function withCounterId(?string $counterId): CounterModel {
 		$this->counterId = $counterId;
 		return $this;
 	}
-	/**
-     * @var string カウンター名
-	 */
-	protected $name;
 
-	/**
-	 * カウンター名を取得
-	 *
-	 * @return string|null カウンター名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * カウンター名を設定
-	 *
-	 * @param string|null $name カウンター名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * カウンター名を設定
-	 *
-	 * @param string|null $name カウンター名
-	 * @return CounterModel $this
-	 */
 	public function withName(?string $name): CounterModel {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string メタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * メタデータを取得
-	 *
-	 * @return string|null メタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 * @return CounterModel $this
-	 */
 	public function withMetadata(?string $metadata): CounterModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var CounterScopeModel[] カウンターのリセットタイミング
-	 */
-	protected $scopes;
 
-	/**
-	 * カウンターのリセットタイミングを取得
-	 *
-	 * @return CounterScopeModel[]|null カウンターのリセットタイミング
-	 */
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
 
-	/**
-	 * カウンターのリセットタイミングを設定
-	 *
-	 * @param CounterScopeModel[]|null $scopes カウンターのリセットタイミング
-	 */
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
 
-	/**
-	 * カウンターのリセットタイミングを設定
-	 *
-	 * @param CounterScopeModel[]|null $scopes カウンターのリセットタイミング
-	 * @return CounterModel $this
-	 */
 	public function withScopes(?array $scopes): CounterModel {
 		$this->scopes = $scopes;
 		return $this;
 	}
-	/**
-     * @var string カウントアップ可能な期間を指定するイベントマスター のGRN
-	 */
-	protected $challengePeriodEventId;
 
-	/**
-	 * カウントアップ可能な期間を指定するイベントマスター のGRNを取得
-	 *
-	 * @return string|null カウントアップ可能な期間を指定するイベントマスター のGRN
-	 */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
 
-	/**
-	 * カウントアップ可能な期間を指定するイベントマスター のGRNを設定
-	 *
-	 * @param string|null $challengePeriodEventId カウントアップ可能な期間を指定するイベントマスター のGRN
-	 */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
 
-	/**
-	 * カウントアップ可能な期間を指定するイベントマスター のGRNを設定
-	 *
-	 * @param string|null $challengePeriodEventId カウントアップ可能な期間を指定するイベントマスター のGRN
-	 * @return CounterModel $this
-	 */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CounterModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "counterId" => $this->counterId,
-            "name" => $this->name,
-            "metadata" => $this->metadata,
-            "scopes" => array_map(
-                function (CounterScopeModel $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?CounterModel {
+        if ($data === null) {
+            return null;
+        }
+        return (new CounterModel())
+            ->withCounterId(empty($data['counterId']) ? null : $data['counterId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withScopes(array_map(
+                function ($item) {
+                    return CounterScopeModel::fromJson($item);
                 },
-                $this->scopes == null ? [] : $this->scopes
-            ),
-            "challengePeriodEventId" => $this->challengePeriodEventId,
-        );
+                array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
+            ))
+            ->withChallengePeriodEventId(empty($data['challengePeriodEventId']) ? null : $data['challengePeriodEventId']);
     }
 
-    public static function fromJson(array $data): CounterModel {
-        $model = new CounterModel();
-        $model->setCounterId(isset($data["counterId"]) ? $data["counterId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setScopes(array_map(
-                function ($v) {
-                    return CounterScopeModel::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "counterId" => $this->getCounterId(),
+            "name" => $this->getName(),
+            "metadata" => $this->getMetadata(),
+            "scopes" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["scopes"]) ? $data["scopes"] : []
-            )
+                $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
+            ),
+            "challengePeriodEventId" => $this->getChallengePeriodEventId(),
         );
-        $model->setChallengePeriodEventId(isset($data["challengePeriodEventId"]) ? $data["challengePeriodEventId"] : null);
-        return $model;
     }
 }

@@ -20,36 +20,34 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\TakeOver;
 
-/**
- * 引き継ぎ設定を更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateTakeOverByUserIdResult implements IResult {
-	/** @var TakeOver 引き継ぎ設定 */
-	private $item;
+    /** @var TakeOver */
+    private $item;
 
-	/**
-	 * 引き継ぎ設定を取得
-	 *
-	 * @return TakeOver|null 引き継ぎ設定を更新
-	 */
 	public function getItem(): ?TakeOver {
 		return $this->item;
 	}
 
-	/**
-	 * 引き継ぎ設定を設定
-	 *
-	 * @param TakeOver|null $item 引き継ぎ設定を更新
-	 */
 	public function setItem(?TakeOver $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateTakeOverByUserIdResult {
-        $result = new UpdateTakeOverByUserIdResult();
-        $result->setItem(isset($data["item"]) ? TakeOver::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?TakeOver $item): UpdateTakeOverByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateTakeOverByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateTakeOverByUserIdResult())
+            ->withItem(empty($data['item']) ? null : TakeOver::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

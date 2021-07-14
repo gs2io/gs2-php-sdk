@@ -19,75 +19,51 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 配信設定マスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteDistributorModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 配信設定マスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 配信設定マスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 配信設定マスターを削除
-     * @return DeleteDistributorModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteDistributorModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 配信設定名 */
+    /** @var string */
     private $distributorName;
 
-    /**
-     * 配信設定名を取得
-     *
-     * @return string|null 配信設定マスターを削除
-     */
-    public function getDistributorName(): ?string {
-        return $this->distributorName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteDistributorModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDistributorName(): ?string {
+		return $this->distributorName;
+	}
+
+	public function setDistributorName(?string $distributorName) {
+		$this->distributorName = $distributorName;
+	}
+
+	public function withDistributorName(?string $distributorName): DeleteDistributorModelMasterRequest {
+		$this->distributorName = $distributorName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteDistributorModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteDistributorModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDistributorName(empty($data['distributorName']) ? null : $data['distributorName']);
     }
 
-    /**
-     * 配信設定名を設定
-     *
-     * @param string $distributorName 配信設定マスターを削除
-     */
-    public function setDistributorName(string $distributorName = null) {
-        $this->distributorName = $distributorName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "distributorName" => $this->getDistributorName(),
+        );
     }
-
-    /**
-     * 配信設定名を設定
-     *
-     * @param string $distributorName 配信設定マスターを削除
-     * @return DeleteDistributorModelMasterRequest $this
-     */
-    public function withDistributorName(string $distributorName = null): DeleteDistributorModelMasterRequest {
-        $this->setDistributorName($distributorName);
-        return $this;
-    }
-
 }

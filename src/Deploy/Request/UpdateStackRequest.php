@@ -19,107 +19,68 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタックを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateStackRequest extends Gs2BasicRequest {
-
-    /** @var string スタック名 */
+    /** @var string */
     private $stackName;
-
-    /**
-     * スタック名を取得
-     *
-     * @return string|null スタックを更新
-     */
-    public function getStackName(): ?string {
-        return $this->stackName;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName スタックを更新
-     */
-    public function setStackName(string $stackName = null) {
-        $this->stackName = $stackName;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName スタックを更新
-     * @return UpdateStackRequest $this
-     */
-    public function withStackName(string $stackName = null): UpdateStackRequest {
-        $this->setStackName($stackName);
-        return $this;
-    }
-
-    /** @var string スタックの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * スタックの説明を取得
-     *
-     * @return string|null スタックを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * スタックの説明を設定
-     *
-     * @param string $description スタックを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * スタックの説明を設定
-     *
-     * @param string $description スタックを更新
-     * @return UpdateStackRequest $this
-     */
-    public function withDescription(string $description = null): UpdateStackRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string テンプレートデータ */
+    /** @var string */
     private $template;
 
-    /**
-     * テンプレートデータを取得
-     *
-     * @return string|null スタックを更新
-     */
-    public function getTemplate(): ?string {
-        return $this->template;
+	public function getStackName(): ?string {
+		return $this->stackName;
+	}
+
+	public function setStackName(?string $stackName) {
+		$this->stackName = $stackName;
+	}
+
+	public function withStackName(?string $stackName): UpdateStackRequest {
+		$this->stackName = $stackName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateStackRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getTemplate(): ?string {
+		return $this->template;
+	}
+
+	public function setTemplate(?string $template) {
+		$this->template = $template;
+	}
+
+	public function withTemplate(?string $template): UpdateStackRequest {
+		$this->template = $template;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateStackRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateStackRequest())
+            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withTemplate(empty($data['template']) ? null : $data['template']);
     }
 
-    /**
-     * テンプレートデータを設定
-     *
-     * @param string $template スタックを更新
-     */
-    public function setTemplate(string $template = null) {
-        $this->template = $template;
+    public function toJson(): array {
+        return array(
+            "stackName" => $this->getStackName(),
+            "description" => $this->getDescription(),
+            "template" => $this->getTemplate(),
+        );
     }
-
-    /**
-     * テンプレートデータを設定
-     *
-     * @param string $template スタックを更新
-     * @return UpdateStackRequest $this
-     */
-    public function withTemplate(string $template = null): UpdateStackRequest {
-        $this->setTemplate($template);
-        return $this;
-    }
-
 }

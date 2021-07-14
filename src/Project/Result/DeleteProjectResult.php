@@ -20,36 +20,34 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Project;
 
-/**
- * プロジェクトを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteProjectResult implements IResult {
-	/** @var Project 削除したプロジェクト */
-	private $item;
+    /** @var Project */
+    private $item;
 
-	/**
-	 * 削除したプロジェクトを取得
-	 *
-	 * @return Project|null プロジェクトを削除
-	 */
 	public function getItem(): ?Project {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したプロジェクトを設定
-	 *
-	 * @param Project|null $item プロジェクトを削除
-	 */
 	public function setItem(?Project $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteProjectResult {
-        $result = new DeleteProjectResult();
-        $result->setItem(isset($data["item"]) ? Project::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Project $item): DeleteProjectResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteProjectResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteProjectResult())
+            ->withItem(empty($data['item']) ? null : Project::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

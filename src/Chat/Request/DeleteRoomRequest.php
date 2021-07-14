@@ -19,139 +19,68 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ルームを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRoomRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ルームを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを削除
-     * @return DeleteRoomRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteRoomRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null ルームを削除
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ルームを削除
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ルームを削除
-     * @return DeleteRoomRequest $this
-     */
-    public function withRoomName(string $roomName = null): DeleteRoomRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ルームを削除
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ルームを削除
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ルームを削除
-     * @return DeleteRoomRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteRoomRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
+    /** @var string */
     private $accessToken;
 
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteRoomRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): DeleteRoomRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): DeleteRoomRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRoomRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRoomRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
     }
 
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "accessToken" => $this->getAccessToken(),
+        );
     }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return DeleteRoomRequest this
-     */
-    public function withAccessToken(string $accessToken): DeleteRoomRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

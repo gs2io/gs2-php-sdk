@@ -19,15 +19,17 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ユーザIDを指定してスタミナを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteStaminaByUserIdResult implements IResult {
 
-    public static function fromJson(array $data): DeleteStaminaByUserIdResult {
-        $result = new DeleteStaminaByUserIdResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteStaminaByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteStaminaByUserIdResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

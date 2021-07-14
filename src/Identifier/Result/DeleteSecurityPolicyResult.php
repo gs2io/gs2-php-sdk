@@ -19,15 +19,17 @@ namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * セキュリティポリシーを削除します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteSecurityPolicyResult implements IResult {
 
-    public static function fromJson(array $data): DeleteSecurityPolicyResult {
-        $result = new DeleteSecurityPolicyResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteSecurityPolicyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteSecurityPolicyResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

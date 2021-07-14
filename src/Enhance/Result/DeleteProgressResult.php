@@ -20,36 +20,34 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\Progress;
 
-/**
- * 強化実行を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteProgressResult implements IResult {
-	/** @var Progress 強化実行 */
-	private $item;
+    /** @var Progress */
+    private $item;
 
-	/**
-	 * 強化実行を取得
-	 *
-	 * @return Progress|null 強化実行を取得
-	 */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
-	/**
-	 * 強化実行を設定
-	 *
-	 * @param Progress|null $item 強化実行を取得
-	 */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteProgressResult {
-        $result = new DeleteProgressResult();
-        $result->setItem(isset($data["item"]) ? Progress::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Progress $item): DeleteProgressResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteProgressResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteProgressResult())
+            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

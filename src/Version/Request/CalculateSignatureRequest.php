@@ -20,107 +20,68 @@ namespace Gs2\Version\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Version\Model\Version;
 
-/**
- * スタンプシートのタスクを実行する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CalculateSignatureRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタンプシートのタスクを実行する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタンプシートのタスクを実行する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタンプシートのタスクを実行する
-     * @return CalculateSignatureRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CalculateSignatureRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string バージョンの種類名 */
+    /** @var string */
     private $versionName;
-
-    /**
-     * バージョンの種類名を取得
-     *
-     * @return string|null スタンプシートのタスクを実行する
-     */
-    public function getVersionName(): ?string {
-        return $this->versionName;
-    }
-
-    /**
-     * バージョンの種類名を設定
-     *
-     * @param string $versionName スタンプシートのタスクを実行する
-     */
-    public function setVersionName(string $versionName = null) {
-        $this->versionName = $versionName;
-    }
-
-    /**
-     * バージョンの種類名を設定
-     *
-     * @param string $versionName スタンプシートのタスクを実行する
-     * @return CalculateSignatureRequest $this
-     */
-    public function withVersionName(string $versionName = null): CalculateSignatureRequest {
-        $this->setVersionName($versionName);
-        return $this;
-    }
-
-    /** @var Version バージョン */
+    /** @var Version */
     private $version;
 
-    /**
-     * バージョンを取得
-     *
-     * @return Version|null スタンプシートのタスクを実行する
-     */
-    public function getVersion(): ?Version {
-        return $this->version;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CalculateSignatureRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getVersionName(): ?string {
+		return $this->versionName;
+	}
+
+	public function setVersionName(?string $versionName) {
+		$this->versionName = $versionName;
+	}
+
+	public function withVersionName(?string $versionName): CalculateSignatureRequest {
+		$this->versionName = $versionName;
+		return $this;
+	}
+
+	public function getVersion(): ?Version {
+		return $this->version;
+	}
+
+	public function setVersion(?Version $version) {
+		$this->version = $version;
+	}
+
+	public function withVersion(?Version $version): CalculateSignatureRequest {
+		$this->version = $version;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CalculateSignatureRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CalculateSignatureRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withVersionName(empty($data['versionName']) ? null : $data['versionName'])
+            ->withVersion(empty($data['version']) ? null : Version::fromJson($data['version']));
     }
 
-    /**
-     * バージョンを設定
-     *
-     * @param Version $version スタンプシートのタスクを実行する
-     */
-    public function setVersion(Version $version = null) {
-        $this->version = $version;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "versionName" => $this->getVersionName(),
+            "version" => $this->getVersion() !== null ? $this->getVersion()->toJson() : null,
+        );
     }
-
-    /**
-     * バージョンを設定
-     *
-     * @param Version $version スタンプシートのタスクを実行する
-     * @return CalculateSignatureRequest $this
-     */
-    public function withVersion(Version $version = null): CalculateSignatureRequest {
-        $this->setVersion($version);
-        return $this;
-    }
-
 }

@@ -19,75 +19,51 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 現在有効なフォーム設定を更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentFormMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 現在有効なフォーム設定を更新します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 現在有効なフォーム設定を更新します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 現在有効なフォーム設定を更新します
-     * @return UpdateCurrentFormMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateCurrentFormMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string マスターデータ */
+    /** @var string */
     private $settings;
 
-    /**
-     * マスターデータを取得
-     *
-     * @return string|null 現在有効なフォーム設定を更新します
-     */
-    public function getSettings(): ?string {
-        return $this->settings;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateCurrentFormMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getSettings(): ?string {
+		return $this->settings;
+	}
+
+	public function setSettings(?string $settings) {
+		$this->settings = $settings;
+	}
+
+	public function withSettings(?string $settings): UpdateCurrentFormMasterRequest {
+		$this->settings = $settings;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentFormMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentFormMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withSettings(empty($data['settings']) ? null : $data['settings']);
     }
 
-    /**
-     * マスターデータを設定
-     *
-     * @param string $settings 現在有効なフォーム設定を更新します
-     */
-    public function setSettings(string $settings = null) {
-        $this->settings = $settings;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "settings" => $this->getSettings(),
+        );
     }
-
-    /**
-     * マスターデータを設定
-     *
-     * @param string $settings 現在有効なフォーム設定を更新します
-     * @return UpdateCurrentFormMasterRequest $this
-     */
-    public function withSettings(string $settings = null): UpdateCurrentFormMasterRequest {
-        $this->setSettings($settings);
-        return $this;
-    }
-
 }

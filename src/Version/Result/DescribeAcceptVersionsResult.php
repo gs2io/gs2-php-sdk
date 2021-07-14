@@ -18,65 +18,64 @@
 namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Version\Model\Version;
 use Gs2\Version\Model\AcceptVersion;
 
-/**
- * 承認したバージョンの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeAcceptVersionsResult implements IResult {
-	/** @var AcceptVersion[] 承認したバージョンのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 承認したバージョンのリストを取得
-	 *
-	 * @return AcceptVersion[]|null 承認したバージョンの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 承認したバージョンのリストを設定
-	 *
-	 * @param AcceptVersion[]|null $items 承認したバージョンの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null 承認したバージョンの一覧を取得
-	 */
+	public function withItems(?array $items): DescribeAcceptVersionsResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken 承認したバージョンの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeAcceptVersionsResult {
-        $result = new DescribeAcceptVersionsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return AcceptVersion::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeAcceptVersionsResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeAcceptVersionsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeAcceptVersionsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return AcceptVersion::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

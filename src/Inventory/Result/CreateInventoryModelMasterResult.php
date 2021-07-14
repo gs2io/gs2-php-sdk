@@ -20,36 +20,34 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\InventoryModelMaster;
 
-/**
- * インベントリモデルマスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateInventoryModelMasterResult implements IResult {
-	/** @var InventoryModelMaster 作成したインベントリモデルマスター */
-	private $item;
+    /** @var InventoryModelMaster */
+    private $item;
 
-	/**
-	 * 作成したインベントリモデルマスターを取得
-	 *
-	 * @return InventoryModelMaster|null インベントリモデルマスターを新規作成
-	 */
 	public function getItem(): ?InventoryModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したインベントリモデルマスターを設定
-	 *
-	 * @param InventoryModelMaster|null $item インベントリモデルマスターを新規作成
-	 */
 	public function setItem(?InventoryModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateInventoryModelMasterResult {
-        $result = new CreateInventoryModelMasterResult();
-        $result->setItem(isset($data["item"]) ? InventoryModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?InventoryModelMaster $item): CreateInventoryModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateInventoryModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateInventoryModelMasterResult())
+            ->withItem(empty($data['item']) ? null : InventoryModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

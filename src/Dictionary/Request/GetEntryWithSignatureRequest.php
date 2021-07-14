@@ -19,171 +19,85 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * エントリーを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetEntryWithSignatureRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null エントリーを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName エントリーを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName エントリーを取得
-     * @return GetEntryWithSignatureRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetEntryWithSignatureRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string エントリー名 */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $entryModelName;
-
-    /**
-     * エントリー名を取得
-     *
-     * @return string|null エントリーを取得
-     */
-    public function getEntryModelName(): ?string {
-        return $this->entryModelName;
-    }
-
-    /**
-     * エントリー名を設定
-     *
-     * @param string $entryModelName エントリーを取得
-     */
-    public function setEntryModelName(string $entryModelName = null) {
-        $this->entryModelName = $entryModelName;
-    }
-
-    /**
-     * エントリー名を設定
-     *
-     * @param string $entryModelName エントリーを取得
-     * @return GetEntryWithSignatureRequest $this
-     */
-    public function withEntryModelName(string $entryModelName = null): GetEntryWithSignatureRequest {
-        $this->setEntryModelName($entryModelName);
-        return $this;
-    }
-
-    /** @var string 署名の発行に使用する暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを取得
-     *
-     * @return string|null エントリーを取得
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetEntryWithSignatureRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): GetEntryWithSignatureRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getEntryModelName(): ?string {
+		return $this->entryModelName;
+	}
+
+	public function setEntryModelName(?string $entryModelName) {
+		$this->entryModelName = $entryModelName;
+	}
+
+	public function withEntryModelName(?string $entryModelName): GetEntryWithSignatureRequest {
+		$this->entryModelName = $entryModelName;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): GetEntryWithSignatureRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetEntryWithSignatureRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetEntryWithSignatureRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withEntryModelName(empty($data['entryModelName']) ? null : $data['entryModelName'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId エントリーを取得
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "entryModelName" => $this->getEntryModelName(),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId エントリーを取得
-     * @return GetEntryWithSignatureRequest $this
-     */
-    public function withKeyId(string $keyId = null): GetEntryWithSignatureRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null エントリーを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider エントリーを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider エントリーを取得
-     * @return GetEntryWithSignatureRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetEntryWithSignatureRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return GetEntryWithSignatureRequest this
-     */
-    public function withAccessToken(string $accessToken): GetEntryWithSignatureRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

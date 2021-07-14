@@ -20,36 +20,34 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\Password;
 
-/**
- * パスワードを新規作成します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreatePasswordResult implements IResult {
-	/** @var Password 作成したパスワード */
-	private $item;
+    /** @var Password */
+    private $item;
 
-	/**
-	 * 作成したパスワードを取得
-	 *
-	 * @return Password|null パスワードを新規作成します
-	 */
 	public function getItem(): ?Password {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したパスワードを設定
-	 *
-	 * @param Password|null $item パスワードを新規作成します
-	 */
 	public function setItem(?Password $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreatePasswordResult {
-        $result = new CreatePasswordResult();
-        $result->setItem(isset($data["item"]) ? Password::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Password $item): CreatePasswordResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreatePasswordResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreatePasswordResult())
+            ->withItem(empty($data['item']) ? null : Password::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -20,203 +20,112 @@ namespace Gs2\Showcase\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Showcase\Model\Config;
 
-/**
- * 陳列棚を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class BuyRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 陳列棚を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 陳列棚を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 陳列棚を取得
-     * @return BuyRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): BuyRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 商品名 */
+    /** @var string */
     private $showcaseName;
-
-    /**
-     * 商品名を取得
-     *
-     * @return string|null 陳列棚を取得
-     */
-    public function getShowcaseName(): ?string {
-        return $this->showcaseName;
-    }
-
-    /**
-     * 商品名を設定
-     *
-     * @param string $showcaseName 陳列棚を取得
-     */
-    public function setShowcaseName(string $showcaseName = null) {
-        $this->showcaseName = $showcaseName;
-    }
-
-    /**
-     * 商品名を設定
-     *
-     * @param string $showcaseName 陳列棚を取得
-     * @return BuyRequest $this
-     */
-    public function withShowcaseName(string $showcaseName = null): BuyRequest {
-        $this->setShowcaseName($showcaseName);
-        return $this;
-    }
-
-    /** @var string 陳列商品ID */
+    /** @var string */
     private $displayItemId;
-
-    /**
-     * 陳列商品IDを取得
-     *
-     * @return string|null 陳列棚を取得
-     */
-    public function getDisplayItemId(): ?string {
-        return $this->displayItemId;
-    }
-
-    /**
-     * 陳列商品IDを設定
-     *
-     * @param string $displayItemId 陳列棚を取得
-     */
-    public function setDisplayItemId(string $displayItemId = null) {
-        $this->displayItemId = $displayItemId;
-    }
-
-    /**
-     * 陳列商品IDを設定
-     *
-     * @param string $displayItemId 陳列棚を取得
-     * @return BuyRequest $this
-     */
-    public function withDisplayItemId(string $displayItemId = null): BuyRequest {
-        $this->setDisplayItemId($displayItemId);
-        return $this;
-    }
-
-    /** @var Config[] 設定値 */
+    /** @var string */
+    private $accessToken;
+    /** @var array */
     private $config;
 
-    /**
-     * 設定値を取得
-     *
-     * @return Config[]|null 陳列棚を取得
-     */
-    public function getConfig(): ?array {
-        return $this->config;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): BuyRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getShowcaseName(): ?string {
+		return $this->showcaseName;
+	}
+
+	public function setShowcaseName(?string $showcaseName) {
+		$this->showcaseName = $showcaseName;
+	}
+
+	public function withShowcaseName(?string $showcaseName): BuyRequest {
+		$this->showcaseName = $showcaseName;
+		return $this;
+	}
+
+	public function getDisplayItemId(): ?string {
+		return $this->displayItemId;
+	}
+
+	public function setDisplayItemId(?string $displayItemId) {
+		$this->displayItemId = $displayItemId;
+	}
+
+	public function withDisplayItemId(?string $displayItemId): BuyRequest {
+		$this->displayItemId = $displayItemId;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): BuyRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+
+	public function withConfig(?array $config): BuyRequest {
+		$this->config = $config;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?BuyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new BuyRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withShowcaseName(empty($data['showcaseName']) ? null : $data['showcaseName'])
+            ->withDisplayItemId(empty($data['displayItemId']) ? null : $data['displayItemId'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    /**
-     * 設定値を設定
-     *
-     * @param Config[] $config 陳列棚を取得
-     */
-    public function setConfig(array $config = null) {
-        $this->config = $config;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "showcaseName" => $this->getShowcaseName(),
+            "displayItemId" => $this->getDisplayItemId(),
+            "accessToken" => $this->getAccessToken(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
+        );
     }
-
-    /**
-     * 設定値を設定
-     *
-     * @param Config[] $config 陳列棚を取得
-     * @return BuyRequest $this
-     */
-    public function withConfig(array $config = null): BuyRequest {
-        $this->setConfig($config);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 陳列棚を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 陳列棚を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 陳列棚を取得
-     * @return BuyRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): BuyRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return BuyRequest this
-     */
-    public function withAccessToken(string $accessToken): BuyRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

@@ -20,42 +20,44 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\Rating;
 
-/**
- * レーティング値の再計算を実行 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class PutResultResult implements IResult {
-	/** @var Rating[] 更新後の{model_name}の一覧 */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 更新後の{model_name}の一覧を取得
-	 *
-	 * @return Rating[]|null レーティング値の再計算を実行
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 更新後の{model_name}の一覧を設定
-	 *
-	 * @param Rating[]|null $items レーティング値の再計算を実行
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): PutResultResult {
-        $result = new PutResultResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Rating::fromJson($v);
+	public function withItems(?array $items): PutResultResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PutResultResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new PutResultResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Rating::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

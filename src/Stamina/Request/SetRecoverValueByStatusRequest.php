@@ -19,235 +19,119 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタミナの最大値をGS2-Experienceのステータスを使用して更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetRecoverValueByStatusRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     * @return SetRecoverValueByStatusRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): SetRecoverValueByStatusRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナの種類名 */
+    /** @var string */
     private $staminaName;
-
-    /**
-     * スタミナの種類名を取得
-     *
-     * @return string|null スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function getStaminaName(): ?string {
-        return $this->staminaName;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function setStaminaName(string $staminaName = null) {
-        $this->staminaName = $staminaName;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     * @return SetRecoverValueByStatusRequest $this
-     */
-    public function withStaminaName(string $staminaName = null): SetRecoverValueByStatusRequest {
-        $this->setStaminaName($staminaName);
-        return $this;
-    }
-
-    /** @var string 署名をつけるのに使用した暗号鍵 のGRN */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $keyId;
-
-    /**
-     * 署名をつけるのに使用した暗号鍵 のGRNを取得
-     *
-     * @return string|null スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
-    }
-
-    /**
-     * 署名をつけるのに使用した暗号鍵 のGRNを設定
-     *
-     * @param string $keyId スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
-    }
-
-    /**
-     * 署名をつけるのに使用した暗号鍵 のGRNを設定
-     *
-     * @param string $keyId スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     * @return SetRecoverValueByStatusRequest $this
-     */
-    public function withKeyId(string $keyId = null): SetRecoverValueByStatusRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 署名対象のステータスボディ */
+    /** @var string */
     private $signedStatusBody;
-
-    /**
-     * 署名対象のステータスボディを取得
-     *
-     * @return string|null スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function getSignedStatusBody(): ?string {
-        return $this->signedStatusBody;
-    }
-
-    /**
-     * 署名対象のステータスボディを設定
-     *
-     * @param string $signedStatusBody スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function setSignedStatusBody(string $signedStatusBody = null) {
-        $this->signedStatusBody = $signedStatusBody;
-    }
-
-    /**
-     * 署名対象のステータスボディを設定
-     *
-     * @param string $signedStatusBody スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     * @return SetRecoverValueByStatusRequest $this
-     */
-    public function withSignedStatusBody(string $signedStatusBody = null): SetRecoverValueByStatusRequest {
-        $this->setSignedStatusBody($signedStatusBody);
-        return $this;
-    }
-
-    /** @var string ステータスの署名 */
+    /** @var string */
     private $signedStatusSignature;
 
-    /**
-     * ステータスの署名を取得
-     *
-     * @return string|null スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function getSignedStatusSignature(): ?string {
-        return $this->signedStatusSignature;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): SetRecoverValueByStatusRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getStaminaName(): ?string {
+		return $this->staminaName;
+	}
+
+	public function setStaminaName(?string $staminaName) {
+		$this->staminaName = $staminaName;
+	}
+
+	public function withStaminaName(?string $staminaName): SetRecoverValueByStatusRequest {
+		$this->staminaName = $staminaName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): SetRecoverValueByStatusRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): SetRecoverValueByStatusRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+	public function getSignedStatusBody(): ?string {
+		return $this->signedStatusBody;
+	}
+
+	public function setSignedStatusBody(?string $signedStatusBody) {
+		$this->signedStatusBody = $signedStatusBody;
+	}
+
+	public function withSignedStatusBody(?string $signedStatusBody): SetRecoverValueByStatusRequest {
+		$this->signedStatusBody = $signedStatusBody;
+		return $this;
+	}
+
+	public function getSignedStatusSignature(): ?string {
+		return $this->signedStatusSignature;
+	}
+
+	public function setSignedStatusSignature(?string $signedStatusSignature) {
+		$this->signedStatusSignature = $signedStatusSignature;
+	}
+
+	public function withSignedStatusSignature(?string $signedStatusSignature): SetRecoverValueByStatusRequest {
+		$this->signedStatusSignature = $signedStatusSignature;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetRecoverValueByStatusRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetRecoverValueByStatusRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withSignedStatusBody(empty($data['signedStatusBody']) ? null : $data['signedStatusBody'])
+            ->withSignedStatusSignature(empty($data['signedStatusSignature']) ? null : $data['signedStatusSignature']);
     }
 
-    /**
-     * ステータスの署名を設定
-     *
-     * @param string $signedStatusSignature スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function setSignedStatusSignature(string $signedStatusSignature = null) {
-        $this->signedStatusSignature = $signedStatusSignature;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "staminaName" => $this->getStaminaName(),
+            "accessToken" => $this->getAccessToken(),
+            "keyId" => $this->getKeyId(),
+            "signedStatusBody" => $this->getSignedStatusBody(),
+            "signedStatusSignature" => $this->getSignedStatusSignature(),
+        );
     }
-
-    /**
-     * ステータスの署名を設定
-     *
-     * @param string $signedStatusSignature スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     * @return SetRecoverValueByStatusRequest $this
-     */
-    public function withSignedStatusSignature(string $signedStatusSignature = null): SetRecoverValueByStatusRequest {
-        $this->setSignedStatusSignature($signedStatusSignature);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタミナの最大値をGS2-Experienceのステータスを使用して更新
-     * @return SetRecoverValueByStatusRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): SetRecoverValueByStatusRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return SetRecoverValueByStatusRequest this
-     */
-    public function withAccessToken(string $accessToken): SetRecoverValueByStatusRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

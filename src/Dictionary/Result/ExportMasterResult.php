@@ -20,36 +20,34 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\CurrentEntryMaster;
 
-/**
- * 現在有効なエントリー設定のマスターデータをエクスポートします のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ExportMasterResult implements IResult {
-	/** @var CurrentEntryMaster 現在有効なエントリー設定 */
-	private $item;
+    /** @var CurrentEntryMaster */
+    private $item;
 
-	/**
-	 * 現在有効なエントリー設定を取得
-	 *
-	 * @return CurrentEntryMaster|null 現在有効なエントリー設定のマスターデータをエクスポートします
-	 */
 	public function getItem(): ?CurrentEntryMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効なエントリー設定を設定
-	 *
-	 * @param CurrentEntryMaster|null $item 現在有効なエントリー設定のマスターデータをエクスポートします
-	 */
 	public function setItem(?CurrentEntryMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): ExportMasterResult {
-        $result = new ExportMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentEntryMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentEntryMaster $item): ExportMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ExportMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ExportMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentEntryMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

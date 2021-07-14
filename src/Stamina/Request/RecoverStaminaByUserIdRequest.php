@@ -19,171 +19,85 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してスタミナを回復 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class RecoverStaminaByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してスタミナを回復
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してスタミナを回復
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してスタミナを回復
-     * @return RecoverStaminaByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): RecoverStaminaByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナの種類名 */
+    /** @var string */
     private $staminaName;
-
-    /**
-     * スタミナの種類名を取得
-     *
-     * @return string|null ユーザIDを指定してスタミナを回復
-     */
-    public function getStaminaName(): ?string {
-        return $this->staminaName;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName ユーザIDを指定してスタミナを回復
-     */
-    public function setStaminaName(string $staminaName = null) {
-        $this->staminaName = $staminaName;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName ユーザIDを指定してスタミナを回復
-     * @return RecoverStaminaByUserIdRequest $this
-     */
-    public function withStaminaName(string $staminaName = null): RecoverStaminaByUserIdRequest {
-        $this->setStaminaName($staminaName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してスタミナを回復
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してスタミナを回復
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してスタミナを回復
-     * @return RecoverStaminaByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): RecoverStaminaByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int 回復するスタミナ量 */
+    /** @var int */
     private $recoverValue;
 
-    /**
-     * 回復するスタミナ量を取得
-     *
-     * @return int|null ユーザIDを指定してスタミナを回復
-     */
-    public function getRecoverValue(): ?int {
-        return $this->recoverValue;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): RecoverStaminaByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getStaminaName(): ?string {
+		return $this->staminaName;
+	}
+
+	public function setStaminaName(?string $staminaName) {
+		$this->staminaName = $staminaName;
+	}
+
+	public function withStaminaName(?string $staminaName): RecoverStaminaByUserIdRequest {
+		$this->staminaName = $staminaName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): RecoverStaminaByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getRecoverValue(): ?int {
+		return $this->recoverValue;
+	}
+
+	public function setRecoverValue(?int $recoverValue) {
+		$this->recoverValue = $recoverValue;
+	}
+
+	public function withRecoverValue(?int $recoverValue): RecoverStaminaByUserIdRequest {
+		$this->recoverValue = $recoverValue;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RecoverStaminaByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new RecoverStaminaByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withRecoverValue(empty($data['recoverValue']) ? null : $data['recoverValue']);
     }
 
-    /**
-     * 回復するスタミナ量を設定
-     *
-     * @param int $recoverValue ユーザIDを指定してスタミナを回復
-     */
-    public function setRecoverValue(int $recoverValue = null) {
-        $this->recoverValue = $recoverValue;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "staminaName" => $this->getStaminaName(),
+            "userId" => $this->getUserId(),
+            "recoverValue" => $this->getRecoverValue(),
+        );
     }
-
-    /**
-     * 回復するスタミナ量を設定
-     *
-     * @param int $recoverValue ユーザIDを指定してスタミナを回復
-     * @return RecoverStaminaByUserIdRequest $this
-     */
-    public function withRecoverValue(int $recoverValue = null): RecoverStaminaByUserIdRequest {
-        $this->setRecoverValue($recoverValue);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してスタミナを回復
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してスタミナを回復
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してスタミナを回復
-     * @return RecoverStaminaByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): RecoverStaminaByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

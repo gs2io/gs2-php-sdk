@@ -19,75 +19,51 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * データオブジェクトの管理情報を修復する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class RestoreDataObjectRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null データオブジェクトの管理情報を修復する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクトの管理情報を修復する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクトの管理情報を修復する
-     * @return RestoreDataObjectRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): RestoreDataObjectRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string データオブジェクト */
+    /** @var string */
     private $dataObjectId;
 
-    /**
-     * データオブジェクトを取得
-     *
-     * @return string|null データオブジェクトの管理情報を修復する
-     */
-    public function getDataObjectId(): ?string {
-        return $this->dataObjectId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): RestoreDataObjectRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDataObjectId(): ?string {
+		return $this->dataObjectId;
+	}
+
+	public function setDataObjectId(?string $dataObjectId) {
+		$this->dataObjectId = $dataObjectId;
+	}
+
+	public function withDataObjectId(?string $dataObjectId): RestoreDataObjectRequest {
+		$this->dataObjectId = $dataObjectId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RestoreDataObjectRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new RestoreDataObjectRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDataObjectId(empty($data['dataObjectId']) ? null : $data['dataObjectId']);
     }
 
-    /**
-     * データオブジェクトを設定
-     *
-     * @param string $dataObjectId データオブジェクトの管理情報を修復する
-     */
-    public function setDataObjectId(string $dataObjectId = null) {
-        $this->dataObjectId = $dataObjectId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "dataObjectId" => $this->getDataObjectId(),
+        );
     }
-
-    /**
-     * データオブジェクトを設定
-     *
-     * @param string $dataObjectId データオブジェクトの管理情報を修復する
-     * @return RestoreDataObjectRequest $this
-     */
-    public function withDataObjectId(string $dataObjectId = null): RestoreDataObjectRequest {
-        $this->setDataObjectId($dataObjectId);
-        return $this;
-    }
-
 }

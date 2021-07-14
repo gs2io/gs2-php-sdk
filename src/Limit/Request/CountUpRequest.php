@@ -19,235 +19,119 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * カウントアップ のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CountUpRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null カウントアップ
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カウントアップ
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カウントアップ
-     * @return CountUpRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CountUpRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 回数制限の種類の名前 */
+    /** @var string */
     private $limitName;
-
-    /**
-     * 回数制限の種類の名前を取得
-     *
-     * @return string|null カウントアップ
-     */
-    public function getLimitName(): ?string {
-        return $this->limitName;
-    }
-
-    /**
-     * 回数制限の種類の名前を設定
-     *
-     * @param string $limitName カウントアップ
-     */
-    public function setLimitName(string $limitName = null) {
-        $this->limitName = $limitName;
-    }
-
-    /**
-     * 回数制限の種類の名前を設定
-     *
-     * @param string $limitName カウントアップ
-     * @return CountUpRequest $this
-     */
-    public function withLimitName(string $limitName = null): CountUpRequest {
-        $this->setLimitName($limitName);
-        return $this;
-    }
-
-    /** @var string カウンターの名前 */
+    /** @var string */
     private $counterName;
-
-    /**
-     * カウンターの名前を取得
-     *
-     * @return string|null カウントアップ
-     */
-    public function getCounterName(): ?string {
-        return $this->counterName;
-    }
-
-    /**
-     * カウンターの名前を設定
-     *
-     * @param string $counterName カウントアップ
-     */
-    public function setCounterName(string $counterName = null) {
-        $this->counterName = $counterName;
-    }
-
-    /**
-     * カウンターの名前を設定
-     *
-     * @param string $counterName カウントアップ
-     * @return CountUpRequest $this
-     */
-    public function withCounterName(string $counterName = null): CountUpRequest {
-        $this->setCounterName($counterName);
-        return $this;
-    }
-
-    /** @var int カウントアップする量 */
+    /** @var string */
+    private $accessToken;
+    /** @var int */
     private $countUpValue;
-
-    /**
-     * カウントアップする量を取得
-     *
-     * @return int|null カウントアップ
-     */
-    public function getCountUpValue(): ?int {
-        return $this->countUpValue;
-    }
-
-    /**
-     * カウントアップする量を設定
-     *
-     * @param int $countUpValue カウントアップ
-     */
-    public function setCountUpValue(int $countUpValue = null) {
-        $this->countUpValue = $countUpValue;
-    }
-
-    /**
-     * カウントアップする量を設定
-     *
-     * @param int $countUpValue カウントアップ
-     * @return CountUpRequest $this
-     */
-    public function withCountUpValue(int $countUpValue = null): CountUpRequest {
-        $this->setCountUpValue($countUpValue);
-        return $this;
-    }
-
-    /** @var int カウントアップを許容する最大値 を入力してください */
+    /** @var int */
     private $maxValue;
 
-    /**
-     * カウントアップを許容する最大値 を入力してくださいを取得
-     *
-     * @return int|null カウントアップ
-     */
-    public function getMaxValue(): ?int {
-        return $this->maxValue;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CountUpRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getLimitName(): ?string {
+		return $this->limitName;
+	}
+
+	public function setLimitName(?string $limitName) {
+		$this->limitName = $limitName;
+	}
+
+	public function withLimitName(?string $limitName): CountUpRequest {
+		$this->limitName = $limitName;
+		return $this;
+	}
+
+	public function getCounterName(): ?string {
+		return $this->counterName;
+	}
+
+	public function setCounterName(?string $counterName) {
+		$this->counterName = $counterName;
+	}
+
+	public function withCounterName(?string $counterName): CountUpRequest {
+		$this->counterName = $counterName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): CountUpRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getCountUpValue(): ?int {
+		return $this->countUpValue;
+	}
+
+	public function setCountUpValue(?int $countUpValue) {
+		$this->countUpValue = $countUpValue;
+	}
+
+	public function withCountUpValue(?int $countUpValue): CountUpRequest {
+		$this->countUpValue = $countUpValue;
+		return $this;
+	}
+
+	public function getMaxValue(): ?int {
+		return $this->maxValue;
+	}
+
+	public function setMaxValue(?int $maxValue) {
+		$this->maxValue = $maxValue;
+	}
+
+	public function withMaxValue(?int $maxValue): CountUpRequest {
+		$this->maxValue = $maxValue;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CountUpRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CountUpRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withLimitName(empty($data['limitName']) ? null : $data['limitName'])
+            ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withCountUpValue(empty($data['countUpValue']) ? null : $data['countUpValue'])
+            ->withMaxValue(empty($data['maxValue']) ? null : $data['maxValue']);
     }
 
-    /**
-     * カウントアップを許容する最大値 を入力してくださいを設定
-     *
-     * @param int $maxValue カウントアップ
-     */
-    public function setMaxValue(int $maxValue = null) {
-        $this->maxValue = $maxValue;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "limitName" => $this->getLimitName(),
+            "counterName" => $this->getCounterName(),
+            "accessToken" => $this->getAccessToken(),
+            "countUpValue" => $this->getCountUpValue(),
+            "maxValue" => $this->getMaxValue(),
+        );
     }
-
-    /**
-     * カウントアップを許容する最大値 を入力してくださいを設定
-     *
-     * @param int $maxValue カウントアップ
-     * @return CountUpRequest $this
-     */
-    public function withMaxValue(int $maxValue = null): CountUpRequest {
-        $this->setMaxValue($maxValue);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null カウントアップ
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider カウントアップ
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider カウントアップ
-     * @return CountUpRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): CountUpRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return CountUpRequest this
-     */
-    public function withAccessToken(string $accessToken): CountUpRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

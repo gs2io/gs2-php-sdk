@@ -19,75 +19,51 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザを新規作成します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateUserRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $name;
-
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null ユーザを新規作成します
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $name ユーザを新規作成します
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $name ユーザを新規作成します
-     * @return CreateUserRequest $this
-     */
-    public function withName(string $name = null): CreateUserRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string ユーザの説明 */
+    /** @var string */
     private $description;
 
-    /**
-     * ユーザの説明を取得
-     *
-     * @return string|null ユーザを新規作成します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateUserRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateUserRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateUserRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateUserRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description']);
     }
 
-    /**
-     * ユーザの説明を設定
-     *
-     * @param string $description ユーザを新規作成します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+        );
     }
-
-    /**
-     * ユーザの説明を設定
-     *
-     * @param string $description ユーザを新規作成します
-     * @return CreateUserRequest $this
-     */
-    public function withDescription(string $description = null): CreateUserRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
 }

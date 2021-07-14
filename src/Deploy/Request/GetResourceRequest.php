@@ -19,75 +19,51 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 作成されたのリソースを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetResourceRequest extends Gs2BasicRequest {
-
-    /** @var string スタック名 */
+    /** @var string */
     private $stackName;
-
-    /**
-     * スタック名を取得
-     *
-     * @return string|null 作成されたのリソースを取得
-     */
-    public function getStackName(): ?string {
-        return $this->stackName;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName 作成されたのリソースを取得
-     */
-    public function setStackName(string $stackName = null) {
-        $this->stackName = $stackName;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName 作成されたのリソースを取得
-     * @return GetResourceRequest $this
-     */
-    public function withStackName(string $stackName = null): GetResourceRequest {
-        $this->setStackName($stackName);
-        return $this;
-    }
-
-    /** @var string 作成中のリソース名 */
+    /** @var string */
     private $resourceName;
 
-    /**
-     * 作成中のリソース名を取得
-     *
-     * @return string|null 作成されたのリソースを取得
-     */
-    public function getResourceName(): ?string {
-        return $this->resourceName;
+	public function getStackName(): ?string {
+		return $this->stackName;
+	}
+
+	public function setStackName(?string $stackName) {
+		$this->stackName = $stackName;
+	}
+
+	public function withStackName(?string $stackName): GetResourceRequest {
+		$this->stackName = $stackName;
+		return $this;
+	}
+
+	public function getResourceName(): ?string {
+		return $this->resourceName;
+	}
+
+	public function setResourceName(?string $resourceName) {
+		$this->resourceName = $resourceName;
+	}
+
+	public function withResourceName(?string $resourceName): GetResourceRequest {
+		$this->resourceName = $resourceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetResourceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetResourceRequest())
+            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
+            ->withResourceName(empty($data['resourceName']) ? null : $data['resourceName']);
     }
 
-    /**
-     * 作成中のリソース名を設定
-     *
-     * @param string $resourceName 作成されたのリソースを取得
-     */
-    public function setResourceName(string $resourceName = null) {
-        $this->resourceName = $resourceName;
+    public function toJson(): array {
+        return array(
+            "stackName" => $this->getStackName(),
+            "resourceName" => $this->getResourceName(),
+        );
     }
-
-    /**
-     * 作成中のリソース名を設定
-     *
-     * @param string $resourceName 作成されたのリソースを取得
-     * @return GetResourceRequest $this
-     */
-    public function withResourceName(string $resourceName = null): GetResourceRequest {
-        $this->setResourceName($resourceName);
-        return $this;
-    }
-
 }

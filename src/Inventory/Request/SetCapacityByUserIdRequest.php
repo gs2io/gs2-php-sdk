@@ -19,171 +19,85 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * キャパシティサイズを設定 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetCapacityByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null キャパシティサイズを設定
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName キャパシティサイズを設定
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName キャパシティサイズを設定
-     * @return SetCapacityByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): SetCapacityByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリモデル名 */
+    /** @var string */
     private $inventoryName;
-
-    /**
-     * インベントリモデル名を取得
-     *
-     * @return string|null キャパシティサイズを設定
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
-    }
-
-    /**
-     * インベントリモデル名を設定
-     *
-     * @param string $inventoryName キャパシティサイズを設定
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
-    }
-
-    /**
-     * インベントリモデル名を設定
-     *
-     * @param string $inventoryName キャパシティサイズを設定
-     * @return SetCapacityByUserIdRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): SetCapacityByUserIdRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null キャパシティサイズを設定
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId キャパシティサイズを設定
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId キャパシティサイズを設定
-     * @return SetCapacityByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): SetCapacityByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int 現在のインベントリの最大キャパシティ */
+    /** @var int */
     private $newCapacityValue;
 
-    /**
-     * 現在のインベントリの最大キャパシティを取得
-     *
-     * @return int|null キャパシティサイズを設定
-     */
-    public function getNewCapacityValue(): ?int {
-        return $this->newCapacityValue;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): SetCapacityByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): SetCapacityByUserIdRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): SetCapacityByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getNewCapacityValue(): ?int {
+		return $this->newCapacityValue;
+	}
+
+	public function setNewCapacityValue(?int $newCapacityValue) {
+		$this->newCapacityValue = $newCapacityValue;
+	}
+
+	public function withNewCapacityValue(?int $newCapacityValue): SetCapacityByUserIdRequest {
+		$this->newCapacityValue = $newCapacityValue;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetCapacityByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetCapacityByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withNewCapacityValue(empty($data['newCapacityValue']) ? null : $data['newCapacityValue']);
     }
 
-    /**
-     * 現在のインベントリの最大キャパシティを設定
-     *
-     * @param int $newCapacityValue キャパシティサイズを設定
-     */
-    public function setNewCapacityValue(int $newCapacityValue = null) {
-        $this->newCapacityValue = $newCapacityValue;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+            "userId" => $this->getUserId(),
+            "newCapacityValue" => $this->getNewCapacityValue(),
+        );
     }
-
-    /**
-     * 現在のインベントリの最大キャパシティを設定
-     *
-     * @param int $newCapacityValue キャパシティサイズを設定
-     * @return SetCapacityByUserIdRequest $this
-     */
-    public function withNewCapacityValue(int $newCapacityValue = null): SetCapacityByUserIdRequest {
-        $this->setNewCapacityValue($newCapacityValue);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null キャパシティサイズを設定
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider キャパシティサイズを設定
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider キャパシティサイズを設定
-     * @return SetCapacityByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): SetCapacityByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

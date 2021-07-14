@@ -20,78 +20,68 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
-/**
- * ステータスを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetStatusWithSignatureResult implements IResult {
-	/** @var Status ステータス */
-	private $item;
-	/** @var string 検証対象のオブジェクト */
-	private $body;
-	/** @var string 署名 */
-	private $signature;
+    /** @var Status */
+    private $item;
+    /** @var string */
+    private $body;
+    /** @var string */
+    private $signature;
 
-	/**
-	 * ステータスを取得
-	 *
-	 * @return Status|null ステータスを取得
-	 */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
-	/**
-	 * ステータスを設定
-	 *
-	 * @param Status|null $item ステータスを取得
-	 */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 検証対象のオブジェクトを取得
-	 *
-	 * @return string|null ステータスを取得
-	 */
+	public function withItem(?Status $item): GetStatusWithSignatureResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
-	/**
-	 * 検証対象のオブジェクトを設定
-	 *
-	 * @param string|null $body ステータスを取得
-	 */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
-	/**
-	 * 署名を取得
-	 *
-	 * @return string|null ステータスを取得
-	 */
+	public function withBody(?string $body): GetStatusWithSignatureResult {
+		$this->body = $body;
+		return $this;
+	}
+
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
-	/**
-	 * 署名を設定
-	 *
-	 * @param string|null $signature ステータスを取得
-	 */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
-    public static function fromJson(array $data): GetStatusWithSignatureResult {
-        $result = new GetStatusWithSignatureResult();
-        $result->setItem(isset($data["item"]) ? Status::fromJson($data["item"]) : null);
-        $result->setBody(isset($data["body"]) ? $data["body"] : null);
-        $result->setSignature(isset($data["signature"]) ? $data["signature"] : null);
-        return $result;
+	public function withSignature(?string $signature): GetStatusWithSignatureResult {
+		$this->signature = $signature;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetStatusWithSignatureResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetStatusWithSignatureResult())
+            ->withItem(empty($data['item']) ? null : Status::fromJson($data['item']))
+            ->withBody(empty($data['body']) ? null : $data['body'])
+            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "body" => $this->getBody(),
+            "signature" => $this->getSignature(),
+        );
     }
 }

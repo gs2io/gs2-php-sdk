@@ -19,203 +19,102 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * フォローの一覧取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeFollowsRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null フォローの一覧取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォローの一覧取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォローの一覧取得
-     * @return DescribeFollowsRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeFollowsRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var bool プロフィールも一緒に取得するか */
+    /** @var string */
+    private $accessToken;
+    /** @var bool */
     private $withProfile;
-
-    /**
-     * プロフィールも一緒に取得するかを取得
-     *
-     * @return bool|null フォローの一覧取得
-     */
-    public function getWithProfile(): ?bool {
-        return $this->withProfile;
-    }
-
-    /**
-     * プロフィールも一緒に取得するかを設定
-     *
-     * @param bool $withProfile フォローの一覧取得
-     */
-    public function setWithProfile(bool $withProfile = null) {
-        $this->withProfile = $withProfile;
-    }
-
-    /**
-     * プロフィールも一緒に取得するかを設定
-     *
-     * @param bool $withProfile フォローの一覧取得
-     * @return DescribeFollowsRequest $this
-     */
-    public function withWithProfile(bool $withProfile = null): DescribeFollowsRequest {
-        $this->setWithProfile($withProfile);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null フォローの一覧取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken フォローの一覧取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken フォローの一覧取得
-     * @return DescribeFollowsRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeFollowsRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null フォローの一覧取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeFollowsRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): DescribeFollowsRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getWithProfile(): ?bool {
+		return $this->withProfile;
+	}
+
+	public function setWithProfile(?bool $withProfile) {
+		$this->withProfile = $withProfile;
+	}
+
+	public function withWithProfile(?bool $withProfile): DescribeFollowsRequest {
+		$this->withProfile = $withProfile;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeFollowsRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeFollowsRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeFollowsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeFollowsRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withWithProfile(empty($data['withProfile']) ? null : $data['withProfile'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit フォローの一覧取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "withProfile" => $this->getWithProfile(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit フォローの一覧取得
-     * @return DescribeFollowsRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeFollowsRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null フォローの一覧取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider フォローの一覧取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider フォローの一覧取得
-     * @return DescribeFollowsRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DescribeFollowsRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return DescribeFollowsRequest this
-     */
-    public function withAccessToken(string $accessToken): DescribeFollowsRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

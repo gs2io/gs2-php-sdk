@@ -19,75 +19,51 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタミナモデルマスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteStaminaModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタミナモデルマスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナモデルマスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナモデルマスターを削除
-     * @return DeleteStaminaModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteStaminaModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナの種類名 */
+    /** @var string */
     private $staminaName;
 
-    /**
-     * スタミナの種類名を取得
-     *
-     * @return string|null スタミナモデルマスターを削除
-     */
-    public function getStaminaName(): ?string {
-        return $this->staminaName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteStaminaModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getStaminaName(): ?string {
+		return $this->staminaName;
+	}
+
+	public function setStaminaName(?string $staminaName) {
+		$this->staminaName = $staminaName;
+	}
+
+	public function withStaminaName(?string $staminaName): DeleteStaminaModelMasterRequest {
+		$this->staminaName = $staminaName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteStaminaModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteStaminaModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName']);
     }
 
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName スタミナモデルマスターを削除
-     */
-    public function setStaminaName(string $staminaName = null) {
-        $this->staminaName = $staminaName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "staminaName" => $this->getStaminaName(),
+        );
     }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName スタミナモデルマスターを削除
-     * @return DeleteStaminaModelMasterRequest $this
-     */
-    public function withStaminaName(string $staminaName = null): DeleteStaminaModelMasterRequest {
-        $this->setStaminaName($staminaName);
-        return $this;
-    }
-
 }

@@ -19,91 +19,56 @@ namespace Gs2\Chat\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 購読
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class NotificationType implements IModel {
 	/**
-     * @var int 新着メッセージ通知を受け取るカテゴリ
+     * @var int
 	 */
-	protected $category;
-
+	private $category;
 	/**
-	 * 新着メッセージ通知を受け取るカテゴリを取得
-	 *
-	 * @return int|null 新着メッセージ通知を受け取るカテゴリ
+     * @var bool
 	 */
+	private $enableTransferMobilePushNotification;
+
 	public function getCategory(): ?int {
 		return $this->category;
 	}
 
-	/**
-	 * 新着メッセージ通知を受け取るカテゴリを設定
-	 *
-	 * @param int|null $category 新着メッセージ通知を受け取るカテゴリ
-	 */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
 
-	/**
-	 * 新着メッセージ通知を受け取るカテゴリを設定
-	 *
-	 * @param int|null $category 新着メッセージ通知を受け取るカテゴリ
-	 * @return NotificationType $this
-	 */
 	public function withCategory(?int $category): NotificationType {
 		$this->category = $category;
 		return $this;
 	}
-	/**
-     * @var bool オフラインだった時にモバイルプッシュ通知に転送するか
-	 */
-	protected $enableTransferMobilePushNotification;
 
-	/**
-	 * オフラインだった時にモバイルプッシュ通知に転送するかを取得
-	 *
-	 * @return bool|null オフラインだった時にモバイルプッシュ通知に転送するか
-	 */
 	public function getEnableTransferMobilePushNotification(): ?bool {
 		return $this->enableTransferMobilePushNotification;
 	}
 
-	/**
-	 * オフラインだった時にモバイルプッシュ通知に転送するかを設定
-	 *
-	 * @param bool|null $enableTransferMobilePushNotification オフラインだった時にモバイルプッシュ通知に転送するか
-	 */
 	public function setEnableTransferMobilePushNotification(?bool $enableTransferMobilePushNotification) {
 		$this->enableTransferMobilePushNotification = $enableTransferMobilePushNotification;
 	}
 
-	/**
-	 * オフラインだった時にモバイルプッシュ通知に転送するかを設定
-	 *
-	 * @param bool|null $enableTransferMobilePushNotification オフラインだった時にモバイルプッシュ通知に転送するか
-	 * @return NotificationType $this
-	 */
 	public function withEnableTransferMobilePushNotification(?bool $enableTransferMobilePushNotification): NotificationType {
 		$this->enableTransferMobilePushNotification = $enableTransferMobilePushNotification;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "category" => $this->category,
-            "enableTransferMobilePushNotification" => $this->enableTransferMobilePushNotification,
-        );
+    public static function fromJson(?array $data): ?NotificationType {
+        if ($data === null) {
+            return null;
+        }
+        return (new NotificationType())
+            ->withCategory(empty($data['category']) ? null : $data['category'])
+            ->withEnableTransferMobilePushNotification(empty($data['enableTransferMobilePushNotification']) ? null : $data['enableTransferMobilePushNotification']);
     }
 
-    public static function fromJson(array $data): NotificationType {
-        $model = new NotificationType();
-        $model->setCategory(isset($data["category"]) ? $data["category"] : null);
-        $model->setEnableTransferMobilePushNotification(isset($data["enableTransferMobilePushNotification"]) ? $data["enableTransferMobilePushNotification"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "category" => $this->getCategory(),
+            "enableTransferMobilePushNotification" => $this->getEnableTransferMobilePushNotification(),
+        );
     }
 }

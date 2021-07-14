@@ -19,15 +19,17 @@ namespace Gs2\Money\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ネームスペースを削除します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteNamespaceResult implements IResult {
 
-    public static function fromJson(array $data): DeleteNamespaceResult {
-        $result = new DeleteNamespaceResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteNamespaceResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteNamespaceResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

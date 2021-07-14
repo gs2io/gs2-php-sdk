@@ -19,36 +19,34 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * スタンプシートの完了を報告する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RunStampSheetWithoutNamespaceResult implements IResult {
-	/** @var string レスポンス内容 */
-	private $result;
+    /** @var string */
+    private $result;
 
-	/**
-	 * レスポンス内容を取得
-	 *
-	 * @return string|null スタンプシートの完了を報告する
-	 */
 	public function getResult(): ?string {
 		return $this->result;
 	}
 
-	/**
-	 * レスポンス内容を設定
-	 *
-	 * @param string|null $result スタンプシートの完了を報告する
-	 */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
 
-    public static function fromJson(array $data): RunStampSheetWithoutNamespaceResult {
-        $result = new RunStampSheetWithoutNamespaceResult();
-        $result->setResult(isset($data["result"]) ? $data["result"] : null);
-        return $result;
+	public function withResult(?string $result): RunStampSheetWithoutNamespaceResult {
+		$this->result = $result;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RunStampSheetWithoutNamespaceResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RunStampSheetWithoutNamespaceResult())
+            ->withResult(empty($data['result']) ? null : $data['result']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "result" => $this->getResult(),
+        );
     }
 }

@@ -19,91 +19,56 @@ namespace Gs2\Quest\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 現在有効なクエストマスター
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class CurrentQuestMaster implements IModel {
 	/**
-     * @var string クエストを分類するカテゴリー
+     * @var string
 	 */
-	protected $namespaceId;
-
+	private $namespaceId;
 	/**
-	 * クエストを分類するカテゴリーを取得
-	 *
-	 * @return string|null クエストを分類するカテゴリー
+     * @var string
 	 */
+	private $settings;
+
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
 
-	/**
-	 * クエストを分類するカテゴリーを設定
-	 *
-	 * @param string|null $namespaceId クエストを分類するカテゴリー
-	 */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
 
-	/**
-	 * クエストを分類するカテゴリーを設定
-	 *
-	 * @param string|null $namespaceId クエストを分類するカテゴリー
-	 * @return CurrentQuestMaster $this
-	 */
 	public function withNamespaceId(?string $namespaceId): CurrentQuestMaster {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-	/**
-     * @var string マスターデータ
-	 */
-	protected $settings;
 
-	/**
-	 * マスターデータを取得
-	 *
-	 * @return string|null マスターデータ
-	 */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
 
-	/**
-	 * マスターデータを設定
-	 *
-	 * @param string|null $settings マスターデータ
-	 */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
 
-	/**
-	 * マスターデータを設定
-	 *
-	 * @param string|null $settings マスターデータ
-	 * @return CurrentQuestMaster $this
-	 */
 	public function withSettings(?string $settings): CurrentQuestMaster {
 		$this->settings = $settings;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "namespaceId" => $this->namespaceId,
-            "settings" => $this->settings,
-        );
+    public static function fromJson(?array $data): ?CurrentQuestMaster {
+        if ($data === null) {
+            return null;
+        }
+        return (new CurrentQuestMaster())
+            ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
+            ->withSettings(empty($data['settings']) ? null : $data['settings']);
     }
 
-    public static function fromJson(array $data): CurrentQuestMaster {
-        $model = new CurrentQuestMaster();
-        $model->setNamespaceId(isset($data["namespaceId"]) ? $data["namespaceId"] : null);
-        $model->setSettings(isset($data["settings"]) ? $data["settings"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "namespaceId" => $this->getNamespaceId(),
+            "settings" => $this->getSettings(),
+        );
     }
 }

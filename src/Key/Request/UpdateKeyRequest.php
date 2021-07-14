@@ -19,107 +19,68 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 暗号鍵を更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateKeyRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 暗号鍵を更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 暗号鍵を更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 暗号鍵を更新
-     * @return UpdateKeyRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateKeyRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 暗号鍵名 */
+    /** @var string */
     private $keyName;
-
-    /**
-     * 暗号鍵名を取得
-     *
-     * @return string|null 暗号鍵を更新
-     */
-    public function getKeyName(): ?string {
-        return $this->keyName;
-    }
-
-    /**
-     * 暗号鍵名を設定
-     *
-     * @param string $keyName 暗号鍵を更新
-     */
-    public function setKeyName(string $keyName = null) {
-        $this->keyName = $keyName;
-    }
-
-    /**
-     * 暗号鍵名を設定
-     *
-     * @param string $keyName 暗号鍵を更新
-     * @return UpdateKeyRequest $this
-     */
-    public function withKeyName(string $keyName = null): UpdateKeyRequest {
-        $this->setKeyName($keyName);
-        return $this;
-    }
-
-    /** @var string 説明文 */
+    /** @var string */
     private $description;
 
-    /**
-     * 説明文を取得
-     *
-     * @return string|null 暗号鍵を更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateKeyRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getKeyName(): ?string {
+		return $this->keyName;
+	}
+
+	public function setKeyName(?string $keyName) {
+		$this->keyName = $keyName;
+	}
+
+	public function withKeyName(?string $keyName): UpdateKeyRequest {
+		$this->keyName = $keyName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateKeyRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateKeyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateKeyRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withKeyName(empty($data['keyName']) ? null : $data['keyName'])
+            ->withDescription(empty($data['description']) ? null : $data['description']);
     }
 
-    /**
-     * 説明文を設定
-     *
-     * @param string $description 暗号鍵を更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "keyName" => $this->getKeyName(),
+            "description" => $this->getDescription(),
+        );
     }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description 暗号鍵を更新
-     * @return UpdateKeyRequest $this
-     */
-    public function withDescription(string $description = null): UpdateKeyRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
 }

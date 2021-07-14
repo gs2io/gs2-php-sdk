@@ -19,107 +19,68 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * セキュリティポリシーを新規作成します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateSecurityPolicyRequest extends Gs2BasicRequest {
-
-    /** @var string セキュリティポリシー名 */
+    /** @var string */
     private $name;
-
-    /**
-     * セキュリティポリシー名を取得
-     *
-     * @return string|null セキュリティポリシーを新規作成します
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * セキュリティポリシー名を設定
-     *
-     * @param string $name セキュリティポリシーを新規作成します
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * セキュリティポリシー名を設定
-     *
-     * @param string $name セキュリティポリシーを新規作成します
-     * @return CreateSecurityPolicyRequest $this
-     */
-    public function withName(string $name = null): CreateSecurityPolicyRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string セキュリティポリシーの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * セキュリティポリシーの説明を取得
-     *
-     * @return string|null セキュリティポリシーを新規作成します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * セキュリティポリシーの説明を設定
-     *
-     * @param string $description セキュリティポリシーを新規作成します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * セキュリティポリシーの説明を設定
-     *
-     * @param string $description セキュリティポリシーを新規作成します
-     * @return CreateSecurityPolicyRequest $this
-     */
-    public function withDescription(string $description = null): CreateSecurityPolicyRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string ポリシードキュメント */
+    /** @var string */
     private $policy;
 
-    /**
-     * ポリシードキュメントを取得
-     *
-     * @return string|null セキュリティポリシーを新規作成します
-     */
-    public function getPolicy(): ?string {
-        return $this->policy;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateSecurityPolicyRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateSecurityPolicyRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getPolicy(): ?string {
+		return $this->policy;
+	}
+
+	public function setPolicy(?string $policy) {
+		$this->policy = $policy;
+	}
+
+	public function withPolicy(?string $policy): CreateSecurityPolicyRequest {
+		$this->policy = $policy;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateSecurityPolicyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateSecurityPolicyRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withPolicy(empty($data['policy']) ? null : $data['policy']);
     }
 
-    /**
-     * ポリシードキュメントを設定
-     *
-     * @param string $policy セキュリティポリシーを新規作成します
-     */
-    public function setPolicy(string $policy = null) {
-        $this->policy = $policy;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "policy" => $this->getPolicy(),
+        );
     }
-
-    /**
-     * ポリシードキュメントを設定
-     *
-     * @param string $policy セキュリティポリシーを新規作成します
-     * @return CreateSecurityPolicyRequest $this
-     */
-    public function withPolicy(string $policy = null): CreateSecurityPolicyRequest {
-        $this->setPolicy($policy);
-        return $this;
-    }
-
 }

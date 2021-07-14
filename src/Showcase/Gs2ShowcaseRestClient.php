@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Showcase\Request\DescribeNamespacesRequest;
 use Gs2\Showcase\Result\DescribeNamespacesResult;
 use Gs2\Showcase\Request\CreateNamespaceRequest;
@@ -1727,9 +1729,6 @@ class DescribeShowcasesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1787,9 +1786,6 @@ class DescribeShowcasesByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1852,9 +1848,6 @@ class GetShowcaseTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1913,9 +1906,6 @@ class GetShowcaseByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1985,9 +1975,6 @@ class BuyTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2054,9 +2041,6 @@ class BuyByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2080,9 +2064,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2097,9 +2079,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2111,9 +2091,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2128,9 +2106,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2142,9 +2118,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2159,9 +2133,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2173,9 +2145,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2190,9 +2160,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2204,9 +2172,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2221,9 +2187,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2235,9 +2199,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2252,9 +2214,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2266,9 +2226,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターの一覧を取得<br>
-     *
-     * @param DescribeSalesItemMastersRequest $request リクエストパラメータ
+     * @param DescribeSalesItemMastersRequest $request
      * @return PromiseInterface
      */
     public function describeSalesItemMastersAsync(
@@ -2283,9 +2241,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターの一覧を取得<br>
-     *
-     * @param DescribeSalesItemMastersRequest $request リクエストパラメータ
+     * @param DescribeSalesItemMastersRequest $request
      * @return DescribeSalesItemMastersResult
      */
     public function describeSalesItemMasters (
@@ -2297,9 +2253,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターを新規作成<br>
-     *
-     * @param CreateSalesItemMasterRequest $request リクエストパラメータ
+     * @param CreateSalesItemMasterRequest $request
      * @return PromiseInterface
      */
     public function createSalesItemMasterAsync(
@@ -2314,9 +2268,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターを新規作成<br>
-     *
-     * @param CreateSalesItemMasterRequest $request リクエストパラメータ
+     * @param CreateSalesItemMasterRequest $request
      * @return CreateSalesItemMasterResult
      */
     public function createSalesItemMaster (
@@ -2328,9 +2280,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターを取得<br>
-     *
-     * @param GetSalesItemMasterRequest $request リクエストパラメータ
+     * @param GetSalesItemMasterRequest $request
      * @return PromiseInterface
      */
     public function getSalesItemMasterAsync(
@@ -2345,9 +2295,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターを取得<br>
-     *
-     * @param GetSalesItemMasterRequest $request リクエストパラメータ
+     * @param GetSalesItemMasterRequest $request
      * @return GetSalesItemMasterResult
      */
     public function getSalesItemMaster (
@@ -2359,9 +2307,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターを更新<br>
-     *
-     * @param UpdateSalesItemMasterRequest $request リクエストパラメータ
+     * @param UpdateSalesItemMasterRequest $request
      * @return PromiseInterface
      */
     public function updateSalesItemMasterAsync(
@@ -2376,9 +2322,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターを更新<br>
-     *
-     * @param UpdateSalesItemMasterRequest $request リクエストパラメータ
+     * @param UpdateSalesItemMasterRequest $request
      * @return UpdateSalesItemMasterResult
      */
     public function updateSalesItemMaster (
@@ -2390,9 +2334,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターを削除<br>
-     *
-     * @param DeleteSalesItemMasterRequest $request リクエストパラメータ
+     * @param DeleteSalesItemMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteSalesItemMasterAsync(
@@ -2407,9 +2349,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品マスターを削除<br>
-     *
-     * @param DeleteSalesItemMasterRequest $request リクエストパラメータ
+     * @param DeleteSalesItemMasterRequest $request
      * @return DeleteSalesItemMasterResult
      */
     public function deleteSalesItemMaster (
@@ -2421,9 +2361,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターの一覧を取得<br>
-     *
-     * @param DescribeSalesItemGroupMastersRequest $request リクエストパラメータ
+     * @param DescribeSalesItemGroupMastersRequest $request
      * @return PromiseInterface
      */
     public function describeSalesItemGroupMastersAsync(
@@ -2438,9 +2376,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターの一覧を取得<br>
-     *
-     * @param DescribeSalesItemGroupMastersRequest $request リクエストパラメータ
+     * @param DescribeSalesItemGroupMastersRequest $request
      * @return DescribeSalesItemGroupMastersResult
      */
     public function describeSalesItemGroupMasters (
@@ -2452,9 +2388,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターを新規作成<br>
-     *
-     * @param CreateSalesItemGroupMasterRequest $request リクエストパラメータ
+     * @param CreateSalesItemGroupMasterRequest $request
      * @return PromiseInterface
      */
     public function createSalesItemGroupMasterAsync(
@@ -2469,9 +2403,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターを新規作成<br>
-     *
-     * @param CreateSalesItemGroupMasterRequest $request リクエストパラメータ
+     * @param CreateSalesItemGroupMasterRequest $request
      * @return CreateSalesItemGroupMasterResult
      */
     public function createSalesItemGroupMaster (
@@ -2483,9 +2415,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターを取得<br>
-     *
-     * @param GetSalesItemGroupMasterRequest $request リクエストパラメータ
+     * @param GetSalesItemGroupMasterRequest $request
      * @return PromiseInterface
      */
     public function getSalesItemGroupMasterAsync(
@@ -2500,9 +2430,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターを取得<br>
-     *
-     * @param GetSalesItemGroupMasterRequest $request リクエストパラメータ
+     * @param GetSalesItemGroupMasterRequest $request
      * @return GetSalesItemGroupMasterResult
      */
     public function getSalesItemGroupMaster (
@@ -2514,9 +2442,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターを更新<br>
-     *
-     * @param UpdateSalesItemGroupMasterRequest $request リクエストパラメータ
+     * @param UpdateSalesItemGroupMasterRequest $request
      * @return PromiseInterface
      */
     public function updateSalesItemGroupMasterAsync(
@@ -2531,9 +2457,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターを更新<br>
-     *
-     * @param UpdateSalesItemGroupMasterRequest $request リクエストパラメータ
+     * @param UpdateSalesItemGroupMasterRequest $request
      * @return UpdateSalesItemGroupMasterResult
      */
     public function updateSalesItemGroupMaster (
@@ -2545,9 +2469,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターを削除<br>
-     *
-     * @param DeleteSalesItemGroupMasterRequest $request リクエストパラメータ
+     * @param DeleteSalesItemGroupMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteSalesItemGroupMasterAsync(
@@ -2562,9 +2484,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 商品グループマスターを削除<br>
-     *
-     * @param DeleteSalesItemGroupMasterRequest $request リクエストパラメータ
+     * @param DeleteSalesItemGroupMasterRequest $request
      * @return DeleteSalesItemGroupMasterResult
      */
     public function deleteSalesItemGroupMaster (
@@ -2576,9 +2496,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターの一覧を取得<br>
-     *
-     * @param DescribeShowcaseMastersRequest $request リクエストパラメータ
+     * @param DescribeShowcaseMastersRequest $request
      * @return PromiseInterface
      */
     public function describeShowcaseMastersAsync(
@@ -2593,9 +2511,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターの一覧を取得<br>
-     *
-     * @param DescribeShowcaseMastersRequest $request リクエストパラメータ
+     * @param DescribeShowcaseMastersRequest $request
      * @return DescribeShowcaseMastersResult
      */
     public function describeShowcaseMasters (
@@ -2607,9 +2523,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターを新規作成<br>
-     *
-     * @param CreateShowcaseMasterRequest $request リクエストパラメータ
+     * @param CreateShowcaseMasterRequest $request
      * @return PromiseInterface
      */
     public function createShowcaseMasterAsync(
@@ -2624,9 +2538,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターを新規作成<br>
-     *
-     * @param CreateShowcaseMasterRequest $request リクエストパラメータ
+     * @param CreateShowcaseMasterRequest $request
      * @return CreateShowcaseMasterResult
      */
     public function createShowcaseMaster (
@@ -2638,9 +2550,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターを取得<br>
-     *
-     * @param GetShowcaseMasterRequest $request リクエストパラメータ
+     * @param GetShowcaseMasterRequest $request
      * @return PromiseInterface
      */
     public function getShowcaseMasterAsync(
@@ -2655,9 +2565,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターを取得<br>
-     *
-     * @param GetShowcaseMasterRequest $request リクエストパラメータ
+     * @param GetShowcaseMasterRequest $request
      * @return GetShowcaseMasterResult
      */
     public function getShowcaseMaster (
@@ -2669,9 +2577,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターを更新<br>
-     *
-     * @param UpdateShowcaseMasterRequest $request リクエストパラメータ
+     * @param UpdateShowcaseMasterRequest $request
      * @return PromiseInterface
      */
     public function updateShowcaseMasterAsync(
@@ -2686,9 +2592,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターを更新<br>
-     *
-     * @param UpdateShowcaseMasterRequest $request リクエストパラメータ
+     * @param UpdateShowcaseMasterRequest $request
      * @return UpdateShowcaseMasterResult
      */
     public function updateShowcaseMaster (
@@ -2700,9 +2604,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターを削除<br>
-     *
-     * @param DeleteShowcaseMasterRequest $request リクエストパラメータ
+     * @param DeleteShowcaseMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteShowcaseMasterAsync(
@@ -2717,9 +2619,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚マスターを削除<br>
-     *
-     * @param DeleteShowcaseMasterRequest $request リクエストパラメータ
+     * @param DeleteShowcaseMasterRequest $request
      * @return DeleteShowcaseMasterResult
      */
     public function deleteShowcaseMaster (
@@ -2731,9 +2631,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な陳列棚マスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2748,9 +2646,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な陳列棚マスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2762,9 +2658,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な陳列棚マスターを取得します<br>
-     *
-     * @param GetCurrentShowcaseMasterRequest $request リクエストパラメータ
+     * @param GetCurrentShowcaseMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentShowcaseMasterAsync(
@@ -2779,9 +2673,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な陳列棚マスターを取得します<br>
-     *
-     * @param GetCurrentShowcaseMasterRequest $request リクエストパラメータ
+     * @param GetCurrentShowcaseMasterRequest $request
      * @return GetCurrentShowcaseMasterResult
      */
     public function getCurrentShowcaseMaster (
@@ -2793,9 +2685,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な陳列棚マスターを更新します<br>
-     *
-     * @param UpdateCurrentShowcaseMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentShowcaseMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentShowcaseMasterAsync(
@@ -2810,9 +2700,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な陳列棚マスターを更新します<br>
-     *
-     * @param UpdateCurrentShowcaseMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentShowcaseMasterRequest $request
      * @return UpdateCurrentShowcaseMasterResult
      */
     public function updateCurrentShowcaseMaster (
@@ -2824,9 +2712,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な陳列棚マスターを更新します<br>
-     *
-     * @param UpdateCurrentShowcaseMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentShowcaseMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentShowcaseMasterFromGitHubAsync(
@@ -2841,9 +2727,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な陳列棚マスターを更新します<br>
-     *
-     * @param UpdateCurrentShowcaseMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentShowcaseMasterFromGitHubRequest $request
      * @return UpdateCurrentShowcaseMasterFromGitHubResult
      */
     public function updateCurrentShowcaseMasterFromGitHub (
@@ -2855,9 +2739,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚の一覧を取得<br>
-     *
-     * @param DescribeShowcasesRequest $request リクエストパラメータ
+     * @param DescribeShowcasesRequest $request
      * @return PromiseInterface
      */
     public function describeShowcasesAsync(
@@ -2872,9 +2754,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚の一覧を取得<br>
-     *
-     * @param DescribeShowcasesRequest $request リクエストパラメータ
+     * @param DescribeShowcasesRequest $request
      * @return DescribeShowcasesResult
      */
     public function describeShowcases (
@@ -2886,9 +2766,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して陳列棚の一覧を取得<br>
-     *
-     * @param DescribeShowcasesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeShowcasesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeShowcasesByUserIdAsync(
@@ -2903,9 +2781,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して陳列棚の一覧を取得<br>
-     *
-     * @param DescribeShowcasesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeShowcasesByUserIdRequest $request
      * @return DescribeShowcasesByUserIdResult
      */
     public function describeShowcasesByUserId (
@@ -2917,9 +2793,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚を取得<br>
-     *
-     * @param GetShowcaseRequest $request リクエストパラメータ
+     * @param GetShowcaseRequest $request
      * @return PromiseInterface
      */
     public function getShowcaseAsync(
@@ -2934,9 +2808,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚を取得<br>
-     *
-     * @param GetShowcaseRequest $request リクエストパラメータ
+     * @param GetShowcaseRequest $request
      * @return GetShowcaseResult
      */
     public function getShowcase (
@@ -2948,9 +2820,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して陳列棚を取得<br>
-     *
-     * @param GetShowcaseByUserIdRequest $request リクエストパラメータ
+     * @param GetShowcaseByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getShowcaseByUserIdAsync(
@@ -2965,9 +2835,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して陳列棚を取得<br>
-     *
-     * @param GetShowcaseByUserIdRequest $request リクエストパラメータ
+     * @param GetShowcaseByUserIdRequest $request
      * @return GetShowcaseByUserIdResult
      */
     public function getShowcaseByUserId (
@@ -2979,9 +2847,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚を取得<br>
-     *
-     * @param BuyRequest $request リクエストパラメータ
+     * @param BuyRequest $request
      * @return PromiseInterface
      */
     public function buyAsync(
@@ -2996,9 +2862,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 陳列棚を取得<br>
-     *
-     * @param BuyRequest $request リクエストパラメータ
+     * @param BuyRequest $request
      * @return BuyResult
      */
     public function buy (
@@ -3010,9 +2874,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して陳列棚を取得<br>
-     *
-     * @param BuyByUserIdRequest $request リクエストパラメータ
+     * @param BuyByUserIdRequest $request
      * @return PromiseInterface
      */
     public function buyByUserIdAsync(
@@ -3027,9 +2889,7 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して陳列棚を取得<br>
-     *
-     * @param BuyByUserIdRequest $request リクエストパラメータ
+     * @param BuyByUserIdRequest $request
      * @return BuyByUserIdResult
      */
     public function buyByUserId (

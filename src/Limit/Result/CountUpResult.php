@@ -20,36 +20,34 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
-/**
- * カウントアップ のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CountUpResult implements IResult {
-	/** @var Counter カウントを増やしたカウンター */
-	private $item;
+    /** @var Counter */
+    private $item;
 
-	/**
-	 * カウントを増やしたカウンターを取得
-	 *
-	 * @return Counter|null カウントアップ
-	 */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
-	/**
-	 * カウントを増やしたカウンターを設定
-	 *
-	 * @param Counter|null $item カウントアップ
-	 */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CountUpResult {
-        $result = new CountUpResult();
-        $result->setItem(isset($data["item"]) ? Counter::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Counter $item): CountUpResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CountUpResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CountUpResult())
+            ->withItem(empty($data['item']) ? null : Counter::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

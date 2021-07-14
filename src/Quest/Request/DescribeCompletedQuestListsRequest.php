@@ -19,171 +19,85 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * クエスト進行の一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeCompletedQuestListsRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null クエスト進行の一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエスト進行の一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエスト進行の一覧を取得
-     * @return DescribeCompletedQuestListsRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeCompletedQuestListsRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null クエスト進行の一覧を取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken クエスト進行の一覧を取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken クエスト進行の一覧を取得
-     * @return DescribeCompletedQuestListsRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeCompletedQuestListsRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null クエスト進行の一覧を取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeCompletedQuestListsRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): DescribeCompletedQuestListsRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeCompletedQuestListsRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeCompletedQuestListsRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeCompletedQuestListsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeCompletedQuestListsRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit クエスト進行の一覧を取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit クエスト進行の一覧を取得
-     * @return DescribeCompletedQuestListsRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeCompletedQuestListsRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null クエスト進行の一覧を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider クエスト進行の一覧を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider クエスト進行の一覧を取得
-     * @return DescribeCompletedQuestListsRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DescribeCompletedQuestListsRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return DescribeCompletedQuestListsRequest this
-     */
-    public function withAccessToken(string $accessToken): DescribeCompletedQuestListsRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

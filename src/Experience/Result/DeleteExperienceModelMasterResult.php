@@ -20,36 +20,34 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\ExperienceModelMaster;
 
-/**
- * 経験値の種類マスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteExperienceModelMasterResult implements IResult {
-	/** @var ExperienceModelMaster 削除した経験値の種類マスター */
-	private $item;
+    /** @var ExperienceModelMaster */
+    private $item;
 
-	/**
-	 * 削除した経験値の種類マスターを取得
-	 *
-	 * @return ExperienceModelMaster|null 経験値の種類マスターを削除
-	 */
 	public function getItem(): ?ExperienceModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除した経験値の種類マスターを設定
-	 *
-	 * @param ExperienceModelMaster|null $item 経験値の種類マスターを削除
-	 */
 	public function setItem(?ExperienceModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteExperienceModelMasterResult {
-        $result = new DeleteExperienceModelMasterResult();
-        $result->setItem(isset($data["item"]) ? ExperienceModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?ExperienceModelMaster $item): DeleteExperienceModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteExperienceModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteExperienceModelMasterResult())
+            ->withItem(empty($data['item']) ? null : ExperienceModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -18,44 +18,47 @@
 namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Version\Model\Version;
 use Gs2\Version\Model\VersionModel;
 
-/**
- * バージョン設定の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeVersionModelsResult implements IResult {
-	/** @var VersionModel[] バージョン設定のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * バージョン設定のリストを取得
-	 *
-	 * @return VersionModel[]|null バージョン設定の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * バージョン設定のリストを設定
-	 *
-	 * @param VersionModel[]|null $items バージョン設定の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeVersionModelsResult {
-        $result = new DescribeVersionModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return VersionModel::fromJson($v);
+	public function withItems(?array $items): DescribeVersionModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeVersionModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeVersionModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return VersionModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

@@ -20,139 +20,85 @@ namespace Gs2\Gateway\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Gateway\Model\LogSetting;
 
-/**
- * ネームスペースを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $name;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withName(string $name = null): CreateNamespaceRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string 説明文 */
+    /** @var string */
     private $description;
-
-    /**
-     * 説明文を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): CreateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string Firebase の通知送信に使用するシークレットトークン */
+    /** @var string */
     private $firebaseSecret;
-
-    /**
-     * Firebase の通知送信に使用するシークレットトークンを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getFirebaseSecret(): ?string {
-        return $this->firebaseSecret;
-    }
-
-    /**
-     * Firebase の通知送信に使用するシークレットトークンを設定
-     *
-     * @param string $firebaseSecret ネームスペースを新規作成
-     */
-    public function setFirebaseSecret(string $firebaseSecret = null) {
-        $this->firebaseSecret = $firebaseSecret;
-    }
-
-    /**
-     * Firebase の通知送信に使用するシークレットトークンを設定
-     *
-     * @param string $firebaseSecret ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withFirebaseSecret(string $firebaseSecret = null): CreateNamespaceRequest {
-        $this->setFirebaseSecret($firebaseSecret);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを新規作成
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateNamespaceRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getFirebaseSecret(): ?string {
+		return $this->firebaseSecret;
+	}
+
+	public function setFirebaseSecret(?string $firebaseSecret) {
+		$this->firebaseSecret = $firebaseSecret;
+	}
+
+	public function withFirebaseSecret(?string $firebaseSecret): CreateNamespaceRequest {
+		$this->firebaseSecret = $firebaseSecret;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withFirebaseSecret(empty($data['firebaseSecret']) ? null : $data['firebaseSecret'])
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "firebaseSecret" => $this->getFirebaseSecret(),
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): CreateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

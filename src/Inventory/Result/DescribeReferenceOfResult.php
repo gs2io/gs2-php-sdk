@@ -22,99 +22,95 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
-/**
- * 参照元の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeReferenceOfResult implements IResult {
-	/** @var string[] この所持品の参照元リスト */
-	private $items;
-	/** @var ItemSet 有効期限ごとのアイテム所持数量 */
-	private $itemSet;
-	/** @var ItemModel アイテムモデル */
-	private $itemModel;
-	/** @var Inventory インベントリ */
-	private $inventory;
+    /** @var array */
+    private $items;
+    /** @var ItemSet */
+    private $itemSet;
+    /** @var ItemModel */
+    private $itemModel;
+    /** @var Inventory */
+    private $inventory;
 
-	/**
-	 * この所持品の参照元リストを取得
-	 *
-	 * @return string[]|null 参照元の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * この所持品の参照元リストを設定
-	 *
-	 * @param string[]|null $items 参照元の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * 有効期限ごとのアイテム所持数量を取得
-	 *
-	 * @return ItemSet|null 参照元の一覧を取得
-	 */
+	public function withItems(?array $items): DescribeReferenceOfResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getItemSet(): ?ItemSet {
 		return $this->itemSet;
 	}
 
-	/**
-	 * 有効期限ごとのアイテム所持数量を設定
-	 *
-	 * @param ItemSet|null $itemSet 参照元の一覧を取得
-	 */
 	public function setItemSet(?ItemSet $itemSet) {
 		$this->itemSet = $itemSet;
 	}
 
-	/**
-	 * アイテムモデルを取得
-	 *
-	 * @return ItemModel|null 参照元の一覧を取得
-	 */
+	public function withItemSet(?ItemSet $itemSet): DescribeReferenceOfResult {
+		$this->itemSet = $itemSet;
+		return $this;
+	}
+
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
-	/**
-	 * アイテムモデルを設定
-	 *
-	 * @param ItemModel|null $itemModel 参照元の一覧を取得
-	 */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
-	/**
-	 * インベントリを取得
-	 *
-	 * @return Inventory|null 参照元の一覧を取得
-	 */
+	public function withItemModel(?ItemModel $itemModel): DescribeReferenceOfResult {
+		$this->itemModel = $itemModel;
+		return $this;
+	}
+
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
-	/**
-	 * インベントリを設定
-	 *
-	 * @param Inventory|null $inventory 参照元の一覧を取得
-	 */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
-    public static function fromJson(array $data): DescribeReferenceOfResult {
-        $result = new DescribeReferenceOfResult();
-        $result->setItems(isset($data["items"]) ? $data["items"] : null);
-        $result->setItemSet(isset($data["itemSet"]) ? ItemSet::fromJson($data["itemSet"]) : null);
-        $result->setItemModel(isset($data["itemModel"]) ? ItemModel::fromJson($data["itemModel"]) : null);
-        $result->setInventory(isset($data["inventory"]) ? Inventory::fromJson($data["inventory"]) : null);
-        return $result;
+	public function withInventory(?Inventory $inventory): DescribeReferenceOfResult {
+		$this->inventory = $inventory;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeReferenceOfResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeReferenceOfResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withItemSet(empty($data['itemSet']) ? null : ItemSet::fromJson($data['itemSet']))
+            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
+            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "itemSet" => $this->getItemSet() !== null ? $this->getItemSet()->toJson() : null,
+            "itemModel" => $this->getItemModel() !== null ? $this->getItemModel()->toJson() : null,
+            "inventory" => $this->getInventory() !== null ? $this->getInventory()->toJson() : null,
+        );
     }
 }

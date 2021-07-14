@@ -19,75 +19,51 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * Noneの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeItemModelsRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null Noneの一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName Noneの一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName Noneの一覧を取得
-     * @return DescribeItemModelsRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeItemModelsRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリの種類名 */
+    /** @var string */
     private $inventoryName;
 
-    /**
-     * インベントリの種類名を取得
-     *
-     * @return string|null Noneの一覧を取得
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeItemModelsRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): DescribeItemModelsRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeItemModelsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeItemModelsRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName']);
     }
 
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName Noneの一覧を取得
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+        );
     }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName Noneの一覧を取得
-     * @return DescribeItemModelsRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): DescribeItemModelsRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
 }

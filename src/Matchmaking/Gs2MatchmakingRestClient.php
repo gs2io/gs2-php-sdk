@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Matchmaking\Request\DescribeNamespacesRequest;
 use Gs2\Matchmaking\Result\DescribeNamespacesResult;
 use Gs2\Matchmaking\Request\CreateNamespaceRequest;
@@ -667,9 +669,6 @@ class CreateGatheringTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -756,9 +755,6 @@ class CreateGatheringByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -826,9 +822,6 @@ class UpdateGatheringTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -893,9 +886,6 @@ class UpdateGatheringByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1022,9 +1012,6 @@ class DoMatchmakingTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1144,9 +1131,6 @@ class CancelMatchmakingTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1205,9 +1189,6 @@ class CancelMatchmakingByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1989,9 +1970,6 @@ class DescribeRatingsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2056,9 +2034,6 @@ class DescribeRatingsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2120,9 +2095,6 @@ class GetRatingTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2181,9 +2153,6 @@ class GetRatingByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2308,9 +2277,6 @@ class DeleteRatingTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2377,9 +2343,6 @@ class GetBallotTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2443,9 +2406,6 @@ class GetBallotByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2629,7 +2589,7 @@ class CommitVoteTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/vote/{ratingName}/{gatheringName}/action/vote/commit";
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/vote/{ratingName}/{gatheringName}/action/vote/commit";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
@@ -2673,9 +2633,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2690,9 +2648,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2704,9 +2660,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2721,9 +2675,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2735,9 +2687,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2752,9 +2702,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2766,9 +2714,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2783,9 +2729,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2797,9 +2741,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2814,9 +2756,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2828,9 +2768,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2845,9 +2783,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2859,9 +2795,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングの一覧を取得<br>
-     *
-     * @param DescribeGatheringsRequest $request リクエストパラメータ
+     * @param DescribeGatheringsRequest $request
      * @return PromiseInterface
      */
     public function describeGatheringsAsync(
@@ -2876,9 +2810,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングの一覧を取得<br>
-     *
-     * @param DescribeGatheringsRequest $request リクエストパラメータ
+     * @param DescribeGatheringsRequest $request
      * @return DescribeGatheringsResult
      */
     public function describeGatherings (
@@ -2890,33 +2822,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを作成して募集を開始<br>
-     *   <br>
-     *   `募集条件` には、作成したギャザリングに参加を許可する各属性値の範囲を指定します。<br>
-     *   <br>
-     *   たとえば、同一ゲームモードを希望するプレイヤーを募集したい場合は、ゲームモードに対応した属性値が完全一致する参加条件プレイヤーとマッチメイキングするように<br>
-     *   `属性名：ゲームモード` `属性最小値: ゲームモードを表す数値` `属性最大値: ゲームモードを表す数値`<br>
-     *   とすることで、同一ゲームモードを希望するプレイヤー同士をマッチメイキングできます。<br>
-     *   <br>
-     *   他にレーティングをベースにしたマッチメイキングを実施したい場合は、<br>
-     *   ルーム作成者のレーティング値を中心とした属性値の範囲を指定することで、レーティング値の近いプレイヤー同士をマッチメイキングできます。<br>
-     *   この `募集条件` はあとで更新することができますので、徐々に条件を緩和していくことができます。<br>
-     *   <br>
-     *   ロール とは 盾役1人・回復役1人・攻撃役2人 などの役割ごとに募集人数を設定したい場合に使用します。<br>
-     *   ロールにはエイリアスを指定できます。<br>
-     *   たとえば、盾役は パラディン と ナイト の2種類の `ジョブ` に更に分類できるとします。<br>
-     *   この場合、ロール名 に `盾役` エイリアス に `パラディン` `ナイト` として募集を出すようにゲームを実装します。<br>
-     *   そして、プレイヤーは自分自身の `ジョブ` を自身のプレイヤー情報のロールに指定します。<br>
-     *   <br>
-     *   こうすることで、募集条件が `盾役` になっているギャザリングには `パラディン` も `ナイト` も参加できます。<br>
-     *   一方で、ギャザリングを作成するときに、 `パラディン` だけ募集したくて、 `ナイト` を募集したくない場合は、<br>
-     *   募集するロール名に `パラディン` を直接指定したり、エイリアスに `ナイト` を含めないようにすることで実現できます。<br>
-     *   <br>
-     *   `参加者` の `募集人数` はプレイヤーの募集人数を指定します。ロール名を指定することで、ロール名ごとの募集人数を設定できます。<br>
-     *   <br>
-     *   `参加者` の `参加者のプレイヤー情報リスト` には事前にプレイヤー間でパーティを構築している場合や、参加者が離脱したあとの追加募集で使用します。<br>
-     *
-     * @param CreateGatheringRequest $request リクエストパラメータ
+     * @param CreateGatheringRequest $request
      * @return PromiseInterface
      */
     public function createGatheringAsync(
@@ -2931,33 +2837,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを作成して募集を開始<br>
-     *   <br>
-     *   `募集条件` には、作成したギャザリングに参加を許可する各属性値の範囲を指定します。<br>
-     *   <br>
-     *   たとえば、同一ゲームモードを希望するプレイヤーを募集したい場合は、ゲームモードに対応した属性値が完全一致する参加条件プレイヤーとマッチメイキングするように<br>
-     *   `属性名：ゲームモード` `属性最小値: ゲームモードを表す数値` `属性最大値: ゲームモードを表す数値`<br>
-     *   とすることで、同一ゲームモードを希望するプレイヤー同士をマッチメイキングできます。<br>
-     *   <br>
-     *   他にレーティングをベースにしたマッチメイキングを実施したい場合は、<br>
-     *   ルーム作成者のレーティング値を中心とした属性値の範囲を指定することで、レーティング値の近いプレイヤー同士をマッチメイキングできます。<br>
-     *   この `募集条件` はあとで更新することができますので、徐々に条件を緩和していくことができます。<br>
-     *   <br>
-     *   ロール とは 盾役1人・回復役1人・攻撃役2人 などの役割ごとに募集人数を設定したい場合に使用します。<br>
-     *   ロールにはエイリアスを指定できます。<br>
-     *   たとえば、盾役は パラディン と ナイト の2種類の `ジョブ` に更に分類できるとします。<br>
-     *   この場合、ロール名 に `盾役` エイリアス に `パラディン` `ナイト` として募集を出すようにゲームを実装します。<br>
-     *   そして、プレイヤーは自分自身の `ジョブ` を自身のプレイヤー情報のロールに指定します。<br>
-     *   <br>
-     *   こうすることで、募集条件が `盾役` になっているギャザリングには `パラディン` も `ナイト` も参加できます。<br>
-     *   一方で、ギャザリングを作成するときに、 `パラディン` だけ募集したくて、 `ナイト` を募集したくない場合は、<br>
-     *   募集するロール名に `パラディン` を直接指定したり、エイリアスに `ナイト` を含めないようにすることで実現できます。<br>
-     *   <br>
-     *   `参加者` の `募集人数` はプレイヤーの募集人数を指定します。ロール名を指定することで、ロール名ごとの募集人数を設定できます。<br>
-     *   <br>
-     *   `参加者` の `参加者のプレイヤー情報リスト` には事前にプレイヤー間でパーティを構築している場合や、参加者が離脱したあとの追加募集で使用します。<br>
-     *
-     * @param CreateGatheringRequest $request リクエストパラメータ
+     * @param CreateGatheringRequest $request
      * @return CreateGatheringResult
      */
     public function createGathering (
@@ -2969,33 +2849,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを作成して募集を開始<br>
-     *   <br>
-     *   `募集条件` には、作成したギャザリングに参加を許可する各属性値の範囲を指定します。<br>
-     *   <br>
-     *   たとえば、同一ゲームモードを希望するプレイヤーを募集したい場合は、ゲームモードに対応した属性値が完全一致する参加条件プレイヤーとマッチメイキングするように<br>
-     *   `属性名：ゲームモード` `属性最小値: ゲームモードを表す数値` `属性最大値: ゲームモードを表す数値`<br>
-     *   とすることで、同一ゲームモードを希望するプレイヤー同士をマッチメイキングできます。<br>
-     *   <br>
-     *   他にレーティングをベースにしたマッチメイキングを実施したい場合は、<br>
-     *   ルーム作成者のレーティング値を中心とした属性値の範囲を指定することで、レーティング値の近いプレイヤー同士をマッチメイキングできます。<br>
-     *   この `募集条件` はあとで更新することができますので、徐々に条件を緩和していくことができます。<br>
-     *   <br>
-     *   ロール とは 盾役1人・回復役1人・攻撃役2人 などの役割ごとに募集人数を設定したい場合に使用します。<br>
-     *   ロールにはエイリアスを指定できます。<br>
-     *   たとえば、盾役は パラディン と ナイト の2種類の `ジョブ` に更に分類できるとします。<br>
-     *   この場合、ロール名 に `盾役` エイリアス に `パラディン` `ナイト` として募集を出すようにゲームを実装します。<br>
-     *   そして、プレイヤーは自分自身の `ジョブ` を自身のプレイヤー情報のロールに指定します。<br>
-     *   <br>
-     *   こうすることで、募集条件が `盾役` になっているギャザリングには `パラディン` も `ナイト` も参加できます。<br>
-     *   一方で、ギャザリングを作成するときに、 `パラディン` だけ募集したくて、 `ナイト` を募集したくない場合は、<br>
-     *   募集するロール名に `パラディン` を直接指定したり、エイリアスに `ナイト` を含めないようにすることで実現できます。<br>
-     *   <br>
-     *   `参加者` の `募集人数` はプレイヤーの募集人数を指定します。ロール名を指定することで、ロール名ごとの募集人数を設定できます。<br>
-     *   <br>
-     *   `参加者` の `参加者のプレイヤー情報リスト` には事前にプレイヤー間でパーティを構築している場合や、参加者が離脱したあとの追加募集で使用します。<br>
-     *
-     * @param CreateGatheringByUserIdRequest $request リクエストパラメータ
+     * @param CreateGatheringByUserIdRequest $request
      * @return PromiseInterface
      */
     public function createGatheringByUserIdAsync(
@@ -3010,33 +2864,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを作成して募集を開始<br>
-     *   <br>
-     *   `募集条件` には、作成したギャザリングに参加を許可する各属性値の範囲を指定します。<br>
-     *   <br>
-     *   たとえば、同一ゲームモードを希望するプレイヤーを募集したい場合は、ゲームモードに対応した属性値が完全一致する参加条件プレイヤーとマッチメイキングするように<br>
-     *   `属性名：ゲームモード` `属性最小値: ゲームモードを表す数値` `属性最大値: ゲームモードを表す数値`<br>
-     *   とすることで、同一ゲームモードを希望するプレイヤー同士をマッチメイキングできます。<br>
-     *   <br>
-     *   他にレーティングをベースにしたマッチメイキングを実施したい場合は、<br>
-     *   ルーム作成者のレーティング値を中心とした属性値の範囲を指定することで、レーティング値の近いプレイヤー同士をマッチメイキングできます。<br>
-     *   この `募集条件` はあとで更新することができますので、徐々に条件を緩和していくことができます。<br>
-     *   <br>
-     *   ロール とは 盾役1人・回復役1人・攻撃役2人 などの役割ごとに募集人数を設定したい場合に使用します。<br>
-     *   ロールにはエイリアスを指定できます。<br>
-     *   たとえば、盾役は パラディン と ナイト の2種類の `ジョブ` に更に分類できるとします。<br>
-     *   この場合、ロール名 に `盾役` エイリアス に `パラディン` `ナイト` として募集を出すようにゲームを実装します。<br>
-     *   そして、プレイヤーは自分自身の `ジョブ` を自身のプレイヤー情報のロールに指定します。<br>
-     *   <br>
-     *   こうすることで、募集条件が `盾役` になっているギャザリングには `パラディン` も `ナイト` も参加できます。<br>
-     *   一方で、ギャザリングを作成するときに、 `パラディン` だけ募集したくて、 `ナイト` を募集したくない場合は、<br>
-     *   募集するロール名に `パラディン` を直接指定したり、エイリアスに `ナイト` を含めないようにすることで実現できます。<br>
-     *   <br>
-     *   `参加者` の `募集人数` はプレイヤーの募集人数を指定します。ロール名を指定することで、ロール名ごとの募集人数を設定できます。<br>
-     *   <br>
-     *   `参加者` の `参加者のプレイヤー情報リスト` には事前にプレイヤー間でパーティを構築している場合や、参加者が離脱したあとの追加募集で使用します。<br>
-     *
-     * @param CreateGatheringByUserIdRequest $request リクエストパラメータ
+     * @param CreateGatheringByUserIdRequest $request
      * @return CreateGatheringByUserIdResult
      */
     public function createGatheringByUserId (
@@ -3048,9 +2876,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを更新する<br>
-     *
-     * @param UpdateGatheringRequest $request リクエストパラメータ
+     * @param UpdateGatheringRequest $request
      * @return PromiseInterface
      */
     public function updateGatheringAsync(
@@ -3065,9 +2891,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを更新する<br>
-     *
-     * @param UpdateGatheringRequest $request リクエストパラメータ
+     * @param UpdateGatheringRequest $request
      * @return UpdateGatheringResult
      */
     public function updateGathering (
@@ -3079,9 +2903,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを更新する<br>
-     *
-     * @param UpdateGatheringByUserIdRequest $request リクエストパラメータ
+     * @param UpdateGatheringByUserIdRequest $request
      * @return PromiseInterface
      */
     public function updateGatheringByUserIdAsync(
@@ -3096,9 +2918,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを更新する<br>
-     *
-     * @param UpdateGatheringByUserIdRequest $request リクエストパラメータ
+     * @param UpdateGatheringByUserIdRequest $request
      * @return UpdateGatheringByUserIdResult
      */
     public function updateGatheringByUserId (
@@ -3110,13 +2930,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Player が参加できるギャザリングを探して参加する<br>
-     *   <br>
-     *   一定時間 検索を行い、対象が見つからなかったときには `マッチメイキングの状態を保持するトークン` を返す。<br>
-     *   次回 `マッチメイキングの状態を保持するトークン` をつけて再度リクエストを出すことで、前回の続きから検索処理を再開できる。<br>
-     *   すべてのギャザリングを検索したが、参加できるギャザリングが存在しなかった場合はギャザリングもトークンもどちらも null が応答される。<br>
-     *
-     * @param DoMatchmakingByPlayerRequest $request リクエストパラメータ
+     * @param DoMatchmakingByPlayerRequest $request
      * @return PromiseInterface
      */
     public function doMatchmakingByPlayerAsync(
@@ -3131,13 +2945,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Player が参加できるギャザリングを探して参加する<br>
-     *   <br>
-     *   一定時間 検索を行い、対象が見つからなかったときには `マッチメイキングの状態を保持するトークン` を返す。<br>
-     *   次回 `マッチメイキングの状態を保持するトークン` をつけて再度リクエストを出すことで、前回の続きから検索処理を再開できる。<br>
-     *   すべてのギャザリングを検索したが、参加できるギャザリングが存在しなかった場合はギャザリングもトークンもどちらも null が応答される。<br>
-     *
-     * @param DoMatchmakingByPlayerRequest $request リクエストパラメータ
+     * @param DoMatchmakingByPlayerRequest $request
      * @return DoMatchmakingByPlayerResult
      */
     public function doMatchmakingByPlayer (
@@ -3149,13 +2957,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 自分が参加できるギャザリングを探して参加する<br>
-     *   <br>
-     *   一定時間 検索を行い、対象が見つからなかったときには `マッチメイキングの状態を保持するトークン` を返す。<br>
-     *   次回 `マッチメイキングの状態を保持するトークン` をつけて再度リクエストを出すことで、前回の続きから検索処理を再開できる。<br>
-     *   すべてのギャザリングを検索したが、参加できるギャザリングが存在しなかった場合はギャザリングもトークンもどちらも null が応答される。<br>
-     *
-     * @param DoMatchmakingRequest $request リクエストパラメータ
+     * @param DoMatchmakingRequest $request
      * @return PromiseInterface
      */
     public function doMatchmakingAsync(
@@ -3170,13 +2972,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 自分が参加できるギャザリングを探して参加する<br>
-     *   <br>
-     *   一定時間 検索を行い、対象が見つからなかったときには `マッチメイキングの状態を保持するトークン` を返す。<br>
-     *   次回 `マッチメイキングの状態を保持するトークン` をつけて再度リクエストを出すことで、前回の続きから検索処理を再開できる。<br>
-     *   すべてのギャザリングを検索したが、参加できるギャザリングが存在しなかった場合はギャザリングもトークンもどちらも null が応答される。<br>
-     *
-     * @param DoMatchmakingRequest $request リクエストパラメータ
+     * @param DoMatchmakingRequest $request
      * @return DoMatchmakingResult
      */
     public function doMatchmaking (
@@ -3188,9 +2984,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを取得<br>
-     *
-     * @param GetGatheringRequest $request リクエストパラメータ
+     * @param GetGatheringRequest $request
      * @return PromiseInterface
      */
     public function getGatheringAsync(
@@ -3205,9 +2999,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを取得<br>
-     *
-     * @param GetGatheringRequest $request リクエストパラメータ
+     * @param GetGatheringRequest $request
      * @return GetGatheringResult
      */
     public function getGathering (
@@ -3219,11 +3011,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * マッチメイキングをキャンセルする<br>
-     *   <br>
-     *   ギャザリングから離脱する前にマッチメイキングが完了した場合は、NotFoundException(404エラー) が発生し失敗します<br>
-     *
-     * @param CancelMatchmakingRequest $request リクエストパラメータ
+     * @param CancelMatchmakingRequest $request
      * @return PromiseInterface
      */
     public function cancelMatchmakingAsync(
@@ -3238,11 +3026,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * マッチメイキングをキャンセルする<br>
-     *   <br>
-     *   ギャザリングから離脱する前にマッチメイキングが完了した場合は、NotFoundException(404エラー) が発生し失敗します<br>
-     *
-     * @param CancelMatchmakingRequest $request リクエストパラメータ
+     * @param CancelMatchmakingRequest $request
      * @return CancelMatchmakingResult
      */
     public function cancelMatchmaking (
@@ -3254,11 +3038,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してマッチメイキングをキャンセルする<br>
-     *   <br>
-     *   ギャザリングから離脱する前にマッチメイキングが完了した場合は、NotFoundException(404エラー) が発生し失敗します<br>
-     *
-     * @param CancelMatchmakingByUserIdRequest $request リクエストパラメータ
+     * @param CancelMatchmakingByUserIdRequest $request
      * @return PromiseInterface
      */
     public function cancelMatchmakingByUserIdAsync(
@@ -3273,11 +3053,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してマッチメイキングをキャンセルする<br>
-     *   <br>
-     *   ギャザリングから離脱する前にマッチメイキングが完了した場合は、NotFoundException(404エラー) が発生し失敗します<br>
-     *
-     * @param CancelMatchmakingByUserIdRequest $request リクエストパラメータ
+     * @param CancelMatchmakingByUserIdRequest $request
      * @return CancelMatchmakingByUserIdResult
      */
     public function cancelMatchmakingByUserId (
@@ -3289,9 +3065,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを削除<br>
-     *
-     * @param DeleteGatheringRequest $request リクエストパラメータ
+     * @param DeleteGatheringRequest $request
      * @return PromiseInterface
      */
     public function deleteGatheringAsync(
@@ -3306,9 +3080,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ギャザリングを削除<br>
-     *
-     * @param DeleteGatheringRequest $request リクエストパラメータ
+     * @param DeleteGatheringRequest $request
      * @return DeleteGatheringResult
      */
     public function deleteGathering (
@@ -3320,9 +3092,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeRatingModelMastersRequest $request リクエストパラメータ
+     * @param DescribeRatingModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeRatingModelMastersAsync(
@@ -3337,9 +3107,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeRatingModelMastersRequest $request リクエストパラメータ
+     * @param DescribeRatingModelMastersRequest $request
      * @return DescribeRatingModelMastersResult
      */
     public function describeRatingModelMasters (
@@ -3351,9 +3119,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターを新規作成<br>
-     *
-     * @param CreateRatingModelMasterRequest $request リクエストパラメータ
+     * @param CreateRatingModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createRatingModelMasterAsync(
@@ -3368,9 +3134,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターを新規作成<br>
-     *
-     * @param CreateRatingModelMasterRequest $request リクエストパラメータ
+     * @param CreateRatingModelMasterRequest $request
      * @return CreateRatingModelMasterResult
      */
     public function createRatingModelMaster (
@@ -3382,9 +3146,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターを取得<br>
-     *
-     * @param GetRatingModelMasterRequest $request リクエストパラメータ
+     * @param GetRatingModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getRatingModelMasterAsync(
@@ -3399,9 +3161,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターを取得<br>
-     *
-     * @param GetRatingModelMasterRequest $request リクエストパラメータ
+     * @param GetRatingModelMasterRequest $request
      * @return GetRatingModelMasterResult
      */
     public function getRatingModelMaster (
@@ -3413,9 +3173,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターを更新<br>
-     *
-     * @param UpdateRatingModelMasterRequest $request リクエストパラメータ
+     * @param UpdateRatingModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateRatingModelMasterAsync(
@@ -3430,9 +3188,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターを更新<br>
-     *
-     * @param UpdateRatingModelMasterRequest $request リクエストパラメータ
+     * @param UpdateRatingModelMasterRequest $request
      * @return UpdateRatingModelMasterResult
      */
     public function updateRatingModelMaster (
@@ -3444,9 +3200,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターを削除<br>
-     *
-     * @param DeleteRatingModelMasterRequest $request リクエストパラメータ
+     * @param DeleteRatingModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteRatingModelMasterAsync(
@@ -3461,9 +3215,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルマスターを削除<br>
-     *
-     * @param DeleteRatingModelMasterRequest $request リクエストパラメータ
+     * @param DeleteRatingModelMasterRequest $request
      * @return DeleteRatingModelMasterResult
      */
     public function deleteRatingModelMaster (
@@ -3475,9 +3227,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルの一覧を取得<br>
-     *
-     * @param DescribeRatingModelsRequest $request リクエストパラメータ
+     * @param DescribeRatingModelsRequest $request
      * @return PromiseInterface
      */
     public function describeRatingModelsAsync(
@@ -3492,9 +3242,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルの一覧を取得<br>
-     *
-     * @param DescribeRatingModelsRequest $request リクエストパラメータ
+     * @param DescribeRatingModelsRequest $request
      * @return DescribeRatingModelsResult
      */
     public function describeRatingModels (
@@ -3506,9 +3254,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルを取得<br>
-     *
-     * @param GetRatingModelRequest $request リクエストパラメータ
+     * @param GetRatingModelRequest $request
      * @return PromiseInterface
      */
     public function getRatingModelAsync(
@@ -3523,9 +3269,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングモデルを取得<br>
-     *
-     * @param GetRatingModelRequest $request リクエストパラメータ
+     * @param GetRatingModelRequest $request
      * @return GetRatingModelResult
      */
     public function getRatingModel (
@@ -3537,9 +3281,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なレーティングマスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -3554,9 +3296,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なレーティングマスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -3568,9 +3308,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なレーティングマスターを取得します<br>
-     *
-     * @param GetCurrentRatingModelMasterRequest $request リクエストパラメータ
+     * @param GetCurrentRatingModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentRatingModelMasterAsync(
@@ -3585,9 +3323,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なレーティングマスターを取得します<br>
-     *
-     * @param GetCurrentRatingModelMasterRequest $request リクエストパラメータ
+     * @param GetCurrentRatingModelMasterRequest $request
      * @return GetCurrentRatingModelMasterResult
      */
     public function getCurrentRatingModelMaster (
@@ -3599,9 +3335,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なレーティングマスターを更新します<br>
-     *
-     * @param UpdateCurrentRatingModelMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentRatingModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentRatingModelMasterAsync(
@@ -3616,9 +3350,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なレーティングマスターを更新します<br>
-     *
-     * @param UpdateCurrentRatingModelMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentRatingModelMasterRequest $request
      * @return UpdateCurrentRatingModelMasterResult
      */
     public function updateCurrentRatingModelMaster (
@@ -3630,9 +3362,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なレーティングマスターを更新します<br>
-     *
-     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentRatingModelMasterFromGitHubAsync(
@@ -3647,9 +3377,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なレーティングマスターを更新します<br>
-     *
-     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request
      * @return UpdateCurrentRatingModelMasterFromGitHubResult
      */
     public function updateCurrentRatingModelMasterFromGitHub (
@@ -3661,9 +3389,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングの一覧を取得<br>
-     *
-     * @param DescribeRatingsRequest $request リクエストパラメータ
+     * @param DescribeRatingsRequest $request
      * @return PromiseInterface
      */
     public function describeRatingsAsync(
@@ -3678,9 +3404,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングの一覧を取得<br>
-     *
-     * @param DescribeRatingsRequest $request リクエストパラメータ
+     * @param DescribeRatingsRequest $request
      * @return DescribeRatingsResult
      */
     public function describeRatings (
@@ -3692,9 +3416,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してレーティングの一覧を取得<br>
-     *
-     * @param DescribeRatingsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeRatingsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeRatingsByUserIdAsync(
@@ -3709,9 +3431,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してレーティングの一覧を取得<br>
-     *
-     * @param DescribeRatingsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeRatingsByUserIdRequest $request
      * @return DescribeRatingsByUserIdResult
      */
     public function describeRatingsByUserId (
@@ -3723,9 +3443,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングを取得<br>
-     *
-     * @param GetRatingRequest $request リクエストパラメータ
+     * @param GetRatingRequest $request
      * @return PromiseInterface
      */
     public function getRatingAsync(
@@ -3740,9 +3458,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングを取得<br>
-     *
-     * @param GetRatingRequest $request リクエストパラメータ
+     * @param GetRatingRequest $request
      * @return GetRatingResult
      */
     public function getRating (
@@ -3754,9 +3470,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングを取得<br>
-     *
-     * @param GetRatingByUserIdRequest $request リクエストパラメータ
+     * @param GetRatingByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getRatingByUserIdAsync(
@@ -3771,9 +3485,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングを取得<br>
-     *
-     * @param GetRatingByUserIdRequest $request リクエストパラメータ
+     * @param GetRatingByUserIdRequest $request
      * @return GetRatingByUserIdResult
      */
     public function getRatingByUserId (
@@ -3785,16 +3497,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティング値の再計算を実行<br>
-     *   <br>
-     *   レーティングの計算処理には Glicko-2 rating system をベースとした計算アルゴリズムを採用しています。<br>
-     *   レーティング値の初期値は1500で、レーティングの値が離れた相手に勝利するほど上昇幅は大きく、同じく負けた側は減少幅は大きくなります。<br>
-     *   <br>
-     *   レーティングの計算には参加したユーザIDのリストが必要となります。<br>
-     *   そのため、クライアントから直接このAPIを呼び出すのは適切ではありません。ゲームの勝敗を判断できるゲームサーバから呼び出すようにしてください。<br>
-     *   P2P 対戦など、クライアント主導で対戦を実現している場合は、投票機能を利用して勝敗を決定するようにしてください。<br>
-     *
-     * @param PutResultRequest $request リクエストパラメータ
+     * @param PutResultRequest $request
      * @return PromiseInterface
      */
     public function putResultAsync(
@@ -3809,16 +3512,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティング値の再計算を実行<br>
-     *   <br>
-     *   レーティングの計算処理には Glicko-2 rating system をベースとした計算アルゴリズムを採用しています。<br>
-     *   レーティング値の初期値は1500で、レーティングの値が離れた相手に勝利するほど上昇幅は大きく、同じく負けた側は減少幅は大きくなります。<br>
-     *   <br>
-     *   レーティングの計算には参加したユーザIDのリストが必要となります。<br>
-     *   そのため、クライアントから直接このAPIを呼び出すのは適切ではありません。ゲームの勝敗を判断できるゲームサーバから呼び出すようにしてください。<br>
-     *   P2P 対戦など、クライアント主導で対戦を実現している場合は、投票機能を利用して勝敗を決定するようにしてください。<br>
-     *
-     * @param PutResultRequest $request リクエストパラメータ
+     * @param PutResultRequest $request
      * @return PutResultResult
      */
     public function putResult (
@@ -3830,9 +3524,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングを削除<br>
-     *
-     * @param DeleteRatingRequest $request リクエストパラメータ
+     * @param DeleteRatingRequest $request
      * @return PromiseInterface
      */
     public function deleteRatingAsync(
@@ -3847,9 +3539,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レーティングを削除<br>
-     *
-     * @param DeleteRatingRequest $request リクエストパラメータ
+     * @param DeleteRatingRequest $request
      * @return DeleteRatingResult
      */
     public function deleteRating (
@@ -3861,9 +3551,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 投票用紙を取得します。<br>
-     *
-     * @param GetBallotRequest $request リクエストパラメータ
+     * @param GetBallotRequest $request
      * @return PromiseInterface
      */
     public function getBallotAsync(
@@ -3878,9 +3566,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 投票用紙を取得します。<br>
-     *
-     * @param GetBallotRequest $request リクエストパラメータ
+     * @param GetBallotRequest $request
      * @return GetBallotResult
      */
     public function getBallot (
@@ -3892,9 +3578,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 投票用紙を取得します。<br>
-     *
-     * @param GetBallotByUserIdRequest $request リクエストパラメータ
+     * @param GetBallotByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getBallotByUserIdAsync(
@@ -3909,9 +3593,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 投票用紙を取得します。<br>
-     *
-     * @param GetBallotByUserIdRequest $request リクエストパラメータ
+     * @param GetBallotByUserIdRequest $request
      * @return GetBallotByUserIdResult
      */
     public function getBallotByUserId (
@@ -3923,16 +3605,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 対戦結果を投票します。<br>
-     *   <br>
-     *   投票は最初の投票が行われてから5分以内に行う必要があります。<br>
-     *   つまり、結果は即座に反映されず、投票開始からおよそ5分後または全てのプレイヤーが投票を行った際に結果が反映されます。<br>
-     *   5分以内に全ての投票用紙を回収できなかった場合はその時点の投票内容で多数決をとって結果を決定します。<br>
-     *   各結果の投票数が同一だった場合は結果は捨てられます（スクリプトで挙動を変更可）。<br>
-     *   <br>
-     *   結果を即座に反映したい場合は、勝利した側の代表プレイヤーが投票用紙を各プレイヤーから集めて voteMultiple を呼び出すことで結果を即座に反映できます。<br>
-     *
-     * @param VoteRequest $request リクエストパラメータ
+     * @param VoteRequest $request
      * @return PromiseInterface
      */
     public function voteAsync(
@@ -3947,16 +3620,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 対戦結果を投票します。<br>
-     *   <br>
-     *   投票は最初の投票が行われてから5分以内に行う必要があります。<br>
-     *   つまり、結果は即座に反映されず、投票開始からおよそ5分後または全てのプレイヤーが投票を行った際に結果が反映されます。<br>
-     *   5分以内に全ての投票用紙を回収できなかった場合はその時点の投票内容で多数決をとって結果を決定します。<br>
-     *   各結果の投票数が同一だった場合は結果は捨てられます（スクリプトで挙動を変更可）。<br>
-     *   <br>
-     *   結果を即座に反映したい場合は、勝利した側の代表プレイヤーが投票用紙を各プレイヤーから集めて voteMultiple を呼び出すことで結果を即座に反映できます。<br>
-     *
-     * @param VoteRequest $request リクエストパラメータ
+     * @param VoteRequest $request
      * @return VoteResult
      */
     public function vote (
@@ -3968,13 +3632,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 対戦結果をまとめて投票します。<br>
-     *   <br>
-     *   ゲームに勝利した側が他プレイヤーの投票用紙を集めてまとめて投票するのに使用します。<br>
-     *   『勝利した側』としているのは、敗北した側が自分たちが勝ったことにして報告することにインセンティブはありますが、その逆はないためです。<br>
-     *   負けた側が投票用紙を渡してこない可能性がありますが、その場合も過半数の投票用紙があれば結果を通すことができます。<br>
-     *
-     * @param VoteMultipleRequest $request リクエストパラメータ
+     * @param VoteMultipleRequest $request
      * @return PromiseInterface
      */
     public function voteMultipleAsync(
@@ -3989,13 +3647,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 対戦結果をまとめて投票します。<br>
-     *   <br>
-     *   ゲームに勝利した側が他プレイヤーの投票用紙を集めてまとめて投票するのに使用します。<br>
-     *   『勝利した側』としているのは、敗北した側が自分たちが勝ったことにして報告することにインセンティブはありますが、その逆はないためです。<br>
-     *   負けた側が投票用紙を渡してこない可能性がありますが、その場合も過半数の投票用紙があれば結果を通すことができます。<br>
-     *
-     * @param VoteMultipleRequest $request リクエストパラメータ
+     * @param VoteMultipleRequest $request
      * @return VoteMultipleResult
      */
     public function voteMultiple (
@@ -4007,9 +3659,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 投票状況を強制確定<br>
-     *
-     * @param CommitVoteRequest $request リクエストパラメータ
+     * @param CommitVoteRequest $request
      * @return PromiseInterface
      */
     public function commitVoteAsync(
@@ -4024,9 +3674,7 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 投票状況を強制確定<br>
-     *
-     * @param CommitVoteRequest $request リクエストパラメータ
+     * @param CommitVoteRequest $request
      * @return CommitVoteResult
      */
     public function commitVote (

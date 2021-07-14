@@ -20,36 +20,34 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
-/**
- * エントリーを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetEntryResult implements IResult {
-	/** @var Entry エントリー */
-	private $item;
+    /** @var Entry */
+    private $item;
 
-	/**
-	 * エントリーを取得
-	 *
-	 * @return Entry|null エントリーを取得
-	 */
 	public function getItem(): ?Entry {
 		return $this->item;
 	}
 
-	/**
-	 * エントリーを設定
-	 *
-	 * @param Entry|null $item エントリーを取得
-	 */
 	public function setItem(?Entry $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetEntryResult {
-        $result = new GetEntryResult();
-        $result->setItem(isset($data["item"]) ? Entry::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Entry $item): GetEntryResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetEntryResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetEntryResult())
+            ->withItem(empty($data['item']) ? null : Entry::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

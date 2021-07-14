@@ -19,75 +19,51 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * イベントマスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteEventMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null イベントマスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName イベントマスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName イベントマスターを削除
-     * @return DeleteEventMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteEventMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string イベントの種類名 */
+    /** @var string */
     private $eventName;
 
-    /**
-     * イベントの種類名を取得
-     *
-     * @return string|null イベントマスターを削除
-     */
-    public function getEventName(): ?string {
-        return $this->eventName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteEventMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getEventName(): ?string {
+		return $this->eventName;
+	}
+
+	public function setEventName(?string $eventName) {
+		$this->eventName = $eventName;
+	}
+
+	public function withEventName(?string $eventName): DeleteEventMasterRequest {
+		$this->eventName = $eventName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteEventMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteEventMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withEventName(empty($data['eventName']) ? null : $data['eventName']);
     }
 
-    /**
-     * イベントの種類名を設定
-     *
-     * @param string $eventName イベントマスターを削除
-     */
-    public function setEventName(string $eventName = null) {
-        $this->eventName = $eventName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "eventName" => $this->getEventName(),
+        );
     }
-
-    /**
-     * イベントの種類名を設定
-     *
-     * @param string $eventName イベントマスターを削除
-     * @return DeleteEventMasterRequest $this
-     */
-    public function withEventName(string $eventName = null): DeleteEventMasterRequest {
-        $this->setEventName($eventName);
-        return $this;
-    }
-
 }

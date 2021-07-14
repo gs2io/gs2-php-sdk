@@ -19,137 +19,85 @@ namespace Gs2\Quest\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * コンテンツ
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Contents implements IModel {
 	/**
-     * @var string クエストモデルのメタデータ
+     * @var string
 	 */
-	protected $metadata;
-
+	private $metadata;
 	/**
-	 * クエストモデルのメタデータを取得
-	 *
-	 * @return string|null クエストモデルのメタデータ
+     * @var array
 	 */
+	private $completeAcquireActions;
+	/**
+     * @var int
+	 */
+	private $weight;
+
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * クエストモデルのメタデータを設定
-	 *
-	 * @param string|null $metadata クエストモデルのメタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * クエストモデルのメタデータを設定
-	 *
-	 * @param string|null $metadata クエストモデルのメタデータ
-	 * @return Contents $this
-	 */
 	public function withMetadata(?string $metadata): Contents {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var AcquireAction[] クエストクリア時の報酬
-	 */
-	protected $completeAcquireActions;
 
-	/**
-	 * クエストクリア時の報酬を取得
-	 *
-	 * @return AcquireAction[]|null クエストクリア時の報酬
-	 */
 	public function getCompleteAcquireActions(): ?array {
 		return $this->completeAcquireActions;
 	}
 
-	/**
-	 * クエストクリア時の報酬を設定
-	 *
-	 * @param AcquireAction[]|null $completeAcquireActions クエストクリア時の報酬
-	 */
 	public function setCompleteAcquireActions(?array $completeAcquireActions) {
 		$this->completeAcquireActions = $completeAcquireActions;
 	}
 
-	/**
-	 * クエストクリア時の報酬を設定
-	 *
-	 * @param AcquireAction[]|null $completeAcquireActions クエストクリア時の報酬
-	 * @return Contents $this
-	 */
 	public function withCompleteAcquireActions(?array $completeAcquireActions): Contents {
 		$this->completeAcquireActions = $completeAcquireActions;
 		return $this;
 	}
-	/**
-     * @var int 抽選する重み
-	 */
-	protected $weight;
 
-	/**
-	 * 抽選する重みを取得
-	 *
-	 * @return int|null 抽選する重み
-	 */
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
 
-	/**
-	 * 抽選する重みを設定
-	 *
-	 * @param int|null $weight 抽選する重み
-	 */
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
 
-	/**
-	 * 抽選する重みを設定
-	 *
-	 * @param int|null $weight 抽選する重み
-	 * @return Contents $this
-	 */
 	public function withWeight(?int $weight): Contents {
 		$this->weight = $weight;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "metadata" => $this->metadata,
-            "completeAcquireActions" => array_map(
-                function (AcquireAction $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?Contents {
+        if ($data === null) {
+            return null;
+        }
+        return (new Contents())
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withCompleteAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
                 },
-                $this->completeAcquireActions == null ? [] : $this->completeAcquireActions
-            ),
-            "weight" => $this->weight,
-        );
+                array_key_exists('completeAcquireActions', $data) && $data['completeAcquireActions'] !== null ? $data['completeAcquireActions'] : []
+            ))
+            ->withWeight(empty($data['weight']) ? null : $data['weight']);
     }
 
-    public static function fromJson(array $data): Contents {
-        $model = new Contents();
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setCompleteAcquireActions(array_map(
-                function ($v) {
-                    return AcquireAction::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "metadata" => $this->getMetadata(),
+            "completeAcquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["completeAcquireActions"]) ? $data["completeAcquireActions"] : []
-            )
+                $this->getCompleteAcquireActions() !== null && $this->getCompleteAcquireActions() !== null ? $this->getCompleteAcquireActions() : []
+            ),
+            "weight" => $this->getWeight(),
         );
-        $model->setWeight(isset($data["weight"]) ? $data["weight"] : null);
-        return $model;
     }
 }

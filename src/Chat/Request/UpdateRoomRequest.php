@@ -19,171 +19,112 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ルームを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateRoomRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ルームを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを更新
-     * @return UpdateRoomRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateRoomRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null ルームを更新
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ルームを更新
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ルームを更新
-     * @return UpdateRoomRequest $this
-     */
-    public function withRoomName(string $roomName = null): UpdateRoomRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var string メタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * メタデータを取得
-     *
-     * @return string|null ルームを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata ルームを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata ルームを更新
-     * @return UpdateRoomRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateRoomRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string メッセージを投稿するために必要となるパスワード */
+    /** @var string */
     private $password;
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを取得
-     *
-     * @return string|null ルームを更新
-     */
-    public function getPassword(): ?string {
-        return $this->password;
-    }
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを設定
-     *
-     * @param string $password ルームを更新
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
-    }
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを設定
-     *
-     * @param string $password ルームを更新
-     * @return UpdateRoomRequest $this
-     */
-    public function withPassword(string $password = null): UpdateRoomRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
-    /** @var string[] ルームに参加可能なユーザIDリスト */
+    /** @var array */
     private $whiteListUserIds;
 
-    /**
-     * ルームに参加可能なユーザIDリストを取得
-     *
-     * @return string[]|null ルームを更新
-     */
-    public function getWhiteListUserIds(): ?array {
-        return $this->whiteListUserIds;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateRoomRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): UpdateRoomRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateRoomRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): UpdateRoomRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+	public function getWhiteListUserIds(): ?array {
+		return $this->whiteListUserIds;
+	}
+
+	public function setWhiteListUserIds(?array $whiteListUserIds) {
+		$this->whiteListUserIds = $whiteListUserIds;
+	}
+
+	public function withWhiteListUserIds(?array $whiteListUserIds): UpdateRoomRequest {
+		$this->whiteListUserIds = $whiteListUserIds;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateRoomRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateRoomRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withPassword(empty($data['password']) ? null : $data['password'])
+            ->withWhiteListUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('whiteListUserIds', $data) && $data['whiteListUserIds'] !== null ? $data['whiteListUserIds'] : []
+            ));
     }
 
-    /**
-     * ルームに参加可能なユーザIDリストを設定
-     *
-     * @param string[] $whiteListUserIds ルームを更新
-     */
-    public function setWhiteListUserIds(array $whiteListUserIds = null) {
-        $this->whiteListUserIds = $whiteListUserIds;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "metadata" => $this->getMetadata(),
+            "password" => $this->getPassword(),
+            "whiteListUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getWhiteListUserIds() !== null && $this->getWhiteListUserIds() !== null ? $this->getWhiteListUserIds() : []
+            ),
+        );
     }
-
-    /**
-     * ルームに参加可能なユーザIDリストを設定
-     *
-     * @param string[] $whiteListUserIds ルームを更新
-     * @return UpdateRoomRequest $this
-     */
-    public function withWhiteListUserIds(array $whiteListUserIds = null): UpdateRoomRequest {
-        $this->setWhiteListUserIds($whiteListUserIds);
-        return $this;
-    }
-
 }

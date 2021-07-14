@@ -19,75 +19,51 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 支払い方法を削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteBillingMethodRequest extends Gs2BasicRequest {
-
-    /** @var string GS2アカウントトークン */
+    /** @var string */
     private $accountToken;
-
-    /**
-     * GS2アカウントトークンを取得
-     *
-     * @return string|null 支払い方法を削除
-     */
-    public function getAccountToken(): ?string {
-        return $this->accountToken;
-    }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken 支払い方法を削除
-     */
-    public function setAccountToken(string $accountToken = null) {
-        $this->accountToken = $accountToken;
-    }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken 支払い方法を削除
-     * @return DeleteBillingMethodRequest $this
-     */
-    public function withAccountToken(string $accountToken = null): DeleteBillingMethodRequest {
-        $this->setAccountToken($accountToken);
-        return $this;
-    }
-
-    /** @var string 名前 */
+    /** @var string */
     private $billingMethodName;
 
-    /**
-     * 名前を取得
-     *
-     * @return string|null 支払い方法を削除
-     */
-    public function getBillingMethodName(): ?string {
-        return $this->billingMethodName;
+	public function getAccountToken(): ?string {
+		return $this->accountToken;
+	}
+
+	public function setAccountToken(?string $accountToken) {
+		$this->accountToken = $accountToken;
+	}
+
+	public function withAccountToken(?string $accountToken): DeleteBillingMethodRequest {
+		$this->accountToken = $accountToken;
+		return $this;
+	}
+
+	public function getBillingMethodName(): ?string {
+		return $this->billingMethodName;
+	}
+
+	public function setBillingMethodName(?string $billingMethodName) {
+		$this->billingMethodName = $billingMethodName;
+	}
+
+	public function withBillingMethodName(?string $billingMethodName): DeleteBillingMethodRequest {
+		$this->billingMethodName = $billingMethodName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteBillingMethodRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteBillingMethodRequest())
+            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
+            ->withBillingMethodName(empty($data['billingMethodName']) ? null : $data['billingMethodName']);
     }
 
-    /**
-     * 名前を設定
-     *
-     * @param string $billingMethodName 支払い方法を削除
-     */
-    public function setBillingMethodName(string $billingMethodName = null) {
-        $this->billingMethodName = $billingMethodName;
+    public function toJson(): array {
+        return array(
+            "accountToken" => $this->getAccountToken(),
+            "billingMethodName" => $this->getBillingMethodName(),
+        );
     }
-
-    /**
-     * 名前を設定
-     *
-     * @param string $billingMethodName 支払い方法を削除
-     * @return DeleteBillingMethodRequest $this
-     */
-    public function withBillingMethodName(string $billingMethodName = null): DeleteBillingMethodRequest {
-        $this->setBillingMethodName($billingMethodName);
-        return $this;
-    }
-
 }

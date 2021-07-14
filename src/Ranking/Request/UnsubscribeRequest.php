@@ -19,171 +19,85 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 購読の購読を解除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UnsubscribeRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 購読の購読を解除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 購読の購読を解除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 購読の購読を解除
-     * @return UnsubscribeRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UnsubscribeRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $categoryName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null 購読の購読を解除
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName 購読の購読を解除
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName 購読の購読を解除
-     * @return UnsubscribeRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): UnsubscribeRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
-    /** @var string 購読されるユーザID */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $targetUserId;
 
-    /**
-     * 購読されるユーザIDを取得
-     *
-     * @return string|null 購読の購読を解除
-     */
-    public function getTargetUserId(): ?string {
-        return $this->targetUserId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UnsubscribeRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): UnsubscribeRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): UnsubscribeRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getTargetUserId(): ?string {
+		return $this->targetUserId;
+	}
+
+	public function setTargetUserId(?string $targetUserId) {
+		$this->targetUserId = $targetUserId;
+	}
+
+	public function withTargetUserId(?string $targetUserId): UnsubscribeRequest {
+		$this->targetUserId = $targetUserId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UnsubscribeRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UnsubscribeRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId']);
     }
 
-    /**
-     * 購読されるユーザIDを設定
-     *
-     * @param string $targetUserId 購読の購読を解除
-     */
-    public function setTargetUserId(string $targetUserId = null) {
-        $this->targetUserId = $targetUserId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+            "accessToken" => $this->getAccessToken(),
+            "targetUserId" => $this->getTargetUserId(),
+        );
     }
-
-    /**
-     * 購読されるユーザIDを設定
-     *
-     * @param string $targetUserId 購読の購読を解除
-     * @return UnsubscribeRequest $this
-     */
-    public function withTargetUserId(string $targetUserId = null): UnsubscribeRequest {
-        $this->setTargetUserId($targetUserId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 購読の購読を解除
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 購読の購読を解除
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 購読の購読を解除
-     * @return UnsubscribeRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UnsubscribeRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return UnsubscribeRequest this
-     */
-    public function withAccessToken(string $accessToken): UnsubscribeRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

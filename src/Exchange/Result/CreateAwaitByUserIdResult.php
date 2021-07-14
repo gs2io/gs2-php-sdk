@@ -20,57 +20,51 @@ namespace Gs2\Exchange\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Await;
 
-/**
- * 交換待機を作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateAwaitByUserIdResult implements IResult {
-	/** @var Await 交換待機 */
-	private $item;
-	/** @var int 取得できるようになる日時 */
-	private $unlockAt;
+    /** @var Await */
+    private $item;
+    /** @var int */
+    private $unlockAt;
 
-	/**
-	 * 交換待機を取得
-	 *
-	 * @return Await|null 交換待機を作成
-	 */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
-	/**
-	 * 交換待機を設定
-	 *
-	 * @param Await|null $item 交換待機を作成
-	 */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 取得できるようになる日時を取得
-	 *
-	 * @return int|null 交換待機を作成
-	 */
+	public function withItem(?Await $item): CreateAwaitByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getUnlockAt(): ?int {
 		return $this->unlockAt;
 	}
 
-	/**
-	 * 取得できるようになる日時を設定
-	 *
-	 * @param int|null $unlockAt 交換待機を作成
-	 */
 	public function setUnlockAt(?int $unlockAt) {
 		$this->unlockAt = $unlockAt;
 	}
 
-    public static function fromJson(array $data): CreateAwaitByUserIdResult {
-        $result = new CreateAwaitByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Await::fromJson($data["item"]) : null);
-        $result->setUnlockAt(isset($data["unlockAt"]) ? $data["unlockAt"] : null);
-        return $result;
+	public function withUnlockAt(?int $unlockAt): CreateAwaitByUserIdResult {
+		$this->unlockAt = $unlockAt;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateAwaitByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateAwaitByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']))
+            ->withUnlockAt(empty($data['unlockAt']) ? null : $data['unlockAt']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "unlockAt" => $this->getUnlockAt(),
+        );
     }
 }

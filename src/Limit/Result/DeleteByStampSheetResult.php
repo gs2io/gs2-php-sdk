@@ -20,36 +20,34 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
-/**
- * スタンプシートでカウンターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteByStampSheetResult implements IResult {
-	/** @var Counter カウンター */
-	private $item;
+    /** @var Counter */
+    private $item;
 
-	/**
-	 * カウンターを取得
-	 *
-	 * @return Counter|null スタンプシートでカウンターを削除
-	 */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
-	/**
-	 * カウンターを設定
-	 *
-	 * @param Counter|null $item スタンプシートでカウンターを削除
-	 */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteByStampSheetResult {
-        $result = new DeleteByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? Counter::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Counter $item): DeleteByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : Counter::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

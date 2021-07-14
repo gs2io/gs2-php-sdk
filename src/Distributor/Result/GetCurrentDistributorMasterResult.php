@@ -20,36 +20,34 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\CurrentDistributorMaster;
 
-/**
- * 現在有効な配信設定を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCurrentDistributorMasterResult implements IResult {
-	/** @var CurrentDistributorMaster 現在有効な配信設定 */
-	private $item;
+    /** @var CurrentDistributorMaster */
+    private $item;
 
-	/**
-	 * 現在有効な配信設定を取得
-	 *
-	 * @return CurrentDistributorMaster|null 現在有効な配信設定を取得します
-	 */
 	public function getItem(): ?CurrentDistributorMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効な配信設定を設定
-	 *
-	 * @param CurrentDistributorMaster|null $item 現在有効な配信設定を取得します
-	 */
 	public function setItem(?CurrentDistributorMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCurrentDistributorMasterResult {
-        $result = new GetCurrentDistributorMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentDistributorMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentDistributorMaster $item): GetCurrentDistributorMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCurrentDistributorMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCurrentDistributorMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentDistributorMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

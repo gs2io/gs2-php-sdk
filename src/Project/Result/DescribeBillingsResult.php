@@ -20,42 +20,44 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Billing;
 
-/**
- * 利用状況の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeBillingsResult implements IResult {
-	/** @var Billing[] 利用状況のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 利用状況のリストを取得
-	 *
-	 * @return Billing[]|null 利用状況の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 利用状況のリストを設定
-	 *
-	 * @param Billing[]|null $items 利用状況の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeBillingsResult {
-        $result = new DescribeBillingsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Billing::fromJson($v);
+	public function withItems(?array $items): DescribeBillingsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeBillingsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeBillingsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Billing::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

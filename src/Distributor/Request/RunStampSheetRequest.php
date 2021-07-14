@@ -19,139 +19,68 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタンプシートの完了を報告する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class RunStampSheetRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタンプシートの完了を報告する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタンプシートの完了を報告する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタンプシートの完了を報告する
-     * @return RunStampSheetRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): RunStampSheetRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 実行するスタンプタスク */
+    /** @var string */
     private $stampSheet;
-
-    /**
-     * 実行するスタンプタスクを取得
-     *
-     * @return string|null スタンプシートの完了を報告する
-     */
-    public function getStampSheet(): ?string {
-        return $this->stampSheet;
-    }
-
-    /**
-     * 実行するスタンプタスクを設定
-     *
-     * @param string $stampSheet スタンプシートの完了を報告する
-     */
-    public function setStampSheet(string $stampSheet = null) {
-        $this->stampSheet = $stampSheet;
-    }
-
-    /**
-     * 実行するスタンプタスクを設定
-     *
-     * @param string $stampSheet スタンプシートの完了を報告する
-     * @return RunStampSheetRequest $this
-     */
-    public function withStampSheet(string $stampSheet = null): RunStampSheetRequest {
-        $this->setStampSheet($stampSheet);
-        return $this;
-    }
-
-    /** @var string スタンプシートの暗号化に使用した暗号鍵GRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * スタンプシートの暗号化に使用した暗号鍵GRNを取得
-     *
-     * @return string|null スタンプシートの完了を報告する
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): RunStampSheetRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getStampSheet(): ?string {
+		return $this->stampSheet;
+	}
+
+	public function setStampSheet(?string $stampSheet) {
+		$this->stampSheet = $stampSheet;
+	}
+
+	public function withStampSheet(?string $stampSheet): RunStampSheetRequest {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): RunStampSheetRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RunStampSheetRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new RunStampSheetRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * スタンプシートの暗号化に使用した暗号鍵GRNを設定
-     *
-     * @param string $keyId スタンプシートの完了を報告する
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "stampSheet" => $this->getStampSheet(),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * スタンプシートの暗号化に使用した暗号鍵GRNを設定
-     *
-     * @param string $keyId スタンプシートの完了を報告する
-     * @return RunStampSheetRequest $this
-     */
-    public function withKeyId(string $keyId = null): RunStampSheetRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null スタンプシートの完了を報告する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタンプシートの完了を報告する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタンプシートの完了を報告する
-     * @return RunStampSheetRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): RunStampSheetRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

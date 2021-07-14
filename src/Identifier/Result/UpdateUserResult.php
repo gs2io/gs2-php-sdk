@@ -20,36 +20,34 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\User;
 
-/**
- * ユーザを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateUserResult implements IResult {
-	/** @var User 更新後のユーザ */
-	private $item;
+    /** @var User */
+    private $item;
 
-	/**
-	 * 更新後のユーザを取得
-	 *
-	 * @return User|null ユーザを更新します
-	 */
 	public function getItem(): ?User {
 		return $this->item;
 	}
 
-	/**
-	 * 更新後のユーザを設定
-	 *
-	 * @param User|null $item ユーザを更新します
-	 */
 	public function setItem(?User $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateUserResult {
-        $result = new UpdateUserResult();
-        $result->setItem(isset($data["item"]) ? User::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?User $item): UpdateUserResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateUserResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateUserResult())
+            ->withItem(empty($data['item']) ? null : User::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

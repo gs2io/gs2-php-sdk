@@ -19,172 +19,114 @@ namespace Gs2\Matchmaking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * プレイヤー情報
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Player implements IModel {
 	/**
-     * @var string ユーザーID
+     * @var string
 	 */
-	protected $userId;
-
+	private $userId;
 	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
+     * @var array
 	 */
+	private $attributes;
+	/**
+     * @var string
+	 */
+	private $roleName;
+	/**
+     * @var array
+	 */
+	private $denyUserIds;
+
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return Player $this
-	 */
 	public function withUserId(?string $userId): Player {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var Attribute[] 属性値のリスト
-	 */
-	protected $attributes;
 
-	/**
-	 * 属性値のリストを取得
-	 *
-	 * @return Attribute[]|null 属性値のリスト
-	 */
 	public function getAttributes(): ?array {
 		return $this->attributes;
 	}
 
-	/**
-	 * 属性値のリストを設定
-	 *
-	 * @param Attribute[]|null $attributes 属性値のリスト
-	 */
 	public function setAttributes(?array $attributes) {
 		$this->attributes = $attributes;
 	}
 
-	/**
-	 * 属性値のリストを設定
-	 *
-	 * @param Attribute[]|null $attributes 属性値のリスト
-	 * @return Player $this
-	 */
 	public function withAttributes(?array $attributes): Player {
 		$this->attributes = $attributes;
 		return $this;
 	}
-	/**
-     * @var string ロール名
-	 */
-	protected $roleName;
 
-	/**
-	 * ロール名を取得
-	 *
-	 * @return string|null ロール名
-	 */
 	public function getRoleName(): ?string {
 		return $this->roleName;
 	}
 
-	/**
-	 * ロール名を設定
-	 *
-	 * @param string|null $roleName ロール名
-	 */
 	public function setRoleName(?string $roleName) {
 		$this->roleName = $roleName;
 	}
 
-	/**
-	 * ロール名を設定
-	 *
-	 * @param string|null $roleName ロール名
-	 * @return Player $this
-	 */
 	public function withRoleName(?string $roleName): Player {
 		$this->roleName = $roleName;
 		return $this;
 	}
-	/**
-     * @var string[] 参加を拒否するユーザIDリスト
-	 */
-	protected $denyUserIds;
 
-	/**
-	 * 参加を拒否するユーザIDリストを取得
-	 *
-	 * @return string[]|null 参加を拒否するユーザIDリスト
-	 */
 	public function getDenyUserIds(): ?array {
 		return $this->denyUserIds;
 	}
 
-	/**
-	 * 参加を拒否するユーザIDリストを設定
-	 *
-	 * @param string[]|null $denyUserIds 参加を拒否するユーザIDリスト
-	 */
 	public function setDenyUserIds(?array $denyUserIds) {
 		$this->denyUserIds = $denyUserIds;
 	}
 
-	/**
-	 * 参加を拒否するユーザIDリストを設定
-	 *
-	 * @param string[]|null $denyUserIds 参加を拒否するユーザIDリスト
-	 * @return Player $this
-	 */
 	public function withDenyUserIds(?array $denyUserIds): Player {
 		$this->denyUserIds = $denyUserIds;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "userId" => $this->userId,
-            "attributes" => array_map(
-                function (Attribute $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?Player {
+        if ($data === null) {
+            return null;
+        }
+        return (new Player())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withAttributes(array_map(
+                function ($item) {
+                    return Attribute::fromJson($item);
                 },
-                $this->attributes == null ? [] : $this->attributes
-            ),
-            "roleName" => $this->roleName,
-            "denyUserIds" => $this->denyUserIds,
-        );
+                array_key_exists('attributes', $data) && $data['attributes'] !== null ? $data['attributes'] : []
+            ))
+            ->withRoleName(empty($data['roleName']) ? null : $data['roleName'])
+            ->withDenyUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('denyUserIds', $data) && $data['denyUserIds'] !== null ? $data['denyUserIds'] : []
+            ));
     }
 
-    public static function fromJson(array $data): Player {
-        $model = new Player();
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setAttributes(array_map(
-                function ($v) {
-                    return Attribute::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "attributes" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["attributes"]) ? $data["attributes"] : []
-            )
+                $this->getAttributes() !== null && $this->getAttributes() !== null ? $this->getAttributes() : []
+            ),
+            "roleName" => $this->getRoleName(),
+            "denyUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getDenyUserIds() !== null && $this->getDenyUserIds() !== null ? $this->getDenyUserIds() : []
+            ),
         );
-        $model->setRoleName(isset($data["roleName"]) ? $data["roleName"] : null);
-        $model->setDenyUserIds(isset($data["denyUserIds"]) ? $data["denyUserIds"] : null);
-        return $model;
     }
 }

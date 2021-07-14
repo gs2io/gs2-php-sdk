@@ -20,42 +20,44 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
-/**
- * 割り当てられたセキュリティポリシーをユーザーから外します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DetachSecurityPolicyResult implements IResult {
-	/** @var SecurityPolicy[] 剥奪したあとユーザーに引き続き割り当てられているセキュリティポリシーのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 剥奪したあとユーザーに引き続き割り当てられているセキュリティポリシーのリストを取得
-	 *
-	 * @return SecurityPolicy[]|null 割り当てられたセキュリティポリシーをユーザーから外します
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 剥奪したあとユーザーに引き続き割り当てられているセキュリティポリシーのリストを設定
-	 *
-	 * @param SecurityPolicy[]|null $items 割り当てられたセキュリティポリシーをユーザーから外します
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DetachSecurityPolicyResult {
-        $result = new DetachSecurityPolicyResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return SecurityPolicy::fromJson($v);
+	public function withItems(?array $items): DetachSecurityPolicyResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DetachSecurityPolicyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DetachSecurityPolicyResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return SecurityPolicy::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

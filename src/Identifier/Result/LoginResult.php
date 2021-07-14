@@ -19,78 +19,68 @@ namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * プロジェクトトークン を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class LoginResult implements IResult {
-	/** @var string プロジェクトトークン */
-	private $access_token;
-	/** @var string Bearer */
-	private $token_type;
-	/** @var int 有効期間(秒) */
-	private $expires_in;
+    /** @var string */
+    private $accessToken;
+    /** @var string */
+    private $tokenType;
+    /** @var int */
+    private $expiresIn;
 
-	/**
-	 * プロジェクトトークンを取得
-	 *
-	 * @return string|null プロジェクトトークン を取得します
-	 */
 	public function getAccessToken(): ?string {
-		return $this->access_token;
+		return $this->accessToken;
 	}
 
-	/**
-	 * プロジェクトトークンを設定
-	 *
-	 * @param string|null $accessToken プロジェクトトークン を取得します
-	 */
 	public function setAccessToken(?string $accessToken) {
-		$this->access_token = $accessToken;
+		$this->accessToken = $accessToken;
 	}
 
-	/**
-	 * Bearerを取得
-	 *
-	 * @return string|null プロジェクトトークン を取得します
-	 */
+	public function withAccessToken(?string $accessToken): LoginResult {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
 	public function getTokenType(): ?string {
-		return $this->token_type;
+		return $this->tokenType;
 	}
 
-	/**
-	 * Bearerを設定
-	 *
-	 * @param string|null $tokenType プロジェクトトークン を取得します
-	 */
 	public function setTokenType(?string $tokenType) {
-		$this->token_type = $tokenType;
+		$this->tokenType = $tokenType;
 	}
 
-	/**
-	 * 有効期間(秒)を取得
-	 *
-	 * @return int|null プロジェクトトークン を取得します
-	 */
+	public function withTokenType(?string $tokenType): LoginResult {
+		$this->tokenType = $tokenType;
+		return $this;
+	}
+
 	public function getExpiresIn(): ?int {
-		return $this->expires_in;
+		return $this->expiresIn;
 	}
 
-	/**
-	 * 有効期間(秒)を設定
-	 *
-	 * @param int|null $expiresIn プロジェクトトークン を取得します
-	 */
 	public function setExpiresIn(?int $expiresIn) {
-		$this->expires_in = $expiresIn;
+		$this->expiresIn = $expiresIn;
 	}
 
-    public static function fromJson(array $data): LoginResult {
-        $result = new LoginResult();
-        $result->setAccessToken(isset($data["accessToken"]) ? $data["accessToken"] : null);
-        $result->setTokenType(isset($data["tokenType"]) ? $data["tokenType"] : null);
-        $result->setExpiresIn(isset($data["expiresIn"]) ? $data["expiresIn"] : null);
-        return $result;
+	public function withExpiresIn(?int $expiresIn): LoginResult {
+		$this->expiresIn = $expiresIn;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?LoginResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new LoginResult())
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withTokenType(empty($data['tokenType']) ? null : $data['tokenType'])
+            ->withExpiresIn(empty($data['expiresIn']) ? null : $data['expiresIn']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "accessToken" => $this->getAccessToken(),
+            "tokenType" => $this->getTokenType(),
+            "expiresIn" => $this->getExpiresIn(),
+        );
     }
 }

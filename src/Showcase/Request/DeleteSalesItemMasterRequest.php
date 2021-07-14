@@ -19,75 +19,51 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 商品マスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteSalesItemMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 商品マスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 商品マスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 商品マスターを削除
-     * @return DeleteSalesItemMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteSalesItemMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 商品名 */
+    /** @var string */
     private $salesItemName;
 
-    /**
-     * 商品名を取得
-     *
-     * @return string|null 商品マスターを削除
-     */
-    public function getSalesItemName(): ?string {
-        return $this->salesItemName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteSalesItemMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getSalesItemName(): ?string {
+		return $this->salesItemName;
+	}
+
+	public function setSalesItemName(?string $salesItemName) {
+		$this->salesItemName = $salesItemName;
+	}
+
+	public function withSalesItemName(?string $salesItemName): DeleteSalesItemMasterRequest {
+		$this->salesItemName = $salesItemName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteSalesItemMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteSalesItemMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withSalesItemName(empty($data['salesItemName']) ? null : $data['salesItemName']);
     }
 
-    /**
-     * 商品名を設定
-     *
-     * @param string $salesItemName 商品マスターを削除
-     */
-    public function setSalesItemName(string $salesItemName = null) {
-        $this->salesItemName = $salesItemName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "salesItemName" => $this->getSalesItemName(),
+        );
     }
-
-    /**
-     * 商品名を設定
-     *
-     * @param string $salesItemName 商品マスターを削除
-     * @return DeleteSalesItemMasterRequest $this
-     */
-    public function withSalesItemName(string $salesItemName = null): DeleteSalesItemMasterRequest {
-        $this->setSalesItemName($salesItemName);
-        return $this;
-    }
-
 }

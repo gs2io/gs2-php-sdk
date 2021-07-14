@@ -18,65 +18,64 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\DisplayItemMaster;
 use Gs2\Showcase\Model\ShowcaseMaster;
 
-/**
- * 陳列棚マスターの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeShowcaseMastersResult implements IResult {
-	/** @var ShowcaseMaster[] 陳列棚マスターのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 陳列棚マスターのリストを取得
-	 *
-	 * @return ShowcaseMaster[]|null 陳列棚マスターの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 陳列棚マスターのリストを設定
-	 *
-	 * @param ShowcaseMaster[]|null $items 陳列棚マスターの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null 陳列棚マスターの一覧を取得
-	 */
+	public function withItems(?array $items): DescribeShowcaseMastersResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken 陳列棚マスターの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeShowcaseMastersResult {
-        $result = new DescribeShowcaseMastersResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return ShowcaseMaster::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeShowcaseMastersResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeShowcaseMastersResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeShowcaseMastersResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return ShowcaseMaster::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

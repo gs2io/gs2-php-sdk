@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Auth\Request\LoginRequest;
 use Gs2\Auth\Result\LoginResult;
 use Gs2\Auth\Request\LoginBySignatureRequest;
@@ -85,9 +87,6 @@ class LoginTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -154,9 +153,6 @@ class LoginBySignatureTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -180,11 +176,7 @@ class Gs2AuthRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * 指定したユーザIDでGS2にログインし、アクセストークンを取得します<br>
-     *   本APIは信頼出来るゲームサーバーから呼び出されることを想定しています。<br>
-     *   ユーザIDの値の検証処理が存在しないため、クライアントから呼び出すのは不適切です。<br>
-     *
-     * @param LoginRequest $request リクエストパラメータ
+     * @param LoginRequest $request
      * @return PromiseInterface
      */
     public function loginAsync(
@@ -199,11 +191,7 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 指定したユーザIDでGS2にログインし、アクセストークンを取得します<br>
-     *   本APIは信頼出来るゲームサーバーから呼び出されることを想定しています。<br>
-     *   ユーザIDの値の検証処理が存在しないため、クライアントから呼び出すのは不適切です。<br>
-     *
-     * @param LoginRequest $request リクエストパラメータ
+     * @param LoginRequest $request
      * @return LoginResult
      */
     public function login (
@@ -215,10 +203,7 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 指定したユーザIDでGS2にログインし、アクセストークンを取得します<br>
-     *   ユーザIDの署名検証を実施することで、本APIはクライアントから呼び出しても安全です。<br>
-     *
-     * @param LoginBySignatureRequest $request リクエストパラメータ
+     * @param LoginBySignatureRequest $request
      * @return PromiseInterface
      */
     public function loginBySignatureAsync(
@@ -233,10 +218,7 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 指定したユーザIDでGS2にログインし、アクセストークンを取得します<br>
-     *   ユーザIDの署名検証を実施することで、本APIはクライアントから呼び出しても安全です。<br>
-     *
-     * @param LoginBySignatureRequest $request リクエストパラメータ
+     * @param LoginBySignatureRequest $request
      * @return LoginBySignatureResult
      */
     public function loginBySignature (

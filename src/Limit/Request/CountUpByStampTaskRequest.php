@@ -19,107 +19,51 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタンプシートでカウントアップ のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CountUpByStampTaskRequest extends Gs2BasicRequest {
-
-    /** @var string スタンプタスク */
+    /** @var string */
     private $stampTask;
-
-    /**
-     * スタンプタスクを取得
-     *
-     * @return string|null スタンプシートでカウントアップ
-     */
-    public function getStampTask(): ?string {
-        return $this->stampTask;
-    }
-
-    /**
-     * スタンプタスクを設定
-     *
-     * @param string $stampTask スタンプシートでカウントアップ
-     */
-    public function setStampTask(string $stampTask = null) {
-        $this->stampTask = $stampTask;
-    }
-
-    /**
-     * スタンプタスクを設定
-     *
-     * @param string $stampTask スタンプシートでカウントアップ
-     * @return CountUpByStampTaskRequest $this
-     */
-    public function withStampTask(string $stampTask = null): CountUpByStampTaskRequest {
-        $this->setStampTask($stampTask);
-        return $this;
-    }
-
-    /** @var string スタンプタスクの署名検証に使用する 暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * スタンプタスクの署名検証に使用する 暗号鍵 のGRNを取得
-     *
-     * @return string|null スタンプシートでカウントアップ
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getStampTask(): ?string {
+		return $this->stampTask;
+	}
+
+	public function setStampTask(?string $stampTask) {
+		$this->stampTask = $stampTask;
+	}
+
+	public function withStampTask(?string $stampTask): CountUpByStampTaskRequest {
+		$this->stampTask = $stampTask;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): CountUpByStampTaskRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CountUpByStampTaskRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CountUpByStampTaskRequest())
+            ->withStampTask(empty($data['stampTask']) ? null : $data['stampTask'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * スタンプタスクの署名検証に使用する 暗号鍵 のGRNを設定
-     *
-     * @param string $keyId スタンプシートでカウントアップ
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "stampTask" => $this->getStampTask(),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * スタンプタスクの署名検証に使用する 暗号鍵 のGRNを設定
-     *
-     * @param string $keyId スタンプシートでカウントアップ
-     * @return CountUpByStampTaskRequest $this
-     */
-    public function withKeyId(string $keyId = null): CountUpByStampTaskRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null スタンプシートでカウントアップ
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタンプシートでカウントアップ
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタンプシートでカウントアップ
-     * @return CountUpByStampTaskRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): CountUpByStampTaskRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

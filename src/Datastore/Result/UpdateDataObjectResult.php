@@ -20,36 +20,34 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
-/**
- * データオブジェクトを更新する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateDataObjectResult implements IResult {
-	/** @var DataObject データオブジェクト */
-	private $item;
+    /** @var DataObject */
+    private $item;
 
-	/**
-	 * データオブジェクトを取得
-	 *
-	 * @return DataObject|null データオブジェクトを更新する
-	 */
 	public function getItem(): ?DataObject {
 		return $this->item;
 	}
 
-	/**
-	 * データオブジェクトを設定
-	 *
-	 * @param DataObject|null $item データオブジェクトを更新する
-	 */
 	public function setItem(?DataObject $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateDataObjectResult {
-        $result = new UpdateDataObjectResult();
-        $result->setItem(isset($data["item"]) ? DataObject::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?DataObject $item): UpdateDataObjectResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateDataObjectResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateDataObjectResult())
+            ->withItem(empty($data['item']) ? null : DataObject::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

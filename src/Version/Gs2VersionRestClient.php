@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Version\Request\DescribeNamespacesRequest;
 use Gs2\Version\Result\DescribeNamespacesResult;
 use Gs2\Version\Request\CreateNamespaceRequest;
@@ -974,9 +976,6 @@ class DescribeAcceptVersionsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1043,9 +1042,6 @@ class DescribeAcceptVersionsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1082,7 +1078,7 @@ class AcceptTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/acceptVersion";
+        $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/acceptVersion";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -1106,9 +1102,6 @@ class AcceptTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1171,9 +1164,6 @@ class AcceptByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1235,9 +1225,6 @@ class GetAcceptVersionTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1296,9 +1283,6 @@ class GetAcceptVersionByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1361,9 +1345,6 @@ class DeleteAcceptVersionTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1422,9 +1403,6 @@ class DeleteAcceptVersionByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1492,9 +1470,6 @@ class CheckVersionTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1558,9 +1533,6 @@ class CheckVersionByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1874,9 +1846,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1891,9 +1861,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1905,9 +1873,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1922,9 +1888,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1936,9 +1900,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1953,9 +1915,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1967,9 +1927,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1984,9 +1942,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1998,9 +1954,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2015,9 +1969,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2029,9 +1981,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2046,9 +1996,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2060,9 +2008,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターの一覧を取得<br>
-     *
-     * @param DescribeVersionModelMastersRequest $request リクエストパラメータ
+     * @param DescribeVersionModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeVersionModelMastersAsync(
@@ -2077,9 +2023,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターの一覧を取得<br>
-     *
-     * @param DescribeVersionModelMastersRequest $request リクエストパラメータ
+     * @param DescribeVersionModelMastersRequest $request
      * @return DescribeVersionModelMastersResult
      */
     public function describeVersionModelMasters (
@@ -2091,9 +2035,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターを新規作成<br>
-     *
-     * @param CreateVersionModelMasterRequest $request リクエストパラメータ
+     * @param CreateVersionModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createVersionModelMasterAsync(
@@ -2108,9 +2050,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターを新規作成<br>
-     *
-     * @param CreateVersionModelMasterRequest $request リクエストパラメータ
+     * @param CreateVersionModelMasterRequest $request
      * @return CreateVersionModelMasterResult
      */
     public function createVersionModelMaster (
@@ -2122,9 +2062,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターを取得<br>
-     *
-     * @param GetVersionModelMasterRequest $request リクエストパラメータ
+     * @param GetVersionModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getVersionModelMasterAsync(
@@ -2139,9 +2077,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターを取得<br>
-     *
-     * @param GetVersionModelMasterRequest $request リクエストパラメータ
+     * @param GetVersionModelMasterRequest $request
      * @return GetVersionModelMasterResult
      */
     public function getVersionModelMaster (
@@ -2153,9 +2089,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターを更新<br>
-     *
-     * @param UpdateVersionModelMasterRequest $request リクエストパラメータ
+     * @param UpdateVersionModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateVersionModelMasterAsync(
@@ -2170,9 +2104,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターを更新<br>
-     *
-     * @param UpdateVersionModelMasterRequest $request リクエストパラメータ
+     * @param UpdateVersionModelMasterRequest $request
      * @return UpdateVersionModelMasterResult
      */
     public function updateVersionModelMaster (
@@ -2184,9 +2116,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターを削除<br>
-     *
-     * @param DeleteVersionModelMasterRequest $request リクエストパラメータ
+     * @param DeleteVersionModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteVersionModelMasterAsync(
@@ -2201,9 +2131,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンマスターを削除<br>
-     *
-     * @param DeleteVersionModelMasterRequest $request リクエストパラメータ
+     * @param DeleteVersionModelMasterRequest $request
      * @return DeleteVersionModelMasterResult
      */
     public function deleteVersionModelMaster (
@@ -2215,9 +2143,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョン設定の一覧を取得<br>
-     *
-     * @param DescribeVersionModelsRequest $request リクエストパラメータ
+     * @param DescribeVersionModelsRequest $request
      * @return PromiseInterface
      */
     public function describeVersionModelsAsync(
@@ -2232,9 +2158,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョン設定の一覧を取得<br>
-     *
-     * @param DescribeVersionModelsRequest $request リクエストパラメータ
+     * @param DescribeVersionModelsRequest $request
      * @return DescribeVersionModelsResult
      */
     public function describeVersionModels (
@@ -2246,9 +2170,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョン設定を取得<br>
-     *
-     * @param GetVersionModelRequest $request リクエストパラメータ
+     * @param GetVersionModelRequest $request
      * @return PromiseInterface
      */
     public function getVersionModelAsync(
@@ -2263,9 +2185,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョン設定を取得<br>
-     *
-     * @param GetVersionModelRequest $request リクエストパラメータ
+     * @param GetVersionModelRequest $request
      * @return GetVersionModelResult
      */
     public function getVersionModel (
@@ -2277,9 +2197,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 承認したバージョンの一覧を取得<br>
-     *
-     * @param DescribeAcceptVersionsRequest $request リクエストパラメータ
+     * @param DescribeAcceptVersionsRequest $request
      * @return PromiseInterface
      */
     public function describeAcceptVersionsAsync(
@@ -2294,9 +2212,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 承認したバージョンの一覧を取得<br>
-     *
-     * @param DescribeAcceptVersionsRequest $request リクエストパラメータ
+     * @param DescribeAcceptVersionsRequest $request
      * @return DescribeAcceptVersionsResult
      */
     public function describeAcceptVersions (
@@ -2308,9 +2224,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 承認したバージョンの一覧を取得<br>
-     *
-     * @param DescribeAcceptVersionsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeAcceptVersionsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeAcceptVersionsByUserIdAsync(
@@ -2325,9 +2239,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 承認したバージョンの一覧を取得<br>
-     *
-     * @param DescribeAcceptVersionsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeAcceptVersionsByUserIdRequest $request
      * @return DescribeAcceptVersionsByUserIdResult
      */
     public function describeAcceptVersionsByUserId (
@@ -2339,9 +2251,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在のバージョンを承認<br>
-     *
-     * @param AcceptRequest $request リクエストパラメータ
+     * @param AcceptRequest $request
      * @return PromiseInterface
      */
     public function acceptAsync(
@@ -2356,9 +2266,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在のバージョンを承認<br>
-     *
-     * @param AcceptRequest $request リクエストパラメータ
+     * @param AcceptRequest $request
      * @return AcceptResult
      */
     public function accept (
@@ -2370,9 +2278,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して現在のバージョンを承認<br>
-     *
-     * @param AcceptByUserIdRequest $request リクエストパラメータ
+     * @param AcceptByUserIdRequest $request
      * @return PromiseInterface
      */
     public function acceptByUserIdAsync(
@@ -2387,9 +2293,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して現在のバージョンを承認<br>
-     *
-     * @param AcceptByUserIdRequest $request リクエストパラメータ
+     * @param AcceptByUserIdRequest $request
      * @return AcceptByUserIdResult
      */
     public function acceptByUserId (
@@ -2401,9 +2305,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 承認したバージョンを取得<br>
-     *
-     * @param GetAcceptVersionRequest $request リクエストパラメータ
+     * @param GetAcceptVersionRequest $request
      * @return PromiseInterface
      */
     public function getAcceptVersionAsync(
@@ -2418,9 +2320,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 承認したバージョンを取得<br>
-     *
-     * @param GetAcceptVersionRequest $request リクエストパラメータ
+     * @param GetAcceptVersionRequest $request
      * @return GetAcceptVersionResult
      */
     public function getAcceptVersion (
@@ -2432,9 +2332,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して承認したバージョンを取得<br>
-     *
-     * @param GetAcceptVersionByUserIdRequest $request リクエストパラメータ
+     * @param GetAcceptVersionByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getAcceptVersionByUserIdAsync(
@@ -2449,9 +2347,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して承認したバージョンを取得<br>
-     *
-     * @param GetAcceptVersionByUserIdRequest $request リクエストパラメータ
+     * @param GetAcceptVersionByUserIdRequest $request
      * @return GetAcceptVersionByUserIdResult
      */
     public function getAcceptVersionByUserId (
@@ -2463,9 +2359,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 承認したバージョンを削除<br>
-     *
-     * @param DeleteAcceptVersionRequest $request リクエストパラメータ
+     * @param DeleteAcceptVersionRequest $request
      * @return PromiseInterface
      */
     public function deleteAcceptVersionAsync(
@@ -2480,9 +2374,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 承認したバージョンを削除<br>
-     *
-     * @param DeleteAcceptVersionRequest $request リクエストパラメータ
+     * @param DeleteAcceptVersionRequest $request
      * @return DeleteAcceptVersionResult
      */
     public function deleteAcceptVersion (
@@ -2494,9 +2386,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して承認したバージョンを削除<br>
-     *
-     * @param DeleteAcceptVersionByUserIdRequest $request リクエストパラメータ
+     * @param DeleteAcceptVersionByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteAcceptVersionByUserIdAsync(
@@ -2511,9 +2401,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して承認したバージョンを削除<br>
-     *
-     * @param DeleteAcceptVersionByUserIdRequest $request リクエストパラメータ
+     * @param DeleteAcceptVersionByUserIdRequest $request
      * @return DeleteAcceptVersionByUserIdResult
      */
     public function deleteAcceptVersionByUserId (
@@ -2525,9 +2413,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンチェック<br>
-     *
-     * @param CheckVersionRequest $request リクエストパラメータ
+     * @param CheckVersionRequest $request
      * @return PromiseInterface
      */
     public function checkVersionAsync(
@@ -2542,9 +2428,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンチェック<br>
-     *
-     * @param CheckVersionRequest $request リクエストパラメータ
+     * @param CheckVersionRequest $request
      * @return CheckVersionResult
      */
     public function checkVersion (
@@ -2556,9 +2440,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンチェック<br>
-     *
-     * @param CheckVersionByUserIdRequest $request リクエストパラメータ
+     * @param CheckVersionByUserIdRequest $request
      * @return PromiseInterface
      */
     public function checkVersionByUserIdAsync(
@@ -2573,9 +2455,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * バージョンチェック<br>
-     *
-     * @param CheckVersionByUserIdRequest $request リクエストパラメータ
+     * @param CheckVersionByUserIdRequest $request
      * @return CheckVersionByUserIdResult
      */
     public function checkVersionByUserId (
@@ -2587,9 +2467,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートのタスクを実行する<br>
-     *
-     * @param CalculateSignatureRequest $request リクエストパラメータ
+     * @param CalculateSignatureRequest $request
      * @return PromiseInterface
      */
     public function calculateSignatureAsync(
@@ -2604,9 +2482,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートのタスクを実行する<br>
-     *
-     * @param CalculateSignatureRequest $request リクエストパラメータ
+     * @param CalculateSignatureRequest $request
      * @return CalculateSignatureResult
      */
     public function calculateSignature (
@@ -2618,9 +2494,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なバージョンのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2635,9 +2509,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なバージョンのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2649,9 +2521,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なバージョンを取得します<br>
-     *
-     * @param GetCurrentVersionMasterRequest $request リクエストパラメータ
+     * @param GetCurrentVersionMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentVersionMasterAsync(
@@ -2666,9 +2536,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なバージョンを取得します<br>
-     *
-     * @param GetCurrentVersionMasterRequest $request リクエストパラメータ
+     * @param GetCurrentVersionMasterRequest $request
      * @return GetCurrentVersionMasterResult
      */
     public function getCurrentVersionMaster (
@@ -2680,9 +2548,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なバージョンを更新します<br>
-     *
-     * @param UpdateCurrentVersionMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentVersionMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentVersionMasterAsync(
@@ -2697,9 +2563,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なバージョンを更新します<br>
-     *
-     * @param UpdateCurrentVersionMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentVersionMasterRequest $request
      * @return UpdateCurrentVersionMasterResult
      */
     public function updateCurrentVersionMaster (
@@ -2711,9 +2575,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なバージョンを更新します<br>
-     *
-     * @param UpdateCurrentVersionMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentVersionMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentVersionMasterFromGitHubAsync(
@@ -2728,9 +2590,7 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なバージョンを更新します<br>
-     *
-     * @param UpdateCurrentVersionMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentVersionMasterFromGitHubRequest $request
      * @return UpdateCurrentVersionMasterFromGitHubResult
      */
     public function updateCurrentVersionMasterFromGitHub (

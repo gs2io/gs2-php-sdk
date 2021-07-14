@@ -20,36 +20,34 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\ProjectToken;
 
-/**
- * プロジェクトトークン を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class LoginByUserResult implements IResult {
-	/** @var ProjectToken プロジェクトトークン */
-	private $item;
+    /** @var ProjectToken */
+    private $item;
 
-	/**
-	 * プロジェクトトークンを取得
-	 *
-	 * @return ProjectToken|null プロジェクトトークン を取得します
-	 */
 	public function getItem(): ?ProjectToken {
 		return $this->item;
 	}
 
-	/**
-	 * プロジェクトトークンを設定
-	 *
-	 * @param ProjectToken|null $item プロジェクトトークン を取得します
-	 */
 	public function setItem(?ProjectToken $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): LoginByUserResult {
-        $result = new LoginByUserResult();
-        $result->setItem(isset($data["item"]) ? ProjectToken::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?ProjectToken $item): LoginByUserResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?LoginByUserResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new LoginByUserResult())
+            ->withItem(empty($data['item']) ? null : ProjectToken::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

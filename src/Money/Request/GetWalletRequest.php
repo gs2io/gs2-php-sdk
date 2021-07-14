@@ -19,139 +19,68 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ウォレットを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetWalletRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null ウォレットを取得します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ウォレットを取得します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ウォレットを取得します
-     * @return GetWalletRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetWalletRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var int スロット番号 */
+    /** @var string */
+    private $accessToken;
+    /** @var int */
     private $slot;
 
-    /**
-     * スロット番号を取得
-     *
-     * @return int|null ウォレットを取得します
-     */
-    public function getSlot(): ?int {
-        return $this->slot;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetWalletRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): GetWalletRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getSlot(): ?int {
+		return $this->slot;
+	}
+
+	public function setSlot(?int $slot) {
+		$this->slot = $slot;
+	}
+
+	public function withSlot(?int $slot): GetWalletRequest {
+		$this->slot = $slot;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetWalletRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetWalletRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withSlot(empty($data['slot']) ? null : $data['slot']);
     }
 
-    /**
-     * スロット番号を設定
-     *
-     * @param int $slot ウォレットを取得します
-     */
-    public function setSlot(int $slot = null) {
-        $this->slot = $slot;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "slot" => $this->getSlot(),
+        );
     }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $slot ウォレットを取得します
-     * @return GetWalletRequest $this
-     */
-    public function withSlot(int $slot = null): GetWalletRequest {
-        $this->setSlot($slot);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ウォレットを取得します
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ウォレットを取得します
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ウォレットを取得します
-     * @return GetWalletRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetWalletRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return GetWalletRequest this
-     */
-    public function withAccessToken(string $accessToken): GetWalletRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

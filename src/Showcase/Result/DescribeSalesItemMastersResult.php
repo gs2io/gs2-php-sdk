@@ -18,65 +18,65 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\ConsumeAction;
+use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\SalesItemMaster;
 
-/**
- * 商品マスターの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeSalesItemMastersResult implements IResult {
-	/** @var SalesItemMaster[] 商品マスターのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 商品マスターのリストを取得
-	 *
-	 * @return SalesItemMaster[]|null 商品マスターの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 商品マスターのリストを設定
-	 *
-	 * @param SalesItemMaster[]|null $items 商品マスターの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null 商品マスターの一覧を取得
-	 */
+	public function withItems(?array $items): DescribeSalesItemMastersResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken 商品マスターの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeSalesItemMastersResult {
-        $result = new DescribeSalesItemMastersResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return SalesItemMaster::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeSalesItemMastersResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeSalesItemMastersResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeSalesItemMastersResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return SalesItemMaster::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

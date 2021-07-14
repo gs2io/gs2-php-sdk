@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendRequest;
 
-/**
- * ユーザーIDを指定してフレンドリクエストを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRequestByUserIdResult implements IResult {
-	/** @var FriendRequest 削除したフレンドリクエスト */
-	private $item;
+    /** @var FriendRequest */
+    private $item;
 
-	/**
-	 * 削除したフレンドリクエストを取得
-	 *
-	 * @return FriendRequest|null ユーザーIDを指定してフレンドリクエストを削除
-	 */
 	public function getItem(): ?FriendRequest {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したフレンドリクエストを設定
-	 *
-	 * @param FriendRequest|null $item ユーザーIDを指定してフレンドリクエストを削除
-	 */
 	public function setItem(?FriendRequest $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteRequestByUserIdResult {
-        $result = new DeleteRequestByUserIdResult();
-        $result->setItem(isset($data["item"]) ? FriendRequest::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FriendRequest $item): DeleteRequestByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRequestByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRequestByUserIdResult())
+            ->withItem(empty($data['item']) ? null : FriendRequest::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

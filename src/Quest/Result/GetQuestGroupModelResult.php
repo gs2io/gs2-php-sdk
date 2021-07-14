@@ -18,38 +18,40 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\AcquireAction;
+use Gs2\Quest\Model\Contents;
+use Gs2\Quest\Model\ConsumeAction;
+use Gs2\Quest\Model\QuestModel;
 use Gs2\Quest\Model\QuestGroupModel;
 
-/**
- * クエストグループを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetQuestGroupModelResult implements IResult {
-	/** @var QuestGroupModel クエストグループ */
-	private $item;
+    /** @var QuestGroupModel */
+    private $item;
 
-	/**
-	 * クエストグループを取得
-	 *
-	 * @return QuestGroupModel|null クエストグループを取得
-	 */
 	public function getItem(): ?QuestGroupModel {
 		return $this->item;
 	}
 
-	/**
-	 * クエストグループを設定
-	 *
-	 * @param QuestGroupModel|null $item クエストグループを取得
-	 */
 	public function setItem(?QuestGroupModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetQuestGroupModelResult {
-        $result = new GetQuestGroupModelResult();
-        $result->setItem(isset($data["item"]) ? QuestGroupModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?QuestGroupModel $item): GetQuestGroupModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetQuestGroupModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetQuestGroupModelResult())
+            ->withItem(empty($data['item']) ? null : QuestGroupModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

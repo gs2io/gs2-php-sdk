@@ -19,406 +19,227 @@ namespace Gs2\Mission\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ミッショングループマスター
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class MissionGroupModelMaster implements IModel {
 	/**
-     * @var string ミッショングループマスター
+     * @var string
 	 */
-	protected $missionGroupId;
-
+	private $missionGroupId;
 	/**
-	 * ミッショングループマスターを取得
-	 *
-	 * @return string|null ミッショングループマスター
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
+     * @var string
+	 */
+	private $description;
+	/**
+     * @var string
+	 */
+	private $resetType;
+	/**
+     * @var int
+	 */
+	private $resetDayOfMonth;
+	/**
+     * @var string
+	 */
+	private $resetDayOfWeek;
+	/**
+     * @var int
+	 */
+	private $resetHour;
+	/**
+     * @var string
+	 */
+	private $completeNotificationNamespaceId;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getMissionGroupId(): ?string {
 		return $this->missionGroupId;
 	}
 
-	/**
-	 * ミッショングループマスターを設定
-	 *
-	 * @param string|null $missionGroupId ミッショングループマスター
-	 */
 	public function setMissionGroupId(?string $missionGroupId) {
 		$this->missionGroupId = $missionGroupId;
 	}
 
-	/**
-	 * ミッショングループマスターを設定
-	 *
-	 * @param string|null $missionGroupId ミッショングループマスター
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withMissionGroupId(?string $missionGroupId): MissionGroupModelMaster {
 		$this->missionGroupId = $missionGroupId;
 		return $this;
 	}
-	/**
-     * @var string ミッショングループ名
-	 */
-	protected $name;
 
-	/**
-	 * ミッショングループ名を取得
-	 *
-	 * @return string|null ミッショングループ名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * ミッショングループ名を設定
-	 *
-	 * @param string|null $name ミッショングループ名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * ミッショングループ名を設定
-	 *
-	 * @param string|null $name ミッショングループ名
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withName(?string $name): MissionGroupModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string メタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * メタデータを取得
-	 *
-	 * @return string|null メタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withMetadata(?string $metadata): MissionGroupModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var string ミッショングループの説明
-	 */
-	protected $description;
 
-	/**
-	 * ミッショングループの説明を取得
-	 *
-	 * @return string|null ミッショングループの説明
-	 */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
 
-	/**
-	 * ミッショングループの説明を設定
-	 *
-	 * @param string|null $description ミッショングループの説明
-	 */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
 
-	/**
-	 * ミッショングループの説明を設定
-	 *
-	 * @param string|null $description ミッショングループの説明
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withDescription(?string $description): MissionGroupModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-	/**
-     * @var string リセットタイミング
-	 */
-	protected $resetType;
 
-	/**
-	 * リセットタイミングを取得
-	 *
-	 * @return string|null リセットタイミング
-	 */
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
 
-	/**
-	 * リセットタイミングを設定
-	 *
-	 * @param string|null $resetType リセットタイミング
-	 */
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
 
-	/**
-	 * リセットタイミングを設定
-	 *
-	 * @param string|null $resetType リセットタイミング
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withResetType(?string $resetType): MissionGroupModelMaster {
 		$this->resetType = $resetType;
 		return $this;
 	}
-	/**
-     * @var int リセットをする日にち
-	 */
-	protected $resetDayOfMonth;
 
-	/**
-	 * リセットをする日にちを取得
-	 *
-	 * @return int|null リセットをする日にち
-	 */
 	public function getResetDayOfMonth(): ?int {
 		return $this->resetDayOfMonth;
 	}
 
-	/**
-	 * リセットをする日にちを設定
-	 *
-	 * @param int|null $resetDayOfMonth リセットをする日にち
-	 */
 	public function setResetDayOfMonth(?int $resetDayOfMonth) {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 	}
 
-	/**
-	 * リセットをする日にちを設定
-	 *
-	 * @param int|null $resetDayOfMonth リセットをする日にち
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withResetDayOfMonth(?int $resetDayOfMonth): MissionGroupModelMaster {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 		return $this;
 	}
-	/**
-     * @var string リセットする曜日
-	 */
-	protected $resetDayOfWeek;
 
-	/**
-	 * リセットする曜日を取得
-	 *
-	 * @return string|null リセットする曜日
-	 */
 	public function getResetDayOfWeek(): ?string {
 		return $this->resetDayOfWeek;
 	}
 
-	/**
-	 * リセットする曜日を設定
-	 *
-	 * @param string|null $resetDayOfWeek リセットする曜日
-	 */
 	public function setResetDayOfWeek(?string $resetDayOfWeek) {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 	}
 
-	/**
-	 * リセットする曜日を設定
-	 *
-	 * @param string|null $resetDayOfWeek リセットする曜日
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withResetDayOfWeek(?string $resetDayOfWeek): MissionGroupModelMaster {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 		return $this;
 	}
-	/**
-     * @var int リセット時刻
-	 */
-	protected $resetHour;
 
-	/**
-	 * リセット時刻を取得
-	 *
-	 * @return int|null リセット時刻
-	 */
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
 
-	/**
-	 * リセット時刻を設定
-	 *
-	 * @param int|null $resetHour リセット時刻
-	 */
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
 
-	/**
-	 * リセット時刻を設定
-	 *
-	 * @param int|null $resetHour リセット時刻
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withResetHour(?int $resetHour): MissionGroupModelMaster {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
-	/**
-     * @var string ミッションを達成したときの通知先ネームスペース のGRN
-	 */
-	protected $completeNotificationNamespaceId;
 
-	/**
-	 * ミッションを達成したときの通知先ネームスペース のGRNを取得
-	 *
-	 * @return string|null ミッションを達成したときの通知先ネームスペース のGRN
-	 */
 	public function getCompleteNotificationNamespaceId(): ?string {
 		return $this->completeNotificationNamespaceId;
 	}
 
-	/**
-	 * ミッションを達成したときの通知先ネームスペース のGRNを設定
-	 *
-	 * @param string|null $completeNotificationNamespaceId ミッションを達成したときの通知先ネームスペース のGRN
-	 */
 	public function setCompleteNotificationNamespaceId(?string $completeNotificationNamespaceId) {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 	}
 
-	/**
-	 * ミッションを達成したときの通知先ネームスペース のGRNを設定
-	 *
-	 * @param string|null $completeNotificationNamespaceId ミッションを達成したときの通知先ネームスペース のGRN
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withCompleteNotificationNamespaceId(?string $completeNotificationNamespaceId): MissionGroupModelMaster {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withCreatedAt(?int $createdAt): MissionGroupModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return MissionGroupModelMaster $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): MissionGroupModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "missionGroupId" => $this->missionGroupId,
-            "name" => $this->name,
-            "metadata" => $this->metadata,
-            "description" => $this->description,
-            "resetType" => $this->resetType,
-            "resetDayOfMonth" => $this->resetDayOfMonth,
-            "resetDayOfWeek" => $this->resetDayOfWeek,
-            "resetHour" => $this->resetHour,
-            "completeNotificationNamespaceId" => $this->completeNotificationNamespaceId,
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+    public static function fromJson(?array $data): ?MissionGroupModelMaster {
+        if ($data === null) {
+            return null;
+        }
+        return (new MissionGroupModelMaster())
+            ->withMissionGroupId(empty($data['missionGroupId']) ? null : $data['missionGroupId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withResetType(empty($data['resetType']) ? null : $data['resetType'])
+            ->withResetDayOfMonth(empty($data['resetDayOfMonth']) ? null : $data['resetDayOfMonth'])
+            ->withResetDayOfWeek(empty($data['resetDayOfWeek']) ? null : $data['resetDayOfWeek'])
+            ->withResetHour(empty($data['resetHour']) ? null : $data['resetHour'])
+            ->withCompleteNotificationNamespaceId(empty($data['completeNotificationNamespaceId']) ? null : $data['completeNotificationNamespaceId'])
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): MissionGroupModelMaster {
-        $model = new MissionGroupModelMaster();
-        $model->setMissionGroupId(isset($data["missionGroupId"]) ? $data["missionGroupId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setDescription(isset($data["description"]) ? $data["description"] : null);
-        $model->setResetType(isset($data["resetType"]) ? $data["resetType"] : null);
-        $model->setResetDayOfMonth(isset($data["resetDayOfMonth"]) ? $data["resetDayOfMonth"] : null);
-        $model->setResetDayOfWeek(isset($data["resetDayOfWeek"]) ? $data["resetDayOfWeek"] : null);
-        $model->setResetHour(isset($data["resetHour"]) ? $data["resetHour"] : null);
-        $model->setCompleteNotificationNamespaceId(isset($data["completeNotificationNamespaceId"]) ? $data["completeNotificationNamespaceId"] : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "missionGroupId" => $this->getMissionGroupId(),
+            "name" => $this->getName(),
+            "metadata" => $this->getMetadata(),
+            "description" => $this->getDescription(),
+            "resetType" => $this->getResetType(),
+            "resetDayOfMonth" => $this->getResetDayOfMonth(),
+            "resetDayOfWeek" => $this->getResetDayOfWeek(),
+            "resetHour" => $this->getResetHour(),
+            "completeNotificationNamespaceId" => $this->getCompleteNotificationNamespaceId(),
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
+        );
     }
 }

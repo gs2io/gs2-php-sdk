@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\News\Request\DescribeNamespacesRequest;
 use Gs2\News\Result\DescribeNamespacesResult;
 use Gs2\News\Request\CreateNamespaceRequest;
@@ -635,9 +637,6 @@ class DescribeNewsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -696,9 +695,6 @@ class DescribeNewsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -735,7 +731,7 @@ class WantGrantTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "news", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/news/grant";
+        $url = str_replace('{service}', "news", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/news/grant";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
@@ -758,9 +754,6 @@ class WantGrantTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -798,7 +791,7 @@ class WantGrantByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "news", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/news/grant";
+        $url = str_replace('{service}', "news", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/news/grant";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
@@ -819,9 +812,6 @@ class WantGrantByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -846,9 +836,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得します<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -863,9 +851,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得します<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -877,9 +863,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成します<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -894,9 +878,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成します<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -908,9 +890,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得します<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -925,9 +905,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得します<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -939,9 +917,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得します<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -956,9 +932,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得します<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -970,9 +944,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新します<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -987,9 +959,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新します<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1001,9 +971,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除します<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1018,9 +986,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除します<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1032,14 +998,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なお知らせを更新準備する<br>
-     *   <br>
-     *   応答に含まれるURLにサイトデータを圧縮したzipファイルをアップロードし<br>
-     *   アップロード完了後に updateCurrentNewsMaster を呼び出して反映します。<br>
-     *   <br>
-     *   zipファイルをアップロードする際には Content-Type に application/zip を指定する必要があります。<br>
-     *
-     * @param PrepareUpdateCurrentNewsMasterRequest $request リクエストパラメータ
+     * @param PrepareUpdateCurrentNewsMasterRequest $request
      * @return PromiseInterface
      */
     public function prepareUpdateCurrentNewsMasterAsync(
@@ -1054,14 +1013,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なお知らせを更新準備する<br>
-     *   <br>
-     *   応答に含まれるURLにサイトデータを圧縮したzipファイルをアップロードし<br>
-     *   アップロード完了後に updateCurrentNewsMaster を呼び出して反映します。<br>
-     *   <br>
-     *   zipファイルをアップロードする際には Content-Type に application/zip を指定する必要があります。<br>
-     *
-     * @param PrepareUpdateCurrentNewsMasterRequest $request リクエストパラメータ
+     * @param PrepareUpdateCurrentNewsMasterRequest $request
      * @return PrepareUpdateCurrentNewsMasterResult
      */
     public function prepareUpdateCurrentNewsMaster (
@@ -1073,9 +1025,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なお知らせを更新します<br>
-     *
-     * @param UpdateCurrentNewsMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentNewsMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentNewsMasterAsync(
@@ -1090,9 +1040,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なお知らせを更新します<br>
-     *
-     * @param UpdateCurrentNewsMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentNewsMasterRequest $request
      * @return UpdateCurrentNewsMasterResult
      */
     public function updateCurrentNewsMaster (
@@ -1104,9 +1052,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なお知らせを更新します<br>
-     *
-     * @param PrepareUpdateCurrentNewsMasterFromGitHubRequest $request リクエストパラメータ
+     * @param PrepareUpdateCurrentNewsMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function prepareUpdateCurrentNewsMasterFromGitHubAsync(
@@ -1121,9 +1067,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なお知らせを更新します<br>
-     *
-     * @param PrepareUpdateCurrentNewsMasterFromGitHubRequest $request リクエストパラメータ
+     * @param PrepareUpdateCurrentNewsMasterFromGitHubRequest $request
      * @return PrepareUpdateCurrentNewsMasterFromGitHubResult
      */
     public function prepareUpdateCurrentNewsMasterFromGitHub (
@@ -1135,9 +1079,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * お知らせ記事の一覧を取得<br>
-     *
-     * @param DescribeNewsRequest $request リクエストパラメータ
+     * @param DescribeNewsRequest $request
      * @return PromiseInterface
      */
     public function describeNewsAsync(
@@ -1152,9 +1094,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * お知らせ記事の一覧を取得<br>
-     *
-     * @param DescribeNewsRequest $request リクエストパラメータ
+     * @param DescribeNewsRequest $request
      * @return DescribeNewsResult
      */
     public function describeNews (
@@ -1166,9 +1106,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してお知らせ記事の一覧を取得<br>
-     *
-     * @param DescribeNewsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeNewsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeNewsByUserIdAsync(
@@ -1183,9 +1121,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してお知らせ記事の一覧を取得<br>
-     *
-     * @param DescribeNewsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeNewsByUserIdRequest $request
      * @return DescribeNewsByUserIdResult
      */
     public function describeNewsByUserId (
@@ -1197,9 +1133,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * お知らせ記事に加算<br>
-     *
-     * @param WantGrantRequest $request リクエストパラメータ
+     * @param WantGrantRequest $request
      * @return PromiseInterface
      */
     public function wantGrantAsync(
@@ -1214,9 +1148,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * お知らせ記事に加算<br>
-     *
-     * @param WantGrantRequest $request リクエストパラメータ
+     * @param WantGrantRequest $request
      * @return WantGrantResult
      */
     public function wantGrant (
@@ -1228,9 +1160,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * お知らせ記事に加算<br>
-     *
-     * @param WantGrantByUserIdRequest $request リクエストパラメータ
+     * @param WantGrantByUserIdRequest $request
      * @return PromiseInterface
      */
     public function wantGrantByUserIdAsync(
@@ -1245,9 +1175,7 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
-     * お知らせ記事に加算<br>
-     *
-     * @param WantGrantByUserIdRequest $request リクエストパラメータ
+     * @param WantGrantByUserIdRequest $request
      * @return WantGrantByUserIdResult
      */
     public function wantGrantByUserId (

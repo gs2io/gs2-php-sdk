@@ -20,36 +20,34 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\CurrentRateMaster;
 
-/**
- * 現在有効な強化レート設定を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCurrentRateMasterResult implements IResult {
-	/** @var CurrentRateMaster 現在有効な強化レート設定 */
-	private $item;
+    /** @var CurrentRateMaster */
+    private $item;
 
-	/**
-	 * 現在有効な強化レート設定を取得
-	 *
-	 * @return CurrentRateMaster|null 現在有効な強化レート設定を取得します
-	 */
 	public function getItem(): ?CurrentRateMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効な強化レート設定を設定
-	 *
-	 * @param CurrentRateMaster|null $item 現在有効な強化レート設定を取得します
-	 */
 	public function setItem(?CurrentRateMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCurrentRateMasterResult {
-        $result = new GetCurrentRateMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentRateMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentRateMaster $item): GetCurrentRateMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCurrentRateMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCurrentRateMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentRateMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

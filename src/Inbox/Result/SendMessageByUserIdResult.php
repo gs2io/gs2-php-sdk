@@ -18,38 +18,37 @@
 namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
-/**
- * メッセージを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SendMessageByUserIdResult implements IResult {
-	/** @var Message 作成したメッセージ */
-	private $item;
+    /** @var Message */
+    private $item;
 
-	/**
-	 * 作成したメッセージを取得
-	 *
-	 * @return Message|null メッセージを新規作成
-	 */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したメッセージを設定
-	 *
-	 * @param Message|null $item メッセージを新規作成
-	 */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): SendMessageByUserIdResult {
-        $result = new SendMessageByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Message::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Message $item): SendMessageByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SendMessageByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SendMessageByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Message::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

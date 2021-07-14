@@ -19,139 +19,68 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * インベントリを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteInventoryByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null インベントリを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName インベントリを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName インベントリを削除
-     * @return DeleteInventoryByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteInventoryByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリモデル名 */
+    /** @var string */
     private $inventoryName;
-
-    /**
-     * インベントリモデル名を取得
-     *
-     * @return string|null インベントリを削除
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
-    }
-
-    /**
-     * インベントリモデル名を設定
-     *
-     * @param string $inventoryName インベントリを削除
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
-    }
-
-    /**
-     * インベントリモデル名を設定
-     *
-     * @param string $inventoryName インベントリを削除
-     * @return DeleteInventoryByUserIdRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): DeleteInventoryByUserIdRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
 
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null インベントリを削除
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteInventoryByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): DeleteInventoryByUserIdRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DeleteInventoryByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteInventoryByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteInventoryByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId インベントリを削除
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+            "userId" => $this->getUserId(),
+        );
     }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId インベントリを削除
-     * @return DeleteInventoryByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DeleteInventoryByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null インベントリを削除
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider インベントリを削除
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider インベントリを削除
-     * @return DeleteInventoryByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteInventoryByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

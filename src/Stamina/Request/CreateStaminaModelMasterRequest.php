@@ -19,395 +19,221 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタミナモデルマスターを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateStaminaModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタミナモデルマスターを新規作成
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナモデルマスターを新規作成
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CreateStaminaModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナの種類名 */
+    /** @var string */
     private $name;
-
-    /**
-     * スタミナの種類名を取得
-     *
-     * @return string|null スタミナモデルマスターを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $name スタミナモデルマスターを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $name スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withName(string $name = null): CreateStaminaModelMasterRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string スタミナモデルマスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * スタミナモデルマスターの説明を取得
-     *
-     * @return string|null スタミナモデルマスターを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * スタミナモデルマスターの説明を設定
-     *
-     * @param string $description スタミナモデルマスターを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * スタミナモデルマスターの説明を設定
-     *
-     * @param string $description スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): CreateStaminaModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string スタミナの種類のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * スタミナの種類のメタデータを取得
-     *
-     * @return string|null スタミナモデルマスターを新規作成
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * スタミナの種類のメタデータを設定
-     *
-     * @param string $metadata スタミナモデルマスターを新規作成
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * スタミナの種類のメタデータを設定
-     *
-     * @param string $metadata スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): CreateStaminaModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var int スタミナを回復する速度(分) */
+    /** @var int */
     private $recoverIntervalMinutes;
-
-    /**
-     * スタミナを回復する速度(分)を取得
-     *
-     * @return int|null スタミナモデルマスターを新規作成
-     */
-    public function getRecoverIntervalMinutes(): ?int {
-        return $this->recoverIntervalMinutes;
-    }
-
-    /**
-     * スタミナを回復する速度(分)を設定
-     *
-     * @param int $recoverIntervalMinutes スタミナモデルマスターを新規作成
-     */
-    public function setRecoverIntervalMinutes(int $recoverIntervalMinutes = null) {
-        $this->recoverIntervalMinutes = $recoverIntervalMinutes;
-    }
-
-    /**
-     * スタミナを回復する速度(分)を設定
-     *
-     * @param int $recoverIntervalMinutes スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withRecoverIntervalMinutes(int $recoverIntervalMinutes = null): CreateStaminaModelMasterRequest {
-        $this->setRecoverIntervalMinutes($recoverIntervalMinutes);
-        return $this;
-    }
-
-    /** @var int 時間経過後に回復する量 */
+    /** @var int */
     private $recoverValue;
-
-    /**
-     * 時間経過後に回復する量を取得
-     *
-     * @return int|null スタミナモデルマスターを新規作成
-     */
-    public function getRecoverValue(): ?int {
-        return $this->recoverValue;
-    }
-
-    /**
-     * 時間経過後に回復する量を設定
-     *
-     * @param int $recoverValue スタミナモデルマスターを新規作成
-     */
-    public function setRecoverValue(int $recoverValue = null) {
-        $this->recoverValue = $recoverValue;
-    }
-
-    /**
-     * 時間経過後に回復する量を設定
-     *
-     * @param int $recoverValue スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withRecoverValue(int $recoverValue = null): CreateStaminaModelMasterRequest {
-        $this->setRecoverValue($recoverValue);
-        return $this;
-    }
-
-    /** @var int スタミナの最大値の初期値 */
+    /** @var int */
     private $initialCapacity;
-
-    /**
-     * スタミナの最大値の初期値を取得
-     *
-     * @return int|null スタミナモデルマスターを新規作成
-     */
-    public function getInitialCapacity(): ?int {
-        return $this->initialCapacity;
-    }
-
-    /**
-     * スタミナの最大値の初期値を設定
-     *
-     * @param int $initialCapacity スタミナモデルマスターを新規作成
-     */
-    public function setInitialCapacity(int $initialCapacity = null) {
-        $this->initialCapacity = $initialCapacity;
-    }
-
-    /**
-     * スタミナの最大値の初期値を設定
-     *
-     * @param int $initialCapacity スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withInitialCapacity(int $initialCapacity = null): CreateStaminaModelMasterRequest {
-        $this->setInitialCapacity($initialCapacity);
-        return $this;
-    }
-
-    /** @var bool 最大値を超えて回復するか */
+    /** @var bool */
     private $isOverflow;
-
-    /**
-     * 最大値を超えて回復するかを取得
-     *
-     * @return bool|null スタミナモデルマスターを新規作成
-     */
-    public function getIsOverflow(): ?bool {
-        return $this->isOverflow;
-    }
-
-    /**
-     * 最大値を超えて回復するかを設定
-     *
-     * @param bool $isOverflow スタミナモデルマスターを新規作成
-     */
-    public function setIsOverflow(bool $isOverflow = null) {
-        $this->isOverflow = $isOverflow;
-    }
-
-    /**
-     * 最大値を超えて回復するかを設定
-     *
-     * @param bool $isOverflow スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withIsOverflow(bool $isOverflow = null): CreateStaminaModelMasterRequest {
-        $this->setIsOverflow($isOverflow);
-        return $this;
-    }
-
-    /** @var int 溢れた状況での最大値 */
+    /** @var int */
     private $maxCapacity;
-
-    /**
-     * 溢れた状況での最大値を取得
-     *
-     * @return int|null スタミナモデルマスターを新規作成
-     */
-    public function getMaxCapacity(): ?int {
-        return $this->maxCapacity;
-    }
-
-    /**
-     * 溢れた状況での最大値を設定
-     *
-     * @param int $maxCapacity スタミナモデルマスターを新規作成
-     */
-    public function setMaxCapacity(int $maxCapacity = null) {
-        $this->maxCapacity = $maxCapacity;
-    }
-
-    /**
-     * 溢れた状況での最大値を設定
-     *
-     * @param int $maxCapacity スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withMaxCapacity(int $maxCapacity = null): CreateStaminaModelMasterRequest {
-        $this->setMaxCapacity($maxCapacity);
-        return $this;
-    }
-
-    /** @var string GS2-Experience のランクによって最大スタミナ値を決定するスタミナ最大値テーブル名 */
+    /** @var string */
     private $maxStaminaTableName;
-
-    /**
-     * GS2-Experience のランクによって最大スタミナ値を決定するスタミナ最大値テーブル名を取得
-     *
-     * @return string|null スタミナモデルマスターを新規作成
-     */
-    public function getMaxStaminaTableName(): ?string {
-        return $this->maxStaminaTableName;
-    }
-
-    /**
-     * GS2-Experience のランクによって最大スタミナ値を決定するスタミナ最大値テーブル名を設定
-     *
-     * @param string $maxStaminaTableName スタミナモデルマスターを新規作成
-     */
-    public function setMaxStaminaTableName(string $maxStaminaTableName = null) {
-        $this->maxStaminaTableName = $maxStaminaTableName;
-    }
-
-    /**
-     * GS2-Experience のランクによって最大スタミナ値を決定するスタミナ最大値テーブル名を設定
-     *
-     * @param string $maxStaminaTableName スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withMaxStaminaTableName(string $maxStaminaTableName = null): CreateStaminaModelMasterRequest {
-        $this->setMaxStaminaTableName($maxStaminaTableName);
-        return $this;
-    }
-
-    /** @var string GS2-Experience のランクによってスタミナの回復間隔を決定する回復間隔テーブル名 */
+    /** @var string */
     private $recoverIntervalTableName;
-
-    /**
-     * GS2-Experience のランクによってスタミナの回復間隔を決定する回復間隔テーブル名を取得
-     *
-     * @return string|null スタミナモデルマスターを新規作成
-     */
-    public function getRecoverIntervalTableName(): ?string {
-        return $this->recoverIntervalTableName;
-    }
-
-    /**
-     * GS2-Experience のランクによってスタミナの回復間隔を決定する回復間隔テーブル名を設定
-     *
-     * @param string $recoverIntervalTableName スタミナモデルマスターを新規作成
-     */
-    public function setRecoverIntervalTableName(string $recoverIntervalTableName = null) {
-        $this->recoverIntervalTableName = $recoverIntervalTableName;
-    }
-
-    /**
-     * GS2-Experience のランクによってスタミナの回復間隔を決定する回復間隔テーブル名を設定
-     *
-     * @param string $recoverIntervalTableName スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withRecoverIntervalTableName(string $recoverIntervalTableName = null): CreateStaminaModelMasterRequest {
-        $this->setRecoverIntervalTableName($recoverIntervalTableName);
-        return $this;
-    }
-
-    /** @var string GS2-Experience のランクによってスタミナの回復量を決定する回復量テーブル名 */
+    /** @var string */
     private $recoverValueTableName;
 
-    /**
-     * GS2-Experience のランクによってスタミナの回復量を決定する回復量テーブル名を取得
-     *
-     * @return string|null スタミナモデルマスターを新規作成
-     */
-    public function getRecoverValueTableName(): ?string {
-        return $this->recoverValueTableName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CreateStaminaModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateStaminaModelMasterRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateStaminaModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): CreateStaminaModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getRecoverIntervalMinutes(): ?int {
+		return $this->recoverIntervalMinutes;
+	}
+
+	public function setRecoverIntervalMinutes(?int $recoverIntervalMinutes) {
+		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
+	}
+
+	public function withRecoverIntervalMinutes(?int $recoverIntervalMinutes): CreateStaminaModelMasterRequest {
+		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
+		return $this;
+	}
+
+	public function getRecoverValue(): ?int {
+		return $this->recoverValue;
+	}
+
+	public function setRecoverValue(?int $recoverValue) {
+		$this->recoverValue = $recoverValue;
+	}
+
+	public function withRecoverValue(?int $recoverValue): CreateStaminaModelMasterRequest {
+		$this->recoverValue = $recoverValue;
+		return $this;
+	}
+
+	public function getInitialCapacity(): ?int {
+		return $this->initialCapacity;
+	}
+
+	public function setInitialCapacity(?int $initialCapacity) {
+		$this->initialCapacity = $initialCapacity;
+	}
+
+	public function withInitialCapacity(?int $initialCapacity): CreateStaminaModelMasterRequest {
+		$this->initialCapacity = $initialCapacity;
+		return $this;
+	}
+
+	public function getIsOverflow(): ?bool {
+		return $this->isOverflow;
+	}
+
+	public function setIsOverflow(?bool $isOverflow) {
+		$this->isOverflow = $isOverflow;
+	}
+
+	public function withIsOverflow(?bool $isOverflow): CreateStaminaModelMasterRequest {
+		$this->isOverflow = $isOverflow;
+		return $this;
+	}
+
+	public function getMaxCapacity(): ?int {
+		return $this->maxCapacity;
+	}
+
+	public function setMaxCapacity(?int $maxCapacity) {
+		$this->maxCapacity = $maxCapacity;
+	}
+
+	public function withMaxCapacity(?int $maxCapacity): CreateStaminaModelMasterRequest {
+		$this->maxCapacity = $maxCapacity;
+		return $this;
+	}
+
+	public function getMaxStaminaTableName(): ?string {
+		return $this->maxStaminaTableName;
+	}
+
+	public function setMaxStaminaTableName(?string $maxStaminaTableName) {
+		$this->maxStaminaTableName = $maxStaminaTableName;
+	}
+
+	public function withMaxStaminaTableName(?string $maxStaminaTableName): CreateStaminaModelMasterRequest {
+		$this->maxStaminaTableName = $maxStaminaTableName;
+		return $this;
+	}
+
+	public function getRecoverIntervalTableName(): ?string {
+		return $this->recoverIntervalTableName;
+	}
+
+	public function setRecoverIntervalTableName(?string $recoverIntervalTableName) {
+		$this->recoverIntervalTableName = $recoverIntervalTableName;
+	}
+
+	public function withRecoverIntervalTableName(?string $recoverIntervalTableName): CreateStaminaModelMasterRequest {
+		$this->recoverIntervalTableName = $recoverIntervalTableName;
+		return $this;
+	}
+
+	public function getRecoverValueTableName(): ?string {
+		return $this->recoverValueTableName;
+	}
+
+	public function setRecoverValueTableName(?string $recoverValueTableName) {
+		$this->recoverValueTableName = $recoverValueTableName;
+	}
+
+	public function withRecoverValueTableName(?string $recoverValueTableName): CreateStaminaModelMasterRequest {
+		$this->recoverValueTableName = $recoverValueTableName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateStaminaModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateStaminaModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) ? null : $data['recoverIntervalMinutes'])
+            ->withRecoverValue(empty($data['recoverValue']) ? null : $data['recoverValue'])
+            ->withInitialCapacity(empty($data['initialCapacity']) ? null : $data['initialCapacity'])
+            ->withIsOverflow(empty($data['isOverflow']) ? null : $data['isOverflow'])
+            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity'])
+            ->withMaxStaminaTableName(empty($data['maxStaminaTableName']) ? null : $data['maxStaminaTableName'])
+            ->withRecoverIntervalTableName(empty($data['recoverIntervalTableName']) ? null : $data['recoverIntervalTableName'])
+            ->withRecoverValueTableName(empty($data['recoverValueTableName']) ? null : $data['recoverValueTableName']);
     }
 
-    /**
-     * GS2-Experience のランクによってスタミナの回復量を決定する回復量テーブル名を設定
-     *
-     * @param string $recoverValueTableName スタミナモデルマスターを新規作成
-     */
-    public function setRecoverValueTableName(string $recoverValueTableName = null) {
-        $this->recoverValueTableName = $recoverValueTableName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "recoverIntervalMinutes" => $this->getRecoverIntervalMinutes(),
+            "recoverValue" => $this->getRecoverValue(),
+            "initialCapacity" => $this->getInitialCapacity(),
+            "isOverflow" => $this->getIsOverflow(),
+            "maxCapacity" => $this->getMaxCapacity(),
+            "maxStaminaTableName" => $this->getMaxStaminaTableName(),
+            "recoverIntervalTableName" => $this->getRecoverIntervalTableName(),
+            "recoverValueTableName" => $this->getRecoverValueTableName(),
+        );
     }
-
-    /**
-     * GS2-Experience のランクによってスタミナの回復量を決定する回復量テーブル名を設定
-     *
-     * @param string $recoverValueTableName スタミナモデルマスターを新規作成
-     * @return CreateStaminaModelMasterRequest $this
-     */
-    public function withRecoverValueTableName(string $recoverValueTableName = null): CreateStaminaModelMasterRequest {
-        $this->setRecoverValueTableName($recoverValueTableName);
-        return $this;
-    }
-
 }

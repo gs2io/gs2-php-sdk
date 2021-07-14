@@ -19,91 +19,56 @@ namespace Gs2\Distributor\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 加算するリソース
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class DistributeResource implements IModel {
 	/**
-     * @var string スタンプシートで実行するアクションの種類
+     * @var string
 	 */
-	protected $action;
-
+	private $action;
 	/**
-	 * スタンプシートで実行するアクションの種類を取得
-	 *
-	 * @return string|null スタンプシートで実行するアクションの種類
+     * @var string
 	 */
+	private $request;
+
 	public function getAction(): ?string {
 		return $this->action;
 	}
 
-	/**
-	 * スタンプシートで実行するアクションの種類を設定
-	 *
-	 * @param string|null $action スタンプシートで実行するアクションの種類
-	 */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
 
-	/**
-	 * スタンプシートで実行するアクションの種類を設定
-	 *
-	 * @param string|null $action スタンプシートで実行するアクションの種類
-	 * @return DistributeResource $this
-	 */
 	public function withAction(?string $action): DistributeResource {
 		$this->action = $action;
 		return $this;
 	}
-	/**
-     * @var string 加算リクエストのJSON
-	 */
-	protected $request;
 
-	/**
-	 * 加算リクエストのJSONを取得
-	 *
-	 * @return string|null 加算リクエストのJSON
-	 */
 	public function getRequest(): ?string {
 		return $this->request;
 	}
 
-	/**
-	 * 加算リクエストのJSONを設定
-	 *
-	 * @param string|null $request 加算リクエストのJSON
-	 */
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
 
-	/**
-	 * 加算リクエストのJSONを設定
-	 *
-	 * @param string|null $request 加算リクエストのJSON
-	 * @return DistributeResource $this
-	 */
 	public function withRequest(?string $request): DistributeResource {
 		$this->request = $request;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "action" => $this->action,
-            "request" => $this->request,
-        );
+    public static function fromJson(?array $data): ?DistributeResource {
+        if ($data === null) {
+            return null;
+        }
+        return (new DistributeResource())
+            ->withAction(empty($data['action']) ? null : $data['action'])
+            ->withRequest(empty($data['request']) ? null : $data['request']);
     }
 
-    public static function fromJson(array $data): DistributeResource {
-        $model = new DistributeResource();
-        $model->setAction(isset($data["action"]) ? $data["action"] : null);
-        $model->setRequest(isset($data["request"]) ? $data["request"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "action" => $this->getAction(),
+            "request" => $this->getRequest(),
+        );
     }
 }

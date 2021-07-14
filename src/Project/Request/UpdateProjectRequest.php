@@ -19,267 +19,153 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * プロジェクトを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateProjectRequest extends Gs2BasicRequest {
-
-    /** @var string GS2アカウントトークン */
+    /** @var string */
     private $accountToken;
-
-    /**
-     * GS2アカウントトークンを取得
-     *
-     * @return string|null プロジェクトを更新
-     */
-    public function getAccountToken(): ?string {
-        return $this->accountToken;
-    }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken プロジェクトを更新
-     */
-    public function setAccountToken(string $accountToken = null) {
-        $this->accountToken = $accountToken;
-    }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken プロジェクトを更新
-     * @return UpdateProjectRequest $this
-     */
-    public function withAccountToken(string $accountToken = null): UpdateProjectRequest {
-        $this->setAccountToken($accountToken);
-        return $this;
-    }
-
-    /** @var string プロジェクト名 */
+    /** @var string */
     private $projectName;
-
-    /**
-     * プロジェクト名を取得
-     *
-     * @return string|null プロジェクトを更新
-     */
-    public function getProjectName(): ?string {
-        return $this->projectName;
-    }
-
-    /**
-     * プロジェクト名を設定
-     *
-     * @param string $projectName プロジェクトを更新
-     */
-    public function setProjectName(string $projectName = null) {
-        $this->projectName = $projectName;
-    }
-
-    /**
-     * プロジェクト名を設定
-     *
-     * @param string $projectName プロジェクトを更新
-     * @return UpdateProjectRequest $this
-     */
-    public function withProjectName(string $projectName = null): UpdateProjectRequest {
-        $this->setProjectName($projectName);
-        return $this;
-    }
-
-    /** @var string プロジェクトの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * プロジェクトの説明を取得
-     *
-     * @return string|null プロジェクトを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * プロジェクトの説明を設定
-     *
-     * @param string $description プロジェクトを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * プロジェクトの説明を設定
-     *
-     * @param string $description プロジェクトを更新
-     * @return UpdateProjectRequest $this
-     */
-    public function withDescription(string $description = null): UpdateProjectRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 契約プラン */
+    /** @var string */
     private $plan;
-
-    /**
-     * 契約プランを取得
-     *
-     * @return string|null プロジェクトを更新
-     */
-    public function getPlan(): ?string {
-        return $this->plan;
-    }
-
-    /**
-     * 契約プランを設定
-     *
-     * @param string $plan プロジェクトを更新
-     */
-    public function setPlan(string $plan = null) {
-        $this->plan = $plan;
-    }
-
-    /**
-     * 契約プランを設定
-     *
-     * @param string $plan プロジェクトを更新
-     * @return UpdateProjectRequest $this
-     */
-    public function withPlan(string $plan = null): UpdateProjectRequest {
-        $this->setPlan($plan);
-        return $this;
-    }
-
-    /** @var string 支払い方法名 */
+    /** @var string */
     private $billingMethodName;
-
-    /**
-     * 支払い方法名を取得
-     *
-     * @return string|null プロジェクトを更新
-     */
-    public function getBillingMethodName(): ?string {
-        return $this->billingMethodName;
-    }
-
-    /**
-     * 支払い方法名を設定
-     *
-     * @param string $billingMethodName プロジェクトを更新
-     */
-    public function setBillingMethodName(string $billingMethodName = null) {
-        $this->billingMethodName = $billingMethodName;
-    }
-
-    /**
-     * 支払い方法名を設定
-     *
-     * @param string $billingMethodName プロジェクトを更新
-     * @return UpdateProjectRequest $this
-     */
-    public function withBillingMethodName(string $billingMethodName = null): UpdateProjectRequest {
-        $this->setBillingMethodName($billingMethodName);
-        return $this;
-    }
-
-    /** @var string AWS EventBridge の設定 */
+    /** @var string */
     private $enableEventBridge;
-
-    /**
-     * AWS EventBridge の設定を取得
-     *
-     * @return string|null プロジェクトを更新
-     */
-    public function getEnableEventBridge(): ?string {
-        return $this->enableEventBridge;
-    }
-
-    /**
-     * AWS EventBridge の設定を設定
-     *
-     * @param string $enableEventBridge プロジェクトを更新
-     */
-    public function setEnableEventBridge(string $enableEventBridge = null) {
-        $this->enableEventBridge = $enableEventBridge;
-    }
-
-    /**
-     * AWS EventBridge の設定を設定
-     *
-     * @param string $enableEventBridge プロジェクトを更新
-     * @return UpdateProjectRequest $this
-     */
-    public function withEnableEventBridge(string $enableEventBridge = null): UpdateProjectRequest {
-        $this->setEnableEventBridge($enableEventBridge);
-        return $this;
-    }
-
-    /** @var string 通知に使用するAWSアカウントのID */
+    /** @var string */
     private $eventBridgeAwsAccountId;
-
-    /**
-     * 通知に使用するAWSアカウントのIDを取得
-     *
-     * @return string|null プロジェクトを更新
-     */
-    public function getEventBridgeAwsAccountId(): ?string {
-        return $this->eventBridgeAwsAccountId;
-    }
-
-    /**
-     * 通知に使用するAWSアカウントのIDを設定
-     *
-     * @param string $eventBridgeAwsAccountId プロジェクトを更新
-     */
-    public function setEventBridgeAwsAccountId(string $eventBridgeAwsAccountId = null) {
-        $this->eventBridgeAwsAccountId = $eventBridgeAwsAccountId;
-    }
-
-    /**
-     * 通知に使用するAWSアカウントのIDを設定
-     *
-     * @param string $eventBridgeAwsAccountId プロジェクトを更新
-     * @return UpdateProjectRequest $this
-     */
-    public function withEventBridgeAwsAccountId(string $eventBridgeAwsAccountId = null): UpdateProjectRequest {
-        $this->setEventBridgeAwsAccountId($eventBridgeAwsAccountId);
-        return $this;
-    }
-
-    /** @var string 通知に使用するAWSリージョン */
+    /** @var string */
     private $eventBridgeAwsRegion;
 
-    /**
-     * 通知に使用するAWSリージョンを取得
-     *
-     * @return string|null プロジェクトを更新
-     */
-    public function getEventBridgeAwsRegion(): ?string {
-        return $this->eventBridgeAwsRegion;
+	public function getAccountToken(): ?string {
+		return $this->accountToken;
+	}
+
+	public function setAccountToken(?string $accountToken) {
+		$this->accountToken = $accountToken;
+	}
+
+	public function withAccountToken(?string $accountToken): UpdateProjectRequest {
+		$this->accountToken = $accountToken;
+		return $this;
+	}
+
+	public function getProjectName(): ?string {
+		return $this->projectName;
+	}
+
+	public function setProjectName(?string $projectName) {
+		$this->projectName = $projectName;
+	}
+
+	public function withProjectName(?string $projectName): UpdateProjectRequest {
+		$this->projectName = $projectName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateProjectRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getPlan(): ?string {
+		return $this->plan;
+	}
+
+	public function setPlan(?string $plan) {
+		$this->plan = $plan;
+	}
+
+	public function withPlan(?string $plan): UpdateProjectRequest {
+		$this->plan = $plan;
+		return $this;
+	}
+
+	public function getBillingMethodName(): ?string {
+		return $this->billingMethodName;
+	}
+
+	public function setBillingMethodName(?string $billingMethodName) {
+		$this->billingMethodName = $billingMethodName;
+	}
+
+	public function withBillingMethodName(?string $billingMethodName): UpdateProjectRequest {
+		$this->billingMethodName = $billingMethodName;
+		return $this;
+	}
+
+	public function getEnableEventBridge(): ?string {
+		return $this->enableEventBridge;
+	}
+
+	public function setEnableEventBridge(?string $enableEventBridge) {
+		$this->enableEventBridge = $enableEventBridge;
+	}
+
+	public function withEnableEventBridge(?string $enableEventBridge): UpdateProjectRequest {
+		$this->enableEventBridge = $enableEventBridge;
+		return $this;
+	}
+
+	public function getEventBridgeAwsAccountId(): ?string {
+		return $this->eventBridgeAwsAccountId;
+	}
+
+	public function setEventBridgeAwsAccountId(?string $eventBridgeAwsAccountId) {
+		$this->eventBridgeAwsAccountId = $eventBridgeAwsAccountId;
+	}
+
+	public function withEventBridgeAwsAccountId(?string $eventBridgeAwsAccountId): UpdateProjectRequest {
+		$this->eventBridgeAwsAccountId = $eventBridgeAwsAccountId;
+		return $this;
+	}
+
+	public function getEventBridgeAwsRegion(): ?string {
+		return $this->eventBridgeAwsRegion;
+	}
+
+	public function setEventBridgeAwsRegion(?string $eventBridgeAwsRegion) {
+		$this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
+	}
+
+	public function withEventBridgeAwsRegion(?string $eventBridgeAwsRegion): UpdateProjectRequest {
+		$this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateProjectRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateProjectRequest())
+            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
+            ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withPlan(empty($data['plan']) ? null : $data['plan'])
+            ->withBillingMethodName(empty($data['billingMethodName']) ? null : $data['billingMethodName'])
+            ->withEnableEventBridge(empty($data['enableEventBridge']) ? null : $data['enableEventBridge'])
+            ->withEventBridgeAwsAccountId(empty($data['eventBridgeAwsAccountId']) ? null : $data['eventBridgeAwsAccountId'])
+            ->withEventBridgeAwsRegion(empty($data['eventBridgeAwsRegion']) ? null : $data['eventBridgeAwsRegion']);
     }
 
-    /**
-     * 通知に使用するAWSリージョンを設定
-     *
-     * @param string $eventBridgeAwsRegion プロジェクトを更新
-     */
-    public function setEventBridgeAwsRegion(string $eventBridgeAwsRegion = null) {
-        $this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
+    public function toJson(): array {
+        return array(
+            "accountToken" => $this->getAccountToken(),
+            "projectName" => $this->getProjectName(),
+            "description" => $this->getDescription(),
+            "plan" => $this->getPlan(),
+            "billingMethodName" => $this->getBillingMethodName(),
+            "enableEventBridge" => $this->getEnableEventBridge(),
+            "eventBridgeAwsAccountId" => $this->getEventBridgeAwsAccountId(),
+            "eventBridgeAwsRegion" => $this->getEventBridgeAwsRegion(),
+        );
     }
-
-    /**
-     * 通知に使用するAWSリージョンを設定
-     *
-     * @param string $eventBridgeAwsRegion プロジェクトを更新
-     * @return UpdateProjectRequest $this
-     */
-    public function withEventBridgeAwsRegion(string $eventBridgeAwsRegion = null): UpdateProjectRequest {
-        $this->setEventBridgeAwsRegion($eventBridgeAwsRegion);
-        return $this;
-    }
-
 }

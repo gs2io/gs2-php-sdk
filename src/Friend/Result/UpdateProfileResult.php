@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\Profile;
 
-/**
- * プロフィールを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateProfileResult implements IResult {
-	/** @var Profile 更新したプロフィール */
-	private $item;
+    /** @var Profile */
+    private $item;
 
-	/**
-	 * 更新したプロフィールを取得
-	 *
-	 * @return Profile|null プロフィールを更新
-	 */
 	public function getItem(): ?Profile {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したプロフィールを設定
-	 *
-	 * @param Profile|null $item プロフィールを更新
-	 */
 	public function setItem(?Profile $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateProfileResult {
-        $result = new UpdateProfileResult();
-        $result->setItem(isset($data["item"]) ? Profile::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Profile $item): UpdateProfileResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateProfileResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateProfileResult())
+            ->withItem(empty($data['item']) ? null : Profile::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

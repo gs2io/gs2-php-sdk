@@ -19,139 +19,68 @@ namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザーIDを指定して承認したバージョンを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetAcceptVersionByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザーIDを指定して承認したバージョンを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定して承認したバージョンを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定して承認したバージョンを取得
-     * @return GetAcceptVersionByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetAcceptVersionByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザーIDを指定して承認したバージョンを取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定して承認したバージョンを取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定して承認したバージョンを取得
-     * @return GetAcceptVersionByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): GetAcceptVersionByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 承認したバージョン名 */
+    /** @var string */
     private $versionName;
 
-    /**
-     * 承認したバージョン名を取得
-     *
-     * @return string|null ユーザーIDを指定して承認したバージョンを取得
-     */
-    public function getVersionName(): ?string {
-        return $this->versionName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetAcceptVersionByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): GetAcceptVersionByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getVersionName(): ?string {
+		return $this->versionName;
+	}
+
+	public function setVersionName(?string $versionName) {
+		$this->versionName = $versionName;
+	}
+
+	public function withVersionName(?string $versionName): GetAcceptVersionByUserIdRequest {
+		$this->versionName = $versionName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetAcceptVersionByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetAcceptVersionByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withVersionName(empty($data['versionName']) ? null : $data['versionName']);
     }
 
-    /**
-     * 承認したバージョン名を設定
-     *
-     * @param string $versionName ユーザーIDを指定して承認したバージョンを取得
-     */
-    public function setVersionName(string $versionName = null) {
-        $this->versionName = $versionName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "versionName" => $this->getVersionName(),
+        );
     }
-
-    /**
-     * 承認したバージョン名を設定
-     *
-     * @param string $versionName ユーザーIDを指定して承認したバージョンを取得
-     * @return GetAcceptVersionByUserIdRequest $this
-     */
-    public function withVersionName(string $versionName = null): GetAcceptVersionByUserIdRequest {
-        $this->setVersionName($versionName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザーIDを指定して承認したバージョンを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定して承認したバージョンを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定して承認したバージョンを取得
-     * @return GetAcceptVersionByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetAcceptVersionByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

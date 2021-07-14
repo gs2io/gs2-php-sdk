@@ -19,203 +19,102 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 累計獲得経験値を設定 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetExperienceByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 累計獲得経験値を設定
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 累計獲得経験値を設定
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 累計獲得経験値を設定
-     * @return SetExperienceByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): SetExperienceByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 累計獲得経験値を設定
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 累計獲得経験値を設定
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 累計獲得経験値を設定
-     * @return SetExperienceByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): SetExperienceByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 経験値の種類の名前 */
+    /** @var string */
     private $experienceName;
-
-    /**
-     * 経験値の種類の名前を取得
-     *
-     * @return string|null 累計獲得経験値を設定
-     */
-    public function getExperienceName(): ?string {
-        return $this->experienceName;
-    }
-
-    /**
-     * 経験値の種類の名前を設定
-     *
-     * @param string $experienceName 累計獲得経験値を設定
-     */
-    public function setExperienceName(string $experienceName = null) {
-        $this->experienceName = $experienceName;
-    }
-
-    /**
-     * 経験値の種類の名前を設定
-     *
-     * @param string $experienceName 累計獲得経験値を設定
-     * @return SetExperienceByUserIdRequest $this
-     */
-    public function withExperienceName(string $experienceName = null): SetExperienceByUserIdRequest {
-        $this->setExperienceName($experienceName);
-        return $this;
-    }
-
-    /** @var string プロパティID */
+    /** @var string */
     private $propertyId;
-
-    /**
-     * プロパティIDを取得
-     *
-     * @return string|null 累計獲得経験値を設定
-     */
-    public function getPropertyId(): ?string {
-        return $this->propertyId;
-    }
-
-    /**
-     * プロパティIDを設定
-     *
-     * @param string $propertyId 累計獲得経験値を設定
-     */
-    public function setPropertyId(string $propertyId = null) {
-        $this->propertyId = $propertyId;
-    }
-
-    /**
-     * プロパティIDを設定
-     *
-     * @param string $propertyId 累計獲得経験値を設定
-     * @return SetExperienceByUserIdRequest $this
-     */
-    public function withPropertyId(string $propertyId = null): SetExperienceByUserIdRequest {
-        $this->setPropertyId($propertyId);
-        return $this;
-    }
-
-    /** @var int 累計獲得経験値 */
+    /** @var int */
     private $experienceValue;
 
-    /**
-     * 累計獲得経験値を取得
-     *
-     * @return int|null 累計獲得経験値を設定
-     */
-    public function getExperienceValue(): ?int {
-        return $this->experienceValue;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): SetExperienceByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): SetExperienceByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getExperienceName(): ?string {
+		return $this->experienceName;
+	}
+
+	public function setExperienceName(?string $experienceName) {
+		$this->experienceName = $experienceName;
+	}
+
+	public function withExperienceName(?string $experienceName): SetExperienceByUserIdRequest {
+		$this->experienceName = $experienceName;
+		return $this;
+	}
+
+	public function getPropertyId(): ?string {
+		return $this->propertyId;
+	}
+
+	public function setPropertyId(?string $propertyId) {
+		$this->propertyId = $propertyId;
+	}
+
+	public function withPropertyId(?string $propertyId): SetExperienceByUserIdRequest {
+		$this->propertyId = $propertyId;
+		return $this;
+	}
+
+	public function getExperienceValue(): ?int {
+		return $this->experienceValue;
+	}
+
+	public function setExperienceValue(?int $experienceValue) {
+		$this->experienceValue = $experienceValue;
+	}
+
+	public function withExperienceValue(?int $experienceValue): SetExperienceByUserIdRequest {
+		$this->experienceValue = $experienceValue;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetExperienceByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetExperienceByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
+            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
+            ->withExperienceValue(empty($data['experienceValue']) ? null : $data['experienceValue']);
     }
 
-    /**
-     * 累計獲得経験値を設定
-     *
-     * @param int $experienceValue 累計獲得経験値を設定
-     */
-    public function setExperienceValue(int $experienceValue = null) {
-        $this->experienceValue = $experienceValue;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "experienceName" => $this->getExperienceName(),
+            "propertyId" => $this->getPropertyId(),
+            "experienceValue" => $this->getExperienceValue(),
+        );
     }
-
-    /**
-     * 累計獲得経験値を設定
-     *
-     * @param int $experienceValue 累計獲得経験値を設定
-     * @return SetExperienceByUserIdRequest $this
-     */
-    public function withExperienceValue(int $experienceValue = null): SetExperienceByUserIdRequest {
-        $this->setExperienceValue($experienceValue);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 累計獲得経験値を設定
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 累計獲得経験値を設定
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 累計獲得経験値を設定
-     * @return SetExperienceByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): SetExperienceByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

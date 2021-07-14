@@ -19,75 +19,51 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 現在有効なクエストマスターを更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentQuestMasterRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null 現在有効なクエストマスターを更新します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName 現在有効なクエストマスターを更新します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName 現在有効なクエストマスターを更新します
-     * @return UpdateCurrentQuestMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateCurrentQuestMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string マスターデータ */
+    /** @var string */
     private $settings;
 
-    /**
-     * マスターデータを取得
-     *
-     * @return string|null 現在有効なクエストマスターを更新します
-     */
-    public function getSettings(): ?string {
-        return $this->settings;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateCurrentQuestMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getSettings(): ?string {
+		return $this->settings;
+	}
+
+	public function setSettings(?string $settings) {
+		$this->settings = $settings;
+	}
+
+	public function withSettings(?string $settings): UpdateCurrentQuestMasterRequest {
+		$this->settings = $settings;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentQuestMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentQuestMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withSettings(empty($data['settings']) ? null : $data['settings']);
     }
 
-    /**
-     * マスターデータを設定
-     *
-     * @param string $settings 現在有効なクエストマスターを更新します
-     */
-    public function setSettings(string $settings = null) {
-        $this->settings = $settings;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "settings" => $this->getSettings(),
+        );
     }
-
-    /**
-     * マスターデータを設定
-     *
-     * @param string $settings 現在有効なクエストマスターを更新します
-     * @return UpdateCurrentQuestMasterRequest $this
-     */
-    public function withSettings(string $settings = null): UpdateCurrentQuestMasterRequest {
-        $this->setSettings($settings);
-        return $this;
-    }
-
 }

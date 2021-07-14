@@ -20,36 +20,34 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\ItemModel;
 
-/**
- * Noneを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetItemModelResult implements IResult {
-	/** @var ItemModel None */
-	private $item;
+    /** @var ItemModel */
+    private $item;
 
-	/**
-	 * Noneを取得
-	 *
-	 * @return ItemModel|null Noneを取得
-	 */
 	public function getItem(): ?ItemModel {
 		return $this->item;
 	}
 
-	/**
-	 * Noneを設定
-	 *
-	 * @param ItemModel|null $item Noneを取得
-	 */
 	public function setItem(?ItemModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetItemModelResult {
-        $result = new GetItemModelResult();
-        $result->setItem(isset($data["item"]) ? ItemModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?ItemModel $item): GetItemModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetItemModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetItemModelResult())
+            ->withItem(empty($data['item']) ? null : ItemModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

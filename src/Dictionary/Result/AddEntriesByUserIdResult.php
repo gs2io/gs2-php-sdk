@@ -20,42 +20,44 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
-/**
- * ユーザIDを指定してエントリーを入手済みとして登録 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AddEntriesByUserIdResult implements IResult {
-	/** @var Entry[] 登録した{model_name}のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 登録した{model_name}のリストを取得
-	 *
-	 * @return Entry[]|null ユーザIDを指定してエントリーを入手済みとして登録
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 登録した{model_name}のリストを設定
-	 *
-	 * @param Entry[]|null $items ユーザIDを指定してエントリーを入手済みとして登録
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): AddEntriesByUserIdResult {
-        $result = new AddEntriesByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Entry::fromJson($v);
+	public function withItems(?array $items): AddEntriesByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AddEntriesByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AddEntriesByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Entry::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

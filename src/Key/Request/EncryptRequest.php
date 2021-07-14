@@ -19,107 +19,68 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * データを暗号化します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class EncryptRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null データを暗号化します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データを暗号化します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データを暗号化します
-     * @return EncryptRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): EncryptRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 暗号鍵名 */
+    /** @var string */
     private $keyName;
-
-    /**
-     * 暗号鍵名を取得
-     *
-     * @return string|null データを暗号化します
-     */
-    public function getKeyName(): ?string {
-        return $this->keyName;
-    }
-
-    /**
-     * 暗号鍵名を設定
-     *
-     * @param string $keyName データを暗号化します
-     */
-    public function setKeyName(string $keyName = null) {
-        $this->keyName = $keyName;
-    }
-
-    /**
-     * 暗号鍵名を設定
-     *
-     * @param string $keyName データを暗号化します
-     * @return EncryptRequest $this
-     */
-    public function withKeyName(string $keyName = null): EncryptRequest {
-        $this->setKeyName($keyName);
-        return $this;
-    }
-
-    /** @var string None */
+    /** @var string */
     private $data;
 
-    /**
-     * Noneを取得
-     *
-     * @return string|null データを暗号化します
-     */
-    public function getData(): ?string {
-        return $this->data;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): EncryptRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getKeyName(): ?string {
+		return $this->keyName;
+	}
+
+	public function setKeyName(?string $keyName) {
+		$this->keyName = $keyName;
+	}
+
+	public function withKeyName(?string $keyName): EncryptRequest {
+		$this->keyName = $keyName;
+		return $this;
+	}
+
+	public function getData(): ?string {
+		return $this->data;
+	}
+
+	public function setData(?string $data) {
+		$this->data = $data;
+	}
+
+	public function withData(?string $data): EncryptRequest {
+		$this->data = $data;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?EncryptRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new EncryptRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withKeyName(empty($data['keyName']) ? null : $data['keyName'])
+            ->withData(empty($data['data']) ? null : $data['data']);
     }
 
-    /**
-     * Noneを設定
-     *
-     * @param string $data データを暗号化します
-     */
-    public function setData(string $data = null) {
-        $this->data = $data;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "keyName" => $this->getKeyName(),
+            "data" => $this->getData(),
+        );
     }
-
-    /**
-     * Noneを設定
-     *
-     * @param string $data データを暗号化します
-     * @return EncryptRequest $this
-     */
-    public function withData(string $data = null): EncryptRequest {
-        $this->setData($data);
-        return $this;
-    }
-
 }

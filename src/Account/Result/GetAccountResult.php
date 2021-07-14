@@ -20,36 +20,34 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\Account;
 
-/**
- * ゲームプレイヤーアカウントを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetAccountResult implements IResult {
-	/** @var Account ゲームプレイヤーアカウント */
-	private $item;
+    /** @var Account */
+    private $item;
 
-	/**
-	 * ゲームプレイヤーアカウントを取得
-	 *
-	 * @return Account|null ゲームプレイヤーアカウントを取得
-	 */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
-	/**
-	 * ゲームプレイヤーアカウントを設定
-	 *
-	 * @param Account|null $item ゲームプレイヤーアカウントを取得
-	 */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetAccountResult {
-        $result = new GetAccountResult();
-        $result->setItem(isset($data["item"]) ? Account::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Account $item): GetAccountResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetAccountResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetAccountResult())
+            ->withItem(empty($data['item']) ? null : Account::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

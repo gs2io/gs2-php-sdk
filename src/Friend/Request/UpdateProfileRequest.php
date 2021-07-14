@@ -19,203 +19,102 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * プロフィールを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateProfileRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null プロフィールを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName プロフィールを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName プロフィールを更新
-     * @return UpdateProfileRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateProfileRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 公開されるプロフィール */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $publicProfile;
-
-    /**
-     * 公開されるプロフィールを取得
-     *
-     * @return string|null プロフィールを更新
-     */
-    public function getPublicProfile(): ?string {
-        return $this->publicProfile;
-    }
-
-    /**
-     * 公開されるプロフィールを設定
-     *
-     * @param string $publicProfile プロフィールを更新
-     */
-    public function setPublicProfile(string $publicProfile = null) {
-        $this->publicProfile = $publicProfile;
-    }
-
-    /**
-     * 公開されるプロフィールを設定
-     *
-     * @param string $publicProfile プロフィールを更新
-     * @return UpdateProfileRequest $this
-     */
-    public function withPublicProfile(string $publicProfile = null): UpdateProfileRequest {
-        $this->setPublicProfile($publicProfile);
-        return $this;
-    }
-
-    /** @var string フォロワー向けに公開されるプロフィール */
+    /** @var string */
     private $followerProfile;
-
-    /**
-     * フォロワー向けに公開されるプロフィールを取得
-     *
-     * @return string|null プロフィールを更新
-     */
-    public function getFollowerProfile(): ?string {
-        return $this->followerProfile;
-    }
-
-    /**
-     * フォロワー向けに公開されるプロフィールを設定
-     *
-     * @param string $followerProfile プロフィールを更新
-     */
-    public function setFollowerProfile(string $followerProfile = null) {
-        $this->followerProfile = $followerProfile;
-    }
-
-    /**
-     * フォロワー向けに公開されるプロフィールを設定
-     *
-     * @param string $followerProfile プロフィールを更新
-     * @return UpdateProfileRequest $this
-     */
-    public function withFollowerProfile(string $followerProfile = null): UpdateProfileRequest {
-        $this->setFollowerProfile($followerProfile);
-        return $this;
-    }
-
-    /** @var string フレンド向けに公開されるプロフィール */
+    /** @var string */
     private $friendProfile;
 
-    /**
-     * フレンド向けに公開されるプロフィールを取得
-     *
-     * @return string|null プロフィールを更新
-     */
-    public function getFriendProfile(): ?string {
-        return $this->friendProfile;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateProfileRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): UpdateProfileRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getPublicProfile(): ?string {
+		return $this->publicProfile;
+	}
+
+	public function setPublicProfile(?string $publicProfile) {
+		$this->publicProfile = $publicProfile;
+	}
+
+	public function withPublicProfile(?string $publicProfile): UpdateProfileRequest {
+		$this->publicProfile = $publicProfile;
+		return $this;
+	}
+
+	public function getFollowerProfile(): ?string {
+		return $this->followerProfile;
+	}
+
+	public function setFollowerProfile(?string $followerProfile) {
+		$this->followerProfile = $followerProfile;
+	}
+
+	public function withFollowerProfile(?string $followerProfile): UpdateProfileRequest {
+		$this->followerProfile = $followerProfile;
+		return $this;
+	}
+
+	public function getFriendProfile(): ?string {
+		return $this->friendProfile;
+	}
+
+	public function setFriendProfile(?string $friendProfile) {
+		$this->friendProfile = $friendProfile;
+	}
+
+	public function withFriendProfile(?string $friendProfile): UpdateProfileRequest {
+		$this->friendProfile = $friendProfile;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateProfileRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateProfileRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
+            ->withFollowerProfile(empty($data['followerProfile']) ? null : $data['followerProfile'])
+            ->withFriendProfile(empty($data['friendProfile']) ? null : $data['friendProfile']);
     }
 
-    /**
-     * フレンド向けに公開されるプロフィールを設定
-     *
-     * @param string $friendProfile プロフィールを更新
-     */
-    public function setFriendProfile(string $friendProfile = null) {
-        $this->friendProfile = $friendProfile;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "publicProfile" => $this->getPublicProfile(),
+            "followerProfile" => $this->getFollowerProfile(),
+            "friendProfile" => $this->getFriendProfile(),
+        );
     }
-
-    /**
-     * フレンド向けに公開されるプロフィールを設定
-     *
-     * @param string $friendProfile プロフィールを更新
-     * @return UpdateProfileRequest $this
-     */
-    public function withFriendProfile(string $friendProfile = null): UpdateProfileRequest {
-        $this->setFriendProfile($friendProfile);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null プロフィールを更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider プロフィールを更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider プロフィールを更新
-     * @return UpdateProfileRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateProfileRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return UpdateProfileRequest this
-     */
-    public function withAccessToken(string $accessToken): UpdateProfileRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

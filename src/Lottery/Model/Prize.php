@@ -19,207 +19,123 @@ namespace Gs2\Lottery\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 景品
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Prize implements IModel {
 	/**
-     * @var string 景品ID
+     * @var string
 	 */
-	protected $prizeId;
-
+	private $prizeId;
 	/**
-	 * 景品IDを取得
-	 *
-	 * @return string|null 景品ID
+     * @var string
 	 */
+	private $type;
+	/**
+     * @var array
+	 */
+	private $acquireActions;
+	/**
+     * @var string
+	 */
+	private $prizeTableName;
+	/**
+     * @var int
+	 */
+	private $weight;
+
 	public function getPrizeId(): ?string {
 		return $this->prizeId;
 	}
 
-	/**
-	 * 景品IDを設定
-	 *
-	 * @param string|null $prizeId 景品ID
-	 */
 	public function setPrizeId(?string $prizeId) {
 		$this->prizeId = $prizeId;
 	}
 
-	/**
-	 * 景品IDを設定
-	 *
-	 * @param string|null $prizeId 景品ID
-	 * @return Prize $this
-	 */
 	public function withPrizeId(?string $prizeId): Prize {
 		$this->prizeId = $prizeId;
 		return $this;
 	}
-	/**
-     * @var string 景品の種類
-	 */
-	protected $type;
 
-	/**
-	 * 景品の種類を取得
-	 *
-	 * @return string|null 景品の種類
-	 */
 	public function getType(): ?string {
 		return $this->type;
 	}
 
-	/**
-	 * 景品の種類を設定
-	 *
-	 * @param string|null $type 景品の種類
-	 */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
 
-	/**
-	 * 景品の種類を設定
-	 *
-	 * @param string|null $type 景品の種類
-	 * @return Prize $this
-	 */
 	public function withType(?string $type): Prize {
 		$this->type = $type;
 		return $this;
 	}
-	/**
-     * @var AcquireAction[] 景品の入手アクションリスト
-	 */
-	protected $acquireActions;
 
-	/**
-	 * 景品の入手アクションリストを取得
-	 *
-	 * @return AcquireAction[]|null 景品の入手アクションリスト
-	 */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
 
-	/**
-	 * 景品の入手アクションリストを設定
-	 *
-	 * @param AcquireAction[]|null $acquireActions 景品の入手アクションリスト
-	 */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
 
-	/**
-	 * 景品の入手アクションリストを設定
-	 *
-	 * @param AcquireAction[]|null $acquireActions 景品の入手アクションリスト
-	 * @return Prize $this
-	 */
 	public function withAcquireActions(?array $acquireActions): Prize {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
-	/**
-     * @var string 排出確率テーブルの名前
-	 */
-	protected $prizeTableName;
 
-	/**
-	 * 排出確率テーブルの名前を取得
-	 *
-	 * @return string|null 排出確率テーブルの名前
-	 */
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
 
-	/**
-	 * 排出確率テーブルの名前を設定
-	 *
-	 * @param string|null $prizeTableName 排出確率テーブルの名前
-	 */
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
 
-	/**
-	 * 排出確率テーブルの名前を設定
-	 *
-	 * @param string|null $prizeTableName 排出確率テーブルの名前
-	 * @return Prize $this
-	 */
 	public function withPrizeTableName(?string $prizeTableName): Prize {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
-	/**
-     * @var int 排出重み
-	 */
-	protected $weight;
 
-	/**
-	 * 排出重みを取得
-	 *
-	 * @return int|null 排出重み
-	 */
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
 
-	/**
-	 * 排出重みを設定
-	 *
-	 * @param int|null $weight 排出重み
-	 */
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
 
-	/**
-	 * 排出重みを設定
-	 *
-	 * @param int|null $weight 排出重み
-	 * @return Prize $this
-	 */
 	public function withWeight(?int $weight): Prize {
 		$this->weight = $weight;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "prizeId" => $this->prizeId,
-            "type" => $this->type,
-            "acquireActions" => array_map(
-                function (AcquireAction $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?Prize {
+        if ($data === null) {
+            return null;
+        }
+        return (new Prize())
+            ->withPrizeId(empty($data['prizeId']) ? null : $data['prizeId'])
+            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
                 },
-                $this->acquireActions == null ? [] : $this->acquireActions
-            ),
-            "prizeTableName" => $this->prizeTableName,
-            "weight" => $this->weight,
-        );
+                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+            ))
+            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
+            ->withWeight(empty($data['weight']) ? null : $data['weight']);
     }
 
-    public static function fromJson(array $data): Prize {
-        $model = new Prize();
-        $model->setPrizeId(isset($data["prizeId"]) ? $data["prizeId"] : null);
-        $model->setType(isset($data["type"]) ? $data["type"] : null);
-        $model->setAcquireActions(array_map(
-                function ($v) {
-                    return AcquireAction::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "prizeId" => $this->getPrizeId(),
+            "type" => $this->getType(),
+            "acquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["acquireActions"]) ? $data["acquireActions"] : []
-            )
+                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+            ),
+            "prizeTableName" => $this->getPrizeTableName(),
+            "weight" => $this->getWeight(),
         );
-        $model->setPrizeTableName(isset($data["prizeTableName"]) ? $data["prizeTableName"] : null);
-        $model->setWeight(isset($data["weight"]) ? $data["weight"] : null);
-        return $model;
     }
 }

@@ -20,171 +20,112 @@ namespace Gs2\Matchmaking\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\GameResult;
 
-/**
- * 対戦結果を投票します。 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class VoteRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 対戦結果を投票します。
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 対戦結果を投票します。
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 対戦結果を投票します。
-     * @return VoteRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): VoteRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 投票用紙の署名対象のデータ */
+    /** @var string */
     private $ballotBody;
-
-    /**
-     * 投票用紙の署名対象のデータを取得
-     *
-     * @return string|null 対戦結果を投票します。
-     */
-    public function getBallotBody(): ?string {
-        return $this->ballotBody;
-    }
-
-    /**
-     * 投票用紙の署名対象のデータを設定
-     *
-     * @param string $ballotBody 対戦結果を投票します。
-     */
-    public function setBallotBody(string $ballotBody = null) {
-        $this->ballotBody = $ballotBody;
-    }
-
-    /**
-     * 投票用紙の署名対象のデータを設定
-     *
-     * @param string $ballotBody 対戦結果を投票します。
-     * @return VoteRequest $this
-     */
-    public function withBallotBody(string $ballotBody = null): VoteRequest {
-        $this->setBallotBody($ballotBody);
-        return $this;
-    }
-
-    /** @var string 投票用紙の署名 */
+    /** @var string */
     private $ballotSignature;
-
-    /**
-     * 投票用紙の署名を取得
-     *
-     * @return string|null 対戦結果を投票します。
-     */
-    public function getBallotSignature(): ?string {
-        return $this->ballotSignature;
-    }
-
-    /**
-     * 投票用紙の署名を設定
-     *
-     * @param string $ballotSignature 対戦結果を投票します。
-     */
-    public function setBallotSignature(string $ballotSignature = null) {
-        $this->ballotSignature = $ballotSignature;
-    }
-
-    /**
-     * 投票用紙の署名を設定
-     *
-     * @param string $ballotSignature 対戦結果を投票します。
-     * @return VoteRequest $this
-     */
-    public function withBallotSignature(string $ballotSignature = null): VoteRequest {
-        $this->setBallotSignature($ballotSignature);
-        return $this;
-    }
-
-    /** @var GameResult[] 投票内容。対戦を行ったプレイヤーグループ1に所属するユーザIDのリスト */
+    /** @var array */
     private $gameResults;
-
-    /**
-     * 投票内容。対戦を行ったプレイヤーグループ1に所属するユーザIDのリストを取得
-     *
-     * @return GameResult[]|null 対戦結果を投票します。
-     */
-    public function getGameResults(): ?array {
-        return $this->gameResults;
-    }
-
-    /**
-     * 投票内容。対戦を行ったプレイヤーグループ1に所属するユーザIDのリストを設定
-     *
-     * @param GameResult[] $gameResults 対戦結果を投票します。
-     */
-    public function setGameResults(array $gameResults = null) {
-        $this->gameResults = $gameResults;
-    }
-
-    /**
-     * 投票内容。対戦を行ったプレイヤーグループ1に所属するユーザIDのリストを設定
-     *
-     * @param GameResult[] $gameResults 対戦結果を投票します。
-     * @return VoteRequest $this
-     */
-    public function withGameResults(array $gameResults = null): VoteRequest {
-        $this->setGameResults($gameResults);
-        return $this;
-    }
-
-    /** @var string 投票用紙の署名検証に使用する暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * 投票用紙の署名検証に使用する暗号鍵 のGRNを取得
-     *
-     * @return string|null 対戦結果を投票します。
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): VoteRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getBallotBody(): ?string {
+		return $this->ballotBody;
+	}
+
+	public function setBallotBody(?string $ballotBody) {
+		$this->ballotBody = $ballotBody;
+	}
+
+	public function withBallotBody(?string $ballotBody): VoteRequest {
+		$this->ballotBody = $ballotBody;
+		return $this;
+	}
+
+	public function getBallotSignature(): ?string {
+		return $this->ballotSignature;
+	}
+
+	public function setBallotSignature(?string $ballotSignature) {
+		$this->ballotSignature = $ballotSignature;
+	}
+
+	public function withBallotSignature(?string $ballotSignature): VoteRequest {
+		$this->ballotSignature = $ballotSignature;
+		return $this;
+	}
+
+	public function getGameResults(): ?array {
+		return $this->gameResults;
+	}
+
+	public function setGameResults(?array $gameResults) {
+		$this->gameResults = $gameResults;
+	}
+
+	public function withGameResults(?array $gameResults): VoteRequest {
+		$this->gameResults = $gameResults;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): VoteRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?VoteRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new VoteRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withBallotBody(empty($data['ballotBody']) ? null : $data['ballotBody'])
+            ->withBallotSignature(empty($data['ballotSignature']) ? null : $data['ballotSignature'])
+            ->withGameResults(array_map(
+                function ($item) {
+                    return GameResult::fromJson($item);
+                },
+                array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
+            ))
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * 投票用紙の署名検証に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId 対戦結果を投票します。
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "ballotBody" => $this->getBallotBody(),
+            "ballotSignature" => $this->getBallotSignature(),
+            "gameResults" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getGameResults() !== null && $this->getGameResults() !== null ? $this->getGameResults() : []
+            ),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * 投票用紙の署名検証に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId 対戦結果を投票します。
-     * @return VoteRequest $this
-     */
-    public function withKeyId(string $keyId = null): VoteRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
 }

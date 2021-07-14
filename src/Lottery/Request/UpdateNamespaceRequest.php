@@ -20,235 +20,136 @@ namespace Gs2\Lottery\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Lottery\Model\LogSetting;
 
-/**
- * ネームスペースを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): UpdateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 景品付与処理をジョブとして追加するキューのネームスペース のGRN */
+    /** @var string */
     private $queueNamespaceId;
-
-    /**
-     * 景品付与処理をジョブとして追加するキューのネームスペース のGRNを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getQueueNamespaceId(): ?string {
-        return $this->queueNamespaceId;
-    }
-
-    /**
-     * 景品付与処理をジョブとして追加するキューのネームスペース のGRNを設定
-     *
-     * @param string $queueNamespaceId ネームスペースを更新
-     */
-    public function setQueueNamespaceId(string $queueNamespaceId = null) {
-        $this->queueNamespaceId = $queueNamespaceId;
-    }
-
-    /**
-     * 景品付与処理をジョブとして追加するキューのネームスペース のGRNを設定
-     *
-     * @param string $queueNamespaceId ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withQueueNamespaceId(string $queueNamespaceId = null): UpdateNamespaceRequest {
-        $this->setQueueNamespaceId($queueNamespaceId);
-        return $this;
-    }
-
-    /** @var string 景品付与処理のスタンプシートで使用する暗号鍵GRN */
+    /** @var string */
     private $keyId;
-
-    /**
-     * 景品付与処理のスタンプシートで使用する暗号鍵GRNを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
-    }
-
-    /**
-     * 景品付与処理のスタンプシートで使用する暗号鍵GRNを設定
-     *
-     * @param string $keyId ネームスペースを更新
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
-    }
-
-    /**
-     * 景品付与処理のスタンプシートで使用する暗号鍵GRNを設定
-     *
-     * @param string $keyId ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withKeyId(string $keyId = null): UpdateNamespaceRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 抽選処理時 に実行されるスクリプト のGRN */
+    /** @var string */
     private $lotteryTriggerScriptId;
-
-    /**
-     * 抽選処理時 に実行されるスクリプト のGRNを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getLotteryTriggerScriptId(): ?string {
-        return $this->lotteryTriggerScriptId;
-    }
-
-    /**
-     * 抽選処理時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $lotteryTriggerScriptId ネームスペースを更新
-     */
-    public function setLotteryTriggerScriptId(string $lotteryTriggerScriptId = null) {
-        $this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
-    }
-
-    /**
-     * 抽選処理時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $lotteryTriggerScriptId ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLotteryTriggerScriptId(string $lotteryTriggerScriptId = null): UpdateNamespaceRequest {
-        $this->setLotteryTriggerScriptId($lotteryTriggerScriptId);
-        return $this;
-    }
-
-    /** @var string 排出テーブル選択時 に実行されるスクリプト のGRN */
+    /** @var string */
     private $choicePrizeTableScriptId;
-
-    /**
-     * 排出テーブル選択時 に実行されるスクリプト のGRNを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getChoicePrizeTableScriptId(): ?string {
-        return $this->choicePrizeTableScriptId;
-    }
-
-    /**
-     * 排出テーブル選択時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $choicePrizeTableScriptId ネームスペースを更新
-     */
-    public function setChoicePrizeTableScriptId(string $choicePrizeTableScriptId = null) {
-        $this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
-    }
-
-    /**
-     * 排出テーブル選択時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $choicePrizeTableScriptId ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withChoicePrizeTableScriptId(string $choicePrizeTableScriptId = null): UpdateNamespaceRequest {
-        $this->setChoicePrizeTableScriptId($choicePrizeTableScriptId);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを更新
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getQueueNamespaceId(): ?string {
+		return $this->queueNamespaceId;
+	}
+
+	public function setQueueNamespaceId(?string $queueNamespaceId) {
+		$this->queueNamespaceId = $queueNamespaceId;
+	}
+
+	public function withQueueNamespaceId(?string $queueNamespaceId): UpdateNamespaceRequest {
+		$this->queueNamespaceId = $queueNamespaceId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): UpdateNamespaceRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+	public function getLotteryTriggerScriptId(): ?string {
+		return $this->lotteryTriggerScriptId;
+	}
+
+	public function setLotteryTriggerScriptId(?string $lotteryTriggerScriptId) {
+		$this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
+	}
+
+	public function withLotteryTriggerScriptId(?string $lotteryTriggerScriptId): UpdateNamespaceRequest {
+		$this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
+		return $this;
+	}
+
+	public function getChoicePrizeTableScriptId(): ?string {
+		return $this->choicePrizeTableScriptId;
+	}
+
+	public function setChoicePrizeTableScriptId(?string $choicePrizeTableScriptId) {
+		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
+	}
+
+	public function withChoicePrizeTableScriptId(?string $choicePrizeTableScriptId): UpdateNamespaceRequest {
+		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withLotteryTriggerScriptId(empty($data['lotteryTriggerScriptId']) ? null : $data['lotteryTriggerScriptId'])
+            ->withChoicePrizeTableScriptId(empty($data['choicePrizeTableScriptId']) ? null : $data['choicePrizeTableScriptId'])
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "description" => $this->getDescription(),
+            "queueNamespaceId" => $this->getQueueNamespaceId(),
+            "keyId" => $this->getKeyId(),
+            "lotteryTriggerScriptId" => $this->getLotteryTriggerScriptId(),
+            "choicePrizeTableScriptId" => $this->getChoicePrizeTableScriptId(),
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): UpdateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

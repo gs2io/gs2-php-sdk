@@ -19,171 +19,102 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * クエストグループマスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateQuestGroupModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null クエストグループマスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストグループマスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストグループマスターを更新
-     * @return UpdateQuestGroupModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateQuestGroupModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string クエストグループモデル名 */
+    /** @var string */
     private $questGroupName;
-
-    /**
-     * クエストグループモデル名を取得
-     *
-     * @return string|null クエストグループマスターを更新
-     */
-    public function getQuestGroupName(): ?string {
-        return $this->questGroupName;
-    }
-
-    /**
-     * クエストグループモデル名を設定
-     *
-     * @param string $questGroupName クエストグループマスターを更新
-     */
-    public function setQuestGroupName(string $questGroupName = null) {
-        $this->questGroupName = $questGroupName;
-    }
-
-    /**
-     * クエストグループモデル名を設定
-     *
-     * @param string $questGroupName クエストグループマスターを更新
-     * @return UpdateQuestGroupModelMasterRequest $this
-     */
-    public function withQuestGroupName(string $questGroupName = null): UpdateQuestGroupModelMasterRequest {
-        $this->setQuestGroupName($questGroupName);
-        return $this;
-    }
-
-    /** @var string クエストグループマスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * クエストグループマスターの説明を取得
-     *
-     * @return string|null クエストグループマスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * クエストグループマスターの説明を設定
-     *
-     * @param string $description クエストグループマスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * クエストグループマスターの説明を設定
-     *
-     * @param string $description クエストグループマスターを更新
-     * @return UpdateQuestGroupModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateQuestGroupModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string クエストグループのメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * クエストグループのメタデータを取得
-     *
-     * @return string|null クエストグループマスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * クエストグループのメタデータを設定
-     *
-     * @param string $metadata クエストグループマスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * クエストグループのメタデータを設定
-     *
-     * @param string $metadata クエストグループマスターを更新
-     * @return UpdateQuestGroupModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateQuestGroupModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string 挑戦可能な期間を指定するイベントマスター のGRN */
+    /** @var string */
     private $challengePeriodEventId;
 
-    /**
-     * 挑戦可能な期間を指定するイベントマスター のGRNを取得
-     *
-     * @return string|null クエストグループマスターを更新
-     */
-    public function getChallengePeriodEventId(): ?string {
-        return $this->challengePeriodEventId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateQuestGroupModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getQuestGroupName(): ?string {
+		return $this->questGroupName;
+	}
+
+	public function setQuestGroupName(?string $questGroupName) {
+		$this->questGroupName = $questGroupName;
+	}
+
+	public function withQuestGroupName(?string $questGroupName): UpdateQuestGroupModelMasterRequest {
+		$this->questGroupName = $questGroupName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateQuestGroupModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateQuestGroupModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getChallengePeriodEventId(): ?string {
+		return $this->challengePeriodEventId;
+	}
+
+	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+	}
+
+	public function withChallengePeriodEventId(?string $challengePeriodEventId): UpdateQuestGroupModelMasterRequest {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateQuestGroupModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateQuestGroupModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withChallengePeriodEventId(empty($data['challengePeriodEventId']) ? null : $data['challengePeriodEventId']);
     }
 
-    /**
-     * 挑戦可能な期間を指定するイベントマスター のGRNを設定
-     *
-     * @param string $challengePeriodEventId クエストグループマスターを更新
-     */
-    public function setChallengePeriodEventId(string $challengePeriodEventId = null) {
-        $this->challengePeriodEventId = $challengePeriodEventId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "questGroupName" => $this->getQuestGroupName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "challengePeriodEventId" => $this->getChallengePeriodEventId(),
+        );
     }
-
-    /**
-     * 挑戦可能な期間を指定するイベントマスター のGRNを設定
-     *
-     * @param string $challengePeriodEventId クエストグループマスターを更新
-     * @return UpdateQuestGroupModelMasterRequest $this
-     */
-    public function withChallengePeriodEventId(string $challengePeriodEventId = null): UpdateQuestGroupModelMasterRequest {
-        $this->setChallengePeriodEventId($challengePeriodEventId);
-        return $this;
-    }
-
 }

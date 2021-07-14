@@ -20,78 +20,68 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
-/**
- * エントリーを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetEntryWithSignatureResult implements IResult {
-	/** @var Entry エントリー */
-	private $item;
-	/** @var string 署名対象のエントリー情報 */
-	private $body;
-	/** @var string 署名 */
-	private $signature;
+    /** @var Entry */
+    private $item;
+    /** @var string */
+    private $body;
+    /** @var string */
+    private $signature;
 
-	/**
-	 * エントリーを取得
-	 *
-	 * @return Entry|null エントリーを取得
-	 */
 	public function getItem(): ?Entry {
 		return $this->item;
 	}
 
-	/**
-	 * エントリーを設定
-	 *
-	 * @param Entry|null $item エントリーを取得
-	 */
 	public function setItem(?Entry $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 署名対象のエントリー情報を取得
-	 *
-	 * @return string|null エントリーを取得
-	 */
+	public function withItem(?Entry $item): GetEntryWithSignatureResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
-	/**
-	 * 署名対象のエントリー情報を設定
-	 *
-	 * @param string|null $body エントリーを取得
-	 */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
-	/**
-	 * 署名を取得
-	 *
-	 * @return string|null エントリーを取得
-	 */
+	public function withBody(?string $body): GetEntryWithSignatureResult {
+		$this->body = $body;
+		return $this;
+	}
+
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
-	/**
-	 * 署名を設定
-	 *
-	 * @param string|null $signature エントリーを取得
-	 */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
-    public static function fromJson(array $data): GetEntryWithSignatureResult {
-        $result = new GetEntryWithSignatureResult();
-        $result->setItem(isset($data["item"]) ? Entry::fromJson($data["item"]) : null);
-        $result->setBody(isset($data["body"]) ? $data["body"] : null);
-        $result->setSignature(isset($data["signature"]) ? $data["signature"] : null);
-        return $result;
+	public function withSignature(?string $signature): GetEntryWithSignatureResult {
+		$this->signature = $signature;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetEntryWithSignatureResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetEntryWithSignatureResult())
+            ->withItem(empty($data['item']) ? null : Entry::fromJson($data['item']))
+            ->withBody(empty($data['body']) ? null : $data['body'])
+            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "body" => $this->getBody(),
+            "signature" => $this->getSignature(),
+        );
     }
 }

@@ -21,331 +21,187 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Money\Model\ScriptSetting;
 use Gs2\Money\Model\LogSetting;
 
-/**
- * ネームスペースを更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null ネームスペースを更新します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ネームスペースを更新します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを更新します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): UpdateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 消費優先度 */
+    /** @var string */
     private $priority;
-
-    /**
-     * 消費優先度を取得
-     *
-     * @return string|null ネームスペースを更新します
-     */
-    public function getPriority(): ?string {
-        return $this->priority;
-    }
-
-    /**
-     * 消費優先度を設定
-     *
-     * @param string $priority ネームスペースを更新します
-     */
-    public function setPriority(string $priority = null) {
-        $this->priority = $priority;
-    }
-
-    /**
-     * 消費優先度を設定
-     *
-     * @param string $priority ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withPriority(string $priority = null): UpdateNamespaceRequest {
-        $this->setPriority($priority);
-        return $this;
-    }
-
-    /** @var string Apple AppStore のバンドルID */
+    /** @var string */
     private $appleKey;
-
-    /**
-     * Apple AppStore のバンドルIDを取得
-     *
-     * @return string|null ネームスペースを更新します
-     */
-    public function getAppleKey(): ?string {
-        return $this->appleKey;
-    }
-
-    /**
-     * Apple AppStore のバンドルIDを設定
-     *
-     * @param string $appleKey ネームスペースを更新します
-     */
-    public function setAppleKey(string $appleKey = null) {
-        $this->appleKey = $appleKey;
-    }
-
-    /**
-     * Apple AppStore のバンドルIDを設定
-     *
-     * @param string $appleKey ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withAppleKey(string $appleKey = null): UpdateNamespaceRequest {
-        $this->setAppleKey($appleKey);
-        return $this;
-    }
-
-    /** @var string Google PlayStore の秘密鍵 */
+    /** @var string */
     private $googleKey;
-
-    /**
-     * Google PlayStore の秘密鍵を取得
-     *
-     * @return string|null ネームスペースを更新します
-     */
-    public function getGoogleKey(): ?string {
-        return $this->googleKey;
-    }
-
-    /**
-     * Google PlayStore の秘密鍵を設定
-     *
-     * @param string $googleKey ネームスペースを更新します
-     */
-    public function setGoogleKey(string $googleKey = null) {
-        $this->googleKey = $googleKey;
-    }
-
-    /**
-     * Google PlayStore の秘密鍵を設定
-     *
-     * @param string $googleKey ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withGoogleKey(string $googleKey = null): UpdateNamespaceRequest {
-        $this->setGoogleKey($googleKey);
-        return $this;
-    }
-
-    /** @var bool UnityEditorが出力する偽のレシートで決済できるようにするか */
+    /** @var bool */
     private $enableFakeReceipt;
-
-    /**
-     * UnityEditorが出力する偽のレシートで決済できるようにするかを取得
-     *
-     * @return bool|null ネームスペースを更新します
-     */
-    public function getEnableFakeReceipt(): ?bool {
-        return $this->enableFakeReceipt;
-    }
-
-    /**
-     * UnityEditorが出力する偽のレシートで決済できるようにするかを設定
-     *
-     * @param bool $enableFakeReceipt ネームスペースを更新します
-     */
-    public function setEnableFakeReceipt(bool $enableFakeReceipt = null) {
-        $this->enableFakeReceipt = $enableFakeReceipt;
-    }
-
-    /**
-     * UnityEditorが出力する偽のレシートで決済できるようにするかを設定
-     *
-     * @param bool $enableFakeReceipt ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withEnableFakeReceipt(bool $enableFakeReceipt = null): UpdateNamespaceRequest {
-        $this->setEnableFakeReceipt($enableFakeReceipt);
-        return $this;
-    }
-
-    /** @var ScriptSetting ウォレット新規作成したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $createWalletScript;
-
-    /**
-     * ウォレット新規作成したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新します
-     */
-    public function getCreateWalletScript(): ?ScriptSetting {
-        return $this->createWalletScript;
-    }
-
-    /**
-     * ウォレット新規作成したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $createWalletScript ネームスペースを更新します
-     */
-    public function setCreateWalletScript(ScriptSetting $createWalletScript = null) {
-        $this->createWalletScript = $createWalletScript;
-    }
-
-    /**
-     * ウォレット新規作成したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $createWalletScript ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withCreateWalletScript(ScriptSetting $createWalletScript = null): UpdateNamespaceRequest {
-        $this->setCreateWalletScript($createWalletScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting ウォレット残高加算したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $depositScript;
-
-    /**
-     * ウォレット残高加算したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新します
-     */
-    public function getDepositScript(): ?ScriptSetting {
-        return $this->depositScript;
-    }
-
-    /**
-     * ウォレット残高加算したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $depositScript ネームスペースを更新します
-     */
-    public function setDepositScript(ScriptSetting $depositScript = null) {
-        $this->depositScript = $depositScript;
-    }
-
-    /**
-     * ウォレット残高加算したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $depositScript ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDepositScript(ScriptSetting $depositScript = null): UpdateNamespaceRequest {
-        $this->setDepositScript($depositScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting ウォレット残高消費したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $withdrawScript;
-
-    /**
-     * ウォレット残高消費したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新します
-     */
-    public function getWithdrawScript(): ?ScriptSetting {
-        return $this->withdrawScript;
-    }
-
-    /**
-     * ウォレット残高消費したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $withdrawScript ネームスペースを更新します
-     */
-    public function setWithdrawScript(ScriptSetting $withdrawScript = null) {
-        $this->withdrawScript = $withdrawScript;
-    }
-
-    /**
-     * ウォレット残高消費したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $withdrawScript ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withWithdrawScript(ScriptSetting $withdrawScript = null): UpdateNamespaceRequest {
-        $this->setWithdrawScript($withdrawScript);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを更新します
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getPriority(): ?string {
+		return $this->priority;
+	}
+
+	public function setPriority(?string $priority) {
+		$this->priority = $priority;
+	}
+
+	public function withPriority(?string $priority): UpdateNamespaceRequest {
+		$this->priority = $priority;
+		return $this;
+	}
+
+	public function getAppleKey(): ?string {
+		return $this->appleKey;
+	}
+
+	public function setAppleKey(?string $appleKey) {
+		$this->appleKey = $appleKey;
+	}
+
+	public function withAppleKey(?string $appleKey): UpdateNamespaceRequest {
+		$this->appleKey = $appleKey;
+		return $this;
+	}
+
+	public function getGoogleKey(): ?string {
+		return $this->googleKey;
+	}
+
+	public function setGoogleKey(?string $googleKey) {
+		$this->googleKey = $googleKey;
+	}
+
+	public function withGoogleKey(?string $googleKey): UpdateNamespaceRequest {
+		$this->googleKey = $googleKey;
+		return $this;
+	}
+
+	public function getEnableFakeReceipt(): ?bool {
+		return $this->enableFakeReceipt;
+	}
+
+	public function setEnableFakeReceipt(?bool $enableFakeReceipt) {
+		$this->enableFakeReceipt = $enableFakeReceipt;
+	}
+
+	public function withEnableFakeReceipt(?bool $enableFakeReceipt): UpdateNamespaceRequest {
+		$this->enableFakeReceipt = $enableFakeReceipt;
+		return $this;
+	}
+
+	public function getCreateWalletScript(): ?ScriptSetting {
+		return $this->createWalletScript;
+	}
+
+	public function setCreateWalletScript(?ScriptSetting $createWalletScript) {
+		$this->createWalletScript = $createWalletScript;
+	}
+
+	public function withCreateWalletScript(?ScriptSetting $createWalletScript): UpdateNamespaceRequest {
+		$this->createWalletScript = $createWalletScript;
+		return $this;
+	}
+
+	public function getDepositScript(): ?ScriptSetting {
+		return $this->depositScript;
+	}
+
+	public function setDepositScript(?ScriptSetting $depositScript) {
+		$this->depositScript = $depositScript;
+	}
+
+	public function withDepositScript(?ScriptSetting $depositScript): UpdateNamespaceRequest {
+		$this->depositScript = $depositScript;
+		return $this;
+	}
+
+	public function getWithdrawScript(): ?ScriptSetting {
+		return $this->withdrawScript;
+	}
+
+	public function setWithdrawScript(?ScriptSetting $withdrawScript) {
+		$this->withdrawScript = $withdrawScript;
+	}
+
+	public function withWithdrawScript(?ScriptSetting $withdrawScript): UpdateNamespaceRequest {
+		$this->withdrawScript = $withdrawScript;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withPriority(empty($data['priority']) ? null : $data['priority'])
+            ->withAppleKey(empty($data['appleKey']) ? null : $data['appleKey'])
+            ->withGoogleKey(empty($data['googleKey']) ? null : $data['googleKey'])
+            ->withEnableFakeReceipt(empty($data['enableFakeReceipt']) ? null : $data['enableFakeReceipt'])
+            ->withCreateWalletScript(empty($data['createWalletScript']) ? null : ScriptSetting::fromJson($data['createWalletScript']))
+            ->withDepositScript(empty($data['depositScript']) ? null : ScriptSetting::fromJson($data['depositScript']))
+            ->withWithdrawScript(empty($data['withdrawScript']) ? null : ScriptSetting::fromJson($data['withdrawScript']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新します
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "description" => $this->getDescription(),
+            "priority" => $this->getPriority(),
+            "appleKey" => $this->getAppleKey(),
+            "googleKey" => $this->getGoogleKey(),
+            "enableFakeReceipt" => $this->getEnableFakeReceipt(),
+            "createWalletScript" => $this->getCreateWalletScript() !== null ? $this->getCreateWalletScript()->toJson() : null,
+            "depositScript" => $this->getDepositScript() !== null ? $this->getDepositScript()->toJson() : null,
+            "withdrawScript" => $this->getWithdrawScript() !== null ? $this->getWithdrawScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新します
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): UpdateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

@@ -18,108 +18,100 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Lottery\Model\BoxItems;
+use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\DrawnPrize;
+use Gs2\Lottery\Model\BoxItem;
+use Gs2\Lottery\Model\BoxItems;
 
-/**
- * スタンプシートを使用して抽選処理を実行 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DrawByStampSheetResult implements IResult {
-	/** @var DrawnPrize[] 抽選結果の景品リスト */
-	private $items;
-	/** @var string 排出された景品を入手するスタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
-	/** @var BoxItems ボックスから取り出したアイテムのリスト */
-	private $boxItems;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
+    /** @var BoxItems */
+    private $boxItems;
 
-	/**
-	 * 抽選結果の景品リストを取得
-	 *
-	 * @return DrawnPrize[]|null スタンプシートを使用して抽選処理を実行
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 抽選結果の景品リストを設定
-	 *
-	 * @param DrawnPrize[]|null $items スタンプシートを使用して抽選処理を実行
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * 排出された景品を入手するスタンプシートを取得
-	 *
-	 * @return string|null スタンプシートを使用して抽選処理を実行
-	 */
+	public function withItems(?array $items): DrawByStampSheetResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * 排出された景品を入手するスタンプシートを設定
-	 *
-	 * @param string|null $stampSheet スタンプシートを使用して抽選処理を実行
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null スタンプシートを使用して抽選処理を実行
-	 */
+	public function withStampSheet(?string $stampSheet): DrawByStampSheetResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId スタンプシートを使用して抽選処理を実行
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * ボックスから取り出したアイテムのリストを取得
-	 *
-	 * @return BoxItems|null スタンプシートを使用して抽選処理を実行
-	 */
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): DrawByStampSheetResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
 	public function getBoxItems(): ?BoxItems {
 		return $this->boxItems;
 	}
 
-	/**
-	 * ボックスから取り出したアイテムのリストを設定
-	 *
-	 * @param BoxItems|null $boxItems スタンプシートを使用して抽選処理を実行
-	 */
 	public function setBoxItems(?BoxItems $boxItems) {
 		$this->boxItems = $boxItems;
 	}
 
-    public static function fromJson(array $data): DrawByStampSheetResult {
-        $result = new DrawByStampSheetResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return DrawnPrize::fromJson($v);
+	public function withBoxItems(?BoxItems $boxItems): DrawByStampSheetResult {
+		$this->boxItems = $boxItems;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DrawByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DrawByStampSheetResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return DrawnPrize::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId'])
+            ->withBoxItems(empty($data['boxItems']) ? null : BoxItems::fromJson($data['boxItems']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+            "boxItems" => $this->getBoxItems() !== null ? $this->getBoxItems()->toJson() : null,
         );
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        $result->setBoxItems(isset($data["boxItems"]) ? BoxItems::fromJson($data["boxItems"]) : null);
-        return $result;
     }
 }

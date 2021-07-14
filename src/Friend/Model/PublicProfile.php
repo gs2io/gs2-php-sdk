@@ -19,91 +19,56 @@ namespace Gs2\Friend\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 公開プロフィール
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class PublicProfile implements IModel {
 	/**
-     * @var string ユーザーID
+     * @var string
 	 */
-	protected $userId;
-
+	private $userId;
 	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
+     * @var string
 	 */
+	private $publicProfile;
+
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return PublicProfile $this
-	 */
 	public function withUserId(?string $userId): PublicProfile {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string 公開されるプロフィール
-	 */
-	protected $publicProfile;
 
-	/**
-	 * 公開されるプロフィールを取得
-	 *
-	 * @return string|null 公開されるプロフィール
-	 */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
 
-	/**
-	 * 公開されるプロフィールを設定
-	 *
-	 * @param string|null $publicProfile 公開されるプロフィール
-	 */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
 
-	/**
-	 * 公開されるプロフィールを設定
-	 *
-	 * @param string|null $publicProfile 公開されるプロフィール
-	 * @return PublicProfile $this
-	 */
 	public function withPublicProfile(?string $publicProfile): PublicProfile {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "userId" => $this->userId,
-            "publicProfile" => $this->publicProfile,
-        );
+    public static function fromJson(?array $data): ?PublicProfile {
+        if ($data === null) {
+            return null;
+        }
+        return (new PublicProfile())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile']);
     }
 
-    public static function fromJson(array $data): PublicProfile {
-        $model = new PublicProfile();
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setPublicProfile(isset($data["publicProfile"]) ? $data["publicProfile"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "publicProfile" => $this->getPublicProfile(),
+        );
     }
 }

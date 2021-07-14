@@ -19,43 +19,34 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * GS2アカウントを有効化します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class VerifyRequest extends Gs2BasicRequest {
-
-    /** @var string 有効化に使用するトークン */
+    /** @var string */
     private $verifyToken;
 
-    /**
-     * 有効化に使用するトークンを取得
-     *
-     * @return string|null GS2アカウントを有効化します
-     */
-    public function getVerifyToken(): ?string {
-        return $this->verifyToken;
+	public function getVerifyToken(): ?string {
+		return $this->verifyToken;
+	}
+
+	public function setVerifyToken(?string $verifyToken) {
+		$this->verifyToken = $verifyToken;
+	}
+
+	public function withVerifyToken(?string $verifyToken): VerifyRequest {
+		$this->verifyToken = $verifyToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?VerifyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new VerifyRequest())
+            ->withVerifyToken(empty($data['verifyToken']) ? null : $data['verifyToken']);
     }
 
-    /**
-     * 有効化に使用するトークンを設定
-     *
-     * @param string $verifyToken GS2アカウントを有効化します
-     */
-    public function setVerifyToken(string $verifyToken = null) {
-        $this->verifyToken = $verifyToken;
+    public function toJson(): array {
+        return array(
+            "verifyToken" => $this->getVerifyToken(),
+        );
     }
-
-    /**
-     * 有効化に使用するトークンを設定
-     *
-     * @param string $verifyToken GS2アカウントを有効化します
-     * @return VerifyRequest $this
-     */
-    public function withVerifyToken(string $verifyToken = null): VerifyRequest {
-        $this->setVerifyToken($verifyToken);
-        return $this;
-    }
-
 }

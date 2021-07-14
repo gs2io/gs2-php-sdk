@@ -18,82 +18,76 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
-use Gs2\Quest\Model\QuestGroupModel;
+use Gs2\Quest\Model\AcquireAction;
+use Gs2\Quest\Model\Contents;
+use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModel;
+use Gs2\Quest\Model\QuestGroupModel;
 
-/**
- * ユーザIDを指定してクエスト挑戦を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetProgressByUserIdResult implements IResult {
-	/** @var Progress クエスト挑戦 */
-	private $item;
-	/** @var QuestGroupModel クエストグループ */
-	private $questGroup;
-	/** @var QuestModel クエストモデル */
-	private $quest;
+    /** @var Progress */
+    private $item;
+    /** @var QuestGroupModel */
+    private $questGroup;
+    /** @var QuestModel */
+    private $quest;
 
-	/**
-	 * クエスト挑戦を取得
-	 *
-	 * @return Progress|null ユーザIDを指定してクエスト挑戦を取得
-	 */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
-	/**
-	 * クエスト挑戦を設定
-	 *
-	 * @param Progress|null $item ユーザIDを指定してクエスト挑戦を取得
-	 */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * クエストグループを取得
-	 *
-	 * @return QuestGroupModel|null ユーザIDを指定してクエスト挑戦を取得
-	 */
+	public function withItem(?Progress $item): GetProgressByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getQuestGroup(): ?QuestGroupModel {
 		return $this->questGroup;
 	}
 
-	/**
-	 * クエストグループを設定
-	 *
-	 * @param QuestGroupModel|null $questGroup ユーザIDを指定してクエスト挑戦を取得
-	 */
 	public function setQuestGroup(?QuestGroupModel $questGroup) {
 		$this->questGroup = $questGroup;
 	}
 
-	/**
-	 * クエストモデルを取得
-	 *
-	 * @return QuestModel|null ユーザIDを指定してクエスト挑戦を取得
-	 */
+	public function withQuestGroup(?QuestGroupModel $questGroup): GetProgressByUserIdResult {
+		$this->questGroup = $questGroup;
+		return $this;
+	}
+
 	public function getQuest(): ?QuestModel {
 		return $this->quest;
 	}
 
-	/**
-	 * クエストモデルを設定
-	 *
-	 * @param QuestModel|null $quest ユーザIDを指定してクエスト挑戦を取得
-	 */
 	public function setQuest(?QuestModel $quest) {
 		$this->quest = $quest;
 	}
 
-    public static function fromJson(array $data): GetProgressByUserIdResult {
-        $result = new GetProgressByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Progress::fromJson($data["item"]) : null);
-        $result->setQuestGroup(isset($data["questGroup"]) ? QuestGroupModel::fromJson($data["questGroup"]) : null);
-        $result->setQuest(isset($data["quest"]) ? QuestModel::fromJson($data["quest"]) : null);
-        return $result;
+	public function withQuest(?QuestModel $quest): GetProgressByUserIdResult {
+		$this->quest = $quest;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetProgressByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetProgressByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
+            ->withQuestGroup(empty($data['questGroup']) ? null : QuestGroupModel::fromJson($data['questGroup']))
+            ->withQuest(empty($data['quest']) ? null : QuestModel::fromJson($data['quest']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "questGroup" => $this->getQuestGroup() !== null ? $this->getQuestGroup()->toJson() : null,
+            "quest" => $this->getQuest() !== null ? $this->getQuest()->toJson() : null,
+        );
     }
 }

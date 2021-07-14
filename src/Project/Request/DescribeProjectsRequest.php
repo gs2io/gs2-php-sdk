@@ -19,107 +19,68 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * プロジェクトの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeProjectsRequest extends Gs2BasicRequest {
-
-    /** @var string GS2アカウントトークン */
+    /** @var string */
     private $accountToken;
-
-    /**
-     * GS2アカウントトークンを取得
-     *
-     * @return string|null プロジェクトの一覧を取得
-     */
-    public function getAccountToken(): ?string {
-        return $this->accountToken;
-    }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken プロジェクトの一覧を取得
-     */
-    public function setAccountToken(string $accountToken = null) {
-        $this->accountToken = $accountToken;
-    }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken プロジェクトの一覧を取得
-     * @return DescribeProjectsRequest $this
-     */
-    public function withAccountToken(string $accountToken = null): DescribeProjectsRequest {
-        $this->setAccountToken($accountToken);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null プロジェクトの一覧を取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken プロジェクトの一覧を取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken プロジェクトの一覧を取得
-     * @return DescribeProjectsRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeProjectsRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null プロジェクトの一覧を取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getAccountToken(): ?string {
+		return $this->accountToken;
+	}
+
+	public function setAccountToken(?string $accountToken) {
+		$this->accountToken = $accountToken;
+	}
+
+	public function withAccountToken(?string $accountToken): DescribeProjectsRequest {
+		$this->accountToken = $accountToken;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeProjectsRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeProjectsRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeProjectsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeProjectsRequest())
+            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit プロジェクトの一覧を取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "accountToken" => $this->getAccountToken(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit プロジェクトの一覧を取得
-     * @return DescribeProjectsRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeProjectsRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
 }

@@ -19,57 +19,51 @@ namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * スタンプシートのタスクを実行する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CalculateSignatureResult implements IResult {
-	/** @var string ボディ */
-	private $body;
-	/** @var string 署名 */
-	private $signature;
+    /** @var string */
+    private $body;
+    /** @var string */
+    private $signature;
 
-	/**
-	 * ボディを取得
-	 *
-	 * @return string|null スタンプシートのタスクを実行する
-	 */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
-	/**
-	 * ボディを設定
-	 *
-	 * @param string|null $body スタンプシートのタスクを実行する
-	 */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
-	/**
-	 * 署名を取得
-	 *
-	 * @return string|null スタンプシートのタスクを実行する
-	 */
+	public function withBody(?string $body): CalculateSignatureResult {
+		$this->body = $body;
+		return $this;
+	}
+
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
-	/**
-	 * 署名を設定
-	 *
-	 * @param string|null $signature スタンプシートのタスクを実行する
-	 */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
-    public static function fromJson(array $data): CalculateSignatureResult {
-        $result = new CalculateSignatureResult();
-        $result->setBody(isset($data["body"]) ? $data["body"] : null);
-        $result->setSignature(isset($data["signature"]) ? $data["signature"] : null);
-        return $result;
+	public function withSignature(?string $signature): CalculateSignatureResult {
+		$this->signature = $signature;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CalculateSignatureResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CalculateSignatureResult())
+            ->withBody(empty($data['body']) ? null : $data['body'])
+            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "body" => $this->getBody(),
+            "signature" => $this->getSignature(),
+        );
     }
 }

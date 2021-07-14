@@ -20,36 +20,34 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Account;
 
-/**
- * GS2アカウントを有効化します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class VerifyResult implements IResult {
-	/** @var Account 有効化したGS2アカウント */
-	private $item;
+    /** @var Account */
+    private $item;
 
-	/**
-	 * 有効化したGS2アカウントを取得
-	 *
-	 * @return Account|null GS2アカウントを有効化します
-	 */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
-	/**
-	 * 有効化したGS2アカウントを設定
-	 *
-	 * @param Account|null $item GS2アカウントを有効化します
-	 */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): VerifyResult {
-        $result = new VerifyResult();
-        $result->setItem(isset($data["item"]) ? Account::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Account $item): VerifyResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?VerifyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new VerifyResult())
+            ->withItem(empty($data['item']) ? null : Account::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

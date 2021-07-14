@@ -19,75 +19,51 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 発生したイベントを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetEventRequest extends Gs2BasicRequest {
-
-    /** @var string スタック名 */
+    /** @var string */
     private $stackName;
-
-    /**
-     * スタック名を取得
-     *
-     * @return string|null 発生したイベントを取得
-     */
-    public function getStackName(): ?string {
-        return $this->stackName;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName 発生したイベントを取得
-     */
-    public function setStackName(string $stackName = null) {
-        $this->stackName = $stackName;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName 発生したイベントを取得
-     * @return GetEventRequest $this
-     */
-    public function withStackName(string $stackName = null): GetEventRequest {
-        $this->setStackName($stackName);
-        return $this;
-    }
-
-    /** @var string イベント名 */
+    /** @var string */
     private $eventName;
 
-    /**
-     * イベント名を取得
-     *
-     * @return string|null 発生したイベントを取得
-     */
-    public function getEventName(): ?string {
-        return $this->eventName;
+	public function getStackName(): ?string {
+		return $this->stackName;
+	}
+
+	public function setStackName(?string $stackName) {
+		$this->stackName = $stackName;
+	}
+
+	public function withStackName(?string $stackName): GetEventRequest {
+		$this->stackName = $stackName;
+		return $this;
+	}
+
+	public function getEventName(): ?string {
+		return $this->eventName;
+	}
+
+	public function setEventName(?string $eventName) {
+		$this->eventName = $eventName;
+	}
+
+	public function withEventName(?string $eventName): GetEventRequest {
+		$this->eventName = $eventName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetEventRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetEventRequest())
+            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
+            ->withEventName(empty($data['eventName']) ? null : $data['eventName']);
     }
 
-    /**
-     * イベント名を設定
-     *
-     * @param string $eventName 発生したイベントを取得
-     */
-    public function setEventName(string $eventName = null) {
-        $this->eventName = $eventName;
+    public function toJson(): array {
+        return array(
+            "stackName" => $this->getStackName(),
+            "eventName" => $this->getEventName(),
+        );
     }
-
-    /**
-     * イベント名を設定
-     *
-     * @param string $eventName 発生したイベントを取得
-     * @return GetEventRequest $this
-     */
-    public function withEventName(string $eventName = null): GetEventRequest {
-        $this->setEventName($eventName);
-        return $this;
-    }
-
 }

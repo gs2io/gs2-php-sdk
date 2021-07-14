@@ -20,36 +20,34 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\RatingModelMaster;
 
-/**
- * レーティングモデルマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRatingModelMasterResult implements IResult {
-	/** @var RatingModelMaster 削除したレーティングモデルマスター */
-	private $item;
+    /** @var RatingModelMaster */
+    private $item;
 
-	/**
-	 * 削除したレーティングモデルマスターを取得
-	 *
-	 * @return RatingModelMaster|null レーティングモデルマスターを削除
-	 */
 	public function getItem(): ?RatingModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したレーティングモデルマスターを設定
-	 *
-	 * @param RatingModelMaster|null $item レーティングモデルマスターを削除
-	 */
 	public function setItem(?RatingModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteRatingModelMasterResult {
-        $result = new DeleteRatingModelMasterResult();
-        $result->setItem(isset($data["item"]) ? RatingModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?RatingModelMaster $item): DeleteRatingModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRatingModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRatingModelMasterResult())
+            ->withItem(empty($data['item']) ? null : RatingModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

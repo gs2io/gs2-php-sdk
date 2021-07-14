@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Exchange\Request\DescribeNamespacesRequest;
 use Gs2\Exchange\Result\DescribeNamespacesResult;
 use Gs2\Exchange\Request\CreateNamespaceRequest;
@@ -1026,9 +1028,6 @@ class ExchangeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1097,9 +1096,6 @@ class ExchangeByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1158,9 +1154,6 @@ class ExchangeByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1452,9 +1445,6 @@ class CreateAwaitByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1524,9 +1514,6 @@ class DescribeAwaitsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1594,9 +1581,6 @@ class DescribeAwaitsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1659,9 +1643,6 @@ class GetAwaitTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1721,9 +1702,6 @@ class GetAwaitByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1793,9 +1771,6 @@ class AcquireTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1862,9 +1837,6 @@ class AcquireByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1930,9 +1902,6 @@ class AcquireForceByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2002,9 +1971,6 @@ class SkipTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2071,9 +2037,6 @@ class SkipByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2136,9 +2099,6 @@ class DeleteAwaitTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2199,9 +2159,6 @@ class DeleteAwaitByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2260,9 +2217,6 @@ class CreateAwaitByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2323,9 +2277,6 @@ class DeleteAwaitByStampTaskTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2349,9 +2300,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2366,9 +2315,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2380,9 +2327,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2397,9 +2342,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2411,9 +2354,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2428,9 +2369,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2442,9 +2381,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2459,9 +2396,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2473,9 +2408,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2490,9 +2423,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2504,9 +2435,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2521,9 +2450,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2535,9 +2462,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートモデルの一覧を取得<br>
-     *
-     * @param DescribeRateModelsRequest $request リクエストパラメータ
+     * @param DescribeRateModelsRequest $request
      * @return PromiseInterface
      */
     public function describeRateModelsAsync(
@@ -2552,9 +2477,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートモデルの一覧を取得<br>
-     *
-     * @param DescribeRateModelsRequest $request リクエストパラメータ
+     * @param DescribeRateModelsRequest $request
      * @return DescribeRateModelsResult
      */
     public function describeRateModels (
@@ -2566,9 +2489,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートモデルを取得<br>
-     *
-     * @param GetRateModelRequest $request リクエストパラメータ
+     * @param GetRateModelRequest $request
      * @return PromiseInterface
      */
     public function getRateModelAsync(
@@ -2583,9 +2504,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートモデルを取得<br>
-     *
-     * @param GetRateModelRequest $request リクエストパラメータ
+     * @param GetRateModelRequest $request
      * @return GetRateModelResult
      */
     public function getRateModel (
@@ -2597,9 +2516,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターの一覧を取得<br>
-     *
-     * @param DescribeRateModelMastersRequest $request リクエストパラメータ
+     * @param DescribeRateModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeRateModelMastersAsync(
@@ -2614,9 +2531,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターの一覧を取得<br>
-     *
-     * @param DescribeRateModelMastersRequest $request リクエストパラメータ
+     * @param DescribeRateModelMastersRequest $request
      * @return DescribeRateModelMastersResult
      */
     public function describeRateModelMasters (
@@ -2628,9 +2543,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターを新規作成<br>
-     *
-     * @param CreateRateModelMasterRequest $request リクエストパラメータ
+     * @param CreateRateModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createRateModelMasterAsync(
@@ -2645,9 +2558,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターを新規作成<br>
-     *
-     * @param CreateRateModelMasterRequest $request リクエストパラメータ
+     * @param CreateRateModelMasterRequest $request
      * @return CreateRateModelMasterResult
      */
     public function createRateModelMaster (
@@ -2659,9 +2570,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターを取得<br>
-     *
-     * @param GetRateModelMasterRequest $request リクエストパラメータ
+     * @param GetRateModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getRateModelMasterAsync(
@@ -2676,9 +2585,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターを取得<br>
-     *
-     * @param GetRateModelMasterRequest $request リクエストパラメータ
+     * @param GetRateModelMasterRequest $request
      * @return GetRateModelMasterResult
      */
     public function getRateModelMaster (
@@ -2690,9 +2597,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターを更新<br>
-     *
-     * @param UpdateRateModelMasterRequest $request リクエストパラメータ
+     * @param UpdateRateModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateRateModelMasterAsync(
@@ -2707,9 +2612,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターを更新<br>
-     *
-     * @param UpdateRateModelMasterRequest $request リクエストパラメータ
+     * @param UpdateRateModelMasterRequest $request
      * @return UpdateRateModelMasterResult
      */
     public function updateRateModelMaster (
@@ -2721,9 +2624,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターを削除<br>
-     *
-     * @param DeleteRateModelMasterRequest $request リクエストパラメータ
+     * @param DeleteRateModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteRateModelMasterAsync(
@@ -2738,9 +2639,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換レートマスターを削除<br>
-     *
-     * @param DeleteRateModelMasterRequest $request リクエストパラメータ
+     * @param DeleteRateModelMasterRequest $request
      * @return DeleteRateModelMasterResult
      */
     public function deleteRateModelMaster (
@@ -2752,9 +2651,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換を実行<br>
-     *
-     * @param ExchangeRequest $request リクエストパラメータ
+     * @param ExchangeRequest $request
      * @return PromiseInterface
      */
     public function exchangeAsync(
@@ -2769,9 +2666,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換を実行<br>
-     *
-     * @param ExchangeRequest $request リクエストパラメータ
+     * @param ExchangeRequest $request
      * @return ExchangeResult
      */
     public function exchange (
@@ -2783,9 +2678,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して交換を実行<br>
-     *
-     * @param ExchangeByUserIdRequest $request リクエストパラメータ
+     * @param ExchangeByUserIdRequest $request
      * @return PromiseInterface
      */
     public function exchangeByUserIdAsync(
@@ -2800,9 +2693,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して交換を実行<br>
-     *
-     * @param ExchangeByUserIdRequest $request リクエストパラメータ
+     * @param ExchangeByUserIdRequest $request
      * @return ExchangeByUserIdResult
      */
     public function exchangeByUserId (
@@ -2814,9 +2705,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートで交換を実行<br>
-     *
-     * @param ExchangeByStampSheetRequest $request リクエストパラメータ
+     * @param ExchangeByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function exchangeByStampSheetAsync(
@@ -2831,9 +2720,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートで交換を実行<br>
-     *
-     * @param ExchangeByStampSheetRequest $request リクエストパラメータ
+     * @param ExchangeByStampSheetRequest $request
      * @return ExchangeByStampSheetResult
      */
     public function exchangeByStampSheet (
@@ -2845,9 +2732,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な交換レート設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2862,9 +2747,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な交換レート設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2876,9 +2759,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な交換レート設定を取得します<br>
-     *
-     * @param GetCurrentRateMasterRequest $request リクエストパラメータ
+     * @param GetCurrentRateMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentRateMasterAsync(
@@ -2893,9 +2774,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な交換レート設定を取得します<br>
-     *
-     * @param GetCurrentRateMasterRequest $request リクエストパラメータ
+     * @param GetCurrentRateMasterRequest $request
      * @return GetCurrentRateMasterResult
      */
     public function getCurrentRateMaster (
@@ -2907,9 +2786,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な交換レート設定を更新します<br>
-     *
-     * @param UpdateCurrentRateMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentRateMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentRateMasterAsync(
@@ -2924,9 +2801,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な交換レート設定を更新します<br>
-     *
-     * @param UpdateCurrentRateMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentRateMasterRequest $request
      * @return UpdateCurrentRateMasterResult
      */
     public function updateCurrentRateMaster (
@@ -2938,9 +2813,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な交換レート設定を更新します<br>
-     *
-     * @param UpdateCurrentRateMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentRateMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentRateMasterFromGitHubAsync(
@@ -2955,9 +2828,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な交換レート設定を更新します<br>
-     *
-     * @param UpdateCurrentRateMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentRateMasterFromGitHubRequest $request
      * @return UpdateCurrentRateMasterFromGitHubResult
      */
     public function updateCurrentRateMasterFromGitHub (
@@ -2969,9 +2840,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を作成<br>
-     *
-     * @param CreateAwaitByUserIdRequest $request リクエストパラメータ
+     * @param CreateAwaitByUserIdRequest $request
      * @return PromiseInterface
      */
     public function createAwaitByUserIdAsync(
@@ -2986,9 +2855,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を作成<br>
-     *
-     * @param CreateAwaitByUserIdRequest $request リクエストパラメータ
+     * @param CreateAwaitByUserIdRequest $request
      * @return CreateAwaitByUserIdResult
      */
     public function createAwaitByUserId (
@@ -3000,9 +2867,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の一覧を取得<br>
-     *
-     * @param DescribeAwaitsRequest $request リクエストパラメータ
+     * @param DescribeAwaitsRequest $request
      * @return PromiseInterface
      */
     public function describeAwaitsAsync(
@@ -3017,9 +2882,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の一覧を取得<br>
-     *
-     * @param DescribeAwaitsRequest $request リクエストパラメータ
+     * @param DescribeAwaitsRequest $request
      * @return DescribeAwaitsResult
      */
     public function describeAwaits (
@@ -3031,9 +2894,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の一覧を取得<br>
-     *
-     * @param DescribeAwaitsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeAwaitsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeAwaitsByUserIdAsync(
@@ -3048,9 +2909,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の一覧を取得<br>
-     *
-     * @param DescribeAwaitsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeAwaitsByUserIdRequest $request
      * @return DescribeAwaitsByUserIdResult
      */
     public function describeAwaitsByUserId (
@@ -3062,9 +2921,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を取得<br>
-     *
-     * @param GetAwaitRequest $request リクエストパラメータ
+     * @param GetAwaitRequest $request
      * @return PromiseInterface
      */
     public function getAwaitAsync(
@@ -3079,9 +2936,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を取得<br>
-     *
-     * @param GetAwaitRequest $request リクエストパラメータ
+     * @param GetAwaitRequest $request
      * @return GetAwaitResult
      */
     public function getAwait (
@@ -3093,9 +2948,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を取得<br>
-     *
-     * @param GetAwaitByUserIdRequest $request リクエストパラメータ
+     * @param GetAwaitByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getAwaitByUserIdAsync(
@@ -3110,9 +2963,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を取得<br>
-     *
-     * @param GetAwaitByUserIdRequest $request リクエストパラメータ
+     * @param GetAwaitByUserIdRequest $request
      * @return GetAwaitByUserIdResult
      */
     public function getAwaitByUserId (
@@ -3124,9 +2975,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の報酬を取得<br>
-     *
-     * @param AcquireRequest $request リクエストパラメータ
+     * @param AcquireRequest $request
      * @return PromiseInterface
      */
     public function acquireAsync(
@@ -3141,9 +2990,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の報酬を取得<br>
-     *
-     * @param AcquireRequest $request リクエストパラメータ
+     * @param AcquireRequest $request
      * @return AcquireResult
      */
     public function acquire (
@@ -3155,9 +3002,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の報酬を取得<br>
-     *
-     * @param AcquireByUserIdRequest $request リクエストパラメータ
+     * @param AcquireByUserIdRequest $request
      * @return PromiseInterface
      */
     public function acquireByUserIdAsync(
@@ -3172,9 +3017,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の報酬を取得<br>
-     *
-     * @param AcquireByUserIdRequest $request リクエストパラメータ
+     * @param AcquireByUserIdRequest $request
      * @return AcquireByUserIdResult
      */
     public function acquireByUserId (
@@ -3186,9 +3029,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の報酬を取得<br>
-     *
-     * @param AcquireForceByUserIdRequest $request リクエストパラメータ
+     * @param AcquireForceByUserIdRequest $request
      * @return PromiseInterface
      */
     public function acquireForceByUserIdAsync(
@@ -3203,9 +3044,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機の報酬を取得<br>
-     *
-     * @param AcquireForceByUserIdRequest $request リクエストパラメータ
+     * @param AcquireForceByUserIdRequest $request
      * @return AcquireForceByUserIdResult
      */
     public function acquireForceByUserId (
@@ -3217,9 +3056,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を対価を払ってスキップ<br>
-     *
-     * @param SkipRequest $request リクエストパラメータ
+     * @param SkipRequest $request
      * @return PromiseInterface
      */
     public function skipAsync(
@@ -3234,9 +3071,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を対価を払ってスキップ<br>
-     *
-     * @param SkipRequest $request リクエストパラメータ
+     * @param SkipRequest $request
      * @return SkipResult
      */
     public function skip (
@@ -3248,9 +3083,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を対価を払ってスキップ<br>
-     *
-     * @param SkipByUserIdRequest $request リクエストパラメータ
+     * @param SkipByUserIdRequest $request
      * @return PromiseInterface
      */
     public function skipByUserIdAsync(
@@ -3265,9 +3098,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を対価を払ってスキップ<br>
-     *
-     * @param SkipByUserIdRequest $request リクエストパラメータ
+     * @param SkipByUserIdRequest $request
      * @return SkipByUserIdResult
      */
     public function skipByUserId (
@@ -3279,9 +3110,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を削除<br>
-     *
-     * @param DeleteAwaitRequest $request リクエストパラメータ
+     * @param DeleteAwaitRequest $request
      * @return PromiseInterface
      */
     public function deleteAwaitAsync(
@@ -3296,9 +3125,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を削除<br>
-     *
-     * @param DeleteAwaitRequest $request リクエストパラメータ
+     * @param DeleteAwaitRequest $request
      * @return DeleteAwaitResult
      */
     public function deleteAwait (
@@ -3310,9 +3137,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を削除<br>
-     *
-     * @param DeleteAwaitByUserIdRequest $request リクエストパラメータ
+     * @param DeleteAwaitByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteAwaitByUserIdAsync(
@@ -3327,9 +3152,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 交換待機を削除<br>
-     *
-     * @param DeleteAwaitByUserIdRequest $request リクエストパラメータ
+     * @param DeleteAwaitByUserIdRequest $request
      * @return DeleteAwaitByUserIdResult
      */
     public function deleteAwaitByUserId (
@@ -3341,9 +3164,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートで交換待機 を作成<br>
-     *
-     * @param CreateAwaitByStampSheetRequest $request リクエストパラメータ
+     * @param CreateAwaitByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function createAwaitByStampSheetAsync(
@@ -3358,9 +3179,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートで交換待機 を作成<br>
-     *
-     * @param CreateAwaitByStampSheetRequest $request リクエストパラメータ
+     * @param CreateAwaitByStampSheetRequest $request
      * @return CreateAwaitByStampSheetResult
      */
     public function createAwaitByStampSheet (
@@ -3372,9 +3191,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクで 交換待機 を削除<br>
-     *
-     * @param DeleteAwaitByStampTaskRequest $request リクエストパラメータ
+     * @param DeleteAwaitByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function deleteAwaitByStampTaskAsync(
@@ -3389,9 +3206,7 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクで 交換待機 を削除<br>
-     *
-     * @param DeleteAwaitByStampTaskRequest $request リクエストパラメータ
+     * @param DeleteAwaitByStampTaskRequest $request
      * @return DeleteAwaitByStampTaskResult
      */
     public function deleteAwaitByStampTask (

@@ -20,63 +20,61 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\GitHubApiKey;
 
-/**
- * GitHub のAPIキーの一覧を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeGitHubApiKeysResult implements IResult {
-	/** @var GitHubApiKey[] GitHub のAPIキーのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * GitHub のAPIキーのリストを取得
-	 *
-	 * @return GitHubApiKey[]|null GitHub のAPIキーの一覧を取得します
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * GitHub のAPIキーのリストを設定
-	 *
-	 * @param GitHubApiKey[]|null $items GitHub のAPIキーの一覧を取得します
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null GitHub のAPIキーの一覧を取得します
-	 */
+	public function withItems(?array $items): DescribeGitHubApiKeysResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken GitHub のAPIキーの一覧を取得します
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeGitHubApiKeysResult {
-        $result = new DescribeGitHubApiKeysResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return GitHubApiKey::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeGitHubApiKeysResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeGitHubApiKeysResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeGitHubApiKeysResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return GitHubApiKey::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

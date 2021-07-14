@@ -19,43 +19,34 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 現在有効なミッションを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCurrentMissionMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 現在有効なミッションを取得します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetCurrentMissionMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCurrentMissionMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCurrentMissionMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 現在有効なミッションを取得します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 現在有効なミッションを取得します
-     * @return GetCurrentMissionMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetCurrentMissionMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

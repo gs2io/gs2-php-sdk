@@ -20,36 +20,34 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\CurrentLotteryMaster;
 
-/**
- * 現在有効な抽選設定を更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentLotteryMasterResult implements IResult {
-	/** @var CurrentLotteryMaster 更新した現在有効な抽選設定 */
-	private $item;
+    /** @var CurrentLotteryMaster */
+    private $item;
 
-	/**
-	 * 更新した現在有効な抽選設定を取得
-	 *
-	 * @return CurrentLotteryMaster|null 現在有効な抽選設定を更新します
-	 */
 	public function getItem(): ?CurrentLotteryMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した現在有効な抽選設定を設定
-	 *
-	 * @param CurrentLotteryMaster|null $item 現在有効な抽選設定を更新します
-	 */
 	public function setItem(?CurrentLotteryMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateCurrentLotteryMasterResult {
-        $result = new UpdateCurrentLotteryMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentLotteryMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentLotteryMaster $item): UpdateCurrentLotteryMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentLotteryMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentLotteryMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentLotteryMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

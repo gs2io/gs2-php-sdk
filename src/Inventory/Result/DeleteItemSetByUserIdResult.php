@@ -18,88 +18,82 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
-use Gs2\Inventory\Model\ItemSet;
 
-/**
- * 有効期限ごとのアイテム所持数量を削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteItemSetByUserIdResult implements IResult {
-	/** @var ItemSet[] 削除した有効期限ごとのアイテム所持数量のリスト */
-	private $items;
-	/** @var ItemModel アイテムモデル */
-	private $itemModel;
-	/** @var Inventory インベントリ */
-	private $inventory;
+    /** @var array */
+    private $items;
+    /** @var ItemModel */
+    private $itemModel;
+    /** @var Inventory */
+    private $inventory;
 
-	/**
-	 * 削除した有効期限ごとのアイテム所持数量のリストを取得
-	 *
-	 * @return ItemSet[]|null 有効期限ごとのアイテム所持数量を削除
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 削除した有効期限ごとのアイテム所持数量のリストを設定
-	 *
-	 * @param ItemSet[]|null $items 有効期限ごとのアイテム所持数量を削除
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * アイテムモデルを取得
-	 *
-	 * @return ItemModel|null 有効期限ごとのアイテム所持数量を削除
-	 */
+	public function withItems(?array $items): DeleteItemSetByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
-	/**
-	 * アイテムモデルを設定
-	 *
-	 * @param ItemModel|null $itemModel 有効期限ごとのアイテム所持数量を削除
-	 */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
-	/**
-	 * インベントリを取得
-	 *
-	 * @return Inventory|null 有効期限ごとのアイテム所持数量を削除
-	 */
+	public function withItemModel(?ItemModel $itemModel): DeleteItemSetByUserIdResult {
+		$this->itemModel = $itemModel;
+		return $this;
+	}
+
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
-	/**
-	 * インベントリを設定
-	 *
-	 * @param Inventory|null $inventory 有効期限ごとのアイテム所持数量を削除
-	 */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
-    public static function fromJson(array $data): DeleteItemSetByUserIdResult {
-        $result = new DeleteItemSetByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return ItemSet::fromJson($v);
+	public function withInventory(?Inventory $inventory): DeleteItemSetByUserIdResult {
+		$this->inventory = $inventory;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteItemSetByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteItemSetByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return ItemSet::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
+            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "itemModel" => $this->getItemModel() !== null ? $this->getItemModel()->toJson() : null,
+            "inventory" => $this->getInventory() !== null ? $this->getInventory()->toJson() : null,
         );
-        $result->setItemModel(isset($data["itemModel"]) ? ItemModel::fromJson($data["itemModel"]) : null);
-        $result->setInventory(isset($data["inventory"]) ? Inventory::fromJson($data["inventory"]) : null);
-        return $result;
     }
 }

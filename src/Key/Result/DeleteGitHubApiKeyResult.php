@@ -19,15 +19,17 @@ namespace Gs2\Key\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * GitHub のAPIキーを削除します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteGitHubApiKeyResult implements IResult {
 
-    public static function fromJson(array $data): DeleteGitHubApiKeyResult {
-        $result = new DeleteGitHubApiKeyResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteGitHubApiKeyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteGitHubApiKeyResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

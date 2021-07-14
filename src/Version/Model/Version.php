@@ -19,126 +19,75 @@ namespace Gs2\Version\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * バージョン
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Version implements IModel {
 	/**
-     * @var int メジャーバージョン
+     * @var int
 	 */
-	protected $major;
-
+	private $major;
 	/**
-	 * メジャーバージョンを取得
-	 *
-	 * @return int|null メジャーバージョン
+     * @var int
 	 */
+	private $minor;
+	/**
+     * @var int
+	 */
+	private $micro;
+
 	public function getMajor(): ?int {
 		return $this->major;
 	}
 
-	/**
-	 * メジャーバージョンを設定
-	 *
-	 * @param int|null $major メジャーバージョン
-	 */
 	public function setMajor(?int $major) {
 		$this->major = $major;
 	}
 
-	/**
-	 * メジャーバージョンを設定
-	 *
-	 * @param int|null $major メジャーバージョン
-	 * @return Version $this
-	 */
 	public function withMajor(?int $major): Version {
 		$this->major = $major;
 		return $this;
 	}
-	/**
-     * @var int マイナーバージョン
-	 */
-	protected $minor;
 
-	/**
-	 * マイナーバージョンを取得
-	 *
-	 * @return int|null マイナーバージョン
-	 */
 	public function getMinor(): ?int {
 		return $this->minor;
 	}
 
-	/**
-	 * マイナーバージョンを設定
-	 *
-	 * @param int|null $minor マイナーバージョン
-	 */
 	public function setMinor(?int $minor) {
 		$this->minor = $minor;
 	}
 
-	/**
-	 * マイナーバージョンを設定
-	 *
-	 * @param int|null $minor マイナーバージョン
-	 * @return Version $this
-	 */
 	public function withMinor(?int $minor): Version {
 		$this->minor = $minor;
 		return $this;
 	}
-	/**
-     * @var int マイクロバージョン
-	 */
-	protected $micro;
 
-	/**
-	 * マイクロバージョンを取得
-	 *
-	 * @return int|null マイクロバージョン
-	 */
 	public function getMicro(): ?int {
 		return $this->micro;
 	}
 
-	/**
-	 * マイクロバージョンを設定
-	 *
-	 * @param int|null $micro マイクロバージョン
-	 */
 	public function setMicro(?int $micro) {
 		$this->micro = $micro;
 	}
 
-	/**
-	 * マイクロバージョンを設定
-	 *
-	 * @param int|null $micro マイクロバージョン
-	 * @return Version $this
-	 */
 	public function withMicro(?int $micro): Version {
 		$this->micro = $micro;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "major" => $this->major,
-            "minor" => $this->minor,
-            "micro" => $this->micro,
-        );
+    public static function fromJson(?array $data): ?Version {
+        if ($data === null) {
+            return null;
+        }
+        return (new Version())
+            ->withMajor(empty($data['major']) ? null : $data['major'])
+            ->withMinor(empty($data['minor']) ? null : $data['minor'])
+            ->withMicro(empty($data['micro']) ? null : $data['micro']);
     }
 
-    public static function fromJson(array $data): Version {
-        $model = new Version();
-        $model->setMajor(isset($data["major"]) ? $data["major"] : null);
-        $model->setMinor(isset($data["minor"]) ? $data["minor"] : null);
-        $model->setMicro(isset($data["micro"]) ? $data["micro"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "major" => $this->getMajor(),
+            "minor" => $this->getMinor(),
+            "micro" => $this->getMicro(),
+        );
     }
 }

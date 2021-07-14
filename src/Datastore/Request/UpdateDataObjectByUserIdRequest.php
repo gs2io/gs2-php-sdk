@@ -19,203 +19,112 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してデータオブジェクトを更新する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateDataObjectByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してデータオブジェクトを更新する
-     * @return UpdateDataObjectByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateDataObjectByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string データの名前 */
+    /** @var string */
     private $dataObjectName;
-
-    /**
-     * データの名前を取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function getDataObjectName(): ?string {
-        return $this->dataObjectName;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function setDataObjectName(string $dataObjectName = null) {
-        $this->dataObjectName = $dataObjectName;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName ユーザIDを指定してデータオブジェクトを更新する
-     * @return UpdateDataObjectByUserIdRequest $this
-     */
-    public function withDataObjectName(string $dataObjectName = null): UpdateDataObjectByUserIdRequest {
-        $this->setDataObjectName($dataObjectName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してデータオブジェクトを更新する
-     * @return UpdateDataObjectByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): UpdateDataObjectByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string ファイルのアクセス権 */
+    /** @var string */
     private $scope;
-
-    /**
-     * ファイルのアクセス権を取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function getScope(): ?string {
-        return $this->scope;
-    }
-
-    /**
-     * ファイルのアクセス権を設定
-     *
-     * @param string $scope ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function setScope(string $scope = null) {
-        $this->scope = $scope;
-    }
-
-    /**
-     * ファイルのアクセス権を設定
-     *
-     * @param string $scope ユーザIDを指定してデータオブジェクトを更新する
-     * @return UpdateDataObjectByUserIdRequest $this
-     */
-    public function withScope(string $scope = null): UpdateDataObjectByUserIdRequest {
-        $this->setScope($scope);
-        return $this;
-    }
-
-    /** @var string[] 公開するユーザIDリスト */
+    /** @var array */
     private $allowUserIds;
 
-    /**
-     * 公開するユーザIDリストを取得
-     *
-     * @return string[]|null ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function getAllowUserIds(): ?array {
-        return $this->allowUserIds;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateDataObjectByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDataObjectName(): ?string {
+		return $this->dataObjectName;
+	}
+
+	public function setDataObjectName(?string $dataObjectName) {
+		$this->dataObjectName = $dataObjectName;
+	}
+
+	public function withDataObjectName(?string $dataObjectName): UpdateDataObjectByUserIdRequest {
+		$this->dataObjectName = $dataObjectName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): UpdateDataObjectByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getScope(): ?string {
+		return $this->scope;
+	}
+
+	public function setScope(?string $scope) {
+		$this->scope = $scope;
+	}
+
+	public function withScope(?string $scope): UpdateDataObjectByUserIdRequest {
+		$this->scope = $scope;
+		return $this;
+	}
+
+	public function getAllowUserIds(): ?array {
+		return $this->allowUserIds;
+	}
+
+	public function setAllowUserIds(?array $allowUserIds) {
+		$this->allowUserIds = $allowUserIds;
+	}
+
+	public function withAllowUserIds(?array $allowUserIds): UpdateDataObjectByUserIdRequest {
+		$this->allowUserIds = $allowUserIds;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateDataObjectByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateDataObjectByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withScope(empty($data['scope']) ? null : $data['scope'])
+            ->withAllowUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+            ));
     }
 
-    /**
-     * 公開するユーザIDリストを設定
-     *
-     * @param string[] $allowUserIds ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function setAllowUserIds(array $allowUserIds = null) {
-        $this->allowUserIds = $allowUserIds;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "dataObjectName" => $this->getDataObjectName(),
+            "userId" => $this->getUserId(),
+            "scope" => $this->getScope(),
+            "allowUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+            ),
+        );
     }
-
-    /**
-     * 公開するユーザIDリストを設定
-     *
-     * @param string[] $allowUserIds ユーザIDを指定してデータオブジェクトを更新する
-     * @return UpdateDataObjectByUserIdRequest $this
-     */
-    public function withAllowUserIds(array $allowUserIds = null): UpdateDataObjectByUserIdRequest {
-        $this->setAllowUserIds($allowUserIds);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してデータオブジェクトを更新する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してデータオブジェクトを更新する
-     * @return UpdateDataObjectByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateDataObjectByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

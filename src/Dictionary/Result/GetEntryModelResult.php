@@ -20,36 +20,34 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModel;
 
-/**
- * エントリーモデルを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetEntryModelResult implements IResult {
-	/** @var EntryModel エントリーモデル */
-	private $item;
+    /** @var EntryModel */
+    private $item;
 
-	/**
-	 * エントリーモデルを取得
-	 *
-	 * @return EntryModel|null エントリーモデルを取得
-	 */
 	public function getItem(): ?EntryModel {
 		return $this->item;
 	}
 
-	/**
-	 * エントリーモデルを設定
-	 *
-	 * @param EntryModel|null $item エントリーモデルを取得
-	 */
 	public function setItem(?EntryModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetEntryModelResult {
-        $result = new GetEntryModelResult();
-        $result->setItem(isset($data["item"]) ? EntryModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?EntryModel $item): GetEntryModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetEntryModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetEntryModelResult())
+            ->withItem(empty($data['item']) ? null : EntryModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

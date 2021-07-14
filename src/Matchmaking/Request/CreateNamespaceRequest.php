@@ -21,427 +21,238 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\NotificationSetting;
 use Gs2\Matchmaking\Model\LogSetting;
 
-/**
- * ネームスペースを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $name;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withName(string $name = null): CreateNamespaceRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): CreateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var bool レーティング計算機能を使用するか */
+    /** @var bool */
     private $enableRating;
-
-    /**
-     * レーティング計算機能を使用するかを取得
-     *
-     * @return bool|null ネームスペースを新規作成
-     */
-    public function getEnableRating(): ?bool {
-        return $this->enableRating;
-    }
-
-    /**
-     * レーティング計算機能を使用するかを設定
-     *
-     * @param bool $enableRating ネームスペースを新規作成
-     */
-    public function setEnableRating(bool $enableRating = null) {
-        $this->enableRating = $enableRating;
-    }
-
-    /**
-     * レーティング計算機能を使用するかを設定
-     *
-     * @param bool $enableRating ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withEnableRating(bool $enableRating = null): CreateNamespaceRequest {
-        $this->setEnableRating($enableRating);
-        return $this;
-    }
-
-    /** @var string ギャザリング新規作成時のアクション */
+    /** @var string */
     private $createGatheringTriggerType;
-
-    /**
-     * ギャザリング新規作成時のアクションを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getCreateGatheringTriggerType(): ?string {
-        return $this->createGatheringTriggerType;
-    }
-
-    /**
-     * ギャザリング新規作成時のアクションを設定
-     *
-     * @param string $createGatheringTriggerType ネームスペースを新規作成
-     */
-    public function setCreateGatheringTriggerType(string $createGatheringTriggerType = null) {
-        $this->createGatheringTriggerType = $createGatheringTriggerType;
-    }
-
-    /**
-     * ギャザリング新規作成時のアクションを設定
-     *
-     * @param string $createGatheringTriggerType ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCreateGatheringTriggerType(string $createGatheringTriggerType = null): CreateNamespaceRequest {
-        $this->setCreateGatheringTriggerType($createGatheringTriggerType);
-        return $this;
-    }
-
-    /** @var string ギャザリング新規作成時 にルームを作成するネームスペース のGRN */
+    /** @var string */
     private $createGatheringTriggerRealtimeNamespaceId;
-
-    /**
-     * ギャザリング新規作成時 にルームを作成するネームスペース のGRNを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getCreateGatheringTriggerRealtimeNamespaceId(): ?string {
-        return $this->createGatheringTriggerRealtimeNamespaceId;
-    }
-
-    /**
-     * ギャザリング新規作成時 にルームを作成するネームスペース のGRNを設定
-     *
-     * @param string $createGatheringTriggerRealtimeNamespaceId ネームスペースを新規作成
-     */
-    public function setCreateGatheringTriggerRealtimeNamespaceId(string $createGatheringTriggerRealtimeNamespaceId = null) {
-        $this->createGatheringTriggerRealtimeNamespaceId = $createGatheringTriggerRealtimeNamespaceId;
-    }
-
-    /**
-     * ギャザリング新規作成時 にルームを作成するネームスペース のGRNを設定
-     *
-     * @param string $createGatheringTriggerRealtimeNamespaceId ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCreateGatheringTriggerRealtimeNamespaceId(string $createGatheringTriggerRealtimeNamespaceId = null): CreateNamespaceRequest {
-        $this->setCreateGatheringTriggerRealtimeNamespaceId($createGatheringTriggerRealtimeNamespaceId);
-        return $this;
-    }
-
-    /** @var string ギャザリング新規作成時 に実行されるスクリプト のGRN */
+    /** @var string */
     private $createGatheringTriggerScriptId;
-
-    /**
-     * ギャザリング新規作成時 に実行されるスクリプト のGRNを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getCreateGatheringTriggerScriptId(): ?string {
-        return $this->createGatheringTriggerScriptId;
-    }
-
-    /**
-     * ギャザリング新規作成時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $createGatheringTriggerScriptId ネームスペースを新規作成
-     */
-    public function setCreateGatheringTriggerScriptId(string $createGatheringTriggerScriptId = null) {
-        $this->createGatheringTriggerScriptId = $createGatheringTriggerScriptId;
-    }
-
-    /**
-     * ギャザリング新規作成時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $createGatheringTriggerScriptId ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCreateGatheringTriggerScriptId(string $createGatheringTriggerScriptId = null): CreateNamespaceRequest {
-        $this->setCreateGatheringTriggerScriptId($createGatheringTriggerScriptId);
-        return $this;
-    }
-
-    /** @var string マッチメイキング完了時のアクション */
+    /** @var string */
     private $completeMatchmakingTriggerType;
-
-    /**
-     * マッチメイキング完了時のアクションを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getCompleteMatchmakingTriggerType(): ?string {
-        return $this->completeMatchmakingTriggerType;
-    }
-
-    /**
-     * マッチメイキング完了時のアクションを設定
-     *
-     * @param string $completeMatchmakingTriggerType ネームスペースを新規作成
-     */
-    public function setCompleteMatchmakingTriggerType(string $completeMatchmakingTriggerType = null) {
-        $this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
-    }
-
-    /**
-     * マッチメイキング完了時のアクションを設定
-     *
-     * @param string $completeMatchmakingTriggerType ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCompleteMatchmakingTriggerType(string $completeMatchmakingTriggerType = null): CreateNamespaceRequest {
-        $this->setCompleteMatchmakingTriggerType($completeMatchmakingTriggerType);
-        return $this;
-    }
-
-    /** @var string マッチメイキング完了時 にルームを作成するネームスペース のGRN */
+    /** @var string */
     private $completeMatchmakingTriggerRealtimeNamespaceId;
-
-    /**
-     * マッチメイキング完了時 にルームを作成するネームスペース のGRNを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getCompleteMatchmakingTriggerRealtimeNamespaceId(): ?string {
-        return $this->completeMatchmakingTriggerRealtimeNamespaceId;
-    }
-
-    /**
-     * マッチメイキング完了時 にルームを作成するネームスペース のGRNを設定
-     *
-     * @param string $completeMatchmakingTriggerRealtimeNamespaceId ネームスペースを新規作成
-     */
-    public function setCompleteMatchmakingTriggerRealtimeNamespaceId(string $completeMatchmakingTriggerRealtimeNamespaceId = null) {
-        $this->completeMatchmakingTriggerRealtimeNamespaceId = $completeMatchmakingTriggerRealtimeNamespaceId;
-    }
-
-    /**
-     * マッチメイキング完了時 にルームを作成するネームスペース のGRNを設定
-     *
-     * @param string $completeMatchmakingTriggerRealtimeNamespaceId ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCompleteMatchmakingTriggerRealtimeNamespaceId(string $completeMatchmakingTriggerRealtimeNamespaceId = null): CreateNamespaceRequest {
-        $this->setCompleteMatchmakingTriggerRealtimeNamespaceId($completeMatchmakingTriggerRealtimeNamespaceId);
-        return $this;
-    }
-
-    /** @var string マッチメイキング完了時 に実行されるスクリプト のGRN */
+    /** @var string */
     private $completeMatchmakingTriggerScriptId;
-
-    /**
-     * マッチメイキング完了時 に実行されるスクリプト のGRNを取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getCompleteMatchmakingTriggerScriptId(): ?string {
-        return $this->completeMatchmakingTriggerScriptId;
-    }
-
-    /**
-     * マッチメイキング完了時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $completeMatchmakingTriggerScriptId ネームスペースを新規作成
-     */
-    public function setCompleteMatchmakingTriggerScriptId(string $completeMatchmakingTriggerScriptId = null) {
-        $this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
-    }
-
-    /**
-     * マッチメイキング完了時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $completeMatchmakingTriggerScriptId ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCompleteMatchmakingTriggerScriptId(string $completeMatchmakingTriggerScriptId = null): CreateNamespaceRequest {
-        $this->setCompleteMatchmakingTriggerScriptId($completeMatchmakingTriggerScriptId);
-        return $this;
-    }
-
-    /** @var NotificationSetting ギャザリングに新規プレイヤーが参加したときのプッシュ通知 */
+    /** @var NotificationSetting */
     private $joinNotification;
-
-    /**
-     * ギャザリングに新規プレイヤーが参加したときのプッシュ通知を取得
-     *
-     * @return NotificationSetting|null ネームスペースを新規作成
-     */
-    public function getJoinNotification(): ?NotificationSetting {
-        return $this->joinNotification;
-    }
-
-    /**
-     * ギャザリングに新規プレイヤーが参加したときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $joinNotification ネームスペースを新規作成
-     */
-    public function setJoinNotification(NotificationSetting $joinNotification = null) {
-        $this->joinNotification = $joinNotification;
-    }
-
-    /**
-     * ギャザリングに新規プレイヤーが参加したときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $joinNotification ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withJoinNotification(NotificationSetting $joinNotification = null): CreateNamespaceRequest {
-        $this->setJoinNotification($joinNotification);
-        return $this;
-    }
-
-    /** @var NotificationSetting ギャザリングからプレイヤーが離脱したときのプッシュ通知 */
+    /** @var NotificationSetting */
     private $leaveNotification;
-
-    /**
-     * ギャザリングからプレイヤーが離脱したときのプッシュ通知を取得
-     *
-     * @return NotificationSetting|null ネームスペースを新規作成
-     */
-    public function getLeaveNotification(): ?NotificationSetting {
-        return $this->leaveNotification;
-    }
-
-    /**
-     * ギャザリングからプレイヤーが離脱したときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $leaveNotification ネームスペースを新規作成
-     */
-    public function setLeaveNotification(NotificationSetting $leaveNotification = null) {
-        $this->leaveNotification = $leaveNotification;
-    }
-
-    /**
-     * ギャザリングからプレイヤーが離脱したときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $leaveNotification ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLeaveNotification(NotificationSetting $leaveNotification = null): CreateNamespaceRequest {
-        $this->setLeaveNotification($leaveNotification);
-        return $this;
-    }
-
-    /** @var NotificationSetting マッチメイキングが完了したときのプッシュ通知 */
+    /** @var NotificationSetting */
     private $completeNotification;
-
-    /**
-     * マッチメイキングが完了したときのプッシュ通知を取得
-     *
-     * @return NotificationSetting|null ネームスペースを新規作成
-     */
-    public function getCompleteNotification(): ?NotificationSetting {
-        return $this->completeNotification;
-    }
-
-    /**
-     * マッチメイキングが完了したときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $completeNotification ネームスペースを新規作成
-     */
-    public function setCompleteNotification(NotificationSetting $completeNotification = null) {
-        $this->completeNotification = $completeNotification;
-    }
-
-    /**
-     * マッチメイキングが完了したときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $completeNotification ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCompleteNotification(NotificationSetting $completeNotification = null): CreateNamespaceRequest {
-        $this->setCompleteNotification($completeNotification);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを新規作成
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateNamespaceRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getEnableRating(): ?bool {
+		return $this->enableRating;
+	}
+
+	public function setEnableRating(?bool $enableRating) {
+		$this->enableRating = $enableRating;
+	}
+
+	public function withEnableRating(?bool $enableRating): CreateNamespaceRequest {
+		$this->enableRating = $enableRating;
+		return $this;
+	}
+
+	public function getCreateGatheringTriggerType(): ?string {
+		return $this->createGatheringTriggerType;
+	}
+
+	public function setCreateGatheringTriggerType(?string $createGatheringTriggerType) {
+		$this->createGatheringTriggerType = $createGatheringTriggerType;
+	}
+
+	public function withCreateGatheringTriggerType(?string $createGatheringTriggerType): CreateNamespaceRequest {
+		$this->createGatheringTriggerType = $createGatheringTriggerType;
+		return $this;
+	}
+
+	public function getCreateGatheringTriggerRealtimeNamespaceId(): ?string {
+		return $this->createGatheringTriggerRealtimeNamespaceId;
+	}
+
+	public function setCreateGatheringTriggerRealtimeNamespaceId(?string $createGatheringTriggerRealtimeNamespaceId) {
+		$this->createGatheringTriggerRealtimeNamespaceId = $createGatheringTriggerRealtimeNamespaceId;
+	}
+
+	public function withCreateGatheringTriggerRealtimeNamespaceId(?string $createGatheringTriggerRealtimeNamespaceId): CreateNamespaceRequest {
+		$this->createGatheringTriggerRealtimeNamespaceId = $createGatheringTriggerRealtimeNamespaceId;
+		return $this;
+	}
+
+	public function getCreateGatheringTriggerScriptId(): ?string {
+		return $this->createGatheringTriggerScriptId;
+	}
+
+	public function setCreateGatheringTriggerScriptId(?string $createGatheringTriggerScriptId) {
+		$this->createGatheringTriggerScriptId = $createGatheringTriggerScriptId;
+	}
+
+	public function withCreateGatheringTriggerScriptId(?string $createGatheringTriggerScriptId): CreateNamespaceRequest {
+		$this->createGatheringTriggerScriptId = $createGatheringTriggerScriptId;
+		return $this;
+	}
+
+	public function getCompleteMatchmakingTriggerType(): ?string {
+		return $this->completeMatchmakingTriggerType;
+	}
+
+	public function setCompleteMatchmakingTriggerType(?string $completeMatchmakingTriggerType) {
+		$this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
+	}
+
+	public function withCompleteMatchmakingTriggerType(?string $completeMatchmakingTriggerType): CreateNamespaceRequest {
+		$this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
+		return $this;
+	}
+
+	public function getCompleteMatchmakingTriggerRealtimeNamespaceId(): ?string {
+		return $this->completeMatchmakingTriggerRealtimeNamespaceId;
+	}
+
+	public function setCompleteMatchmakingTriggerRealtimeNamespaceId(?string $completeMatchmakingTriggerRealtimeNamespaceId) {
+		$this->completeMatchmakingTriggerRealtimeNamespaceId = $completeMatchmakingTriggerRealtimeNamespaceId;
+	}
+
+	public function withCompleteMatchmakingTriggerRealtimeNamespaceId(?string $completeMatchmakingTriggerRealtimeNamespaceId): CreateNamespaceRequest {
+		$this->completeMatchmakingTriggerRealtimeNamespaceId = $completeMatchmakingTriggerRealtimeNamespaceId;
+		return $this;
+	}
+
+	public function getCompleteMatchmakingTriggerScriptId(): ?string {
+		return $this->completeMatchmakingTriggerScriptId;
+	}
+
+	public function setCompleteMatchmakingTriggerScriptId(?string $completeMatchmakingTriggerScriptId) {
+		$this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
+	}
+
+	public function withCompleteMatchmakingTriggerScriptId(?string $completeMatchmakingTriggerScriptId): CreateNamespaceRequest {
+		$this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
+		return $this;
+	}
+
+	public function getJoinNotification(): ?NotificationSetting {
+		return $this->joinNotification;
+	}
+
+	public function setJoinNotification(?NotificationSetting $joinNotification) {
+		$this->joinNotification = $joinNotification;
+	}
+
+	public function withJoinNotification(?NotificationSetting $joinNotification): CreateNamespaceRequest {
+		$this->joinNotification = $joinNotification;
+		return $this;
+	}
+
+	public function getLeaveNotification(): ?NotificationSetting {
+		return $this->leaveNotification;
+	}
+
+	public function setLeaveNotification(?NotificationSetting $leaveNotification) {
+		$this->leaveNotification = $leaveNotification;
+	}
+
+	public function withLeaveNotification(?NotificationSetting $leaveNotification): CreateNamespaceRequest {
+		$this->leaveNotification = $leaveNotification;
+		return $this;
+	}
+
+	public function getCompleteNotification(): ?NotificationSetting {
+		return $this->completeNotification;
+	}
+
+	public function setCompleteNotification(?NotificationSetting $completeNotification) {
+		$this->completeNotification = $completeNotification;
+	}
+
+	public function withCompleteNotification(?NotificationSetting $completeNotification): CreateNamespaceRequest {
+		$this->completeNotification = $completeNotification;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withEnableRating(empty($data['enableRating']) ? null : $data['enableRating'])
+            ->withCreateGatheringTriggerType(empty($data['createGatheringTriggerType']) ? null : $data['createGatheringTriggerType'])
+            ->withCreateGatheringTriggerRealtimeNamespaceId(empty($data['createGatheringTriggerRealtimeNamespaceId']) ? null : $data['createGatheringTriggerRealtimeNamespaceId'])
+            ->withCreateGatheringTriggerScriptId(empty($data['createGatheringTriggerScriptId']) ? null : $data['createGatheringTriggerScriptId'])
+            ->withCompleteMatchmakingTriggerType(empty($data['completeMatchmakingTriggerType']) ? null : $data['completeMatchmakingTriggerType'])
+            ->withCompleteMatchmakingTriggerRealtimeNamespaceId(empty($data['completeMatchmakingTriggerRealtimeNamespaceId']) ? null : $data['completeMatchmakingTriggerRealtimeNamespaceId'])
+            ->withCompleteMatchmakingTriggerScriptId(empty($data['completeMatchmakingTriggerScriptId']) ? null : $data['completeMatchmakingTriggerScriptId'])
+            ->withJoinNotification(empty($data['joinNotification']) ? null : NotificationSetting::fromJson($data['joinNotification']))
+            ->withLeaveNotification(empty($data['leaveNotification']) ? null : NotificationSetting::fromJson($data['leaveNotification']))
+            ->withCompleteNotification(empty($data['completeNotification']) ? null : NotificationSetting::fromJson($data['completeNotification']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "enableRating" => $this->getEnableRating(),
+            "createGatheringTriggerType" => $this->getCreateGatheringTriggerType(),
+            "createGatheringTriggerRealtimeNamespaceId" => $this->getCreateGatheringTriggerRealtimeNamespaceId(),
+            "createGatheringTriggerScriptId" => $this->getCreateGatheringTriggerScriptId(),
+            "completeMatchmakingTriggerType" => $this->getCompleteMatchmakingTriggerType(),
+            "completeMatchmakingTriggerRealtimeNamespaceId" => $this->getCompleteMatchmakingTriggerRealtimeNamespaceId(),
+            "completeMatchmakingTriggerScriptId" => $this->getCompleteMatchmakingTriggerScriptId(),
+            "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
+            "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,
+            "completeNotification" => $this->getCompleteNotification() !== null ? $this->getCompleteNotification()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): CreateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

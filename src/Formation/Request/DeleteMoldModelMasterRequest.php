@@ -19,75 +19,51 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * フォームの保存領域マスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteMoldModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null フォームの保存領域マスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォームの保存領域マスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォームの保存領域マスターを削除
-     * @return DeleteMoldModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteMoldModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string フォームの保存領域名 */
+    /** @var string */
     private $moldName;
 
-    /**
-     * フォームの保存領域名を取得
-     *
-     * @return string|null フォームの保存領域マスターを削除
-     */
-    public function getMoldName(): ?string {
-        return $this->moldName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteMoldModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getMoldName(): ?string {
+		return $this->moldName;
+	}
+
+	public function setMoldName(?string $moldName) {
+		$this->moldName = $moldName;
+	}
+
+	public function withMoldName(?string $moldName): DeleteMoldModelMasterRequest {
+		$this->moldName = $moldName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteMoldModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteMoldModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withMoldName(empty($data['moldName']) ? null : $data['moldName']);
     }
 
-    /**
-     * フォームの保存領域名を設定
-     *
-     * @param string $moldName フォームの保存領域マスターを削除
-     */
-    public function setMoldName(string $moldName = null) {
-        $this->moldName = $moldName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "moldName" => $this->getMoldName(),
+        );
     }
-
-    /**
-     * フォームの保存領域名を設定
-     *
-     * @param string $moldName フォームの保存領域マスターを削除
-     * @return DeleteMoldModelMasterRequest $this
-     */
-    public function withMoldName(string $moldName = null): DeleteMoldModelMasterRequest {
-        $this->setMoldName($moldName);
-        return $this;
-    }
-
 }

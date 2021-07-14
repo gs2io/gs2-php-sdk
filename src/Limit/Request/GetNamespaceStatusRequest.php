@@ -19,43 +19,34 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ネームスペースの状態を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetNamespaceStatusRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースの状態を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetNamespaceStatusRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetNamespaceStatusRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetNamespaceStatusRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースの状態を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースの状態を取得
-     * @return GetNamespaceStatusRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetNamespaceStatusRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

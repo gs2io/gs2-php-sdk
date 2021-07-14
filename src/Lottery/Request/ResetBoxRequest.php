@@ -19,139 +19,68 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ボックスをリセット のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class ResetBoxRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ボックスをリセット
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ボックスをリセット
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ボックスをリセット
-     * @return ResetBoxRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): ResetBoxRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 排出確率テーブル名 */
+    /** @var string */
     private $prizeTableName;
-
-    /**
-     * 排出確率テーブル名を取得
-     *
-     * @return string|null ボックスをリセット
-     */
-    public function getPrizeTableName(): ?string {
-        return $this->prizeTableName;
-    }
-
-    /**
-     * 排出確率テーブル名を設定
-     *
-     * @param string $prizeTableName ボックスをリセット
-     */
-    public function setPrizeTableName(string $prizeTableName = null) {
-        $this->prizeTableName = $prizeTableName;
-    }
-
-    /**
-     * 排出確率テーブル名を設定
-     *
-     * @param string $prizeTableName ボックスをリセット
-     * @return ResetBoxRequest $this
-     */
-    public function withPrizeTableName(string $prizeTableName = null): ResetBoxRequest {
-        $this->setPrizeTableName($prizeTableName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ボックスをリセット
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ボックスをリセット
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ボックスをリセット
-     * @return ResetBoxRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): ResetBoxRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
+    /** @var string */
     private $accessToken;
 
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): ResetBoxRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getPrizeTableName(): ?string {
+		return $this->prizeTableName;
+	}
+
+	public function setPrizeTableName(?string $prizeTableName) {
+		$this->prizeTableName = $prizeTableName;
+	}
+
+	public function withPrizeTableName(?string $prizeTableName): ResetBoxRequest {
+		$this->prizeTableName = $prizeTableName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): ResetBoxRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ResetBoxRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new ResetBoxRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
     }
 
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "prizeTableName" => $this->getPrizeTableName(),
+            "accessToken" => $this->getAccessToken(),
+        );
     }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return ResetBoxRequest this
-     */
-    public function withAccessToken(string $accessToken): ResetBoxRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

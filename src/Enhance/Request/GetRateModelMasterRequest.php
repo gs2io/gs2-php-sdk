@@ -19,75 +19,51 @@ namespace Gs2\Enhance\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 強化レートマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRateModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 強化レートマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 強化レートマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 強化レートマスターを取得
-     * @return GetRateModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetRateModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 強化レート名 */
+    /** @var string */
     private $rateName;
 
-    /**
-     * 強化レート名を取得
-     *
-     * @return string|null 強化レートマスターを取得
-     */
-    public function getRateName(): ?string {
-        return $this->rateName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetRateModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRateName(): ?string {
+		return $this->rateName;
+	}
+
+	public function setRateName(?string $rateName) {
+		$this->rateName = $rateName;
+	}
+
+	public function withRateName(?string $rateName): GetRateModelMasterRequest {
+		$this->rateName = $rateName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRateModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRateModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRateName(empty($data['rateName']) ? null : $data['rateName']);
     }
 
-    /**
-     * 強化レート名を設定
-     *
-     * @param string $rateName 強化レートマスターを取得
-     */
-    public function setRateName(string $rateName = null) {
-        $this->rateName = $rateName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "rateName" => $this->getRateName(),
+        );
     }
-
-    /**
-     * 強化レート名を設定
-     *
-     * @param string $rateName 強化レートマスターを取得
-     * @return GetRateModelMasterRequest $this
-     */
-    public function withRateName(string $rateName = null): GetRateModelMasterRequest {
-        $this->setRateName($rateName);
-        return $this;
-    }
-
 }

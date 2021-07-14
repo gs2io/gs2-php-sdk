@@ -19,75 +19,51 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ミッショングループを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMissionGroupModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ミッショングループを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ミッショングループを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ミッショングループを取得
-     * @return GetMissionGroupModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetMissionGroupModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string グループ名 */
+    /** @var string */
     private $missionGroupName;
 
-    /**
-     * グループ名を取得
-     *
-     * @return string|null ミッショングループを取得
-     */
-    public function getMissionGroupName(): ?string {
-        return $this->missionGroupName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetMissionGroupModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getMissionGroupName(): ?string {
+		return $this->missionGroupName;
+	}
+
+	public function setMissionGroupName(?string $missionGroupName) {
+		$this->missionGroupName = $missionGroupName;
+	}
+
+	public function withMissionGroupName(?string $missionGroupName): GetMissionGroupModelRequest {
+		$this->missionGroupName = $missionGroupName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMissionGroupModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMissionGroupModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName']);
     }
 
-    /**
-     * グループ名を設定
-     *
-     * @param string $missionGroupName ミッショングループを取得
-     */
-    public function setMissionGroupName(string $missionGroupName = null) {
-        $this->missionGroupName = $missionGroupName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "missionGroupName" => $this->getMissionGroupName(),
+        );
     }
-
-    /**
-     * グループ名を設定
-     *
-     * @param string $missionGroupName ミッショングループを取得
-     * @return GetMissionGroupModelRequest $this
-     */
-    public function withMissionGroupName(string $missionGroupName = null): GetMissionGroupModelRequest {
-        $this->setMissionGroupName($missionGroupName);
-        return $this;
-    }
-
 }

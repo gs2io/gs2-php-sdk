@@ -18,44 +18,48 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\AcquireAction;
+use Gs2\Lottery\Model\DrawnPrize;
 use Gs2\Lottery\Model\Probability;
 
-/**
- * 排出確率を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeProbabilitiesByUserIdResult implements IResult {
-	/** @var Probability[] 景品の当選確率リスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 景品の当選確率リストを取得
-	 *
-	 * @return Probability[]|null 排出確率を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 景品の当選確率リストを設定
-	 *
-	 * @param Probability[]|null $items 排出確率を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeProbabilitiesByUserIdResult {
-        $result = new DescribeProbabilitiesByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Probability::fromJson($v);
+	public function withItems(?array $items): DescribeProbabilitiesByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeProbabilitiesByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeProbabilitiesByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Probability::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

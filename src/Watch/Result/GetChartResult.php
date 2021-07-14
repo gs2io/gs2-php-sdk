@@ -20,36 +20,34 @@ namespace Gs2\Watch\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Watch\Model\Chart;
 
-/**
- * チャートを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetChartResult implements IResult {
-	/** @var Chart チャート */
-	private $item;
+    /** @var Chart */
+    private $item;
 
-	/**
-	 * チャートを取得
-	 *
-	 * @return Chart|null チャートを取得
-	 */
 	public function getItem(): ?Chart {
 		return $this->item;
 	}
 
-	/**
-	 * チャートを設定
-	 *
-	 * @param Chart|null $item チャートを取得
-	 */
 	public function setItem(?Chart $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetChartResult {
-        $result = new GetChartResult();
-        $result->setItem(isset($data["item"]) ? Chart::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Chart $item): GetChartResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetChartResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetChartResult())
+            ->withItem(empty($data['item']) ? null : Chart::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

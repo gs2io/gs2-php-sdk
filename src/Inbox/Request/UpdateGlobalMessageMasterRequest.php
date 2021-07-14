@@ -18,206 +18,132 @@
 namespace Gs2\Inbox\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Inbox\Model\TimeSpan;
 use Gs2\Inbox\Model\AcquireAction;
+use Gs2\Inbox\Model\TimeSpan;
 
-/**
- * 全ユーザに向けたメッセージを開封 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateGlobalMessageMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 全ユーザに向けたメッセージを開封
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 全ユーザに向けたメッセージを開封
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 全ユーザに向けたメッセージを開封
-     * @return UpdateGlobalMessageMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateGlobalMessageMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 全ユーザに向けたメッセージ名 */
+    /** @var string */
     private $globalMessageName;
-
-    /**
-     * 全ユーザに向けたメッセージ名を取得
-     *
-     * @return string|null 全ユーザに向けたメッセージを開封
-     */
-    public function getGlobalMessageName(): ?string {
-        return $this->globalMessageName;
-    }
-
-    /**
-     * 全ユーザに向けたメッセージ名を設定
-     *
-     * @param string $globalMessageName 全ユーザに向けたメッセージを開封
-     */
-    public function setGlobalMessageName(string $globalMessageName = null) {
-        $this->globalMessageName = $globalMessageName;
-    }
-
-    /**
-     * 全ユーザに向けたメッセージ名を設定
-     *
-     * @param string $globalMessageName 全ユーザに向けたメッセージを開封
-     * @return UpdateGlobalMessageMasterRequest $this
-     */
-    public function withGlobalMessageName(string $globalMessageName = null): UpdateGlobalMessageMasterRequest {
-        $this->setGlobalMessageName($globalMessageName);
-        return $this;
-    }
-
-    /** @var string 全ユーザに向けたメッセージの内容に相当するメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * 全ユーザに向けたメッセージの内容に相当するメタデータを取得
-     *
-     * @return string|null 全ユーザに向けたメッセージを開封
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * 全ユーザに向けたメッセージの内容に相当するメタデータを設定
-     *
-     * @param string $metadata 全ユーザに向けたメッセージを開封
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * 全ユーザに向けたメッセージの内容に相当するメタデータを設定
-     *
-     * @param string $metadata 全ユーザに向けたメッセージを開封
-     * @return UpdateGlobalMessageMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateGlobalMessageMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var AcquireAction[] 開封時に実行する入手アクション */
+    /** @var array */
     private $readAcquireActions;
-
-    /**
-     * 開封時に実行する入手アクションを取得
-     *
-     * @return AcquireAction[]|null 全ユーザに向けたメッセージを開封
-     */
-    public function getReadAcquireActions(): ?array {
-        return $this->readAcquireActions;
-    }
-
-    /**
-     * 開封時に実行する入手アクションを設定
-     *
-     * @param AcquireAction[] $readAcquireActions 全ユーザに向けたメッセージを開封
-     */
-    public function setReadAcquireActions(array $readAcquireActions = null) {
-        $this->readAcquireActions = $readAcquireActions;
-    }
-
-    /**
-     * 開封時に実行する入手アクションを設定
-     *
-     * @param AcquireAction[] $readAcquireActions 全ユーザに向けたメッセージを開封
-     * @return UpdateGlobalMessageMasterRequest $this
-     */
-    public function withReadAcquireActions(array $readAcquireActions = null): UpdateGlobalMessageMasterRequest {
-        $this->setReadAcquireActions($readAcquireActions);
-        return $this;
-    }
-
-    /** @var TimeSpan メッセージを受信したあとメッセージが削除されるまでの期間 */
+    /** @var TimeSpan */
     private $expiresTimeSpan;
-
-    /**
-     * メッセージを受信したあとメッセージが削除されるまでの期間を取得
-     *
-     * @return TimeSpan|null 全ユーザに向けたメッセージを開封
-     */
-    public function getExpiresTimeSpan(): ?TimeSpan {
-        return $this->expiresTimeSpan;
-    }
-
-    /**
-     * メッセージを受信したあとメッセージが削除されるまでの期間を設定
-     *
-     * @param TimeSpan $expiresTimeSpan 全ユーザに向けたメッセージを開封
-     */
-    public function setExpiresTimeSpan(TimeSpan $expiresTimeSpan = null) {
-        $this->expiresTimeSpan = $expiresTimeSpan;
-    }
-
-    /**
-     * メッセージを受信したあとメッセージが削除されるまでの期間を設定
-     *
-     * @param TimeSpan $expiresTimeSpan 全ユーザに向けたメッセージを開封
-     * @return UpdateGlobalMessageMasterRequest $this
-     */
-    public function withExpiresTimeSpan(TimeSpan $expiresTimeSpan = null): UpdateGlobalMessageMasterRequest {
-        $this->setExpiresTimeSpan($expiresTimeSpan);
-        return $this;
-    }
-
-    /** @var int 全ユーザに向けたメッセージの受信期限 */
+    /** @var int */
     private $expiresAt;
 
-    /**
-     * 全ユーザに向けたメッセージの受信期限を取得
-     *
-     * @return int|null 全ユーザに向けたメッセージを開封
-     */
-    public function getExpiresAt(): ?int {
-        return $this->expiresAt;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateGlobalMessageMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getGlobalMessageName(): ?string {
+		return $this->globalMessageName;
+	}
+
+	public function setGlobalMessageName(?string $globalMessageName) {
+		$this->globalMessageName = $globalMessageName;
+	}
+
+	public function withGlobalMessageName(?string $globalMessageName): UpdateGlobalMessageMasterRequest {
+		$this->globalMessageName = $globalMessageName;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateGlobalMessageMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getReadAcquireActions(): ?array {
+		return $this->readAcquireActions;
+	}
+
+	public function setReadAcquireActions(?array $readAcquireActions) {
+		$this->readAcquireActions = $readAcquireActions;
+	}
+
+	public function withReadAcquireActions(?array $readAcquireActions): UpdateGlobalMessageMasterRequest {
+		$this->readAcquireActions = $readAcquireActions;
+		return $this;
+	}
+
+	public function getExpiresTimeSpan(): ?TimeSpan {
+		return $this->expiresTimeSpan;
+	}
+
+	public function setExpiresTimeSpan(?TimeSpan $expiresTimeSpan) {
+		$this->expiresTimeSpan = $expiresTimeSpan;
+	}
+
+	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): UpdateGlobalMessageMasterRequest {
+		$this->expiresTimeSpan = $expiresTimeSpan;
+		return $this;
+	}
+
+	public function getExpiresAt(): ?int {
+		return $this->expiresAt;
+	}
+
+	public function setExpiresAt(?int $expiresAt) {
+		$this->expiresAt = $expiresAt;
+	}
+
+	public function withExpiresAt(?int $expiresAt): UpdateGlobalMessageMasterRequest {
+		$this->expiresAt = $expiresAt;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateGlobalMessageMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateGlobalMessageMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withGlobalMessageName(empty($data['globalMessageName']) ? null : $data['globalMessageName'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withReadAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
+                },
+                array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
+            ))
+            ->withExpiresTimeSpan(empty($data['expiresTimeSpan']) ? null : TimeSpan::fromJson($data['expiresTimeSpan']))
+            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt']);
     }
 
-    /**
-     * 全ユーザに向けたメッセージの受信期限を設定
-     *
-     * @param int $expiresAt 全ユーザに向けたメッセージを開封
-     */
-    public function setExpiresAt(int $expiresAt = null) {
-        $this->expiresAt = $expiresAt;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "globalMessageName" => $this->getGlobalMessageName(),
+            "metadata" => $this->getMetadata(),
+            "readAcquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getReadAcquireActions() !== null && $this->getReadAcquireActions() !== null ? $this->getReadAcquireActions() : []
+            ),
+            "expiresTimeSpan" => $this->getExpiresTimeSpan() !== null ? $this->getExpiresTimeSpan()->toJson() : null,
+            "expiresAt" => $this->getExpiresAt(),
+        );
     }
-
-    /**
-     * 全ユーザに向けたメッセージの受信期限を設定
-     *
-     * @param int $expiresAt 全ユーザに向けたメッセージを開封
-     * @return UpdateGlobalMessageMasterRequest $this
-     */
-    public function withExpiresAt(int $expiresAt = null): UpdateGlobalMessageMasterRequest {
-        $this->setExpiresAt($expiresAt);
-        return $this;
-    }
-
 }

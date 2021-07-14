@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\PublicProfile;
 
-/**
- * 公開プロフィールを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetPublicProfileResult implements IResult {
-	/** @var PublicProfile 公開プロフィール */
-	private $item;
+    /** @var PublicProfile */
+    private $item;
 
-	/**
-	 * 公開プロフィールを取得
-	 *
-	 * @return PublicProfile|null 公開プロフィールを取得
-	 */
 	public function getItem(): ?PublicProfile {
 		return $this->item;
 	}
 
-	/**
-	 * 公開プロフィールを設定
-	 *
-	 * @param PublicProfile|null $item 公開プロフィールを取得
-	 */
 	public function setItem(?PublicProfile $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetPublicProfileResult {
-        $result = new GetPublicProfileResult();
-        $result->setItem(isset($data["item"]) ? PublicProfile::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?PublicProfile $item): GetPublicProfileResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetPublicProfileResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetPublicProfileResult())
+            ->withItem(empty($data['item']) ? null : PublicProfile::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

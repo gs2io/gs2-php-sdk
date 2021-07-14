@@ -19,363 +19,187 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタンプシート実行ログの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CountExecuteStampSheetLogRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタンプシート実行ログの一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタンプシート実行ログの一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CountExecuteStampSheetLogRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string マイクロサービスの種類 */
+    /** @var string */
     private $service;
-
-    /**
-     * マイクロサービスの種類を取得
-     *
-     * @return string|null スタンプシート実行ログの一覧を取得
-     */
-    public function getService(): ?string {
-        return $this->service;
-    }
-
-    /**
-     * マイクロサービスの種類を設定
-     *
-     * @param string $service スタンプシート実行ログの一覧を取得
-     */
-    public function setService(string $service = null) {
-        $this->service = $service;
-    }
-
-    /**
-     * マイクロサービスの種類を設定
-     *
-     * @param string $service スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withService(string $service = null): CountExecuteStampSheetLogRequest {
-        $this->setService($service);
-        return $this;
-    }
-
-    /** @var string マイクロサービスのメソッド */
+    /** @var string */
     private $method;
-
-    /**
-     * マイクロサービスのメソッドを取得
-     *
-     * @return string|null スタンプシート実行ログの一覧を取得
-     */
-    public function getMethod(): ?string {
-        return $this->method;
-    }
-
-    /**
-     * マイクロサービスのメソッドを設定
-     *
-     * @param string $method スタンプシート実行ログの一覧を取得
-     */
-    public function setMethod(string $method = null) {
-        $this->method = $method;
-    }
-
-    /**
-     * マイクロサービスのメソッドを設定
-     *
-     * @param string $method スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withMethod(string $method = null): CountExecuteStampSheetLogRequest {
-        $this->setMethod($method);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null スタンプシート実行ログの一覧を取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId スタンプシート実行ログの一覧を取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withUserId(string $userId = null): CountExecuteStampSheetLogRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 報酬アクション */
+    /** @var string */
     private $action;
-
-    /**
-     * 報酬アクションを取得
-     *
-     * @return string|null スタンプシート実行ログの一覧を取得
-     */
-    public function getAction(): ?string {
-        return $this->action;
-    }
-
-    /**
-     * 報酬アクションを設定
-     *
-     * @param string $action スタンプシート実行ログの一覧を取得
-     */
-    public function setAction(string $action = null) {
-        $this->action = $action;
-    }
-
-    /**
-     * 報酬アクションを設定
-     *
-     * @param string $action スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withAction(string $action = null): CountExecuteStampSheetLogRequest {
-        $this->setAction($action);
-        return $this;
-    }
-
-    /** @var int 検索範囲開始日時 */
+    /** @var int */
     private $begin;
-
-    /**
-     * 検索範囲開始日時を取得
-     *
-     * @return int|null スタンプシート実行ログの一覧を取得
-     */
-    public function getBegin(): ?int {
-        return $this->begin;
-    }
-
-    /**
-     * 検索範囲開始日時を設定
-     *
-     * @param int $begin スタンプシート実行ログの一覧を取得
-     */
-    public function setBegin(int $begin = null) {
-        $this->begin = $begin;
-    }
-
-    /**
-     * 検索範囲開始日時を設定
-     *
-     * @param int $begin スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withBegin(int $begin = null): CountExecuteStampSheetLogRequest {
-        $this->setBegin($begin);
-        return $this;
-    }
-
-    /** @var int 検索範囲終了日時 */
+    /** @var int */
     private $end;
-
-    /**
-     * 検索範囲終了日時を取得
-     *
-     * @return int|null スタンプシート実行ログの一覧を取得
-     */
-    public function getEnd(): ?int {
-        return $this->end;
-    }
-
-    /**
-     * 検索範囲終了日時を設定
-     *
-     * @param int $end スタンプシート実行ログの一覧を取得
-     */
-    public function setEnd(int $end = null) {
-        $this->end = $end;
-    }
-
-    /**
-     * 検索範囲終了日時を設定
-     *
-     * @param int $end スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withEnd(int $end = null): CountExecuteStampSheetLogRequest {
-        $this->setEnd($end);
-        return $this;
-    }
-
-    /** @var bool 7日より長い期間のログを検索対象とするか */
+    /** @var bool */
     private $longTerm;
-
-    /**
-     * 7日より長い期間のログを検索対象とするかを取得
-     *
-     * @return bool|null スタンプシート実行ログの一覧を取得
-     */
-    public function getLongTerm(): ?bool {
-        return $this->longTerm;
-    }
-
-    /**
-     * 7日より長い期間のログを検索対象とするかを設定
-     *
-     * @param bool $longTerm スタンプシート実行ログの一覧を取得
-     */
-    public function setLongTerm(bool $longTerm = null) {
-        $this->longTerm = $longTerm;
-    }
-
-    /**
-     * 7日より長い期間のログを検索対象とするかを設定
-     *
-     * @param bool $longTerm スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withLongTerm(bool $longTerm = null): CountExecuteStampSheetLogRequest {
-        $this->setLongTerm($longTerm);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null スタンプシート実行ログの一覧を取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken スタンプシート実行ログの一覧を取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withPageToken(string $pageToken = null): CountExecuteStampSheetLogRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null スタンプシート実行ログの一覧を取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CountExecuteStampSheetLogRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getService(): ?string {
+		return $this->service;
+	}
+
+	public function setService(?string $service) {
+		$this->service = $service;
+	}
+
+	public function withService(?string $service): CountExecuteStampSheetLogRequest {
+		$this->service = $service;
+		return $this;
+	}
+
+	public function getMethod(): ?string {
+		return $this->method;
+	}
+
+	public function setMethod(?string $method) {
+		$this->method = $method;
+	}
+
+	public function withMethod(?string $method): CountExecuteStampSheetLogRequest {
+		$this->method = $method;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): CountExecuteStampSheetLogRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getAction(): ?string {
+		return $this->action;
+	}
+
+	public function setAction(?string $action) {
+		$this->action = $action;
+	}
+
+	public function withAction(?string $action): CountExecuteStampSheetLogRequest {
+		$this->action = $action;
+		return $this;
+	}
+
+	public function getBegin(): ?int {
+		return $this->begin;
+	}
+
+	public function setBegin(?int $begin) {
+		$this->begin = $begin;
+	}
+
+	public function withBegin(?int $begin): CountExecuteStampSheetLogRequest {
+		$this->begin = $begin;
+		return $this;
+	}
+
+	public function getEnd(): ?int {
+		return $this->end;
+	}
+
+	public function setEnd(?int $end) {
+		$this->end = $end;
+	}
+
+	public function withEnd(?int $end): CountExecuteStampSheetLogRequest {
+		$this->end = $end;
+		return $this;
+	}
+
+	public function getLongTerm(): ?bool {
+		return $this->longTerm;
+	}
+
+	public function setLongTerm(?bool $longTerm) {
+		$this->longTerm = $longTerm;
+	}
+
+	public function withLongTerm(?bool $longTerm): CountExecuteStampSheetLogRequest {
+		$this->longTerm = $longTerm;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): CountExecuteStampSheetLogRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): CountExecuteStampSheetLogRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CountExecuteStampSheetLogRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CountExecuteStampSheetLogRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withService(empty($data['service']) ? null : $data['service'])
+            ->withMethod(empty($data['method']) ? null : $data['method'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withAction(empty($data['action']) ? null : $data['action'])
+            ->withBegin(empty($data['begin']) ? null : $data['begin'])
+            ->withEnd(empty($data['end']) ? null : $data['end'])
+            ->withLongTerm(empty($data['longTerm']) ? null : $data['longTerm'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit スタンプシート実行ログの一覧を取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "service" => $this->getService(),
+            "method" => $this->getMethod(),
+            "userId" => $this->getUserId(),
+            "action" => $this->getAction(),
+            "begin" => $this->getBegin(),
+            "end" => $this->getEnd(),
+            "longTerm" => $this->getLongTerm(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withLimit(int $limit = null): CountExecuteStampSheetLogRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null スタンプシート実行ログの一覧を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタンプシート実行ログの一覧を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタンプシート実行ログの一覧を取得
-     * @return CountExecuteStampSheetLogRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): CountExecuteStampSheetLogRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

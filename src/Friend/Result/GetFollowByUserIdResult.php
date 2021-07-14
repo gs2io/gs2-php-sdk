@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FollowUser;
 
-/**
- * ユーザーIDを指定してフォローを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetFollowByUserIdResult implements IResult {
-	/** @var FollowUser フォローしているユーザー */
-	private $item;
+    /** @var FollowUser */
+    private $item;
 
-	/**
-	 * フォローしているユーザーを取得
-	 *
-	 * @return FollowUser|null ユーザーIDを指定してフォローを取得
-	 */
 	public function getItem(): ?FollowUser {
 		return $this->item;
 	}
 
-	/**
-	 * フォローしているユーザーを設定
-	 *
-	 * @param FollowUser|null $item ユーザーIDを指定してフォローを取得
-	 */
 	public function setItem(?FollowUser $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetFollowByUserIdResult {
-        $result = new GetFollowByUserIdResult();
-        $result->setItem(isset($data["item"]) ? FollowUser::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FollowUser $item): GetFollowByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetFollowByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetFollowByUserIdResult())
+            ->withItem(empty($data['item']) ? null : FollowUser::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

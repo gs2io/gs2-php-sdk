@@ -19,56 +19,37 @@ namespace Gs2\Realtime\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ロギング通知設定
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class LogSetting implements IModel {
 	/**
-     * @var string ログの記録に使用する GS2-Log のネームスペース のGRN
+     * @var string
 	 */
-	protected $loggingNamespaceId;
+	private $loggingNamespaceId;
 
-	/**
-	 * ログの記録に使用する GS2-Log のネームスペース のGRNを取得
-	 *
-	 * @return string|null ログの記録に使用する GS2-Log のネームスペース のGRN
-	 */
 	public function getLoggingNamespaceId(): ?string {
 		return $this->loggingNamespaceId;
 	}
 
-	/**
-	 * ログの記録に使用する GS2-Log のネームスペース のGRNを設定
-	 *
-	 * @param string|null $loggingNamespaceId ログの記録に使用する GS2-Log のネームスペース のGRN
-	 */
 	public function setLoggingNamespaceId(?string $loggingNamespaceId) {
 		$this->loggingNamespaceId = $loggingNamespaceId;
 	}
 
-	/**
-	 * ログの記録に使用する GS2-Log のネームスペース のGRNを設定
-	 *
-	 * @param string|null $loggingNamespaceId ログの記録に使用する GS2-Log のネームスペース のGRN
-	 * @return LogSetting $this
-	 */
 	public function withLoggingNamespaceId(?string $loggingNamespaceId): LogSetting {
 		$this->loggingNamespaceId = $loggingNamespaceId;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "loggingNamespaceId" => $this->loggingNamespaceId,
-        );
+    public static function fromJson(?array $data): ?LogSetting {
+        if ($data === null) {
+            return null;
+        }
+        return (new LogSetting())
+            ->withLoggingNamespaceId(empty($data['loggingNamespaceId']) ? null : $data['loggingNamespaceId']);
     }
 
-    public static function fromJson(array $data): LogSetting {
-        $model = new LogSetting();
-        $model->setLoggingNamespaceId(isset($data["loggingNamespaceId"]) ? $data["loggingNamespaceId"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "loggingNamespaceId" => $this->getLoggingNamespaceId(),
+        );
     }
 }

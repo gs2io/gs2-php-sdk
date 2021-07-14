@@ -20,36 +20,34 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\QuestGroupModelMaster;
 
-/**
- * クエストグループマスターを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateQuestGroupModelMasterResult implements IResult {
-	/** @var QuestGroupModelMaster 更新したクエストグループマスター */
-	private $item;
+    /** @var QuestGroupModelMaster */
+    private $item;
 
-	/**
-	 * 更新したクエストグループマスターを取得
-	 *
-	 * @return QuestGroupModelMaster|null クエストグループマスターを更新
-	 */
 	public function getItem(): ?QuestGroupModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したクエストグループマスターを設定
-	 *
-	 * @param QuestGroupModelMaster|null $item クエストグループマスターを更新
-	 */
 	public function setItem(?QuestGroupModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateQuestGroupModelMasterResult {
-        $result = new UpdateQuestGroupModelMasterResult();
-        $result->setItem(isset($data["item"]) ? QuestGroupModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?QuestGroupModelMaster $item): UpdateQuestGroupModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateQuestGroupModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateQuestGroupModelMasterResult())
+            ->withItem(empty($data['item']) ? null : QuestGroupModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

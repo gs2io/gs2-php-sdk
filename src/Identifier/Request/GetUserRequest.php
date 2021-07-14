@@ -19,43 +19,34 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetUserRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
 
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null ユーザを取得します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): GetUserRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetUserRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetUserRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName']);
     }
 
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName ユーザを取得します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+        );
     }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName ユーザを取得します
-     * @return GetUserRequest $this
-     */
-    public function withUserName(string $userName = null): GetUserRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
 }

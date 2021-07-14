@@ -19,235 +19,136 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * インベントリモデルマスターを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateInventoryModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null インベントリモデルマスターを新規作成
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName インベントリモデルマスターを新規作成
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName インベントリモデルマスターを新規作成
-     * @return CreateInventoryModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CreateInventoryModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリの種類名 */
+    /** @var string */
     private $name;
-
-    /**
-     * インベントリの種類名を取得
-     *
-     * @return string|null インベントリモデルマスターを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $name インベントリモデルマスターを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $name インベントリモデルマスターを新規作成
-     * @return CreateInventoryModelMasterRequest $this
-     */
-    public function withName(string $name = null): CreateInventoryModelMasterRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string インベントリモデルマスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * インベントリモデルマスターの説明を取得
-     *
-     * @return string|null インベントリモデルマスターを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * インベントリモデルマスターの説明を設定
-     *
-     * @param string $description インベントリモデルマスターを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * インベントリモデルマスターの説明を設定
-     *
-     * @param string $description インベントリモデルマスターを新規作成
-     * @return CreateInventoryModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): CreateInventoryModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string インベントリの種類のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * インベントリの種類のメタデータを取得
-     *
-     * @return string|null インベントリモデルマスターを新規作成
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * インベントリの種類のメタデータを設定
-     *
-     * @param string $metadata インベントリモデルマスターを新規作成
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * インベントリの種類のメタデータを設定
-     *
-     * @param string $metadata インベントリモデルマスターを新規作成
-     * @return CreateInventoryModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): CreateInventoryModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var int インベントリの初期サイズ */
+    /** @var int */
     private $initialCapacity;
-
-    /**
-     * インベントリの初期サイズを取得
-     *
-     * @return int|null インベントリモデルマスターを新規作成
-     */
-    public function getInitialCapacity(): ?int {
-        return $this->initialCapacity;
-    }
-
-    /**
-     * インベントリの初期サイズを設定
-     *
-     * @param int $initialCapacity インベントリモデルマスターを新規作成
-     */
-    public function setInitialCapacity(int $initialCapacity = null) {
-        $this->initialCapacity = $initialCapacity;
-    }
-
-    /**
-     * インベントリの初期サイズを設定
-     *
-     * @param int $initialCapacity インベントリモデルマスターを新規作成
-     * @return CreateInventoryModelMasterRequest $this
-     */
-    public function withInitialCapacity(int $initialCapacity = null): CreateInventoryModelMasterRequest {
-        $this->setInitialCapacity($initialCapacity);
-        return $this;
-    }
-
-    /** @var int インベントリの最大サイズ */
+    /** @var int */
     private $maxCapacity;
-
-    /**
-     * インベントリの最大サイズを取得
-     *
-     * @return int|null インベントリモデルマスターを新規作成
-     */
-    public function getMaxCapacity(): ?int {
-        return $this->maxCapacity;
-    }
-
-    /**
-     * インベントリの最大サイズを設定
-     *
-     * @param int $maxCapacity インベントリモデルマスターを新規作成
-     */
-    public function setMaxCapacity(int $maxCapacity = null) {
-        $this->maxCapacity = $maxCapacity;
-    }
-
-    /**
-     * インベントリの最大サイズを設定
-     *
-     * @param int $maxCapacity インベントリモデルマスターを新規作成
-     * @return CreateInventoryModelMasterRequest $this
-     */
-    public function withMaxCapacity(int $maxCapacity = null): CreateInventoryModelMasterRequest {
-        $this->setMaxCapacity($maxCapacity);
-        return $this;
-    }
-
-    /** @var bool 参照元が登録されているアイテムセットは削除できなくする */
+    /** @var bool */
     private $protectReferencedItem;
 
-    /**
-     * 参照元が登録されているアイテムセットは削除できなくするを取得
-     *
-     * @return bool|null インベントリモデルマスターを新規作成
-     */
-    public function getProtectReferencedItem(): ?bool {
-        return $this->protectReferencedItem;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CreateInventoryModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateInventoryModelMasterRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateInventoryModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): CreateInventoryModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getInitialCapacity(): ?int {
+		return $this->initialCapacity;
+	}
+
+	public function setInitialCapacity(?int $initialCapacity) {
+		$this->initialCapacity = $initialCapacity;
+	}
+
+	public function withInitialCapacity(?int $initialCapacity): CreateInventoryModelMasterRequest {
+		$this->initialCapacity = $initialCapacity;
+		return $this;
+	}
+
+	public function getMaxCapacity(): ?int {
+		return $this->maxCapacity;
+	}
+
+	public function setMaxCapacity(?int $maxCapacity) {
+		$this->maxCapacity = $maxCapacity;
+	}
+
+	public function withMaxCapacity(?int $maxCapacity): CreateInventoryModelMasterRequest {
+		$this->maxCapacity = $maxCapacity;
+		return $this;
+	}
+
+	public function getProtectReferencedItem(): ?bool {
+		return $this->protectReferencedItem;
+	}
+
+	public function setProtectReferencedItem(?bool $protectReferencedItem) {
+		$this->protectReferencedItem = $protectReferencedItem;
+	}
+
+	public function withProtectReferencedItem(?bool $protectReferencedItem): CreateInventoryModelMasterRequest {
+		$this->protectReferencedItem = $protectReferencedItem;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateInventoryModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateInventoryModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withInitialCapacity(empty($data['initialCapacity']) ? null : $data['initialCapacity'])
+            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity'])
+            ->withProtectReferencedItem(empty($data['protectReferencedItem']) ? null : $data['protectReferencedItem']);
     }
 
-    /**
-     * 参照元が登録されているアイテムセットは削除できなくするを設定
-     *
-     * @param bool $protectReferencedItem インベントリモデルマスターを新規作成
-     */
-    public function setProtectReferencedItem(bool $protectReferencedItem = null) {
-        $this->protectReferencedItem = $protectReferencedItem;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "initialCapacity" => $this->getInitialCapacity(),
+            "maxCapacity" => $this->getMaxCapacity(),
+            "protectReferencedItem" => $this->getProtectReferencedItem(),
+        );
     }
-
-    /**
-     * 参照元が登録されているアイテムセットは削除できなくするを設定
-     *
-     * @param bool $protectReferencedItem インベントリモデルマスターを新規作成
-     * @return CreateInventoryModelMasterRequest $this
-     */
-    public function withProtectReferencedItem(bool $protectReferencedItem = null): CreateInventoryModelMasterRequest {
-        $this->setProtectReferencedItem($protectReferencedItem);
-        return $this;
-    }
-
 }

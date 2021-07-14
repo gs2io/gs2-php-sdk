@@ -20,42 +20,44 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Ranking;
 
-/**
- * 指定したスコア付近のランキングを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeNearRankingsResult implements IResult {
-	/** @var Ranking[] ランキングのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * ランキングのリストを取得
-	 *
-	 * @return Ranking[]|null 指定したスコア付近のランキングを取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * ランキングのリストを設定
-	 *
-	 * @param Ranking[]|null $items 指定したスコア付近のランキングを取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeNearRankingsResult {
-        $result = new DescribeNearRankingsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Ranking::fromJson($v);
+	public function withItems(?array $items): DescribeNearRankingsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeNearRankingsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeNearRankingsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Ranking::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

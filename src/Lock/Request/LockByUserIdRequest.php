@@ -19,203 +19,102 @@ namespace Gs2\Lock\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してミューテックスを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class LockByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリー名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリー名を取得
-     *
-     * @return string|null ユーザIDを指定してミューテックスを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリー名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してミューテックスを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリー名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してミューテックスを取得
-     * @return LockByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): LockByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string プロパティID */
+    /** @var string */
     private $propertyId;
-
-    /**
-     * プロパティIDを取得
-     *
-     * @return string|null ユーザIDを指定してミューテックスを取得
-     */
-    public function getPropertyId(): ?string {
-        return $this->propertyId;
-    }
-
-    /**
-     * プロパティIDを設定
-     *
-     * @param string $propertyId ユーザIDを指定してミューテックスを取得
-     */
-    public function setPropertyId(string $propertyId = null) {
-        $this->propertyId = $propertyId;
-    }
-
-    /**
-     * プロパティIDを設定
-     *
-     * @param string $propertyId ユーザIDを指定してミューテックスを取得
-     * @return LockByUserIdRequest $this
-     */
-    public function withPropertyId(string $propertyId = null): LockByUserIdRequest {
-        $this->setPropertyId($propertyId);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してミューテックスを取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してミューテックスを取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してミューテックスを取得
-     * @return LockByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): LockByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string ロックを取得するトランザクションID */
+    /** @var string */
     private $transactionId;
-
-    /**
-     * ロックを取得するトランザクションIDを取得
-     *
-     * @return string|null ユーザIDを指定してミューテックスを取得
-     */
-    public function getTransactionId(): ?string {
-        return $this->transactionId;
-    }
-
-    /**
-     * ロックを取得するトランザクションIDを設定
-     *
-     * @param string $transactionId ユーザIDを指定してミューテックスを取得
-     */
-    public function setTransactionId(string $transactionId = null) {
-        $this->transactionId = $transactionId;
-    }
-
-    /**
-     * ロックを取得するトランザクションIDを設定
-     *
-     * @param string $transactionId ユーザIDを指定してミューテックスを取得
-     * @return LockByUserIdRequest $this
-     */
-    public function withTransactionId(string $transactionId = null): LockByUserIdRequest {
-        $this->setTransactionId($transactionId);
-        return $this;
-    }
-
-    /** @var int ロックを取得する期限（秒） */
+    /** @var int */
     private $ttl;
 
-    /**
-     * ロックを取得する期限（秒）を取得
-     *
-     * @return int|null ユーザIDを指定してミューテックスを取得
-     */
-    public function getTtl(): ?int {
-        return $this->ttl;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): LockByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getPropertyId(): ?string {
+		return $this->propertyId;
+	}
+
+	public function setPropertyId(?string $propertyId) {
+		$this->propertyId = $propertyId;
+	}
+
+	public function withPropertyId(?string $propertyId): LockByUserIdRequest {
+		$this->propertyId = $propertyId;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): LockByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getTransactionId(): ?string {
+		return $this->transactionId;
+	}
+
+	public function setTransactionId(?string $transactionId) {
+		$this->transactionId = $transactionId;
+	}
+
+	public function withTransactionId(?string $transactionId): LockByUserIdRequest {
+		$this->transactionId = $transactionId;
+		return $this;
+	}
+
+	public function getTtl(): ?int {
+		return $this->ttl;
+	}
+
+	public function setTtl(?int $ttl) {
+		$this->ttl = $ttl;
+	}
+
+	public function withTtl(?int $ttl): LockByUserIdRequest {
+		$this->ttl = $ttl;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?LockByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new LockByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
+            ->withTtl(empty($data['ttl']) ? null : $data['ttl']);
     }
 
-    /**
-     * ロックを取得する期限（秒）を設定
-     *
-     * @param int $ttl ユーザIDを指定してミューテックスを取得
-     */
-    public function setTtl(int $ttl = null) {
-        $this->ttl = $ttl;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "propertyId" => $this->getPropertyId(),
+            "userId" => $this->getUserId(),
+            "transactionId" => $this->getTransactionId(),
+            "ttl" => $this->getTtl(),
+        );
     }
-
-    /**
-     * ロックを取得する期限（秒）を設定
-     *
-     * @param int $ttl ユーザIDを指定してミューテックスを取得
-     * @return LockByUserIdRequest $this
-     */
-    public function withTtl(int $ttl = null): LockByUserIdRequest {
-        $this->setTtl($ttl);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してミューテックスを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してミューテックスを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してミューテックスを取得
-     * @return LockByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): LockByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

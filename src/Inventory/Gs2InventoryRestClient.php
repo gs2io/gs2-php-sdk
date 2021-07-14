@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Inventory\Request\DescribeNamespacesRequest;
 use Gs2\Inventory\Result\DescribeNamespacesResult;
 use Gs2\Inventory\Request\CreateNamespaceRequest;
@@ -1691,9 +1693,6 @@ class DescribeInventoriesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1758,9 +1757,6 @@ class DescribeInventoriesByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1822,9 +1818,6 @@ class GetInventoryTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1883,9 +1876,6 @@ class GetInventoryByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1947,9 +1937,6 @@ class AddCapacityByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2010,9 +1997,6 @@ class SetCapacityByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2071,9 +2055,6 @@ class DeleteInventoryByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2134,9 +2115,6 @@ class AddCapacityByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2195,9 +2173,6 @@ class SetCapacityByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2266,9 +2241,6 @@ class DescribeItemSetsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2333,9 +2305,6 @@ class DescribeItemSetsByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2402,9 +2371,6 @@ class GetItemSetTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2467,9 +2433,6 @@ class GetItemSetByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2539,9 +2502,6 @@ class GetItemWithSignatureTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2607,9 +2567,6 @@ class GetItemWithSignatureByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2681,9 +2638,6 @@ class AcquireItemSetByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2750,9 +2704,6 @@ class ConsumeItemSetTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2817,9 +2768,6 @@ class ConsumeItemSetByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2883,9 +2831,6 @@ class DescribeReferenceOfTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2946,9 +2891,6 @@ class DescribeReferenceOfByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3014,9 +2956,6 @@ class GetReferenceOfTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3079,9 +3018,6 @@ class GetReferenceOfByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3118,7 +3054,7 @@ class VerifyReferenceOfTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/verify";
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/{referenceOf}/verify/{verifyType}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
@@ -3144,9 +3080,6 @@ class VerifyReferenceOfTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3184,7 +3117,7 @@ class VerifyReferenceOfByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/verify";
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/{referenceOf}/verify/{verifyType}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
@@ -3208,9 +3141,6 @@ class VerifyReferenceOfByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3276,9 +3206,6 @@ class AddReferenceOfTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3341,9 +3268,6 @@ class AddReferenceOfByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3380,12 +3304,13 @@ class DeleteReferenceOfTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference";
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/{referenceOf}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
         $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
         $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+        $url = str_replace("{referenceOf}", $this->request->getReferenceOf() === null|| strlen($this->request->getReferenceOf()) == 0 ? "null" : $this->request->getReferenceOf(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -3406,9 +3331,6 @@ class DeleteReferenceOfTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3446,13 +3368,14 @@ class DeleteReferenceOfByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference";
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/{itemSetName}/reference/{referenceOf}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
         $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
         $url = str_replace("{itemSetName}", $this->request->getItemSetName() === null|| strlen($this->request->getItemSetName()) == 0 ? "null" : $this->request->getItemSetName(), $url);
+        $url = str_replace("{referenceOf}", $this->request->getReferenceOf() === null|| strlen($this->request->getReferenceOf()) == 0 ? "null" : $this->request->getReferenceOf(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -3470,9 +3393,6 @@ class DeleteReferenceOfByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3537,9 +3457,6 @@ class DeleteItemSetByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3598,9 +3515,6 @@ class AcquireItemSetByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3661,9 +3575,6 @@ class AddReferenceOfItemSetByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3722,9 +3633,6 @@ class DeleteReferenceOfItemSetByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3785,9 +3693,6 @@ class ConsumeItemSetByStampTaskTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3847,9 +3752,6 @@ class VerifyReferenceOfByStampTaskTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3873,9 +3775,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -3890,9 +3790,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -3904,9 +3802,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -3921,9 +3817,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -3935,9 +3829,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -3952,9 +3844,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -3966,9 +3856,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -3983,9 +3871,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -3997,9 +3883,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -4014,9 +3898,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -4028,9 +3910,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -4045,9 +3925,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -4059,9 +3937,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeInventoryModelMastersRequest $request リクエストパラメータ
+     * @param DescribeInventoryModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeInventoryModelMastersAsync(
@@ -4076,9 +3952,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeInventoryModelMastersRequest $request リクエストパラメータ
+     * @param DescribeInventoryModelMastersRequest $request
      * @return DescribeInventoryModelMastersResult
      */
     public function describeInventoryModelMasters (
@@ -4090,9 +3964,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターを新規作成<br>
-     *
-     * @param CreateInventoryModelMasterRequest $request リクエストパラメータ
+     * @param CreateInventoryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createInventoryModelMasterAsync(
@@ -4107,9 +3979,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターを新規作成<br>
-     *
-     * @param CreateInventoryModelMasterRequest $request リクエストパラメータ
+     * @param CreateInventoryModelMasterRequest $request
      * @return CreateInventoryModelMasterResult
      */
     public function createInventoryModelMaster (
@@ -4121,9 +3991,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターを取得<br>
-     *
-     * @param GetInventoryModelMasterRequest $request リクエストパラメータ
+     * @param GetInventoryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getInventoryModelMasterAsync(
@@ -4138,9 +4006,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターを取得<br>
-     *
-     * @param GetInventoryModelMasterRequest $request リクエストパラメータ
+     * @param GetInventoryModelMasterRequest $request
      * @return GetInventoryModelMasterResult
      */
     public function getInventoryModelMaster (
@@ -4152,9 +4018,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターを更新<br>
-     *
-     * @param UpdateInventoryModelMasterRequest $request リクエストパラメータ
+     * @param UpdateInventoryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateInventoryModelMasterAsync(
@@ -4169,9 +4033,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターを更新<br>
-     *
-     * @param UpdateInventoryModelMasterRequest $request リクエストパラメータ
+     * @param UpdateInventoryModelMasterRequest $request
      * @return UpdateInventoryModelMasterResult
      */
     public function updateInventoryModelMaster (
@@ -4183,9 +4045,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターを削除<br>
-     *
-     * @param DeleteInventoryModelMasterRequest $request リクエストパラメータ
+     * @param DeleteInventoryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteInventoryModelMasterAsync(
@@ -4200,9 +4060,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルマスターを削除<br>
-     *
-     * @param DeleteInventoryModelMasterRequest $request リクエストパラメータ
+     * @param DeleteInventoryModelMasterRequest $request
      * @return DeleteInventoryModelMasterResult
      */
     public function deleteInventoryModelMaster (
@@ -4214,9 +4072,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルの一覧を取得<br>
-     *
-     * @param DescribeInventoryModelsRequest $request リクエストパラメータ
+     * @param DescribeInventoryModelsRequest $request
      * @return PromiseInterface
      */
     public function describeInventoryModelsAsync(
@@ -4231,9 +4087,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルの一覧を取得<br>
-     *
-     * @param DescribeInventoryModelsRequest $request リクエストパラメータ
+     * @param DescribeInventoryModelsRequest $request
      * @return DescribeInventoryModelsResult
      */
     public function describeInventoryModels (
@@ -4245,9 +4099,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルを取得<br>
-     *
-     * @param GetInventoryModelRequest $request リクエストパラメータ
+     * @param GetInventoryModelRequest $request
      * @return PromiseInterface
      */
     public function getInventoryModelAsync(
@@ -4262,9 +4114,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリモデルを取得<br>
-     *
-     * @param GetInventoryModelRequest $request リクエストパラメータ
+     * @param GetInventoryModelRequest $request
      * @return GetInventoryModelResult
      */
     public function getInventoryModel (
@@ -4276,9 +4126,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeItemModelMastersRequest $request リクエストパラメータ
+     * @param DescribeItemModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeItemModelMastersAsync(
@@ -4293,9 +4141,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeItemModelMastersRequest $request リクエストパラメータ
+     * @param DescribeItemModelMastersRequest $request
      * @return DescribeItemModelMastersResult
      */
     public function describeItemModelMasters (
@@ -4307,9 +4153,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターを新規作成<br>
-     *
-     * @param CreateItemModelMasterRequest $request リクエストパラメータ
+     * @param CreateItemModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createItemModelMasterAsync(
@@ -4324,9 +4168,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターを新規作成<br>
-     *
-     * @param CreateItemModelMasterRequest $request リクエストパラメータ
+     * @param CreateItemModelMasterRequest $request
      * @return CreateItemModelMasterResult
      */
     public function createItemModelMaster (
@@ -4338,9 +4180,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターを取得<br>
-     *
-     * @param GetItemModelMasterRequest $request リクエストパラメータ
+     * @param GetItemModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getItemModelMasterAsync(
@@ -4355,9 +4195,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターを取得<br>
-     *
-     * @param GetItemModelMasterRequest $request リクエストパラメータ
+     * @param GetItemModelMasterRequest $request
      * @return GetItemModelMasterResult
      */
     public function getItemModelMaster (
@@ -4369,9 +4207,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターを更新<br>
-     *
-     * @param UpdateItemModelMasterRequest $request リクエストパラメータ
+     * @param UpdateItemModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateItemModelMasterAsync(
@@ -4386,9 +4222,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターを更新<br>
-     *
-     * @param UpdateItemModelMasterRequest $request リクエストパラメータ
+     * @param UpdateItemModelMasterRequest $request
      * @return UpdateItemModelMasterResult
      */
     public function updateItemModelMaster (
@@ -4400,9 +4234,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターを削除<br>
-     *
-     * @param DeleteItemModelMasterRequest $request リクエストパラメータ
+     * @param DeleteItemModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteItemModelMasterAsync(
@@ -4417,9 +4249,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムモデルマスターを削除<br>
-     *
-     * @param DeleteItemModelMasterRequest $request リクエストパラメータ
+     * @param DeleteItemModelMasterRequest $request
      * @return DeleteItemModelMasterResult
      */
     public function deleteItemModelMaster (
@@ -4431,9 +4261,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Noneの一覧を取得<br>
-     *
-     * @param DescribeItemModelsRequest $request リクエストパラメータ
+     * @param DescribeItemModelsRequest $request
      * @return PromiseInterface
      */
     public function describeItemModelsAsync(
@@ -4448,9 +4276,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Noneの一覧を取得<br>
-     *
-     * @param DescribeItemModelsRequest $request リクエストパラメータ
+     * @param DescribeItemModelsRequest $request
      * @return DescribeItemModelsResult
      */
     public function describeItemModels (
@@ -4462,9 +4288,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Noneを取得<br>
-     *
-     * @param GetItemModelRequest $request リクエストパラメータ
+     * @param GetItemModelRequest $request
      * @return PromiseInterface
      */
     public function getItemModelAsync(
@@ -4479,9 +4303,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Noneを取得<br>
-     *
-     * @param GetItemModelRequest $request リクエストパラメータ
+     * @param GetItemModelRequest $request
      * @return GetItemModelResult
      */
     public function getItemModel (
@@ -4493,9 +4315,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な所持品マスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -4510,9 +4330,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な所持品マスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -4524,9 +4342,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な所持品マスターを取得します<br>
-     *
-     * @param GetCurrentItemModelMasterRequest $request リクエストパラメータ
+     * @param GetCurrentItemModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentItemModelMasterAsync(
@@ -4541,9 +4357,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な所持品マスターを取得します<br>
-     *
-     * @param GetCurrentItemModelMasterRequest $request リクエストパラメータ
+     * @param GetCurrentItemModelMasterRequest $request
      * @return GetCurrentItemModelMasterResult
      */
     public function getCurrentItemModelMaster (
@@ -4555,9 +4369,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な所持品マスターを更新します<br>
-     *
-     * @param UpdateCurrentItemModelMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentItemModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentItemModelMasterAsync(
@@ -4572,9 +4384,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な所持品マスターを更新します<br>
-     *
-     * @param UpdateCurrentItemModelMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentItemModelMasterRequest $request
      * @return UpdateCurrentItemModelMasterResult
      */
     public function updateCurrentItemModelMaster (
@@ -4586,9 +4396,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な所持品マスターを更新します<br>
-     *
-     * @param UpdateCurrentItemModelMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentItemModelMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentItemModelMasterFromGitHubAsync(
@@ -4603,9 +4411,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な所持品マスターを更新します<br>
-     *
-     * @param UpdateCurrentItemModelMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentItemModelMasterFromGitHubRequest $request
      * @return UpdateCurrentItemModelMasterFromGitHubResult
      */
     public function updateCurrentItemModelMasterFromGitHub (
@@ -4617,9 +4423,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリの一覧を取得<br>
-     *
-     * @param DescribeInventoriesRequest $request リクエストパラメータ
+     * @param DescribeInventoriesRequest $request
      * @return PromiseInterface
      */
     public function describeInventoriesAsync(
@@ -4634,9 +4438,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリの一覧を取得<br>
-     *
-     * @param DescribeInventoriesRequest $request リクエストパラメータ
+     * @param DescribeInventoriesRequest $request
      * @return DescribeInventoriesResult
      */
     public function describeInventories (
@@ -4648,9 +4450,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリの一覧を取得<br>
-     *
-     * @param DescribeInventoriesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeInventoriesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeInventoriesByUserIdAsync(
@@ -4665,9 +4465,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリの一覧を取得<br>
-     *
-     * @param DescribeInventoriesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeInventoriesByUserIdRequest $request
      * @return DescribeInventoriesByUserIdResult
      */
     public function describeInventoriesByUserId (
@@ -4679,9 +4477,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリを取得<br>
-     *
-     * @param GetInventoryRequest $request リクエストパラメータ
+     * @param GetInventoryRequest $request
      * @return PromiseInterface
      */
     public function getInventoryAsync(
@@ -4696,9 +4492,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリを取得<br>
-     *
-     * @param GetInventoryRequest $request リクエストパラメータ
+     * @param GetInventoryRequest $request
      * @return GetInventoryResult
      */
     public function getInventory (
@@ -4710,9 +4504,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリを取得<br>
-     *
-     * @param GetInventoryByUserIdRequest $request リクエストパラメータ
+     * @param GetInventoryByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getInventoryByUserIdAsync(
@@ -4727,9 +4519,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリを取得<br>
-     *
-     * @param GetInventoryByUserIdRequest $request リクエストパラメータ
+     * @param GetInventoryByUserIdRequest $request
      * @return GetInventoryByUserIdResult
      */
     public function getInventoryByUserId (
@@ -4741,9 +4531,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * キャパシティサイズを加算<br>
-     *
-     * @param AddCapacityByUserIdRequest $request リクエストパラメータ
+     * @param AddCapacityByUserIdRequest $request
      * @return PromiseInterface
      */
     public function addCapacityByUserIdAsync(
@@ -4758,9 +4546,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * キャパシティサイズを加算<br>
-     *
-     * @param AddCapacityByUserIdRequest $request リクエストパラメータ
+     * @param AddCapacityByUserIdRequest $request
      * @return AddCapacityByUserIdResult
      */
     public function addCapacityByUserId (
@@ -4772,9 +4558,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * キャパシティサイズを設定<br>
-     *
-     * @param SetCapacityByUserIdRequest $request リクエストパラメータ
+     * @param SetCapacityByUserIdRequest $request
      * @return PromiseInterface
      */
     public function setCapacityByUserIdAsync(
@@ -4789,9 +4573,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * キャパシティサイズを設定<br>
-     *
-     * @param SetCapacityByUserIdRequest $request リクエストパラメータ
+     * @param SetCapacityByUserIdRequest $request
      * @return SetCapacityByUserIdResult
      */
     public function setCapacityByUserId (
@@ -4803,9 +4585,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリを削除<br>
-     *
-     * @param DeleteInventoryByUserIdRequest $request リクエストパラメータ
+     * @param DeleteInventoryByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteInventoryByUserIdAsync(
@@ -4820,9 +4600,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリを削除<br>
-     *
-     * @param DeleteInventoryByUserIdRequest $request リクエストパラメータ
+     * @param DeleteInventoryByUserIdRequest $request
      * @return DeleteInventoryByUserIdResult
      */
     public function deleteInventoryByUserId (
@@ -4834,9 +4612,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでキャパシティサイズを加算<br>
-     *
-     * @param AddCapacityByStampSheetRequest $request リクエストパラメータ
+     * @param AddCapacityByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function addCapacityByStampSheetAsync(
@@ -4851,9 +4627,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでキャパシティサイズを加算<br>
-     *
-     * @param AddCapacityByStampSheetRequest $request リクエストパラメータ
+     * @param AddCapacityByStampSheetRequest $request
      * @return AddCapacityByStampSheetResult
      */
     public function addCapacityByStampSheet (
@@ -4865,9 +4639,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでキャパシティサイズを設定<br>
-     *
-     * @param SetCapacityByStampSheetRequest $request リクエストパラメータ
+     * @param SetCapacityByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function setCapacityByStampSheetAsync(
@@ -4882,9 +4654,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでキャパシティサイズを設定<br>
-     *
-     * @param SetCapacityByStampSheetRequest $request リクエストパラメータ
+     * @param SetCapacityByStampSheetRequest $request
      * @return SetCapacityByStampSheetResult
      */
     public function setCapacityByStampSheet (
@@ -4896,9 +4666,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量の一覧を取得<br>
-     *
-     * @param DescribeItemSetsRequest $request リクエストパラメータ
+     * @param DescribeItemSetsRequest $request
      * @return PromiseInterface
      */
     public function describeItemSetsAsync(
@@ -4913,9 +4681,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量の一覧を取得<br>
-     *
-     * @param DescribeItemSetsRequest $request リクエストパラメータ
+     * @param DescribeItemSetsRequest $request
      * @return DescribeItemSetsResult
      */
     public function describeItemSets (
@@ -4927,9 +4693,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量の一覧を取得<br>
-     *
-     * @param DescribeItemSetsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeItemSetsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeItemSetsByUserIdAsync(
@@ -4944,9 +4708,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量の一覧を取得<br>
-     *
-     * @param DescribeItemSetsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeItemSetsByUserIdRequest $request
      * @return DescribeItemSetsByUserIdResult
      */
     public function describeItemSetsByUserId (
@@ -4958,9 +4720,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を取得<br>
-     *
-     * @param GetItemSetRequest $request リクエストパラメータ
+     * @param GetItemSetRequest $request
      * @return PromiseInterface
      */
     public function getItemSetAsync(
@@ -4975,9 +4735,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を取得<br>
-     *
-     * @param GetItemSetRequest $request リクエストパラメータ
+     * @param GetItemSetRequest $request
      * @return GetItemSetResult
      */
     public function getItemSet (
@@ -4989,9 +4747,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を取得<br>
-     *
-     * @param GetItemSetByUserIdRequest $request リクエストパラメータ
+     * @param GetItemSetByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getItemSetByUserIdAsync(
@@ -5006,9 +4762,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を取得<br>
-     *
-     * @param GetItemSetByUserIdRequest $request リクエストパラメータ
+     * @param GetItemSetByUserIdRequest $request
      * @return GetItemSetByUserIdResult
      */
     public function getItemSetByUserId (
@@ -5020,9 +4774,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を取得<br>
-     *
-     * @param GetItemWithSignatureRequest $request リクエストパラメータ
+     * @param GetItemWithSignatureRequest $request
      * @return PromiseInterface
      */
     public function getItemWithSignatureAsync(
@@ -5037,9 +4789,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を取得<br>
-     *
-     * @param GetItemWithSignatureRequest $request リクエストパラメータ
+     * @param GetItemWithSignatureRequest $request
      * @return GetItemWithSignatureResult
      */
     public function getItemWithSignature (
@@ -5051,9 +4801,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を取得<br>
-     *
-     * @param GetItemWithSignatureByUserIdRequest $request リクエストパラメータ
+     * @param GetItemWithSignatureByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getItemWithSignatureByUserIdAsync(
@@ -5068,9 +4816,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を取得<br>
-     *
-     * @param GetItemWithSignatureByUserIdRequest $request リクエストパラメータ
+     * @param GetItemWithSignatureByUserIdRequest $request
      * @return GetItemWithSignatureByUserIdResult
      */
     public function getItemWithSignatureByUserId (
@@ -5082,9 +4828,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムをインベントリに追加<br>
-     *
-     * @param AcquireItemSetByUserIdRequest $request リクエストパラメータ
+     * @param AcquireItemSetByUserIdRequest $request
      * @return PromiseInterface
      */
     public function acquireItemSetByUserIdAsync(
@@ -5099,9 +4843,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アイテムをインベントリに追加<br>
-     *
-     * @param AcquireItemSetByUserIdRequest $request リクエストパラメータ
+     * @param AcquireItemSetByUserIdRequest $request
      * @return AcquireItemSetByUserIdResult
      */
     public function acquireItemSetByUserId (
@@ -5113,9 +4855,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリのアイテムを消費<br>
-     *
-     * @param ConsumeItemSetRequest $request リクエストパラメータ
+     * @param ConsumeItemSetRequest $request
      * @return PromiseInterface
      */
     public function consumeItemSetAsync(
@@ -5130,9 +4870,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリのアイテムを消費<br>
-     *
-     * @param ConsumeItemSetRequest $request リクエストパラメータ
+     * @param ConsumeItemSetRequest $request
      * @return ConsumeItemSetResult
      */
     public function consumeItemSet (
@@ -5144,9 +4882,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリのアイテムを消費<br>
-     *
-     * @param ConsumeItemSetByUserIdRequest $request リクエストパラメータ
+     * @param ConsumeItemSetByUserIdRequest $request
      * @return PromiseInterface
      */
     public function consumeItemSetByUserIdAsync(
@@ -5161,9 +4897,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * インベントリのアイテムを消費<br>
-     *
-     * @param ConsumeItemSetByUserIdRequest $request リクエストパラメータ
+     * @param ConsumeItemSetByUserIdRequest $request
      * @return ConsumeItemSetByUserIdResult
      */
     public function consumeItemSetByUserId (
@@ -5175,9 +4909,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元の一覧を取得<br>
-     *
-     * @param DescribeReferenceOfRequest $request リクエストパラメータ
+     * @param DescribeReferenceOfRequest $request
      * @return PromiseInterface
      */
     public function describeReferenceOfAsync(
@@ -5192,9 +4924,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元の一覧を取得<br>
-     *
-     * @param DescribeReferenceOfRequest $request リクエストパラメータ
+     * @param DescribeReferenceOfRequest $request
      * @return DescribeReferenceOfResult
      */
     public function describeReferenceOf (
@@ -5206,9 +4936,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元の一覧を取得<br>
-     *
-     * @param DescribeReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param DescribeReferenceOfByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeReferenceOfByUserIdAsync(
@@ -5223,9 +4951,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元の一覧を取得<br>
-     *
-     * @param DescribeReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param DescribeReferenceOfByUserIdRequest $request
      * @return DescribeReferenceOfByUserIdResult
      */
     public function describeReferenceOfByUserId (
@@ -5237,9 +4963,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を取得<br>
-     *
-     * @param GetReferenceOfRequest $request リクエストパラメータ
+     * @param GetReferenceOfRequest $request
      * @return PromiseInterface
      */
     public function getReferenceOfAsync(
@@ -5254,9 +4978,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を取得<br>
-     *
-     * @param GetReferenceOfRequest $request リクエストパラメータ
+     * @param GetReferenceOfRequest $request
      * @return GetReferenceOfResult
      */
     public function getReferenceOf (
@@ -5268,9 +4990,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を取得<br>
-     *
-     * @param GetReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param GetReferenceOfByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getReferenceOfByUserIdAsync(
@@ -5285,9 +5005,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を取得<br>
-     *
-     * @param GetReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param GetReferenceOfByUserIdRequest $request
      * @return GetReferenceOfByUserIdResult
      */
     public function getReferenceOfByUserId (
@@ -5299,9 +5017,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元に関する検証<br>
-     *
-     * @param VerifyReferenceOfRequest $request リクエストパラメータ
+     * @param VerifyReferenceOfRequest $request
      * @return PromiseInterface
      */
     public function verifyReferenceOfAsync(
@@ -5316,9 +5032,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元に関する検証<br>
-     *
-     * @param VerifyReferenceOfRequest $request リクエストパラメータ
+     * @param VerifyReferenceOfRequest $request
      * @return VerifyReferenceOfResult
      */
     public function verifyReferenceOf (
@@ -5330,9 +5044,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元に関する検証<br>
-     *
-     * @param VerifyReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param VerifyReferenceOfByUserIdRequest $request
      * @return PromiseInterface
      */
     public function verifyReferenceOfByUserIdAsync(
@@ -5347,9 +5059,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元に関する検証<br>
-     *
-     * @param VerifyReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param VerifyReferenceOfByUserIdRequest $request
      * @return VerifyReferenceOfByUserIdResult
      */
     public function verifyReferenceOfByUserId (
@@ -5361,9 +5071,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を追加<br>
-     *
-     * @param AddReferenceOfRequest $request リクエストパラメータ
+     * @param AddReferenceOfRequest $request
      * @return PromiseInterface
      */
     public function addReferenceOfAsync(
@@ -5378,9 +5086,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を追加<br>
-     *
-     * @param AddReferenceOfRequest $request リクエストパラメータ
+     * @param AddReferenceOfRequest $request
      * @return AddReferenceOfResult
      */
     public function addReferenceOf (
@@ -5392,9 +5098,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を追加<br>
-     *
-     * @param AddReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param AddReferenceOfByUserIdRequest $request
      * @return PromiseInterface
      */
     public function addReferenceOfByUserIdAsync(
@@ -5409,9 +5113,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を追加<br>
-     *
-     * @param AddReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param AddReferenceOfByUserIdRequest $request
      * @return AddReferenceOfByUserIdResult
      */
     public function addReferenceOfByUserId (
@@ -5423,9 +5125,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を削除<br>
-     *
-     * @param DeleteReferenceOfRequest $request リクエストパラメータ
+     * @param DeleteReferenceOfRequest $request
      * @return PromiseInterface
      */
     public function deleteReferenceOfAsync(
@@ -5440,9 +5140,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を削除<br>
-     *
-     * @param DeleteReferenceOfRequest $request リクエストパラメータ
+     * @param DeleteReferenceOfRequest $request
      * @return DeleteReferenceOfResult
      */
     public function deleteReferenceOf (
@@ -5454,9 +5152,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を削除<br>
-     *
-     * @param DeleteReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param DeleteReferenceOfByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteReferenceOfByUserIdAsync(
@@ -5471,9 +5167,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 参照元を削除<br>
-     *
-     * @param DeleteReferenceOfByUserIdRequest $request リクエストパラメータ
+     * @param DeleteReferenceOfByUserIdRequest $request
      * @return DeleteReferenceOfByUserIdResult
      */
     public function deleteReferenceOfByUserId (
@@ -5485,9 +5179,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を削除<br>
-     *
-     * @param DeleteItemSetByUserIdRequest $request リクエストパラメータ
+     * @param DeleteItemSetByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteItemSetByUserIdAsync(
@@ -5502,9 +5194,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 有効期限ごとのアイテム所持数量を削除<br>
-     *
-     * @param DeleteItemSetByUserIdRequest $request リクエストパラメータ
+     * @param DeleteItemSetByUserIdRequest $request
      * @return DeleteItemSetByUserIdResult
      */
     public function deleteItemSetByUserId (
@@ -5516,9 +5206,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでアイテムをインベントリに追加<br>
-     *
-     * @param AcquireItemSetByStampSheetRequest $request リクエストパラメータ
+     * @param AcquireItemSetByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function acquireItemSetByStampSheetAsync(
@@ -5533,9 +5221,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでアイテムをインベントリに追加<br>
-     *
-     * @param AcquireItemSetByStampSheetRequest $request リクエストパラメータ
+     * @param AcquireItemSetByStampSheetRequest $request
      * @return AcquireItemSetByStampSheetResult
      */
     public function acquireItemSetByStampSheet (
@@ -5547,9 +5233,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでアイテムに参照元を追加<br>
-     *
-     * @param AddReferenceOfItemSetByStampSheetRequest $request リクエストパラメータ
+     * @param AddReferenceOfItemSetByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function addReferenceOfItemSetByStampSheetAsync(
@@ -5564,9 +5248,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでアイテムに参照元を追加<br>
-     *
-     * @param AddReferenceOfItemSetByStampSheetRequest $request リクエストパラメータ
+     * @param AddReferenceOfItemSetByStampSheetRequest $request
      * @return AddReferenceOfItemSetByStampSheetResult
      */
     public function addReferenceOfItemSetByStampSheet (
@@ -5578,9 +5260,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでアイテムの参照元を削除<br>
-     *
-     * @param DeleteReferenceOfItemSetByStampSheetRequest $request リクエストパラメータ
+     * @param DeleteReferenceOfItemSetByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function deleteReferenceOfItemSetByStampSheetAsync(
@@ -5595,9 +5275,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでアイテムの参照元を削除<br>
-     *
-     * @param DeleteReferenceOfItemSetByStampSheetRequest $request リクエストパラメータ
+     * @param DeleteReferenceOfItemSetByStampSheetRequest $request
      * @return DeleteReferenceOfItemSetByStampSheetResult
      */
     public function deleteReferenceOfItemSetByStampSheet (
@@ -5609,9 +5287,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでインベントリのアイテムを消費<br>
-     *
-     * @param ConsumeItemSetByStampTaskRequest $request リクエストパラメータ
+     * @param ConsumeItemSetByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function consumeItemSetByStampTaskAsync(
@@ -5626,9 +5302,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでインベントリのアイテムを消費<br>
-     *
-     * @param ConsumeItemSetByStampTaskRequest $request リクエストパラメータ
+     * @param ConsumeItemSetByStampTaskRequest $request
      * @return ConsumeItemSetByStampTaskResult
      */
     public function consumeItemSetByStampTask (
@@ -5640,9 +5314,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでインベントリのアイテムを検証<br>
-     *
-     * @param VerifyReferenceOfByStampTaskRequest $request リクエストパラメータ
+     * @param VerifyReferenceOfByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function verifyReferenceOfByStampTaskAsync(
@@ -5657,9 +5329,7 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでインベントリのアイテムを検証<br>
-     *
-     * @param VerifyReferenceOfByStampTaskRequest $request リクエストパラメータ
+     * @param VerifyReferenceOfByStampTaskRequest $request
      * @return VerifyReferenceOfByStampTaskResult
      */
     public function verifyReferenceOfByStampTask (

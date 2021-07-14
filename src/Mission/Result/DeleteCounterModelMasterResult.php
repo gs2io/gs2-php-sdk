@@ -18,38 +18,37 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\CounterScopeModel;
 use Gs2\Mission\Model\CounterModelMaster;
 
-/**
- * カウンターの種類マスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteCounterModelMasterResult implements IResult {
-	/** @var CounterModelMaster 削除したカウンターの種類マスター */
-	private $item;
+    /** @var CounterModelMaster */
+    private $item;
 
-	/**
-	 * 削除したカウンターの種類マスターを取得
-	 *
-	 * @return CounterModelMaster|null カウンターの種類マスターを削除
-	 */
 	public function getItem(): ?CounterModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したカウンターの種類マスターを設定
-	 *
-	 * @param CounterModelMaster|null $item カウンターの種類マスターを削除
-	 */
 	public function setItem(?CounterModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteCounterModelMasterResult {
-        $result = new DeleteCounterModelMasterResult();
-        $result->setItem(isset($data["item"]) ? CounterModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CounterModelMaster $item): DeleteCounterModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteCounterModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteCounterModelMasterResult())
+            ->withItem(empty($data['item']) ? null : CounterModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

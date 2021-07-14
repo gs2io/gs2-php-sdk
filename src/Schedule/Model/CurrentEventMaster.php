@@ -19,91 +19,56 @@ namespace Gs2\Schedule\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 現在有効なイベントスケジュールマスター
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class CurrentEventMaster implements IModel {
 	/**
-     * @var string ネームスペース
+     * @var string
 	 */
-	protected $namespaceId;
-
+	private $namespaceId;
 	/**
-	 * ネームスペースを取得
-	 *
-	 * @return string|null ネームスペース
+     * @var string
 	 */
+	private $settings;
+
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param string|null $namespaceId ネームスペース
-	 */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param string|null $namespaceId ネームスペース
-	 * @return CurrentEventMaster $this
-	 */
 	public function withNamespaceId(?string $namespaceId): CurrentEventMaster {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-	/**
-     * @var string マスターデータ
-	 */
-	protected $settings;
 
-	/**
-	 * マスターデータを取得
-	 *
-	 * @return string|null マスターデータ
-	 */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
 
-	/**
-	 * マスターデータを設定
-	 *
-	 * @param string|null $settings マスターデータ
-	 */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
 
-	/**
-	 * マスターデータを設定
-	 *
-	 * @param string|null $settings マスターデータ
-	 * @return CurrentEventMaster $this
-	 */
 	public function withSettings(?string $settings): CurrentEventMaster {
 		$this->settings = $settings;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "namespaceId" => $this->namespaceId,
-            "settings" => $this->settings,
-        );
+    public static function fromJson(?array $data): ?CurrentEventMaster {
+        if ($data === null) {
+            return null;
+        }
+        return (new CurrentEventMaster())
+            ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
+            ->withSettings(empty($data['settings']) ? null : $data['settings']);
     }
 
-    public static function fromJson(array $data): CurrentEventMaster {
-        $model = new CurrentEventMaster();
-        $model->setNamespaceId(isset($data["namespaceId"]) ? $data["namespaceId"] : null);
-        $model->setSettings(isset($data["settings"]) ? $data["settings"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "namespaceId" => $this->getNamespaceId(),
+            "settings" => $this->getSettings(),
+        );
     }
 }

@@ -20,36 +20,34 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Namespace_;
 
-/**
- * ネームスペースを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetNamespaceResult implements IResult {
-	/** @var Namespace_ ネームスペース */
-	private $item;
+    /** @var Namespace_ */
+    private $item;
 
-	/**
-	 * ネームスペースを取得
-	 *
-	 * @return Namespace_|null ネームスペースを取得
-	 */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param Namespace_|null $item ネームスペースを取得
-	 */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetNamespaceResult {
-        $result = new GetNamespaceResult();
-        $result->setItem(isset($data["item"]) ? Namespace_::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Namespace_ $item): GetNamespaceResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetNamespaceResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetNamespaceResult())
+            ->withItem(empty($data['item']) ? null : Namespace_::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

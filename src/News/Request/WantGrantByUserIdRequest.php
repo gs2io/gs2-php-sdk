@@ -19,107 +19,51 @@ namespace Gs2\News\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * お知らせ記事に加算 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class WantGrantByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null お知らせ記事に加算
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName お知らせ記事に加算
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName お知らせ記事に加算
-     * @return WantGrantByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): WantGrantByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
 
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null お知らせ記事に加算
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): WantGrantByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): WantGrantByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?WantGrantByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new WantGrantByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId お知らせ記事に加算
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+        );
     }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId お知らせ記事に加算
-     * @return WantGrantByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): WantGrantByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null お知らせ記事に加算
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider お知らせ記事に加算
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider お知らせ記事に加算
-     * @return WantGrantByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): WantGrantByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

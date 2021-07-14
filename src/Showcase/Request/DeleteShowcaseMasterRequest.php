@@ -19,75 +19,51 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 陳列棚マスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteShowcaseMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 陳列棚マスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 陳列棚マスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 陳列棚マスターを削除
-     * @return DeleteShowcaseMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteShowcaseMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 陳列棚名 */
+    /** @var string */
     private $showcaseName;
 
-    /**
-     * 陳列棚名を取得
-     *
-     * @return string|null 陳列棚マスターを削除
-     */
-    public function getShowcaseName(): ?string {
-        return $this->showcaseName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteShowcaseMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getShowcaseName(): ?string {
+		return $this->showcaseName;
+	}
+
+	public function setShowcaseName(?string $showcaseName) {
+		$this->showcaseName = $showcaseName;
+	}
+
+	public function withShowcaseName(?string $showcaseName): DeleteShowcaseMasterRequest {
+		$this->showcaseName = $showcaseName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteShowcaseMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteShowcaseMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withShowcaseName(empty($data['showcaseName']) ? null : $data['showcaseName']);
     }
 
-    /**
-     * 陳列棚名を設定
-     *
-     * @param string $showcaseName 陳列棚マスターを削除
-     */
-    public function setShowcaseName(string $showcaseName = null) {
-        $this->showcaseName = $showcaseName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "showcaseName" => $this->getShowcaseName(),
+        );
     }
-
-    /**
-     * 陳列棚名を設定
-     *
-     * @param string $showcaseName 陳列棚マスターを削除
-     * @return DeleteShowcaseMasterRequest $this
-     */
-    public function withShowcaseName(string $showcaseName = null): DeleteShowcaseMasterRequest {
-        $this->setShowcaseName($showcaseName);
-        return $this;
-    }
-
 }

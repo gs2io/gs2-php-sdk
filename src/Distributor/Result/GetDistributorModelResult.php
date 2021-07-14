@@ -20,36 +20,34 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModel;
 
-/**
- * 配信設定を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetDistributorModelResult implements IResult {
-	/** @var DistributorModel 配信設定 */
-	private $item;
+    /** @var DistributorModel */
+    private $item;
 
-	/**
-	 * 配信設定を取得
-	 *
-	 * @return DistributorModel|null 配信設定を取得
-	 */
 	public function getItem(): ?DistributorModel {
 		return $this->item;
 	}
 
-	/**
-	 * 配信設定を設定
-	 *
-	 * @param DistributorModel|null $item 配信設定を取得
-	 */
 	public function setItem(?DistributorModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetDistributorModelResult {
-        $result = new GetDistributorModelResult();
-        $result->setItem(isset($data["item"]) ? DistributorModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?DistributorModel $item): GetDistributorModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetDistributorModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetDistributorModelResult())
+            ->withItem(empty($data['item']) ? null : DistributorModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

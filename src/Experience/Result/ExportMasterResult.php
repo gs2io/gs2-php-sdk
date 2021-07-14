@@ -20,36 +20,34 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\CurrentExperienceMaster;
 
-/**
- * 現在有効な経験値設定のマスターデータをエクスポートします のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ExportMasterResult implements IResult {
-	/** @var CurrentExperienceMaster 現在有効な経験値設定 */
-	private $item;
+    /** @var CurrentExperienceMaster */
+    private $item;
 
-	/**
-	 * 現在有効な経験値設定を取得
-	 *
-	 * @return CurrentExperienceMaster|null 現在有効な経験値設定のマスターデータをエクスポートします
-	 */
 	public function getItem(): ?CurrentExperienceMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効な経験値設定を設定
-	 *
-	 * @param CurrentExperienceMaster|null $item 現在有効な経験値設定のマスターデータをエクスポートします
-	 */
 	public function setItem(?CurrentExperienceMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): ExportMasterResult {
-        $result = new ExportMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentExperienceMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentExperienceMaster $item): ExportMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ExportMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ExportMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentExperienceMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

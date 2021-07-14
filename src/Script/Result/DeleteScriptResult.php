@@ -19,15 +19,17 @@ namespace Gs2\Script\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * スクリプトを削除します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteScriptResult implements IResult {
 
-    public static function fromJson(array $data): DeleteScriptResult {
-        $result = new DeleteScriptResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteScriptResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteScriptResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

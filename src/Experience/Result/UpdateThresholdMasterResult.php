@@ -20,36 +20,34 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\ThresholdMaster;
 
-/**
- * ランクアップ閾値マスターを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateThresholdMasterResult implements IResult {
-	/** @var ThresholdMaster 更新したランクアップ閾値マスター */
-	private $item;
+    /** @var ThresholdMaster */
+    private $item;
 
-	/**
-	 * 更新したランクアップ閾値マスターを取得
-	 *
-	 * @return ThresholdMaster|null ランクアップ閾値マスターを更新
-	 */
 	public function getItem(): ?ThresholdMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したランクアップ閾値マスターを設定
-	 *
-	 * @param ThresholdMaster|null $item ランクアップ閾値マスターを更新
-	 */
 	public function setItem(?ThresholdMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateThresholdMasterResult {
-        $result = new UpdateThresholdMasterResult();
-        $result->setItem(isset($data["item"]) ? ThresholdMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?ThresholdMaster $item): UpdateThresholdMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateThresholdMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateThresholdMasterResult())
+            ->withItem(empty($data['item']) ? null : ThresholdMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

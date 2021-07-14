@@ -20,36 +20,34 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\LotteryModel;
 
-/**
- * 抽選の種類を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetLotteryModelResult implements IResult {
-	/** @var LotteryModel 抽選の種類 */
-	private $item;
+    /** @var LotteryModel */
+    private $item;
 
-	/**
-	 * 抽選の種類を取得
-	 *
-	 * @return LotteryModel|null 抽選の種類を取得
-	 */
 	public function getItem(): ?LotteryModel {
 		return $this->item;
 	}
 
-	/**
-	 * 抽選の種類を設定
-	 *
-	 * @param LotteryModel|null $item 抽選の種類を取得
-	 */
 	public function setItem(?LotteryModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetLotteryModelResult {
-        $result = new GetLotteryModelResult();
-        $result->setItem(isset($data["item"]) ? LotteryModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?LotteryModel $item): GetLotteryModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetLotteryModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetLotteryModelResult())
+            ->withItem(empty($data['item']) ? null : LotteryModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

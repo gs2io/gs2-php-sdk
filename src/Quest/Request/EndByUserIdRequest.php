@@ -21,235 +21,139 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Config;
 
-/**
- * ユーザIDを指定してクエストを完了 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class EndByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null ユーザIDを指定してクエストを完了
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してクエストを完了
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してクエストを完了
-     * @return EndByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): EndByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してクエストを完了
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してクエストを完了
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してクエストを完了
-     * @return EndByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): EndByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string トランザクションID */
+    /** @var string */
     private $transactionId;
-
-    /**
-     * トランザクションIDを取得
-     *
-     * @return string|null ユーザIDを指定してクエストを完了
-     */
-    public function getTransactionId(): ?string {
-        return $this->transactionId;
-    }
-
-    /**
-     * トランザクションIDを設定
-     *
-     * @param string $transactionId ユーザIDを指定してクエストを完了
-     */
-    public function setTransactionId(string $transactionId = null) {
-        $this->transactionId = $transactionId;
-    }
-
-    /**
-     * トランザクションIDを設定
-     *
-     * @param string $transactionId ユーザIDを指定してクエストを完了
-     * @return EndByUserIdRequest $this
-     */
-    public function withTransactionId(string $transactionId = null): EndByUserIdRequest {
-        $this->setTransactionId($transactionId);
-        return $this;
-    }
-
-    /** @var Reward[] 実際にクエストで得た報酬 */
+    /** @var array */
     private $rewards;
-
-    /**
-     * 実際にクエストで得た報酬を取得
-     *
-     * @return Reward[]|null ユーザIDを指定してクエストを完了
-     */
-    public function getRewards(): ?array {
-        return $this->rewards;
-    }
-
-    /**
-     * 実際にクエストで得た報酬を設定
-     *
-     * @param Reward[] $rewards ユーザIDを指定してクエストを完了
-     */
-    public function setRewards(array $rewards = null) {
-        $this->rewards = $rewards;
-    }
-
-    /**
-     * 実際にクエストで得た報酬を設定
-     *
-     * @param Reward[] $rewards ユーザIDを指定してクエストを完了
-     * @return EndByUserIdRequest $this
-     */
-    public function withRewards(array $rewards = null): EndByUserIdRequest {
-        $this->setRewards($rewards);
-        return $this;
-    }
-
-    /** @var bool クエストをクリアしたか */
+    /** @var bool */
     private $isComplete;
-
-    /**
-     * クエストをクリアしたかを取得
-     *
-     * @return bool|null ユーザIDを指定してクエストを完了
-     */
-    public function getIsComplete(): ?bool {
-        return $this->isComplete;
-    }
-
-    /**
-     * クエストをクリアしたかを設定
-     *
-     * @param bool $isComplete ユーザIDを指定してクエストを完了
-     */
-    public function setIsComplete(bool $isComplete = null) {
-        $this->isComplete = $isComplete;
-    }
-
-    /**
-     * クエストをクリアしたかを設定
-     *
-     * @param bool $isComplete ユーザIDを指定してクエストを完了
-     * @return EndByUserIdRequest $this
-     */
-    public function withIsComplete(bool $isComplete = null): EndByUserIdRequest {
-        $this->setIsComplete($isComplete);
-        return $this;
-    }
-
-    /** @var Config[] スタンプシートの変数に適用する設定値 */
+    /** @var array */
     private $config;
 
-    /**
-     * スタンプシートの変数に適用する設定値を取得
-     *
-     * @return Config[]|null ユーザIDを指定してクエストを完了
-     */
-    public function getConfig(): ?array {
-        return $this->config;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): EndByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): EndByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getTransactionId(): ?string {
+		return $this->transactionId;
+	}
+
+	public function setTransactionId(?string $transactionId) {
+		$this->transactionId = $transactionId;
+	}
+
+	public function withTransactionId(?string $transactionId): EndByUserIdRequest {
+		$this->transactionId = $transactionId;
+		return $this;
+	}
+
+	public function getRewards(): ?array {
+		return $this->rewards;
+	}
+
+	public function setRewards(?array $rewards) {
+		$this->rewards = $rewards;
+	}
+
+	public function withRewards(?array $rewards): EndByUserIdRequest {
+		$this->rewards = $rewards;
+		return $this;
+	}
+
+	public function getIsComplete(): ?bool {
+		return $this->isComplete;
+	}
+
+	public function setIsComplete(?bool $isComplete) {
+		$this->isComplete = $isComplete;
+	}
+
+	public function withIsComplete(?bool $isComplete): EndByUserIdRequest {
+		$this->isComplete = $isComplete;
+		return $this;
+	}
+
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+
+	public function withConfig(?array $config): EndByUserIdRequest {
+		$this->config = $config;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?EndByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new EndByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
+            ->withRewards(array_map(
+                function ($item) {
+                    return Reward::fromJson($item);
+                },
+                array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
+            ))
+            ->withIsComplete(empty($data['isComplete']) ? null : $data['isComplete'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config ユーザIDを指定してクエストを完了
-     */
-    public function setConfig(array $config = null) {
-        $this->config = $config;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "transactionId" => $this->getTransactionId(),
+            "rewards" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getRewards() !== null && $this->getRewards() !== null ? $this->getRewards() : []
+            ),
+            "isComplete" => $this->getIsComplete(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
+        );
     }
-
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config ユーザIDを指定してクエストを完了
-     * @return EndByUserIdRequest $this
-     */
-    public function withConfig(array $config = null): EndByUserIdRequest {
-        $this->setConfig($config);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してクエストを完了
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してクエストを完了
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してクエストを完了
-     * @return EndByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): EndByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

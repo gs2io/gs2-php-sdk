@@ -19,75 +19,51 @@ namespace Gs2\Lock\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ネームスペースの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeNamespacesRequest extends Gs2BasicRequest {
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null ネームスペースの一覧を取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken ネームスペースの一覧を取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken ネームスペースの一覧を取得
-     * @return DescribeNamespacesRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeNamespacesRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null ネームスペースの一覧を取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeNamespacesRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeNamespacesRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeNamespacesRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeNamespacesRequest())
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit ネームスペースの一覧を取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit ネームスペースの一覧を取得
-     * @return DescribeNamespacesRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeNamespacesRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
 }

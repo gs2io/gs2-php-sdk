@@ -19,203 +19,102 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定して署名付きフォームを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetFormWithSignatureByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定して署名付きフォームを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して署名付きフォームを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して署名付きフォームを取得
-     * @return GetFormWithSignatureByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetFormWithSignatureByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定して署名付きフォームを取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定して署名付きフォームを取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定して署名付きフォームを取得
-     * @return GetFormWithSignatureByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): GetFormWithSignatureByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string フォームの保存領域の名前 */
+    /** @var string */
     private $moldName;
-
-    /**
-     * フォームの保存領域の名前を取得
-     *
-     * @return string|null ユーザIDを指定して署名付きフォームを取得
-     */
-    public function getMoldName(): ?string {
-        return $this->moldName;
-    }
-
-    /**
-     * フォームの保存領域の名前を設定
-     *
-     * @param string $moldName ユーザIDを指定して署名付きフォームを取得
-     */
-    public function setMoldName(string $moldName = null) {
-        $this->moldName = $moldName;
-    }
-
-    /**
-     * フォームの保存領域の名前を設定
-     *
-     * @param string $moldName ユーザIDを指定して署名付きフォームを取得
-     * @return GetFormWithSignatureByUserIdRequest $this
-     */
-    public function withMoldName(string $moldName = null): GetFormWithSignatureByUserIdRequest {
-        $this->setMoldName($moldName);
-        return $this;
-    }
-
-    /** @var int 保存領域のインデックス */
+    /** @var int */
     private $index;
-
-    /**
-     * 保存領域のインデックスを取得
-     *
-     * @return int|null ユーザIDを指定して署名付きフォームを取得
-     */
-    public function getIndex(): ?int {
-        return $this->index;
-    }
-
-    /**
-     * 保存領域のインデックスを設定
-     *
-     * @param int $index ユーザIDを指定して署名付きフォームを取得
-     */
-    public function setIndex(int $index = null) {
-        $this->index = $index;
-    }
-
-    /**
-     * 保存領域のインデックスを設定
-     *
-     * @param int $index ユーザIDを指定して署名付きフォームを取得
-     * @return GetFormWithSignatureByUserIdRequest $this
-     */
-    public function withIndex(int $index = null): GetFormWithSignatureByUserIdRequest {
-        $this->setIndex($index);
-        return $this;
-    }
-
-    /** @var string 署名の発行に使用する暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを取得
-     *
-     * @return string|null ユーザIDを指定して署名付きフォームを取得
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetFormWithSignatureByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): GetFormWithSignatureByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getMoldName(): ?string {
+		return $this->moldName;
+	}
+
+	public function setMoldName(?string $moldName) {
+		$this->moldName = $moldName;
+	}
+
+	public function withMoldName(?string $moldName): GetFormWithSignatureByUserIdRequest {
+		$this->moldName = $moldName;
+		return $this;
+	}
+
+	public function getIndex(): ?int {
+		return $this->index;
+	}
+
+	public function setIndex(?int $index) {
+		$this->index = $index;
+	}
+
+	public function withIndex(?int $index): GetFormWithSignatureByUserIdRequest {
+		$this->index = $index;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): GetFormWithSignatureByUserIdRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetFormWithSignatureByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetFormWithSignatureByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
+            ->withIndex(empty($data['index']) ? null : $data['index'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId ユーザIDを指定して署名付きフォームを取得
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "moldName" => $this->getMoldName(),
+            "index" => $this->getIndex(),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId ユーザIDを指定して署名付きフォームを取得
-     * @return GetFormWithSignatureByUserIdRequest $this
-     */
-    public function withKeyId(string $keyId = null): GetFormWithSignatureByUserIdRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定して署名付きフォームを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して署名付きフォームを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して署名付きフォームを取得
-     * @return GetFormWithSignatureByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetFormWithSignatureByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

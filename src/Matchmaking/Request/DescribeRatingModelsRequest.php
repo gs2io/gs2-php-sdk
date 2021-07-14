@@ -19,43 +19,34 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * レーティングモデルの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeRatingModelsRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null レーティングモデルの一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeRatingModelsRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeRatingModelsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeRatingModelsRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティングモデルの一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティングモデルの一覧を取得
-     * @return DescribeRatingModelsRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeRatingModelsRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

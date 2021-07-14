@@ -19,36 +19,44 @@ namespace Gs2\Friend\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ブラックリストを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeBlackListResult implements IResult {
-	/** @var string[] ブラックリストに登録されたユーザIDリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * ブラックリストに登録されたユーザIDリストを取得
-	 *
-	 * @return string[]|null ブラックリストを取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * ブラックリストに登録されたユーザIDリストを設定
-	 *
-	 * @param string[]|null $items ブラックリストを取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeBlackListResult {
-        $result = new DescribeBlackListResult();
-        $result->setItems(isset($data["items"]) ? $data["items"] : null);
-        return $result;
+	public function withItems(?array $items): DescribeBlackListResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeBlackListResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeBlackListResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+        );
     }
 }

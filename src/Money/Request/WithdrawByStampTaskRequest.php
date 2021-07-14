@@ -19,107 +19,51 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ウォレットから残高を消費します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class WithdrawByStampTaskRequest extends Gs2BasicRequest {
-
-    /** @var string スタンプタスク */
+    /** @var string */
     private $stampTask;
-
-    /**
-     * スタンプタスクを取得
-     *
-     * @return string|null ウォレットから残高を消費します
-     */
-    public function getStampTask(): ?string {
-        return $this->stampTask;
-    }
-
-    /**
-     * スタンプタスクを設定
-     *
-     * @param string $stampTask ウォレットから残高を消費します
-     */
-    public function setStampTask(string $stampTask = null) {
-        $this->stampTask = $stampTask;
-    }
-
-    /**
-     * スタンプタスクを設定
-     *
-     * @param string $stampTask ウォレットから残高を消費します
-     * @return WithdrawByStampTaskRequest $this
-     */
-    public function withStampTask(string $stampTask = null): WithdrawByStampTaskRequest {
-        $this->setStampTask($stampTask);
-        return $this;
-    }
-
-    /** @var string スタンプタスクの署名検証に使用する 暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * スタンプタスクの署名検証に使用する 暗号鍵 のGRNを取得
-     *
-     * @return string|null ウォレットから残高を消費します
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getStampTask(): ?string {
+		return $this->stampTask;
+	}
+
+	public function setStampTask(?string $stampTask) {
+		$this->stampTask = $stampTask;
+	}
+
+	public function withStampTask(?string $stampTask): WithdrawByStampTaskRequest {
+		$this->stampTask = $stampTask;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): WithdrawByStampTaskRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?WithdrawByStampTaskRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new WithdrawByStampTaskRequest())
+            ->withStampTask(empty($data['stampTask']) ? null : $data['stampTask'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * スタンプタスクの署名検証に使用する 暗号鍵 のGRNを設定
-     *
-     * @param string $keyId ウォレットから残高を消費します
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "stampTask" => $this->getStampTask(),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * スタンプタスクの署名検証に使用する 暗号鍵 のGRNを設定
-     *
-     * @param string $keyId ウォレットから残高を消費します
-     * @return WithdrawByStampTaskRequest $this
-     */
-    public function withKeyId(string $keyId = null): WithdrawByStampTaskRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ウォレットから残高を消費します
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ウォレットから残高を消費します
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ウォレットから残高を消費します
-     * @return WithdrawByStampTaskRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): WithdrawByStampTaskRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

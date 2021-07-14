@@ -20,42 +20,44 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
-/**
- * スタンプシートでエントリーを追加 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AddEntriesByStampSheetResult implements IResult {
-	/** @var Entry[] 追加後のエントリーのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 追加後のエントリーのリストを取得
-	 *
-	 * @return Entry[]|null スタンプシートでエントリーを追加
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 追加後のエントリーのリストを設定
-	 *
-	 * @param Entry[]|null $items スタンプシートでエントリーを追加
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): AddEntriesByStampSheetResult {
-        $result = new AddEntriesByStampSheetResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Entry::fromJson($v);
+	public function withItems(?array $items): AddEntriesByStampSheetResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AddEntriesByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AddEntriesByStampSheetResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Entry::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

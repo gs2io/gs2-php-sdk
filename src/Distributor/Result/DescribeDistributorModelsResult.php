@@ -20,42 +20,44 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModel;
 
-/**
- * 配信設定の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeDistributorModelsResult implements IResult {
-	/** @var DistributorModel[] 配信設定のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 配信設定のリストを取得
-	 *
-	 * @return DistributorModel[]|null 配信設定の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 配信設定のリストを設定
-	 *
-	 * @param DistributorModel[]|null $items 配信設定の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeDistributorModelsResult {
-        $result = new DescribeDistributorModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return DistributorModel::fromJson($v);
+	public function withItems(?array $items): DescribeDistributorModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeDistributorModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeDistributorModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return DistributorModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

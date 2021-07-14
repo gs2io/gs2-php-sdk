@@ -20,36 +20,34 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
-/**
- * ユーザIDを指定してカウントアップ のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CountUpByUserIdResult implements IResult {
-	/** @var Counter カウントを増やしたカウンター */
-	private $item;
+    /** @var Counter */
+    private $item;
 
-	/**
-	 * カウントを増やしたカウンターを取得
-	 *
-	 * @return Counter|null ユーザIDを指定してカウントアップ
-	 */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
-	/**
-	 * カウントを増やしたカウンターを設定
-	 *
-	 * @param Counter|null $item ユーザIDを指定してカウントアップ
-	 */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CountUpByUserIdResult {
-        $result = new CountUpByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Counter::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Counter $item): CountUpByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CountUpByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CountUpByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Counter::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

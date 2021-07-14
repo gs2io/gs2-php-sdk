@@ -20,36 +20,34 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Mold;
 
-/**
- * 保存したフォームを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteMoldResult implements IResult {
-	/** @var Mold 保存したフォーム */
-	private $item;
+    /** @var Mold */
+    private $item;
 
-	/**
-	 * 保存したフォームを取得
-	 *
-	 * @return Mold|null 保存したフォームを削除
-	 */
 	public function getItem(): ?Mold {
 		return $this->item;
 	}
 
-	/**
-	 * 保存したフォームを設定
-	 *
-	 * @param Mold|null $item 保存したフォームを削除
-	 */
 	public function setItem(?Mold $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteMoldResult {
-        $result = new DeleteMoldResult();
-        $result->setItem(isset($data["item"]) ? Mold::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Mold $item): DeleteMoldResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteMoldResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteMoldResult())
+            ->withItem(empty($data['item']) ? null : Mold::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

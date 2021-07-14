@@ -19,120 +19,112 @@ namespace Gs2\Script\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * スクリプトを実行します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class InvokeScriptResult implements IResult {
-	/** @var int ステータスコード */
-	private $code;
-	/** @var string 戻り値 */
-	private $result;
-	/** @var int スクリプトの実行時間(ミリ秒) */
-	private $execute_time;
-	/** @var int 費用の計算対象となった時間(秒) */
-	private $charged;
-	/** @var string[] 標準出力の内容のリスト */
-	private $output;
+    /** @var int */
+    private $code;
+    /** @var string */
+    private $result;
+    /** @var int */
+    private $executeTime;
+    /** @var int */
+    private $charged;
+    /** @var array */
+    private $output;
 
-	/**
-	 * ステータスコードを取得
-	 *
-	 * @return int|null スクリプトを実行します
-	 */
 	public function getCode(): ?int {
 		return $this->code;
 	}
 
-	/**
-	 * ステータスコードを設定
-	 *
-	 * @param int|null $code スクリプトを実行します
-	 */
 	public function setCode(?int $code) {
 		$this->code = $code;
 	}
 
-	/**
-	 * 戻り値を取得
-	 *
-	 * @return string|null スクリプトを実行します
-	 */
+	public function withCode(?int $code): InvokeScriptResult {
+		$this->code = $code;
+		return $this;
+	}
+
 	public function getResult(): ?string {
 		return $this->result;
 	}
 
-	/**
-	 * 戻り値を設定
-	 *
-	 * @param string|null $result スクリプトを実行します
-	 */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
 
-	/**
-	 * スクリプトの実行時間(ミリ秒)を取得
-	 *
-	 * @return int|null スクリプトを実行します
-	 */
+	public function withResult(?string $result): InvokeScriptResult {
+		$this->result = $result;
+		return $this;
+	}
+
 	public function getExecuteTime(): ?int {
-		return $this->execute_time;
+		return $this->executeTime;
 	}
 
-	/**
-	 * スクリプトの実行時間(ミリ秒)を設定
-	 *
-	 * @param int|null $executeTime スクリプトを実行します
-	 */
 	public function setExecuteTime(?int $executeTime) {
-		$this->execute_time = $executeTime;
+		$this->executeTime = $executeTime;
 	}
 
-	/**
-	 * 費用の計算対象となった時間(秒)を取得
-	 *
-	 * @return int|null スクリプトを実行します
-	 */
+	public function withExecuteTime(?int $executeTime): InvokeScriptResult {
+		$this->executeTime = $executeTime;
+		return $this;
+	}
+
 	public function getCharged(): ?int {
 		return $this->charged;
 	}
 
-	/**
-	 * 費用の計算対象となった時間(秒)を設定
-	 *
-	 * @param int|null $charged スクリプトを実行します
-	 */
 	public function setCharged(?int $charged) {
 		$this->charged = $charged;
 	}
 
-	/**
-	 * 標準出力の内容のリストを取得
-	 *
-	 * @return string[]|null スクリプトを実行します
-	 */
+	public function withCharged(?int $charged): InvokeScriptResult {
+		$this->charged = $charged;
+		return $this;
+	}
+
 	public function getOutput(): ?array {
 		return $this->output;
 	}
 
-	/**
-	 * 標準出力の内容のリストを設定
-	 *
-	 * @param string[]|null $output スクリプトを実行します
-	 */
 	public function setOutput(?array $output) {
 		$this->output = $output;
 	}
 
-    public static function fromJson(array $data): InvokeScriptResult {
-        $result = new InvokeScriptResult();
-        $result->setCode(isset($data["code"]) ? $data["code"] : null);
-        $result->setResult(isset($data["result"]) ? $data["result"] : null);
-        $result->setExecuteTime(isset($data["executeTime"]) ? $data["executeTime"] : null);
-        $result->setCharged(isset($data["charged"]) ? $data["charged"] : null);
-        $result->setOutput(isset($data["output"]) ? $data["output"] : null);
-        return $result;
+	public function withOutput(?array $output): InvokeScriptResult {
+		$this->output = $output;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?InvokeScriptResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new InvokeScriptResult())
+            ->withCode(empty($data['code']) ? null : $data['code'])
+            ->withResult(empty($data['result']) ? null : $data['result'])
+            ->withExecuteTime(empty($data['executeTime']) ? null : $data['executeTime'])
+            ->withCharged(empty($data['charged']) ? null : $data['charged'])
+            ->withOutput(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('output', $data) && $data['output'] !== null ? $data['output'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "code" => $this->getCode(),
+            "result" => $this->getResult(),
+            "executeTime" => $this->getExecuteTime(),
+            "charged" => $this->getCharged(),
+            "output" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getOutput() !== null && $this->getOutput() !== null ? $this->getOutput() : []
+            ),
+        );
     }
 }

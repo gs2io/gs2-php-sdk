@@ -20,36 +20,34 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObjectHistory;
 
-/**
- * データオブジェクト履歴を取得する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetDataObjectHistoryResult implements IResult {
-	/** @var DataObjectHistory データオブジェクト履歴 */
-	private $item;
+    /** @var DataObjectHistory */
+    private $item;
 
-	/**
-	 * データオブジェクト履歴を取得
-	 *
-	 * @return DataObjectHistory|null データオブジェクト履歴を取得する
-	 */
 	public function getItem(): ?DataObjectHistory {
 		return $this->item;
 	}
 
-	/**
-	 * データオブジェクト履歴を設定
-	 *
-	 * @param DataObjectHistory|null $item データオブジェクト履歴を取得する
-	 */
 	public function setItem(?DataObjectHistory $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetDataObjectHistoryResult {
-        $result = new GetDataObjectHistoryResult();
-        $result->setItem(isset($data["item"]) ? DataObjectHistory::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?DataObjectHistory $item): GetDataObjectHistoryResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetDataObjectHistoryResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetDataObjectHistoryResult())
+            ->withItem(empty($data['item']) ? null : DataObjectHistory::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

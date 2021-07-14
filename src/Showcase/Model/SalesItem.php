@@ -19,183 +19,114 @@ namespace Gs2\Showcase\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 商品
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class SalesItem implements IModel {
 	/**
-     * @var string 商品名
+     * @var string
 	 */
-	protected $name;
-
+	private $name;
 	/**
-	 * 商品名を取得
-	 *
-	 * @return string|null 商品名
+     * @var string
 	 */
+	private $metadata;
+	/**
+     * @var array
+	 */
+	private $consumeActions;
+	/**
+     * @var array
+	 */
+	private $acquireActions;
+
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * 商品名を設定
-	 *
-	 * @param string|null $name 商品名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * 商品名を設定
-	 *
-	 * @param string|null $name 商品名
-	 * @return SalesItem $this
-	 */
 	public function withName(?string $name): SalesItem {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string 商品のメタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * 商品のメタデータを取得
-	 *
-	 * @return string|null 商品のメタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * 商品のメタデータを設定
-	 *
-	 * @param string|null $metadata 商品のメタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * 商品のメタデータを設定
-	 *
-	 * @param string|null $metadata 商品のメタデータ
-	 * @return SalesItem $this
-	 */
 	public function withMetadata(?string $metadata): SalesItem {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var ConsumeAction[] 消費アクションリスト
-	 */
-	protected $consumeActions;
 
-	/**
-	 * 消費アクションリストを取得
-	 *
-	 * @return ConsumeAction[]|null 消費アクションリスト
-	 */
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
 
-	/**
-	 * 消費アクションリストを設定
-	 *
-	 * @param ConsumeAction[]|null $consumeActions 消費アクションリスト
-	 */
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
 
-	/**
-	 * 消費アクションリストを設定
-	 *
-	 * @param ConsumeAction[]|null $consumeActions 消費アクションリスト
-	 * @return SalesItem $this
-	 */
 	public function withConsumeActions(?array $consumeActions): SalesItem {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
-	/**
-     * @var AcquireAction[] 入手アクションリスト
-	 */
-	protected $acquireActions;
 
-	/**
-	 * 入手アクションリストを取得
-	 *
-	 * @return AcquireAction[]|null 入手アクションリスト
-	 */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
 
-	/**
-	 * 入手アクションリストを設定
-	 *
-	 * @param AcquireAction[]|null $acquireActions 入手アクションリスト
-	 */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
 
-	/**
-	 * 入手アクションリストを設定
-	 *
-	 * @param AcquireAction[]|null $acquireActions 入手アクションリスト
-	 * @return SalesItem $this
-	 */
 	public function withAcquireActions(?array $acquireActions): SalesItem {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "name" => $this->name,
-            "metadata" => $this->metadata,
-            "consumeActions" => array_map(
-                function (ConsumeAction $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?SalesItem {
+        if ($data === null) {
+            return null;
+        }
+        return (new SalesItem())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withConsumeActions(array_map(
+                function ($item) {
+                    return ConsumeAction::fromJson($item);
                 },
-                $this->consumeActions == null ? [] : $this->consumeActions
-            ),
-            "acquireActions" => array_map(
-                function (AcquireAction $v) {
-                    return $v->toJson();
+                array_key_exists('consumeActions', $data) && $data['consumeActions'] !== null ? $data['consumeActions'] : []
+            ))
+            ->withAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
                 },
-                $this->acquireActions == null ? [] : $this->acquireActions
-            ),
-        );
+                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+            ));
     }
 
-    public static function fromJson(array $data): SalesItem {
-        $model = new SalesItem();
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setConsumeActions(array_map(
-                function ($v) {
-                    return ConsumeAction::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "metadata" => $this->getMetadata(),
+            "consumeActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["consumeActions"]) ? $data["consumeActions"] : []
-            )
-        );
-        $model->setAcquireActions(array_map(
-                function ($v) {
-                    return AcquireAction::fromJson($v);
+                $this->getConsumeActions() !== null && $this->getConsumeActions() !== null ? $this->getConsumeActions() : []
+            ),
+            "acquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["acquireActions"]) ? $data["acquireActions"] : []
-            )
+                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+            ),
         );
-        return $model;
     }
 }

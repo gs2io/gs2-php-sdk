@@ -19,126 +19,75 @@ namespace Gs2\Ranking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 購読対象
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class SubscribeUser implements IModel {
 	/**
-     * @var string カテゴリ名
+     * @var string
 	 */
-	protected $categoryName;
-
+	private $categoryName;
 	/**
-	 * カテゴリ名を取得
-	 *
-	 * @return string|null カテゴリ名
+     * @var string
 	 */
+	private $userId;
+	/**
+     * @var string
+	 */
+	private $targetUserId;
+
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
 
-	/**
-	 * カテゴリ名を設定
-	 *
-	 * @param string|null $categoryName カテゴリ名
-	 */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
 
-	/**
-	 * カテゴリ名を設定
-	 *
-	 * @param string|null $categoryName カテゴリ名
-	 * @return SubscribeUser $this
-	 */
 	public function withCategoryName(?string $categoryName): SubscribeUser {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-	/**
-     * @var string 購読するユーザID
-	 */
-	protected $userId;
 
-	/**
-	 * 購読するユーザIDを取得
-	 *
-	 * @return string|null 購読するユーザID
-	 */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * 購読するユーザIDを設定
-	 *
-	 * @param string|null $userId 購読するユーザID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * 購読するユーザIDを設定
-	 *
-	 * @param string|null $userId 購読するユーザID
-	 * @return SubscribeUser $this
-	 */
 	public function withUserId(?string $userId): SubscribeUser {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string 購読されるユーザID
-	 */
-	protected $targetUserId;
 
-	/**
-	 * 購読されるユーザIDを取得
-	 *
-	 * @return string|null 購読されるユーザID
-	 */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
 
-	/**
-	 * 購読されるユーザIDを設定
-	 *
-	 * @param string|null $targetUserId 購読されるユーザID
-	 */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
 
-	/**
-	 * 購読されるユーザIDを設定
-	 *
-	 * @param string|null $targetUserId 購読されるユーザID
-	 * @return SubscribeUser $this
-	 */
 	public function withTargetUserId(?string $targetUserId): SubscribeUser {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "categoryName" => $this->categoryName,
-            "userId" => $this->userId,
-            "targetUserId" => $this->targetUserId,
-        );
+    public static function fromJson(?array $data): ?SubscribeUser {
+        if ($data === null) {
+            return null;
+        }
+        return (new SubscribeUser())
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId']);
     }
 
-    public static function fromJson(array $data): SubscribeUser {
-        $model = new SubscribeUser();
-        $model->setCategoryName(isset($data["categoryName"]) ? $data["categoryName"] : null);
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setTargetUserId(isset($data["targetUserId"]) ? $data["targetUserId"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "categoryName" => $this->getCategoryName(),
+            "userId" => $this->getUserId(),
+            "targetUserId" => $this->getTargetUserId(),
+        );
     }
 }

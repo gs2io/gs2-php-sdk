@@ -20,120 +20,102 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\Progress;
 
-/**
- * 強化を完了 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class EndResult implements IResult {
-	/** @var Progress 強化実行 */
-	private $item;
-	/** @var string 報酬付与処理の実行に使用するスタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
-	/** @var int 獲得経験値量 */
-	private $acquireExperience;
-	/** @var float 経験値ボーナスの倍率(1.0=ボーナスなし) */
-	private $bonusRate;
+    /** @var Progress */
+    private $item;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
+    /** @var int */
+    private $acquireExperience;
+    /** @var float */
+    private $bonusRate;
 
-	/**
-	 * 強化実行を取得
-	 *
-	 * @return Progress|null 強化を完了
-	 */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
-	/**
-	 * 強化実行を設定
-	 *
-	 * @param Progress|null $item 強化を完了
-	 */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 報酬付与処理の実行に使用するスタンプシートを取得
-	 *
-	 * @return string|null 強化を完了
-	 */
+	public function withItem(?Progress $item): EndResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * 報酬付与処理の実行に使用するスタンプシートを設定
-	 *
-	 * @param string|null $stampSheet 強化を完了
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null 強化を完了
-	 */
+	public function withStampSheet(?string $stampSheet): EndResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId 強化を完了
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * 獲得経験値量を取得
-	 *
-	 * @return int|null 強化を完了
-	 */
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): EndResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
 	public function getAcquireExperience(): ?int {
 		return $this->acquireExperience;
 	}
 
-	/**
-	 * 獲得経験値量を設定
-	 *
-	 * @param int|null $acquireExperience 強化を完了
-	 */
 	public function setAcquireExperience(?int $acquireExperience) {
 		$this->acquireExperience = $acquireExperience;
 	}
 
-	/**
-	 * 経験値ボーナスの倍率(1.0=ボーナスなし)を取得
-	 *
-	 * @return float|null 強化を完了
-	 */
+	public function withAcquireExperience(?int $acquireExperience): EndResult {
+		$this->acquireExperience = $acquireExperience;
+		return $this;
+	}
+
 	public function getBonusRate(): ?float {
 		return $this->bonusRate;
 	}
 
-	/**
-	 * 経験値ボーナスの倍率(1.0=ボーナスなし)を設定
-	 *
-	 * @param float|null $bonusRate 強化を完了
-	 */
 	public function setBonusRate(?float $bonusRate) {
 		$this->bonusRate = $bonusRate;
 	}
 
-    public static function fromJson(array $data): EndResult {
-        $result = new EndResult();
-        $result->setItem(isset($data["item"]) ? Progress::fromJson($data["item"]) : null);
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        $result->setAcquireExperience(isset($data["acquireExperience"]) ? $data["acquireExperience"] : null);
-        $result->setBonusRate(isset($data["bonusRate"]) ? $data["bonusRate"] : null);
-        return $result;
+	public function withBonusRate(?float $bonusRate): EndResult {
+		$this->bonusRate = $bonusRate;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?EndResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new EndResult())
+            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId'])
+            ->withAcquireExperience(empty($data['acquireExperience']) ? null : $data['acquireExperience'])
+            ->withBonusRate(empty($data['bonusRate']) ? null : $data['bonusRate']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+            "acquireExperience" => $this->getAcquireExperience(),
+            "bonusRate" => $this->getBonusRate(),
+        );
     }
 }

@@ -20,42 +20,44 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
-/**
- * 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AttachSecurityPolicyResult implements IResult {
-	/** @var SecurityPolicy[] 新しくユーザーに割り当てたセキュリティポリシーのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 新しくユーザーに割り当てたセキュリティポリシーのリストを取得
-	 *
-	 * @return SecurityPolicy[]|null 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 新しくユーザーに割り当てたセキュリティポリシーのリストを設定
-	 *
-	 * @param SecurityPolicy[]|null $items 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): AttachSecurityPolicyResult {
-        $result = new AttachSecurityPolicyResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return SecurityPolicy::fromJson($v);
+	public function withItems(?array $items): AttachSecurityPolicyResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AttachSecurityPolicyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AttachSecurityPolicyResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return SecurityPolicy::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

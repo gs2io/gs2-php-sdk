@@ -19,80 +19,73 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\MaxStaminaTable;
+use Gs2\Stamina\Model\RecoverIntervalTable;
+use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
-/**
- * スタンプタスクを使用してスタミナを消費 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ConsumeStaminaByStampTaskResult implements IResult {
-	/** @var Stamina スタミナ */
-	private $item;
-	/** @var StaminaModel スタミナモデル */
-	private $staminaModel;
-	/** @var string スタンプタスクの実行結果を記録したコンテキスト */
-	private $newContextStack;
+    /** @var Stamina */
+    private $item;
+    /** @var StaminaModel */
+    private $staminaModel;
+    /** @var string */
+    private $newContextStack;
 
-	/**
-	 * スタミナを取得
-	 *
-	 * @return Stamina|null スタンプタスクを使用してスタミナを消費
-	 */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
-	/**
-	 * スタミナを設定
-	 *
-	 * @param Stamina|null $item スタンプタスクを使用してスタミナを消費
-	 */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタミナモデルを取得
-	 *
-	 * @return StaminaModel|null スタンプタスクを使用してスタミナを消費
-	 */
+	public function withItem(?Stamina $item): ConsumeStaminaByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
-	/**
-	 * スタミナモデルを設定
-	 *
-	 * @param StaminaModel|null $staminaModel スタンプタスクを使用してスタミナを消費
-	 */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを取得
-	 *
-	 * @return string|null スタンプタスクを使用してスタミナを消費
-	 */
+	public function withStaminaModel(?StaminaModel $staminaModel): ConsumeStaminaByStampTaskResult {
+		$this->staminaModel = $staminaModel;
+		return $this;
+	}
+
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを設定
-	 *
-	 * @param string|null $newContextStack スタンプタスクを使用してスタミナを消費
-	 */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
-    public static function fromJson(array $data): ConsumeStaminaByStampTaskResult {
-        $result = new ConsumeStaminaByStampTaskResult();
-        $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
-        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
-        $result->setNewContextStack(isset($data["newContextStack"]) ? $data["newContextStack"] : null);
-        return $result;
+	public function withNewContextStack(?string $newContextStack): ConsumeStaminaByStampTaskResult {
+		$this->newContextStack = $newContextStack;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ConsumeStaminaByStampTaskResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ConsumeStaminaByStampTaskResult())
+            ->withItem(empty($data['item']) ? null : Stamina::fromJson($data['item']))
+            ->withStaminaModel(empty($data['staminaModel']) ? null : StaminaModel::fromJson($data['staminaModel']))
+            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "staminaModel" => $this->getStaminaModel() !== null ? $this->getStaminaModel()->toJson() : null,
+            "newContextStack" => $this->getNewContextStack(),
+        );
     }
 }

@@ -19,75 +19,51 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ミッショングループマスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteMissionGroupModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ミッショングループマスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ミッショングループマスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ミッショングループマスターを削除
-     * @return DeleteMissionGroupModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteMissionGroupModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ミッショングループ名 */
+    /** @var string */
     private $missionGroupName;
 
-    /**
-     * ミッショングループ名を取得
-     *
-     * @return string|null ミッショングループマスターを削除
-     */
-    public function getMissionGroupName(): ?string {
-        return $this->missionGroupName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteMissionGroupModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getMissionGroupName(): ?string {
+		return $this->missionGroupName;
+	}
+
+	public function setMissionGroupName(?string $missionGroupName) {
+		$this->missionGroupName = $missionGroupName;
+	}
+
+	public function withMissionGroupName(?string $missionGroupName): DeleteMissionGroupModelMasterRequest {
+		$this->missionGroupName = $missionGroupName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteMissionGroupModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteMissionGroupModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName']);
     }
 
-    /**
-     * ミッショングループ名を設定
-     *
-     * @param string $missionGroupName ミッショングループマスターを削除
-     */
-    public function setMissionGroupName(string $missionGroupName = null) {
-        $this->missionGroupName = $missionGroupName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "missionGroupName" => $this->getMissionGroupName(),
+        );
     }
-
-    /**
-     * ミッショングループ名を設定
-     *
-     * @param string $missionGroupName ミッショングループマスターを削除
-     * @return DeleteMissionGroupModelMasterRequest $this
-     */
-    public function withMissionGroupName(string $missionGroupName = null): DeleteMissionGroupModelMasterRequest {
-        $this->setMissionGroupName($missionGroupName);
-        return $this;
-    }
-
 }

@@ -20,36 +20,34 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\GitHubApiKey;
 
-/**
- * GitHub のAPIキーを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateGitHubApiKeyResult implements IResult {
-	/** @var GitHubApiKey 更新したGitHub のAPIキー */
-	private $item;
+    /** @var GitHubApiKey */
+    private $item;
 
-	/**
-	 * 更新したGitHub のAPIキーを取得
-	 *
-	 * @return GitHubApiKey|null GitHub のAPIキーを更新
-	 */
 	public function getItem(): ?GitHubApiKey {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したGitHub のAPIキーを設定
-	 *
-	 * @param GitHubApiKey|null $item GitHub のAPIキーを更新
-	 */
 	public function setItem(?GitHubApiKey $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateGitHubApiKeyResult {
-        $result = new UpdateGitHubApiKeyResult();
-        $result->setItem(isset($data["item"]) ? GitHubApiKey::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?GitHubApiKey $item): UpdateGitHubApiKeyResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateGitHubApiKeyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateGitHubApiKeyResult())
+            ->withItem(empty($data['item']) ? null : GitHubApiKey::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

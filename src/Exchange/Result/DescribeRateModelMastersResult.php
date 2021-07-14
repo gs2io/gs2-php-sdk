@@ -18,65 +18,65 @@
 namespace Gs2\Exchange\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Exchange\Model\ConsumeAction;
+use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModelMaster;
 
-/**
- * 交換レートマスターの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeRateModelMastersResult implements IResult {
-	/** @var RateModelMaster[] 交換レートマスターのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 交換レートマスターのリストを取得
-	 *
-	 * @return RateModelMaster[]|null 交換レートマスターの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 交換レートマスターのリストを設定
-	 *
-	 * @param RateModelMaster[]|null $items 交換レートマスターの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null 交換レートマスターの一覧を取得
-	 */
+	public function withItems(?array $items): DescribeRateModelMastersResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken 交換レートマスターの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeRateModelMastersResult {
-        $result = new DescribeRateModelMastersResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return RateModelMaster::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeRateModelMastersResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeRateModelMastersResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeRateModelMastersResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return RateModelMaster::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

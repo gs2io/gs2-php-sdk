@@ -18,38 +18,39 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\AcquireAction;
+use Gs2\Quest\Model\Contents;
+use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModelMaster;
 
-/**
- * クエストモデルマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteQuestModelMasterResult implements IResult {
-	/** @var QuestModelMaster 削除したクエストモデルマスター */
-	private $item;
+    /** @var QuestModelMaster */
+    private $item;
 
-	/**
-	 * 削除したクエストモデルマスターを取得
-	 *
-	 * @return QuestModelMaster|null クエストモデルマスターを削除
-	 */
 	public function getItem(): ?QuestModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したクエストモデルマスターを設定
-	 *
-	 * @param QuestModelMaster|null $item クエストモデルマスターを削除
-	 */
 	public function setItem(?QuestModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteQuestModelMasterResult {
-        $result = new DeleteQuestModelMasterResult();
-        $result->setItem(isset($data["item"]) ? QuestModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?QuestModelMaster $item): DeleteQuestModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteQuestModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteQuestModelMasterResult())
+            ->withItem(empty($data['item']) ? null : QuestModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -20,203 +20,129 @@ namespace Gs2\Mission\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Mission\Model\CounterScopeModel;
 
-/**
- * カウンターの種類マスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCounterModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null カウンターの種類マスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カウンターの種類マスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カウンターの種類マスターを更新
-     * @return UpdateCounterModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateCounterModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カウンター名 */
+    /** @var string */
     private $counterName;
-
-    /**
-     * カウンター名を取得
-     *
-     * @return string|null カウンターの種類マスターを更新
-     */
-    public function getCounterName(): ?string {
-        return $this->counterName;
-    }
-
-    /**
-     * カウンター名を設定
-     *
-     * @param string $counterName カウンターの種類マスターを更新
-     */
-    public function setCounterName(string $counterName = null) {
-        $this->counterName = $counterName;
-    }
-
-    /**
-     * カウンター名を設定
-     *
-     * @param string $counterName カウンターの種類マスターを更新
-     * @return UpdateCounterModelMasterRequest $this
-     */
-    public function withCounterName(string $counterName = null): UpdateCounterModelMasterRequest {
-        $this->setCounterName($counterName);
-        return $this;
-    }
-
-    /** @var string メタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * メタデータを取得
-     *
-     * @return string|null カウンターの種類マスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata カウンターの種類マスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata カウンターの種類マスターを更新
-     * @return UpdateCounterModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateCounterModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string カウンターの種類マスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * カウンターの種類マスターの説明を取得
-     *
-     * @return string|null カウンターの種類マスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * カウンターの種類マスターの説明を設定
-     *
-     * @param string $description カウンターの種類マスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * カウンターの種類マスターの説明を設定
-     *
-     * @param string $description カウンターの種類マスターを更新
-     * @return UpdateCounterModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateCounterModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var CounterScopeModel[] カウンターのリセットタイミング */
+    /** @var array */
     private $scopes;
-
-    /**
-     * カウンターのリセットタイミングを取得
-     *
-     * @return CounterScopeModel[]|null カウンターの種類マスターを更新
-     */
-    public function getScopes(): ?array {
-        return $this->scopes;
-    }
-
-    /**
-     * カウンターのリセットタイミングを設定
-     *
-     * @param CounterScopeModel[] $scopes カウンターの種類マスターを更新
-     */
-    public function setScopes(array $scopes = null) {
-        $this->scopes = $scopes;
-    }
-
-    /**
-     * カウンターのリセットタイミングを設定
-     *
-     * @param CounterScopeModel[] $scopes カウンターの種類マスターを更新
-     * @return UpdateCounterModelMasterRequest $this
-     */
-    public function withScopes(array $scopes = null): UpdateCounterModelMasterRequest {
-        $this->setScopes($scopes);
-        return $this;
-    }
-
-    /** @var string カウントアップ可能な期間を指定するイベントマスター のGRN */
+    /** @var string */
     private $challengePeriodEventId;
 
-    /**
-     * カウントアップ可能な期間を指定するイベントマスター のGRNを取得
-     *
-     * @return string|null カウンターの種類マスターを更新
-     */
-    public function getChallengePeriodEventId(): ?string {
-        return $this->challengePeriodEventId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateCounterModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCounterName(): ?string {
+		return $this->counterName;
+	}
+
+	public function setCounterName(?string $counterName) {
+		$this->counterName = $counterName;
+	}
+
+	public function withCounterName(?string $counterName): UpdateCounterModelMasterRequest {
+		$this->counterName = $counterName;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateCounterModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateCounterModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getScopes(): ?array {
+		return $this->scopes;
+	}
+
+	public function setScopes(?array $scopes) {
+		$this->scopes = $scopes;
+	}
+
+	public function withScopes(?array $scopes): UpdateCounterModelMasterRequest {
+		$this->scopes = $scopes;
+		return $this;
+	}
+
+	public function getChallengePeriodEventId(): ?string {
+		return $this->challengePeriodEventId;
+	}
+
+	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+	}
+
+	public function withChallengePeriodEventId(?string $challengePeriodEventId): UpdateCounterModelMasterRequest {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCounterModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCounterModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withScopes(array_map(
+                function ($item) {
+                    return CounterScopeModel::fromJson($item);
+                },
+                array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
+            ))
+            ->withChallengePeriodEventId(empty($data['challengePeriodEventId']) ? null : $data['challengePeriodEventId']);
     }
 
-    /**
-     * カウントアップ可能な期間を指定するイベントマスター のGRNを設定
-     *
-     * @param string $challengePeriodEventId カウンターの種類マスターを更新
-     */
-    public function setChallengePeriodEventId(string $challengePeriodEventId = null) {
-        $this->challengePeriodEventId = $challengePeriodEventId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "counterName" => $this->getCounterName(),
+            "metadata" => $this->getMetadata(),
+            "description" => $this->getDescription(),
+            "scopes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
+            ),
+            "challengePeriodEventId" => $this->getChallengePeriodEventId(),
+        );
     }
-
-    /**
-     * カウントアップ可能な期間を指定するイベントマスター のGRNを設定
-     *
-     * @param string $challengePeriodEventId カウンターの種類マスターを更新
-     * @return UpdateCounterModelMasterRequest $this
-     */
-    public function withChallengePeriodEventId(string $challengePeriodEventId = null): UpdateCounterModelMasterRequest {
-        $this->setChallengePeriodEventId($challengePeriodEventId);
-        return $this;
-    }
-
 }

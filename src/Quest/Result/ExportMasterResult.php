@@ -20,36 +20,34 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\CurrentQuestMaster;
 
-/**
- * 現在有効なクエストマスターのマスターデータをエクスポートします のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ExportMasterResult implements IResult {
-	/** @var CurrentQuestMaster 現在有効なクエストマスター */
-	private $item;
+    /** @var CurrentQuestMaster */
+    private $item;
 
-	/**
-	 * 現在有効なクエストマスターを取得
-	 *
-	 * @return CurrentQuestMaster|null 現在有効なクエストマスターのマスターデータをエクスポートします
-	 */
 	public function getItem(): ?CurrentQuestMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効なクエストマスターを設定
-	 *
-	 * @param CurrentQuestMaster|null $item 現在有効なクエストマスターのマスターデータをエクスポートします
-	 */
 	public function setItem(?CurrentQuestMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): ExportMasterResult {
-        $result = new ExportMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentQuestMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentQuestMaster $item): ExportMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ExportMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ExportMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentQuestMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

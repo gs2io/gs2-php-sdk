@@ -20,36 +20,34 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\CurrentItemModelMaster;
 
-/**
- * 現在有効な所持品マスターを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentItemModelMasterResult implements IResult {
-	/** @var CurrentItemModelMaster 更新した現在有効な所持品マスター */
-	private $item;
+    /** @var CurrentItemModelMaster */
+    private $item;
 
-	/**
-	 * 更新した現在有効な所持品マスターを取得
-	 *
-	 * @return CurrentItemModelMaster|null 現在有効な所持品マスターを更新します
-	 */
 	public function getItem(): ?CurrentItemModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した現在有効な所持品マスターを設定
-	 *
-	 * @param CurrentItemModelMaster|null $item 現在有効な所持品マスターを更新します
-	 */
 	public function setItem(?CurrentItemModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateCurrentItemModelMasterResult {
-        $result = new UpdateCurrentItemModelMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentItemModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentItemModelMaster $item): UpdateCurrentItemModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentItemModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentItemModelMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentItemModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

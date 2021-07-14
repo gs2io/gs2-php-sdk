@@ -19,15 +19,17 @@ namespace Gs2\Gateway\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * モバイルプッシュ通知を送信 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SendMobileNotificationByUserIdResult implements IResult {
 
-    public static function fromJson(array $data): SendMobileNotificationByUserIdResult {
-        $result = new SendMobileNotificationByUserIdResult();
-        return $result;
+    public static function fromJson(?array $data): ?SendMobileNotificationByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SendMobileNotificationByUserIdResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

@@ -20,63 +20,61 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\Password;
 
-/**
- * パスワードの一覧を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribePasswordsResult implements IResult {
-	/** @var Password[] パスワードのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * パスワードのリストを取得
-	 *
-	 * @return Password[]|null パスワードの一覧を取得します
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * パスワードのリストを設定
-	 *
-	 * @param Password[]|null $items パスワードの一覧を取得します
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null パスワードの一覧を取得します
-	 */
+	public function withItems(?array $items): DescribePasswordsResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken パスワードの一覧を取得します
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribePasswordsResult {
-        $result = new DescribePasswordsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Password::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribePasswordsResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribePasswordsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribePasswordsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Password::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

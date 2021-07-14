@@ -19,107 +19,51 @@ namespace Gs2\Gateway\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してFirebaseデバイストークンを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してFirebaseデバイストークンを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してFirebaseデバイストークンを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してFirebaseデバイストークンを削除
-     * @return DeleteFirebaseTokenByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteFirebaseTokenByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
 
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してFirebaseデバイストークンを削除
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteFirebaseTokenByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DeleteFirebaseTokenByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteFirebaseTokenByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteFirebaseTokenByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してFirebaseデバイストークンを削除
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+        );
     }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してFirebaseデバイストークンを削除
-     * @return DeleteFirebaseTokenByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DeleteFirebaseTokenByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してFirebaseデバイストークンを削除
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してFirebaseデバイストークンを削除
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してFirebaseデバイストークンを削除
-     * @return DeleteFirebaseTokenByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteFirebaseTokenByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

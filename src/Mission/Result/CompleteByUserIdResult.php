@@ -19,57 +19,51 @@ namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 達成状況を新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CompleteByUserIdResult implements IResult {
-	/** @var string ミッションの達成報酬を受領するスタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
 
-	/**
-	 * ミッションの達成報酬を受領するスタンプシートを取得
-	 *
-	 * @return string|null 達成状況を新規作成
-	 */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * ミッションの達成報酬を受領するスタンプシートを設定
-	 *
-	 * @param string|null $stampSheet 達成状況を新規作成
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null 達成状況を新規作成
-	 */
+	public function withStampSheet(?string $stampSheet): CompleteByUserIdResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId 達成状況を新規作成
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-    public static function fromJson(array $data): CompleteByUserIdResult {
-        $result = new CompleteByUserIdResult();
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        return $result;
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): CompleteByUserIdResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CompleteByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CompleteByUserIdResult())
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+        );
     }
 }

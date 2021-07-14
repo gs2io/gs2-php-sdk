@@ -18,38 +18,38 @@
 namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inbox\Model\AcquireAction;
+use Gs2\Inbox\Model\TimeSpan;
 use Gs2\Inbox\Model\GlobalMessage;
 
-/**
- * 全ユーザに向けたメッセージを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetGlobalMessageResult implements IResult {
-	/** @var GlobalMessage 全ユーザに向けたメッセージ */
-	private $item;
+    /** @var GlobalMessage */
+    private $item;
 
-	/**
-	 * 全ユーザに向けたメッセージを取得
-	 *
-	 * @return GlobalMessage|null 全ユーザに向けたメッセージを取得
-	 */
 	public function getItem(): ?GlobalMessage {
 		return $this->item;
 	}
 
-	/**
-	 * 全ユーザに向けたメッセージを設定
-	 *
-	 * @param GlobalMessage|null $item 全ユーザに向けたメッセージを取得
-	 */
 	public function setItem(?GlobalMessage $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetGlobalMessageResult {
-        $result = new GetGlobalMessageResult();
-        $result->setItem(isset($data["item"]) ? GlobalMessage::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?GlobalMessage $item): GetGlobalMessageResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetGlobalMessageResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetGlobalMessageResult())
+            ->withItem(empty($data['item']) ? null : GlobalMessage::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

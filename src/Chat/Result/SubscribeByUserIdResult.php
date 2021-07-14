@@ -18,38 +18,37 @@
 namespace Gs2\Chat\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Chat\Model\NotificationType;
 use Gs2\Chat\Model\Subscribe;
 
-/**
- * ユーザIDを指定してルームを購読 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SubscribeByUserIdResult implements IResult {
-	/** @var Subscribe 購読した購読 */
-	private $item;
+    /** @var Subscribe */
+    private $item;
 
-	/**
-	 * 購読した購読を取得
-	 *
-	 * @return Subscribe|null ユーザIDを指定してルームを購読
-	 */
 	public function getItem(): ?Subscribe {
 		return $this->item;
 	}
 
-	/**
-	 * 購読した購読を設定
-	 *
-	 * @param Subscribe|null $item ユーザIDを指定してルームを購読
-	 */
 	public function setItem(?Subscribe $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): SubscribeByUserIdResult {
-        $result = new SubscribeByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Subscribe::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Subscribe $item): SubscribeByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SubscribeByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SubscribeByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Subscribe::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

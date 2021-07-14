@@ -19,91 +19,56 @@ namespace Gs2\Inventory\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 現在有効な所持品マスター
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class CurrentItemModelMaster implements IModel {
 	/**
-     * @var string ネームスペース
+     * @var string
 	 */
-	protected $namespaceId;
-
+	private $namespaceId;
 	/**
-	 * ネームスペースを取得
-	 *
-	 * @return string|null ネームスペース
+     * @var string
 	 */
+	private $settings;
+
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param string|null $namespaceId ネームスペース
-	 */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param string|null $namespaceId ネームスペース
-	 * @return CurrentItemModelMaster $this
-	 */
 	public function withNamespaceId(?string $namespaceId): CurrentItemModelMaster {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-	/**
-     * @var string マスターデータ
-	 */
-	protected $settings;
 
-	/**
-	 * マスターデータを取得
-	 *
-	 * @return string|null マスターデータ
-	 */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
 
-	/**
-	 * マスターデータを設定
-	 *
-	 * @param string|null $settings マスターデータ
-	 */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
 
-	/**
-	 * マスターデータを設定
-	 *
-	 * @param string|null $settings マスターデータ
-	 * @return CurrentItemModelMaster $this
-	 */
 	public function withSettings(?string $settings): CurrentItemModelMaster {
 		$this->settings = $settings;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "namespaceId" => $this->namespaceId,
-            "settings" => $this->settings,
-        );
+    public static function fromJson(?array $data): ?CurrentItemModelMaster {
+        if ($data === null) {
+            return null;
+        }
+        return (new CurrentItemModelMaster())
+            ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
+            ->withSettings(empty($data['settings']) ? null : $data['settings']);
     }
 
-    public static function fromJson(array $data): CurrentItemModelMaster {
-        $model = new CurrentItemModelMaster();
-        $model->setNamespaceId(isset($data["namespaceId"]) ? $data["namespaceId"] : null);
-        $model->setSettings(isset($data["settings"]) ? $data["settings"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "namespaceId" => $this->getNamespaceId(),
+            "settings" => $this->getSettings(),
+        );
     }
 }

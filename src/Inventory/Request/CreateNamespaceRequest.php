@@ -21,203 +21,119 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Inventory\Model\ScriptSetting;
 use Gs2\Inventory\Model\LogSetting;
 
-/**
- * ネームスペースを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $name;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withName(string $name = null): CreateNamespaceRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): CreateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var ScriptSetting アイテム入手したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $acquireScript;
-
-    /**
-     * アイテム入手したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getAcquireScript(): ?ScriptSetting {
-        return $this->acquireScript;
-    }
-
-    /**
-     * アイテム入手したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $acquireScript ネームスペースを新規作成
-     */
-    public function setAcquireScript(ScriptSetting $acquireScript = null) {
-        $this->acquireScript = $acquireScript;
-    }
-
-    /**
-     * アイテム入手したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $acquireScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withAcquireScript(ScriptSetting $acquireScript = null): CreateNamespaceRequest {
-        $this->setAcquireScript($acquireScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting 入手上限に当たって入手できなかったときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $overflowScript;
-
-    /**
-     * 入手上限に当たって入手できなかったときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getOverflowScript(): ?ScriptSetting {
-        return $this->overflowScript;
-    }
-
-    /**
-     * 入手上限に当たって入手できなかったときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $overflowScript ネームスペースを新規作成
-     */
-    public function setOverflowScript(ScriptSetting $overflowScript = null) {
-        $this->overflowScript = $overflowScript;
-    }
-
-    /**
-     * 入手上限に当たって入手できなかったときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $overflowScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withOverflowScript(ScriptSetting $overflowScript = null): CreateNamespaceRequest {
-        $this->setOverflowScript($overflowScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting アイテム消費するときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $consumeScript;
-
-    /**
-     * アイテム消費するときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getConsumeScript(): ?ScriptSetting {
-        return $this->consumeScript;
-    }
-
-    /**
-     * アイテム消費するときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $consumeScript ネームスペースを新規作成
-     */
-    public function setConsumeScript(ScriptSetting $consumeScript = null) {
-        $this->consumeScript = $consumeScript;
-    }
-
-    /**
-     * アイテム消費するときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $consumeScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withConsumeScript(ScriptSetting $consumeScript = null): CreateNamespaceRequest {
-        $this->setConsumeScript($consumeScript);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを新規作成
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateNamespaceRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getAcquireScript(): ?ScriptSetting {
+		return $this->acquireScript;
+	}
+
+	public function setAcquireScript(?ScriptSetting $acquireScript) {
+		$this->acquireScript = $acquireScript;
+	}
+
+	public function withAcquireScript(?ScriptSetting $acquireScript): CreateNamespaceRequest {
+		$this->acquireScript = $acquireScript;
+		return $this;
+	}
+
+	public function getOverflowScript(): ?ScriptSetting {
+		return $this->overflowScript;
+	}
+
+	public function setOverflowScript(?ScriptSetting $overflowScript) {
+		$this->overflowScript = $overflowScript;
+	}
+
+	public function withOverflowScript(?ScriptSetting $overflowScript): CreateNamespaceRequest {
+		$this->overflowScript = $overflowScript;
+		return $this;
+	}
+
+	public function getConsumeScript(): ?ScriptSetting {
+		return $this->consumeScript;
+	}
+
+	public function setConsumeScript(?ScriptSetting $consumeScript) {
+		$this->consumeScript = $consumeScript;
+	}
+
+	public function withConsumeScript(?ScriptSetting $consumeScript): CreateNamespaceRequest {
+		$this->consumeScript = $consumeScript;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withAcquireScript(empty($data['acquireScript']) ? null : ScriptSetting::fromJson($data['acquireScript']))
+            ->withOverflowScript(empty($data['overflowScript']) ? null : ScriptSetting::fromJson($data['overflowScript']))
+            ->withConsumeScript(empty($data['consumeScript']) ? null : ScriptSetting::fromJson($data['consumeScript']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "acquireScript" => $this->getAcquireScript() !== null ? $this->getAcquireScript()->toJson() : null,
+            "overflowScript" => $this->getOverflowScript() !== null ? $this->getOverflowScript()->toJson() : null,
+            "consumeScript" => $this->getConsumeScript() !== null ? $this->getConsumeScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): CreateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

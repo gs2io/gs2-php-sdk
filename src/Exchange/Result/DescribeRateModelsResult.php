@@ -18,44 +18,48 @@
 namespace Gs2\Exchange\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Exchange\Model\ConsumeAction;
+use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModel;
 
-/**
- * 交換レートモデルの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeRateModelsResult implements IResult {
-	/** @var RateModel[] 交換レートモデルのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 交換レートモデルのリストを取得
-	 *
-	 * @return RateModel[]|null 交換レートモデルの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 交換レートモデルのリストを設定
-	 *
-	 * @param RateModel[]|null $items 交換レートモデルの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeRateModelsResult {
-        $result = new DescribeRateModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return RateModel::fromJson($v);
+	public function withItems(?array $items): DescribeRateModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeRateModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeRateModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return RateModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

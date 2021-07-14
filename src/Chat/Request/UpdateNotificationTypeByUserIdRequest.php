@@ -20,171 +20,95 @@ namespace Gs2\Chat\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Chat\Model\NotificationType;
 
-/**
- * ユーザIDを指定して通知方法を更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNotificationTypeByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定して通知方法を更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して通知方法を更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して通知方法を更新
-     * @return UpdateNotificationTypeByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNotificationTypeByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null ユーザIDを指定して通知方法を更新
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ユーザIDを指定して通知方法を更新
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ユーザIDを指定して通知方法を更新
-     * @return UpdateNotificationTypeByUserIdRequest $this
-     */
-    public function withRoomName(string $roomName = null): UpdateNotificationTypeByUserIdRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var string 購読するユーザID */
+    /** @var string */
     private $userId;
-
-    /**
-     * 購読するユーザIDを取得
-     *
-     * @return string|null ユーザIDを指定して通知方法を更新
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * 購読するユーザIDを設定
-     *
-     * @param string $userId ユーザIDを指定して通知方法を更新
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * 購読するユーザIDを設定
-     *
-     * @param string $userId ユーザIDを指定して通知方法を更新
-     * @return UpdateNotificationTypeByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): UpdateNotificationTypeByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var NotificationType[] 新着メッセージ通知を受け取るカテゴリリスト */
+    /** @var array */
     private $notificationTypes;
 
-    /**
-     * 新着メッセージ通知を受け取るカテゴリリストを取得
-     *
-     * @return NotificationType[]|null ユーザIDを指定して通知方法を更新
-     */
-    public function getNotificationTypes(): ?array {
-        return $this->notificationTypes;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNotificationTypeByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): UpdateNotificationTypeByUserIdRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): UpdateNotificationTypeByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getNotificationTypes(): ?array {
+		return $this->notificationTypes;
+	}
+
+	public function setNotificationTypes(?array $notificationTypes) {
+		$this->notificationTypes = $notificationTypes;
+	}
+
+	public function withNotificationTypes(?array $notificationTypes): UpdateNotificationTypeByUserIdRequest {
+		$this->notificationTypes = $notificationTypes;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNotificationTypeByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNotificationTypeByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withNotificationTypes(array_map(
+                function ($item) {
+                    return NotificationType::fromJson($item);
+                },
+                array_key_exists('notificationTypes', $data) && $data['notificationTypes'] !== null ? $data['notificationTypes'] : []
+            ));
     }
 
-    /**
-     * 新着メッセージ通知を受け取るカテゴリリストを設定
-     *
-     * @param NotificationType[] $notificationTypes ユーザIDを指定して通知方法を更新
-     */
-    public function setNotificationTypes(array $notificationTypes = null) {
-        $this->notificationTypes = $notificationTypes;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "userId" => $this->getUserId(),
+            "notificationTypes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getNotificationTypes() !== null && $this->getNotificationTypes() !== null ? $this->getNotificationTypes() : []
+            ),
+        );
     }
-
-    /**
-     * 新着メッセージ通知を受け取るカテゴリリストを設定
-     *
-     * @param NotificationType[] $notificationTypes ユーザIDを指定して通知方法を更新
-     * @return UpdateNotificationTypeByUserIdRequest $this
-     */
-    public function withNotificationTypes(array $notificationTypes = null): UpdateNotificationTypeByUserIdRequest {
-        $this->setNotificationTypes($notificationTypes);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定して通知方法を更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して通知方法を更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して通知方法を更新
-     * @return UpdateNotificationTypeByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateNotificationTypeByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

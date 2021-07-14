@@ -18,38 +18,37 @@
 namespace Gs2\Chat\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Chat\Model\NotificationType;
 use Gs2\Chat\Model\Subscribe;
 
-/**
- * 通知方法を更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNotificationTypeResult implements IResult {
-	/** @var Subscribe 更新した購読 */
-	private $item;
+    /** @var Subscribe */
+    private $item;
 
-	/**
-	 * 更新した購読を取得
-	 *
-	 * @return Subscribe|null 通知方法を更新
-	 */
 	public function getItem(): ?Subscribe {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した購読を設定
-	 *
-	 * @param Subscribe|null $item 通知方法を更新
-	 */
 	public function setItem(?Subscribe $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateNotificationTypeResult {
-        $result = new UpdateNotificationTypeResult();
-        $result->setItem(isset($data["item"]) ? Subscribe::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Subscribe $item): UpdateNotificationTypeResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNotificationTypeResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNotificationTypeResult())
+            ->withItem(empty($data['item']) ? null : Subscribe::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

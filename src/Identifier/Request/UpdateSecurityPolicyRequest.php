@@ -19,107 +19,68 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * セキュリティポリシーを更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateSecurityPolicyRequest extends Gs2BasicRequest {
-
-    /** @var string セキュリティポリシー名 */
+    /** @var string */
     private $securityPolicyName;
-
-    /**
-     * セキュリティポリシー名を取得
-     *
-     * @return string|null セキュリティポリシーを更新します
-     */
-    public function getSecurityPolicyName(): ?string {
-        return $this->securityPolicyName;
-    }
-
-    /**
-     * セキュリティポリシー名を設定
-     *
-     * @param string $securityPolicyName セキュリティポリシーを更新します
-     */
-    public function setSecurityPolicyName(string $securityPolicyName = null) {
-        $this->securityPolicyName = $securityPolicyName;
-    }
-
-    /**
-     * セキュリティポリシー名を設定
-     *
-     * @param string $securityPolicyName セキュリティポリシーを更新します
-     * @return UpdateSecurityPolicyRequest $this
-     */
-    public function withSecurityPolicyName(string $securityPolicyName = null): UpdateSecurityPolicyRequest {
-        $this->setSecurityPolicyName($securityPolicyName);
-        return $this;
-    }
-
-    /** @var string セキュリティポリシーの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * セキュリティポリシーの説明を取得
-     *
-     * @return string|null セキュリティポリシーを更新します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * セキュリティポリシーの説明を設定
-     *
-     * @param string $description セキュリティポリシーを更新します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * セキュリティポリシーの説明を設定
-     *
-     * @param string $description セキュリティポリシーを更新します
-     * @return UpdateSecurityPolicyRequest $this
-     */
-    public function withDescription(string $description = null): UpdateSecurityPolicyRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string ポリシードキュメント */
+    /** @var string */
     private $policy;
 
-    /**
-     * ポリシードキュメントを取得
-     *
-     * @return string|null セキュリティポリシーを更新します
-     */
-    public function getPolicy(): ?string {
-        return $this->policy;
+	public function getSecurityPolicyName(): ?string {
+		return $this->securityPolicyName;
+	}
+
+	public function setSecurityPolicyName(?string $securityPolicyName) {
+		$this->securityPolicyName = $securityPolicyName;
+	}
+
+	public function withSecurityPolicyName(?string $securityPolicyName): UpdateSecurityPolicyRequest {
+		$this->securityPolicyName = $securityPolicyName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateSecurityPolicyRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getPolicy(): ?string {
+		return $this->policy;
+	}
+
+	public function setPolicy(?string $policy) {
+		$this->policy = $policy;
+	}
+
+	public function withPolicy(?string $policy): UpdateSecurityPolicyRequest {
+		$this->policy = $policy;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateSecurityPolicyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateSecurityPolicyRequest())
+            ->withSecurityPolicyName(empty($data['securityPolicyName']) ? null : $data['securityPolicyName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withPolicy(empty($data['policy']) ? null : $data['policy']);
     }
 
-    /**
-     * ポリシードキュメントを設定
-     *
-     * @param string $policy セキュリティポリシーを更新します
-     */
-    public function setPolicy(string $policy = null) {
-        $this->policy = $policy;
+    public function toJson(): array {
+        return array(
+            "securityPolicyName" => $this->getSecurityPolicyName(),
+            "description" => $this->getDescription(),
+            "policy" => $this->getPolicy(),
+        );
     }
-
-    /**
-     * ポリシードキュメントを設定
-     *
-     * @param string $policy セキュリティポリシーを更新します
-     * @return UpdateSecurityPolicyRequest $this
-     */
-    public function withPolicy(string $policy = null): UpdateSecurityPolicyRequest {
-        $this->setPolicy($policy);
-        return $this;
-    }
-
 }

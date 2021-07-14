@@ -19,75 +19,51 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * GitHub のAPIキーを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetGitHubApiKeyRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null GitHub のAPIキーを取得します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName GitHub のAPIキーを取得します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName GitHub のAPIキーを取得します
-     * @return GetGitHubApiKeyRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetGitHubApiKeyRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string GitHub APIキー名 */
+    /** @var string */
     private $apiKeyName;
 
-    /**
-     * GitHub APIキー名を取得
-     *
-     * @return string|null GitHub のAPIキーを取得します
-     */
-    public function getApiKeyName(): ?string {
-        return $this->apiKeyName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetGitHubApiKeyRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getApiKeyName(): ?string {
+		return $this->apiKeyName;
+	}
+
+	public function setApiKeyName(?string $apiKeyName) {
+		$this->apiKeyName = $apiKeyName;
+	}
+
+	public function withApiKeyName(?string $apiKeyName): GetGitHubApiKeyRequest {
+		$this->apiKeyName = $apiKeyName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetGitHubApiKeyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetGitHubApiKeyRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withApiKeyName(empty($data['apiKeyName']) ? null : $data['apiKeyName']);
     }
 
-    /**
-     * GitHub APIキー名を設定
-     *
-     * @param string $apiKeyName GitHub のAPIキーを取得します
-     */
-    public function setApiKeyName(string $apiKeyName = null) {
-        $this->apiKeyName = $apiKeyName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "apiKeyName" => $this->getApiKeyName(),
+        );
     }
-
-    /**
-     * GitHub APIキー名を設定
-     *
-     * @param string $apiKeyName GitHub のAPIキーを取得します
-     * @return GetGitHubApiKeyRequest $this
-     */
-    public function withApiKeyName(string $apiKeyName = null): GetGitHubApiKeyRequest {
-        $this->setApiKeyName($apiKeyName);
-        return $this;
-    }
-
 }

@@ -20,36 +20,34 @@ namespace Gs2\Showcase\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\CurrentShowcaseMaster;
 
-/**
- * 現在有効な陳列棚マスターのマスターデータをエクスポートします のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ExportMasterResult implements IResult {
-	/** @var CurrentShowcaseMaster 現在有効な陳列棚マスター */
-	private $item;
+    /** @var CurrentShowcaseMaster */
+    private $item;
 
-	/**
-	 * 現在有効な陳列棚マスターを取得
-	 *
-	 * @return CurrentShowcaseMaster|null 現在有効な陳列棚マスターのマスターデータをエクスポートします
-	 */
 	public function getItem(): ?CurrentShowcaseMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効な陳列棚マスターを設定
-	 *
-	 * @param CurrentShowcaseMaster|null $item 現在有効な陳列棚マスターのマスターデータをエクスポートします
-	 */
 	public function setItem(?CurrentShowcaseMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): ExportMasterResult {
-        $result = new ExportMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentShowcaseMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentShowcaseMaster $item): ExportMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ExportMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ExportMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentShowcaseMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

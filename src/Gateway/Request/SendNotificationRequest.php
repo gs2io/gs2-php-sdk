@@ -19,267 +19,119 @@ namespace Gs2\Gateway\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 通知を送信 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SendNotificationRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 通知を送信
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 通知を送信
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 通知を送信
-     * @return SendNotificationRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): SendNotificationRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 通知を送信
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 通知を送信
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 通知を送信
-     * @return SendNotificationRequest $this
-     */
-    public function withUserId(string $userId = null): SendNotificationRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 通知元のサービス */
-    private $issuer;
-
-    /**
-     * 通知元のサービスを取得
-     *
-     * @return string|null 通知を送信
-     */
-    public function getIssuer(): ?string {
-        return $this->issuer;
-    }
-
-    /**
-     * 通知元のサービスを設定
-     *
-     * @param string $issuer 通知を送信
-     */
-    public function setIssuer(string $issuer = null) {
-        $this->issuer = $issuer;
-    }
-
-    /**
-     * 通知元のサービスを設定
-     *
-     * @param string $issuer 通知を送信
-     * @return SendNotificationRequest $this
-     */
-    public function withIssuer(string $issuer = null): SendNotificationRequest {
-        $this->setIssuer($issuer);
-        return $this;
-    }
-
-    /** @var string タイトル */
+    /** @var string */
     private $subject;
-
-    /**
-     * タイトルを取得
-     *
-     * @return string|null 通知を送信
-     */
-    public function getSubject(): ?string {
-        return $this->subject;
-    }
-
-    /**
-     * タイトルを設定
-     *
-     * @param string $subject 通知を送信
-     */
-    public function setSubject(string $subject = null) {
-        $this->subject = $subject;
-    }
-
-    /**
-     * タイトルを設定
-     *
-     * @param string $subject 通知を送信
-     * @return SendNotificationRequest $this
-     */
-    public function withSubject(string $subject = null): SendNotificationRequest {
-        $this->setSubject($subject);
-        return $this;
-    }
-
-    /** @var string ペイロード */
+    /** @var string */
     private $payload;
-
-    /**
-     * ペイロードを取得
-     *
-     * @return string|null 通知を送信
-     */
-    public function getPayload(): ?string {
-        return $this->payload;
-    }
-
-    /**
-     * ペイロードを設定
-     *
-     * @param string $payload 通知を送信
-     */
-    public function setPayload(string $payload = null) {
-        $this->payload = $payload;
-    }
-
-    /**
-     * ペイロードを設定
-     *
-     * @param string $payload 通知を送信
-     * @return SendNotificationRequest $this
-     */
-    public function withPayload(string $payload = null): SendNotificationRequest {
-        $this->setPayload($payload);
-        return $this;
-    }
-
-    /** @var bool 通知先のユーザがオフラインだったときにモバイルプッシュ通知に転送するか */
+    /** @var bool */
     private $enableTransferMobileNotification;
-
-    /**
-     * 通知先のユーザがオフラインだったときにモバイルプッシュ通知に転送するかを取得
-     *
-     * @return bool|null 通知を送信
-     */
-    public function getEnableTransferMobileNotification(): ?bool {
-        return $this->enableTransferMobileNotification;
-    }
-
-    /**
-     * 通知先のユーザがオフラインだったときにモバイルプッシュ通知に転送するかを設定
-     *
-     * @param bool $enableTransferMobileNotification 通知を送信
-     */
-    public function setEnableTransferMobileNotification(bool $enableTransferMobileNotification = null) {
-        $this->enableTransferMobileNotification = $enableTransferMobileNotification;
-    }
-
-    /**
-     * 通知先のユーザがオフラインだったときにモバイルプッシュ通知に転送するかを設定
-     *
-     * @param bool $enableTransferMobileNotification 通知を送信
-     * @return SendNotificationRequest $this
-     */
-    public function withEnableTransferMobileNotification(bool $enableTransferMobileNotification = null): SendNotificationRequest {
-        $this->setEnableTransferMobileNotification($enableTransferMobileNotification);
-        return $this;
-    }
-
-    /** @var string 再生する音声ファイル名 */
+    /** @var string */
     private $sound;
 
-    /**
-     * 再生する音声ファイル名を取得
-     *
-     * @return string|null 通知を送信
-     */
-    public function getSound(): ?string {
-        return $this->sound;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): SendNotificationRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): SendNotificationRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getSubject(): ?string {
+		return $this->subject;
+	}
+
+	public function setSubject(?string $subject) {
+		$this->subject = $subject;
+	}
+
+	public function withSubject(?string $subject): SendNotificationRequest {
+		$this->subject = $subject;
+		return $this;
+	}
+
+	public function getPayload(): ?string {
+		return $this->payload;
+	}
+
+	public function setPayload(?string $payload) {
+		$this->payload = $payload;
+	}
+
+	public function withPayload(?string $payload): SendNotificationRequest {
+		$this->payload = $payload;
+		return $this;
+	}
+
+	public function getEnableTransferMobileNotification(): ?bool {
+		return $this->enableTransferMobileNotification;
+	}
+
+	public function setEnableTransferMobileNotification(?bool $enableTransferMobileNotification) {
+		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
+	}
+
+	public function withEnableTransferMobileNotification(?bool $enableTransferMobileNotification): SendNotificationRequest {
+		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
+		return $this;
+	}
+
+	public function getSound(): ?string {
+		return $this->sound;
+	}
+
+	public function setSound(?string $sound) {
+		$this->sound = $sound;
+	}
+
+	public function withSound(?string $sound): SendNotificationRequest {
+		$this->sound = $sound;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SendNotificationRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SendNotificationRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withSubject(empty($data['subject']) ? null : $data['subject'])
+            ->withPayload(empty($data['payload']) ? null : $data['payload'])
+            ->withEnableTransferMobileNotification(empty($data['enableTransferMobileNotification']) ? null : $data['enableTransferMobileNotification'])
+            ->withSound(empty($data['sound']) ? null : $data['sound']);
     }
 
-    /**
-     * 再生する音声ファイル名を設定
-     *
-     * @param string $sound 通知を送信
-     */
-    public function setSound(string $sound = null) {
-        $this->sound = $sound;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "subject" => $this->getSubject(),
+            "payload" => $this->getPayload(),
+            "enableTransferMobileNotification" => $this->getEnableTransferMobileNotification(),
+            "sound" => $this->getSound(),
+        );
     }
-
-    /**
-     * 再生する音声ファイル名を設定
-     *
-     * @param string $sound 通知を送信
-     * @return SendNotificationRequest $this
-     */
-    public function withSound(string $sound = null): SendNotificationRequest {
-        $this->setSound($sound);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 通知を送信
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 通知を送信
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 通知を送信
-     * @return SendNotificationRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): SendNotificationRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

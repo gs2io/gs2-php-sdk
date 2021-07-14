@@ -19,75 +19,51 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * プロジェクトトークン を取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class LoginByUserRequest extends Gs2BasicRequest {
-
-    /** @var string GS2-Identifier のユーザ名 */
+    /** @var string */
     private $userName;
-
-    /**
-     * GS2-Identifier のユーザ名を取得
-     *
-     * @return string|null プロジェクトトークン を取得します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
-     * GS2-Identifier のユーザ名を設定
-     *
-     * @param string $userName プロジェクトトークン を取得します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
-    }
-
-    /**
-     * GS2-Identifier のユーザ名を設定
-     *
-     * @param string $userName プロジェクトトークン を取得します
-     * @return LoginByUserRequest $this
-     */
-    public function withUserName(string $userName = null): LoginByUserRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
-    /** @var string GS2-Identifier のユーザのパスワード */
+    /** @var string */
     private $password;
 
-    /**
-     * GS2-Identifier のユーザのパスワードを取得
-     *
-     * @return string|null プロジェクトトークン を取得します
-     */
-    public function getPassword(): ?string {
-        return $this->password;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): LoginByUserRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): LoginByUserRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?LoginByUserRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new LoginByUserRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName'])
+            ->withPassword(empty($data['password']) ? null : $data['password']);
     }
 
-    /**
-     * GS2-Identifier のユーザのパスワードを設定
-     *
-     * @param string $password プロジェクトトークン を取得します
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+            "password" => $this->getPassword(),
+        );
     }
-
-    /**
-     * GS2-Identifier のユーザのパスワードを設定
-     *
-     * @param string $password プロジェクトトークン を取得します
-     * @return LoginByUserRequest $this
-     */
-    public function withPassword(string $password = null): LoginByUserRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
 }

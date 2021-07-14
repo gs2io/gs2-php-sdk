@@ -20,203 +20,112 @@ namespace Gs2\Exchange\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\Config;
 
-/**
- * 交換を実行 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class ExchangeRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 交換を実行
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 交換を実行
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 交換を実行
-     * @return ExchangeRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): ExchangeRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 交換レートの種類名 */
+    /** @var string */
     private $rateName;
-
-    /**
-     * 交換レートの種類名を取得
-     *
-     * @return string|null 交換を実行
-     */
-    public function getRateName(): ?string {
-        return $this->rateName;
-    }
-
-    /**
-     * 交換レートの種類名を設定
-     *
-     * @param string $rateName 交換を実行
-     */
-    public function setRateName(string $rateName = null) {
-        $this->rateName = $rateName;
-    }
-
-    /**
-     * 交換レートの種類名を設定
-     *
-     * @param string $rateName 交換を実行
-     * @return ExchangeRequest $this
-     */
-    public function withRateName(string $rateName = null): ExchangeRequest {
-        $this->setRateName($rateName);
-        return $this;
-    }
-
-    /** @var int 交換するロット数 */
+    /** @var string */
+    private $accessToken;
+    /** @var int */
     private $count;
-
-    /**
-     * 交換するロット数を取得
-     *
-     * @return int|null 交換を実行
-     */
-    public function getCount(): ?int {
-        return $this->count;
-    }
-
-    /**
-     * 交換するロット数を設定
-     *
-     * @param int $count 交換を実行
-     */
-    public function setCount(int $count = null) {
-        $this->count = $count;
-    }
-
-    /**
-     * 交換するロット数を設定
-     *
-     * @param int $count 交換を実行
-     * @return ExchangeRequest $this
-     */
-    public function withCount(int $count = null): ExchangeRequest {
-        $this->setCount($count);
-        return $this;
-    }
-
-    /** @var Config[] 設定値 */
+    /** @var array */
     private $config;
 
-    /**
-     * 設定値を取得
-     *
-     * @return Config[]|null 交換を実行
-     */
-    public function getConfig(): ?array {
-        return $this->config;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): ExchangeRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRateName(): ?string {
+		return $this->rateName;
+	}
+
+	public function setRateName(?string $rateName) {
+		$this->rateName = $rateName;
+	}
+
+	public function withRateName(?string $rateName): ExchangeRequest {
+		$this->rateName = $rateName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): ExchangeRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getCount(): ?int {
+		return $this->count;
+	}
+
+	public function setCount(?int $count) {
+		$this->count = $count;
+	}
+
+	public function withCount(?int $count): ExchangeRequest {
+		$this->count = $count;
+		return $this;
+	}
+
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+
+	public function withConfig(?array $config): ExchangeRequest {
+		$this->config = $config;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ExchangeRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new ExchangeRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withCount(empty($data['count']) ? null : $data['count'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    /**
-     * 設定値を設定
-     *
-     * @param Config[] $config 交換を実行
-     */
-    public function setConfig(array $config = null) {
-        $this->config = $config;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "rateName" => $this->getRateName(),
+            "accessToken" => $this->getAccessToken(),
+            "count" => $this->getCount(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
+        );
     }
-
-    /**
-     * 設定値を設定
-     *
-     * @param Config[] $config 交換を実行
-     * @return ExchangeRequest $this
-     */
-    public function withConfig(array $config = null): ExchangeRequest {
-        $this->setConfig($config);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 交換を実行
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 交換を実行
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 交換を実行
-     * @return ExchangeRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): ExchangeRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return ExchangeRequest this
-     */
-    public function withAccessToken(string $accessToken): ExchangeRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

@@ -19,75 +19,51 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタミナの最大値テーブルマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMaxStaminaTableMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタミナの最大値テーブルマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナの最大値テーブルマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナの最大値テーブルマスターを取得
-     * @return GetMaxStaminaTableMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetMaxStaminaTableMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 最大スタミナ値テーブル名 */
+    /** @var string */
     private $maxStaminaTableName;
 
-    /**
-     * 最大スタミナ値テーブル名を取得
-     *
-     * @return string|null スタミナの最大値テーブルマスターを取得
-     */
-    public function getMaxStaminaTableName(): ?string {
-        return $this->maxStaminaTableName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetMaxStaminaTableMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getMaxStaminaTableName(): ?string {
+		return $this->maxStaminaTableName;
+	}
+
+	public function setMaxStaminaTableName(?string $maxStaminaTableName) {
+		$this->maxStaminaTableName = $maxStaminaTableName;
+	}
+
+	public function withMaxStaminaTableName(?string $maxStaminaTableName): GetMaxStaminaTableMasterRequest {
+		$this->maxStaminaTableName = $maxStaminaTableName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMaxStaminaTableMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMaxStaminaTableMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withMaxStaminaTableName(empty($data['maxStaminaTableName']) ? null : $data['maxStaminaTableName']);
     }
 
-    /**
-     * 最大スタミナ値テーブル名を設定
-     *
-     * @param string $maxStaminaTableName スタミナの最大値テーブルマスターを取得
-     */
-    public function setMaxStaminaTableName(string $maxStaminaTableName = null) {
-        $this->maxStaminaTableName = $maxStaminaTableName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "maxStaminaTableName" => $this->getMaxStaminaTableName(),
+        );
     }
-
-    /**
-     * 最大スタミナ値テーブル名を設定
-     *
-     * @param string $maxStaminaTableName スタミナの最大値テーブルマスターを取得
-     * @return GetMaxStaminaTableMasterRequest $this
-     */
-    public function withMaxStaminaTableName(string $maxStaminaTableName = null): GetMaxStaminaTableMasterRequest {
-        $this->setMaxStaminaTableName($maxStaminaTableName);
-        return $this;
-    }
-
 }

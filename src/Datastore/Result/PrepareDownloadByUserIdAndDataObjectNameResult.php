@@ -20,78 +20,68 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
-/**
- * ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class PrepareDownloadByUserIdAndDataObjectNameResult implements IResult {
-	/** @var DataObject データオブジェクト */
-	private $item;
-	/** @var string ファイルをダウンロードするためのURL */
-	private $fileUrl;
-	/** @var int ファイルの容量 */
-	private $contentLength;
+    /** @var DataObject */
+    private $item;
+    /** @var string */
+    private $fileUrl;
+    /** @var int */
+    private $contentLength;
 
-	/**
-	 * データオブジェクトを取得
-	 *
-	 * @return DataObject|null ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する
-	 */
 	public function getItem(): ?DataObject {
 		return $this->item;
 	}
 
-	/**
-	 * データオブジェクトを設定
-	 *
-	 * @param DataObject|null $item ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する
-	 */
 	public function setItem(?DataObject $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * ファイルをダウンロードするためのURLを取得
-	 *
-	 * @return string|null ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する
-	 */
+	public function withItem(?DataObject $item): PrepareDownloadByUserIdAndDataObjectNameResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getFileUrl(): ?string {
 		return $this->fileUrl;
 	}
 
-	/**
-	 * ファイルをダウンロードするためのURLを設定
-	 *
-	 * @param string|null $fileUrl ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する
-	 */
 	public function setFileUrl(?string $fileUrl) {
 		$this->fileUrl = $fileUrl;
 	}
 
-	/**
-	 * ファイルの容量を取得
-	 *
-	 * @return int|null ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する
-	 */
+	public function withFileUrl(?string $fileUrl): PrepareDownloadByUserIdAndDataObjectNameResult {
+		$this->fileUrl = $fileUrl;
+		return $this;
+	}
+
 	public function getContentLength(): ?int {
 		return $this->contentLength;
 	}
 
-	/**
-	 * ファイルの容量を設定
-	 *
-	 * @param int|null $contentLength ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する
-	 */
 	public function setContentLength(?int $contentLength) {
 		$this->contentLength = $contentLength;
 	}
 
-    public static function fromJson(array $data): PrepareDownloadByUserIdAndDataObjectNameResult {
-        $result = new PrepareDownloadByUserIdAndDataObjectNameResult();
-        $result->setItem(isset($data["item"]) ? DataObject::fromJson($data["item"]) : null);
-        $result->setFileUrl(isset($data["fileUrl"]) ? $data["fileUrl"] : null);
-        $result->setContentLength(isset($data["contentLength"]) ? $data["contentLength"] : null);
-        return $result;
+	public function withContentLength(?int $contentLength): PrepareDownloadByUserIdAndDataObjectNameResult {
+		$this->contentLength = $contentLength;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PrepareDownloadByUserIdAndDataObjectNameResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new PrepareDownloadByUserIdAndDataObjectNameResult())
+            ->withItem(empty($data['item']) ? null : DataObject::fromJson($data['item']))
+            ->withFileUrl(empty($data['fileUrl']) ? null : $data['fileUrl'])
+            ->withContentLength(empty($data['contentLength']) ? null : $data['contentLength']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "fileUrl" => $this->getFileUrl(),
+            "contentLength" => $this->getContentLength(),
+        );
     }
 }

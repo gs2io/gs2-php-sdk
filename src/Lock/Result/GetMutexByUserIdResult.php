@@ -20,36 +20,34 @@ namespace Gs2\Lock\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lock\Model\Mutex;
 
-/**
- * ユーザIDを指定してミューテックスを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMutexByUserIdResult implements IResult {
-	/** @var Mutex ミューテックス */
-	private $item;
+    /** @var Mutex */
+    private $item;
 
-	/**
-	 * ミューテックスを取得
-	 *
-	 * @return Mutex|null ユーザIDを指定してミューテックスを取得
-	 */
 	public function getItem(): ?Mutex {
 		return $this->item;
 	}
 
-	/**
-	 * ミューテックスを設定
-	 *
-	 * @param Mutex|null $item ユーザIDを指定してミューテックスを取得
-	 */
 	public function setItem(?Mutex $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetMutexByUserIdResult {
-        $result = new GetMutexByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Mutex::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Mutex $item): GetMutexByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMutexByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMutexByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Mutex::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -20,36 +20,34 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\Rating;
 
-/**
- * レーティングを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRatingResult implements IResult {
-	/** @var Rating レーティング */
-	private $item;
+    /** @var Rating */
+    private $item;
 
-	/**
-	 * レーティングを取得
-	 *
-	 * @return Rating|null レーティングを削除
-	 */
 	public function getItem(): ?Rating {
 		return $this->item;
 	}
 
-	/**
-	 * レーティングを設定
-	 *
-	 * @param Rating|null $item レーティングを削除
-	 */
 	public function setItem(?Rating $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteRatingResult {
-        $result = new DeleteRatingResult();
-        $result->setItem(isset($data["item"]) ? Rating::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Rating $item): DeleteRatingResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRatingResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRatingResult())
+            ->withItem(empty($data['item']) ? null : Rating::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

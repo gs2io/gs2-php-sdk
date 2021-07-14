@@ -19,75 +19,51 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ギャザリングを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteGatheringRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ギャザリングを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ギャザリングを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ギャザリングを削除
-     * @return DeleteGatheringRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteGatheringRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ギャザリング名 */
+    /** @var string */
     private $gatheringName;
 
-    /**
-     * ギャザリング名を取得
-     *
-     * @return string|null ギャザリングを削除
-     */
-    public function getGatheringName(): ?string {
-        return $this->gatheringName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteGatheringRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getGatheringName(): ?string {
+		return $this->gatheringName;
+	}
+
+	public function setGatheringName(?string $gatheringName) {
+		$this->gatheringName = $gatheringName;
+	}
+
+	public function withGatheringName(?string $gatheringName): DeleteGatheringRequest {
+		$this->gatheringName = $gatheringName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteGatheringRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteGatheringRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName']);
     }
 
-    /**
-     * ギャザリング名を設定
-     *
-     * @param string $gatheringName ギャザリングを削除
-     */
-    public function setGatheringName(string $gatheringName = null) {
-        $this->gatheringName = $gatheringName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "gatheringName" => $this->getGatheringName(),
+        );
     }
-
-    /**
-     * ギャザリング名を設定
-     *
-     * @param string $gatheringName ギャザリングを削除
-     * @return DeleteGatheringRequest $this
-     */
-    public function withGatheringName(string $gatheringName = null): DeleteGatheringRequest {
-        $this->setGatheringName($gatheringName);
-        return $this;
-    }
-
 }

@@ -20,171 +20,95 @@ namespace Gs2\Chat\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Chat\Model\NotificationType;
 
-/**
- * 通知方法を更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNotificationTypeRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 通知方法を更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 通知方法を更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 通知方法を更新
-     * @return UpdateNotificationTypeRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNotificationTypeRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null 通知方法を更新
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName 通知方法を更新
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName 通知方法を更新
-     * @return UpdateNotificationTypeRequest $this
-     */
-    public function withRoomName(string $roomName = null): UpdateNotificationTypeRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var NotificationType[] 新着メッセージ通知を受け取るカテゴリリスト */
+    /** @var string */
+    private $accessToken;
+    /** @var array */
     private $notificationTypes;
 
-    /**
-     * 新着メッセージ通知を受け取るカテゴリリストを取得
-     *
-     * @return NotificationType[]|null 通知方法を更新
-     */
-    public function getNotificationTypes(): ?array {
-        return $this->notificationTypes;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNotificationTypeRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): UpdateNotificationTypeRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): UpdateNotificationTypeRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getNotificationTypes(): ?array {
+		return $this->notificationTypes;
+	}
+
+	public function setNotificationTypes(?array $notificationTypes) {
+		$this->notificationTypes = $notificationTypes;
+	}
+
+	public function withNotificationTypes(?array $notificationTypes): UpdateNotificationTypeRequest {
+		$this->notificationTypes = $notificationTypes;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNotificationTypeRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNotificationTypeRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withNotificationTypes(array_map(
+                function ($item) {
+                    return NotificationType::fromJson($item);
+                },
+                array_key_exists('notificationTypes', $data) && $data['notificationTypes'] !== null ? $data['notificationTypes'] : []
+            ));
     }
 
-    /**
-     * 新着メッセージ通知を受け取るカテゴリリストを設定
-     *
-     * @param NotificationType[] $notificationTypes 通知方法を更新
-     */
-    public function setNotificationTypes(array $notificationTypes = null) {
-        $this->notificationTypes = $notificationTypes;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "accessToken" => $this->getAccessToken(),
+            "notificationTypes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getNotificationTypes() !== null && $this->getNotificationTypes() !== null ? $this->getNotificationTypes() : []
+            ),
+        );
     }
-
-    /**
-     * 新着メッセージ通知を受け取るカテゴリリストを設定
-     *
-     * @param NotificationType[] $notificationTypes 通知方法を更新
-     * @return UpdateNotificationTypeRequest $this
-     */
-    public function withNotificationTypes(array $notificationTypes = null): UpdateNotificationTypeRequest {
-        $this->setNotificationTypes($notificationTypes);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 通知方法を更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 通知方法を更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 通知方法を更新
-     * @return UpdateNotificationTypeRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateNotificationTypeRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return UpdateNotificationTypeRequest this
-     */
-    public function withAccessToken(string $accessToken): UpdateNotificationTypeRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

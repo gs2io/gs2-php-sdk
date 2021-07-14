@@ -20,36 +20,34 @@ namespace Gs2\Script\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Script\Model\Script;
 
-/**
- * GitHubリポジトリのコードからスクリプトを新規作成します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateScriptFromGitHubResult implements IResult {
-	/** @var Script 作成したスクリプト */
-	private $item;
+    /** @var Script */
+    private $item;
 
-	/**
-	 * 作成したスクリプトを取得
-	 *
-	 * @return Script|null GitHubリポジトリのコードからスクリプトを新規作成します
-	 */
 	public function getItem(): ?Script {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したスクリプトを設定
-	 *
-	 * @param Script|null $item GitHubリポジトリのコードからスクリプトを新規作成します
-	 */
 	public function setItem(?Script $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateScriptFromGitHubResult {
-        $result = new CreateScriptFromGitHubResult();
-        $result->setItem(isset($data["item"]) ? Script::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Script $item): CreateScriptFromGitHubResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateScriptFromGitHubResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateScriptFromGitHubResult())
+            ->withItem(empty($data['item']) ? null : Script::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -19,139 +19,68 @@ namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 現在のバージョンを承認 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class AcceptRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 現在のバージョンを承認
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 現在のバージョンを承認
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 現在のバージョンを承認
-     * @return AcceptRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): AcceptRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 承認したバージョン名 */
+    /** @var string */
     private $versionName;
-
-    /**
-     * 承認したバージョン名を取得
-     *
-     * @return string|null 現在のバージョンを承認
-     */
-    public function getVersionName(): ?string {
-        return $this->versionName;
-    }
-
-    /**
-     * 承認したバージョン名を設定
-     *
-     * @param string $versionName 現在のバージョンを承認
-     */
-    public function setVersionName(string $versionName = null) {
-        $this->versionName = $versionName;
-    }
-
-    /**
-     * 承認したバージョン名を設定
-     *
-     * @param string $versionName 現在のバージョンを承認
-     * @return AcceptRequest $this
-     */
-    public function withVersionName(string $versionName = null): AcceptRequest {
-        $this->setVersionName($versionName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 現在のバージョンを承認
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 現在のバージョンを承認
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 現在のバージョンを承認
-     * @return AcceptRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): AcceptRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
+    /** @var string */
     private $accessToken;
 
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): AcceptRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getVersionName(): ?string {
+		return $this->versionName;
+	}
+
+	public function setVersionName(?string $versionName) {
+		$this->versionName = $versionName;
+	}
+
+	public function withVersionName(?string $versionName): AcceptRequest {
+		$this->versionName = $versionName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): AcceptRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AcceptRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new AcceptRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withVersionName(empty($data['versionName']) ? null : $data['versionName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
     }
 
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "versionName" => $this->getVersionName(),
+            "accessToken" => $this->getAccessToken(),
+        );
     }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return AcceptRequest this
-     */
-    public function withAccessToken(string $accessToken): AcceptRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

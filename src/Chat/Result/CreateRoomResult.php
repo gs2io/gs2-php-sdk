@@ -20,36 +20,34 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Room;
 
-/**
- * ルームを作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateRoomResult implements IResult {
-	/** @var Room 作成したルーム */
-	private $item;
+    /** @var Room */
+    private $item;
 
-	/**
-	 * 作成したルームを取得
-	 *
-	 * @return Room|null ルームを作成
-	 */
 	public function getItem(): ?Room {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したルームを設定
-	 *
-	 * @param Room|null $item ルームを作成
-	 */
 	public function setItem(?Room $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateRoomResult {
-        $result = new CreateRoomResult();
-        $result->setItem(isset($data["item"]) ? Room::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Room $item): CreateRoomResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateRoomResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateRoomResult())
+            ->withItem(empty($data['item']) ? null : Room::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

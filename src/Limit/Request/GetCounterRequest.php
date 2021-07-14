@@ -19,171 +19,85 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * カウンターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCounterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null カウンターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カウンターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カウンターを取得
-     * @return GetCounterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetCounterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 回数制限の種類の名前 */
+    /** @var string */
     private $limitName;
-
-    /**
-     * 回数制限の種類の名前を取得
-     *
-     * @return string|null カウンターを取得
-     */
-    public function getLimitName(): ?string {
-        return $this->limitName;
-    }
-
-    /**
-     * 回数制限の種類の名前を設定
-     *
-     * @param string $limitName カウンターを取得
-     */
-    public function setLimitName(string $limitName = null) {
-        $this->limitName = $limitName;
-    }
-
-    /**
-     * 回数制限の種類の名前を設定
-     *
-     * @param string $limitName カウンターを取得
-     * @return GetCounterRequest $this
-     */
-    public function withLimitName(string $limitName = null): GetCounterRequest {
-        $this->setLimitName($limitName);
-        return $this;
-    }
-
-    /** @var string カウンターの名前 */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $counterName;
 
-    /**
-     * カウンターの名前を取得
-     *
-     * @return string|null カウンターを取得
-     */
-    public function getCounterName(): ?string {
-        return $this->counterName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetCounterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getLimitName(): ?string {
+		return $this->limitName;
+	}
+
+	public function setLimitName(?string $limitName) {
+		$this->limitName = $limitName;
+	}
+
+	public function withLimitName(?string $limitName): GetCounterRequest {
+		$this->limitName = $limitName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): GetCounterRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getCounterName(): ?string {
+		return $this->counterName;
+	}
+
+	public function setCounterName(?string $counterName) {
+		$this->counterName = $counterName;
+	}
+
+	public function withCounterName(?string $counterName): GetCounterRequest {
+		$this->counterName = $counterName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCounterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCounterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withLimitName(empty($data['limitName']) ? null : $data['limitName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withCounterName(empty($data['counterName']) ? null : $data['counterName']);
     }
 
-    /**
-     * カウンターの名前を設定
-     *
-     * @param string $counterName カウンターを取得
-     */
-    public function setCounterName(string $counterName = null) {
-        $this->counterName = $counterName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "limitName" => $this->getLimitName(),
+            "accessToken" => $this->getAccessToken(),
+            "counterName" => $this->getCounterName(),
+        );
     }
-
-    /**
-     * カウンターの名前を設定
-     *
-     * @param string $counterName カウンターを取得
-     * @return GetCounterRequest $this
-     */
-    public function withCounterName(string $counterName = null): GetCounterRequest {
-        $this->setCounterName($counterName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null カウンターを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider カウンターを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider カウンターを取得
-     * @return GetCounterRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetCounterRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return GetCounterRequest this
-     */
-    public function withAccessToken(string $accessToken): GetCounterRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

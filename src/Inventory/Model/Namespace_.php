@@ -19,371 +19,189 @@ namespace Gs2\Inventory\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ネームスペース
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Namespace_ implements IModel {
 	/**
-     * @var string ネームスペース
+     * @var string
 	 */
-	protected $namespaceId;
-
+	private $namespaceId;
 	/**
-	 * ネームスペースを取得
-	 *
-	 * @return string|null ネームスペース
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $description;
+	/**
+     * @var ScriptSetting
+	 */
+	private $acquireScript;
+	/**
+     * @var ScriptSetting
+	 */
+	private $overflowScript;
+	/**
+     * @var ScriptSetting
+	 */
+	private $consumeScript;
+	/**
+     * @var LogSetting
+	 */
+	private $logSetting;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param string|null $namespaceId ネームスペース
-	 */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param string|null $namespaceId ネームスペース
-	 * @return Namespace_ $this
-	 */
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-	/**
-     * @var string オーナーID
-	 */
-	protected $ownerId;
 
-	/**
-	 * オーナーIDを取得
-	 *
-	 * @return string|null オーナーID
-	 */
-	public function getOwnerId(): ?string {
-		return $this->ownerId;
-	}
-
-	/**
-	 * オーナーIDを設定
-	 *
-	 * @param string|null $ownerId オーナーID
-	 */
-	public function setOwnerId(?string $ownerId) {
-		$this->ownerId = $ownerId;
-	}
-
-	/**
-	 * オーナーIDを設定
-	 *
-	 * @param string|null $ownerId オーナーID
-	 * @return Namespace_ $this
-	 */
-	public function withOwnerId(?string $ownerId): Namespace_ {
-		$this->ownerId = $ownerId;
-		return $this;
-	}
-	/**
-     * @var string ネームスペース名
-	 */
-	protected $name;
-
-	/**
-	 * ネームスペース名を取得
-	 *
-	 * @return string|null ネームスペース名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * ネームスペース名を設定
-	 *
-	 * @param string|null $name ネームスペース名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * ネームスペース名を設定
-	 *
-	 * @param string|null $name ネームスペース名
-	 * @return Namespace_ $this
-	 */
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string ネームスペースの説明
-	 */
-	protected $description;
 
-	/**
-	 * ネームスペースの説明を取得
-	 *
-	 * @return string|null ネームスペースの説明
-	 */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
 
-	/**
-	 * ネームスペースの説明を設定
-	 *
-	 * @param string|null $description ネームスペースの説明
-	 */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
 
-	/**
-	 * ネームスペースの説明を設定
-	 *
-	 * @param string|null $description ネームスペースの説明
-	 * @return Namespace_ $this
-	 */
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
-	/**
-     * @var ScriptSetting アイテム入手したときに実行するスクリプト
-	 */
-	protected $acquireScript;
 
-	/**
-	 * アイテム入手したときに実行するスクリプトを取得
-	 *
-	 * @return ScriptSetting|null アイテム入手したときに実行するスクリプト
-	 */
 	public function getAcquireScript(): ?ScriptSetting {
 		return $this->acquireScript;
 	}
 
-	/**
-	 * アイテム入手したときに実行するスクリプトを設定
-	 *
-	 * @param ScriptSetting|null $acquireScript アイテム入手したときに実行するスクリプト
-	 */
 	public function setAcquireScript(?ScriptSetting $acquireScript) {
 		$this->acquireScript = $acquireScript;
 	}
 
-	/**
-	 * アイテム入手したときに実行するスクリプトを設定
-	 *
-	 * @param ScriptSetting|null $acquireScript アイテム入手したときに実行するスクリプト
-	 * @return Namespace_ $this
-	 */
 	public function withAcquireScript(?ScriptSetting $acquireScript): Namespace_ {
 		$this->acquireScript = $acquireScript;
 		return $this;
 	}
-	/**
-     * @var ScriptSetting 入手上限に当たって入手できなかったときに実行するスクリプト
-	 */
-	protected $overflowScript;
 
-	/**
-	 * 入手上限に当たって入手できなかったときに実行するスクリプトを取得
-	 *
-	 * @return ScriptSetting|null 入手上限に当たって入手できなかったときに実行するスクリプト
-	 */
 	public function getOverflowScript(): ?ScriptSetting {
 		return $this->overflowScript;
 	}
 
-	/**
-	 * 入手上限に当たって入手できなかったときに実行するスクリプトを設定
-	 *
-	 * @param ScriptSetting|null $overflowScript 入手上限に当たって入手できなかったときに実行するスクリプト
-	 */
 	public function setOverflowScript(?ScriptSetting $overflowScript) {
 		$this->overflowScript = $overflowScript;
 	}
 
-	/**
-	 * 入手上限に当たって入手できなかったときに実行するスクリプトを設定
-	 *
-	 * @param ScriptSetting|null $overflowScript 入手上限に当たって入手できなかったときに実行するスクリプト
-	 * @return Namespace_ $this
-	 */
 	public function withOverflowScript(?ScriptSetting $overflowScript): Namespace_ {
 		$this->overflowScript = $overflowScript;
 		return $this;
 	}
-	/**
-     * @var ScriptSetting アイテム消費するときに実行するスクリプト
-	 */
-	protected $consumeScript;
 
-	/**
-	 * アイテム消費するときに実行するスクリプトを取得
-	 *
-	 * @return ScriptSetting|null アイテム消費するときに実行するスクリプト
-	 */
 	public function getConsumeScript(): ?ScriptSetting {
 		return $this->consumeScript;
 	}
 
-	/**
-	 * アイテム消費するときに実行するスクリプトを設定
-	 *
-	 * @param ScriptSetting|null $consumeScript アイテム消費するときに実行するスクリプト
-	 */
 	public function setConsumeScript(?ScriptSetting $consumeScript) {
 		$this->consumeScript = $consumeScript;
 	}
 
-	/**
-	 * アイテム消費するときに実行するスクリプトを設定
-	 *
-	 * @param ScriptSetting|null $consumeScript アイテム消費するときに実行するスクリプト
-	 * @return Namespace_ $this
-	 */
 	public function withConsumeScript(?ScriptSetting $consumeScript): Namespace_ {
 		$this->consumeScript = $consumeScript;
 		return $this;
 	}
-	/**
-     * @var LogSetting ログの出力設定
-	 */
-	protected $logSetting;
 
-	/**
-	 * ログの出力設定を取得
-	 *
-	 * @return LogSetting|null ログの出力設定
-	 */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
 
-	/**
-	 * ログの出力設定を設定
-	 *
-	 * @param LogSetting|null $logSetting ログの出力設定
-	 */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
 
-	/**
-	 * ログの出力設定を設定
-	 *
-	 * @param LogSetting|null $logSetting ログの出力設定
-	 * @return Namespace_ $this
-	 */
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return Namespace_ $this
-	 */
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return Namespace_ $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "namespaceId" => $this->namespaceId,
-            "ownerId" => $this->ownerId,
-            "name" => $this->name,
-            "description" => $this->description,
-            "acquireScript" => $this->acquireScript->toJson(),
-            "overflowScript" => $this->overflowScript->toJson(),
-            "consumeScript" => $this->consumeScript->toJson(),
-            "logSetting" => $this->logSetting->toJson(),
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+    public static function fromJson(?array $data): ?Namespace_ {
+        if ($data === null) {
+            return null;
+        }
+        return (new Namespace_())
+            ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withAcquireScript(empty($data['acquireScript']) ? null : ScriptSetting::fromJson($data['acquireScript']))
+            ->withOverflowScript(empty($data['overflowScript']) ? null : ScriptSetting::fromJson($data['overflowScript']))
+            ->withConsumeScript(empty($data['consumeScript']) ? null : ScriptSetting::fromJson($data['consumeScript']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): Namespace_ {
-        $model = new Namespace_();
-        $model->setNamespaceId(isset($data["namespaceId"]) ? $data["namespaceId"] : null);
-        $model->setOwnerId(isset($data["ownerId"]) ? $data["ownerId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setDescription(isset($data["description"]) ? $data["description"] : null);
-        $model->setAcquireScript(isset($data["acquireScript"]) ? ScriptSetting::fromJson($data["acquireScript"]) : null);
-        $model->setOverflowScript(isset($data["overflowScript"]) ? ScriptSetting::fromJson($data["overflowScript"]) : null);
-        $model->setConsumeScript(isset($data["consumeScript"]) ? ScriptSetting::fromJson($data["consumeScript"]) : null);
-        $model->setLogSetting(isset($data["logSetting"]) ? LogSetting::fromJson($data["logSetting"]) : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "namespaceId" => $this->getNamespaceId(),
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "acquireScript" => $this->getAcquireScript() !== null ? $this->getAcquireScript()->toJson() : null,
+            "overflowScript" => $this->getOverflowScript() !== null ? $this->getOverflowScript()->toJson() : null,
+            "consumeScript" => $this->getConsumeScript() !== null ? $this->getConsumeScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
+        );
     }
 }

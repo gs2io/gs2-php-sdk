@@ -19,126 +19,75 @@ namespace Gs2\JobQueue\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ジョブ
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class JobEntry implements IModel {
 	/**
-     * @var string スクリプト のGRN
+     * @var string
 	 */
-	protected $scriptId;
-
+	private $scriptId;
 	/**
-	 * スクリプト のGRNを取得
-	 *
-	 * @return string|null スクリプト のGRN
+     * @var string
 	 */
+	private $args;
+	/**
+     * @var int
+	 */
+	private $maxTryCount;
+
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
 
-	/**
-	 * スクリプト のGRNを設定
-	 *
-	 * @param string|null $scriptId スクリプト のGRN
-	 */
 	public function setScriptId(?string $scriptId) {
 		$this->scriptId = $scriptId;
 	}
 
-	/**
-	 * スクリプト のGRNを設定
-	 *
-	 * @param string|null $scriptId スクリプト のGRN
-	 * @return JobEntry $this
-	 */
 	public function withScriptId(?string $scriptId): JobEntry {
 		$this->scriptId = $scriptId;
 		return $this;
 	}
-	/**
-     * @var string 引数
-	 */
-	protected $args;
 
-	/**
-	 * 引数を取得
-	 *
-	 * @return string|null 引数
-	 */
 	public function getArgs(): ?string {
 		return $this->args;
 	}
 
-	/**
-	 * 引数を設定
-	 *
-	 * @param string|null $args 引数
-	 */
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
 
-	/**
-	 * 引数を設定
-	 *
-	 * @param string|null $args 引数
-	 * @return JobEntry $this
-	 */
 	public function withArgs(?string $args): JobEntry {
 		$this->args = $args;
 		return $this;
 	}
-	/**
-     * @var int 最大試行回数
-	 */
-	protected $maxTryCount;
 
-	/**
-	 * 最大試行回数を取得
-	 *
-	 * @return int|null 最大試行回数
-	 */
 	public function getMaxTryCount(): ?int {
 		return $this->maxTryCount;
 	}
 
-	/**
-	 * 最大試行回数を設定
-	 *
-	 * @param int|null $maxTryCount 最大試行回数
-	 */
 	public function setMaxTryCount(?int $maxTryCount) {
 		$this->maxTryCount = $maxTryCount;
 	}
 
-	/**
-	 * 最大試行回数を設定
-	 *
-	 * @param int|null $maxTryCount 最大試行回数
-	 * @return JobEntry $this
-	 */
 	public function withMaxTryCount(?int $maxTryCount): JobEntry {
 		$this->maxTryCount = $maxTryCount;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "scriptId" => $this->scriptId,
-            "args" => $this->args,
-            "maxTryCount" => $this->maxTryCount,
-        );
+    public static function fromJson(?array $data): ?JobEntry {
+        if ($data === null) {
+            return null;
+        }
+        return (new JobEntry())
+            ->withScriptId(empty($data['scriptId']) ? null : $data['scriptId'])
+            ->withArgs(empty($data['args']) ? null : $data['args'])
+            ->withMaxTryCount(empty($data['maxTryCount']) ? null : $data['maxTryCount']);
     }
 
-    public static function fromJson(array $data): JobEntry {
-        $model = new JobEntry();
-        $model->setScriptId(isset($data["scriptId"]) ? $data["scriptId"] : null);
-        $model->setArgs(isset($data["args"]) ? $data["args"] : null);
-        $model->setMaxTryCount(isset($data["maxTryCount"]) ? $data["maxTryCount"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "scriptId" => $this->getScriptId(),
+            "args" => $this->getArgs(),
+            "maxTryCount" => $this->getMaxTryCount(),
+        );
     }
 }

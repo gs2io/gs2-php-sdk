@@ -20,36 +20,34 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\CurrentRankingMaster;
 
-/**
- * 現在有効なランキング設定を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCurrentRankingMasterResult implements IResult {
-	/** @var CurrentRankingMaster 現在有効なランキング設定 */
-	private $item;
+    /** @var CurrentRankingMaster */
+    private $item;
 
-	/**
-	 * 現在有効なランキング設定を取得
-	 *
-	 * @return CurrentRankingMaster|null 現在有効なランキング設定を取得します
-	 */
 	public function getItem(): ?CurrentRankingMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効なランキング設定を設定
-	 *
-	 * @param CurrentRankingMaster|null $item 現在有効なランキング設定を取得します
-	 */
 	public function setItem(?CurrentRankingMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCurrentRankingMasterResult {
-        $result = new GetCurrentRankingMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentRankingMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentRankingMaster $item): GetCurrentRankingMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCurrentRankingMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCurrentRankingMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentRankingMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

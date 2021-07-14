@@ -20,139 +20,85 @@ namespace Gs2\Script\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Script\Model\GitHubCheckoutSetting;
 
-/**
- * GitHubリポジトリのコードからスクリプトを新規作成します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateScriptFromGitHubRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null GitHubリポジトリのコードからスクリプトを新規作成します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName GitHubリポジトリのコードからスクリプトを新規作成します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName GitHubリポジトリのコードからスクリプトを新規作成します
-     * @return CreateScriptFromGitHubRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CreateScriptFromGitHubRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スクリプト名 */
+    /** @var string */
     private $name;
-
-    /**
-     * スクリプト名を取得
-     *
-     * @return string|null GitHubリポジトリのコードからスクリプトを新規作成します
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $name GitHubリポジトリのコードからスクリプトを新規作成します
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $name GitHubリポジトリのコードからスクリプトを新規作成します
-     * @return CreateScriptFromGitHubRequest $this
-     */
-    public function withName(string $name = null): CreateScriptFromGitHubRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string 説明文 */
+    /** @var string */
     private $description;
-
-    /**
-     * 説明文を取得
-     *
-     * @return string|null GitHubリポジトリのコードからスクリプトを新規作成します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description GitHubリポジトリのコードからスクリプトを新規作成します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description GitHubリポジトリのコードからスクリプトを新規作成します
-     * @return CreateScriptFromGitHubRequest $this
-     */
-    public function withDescription(string $description = null): CreateScriptFromGitHubRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var GitHubCheckoutSetting GitHubからソースコードをチェックアウトしてくる設定 */
+    /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
 
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を取得
-     *
-     * @return GitHubCheckoutSetting|null GitHubリポジトリのコードからスクリプトを新規作成します
-     */
-    public function getCheckoutSetting(): ?GitHubCheckoutSetting {
-        return $this->checkoutSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CreateScriptFromGitHubRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateScriptFromGitHubRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateScriptFromGitHubRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
+		return $this->checkoutSetting;
+	}
+
+	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
+		$this->checkoutSetting = $checkoutSetting;
+	}
+
+	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): CreateScriptFromGitHubRequest {
+		$this->checkoutSetting = $checkoutSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateScriptFromGitHubRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateScriptFromGitHubRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withCheckoutSetting(empty($data['checkoutSetting']) ? null : GitHubCheckoutSetting::fromJson($data['checkoutSetting']));
     }
 
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を設定
-     *
-     * @param GitHubCheckoutSetting $checkoutSetting GitHubリポジトリのコードからスクリプトを新規作成します
-     */
-    public function setCheckoutSetting(GitHubCheckoutSetting $checkoutSetting = null) {
-        $this->checkoutSetting = $checkoutSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "checkoutSetting" => $this->getCheckoutSetting() !== null ? $this->getCheckoutSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を設定
-     *
-     * @param GitHubCheckoutSetting $checkoutSetting GitHubリポジトリのコードからスクリプトを新規作成します
-     * @return CreateScriptFromGitHubRequest $this
-     */
-    public function withCheckoutSetting(GitHubCheckoutSetting $checkoutSetting = null): CreateScriptFromGitHubRequest {
-        $this->setCheckoutSetting($checkoutSetting);
-        return $this;
-    }
-
 }

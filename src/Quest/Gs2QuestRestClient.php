@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Quest\Request\DescribeNamespacesRequest;
 use Gs2\Quest\Result\DescribeNamespacesResult;
 use Gs2\Quest\Request\CreateNamespaceRequest;
@@ -1477,9 +1479,6 @@ class DescribeProgressesByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1550,9 +1549,6 @@ class CreateProgressByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1613,9 +1609,6 @@ class GetProgressTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1673,9 +1666,6 @@ class GetProgressByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1748,9 +1738,6 @@ class StartTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1819,9 +1806,6 @@ class StartByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1903,9 +1887,6 @@ class EndTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1984,9 +1965,6 @@ class EndByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2047,9 +2025,6 @@ class DeleteProgressTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2107,9 +2082,6 @@ class DeleteProgressByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2170,9 +2142,6 @@ class CreateProgressByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2231,9 +2200,6 @@ class DeleteProgressByStampTaskTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2301,9 +2267,6 @@ class DescribeCompletedQuestListsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2368,9 +2331,6 @@ class DescribeCompletedQuestListsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2432,9 +2392,6 @@ class GetCompletedQuestListTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2494,9 +2451,6 @@ class GetCompletedQuestListByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2555,9 +2509,6 @@ class DeleteCompletedQuestListByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2814,9 +2765,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * クエストを分類するカテゴリーの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2831,9 +2780,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2845,9 +2792,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2862,9 +2807,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2876,9 +2819,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2893,9 +2834,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2907,9 +2846,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2924,9 +2861,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2938,9 +2873,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2955,9 +2888,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2969,9 +2900,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2986,9 +2915,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを分類するカテゴリーを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -3000,9 +2927,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターの一覧を取得<br>
-     *
-     * @param DescribeQuestGroupModelMastersRequest $request リクエストパラメータ
+     * @param DescribeQuestGroupModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeQuestGroupModelMastersAsync(
@@ -3017,9 +2942,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターの一覧を取得<br>
-     *
-     * @param DescribeQuestGroupModelMastersRequest $request リクエストパラメータ
+     * @param DescribeQuestGroupModelMastersRequest $request
      * @return DescribeQuestGroupModelMastersResult
      */
     public function describeQuestGroupModelMasters (
@@ -3031,9 +2954,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターを新規作成<br>
-     *
-     * @param CreateQuestGroupModelMasterRequest $request リクエストパラメータ
+     * @param CreateQuestGroupModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createQuestGroupModelMasterAsync(
@@ -3048,9 +2969,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターを新規作成<br>
-     *
-     * @param CreateQuestGroupModelMasterRequest $request リクエストパラメータ
+     * @param CreateQuestGroupModelMasterRequest $request
      * @return CreateQuestGroupModelMasterResult
      */
     public function createQuestGroupModelMaster (
@@ -3062,9 +2981,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターを取得<br>
-     *
-     * @param GetQuestGroupModelMasterRequest $request リクエストパラメータ
+     * @param GetQuestGroupModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getQuestGroupModelMasterAsync(
@@ -3079,9 +2996,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターを取得<br>
-     *
-     * @param GetQuestGroupModelMasterRequest $request リクエストパラメータ
+     * @param GetQuestGroupModelMasterRequest $request
      * @return GetQuestGroupModelMasterResult
      */
     public function getQuestGroupModelMaster (
@@ -3093,9 +3008,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターを更新<br>
-     *
-     * @param UpdateQuestGroupModelMasterRequest $request リクエストパラメータ
+     * @param UpdateQuestGroupModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateQuestGroupModelMasterAsync(
@@ -3110,9 +3023,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターを更新<br>
-     *
-     * @param UpdateQuestGroupModelMasterRequest $request リクエストパラメータ
+     * @param UpdateQuestGroupModelMasterRequest $request
      * @return UpdateQuestGroupModelMasterResult
      */
     public function updateQuestGroupModelMaster (
@@ -3124,9 +3035,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターを削除<br>
-     *
-     * @param DeleteQuestGroupModelMasterRequest $request リクエストパラメータ
+     * @param DeleteQuestGroupModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteQuestGroupModelMasterAsync(
@@ -3141,9 +3050,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループマスターを削除<br>
-     *
-     * @param DeleteQuestGroupModelMasterRequest $request リクエストパラメータ
+     * @param DeleteQuestGroupModelMasterRequest $request
      * @return DeleteQuestGroupModelMasterResult
      */
     public function deleteQuestGroupModelMaster (
@@ -3155,9 +3062,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeQuestModelMastersRequest $request リクエストパラメータ
+     * @param DescribeQuestModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeQuestModelMastersAsync(
@@ -3172,9 +3077,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeQuestModelMastersRequest $request リクエストパラメータ
+     * @param DescribeQuestModelMastersRequest $request
      * @return DescribeQuestModelMastersResult
      */
     public function describeQuestModelMasters (
@@ -3186,9 +3089,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターを新規作成<br>
-     *
-     * @param CreateQuestModelMasterRequest $request リクエストパラメータ
+     * @param CreateQuestModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createQuestModelMasterAsync(
@@ -3203,9 +3104,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターを新規作成<br>
-     *
-     * @param CreateQuestModelMasterRequest $request リクエストパラメータ
+     * @param CreateQuestModelMasterRequest $request
      * @return CreateQuestModelMasterResult
      */
     public function createQuestModelMaster (
@@ -3217,9 +3116,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターを取得<br>
-     *
-     * @param GetQuestModelMasterRequest $request リクエストパラメータ
+     * @param GetQuestModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getQuestModelMasterAsync(
@@ -3234,9 +3131,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターを取得<br>
-     *
-     * @param GetQuestModelMasterRequest $request リクエストパラメータ
+     * @param GetQuestModelMasterRequest $request
      * @return GetQuestModelMasterResult
      */
     public function getQuestModelMaster (
@@ -3248,9 +3143,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターを更新<br>
-     *
-     * @param UpdateQuestModelMasterRequest $request リクエストパラメータ
+     * @param UpdateQuestModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateQuestModelMasterAsync(
@@ -3265,9 +3158,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターを更新<br>
-     *
-     * @param UpdateQuestModelMasterRequest $request リクエストパラメータ
+     * @param UpdateQuestModelMasterRequest $request
      * @return UpdateQuestModelMasterResult
      */
     public function updateQuestModelMaster (
@@ -3279,9 +3170,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターを削除<br>
-     *
-     * @param DeleteQuestModelMasterRequest $request リクエストパラメータ
+     * @param DeleteQuestModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteQuestModelMasterAsync(
@@ -3296,9 +3185,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルマスターを削除<br>
-     *
-     * @param DeleteQuestModelMasterRequest $request リクエストパラメータ
+     * @param DeleteQuestModelMasterRequest $request
      * @return DeleteQuestModelMasterResult
      */
     public function deleteQuestModelMaster (
@@ -3310,9 +3197,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なクエストマスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -3327,9 +3212,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なクエストマスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -3341,9 +3224,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なクエストマスターを取得します<br>
-     *
-     * @param GetCurrentQuestMasterRequest $request リクエストパラメータ
+     * @param GetCurrentQuestMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentQuestMasterAsync(
@@ -3358,9 +3239,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なクエストマスターを取得します<br>
-     *
-     * @param GetCurrentQuestMasterRequest $request リクエストパラメータ
+     * @param GetCurrentQuestMasterRequest $request
      * @return GetCurrentQuestMasterResult
      */
     public function getCurrentQuestMaster (
@@ -3372,9 +3251,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なクエストマスターを更新します<br>
-     *
-     * @param UpdateCurrentQuestMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentQuestMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentQuestMasterAsync(
@@ -3389,9 +3266,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なクエストマスターを更新します<br>
-     *
-     * @param UpdateCurrentQuestMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentQuestMasterRequest $request
      * @return UpdateCurrentQuestMasterResult
      */
     public function updateCurrentQuestMaster (
@@ -3403,9 +3278,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なクエストマスターを更新します<br>
-     *
-     * @param UpdateCurrentQuestMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentQuestMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentQuestMasterFromGitHubAsync(
@@ -3420,9 +3293,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なクエストマスターを更新します<br>
-     *
-     * @param UpdateCurrentQuestMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentQuestMasterFromGitHubRequest $request
      * @return UpdateCurrentQuestMasterFromGitHubResult
      */
     public function updateCurrentQuestMasterFromGitHub (
@@ -3434,9 +3305,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト挑戦の一覧を取得<br>
-     *
-     * @param DescribeProgressesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeProgressesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeProgressesByUserIdAsync(
@@ -3451,9 +3320,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト挑戦の一覧を取得<br>
-     *
-     * @param DescribeProgressesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeProgressesByUserIdRequest $request
      * @return DescribeProgressesByUserIdResult
      */
     public function describeProgressesByUserId (
@@ -3465,9 +3332,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト挑戦を作成<br>
-     *
-     * @param CreateProgressByUserIdRequest $request リクエストパラメータ
+     * @param CreateProgressByUserIdRequest $request
      * @return PromiseInterface
      */
     public function createProgressByUserIdAsync(
@@ -3482,9 +3347,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト挑戦を作成<br>
-     *
-     * @param CreateProgressByUserIdRequest $request リクエストパラメータ
+     * @param CreateProgressByUserIdRequest $request
      * @return CreateProgressByUserIdResult
      */
     public function createProgressByUserId (
@@ -3496,9 +3359,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト挑戦を取得<br>
-     *
-     * @param GetProgressRequest $request リクエストパラメータ
+     * @param GetProgressRequest $request
      * @return PromiseInterface
      */
     public function getProgressAsync(
@@ -3513,9 +3374,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト挑戦を取得<br>
-     *
-     * @param GetProgressRequest $request リクエストパラメータ
+     * @param GetProgressRequest $request
      * @return GetProgressResult
      */
     public function getProgress (
@@ -3527,9 +3386,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト挑戦を取得<br>
-     *
-     * @param GetProgressByUserIdRequest $request リクエストパラメータ
+     * @param GetProgressByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getProgressByUserIdAsync(
@@ -3544,9 +3401,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト挑戦を取得<br>
-     *
-     * @param GetProgressByUserIdRequest $request リクエストパラメータ
+     * @param GetProgressByUserIdRequest $request
      * @return GetProgressByUserIdResult
      */
     public function getProgressByUserId (
@@ -3558,28 +3413,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを開始<br>
-     *   <br>
-     *   同一カテゴリ内でゲームプレイヤーは同時に1つのクエストを実行できます。<br>
-     *   すでに同一カテゴリ内で実行中のクエストがある場合、このAPIはエラーを返します。<br>
-     *   進行中のクエストを取得するAPIを呼び出すことで、クエストを再開するために必要な情報を得ることができます。<br>
-     *   強制的にクエストを開始するには force パラメータに true を指定することで強制的にクエストを開始できます。<br>
-     *   <br>
-     *   クエストが正常に開始できた場合、Progress オブジェクトを応答します。<br>
-     *   Progress オブジェクトはクエストを実行するために必要ないくつかの情報を応答します。<br>
-     *   <br>
-     *   transactionId は実行中のクエスト固有のIDです。<br>
-     *   クエストの完了報告にはこのIDを指定する必要があります。<br>
-     *   <br>
-     *   randomSeed はクエストの内容を決定するために使用できる乱数シードです。<br>
-     *   クエストを開始するたびに異なる乱数が払い出されますので、この値をシード値としてゲームを進行させることで<br>
-     *   クエスト中にアプリケーションを強制終了したとしても同一条件で再開することができます。<br>
-     *   <br>
-     *   rewards にはこのクエストにおいて入手可能な報酬とその数量の"最大値"が得られます。<br>
-     *   クエストの完了報告にも rewards を渡すことができ、そこでクエスト中に実際に入手したアイテムの数量を指定します。<br>
-     *   詳細はクエストの完了報告APIのドキュメントを参照してください。<br>
-     *
-     * @param StartRequest $request リクエストパラメータ
+     * @param StartRequest $request
      * @return PromiseInterface
      */
     public function startAsync(
@@ -3594,28 +3428,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを開始<br>
-     *   <br>
-     *   同一カテゴリ内でゲームプレイヤーは同時に1つのクエストを実行できます。<br>
-     *   すでに同一カテゴリ内で実行中のクエストがある場合、このAPIはエラーを返します。<br>
-     *   進行中のクエストを取得するAPIを呼び出すことで、クエストを再開するために必要な情報を得ることができます。<br>
-     *   強制的にクエストを開始するには force パラメータに true を指定することで強制的にクエストを開始できます。<br>
-     *   <br>
-     *   クエストが正常に開始できた場合、Progress オブジェクトを応答します。<br>
-     *   Progress オブジェクトはクエストを実行するために必要ないくつかの情報を応答します。<br>
-     *   <br>
-     *   transactionId は実行中のクエスト固有のIDです。<br>
-     *   クエストの完了報告にはこのIDを指定する必要があります。<br>
-     *   <br>
-     *   randomSeed はクエストの内容を決定するために使用できる乱数シードです。<br>
-     *   クエストを開始するたびに異なる乱数が払い出されますので、この値をシード値としてゲームを進行させることで<br>
-     *   クエスト中にアプリケーションを強制終了したとしても同一条件で再開することができます。<br>
-     *   <br>
-     *   rewards にはこのクエストにおいて入手可能な報酬とその数量の"最大値"が得られます。<br>
-     *   クエストの完了報告にも rewards を渡すことができ、そこでクエスト中に実際に入手したアイテムの数量を指定します。<br>
-     *   詳細はクエストの完了報告APIのドキュメントを参照してください。<br>
-     *
-     * @param StartRequest $request リクエストパラメータ
+     * @param StartRequest $request
      * @return StartResult
      */
     public function start (
@@ -3627,28 +3440,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエストを開始<br>
-     *   <br>
-     *   同一カテゴリ内でゲームプレイヤーは同時に1つのクエストを実行できます。<br>
-     *   すでに同一カテゴリ内で実行中のクエストがある場合、このAPIはエラーを返します。<br>
-     *   進行中のクエストを取得するAPIを呼び出すことで、クエストを再開するために必要な情報を得ることができます。<br>
-     *   強制的にクエストを開始するには force パラメータに true を指定することで強制的にクエストを開始できます。<br>
-     *   <br>
-     *   クエストが正常に開始できた場合、Progress オブジェクトを応答します。<br>
-     *   Progress オブジェクトはクエストを実行するために必要ないくつかの情報を応答します。<br>
-     *   <br>
-     *   transactionId は実行中のクエスト固有のIDです。<br>
-     *   クエストの完了報告にはこのIDを指定する必要があります。<br>
-     *   <br>
-     *   randomSeed はクエストの内容を決定するために使用できる乱数シードです。<br>
-     *   クエストを開®®始するたびに異なる乱数が払い出されますので、この値をシード値としてゲームを進行させることで<br>
-     *   クエスト中にアプリケーションを強制終了したとしても同一条件で再開することができます。<br>
-     *   <br>
-     *   rewards にはこのクエストにおいて入手可能な報酬とその数量の"最大値"が得られます。<br>
-     *   クエストの完了報告にも rewards を渡すことができ、そこでクエスト中に実際に入手したアイテムの数量を指定します。<br>
-     *   詳細はクエストの完了報告APIのドキュメントを参照してください。<br>
-     *
-     * @param StartByUserIdRequest $request リクエストパラメータ
+     * @param StartByUserIdRequest $request
      * @return PromiseInterface
      */
     public function startByUserIdAsync(
@@ -3663,28 +3455,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエストを開始<br>
-     *   <br>
-     *   同一カテゴリ内でゲームプレイヤーは同時に1つのクエストを実行できます。<br>
-     *   すでに同一カテゴリ内で実行中のクエストがある場合、このAPIはエラーを返します。<br>
-     *   進行中のクエストを取得するAPIを呼び出すことで、クエストを再開するために必要な情報を得ることができます。<br>
-     *   強制的にクエストを開始するには force パラメータに true を指定することで強制的にクエストを開始できます。<br>
-     *   <br>
-     *   クエストが正常に開始できた場合、Progress オブジェクトを応答します。<br>
-     *   Progress オブジェクトはクエストを実行するために必要ないくつかの情報を応答します。<br>
-     *   <br>
-     *   transactionId は実行中のクエスト固有のIDです。<br>
-     *   クエストの完了報告にはこのIDを指定する必要があります。<br>
-     *   <br>
-     *   randomSeed はクエストの内容を決定するために使用できる乱数シードです。<br>
-     *   クエストを開®®始するたびに異なる乱数が払い出されますので、この値をシード値としてゲームを進行させることで<br>
-     *   クエスト中にアプリケーションを強制終了したとしても同一条件で再開することができます。<br>
-     *   <br>
-     *   rewards にはこのクエストにおいて入手可能な報酬とその数量の"最大値"が得られます。<br>
-     *   クエストの完了報告にも rewards を渡すことができ、そこでクエスト中に実際に入手したアイテムの数量を指定します。<br>
-     *   詳細はクエストの完了報告APIのドキュメントを参照してください。<br>
-     *
-     * @param StartByUserIdRequest $request リクエストパラメータ
+     * @param StartByUserIdRequest $request
      * @return StartByUserIdResult
      */
     public function startByUserId (
@@ -3696,12 +3467,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを完了<br>
-     *   <br>
-     *   開始時に受け取ったクエストにおいて入手可能な報酬とその数量の"最大値"のうち、クエスト内で実際に入手した報酬を rewards で報告します。<br>
-     *   isComplete にはクエストをクリアできたかを報告します。クエストに失敗した場合、rewards の値は無視してクエストに設定された失敗した場合の報酬が付与されます。<br>
-     *
-     * @param EndRequest $request リクエストパラメータ
+     * @param EndRequest $request
      * @return PromiseInterface
      */
     public function endAsync(
@@ -3716,12 +3482,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストを完了<br>
-     *   <br>
-     *   開始時に受け取ったクエストにおいて入手可能な報酬とその数量の"最大値"のうち、クエスト内で実際に入手した報酬を rewards で報告します。<br>
-     *   isComplete にはクエストをクリアできたかを報告します。クエストに失敗した場合、rewards の値は無視してクエストに設定された失敗した場合の報酬が付与されます。<br>
-     *
-     * @param EndRequest $request リクエストパラメータ
+     * @param EndRequest $request
      * @return EndResult
      */
     public function end (
@@ -3733,12 +3494,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエストを完了<br>
-     *   <br>
-     *   開始時に受け取ったクエストにおいて入手可能な報酬とその数量の"最大値"のうち、クエスト内で実際に入手した報酬を rewards で報告します。<br>
-     *   isComplete にはクエストをクリアできたかを報告します。クエストに失敗した場合、rewards の値は無視してクエストに設定された失敗した場合の報酬が付与されます。<br>
-     *
-     * @param EndByUserIdRequest $request リクエストパラメータ
+     * @param EndByUserIdRequest $request
      * @return PromiseInterface
      */
     public function endByUserIdAsync(
@@ -3753,12 +3509,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエストを完了<br>
-     *   <br>
-     *   開始時に受け取ったクエストにおいて入手可能な報酬とその数量の"最大値"のうち、クエスト内で実際に入手した報酬を rewards で報告します。<br>
-     *   isComplete にはクエストをクリアできたかを報告します。クエストに失敗した場合、rewards の値は無視してクエストに設定された失敗した場合の報酬が付与されます。<br>
-     *
-     * @param EndByUserIdRequest $request リクエストパラメータ
+     * @param EndByUserIdRequest $request
      * @return EndByUserIdResult
      */
     public function endByUserId (
@@ -3770,9 +3521,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト挑戦を取得<br>
-     *
-     * @param DeleteProgressRequest $request リクエストパラメータ
+     * @param DeleteProgressRequest $request
      * @return PromiseInterface
      */
     public function deleteProgressAsync(
@@ -3787,9 +3536,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト挑戦を取得<br>
-     *
-     * @param DeleteProgressRequest $request リクエストパラメータ
+     * @param DeleteProgressRequest $request
      * @return DeleteProgressResult
      */
     public function deleteProgress (
@@ -3801,9 +3548,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト挑戦を削除<br>
-     *
-     * @param DeleteProgressByUserIdRequest $request リクエストパラメータ
+     * @param DeleteProgressByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteProgressByUserIdAsync(
@@ -3818,9 +3563,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト挑戦を削除<br>
-     *
-     * @param DeleteProgressByUserIdRequest $request リクエストパラメータ
+     * @param DeleteProgressByUserIdRequest $request
      * @return DeleteProgressByUserIdResult
      */
     public function deleteProgressByUserId (
@@ -3832,9 +3575,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでクエストを開始<br>
-     *
-     * @param CreateProgressByStampSheetRequest $request リクエストパラメータ
+     * @param CreateProgressByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function createProgressByStampSheetAsync(
@@ -3849,9 +3590,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでクエストを開始<br>
-     *
-     * @param CreateProgressByStampSheetRequest $request リクエストパラメータ
+     * @param CreateProgressByStampSheetRequest $request
      * @return CreateProgressByStampSheetResult
      */
     public function createProgressByStampSheet (
@@ -3863,9 +3602,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクで クエスト挑戦 を削除<br>
-     *
-     * @param DeleteProgressByStampTaskRequest $request リクエストパラメータ
+     * @param DeleteProgressByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function deleteProgressByStampTaskAsync(
@@ -3880,9 +3617,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクで クエスト挑戦 を削除<br>
-     *
-     * @param DeleteProgressByStampTaskRequest $request リクエストパラメータ
+     * @param DeleteProgressByStampTaskRequest $request
      * @return DeleteProgressByStampTaskResult
      */
     public function deleteProgressByStampTask (
@@ -3894,9 +3629,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト進行の一覧を取得<br>
-     *
-     * @param DescribeCompletedQuestListsRequest $request リクエストパラメータ
+     * @param DescribeCompletedQuestListsRequest $request
      * @return PromiseInterface
      */
     public function describeCompletedQuestListsAsync(
@@ -3911,9 +3644,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト進行の一覧を取得<br>
-     *
-     * @param DescribeCompletedQuestListsRequest $request リクエストパラメータ
+     * @param DescribeCompletedQuestListsRequest $request
      * @return DescribeCompletedQuestListsResult
      */
     public function describeCompletedQuestLists (
@@ -3925,9 +3656,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト進行の一覧を取得<br>
-     *
-     * @param DescribeCompletedQuestListsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeCompletedQuestListsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeCompletedQuestListsByUserIdAsync(
@@ -3942,9 +3671,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト進行の一覧を取得<br>
-     *
-     * @param DescribeCompletedQuestListsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeCompletedQuestListsByUserIdRequest $request
      * @return DescribeCompletedQuestListsByUserIdResult
      */
     public function describeCompletedQuestListsByUserId (
@@ -3956,9 +3683,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト進行を取得<br>
-     *
-     * @param GetCompletedQuestListRequest $request リクエストパラメータ
+     * @param GetCompletedQuestListRequest $request
      * @return PromiseInterface
      */
     public function getCompletedQuestListAsync(
@@ -3973,9 +3698,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエスト進行を取得<br>
-     *
-     * @param GetCompletedQuestListRequest $request リクエストパラメータ
+     * @param GetCompletedQuestListRequest $request
      * @return GetCompletedQuestListResult
      */
     public function getCompletedQuestList (
@@ -3987,9 +3710,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト進行を取得<br>
-     *
-     * @param GetCompletedQuestListByUserIdRequest $request リクエストパラメータ
+     * @param GetCompletedQuestListByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getCompletedQuestListByUserIdAsync(
@@ -4004,9 +3725,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト進行を取得<br>
-     *
-     * @param GetCompletedQuestListByUserIdRequest $request リクエストパラメータ
+     * @param GetCompletedQuestListByUserIdRequest $request
      * @return GetCompletedQuestListByUserIdResult
      */
     public function getCompletedQuestListByUserId (
@@ -4018,9 +3737,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト進行を削除<br>
-     *
-     * @param DeleteCompletedQuestListByUserIdRequest $request リクエストパラメータ
+     * @param DeleteCompletedQuestListByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteCompletedQuestListByUserIdAsync(
@@ -4035,9 +3752,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してクエスト進行を削除<br>
-     *
-     * @param DeleteCompletedQuestListByUserIdRequest $request リクエストパラメータ
+     * @param DeleteCompletedQuestListByUserIdRequest $request
      * @return DeleteCompletedQuestListByUserIdResult
      */
     public function deleteCompletedQuestListByUserId (
@@ -4049,9 +3764,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループの一覧を取得<br>
-     *
-     * @param DescribeQuestGroupModelsRequest $request リクエストパラメータ
+     * @param DescribeQuestGroupModelsRequest $request
      * @return PromiseInterface
      */
     public function describeQuestGroupModelsAsync(
@@ -4066,9 +3779,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループの一覧を取得<br>
-     *
-     * @param DescribeQuestGroupModelsRequest $request リクエストパラメータ
+     * @param DescribeQuestGroupModelsRequest $request
      * @return DescribeQuestGroupModelsResult
      */
     public function describeQuestGroupModels (
@@ -4080,9 +3791,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループを取得<br>
-     *
-     * @param GetQuestGroupModelRequest $request リクエストパラメータ
+     * @param GetQuestGroupModelRequest $request
      * @return PromiseInterface
      */
     public function getQuestGroupModelAsync(
@@ -4097,9 +3806,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストグループを取得<br>
-     *
-     * @param GetQuestGroupModelRequest $request リクエストパラメータ
+     * @param GetQuestGroupModelRequest $request
      * @return GetQuestGroupModelResult
      */
     public function getQuestGroupModel (
@@ -4111,9 +3818,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルの一覧を取得<br>
-     *
-     * @param DescribeQuestModelsRequest $request リクエストパラメータ
+     * @param DescribeQuestModelsRequest $request
      * @return PromiseInterface
      */
     public function describeQuestModelsAsync(
@@ -4128,9 +3833,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルの一覧を取得<br>
-     *
-     * @param DescribeQuestModelsRequest $request リクエストパラメータ
+     * @param DescribeQuestModelsRequest $request
      * @return DescribeQuestModelsResult
      */
     public function describeQuestModels (
@@ -4142,9 +3845,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルを取得<br>
-     *
-     * @param GetQuestModelRequest $request リクエストパラメータ
+     * @param GetQuestModelRequest $request
      * @return PromiseInterface
      */
     public function getQuestModelAsync(
@@ -4159,9 +3860,7 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クエストモデルを取得<br>
-     *
-     * @param GetQuestModelRequest $request リクエストパラメータ
+     * @param GetQuestModelRequest $request
      * @return GetQuestModelResult
      */
     public function getQuestModel (

@@ -19,91 +19,56 @@ namespace Gs2\Deploy\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * Output に記録するフィールド
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class OutputField implements IModel {
 	/**
-     * @var string 名前
+     * @var string
 	 */
-	protected $name;
-
+	private $name;
 	/**
-	 * 名前を取得
-	 *
-	 * @return string|null 名前
+     * @var string
 	 */
+	private $fieldName;
+
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * 名前を設定
-	 *
-	 * @param string|null $name 名前
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * 名前を設定
-	 *
-	 * @param string|null $name 名前
-	 * @return OutputField $this
-	 */
 	public function withName(?string $name): OutputField {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string フィールド名
-	 */
-	protected $fieldName;
 
-	/**
-	 * フィールド名を取得
-	 *
-	 * @return string|null フィールド名
-	 */
 	public function getFieldName(): ?string {
 		return $this->fieldName;
 	}
 
-	/**
-	 * フィールド名を設定
-	 *
-	 * @param string|null $fieldName フィールド名
-	 */
 	public function setFieldName(?string $fieldName) {
 		$this->fieldName = $fieldName;
 	}
 
-	/**
-	 * フィールド名を設定
-	 *
-	 * @param string|null $fieldName フィールド名
-	 * @return OutputField $this
-	 */
 	public function withFieldName(?string $fieldName): OutputField {
 		$this->fieldName = $fieldName;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "name" => $this->name,
-            "fieldName" => $this->fieldName,
-        );
+    public static function fromJson(?array $data): ?OutputField {
+        if ($data === null) {
+            return null;
+        }
+        return (new OutputField())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withFieldName(empty($data['fieldName']) ? null : $data['fieldName']);
     }
 
-    public static function fromJson(array $data): OutputField {
-        $model = new OutputField();
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setFieldName(isset($data["fieldName"]) ? $data["fieldName"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "fieldName" => $this->getFieldName(),
+        );
     }
 }

@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Watch\Request\GetChartRequest;
 use Gs2\Watch\Result\GetChartResult;
 use Gs2\Watch\Request\GetCumulativeRequest;
@@ -324,9 +326,7 @@ class Gs2WatchRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * チャートを取得<br>
-     *
-     * @param GetChartRequest $request リクエストパラメータ
+     * @param GetChartRequest $request
      * @return PromiseInterface
      */
     public function getChartAsync(
@@ -341,9 +341,7 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     }
 
     /**
-     * チャートを取得<br>
-     *
-     * @param GetChartRequest $request リクエストパラメータ
+     * @param GetChartRequest $request
      * @return GetChartResult
      */
     public function getChart (
@@ -355,9 +353,7 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 累積値を取得<br>
-     *
-     * @param GetCumulativeRequest $request リクエストパラメータ
+     * @param GetCumulativeRequest $request
      * @return PromiseInterface
      */
     public function getCumulativeAsync(
@@ -372,9 +368,7 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 累積値を取得<br>
-     *
-     * @param GetCumulativeRequest $request リクエストパラメータ
+     * @param GetCumulativeRequest $request
      * @return GetCumulativeResult
      */
     public function getCumulative (
@@ -386,9 +380,7 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 請求にまつわるアクティビティの一覧を取得<br>
-     *
-     * @param DescribeBillingActivitiesRequest $request リクエストパラメータ
+     * @param DescribeBillingActivitiesRequest $request
      * @return PromiseInterface
      */
     public function describeBillingActivitiesAsync(
@@ -403,9 +395,7 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 請求にまつわるアクティビティの一覧を取得<br>
-     *
-     * @param DescribeBillingActivitiesRequest $request リクエストパラメータ
+     * @param DescribeBillingActivitiesRequest $request
      * @return DescribeBillingActivitiesResult
      */
     public function describeBillingActivities (
@@ -417,9 +407,7 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 請求にまつわるアクティビティを取得<br>
-     *
-     * @param GetBillingActivityRequest $request リクエストパラメータ
+     * @param GetBillingActivityRequest $request
      * @return PromiseInterface
      */
     public function getBillingActivityAsync(
@@ -434,9 +422,7 @@ class Gs2WatchRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 請求にまつわるアクティビティを取得<br>
-     *
-     * @param GetBillingActivityRequest $request リクエストパラメータ
+     * @param GetBillingActivityRequest $request
      * @return GetBillingActivityResult
      */
     public function getBillingActivity (

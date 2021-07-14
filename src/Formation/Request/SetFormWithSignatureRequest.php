@@ -20,235 +20,129 @@ namespace Gs2\Formation\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Formation\Model\SlotWithSignature;
 
-/**
- * 署名付きスロットを使ってフォームを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetFormWithSignatureRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 署名付きスロットを使ってフォームを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 署名付きスロットを使ってフォームを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 署名付きスロットを使ってフォームを更新
-     * @return SetFormWithSignatureRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): SetFormWithSignatureRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string フォームの保存領域の名前 */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $moldName;
-
-    /**
-     * フォームの保存領域の名前を取得
-     *
-     * @return string|null 署名付きスロットを使ってフォームを更新
-     */
-    public function getMoldName(): ?string {
-        return $this->moldName;
-    }
-
-    /**
-     * フォームの保存領域の名前を設定
-     *
-     * @param string $moldName 署名付きスロットを使ってフォームを更新
-     */
-    public function setMoldName(string $moldName = null) {
-        $this->moldName = $moldName;
-    }
-
-    /**
-     * フォームの保存領域の名前を設定
-     *
-     * @param string $moldName 署名付きスロットを使ってフォームを更新
-     * @return SetFormWithSignatureRequest $this
-     */
-    public function withMoldName(string $moldName = null): SetFormWithSignatureRequest {
-        $this->setMoldName($moldName);
-        return $this;
-    }
-
-    /** @var int 保存領域のインデックス */
+    /** @var int */
     private $index;
-
-    /**
-     * 保存領域のインデックスを取得
-     *
-     * @return int|null 署名付きスロットを使ってフォームを更新
-     */
-    public function getIndex(): ?int {
-        return $this->index;
-    }
-
-    /**
-     * 保存領域のインデックスを設定
-     *
-     * @param int $index 署名付きスロットを使ってフォームを更新
-     */
-    public function setIndex(int $index = null) {
-        $this->index = $index;
-    }
-
-    /**
-     * 保存領域のインデックスを設定
-     *
-     * @param int $index 署名付きスロットを使ってフォームを更新
-     * @return SetFormWithSignatureRequest $this
-     */
-    public function withIndex(int $index = null): SetFormWithSignatureRequest {
-        $this->setIndex($index);
-        return $this;
-    }
-
-    /** @var SlotWithSignature[] 編成するスロットのリスト */
+    /** @var array */
     private $slots;
-
-    /**
-     * 編成するスロットのリストを取得
-     *
-     * @return SlotWithSignature[]|null 署名付きスロットを使ってフォームを更新
-     */
-    public function getSlots(): ?array {
-        return $this->slots;
-    }
-
-    /**
-     * 編成するスロットのリストを設定
-     *
-     * @param SlotWithSignature[] $slots 署名付きスロットを使ってフォームを更新
-     */
-    public function setSlots(array $slots = null) {
-        $this->slots = $slots;
-    }
-
-    /**
-     * 編成するスロットのリストを設定
-     *
-     * @param SlotWithSignature[] $slots 署名付きスロットを使ってフォームを更新
-     * @return SetFormWithSignatureRequest $this
-     */
-    public function withSlots(array $slots = null): SetFormWithSignatureRequest {
-        $this->setSlots($slots);
-        return $this;
-    }
-
-    /** @var string 署名の発行に使用した GS2-Key の暗号鍵GRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * 署名の発行に使用した GS2-Key の暗号鍵GRNを取得
-     *
-     * @return string|null 署名付きスロットを使ってフォームを更新
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): SetFormWithSignatureRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): SetFormWithSignatureRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getMoldName(): ?string {
+		return $this->moldName;
+	}
+
+	public function setMoldName(?string $moldName) {
+		$this->moldName = $moldName;
+	}
+
+	public function withMoldName(?string $moldName): SetFormWithSignatureRequest {
+		$this->moldName = $moldName;
+		return $this;
+	}
+
+	public function getIndex(): ?int {
+		return $this->index;
+	}
+
+	public function setIndex(?int $index) {
+		$this->index = $index;
+	}
+
+	public function withIndex(?int $index): SetFormWithSignatureRequest {
+		$this->index = $index;
+		return $this;
+	}
+
+	public function getSlots(): ?array {
+		return $this->slots;
+	}
+
+	public function setSlots(?array $slots) {
+		$this->slots = $slots;
+	}
+
+	public function withSlots(?array $slots): SetFormWithSignatureRequest {
+		$this->slots = $slots;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): SetFormWithSignatureRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetFormWithSignatureRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetFormWithSignatureRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
+            ->withIndex(empty($data['index']) ? null : $data['index'])
+            ->withSlots(array_map(
+                function ($item) {
+                    return SlotWithSignature::fromJson($item);
+                },
+                array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
+            ))
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * 署名の発行に使用した GS2-Key の暗号鍵GRNを設定
-     *
-     * @param string $keyId 署名付きスロットを使ってフォームを更新
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "moldName" => $this->getMoldName(),
+            "index" => $this->getIndex(),
+            "slots" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
+            ),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * 署名の発行に使用した GS2-Key の暗号鍵GRNを設定
-     *
-     * @param string $keyId 署名付きスロットを使ってフォームを更新
-     * @return SetFormWithSignatureRequest $this
-     */
-    public function withKeyId(string $keyId = null): SetFormWithSignatureRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 署名付きスロットを使ってフォームを更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 署名付きスロットを使ってフォームを更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 署名付きスロットを使ってフォームを更新
-     * @return SetFormWithSignatureRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): SetFormWithSignatureRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return SetFormWithSignatureRequest this
-     */
-    public function withAccessToken(string $accessToken): SetFormWithSignatureRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

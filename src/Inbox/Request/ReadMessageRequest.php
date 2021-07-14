@@ -20,171 +20,95 @@ namespace Gs2\Inbox\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Inbox\Model\Config;
 
-/**
- * メッセージを開封 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class ReadMessageRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null メッセージを開封
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージを開封
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージを開封
-     * @return ReadMessageRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): ReadMessageRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string メッセージID */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $messageName;
-
-    /**
-     * メッセージIDを取得
-     *
-     * @return string|null メッセージを開封
-     */
-    public function getMessageName(): ?string {
-        return $this->messageName;
-    }
-
-    /**
-     * メッセージIDを設定
-     *
-     * @param string $messageName メッセージを開封
-     */
-    public function setMessageName(string $messageName = null) {
-        $this->messageName = $messageName;
-    }
-
-    /**
-     * メッセージIDを設定
-     *
-     * @param string $messageName メッセージを開封
-     * @return ReadMessageRequest $this
-     */
-    public function withMessageName(string $messageName = null): ReadMessageRequest {
-        $this->setMessageName($messageName);
-        return $this;
-    }
-
-    /** @var Config[] スタンプシートの変数に適用する設定値 */
+    /** @var array */
     private $config;
 
-    /**
-     * スタンプシートの変数に適用する設定値を取得
-     *
-     * @return Config[]|null メッセージを開封
-     */
-    public function getConfig(): ?array {
-        return $this->config;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): ReadMessageRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): ReadMessageRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getMessageName(): ?string {
+		return $this->messageName;
+	}
+
+	public function setMessageName(?string $messageName) {
+		$this->messageName = $messageName;
+	}
+
+	public function withMessageName(?string $messageName): ReadMessageRequest {
+		$this->messageName = $messageName;
+		return $this;
+	}
+
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+
+	public function withConfig(?array $config): ReadMessageRequest {
+		$this->config = $config;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ReadMessageRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new ReadMessageRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withMessageName(empty($data['messageName']) ? null : $data['messageName'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config メッセージを開封
-     */
-    public function setConfig(array $config = null) {
-        $this->config = $config;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "messageName" => $this->getMessageName(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
+        );
     }
-
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config メッセージを開封
-     * @return ReadMessageRequest $this
-     */
-    public function withConfig(array $config = null): ReadMessageRequest {
-        $this->setConfig($config);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null メッセージを開封
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider メッセージを開封
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider メッセージを開封
-     * @return ReadMessageRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): ReadMessageRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return ReadMessageRequest this
-     */
-    public function withAccessToken(string $accessToken): ReadMessageRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

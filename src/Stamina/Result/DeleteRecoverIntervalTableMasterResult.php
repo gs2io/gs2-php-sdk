@@ -20,36 +20,34 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\RecoverIntervalTableMaster;
 
-/**
- * スタミナ回復間隔テーブルマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRecoverIntervalTableMasterResult implements IResult {
-	/** @var RecoverIntervalTableMaster 削除したスタミナ回復間隔テーブルマスター */
-	private $item;
+    /** @var RecoverIntervalTableMaster */
+    private $item;
 
-	/**
-	 * 削除したスタミナ回復間隔テーブルマスターを取得
-	 *
-	 * @return RecoverIntervalTableMaster|null スタミナ回復間隔テーブルマスターを削除
-	 */
 	public function getItem(): ?RecoverIntervalTableMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したスタミナ回復間隔テーブルマスターを設定
-	 *
-	 * @param RecoverIntervalTableMaster|null $item スタミナ回復間隔テーブルマスターを削除
-	 */
 	public function setItem(?RecoverIntervalTableMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteRecoverIntervalTableMasterResult {
-        $result = new DeleteRecoverIntervalTableMasterResult();
-        $result->setItem(isset($data["item"]) ? RecoverIntervalTableMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?RecoverIntervalTableMaster $item): DeleteRecoverIntervalTableMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRecoverIntervalTableMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRecoverIntervalTableMasterResult())
+            ->withItem(empty($data['item']) ? null : RecoverIntervalTableMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

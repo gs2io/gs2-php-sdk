@@ -20,36 +20,34 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\StaminaModelMaster;
 
-/**
- * スタミナモデルマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteStaminaModelMasterResult implements IResult {
-	/** @var StaminaModelMaster 削除したスタミナモデルマスター */
-	private $item;
+    /** @var StaminaModelMaster */
+    private $item;
 
-	/**
-	 * 削除したスタミナモデルマスターを取得
-	 *
-	 * @return StaminaModelMaster|null スタミナモデルマスターを削除
-	 */
 	public function getItem(): ?StaminaModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したスタミナモデルマスターを設定
-	 *
-	 * @param StaminaModelMaster|null $item スタミナモデルマスターを削除
-	 */
 	public function setItem(?StaminaModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteStaminaModelMasterResult {
-        $result = new DeleteStaminaModelMasterResult();
-        $result->setItem(isset($data["item"]) ? StaminaModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?StaminaModelMaster $item): DeleteStaminaModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteStaminaModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteStaminaModelMasterResult())
+            ->withItem(empty($data['item']) ? null : StaminaModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

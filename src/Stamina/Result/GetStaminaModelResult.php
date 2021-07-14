@@ -18,38 +18,39 @@
 namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Stamina\Model\MaxStaminaTable;
+use Gs2\Stamina\Model\RecoverIntervalTable;
+use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
-/**
- * スタミナモデルを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetStaminaModelResult implements IResult {
-	/** @var StaminaModel スタミナモデル */
-	private $item;
+    /** @var StaminaModel */
+    private $item;
 
-	/**
-	 * スタミナモデルを取得
-	 *
-	 * @return StaminaModel|null スタミナモデルを取得
-	 */
 	public function getItem(): ?StaminaModel {
 		return $this->item;
 	}
 
-	/**
-	 * スタミナモデルを設定
-	 *
-	 * @param StaminaModel|null $item スタミナモデルを取得
-	 */
 	public function setItem(?StaminaModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetStaminaModelResult {
-        $result = new GetStaminaModelResult();
-        $result->setItem(isset($data["item"]) ? StaminaModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?StaminaModel $item): GetStaminaModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetStaminaModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetStaminaModelResult())
+            ->withItem(empty($data['item']) ? null : StaminaModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -19,126 +19,75 @@ namespace Gs2\Friend\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * フォローしているユーザー
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class FollowUser implements IModel {
 	/**
-     * @var string ユーザーID
+     * @var string
 	 */
-	protected $userId;
-
+	private $userId;
 	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
+     * @var string
 	 */
+	private $publicProfile;
+	/**
+     * @var string
+	 */
+	private $followerProfile;
+
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return FollowUser $this
-	 */
 	public function withUserId(?string $userId): FollowUser {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string 公開されるプロフィール
-	 */
-	protected $publicProfile;
 
-	/**
-	 * 公開されるプロフィールを取得
-	 *
-	 * @return string|null 公開されるプロフィール
-	 */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
 
-	/**
-	 * 公開されるプロフィールを設定
-	 *
-	 * @param string|null $publicProfile 公開されるプロフィール
-	 */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
 
-	/**
-	 * 公開されるプロフィールを設定
-	 *
-	 * @param string|null $publicProfile 公開されるプロフィール
-	 * @return FollowUser $this
-	 */
 	public function withPublicProfile(?string $publicProfile): FollowUser {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
-	/**
-     * @var string フォロワー向けに公開されるプロフィール
-	 */
-	protected $followerProfile;
 
-	/**
-	 * フォロワー向けに公開されるプロフィールを取得
-	 *
-	 * @return string|null フォロワー向けに公開されるプロフィール
-	 */
 	public function getFollowerProfile(): ?string {
 		return $this->followerProfile;
 	}
 
-	/**
-	 * フォロワー向けに公開されるプロフィールを設定
-	 *
-	 * @param string|null $followerProfile フォロワー向けに公開されるプロフィール
-	 */
 	public function setFollowerProfile(?string $followerProfile) {
 		$this->followerProfile = $followerProfile;
 	}
 
-	/**
-	 * フォロワー向けに公開されるプロフィールを設定
-	 *
-	 * @param string|null $followerProfile フォロワー向けに公開されるプロフィール
-	 * @return FollowUser $this
-	 */
 	public function withFollowerProfile(?string $followerProfile): FollowUser {
 		$this->followerProfile = $followerProfile;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "userId" => $this->userId,
-            "publicProfile" => $this->publicProfile,
-            "followerProfile" => $this->followerProfile,
-        );
+    public static function fromJson(?array $data): ?FollowUser {
+        if ($data === null) {
+            return null;
+        }
+        return (new FollowUser())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
+            ->withFollowerProfile(empty($data['followerProfile']) ? null : $data['followerProfile']);
     }
 
-    public static function fromJson(array $data): FollowUser {
-        $model = new FollowUser();
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setPublicProfile(isset($data["publicProfile"]) ? $data["publicProfile"] : null);
-        $model->setFollowerProfile(isset($data["followerProfile"]) ? $data["followerProfile"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "publicProfile" => $this->getPublicProfile(),
+            "followerProfile" => $this->getFollowerProfile(),
+        );
     }
 }

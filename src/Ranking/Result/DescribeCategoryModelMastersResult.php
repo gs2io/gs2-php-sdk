@@ -20,63 +20,61 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\CategoryModelMaster;
 
-/**
- * カテゴリマスターの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeCategoryModelMastersResult implements IResult {
-	/** @var CategoryModelMaster[] カテゴリマスターのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * カテゴリマスターのリストを取得
-	 *
-	 * @return CategoryModelMaster[]|null カテゴリマスターの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * カテゴリマスターのリストを設定
-	 *
-	 * @param CategoryModelMaster[]|null $items カテゴリマスターの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null カテゴリマスターの一覧を取得
-	 */
+	public function withItems(?array $items): DescribeCategoryModelMastersResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken カテゴリマスターの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeCategoryModelMastersResult {
-        $result = new DescribeCategoryModelMastersResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return CategoryModelMaster::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeCategoryModelMastersResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeCategoryModelMastersResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeCategoryModelMastersResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return CategoryModelMaster::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

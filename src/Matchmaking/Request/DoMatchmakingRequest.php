@@ -18,173 +18,88 @@
 namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Matchmaking\Model\Attribute;
 use Gs2\Matchmaking\Model\Player;
 
-/**
- * 自分が参加できるギャザリングを探して参加する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DoMatchmakingRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 自分が参加できるギャザリングを探して参加する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 自分が参加できるギャザリングを探して参加する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 自分が参加できるギャザリングを探して参加する
-     * @return DoMatchmakingRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DoMatchmakingRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var Player 自身のプレイヤー情報 */
+    /** @var string */
+    private $accessToken;
+    /** @var Player */
     private $player;
-
-    /**
-     * 自身のプレイヤー情報を取得
-     *
-     * @return Player|null 自分が参加できるギャザリングを探して参加する
-     */
-    public function getPlayer(): ?Player {
-        return $this->player;
-    }
-
-    /**
-     * 自身のプレイヤー情報を設定
-     *
-     * @param Player $player 自分が参加できるギャザリングを探して参加する
-     */
-    public function setPlayer(Player $player = null) {
-        $this->player = $player;
-    }
-
-    /**
-     * 自身のプレイヤー情報を設定
-     *
-     * @param Player $player 自分が参加できるギャザリングを探して参加する
-     * @return DoMatchmakingRequest $this
-     */
-    public function withPlayer(Player $player = null): DoMatchmakingRequest {
-        $this->setPlayer($player);
-        return $this;
-    }
-
-    /** @var string 検索の再開に使用する マッチメイキングの状態を保持するトークン */
+    /** @var string */
     private $matchmakingContextToken;
 
-    /**
-     * 検索の再開に使用する マッチメイキングの状態を保持するトークンを取得
-     *
-     * @return string|null 自分が参加できるギャザリングを探して参加する
-     */
-    public function getMatchmakingContextToken(): ?string {
-        return $this->matchmakingContextToken;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DoMatchmakingRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): DoMatchmakingRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getPlayer(): ?Player {
+		return $this->player;
+	}
+
+	public function setPlayer(?Player $player) {
+		$this->player = $player;
+	}
+
+	public function withPlayer(?Player $player): DoMatchmakingRequest {
+		$this->player = $player;
+		return $this;
+	}
+
+	public function getMatchmakingContextToken(): ?string {
+		return $this->matchmakingContextToken;
+	}
+
+	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
+		$this->matchmakingContextToken = $matchmakingContextToken;
+	}
+
+	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingRequest {
+		$this->matchmakingContextToken = $matchmakingContextToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DoMatchmakingRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DoMatchmakingRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withPlayer(empty($data['player']) ? null : Player::fromJson($data['player']))
+            ->withMatchmakingContextToken(empty($data['matchmakingContextToken']) ? null : $data['matchmakingContextToken']);
     }
 
-    /**
-     * 検索の再開に使用する マッチメイキングの状態を保持するトークンを設定
-     *
-     * @param string $matchmakingContextToken 自分が参加できるギャザリングを探して参加する
-     */
-    public function setMatchmakingContextToken(string $matchmakingContextToken = null) {
-        $this->matchmakingContextToken = $matchmakingContextToken;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "player" => $this->getPlayer() !== null ? $this->getPlayer()->toJson() : null,
+            "matchmakingContextToken" => $this->getMatchmakingContextToken(),
+        );
     }
-
-    /**
-     * 検索の再開に使用する マッチメイキングの状態を保持するトークンを設定
-     *
-     * @param string $matchmakingContextToken 自分が参加できるギャザリングを探して参加する
-     * @return DoMatchmakingRequest $this
-     */
-    public function withMatchmakingContextToken(string $matchmakingContextToken = null): DoMatchmakingRequest {
-        $this->setMatchmakingContextToken($matchmakingContextToken);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 自分が参加できるギャザリングを探して参加する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 自分が参加できるギャザリングを探して参加する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 自分が参加できるギャザリングを探して参加する
-     * @return DoMatchmakingRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DoMatchmakingRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return DoMatchmakingRequest this
-     */
-    public function withAccessToken(string $accessToken): DoMatchmakingRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

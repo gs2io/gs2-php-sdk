@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendUser;
 
-/**
- * ユーザーIDを指定してフレンドを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetFriendByUserIdResult implements IResult {
-	/** @var FriendUser フレンドのユーザー */
-	private $item;
+    /** @var FriendUser */
+    private $item;
 
-	/**
-	 * フレンドのユーザーを取得
-	 *
-	 * @return FriendUser|null ユーザーIDを指定してフレンドを取得
-	 */
 	public function getItem(): ?FriendUser {
 		return $this->item;
 	}
 
-	/**
-	 * フレンドのユーザーを設定
-	 *
-	 * @param FriendUser|null $item ユーザーIDを指定してフレンドを取得
-	 */
 	public function setItem(?FriendUser $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetFriendByUserIdResult {
-        $result = new GetFriendByUserIdResult();
-        $result->setItem(isset($data["item"]) ? FriendUser::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FriendUser $item): GetFriendByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetFriendByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetFriendByUserIdResult())
+            ->withItem(empty($data['item']) ? null : FriendUser::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -19,91 +19,56 @@ namespace Gs2\Friend\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * フレンドリクエスト
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class FriendRequest implements IModel {
 	/**
-     * @var string ユーザーID
+     * @var string
 	 */
-	protected $userId;
-
+	private $userId;
 	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
+     * @var string
 	 */
+	private $targetUserId;
+
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return FriendRequest $this
-	 */
 	public function withUserId(?string $userId): FriendRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string ユーザーID
-	 */
-	protected $targetUserId;
 
-	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
-	 */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $targetUserId ユーザーID
-	 */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $targetUserId ユーザーID
-	 * @return FriendRequest $this
-	 */
 	public function withTargetUserId(?string $targetUserId): FriendRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "userId" => $this->userId,
-            "targetUserId" => $this->targetUserId,
-        );
+    public static function fromJson(?array $data): ?FriendRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new FriendRequest())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId']);
     }
 
-    public static function fromJson(array $data): FriendRequest {
-        $model = new FriendRequest();
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setTargetUserId(isset($data["targetUserId"]) ? $data["targetUserId"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "targetUserId" => $this->getTargetUserId(),
+        );
     }
 }

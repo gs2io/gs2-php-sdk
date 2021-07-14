@@ -20,36 +20,34 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\CurrentLimitMaster;
 
-/**
- * 現在有効な回数制限設定を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCurrentLimitMasterResult implements IResult {
-	/** @var CurrentLimitMaster 現在有効な回数制限設定 */
-	private $item;
+    /** @var CurrentLimitMaster */
+    private $item;
 
-	/**
-	 * 現在有効な回数制限設定を取得
-	 *
-	 * @return CurrentLimitMaster|null 現在有効な回数制限設定を取得します
-	 */
 	public function getItem(): ?CurrentLimitMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効な回数制限設定を設定
-	 *
-	 * @param CurrentLimitMaster|null $item 現在有効な回数制限設定を取得します
-	 */
 	public function setItem(?CurrentLimitMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCurrentLimitMasterResult {
-        $result = new GetCurrentLimitMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentLimitMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentLimitMaster $item): GetCurrentLimitMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCurrentLimitMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCurrentLimitMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentLimitMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

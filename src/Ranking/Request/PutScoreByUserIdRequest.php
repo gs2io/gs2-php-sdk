@@ -19,203 +19,102 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザーIDを指定してスコアを登録 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PutScoreByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザーIDを指定してスコアを登録
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してスコアを登録
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してスコアを登録
-     * @return PutScoreByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PutScoreByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $categoryName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null ユーザーIDを指定してスコアを登録
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName ユーザーIDを指定してスコアを登録
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName ユーザーIDを指定してスコアを登録
-     * @return PutScoreByUserIdRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): PutScoreByUserIdRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
-    /** @var string ユーザID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザIDを取得
-     *
-     * @return string|null ユーザーIDを指定してスコアを登録
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してスコアを登録
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してスコアを登録
-     * @return PutScoreByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): PutScoreByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int スコア */
+    /** @var int */
     private $score;
-
-    /**
-     * スコアを取得
-     *
-     * @return int|null ユーザーIDを指定してスコアを登録
-     */
-    public function getScore(): ?int {
-        return $this->score;
-    }
-
-    /**
-     * スコアを設定
-     *
-     * @param int $score ユーザーIDを指定してスコアを登録
-     */
-    public function setScore(int $score = null) {
-        $this->score = $score;
-    }
-
-    /**
-     * スコアを設定
-     *
-     * @param int $score ユーザーIDを指定してスコアを登録
-     * @return PutScoreByUserIdRequest $this
-     */
-    public function withScore(int $score = null): PutScoreByUserIdRequest {
-        $this->setScore($score);
-        return $this;
-    }
-
-    /** @var string メタデータ */
+    /** @var string */
     private $metadata;
 
-    /**
-     * メタデータを取得
-     *
-     * @return string|null ユーザーIDを指定してスコアを登録
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PutScoreByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): PutScoreByUserIdRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): PutScoreByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getScore(): ?int {
+		return $this->score;
+	}
+
+	public function setScore(?int $score) {
+		$this->score = $score;
+	}
+
+	public function withScore(?int $score): PutScoreByUserIdRequest {
+		$this->score = $score;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): PutScoreByUserIdRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PutScoreByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PutScoreByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withScore(empty($data['score']) ? null : $data['score'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
     }
 
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata ユーザーIDを指定してスコアを登録
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+            "userId" => $this->getUserId(),
+            "score" => $this->getScore(),
+            "metadata" => $this->getMetadata(),
+        );
     }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata ユーザーIDを指定してスコアを登録
-     * @return PutScoreByUserIdRequest $this
-     */
-    public function withMetadata(string $metadata = null): PutScoreByUserIdRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザーIDを指定してスコアを登録
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してスコアを登録
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してスコアを登録
-     * @return PutScoreByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): PutScoreByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

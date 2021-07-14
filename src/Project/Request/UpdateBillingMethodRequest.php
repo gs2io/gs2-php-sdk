@@ -19,107 +19,68 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 支払い方法を更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateBillingMethodRequest extends Gs2BasicRequest {
-
-    /** @var string GS2アカウントトークン */
+    /** @var string */
     private $accountToken;
-
-    /**
-     * GS2アカウントトークンを取得
-     *
-     * @return string|null 支払い方法を更新
-     */
-    public function getAccountToken(): ?string {
-        return $this->accountToken;
-    }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken 支払い方法を更新
-     */
-    public function setAccountToken(string $accountToken = null) {
-        $this->accountToken = $accountToken;
-    }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken 支払い方法を更新
-     * @return UpdateBillingMethodRequest $this
-     */
-    public function withAccountToken(string $accountToken = null): UpdateBillingMethodRequest {
-        $this->setAccountToken($accountToken);
-        return $this;
-    }
-
-    /** @var string 名前 */
+    /** @var string */
     private $billingMethodName;
-
-    /**
-     * 名前を取得
-     *
-     * @return string|null 支払い方法を更新
-     */
-    public function getBillingMethodName(): ?string {
-        return $this->billingMethodName;
-    }
-
-    /**
-     * 名前を設定
-     *
-     * @param string $billingMethodName 支払い方法を更新
-     */
-    public function setBillingMethodName(string $billingMethodName = null) {
-        $this->billingMethodName = $billingMethodName;
-    }
-
-    /**
-     * 名前を設定
-     *
-     * @param string $billingMethodName 支払い方法を更新
-     * @return UpdateBillingMethodRequest $this
-     */
-    public function withBillingMethodName(string $billingMethodName = null): UpdateBillingMethodRequest {
-        $this->setBillingMethodName($billingMethodName);
-        return $this;
-    }
-
-    /** @var string 名前 */
+    /** @var string */
     private $description;
 
-    /**
-     * 名前を取得
-     *
-     * @return string|null 支払い方法を更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
+	public function getAccountToken(): ?string {
+		return $this->accountToken;
+	}
+
+	public function setAccountToken(?string $accountToken) {
+		$this->accountToken = $accountToken;
+	}
+
+	public function withAccountToken(?string $accountToken): UpdateBillingMethodRequest {
+		$this->accountToken = $accountToken;
+		return $this;
+	}
+
+	public function getBillingMethodName(): ?string {
+		return $this->billingMethodName;
+	}
+
+	public function setBillingMethodName(?string $billingMethodName) {
+		$this->billingMethodName = $billingMethodName;
+	}
+
+	public function withBillingMethodName(?string $billingMethodName): UpdateBillingMethodRequest {
+		$this->billingMethodName = $billingMethodName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateBillingMethodRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateBillingMethodRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateBillingMethodRequest())
+            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
+            ->withBillingMethodName(empty($data['billingMethodName']) ? null : $data['billingMethodName'])
+            ->withDescription(empty($data['description']) ? null : $data['description']);
     }
 
-    /**
-     * 名前を設定
-     *
-     * @param string $description 支払い方法を更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
+    public function toJson(): array {
+        return array(
+            "accountToken" => $this->getAccountToken(),
+            "billingMethodName" => $this->getBillingMethodName(),
+            "description" => $this->getDescription(),
+        );
     }
-
-    /**
-     * 名前を設定
-     *
-     * @param string $description 支払い方法を更新
-     * @return UpdateBillingMethodRequest $this
-     */
-    public function withDescription(string $description = null): UpdateBillingMethodRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
 }

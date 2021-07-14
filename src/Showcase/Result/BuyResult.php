@@ -18,80 +18,72 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\ConsumeAction;
+use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\SalesItem;
 
-/**
- * 陳列棚を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class BuyResult implements IResult {
-	/** @var SalesItem 商品 */
-	private $item;
-	/** @var string 購入処理の実行に使用するスタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
+    /** @var SalesItem */
+    private $item;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
 
-	/**
-	 * 商品を取得
-	 *
-	 * @return SalesItem|null 陳列棚を取得
-	 */
 	public function getItem(): ?SalesItem {
 		return $this->item;
 	}
 
-	/**
-	 * 商品を設定
-	 *
-	 * @param SalesItem|null $item 陳列棚を取得
-	 */
 	public function setItem(?SalesItem $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 購入処理の実行に使用するスタンプシートを取得
-	 *
-	 * @return string|null 陳列棚を取得
-	 */
+	public function withItem(?SalesItem $item): BuyResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * 購入処理の実行に使用するスタンプシートを設定
-	 *
-	 * @param string|null $stampSheet 陳列棚を取得
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null 陳列棚を取得
-	 */
+	public function withStampSheet(?string $stampSheet): BuyResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId 陳列棚を取得
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-    public static function fromJson(array $data): BuyResult {
-        $result = new BuyResult();
-        $result->setItem(isset($data["item"]) ? SalesItem::fromJson($data["item"]) : null);
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        return $result;
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): BuyResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?BuyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new BuyResult())
+            ->withItem(empty($data['item']) ? null : SalesItem::fromJson($data['item']))
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+        );
     }
 }

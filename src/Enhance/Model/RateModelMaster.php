@@ -19,452 +19,266 @@ namespace Gs2\Enhance\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 強化レートマスター
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class RateModelMaster implements IModel {
 	/**
-     * @var string 強化レートマスター
+     * @var string
 	 */
-	protected $rateModelId;
-
+	private $rateModelId;
 	/**
-	 * 強化レートマスターを取得
-	 *
-	 * @return string|null 強化レートマスター
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $description;
+	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
+     * @var string
+	 */
+	private $targetInventoryModelId;
+	/**
+     * @var string
+	 */
+	private $acquireExperienceSuffix;
+	/**
+     * @var string
+	 */
+	private $materialInventoryModelId;
+	/**
+     * @var array
+	 */
+	private $acquireExperienceHierarchy;
+	/**
+     * @var string
+	 */
+	private $experienceModelId;
+	/**
+     * @var array
+	 */
+	private $bonusRates;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getRateModelId(): ?string {
 		return $this->rateModelId;
 	}
 
-	/**
-	 * 強化レートマスターを設定
-	 *
-	 * @param string|null $rateModelId 強化レートマスター
-	 */
 	public function setRateModelId(?string $rateModelId) {
 		$this->rateModelId = $rateModelId;
 	}
 
-	/**
-	 * 強化レートマスターを設定
-	 *
-	 * @param string|null $rateModelId 強化レートマスター
-	 * @return RateModelMaster $this
-	 */
 	public function withRateModelId(?string $rateModelId): RateModelMaster {
 		$this->rateModelId = $rateModelId;
 		return $this;
 	}
-	/**
-     * @var string 強化レート名
-	 */
-	protected $name;
 
-	/**
-	 * 強化レート名を取得
-	 *
-	 * @return string|null 強化レート名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * 強化レート名を設定
-	 *
-	 * @param string|null $name 強化レート名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * 強化レート名を設定
-	 *
-	 * @param string|null $name 強化レート名
-	 * @return RateModelMaster $this
-	 */
 	public function withName(?string $name): RateModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string 強化レートマスターの説明
-	 */
-	protected $description;
 
-	/**
-	 * 強化レートマスターの説明を取得
-	 *
-	 * @return string|null 強化レートマスターの説明
-	 */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
 
-	/**
-	 * 強化レートマスターの説明を設定
-	 *
-	 * @param string|null $description 強化レートマスターの説明
-	 */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
 
-	/**
-	 * 強化レートマスターの説明を設定
-	 *
-	 * @param string|null $description 強化レートマスターの説明
-	 * @return RateModelMaster $this
-	 */
 	public function withDescription(?string $description): RateModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-	/**
-     * @var string 強化レートのメタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * 強化レートのメタデータを取得
-	 *
-	 * @return string|null 強化レートのメタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * 強化レートのメタデータを設定
-	 *
-	 * @param string|null $metadata 強化レートのメタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * 強化レートのメタデータを設定
-	 *
-	 * @param string|null $metadata 強化レートのメタデータ
-	 * @return RateModelMaster $this
-	 */
 	public function withMetadata(?string $metadata): RateModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var string 強化対象に使用できるインベントリモデル のGRN
-	 */
-	protected $targetInventoryModelId;
 
-	/**
-	 * 強化対象に使用できるインベントリモデル のGRNを取得
-	 *
-	 * @return string|null 強化対象に使用できるインベントリモデル のGRN
-	 */
 	public function getTargetInventoryModelId(): ?string {
 		return $this->targetInventoryModelId;
 	}
 
-	/**
-	 * 強化対象に使用できるインベントリモデル のGRNを設定
-	 *
-	 * @param string|null $targetInventoryModelId 強化対象に使用できるインベントリモデル のGRN
-	 */
 	public function setTargetInventoryModelId(?string $targetInventoryModelId) {
 		$this->targetInventoryModelId = $targetInventoryModelId;
 	}
 
-	/**
-	 * 強化対象に使用できるインベントリモデル のGRNを設定
-	 *
-	 * @param string|null $targetInventoryModelId 強化対象に使用できるインベントリモデル のGRN
-	 * @return RateModelMaster $this
-	 */
 	public function withTargetInventoryModelId(?string $targetInventoryModelId): RateModelMaster {
 		$this->targetInventoryModelId = $targetInventoryModelId;
 		return $this;
 	}
-	/**
-     * @var string GS2-Experience で入手した経験値を格納する プロパティID に付与するサフィックス
-	 */
-	protected $acquireExperienceSuffix;
 
-	/**
-	 * GS2-Experience で入手した経験値を格納する プロパティID に付与するサフィックスを取得
-	 *
-	 * @return string|null GS2-Experience で入手した経験値を格納する プロパティID に付与するサフィックス
-	 */
 	public function getAcquireExperienceSuffix(): ?string {
 		return $this->acquireExperienceSuffix;
 	}
 
-	/**
-	 * GS2-Experience で入手した経験値を格納する プロパティID に付与するサフィックスを設定
-	 *
-	 * @param string|null $acquireExperienceSuffix GS2-Experience で入手した経験値を格納する プロパティID に付与するサフィックス
-	 */
 	public function setAcquireExperienceSuffix(?string $acquireExperienceSuffix) {
 		$this->acquireExperienceSuffix = $acquireExperienceSuffix;
 	}
 
-	/**
-	 * GS2-Experience で入手した経験値を格納する プロパティID に付与するサフィックスを設定
-	 *
-	 * @param string|null $acquireExperienceSuffix GS2-Experience で入手した経験値を格納する プロパティID に付与するサフィックス
-	 * @return RateModelMaster $this
-	 */
 	public function withAcquireExperienceSuffix(?string $acquireExperienceSuffix): RateModelMaster {
 		$this->acquireExperienceSuffix = $acquireExperienceSuffix;
 		return $this;
 	}
-	/**
-     * @var string 強化素材に使用できるインベントリモデル のGRN
-	 */
-	protected $materialInventoryModelId;
 
-	/**
-	 * 強化素材に使用できるインベントリモデル のGRNを取得
-	 *
-	 * @return string|null 強化素材に使用できるインベントリモデル のGRN
-	 */
 	public function getMaterialInventoryModelId(): ?string {
 		return $this->materialInventoryModelId;
 	}
 
-	/**
-	 * 強化素材に使用できるインベントリモデル のGRNを設定
-	 *
-	 * @param string|null $materialInventoryModelId 強化素材に使用できるインベントリモデル のGRN
-	 */
 	public function setMaterialInventoryModelId(?string $materialInventoryModelId) {
 		$this->materialInventoryModelId = $materialInventoryModelId;
 	}
 
-	/**
-	 * 強化素材に使用できるインベントリモデル のGRNを設定
-	 *
-	 * @param string|null $materialInventoryModelId 強化素材に使用できるインベントリモデル のGRN
-	 * @return RateModelMaster $this
-	 */
 	public function withMaterialInventoryModelId(?string $materialInventoryModelId): RateModelMaster {
 		$this->materialInventoryModelId = $materialInventoryModelId;
 		return $this;
 	}
-	/**
-     * @var string[] 入手経験値を格納しているメタデータのJSON階層
-	 */
-	protected $acquireExperienceHierarchy;
 
-	/**
-	 * 入手経験値を格納しているメタデータのJSON階層を取得
-	 *
-	 * @return string[]|null 入手経験値を格納しているメタデータのJSON階層
-	 */
 	public function getAcquireExperienceHierarchy(): ?array {
 		return $this->acquireExperienceHierarchy;
 	}
 
-	/**
-	 * 入手経験値を格納しているメタデータのJSON階層を設定
-	 *
-	 * @param string[]|null $acquireExperienceHierarchy 入手経験値を格納しているメタデータのJSON階層
-	 */
 	public function setAcquireExperienceHierarchy(?array $acquireExperienceHierarchy) {
 		$this->acquireExperienceHierarchy = $acquireExperienceHierarchy;
 	}
 
-	/**
-	 * 入手経験値を格納しているメタデータのJSON階層を設定
-	 *
-	 * @param string[]|null $acquireExperienceHierarchy 入手経験値を格納しているメタデータのJSON階層
-	 * @return RateModelMaster $this
-	 */
 	public function withAcquireExperienceHierarchy(?array $acquireExperienceHierarchy): RateModelMaster {
 		$this->acquireExperienceHierarchy = $acquireExperienceHierarchy;
 		return $this;
 	}
-	/**
-     * @var string 獲得できる経験値の種類マスター のGRN
-	 */
-	protected $experienceModelId;
 
-	/**
-	 * 獲得できる経験値の種類マスター のGRNを取得
-	 *
-	 * @return string|null 獲得できる経験値の種類マスター のGRN
-	 */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
 
-	/**
-	 * 獲得できる経験値の種類マスター のGRNを設定
-	 *
-	 * @param string|null $experienceModelId 獲得できる経験値の種類マスター のGRN
-	 */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
 
-	/**
-	 * 獲得できる経験値の種類マスター のGRNを設定
-	 *
-	 * @param string|null $experienceModelId 獲得できる経験値の種類マスター のGRN
-	 * @return RateModelMaster $this
-	 */
 	public function withExperienceModelId(?string $experienceModelId): RateModelMaster {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-	/**
-     * @var BonusRate[] 経験値獲得量ボーナス
-	 */
-	protected $bonusRates;
 
-	/**
-	 * 経験値獲得量ボーナスを取得
-	 *
-	 * @return BonusRate[]|null 経験値獲得量ボーナス
-	 */
 	public function getBonusRates(): ?array {
 		return $this->bonusRates;
 	}
 
-	/**
-	 * 経験値獲得量ボーナスを設定
-	 *
-	 * @param BonusRate[]|null $bonusRates 経験値獲得量ボーナス
-	 */
 	public function setBonusRates(?array $bonusRates) {
 		$this->bonusRates = $bonusRates;
 	}
 
-	/**
-	 * 経験値獲得量ボーナスを設定
-	 *
-	 * @param BonusRate[]|null $bonusRates 経験値獲得量ボーナス
-	 * @return RateModelMaster $this
-	 */
 	public function withBonusRates(?array $bonusRates): RateModelMaster {
 		$this->bonusRates = $bonusRates;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return RateModelMaster $this
-	 */
 	public function withCreatedAt(?int $createdAt): RateModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return RateModelMaster $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): RateModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "rateModelId" => $this->rateModelId,
-            "name" => $this->name,
-            "description" => $this->description,
-            "metadata" => $this->metadata,
-            "targetInventoryModelId" => $this->targetInventoryModelId,
-            "acquireExperienceSuffix" => $this->acquireExperienceSuffix,
-            "materialInventoryModelId" => $this->materialInventoryModelId,
-            "acquireExperienceHierarchy" => $this->acquireExperienceHierarchy,
-            "experienceModelId" => $this->experienceModelId,
-            "bonusRates" => array_map(
-                function (BonusRate $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?RateModelMaster {
+        if ($data === null) {
+            return null;
+        }
+        return (new RateModelMaster())
+            ->withRateModelId(empty($data['rateModelId']) ? null : $data['rateModelId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withTargetInventoryModelId(empty($data['targetInventoryModelId']) ? null : $data['targetInventoryModelId'])
+            ->withAcquireExperienceSuffix(empty($data['acquireExperienceSuffix']) ? null : $data['acquireExperienceSuffix'])
+            ->withMaterialInventoryModelId(empty($data['materialInventoryModelId']) ? null : $data['materialInventoryModelId'])
+            ->withAcquireExperienceHierarchy(array_map(
+                function ($item) {
+                    return $item;
                 },
-                $this->bonusRates == null ? [] : $this->bonusRates
-            ),
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+                array_key_exists('acquireExperienceHierarchy', $data) && $data['acquireExperienceHierarchy'] !== null ? $data['acquireExperienceHierarchy'] : []
+            ))
+            ->withExperienceModelId(empty($data['experienceModelId']) ? null : $data['experienceModelId'])
+            ->withBonusRates(array_map(
+                function ($item) {
+                    return BonusRate::fromJson($item);
+                },
+                array_key_exists('bonusRates', $data) && $data['bonusRates'] !== null ? $data['bonusRates'] : []
+            ))
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): RateModelMaster {
-        $model = new RateModelMaster();
-        $model->setRateModelId(isset($data["rateModelId"]) ? $data["rateModelId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setDescription(isset($data["description"]) ? $data["description"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setTargetInventoryModelId(isset($data["targetInventoryModelId"]) ? $data["targetInventoryModelId"] : null);
-        $model->setAcquireExperienceSuffix(isset($data["acquireExperienceSuffix"]) ? $data["acquireExperienceSuffix"] : null);
-        $model->setMaterialInventoryModelId(isset($data["materialInventoryModelId"]) ? $data["materialInventoryModelId"] : null);
-        $model->setAcquireExperienceHierarchy(isset($data["acquireExperienceHierarchy"]) ? $data["acquireExperienceHierarchy"] : null);
-        $model->setExperienceModelId(isset($data["experienceModelId"]) ? $data["experienceModelId"] : null);
-        $model->setBonusRates(array_map(
-                function ($v) {
-                    return BonusRate::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "rateModelId" => $this->getRateModelId(),
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "targetInventoryModelId" => $this->getTargetInventoryModelId(),
+            "acquireExperienceSuffix" => $this->getAcquireExperienceSuffix(),
+            "materialInventoryModelId" => $this->getMaterialInventoryModelId(),
+            "acquireExperienceHierarchy" => array_map(
+                function ($item) {
+                    return $item;
                 },
-                isset($data["bonusRates"]) ? $data["bonusRates"] : []
-            )
+                $this->getAcquireExperienceHierarchy() !== null && $this->getAcquireExperienceHierarchy() !== null ? $this->getAcquireExperienceHierarchy() : []
+            ),
+            "experienceModelId" => $this->getExperienceModelId(),
+            "bonusRates" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getBonusRates() !== null && $this->getBonusRates() !== null ? $this->getBonusRates() : []
+            ),
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
         );
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
     }
 }

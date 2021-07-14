@@ -19,75 +19,51 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 抽選の種類を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetLotteryModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 抽選の種類を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 抽選の種類を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 抽選の種類を取得
-     * @return GetLotteryModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetLotteryModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 抽選モデルの種類名 */
+    /** @var string */
     private $lotteryName;
 
-    /**
-     * 抽選モデルの種類名を取得
-     *
-     * @return string|null 抽選の種類を取得
-     */
-    public function getLotteryName(): ?string {
-        return $this->lotteryName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetLotteryModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getLotteryName(): ?string {
+		return $this->lotteryName;
+	}
+
+	public function setLotteryName(?string $lotteryName) {
+		$this->lotteryName = $lotteryName;
+	}
+
+	public function withLotteryName(?string $lotteryName): GetLotteryModelRequest {
+		$this->lotteryName = $lotteryName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetLotteryModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetLotteryModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withLotteryName(empty($data['lotteryName']) ? null : $data['lotteryName']);
     }
 
-    /**
-     * 抽選モデルの種類名を設定
-     *
-     * @param string $lotteryName 抽選の種類を取得
-     */
-    public function setLotteryName(string $lotteryName = null) {
-        $this->lotteryName = $lotteryName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "lotteryName" => $this->getLotteryName(),
+        );
     }
-
-    /**
-     * 抽選モデルの種類名を設定
-     *
-     * @param string $lotteryName 抽選の種類を取得
-     * @return GetLotteryModelRequest $this
-     */
-    public function withLotteryName(string $lotteryName = null): GetLotteryModelRequest {
-        $this->setLotteryName($lotteryName);
-        return $this;
-    }
-
 }

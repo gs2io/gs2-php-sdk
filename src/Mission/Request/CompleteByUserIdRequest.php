@@ -20,203 +20,112 @@ namespace Gs2\Mission\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Mission\Model\Config;
 
-/**
- * 達成状況を新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CompleteByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 達成状況を新規作成
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 達成状況を新規作成
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 達成状況を新規作成
-     * @return CompleteByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CompleteByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ミッショングループ名 */
+    /** @var string */
     private $missionGroupName;
-
-    /**
-     * ミッショングループ名を取得
-     *
-     * @return string|null 達成状況を新規作成
-     */
-    public function getMissionGroupName(): ?string {
-        return $this->missionGroupName;
-    }
-
-    /**
-     * ミッショングループ名を設定
-     *
-     * @param string $missionGroupName 達成状況を新規作成
-     */
-    public function setMissionGroupName(string $missionGroupName = null) {
-        $this->missionGroupName = $missionGroupName;
-    }
-
-    /**
-     * ミッショングループ名を設定
-     *
-     * @param string $missionGroupName 達成状況を新規作成
-     * @return CompleteByUserIdRequest $this
-     */
-    public function withMissionGroupName(string $missionGroupName = null): CompleteByUserIdRequest {
-        $this->setMissionGroupName($missionGroupName);
-        return $this;
-    }
-
-    /** @var string タスク名 */
+    /** @var string */
     private $missionTaskName;
-
-    /**
-     * タスク名を取得
-     *
-     * @return string|null 達成状況を新規作成
-     */
-    public function getMissionTaskName(): ?string {
-        return $this->missionTaskName;
-    }
-
-    /**
-     * タスク名を設定
-     *
-     * @param string $missionTaskName 達成状況を新規作成
-     */
-    public function setMissionTaskName(string $missionTaskName = null) {
-        $this->missionTaskName = $missionTaskName;
-    }
-
-    /**
-     * タスク名を設定
-     *
-     * @param string $missionTaskName 達成状況を新規作成
-     * @return CompleteByUserIdRequest $this
-     */
-    public function withMissionTaskName(string $missionTaskName = null): CompleteByUserIdRequest {
-        $this->setMissionTaskName($missionTaskName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 達成状況を新規作成
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 達成状況を新規作成
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 達成状況を新規作成
-     * @return CompleteByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): CompleteByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var Config[] スタンプシートの変数に適用する設定値 */
+    /** @var array */
     private $config;
 
-    /**
-     * スタンプシートの変数に適用する設定値を取得
-     *
-     * @return Config[]|null 達成状況を新規作成
-     */
-    public function getConfig(): ?array {
-        return $this->config;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CompleteByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getMissionGroupName(): ?string {
+		return $this->missionGroupName;
+	}
+
+	public function setMissionGroupName(?string $missionGroupName) {
+		$this->missionGroupName = $missionGroupName;
+	}
+
+	public function withMissionGroupName(?string $missionGroupName): CompleteByUserIdRequest {
+		$this->missionGroupName = $missionGroupName;
+		return $this;
+	}
+
+	public function getMissionTaskName(): ?string {
+		return $this->missionTaskName;
+	}
+
+	public function setMissionTaskName(?string $missionTaskName) {
+		$this->missionTaskName = $missionTaskName;
+	}
+
+	public function withMissionTaskName(?string $missionTaskName): CompleteByUserIdRequest {
+		$this->missionTaskName = $missionTaskName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): CompleteByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+
+	public function withConfig(?array $config): CompleteByUserIdRequest {
+		$this->config = $config;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CompleteByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CompleteByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName'])
+            ->withMissionTaskName(empty($data['missionTaskName']) ? null : $data['missionTaskName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config 達成状況を新規作成
-     */
-    public function setConfig(array $config = null) {
-        $this->config = $config;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "missionGroupName" => $this->getMissionGroupName(),
+            "missionTaskName" => $this->getMissionTaskName(),
+            "userId" => $this->getUserId(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
+        );
     }
-
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config 達成状況を新規作成
-     * @return CompleteByUserIdRequest $this
-     */
-    public function withConfig(array $config = null): CompleteByUserIdRequest {
-        $this->setConfig($config);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 達成状況を新規作成
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 達成状況を新規作成
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 達成状況を新規作成
-     * @return CompleteByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): CompleteByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

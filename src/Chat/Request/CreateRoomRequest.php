@@ -19,235 +19,129 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ルームを作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateRoomRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ルームを作成
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを作成
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを作成
-     * @return CreateRoomRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CreateRoomRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $name;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null ルームを作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $name ルームを作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $name ルームを作成
-     * @return CreateRoomRequest $this
-     */
-    public function withName(string $name = null): CreateRoomRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string メタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * メタデータを取得
-     *
-     * @return string|null ルームを作成
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata ルームを作成
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata ルームを作成
-     * @return CreateRoomRequest $this
-     */
-    public function withMetadata(string $metadata = null): CreateRoomRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string メッセージを投稿するために必要となるパスワード */
+    /** @var string */
     private $password;
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを取得
-     *
-     * @return string|null ルームを作成
-     */
-    public function getPassword(): ?string {
-        return $this->password;
-    }
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを設定
-     *
-     * @param string $password ルームを作成
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
-    }
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを設定
-     *
-     * @param string $password ルームを作成
-     * @return CreateRoomRequest $this
-     */
-    public function withPassword(string $password = null): CreateRoomRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
-    /** @var string[] ルームに参加可能なユーザIDリスト */
+    /** @var array */
     private $whiteListUserIds;
 
-    /**
-     * ルームに参加可能なユーザIDリストを取得
-     *
-     * @return string[]|null ルームを作成
-     */
-    public function getWhiteListUserIds(): ?array {
-        return $this->whiteListUserIds;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CreateRoomRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): CreateRoomRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateRoomRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): CreateRoomRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): CreateRoomRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+	public function getWhiteListUserIds(): ?array {
+		return $this->whiteListUserIds;
+	}
+
+	public function setWhiteListUserIds(?array $whiteListUserIds) {
+		$this->whiteListUserIds = $whiteListUserIds;
+	}
+
+	public function withWhiteListUserIds(?array $whiteListUserIds): CreateRoomRequest {
+		$this->whiteListUserIds = $whiteListUserIds;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateRoomRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateRoomRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withPassword(empty($data['password']) ? null : $data['password'])
+            ->withWhiteListUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('whiteListUserIds', $data) && $data['whiteListUserIds'] !== null ? $data['whiteListUserIds'] : []
+            ));
     }
 
-    /**
-     * ルームに参加可能なユーザIDリストを設定
-     *
-     * @param string[] $whiteListUserIds ルームを作成
-     */
-    public function setWhiteListUserIds(array $whiteListUserIds = null) {
-        $this->whiteListUserIds = $whiteListUserIds;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "name" => $this->getName(),
+            "metadata" => $this->getMetadata(),
+            "password" => $this->getPassword(),
+            "whiteListUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getWhiteListUserIds() !== null && $this->getWhiteListUserIds() !== null ? $this->getWhiteListUserIds() : []
+            ),
+        );
     }
-
-    /**
-     * ルームに参加可能なユーザIDリストを設定
-     *
-     * @param string[] $whiteListUserIds ルームを作成
-     * @return CreateRoomRequest $this
-     */
-    public function withWhiteListUserIds(array $whiteListUserIds = null): CreateRoomRequest {
-        $this->setWhiteListUserIds($whiteListUserIds);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ルームを作成
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ルームを作成
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ルームを作成
-     * @return CreateRoomRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): CreateRoomRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return CreateRoomRequest this
-     */
-    public function withAccessToken(string $accessToken): CreateRoomRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

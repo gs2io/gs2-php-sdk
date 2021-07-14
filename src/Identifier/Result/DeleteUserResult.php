@@ -19,15 +19,17 @@ namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ユーザを削除します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteUserResult implements IResult {
 
-    public static function fromJson(array $data): DeleteUserResult {
-        $result = new DeleteUserResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteUserResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteUserResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

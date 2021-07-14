@@ -20,36 +20,34 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\CurrentMissionMaster;
 
-/**
- * 現在有効なミッションを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentMissionMasterFromGitHubResult implements IResult {
-	/** @var CurrentMissionMaster 更新した現在有効なミッション */
-	private $item;
+    /** @var CurrentMissionMaster */
+    private $item;
 
-	/**
-	 * 更新した現在有効なミッションを取得
-	 *
-	 * @return CurrentMissionMaster|null 現在有効なミッションを更新します
-	 */
 	public function getItem(): ?CurrentMissionMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した現在有効なミッションを設定
-	 *
-	 * @param CurrentMissionMaster|null $item 現在有効なミッションを更新します
-	 */
 	public function setItem(?CurrentMissionMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateCurrentMissionMasterFromGitHubResult {
-        $result = new UpdateCurrentMissionMasterFromGitHubResult();
-        $result->setItem(isset($data["item"]) ? CurrentMissionMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentMissionMaster $item): UpdateCurrentMissionMasterFromGitHubResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentMissionMasterFromGitHubResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentMissionMasterFromGitHubResult())
+            ->withItem(empty($data['item']) ? null : CurrentMissionMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

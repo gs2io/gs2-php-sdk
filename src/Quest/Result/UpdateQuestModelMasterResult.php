@@ -18,38 +18,39 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\AcquireAction;
+use Gs2\Quest\Model\Contents;
+use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModelMaster;
 
-/**
- * クエストモデルマスターを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateQuestModelMasterResult implements IResult {
-	/** @var QuestModelMaster 更新したクエストモデルマスター */
-	private $item;
+    /** @var QuestModelMaster */
+    private $item;
 
-	/**
-	 * 更新したクエストモデルマスターを取得
-	 *
-	 * @return QuestModelMaster|null クエストモデルマスターを更新
-	 */
 	public function getItem(): ?QuestModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したクエストモデルマスターを設定
-	 *
-	 * @param QuestModelMaster|null $item クエストモデルマスターを更新
-	 */
 	public function setItem(?QuestModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateQuestModelMasterResult {
-        $result = new UpdateQuestModelMasterResult();
-        $result->setItem(isset($data["item"]) ? QuestModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?QuestModelMaster $item): UpdateQuestModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateQuestModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateQuestModelMasterResult())
+            ->withItem(empty($data['item']) ? null : QuestModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

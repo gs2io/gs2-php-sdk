@@ -20,36 +20,34 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Stack;
 
-/**
- * スタックを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteStackResult implements IResult {
-	/** @var Stack 削除したスタック */
-	private $item;
+    /** @var Stack */
+    private $item;
 
-	/**
-	 * 削除したスタックを取得
-	 *
-	 * @return Stack|null スタックを削除
-	 */
 	public function getItem(): ?Stack {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したスタックを設定
-	 *
-	 * @param Stack|null $item スタックを削除
-	 */
 	public function setItem(?Stack $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteStackResult {
-        $result = new DeleteStackResult();
-        $result->setItem(isset($data["item"]) ? Stack::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Stack $item): DeleteStackResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteStackResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteStackResult())
+            ->withItem(empty($data['item']) ? null : Stack::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

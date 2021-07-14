@@ -18,44 +18,48 @@
 namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inbox\Model\AcquireAction;
+use Gs2\Inbox\Model\TimeSpan;
 use Gs2\Inbox\Model\GlobalMessage;
 
-/**
- * 全ユーザに向けたメッセージの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeGlobalMessagesResult implements IResult {
-	/** @var GlobalMessage[] 全ユーザに向けたメッセージのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 全ユーザに向けたメッセージのリストを取得
-	 *
-	 * @return GlobalMessage[]|null 全ユーザに向けたメッセージの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 全ユーザに向けたメッセージのリストを設定
-	 *
-	 * @param GlobalMessage[]|null $items 全ユーザに向けたメッセージの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeGlobalMessagesResult {
-        $result = new DescribeGlobalMessagesResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return GlobalMessage::fromJson($v);
+	public function withItems(?array $items): DescribeGlobalMessagesResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeGlobalMessagesResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeGlobalMessagesResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return GlobalMessage::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

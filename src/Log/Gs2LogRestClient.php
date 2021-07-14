@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Log\Request\DescribeNamespacesRequest;
 use Gs2\Log\Result\DescribeNamespacesResult;
 use Gs2\Log\Request\CreateNamespaceRequest;
@@ -529,9 +531,6 @@ class QueryAccessLogTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -612,9 +611,6 @@ class CountAccessLogTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -700,9 +696,6 @@ class QueryIssueStampSheetLogTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -786,9 +779,6 @@ class CountIssueStampSheetLogTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -874,9 +864,6 @@ class QueryExecuteStampSheetLogTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -960,9 +947,6 @@ class CountExecuteStampSheetLogTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1048,9 +1032,6 @@ class QueryExecuteStampTaskLogTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1135,9 +1116,6 @@ class CountExecuteStampTaskLogTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1161,9 +1139,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1178,9 +1154,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1192,9 +1166,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1209,9 +1181,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1223,9 +1193,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1240,9 +1208,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1254,9 +1220,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1271,9 +1235,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1285,9 +1247,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1302,9 +1262,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1316,9 +1274,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1333,9 +1289,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1347,9 +1301,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アクセスログの一覧を取得<br>
-     *
-     * @param QueryAccessLogRequest $request リクエストパラメータ
+     * @param QueryAccessLogRequest $request
      * @return PromiseInterface
      */
     public function queryAccessLogAsync(
@@ -1364,9 +1316,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アクセスログの一覧を取得<br>
-     *
-     * @param QueryAccessLogRequest $request リクエストパラメータ
+     * @param QueryAccessLogRequest $request
      * @return QueryAccessLogResult
      */
     public function queryAccessLog (
@@ -1378,9 +1328,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アクセスログの一覧を取得<br>
-     *
-     * @param CountAccessLogRequest $request リクエストパラメータ
+     * @param CountAccessLogRequest $request
      * @return PromiseInterface
      */
     public function countAccessLogAsync(
@@ -1395,9 +1343,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アクセスログの一覧を取得<br>
-     *
-     * @param CountAccessLogRequest $request リクエストパラメータ
+     * @param CountAccessLogRequest $request
      * @return CountAccessLogResult
      */
     public function countAccessLog (
@@ -1409,9 +1355,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシート発行ログの一覧を取得<br>
-     *
-     * @param QueryIssueStampSheetLogRequest $request リクエストパラメータ
+     * @param QueryIssueStampSheetLogRequest $request
      * @return PromiseInterface
      */
     public function queryIssueStampSheetLogAsync(
@@ -1426,9 +1370,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシート発行ログの一覧を取得<br>
-     *
-     * @param QueryIssueStampSheetLogRequest $request リクエストパラメータ
+     * @param QueryIssueStampSheetLogRequest $request
      * @return QueryIssueStampSheetLogResult
      */
     public function queryIssueStampSheetLog (
@@ -1440,9 +1382,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシート発行ログの一覧を取得<br>
-     *
-     * @param CountIssueStampSheetLogRequest $request リクエストパラメータ
+     * @param CountIssueStampSheetLogRequest $request
      * @return PromiseInterface
      */
     public function countIssueStampSheetLogAsync(
@@ -1457,9 +1397,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシート発行ログの一覧を取得<br>
-     *
-     * @param CountIssueStampSheetLogRequest $request リクエストパラメータ
+     * @param CountIssueStampSheetLogRequest $request
      * @return CountIssueStampSheetLogResult
      */
     public function countIssueStampSheetLog (
@@ -1471,9 +1409,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシート実行ログの一覧を取得<br>
-     *
-     * @param QueryExecuteStampSheetLogRequest $request リクエストパラメータ
+     * @param QueryExecuteStampSheetLogRequest $request
      * @return PromiseInterface
      */
     public function queryExecuteStampSheetLogAsync(
@@ -1488,9 +1424,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシート実行ログの一覧を取得<br>
-     *
-     * @param QueryExecuteStampSheetLogRequest $request リクエストパラメータ
+     * @param QueryExecuteStampSheetLogRequest $request
      * @return QueryExecuteStampSheetLogResult
      */
     public function queryExecuteStampSheetLog (
@@ -1502,9 +1436,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシート実行ログの一覧を取得<br>
-     *
-     * @param CountExecuteStampSheetLogRequest $request リクエストパラメータ
+     * @param CountExecuteStampSheetLogRequest $request
      * @return PromiseInterface
      */
     public function countExecuteStampSheetLogAsync(
@@ -1519,9 +1451,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシート実行ログの一覧を取得<br>
-     *
-     * @param CountExecuteStampSheetLogRequest $request リクエストパラメータ
+     * @param CountExecuteStampSheetLogRequest $request
      * @return CountExecuteStampSheetLogResult
      */
     public function countExecuteStampSheetLog (
@@ -1533,9 +1463,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスク実行ログの一覧を取得<br>
-     *
-     * @param QueryExecuteStampTaskLogRequest $request リクエストパラメータ
+     * @param QueryExecuteStampTaskLogRequest $request
      * @return PromiseInterface
      */
     public function queryExecuteStampTaskLogAsync(
@@ -1550,9 +1478,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスク実行ログの一覧を取得<br>
-     *
-     * @param QueryExecuteStampTaskLogRequest $request リクエストパラメータ
+     * @param QueryExecuteStampTaskLogRequest $request
      * @return QueryExecuteStampTaskLogResult
      */
     public function queryExecuteStampTaskLog (
@@ -1564,9 +1490,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスク実行ログの一覧を取得<br>
-     *
-     * @param CountExecuteStampTaskLogRequest $request リクエストパラメータ
+     * @param CountExecuteStampTaskLogRequest $request
      * @return PromiseInterface
      */
     public function countExecuteStampTaskLogAsync(
@@ -1581,9 +1505,7 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスク実行ログの一覧を取得<br>
-     *
-     * @param CountExecuteStampTaskLogRequest $request リクエストパラメータ
+     * @param CountExecuteStampTaskLogRequest $request
      * @return CountExecuteStampTaskLogResult
      */
     public function countExecuteStampTaskLog (

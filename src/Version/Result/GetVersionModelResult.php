@@ -18,38 +18,37 @@
 namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Version\Model\Version;
 use Gs2\Version\Model\VersionModel;
 
-/**
- * バージョン設定を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetVersionModelResult implements IResult {
-	/** @var VersionModel バージョン設定 */
-	private $item;
+    /** @var VersionModel */
+    private $item;
 
-	/**
-	 * バージョン設定を取得
-	 *
-	 * @return VersionModel|null バージョン設定を取得
-	 */
 	public function getItem(): ?VersionModel {
 		return $this->item;
 	}
 
-	/**
-	 * バージョン設定を設定
-	 *
-	 * @param VersionModel|null $item バージョン設定を取得
-	 */
 	public function setItem(?VersionModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetVersionModelResult {
-        $result = new GetVersionModelResult();
-        $result->setItem(isset($data["item"]) ? VersionModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?VersionModel $item): GetVersionModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetVersionModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetVersionModelResult())
+            ->withItem(empty($data['item']) ? null : VersionModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

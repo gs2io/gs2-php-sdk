@@ -20,36 +20,34 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\EventMaster;
 
-/**
- * イベントマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteEventMasterResult implements IResult {
-	/** @var EventMaster 削除したイベントマスター */
-	private $item;
+    /** @var EventMaster */
+    private $item;
 
-	/**
-	 * 削除したイベントマスターを取得
-	 *
-	 * @return EventMaster|null イベントマスターを削除
-	 */
 	public function getItem(): ?EventMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したイベントマスターを設定
-	 *
-	 * @param EventMaster|null $item イベントマスターを削除
-	 */
 	public function setItem(?EventMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteEventMasterResult {
-        $result = new DeleteEventMasterResult();
-        $result->setItem(isset($data["item"]) ? EventMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?EventMaster $item): DeleteEventMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteEventMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteEventMasterResult())
+            ->withItem(empty($data['item']) ? null : EventMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

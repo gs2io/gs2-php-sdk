@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Datastore\Request\DescribeNamespacesRequest;
 use Gs2\Datastore\Result\DescribeNamespacesResult;
 use Gs2\Datastore\Request\CreateNamespaceRequest;
@@ -515,9 +517,6 @@ class DescribeDataObjectsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -584,9 +583,6 @@ class DescribeDataObjectsByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -666,9 +662,6 @@ class PrepareUploadTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -745,9 +738,6 @@ class PrepareUploadByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -818,9 +808,6 @@ class UpdateDataObjectTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -889,9 +876,6 @@ class UpdateDataObjectByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -928,7 +912,7 @@ class PrepareReUploadTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "datastore", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/data/{dataObjectName}/file";
+        $url = str_replace('{service}', "datastore", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/data/{dataObjectName}/file/reUpload";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{dataObjectName}", $this->request->getDataObjectName() === null|| strlen($this->request->getDataObjectName()) == 0 ? "null" : $this->request->getDataObjectName(), $url);
@@ -953,9 +937,6 @@ class PrepareReUploadTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -993,7 +974,7 @@ class PrepareReUploadByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "datastore", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/data/{dataObjectName}/file";
+        $url = str_replace('{service}', "datastore", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/data/{dataObjectName}/file/reUpload";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{dataObjectName}", $this->request->getDataObjectName() === null|| strlen($this->request->getDataObjectName()) == 0 ? "null" : $this->request->getDataObjectName(), $url);
@@ -1016,9 +997,6 @@ class PrepareReUploadByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1079,9 +1057,6 @@ class DoneUploadTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1138,9 +1113,6 @@ class DoneUploadByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1203,9 +1175,6 @@ class DeleteDataObjectTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1264,9 +1233,6 @@ class DeleteDataObjectByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1329,9 +1295,6 @@ class PrepareDownloadTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1390,9 +1353,6 @@ class PrepareDownloadByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1456,9 +1416,6 @@ class PrepareDownloadByGenerationTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1519,9 +1476,6 @@ class PrepareDownloadByGenerationAndUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1558,7 +1512,7 @@ class PrepareDownloadOwnDataTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "datastore", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/file";
+        $url = str_replace('{service}', "datastore", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/data/{dataObjectName}/file";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{dataObjectName}", $this->request->getDataObjectName() === null|| strlen($this->request->getDataObjectName()) == 0 ? "null" : $this->request->getDataObjectName(), $url);
@@ -1580,9 +1534,6 @@ class PrepareDownloadOwnDataTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1642,9 +1593,6 @@ class PrepareDownloadByUserIdAndDataObjectNameTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1706,9 +1654,6 @@ class PrepareDownloadOwnDataByGenerationTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1766,9 +1711,6 @@ class PrepareDownloadByUserIdAndDataObjectNameAndGenerationTask extends Gs2RestS
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1895,9 +1837,6 @@ class DescribeDataObjectHistoriesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1963,9 +1902,6 @@ class DescribeDataObjectHistoriesByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2026,9 +1962,6 @@ class GetDataObjectHistoryTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2087,9 +2020,6 @@ class GetDataObjectHistoryByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2113,9 +2043,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2130,9 +2058,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2144,9 +2070,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2161,9 +2085,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2175,9 +2097,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2192,9 +2112,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2206,9 +2124,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2223,9 +2139,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2237,9 +2151,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2254,9 +2166,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2268,9 +2178,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2285,9 +2193,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2299,9 +2205,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトの一覧を取得<br>
-     *
-     * @param DescribeDataObjectsRequest $request リクエストパラメータ
+     * @param DescribeDataObjectsRequest $request
      * @return PromiseInterface
      */
     public function describeDataObjectsAsync(
@@ -2316,9 +2220,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトの一覧を取得<br>
-     *
-     * @param DescribeDataObjectsRequest $request リクエストパラメータ
+     * @param DescribeDataObjectsRequest $request
      * @return DescribeDataObjectsResult
      */
     public function describeDataObjects (
@@ -2330,9 +2232,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * オーナーIDを指定してデータオブジェクトの一覧を取得<br>
-     *
-     * @param DescribeDataObjectsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeDataObjectsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeDataObjectsByUserIdAsync(
@@ -2347,9 +2247,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * オーナーIDを指定してデータオブジェクトの一覧を取得<br>
-     *
-     * @param DescribeDataObjectsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeDataObjectsByUserIdRequest $request
      * @return DescribeDataObjectsByUserIdResult
      */
     public function describeDataObjectsByUserId (
@@ -2361,9 +2259,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトをアップロード準備する<br>
-     *
-     * @param PrepareUploadRequest $request リクエストパラメータ
+     * @param PrepareUploadRequest $request
      * @return PromiseInterface
      */
     public function prepareUploadAsync(
@@ -2378,9 +2274,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトをアップロード準備する<br>
-     *
-     * @param PrepareUploadRequest $request リクエストパラメータ
+     * @param PrepareUploadRequest $request
      * @return PrepareUploadResult
      */
     public function prepareUpload (
@@ -2392,9 +2286,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトをアップロード準備する<br>
-     *
-     * @param PrepareUploadByUserIdRequest $request リクエストパラメータ
+     * @param PrepareUploadByUserIdRequest $request
      * @return PromiseInterface
      */
     public function prepareUploadByUserIdAsync(
@@ -2409,9 +2301,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトをアップロード準備する<br>
-     *
-     * @param PrepareUploadByUserIdRequest $request リクエストパラメータ
+     * @param PrepareUploadByUserIdRequest $request
      * @return PrepareUploadByUserIdResult
      */
     public function prepareUploadByUserId (
@@ -2423,9 +2313,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを更新する<br>
-     *
-     * @param UpdateDataObjectRequest $request リクエストパラメータ
+     * @param UpdateDataObjectRequest $request
      * @return PromiseInterface
      */
     public function updateDataObjectAsync(
@@ -2440,9 +2328,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを更新する<br>
-     *
-     * @param UpdateDataObjectRequest $request リクエストパラメータ
+     * @param UpdateDataObjectRequest $request
      * @return UpdateDataObjectResult
      */
     public function updateDataObject (
@@ -2454,9 +2340,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを更新する<br>
-     *
-     * @param UpdateDataObjectByUserIdRequest $request リクエストパラメータ
+     * @param UpdateDataObjectByUserIdRequest $request
      * @return PromiseInterface
      */
     public function updateDataObjectByUserIdAsync(
@@ -2471,9 +2355,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを更新する<br>
-     *
-     * @param UpdateDataObjectByUserIdRequest $request リクエストパラメータ
+     * @param UpdateDataObjectByUserIdRequest $request
      * @return UpdateDataObjectByUserIdResult
      */
     public function updateDataObjectByUserId (
@@ -2485,9 +2367,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを再アップロード準備する<br>
-     *
-     * @param PrepareReUploadRequest $request リクエストパラメータ
+     * @param PrepareReUploadRequest $request
      * @return PromiseInterface
      */
     public function prepareReUploadAsync(
@@ -2502,9 +2382,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを再アップロード準備する<br>
-     *
-     * @param PrepareReUploadRequest $request リクエストパラメータ
+     * @param PrepareReUploadRequest $request
      * @return PrepareReUploadResult
      */
     public function prepareReUpload (
@@ -2516,9 +2394,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを再アップロード準備する<br>
-     *
-     * @param PrepareReUploadByUserIdRequest $request リクエストパラメータ
+     * @param PrepareReUploadByUserIdRequest $request
      * @return PromiseInterface
      */
     public function prepareReUploadByUserIdAsync(
@@ -2533,9 +2409,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを再アップロード準備する<br>
-     *
-     * @param PrepareReUploadByUserIdRequest $request リクエストパラメータ
+     * @param PrepareReUploadByUserIdRequest $request
      * @return PrepareReUploadByUserIdResult
      */
     public function prepareReUploadByUserId (
@@ -2547,9 +2421,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトのアップロード完了を報告する<br>
-     *
-     * @param DoneUploadRequest $request リクエストパラメータ
+     * @param DoneUploadRequest $request
      * @return PromiseInterface
      */
     public function doneUploadAsync(
@@ -2564,9 +2436,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトのアップロード完了を報告する<br>
-     *
-     * @param DoneUploadRequest $request リクエストパラメータ
+     * @param DoneUploadRequest $request
      * @return DoneUploadResult
      */
     public function doneUpload (
@@ -2578,9 +2448,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトのアップロード完了を報告する<br>
-     *
-     * @param DoneUploadByUserIdRequest $request リクエストパラメータ
+     * @param DoneUploadByUserIdRequest $request
      * @return PromiseInterface
      */
     public function doneUploadByUserIdAsync(
@@ -2595,9 +2463,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトのアップロード完了を報告する<br>
-     *
-     * @param DoneUploadByUserIdRequest $request リクエストパラメータ
+     * @param DoneUploadByUserIdRequest $request
      * @return DoneUploadByUserIdResult
      */
     public function doneUploadByUserId (
@@ -2609,9 +2475,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを削除する<br>
-     *
-     * @param DeleteDataObjectRequest $request リクエストパラメータ
+     * @param DeleteDataObjectRequest $request
      * @return PromiseInterface
      */
     public function deleteDataObjectAsync(
@@ -2626,9 +2490,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを削除する<br>
-     *
-     * @param DeleteDataObjectRequest $request リクエストパラメータ
+     * @param DeleteDataObjectRequest $request
      * @return DeleteDataObjectResult
      */
     public function deleteDataObject (
@@ -2640,9 +2502,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを削除する<br>
-     *
-     * @param DeleteDataObjectByUserIdRequest $request リクエストパラメータ
+     * @param DeleteDataObjectByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteDataObjectByUserIdAsync(
@@ -2657,9 +2517,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを削除する<br>
-     *
-     * @param DeleteDataObjectByUserIdRequest $request リクエストパラメータ
+     * @param DeleteDataObjectByUserIdRequest $request
      * @return DeleteDataObjectByUserIdResult
      */
     public function deleteDataObjectByUserId (
@@ -2671,9 +2529,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトをダウンロード準備する<br>
-     *
-     * @param PrepareDownloadRequest $request リクエストパラメータ
+     * @param PrepareDownloadRequest $request
      * @return PromiseInterface
      */
     public function prepareDownloadAsync(
@@ -2688,9 +2544,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトをダウンロード準備する<br>
-     *
-     * @param PrepareDownloadRequest $request リクエストパラメータ
+     * @param PrepareDownloadRequest $request
      * @return PrepareDownloadResult
      */
     public function prepareDownload (
@@ -2702,9 +2556,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトをダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByUserIdRequest $request リクエストパラメータ
+     * @param PrepareDownloadByUserIdRequest $request
      * @return PromiseInterface
      */
     public function prepareDownloadByUserIdAsync(
@@ -2719,9 +2571,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトをダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByUserIdRequest $request リクエストパラメータ
+     * @param PrepareDownloadByUserIdRequest $request
      * @return PrepareDownloadByUserIdResult
      */
     public function prepareDownloadByUserId (
@@ -2733,9 +2583,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを世代を指定してダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByGenerationRequest $request リクエストパラメータ
+     * @param PrepareDownloadByGenerationRequest $request
      * @return PromiseInterface
      */
     public function prepareDownloadByGenerationAsync(
@@ -2750,9 +2598,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを世代を指定してダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByGenerationRequest $request リクエストパラメータ
+     * @param PrepareDownloadByGenerationRequest $request
      * @return PrepareDownloadByGenerationResult
      */
     public function prepareDownloadByGeneration (
@@ -2764,9 +2610,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを世代を指定してダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByGenerationAndUserIdRequest $request リクエストパラメータ
+     * @param PrepareDownloadByGenerationAndUserIdRequest $request
      * @return PromiseInterface
      */
     public function prepareDownloadByGenerationAndUserIdAsync(
@@ -2781,9 +2625,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを世代を指定してダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByGenerationAndUserIdRequest $request リクエストパラメータ
+     * @param PrepareDownloadByGenerationAndUserIdRequest $request
      * @return PrepareDownloadByGenerationAndUserIdResult
      */
     public function prepareDownloadByGenerationAndUserId (
@@ -2795,9 +2637,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトをダウンロード準備する<br>
-     *
-     * @param PrepareDownloadOwnDataRequest $request リクエストパラメータ
+     * @param PrepareDownloadOwnDataRequest $request
      * @return PromiseInterface
      */
     public function prepareDownloadOwnDataAsync(
@@ -2812,9 +2652,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトをダウンロード準備する<br>
-     *
-     * @param PrepareDownloadOwnDataRequest $request リクエストパラメータ
+     * @param PrepareDownloadOwnDataRequest $request
      * @return PrepareDownloadOwnDataResult
      */
     public function prepareDownloadOwnData (
@@ -2826,9 +2664,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request リクエストパラメータ
+     * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request
      * @return PromiseInterface
      */
     public function prepareDownloadByUserIdAndDataObjectNameAsync(
@@ -2843,9 +2679,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDとオブジェクト名を指定してデータオブジェクトをダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request リクエストパラメータ
+     * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request
      * @return PrepareDownloadByUserIdAndDataObjectNameResult
      */
     public function prepareDownloadByUserIdAndDataObjectName (
@@ -2857,9 +2691,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを世代を指定してダウンロード準備する<br>
-     *
-     * @param PrepareDownloadOwnDataByGenerationRequest $request リクエストパラメータ
+     * @param PrepareDownloadOwnDataByGenerationRequest $request
      * @return PromiseInterface
      */
     public function prepareDownloadOwnDataByGenerationAsync(
@@ -2874,9 +2706,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトを世代を指定してダウンロード準備する<br>
-     *
-     * @param PrepareDownloadOwnDataByGenerationRequest $request リクエストパラメータ
+     * @param PrepareDownloadOwnDataByGenerationRequest $request
      * @return PrepareDownloadOwnDataByGenerationResult
      */
     public function prepareDownloadOwnDataByGeneration (
@@ -2888,9 +2718,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを世代を指定してダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request リクエストパラメータ
+     * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
      * @return PromiseInterface
      */
     public function prepareDownloadByUserIdAndDataObjectNameAndGenerationAsync(
@@ -2905,9 +2733,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクトを世代を指定してダウンロード準備する<br>
-     *
-     * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request リクエストパラメータ
+     * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
      * @return PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult
      */
     public function prepareDownloadByUserIdAndDataObjectNameAndGeneration (
@@ -2919,9 +2745,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトの管理情報を修復する<br>
-     *
-     * @param RestoreDataObjectRequest $request リクエストパラメータ
+     * @param RestoreDataObjectRequest $request
      * @return PromiseInterface
      */
     public function restoreDataObjectAsync(
@@ -2936,9 +2760,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクトの管理情報を修復する<br>
-     *
-     * @param RestoreDataObjectRequest $request リクエストパラメータ
+     * @param RestoreDataObjectRequest $request
      * @return RestoreDataObjectResult
      */
     public function restoreDataObject (
@@ -2950,9 +2772,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクト履歴の一覧を取得<br>
-     *
-     * @param DescribeDataObjectHistoriesRequest $request リクエストパラメータ
+     * @param DescribeDataObjectHistoriesRequest $request
      * @return PromiseInterface
      */
     public function describeDataObjectHistoriesAsync(
@@ -2967,9 +2787,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクト履歴の一覧を取得<br>
-     *
-     * @param DescribeDataObjectHistoriesRequest $request リクエストパラメータ
+     * @param DescribeDataObjectHistoriesRequest $request
      * @return DescribeDataObjectHistoriesResult
      */
     public function describeDataObjectHistories (
@@ -2981,9 +2799,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクト履歴の一覧を取得<br>
-     *
-     * @param DescribeDataObjectHistoriesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeDataObjectHistoriesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeDataObjectHistoriesByUserIdAsync(
@@ -2998,9 +2814,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクト履歴の一覧を取得<br>
-     *
-     * @param DescribeDataObjectHistoriesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeDataObjectHistoriesByUserIdRequest $request
      * @return DescribeDataObjectHistoriesByUserIdResult
      */
     public function describeDataObjectHistoriesByUserId (
@@ -3012,9 +2826,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクト履歴を取得する<br>
-     *
-     * @param GetDataObjectHistoryRequest $request リクエストパラメータ
+     * @param GetDataObjectHistoryRequest $request
      * @return PromiseInterface
      */
     public function getDataObjectHistoryAsync(
@@ -3029,9 +2841,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データオブジェクト履歴を取得する<br>
-     *
-     * @param GetDataObjectHistoryRequest $request リクエストパラメータ
+     * @param GetDataObjectHistoryRequest $request
      * @return GetDataObjectHistoryResult
      */
     public function getDataObjectHistory (
@@ -3043,9 +2853,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクト履歴を取得する<br>
-     *
-     * @param GetDataObjectHistoryByUserIdRequest $request リクエストパラメータ
+     * @param GetDataObjectHistoryByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getDataObjectHistoryByUserIdAsync(
@@ -3060,9 +2868,7 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデータオブジェクト履歴を取得する<br>
-     *
-     * @param GetDataObjectHistoryByUserIdRequest $request リクエストパラメータ
+     * @param GetDataObjectHistoryByUserIdRequest $request
      * @return GetDataObjectHistoryByUserIdResult
      */
     public function getDataObjectHistoryByUserId (

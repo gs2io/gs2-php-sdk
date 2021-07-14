@@ -21,235 +21,139 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Config;
 
-/**
- * クエストを完了 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class EndRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null クエストを完了
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストを完了
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストを完了
-     * @return EndRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): EndRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string トランザクションID */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $transactionId;
-
-    /**
-     * トランザクションIDを取得
-     *
-     * @return string|null クエストを完了
-     */
-    public function getTransactionId(): ?string {
-        return $this->transactionId;
-    }
-
-    /**
-     * トランザクションIDを設定
-     *
-     * @param string $transactionId クエストを完了
-     */
-    public function setTransactionId(string $transactionId = null) {
-        $this->transactionId = $transactionId;
-    }
-
-    /**
-     * トランザクションIDを設定
-     *
-     * @param string $transactionId クエストを完了
-     * @return EndRequest $this
-     */
-    public function withTransactionId(string $transactionId = null): EndRequest {
-        $this->setTransactionId($transactionId);
-        return $this;
-    }
-
-    /** @var Reward[] 実際にクエストで得た報酬 */
+    /** @var array */
     private $rewards;
-
-    /**
-     * 実際にクエストで得た報酬を取得
-     *
-     * @return Reward[]|null クエストを完了
-     */
-    public function getRewards(): ?array {
-        return $this->rewards;
-    }
-
-    /**
-     * 実際にクエストで得た報酬を設定
-     *
-     * @param Reward[] $rewards クエストを完了
-     */
-    public function setRewards(array $rewards = null) {
-        $this->rewards = $rewards;
-    }
-
-    /**
-     * 実際にクエストで得た報酬を設定
-     *
-     * @param Reward[] $rewards クエストを完了
-     * @return EndRequest $this
-     */
-    public function withRewards(array $rewards = null): EndRequest {
-        $this->setRewards($rewards);
-        return $this;
-    }
-
-    /** @var bool クエストをクリアしたか */
+    /** @var bool */
     private $isComplete;
-
-    /**
-     * クエストをクリアしたかを取得
-     *
-     * @return bool|null クエストを完了
-     */
-    public function getIsComplete(): ?bool {
-        return $this->isComplete;
-    }
-
-    /**
-     * クエストをクリアしたかを設定
-     *
-     * @param bool $isComplete クエストを完了
-     */
-    public function setIsComplete(bool $isComplete = null) {
-        $this->isComplete = $isComplete;
-    }
-
-    /**
-     * クエストをクリアしたかを設定
-     *
-     * @param bool $isComplete クエストを完了
-     * @return EndRequest $this
-     */
-    public function withIsComplete(bool $isComplete = null): EndRequest {
-        $this->setIsComplete($isComplete);
-        return $this;
-    }
-
-    /** @var Config[] スタンプシートの変数に適用する設定値 */
+    /** @var array */
     private $config;
 
-    /**
-     * スタンプシートの変数に適用する設定値を取得
-     *
-     * @return Config[]|null クエストを完了
-     */
-    public function getConfig(): ?array {
-        return $this->config;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): EndRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): EndRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getTransactionId(): ?string {
+		return $this->transactionId;
+	}
+
+	public function setTransactionId(?string $transactionId) {
+		$this->transactionId = $transactionId;
+	}
+
+	public function withTransactionId(?string $transactionId): EndRequest {
+		$this->transactionId = $transactionId;
+		return $this;
+	}
+
+	public function getRewards(): ?array {
+		return $this->rewards;
+	}
+
+	public function setRewards(?array $rewards) {
+		$this->rewards = $rewards;
+	}
+
+	public function withRewards(?array $rewards): EndRequest {
+		$this->rewards = $rewards;
+		return $this;
+	}
+
+	public function getIsComplete(): ?bool {
+		return $this->isComplete;
+	}
+
+	public function setIsComplete(?bool $isComplete) {
+		$this->isComplete = $isComplete;
+	}
+
+	public function withIsComplete(?bool $isComplete): EndRequest {
+		$this->isComplete = $isComplete;
+		return $this;
+	}
+
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+
+	public function withConfig(?array $config): EndRequest {
+		$this->config = $config;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?EndRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new EndRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
+            ->withRewards(array_map(
+                function ($item) {
+                    return Reward::fromJson($item);
+                },
+                array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
+            ))
+            ->withIsComplete(empty($data['isComplete']) ? null : $data['isComplete'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config クエストを完了
-     */
-    public function setConfig(array $config = null) {
-        $this->config = $config;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "transactionId" => $this->getTransactionId(),
+            "rewards" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getRewards() !== null && $this->getRewards() !== null ? $this->getRewards() : []
+            ),
+            "isComplete" => $this->getIsComplete(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
+        );
     }
-
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config クエストを完了
-     * @return EndRequest $this
-     */
-    public function withConfig(array $config = null): EndRequest {
-        $this->setConfig($config);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null クエストを完了
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider クエストを完了
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider クエストを完了
-     * @return EndRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): EndRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return EndRequest this
-     */
-    public function withAccessToken(string $accessToken): EndRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

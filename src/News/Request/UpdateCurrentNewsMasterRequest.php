@@ -19,75 +19,51 @@ namespace Gs2\News\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 現在有効なお知らせを更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentNewsMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null 現在有効なお知らせを更新します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName 現在有効なお知らせを更新します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName 現在有効なお知らせを更新します
-     * @return UpdateCurrentNewsMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateCurrentNewsMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string アップロード準備で受け取ったトークン */
+    /** @var string */
     private $uploadToken;
 
-    /**
-     * アップロード準備で受け取ったトークンを取得
-     *
-     * @return string|null 現在有効なお知らせを更新します
-     */
-    public function getUploadToken(): ?string {
-        return $this->uploadToken;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateCurrentNewsMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUploadToken(): ?string {
+		return $this->uploadToken;
+	}
+
+	public function setUploadToken(?string $uploadToken) {
+		$this->uploadToken = $uploadToken;
+	}
+
+	public function withUploadToken(?string $uploadToken): UpdateCurrentNewsMasterRequest {
+		$this->uploadToken = $uploadToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentNewsMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentNewsMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUploadToken(empty($data['uploadToken']) ? null : $data['uploadToken']);
     }
 
-    /**
-     * アップロード準備で受け取ったトークンを設定
-     *
-     * @param string $uploadToken 現在有効なお知らせを更新します
-     */
-    public function setUploadToken(string $uploadToken = null) {
-        $this->uploadToken = $uploadToken;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "uploadToken" => $this->getUploadToken(),
+        );
     }
-
-    /**
-     * アップロード準備で受け取ったトークンを設定
-     *
-     * @param string $uploadToken 現在有効なお知らせを更新します
-     * @return UpdateCurrentNewsMasterRequest $this
-     */
-    public function withUploadToken(string $uploadToken = null): UpdateCurrentNewsMasterRequest {
-        $this->setUploadToken($uploadToken);
-        return $this;
-    }
-
 }

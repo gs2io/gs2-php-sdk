@@ -19,15 +19,17 @@ namespace Gs2\Account\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 引き継ぎ設定を削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteTakeOverResult implements IResult {
 
-    public static function fromJson(array $data): DeleteTakeOverResult {
-        $result = new DeleteTakeOverResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteTakeOverResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteTakeOverResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

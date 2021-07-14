@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Script\Request\DescribeNamespacesRequest;
 use Gs2\Script\Result\DescribeNamespacesResult;
 use Gs2\Script\Request\CreateNamespaceRequest;
@@ -980,9 +982,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -997,9 +997,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1011,9 +1009,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1028,9 +1024,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1042,9 +1036,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1059,9 +1051,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1073,9 +1063,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1090,9 +1078,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1104,9 +1090,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1121,9 +1105,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1135,9 +1117,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1152,9 +1132,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1166,9 +1144,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトの一覧を取得します<br>
-     *
-     * @param DescribeScriptsRequest $request リクエストパラメータ
+     * @param DescribeScriptsRequest $request
      * @return PromiseInterface
      */
     public function describeScriptsAsync(
@@ -1183,9 +1159,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトの一覧を取得します<br>
-     *
-     * @param DescribeScriptsRequest $request リクエストパラメータ
+     * @param DescribeScriptsRequest $request
      * @return DescribeScriptsResult
      */
     public function describeScripts (
@@ -1197,9 +1171,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを新規作成します<br>
-     *
-     * @param CreateScriptRequest $request リクエストパラメータ
+     * @param CreateScriptRequest $request
      * @return PromiseInterface
      */
     public function createScriptAsync(
@@ -1214,9 +1186,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを新規作成します<br>
-     *
-     * @param CreateScriptRequest $request リクエストパラメータ
+     * @param CreateScriptRequest $request
      * @return CreateScriptResult
      */
     public function createScript (
@@ -1228,9 +1198,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHubリポジトリのコードからスクリプトを新規作成します<br>
-     *
-     * @param CreateScriptFromGitHubRequest $request リクエストパラメータ
+     * @param CreateScriptFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function createScriptFromGitHubAsync(
@@ -1245,9 +1213,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHubリポジトリのコードからスクリプトを新規作成します<br>
-     *
-     * @param CreateScriptFromGitHubRequest $request リクエストパラメータ
+     * @param CreateScriptFromGitHubRequest $request
      * @return CreateScriptFromGitHubResult
      */
     public function createScriptFromGitHub (
@@ -1259,9 +1225,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを取得します<br>
-     *
-     * @param GetScriptRequest $request リクエストパラメータ
+     * @param GetScriptRequest $request
      * @return PromiseInterface
      */
     public function getScriptAsync(
@@ -1276,9 +1240,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを取得します<br>
-     *
-     * @param GetScriptRequest $request リクエストパラメータ
+     * @param GetScriptRequest $request
      * @return GetScriptResult
      */
     public function getScript (
@@ -1290,9 +1252,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを更新します<br>
-     *
-     * @param UpdateScriptRequest $request リクエストパラメータ
+     * @param UpdateScriptRequest $request
      * @return PromiseInterface
      */
     public function updateScriptAsync(
@@ -1307,9 +1267,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを更新します<br>
-     *
-     * @param UpdateScriptRequest $request リクエストパラメータ
+     * @param UpdateScriptRequest $request
      * @return UpdateScriptResult
      */
     public function updateScript (
@@ -1321,9 +1279,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GithHub をデータソースとしてスクリプトを更新します<br>
-     *
-     * @param UpdateScriptFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateScriptFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateScriptFromGitHubAsync(
@@ -1338,9 +1294,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GithHub をデータソースとしてスクリプトを更新します<br>
-     *
-     * @param UpdateScriptFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateScriptFromGitHubRequest $request
      * @return UpdateScriptFromGitHubResult
      */
     public function updateScriptFromGitHub (
@@ -1352,9 +1306,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを削除します<br>
-     *
-     * @param DeleteScriptRequest $request リクエストパラメータ
+     * @param DeleteScriptRequest $request
      * @return PromiseInterface
      */
     public function deleteScriptAsync(
@@ -1369,9 +1321,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを削除します<br>
-     *
-     * @param DeleteScriptRequest $request リクエストパラメータ
+     * @param DeleteScriptRequest $request
      * @return DeleteScriptResult
      */
     public function deleteScript (
@@ -1383,9 +1333,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを実行します<br>
-     *
-     * @param InvokeScriptRequest $request リクエストパラメータ
+     * @param InvokeScriptRequest $request
      * @return PromiseInterface
      */
     public function invokeScriptAsync(
@@ -1400,9 +1348,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを実行します<br>
-     *
-     * @param InvokeScriptRequest $request リクエストパラメータ
+     * @param InvokeScriptRequest $request
      * @return InvokeScriptResult
      */
     public function invokeScript (
@@ -1414,9 +1360,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを実行します<br>
-     *
-     * @param DebugInvokeRequest $request リクエストパラメータ
+     * @param DebugInvokeRequest $request
      * @return PromiseInterface
      */
     public function debugInvokeAsync(
@@ -1431,9 +1375,7 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スクリプトを実行します<br>
-     *
-     * @param DebugInvokeRequest $request リクエストパラメータ
+     * @param DebugInvokeRequest $request
      * @return DebugInvokeResult
      */
     public function debugInvoke (

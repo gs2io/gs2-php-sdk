@@ -20,331 +20,187 @@ namespace Gs2\Version\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Version\Model\Version;
 
-/**
- * バージョンマスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateVersionModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null バージョンマスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName バージョンマスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateVersionModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string バージョン名 */
+    /** @var string */
     private $versionName;
-
-    /**
-     * バージョン名を取得
-     *
-     * @return string|null バージョンマスターを更新
-     */
-    public function getVersionName(): ?string {
-        return $this->versionName;
-    }
-
-    /**
-     * バージョン名を設定
-     *
-     * @param string $versionName バージョンマスターを更新
-     */
-    public function setVersionName(string $versionName = null) {
-        $this->versionName = $versionName;
-    }
-
-    /**
-     * バージョン名を設定
-     *
-     * @param string $versionName バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withVersionName(string $versionName = null): UpdateVersionModelMasterRequest {
-        $this->setVersionName($versionName);
-        return $this;
-    }
-
-    /** @var string バージョンマスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * バージョンマスターの説明を取得
-     *
-     * @return string|null バージョンマスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * バージョンマスターの説明を設定
-     *
-     * @param string $description バージョンマスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * バージョンマスターの説明を設定
-     *
-     * @param string $description バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateVersionModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string バージョンのメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * バージョンのメタデータを取得
-     *
-     * @return string|null バージョンマスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * バージョンのメタデータを設定
-     *
-     * @param string $metadata バージョンマスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * バージョンのメタデータを設定
-     *
-     * @param string $metadata バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateVersionModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var Version バージョンアップを促すバージョン */
+    /** @var Version */
     private $warningVersion;
-
-    /**
-     * バージョンアップを促すバージョンを取得
-     *
-     * @return Version|null バージョンマスターを更新
-     */
-    public function getWarningVersion(): ?Version {
-        return $this->warningVersion;
-    }
-
-    /**
-     * バージョンアップを促すバージョンを設定
-     *
-     * @param Version $warningVersion バージョンマスターを更新
-     */
-    public function setWarningVersion(Version $warningVersion = null) {
-        $this->warningVersion = $warningVersion;
-    }
-
-    /**
-     * バージョンアップを促すバージョンを設定
-     *
-     * @param Version $warningVersion バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withWarningVersion(Version $warningVersion = null): UpdateVersionModelMasterRequest {
-        $this->setWarningVersion($warningVersion);
-        return $this;
-    }
-
-    /** @var Version バージョンチェックを蹴るバージョン */
+    /** @var Version */
     private $errorVersion;
-
-    /**
-     * バージョンチェックを蹴るバージョンを取得
-     *
-     * @return Version|null バージョンマスターを更新
-     */
-    public function getErrorVersion(): ?Version {
-        return $this->errorVersion;
-    }
-
-    /**
-     * バージョンチェックを蹴るバージョンを設定
-     *
-     * @param Version $errorVersion バージョンマスターを更新
-     */
-    public function setErrorVersion(Version $errorVersion = null) {
-        $this->errorVersion = $errorVersion;
-    }
-
-    /**
-     * バージョンチェックを蹴るバージョンを設定
-     *
-     * @param Version $errorVersion バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withErrorVersion(Version $errorVersion = null): UpdateVersionModelMasterRequest {
-        $this->setErrorVersion($errorVersion);
-        return $this;
-    }
-
-    /** @var string 判定に使用するバージョン値の種類 */
+    /** @var string */
     private $scope;
-
-    /**
-     * 判定に使用するバージョン値の種類を取得
-     *
-     * @return string|null バージョンマスターを更新
-     */
-    public function getScope(): ?string {
-        return $this->scope;
-    }
-
-    /**
-     * 判定に使用するバージョン値の種類を設定
-     *
-     * @param string $scope バージョンマスターを更新
-     */
-    public function setScope(string $scope = null) {
-        $this->scope = $scope;
-    }
-
-    /**
-     * 判定に使用するバージョン値の種類を設定
-     *
-     * @param string $scope バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withScope(string $scope = null): UpdateVersionModelMasterRequest {
-        $this->setScope($scope);
-        return $this;
-    }
-
-    /** @var Version 現在のバージョン */
+    /** @var Version */
     private $currentVersion;
-
-    /**
-     * 現在のバージョンを取得
-     *
-     * @return Version|null バージョンマスターを更新
-     */
-    public function getCurrentVersion(): ?Version {
-        return $this->currentVersion;
-    }
-
-    /**
-     * 現在のバージョンを設定
-     *
-     * @param Version $currentVersion バージョンマスターを更新
-     */
-    public function setCurrentVersion(Version $currentVersion = null) {
-        $this->currentVersion = $currentVersion;
-    }
-
-    /**
-     * 現在のバージョンを設定
-     *
-     * @param Version $currentVersion バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withCurrentVersion(Version $currentVersion = null): UpdateVersionModelMasterRequest {
-        $this->setCurrentVersion($currentVersion);
-        return $this;
-    }
-
-    /** @var bool 判定するバージョン値に署名検証を必要とするか */
+    /** @var bool */
     private $needSignature;
-
-    /**
-     * 判定するバージョン値に署名検証を必要とするかを取得
-     *
-     * @return bool|null バージョンマスターを更新
-     */
-    public function getNeedSignature(): ?bool {
-        return $this->needSignature;
-    }
-
-    /**
-     * 判定するバージョン値に署名検証を必要とするかを設定
-     *
-     * @param bool $needSignature バージョンマスターを更新
-     */
-    public function setNeedSignature(bool $needSignature = null) {
-        $this->needSignature = $needSignature;
-    }
-
-    /**
-     * 判定するバージョン値に署名検証を必要とするかを設定
-     *
-     * @param bool $needSignature バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withNeedSignature(bool $needSignature = null): UpdateVersionModelMasterRequest {
-        $this->setNeedSignature($needSignature);
-        return $this;
-    }
-
-    /** @var string 署名検証に使用する暗号鍵 のGRN */
+    /** @var string */
     private $signatureKeyId;
 
-    /**
-     * 署名検証に使用する暗号鍵 のGRNを取得
-     *
-     * @return string|null バージョンマスターを更新
-     */
-    public function getSignatureKeyId(): ?string {
-        return $this->signatureKeyId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateVersionModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getVersionName(): ?string {
+		return $this->versionName;
+	}
+
+	public function setVersionName(?string $versionName) {
+		$this->versionName = $versionName;
+	}
+
+	public function withVersionName(?string $versionName): UpdateVersionModelMasterRequest {
+		$this->versionName = $versionName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateVersionModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateVersionModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getWarningVersion(): ?Version {
+		return $this->warningVersion;
+	}
+
+	public function setWarningVersion(?Version $warningVersion) {
+		$this->warningVersion = $warningVersion;
+	}
+
+	public function withWarningVersion(?Version $warningVersion): UpdateVersionModelMasterRequest {
+		$this->warningVersion = $warningVersion;
+		return $this;
+	}
+
+	public function getErrorVersion(): ?Version {
+		return $this->errorVersion;
+	}
+
+	public function setErrorVersion(?Version $errorVersion) {
+		$this->errorVersion = $errorVersion;
+	}
+
+	public function withErrorVersion(?Version $errorVersion): UpdateVersionModelMasterRequest {
+		$this->errorVersion = $errorVersion;
+		return $this;
+	}
+
+	public function getScope(): ?string {
+		return $this->scope;
+	}
+
+	public function setScope(?string $scope) {
+		$this->scope = $scope;
+	}
+
+	public function withScope(?string $scope): UpdateVersionModelMasterRequest {
+		$this->scope = $scope;
+		return $this;
+	}
+
+	public function getCurrentVersion(): ?Version {
+		return $this->currentVersion;
+	}
+
+	public function setCurrentVersion(?Version $currentVersion) {
+		$this->currentVersion = $currentVersion;
+	}
+
+	public function withCurrentVersion(?Version $currentVersion): UpdateVersionModelMasterRequest {
+		$this->currentVersion = $currentVersion;
+		return $this;
+	}
+
+	public function getNeedSignature(): ?bool {
+		return $this->needSignature;
+	}
+
+	public function setNeedSignature(?bool $needSignature) {
+		$this->needSignature = $needSignature;
+	}
+
+	public function withNeedSignature(?bool $needSignature): UpdateVersionModelMasterRequest {
+		$this->needSignature = $needSignature;
+		return $this;
+	}
+
+	public function getSignatureKeyId(): ?string {
+		return $this->signatureKeyId;
+	}
+
+	public function setSignatureKeyId(?string $signatureKeyId) {
+		$this->signatureKeyId = $signatureKeyId;
+	}
+
+	public function withSignatureKeyId(?string $signatureKeyId): UpdateVersionModelMasterRequest {
+		$this->signatureKeyId = $signatureKeyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateVersionModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateVersionModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withVersionName(empty($data['versionName']) ? null : $data['versionName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withWarningVersion(empty($data['warningVersion']) ? null : Version::fromJson($data['warningVersion']))
+            ->withErrorVersion(empty($data['errorVersion']) ? null : Version::fromJson($data['errorVersion']))
+            ->withScope(empty($data['scope']) ? null : $data['scope'])
+            ->withCurrentVersion(empty($data['currentVersion']) ? null : Version::fromJson($data['currentVersion']))
+            ->withNeedSignature(empty($data['needSignature']) ? null : $data['needSignature'])
+            ->withSignatureKeyId(empty($data['signatureKeyId']) ? null : $data['signatureKeyId']);
     }
 
-    /**
-     * 署名検証に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $signatureKeyId バージョンマスターを更新
-     */
-    public function setSignatureKeyId(string $signatureKeyId = null) {
-        $this->signatureKeyId = $signatureKeyId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "versionName" => $this->getVersionName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "warningVersion" => $this->getWarningVersion() !== null ? $this->getWarningVersion()->toJson() : null,
+            "errorVersion" => $this->getErrorVersion() !== null ? $this->getErrorVersion()->toJson() : null,
+            "scope" => $this->getScope(),
+            "currentVersion" => $this->getCurrentVersion() !== null ? $this->getCurrentVersion()->toJson() : null,
+            "needSignature" => $this->getNeedSignature(),
+            "signatureKeyId" => $this->getSignatureKeyId(),
+        );
     }
-
-    /**
-     * 署名検証に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $signatureKeyId バージョンマスターを更新
-     * @return UpdateVersionModelMasterRequest $this
-     */
-    public function withSignatureKeyId(string $signatureKeyId = null): UpdateVersionModelMasterRequest {
-        $this->setSignatureKeyId($signatureKeyId);
-        return $this;
-    }
-
 }

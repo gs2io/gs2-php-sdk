@@ -20,36 +20,34 @@ namespace Gs2\Exchange\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Await;
 
-/**
- * 交換待機を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetAwaitResult implements IResult {
-	/** @var Await 交換待機 */
-	private $item;
+    /** @var Await */
+    private $item;
 
-	/**
-	 * 交換待機を取得
-	 *
-	 * @return Await|null 交換待機を取得
-	 */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
-	/**
-	 * 交換待機を設定
-	 *
-	 * @param Await|null $item 交換待機を取得
-	 */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetAwaitResult {
-        $result = new GetAwaitResult();
-        $result->setItem(isset($data["item"]) ? Await::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Await $item): GetAwaitResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetAwaitResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetAwaitResult())
+            ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

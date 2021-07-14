@@ -19,161 +19,94 @@ namespace Gs2\Log\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * アクセスログ集計
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class AccessLogCount implements IModel {
 	/**
-     * @var string マイクロサービスの種類
+     * @var string
 	 */
-	protected $service;
-
+	private $service;
 	/**
-	 * マイクロサービスの種類を取得
-	 *
-	 * @return string|null マイクロサービスの種類
+     * @var string
 	 */
+	private $method;
+	/**
+     * @var string
+	 */
+	private $userId;
+	/**
+     * @var int
+	 */
+	private $count;
+
 	public function getService(): ?string {
 		return $this->service;
 	}
 
-	/**
-	 * マイクロサービスの種類を設定
-	 *
-	 * @param string|null $service マイクロサービスの種類
-	 */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
 
-	/**
-	 * マイクロサービスの種類を設定
-	 *
-	 * @param string|null $service マイクロサービスの種類
-	 * @return AccessLogCount $this
-	 */
 	public function withService(?string $service): AccessLogCount {
 		$this->service = $service;
 		return $this;
 	}
-	/**
-     * @var string マイクロサービスのメソッド
-	 */
-	protected $method;
 
-	/**
-	 * マイクロサービスのメソッドを取得
-	 *
-	 * @return string|null マイクロサービスのメソッド
-	 */
 	public function getMethod(): ?string {
 		return $this->method;
 	}
 
-	/**
-	 * マイクロサービスのメソッドを設定
-	 *
-	 * @param string|null $method マイクロサービスのメソッド
-	 */
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
 
-	/**
-	 * マイクロサービスのメソッドを設定
-	 *
-	 * @param string|null $method マイクロサービスのメソッド
-	 * @return AccessLogCount $this
-	 */
 	public function withMethod(?string $method): AccessLogCount {
 		$this->method = $method;
 		return $this;
 	}
-	/**
-     * @var string ユーザーID
-	 */
-	protected $userId;
 
-	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
-	 */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return AccessLogCount $this
-	 */
 	public function withUserId(?string $userId): AccessLogCount {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var int 回数
-	 */
-	protected $count;
 
-	/**
-	 * 回数を取得
-	 *
-	 * @return int|null 回数
-	 */
 	public function getCount(): ?int {
 		return $this->count;
 	}
 
-	/**
-	 * 回数を設定
-	 *
-	 * @param int|null $count 回数
-	 */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
 
-	/**
-	 * 回数を設定
-	 *
-	 * @param int|null $count 回数
-	 * @return AccessLogCount $this
-	 */
 	public function withCount(?int $count): AccessLogCount {
 		$this->count = $count;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "service" => $this->service,
-            "method" => $this->method,
-            "userId" => $this->userId,
-            "count" => $this->count,
-        );
+    public static function fromJson(?array $data): ?AccessLogCount {
+        if ($data === null) {
+            return null;
+        }
+        return (new AccessLogCount())
+            ->withService(empty($data['service']) ? null : $data['service'])
+            ->withMethod(empty($data['method']) ? null : $data['method'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withCount(empty($data['count']) ? null : $data['count']);
     }
 
-    public static function fromJson(array $data): AccessLogCount {
-        $model = new AccessLogCount();
-        $model->setService(isset($data["service"]) ? $data["service"] : null);
-        $model->setMethod(isset($data["method"]) ? $data["method"] : null);
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setCount(isset($data["count"]) ? $data["count"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "service" => $this->getService(),
+            "method" => $this->getMethod(),
+            "userId" => $this->getUserId(),
+            "count" => $this->getCount(),
+        );
     }
 }

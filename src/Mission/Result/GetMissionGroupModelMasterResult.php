@@ -20,36 +20,34 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\MissionGroupModelMaster;
 
-/**
- * ミッショングループマスターを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMissionGroupModelMasterResult implements IResult {
-	/** @var MissionGroupModelMaster ミッショングループマスター */
-	private $item;
+    /** @var MissionGroupModelMaster */
+    private $item;
 
-	/**
-	 * ミッショングループマスターを取得
-	 *
-	 * @return MissionGroupModelMaster|null ミッショングループマスターを取得
-	 */
 	public function getItem(): ?MissionGroupModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * ミッショングループマスターを設定
-	 *
-	 * @param MissionGroupModelMaster|null $item ミッショングループマスターを取得
-	 */
 	public function setItem(?MissionGroupModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetMissionGroupModelMasterResult {
-        $result = new GetMissionGroupModelMasterResult();
-        $result->setItem(isset($data["item"]) ? MissionGroupModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?MissionGroupModelMaster $item): GetMissionGroupModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMissionGroupModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMissionGroupModelMasterResult())
+            ->withItem(empty($data['item']) ? null : MissionGroupModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -19,59 +19,55 @@ namespace Gs2\Formation\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Mold;
+use Gs2\Formation\Model\SlotModel;
+use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
-/**
- * ユーザIDを指定して保存したフォームのキャパシティを追加 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AddMoldCapacityByUserIdResult implements IResult {
-	/** @var Mold キャパシティを更新した保存したフォーム */
-	private $item;
-	/** @var MoldModel フォームの保存領域 */
-	private $moldModel;
+    /** @var Mold */
+    private $item;
+    /** @var MoldModel */
+    private $moldModel;
 
-	/**
-	 * キャパシティを更新した保存したフォームを取得
-	 *
-	 * @return Mold|null ユーザIDを指定して保存したフォームのキャパシティを追加
-	 */
 	public function getItem(): ?Mold {
 		return $this->item;
 	}
 
-	/**
-	 * キャパシティを更新した保存したフォームを設定
-	 *
-	 * @param Mold|null $item ユーザIDを指定して保存したフォームのキャパシティを追加
-	 */
 	public function setItem(?Mold $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * フォームの保存領域を取得
-	 *
-	 * @return MoldModel|null ユーザIDを指定して保存したフォームのキャパシティを追加
-	 */
+	public function withItem(?Mold $item): AddMoldCapacityByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
-	/**
-	 * フォームの保存領域を設定
-	 *
-	 * @param MoldModel|null $moldModel ユーザIDを指定して保存したフォームのキャパシティを追加
-	 */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
-    public static function fromJson(array $data): AddMoldCapacityByUserIdResult {
-        $result = new AddMoldCapacityByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Mold::fromJson($data["item"]) : null);
-        $result->setMoldModel(isset($data["moldModel"]) ? MoldModel::fromJson($data["moldModel"]) : null);
-        return $result;
+	public function withMoldModel(?MoldModel $moldModel): AddMoldCapacityByUserIdResult {
+		$this->moldModel = $moldModel;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AddMoldCapacityByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AddMoldCapacityByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Mold::fromJson($data['item']))
+            ->withMoldModel(empty($data['moldModel']) ? null : MoldModel::fromJson($data['moldModel']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "moldModel" => $this->getMoldModel() !== null ? $this->getMoldModel()->toJson() : null,
+        );
     }
 }

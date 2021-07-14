@@ -19,75 +19,51 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * レーティングモデルを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRatingModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null レーティングモデルを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティングモデルを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティングモデルを取得
-     * @return GetRatingModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetRatingModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string レーティングの種類名 */
+    /** @var string */
     private $ratingName;
 
-    /**
-     * レーティングの種類名を取得
-     *
-     * @return string|null レーティングモデルを取得
-     */
-    public function getRatingName(): ?string {
-        return $this->ratingName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetRatingModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRatingName(): ?string {
+		return $this->ratingName;
+	}
+
+	public function setRatingName(?string $ratingName) {
+		$this->ratingName = $ratingName;
+	}
+
+	public function withRatingName(?string $ratingName): GetRatingModelRequest {
+		$this->ratingName = $ratingName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRatingModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRatingModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName']);
     }
 
-    /**
-     * レーティングの種類名を設定
-     *
-     * @param string $ratingName レーティングモデルを取得
-     */
-    public function setRatingName(string $ratingName = null) {
-        $this->ratingName = $ratingName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "ratingName" => $this->getRatingName(),
+        );
     }
-
-    /**
-     * レーティングの種類名を設定
-     *
-     * @param string $ratingName レーティングモデルを取得
-     * @return GetRatingModelRequest $this
-     */
-    public function withRatingName(string $ratingName = null): GetRatingModelRequest {
-        $this->setRatingName($ratingName);
-        return $this;
-    }
-
 }

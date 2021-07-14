@@ -19,203 +19,102 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザーIDを指定してウォレットに残高を加算します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DepositByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してウォレットに残高を加算します
-     * @return DepositByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DepositByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してウォレットに残高を加算します
-     * @return DepositByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DepositByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int スロット番号 */
+    /** @var int */
     private $slot;
-
-    /**
-     * スロット番号を取得
-     *
-     * @return int|null ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function getSlot(): ?int {
-        return $this->slot;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $slot ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function setSlot(int $slot = null) {
-        $this->slot = $slot;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $slot ユーザーIDを指定してウォレットに残高を加算します
-     * @return DepositByUserIdRequest $this
-     */
-    public function withSlot(int $slot = null): DepositByUserIdRequest {
-        $this->setSlot($slot);
-        return $this;
-    }
-
-    /** @var float 購入価格 */
+    /** @var float */
     private $price;
-
-    /**
-     * 購入価格を取得
-     *
-     * @return float|null ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function getPrice(): ?float {
-        return $this->price;
-    }
-
-    /**
-     * 購入価格を設定
-     *
-     * @param float $price ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function setPrice(float $price = null) {
-        $this->price = $price;
-    }
-
-    /**
-     * 購入価格を設定
-     *
-     * @param float $price ユーザーIDを指定してウォレットに残高を加算します
-     * @return DepositByUserIdRequest $this
-     */
-    public function withPrice(float $price = null): DepositByUserIdRequest {
-        $this->setPrice($price);
-        return $this;
-    }
-
-    /** @var int 付与する課金通貨の数量 */
+    /** @var int */
     private $count;
 
-    /**
-     * 付与する課金通貨の数量を取得
-     *
-     * @return int|null ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function getCount(): ?int {
-        return $this->count;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DepositByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DepositByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getSlot(): ?int {
+		return $this->slot;
+	}
+
+	public function setSlot(?int $slot) {
+		$this->slot = $slot;
+	}
+
+	public function withSlot(?int $slot): DepositByUserIdRequest {
+		$this->slot = $slot;
+		return $this;
+	}
+
+	public function getPrice(): ?float {
+		return $this->price;
+	}
+
+	public function setPrice(?float $price) {
+		$this->price = $price;
+	}
+
+	public function withPrice(?float $price): DepositByUserIdRequest {
+		$this->price = $price;
+		return $this;
+	}
+
+	public function getCount(): ?int {
+		return $this->count;
+	}
+
+	public function setCount(?int $count) {
+		$this->count = $count;
+	}
+
+	public function withCount(?int $count): DepositByUserIdRequest {
+		$this->count = $count;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DepositByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DepositByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withSlot(empty($data['slot']) ? null : $data['slot'])
+            ->withPrice(empty($data['price']) ? null : $data['price'])
+            ->withCount(empty($data['count']) ? null : $data['count']);
     }
 
-    /**
-     * 付与する課金通貨の数量を設定
-     *
-     * @param int $count ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function setCount(int $count = null) {
-        $this->count = $count;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "slot" => $this->getSlot(),
+            "price" => $this->getPrice(),
+            "count" => $this->getCount(),
+        );
     }
-
-    /**
-     * 付与する課金通貨の数量を設定
-     *
-     * @param int $count ユーザーIDを指定してウォレットに残高を加算します
-     * @return DepositByUserIdRequest $this
-     */
-    public function withCount(int $count = null): DepositByUserIdRequest {
-        $this->setCount($count);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してウォレットに残高を加算します
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してウォレットに残高を加算します
-     * @return DepositByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DepositByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

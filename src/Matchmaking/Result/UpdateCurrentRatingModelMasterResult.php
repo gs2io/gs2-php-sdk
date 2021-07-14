@@ -20,36 +20,34 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\CurrentRatingModelMaster;
 
-/**
- * 現在有効なレーティングマスターを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentRatingModelMasterResult implements IResult {
-	/** @var CurrentRatingModelMaster 更新した現在有効なレーティングマスター */
-	private $item;
+    /** @var CurrentRatingModelMaster */
+    private $item;
 
-	/**
-	 * 更新した現在有効なレーティングマスターを取得
-	 *
-	 * @return CurrentRatingModelMaster|null 現在有効なレーティングマスターを更新します
-	 */
 	public function getItem(): ?CurrentRatingModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した現在有効なレーティングマスターを設定
-	 *
-	 * @param CurrentRatingModelMaster|null $item 現在有効なレーティングマスターを更新します
-	 */
 	public function setItem(?CurrentRatingModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateCurrentRatingModelMasterResult {
-        $result = new UpdateCurrentRatingModelMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentRatingModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentRatingModelMaster $item): UpdateCurrentRatingModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentRatingModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentRatingModelMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentRatingModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

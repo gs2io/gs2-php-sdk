@@ -18,38 +18,38 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\ConsumeAction;
+use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\SalesItemMaster;
 
-/**
- * 商品マスターを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateSalesItemMasterResult implements IResult {
-	/** @var SalesItemMaster 更新した商品マスター */
-	private $item;
+    /** @var SalesItemMaster */
+    private $item;
 
-	/**
-	 * 更新した商品マスターを取得
-	 *
-	 * @return SalesItemMaster|null 商品マスターを更新
-	 */
 	public function getItem(): ?SalesItemMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した商品マスターを設定
-	 *
-	 * @param SalesItemMaster|null $item 商品マスターを更新
-	 */
 	public function setItem(?SalesItemMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateSalesItemMasterResult {
-        $result = new UpdateSalesItemMasterResult();
-        $result->setItem(isset($data["item"]) ? SalesItemMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?SalesItemMaster $item): UpdateSalesItemMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateSalesItemMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateSalesItemMasterResult())
+            ->withItem(empty($data['item']) ? null : SalesItemMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

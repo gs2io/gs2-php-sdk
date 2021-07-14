@@ -19,43 +19,34 @@ namespace Gs2\News\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 現在有効なお知らせを更新準備する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PrepareUpdateCurrentNewsMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null 現在有効なお知らせを更新準備する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PrepareUpdateCurrentNewsMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PrepareUpdateCurrentNewsMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PrepareUpdateCurrentNewsMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName 現在有効なお知らせを更新準備する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName 現在有効なお知らせを更新準備する
-     * @return PrepareUpdateCurrentNewsMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PrepareUpdateCurrentNewsMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

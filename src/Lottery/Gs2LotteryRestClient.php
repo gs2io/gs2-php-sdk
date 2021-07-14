@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Lottery\Request\DescribeNamespacesRequest;
 use Gs2\Lottery\Result\DescribeNamespacesResult;
 use Gs2\Lottery\Request\CreateNamespaceRequest;
@@ -1188,9 +1190,6 @@ class DescribeBoxesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1255,9 +1254,6 @@ class DescribeBoxesByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1319,9 +1315,6 @@ class GetBoxTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1381,9 +1374,6 @@ class GetBoxByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1442,9 +1432,6 @@ class GetRawBoxByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1507,9 +1494,6 @@ class ResetBoxTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1568,9 +1552,6 @@ class ResetBoxByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1870,9 +1851,6 @@ class DrawByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1934,9 +1912,6 @@ class DescribeProbabilitiesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1996,9 +1971,6 @@ class DescribeProbabilitiesByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2057,9 +2029,6 @@ class DrawByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2314,9 +2283,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2331,9 +2298,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2345,9 +2310,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2362,9 +2325,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2376,9 +2337,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2393,9 +2352,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2407,9 +2364,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2424,9 +2379,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2438,9 +2391,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2455,9 +2406,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2469,9 +2418,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2486,9 +2433,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2500,9 +2445,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターの一覧を取得<br>
-     *
-     * @param DescribeLotteryModelMastersRequest $request リクエストパラメータ
+     * @param DescribeLotteryModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeLotteryModelMastersAsync(
@@ -2517,9 +2460,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターの一覧を取得<br>
-     *
-     * @param DescribeLotteryModelMastersRequest $request リクエストパラメータ
+     * @param DescribeLotteryModelMastersRequest $request
      * @return DescribeLotteryModelMastersResult
      */
     public function describeLotteryModelMasters (
@@ -2531,9 +2472,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターを新規作成<br>
-     *
-     * @param CreateLotteryModelMasterRequest $request リクエストパラメータ
+     * @param CreateLotteryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createLotteryModelMasterAsync(
@@ -2548,9 +2487,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターを新規作成<br>
-     *
-     * @param CreateLotteryModelMasterRequest $request リクエストパラメータ
+     * @param CreateLotteryModelMasterRequest $request
      * @return CreateLotteryModelMasterResult
      */
     public function createLotteryModelMaster (
@@ -2562,9 +2499,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターを取得<br>
-     *
-     * @param GetLotteryModelMasterRequest $request リクエストパラメータ
+     * @param GetLotteryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getLotteryModelMasterAsync(
@@ -2579,9 +2514,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターを取得<br>
-     *
-     * @param GetLotteryModelMasterRequest $request リクエストパラメータ
+     * @param GetLotteryModelMasterRequest $request
      * @return GetLotteryModelMasterResult
      */
     public function getLotteryModelMaster (
@@ -2593,9 +2526,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターを更新<br>
-     *
-     * @param UpdateLotteryModelMasterRequest $request リクエストパラメータ
+     * @param UpdateLotteryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateLotteryModelMasterAsync(
@@ -2610,9 +2541,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターを更新<br>
-     *
-     * @param UpdateLotteryModelMasterRequest $request リクエストパラメータ
+     * @param UpdateLotteryModelMasterRequest $request
      * @return UpdateLotteryModelMasterResult
      */
     public function updateLotteryModelMaster (
@@ -2624,9 +2553,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターを削除<br>
-     *
-     * @param DeleteLotteryModelMasterRequest $request リクエストパラメータ
+     * @param DeleteLotteryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteLotteryModelMasterAsync(
@@ -2641,9 +2568,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類マスターを削除<br>
-     *
-     * @param DeleteLotteryModelMasterRequest $request リクエストパラメータ
+     * @param DeleteLotteryModelMasterRequest $request
      * @return DeleteLotteryModelMasterResult
      */
     public function deleteLotteryModelMaster (
@@ -2655,9 +2580,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターの一覧を取得<br>
-     *
-     * @param DescribePrizeTableMastersRequest $request リクエストパラメータ
+     * @param DescribePrizeTableMastersRequest $request
      * @return PromiseInterface
      */
     public function describePrizeTableMastersAsync(
@@ -2672,9 +2595,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターの一覧を取得<br>
-     *
-     * @param DescribePrizeTableMastersRequest $request リクエストパラメータ
+     * @param DescribePrizeTableMastersRequest $request
      * @return DescribePrizeTableMastersResult
      */
     public function describePrizeTableMasters (
@@ -2686,9 +2607,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターを新規作成<br>
-     *
-     * @param CreatePrizeTableMasterRequest $request リクエストパラメータ
+     * @param CreatePrizeTableMasterRequest $request
      * @return PromiseInterface
      */
     public function createPrizeTableMasterAsync(
@@ -2703,9 +2622,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターを新規作成<br>
-     *
-     * @param CreatePrizeTableMasterRequest $request リクエストパラメータ
+     * @param CreatePrizeTableMasterRequest $request
      * @return CreatePrizeTableMasterResult
      */
     public function createPrizeTableMaster (
@@ -2717,9 +2634,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターを取得<br>
-     *
-     * @param GetPrizeTableMasterRequest $request リクエストパラメータ
+     * @param GetPrizeTableMasterRequest $request
      * @return PromiseInterface
      */
     public function getPrizeTableMasterAsync(
@@ -2734,9 +2649,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターを取得<br>
-     *
-     * @param GetPrizeTableMasterRequest $request リクエストパラメータ
+     * @param GetPrizeTableMasterRequest $request
      * @return GetPrizeTableMasterResult
      */
     public function getPrizeTableMaster (
@@ -2748,9 +2661,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターを更新<br>
-     *
-     * @param UpdatePrizeTableMasterRequest $request リクエストパラメータ
+     * @param UpdatePrizeTableMasterRequest $request
      * @return PromiseInterface
      */
     public function updatePrizeTableMasterAsync(
@@ -2765,9 +2676,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターを更新<br>
-     *
-     * @param UpdatePrizeTableMasterRequest $request リクエストパラメータ
+     * @param UpdatePrizeTableMasterRequest $request
      * @return UpdatePrizeTableMasterResult
      */
     public function updatePrizeTableMaster (
@@ -2779,9 +2688,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターを削除<br>
-     *
-     * @param DeletePrizeTableMasterRequest $request リクエストパラメータ
+     * @param DeletePrizeTableMasterRequest $request
      * @return PromiseInterface
      */
     public function deletePrizeTableMasterAsync(
@@ -2796,9 +2703,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルマスターを削除<br>
-     *
-     * @param DeletePrizeTableMasterRequest $request リクエストパラメータ
+     * @param DeletePrizeTableMasterRequest $request
      * @return DeletePrizeTableMasterResult
      */
     public function deletePrizeTableMaster (
@@ -2810,9 +2715,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ボックスの一覧を取得<br>
-     *
-     * @param DescribeBoxesRequest $request リクエストパラメータ
+     * @param DescribeBoxesRequest $request
      * @return PromiseInterface
      */
     public function describeBoxesAsync(
@@ -2827,9 +2730,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ボックスの一覧を取得<br>
-     *
-     * @param DescribeBoxesRequest $request リクエストパラメータ
+     * @param DescribeBoxesRequest $request
      * @return DescribeBoxesResult
      */
     public function describeBoxes (
@@ -2841,9 +2742,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してボックスの一覧を取得<br>
-     *
-     * @param DescribeBoxesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeBoxesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeBoxesByUserIdAsync(
@@ -2858,9 +2757,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してボックスの一覧を取得<br>
-     *
-     * @param DescribeBoxesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeBoxesByUserIdRequest $request
      * @return DescribeBoxesByUserIdResult
      */
     public function describeBoxesByUserId (
@@ -2872,9 +2769,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ボックスを取得<br>
-     *
-     * @param GetBoxRequest $request リクエストパラメータ
+     * @param GetBoxRequest $request
      * @return PromiseInterface
      */
     public function getBoxAsync(
@@ -2889,9 +2784,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ボックスを取得<br>
-     *
-     * @param GetBoxRequest $request リクエストパラメータ
+     * @param GetBoxRequest $request
      * @return GetBoxResult
      */
     public function getBox (
@@ -2903,9 +2796,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してボックスを取得<br>
-     *
-     * @param GetBoxByUserIdRequest $request リクエストパラメータ
+     * @param GetBoxByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getBoxByUserIdAsync(
@@ -2920,9 +2811,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してボックスを取得<br>
-     *
-     * @param GetBoxByUserIdRequest $request リクエストパラメータ
+     * @param GetBoxByUserIdRequest $request
      * @return GetBoxByUserIdResult
      */
     public function getBoxByUserId (
@@ -2934,9 +2823,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してボックスを取得<br>
-     *
-     * @param GetRawBoxByUserIdRequest $request リクエストパラメータ
+     * @param GetRawBoxByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getRawBoxByUserIdAsync(
@@ -2951,9 +2838,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してボックスを取得<br>
-     *
-     * @param GetRawBoxByUserIdRequest $request リクエストパラメータ
+     * @param GetRawBoxByUserIdRequest $request
      * @return GetRawBoxByUserIdResult
      */
     public function getRawBoxByUserId (
@@ -2965,9 +2850,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ボックスをリセット<br>
-     *
-     * @param ResetBoxRequest $request リクエストパラメータ
+     * @param ResetBoxRequest $request
      * @return PromiseInterface
      */
     public function resetBoxAsync(
@@ -2982,9 +2865,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ボックスをリセット<br>
-     *
-     * @param ResetBoxRequest $request リクエストパラメータ
+     * @param ResetBoxRequest $request
      * @return ResetBoxResult
      */
     public function resetBox (
@@ -2996,9 +2877,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してボックスをリセット<br>
-     *
-     * @param ResetBoxByUserIdRequest $request リクエストパラメータ
+     * @param ResetBoxByUserIdRequest $request
      * @return PromiseInterface
      */
     public function resetBoxByUserIdAsync(
@@ -3013,9 +2892,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してボックスをリセット<br>
-     *
-     * @param ResetBoxByUserIdRequest $request リクエストパラメータ
+     * @param ResetBoxByUserIdRequest $request
      * @return ResetBoxByUserIdResult
      */
     public function resetBoxByUserId (
@@ -3027,9 +2904,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類の一覧を取得<br>
-     *
-     * @param DescribeLotteryModelsRequest $request リクエストパラメータ
+     * @param DescribeLotteryModelsRequest $request
      * @return PromiseInterface
      */
     public function describeLotteryModelsAsync(
@@ -3044,9 +2919,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類の一覧を取得<br>
-     *
-     * @param DescribeLotteryModelsRequest $request リクエストパラメータ
+     * @param DescribeLotteryModelsRequest $request
      * @return DescribeLotteryModelsResult
      */
     public function describeLotteryModels (
@@ -3058,9 +2931,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類を取得<br>
-     *
-     * @param GetLotteryModelRequest $request リクエストパラメータ
+     * @param GetLotteryModelRequest $request
      * @return PromiseInterface
      */
     public function getLotteryModelAsync(
@@ -3075,9 +2946,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 抽選の種類を取得<br>
-     *
-     * @param GetLotteryModelRequest $request リクエストパラメータ
+     * @param GetLotteryModelRequest $request
      * @return GetLotteryModelResult
      */
     public function getLotteryModel (
@@ -3089,9 +2958,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルの一覧を取得<br>
-     *
-     * @param DescribePrizeTablesRequest $request リクエストパラメータ
+     * @param DescribePrizeTablesRequest $request
      * @return PromiseInterface
      */
     public function describePrizeTablesAsync(
@@ -3106,9 +2973,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルの一覧を取得<br>
-     *
-     * @param DescribePrizeTablesRequest $request リクエストパラメータ
+     * @param DescribePrizeTablesRequest $request
      * @return DescribePrizeTablesResult
      */
     public function describePrizeTables (
@@ -3120,9 +2985,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルを取得<br>
-     *
-     * @param GetPrizeTableRequest $request リクエストパラメータ
+     * @param GetPrizeTableRequest $request
      * @return PromiseInterface
      */
     public function getPrizeTableAsync(
@@ -3137,9 +3000,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率テーブルを取得<br>
-     *
-     * @param GetPrizeTableRequest $request リクエストパラメータ
+     * @param GetPrizeTableRequest $request
      * @return GetPrizeTableResult
      */
     public function getPrizeTable (
@@ -3151,9 +3012,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して抽選を実行<br>
-     *
-     * @param DrawByUserIdRequest $request リクエストパラメータ
+     * @param DrawByUserIdRequest $request
      * @return PromiseInterface
      */
     public function drawByUserIdAsync(
@@ -3168,9 +3027,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して抽選を実行<br>
-     *
-     * @param DrawByUserIdRequest $request リクエストパラメータ
+     * @param DrawByUserIdRequest $request
      * @return DrawByUserIdResult
      */
     public function drawByUserId (
@@ -3182,12 +3039,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率を取得<br>
-     *   <br>
-     *   通常抽選ではすべてのゲームプレイヤーに対して同じ確率を応答します。<br>
-     *   ボックス抽選ではボックスの中身の残りを考慮したゲームプレイヤーごとに異なる確率を応答します。<br>
-     *
-     * @param DescribeProbabilitiesRequest $request リクエストパラメータ
+     * @param DescribeProbabilitiesRequest $request
      * @return PromiseInterface
      */
     public function describeProbabilitiesAsync(
@@ -3202,12 +3054,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率を取得<br>
-     *   <br>
-     *   通常抽選ではすべてのゲームプレイヤーに対して同じ確率を応答します。<br>
-     *   ボックス抽選ではボックスの中身の残りを考慮したゲームプレイヤーごとに異なる確率を応答します。<br>
-     *
-     * @param DescribeProbabilitiesRequest $request リクエストパラメータ
+     * @param DescribeProbabilitiesRequest $request
      * @return DescribeProbabilitiesResult
      */
     public function describeProbabilities (
@@ -3219,12 +3066,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率を取得<br>
-     *   <br>
-     *   通常抽選ではすべてのゲームプレイヤーに対して同じ確率を応答します。<br>
-     *   ボックス抽選ではボックスの中身の残りを考慮したゲームプレイヤーごとに異なる確率を応答します。<br>
-     *
-     * @param DescribeProbabilitiesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeProbabilitiesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeProbabilitiesByUserIdAsync(
@@ -3239,12 +3081,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 排出確率を取得<br>
-     *   <br>
-     *   通常抽選ではすべてのゲームプレイヤーに対して同じ確率を応答します。<br>
-     *   ボックス抽選ではボックスの中身の残りを考慮したゲームプレイヤーごとに異なる確率を応答します。<br>
-     *
-     * @param DescribeProbabilitiesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeProbabilitiesByUserIdRequest $request
      * @return DescribeProbabilitiesByUserIdResult
      */
     public function describeProbabilitiesByUserId (
@@ -3256,9 +3093,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートを使用して抽選処理を実行<br>
-     *
-     * @param DrawByStampSheetRequest $request リクエストパラメータ
+     * @param DrawByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function drawByStampSheetAsync(
@@ -3273,9 +3108,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートを使用して抽選処理を実行<br>
-     *
-     * @param DrawByStampSheetRequest $request リクエストパラメータ
+     * @param DrawByStampSheetRequest $request
      * @return DrawByStampSheetResult
      */
     public function drawByStampSheet (
@@ -3287,9 +3120,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な抽選設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -3304,9 +3135,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な抽選設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -3318,9 +3147,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な抽選設定を取得します<br>
-     *
-     * @param GetCurrentLotteryMasterRequest $request リクエストパラメータ
+     * @param GetCurrentLotteryMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentLotteryMasterAsync(
@@ -3335,9 +3162,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な抽選設定を取得します<br>
-     *
-     * @param GetCurrentLotteryMasterRequest $request リクエストパラメータ
+     * @param GetCurrentLotteryMasterRequest $request
      * @return GetCurrentLotteryMasterResult
      */
     public function getCurrentLotteryMaster (
@@ -3349,9 +3174,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な抽選設定を更新します<br>
-     *
-     * @param UpdateCurrentLotteryMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentLotteryMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentLotteryMasterAsync(
@@ -3366,9 +3189,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な抽選設定を更新します<br>
-     *
-     * @param UpdateCurrentLotteryMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentLotteryMasterRequest $request
      * @return UpdateCurrentLotteryMasterResult
      */
     public function updateCurrentLotteryMaster (
@@ -3380,9 +3201,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な抽選設定を更新します<br>
-     *
-     * @param UpdateCurrentLotteryMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentLotteryMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentLotteryMasterFromGitHubAsync(
@@ -3397,9 +3216,7 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な抽選設定を更新します<br>
-     *
-     * @param UpdateCurrentLotteryMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentLotteryMasterFromGitHubRequest $request
      * @return UpdateCurrentLotteryMasterFromGitHubResult
      */
     public function updateCurrentLotteryMasterFromGitHub (

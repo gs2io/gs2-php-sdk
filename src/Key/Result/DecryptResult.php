@@ -19,36 +19,34 @@ namespace Gs2\Key\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * データを復号します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DecryptResult implements IResult {
-	/** @var string 復号済みデータ */
-	private $data;
+    /** @var string */
+    private $data;
 
-	/**
-	 * 復号済みデータを取得
-	 *
-	 * @return string|null データを復号します
-	 */
 	public function getData(): ?string {
 		return $this->data;
 	}
 
-	/**
-	 * 復号済みデータを設定
-	 *
-	 * @param string|null $data データを復号します
-	 */
 	public function setData(?string $data) {
 		$this->data = $data;
 	}
 
-    public static function fromJson(array $data): DecryptResult {
-        $result = new DecryptResult();
-        $result->setData(isset($data["data"]) ? $data["data"] : null);
-        return $result;
+	public function withData(?string $data): DecryptResult {
+		$this->data = $data;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DecryptResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DecryptResult())
+            ->withData(empty($data['data']) ? null : $data['data']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "data" => $this->getData(),
+        );
     }
 }

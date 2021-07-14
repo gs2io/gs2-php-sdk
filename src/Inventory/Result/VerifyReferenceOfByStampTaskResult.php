@@ -22,120 +22,112 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
-/**
- * スタンプシートでインベントリのアイテムを検証 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class VerifyReferenceOfByStampTaskResult implements IResult {
-	/** @var string[] この所持品の参照元のリスト */
-	private $item;
-	/** @var ItemSet 有効期限ごとのアイテム所持数量 */
-	private $itemSet;
-	/** @var ItemModel アイテムモデル */
-	private $itemModel;
-	/** @var Inventory インベントリ */
-	private $inventory;
-	/** @var string スタンプタスクの実行結果を記録したコンテキスト */
-	private $newContextStack;
+    /** @var array */
+    private $item;
+    /** @var ItemSet */
+    private $itemSet;
+    /** @var ItemModel */
+    private $itemModel;
+    /** @var Inventory */
+    private $inventory;
+    /** @var string */
+    private $newContextStack;
 
-	/**
-	 * この所持品の参照元のリストを取得
-	 *
-	 * @return string[]|null スタンプシートでインベントリのアイテムを検証
-	 */
 	public function getItem(): ?array {
 		return $this->item;
 	}
 
-	/**
-	 * この所持品の参照元のリストを設定
-	 *
-	 * @param string[]|null $item スタンプシートでインベントリのアイテムを検証
-	 */
 	public function setItem(?array $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 有効期限ごとのアイテム所持数量を取得
-	 *
-	 * @return ItemSet|null スタンプシートでインベントリのアイテムを検証
-	 */
+	public function withItem(?array $item): VerifyReferenceOfByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getItemSet(): ?ItemSet {
 		return $this->itemSet;
 	}
 
-	/**
-	 * 有効期限ごとのアイテム所持数量を設定
-	 *
-	 * @param ItemSet|null $itemSet スタンプシートでインベントリのアイテムを検証
-	 */
 	public function setItemSet(?ItemSet $itemSet) {
 		$this->itemSet = $itemSet;
 	}
 
-	/**
-	 * アイテムモデルを取得
-	 *
-	 * @return ItemModel|null スタンプシートでインベントリのアイテムを検証
-	 */
+	public function withItemSet(?ItemSet $itemSet): VerifyReferenceOfByStampTaskResult {
+		$this->itemSet = $itemSet;
+		return $this;
+	}
+
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
-	/**
-	 * アイテムモデルを設定
-	 *
-	 * @param ItemModel|null $itemModel スタンプシートでインベントリのアイテムを検証
-	 */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
-	/**
-	 * インベントリを取得
-	 *
-	 * @return Inventory|null スタンプシートでインベントリのアイテムを検証
-	 */
+	public function withItemModel(?ItemModel $itemModel): VerifyReferenceOfByStampTaskResult {
+		$this->itemModel = $itemModel;
+		return $this;
+	}
+
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
-	/**
-	 * インベントリを設定
-	 *
-	 * @param Inventory|null $inventory スタンプシートでインベントリのアイテムを検証
-	 */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを取得
-	 *
-	 * @return string|null スタンプシートでインベントリのアイテムを検証
-	 */
+	public function withInventory(?Inventory $inventory): VerifyReferenceOfByStampTaskResult {
+		$this->inventory = $inventory;
+		return $this;
+	}
+
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを設定
-	 *
-	 * @param string|null $newContextStack スタンプシートでインベントリのアイテムを検証
-	 */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
-    public static function fromJson(array $data): VerifyReferenceOfByStampTaskResult {
-        $result = new VerifyReferenceOfByStampTaskResult();
-        $result->setItem(isset($data["item"]) ? $data["item"] : null);
-        $result->setItemSet(isset($data["itemSet"]) ? ItemSet::fromJson($data["itemSet"]) : null);
-        $result->setItemModel(isset($data["itemModel"]) ? ItemModel::fromJson($data["itemModel"]) : null);
-        $result->setInventory(isset($data["inventory"]) ? Inventory::fromJson($data["inventory"]) : null);
-        $result->setNewContextStack(isset($data["newContextStack"]) ? $data["newContextStack"] : null);
-        return $result;
+	public function withNewContextStack(?string $newContextStack): VerifyReferenceOfByStampTaskResult {
+		$this->newContextStack = $newContextStack;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?VerifyReferenceOfByStampTaskResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new VerifyReferenceOfByStampTaskResult())
+            ->withItem(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('item', $data) && $data['item'] !== null ? $data['item'] : []
+            ))
+            ->withItemSet(empty($data['itemSet']) ? null : ItemSet::fromJson($data['itemSet']))
+            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
+            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']))
+            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getItem() !== null && $this->getItem() !== null ? $this->getItem() : []
+            ),
+            "itemSet" => $this->getItemSet() !== null ? $this->getItemSet()->toJson() : null,
+            "itemModel" => $this->getItemModel() !== null ? $this->getItemModel()->toJson() : null,
+            "inventory" => $this->getInventory() !== null ? $this->getInventory()->toJson() : null,
+            "newContextStack" => $this->getNewContextStack(),
+        );
     }
 }

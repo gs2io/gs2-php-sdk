@@ -19,139 +19,68 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ルームを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRoomFromBackendRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ルームを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを削除
-     * @return DeleteRoomFromBackendRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteRoomFromBackendRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null ルームを削除
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ルームを削除
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ルームを削除
-     * @return DeleteRoomFromBackendRequest $this
-     */
-    public function withRoomName(string $roomName = null): DeleteRoomFromBackendRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var string ユーザID */
+    /** @var string */
     private $userId;
 
-    /**
-     * ユーザIDを取得
-     *
-     * @return string|null ルームを削除
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteRoomFromBackendRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): DeleteRoomFromBackendRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DeleteRoomFromBackendRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRoomFromBackendRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRoomFromBackendRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
-    /**
-     * ユーザIDを設定
-     *
-     * @param string $userId ルームを削除
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "userId" => $this->getUserId(),
+        );
     }
-
-    /**
-     * ユーザIDを設定
-     *
-     * @param string $userId ルームを削除
-     * @return DeleteRoomFromBackendRequest $this
-     */
-    public function withUserId(string $userId = null): DeleteRoomFromBackendRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ルームを削除
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ルームを削除
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ルームを削除
-     * @return DeleteRoomFromBackendRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteRoomFromBackendRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

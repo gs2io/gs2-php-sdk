@@ -20,57 +20,51 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Account;
 
-/**
- * サインインします のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SignInResult implements IResult {
-	/** @var Account サインインしたGS2アカウント */
-	private $item;
-	/** @var string GS2-Console にアクセスするのに使用するトークン */
-	private $accountToken;
+    /** @var Account */
+    private $item;
+    /** @var string */
+    private $accountToken;
 
-	/**
-	 * サインインしたGS2アカウントを取得
-	 *
-	 * @return Account|null サインインします
-	 */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
-	/**
-	 * サインインしたGS2アカウントを設定
-	 *
-	 * @param Account|null $item サインインします
-	 */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * GS2-Console にアクセスするのに使用するトークンを取得
-	 *
-	 * @return string|null サインインします
-	 */
+	public function withItem(?Account $item): SignInResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
 
-	/**
-	 * GS2-Console にアクセスするのに使用するトークンを設定
-	 *
-	 * @param string|null $accountToken サインインします
-	 */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
 
-    public static function fromJson(array $data): SignInResult {
-        $result = new SignInResult();
-        $result->setItem(isset($data["item"]) ? Account::fromJson($data["item"]) : null);
-        $result->setAccountToken(isset($data["accountToken"]) ? $data["accountToken"] : null);
-        return $result;
+	public function withAccountToken(?string $accountToken): SignInResult {
+		$this->accountToken = $accountToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SignInResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SignInResult())
+            ->withItem(empty($data['item']) ? null : Account::fromJson($data['item']))
+            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "accountToken" => $this->getAccountToken(),
+        );
     }
 }

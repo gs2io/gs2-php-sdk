@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Stamina\Request\DescribeNamespacesRequest;
 use Gs2\Stamina\Result\DescribeNamespacesResult;
 use Gs2\Stamina\Request\CreateNamespaceRequest;
@@ -237,11 +239,8 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
-        if ($this->request->getOverflowTriggerScriptId() !== null) {
-            $json["overflowTriggerScriptId"] = $this->request->getOverflowTriggerScriptId();
-        }
-        if ($this->request->getOverflowTriggerNamespaceId() !== null) {
-            $json["overflowTriggerNamespaceId"] = $this->request->getOverflowTriggerNamespaceId();
+        if ($this->request->getOverflowTriggerScript() !== null) {
+            $json["overflowTriggerScript"] = $this->request->getOverflowTriggerScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -418,11 +417,8 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
-        if ($this->request->getOverflowTriggerScriptId() !== null) {
-            $json["overflowTriggerScriptId"] = $this->request->getOverflowTriggerScriptId();
-        }
-        if ($this->request->getOverflowTriggerNamespaceId() !== null) {
-            $json["overflowTriggerNamespaceId"] = $this->request->getOverflowTriggerNamespaceId();
+        if ($this->request->getOverflowTriggerScript() !== null) {
+            $json["overflowTriggerScript"] = $this->request->getOverflowTriggerScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -2243,9 +2239,6 @@ class DescribeStaminasTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2310,9 +2303,6 @@ class DescribeStaminasByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2374,9 +2364,6 @@ class GetStaminaTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2435,9 +2422,6 @@ class GetStaminaByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2508,9 +2492,6 @@ class UpdateStaminaByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2573,9 +2554,6 @@ class ConsumeStaminaTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2635,9 +2613,6 @@ class ConsumeStaminaByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2699,9 +2674,6 @@ class RecoverStaminaByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2761,9 +2733,6 @@ class RaiseMaxValueByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2825,9 +2794,6 @@ class SetMaxValueByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2888,9 +2854,6 @@ class SetRecoverIntervalByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2950,9 +2913,6 @@ class SetRecoverValueByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3022,9 +2982,6 @@ class SetMaxValueByStatusTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3093,9 +3050,6 @@ class SetRecoverIntervalByStatusTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3132,7 +3086,7 @@ class SetRecoverValueByStatusTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/reoverValue/set";
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/recoverValue/set";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
@@ -3163,9 +3117,6 @@ class SetRecoverValueByStatusTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3226,9 +3177,6 @@ class DeleteStaminaByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3287,9 +3235,6 @@ class RecoverStaminaByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3350,9 +3295,6 @@ class RaiseMaxValueByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3411,9 +3353,6 @@ class SetMaxValueByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3474,9 +3413,6 @@ class SetRecoverIntervalByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3535,9 +3471,6 @@ class SetRecoverValueByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3598,9 +3531,6 @@ class ConsumeStaminaByStampTaskTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3624,9 +3554,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -3641,9 +3569,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -3655,9 +3581,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -3672,9 +3596,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -3686,9 +3608,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -3703,9 +3623,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -3717,9 +3635,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -3734,9 +3650,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -3748,9 +3662,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -3765,9 +3677,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -3779,9 +3689,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -3796,9 +3704,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -3810,9 +3716,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeStaminaModelMastersRequest $request リクエストパラメータ
+     * @param DescribeStaminaModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeStaminaModelMastersAsync(
@@ -3827,9 +3731,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeStaminaModelMastersRequest $request リクエストパラメータ
+     * @param DescribeStaminaModelMastersRequest $request
      * @return DescribeStaminaModelMastersResult
      */
     public function describeStaminaModelMasters (
@@ -3841,9 +3743,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターを新規作成<br>
-     *
-     * @param CreateStaminaModelMasterRequest $request リクエストパラメータ
+     * @param CreateStaminaModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createStaminaModelMasterAsync(
@@ -3858,9 +3758,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターを新規作成<br>
-     *
-     * @param CreateStaminaModelMasterRequest $request リクエストパラメータ
+     * @param CreateStaminaModelMasterRequest $request
      * @return CreateStaminaModelMasterResult
      */
     public function createStaminaModelMaster (
@@ -3872,9 +3770,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターを取得<br>
-     *
-     * @param GetStaminaModelMasterRequest $request リクエストパラメータ
+     * @param GetStaminaModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getStaminaModelMasterAsync(
@@ -3889,9 +3785,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターを取得<br>
-     *
-     * @param GetStaminaModelMasterRequest $request リクエストパラメータ
+     * @param GetStaminaModelMasterRequest $request
      * @return GetStaminaModelMasterResult
      */
     public function getStaminaModelMaster (
@@ -3903,9 +3797,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターを更新<br>
-     *
-     * @param UpdateStaminaModelMasterRequest $request リクエストパラメータ
+     * @param UpdateStaminaModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateStaminaModelMasterAsync(
@@ -3920,9 +3812,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターを更新<br>
-     *
-     * @param UpdateStaminaModelMasterRequest $request リクエストパラメータ
+     * @param UpdateStaminaModelMasterRequest $request
      * @return UpdateStaminaModelMasterResult
      */
     public function updateStaminaModelMaster (
@@ -3934,9 +3824,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターを削除<br>
-     *
-     * @param DeleteStaminaModelMasterRequest $request リクエストパラメータ
+     * @param DeleteStaminaModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteStaminaModelMasterAsync(
@@ -3951,9 +3839,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルマスターを削除<br>
-     *
-     * @param DeleteStaminaModelMasterRequest $request リクエストパラメータ
+     * @param DeleteStaminaModelMasterRequest $request
      * @return DeleteStaminaModelMasterResult
      */
     public function deleteStaminaModelMaster (
@@ -3965,9 +3851,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターの一覧を取得<br>
-     *
-     * @param DescribeMaxStaminaTableMastersRequest $request リクエストパラメータ
+     * @param DescribeMaxStaminaTableMastersRequest $request
      * @return PromiseInterface
      */
     public function describeMaxStaminaTableMastersAsync(
@@ -3982,9 +3866,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターの一覧を取得<br>
-     *
-     * @param DescribeMaxStaminaTableMastersRequest $request リクエストパラメータ
+     * @param DescribeMaxStaminaTableMastersRequest $request
      * @return DescribeMaxStaminaTableMastersResult
      */
     public function describeMaxStaminaTableMasters (
@@ -3996,9 +3878,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターを新規作成<br>
-     *
-     * @param CreateMaxStaminaTableMasterRequest $request リクエストパラメータ
+     * @param CreateMaxStaminaTableMasterRequest $request
      * @return PromiseInterface
      */
     public function createMaxStaminaTableMasterAsync(
@@ -4013,9 +3893,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターを新規作成<br>
-     *
-     * @param CreateMaxStaminaTableMasterRequest $request リクエストパラメータ
+     * @param CreateMaxStaminaTableMasterRequest $request
      * @return CreateMaxStaminaTableMasterResult
      */
     public function createMaxStaminaTableMaster (
@@ -4027,9 +3905,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターを取得<br>
-     *
-     * @param GetMaxStaminaTableMasterRequest $request リクエストパラメータ
+     * @param GetMaxStaminaTableMasterRequest $request
      * @return PromiseInterface
      */
     public function getMaxStaminaTableMasterAsync(
@@ -4044,9 +3920,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターを取得<br>
-     *
-     * @param GetMaxStaminaTableMasterRequest $request リクエストパラメータ
+     * @param GetMaxStaminaTableMasterRequest $request
      * @return GetMaxStaminaTableMasterResult
      */
     public function getMaxStaminaTableMaster (
@@ -4058,9 +3932,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターを更新<br>
-     *
-     * @param UpdateMaxStaminaTableMasterRequest $request リクエストパラメータ
+     * @param UpdateMaxStaminaTableMasterRequest $request
      * @return PromiseInterface
      */
     public function updateMaxStaminaTableMasterAsync(
@@ -4075,9 +3947,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターを更新<br>
-     *
-     * @param UpdateMaxStaminaTableMasterRequest $request リクエストパラメータ
+     * @param UpdateMaxStaminaTableMasterRequest $request
      * @return UpdateMaxStaminaTableMasterResult
      */
     public function updateMaxStaminaTableMaster (
@@ -4089,9 +3959,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターを削除<br>
-     *
-     * @param DeleteMaxStaminaTableMasterRequest $request リクエストパラメータ
+     * @param DeleteMaxStaminaTableMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteMaxStaminaTableMasterAsync(
@@ -4106,9 +3974,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値テーブルマスターを削除<br>
-     *
-     * @param DeleteMaxStaminaTableMasterRequest $request リクエストパラメータ
+     * @param DeleteMaxStaminaTableMasterRequest $request
      * @return DeleteMaxStaminaTableMasterResult
      */
     public function deleteMaxStaminaTableMaster (
@@ -4120,9 +3986,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターの一覧を取得<br>
-     *
-     * @param DescribeRecoverIntervalTableMastersRequest $request リクエストパラメータ
+     * @param DescribeRecoverIntervalTableMastersRequest $request
      * @return PromiseInterface
      */
     public function describeRecoverIntervalTableMastersAsync(
@@ -4137,9 +4001,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターの一覧を取得<br>
-     *
-     * @param DescribeRecoverIntervalTableMastersRequest $request リクエストパラメータ
+     * @param DescribeRecoverIntervalTableMastersRequest $request
      * @return DescribeRecoverIntervalTableMastersResult
      */
     public function describeRecoverIntervalTableMasters (
@@ -4151,9 +4013,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターを新規作成<br>
-     *
-     * @param CreateRecoverIntervalTableMasterRequest $request リクエストパラメータ
+     * @param CreateRecoverIntervalTableMasterRequest $request
      * @return PromiseInterface
      */
     public function createRecoverIntervalTableMasterAsync(
@@ -4168,9 +4028,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターを新規作成<br>
-     *
-     * @param CreateRecoverIntervalTableMasterRequest $request リクエストパラメータ
+     * @param CreateRecoverIntervalTableMasterRequest $request
      * @return CreateRecoverIntervalTableMasterResult
      */
     public function createRecoverIntervalTableMaster (
@@ -4182,9 +4040,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターを取得<br>
-     *
-     * @param GetRecoverIntervalTableMasterRequest $request リクエストパラメータ
+     * @param GetRecoverIntervalTableMasterRequest $request
      * @return PromiseInterface
      */
     public function getRecoverIntervalTableMasterAsync(
@@ -4199,9 +4055,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターを取得<br>
-     *
-     * @param GetRecoverIntervalTableMasterRequest $request リクエストパラメータ
+     * @param GetRecoverIntervalTableMasterRequest $request
      * @return GetRecoverIntervalTableMasterResult
      */
     public function getRecoverIntervalTableMaster (
@@ -4213,9 +4067,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターを更新<br>
-     *
-     * @param UpdateRecoverIntervalTableMasterRequest $request リクエストパラメータ
+     * @param UpdateRecoverIntervalTableMasterRequest $request
      * @return PromiseInterface
      */
     public function updateRecoverIntervalTableMasterAsync(
@@ -4230,9 +4082,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターを更新<br>
-     *
-     * @param UpdateRecoverIntervalTableMasterRequest $request リクエストパラメータ
+     * @param UpdateRecoverIntervalTableMasterRequest $request
      * @return UpdateRecoverIntervalTableMasterResult
      */
     public function updateRecoverIntervalTableMaster (
@@ -4244,9 +4094,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターを削除<br>
-     *
-     * @param DeleteRecoverIntervalTableMasterRequest $request リクエストパラメータ
+     * @param DeleteRecoverIntervalTableMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteRecoverIntervalTableMasterAsync(
@@ -4261,9 +4109,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復間隔テーブルマスターを削除<br>
-     *
-     * @param DeleteRecoverIntervalTableMasterRequest $request リクエストパラメータ
+     * @param DeleteRecoverIntervalTableMasterRequest $request
      * @return DeleteRecoverIntervalTableMasterResult
      */
     public function deleteRecoverIntervalTableMaster (
@@ -4275,9 +4121,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターの一覧を取得<br>
-     *
-     * @param DescribeRecoverValueTableMastersRequest $request リクエストパラメータ
+     * @param DescribeRecoverValueTableMastersRequest $request
      * @return PromiseInterface
      */
     public function describeRecoverValueTableMastersAsync(
@@ -4292,9 +4136,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターの一覧を取得<br>
-     *
-     * @param DescribeRecoverValueTableMastersRequest $request リクエストパラメータ
+     * @param DescribeRecoverValueTableMastersRequest $request
      * @return DescribeRecoverValueTableMastersResult
      */
     public function describeRecoverValueTableMasters (
@@ -4306,9 +4148,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターを新規作成<br>
-     *
-     * @param CreateRecoverValueTableMasterRequest $request リクエストパラメータ
+     * @param CreateRecoverValueTableMasterRequest $request
      * @return PromiseInterface
      */
     public function createRecoverValueTableMasterAsync(
@@ -4323,9 +4163,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターを新規作成<br>
-     *
-     * @param CreateRecoverValueTableMasterRequest $request リクエストパラメータ
+     * @param CreateRecoverValueTableMasterRequest $request
      * @return CreateRecoverValueTableMasterResult
      */
     public function createRecoverValueTableMaster (
@@ -4337,9 +4175,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターを取得<br>
-     *
-     * @param GetRecoverValueTableMasterRequest $request リクエストパラメータ
+     * @param GetRecoverValueTableMasterRequest $request
      * @return PromiseInterface
      */
     public function getRecoverValueTableMasterAsync(
@@ -4354,9 +4190,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターを取得<br>
-     *
-     * @param GetRecoverValueTableMasterRequest $request リクエストパラメータ
+     * @param GetRecoverValueTableMasterRequest $request
      * @return GetRecoverValueTableMasterResult
      */
     public function getRecoverValueTableMaster (
@@ -4368,9 +4202,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターを更新<br>
-     *
-     * @param UpdateRecoverValueTableMasterRequest $request リクエストパラメータ
+     * @param UpdateRecoverValueTableMasterRequest $request
      * @return PromiseInterface
      */
     public function updateRecoverValueTableMasterAsync(
@@ -4385,9 +4217,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターを更新<br>
-     *
-     * @param UpdateRecoverValueTableMasterRequest $request リクエストパラメータ
+     * @param UpdateRecoverValueTableMasterRequest $request
      * @return UpdateRecoverValueTableMasterResult
      */
     public function updateRecoverValueTableMaster (
@@ -4399,9 +4229,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターを削除<br>
-     *
-     * @param DeleteRecoverValueTableMasterRequest $request リクエストパラメータ
+     * @param DeleteRecoverValueTableMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteRecoverValueTableMasterAsync(
@@ -4416,9 +4244,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナ回復量テーブルマスターを削除<br>
-     *
-     * @param DeleteRecoverValueTableMasterRequest $request リクエストパラメータ
+     * @param DeleteRecoverValueTableMasterRequest $request
      * @return DeleteRecoverValueTableMasterResult
      */
     public function deleteRecoverValueTableMaster (
@@ -4430,9 +4256,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なスタミナマスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -4447,9 +4271,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なスタミナマスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -4461,9 +4283,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なスタミナマスターを取得します<br>
-     *
-     * @param GetCurrentStaminaMasterRequest $request リクエストパラメータ
+     * @param GetCurrentStaminaMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentStaminaMasterAsync(
@@ -4478,9 +4298,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なスタミナマスターを取得します<br>
-     *
-     * @param GetCurrentStaminaMasterRequest $request リクエストパラメータ
+     * @param GetCurrentStaminaMasterRequest $request
      * @return GetCurrentStaminaMasterResult
      */
     public function getCurrentStaminaMaster (
@@ -4492,9 +4310,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なスタミナマスターを更新します<br>
-     *
-     * @param UpdateCurrentStaminaMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentStaminaMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentStaminaMasterAsync(
@@ -4509,9 +4325,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なスタミナマスターを更新します<br>
-     *
-     * @param UpdateCurrentStaminaMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentStaminaMasterRequest $request
      * @return UpdateCurrentStaminaMasterResult
      */
     public function updateCurrentStaminaMaster (
@@ -4523,9 +4337,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なスタミナマスターを更新します<br>
-     *
-     * @param UpdateCurrentStaminaMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentStaminaMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentStaminaMasterFromGitHubAsync(
@@ -4540,9 +4352,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なスタミナマスターを更新します<br>
-     *
-     * @param UpdateCurrentStaminaMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentStaminaMasterFromGitHubRequest $request
      * @return UpdateCurrentStaminaMasterFromGitHubResult
      */
     public function updateCurrentStaminaMasterFromGitHub (
@@ -4554,9 +4364,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルの一覧を取得<br>
-     *
-     * @param DescribeStaminaModelsRequest $request リクエストパラメータ
+     * @param DescribeStaminaModelsRequest $request
      * @return PromiseInterface
      */
     public function describeStaminaModelsAsync(
@@ -4571,9 +4379,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルの一覧を取得<br>
-     *
-     * @param DescribeStaminaModelsRequest $request リクエストパラメータ
+     * @param DescribeStaminaModelsRequest $request
      * @return DescribeStaminaModelsResult
      */
     public function describeStaminaModels (
@@ -4585,9 +4391,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルを取得<br>
-     *
-     * @param GetStaminaModelRequest $request リクエストパラメータ
+     * @param GetStaminaModelRequest $request
      * @return PromiseInterface
      */
     public function getStaminaModelAsync(
@@ -4602,9 +4406,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナモデルを取得<br>
-     *
-     * @param GetStaminaModelRequest $request リクエストパラメータ
+     * @param GetStaminaModelRequest $request
      * @return GetStaminaModelResult
      */
     public function getStaminaModel (
@@ -4616,9 +4418,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナを取得<br>
-     *
-     * @param DescribeStaminasRequest $request リクエストパラメータ
+     * @param DescribeStaminasRequest $request
      * @return PromiseInterface
      */
     public function describeStaminasAsync(
@@ -4633,9 +4433,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナを取得<br>
-     *
-     * @param DescribeStaminasRequest $request リクエストパラメータ
+     * @param DescribeStaminasRequest $request
      * @return DescribeStaminasResult
      */
     public function describeStaminas (
@@ -4647,9 +4445,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを取得<br>
-     *
-     * @param DescribeStaminasByUserIdRequest $request リクエストパラメータ
+     * @param DescribeStaminasByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeStaminasByUserIdAsync(
@@ -4664,9 +4460,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを取得<br>
-     *
-     * @param DescribeStaminasByUserIdRequest $request リクエストパラメータ
+     * @param DescribeStaminasByUserIdRequest $request
      * @return DescribeStaminasByUserIdResult
      */
     public function describeStaminasByUserId (
@@ -4678,9 +4472,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナを取得<br>
-     *
-     * @param GetStaminaRequest $request リクエストパラメータ
+     * @param GetStaminaRequest $request
      * @return PromiseInterface
      */
     public function getStaminaAsync(
@@ -4695,9 +4487,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナを取得<br>
-     *
-     * @param GetStaminaRequest $request リクエストパラメータ
+     * @param GetStaminaRequest $request
      * @return GetStaminaResult
      */
     public function getStamina (
@@ -4709,9 +4499,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを取得<br>
-     *
-     * @param GetStaminaByUserIdRequest $request リクエストパラメータ
+     * @param GetStaminaByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getStaminaByUserIdAsync(
@@ -4726,9 +4514,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを取得<br>
-     *
-     * @param GetStaminaByUserIdRequest $request リクエストパラメータ
+     * @param GetStaminaByUserIdRequest $request
      * @return GetStaminaByUserIdResult
      */
     public function getStaminaByUserId (
@@ -4740,9 +4526,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを作成・更新<br>
-     *
-     * @param UpdateStaminaByUserIdRequest $request リクエストパラメータ
+     * @param UpdateStaminaByUserIdRequest $request
      * @return PromiseInterface
      */
     public function updateStaminaByUserIdAsync(
@@ -4757,9 +4541,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを作成・更新<br>
-     *
-     * @param UpdateStaminaByUserIdRequest $request リクエストパラメータ
+     * @param UpdateStaminaByUserIdRequest $request
      * @return UpdateStaminaByUserIdResult
      */
     public function updateStaminaByUserId (
@@ -4771,9 +4553,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナを消費<br>
-     *
-     * @param ConsumeStaminaRequest $request リクエストパラメータ
+     * @param ConsumeStaminaRequest $request
      * @return PromiseInterface
      */
     public function consumeStaminaAsync(
@@ -4788,9 +4568,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナを消費<br>
-     *
-     * @param ConsumeStaminaRequest $request リクエストパラメータ
+     * @param ConsumeStaminaRequest $request
      * @return ConsumeStaminaResult
      */
     public function consumeStamina (
@@ -4802,9 +4580,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを消費<br>
-     *
-     * @param ConsumeStaminaByUserIdRequest $request リクエストパラメータ
+     * @param ConsumeStaminaByUserIdRequest $request
      * @return PromiseInterface
      */
     public function consumeStaminaByUserIdAsync(
@@ -4819,9 +4595,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを消費<br>
-     *
-     * @param ConsumeStaminaByUserIdRequest $request リクエストパラメータ
+     * @param ConsumeStaminaByUserIdRequest $request
      * @return ConsumeStaminaByUserIdResult
      */
     public function consumeStaminaByUserId (
@@ -4833,9 +4607,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを回復<br>
-     *
-     * @param RecoverStaminaByUserIdRequest $request リクエストパラメータ
+     * @param RecoverStaminaByUserIdRequest $request
      * @return PromiseInterface
      */
     public function recoverStaminaByUserIdAsync(
@@ -4850,9 +4622,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを回復<br>
-     *
-     * @param RecoverStaminaByUserIdRequest $request リクエストパラメータ
+     * @param RecoverStaminaByUserIdRequest $request
      * @return RecoverStaminaByUserIdResult
      */
     public function recoverStaminaByUserId (
@@ -4864,9 +4634,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナの最大値を加算<br>
-     *
-     * @param RaiseMaxValueByUserIdRequest $request リクエストパラメータ
+     * @param RaiseMaxValueByUserIdRequest $request
      * @return PromiseInterface
      */
     public function raiseMaxValueByUserIdAsync(
@@ -4881,9 +4649,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナの最大値を加算<br>
-     *
-     * @param RaiseMaxValueByUserIdRequest $request リクエストパラメータ
+     * @param RaiseMaxValueByUserIdRequest $request
      * @return RaiseMaxValueByUserIdResult
      */
     public function raiseMaxValueByUserId (
@@ -4895,9 +4661,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナの最大値を更新<br>
-     *
-     * @param SetMaxValueByUserIdRequest $request リクエストパラメータ
+     * @param SetMaxValueByUserIdRequest $request
      * @return PromiseInterface
      */
     public function setMaxValueByUserIdAsync(
@@ -4912,9 +4676,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナの最大値を更新<br>
-     *
-     * @param SetMaxValueByUserIdRequest $request リクエストパラメータ
+     * @param SetMaxValueByUserIdRequest $request
      * @return SetMaxValueByUserIdResult
      */
     public function setMaxValueByUserId (
@@ -4926,9 +4688,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナの回復間隔(分)を更新<br>
-     *
-     * @param SetRecoverIntervalByUserIdRequest $request リクエストパラメータ
+     * @param SetRecoverIntervalByUserIdRequest $request
      * @return PromiseInterface
      */
     public function setRecoverIntervalByUserIdAsync(
@@ -4943,9 +4703,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナの回復間隔(分)を更新<br>
-     *
-     * @param SetRecoverIntervalByUserIdRequest $request リクエストパラメータ
+     * @param SetRecoverIntervalByUserIdRequest $request
      * @return SetRecoverIntervalByUserIdResult
      */
     public function setRecoverIntervalByUserId (
@@ -4957,9 +4715,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナの回復間隔(分)を更新<br>
-     *
-     * @param SetRecoverValueByUserIdRequest $request リクエストパラメータ
+     * @param SetRecoverValueByUserIdRequest $request
      * @return PromiseInterface
      */
     public function setRecoverValueByUserIdAsync(
@@ -4974,9 +4730,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナの回復間隔(分)を更新<br>
-     *
-     * @param SetRecoverValueByUserIdRequest $request リクエストパラメータ
+     * @param SetRecoverValueByUserIdRequest $request
      * @return SetRecoverValueByUserIdResult
      */
     public function setRecoverValueByUserId (
@@ -4988,9 +4742,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値をGS2-Experienceのステータスを使用して更新<br>
-     *
-     * @param SetMaxValueByStatusRequest $request リクエストパラメータ
+     * @param SetMaxValueByStatusRequest $request
      * @return PromiseInterface
      */
     public function setMaxValueByStatusAsync(
@@ -5005,9 +4757,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値をGS2-Experienceのステータスを使用して更新<br>
-     *
-     * @param SetMaxValueByStatusRequest $request リクエストパラメータ
+     * @param SetMaxValueByStatusRequest $request
      * @return SetMaxValueByStatusResult
      */
     public function setMaxValueByStatus (
@@ -5019,9 +4769,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値をGS2-Experienceのステータスを使用して更新<br>
-     *
-     * @param SetRecoverIntervalByStatusRequest $request リクエストパラメータ
+     * @param SetRecoverIntervalByStatusRequest $request
      * @return PromiseInterface
      */
     public function setRecoverIntervalByStatusAsync(
@@ -5036,9 +4784,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値をGS2-Experienceのステータスを使用して更新<br>
-     *
-     * @param SetRecoverIntervalByStatusRequest $request リクエストパラメータ
+     * @param SetRecoverIntervalByStatusRequest $request
      * @return SetRecoverIntervalByStatusResult
      */
     public function setRecoverIntervalByStatus (
@@ -5050,9 +4796,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値をGS2-Experienceのステータスを使用して更新<br>
-     *
-     * @param SetRecoverValueByStatusRequest $request リクエストパラメータ
+     * @param SetRecoverValueByStatusRequest $request
      * @return PromiseInterface
      */
     public function setRecoverValueByStatusAsync(
@@ -5067,9 +4811,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタミナの最大値をGS2-Experienceのステータスを使用して更新<br>
-     *
-     * @param SetRecoverValueByStatusRequest $request リクエストパラメータ
+     * @param SetRecoverValueByStatusRequest $request
      * @return SetRecoverValueByStatusResult
      */
     public function setRecoverValueByStatus (
@@ -5081,9 +4823,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを削除<br>
-     *
-     * @param DeleteStaminaByUserIdRequest $request リクエストパラメータ
+     * @param DeleteStaminaByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteStaminaByUserIdAsync(
@@ -5098,9 +4838,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してスタミナを削除<br>
-     *
-     * @param DeleteStaminaByUserIdRequest $request リクエストパラメータ
+     * @param DeleteStaminaByUserIdRequest $request
      * @return DeleteStaminaByUserIdResult
      */
     public function deleteStaminaByUserId (
@@ -5112,9 +4850,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートを使用してスタミナを回復<br>
-     *
-     * @param RecoverStaminaByStampSheetRequest $request リクエストパラメータ
+     * @param RecoverStaminaByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function recoverStaminaByStampSheetAsync(
@@ -5129,9 +4865,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートを使用してスタミナを回復<br>
-     *
-     * @param RecoverStaminaByStampSheetRequest $request リクエストパラメータ
+     * @param RecoverStaminaByStampSheetRequest $request
      * @return RecoverStaminaByStampSheetResult
      */
     public function recoverStaminaByStampSheet (
@@ -5143,9 +4877,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでスタミナの最大値を加算<br>
-     *
-     * @param RaiseMaxValueByStampSheetRequest $request リクエストパラメータ
+     * @param RaiseMaxValueByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function raiseMaxValueByStampSheetAsync(
@@ -5160,9 +4892,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでスタミナの最大値を加算<br>
-     *
-     * @param RaiseMaxValueByStampSheetRequest $request リクエストパラメータ
+     * @param RaiseMaxValueByStampSheetRequest $request
      * @return RaiseMaxValueByStampSheetResult
      */
     public function raiseMaxValueByStampSheet (
@@ -5174,9 +4904,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでスタミナの最大値を更新<br>
-     *
-     * @param SetMaxValueByStampSheetRequest $request リクエストパラメータ
+     * @param SetMaxValueByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function setMaxValueByStampSheetAsync(
@@ -5191,9 +4919,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでスタミナの最大値を更新<br>
-     *
-     * @param SetMaxValueByStampSheetRequest $request リクエストパラメータ
+     * @param SetMaxValueByStampSheetRequest $request
      * @return SetMaxValueByStampSheetResult
      */
     public function setMaxValueByStampSheet (
@@ -5205,9 +4931,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでスタミナの最大値を更新<br>
-     *
-     * @param SetRecoverIntervalByStampSheetRequest $request リクエストパラメータ
+     * @param SetRecoverIntervalByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function setRecoverIntervalByStampSheetAsync(
@@ -5222,9 +4946,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでスタミナの最大値を更新<br>
-     *
-     * @param SetRecoverIntervalByStampSheetRequest $request リクエストパラメータ
+     * @param SetRecoverIntervalByStampSheetRequest $request
      * @return SetRecoverIntervalByStampSheetResult
      */
     public function setRecoverIntervalByStampSheet (
@@ -5236,9 +4958,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでスタミナの最大値を更新<br>
-     *
-     * @param SetRecoverValueByStampSheetRequest $request リクエストパラメータ
+     * @param SetRecoverValueByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function setRecoverValueByStampSheetAsync(
@@ -5253,9 +4973,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでスタミナの最大値を更新<br>
-     *
-     * @param SetRecoverValueByStampSheetRequest $request リクエストパラメータ
+     * @param SetRecoverValueByStampSheetRequest $request
      * @return SetRecoverValueByStampSheetResult
      */
     public function setRecoverValueByStampSheet (
@@ -5267,9 +4985,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクを使用してスタミナを消費<br>
-     *
-     * @param ConsumeStaminaByStampTaskRequest $request リクエストパラメータ
+     * @param ConsumeStaminaByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function consumeStaminaByStampTaskAsync(
@@ -5284,9 +5000,7 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクを使用してスタミナを消費<br>
-     *
-     * @param ConsumeStaminaByStampTaskRequest $request リクエストパラメータ
+     * @param ConsumeStaminaByStampTaskRequest $request
      * @return ConsumeStaminaByStampTaskResult
      */
     public function consumeStaminaByStampTask (

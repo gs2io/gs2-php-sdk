@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Ranking\Request\DescribeNamespacesRequest;
 use Gs2\Ranking\Result\DescribeNamespacesResult;
 use Gs2\Ranking\Request\CreateNamespaceRequest;
@@ -997,9 +999,6 @@ class DescribeSubscribesByCategoryNameTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1058,9 +1057,6 @@ class DescribeSubscribesByCategoryNameAndUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1122,9 +1118,6 @@ class SubscribeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1182,9 +1175,6 @@ class SubscribeByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1248,9 +1238,6 @@ class GetSubscribeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1310,9 +1297,6 @@ class GetSubscribeByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1376,9 +1360,6 @@ class UnsubscribeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1438,9 +1419,6 @@ class UnsubscribeByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1510,9 +1488,6 @@ class DescribeScoresTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1579,9 +1554,6 @@ class DescribeScoresByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1645,9 +1617,6 @@ class GetScoreTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1708,9 +1677,6 @@ class GetScoreByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1782,9 +1748,6 @@ class DescribeRankingsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1852,9 +1815,6 @@ class DescribeRankingssByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1980,9 +1940,6 @@ class GetRankingTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2043,9 +2000,6 @@ class GetRankingByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2112,9 +2066,6 @@ class PutScoreTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2177,9 +2128,6 @@ class PutScoreByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2434,9 +2382,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2451,9 +2397,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2465,9 +2409,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2482,9 +2424,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2496,9 +2436,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2513,9 +2451,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2527,9 +2463,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2544,9 +2478,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2558,9 +2490,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2575,9 +2505,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2589,9 +2517,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2606,9 +2532,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2620,9 +2544,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリの一覧を取得<br>
-     *
-     * @param DescribeCategoryModelsRequest $request リクエストパラメータ
+     * @param DescribeCategoryModelsRequest $request
      * @return PromiseInterface
      */
     public function describeCategoryModelsAsync(
@@ -2637,9 +2559,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリの一覧を取得<br>
-     *
-     * @param DescribeCategoryModelsRequest $request リクエストパラメータ
+     * @param DescribeCategoryModelsRequest $request
      * @return DescribeCategoryModelsResult
      */
     public function describeCategoryModels (
@@ -2651,9 +2571,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリを取得<br>
-     *
-     * @param GetCategoryModelRequest $request リクエストパラメータ
+     * @param GetCategoryModelRequest $request
      * @return PromiseInterface
      */
     public function getCategoryModelAsync(
@@ -2668,9 +2586,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリを取得<br>
-     *
-     * @param GetCategoryModelRequest $request リクエストパラメータ
+     * @param GetCategoryModelRequest $request
      * @return GetCategoryModelResult
      */
     public function getCategoryModel (
@@ -2682,9 +2598,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターの一覧を取得<br>
-     *
-     * @param DescribeCategoryModelMastersRequest $request リクエストパラメータ
+     * @param DescribeCategoryModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeCategoryModelMastersAsync(
@@ -2699,9 +2613,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターの一覧を取得<br>
-     *
-     * @param DescribeCategoryModelMastersRequest $request リクエストパラメータ
+     * @param DescribeCategoryModelMastersRequest $request
      * @return DescribeCategoryModelMastersResult
      */
     public function describeCategoryModelMasters (
@@ -2713,9 +2625,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターを新規作成<br>
-     *
-     * @param CreateCategoryModelMasterRequest $request リクエストパラメータ
+     * @param CreateCategoryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createCategoryModelMasterAsync(
@@ -2730,9 +2640,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターを新規作成<br>
-     *
-     * @param CreateCategoryModelMasterRequest $request リクエストパラメータ
+     * @param CreateCategoryModelMasterRequest $request
      * @return CreateCategoryModelMasterResult
      */
     public function createCategoryModelMaster (
@@ -2744,9 +2652,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターを取得<br>
-     *
-     * @param GetCategoryModelMasterRequest $request リクエストパラメータ
+     * @param GetCategoryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getCategoryModelMasterAsync(
@@ -2761,9 +2667,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターを取得<br>
-     *
-     * @param GetCategoryModelMasterRequest $request リクエストパラメータ
+     * @param GetCategoryModelMasterRequest $request
      * @return GetCategoryModelMasterResult
      */
     public function getCategoryModelMaster (
@@ -2775,9 +2679,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターを更新<br>
-     *
-     * @param UpdateCategoryModelMasterRequest $request リクエストパラメータ
+     * @param UpdateCategoryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCategoryModelMasterAsync(
@@ -2792,9 +2694,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターを更新<br>
-     *
-     * @param UpdateCategoryModelMasterRequest $request リクエストパラメータ
+     * @param UpdateCategoryModelMasterRequest $request
      * @return UpdateCategoryModelMasterResult
      */
     public function updateCategoryModelMaster (
@@ -2806,9 +2706,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターを削除<br>
-     *
-     * @param DeleteCategoryModelMasterRequest $request リクエストパラメータ
+     * @param DeleteCategoryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteCategoryModelMasterAsync(
@@ -2823,9 +2721,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カテゴリマスターを削除<br>
-     *
-     * @param DeleteCategoryModelMasterRequest $request リクエストパラメータ
+     * @param DeleteCategoryModelMasterRequest $request
      * @return DeleteCategoryModelMasterResult
      */
     public function deleteCategoryModelMaster (
@@ -2837,9 +2733,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読しているユーザIDの一覧取得<br>
-     *
-     * @param DescribeSubscribesByCategoryNameRequest $request リクエストパラメータ
+     * @param DescribeSubscribesByCategoryNameRequest $request
      * @return PromiseInterface
      */
     public function describeSubscribesByCategoryNameAsync(
@@ -2854,9 +2748,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読しているユーザIDの一覧取得<br>
-     *
-     * @param DescribeSubscribesByCategoryNameRequest $request リクエストパラメータ
+     * @param DescribeSubscribesByCategoryNameRequest $request
      * @return DescribeSubscribesByCategoryNameResult
      */
     public function describeSubscribesByCategoryName (
@@ -2868,9 +2760,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読しているユーザIDの一覧取得<br>
-     *
-     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request リクエストパラメータ
+     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeSubscribesByCategoryNameAndUserIdAsync(
@@ -2885,9 +2775,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読しているユーザIDの一覧取得<br>
-     *
-     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request リクエストパラメータ
+     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
      * @return DescribeSubscribesByCategoryNameAndUserIdResult
      */
     public function describeSubscribesByCategoryNameAndUserId (
@@ -2899,9 +2787,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを購読<br>
-     *
-     * @param SubscribeRequest $request リクエストパラメータ
+     * @param SubscribeRequest $request
      * @return PromiseInterface
      */
     public function subscribeAsync(
@@ -2916,9 +2802,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを購読<br>
-     *
-     * @param SubscribeRequest $request リクエストパラメータ
+     * @param SubscribeRequest $request
      * @return SubscribeResult
      */
     public function subscribe (
@@ -2930,9 +2814,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してユーザIDを購読<br>
-     *
-     * @param SubscribeByUserIdRequest $request リクエストパラメータ
+     * @param SubscribeByUserIdRequest $request
      * @return PromiseInterface
      */
     public function subscribeByUserIdAsync(
@@ -2947,9 +2829,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してユーザIDを購読<br>
-     *
-     * @param SubscribeByUserIdRequest $request リクエストパラメータ
+     * @param SubscribeByUserIdRequest $request
      * @return SubscribeByUserIdResult
      */
     public function subscribeByUserId (
@@ -2961,9 +2841,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読を取得<br>
-     *
-     * @param GetSubscribeRequest $request リクエストパラメータ
+     * @param GetSubscribeRequest $request
      * @return PromiseInterface
      */
     public function getSubscribeAsync(
@@ -2978,9 +2856,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読を取得<br>
-     *
-     * @param GetSubscribeRequest $request リクエストパラメータ
+     * @param GetSubscribeRequest $request
      * @return GetSubscribeResult
      */
     public function getSubscribe (
@@ -2992,9 +2868,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読を取得<br>
-     *
-     * @param GetSubscribeByUserIdRequest $request リクエストパラメータ
+     * @param GetSubscribeByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getSubscribeByUserIdAsync(
@@ -3009,9 +2883,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読を取得<br>
-     *
-     * @param GetSubscribeByUserIdRequest $request リクエストパラメータ
+     * @param GetSubscribeByUserIdRequest $request
      * @return GetSubscribeByUserIdResult
      */
     public function getSubscribeByUserId (
@@ -3023,9 +2895,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読の購読を解除<br>
-     *
-     * @param UnsubscribeRequest $request リクエストパラメータ
+     * @param UnsubscribeRequest $request
      * @return PromiseInterface
      */
     public function unsubscribeAsync(
@@ -3040,9 +2910,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読の購読を解除<br>
-     *
-     * @param UnsubscribeRequest $request リクエストパラメータ
+     * @param UnsubscribeRequest $request
      * @return UnsubscribeResult
      */
     public function unsubscribe (
@@ -3054,9 +2922,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読の購読を解除<br>
-     *
-     * @param UnsubscribeByUserIdRequest $request リクエストパラメータ
+     * @param UnsubscribeByUserIdRequest $request
      * @return PromiseInterface
      */
     public function unsubscribeByUserIdAsync(
@@ -3071,9 +2937,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読の購読を解除<br>
-     *
-     * @param UnsubscribeByUserIdRequest $request リクエストパラメータ
+     * @param UnsubscribeByUserIdRequest $request
      * @return UnsubscribeByUserIdResult
      */
     public function unsubscribeByUserId (
@@ -3085,9 +2949,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアの一覧を取得<br>
-     *
-     * @param DescribeScoresRequest $request リクエストパラメータ
+     * @param DescribeScoresRequest $request
      * @return PromiseInterface
      */
     public function describeScoresAsync(
@@ -3102,9 +2964,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアの一覧を取得<br>
-     *
-     * @param DescribeScoresRequest $request リクエストパラメータ
+     * @param DescribeScoresRequest $request
      * @return DescribeScoresResult
      */
     public function describeScores (
@@ -3116,9 +2976,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアの一覧を取得<br>
-     *
-     * @param DescribeScoresByUserIdRequest $request リクエストパラメータ
+     * @param DescribeScoresByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeScoresByUserIdAsync(
@@ -3133,9 +2991,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアの一覧を取得<br>
-     *
-     * @param DescribeScoresByUserIdRequest $request リクエストパラメータ
+     * @param DescribeScoresByUserIdRequest $request
      * @return DescribeScoresByUserIdResult
      */
     public function describeScoresByUserId (
@@ -3147,9 +3003,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアを取得<br>
-     *
-     * @param GetScoreRequest $request リクエストパラメータ
+     * @param GetScoreRequest $request
      * @return PromiseInterface
      */
     public function getScoreAsync(
@@ -3164,9 +3018,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアを取得<br>
-     *
-     * @param GetScoreRequest $request リクエストパラメータ
+     * @param GetScoreRequest $request
      * @return GetScoreResult
      */
     public function getScore (
@@ -3178,9 +3030,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアを取得<br>
-     *
-     * @param GetScoreByUserIdRequest $request リクエストパラメータ
+     * @param GetScoreByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getScoreByUserIdAsync(
@@ -3195,9 +3045,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアを取得<br>
-     *
-     * @param GetScoreByUserIdRequest $request リクエストパラメータ
+     * @param GetScoreByUserIdRequest $request
      * @return GetScoreByUserIdResult
      */
     public function getScoreByUserId (
@@ -3209,9 +3057,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランキングを取得<br>
-     *
-     * @param DescribeRankingsRequest $request リクエストパラメータ
+     * @param DescribeRankingsRequest $request
      * @return PromiseInterface
      */
     public function describeRankingsAsync(
@@ -3226,9 +3072,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランキングを取得<br>
-     *
-     * @param DescribeRankingsRequest $request リクエストパラメータ
+     * @param DescribeRankingsRequest $request
      * @return DescribeRankingsResult
      */
     public function describeRankings (
@@ -3240,9 +3084,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してランキングを取得<br>
-     *
-     * @param DescribeRankingssByUserIdRequest $request リクエストパラメータ
+     * @param DescribeRankingssByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeRankingssByUserIdAsync(
@@ -3257,9 +3099,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してランキングを取得<br>
-     *
-     * @param DescribeRankingssByUserIdRequest $request リクエストパラメータ
+     * @param DescribeRankingssByUserIdRequest $request
      * @return DescribeRankingssByUserIdResult
      */
     public function describeRankingssByUserId (
@@ -3271,11 +3111,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 指定したスコア付近のランキングを取得<br>
-     *   <br>
-     *   このAPIはグローバルランキングのときのみ使用できます<br>
-     *
-     * @param DescribeNearRankingsRequest $request リクエストパラメータ
+     * @param DescribeNearRankingsRequest $request
      * @return PromiseInterface
      */
     public function describeNearRankingsAsync(
@@ -3290,11 +3126,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 指定したスコア付近のランキングを取得<br>
-     *   <br>
-     *   このAPIはグローバルランキングのときのみ使用できます<br>
-     *
-     * @param DescribeNearRankingsRequest $request リクエストパラメータ
+     * @param DescribeNearRankingsRequest $request
      * @return DescribeNearRankingsResult
      */
     public function describeNearRankings (
@@ -3306,9 +3138,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランキングを取得<br>
-     *
-     * @param GetRankingRequest $request リクエストパラメータ
+     * @param GetRankingRequest $request
      * @return PromiseInterface
      */
     public function getRankingAsync(
@@ -3323,9 +3153,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランキングを取得<br>
-     *
-     * @param GetRankingRequest $request リクエストパラメータ
+     * @param GetRankingRequest $request
      * @return GetRankingResult
      */
     public function getRanking (
@@ -3337,9 +3165,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランキングを取得<br>
-     *
-     * @param GetRankingByUserIdRequest $request リクエストパラメータ
+     * @param GetRankingByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getRankingByUserIdAsync(
@@ -3354,9 +3180,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランキングを取得<br>
-     *
-     * @param GetRankingByUserIdRequest $request リクエストパラメータ
+     * @param GetRankingByUserIdRequest $request
      * @return GetRankingByUserIdResult
      */
     public function getRankingByUserId (
@@ -3368,9 +3192,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアを登録<br>
-     *
-     * @param PutScoreRequest $request リクエストパラメータ
+     * @param PutScoreRequest $request
      * @return PromiseInterface
      */
     public function putScoreAsync(
@@ -3385,9 +3207,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スコアを登録<br>
-     *
-     * @param PutScoreRequest $request リクエストパラメータ
+     * @param PutScoreRequest $request
      * @return PutScoreResult
      */
     public function putScore (
@@ -3399,9 +3219,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してスコアを登録<br>
-     *
-     * @param PutScoreByUserIdRequest $request リクエストパラメータ
+     * @param PutScoreByUserIdRequest $request
      * @return PromiseInterface
      */
     public function putScoreByUserIdAsync(
@@ -3416,9 +3234,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してスコアを登録<br>
-     *
-     * @param PutScoreByUserIdRequest $request リクエストパラメータ
+     * @param PutScoreByUserIdRequest $request
      * @return PutScoreByUserIdResult
      */
     public function putScoreByUserId (
@@ -3430,9 +3246,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なランキング設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -3447,9 +3261,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なランキング設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -3461,9 +3273,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なランキング設定を取得します<br>
-     *
-     * @param GetCurrentRankingMasterRequest $request リクエストパラメータ
+     * @param GetCurrentRankingMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentRankingMasterAsync(
@@ -3478,9 +3288,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なランキング設定を取得します<br>
-     *
-     * @param GetCurrentRankingMasterRequest $request リクエストパラメータ
+     * @param GetCurrentRankingMasterRequest $request
      * @return GetCurrentRankingMasterResult
      */
     public function getCurrentRankingMaster (
@@ -3492,9 +3300,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なランキング設定を更新します<br>
-     *
-     * @param UpdateCurrentRankingMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentRankingMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentRankingMasterAsync(
@@ -3509,9 +3315,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なランキング設定を更新します<br>
-     *
-     * @param UpdateCurrentRankingMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentRankingMasterRequest $request
      * @return UpdateCurrentRankingMasterResult
      */
     public function updateCurrentRankingMaster (
@@ -3523,9 +3327,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なランキング設定を更新します<br>
-     *
-     * @param UpdateCurrentRankingMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentRankingMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentRankingMasterFromGitHubAsync(
@@ -3540,9 +3342,7 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なランキング設定を更新します<br>
-     *
-     * @param UpdateCurrentRankingMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentRankingMasterFromGitHubRequest $request
      * @return UpdateCurrentRankingMasterFromGitHubResult
      */
     public function updateCurrentRankingMasterFromGitHub (

@@ -20,57 +20,51 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
-/**
- * 達成状況を作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ReceiveByStampTaskResult implements IResult {
-	/** @var Complete 達成状況 */
-	private $item;
-	/** @var string スタンプタスクの実行結果を記録したコンテキスト */
-	private $newContextStack;
+    /** @var Complete */
+    private $item;
+    /** @var string */
+    private $newContextStack;
 
-	/**
-	 * 達成状況を取得
-	 *
-	 * @return Complete|null 達成状況を作成
-	 */
 	public function getItem(): ?Complete {
 		return $this->item;
 	}
 
-	/**
-	 * 達成状況を設定
-	 *
-	 * @param Complete|null $item 達成状況を作成
-	 */
 	public function setItem(?Complete $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを取得
-	 *
-	 * @return string|null 達成状況を作成
-	 */
+	public function withItem(?Complete $item): ReceiveByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを設定
-	 *
-	 * @param string|null $newContextStack 達成状況を作成
-	 */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
-    public static function fromJson(array $data): ReceiveByStampTaskResult {
-        $result = new ReceiveByStampTaskResult();
-        $result->setItem(isset($data["item"]) ? Complete::fromJson($data["item"]) : null);
-        $result->setNewContextStack(isset($data["newContextStack"]) ? $data["newContextStack"] : null);
-        return $result;
+	public function withNewContextStack(?string $newContextStack): ReceiveByStampTaskResult {
+		$this->newContextStack = $newContextStack;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ReceiveByStampTaskResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ReceiveByStampTaskResult())
+            ->withItem(empty($data['item']) ? null : Complete::fromJson($data['item']))
+            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "newContextStack" => $this->getNewContextStack(),
+        );
     }
 }

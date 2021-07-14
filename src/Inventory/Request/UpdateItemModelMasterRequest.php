@@ -19,267 +19,153 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * アイテムモデルマスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateItemModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null アイテムモデルマスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName アイテムモデルマスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName アイテムモデルマスターを更新
-     * @return UpdateItemModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateItemModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリの種類名 */
+    /** @var string */
     private $inventoryName;
-
-    /**
-     * インベントリの種類名を取得
-     *
-     * @return string|null アイテムモデルマスターを更新
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName アイテムモデルマスターを更新
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName アイテムモデルマスターを更新
-     * @return UpdateItemModelMasterRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): UpdateItemModelMasterRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
-    /** @var string アイテムモデルの種類名 */
+    /** @var string */
     private $itemName;
-
-    /**
-     * アイテムモデルの種類名を取得
-     *
-     * @return string|null アイテムモデルマスターを更新
-     */
-    public function getItemName(): ?string {
-        return $this->itemName;
-    }
-
-    /**
-     * アイテムモデルの種類名を設定
-     *
-     * @param string $itemName アイテムモデルマスターを更新
-     */
-    public function setItemName(string $itemName = null) {
-        $this->itemName = $itemName;
-    }
-
-    /**
-     * アイテムモデルの種類名を設定
-     *
-     * @param string $itemName アイテムモデルマスターを更新
-     * @return UpdateItemModelMasterRequest $this
-     */
-    public function withItemName(string $itemName = null): UpdateItemModelMasterRequest {
-        $this->setItemName($itemName);
-        return $this;
-    }
-
-    /** @var string アイテムモデルマスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * アイテムモデルマスターの説明を取得
-     *
-     * @return string|null アイテムモデルマスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * アイテムモデルマスターの説明を設定
-     *
-     * @param string $description アイテムモデルマスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * アイテムモデルマスターの説明を設定
-     *
-     * @param string $description アイテムモデルマスターを更新
-     * @return UpdateItemModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateItemModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string アイテムモデルの種類のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * アイテムモデルの種類のメタデータを取得
-     *
-     * @return string|null アイテムモデルマスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * アイテムモデルの種類のメタデータを設定
-     *
-     * @param string $metadata アイテムモデルマスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * アイテムモデルの種類のメタデータを設定
-     *
-     * @param string $metadata アイテムモデルマスターを更新
-     * @return UpdateItemModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateItemModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var int スタック可能な最大数量 */
+    /** @var int */
     private $stackingLimit;
-
-    /**
-     * スタック可能な最大数量を取得
-     *
-     * @return int|null アイテムモデルマスターを更新
-     */
-    public function getStackingLimit(): ?int {
-        return $this->stackingLimit;
-    }
-
-    /**
-     * スタック可能な最大数量を設定
-     *
-     * @param int $stackingLimit アイテムモデルマスターを更新
-     */
-    public function setStackingLimit(int $stackingLimit = null) {
-        $this->stackingLimit = $stackingLimit;
-    }
-
-    /**
-     * スタック可能な最大数量を設定
-     *
-     * @param int $stackingLimit アイテムモデルマスターを更新
-     * @return UpdateItemModelMasterRequest $this
-     */
-    public function withStackingLimit(int $stackingLimit = null): UpdateItemModelMasterRequest {
-        $this->setStackingLimit($stackingLimit);
-        return $this;
-    }
-
-    /** @var bool スタック可能な最大数量を超えた時複数枠にアイテムを保管することを許すか */
+    /** @var bool */
     private $allowMultipleStacks;
-
-    /**
-     * スタック可能な最大数量を超えた時複数枠にアイテムを保管することを許すかを取得
-     *
-     * @return bool|null アイテムモデルマスターを更新
-     */
-    public function getAllowMultipleStacks(): ?bool {
-        return $this->allowMultipleStacks;
-    }
-
-    /**
-     * スタック可能な最大数量を超えた時複数枠にアイテムを保管することを許すかを設定
-     *
-     * @param bool $allowMultipleStacks アイテムモデルマスターを更新
-     */
-    public function setAllowMultipleStacks(bool $allowMultipleStacks = null) {
-        $this->allowMultipleStacks = $allowMultipleStacks;
-    }
-
-    /**
-     * スタック可能な最大数量を超えた時複数枠にアイテムを保管することを許すかを設定
-     *
-     * @param bool $allowMultipleStacks アイテムモデルマスターを更新
-     * @return UpdateItemModelMasterRequest $this
-     */
-    public function withAllowMultipleStacks(bool $allowMultipleStacks = null): UpdateItemModelMasterRequest {
-        $this->setAllowMultipleStacks($allowMultipleStacks);
-        return $this;
-    }
-
-    /** @var int 表示順番 */
+    /** @var int */
     private $sortValue;
 
-    /**
-     * 表示順番を取得
-     *
-     * @return int|null アイテムモデルマスターを更新
-     */
-    public function getSortValue(): ?int {
-        return $this->sortValue;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateItemModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): UpdateItemModelMasterRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+	public function getItemName(): ?string {
+		return $this->itemName;
+	}
+
+	public function setItemName(?string $itemName) {
+		$this->itemName = $itemName;
+	}
+
+	public function withItemName(?string $itemName): UpdateItemModelMasterRequest {
+		$this->itemName = $itemName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateItemModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateItemModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getStackingLimit(): ?int {
+		return $this->stackingLimit;
+	}
+
+	public function setStackingLimit(?int $stackingLimit) {
+		$this->stackingLimit = $stackingLimit;
+	}
+
+	public function withStackingLimit(?int $stackingLimit): UpdateItemModelMasterRequest {
+		$this->stackingLimit = $stackingLimit;
+		return $this;
+	}
+
+	public function getAllowMultipleStacks(): ?bool {
+		return $this->allowMultipleStacks;
+	}
+
+	public function setAllowMultipleStacks(?bool $allowMultipleStacks) {
+		$this->allowMultipleStacks = $allowMultipleStacks;
+	}
+
+	public function withAllowMultipleStacks(?bool $allowMultipleStacks): UpdateItemModelMasterRequest {
+		$this->allowMultipleStacks = $allowMultipleStacks;
+		return $this;
+	}
+
+	public function getSortValue(): ?int {
+		return $this->sortValue;
+	}
+
+	public function setSortValue(?int $sortValue) {
+		$this->sortValue = $sortValue;
+	}
+
+	public function withSortValue(?int $sortValue): UpdateItemModelMasterRequest {
+		$this->sortValue = $sortValue;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateItemModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateItemModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
+            ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withStackingLimit(empty($data['stackingLimit']) ? null : $data['stackingLimit'])
+            ->withAllowMultipleStacks(empty($data['allowMultipleStacks']) ? null : $data['allowMultipleStacks'])
+            ->withSortValue(empty($data['sortValue']) ? null : $data['sortValue']);
     }
 
-    /**
-     * 表示順番を設定
-     *
-     * @param int $sortValue アイテムモデルマスターを更新
-     */
-    public function setSortValue(int $sortValue = null) {
-        $this->sortValue = $sortValue;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+            "itemName" => $this->getItemName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "stackingLimit" => $this->getStackingLimit(),
+            "allowMultipleStacks" => $this->getAllowMultipleStacks(),
+            "sortValue" => $this->getSortValue(),
+        );
     }
-
-    /**
-     * 表示順番を設定
-     *
-     * @param int $sortValue アイテムモデルマスターを更新
-     * @return UpdateItemModelMasterRequest $this
-     */
-    public function withSortValue(int $sortValue = null): UpdateItemModelMasterRequest {
-        $this->setSortValue($sortValue);
-        return $this;
-    }
-
 }

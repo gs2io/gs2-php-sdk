@@ -19,75 +19,51 @@ namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スクリプトを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetScriptRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スクリプトを取得します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スクリプトを取得します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スクリプトを取得します
-     * @return GetScriptRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetScriptRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スクリプト名 */
+    /** @var string */
     private $scriptName;
 
-    /**
-     * スクリプト名を取得
-     *
-     * @return string|null スクリプトを取得します
-     */
-    public function getScriptName(): ?string {
-        return $this->scriptName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetScriptRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getScriptName(): ?string {
+		return $this->scriptName;
+	}
+
+	public function setScriptName(?string $scriptName) {
+		$this->scriptName = $scriptName;
+	}
+
+	public function withScriptName(?string $scriptName): GetScriptRequest {
+		$this->scriptName = $scriptName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetScriptRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetScriptRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withScriptName(empty($data['scriptName']) ? null : $data['scriptName']);
     }
 
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $scriptName スクリプトを取得します
-     */
-    public function setScriptName(string $scriptName = null) {
-        $this->scriptName = $scriptName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "scriptName" => $this->getScriptName(),
+        );
     }
-
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $scriptName スクリプトを取得します
-     * @return GetScriptRequest $this
-     */
-    public function withScriptName(string $scriptName = null): GetScriptRequest {
-        $this->setScriptName($scriptName);
-        return $this;
-    }
-
 }

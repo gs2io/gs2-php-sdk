@@ -19,171 +19,112 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ランクアップ閾値マスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateThresholdMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ランクアップ閾値マスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ランクアップ閾値マスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ランクアップ閾値マスターを更新
-     * @return UpdateThresholdMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateThresholdMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ランクアップ閾値名 */
+    /** @var string */
     private $thresholdName;
-
-    /**
-     * ランクアップ閾値名を取得
-     *
-     * @return string|null ランクアップ閾値マスターを更新
-     */
-    public function getThresholdName(): ?string {
-        return $this->thresholdName;
-    }
-
-    /**
-     * ランクアップ閾値名を設定
-     *
-     * @param string $thresholdName ランクアップ閾値マスターを更新
-     */
-    public function setThresholdName(string $thresholdName = null) {
-        $this->thresholdName = $thresholdName;
-    }
-
-    /**
-     * ランクアップ閾値名を設定
-     *
-     * @param string $thresholdName ランクアップ閾値マスターを更新
-     * @return UpdateThresholdMasterRequest $this
-     */
-    public function withThresholdName(string $thresholdName = null): UpdateThresholdMasterRequest {
-        $this->setThresholdName($thresholdName);
-        return $this;
-    }
-
-    /** @var string ランクアップ閾値マスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ランクアップ閾値マスターの説明を取得
-     *
-     * @return string|null ランクアップ閾値マスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ランクアップ閾値マスターの説明を設定
-     *
-     * @param string $description ランクアップ閾値マスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ランクアップ閾値マスターの説明を設定
-     *
-     * @param string $description ランクアップ閾値マスターを更新
-     * @return UpdateThresholdMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateThresholdMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string ランクアップ閾値のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * ランクアップ閾値のメタデータを取得
-     *
-     * @return string|null ランクアップ閾値マスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * ランクアップ閾値のメタデータを設定
-     *
-     * @param string $metadata ランクアップ閾値マスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * ランクアップ閾値のメタデータを設定
-     *
-     * @param string $metadata ランクアップ閾値マスターを更新
-     * @return UpdateThresholdMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateThresholdMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var int[] ランクアップ経験値閾値リスト */
+    /** @var array */
     private $values;
 
-    /**
-     * ランクアップ経験値閾値リストを取得
-     *
-     * @return int[]|null ランクアップ閾値マスターを更新
-     */
-    public function getValues(): ?array {
-        return $this->values;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateThresholdMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getThresholdName(): ?string {
+		return $this->thresholdName;
+	}
+
+	public function setThresholdName(?string $thresholdName) {
+		$this->thresholdName = $thresholdName;
+	}
+
+	public function withThresholdName(?string $thresholdName): UpdateThresholdMasterRequest {
+		$this->thresholdName = $thresholdName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateThresholdMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateThresholdMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getValues(): ?array {
+		return $this->values;
+	}
+
+	public function setValues(?array $values) {
+		$this->values = $values;
+	}
+
+	public function withValues(?array $values): UpdateThresholdMasterRequest {
+		$this->values = $values;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateThresholdMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateThresholdMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withThresholdName(empty($data['thresholdName']) ? null : $data['thresholdName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withValues(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
+            ));
     }
 
-    /**
-     * ランクアップ経験値閾値リストを設定
-     *
-     * @param int[] $values ランクアップ閾値マスターを更新
-     */
-    public function setValues(array $values = null) {
-        $this->values = $values;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "thresholdName" => $this->getThresholdName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "values" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getValues() !== null && $this->getValues() !== null ? $this->getValues() : []
+            ),
+        );
     }
-
-    /**
-     * ランクアップ経験値閾値リストを設定
-     *
-     * @param int[] $values ランクアップ閾値マスターを更新
-     * @return UpdateThresholdMasterRequest $this
-     */
-    public function withValues(array $values = null): UpdateThresholdMasterRequest {
-        $this->setValues($values);
-        return $this;
-    }
-
 }

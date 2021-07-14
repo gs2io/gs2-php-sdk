@@ -19,91 +19,56 @@ namespace Gs2\Ranking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 現在有効なランキング設定
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class CurrentRankingMaster implements IModel {
 	/**
-     * @var string ネームスペース
+     * @var string
 	 */
-	protected $namespaceId;
-
+	private $namespaceId;
 	/**
-	 * ネームスペースを取得
-	 *
-	 * @return string|null ネームスペース
+     * @var string
 	 */
+	private $settings;
+
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param string|null $namespaceId ネームスペース
-	 */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
 
-	/**
-	 * ネームスペースを設定
-	 *
-	 * @param string|null $namespaceId ネームスペース
-	 * @return CurrentRankingMaster $this
-	 */
 	public function withNamespaceId(?string $namespaceId): CurrentRankingMaster {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-	/**
-     * @var string マスターデータ
-	 */
-	protected $settings;
 
-	/**
-	 * マスターデータを取得
-	 *
-	 * @return string|null マスターデータ
-	 */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
 
-	/**
-	 * マスターデータを設定
-	 *
-	 * @param string|null $settings マスターデータ
-	 */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
 
-	/**
-	 * マスターデータを設定
-	 *
-	 * @param string|null $settings マスターデータ
-	 * @return CurrentRankingMaster $this
-	 */
 	public function withSettings(?string $settings): CurrentRankingMaster {
 		$this->settings = $settings;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "namespaceId" => $this->namespaceId,
-            "settings" => $this->settings,
-        );
+    public static function fromJson(?array $data): ?CurrentRankingMaster {
+        if ($data === null) {
+            return null;
+        }
+        return (new CurrentRankingMaster())
+            ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
+            ->withSettings(empty($data['settings']) ? null : $data['settings']);
     }
 
-    public static function fromJson(array $data): CurrentRankingMaster {
-        $model = new CurrentRankingMaster();
-        $model->setNamespaceId(isset($data["namespaceId"]) ? $data["namespaceId"] : null);
-        $model->setSettings(isset($data["settings"]) ? $data["settings"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "namespaceId" => $this->getNamespaceId(),
+            "settings" => $this->getSettings(),
+        );
     }
 }

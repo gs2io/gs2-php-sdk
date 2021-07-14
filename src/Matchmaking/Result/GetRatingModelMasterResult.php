@@ -20,36 +20,34 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\RatingModelMaster;
 
-/**
- * レーティングモデルマスターを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRatingModelMasterResult implements IResult {
-	/** @var RatingModelMaster レーティングモデルマスター */
-	private $item;
+    /** @var RatingModelMaster */
+    private $item;
 
-	/**
-	 * レーティングモデルマスターを取得
-	 *
-	 * @return RatingModelMaster|null レーティングモデルマスターを取得
-	 */
 	public function getItem(): ?RatingModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * レーティングモデルマスターを設定
-	 *
-	 * @param RatingModelMaster|null $item レーティングモデルマスターを取得
-	 */
 	public function setItem(?RatingModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetRatingModelMasterResult {
-        $result = new GetRatingModelMasterResult();
-        $result->setItem(isset($data["item"]) ? RatingModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?RatingModelMaster $item): GetRatingModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRatingModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRatingModelMasterResult())
+            ->withItem(empty($data['item']) ? null : RatingModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

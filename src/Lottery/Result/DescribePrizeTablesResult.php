@@ -18,44 +18,48 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\AcquireAction;
+use Gs2\Lottery\Model\Prize;
 use Gs2\Lottery\Model\PrizeTable;
 
-/**
- * 排出確率テーブルの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribePrizeTablesResult implements IResult {
-	/** @var PrizeTable[] 排出確率テーブルのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 排出確率テーブルのリストを取得
-	 *
-	 * @return PrizeTable[]|null 排出確率テーブルの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 排出確率テーブルのリストを設定
-	 *
-	 * @param PrizeTable[]|null $items 排出確率テーブルの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribePrizeTablesResult {
-        $result = new DescribePrizeTablesResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return PrizeTable::fromJson($v);
+	public function withItems(?array $items): DescribePrizeTablesResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribePrizeTablesResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribePrizeTablesResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return PrizeTable::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

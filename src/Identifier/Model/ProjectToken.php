@@ -19,56 +19,37 @@ namespace Gs2\Identifier\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * プロジェクトトークン
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class ProjectToken implements IModel {
 	/**
-     * @var string プロジェクトトークン
+     * @var string
 	 */
-	protected $token;
+	private $token;
 
-	/**
-	 * プロジェクトトークンを取得
-	 *
-	 * @return string|null プロジェクトトークン
-	 */
 	public function getToken(): ?string {
 		return $this->token;
 	}
 
-	/**
-	 * プロジェクトトークンを設定
-	 *
-	 * @param string|null $token プロジェクトトークン
-	 */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
 
-	/**
-	 * プロジェクトトークンを設定
-	 *
-	 * @param string|null $token プロジェクトトークン
-	 * @return ProjectToken $this
-	 */
 	public function withToken(?string $token): ProjectToken {
 		$this->token = $token;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "token" => $this->token,
-        );
+    public static function fromJson(?array $data): ?ProjectToken {
+        if ($data === null) {
+            return null;
+        }
+        return (new ProjectToken())
+            ->withToken(empty($data['token']) ? null : $data['token']);
     }
 
-    public static function fromJson(array $data): ProjectToken {
-        $model = new ProjectToken();
-        $model->setToken(isset($data["token"]) ? $data["token"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "token" => $this->getToken(),
+        );
     }
 }

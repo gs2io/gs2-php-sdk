@@ -19,15 +19,17 @@ namespace Gs2\Dictionary\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * エントリーをリセット のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ResetByUserIdResult implements IResult {
 
-    public static function fromJson(array $data): ResetByUserIdResult {
-        $result = new ResetByUserIdResult();
-        return $result;
+    public static function fromJson(?array $data): ?ResetByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ResetByUserIdResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

@@ -18,65 +18,64 @@
 namespace Gs2\Chat\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Chat\Model\NotificationType;
 use Gs2\Chat\Model\Subscribe;
 
-/**
- * ルーム名を指定して購読しているユーザの一覧取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeSubscribesByRoomNameResult implements IResult {
-	/** @var Subscribe[] 購読のリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 購読のリストを取得
-	 *
-	 * @return Subscribe[]|null ルーム名を指定して購読しているユーザの一覧取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 購読のリストを設定
-	 *
-	 * @param Subscribe[]|null $items ルーム名を指定して購読しているユーザの一覧取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null ルーム名を指定して購読しているユーザの一覧取得
-	 */
+	public function withItems(?array $items): DescribeSubscribesByRoomNameResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken ルーム名を指定して購読しているユーザの一覧取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeSubscribesByRoomNameResult {
-        $result = new DescribeSubscribesByRoomNameResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Subscribe::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeSubscribesByRoomNameResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeSubscribesByRoomNameResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeSubscribesByRoomNameResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Subscribe::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

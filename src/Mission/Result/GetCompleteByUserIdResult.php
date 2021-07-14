@@ -20,36 +20,34 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
-/**
- * ユーザIDを指定して達成状況を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCompleteByUserIdResult implements IResult {
-	/** @var Complete 達成状況 */
-	private $item;
+    /** @var Complete */
+    private $item;
 
-	/**
-	 * 達成状況を取得
-	 *
-	 * @return Complete|null ユーザIDを指定して達成状況を取得
-	 */
 	public function getItem(): ?Complete {
 		return $this->item;
 	}
 
-	/**
-	 * 達成状況を設定
-	 *
-	 * @param Complete|null $item ユーザIDを指定して達成状況を取得
-	 */
 	public function setItem(?Complete $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCompleteByUserIdResult {
-        $result = new GetCompleteByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Complete::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Complete $item): GetCompleteByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCompleteByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCompleteByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Complete::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

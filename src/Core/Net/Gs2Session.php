@@ -252,7 +252,7 @@ abstract class Gs2Session {
                     $gs2Session->notifyComplete($gs2SessionTask);
                     return $result;
                 },
-                function (Gs2Exception $e) use ($gs2Session, $gs2SessionTask) {
+                function ($e) use ($gs2Session, $gs2SessionTask) {
                     $gs2Session->notifyComplete($gs2SessionTask);
                     throw $e;
                 }

@@ -18,38 +18,37 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 
-/**
- * カウンターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteCounterByUserIdResult implements IResult {
-	/** @var Counter 削除したカウンター */
-	private $item;
+    /** @var Counter */
+    private $item;
 
-	/**
-	 * 削除したカウンターを取得
-	 *
-	 * @return Counter|null カウンターを削除
-	 */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したカウンターを設定
-	 *
-	 * @param Counter|null $item カウンターを削除
-	 */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteCounterByUserIdResult {
-        $result = new DeleteCounterByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Counter::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Counter $item): DeleteCounterByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteCounterByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteCounterByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Counter::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

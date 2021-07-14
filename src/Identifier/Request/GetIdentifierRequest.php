@@ -19,75 +19,51 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * クレデンシャルを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetIdentifierRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
-
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null クレデンシャルを取得します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName クレデンシャルを取得します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName クレデンシャルを取得します
-     * @return GetIdentifierRequest $this
-     */
-    public function withUserName(string $userName = null): GetIdentifierRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
-    /** @var string クライアントID */
+    /** @var string */
     private $clientId;
 
-    /**
-     * クライアントIDを取得
-     *
-     * @return string|null クレデンシャルを取得します
-     */
-    public function getClientId(): ?string {
-        return $this->clientId;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): GetIdentifierRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+	public function getClientId(): ?string {
+		return $this->clientId;
+	}
+
+	public function setClientId(?string $clientId) {
+		$this->clientId = $clientId;
+	}
+
+	public function withClientId(?string $clientId): GetIdentifierRequest {
+		$this->clientId = $clientId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetIdentifierRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetIdentifierRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName'])
+            ->withClientId(empty($data['clientId']) ? null : $data['clientId']);
     }
 
-    /**
-     * クライアントIDを設定
-     *
-     * @param string $clientId クレデンシャルを取得します
-     */
-    public function setClientId(string $clientId = null) {
-        $this->clientId = $clientId;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+            "clientId" => $this->getClientId(),
+        );
     }
-
-    /**
-     * クライアントIDを設定
-     *
-     * @param string $clientId クレデンシャルを取得します
-     * @return GetIdentifierRequest $this
-     */
-    public function withClientId(string $clientId = null): GetIdentifierRequest {
-        $this->setClientId($clientId);
-        return $this;
-    }
-
 }

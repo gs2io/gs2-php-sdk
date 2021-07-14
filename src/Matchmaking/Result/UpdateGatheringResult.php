@@ -18,38 +18,40 @@
 namespace Gs2\Matchmaking\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Matchmaking\Model\AttributeRange;
+use Gs2\Matchmaking\Model\Attribute;
+use Gs2\Matchmaking\Model\Player;
+use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
-/**
- * ギャザリングを更新する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateGatheringResult implements IResult {
-	/** @var Gathering ギャザリング */
-	private $item;
+    /** @var Gathering */
+    private $item;
 
-	/**
-	 * ギャザリングを取得
-	 *
-	 * @return Gathering|null ギャザリングを更新する
-	 */
 	public function getItem(): ?Gathering {
 		return $this->item;
 	}
 
-	/**
-	 * ギャザリングを設定
-	 *
-	 * @param Gathering|null $item ギャザリングを更新する
-	 */
 	public function setItem(?Gathering $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateGatheringResult {
-        $result = new UpdateGatheringResult();
-        $result->setItem(isset($data["item"]) ? Gathering::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Gathering $item): UpdateGatheringResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateGatheringResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateGatheringResult())
+            ->withItem(empty($data['item']) ? null : Gathering::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

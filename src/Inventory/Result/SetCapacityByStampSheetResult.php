@@ -20,36 +20,34 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\Inventory;
 
-/**
- * スタンプシートでキャパシティサイズを設定 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetCapacityByStampSheetResult implements IResult {
-	/** @var Inventory 更新後のインベントリ */
-	private $item;
+    /** @var Inventory */
+    private $item;
 
-	/**
-	 * 更新後のインベントリを取得
-	 *
-	 * @return Inventory|null スタンプシートでキャパシティサイズを設定
-	 */
 	public function getItem(): ?Inventory {
 		return $this->item;
 	}
 
-	/**
-	 * 更新後のインベントリを設定
-	 *
-	 * @param Inventory|null $item スタンプシートでキャパシティサイズを設定
-	 */
 	public function setItem(?Inventory $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): SetCapacityByStampSheetResult {
-        $result = new SetCapacityByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? Inventory::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Inventory $item): SetCapacityByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetCapacityByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetCapacityByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : Inventory::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

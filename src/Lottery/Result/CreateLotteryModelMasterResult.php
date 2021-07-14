@@ -20,36 +20,34 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\LotteryModelMaster;
 
-/**
- * 抽選の種類マスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateLotteryModelMasterResult implements IResult {
-	/** @var LotteryModelMaster 作成した抽選の種類マスター */
-	private $item;
+    /** @var LotteryModelMaster */
+    private $item;
 
-	/**
-	 * 作成した抽選の種類マスターを取得
-	 *
-	 * @return LotteryModelMaster|null 抽選の種類マスターを新規作成
-	 */
 	public function getItem(): ?LotteryModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成した抽選の種類マスターを設定
-	 *
-	 * @param LotteryModelMaster|null $item 抽選の種類マスターを新規作成
-	 */
 	public function setItem(?LotteryModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateLotteryModelMasterResult {
-        $result = new CreateLotteryModelMasterResult();
-        $result->setItem(isset($data["item"]) ? LotteryModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?LotteryModelMaster $item): CreateLotteryModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateLotteryModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateLotteryModelMasterResult())
+            ->withItem(empty($data['item']) ? null : LotteryModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

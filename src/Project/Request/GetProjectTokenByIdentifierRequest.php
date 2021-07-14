@@ -19,139 +19,85 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * プロジェクトトークンを発行します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetProjectTokenByIdentifierRequest extends Gs2BasicRequest {
-
-    /** @var string GS2アカウントの名前 */
+    /** @var string */
     private $accountName;
-
-    /**
-     * GS2アカウントの名前を取得
-     *
-     * @return string|null プロジェクトトークンを発行します
-     */
-    public function getAccountName(): ?string {
-        return $this->accountName;
-    }
-
-    /**
-     * GS2アカウントの名前を設定
-     *
-     * @param string $accountName プロジェクトトークンを発行します
-     */
-    public function setAccountName(string $accountName = null) {
-        $this->accountName = $accountName;
-    }
-
-    /**
-     * GS2アカウントの名前を設定
-     *
-     * @param string $accountName プロジェクトトークンを発行します
-     * @return GetProjectTokenByIdentifierRequest $this
-     */
-    public function withAccountName(string $accountName = null): GetProjectTokenByIdentifierRequest {
-        $this->setAccountName($accountName);
-        return $this;
-    }
-
-    /** @var string プロジェクト名 */
+    /** @var string */
     private $projectName;
-
-    /**
-     * プロジェクト名を取得
-     *
-     * @return string|null プロジェクトトークンを発行します
-     */
-    public function getProjectName(): ?string {
-        return $this->projectName;
-    }
-
-    /**
-     * プロジェクト名を設定
-     *
-     * @param string $projectName プロジェクトトークンを発行します
-     */
-    public function setProjectName(string $projectName = null) {
-        $this->projectName = $projectName;
-    }
-
-    /**
-     * プロジェクト名を設定
-     *
-     * @param string $projectName プロジェクトトークンを発行します
-     * @return GetProjectTokenByIdentifierRequest $this
-     */
-    public function withProjectName(string $projectName = null): GetProjectTokenByIdentifierRequest {
-        $this->setProjectName($projectName);
-        return $this;
-    }
-
-    /** @var string ユーザ名 */
+    /** @var string */
     private $userName;
-
-    /**
-     * ユーザ名を取得
-     *
-     * @return string|null プロジェクトトークンを発行します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
-     * ユーザ名を設定
-     *
-     * @param string $userName プロジェクトトークンを発行します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
-    }
-
-    /**
-     * ユーザ名を設定
-     *
-     * @param string $userName プロジェクトトークンを発行します
-     * @return GetProjectTokenByIdentifierRequest $this
-     */
-    public function withUserName(string $userName = null): GetProjectTokenByIdentifierRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
-    /** @var string パスワード */
+    /** @var string */
     private $password;
 
-    /**
-     * パスワードを取得
-     *
-     * @return string|null プロジェクトトークンを発行します
-     */
-    public function getPassword(): ?string {
-        return $this->password;
+	public function getAccountName(): ?string {
+		return $this->accountName;
+	}
+
+	public function setAccountName(?string $accountName) {
+		$this->accountName = $accountName;
+	}
+
+	public function withAccountName(?string $accountName): GetProjectTokenByIdentifierRequest {
+		$this->accountName = $accountName;
+		return $this;
+	}
+
+	public function getProjectName(): ?string {
+		return $this->projectName;
+	}
+
+	public function setProjectName(?string $projectName) {
+		$this->projectName = $projectName;
+	}
+
+	public function withProjectName(?string $projectName): GetProjectTokenByIdentifierRequest {
+		$this->projectName = $projectName;
+		return $this;
+	}
+
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): GetProjectTokenByIdentifierRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): GetProjectTokenByIdentifierRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetProjectTokenByIdentifierRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetProjectTokenByIdentifierRequest())
+            ->withAccountName(empty($data['accountName']) ? null : $data['accountName'])
+            ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
+            ->withUserName(empty($data['userName']) ? null : $data['userName'])
+            ->withPassword(empty($data['password']) ? null : $data['password']);
     }
 
-    /**
-     * パスワードを設定
-     *
-     * @param string $password プロジェクトトークンを発行します
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
+    public function toJson(): array {
+        return array(
+            "accountName" => $this->getAccountName(),
+            "projectName" => $this->getProjectName(),
+            "userName" => $this->getUserName(),
+            "password" => $this->getPassword(),
+        );
     }
-
-    /**
-     * パスワードを設定
-     *
-     * @param string $password プロジェクトトークンを発行します
-     * @return GetProjectTokenByIdentifierRequest $this
-     */
-    public function withPassword(string $password = null): GetProjectTokenByIdentifierRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
 }

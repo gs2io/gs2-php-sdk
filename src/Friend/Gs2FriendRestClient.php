@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Friend\Request\DescribeNamespacesRequest;
 use Gs2\Friend\Result\DescribeNamespacesResult;
 use Gs2\Friend\Request\CreateNamespaceRequest;
@@ -665,9 +667,6 @@ class GetProfileTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -725,9 +724,6 @@ class GetProfileByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -796,9 +792,6 @@ class UpdateProfileTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -864,9 +857,6 @@ class UpdateProfileByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -925,9 +915,6 @@ class DeleteProfileByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -985,9 +972,6 @@ class GetPublicProfileTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1058,9 +1042,6 @@ class DescribeFollowsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1128,9 +1109,6 @@ class DescribeFollowsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1195,9 +1173,6 @@ class GetFollowTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1260,9 +1235,6 @@ class GetFollowByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1322,9 +1294,6 @@ class FollowTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1381,9 +1350,6 @@ class FollowByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1446,9 +1412,6 @@ class UnfollowTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1507,9 +1470,6 @@ class UnfollowByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1580,9 +1540,6 @@ class DescribeFriendsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1650,9 +1607,6 @@ class DescribeFriendsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1717,9 +1671,6 @@ class GetFriendTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1782,9 +1733,6 @@ class GetFriendByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1846,9 +1794,6 @@ class DeleteFriendTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1907,9 +1852,6 @@ class DeleteFriendByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1971,9 +1913,6 @@ class DescribeSendRequestsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2031,9 +1970,6 @@ class DescribeSendRequestsByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2096,9 +2032,6 @@ class GetSendRequestTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2157,9 +2090,6 @@ class GetSendRequestByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2220,9 +2150,6 @@ class SendRequestTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2279,9 +2206,6 @@ class SendRequestByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2344,9 +2268,6 @@ class DeleteRequestTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2405,9 +2326,6 @@ class DeleteRequestByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2469,9 +2387,6 @@ class DescribeReceiveRequestsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2529,9 +2444,6 @@ class DescribeReceiveRequestsByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2594,9 +2506,6 @@ class GetReceiveRequestTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2655,9 +2564,6 @@ class GetReceiveRequestByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2718,9 +2624,6 @@ class AcceptRequestTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2777,9 +2680,6 @@ class AcceptRequestByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2842,9 +2742,6 @@ class RejectRequestTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2903,9 +2800,6 @@ class RejectRequestByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2967,9 +2861,6 @@ class DescribeBlackListTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3027,9 +2918,6 @@ class DescribeBlackListByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3090,9 +2978,6 @@ class RegisterBlackListTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3149,9 +3034,6 @@ class RegisterBlackListByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3214,9 +3096,6 @@ class UnregisterBlackListTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3276,9 +3155,6 @@ class UnregisterBlackListByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -3302,9 +3178,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -3319,9 +3193,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -3333,9 +3205,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -3350,9 +3220,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -3364,9 +3232,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -3381,9 +3247,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -3395,9 +3259,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -3412,9 +3274,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -3426,9 +3286,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -3443,9 +3301,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -3457,9 +3313,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -3474,9 +3328,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -3488,9 +3340,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してプロフィールの一覧を取得<br>
-     *
-     * @param DescribeProfilesRequest $request リクエストパラメータ
+     * @param DescribeProfilesRequest $request
      * @return PromiseInterface
      */
     public function describeProfilesAsync(
@@ -3505,9 +3355,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してプロフィールの一覧を取得<br>
-     *
-     * @param DescribeProfilesRequest $request リクエストパラメータ
+     * @param DescribeProfilesRequest $request
      * @return DescribeProfilesResult
      */
     public function describeProfiles (
@@ -3519,9 +3367,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロフィールを取得<br>
-     *
-     * @param GetProfileRequest $request リクエストパラメータ
+     * @param GetProfileRequest $request
      * @return PromiseInterface
      */
     public function getProfileAsync(
@@ -3536,9 +3382,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロフィールを取得<br>
-     *
-     * @param GetProfileRequest $request リクエストパラメータ
+     * @param GetProfileRequest $request
      * @return GetProfileResult
      */
     public function getProfile (
@@ -3550,9 +3394,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してプロフィールを取得<br>
-     *
-     * @param GetProfileByUserIdRequest $request リクエストパラメータ
+     * @param GetProfileByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getProfileByUserIdAsync(
@@ -3567,9 +3409,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してプロフィールを取得<br>
-     *
-     * @param GetProfileByUserIdRequest $request リクエストパラメータ
+     * @param GetProfileByUserIdRequest $request
      * @return GetProfileByUserIdResult
      */
     public function getProfileByUserId (
@@ -3581,9 +3421,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロフィールを更新<br>
-     *
-     * @param UpdateProfileRequest $request リクエストパラメータ
+     * @param UpdateProfileRequest $request
      * @return PromiseInterface
      */
     public function updateProfileAsync(
@@ -3598,9 +3436,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロフィールを更新<br>
-     *
-     * @param UpdateProfileRequest $request リクエストパラメータ
+     * @param UpdateProfileRequest $request
      * @return UpdateProfileResult
      */
     public function updateProfile (
@@ -3612,9 +3448,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してプロフィールを更新<br>
-     *
-     * @param UpdateProfileByUserIdRequest $request リクエストパラメータ
+     * @param UpdateProfileByUserIdRequest $request
      * @return PromiseInterface
      */
     public function updateProfileByUserIdAsync(
@@ -3629,9 +3463,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してプロフィールを更新<br>
-     *
-     * @param UpdateProfileByUserIdRequest $request リクエストパラメータ
+     * @param UpdateProfileByUserIdRequest $request
      * @return UpdateProfileByUserIdResult
      */
     public function updateProfileByUserId (
@@ -3643,9 +3475,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロフィールを削除<br>
-     *
-     * @param DeleteProfileByUserIdRequest $request リクエストパラメータ
+     * @param DeleteProfileByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteProfileByUserIdAsync(
@@ -3660,9 +3490,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロフィールを削除<br>
-     *
-     * @param DeleteProfileByUserIdRequest $request リクエストパラメータ
+     * @param DeleteProfileByUserIdRequest $request
      * @return DeleteProfileByUserIdResult
      */
     public function deleteProfileByUserId (
@@ -3674,9 +3502,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 公開プロフィールを取得<br>
-     *
-     * @param GetPublicProfileRequest $request リクエストパラメータ
+     * @param GetPublicProfileRequest $request
      * @return PromiseInterface
      */
     public function getPublicProfileAsync(
@@ -3691,9 +3517,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 公開プロフィールを取得<br>
-     *
-     * @param GetPublicProfileRequest $request リクエストパラメータ
+     * @param GetPublicProfileRequest $request
      * @return GetPublicProfileResult
      */
     public function getPublicProfile (
@@ -3705,9 +3529,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フォローの一覧取得<br>
-     *
-     * @param DescribeFollowsRequest $request リクエストパラメータ
+     * @param DescribeFollowsRequest $request
      * @return PromiseInterface
      */
     public function describeFollowsAsync(
@@ -3722,9 +3544,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フォローの一覧取得<br>
-     *
-     * @param DescribeFollowsRequest $request リクエストパラメータ
+     * @param DescribeFollowsRequest $request
      * @return DescribeFollowsResult
      */
     public function describeFollows (
@@ -3736,9 +3556,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフォローの一覧を取得<br>
-     *
-     * @param DescribeFollowsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeFollowsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeFollowsByUserIdAsync(
@@ -3753,9 +3571,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフォローの一覧を取得<br>
-     *
-     * @param DescribeFollowsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeFollowsByUserIdRequest $request
      * @return DescribeFollowsByUserIdResult
      */
     public function describeFollowsByUserId (
@@ -3767,9 +3583,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フォローを取得<br>
-     *
-     * @param GetFollowRequest $request リクエストパラメータ
+     * @param GetFollowRequest $request
      * @return PromiseInterface
      */
     public function getFollowAsync(
@@ -3784,9 +3598,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フォローを取得<br>
-     *
-     * @param GetFollowRequest $request リクエストパラメータ
+     * @param GetFollowRequest $request
      * @return GetFollowResult
      */
     public function getFollow (
@@ -3798,9 +3610,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフォローを取得<br>
-     *
-     * @param GetFollowByUserIdRequest $request リクエストパラメータ
+     * @param GetFollowByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getFollowByUserIdAsync(
@@ -3815,9 +3625,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフォローを取得<br>
-     *
-     * @param GetFollowByUserIdRequest $request リクエストパラメータ
+     * @param GetFollowByUserIdRequest $request
      * @return GetFollowByUserIdResult
      */
     public function getFollowByUserId (
@@ -3829,9 +3637,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フォロー<br>
-     *
-     * @param FollowRequest $request リクエストパラメータ
+     * @param FollowRequest $request
      * @return PromiseInterface
      */
     public function followAsync(
@@ -3846,9 +3652,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フォロー<br>
-     *
-     * @param FollowRequest $request リクエストパラメータ
+     * @param FollowRequest $request
      * @return FollowResult
      */
     public function follow (
@@ -3860,9 +3664,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフォロー<br>
-     *
-     * @param FollowByUserIdRequest $request リクエストパラメータ
+     * @param FollowByUserIdRequest $request
      * @return PromiseInterface
      */
     public function followByUserIdAsync(
@@ -3877,9 +3679,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフォロー<br>
-     *
-     * @param FollowByUserIdRequest $request リクエストパラメータ
+     * @param FollowByUserIdRequest $request
      * @return FollowByUserIdResult
      */
     public function followByUserId (
@@ -3891,9 +3691,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アンフォロー<br>
-     *
-     * @param UnfollowRequest $request リクエストパラメータ
+     * @param UnfollowRequest $request
      * @return PromiseInterface
      */
     public function unfollowAsync(
@@ -3908,9 +3706,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アンフォロー<br>
-     *
-     * @param UnfollowRequest $request リクエストパラメータ
+     * @param UnfollowRequest $request
      * @return UnfollowResult
      */
     public function unfollow (
@@ -3922,9 +3718,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してアンフォロー<br>
-     *
-     * @param UnfollowByUserIdRequest $request リクエストパラメータ
+     * @param UnfollowByUserIdRequest $request
      * @return PromiseInterface
      */
     public function unfollowByUserIdAsync(
@@ -3939,9 +3733,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してアンフォロー<br>
-     *
-     * @param UnfollowByUserIdRequest $request リクエストパラメータ
+     * @param UnfollowByUserIdRequest $request
      * @return UnfollowByUserIdResult
      */
     public function unfollowByUserId (
@@ -3953,9 +3745,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドを取得<br>
-     *
-     * @param DescribeFriendsRequest $request リクエストパラメータ
+     * @param DescribeFriendsRequest $request
      * @return PromiseInterface
      */
     public function describeFriendsAsync(
@@ -3970,9 +3760,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドを取得<br>
-     *
-     * @param DescribeFriendsRequest $request リクエストパラメータ
+     * @param DescribeFriendsRequest $request
      * @return DescribeFriendsResult
      */
     public function describeFriends (
@@ -3984,9 +3772,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドを取得<br>
-     *
-     * @param DescribeFriendsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeFriendsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeFriendsByUserIdAsync(
@@ -4001,9 +3787,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドを取得<br>
-     *
-     * @param DescribeFriendsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeFriendsByUserIdRequest $request
      * @return DescribeFriendsByUserIdResult
      */
     public function describeFriendsByUserId (
@@ -4015,9 +3799,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドを取得<br>
-     *
-     * @param GetFriendRequest $request リクエストパラメータ
+     * @param GetFriendRequest $request
      * @return PromiseInterface
      */
     public function getFriendAsync(
@@ -4032,9 +3814,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドを取得<br>
-     *
-     * @param GetFriendRequest $request リクエストパラメータ
+     * @param GetFriendRequest $request
      * @return GetFriendResult
      */
     public function getFriend (
@@ -4046,9 +3826,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドを取得<br>
-     *
-     * @param GetFriendByUserIdRequest $request リクエストパラメータ
+     * @param GetFriendByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getFriendByUserIdAsync(
@@ -4063,9 +3841,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドを取得<br>
-     *
-     * @param GetFriendByUserIdRequest $request リクエストパラメータ
+     * @param GetFriendByUserIdRequest $request
      * @return GetFriendByUserIdResult
      */
     public function getFriendByUserId (
@@ -4077,9 +3853,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドを取得<br>
-     *
-     * @param DeleteFriendRequest $request リクエストパラメータ
+     * @param DeleteFriendRequest $request
      * @return PromiseInterface
      */
     public function deleteFriendAsync(
@@ -4094,9 +3868,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドを取得<br>
-     *
-     * @param DeleteFriendRequest $request リクエストパラメータ
+     * @param DeleteFriendRequest $request
      * @return DeleteFriendResult
      */
     public function deleteFriend (
@@ -4108,9 +3880,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドを取得<br>
-     *
-     * @param DeleteFriendByUserIdRequest $request リクエストパラメータ
+     * @param DeleteFriendByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteFriendByUserIdAsync(
@@ -4125,9 +3895,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドを取得<br>
-     *
-     * @param DeleteFriendByUserIdRequest $request リクエストパラメータ
+     * @param DeleteFriendByUserIdRequest $request
      * @return DeleteFriendByUserIdResult
      */
     public function deleteFriendByUserId (
@@ -4139,9 +3907,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 送信したフレンドリクエストの一覧を取得<br>
-     *
-     * @param DescribeSendRequestsRequest $request リクエストパラメータ
+     * @param DescribeSendRequestsRequest $request
      * @return PromiseInterface
      */
     public function describeSendRequestsAsync(
@@ -4156,9 +3922,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 送信したフレンドリクエストの一覧を取得<br>
-     *
-     * @param DescribeSendRequestsRequest $request リクエストパラメータ
+     * @param DescribeSendRequestsRequest $request
      * @return DescribeSendRequestsResult
      */
     public function describeSendRequests (
@@ -4170,9 +3934,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して送信したフレンドリクエストの一覧を取得<br>
-     *
-     * @param DescribeSendRequestsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeSendRequestsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeSendRequestsByUserIdAsync(
@@ -4187,9 +3949,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して送信したフレンドリクエストの一覧を取得<br>
-     *
-     * @param DescribeSendRequestsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeSendRequestsByUserIdRequest $request
      * @return DescribeSendRequestsByUserIdResult
      */
     public function describeSendRequestsByUserId (
@@ -4201,9 +3961,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 送信したフレンドリクエストを取得<br>
-     *
-     * @param GetSendRequestRequest $request リクエストパラメータ
+     * @param GetSendRequestRequest $request
      * @return PromiseInterface
      */
     public function getSendRequestAsync(
@@ -4218,9 +3976,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 送信したフレンドリクエストを取得<br>
-     *
-     * @param GetSendRequestRequest $request リクエストパラメータ
+     * @param GetSendRequestRequest $request
      * @return GetSendRequestResult
      */
     public function getSendRequest (
@@ -4232,9 +3988,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して送信したフレンドリクエストを取得<br>
-     *
-     * @param GetSendRequestByUserIdRequest $request リクエストパラメータ
+     * @param GetSendRequestByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getSendRequestByUserIdAsync(
@@ -4249,9 +4003,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して送信したフレンドリクエストを取得<br>
-     *
-     * @param GetSendRequestByUserIdRequest $request リクエストパラメータ
+     * @param GetSendRequestByUserIdRequest $request
      * @return GetSendRequestByUserIdResult
      */
     public function getSendRequestByUserId (
@@ -4263,9 +4015,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドリクエストを送信<br>
-     *
-     * @param SendRequestRequest $request リクエストパラメータ
+     * @param SendRequestRequest $request
      * @return PromiseInterface
      */
     public function sendRequestAsync(
@@ -4280,9 +4030,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドリクエストを送信<br>
-     *
-     * @param SendRequestRequest $request リクエストパラメータ
+     * @param SendRequestRequest $request
      * @return SendRequestResult
      */
     public function sendRequest (
@@ -4294,9 +4042,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドリクエストを送信<br>
-     *
-     * @param SendRequestByUserIdRequest $request リクエストパラメータ
+     * @param SendRequestByUserIdRequest $request
      * @return PromiseInterface
      */
     public function sendRequestByUserIdAsync(
@@ -4311,9 +4057,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドリクエストを送信<br>
-     *
-     * @param SendRequestByUserIdRequest $request リクエストパラメータ
+     * @param SendRequestByUserIdRequest $request
      * @return SendRequestByUserIdResult
      */
     public function sendRequestByUserId (
@@ -4325,9 +4069,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドリクエストを削除<br>
-     *
-     * @param DeleteRequestRequest $request リクエストパラメータ
+     * @param DeleteRequestRequest $request
      * @return PromiseInterface
      */
     public function deleteRequestAsync(
@@ -4342,9 +4084,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドリクエストを削除<br>
-     *
-     * @param DeleteRequestRequest $request リクエストパラメータ
+     * @param DeleteRequestRequest $request
      * @return DeleteRequestResult
      */
     public function deleteRequest (
@@ -4356,9 +4096,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドリクエストを削除<br>
-     *
-     * @param DeleteRequestByUserIdRequest $request リクエストパラメータ
+     * @param DeleteRequestByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteRequestByUserIdAsync(
@@ -4373,9 +4111,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドリクエストを削除<br>
-     *
-     * @param DeleteRequestByUserIdRequest $request リクエストパラメータ
+     * @param DeleteRequestByUserIdRequest $request
      * @return DeleteRequestByUserIdResult
      */
     public function deleteRequestByUserId (
@@ -4387,9 +4123,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 受信したフレンドリクエストの一覧を取得<br>
-     *
-     * @param DescribeReceiveRequestsRequest $request リクエストパラメータ
+     * @param DescribeReceiveRequestsRequest $request
      * @return PromiseInterface
      */
     public function describeReceiveRequestsAsync(
@@ -4404,9 +4138,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 受信したフレンドリクエストの一覧を取得<br>
-     *
-     * @param DescribeReceiveRequestsRequest $request リクエストパラメータ
+     * @param DescribeReceiveRequestsRequest $request
      * @return DescribeReceiveRequestsResult
      */
     public function describeReceiveRequests (
@@ -4418,9 +4150,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信したフレンドリクエストの一覧を取得<br>
-     *
-     * @param DescribeReceiveRequestsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeReceiveRequestsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeReceiveRequestsByUserIdAsync(
@@ -4435,9 +4165,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信したフレンドリクエストの一覧を取得<br>
-     *
-     * @param DescribeReceiveRequestsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeReceiveRequestsByUserIdRequest $request
      * @return DescribeReceiveRequestsByUserIdResult
      */
     public function describeReceiveRequestsByUserId (
@@ -4449,9 +4177,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 受信したフレンドリクエストを取得<br>
-     *
-     * @param GetReceiveRequestRequest $request リクエストパラメータ
+     * @param GetReceiveRequestRequest $request
      * @return PromiseInterface
      */
     public function getReceiveRequestAsync(
@@ -4466,9 +4192,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 受信したフレンドリクエストを取得<br>
-     *
-     * @param GetReceiveRequestRequest $request リクエストパラメータ
+     * @param GetReceiveRequestRequest $request
      * @return GetReceiveRequestResult
      */
     public function getReceiveRequest (
@@ -4480,9 +4204,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信したフレンドリクエストを取得<br>
-     *
-     * @param GetReceiveRequestByUserIdRequest $request リクエストパラメータ
+     * @param GetReceiveRequestByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getReceiveRequestByUserIdAsync(
@@ -4497,9 +4219,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して受信したフレンドリクエストを取得<br>
-     *
-     * @param GetReceiveRequestByUserIdRequest $request リクエストパラメータ
+     * @param GetReceiveRequestByUserIdRequest $request
      * @return GetReceiveRequestByUserIdResult
      */
     public function getReceiveRequestByUserId (
@@ -4511,9 +4231,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドリクエストを承諾<br>
-     *
-     * @param AcceptRequestRequest $request リクエストパラメータ
+     * @param AcceptRequestRequest $request
      * @return PromiseInterface
      */
     public function acceptRequestAsync(
@@ -4528,9 +4246,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドリクエストを承諾<br>
-     *
-     * @param AcceptRequestRequest $request リクエストパラメータ
+     * @param AcceptRequestRequest $request
      * @return AcceptRequestResult
      */
     public function acceptRequest (
@@ -4542,9 +4258,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドリクエストを承諾<br>
-     *
-     * @param AcceptRequestByUserIdRequest $request リクエストパラメータ
+     * @param AcceptRequestByUserIdRequest $request
      * @return PromiseInterface
      */
     public function acceptRequestByUserIdAsync(
@@ -4559,9 +4273,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドリクエストを承諾<br>
-     *
-     * @param AcceptRequestByUserIdRequest $request リクエストパラメータ
+     * @param AcceptRequestByUserIdRequest $request
      * @return AcceptRequestByUserIdResult
      */
     public function acceptRequestByUserId (
@@ -4573,9 +4285,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドリクエストを拒否<br>
-     *
-     * @param RejectRequestRequest $request リクエストパラメータ
+     * @param RejectRequestRequest $request
      * @return PromiseInterface
      */
     public function rejectRequestAsync(
@@ -4590,9 +4300,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * フレンドリクエストを拒否<br>
-     *
-     * @param RejectRequestRequest $request リクエストパラメータ
+     * @param RejectRequestRequest $request
      * @return RejectRequestResult
      */
     public function rejectRequest (
@@ -4604,9 +4312,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドリクエストを拒否<br>
-     *
-     * @param RejectRequestByUserIdRequest $request リクエストパラメータ
+     * @param RejectRequestByUserIdRequest $request
      * @return PromiseInterface
      */
     public function rejectRequestByUserIdAsync(
@@ -4621,9 +4327,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してフレンドリクエストを拒否<br>
-     *
-     * @param RejectRequestByUserIdRequest $request リクエストパラメータ
+     * @param RejectRequestByUserIdRequest $request
      * @return RejectRequestByUserIdResult
      */
     public function rejectRequestByUserId (
@@ -4635,9 +4339,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ブラックリストを取得<br>
-     *
-     * @param DescribeBlackListRequest $request リクエストパラメータ
+     * @param DescribeBlackListRequest $request
      * @return PromiseInterface
      */
     public function describeBlackListAsync(
@@ -4652,9 +4354,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ブラックリストを取得<br>
-     *
-     * @param DescribeBlackListRequest $request リクエストパラメータ
+     * @param DescribeBlackListRequest $request
      * @return DescribeBlackListResult
      */
     public function describeBlackList (
@@ -4666,9 +4366,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してブラックリストを取得<br>
-     *
-     * @param DescribeBlackListByUserIdRequest $request リクエストパラメータ
+     * @param DescribeBlackListByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeBlackListByUserIdAsync(
@@ -4683,9 +4381,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してブラックリストを取得<br>
-     *
-     * @param DescribeBlackListByUserIdRequest $request リクエストパラメータ
+     * @param DescribeBlackListByUserIdRequest $request
      * @return DescribeBlackListByUserIdResult
      */
     public function describeBlackListByUserId (
@@ -4697,9 +4393,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ブラックリストに登録<br>
-     *
-     * @param RegisterBlackListRequest $request リクエストパラメータ
+     * @param RegisterBlackListRequest $request
      * @return PromiseInterface
      */
     public function registerBlackListAsync(
@@ -4714,9 +4408,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ブラックリストに登録<br>
-     *
-     * @param RegisterBlackListRequest $request リクエストパラメータ
+     * @param RegisterBlackListRequest $request
      * @return RegisterBlackListResult
      */
     public function registerBlackList (
@@ -4728,9 +4420,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してブラックリストに登録<br>
-     *
-     * @param RegisterBlackListByUserIdRequest $request リクエストパラメータ
+     * @param RegisterBlackListByUserIdRequest $request
      * @return PromiseInterface
      */
     public function registerBlackListByUserIdAsync(
@@ -4745,9 +4435,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してブラックリストに登録<br>
-     *
-     * @param RegisterBlackListByUserIdRequest $request リクエストパラメータ
+     * @param RegisterBlackListByUserIdRequest $request
      * @return RegisterBlackListByUserIdResult
      */
     public function registerBlackListByUserId (
@@ -4759,9 +4447,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ブラックリストからユーザを削除<br>
-     *
-     * @param UnregisterBlackListRequest $request リクエストパラメータ
+     * @param UnregisterBlackListRequest $request
      * @return PromiseInterface
      */
     public function unregisterBlackListAsync(
@@ -4776,9 +4462,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ブラックリストからユーザを削除<br>
-     *
-     * @param UnregisterBlackListRequest $request リクエストパラメータ
+     * @param UnregisterBlackListRequest $request
      * @return UnregisterBlackListResult
      */
     public function unregisterBlackList (
@@ -4790,9 +4474,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してブラックリストからユーザを削除<br>
-     *
-     * @param UnregisterBlackListByUserIdRequest $request リクエストパラメータ
+     * @param UnregisterBlackListByUserIdRequest $request
      * @return PromiseInterface
      */
     public function unregisterBlackListByUserIdAsync(
@@ -4807,9 +4489,7 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してブラックリストからユーザを削除<br>
-     *
-     * @param UnregisterBlackListByUserIdRequest $request リクエストパラメータ
+     * @param UnregisterBlackListByUserIdRequest $request
      * @return UnregisterBlackListByUserIdResult
      */
     public function unregisterBlackListByUserId (

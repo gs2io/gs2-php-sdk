@@ -18,38 +18,37 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 
-/**
- * カウンター加算 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class IncreaseByStampSheetResult implements IResult {
-	/** @var Counter カウンター加算後のカウンター */
-	private $item;
+    /** @var Counter */
+    private $item;
 
-	/**
-	 * カウンター加算後のカウンターを取得
-	 *
-	 * @return Counter|null カウンター加算
-	 */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
-	/**
-	 * カウンター加算後のカウンターを設定
-	 *
-	 * @param Counter|null $item カウンター加算
-	 */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): IncreaseByStampSheetResult {
-        $result = new IncreaseByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? Counter::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Counter $item): IncreaseByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?IncreaseByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new IncreaseByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : Counter::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

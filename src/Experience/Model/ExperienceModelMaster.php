@@ -19,371 +19,208 @@ namespace Gs2\Experience\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 経験値の種類マスター
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class ExperienceModelMaster implements IModel {
 	/**
-     * @var string 経験値の種類マスター
+     * @var string
 	 */
-	protected $experienceModelId;
-
+	private $experienceModelId;
 	/**
-	 * 経験値の種類マスターを取得
-	 *
-	 * @return string|null 経験値の種類マスター
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $description;
+	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
+     * @var int
+	 */
+	private $defaultExperience;
+	/**
+     * @var int
+	 */
+	private $defaultRankCap;
+	/**
+     * @var int
+	 */
+	private $maxRankCap;
+	/**
+     * @var string
+	 */
+	private $rankThresholdName;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
 
-	/**
-	 * 経験値の種類マスターを設定
-	 *
-	 * @param string|null $experienceModelId 経験値の種類マスター
-	 */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
 
-	/**
-	 * 経験値の種類マスターを設定
-	 *
-	 * @param string|null $experienceModelId 経験値の種類マスター
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withExperienceModelId(?string $experienceModelId): ExperienceModelMaster {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-	/**
-     * @var string 経験値の種類名
-	 */
-	protected $name;
 
-	/**
-	 * 経験値の種類名を取得
-	 *
-	 * @return string|null 経験値の種類名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * 経験値の種類名を設定
-	 *
-	 * @param string|null $name 経験値の種類名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * 経験値の種類名を設定
-	 *
-	 * @param string|null $name 経験値の種類名
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withName(?string $name): ExperienceModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string 経験値の種類マスターの説明
-	 */
-	protected $description;
 
-	/**
-	 * 経験値の種類マスターの説明を取得
-	 *
-	 * @return string|null 経験値の種類マスターの説明
-	 */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
 
-	/**
-	 * 経験値の種類マスターの説明を設定
-	 *
-	 * @param string|null $description 経験値の種類マスターの説明
-	 */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
 
-	/**
-	 * 経験値の種類マスターの説明を設定
-	 *
-	 * @param string|null $description 経験値の種類マスターの説明
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withDescription(?string $description): ExperienceModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-	/**
-     * @var string 経験値の種類のメタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * 経験値の種類のメタデータを取得
-	 *
-	 * @return string|null 経験値の種類のメタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * 経験値の種類のメタデータを設定
-	 *
-	 * @param string|null $metadata 経験値の種類のメタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * 経験値の種類のメタデータを設定
-	 *
-	 * @param string|null $metadata 経験値の種類のメタデータ
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withMetadata(?string $metadata): ExperienceModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var int 経験値の初期値
-	 */
-	protected $defaultExperience;
 
-	/**
-	 * 経験値の初期値を取得
-	 *
-	 * @return int|null 経験値の初期値
-	 */
 	public function getDefaultExperience(): ?int {
 		return $this->defaultExperience;
 	}
 
-	/**
-	 * 経験値の初期値を設定
-	 *
-	 * @param int|null $defaultExperience 経験値の初期値
-	 */
 	public function setDefaultExperience(?int $defaultExperience) {
 		$this->defaultExperience = $defaultExperience;
 	}
 
-	/**
-	 * 経験値の初期値を設定
-	 *
-	 * @param int|null $defaultExperience 経験値の初期値
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withDefaultExperience(?int $defaultExperience): ExperienceModelMaster {
 		$this->defaultExperience = $defaultExperience;
 		return $this;
 	}
-	/**
-     * @var int ランクキャップの初期値
-	 */
-	protected $defaultRankCap;
 
-	/**
-	 * ランクキャップの初期値を取得
-	 *
-	 * @return int|null ランクキャップの初期値
-	 */
 	public function getDefaultRankCap(): ?int {
 		return $this->defaultRankCap;
 	}
 
-	/**
-	 * ランクキャップの初期値を設定
-	 *
-	 * @param int|null $defaultRankCap ランクキャップの初期値
-	 */
 	public function setDefaultRankCap(?int $defaultRankCap) {
 		$this->defaultRankCap = $defaultRankCap;
 	}
 
-	/**
-	 * ランクキャップの初期値を設定
-	 *
-	 * @param int|null $defaultRankCap ランクキャップの初期値
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withDefaultRankCap(?int $defaultRankCap): ExperienceModelMaster {
 		$this->defaultRankCap = $defaultRankCap;
 		return $this;
 	}
-	/**
-     * @var int ランクキャップの最大値
-	 */
-	protected $maxRankCap;
 
-	/**
-	 * ランクキャップの最大値を取得
-	 *
-	 * @return int|null ランクキャップの最大値
-	 */
 	public function getMaxRankCap(): ?int {
 		return $this->maxRankCap;
 	}
 
-	/**
-	 * ランクキャップの最大値を設定
-	 *
-	 * @param int|null $maxRankCap ランクキャップの最大値
-	 */
 	public function setMaxRankCap(?int $maxRankCap) {
 		$this->maxRankCap = $maxRankCap;
 	}
 
-	/**
-	 * ランクキャップの最大値を設定
-	 *
-	 * @param int|null $maxRankCap ランクキャップの最大値
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withMaxRankCap(?int $maxRankCap): ExperienceModelMaster {
 		$this->maxRankCap = $maxRankCap;
 		return $this;
 	}
-	/**
-     * @var string ランク計算に用いる
-	 */
-	protected $rankThresholdId;
 
-	/**
-	 * ランク計算に用いるを取得
-	 *
-	 * @return string|null ランク計算に用いる
-	 */
-	public function getRankThresholdId(): ?string {
-		return $this->rankThresholdId;
+	public function getRankThresholdName(): ?string {
+		return $this->rankThresholdName;
 	}
 
-	/**
-	 * ランク計算に用いるを設定
-	 *
-	 * @param string|null $rankThresholdId ランク計算に用いる
-	 */
-	public function setRankThresholdId(?string $rankThresholdId) {
-		$this->rankThresholdId = $rankThresholdId;
+	public function setRankThresholdName(?string $rankThresholdName) {
+		$this->rankThresholdName = $rankThresholdName;
 	}
 
-	/**
-	 * ランク計算に用いるを設定
-	 *
-	 * @param string|null $rankThresholdId ランク計算に用いる
-	 * @return ExperienceModelMaster $this
-	 */
-	public function withRankThresholdId(?string $rankThresholdId): ExperienceModelMaster {
-		$this->rankThresholdId = $rankThresholdId;
+	public function withRankThresholdName(?string $rankThresholdName): ExperienceModelMaster {
+		$this->rankThresholdName = $rankThresholdName;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withCreatedAt(?int $createdAt): ExperienceModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return ExperienceModelMaster $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): ExperienceModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "experienceModelId" => $this->experienceModelId,
-            "name" => $this->name,
-            "description" => $this->description,
-            "metadata" => $this->metadata,
-            "defaultExperience" => $this->defaultExperience,
-            "defaultRankCap" => $this->defaultRankCap,
-            "maxRankCap" => $this->maxRankCap,
-            "rankThresholdId" => $this->rankThresholdId,
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+    public static function fromJson(?array $data): ?ExperienceModelMaster {
+        if ($data === null) {
+            return null;
+        }
+        return (new ExperienceModelMaster())
+            ->withExperienceModelId(empty($data['experienceModelId']) ? null : $data['experienceModelId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withDefaultExperience(empty($data['defaultExperience']) ? null : $data['defaultExperience'])
+            ->withDefaultRankCap(empty($data['defaultRankCap']) ? null : $data['defaultRankCap'])
+            ->withMaxRankCap(empty($data['maxRankCap']) ? null : $data['maxRankCap'])
+            ->withRankThresholdName(empty($data['rankThresholdName']) ? null : $data['rankThresholdName'])
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): ExperienceModelMaster {
-        $model = new ExperienceModelMaster();
-        $model->setExperienceModelId(isset($data["experienceModelId"]) ? $data["experienceModelId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setDescription(isset($data["description"]) ? $data["description"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setDefaultExperience(isset($data["defaultExperience"]) ? $data["defaultExperience"] : null);
-        $model->setDefaultRankCap(isset($data["defaultRankCap"]) ? $data["defaultRankCap"] : null);
-        $model->setMaxRankCap(isset($data["maxRankCap"]) ? $data["maxRankCap"] : null);
-        $model->setRankThresholdId(isset($data["rankThresholdId"]) ? $data["rankThresholdId"] : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "experienceModelId" => $this->getExperienceModelId(),
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "defaultExperience" => $this->getDefaultExperience(),
+            "defaultRankCap" => $this->getDefaultRankCap(),
+            "maxRankCap" => $this->getMaxRankCap(),
+            "rankThresholdName" => $this->getRankThresholdName(),
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
+        );
     }
 }

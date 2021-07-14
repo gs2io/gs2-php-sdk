@@ -19,139 +19,85 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * エントリーモデルマスターを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateEntryModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null エントリーモデルマスターを新規作成
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName エントリーモデルマスターを新規作成
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName エントリーモデルマスターを新規作成
-     * @return CreateEntryModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CreateEntryModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string エントリーモデル名 */
+    /** @var string */
     private $name;
-
-    /**
-     * エントリーモデル名を取得
-     *
-     * @return string|null エントリーモデルマスターを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * エントリーモデル名を設定
-     *
-     * @param string $name エントリーモデルマスターを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * エントリーモデル名を設定
-     *
-     * @param string $name エントリーモデルマスターを新規作成
-     * @return CreateEntryModelMasterRequest $this
-     */
-    public function withName(string $name = null): CreateEntryModelMasterRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string エントリーモデルマスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * エントリーモデルマスターの説明を取得
-     *
-     * @return string|null エントリーモデルマスターを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * エントリーモデルマスターの説明を設定
-     *
-     * @param string $description エントリーモデルマスターを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * エントリーモデルマスターの説明を設定
-     *
-     * @param string $description エントリーモデルマスターを新規作成
-     * @return CreateEntryModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): CreateEntryModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string エントリーモデルのメタデータ */
+    /** @var string */
     private $metadata;
 
-    /**
-     * エントリーモデルのメタデータを取得
-     *
-     * @return string|null エントリーモデルマスターを新規作成
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CreateEntryModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateEntryModelMasterRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateEntryModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): CreateEntryModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateEntryModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateEntryModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
     }
 
-    /**
-     * エントリーモデルのメタデータを設定
-     *
-     * @param string $metadata エントリーモデルマスターを新規作成
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+        );
     }
-
-    /**
-     * エントリーモデルのメタデータを設定
-     *
-     * @param string $metadata エントリーモデルマスターを新規作成
-     * @return CreateEntryModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): CreateEntryModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
 }

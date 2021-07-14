@@ -19,15 +19,17 @@ namespace Gs2\Key\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 暗号鍵を削除します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteKeyResult implements IResult {
 
-    public static function fromJson(array $data): DeleteKeyResult {
-        $result = new DeleteKeyResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteKeyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteKeyResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

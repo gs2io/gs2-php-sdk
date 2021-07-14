@@ -20,36 +20,34 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
-/**
- * ステータスを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteStatusByUserIdResult implements IResult {
-	/** @var Status ステータス */
-	private $item;
+    /** @var Status */
+    private $item;
 
-	/**
-	 * ステータスを取得
-	 *
-	 * @return Status|null ステータスを削除
-	 */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
-	/**
-	 * ステータスを設定
-	 *
-	 * @param Status|null $item ステータスを削除
-	 */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteStatusByUserIdResult {
-        $result = new DeleteStatusByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Status::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Status $item): DeleteStatusByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteStatusByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteStatusByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Status::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

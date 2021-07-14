@@ -20,36 +20,34 @@ namespace Gs2\Inbox\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\Received;
 
-/**
- * ユーザーIDを指定して受信済みグローバルメッセージ名を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetReceivedByUserIdResult implements IResult {
-	/** @var Received 受信済みグローバルメッセージ名 */
-	private $item;
+    /** @var Received */
+    private $item;
 
-	/**
-	 * 受信済みグローバルメッセージ名を取得
-	 *
-	 * @return Received|null ユーザーIDを指定して受信済みグローバルメッセージ名を取得
-	 */
 	public function getItem(): ?Received {
 		return $this->item;
 	}
 
-	/**
-	 * 受信済みグローバルメッセージ名を設定
-	 *
-	 * @param Received|null $item ユーザーIDを指定して受信済みグローバルメッセージ名を取得
-	 */
 	public function setItem(?Received $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetReceivedByUserIdResult {
-        $result = new GetReceivedByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Received::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Received $item): GetReceivedByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetReceivedByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetReceivedByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Received::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

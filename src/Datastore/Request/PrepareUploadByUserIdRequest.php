@@ -19,267 +19,146 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してデータオブジェクトをアップロード準備する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PrepareUploadByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してデータオブジェクトをアップロード準備する
-     * @return PrepareUploadByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PrepareUploadByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してデータオブジェクトをアップロード準備する
-     * @return PrepareUploadByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): PrepareUploadByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string データの名前 */
+    /** @var string */
     private $name;
-
-    /**
-     * データの名前を取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $name ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $name ユーザIDを指定してデータオブジェクトをアップロード準備する
-     * @return PrepareUploadByUserIdRequest $this
-     */
-    public function withName(string $name = null): PrepareUploadByUserIdRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string アップロードするデータの MIME-Type */
+    /** @var string */
     private $contentType;
-
-    /**
-     * アップロードするデータの MIME-Typeを取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function getContentType(): ?string {
-        return $this->contentType;
-    }
-
-    /**
-     * アップロードするデータの MIME-Typeを設定
-     *
-     * @param string $contentType ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function setContentType(string $contentType = null) {
-        $this->contentType = $contentType;
-    }
-
-    /**
-     * アップロードするデータの MIME-Typeを設定
-     *
-     * @param string $contentType ユーザIDを指定してデータオブジェクトをアップロード準備する
-     * @return PrepareUploadByUserIdRequest $this
-     */
-    public function withContentType(string $contentType = null): PrepareUploadByUserIdRequest {
-        $this->setContentType($contentType);
-        return $this;
-    }
-
-    /** @var string ファイルのアクセス権 */
+    /** @var string */
     private $scope;
-
-    /**
-     * ファイルのアクセス権を取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function getScope(): ?string {
-        return $this->scope;
-    }
-
-    /**
-     * ファイルのアクセス権を設定
-     *
-     * @param string $scope ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function setScope(string $scope = null) {
-        $this->scope = $scope;
-    }
-
-    /**
-     * ファイルのアクセス権を設定
-     *
-     * @param string $scope ユーザIDを指定してデータオブジェクトをアップロード準備する
-     * @return PrepareUploadByUserIdRequest $this
-     */
-    public function withScope(string $scope = null): PrepareUploadByUserIdRequest {
-        $this->setScope($scope);
-        return $this;
-    }
-
-    /** @var string[] 公開するユーザIDリスト */
+    /** @var array */
     private $allowUserIds;
-
-    /**
-     * 公開するユーザIDリストを取得
-     *
-     * @return string[]|null ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function getAllowUserIds(): ?array {
-        return $this->allowUserIds;
-    }
-
-    /**
-     * 公開するユーザIDリストを設定
-     *
-     * @param string[] $allowUserIds ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function setAllowUserIds(array $allowUserIds = null) {
-        $this->allowUserIds = $allowUserIds;
-    }
-
-    /**
-     * 公開するユーザIDリストを設定
-     *
-     * @param string[] $allowUserIds ユーザIDを指定してデータオブジェクトをアップロード準備する
-     * @return PrepareUploadByUserIdRequest $this
-     */
-    public function withAllowUserIds(array $allowUserIds = null): PrepareUploadByUserIdRequest {
-        $this->setAllowUserIds($allowUserIds);
-        return $this;
-    }
-
-    /** @var bool 既にデータが存在する場合にエラーとするか、データを更新するか */
+    /** @var bool */
     private $updateIfExists;
 
-    /**
-     * 既にデータが存在する場合にエラーとするか、データを更新するかを取得
-     *
-     * @return bool|null ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function getUpdateIfExists(): ?bool {
-        return $this->updateIfExists;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PrepareUploadByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): PrepareUploadByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): PrepareUploadByUserIdRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getContentType(): ?string {
+		return $this->contentType;
+	}
+
+	public function setContentType(?string $contentType) {
+		$this->contentType = $contentType;
+	}
+
+	public function withContentType(?string $contentType): PrepareUploadByUserIdRequest {
+		$this->contentType = $contentType;
+		return $this;
+	}
+
+	public function getScope(): ?string {
+		return $this->scope;
+	}
+
+	public function setScope(?string $scope) {
+		$this->scope = $scope;
+	}
+
+	public function withScope(?string $scope): PrepareUploadByUserIdRequest {
+		$this->scope = $scope;
+		return $this;
+	}
+
+	public function getAllowUserIds(): ?array {
+		return $this->allowUserIds;
+	}
+
+	public function setAllowUserIds(?array $allowUserIds) {
+		$this->allowUserIds = $allowUserIds;
+	}
+
+	public function withAllowUserIds(?array $allowUserIds): PrepareUploadByUserIdRequest {
+		$this->allowUserIds = $allowUserIds;
+		return $this;
+	}
+
+	public function getUpdateIfExists(): ?bool {
+		return $this->updateIfExists;
+	}
+
+	public function setUpdateIfExists(?bool $updateIfExists) {
+		$this->updateIfExists = $updateIfExists;
+	}
+
+	public function withUpdateIfExists(?bool $updateIfExists): PrepareUploadByUserIdRequest {
+		$this->updateIfExists = $updateIfExists;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PrepareUploadByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PrepareUploadByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withContentType(empty($data['contentType']) ? null : $data['contentType'])
+            ->withScope(empty($data['scope']) ? null : $data['scope'])
+            ->withAllowUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+            ))
+            ->withUpdateIfExists(empty($data['updateIfExists']) ? null : $data['updateIfExists']);
     }
 
-    /**
-     * 既にデータが存在する場合にエラーとするか、データを更新するかを設定
-     *
-     * @param bool $updateIfExists ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function setUpdateIfExists(bool $updateIfExists = null) {
-        $this->updateIfExists = $updateIfExists;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "name" => $this->getName(),
+            "contentType" => $this->getContentType(),
+            "scope" => $this->getScope(),
+            "allowUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+            ),
+            "updateIfExists" => $this->getUpdateIfExists(),
+        );
     }
-
-    /**
-     * 既にデータが存在する場合にエラーとするか、データを更新するかを設定
-     *
-     * @param bool $updateIfExists ユーザIDを指定してデータオブジェクトをアップロード準備する
-     * @return PrepareUploadByUserIdRequest $this
-     */
-    public function withUpdateIfExists(bool $updateIfExists = null): PrepareUploadByUserIdRequest {
-        $this->setUpdateIfExists($updateIfExists);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してデータオブジェクトをアップロード準備する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してデータオブジェクトをアップロード準備する
-     * @return PrepareUploadByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): PrepareUploadByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

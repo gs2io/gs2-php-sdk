@@ -19,15 +19,17 @@ namespace Gs2\News\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 現在有効なお知らせを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentNewsMasterResult implements IResult {
 
-    public static function fromJson(array $data): UpdateCurrentNewsMasterResult {
-        $result = new UpdateCurrentNewsMasterResult();
-        return $result;
+    public static function fromJson(?array $data): ?UpdateCurrentNewsMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentNewsMasterResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

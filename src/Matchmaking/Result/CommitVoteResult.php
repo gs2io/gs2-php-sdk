@@ -19,15 +19,17 @@ namespace Gs2\Matchmaking\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 投票状況を強制確定 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CommitVoteResult implements IResult {
 
-    public static function fromJson(array $data): CommitVoteResult {
-        $result = new CommitVoteResult();
-        return $result;
+    public static function fromJson(?array $data): ?CommitVoteResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CommitVoteResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

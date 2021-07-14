@@ -21,267 +21,156 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Enhance\Model\Material;
 use Gs2\Enhance\Model\Config;
 
-/**
- * 強化を開始 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class StartRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 強化を開始
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 強化を開始
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 強化を開始
-     * @return StartRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): StartRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 強化レート名 */
+    /** @var string */
     private $rateName;
-
-    /**
-     * 強化レート名を取得
-     *
-     * @return string|null 強化を開始
-     */
-    public function getRateName(): ?string {
-        return $this->rateName;
-    }
-
-    /**
-     * 強化レート名を設定
-     *
-     * @param string $rateName 強化を開始
-     */
-    public function setRateName(string $rateName = null) {
-        $this->rateName = $rateName;
-    }
-
-    /**
-     * 強化レート名を設定
-     *
-     * @param string $rateName 強化を開始
-     * @return StartRequest $this
-     */
-    public function withRateName(string $rateName = null): StartRequest {
-        $this->setRateName($rateName);
-        return $this;
-    }
-
-    /** @var string 強化対象の GS2-Inventory アイテムセットGRN */
+    /** @var string */
     private $targetItemSetId;
-
-    /**
-     * 強化対象の GS2-Inventory アイテムセットGRNを取得
-     *
-     * @return string|null 強化を開始
-     */
-    public function getTargetItemSetId(): ?string {
-        return $this->targetItemSetId;
-    }
-
-    /**
-     * 強化対象の GS2-Inventory アイテムセットGRNを設定
-     *
-     * @param string $targetItemSetId 強化を開始
-     */
-    public function setTargetItemSetId(string $targetItemSetId = null) {
-        $this->targetItemSetId = $targetItemSetId;
-    }
-
-    /**
-     * 強化対象の GS2-Inventory アイテムセットGRNを設定
-     *
-     * @param string $targetItemSetId 強化を開始
-     * @return StartRequest $this
-     */
-    public function withTargetItemSetId(string $targetItemSetId = null): StartRequest {
-        $this->setTargetItemSetId($targetItemSetId);
-        return $this;
-    }
-
-    /** @var Material[] 強化素材リスト */
+    /** @var array */
     private $materials;
-
-    /**
-     * 強化素材リストを取得
-     *
-     * @return Material[]|null 強化を開始
-     */
-    public function getMaterials(): ?array {
-        return $this->materials;
-    }
-
-    /**
-     * 強化素材リストを設定
-     *
-     * @param Material[] $materials 強化を開始
-     */
-    public function setMaterials(array $materials = null) {
-        $this->materials = $materials;
-    }
-
-    /**
-     * 強化素材リストを設定
-     *
-     * @param Material[] $materials 強化を開始
-     * @return StartRequest $this
-     */
-    public function withMaterials(array $materials = null): StartRequest {
-        $this->setMaterials($materials);
-        return $this;
-    }
-
-    /** @var bool すでに開始している強化がある場合にそれを破棄して開始するか */
+    /** @var string */
+    private $accessToken;
+    /** @var bool */
     private $force;
-
-    /**
-     * すでに開始している強化がある場合にそれを破棄して開始するかを取得
-     *
-     * @return bool|null 強化を開始
-     */
-    public function getForce(): ?bool {
-        return $this->force;
-    }
-
-    /**
-     * すでに開始している強化がある場合にそれを破棄して開始するかを設定
-     *
-     * @param bool $force 強化を開始
-     */
-    public function setForce(bool $force = null) {
-        $this->force = $force;
-    }
-
-    /**
-     * すでに開始している強化がある場合にそれを破棄して開始するかを設定
-     *
-     * @param bool $force 強化を開始
-     * @return StartRequest $this
-     */
-    public function withForce(bool $force = null): StartRequest {
-        $this->setForce($force);
-        return $this;
-    }
-
-    /** @var Config[] スタンプシートの変数に適用する設定値 */
+    /** @var array */
     private $config;
 
-    /**
-     * スタンプシートの変数に適用する設定値を取得
-     *
-     * @return Config[]|null 強化を開始
-     */
-    public function getConfig(): ?array {
-        return $this->config;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): StartRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRateName(): ?string {
+		return $this->rateName;
+	}
+
+	public function setRateName(?string $rateName) {
+		$this->rateName = $rateName;
+	}
+
+	public function withRateName(?string $rateName): StartRequest {
+		$this->rateName = $rateName;
+		return $this;
+	}
+
+	public function getTargetItemSetId(): ?string {
+		return $this->targetItemSetId;
+	}
+
+	public function setTargetItemSetId(?string $targetItemSetId) {
+		$this->targetItemSetId = $targetItemSetId;
+	}
+
+	public function withTargetItemSetId(?string $targetItemSetId): StartRequest {
+		$this->targetItemSetId = $targetItemSetId;
+		return $this;
+	}
+
+	public function getMaterials(): ?array {
+		return $this->materials;
+	}
+
+	public function setMaterials(?array $materials) {
+		$this->materials = $materials;
+	}
+
+	public function withMaterials(?array $materials): StartRequest {
+		$this->materials = $materials;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): StartRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getForce(): ?bool {
+		return $this->force;
+	}
+
+	public function setForce(?bool $force) {
+		$this->force = $force;
+	}
+
+	public function withForce(?bool $force): StartRequest {
+		$this->force = $force;
+		return $this;
+	}
+
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+
+	public function withConfig(?array $config): StartRequest {
+		$this->config = $config;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?StartRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new StartRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
+            ->withTargetItemSetId(empty($data['targetItemSetId']) ? null : $data['targetItemSetId'])
+            ->withMaterials(array_map(
+                function ($item) {
+                    return Material::fromJson($item);
+                },
+                array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
+            ))
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withForce(empty($data['force']) ? null : $data['force'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config 強化を開始
-     */
-    public function setConfig(array $config = null) {
-        $this->config = $config;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "rateName" => $this->getRateName(),
+            "targetItemSetId" => $this->getTargetItemSetId(),
+            "materials" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getMaterials() !== null && $this->getMaterials() !== null ? $this->getMaterials() : []
+            ),
+            "accessToken" => $this->getAccessToken(),
+            "force" => $this->getForce(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
+        );
     }
-
-    /**
-     * スタンプシートの変数に適用する設定値を設定
-     *
-     * @param Config[] $config 強化を開始
-     * @return StartRequest $this
-     */
-    public function withConfig(array $config = null): StartRequest {
-        $this->setConfig($config);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 強化を開始
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 強化を開始
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 強化を開始
-     * @return StartRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): StartRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return StartRequest this
-     */
-    public function withAccessToken(string $accessToken): StartRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

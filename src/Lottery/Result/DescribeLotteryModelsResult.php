@@ -20,42 +20,44 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\LotteryModel;
 
-/**
- * 抽選の種類の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeLotteryModelsResult implements IResult {
-	/** @var LotteryModel[] 抽選の種類のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 抽選の種類のリストを取得
-	 *
-	 * @return LotteryModel[]|null 抽選の種類の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 抽選の種類のリストを設定
-	 *
-	 * @param LotteryModel[]|null $items 抽選の種類の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeLotteryModelsResult {
-        $result = new DescribeLotteryModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return LotteryModel::fromJson($v);
+	public function withItems(?array $items): DescribeLotteryModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeLotteryModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeLotteryModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return LotteryModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

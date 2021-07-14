@@ -19,43 +19,34 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタックを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetStackRequest extends Gs2BasicRequest {
-
-    /** @var string スタック名 */
+    /** @var string */
     private $stackName;
 
-    /**
-     * スタック名を取得
-     *
-     * @return string|null スタックを取得
-     */
-    public function getStackName(): ?string {
-        return $this->stackName;
+	public function getStackName(): ?string {
+		return $this->stackName;
+	}
+
+	public function setStackName(?string $stackName) {
+		$this->stackName = $stackName;
+	}
+
+	public function withStackName(?string $stackName): GetStackRequest {
+		$this->stackName = $stackName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetStackRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetStackRequest())
+            ->withStackName(empty($data['stackName']) ? null : $data['stackName']);
     }
 
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName スタックを取得
-     */
-    public function setStackName(string $stackName = null) {
-        $this->stackName = $stackName;
+    public function toJson(): array {
+        return array(
+            "stackName" => $this->getStackName(),
+        );
     }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName スタックを取得
-     * @return GetStackRequest $this
-     */
-    public function withStackName(string $stackName = null): GetStackRequest {
-        $this->setStackName($stackName);
-        return $this;
-    }
-
 }

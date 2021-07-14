@@ -19,91 +19,56 @@ namespace Gs2\Matchmaking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 署名済みの投票用紙
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class SignedBallot implements IModel {
 	/**
-     * @var string 投票用紙の署名対象のデータ
+     * @var string
 	 */
-	protected $body;
-
+	private $body;
 	/**
-	 * 投票用紙の署名対象のデータを取得
-	 *
-	 * @return string|null 投票用紙の署名対象のデータ
+     * @var string
 	 */
+	private $signature;
+
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
-	/**
-	 * 投票用紙の署名対象のデータを設定
-	 *
-	 * @param string|null $body 投票用紙の署名対象のデータ
-	 */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
-	/**
-	 * 投票用紙の署名対象のデータを設定
-	 *
-	 * @param string|null $body 投票用紙の署名対象のデータ
-	 * @return SignedBallot $this
-	 */
 	public function withBody(?string $body): SignedBallot {
 		$this->body = $body;
 		return $this;
 	}
-	/**
-     * @var string 投票用紙の署名
-	 */
-	protected $signature;
 
-	/**
-	 * 投票用紙の署名を取得
-	 *
-	 * @return string|null 投票用紙の署名
-	 */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
-	/**
-	 * 投票用紙の署名を設定
-	 *
-	 * @param string|null $signature 投票用紙の署名
-	 */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
-	/**
-	 * 投票用紙の署名を設定
-	 *
-	 * @param string|null $signature 投票用紙の署名
-	 * @return SignedBallot $this
-	 */
 	public function withSignature(?string $signature): SignedBallot {
 		$this->signature = $signature;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "body" => $this->body,
-            "signature" => $this->signature,
-        );
+    public static function fromJson(?array $data): ?SignedBallot {
+        if ($data === null) {
+            return null;
+        }
+        return (new SignedBallot())
+            ->withBody(empty($data['body']) ? null : $data['body'])
+            ->withSignature(empty($data['signature']) ? null : $data['signature']);
     }
 
-    public static function fromJson(array $data): SignedBallot {
-        $model = new SignedBallot();
-        $model->setBody(isset($data["body"]) ? $data["body"] : null);
-        $model->setSignature(isset($data["signature"]) ? $data["signature"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "body" => $this->getBody(),
+            "signature" => $this->getSignature(),
+        );
     }
 }

@@ -19,59 +19,55 @@ namespace Gs2\Formation\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Mold;
+use Gs2\Formation\Model\SlotModel;
+use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
-/**
- * スタンプシートでキャパシティサイズを加算 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AddCapacityByStampSheetResult implements IResult {
-	/** @var Mold キャパシティ加算後の保存したフォーム */
-	private $item;
-	/** @var MoldModel フォームの保存領域 */
-	private $moldModel;
+    /** @var Mold */
+    private $item;
+    /** @var MoldModel */
+    private $moldModel;
 
-	/**
-	 * キャパシティ加算後の保存したフォームを取得
-	 *
-	 * @return Mold|null スタンプシートでキャパシティサイズを加算
-	 */
 	public function getItem(): ?Mold {
 		return $this->item;
 	}
 
-	/**
-	 * キャパシティ加算後の保存したフォームを設定
-	 *
-	 * @param Mold|null $item スタンプシートでキャパシティサイズを加算
-	 */
 	public function setItem(?Mold $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * フォームの保存領域を取得
-	 *
-	 * @return MoldModel|null スタンプシートでキャパシティサイズを加算
-	 */
+	public function withItem(?Mold $item): AddCapacityByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
-	/**
-	 * フォームの保存領域を設定
-	 *
-	 * @param MoldModel|null $moldModel スタンプシートでキャパシティサイズを加算
-	 */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
-    public static function fromJson(array $data): AddCapacityByStampSheetResult {
-        $result = new AddCapacityByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? Mold::fromJson($data["item"]) : null);
-        $result->setMoldModel(isset($data["moldModel"]) ? MoldModel::fromJson($data["moldModel"]) : null);
-        return $result;
+	public function withMoldModel(?MoldModel $moldModel): AddCapacityByStampSheetResult {
+		$this->moldModel = $moldModel;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AddCapacityByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AddCapacityByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : Mold::fromJson($data['item']))
+            ->withMoldModel(empty($data['moldModel']) ? null : MoldModel::fromJson($data['moldModel']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "moldModel" => $this->getMoldModel() !== null ? $this->getMoldModel()->toJson() : null,
+        );
     }
 }

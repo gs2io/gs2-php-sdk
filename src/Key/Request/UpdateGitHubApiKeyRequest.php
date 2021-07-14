@@ -19,171 +19,102 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * GitHub のAPIキーを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateGitHubApiKeyRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null GitHub のAPIキーを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName GitHub のAPIキーを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName GitHub のAPIキーを更新
-     * @return UpdateGitHubApiKeyRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateGitHubApiKeyRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string GitHub APIキー名 */
+    /** @var string */
     private $apiKeyName;
-
-    /**
-     * GitHub APIキー名を取得
-     *
-     * @return string|null GitHub のAPIキーを更新
-     */
-    public function getApiKeyName(): ?string {
-        return $this->apiKeyName;
-    }
-
-    /**
-     * GitHub APIキー名を設定
-     *
-     * @param string $apiKeyName GitHub のAPIキーを更新
-     */
-    public function setApiKeyName(string $apiKeyName = null) {
-        $this->apiKeyName = $apiKeyName;
-    }
-
-    /**
-     * GitHub APIキー名を設定
-     *
-     * @param string $apiKeyName GitHub のAPIキーを更新
-     * @return UpdateGitHubApiKeyRequest $this
-     */
-    public function withApiKeyName(string $apiKeyName = null): UpdateGitHubApiKeyRequest {
-        $this->setApiKeyName($apiKeyName);
-        return $this;
-    }
-
-    /** @var string 説明文 */
+    /** @var string */
     private $description;
-
-    /**
-     * 説明文を取得
-     *
-     * @return string|null GitHub のAPIキーを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description GitHub のAPIキーを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description GitHub のAPIキーを更新
-     * @return UpdateGitHubApiKeyRequest $this
-     */
-    public function withDescription(string $description = null): UpdateGitHubApiKeyRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string APIキー */
+    /** @var string */
     private $apiKey;
-
-    /**
-     * APIキーを取得
-     *
-     * @return string|null GitHub のAPIキーを更新
-     */
-    public function getApiKey(): ?string {
-        return $this->apiKey;
-    }
-
-    /**
-     * APIキーを設定
-     *
-     * @param string $apiKey GitHub のAPIキーを更新
-     */
-    public function setApiKey(string $apiKey = null) {
-        $this->apiKey = $apiKey;
-    }
-
-    /**
-     * APIキーを設定
-     *
-     * @param string $apiKey GitHub のAPIキーを更新
-     * @return UpdateGitHubApiKeyRequest $this
-     */
-    public function withApiKey(string $apiKey = null): UpdateGitHubApiKeyRequest {
-        $this->setApiKey($apiKey);
-        return $this;
-    }
-
-    /** @var string APIキーの暗号化に使用する暗号鍵名 */
+    /** @var string */
     private $encryptionKeyName;
 
-    /**
-     * APIキーの暗号化に使用する暗号鍵名を取得
-     *
-     * @return string|null GitHub のAPIキーを更新
-     */
-    public function getEncryptionKeyName(): ?string {
-        return $this->encryptionKeyName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateGitHubApiKeyRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getApiKeyName(): ?string {
+		return $this->apiKeyName;
+	}
+
+	public function setApiKeyName(?string $apiKeyName) {
+		$this->apiKeyName = $apiKeyName;
+	}
+
+	public function withApiKeyName(?string $apiKeyName): UpdateGitHubApiKeyRequest {
+		$this->apiKeyName = $apiKeyName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateGitHubApiKeyRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getApiKey(): ?string {
+		return $this->apiKey;
+	}
+
+	public function setApiKey(?string $apiKey) {
+		$this->apiKey = $apiKey;
+	}
+
+	public function withApiKey(?string $apiKey): UpdateGitHubApiKeyRequest {
+		$this->apiKey = $apiKey;
+		return $this;
+	}
+
+	public function getEncryptionKeyName(): ?string {
+		return $this->encryptionKeyName;
+	}
+
+	public function setEncryptionKeyName(?string $encryptionKeyName) {
+		$this->encryptionKeyName = $encryptionKeyName;
+	}
+
+	public function withEncryptionKeyName(?string $encryptionKeyName): UpdateGitHubApiKeyRequest {
+		$this->encryptionKeyName = $encryptionKeyName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateGitHubApiKeyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateGitHubApiKeyRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withApiKeyName(empty($data['apiKeyName']) ? null : $data['apiKeyName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withApiKey(empty($data['apiKey']) ? null : $data['apiKey'])
+            ->withEncryptionKeyName(empty($data['encryptionKeyName']) ? null : $data['encryptionKeyName']);
     }
 
-    /**
-     * APIキーの暗号化に使用する暗号鍵名を設定
-     *
-     * @param string $encryptionKeyName GitHub のAPIキーを更新
-     */
-    public function setEncryptionKeyName(string $encryptionKeyName = null) {
-        $this->encryptionKeyName = $encryptionKeyName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "apiKeyName" => $this->getApiKeyName(),
+            "description" => $this->getDescription(),
+            "apiKey" => $this->getApiKey(),
+            "encryptionKeyName" => $this->getEncryptionKeyName(),
+        );
     }
-
-    /**
-     * APIキーの暗号化に使用する暗号鍵名を設定
-     *
-     * @param string $encryptionKeyName GitHub のAPIキーを更新
-     * @return UpdateGitHubApiKeyRequest $this
-     */
-    public function withEncryptionKeyName(string $encryptionKeyName = null): UpdateGitHubApiKeyRequest {
-        $this->setEncryptionKeyName($encryptionKeyName);
-        return $this;
-    }
-
 }

@@ -19,43 +19,34 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * パスワードを再発行 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class IssuePasswordRequest extends Gs2BasicRequest {
-
-    /** @var string パスワードを再発行するために必要なトークン */
+    /** @var string */
     private $issuePasswordToken;
 
-    /**
-     * パスワードを再発行するために必要なトークンを取得
-     *
-     * @return string|null パスワードを再発行
-     */
-    public function getIssuePasswordToken(): ?string {
-        return $this->issuePasswordToken;
+	public function getIssuePasswordToken(): ?string {
+		return $this->issuePasswordToken;
+	}
+
+	public function setIssuePasswordToken(?string $issuePasswordToken) {
+		$this->issuePasswordToken = $issuePasswordToken;
+	}
+
+	public function withIssuePasswordToken(?string $issuePasswordToken): IssuePasswordRequest {
+		$this->issuePasswordToken = $issuePasswordToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?IssuePasswordRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new IssuePasswordRequest())
+            ->withIssuePasswordToken(empty($data['issuePasswordToken']) ? null : $data['issuePasswordToken']);
     }
 
-    /**
-     * パスワードを再発行するために必要なトークンを設定
-     *
-     * @param string $issuePasswordToken パスワードを再発行
-     */
-    public function setIssuePasswordToken(string $issuePasswordToken = null) {
-        $this->issuePasswordToken = $issuePasswordToken;
+    public function toJson(): array {
+        return array(
+            "issuePasswordToken" => $this->getIssuePasswordToken(),
+        );
     }
-
-    /**
-     * パスワードを再発行するために必要なトークンを設定
-     *
-     * @param string $issuePasswordToken パスワードを再発行
-     * @return IssuePasswordRequest $this
-     */
-    public function withIssuePasswordToken(string $issuePasswordToken = null): IssuePasswordRequest {
-        $this->setIssuePasswordToken($issuePasswordToken);
-        return $this;
-    }
-
 }

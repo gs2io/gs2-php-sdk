@@ -19,36 +19,34 @@ namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * パスワードを再発行 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class IssuePasswordResult implements IResult {
-	/** @var string 新しいパスワード */
-	private $newPassword;
+    /** @var string */
+    private $newPassword;
 
-	/**
-	 * 新しいパスワードを取得
-	 *
-	 * @return string|null パスワードを再発行
-	 */
 	public function getNewPassword(): ?string {
 		return $this->newPassword;
 	}
 
-	/**
-	 * 新しいパスワードを設定
-	 *
-	 * @param string|null $newPassword パスワードを再発行
-	 */
 	public function setNewPassword(?string $newPassword) {
 		$this->newPassword = $newPassword;
 	}
 
-    public static function fromJson(array $data): IssuePasswordResult {
-        $result = new IssuePasswordResult();
-        $result->setNewPassword(isset($data["newPassword"]) ? $data["newPassword"] : null);
-        return $result;
+	public function withNewPassword(?string $newPassword): IssuePasswordResult {
+		$this->newPassword = $newPassword;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?IssuePasswordResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new IssuePasswordResult())
+            ->withNewPassword(empty($data['newPassword']) ? null : $data['newPassword']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "newPassword" => $this->getNewPassword(),
+        );
     }
 }

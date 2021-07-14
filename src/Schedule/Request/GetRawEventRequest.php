@@ -19,75 +19,51 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * イベントを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRawEventRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null イベントを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName イベントを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName イベントを取得
-     * @return GetRawEventRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetRawEventRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string イベントの種類名 */
+    /** @var string */
     private $eventName;
 
-    /**
-     * イベントの種類名を取得
-     *
-     * @return string|null イベントを取得
-     */
-    public function getEventName(): ?string {
-        return $this->eventName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetRawEventRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getEventName(): ?string {
+		return $this->eventName;
+	}
+
+	public function setEventName(?string $eventName) {
+		$this->eventName = $eventName;
+	}
+
+	public function withEventName(?string $eventName): GetRawEventRequest {
+		$this->eventName = $eventName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRawEventRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRawEventRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withEventName(empty($data['eventName']) ? null : $data['eventName']);
     }
 
-    /**
-     * イベントの種類名を設定
-     *
-     * @param string $eventName イベントを取得
-     */
-    public function setEventName(string $eventName = null) {
-        $this->eventName = $eventName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "eventName" => $this->getEventName(),
+        );
     }
-
-    /**
-     * イベントの種類名を設定
-     *
-     * @param string $eventName イベントを取得
-     * @return GetRawEventRequest $this
-     */
-    public function withEventName(string $eventName = null): GetRawEventRequest {
-        $this->setEventName($eventName);
-        return $this;
-    }
-
 }

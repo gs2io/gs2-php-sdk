@@ -19,75 +19,51 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタミナ回復間隔テーブルマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRecoverIntervalTableMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタミナ回復間隔テーブルマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナ回復間隔テーブルマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナ回復間隔テーブルマスターを取得
-     * @return GetRecoverIntervalTableMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetRecoverIntervalTableMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナ回復間隔テーブル名 */
+    /** @var string */
     private $recoverIntervalTableName;
 
-    /**
-     * スタミナ回復間隔テーブル名を取得
-     *
-     * @return string|null スタミナ回復間隔テーブルマスターを取得
-     */
-    public function getRecoverIntervalTableName(): ?string {
-        return $this->recoverIntervalTableName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetRecoverIntervalTableMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRecoverIntervalTableName(): ?string {
+		return $this->recoverIntervalTableName;
+	}
+
+	public function setRecoverIntervalTableName(?string $recoverIntervalTableName) {
+		$this->recoverIntervalTableName = $recoverIntervalTableName;
+	}
+
+	public function withRecoverIntervalTableName(?string $recoverIntervalTableName): GetRecoverIntervalTableMasterRequest {
+		$this->recoverIntervalTableName = $recoverIntervalTableName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRecoverIntervalTableMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRecoverIntervalTableMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRecoverIntervalTableName(empty($data['recoverIntervalTableName']) ? null : $data['recoverIntervalTableName']);
     }
 
-    /**
-     * スタミナ回復間隔テーブル名を設定
-     *
-     * @param string $recoverIntervalTableName スタミナ回復間隔テーブルマスターを取得
-     */
-    public function setRecoverIntervalTableName(string $recoverIntervalTableName = null) {
-        $this->recoverIntervalTableName = $recoverIntervalTableName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "recoverIntervalTableName" => $this->getRecoverIntervalTableName(),
+        );
     }
-
-    /**
-     * スタミナ回復間隔テーブル名を設定
-     *
-     * @param string $recoverIntervalTableName スタミナ回復間隔テーブルマスターを取得
-     * @return GetRecoverIntervalTableMasterRequest $this
-     */
-    public function withRecoverIntervalTableName(string $recoverIntervalTableName = null): GetRecoverIntervalTableMasterRequest {
-        $this->setRecoverIntervalTableName($recoverIntervalTableName);
-        return $this;
-    }
-
 }

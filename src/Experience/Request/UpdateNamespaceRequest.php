@@ -21,267 +21,153 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Experience\Model\ScriptSetting;
 use Gs2\Experience\Model\LogSetting;
 
-/**
- * ネームスペースを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): UpdateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string ランクキャップ取得時 に実行されるスクリプト のGRN */
+    /** @var string */
     private $experienceCapScriptId;
-
-    /**
-     * ランクキャップ取得時 に実行されるスクリプト のGRNを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getExperienceCapScriptId(): ?string {
-        return $this->experienceCapScriptId;
-    }
-
-    /**
-     * ランクキャップ取得時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $experienceCapScriptId ネームスペースを更新
-     */
-    public function setExperienceCapScriptId(string $experienceCapScriptId = null) {
-        $this->experienceCapScriptId = $experienceCapScriptId;
-    }
-
-    /**
-     * ランクキャップ取得時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $experienceCapScriptId ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withExperienceCapScriptId(string $experienceCapScriptId = null): UpdateNamespaceRequest {
-        $this->setExperienceCapScriptId($experienceCapScriptId);
-        return $this;
-    }
-
-    /** @var ScriptSetting 経験値変化したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $changeExperienceScript;
-
-    /**
-     * 経験値変化したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getChangeExperienceScript(): ?ScriptSetting {
-        return $this->changeExperienceScript;
-    }
-
-    /**
-     * 経験値変化したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $changeExperienceScript ネームスペースを更新
-     */
-    public function setChangeExperienceScript(ScriptSetting $changeExperienceScript = null) {
-        $this->changeExperienceScript = $changeExperienceScript;
-    }
-
-    /**
-     * 経験値変化したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $changeExperienceScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withChangeExperienceScript(ScriptSetting $changeExperienceScript = null): UpdateNamespaceRequest {
-        $this->setChangeExperienceScript($changeExperienceScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting ランク変化したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $changeRankScript;
-
-    /**
-     * ランク変化したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getChangeRankScript(): ?ScriptSetting {
-        return $this->changeRankScript;
-    }
-
-    /**
-     * ランク変化したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $changeRankScript ネームスペースを更新
-     */
-    public function setChangeRankScript(ScriptSetting $changeRankScript = null) {
-        $this->changeRankScript = $changeRankScript;
-    }
-
-    /**
-     * ランク変化したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $changeRankScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withChangeRankScript(ScriptSetting $changeRankScript = null): UpdateNamespaceRequest {
-        $this->setChangeRankScript($changeRankScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting ランクキャップ変化したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $changeRankCapScript;
-
-    /**
-     * ランクキャップ変化したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getChangeRankCapScript(): ?ScriptSetting {
-        return $this->changeRankCapScript;
-    }
-
-    /**
-     * ランクキャップ変化したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $changeRankCapScript ネームスペースを更新
-     */
-    public function setChangeRankCapScript(ScriptSetting $changeRankCapScript = null) {
-        $this->changeRankCapScript = $changeRankCapScript;
-    }
-
-    /**
-     * ランクキャップ変化したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $changeRankCapScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withChangeRankCapScript(ScriptSetting $changeRankCapScript = null): UpdateNamespaceRequest {
-        $this->setChangeRankCapScript($changeRankCapScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting 経験値あふれしたときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $overflowExperienceScript;
-
-    /**
-     * 経験値あふれしたときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getOverflowExperienceScript(): ?ScriptSetting {
-        return $this->overflowExperienceScript;
-    }
-
-    /**
-     * 経験値あふれしたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $overflowExperienceScript ネームスペースを更新
-     */
-    public function setOverflowExperienceScript(ScriptSetting $overflowExperienceScript = null) {
-        $this->overflowExperienceScript = $overflowExperienceScript;
-    }
-
-    /**
-     * 経験値あふれしたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $overflowExperienceScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withOverflowExperienceScript(ScriptSetting $overflowExperienceScript = null): UpdateNamespaceRequest {
-        $this->setOverflowExperienceScript($overflowExperienceScript);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを更新
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getExperienceCapScriptId(): ?string {
+		return $this->experienceCapScriptId;
+	}
+
+	public function setExperienceCapScriptId(?string $experienceCapScriptId) {
+		$this->experienceCapScriptId = $experienceCapScriptId;
+	}
+
+	public function withExperienceCapScriptId(?string $experienceCapScriptId): UpdateNamespaceRequest {
+		$this->experienceCapScriptId = $experienceCapScriptId;
+		return $this;
+	}
+
+	public function getChangeExperienceScript(): ?ScriptSetting {
+		return $this->changeExperienceScript;
+	}
+
+	public function setChangeExperienceScript(?ScriptSetting $changeExperienceScript) {
+		$this->changeExperienceScript = $changeExperienceScript;
+	}
+
+	public function withChangeExperienceScript(?ScriptSetting $changeExperienceScript): UpdateNamespaceRequest {
+		$this->changeExperienceScript = $changeExperienceScript;
+		return $this;
+	}
+
+	public function getChangeRankScript(): ?ScriptSetting {
+		return $this->changeRankScript;
+	}
+
+	public function setChangeRankScript(?ScriptSetting $changeRankScript) {
+		$this->changeRankScript = $changeRankScript;
+	}
+
+	public function withChangeRankScript(?ScriptSetting $changeRankScript): UpdateNamespaceRequest {
+		$this->changeRankScript = $changeRankScript;
+		return $this;
+	}
+
+	public function getChangeRankCapScript(): ?ScriptSetting {
+		return $this->changeRankCapScript;
+	}
+
+	public function setChangeRankCapScript(?ScriptSetting $changeRankCapScript) {
+		$this->changeRankCapScript = $changeRankCapScript;
+	}
+
+	public function withChangeRankCapScript(?ScriptSetting $changeRankCapScript): UpdateNamespaceRequest {
+		$this->changeRankCapScript = $changeRankCapScript;
+		return $this;
+	}
+
+	public function getOverflowExperienceScript(): ?ScriptSetting {
+		return $this->overflowExperienceScript;
+	}
+
+	public function setOverflowExperienceScript(?ScriptSetting $overflowExperienceScript) {
+		$this->overflowExperienceScript = $overflowExperienceScript;
+	}
+
+	public function withOverflowExperienceScript(?ScriptSetting $overflowExperienceScript): UpdateNamespaceRequest {
+		$this->overflowExperienceScript = $overflowExperienceScript;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withExperienceCapScriptId(empty($data['experienceCapScriptId']) ? null : $data['experienceCapScriptId'])
+            ->withChangeExperienceScript(empty($data['changeExperienceScript']) ? null : ScriptSetting::fromJson($data['changeExperienceScript']))
+            ->withChangeRankScript(empty($data['changeRankScript']) ? null : ScriptSetting::fromJson($data['changeRankScript']))
+            ->withChangeRankCapScript(empty($data['changeRankCapScript']) ? null : ScriptSetting::fromJson($data['changeRankCapScript']))
+            ->withOverflowExperienceScript(empty($data['overflowExperienceScript']) ? null : ScriptSetting::fromJson($data['overflowExperienceScript']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "description" => $this->getDescription(),
+            "experienceCapScriptId" => $this->getExperienceCapScriptId(),
+            "changeExperienceScript" => $this->getChangeExperienceScript() !== null ? $this->getChangeExperienceScript()->toJson() : null,
+            "changeRankScript" => $this->getChangeRankScript() !== null ? $this->getChangeRankScript()->toJson() : null,
+            "changeRankCapScript" => $this->getChangeRankCapScript() !== null ? $this->getChangeRankCapScript()->toJson() : null,
+            "overflowExperienceScript" => $this->getOverflowExperienceScript() !== null ? $this->getOverflowExperienceScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): UpdateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

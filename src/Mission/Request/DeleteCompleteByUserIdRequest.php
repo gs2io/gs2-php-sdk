@@ -19,139 +19,68 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 達成状況を削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteCompleteByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 達成状況を削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 達成状況を削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 達成状況を削除
-     * @return DeleteCompleteByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteCompleteByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 達成状況を削除
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 達成状況を削除
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 達成状況を削除
-     * @return DeleteCompleteByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DeleteCompleteByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string ミッショングループ名 */
+    /** @var string */
     private $missionGroupName;
 
-    /**
-     * ミッショングループ名を取得
-     *
-     * @return string|null 達成状況を削除
-     */
-    public function getMissionGroupName(): ?string {
-        return $this->missionGroupName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteCompleteByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DeleteCompleteByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getMissionGroupName(): ?string {
+		return $this->missionGroupName;
+	}
+
+	public function setMissionGroupName(?string $missionGroupName) {
+		$this->missionGroupName = $missionGroupName;
+	}
+
+	public function withMissionGroupName(?string $missionGroupName): DeleteCompleteByUserIdRequest {
+		$this->missionGroupName = $missionGroupName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteCompleteByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteCompleteByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName']);
     }
 
-    /**
-     * ミッショングループ名を設定
-     *
-     * @param string $missionGroupName 達成状況を削除
-     */
-    public function setMissionGroupName(string $missionGroupName = null) {
-        $this->missionGroupName = $missionGroupName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "missionGroupName" => $this->getMissionGroupName(),
+        );
     }
-
-    /**
-     * ミッショングループ名を設定
-     *
-     * @param string $missionGroupName 達成状況を削除
-     * @return DeleteCompleteByUserIdRequest $this
-     */
-    public function withMissionGroupName(string $missionGroupName = null): DeleteCompleteByUserIdRequest {
-        $this->setMissionGroupName($missionGroupName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 達成状況を削除
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 達成状況を削除
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 達成状況を削除
-     * @return DeleteCompleteByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteCompleteByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

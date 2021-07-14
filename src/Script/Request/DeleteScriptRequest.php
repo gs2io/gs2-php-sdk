@@ -19,75 +19,51 @@ namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スクリプトを削除します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteScriptRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スクリプトを削除します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スクリプトを削除します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スクリプトを削除します
-     * @return DeleteScriptRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteScriptRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スクリプト名 */
+    /** @var string */
     private $scriptName;
 
-    /**
-     * スクリプト名を取得
-     *
-     * @return string|null スクリプトを削除します
-     */
-    public function getScriptName(): ?string {
-        return $this->scriptName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteScriptRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getScriptName(): ?string {
+		return $this->scriptName;
+	}
+
+	public function setScriptName(?string $scriptName) {
+		$this->scriptName = $scriptName;
+	}
+
+	public function withScriptName(?string $scriptName): DeleteScriptRequest {
+		$this->scriptName = $scriptName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteScriptRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteScriptRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withScriptName(empty($data['scriptName']) ? null : $data['scriptName']);
     }
 
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $scriptName スクリプトを削除します
-     */
-    public function setScriptName(string $scriptName = null) {
-        $this->scriptName = $scriptName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "scriptName" => $this->getScriptName(),
+        );
     }
-
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $scriptName スクリプトを削除します
-     * @return DeleteScriptRequest $this
-     */
-    public function withScriptName(string $scriptName = null): DeleteScriptRequest {
-        $this->setScriptName($scriptName);
-        return $this;
-    }
-
 }

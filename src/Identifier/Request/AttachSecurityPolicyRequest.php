@@ -19,75 +19,51 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class AttachSecurityPolicyRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
-
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます
-     * @return AttachSecurityPolicyRequest $this
-     */
-    public function withUserName(string $userName = null): AttachSecurityPolicyRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
-    /** @var string 割り当てるセキュリティポリシーのGRN */
+    /** @var string */
     private $securityPolicyId;
 
-    /**
-     * 割り当てるセキュリティポリシーのGRNを取得
-     *
-     * @return string|null 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます
-     */
-    public function getSecurityPolicyId(): ?string {
-        return $this->securityPolicyId;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): AttachSecurityPolicyRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+	public function getSecurityPolicyId(): ?string {
+		return $this->securityPolicyId;
+	}
+
+	public function setSecurityPolicyId(?string $securityPolicyId) {
+		$this->securityPolicyId = $securityPolicyId;
+	}
+
+	public function withSecurityPolicyId(?string $securityPolicyId): AttachSecurityPolicyRequest {
+		$this->securityPolicyId = $securityPolicyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AttachSecurityPolicyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new AttachSecurityPolicyRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName'])
+            ->withSecurityPolicyId(empty($data['securityPolicyId']) ? null : $data['securityPolicyId']);
     }
 
-    /**
-     * 割り当てるセキュリティポリシーのGRNを設定
-     *
-     * @param string $securityPolicyId 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます
-     */
-    public function setSecurityPolicyId(string $securityPolicyId = null) {
-        $this->securityPolicyId = $securityPolicyId;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+            "securityPolicyId" => $this->getSecurityPolicyId(),
+        );
     }
-
-    /**
-     * 割り当てるセキュリティポリシーのGRNを設定
-     *
-     * @param string $securityPolicyId 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます
-     * @return AttachSecurityPolicyRequest $this
-     */
-    public function withSecurityPolicyId(string $securityPolicyId = null): AttachSecurityPolicyRequest {
-        $this->setSecurityPolicyId($securityPolicyId);
-        return $this;
-    }
-
 }

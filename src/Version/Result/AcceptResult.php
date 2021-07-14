@@ -18,38 +18,37 @@
 namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Version\Model\Version;
 use Gs2\Version\Model\AcceptVersion;
 
-/**
- * 現在のバージョンを承認 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AcceptResult implements IResult {
-	/** @var AcceptVersion 承認したバージョン */
-	private $item;
+    /** @var AcceptVersion */
+    private $item;
 
-	/**
-	 * 承認したバージョンを取得
-	 *
-	 * @return AcceptVersion|null 現在のバージョンを承認
-	 */
 	public function getItem(): ?AcceptVersion {
 		return $this->item;
 	}
 
-	/**
-	 * 承認したバージョンを設定
-	 *
-	 * @param AcceptVersion|null $item 現在のバージョンを承認
-	 */
 	public function setItem(?AcceptVersion $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): AcceptResult {
-        $result = new AcceptResult();
-        $result->setItem(isset($data["item"]) ? AcceptVersion::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?AcceptVersion $item): AcceptResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AcceptResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AcceptResult())
+            ->withItem(empty($data['item']) ? null : AcceptVersion::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

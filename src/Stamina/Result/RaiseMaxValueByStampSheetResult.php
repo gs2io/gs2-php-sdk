@@ -19,59 +19,56 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\MaxStaminaTable;
+use Gs2\Stamina\Model\RecoverIntervalTable;
+use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
-/**
- * スタンプシートでスタミナの最大値を加算 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RaiseMaxValueByStampSheetResult implements IResult {
-	/** @var Stamina スタミナ */
-	private $item;
-	/** @var StaminaModel スタミナモデル */
-	private $staminaModel;
+    /** @var Stamina */
+    private $item;
+    /** @var StaminaModel */
+    private $staminaModel;
 
-	/**
-	 * スタミナを取得
-	 *
-	 * @return Stamina|null スタンプシートでスタミナの最大値を加算
-	 */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
-	/**
-	 * スタミナを設定
-	 *
-	 * @param Stamina|null $item スタンプシートでスタミナの最大値を加算
-	 */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタミナモデルを取得
-	 *
-	 * @return StaminaModel|null スタンプシートでスタミナの最大値を加算
-	 */
+	public function withItem(?Stamina $item): RaiseMaxValueByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
-	/**
-	 * スタミナモデルを設定
-	 *
-	 * @param StaminaModel|null $staminaModel スタンプシートでスタミナの最大値を加算
-	 */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
-    public static function fromJson(array $data): RaiseMaxValueByStampSheetResult {
-        $result = new RaiseMaxValueByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
-        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
-        return $result;
+	public function withStaminaModel(?StaminaModel $staminaModel): RaiseMaxValueByStampSheetResult {
+		$this->staminaModel = $staminaModel;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RaiseMaxValueByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RaiseMaxValueByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : Stamina::fromJson($data['item']))
+            ->withStaminaModel(empty($data['staminaModel']) ? null : StaminaModel::fromJson($data['staminaModel']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "staminaModel" => $this->getStaminaModel() !== null ? $this->getStaminaModel()->toJson() : null,
+        );
     }
 }

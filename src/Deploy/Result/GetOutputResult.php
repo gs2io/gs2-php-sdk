@@ -20,36 +20,34 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Output;
 
-/**
- * アウトプットを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetOutputResult implements IResult {
-	/** @var Output アウトプット */
-	private $item;
+    /** @var Output */
+    private $item;
 
-	/**
-	 * アウトプットを取得
-	 *
-	 * @return Output|null アウトプットを取得
-	 */
 	public function getItem(): ?Output {
 		return $this->item;
 	}
 
-	/**
-	 * アウトプットを設定
-	 *
-	 * @param Output|null $item アウトプットを取得
-	 */
 	public function setItem(?Output $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetOutputResult {
-        $result = new GetOutputResult();
-        $result->setItem(isset($data["item"]) ? Output::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Output $item): GetOutputResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetOutputResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetOutputResult())
+            ->withItem(empty($data['item']) ? null : Output::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

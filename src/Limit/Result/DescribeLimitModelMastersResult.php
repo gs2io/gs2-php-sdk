@@ -20,63 +20,61 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\LimitModelMaster;
 
-/**
- * 回数制限の種類マスターの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeLimitModelMastersResult implements IResult {
-	/** @var LimitModelMaster[] 回数制限の種類マスターのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 回数制限の種類マスターのリストを取得
-	 *
-	 * @return LimitModelMaster[]|null 回数制限の種類マスターの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 回数制限の種類マスターのリストを設定
-	 *
-	 * @param LimitModelMaster[]|null $items 回数制限の種類マスターの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null 回数制限の種類マスターの一覧を取得
-	 */
+	public function withItems(?array $items): DescribeLimitModelMastersResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken 回数制限の種類マスターの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeLimitModelMastersResult {
-        $result = new DescribeLimitModelMastersResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return LimitModelMaster::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeLimitModelMastersResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeLimitModelMastersResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeLimitModelMastersResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return LimitModelMaster::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

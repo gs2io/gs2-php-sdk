@@ -19,75 +19,51 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * カテゴリマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCategoryModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null カテゴリマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カテゴリマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カテゴリマスターを取得
-     * @return GetCategoryModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetCategoryModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリモデル名 */
+    /** @var string */
     private $categoryName;
 
-    /**
-     * カテゴリモデル名を取得
-     *
-     * @return string|null カテゴリマスターを取得
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetCategoryModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): GetCategoryModelMasterRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCategoryModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCategoryModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName']);
     }
 
-    /**
-     * カテゴリモデル名を設定
-     *
-     * @param string $categoryName カテゴリマスターを取得
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+        );
     }
-
-    /**
-     * カテゴリモデル名を設定
-     *
-     * @param string $categoryName カテゴリマスターを取得
-     * @return GetCategoryModelMasterRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): GetCategoryModelMasterRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
 }

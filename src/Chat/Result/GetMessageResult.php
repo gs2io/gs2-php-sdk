@@ -20,36 +20,34 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Message;
 
-/**
- * メッセージを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMessageResult implements IResult {
-	/** @var Message メッセージ */
-	private $item;
+    /** @var Message */
+    private $item;
 
-	/**
-	 * メッセージを取得
-	 *
-	 * @return Message|null メッセージを取得
-	 */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
-	/**
-	 * メッセージを設定
-	 *
-	 * @param Message|null $item メッセージを取得
-	 */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetMessageResult {
-        $result = new GetMessageResult();
-        $result->setItem(isset($data["item"]) ? Message::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Message $item): GetMessageResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMessageResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMessageResult())
+            ->withItem(empty($data['item']) ? null : Message::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -19,139 +19,68 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * フォロー のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class FollowRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null フォロー
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォロー
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォロー
-     * @return FollowRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): FollowRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string フォローされるユーザID */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $targetUserId;
 
-    /**
-     * フォローされるユーザIDを取得
-     *
-     * @return string|null フォロー
-     */
-    public function getTargetUserId(): ?string {
-        return $this->targetUserId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): FollowRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): FollowRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getTargetUserId(): ?string {
+		return $this->targetUserId;
+	}
+
+	public function setTargetUserId(?string $targetUserId) {
+		$this->targetUserId = $targetUserId;
+	}
+
+	public function withTargetUserId(?string $targetUserId): FollowRequest {
+		$this->targetUserId = $targetUserId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?FollowRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new FollowRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId']);
     }
 
-    /**
-     * フォローされるユーザIDを設定
-     *
-     * @param string $targetUserId フォロー
-     */
-    public function setTargetUserId(string $targetUserId = null) {
-        $this->targetUserId = $targetUserId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "targetUserId" => $this->getTargetUserId(),
+        );
     }
-
-    /**
-     * フォローされるユーザIDを設定
-     *
-     * @param string $targetUserId フォロー
-     * @return FollowRequest $this
-     */
-    public function withTargetUserId(string $targetUserId = null): FollowRequest {
-        $this->setTargetUserId($targetUserId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null フォロー
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider フォロー
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider フォロー
-     * @return FollowRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): FollowRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return FollowRequest this
-     */
-    public function withAccessToken(string $accessToken): FollowRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

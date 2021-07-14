@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\JobQueue\Request\DescribeNamespacesRequest;
 use Gs2\JobQueue\Result\DescribeNamespacesResult;
 use Gs2\JobQueue\Request\CreateNamespaceRequest;
@@ -480,9 +482,6 @@ class DescribeJobsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -541,9 +540,6 @@ class GetJobByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -609,9 +605,6 @@ class PushByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -670,9 +663,6 @@ class RunTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -728,9 +718,6 @@ class RunByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -791,9 +778,6 @@ class DeleteJobByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -852,9 +836,6 @@ class PushByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -920,9 +901,6 @@ class DescribeDeadLetterJobsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -981,9 +959,6 @@ class GetDeadLetterJobByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1044,9 +1019,6 @@ class DeleteDeadLetterJobByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1070,9 +1042,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1087,9 +1057,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1101,9 +1069,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1118,9 +1084,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1132,9 +1096,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1149,9 +1111,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1163,9 +1123,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1180,9 +1138,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1194,9 +1150,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1211,9 +1165,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1225,9 +1177,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1242,9 +1192,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1256,9 +1204,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ジョブの一覧を取得<br>
-     *
-     * @param DescribeJobsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeJobsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeJobsByUserIdAsync(
@@ -1273,9 +1219,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ジョブの一覧を取得<br>
-     *
-     * @param DescribeJobsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeJobsByUserIdRequest $request
      * @return DescribeJobsByUserIdResult
      */
     public function describeJobsByUserId (
@@ -1287,9 +1231,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ジョブを取得<br>
-     *
-     * @param GetJobByUserIdRequest $request リクエストパラメータ
+     * @param GetJobByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getJobByUserIdAsync(
@@ -1304,9 +1246,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ジョブを取得<br>
-     *
-     * @param GetJobByUserIdRequest $request リクエストパラメータ
+     * @param GetJobByUserIdRequest $request
      * @return GetJobByUserIdResult
      */
     public function getJobByUserId (
@@ -1318,9 +1258,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してジョブを登録<br>
-     *
-     * @param PushByUserIdRequest $request リクエストパラメータ
+     * @param PushByUserIdRequest $request
      * @return PromiseInterface
      */
     public function pushByUserIdAsync(
@@ -1335,9 +1273,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してジョブを登録<br>
-     *
-     * @param PushByUserIdRequest $request リクエストパラメータ
+     * @param PushByUserIdRequest $request
      * @return PushByUserIdResult
      */
     public function pushByUserId (
@@ -1349,9 +1285,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ジョブを実行<br>
-     *
-     * @param RunRequest $request リクエストパラメータ
+     * @param RunRequest $request
      * @return PromiseInterface
      */
     public function runAsync(
@@ -1366,9 +1300,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ジョブを実行<br>
-     *
-     * @param RunRequest $request リクエストパラメータ
+     * @param RunRequest $request
      * @return RunResult
      */
     public function run (
@@ -1380,9 +1312,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してジョブを実行<br>
-     *
-     * @param RunByUserIdRequest $request リクエストパラメータ
+     * @param RunByUserIdRequest $request
      * @return PromiseInterface
      */
     public function runByUserIdAsync(
@@ -1397,9 +1327,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してジョブを実行<br>
-     *
-     * @param RunByUserIdRequest $request リクエストパラメータ
+     * @param RunByUserIdRequest $request
      * @return RunByUserIdResult
      */
     public function runByUserId (
@@ -1411,9 +1339,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ジョブを取得<br>
-     *
-     * @param DeleteJobByUserIdRequest $request リクエストパラメータ
+     * @param DeleteJobByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteJobByUserIdAsync(
@@ -1428,9 +1354,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ジョブを取得<br>
-     *
-     * @param DeleteJobByUserIdRequest $request リクエストパラメータ
+     * @param DeleteJobByUserIdRequest $request
      * @return DeleteJobByUserIdResult
      */
     public function deleteJobByUserId (
@@ -1442,9 +1366,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでジョブを登録<br>
-     *
-     * @param PushByStampSheetRequest $request リクエストパラメータ
+     * @param PushByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function pushByStampSheetAsync(
@@ -1459,9 +1381,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでジョブを登録<br>
-     *
-     * @param PushByStampSheetRequest $request リクエストパラメータ
+     * @param PushByStampSheetRequest $request
      * @return PushByStampSheetResult
      */
     public function pushByStampSheet (
@@ -1473,9 +1393,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * デッドレタージョブの一覧を取得<br>
-     *
-     * @param DescribeDeadLetterJobsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeDeadLetterJobsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeDeadLetterJobsByUserIdAsync(
@@ -1490,9 +1408,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * デッドレタージョブの一覧を取得<br>
-     *
-     * @param DescribeDeadLetterJobsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeDeadLetterJobsByUserIdRequest $request
      * @return DescribeDeadLetterJobsByUserIdResult
      */
     public function describeDeadLetterJobsByUserId (
@@ -1504,9 +1420,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * デッドレタージョブを取得<br>
-     *
-     * @param GetDeadLetterJobByUserIdRequest $request リクエストパラメータ
+     * @param GetDeadLetterJobByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getDeadLetterJobByUserIdAsync(
@@ -1521,9 +1435,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * デッドレタージョブを取得<br>
-     *
-     * @param GetDeadLetterJobByUserIdRequest $request リクエストパラメータ
+     * @param GetDeadLetterJobByUserIdRequest $request
      * @return GetDeadLetterJobByUserIdResult
      */
     public function getDeadLetterJobByUserId (
@@ -1535,9 +1447,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * デッドレタージョブを取得<br>
-     *
-     * @param DeleteDeadLetterJobByUserIdRequest $request リクエストパラメータ
+     * @param DeleteDeadLetterJobByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteDeadLetterJobByUserIdAsync(
@@ -1552,9 +1462,7 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
-     * デッドレタージョブを取得<br>
-     *
-     * @param DeleteDeadLetterJobByUserIdRequest $request リクエストパラメータ
+     * @param DeleteDeadLetterJobByUserIdRequest $request
      * @return DeleteDeadLetterJobByUserIdResult
      */
     public function deleteDeadLetterJobByUserId (

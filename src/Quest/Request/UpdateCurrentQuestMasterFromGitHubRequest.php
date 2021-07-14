@@ -20,75 +20,51 @@ namespace Gs2\Quest\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Quest\Model\GitHubCheckoutSetting;
 
-/**
- * 現在有効なクエストマスターを更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentQuestMasterFromGitHubRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null 現在有効なクエストマスターを更新します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName 現在有効なクエストマスターを更新します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName 現在有効なクエストマスターを更新します
-     * @return UpdateCurrentQuestMasterFromGitHubRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateCurrentQuestMasterFromGitHubRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var GitHubCheckoutSetting GitHubからマスターデータをチェックアウトしてくる設定 */
+    /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
 
-    /**
-     * GitHubからマスターデータをチェックアウトしてくる設定を取得
-     *
-     * @return GitHubCheckoutSetting|null 現在有効なクエストマスターを更新します
-     */
-    public function getCheckoutSetting(): ?GitHubCheckoutSetting {
-        return $this->checkoutSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateCurrentQuestMasterFromGitHubRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
+		return $this->checkoutSetting;
+	}
+
+	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
+		$this->checkoutSetting = $checkoutSetting;
+	}
+
+	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): UpdateCurrentQuestMasterFromGitHubRequest {
+		$this->checkoutSetting = $checkoutSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentQuestMasterFromGitHubRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentQuestMasterFromGitHubRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCheckoutSetting(empty($data['checkoutSetting']) ? null : GitHubCheckoutSetting::fromJson($data['checkoutSetting']));
     }
 
-    /**
-     * GitHubからマスターデータをチェックアウトしてくる設定を設定
-     *
-     * @param GitHubCheckoutSetting $checkoutSetting 現在有効なクエストマスターを更新します
-     */
-    public function setCheckoutSetting(GitHubCheckoutSetting $checkoutSetting = null) {
-        $this->checkoutSetting = $checkoutSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "checkoutSetting" => $this->getCheckoutSetting() !== null ? $this->getCheckoutSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * GitHubからマスターデータをチェックアウトしてくる設定を設定
-     *
-     * @param GitHubCheckoutSetting $checkoutSetting 現在有効なクエストマスターを更新します
-     * @return UpdateCurrentQuestMasterFromGitHubRequest $this
-     */
-    public function withCheckoutSetting(GitHubCheckoutSetting $checkoutSetting = null): UpdateCurrentQuestMasterFromGitHubRequest {
-        $this->setCheckoutSetting($checkoutSetting);
-        return $this;
-    }
-
 }

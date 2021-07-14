@@ -20,36 +20,34 @@ namespace Gs2\Script\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Script\Model\Script;
 
-/**
- * GithHub をデータソースとしてスクリプトを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateScriptFromGitHubResult implements IResult {
-	/** @var Script 更新したスクリプト */
-	private $item;
+    /** @var Script */
+    private $item;
 
-	/**
-	 * 更新したスクリプトを取得
-	 *
-	 * @return Script|null GithHub をデータソースとしてスクリプトを更新します
-	 */
 	public function getItem(): ?Script {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したスクリプトを設定
-	 *
-	 * @param Script|null $item GithHub をデータソースとしてスクリプトを更新します
-	 */
 	public function setItem(?Script $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateScriptFromGitHubResult {
-        $result = new UpdateScriptFromGitHubResult();
-        $result->setItem(isset($data["item"]) ? Script::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Script $item): UpdateScriptFromGitHubResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateScriptFromGitHubResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateScriptFromGitHubResult())
+            ->withItem(empty($data['item']) ? null : Script::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -21,171 +21,102 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Formation\Model\ScriptSetting;
 use Gs2\Formation\Model\LogSetting;
 
-/**
- * ネームスペースを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $name;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withName(string $name = null): CreateNamespaceRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): CreateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var ScriptSetting キャパシティを更新するときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $updateMoldScript;
-
-    /**
-     * キャパシティを更新するときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getUpdateMoldScript(): ?ScriptSetting {
-        return $this->updateMoldScript;
-    }
-
-    /**
-     * キャパシティを更新するときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $updateMoldScript ネームスペースを新規作成
-     */
-    public function setUpdateMoldScript(ScriptSetting $updateMoldScript = null) {
-        $this->updateMoldScript = $updateMoldScript;
-    }
-
-    /**
-     * キャパシティを更新するときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $updateMoldScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withUpdateMoldScript(ScriptSetting $updateMoldScript = null): CreateNamespaceRequest {
-        $this->setUpdateMoldScript($updateMoldScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting フォームを更新するときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $updateFormScript;
-
-    /**
-     * フォームを更新するときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getUpdateFormScript(): ?ScriptSetting {
-        return $this->updateFormScript;
-    }
-
-    /**
-     * フォームを更新するときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $updateFormScript ネームスペースを新規作成
-     */
-    public function setUpdateFormScript(ScriptSetting $updateFormScript = null) {
-        $this->updateFormScript = $updateFormScript;
-    }
-
-    /**
-     * フォームを更新するときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $updateFormScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withUpdateFormScript(ScriptSetting $updateFormScript = null): CreateNamespaceRequest {
-        $this->setUpdateFormScript($updateFormScript);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを新規作成
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateNamespaceRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getUpdateMoldScript(): ?ScriptSetting {
+		return $this->updateMoldScript;
+	}
+
+	public function setUpdateMoldScript(?ScriptSetting $updateMoldScript) {
+		$this->updateMoldScript = $updateMoldScript;
+	}
+
+	public function withUpdateMoldScript(?ScriptSetting $updateMoldScript): CreateNamespaceRequest {
+		$this->updateMoldScript = $updateMoldScript;
+		return $this;
+	}
+
+	public function getUpdateFormScript(): ?ScriptSetting {
+		return $this->updateFormScript;
+	}
+
+	public function setUpdateFormScript(?ScriptSetting $updateFormScript) {
+		$this->updateFormScript = $updateFormScript;
+	}
+
+	public function withUpdateFormScript(?ScriptSetting $updateFormScript): CreateNamespaceRequest {
+		$this->updateFormScript = $updateFormScript;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withUpdateMoldScript(empty($data['updateMoldScript']) ? null : ScriptSetting::fromJson($data['updateMoldScript']))
+            ->withUpdateFormScript(empty($data['updateFormScript']) ? null : ScriptSetting::fromJson($data['updateFormScript']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "updateMoldScript" => $this->getUpdateMoldScript() !== null ? $this->getUpdateMoldScript()->toJson() : null,
+            "updateFormScript" => $this->getUpdateFormScript() !== null ? $this->getUpdateFormScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): CreateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

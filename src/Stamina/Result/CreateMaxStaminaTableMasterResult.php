@@ -20,36 +20,34 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\MaxStaminaTableMaster;
 
-/**
- * スタミナの最大値テーブルマスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateMaxStaminaTableMasterResult implements IResult {
-	/** @var MaxStaminaTableMaster 作成したスタミナの最大値テーブルマスター */
-	private $item;
+    /** @var MaxStaminaTableMaster */
+    private $item;
 
-	/**
-	 * 作成したスタミナの最大値テーブルマスターを取得
-	 *
-	 * @return MaxStaminaTableMaster|null スタミナの最大値テーブルマスターを新規作成
-	 */
 	public function getItem(): ?MaxStaminaTableMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したスタミナの最大値テーブルマスターを設定
-	 *
-	 * @param MaxStaminaTableMaster|null $item スタミナの最大値テーブルマスターを新規作成
-	 */
 	public function setItem(?MaxStaminaTableMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateMaxStaminaTableMasterResult {
-        $result = new CreateMaxStaminaTableMasterResult();
-        $result->setItem(isset($data["item"]) ? MaxStaminaTableMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?MaxStaminaTableMaster $item): CreateMaxStaminaTableMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateMaxStaminaTableMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateMaxStaminaTableMasterResult())
+            ->withItem(empty($data['item']) ? null : MaxStaminaTableMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

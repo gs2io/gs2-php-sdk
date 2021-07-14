@@ -19,75 +19,51 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザを更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateUserRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
-
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null ユーザを更新します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName ユーザを更新します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName ユーザを更新します
-     * @return UpdateUserRequest $this
-     */
-    public function withUserName(string $userName = null): UpdateUserRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
-    /** @var string ユーザの説明 */
+    /** @var string */
     private $description;
 
-    /**
-     * ユーザの説明を取得
-     *
-     * @return string|null ユーザを更新します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): UpdateUserRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateUserRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateUserRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateUserRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName'])
+            ->withDescription(empty($data['description']) ? null : $data['description']);
     }
 
-    /**
-     * ユーザの説明を設定
-     *
-     * @param string $description ユーザを更新します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+            "description" => $this->getDescription(),
+        );
     }
-
-    /**
-     * ユーザの説明を設定
-     *
-     * @param string $description ユーザを更新します
-     * @return UpdateUserRequest $this
-     */
-    public function withDescription(string $description = null): UpdateUserRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
 }

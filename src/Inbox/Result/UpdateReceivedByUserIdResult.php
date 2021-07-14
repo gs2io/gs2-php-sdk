@@ -19,15 +19,17 @@ namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ユーザーIDを指定して受信済みグローバルメッセージ名を削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateReceivedByUserIdResult implements IResult {
 
-    public static function fromJson(array $data): UpdateReceivedByUserIdResult {
-        $result = new UpdateReceivedByUserIdResult();
-        return $result;
+    public static function fromJson(?array $data): ?UpdateReceivedByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateReceivedByUserIdResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

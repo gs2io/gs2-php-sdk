@@ -20,36 +20,34 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\MoldModelMaster;
 
-/**
- * フォームの保存領域マスターを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateMoldModelMasterResult implements IResult {
-	/** @var MoldModelMaster 更新したフォームの保存領域マスター */
-	private $item;
+    /** @var MoldModelMaster */
+    private $item;
 
-	/**
-	 * 更新したフォームの保存領域マスターを取得
-	 *
-	 * @return MoldModelMaster|null フォームの保存領域マスターを更新
-	 */
 	public function getItem(): ?MoldModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したフォームの保存領域マスターを設定
-	 *
-	 * @param MoldModelMaster|null $item フォームの保存領域マスターを更新
-	 */
 	public function setItem(?MoldModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateMoldModelMasterResult {
-        $result = new UpdateMoldModelMasterResult();
-        $result->setItem(isset($data["item"]) ? MoldModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?MoldModelMaster $item): UpdateMoldModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateMoldModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateMoldModelMasterResult())
+            ->withItem(empty($data['item']) ? null : MoldModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

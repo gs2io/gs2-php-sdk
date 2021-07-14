@@ -20,36 +20,34 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\Ballot;
 
-/**
- * 対戦結果を投票します。 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class VoteResult implements IResult {
-	/** @var Ballot 投票用紙 */
-	private $item;
+    /** @var Ballot */
+    private $item;
 
-	/**
-	 * 投票用紙を取得
-	 *
-	 * @return Ballot|null 対戦結果を投票します。
-	 */
 	public function getItem(): ?Ballot {
 		return $this->item;
 	}
 
-	/**
-	 * 投票用紙を設定
-	 *
-	 * @param Ballot|null $item 対戦結果を投票します。
-	 */
 	public function setItem(?Ballot $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): VoteResult {
-        $result = new VoteResult();
-        $result->setItem(isset($data["item"]) ? Ballot::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Ballot $item): VoteResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?VoteResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new VoteResult())
+            ->withItem(empty($data['item']) ? null : Ballot::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

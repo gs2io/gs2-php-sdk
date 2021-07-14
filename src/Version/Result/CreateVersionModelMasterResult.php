@@ -18,38 +18,37 @@
 namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Version\Model\Version;
 use Gs2\Version\Model\VersionModelMaster;
 
-/**
- * バージョンマスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateVersionModelMasterResult implements IResult {
-	/** @var VersionModelMaster 作成したバージョンマスター */
-	private $item;
+    /** @var VersionModelMaster */
+    private $item;
 
-	/**
-	 * 作成したバージョンマスターを取得
-	 *
-	 * @return VersionModelMaster|null バージョンマスターを新規作成
-	 */
 	public function getItem(): ?VersionModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したバージョンマスターを設定
-	 *
-	 * @param VersionModelMaster|null $item バージョンマスターを新規作成
-	 */
 	public function setItem(?VersionModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateVersionModelMasterResult {
-        $result = new CreateVersionModelMasterResult();
-        $result->setItem(isset($data["item"]) ? VersionModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?VersionModelMaster $item): CreateVersionModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateVersionModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateVersionModelMasterResult())
+            ->withItem(empty($data['item']) ? null : VersionModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

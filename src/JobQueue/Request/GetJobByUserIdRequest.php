@@ -19,139 +19,68 @@ namespace Gs2\JobQueue\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ジョブを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetJobByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ジョブを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ジョブを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ジョブを取得
-     * @return GetJobByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetJobByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ジョブを取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ジョブを取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ジョブを取得
-     * @return GetJobByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): GetJobByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string ジョブの名前 */
+    /** @var string */
     private $jobName;
 
-    /**
-     * ジョブの名前を取得
-     *
-     * @return string|null ジョブを取得
-     */
-    public function getJobName(): ?string {
-        return $this->jobName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetJobByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): GetJobByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getJobName(): ?string {
+		return $this->jobName;
+	}
+
+	public function setJobName(?string $jobName) {
+		$this->jobName = $jobName;
+	}
+
+	public function withJobName(?string $jobName): GetJobByUserIdRequest {
+		$this->jobName = $jobName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetJobByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetJobByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withJobName(empty($data['jobName']) ? null : $data['jobName']);
     }
 
-    /**
-     * ジョブの名前を設定
-     *
-     * @param string $jobName ジョブを取得
-     */
-    public function setJobName(string $jobName = null) {
-        $this->jobName = $jobName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "jobName" => $this->getJobName(),
+        );
     }
-
-    /**
-     * ジョブの名前を設定
-     *
-     * @param string $jobName ジョブを取得
-     * @return GetJobByUserIdRequest $this
-     */
-    public function withJobName(string $jobName = null): GetJobByUserIdRequest {
-        $this->setJobName($jobName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ジョブを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ジョブを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ジョブを取得
-     * @return GetJobByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetJobByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

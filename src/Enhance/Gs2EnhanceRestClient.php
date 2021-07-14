@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Enhance\Request\DescribeNamespacesRequest;
 use Gs2\Enhance\Result\DescribeNamespacesResult;
 use Gs2\Enhance\Request\CreateNamespaceRequest;
@@ -1014,9 +1016,6 @@ class DirectEnhanceTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1093,9 +1092,6 @@ class DirectEnhanceByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1154,9 +1150,6 @@ class DirectEnhanceByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1223,9 +1216,6 @@ class DescribeProgressesByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1300,9 +1290,6 @@ class CreateProgressByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1363,9 +1350,6 @@ class GetProgressTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1423,9 +1407,6 @@ class GetProgressByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1508,9 +1489,6 @@ class StartTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1590,9 +1568,6 @@ class StartByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1659,9 +1634,6 @@ class EndTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1726,9 +1698,6 @@ class EndByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1789,9 +1758,6 @@ class DeleteProgressTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1849,9 +1815,6 @@ class DeleteProgressByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1912,9 +1875,6 @@ class CreateProgressByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1973,9 +1933,6 @@ class DeleteProgressByStampTaskTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2230,9 +2187,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2247,9 +2202,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2261,9 +2214,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2278,9 +2229,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2292,9 +2241,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2309,9 +2256,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2323,9 +2268,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2340,9 +2283,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2354,9 +2295,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2371,9 +2310,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2385,9 +2322,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2402,9 +2337,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2416,9 +2349,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートモデルの一覧を取得<br>
-     *
-     * @param DescribeRateModelsRequest $request リクエストパラメータ
+     * @param DescribeRateModelsRequest $request
      * @return PromiseInterface
      */
     public function describeRateModelsAsync(
@@ -2433,9 +2364,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートモデルの一覧を取得<br>
-     *
-     * @param DescribeRateModelsRequest $request リクエストパラメータ
+     * @param DescribeRateModelsRequest $request
      * @return DescribeRateModelsResult
      */
     public function describeRateModels (
@@ -2447,9 +2376,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートモデルを取得<br>
-     *
-     * @param GetRateModelRequest $request リクエストパラメータ
+     * @param GetRateModelRequest $request
      * @return PromiseInterface
      */
     public function getRateModelAsync(
@@ -2464,9 +2391,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートモデルを取得<br>
-     *
-     * @param GetRateModelRequest $request リクエストパラメータ
+     * @param GetRateModelRequest $request
      * @return GetRateModelResult
      */
     public function getRateModel (
@@ -2478,9 +2403,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターの一覧を取得<br>
-     *
-     * @param DescribeRateModelMastersRequest $request リクエストパラメータ
+     * @param DescribeRateModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeRateModelMastersAsync(
@@ -2495,9 +2418,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターの一覧を取得<br>
-     *
-     * @param DescribeRateModelMastersRequest $request リクエストパラメータ
+     * @param DescribeRateModelMastersRequest $request
      * @return DescribeRateModelMastersResult
      */
     public function describeRateModelMasters (
@@ -2509,9 +2430,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターを新規作成<br>
-     *
-     * @param CreateRateModelMasterRequest $request リクエストパラメータ
+     * @param CreateRateModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createRateModelMasterAsync(
@@ -2526,9 +2445,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターを新規作成<br>
-     *
-     * @param CreateRateModelMasterRequest $request リクエストパラメータ
+     * @param CreateRateModelMasterRequest $request
      * @return CreateRateModelMasterResult
      */
     public function createRateModelMaster (
@@ -2540,9 +2457,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターを取得<br>
-     *
-     * @param GetRateModelMasterRequest $request リクエストパラメータ
+     * @param GetRateModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getRateModelMasterAsync(
@@ -2557,9 +2472,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターを取得<br>
-     *
-     * @param GetRateModelMasterRequest $request リクエストパラメータ
+     * @param GetRateModelMasterRequest $request
      * @return GetRateModelMasterResult
      */
     public function getRateModelMaster (
@@ -2571,9 +2484,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターを更新<br>
-     *
-     * @param UpdateRateModelMasterRequest $request リクエストパラメータ
+     * @param UpdateRateModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateRateModelMasterAsync(
@@ -2588,9 +2499,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターを更新<br>
-     *
-     * @param UpdateRateModelMasterRequest $request リクエストパラメータ
+     * @param UpdateRateModelMasterRequest $request
      * @return UpdateRateModelMasterResult
      */
     public function updateRateModelMaster (
@@ -2602,9 +2511,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターを削除<br>
-     *
-     * @param DeleteRateModelMasterRequest $request リクエストパラメータ
+     * @param DeleteRateModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteRateModelMasterAsync(
@@ -2619,9 +2526,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化レートマスターを削除<br>
-     *
-     * @param DeleteRateModelMasterRequest $request リクエストパラメータ
+     * @param DeleteRateModelMasterRequest $request
      * @return DeleteRateModelMasterResult
      */
     public function deleteRateModelMaster (
@@ -2633,17 +2538,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化を実行<br>
-     *   <br>
-     *   このAPIは実行速度を最適化する代わりにセキュリティ的に課題を抱えています。<br>
-     *   <br>
-     *   スタンプシートの発行と同時に「成功」「大成功」を表現するためのボーナスレートも応答していますが、<br>
-     *   それによって、スタンプシートを発行だけして実行しないことで、選別が可能となっています。<br>
-     *   選別を出来ないようにするには、Progress にある Start / End APIを利用することで、<br>
-     *   Start を呼び出したタイミングで強化素材を消費し、ボーナスレートを確定し<br>
-     *   End を呼び出したタイミングで経験値を得るためのスタンプシートを発行するようにすることができます。<br>
-     *
-     * @param DirectEnhanceRequest $request リクエストパラメータ
+     * @param DirectEnhanceRequest $request
      * @return PromiseInterface
      */
     public function directEnhanceAsync(
@@ -2658,17 +2553,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化を実行<br>
-     *   <br>
-     *   このAPIは実行速度を最適化する代わりにセキュリティ的に課題を抱えています。<br>
-     *   <br>
-     *   スタンプシートの発行と同時に「成功」「大成功」を表現するためのボーナスレートも応答していますが、<br>
-     *   それによって、スタンプシートを発行だけして実行しないことで、選別が可能となっています。<br>
-     *   選別を出来ないようにするには、Progress にある Start / End APIを利用することで、<br>
-     *   Start を呼び出したタイミングで強化素材を消費し、ボーナスレートを確定し<br>
-     *   End を呼び出したタイミングで経験値を得るためのスタンプシートを発行するようにすることができます。<br>
-     *
-     * @param DirectEnhanceRequest $request リクエストパラメータ
+     * @param DirectEnhanceRequest $request
      * @return DirectEnhanceResult
      */
     public function directEnhance (
@@ -2680,17 +2565,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化を実行<br>
-     *   <br>
-     *   このAPIは実行速度を最適化する代わりにセキュリティ的に課題を抱えています。<br>
-     *   <br>
-     *   スタンプシートの発行と同時に「成功」「大成功」を表現するためのボーナスレートも応答していますが、<br>
-     *   それによって、スタンプシートを発行だけして実行しないことで、選別が可能となっています。<br>
-     *   選別を出来ないようにするには、Progress にある Start / End APIを利用することで、<br>
-     *   Start を呼び出したタイミングで強化素材を消費し、ボーナスレートを確定し<br>
-     *   End を呼び出したタイミングで経験値を得るためのスタンプシートを発行するようにすることができます。<br>
-     *
-     * @param DirectEnhanceByUserIdRequest $request リクエストパラメータ
+     * @param DirectEnhanceByUserIdRequest $request
      * @return PromiseInterface
      */
     public function directEnhanceByUserIdAsync(
@@ -2705,17 +2580,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化を実行<br>
-     *   <br>
-     *   このAPIは実行速度を最適化する代わりにセキュリティ的に課題を抱えています。<br>
-     *   <br>
-     *   スタンプシートの発行と同時に「成功」「大成功」を表現するためのボーナスレートも応答していますが、<br>
-     *   それによって、スタンプシートを発行だけして実行しないことで、選別が可能となっています。<br>
-     *   選別を出来ないようにするには、Progress にある Start / End APIを利用することで、<br>
-     *   Start を呼び出したタイミングで強化素材を消費し、ボーナスレートを確定し<br>
-     *   End を呼び出したタイミングで経験値を得るためのスタンプシートを発行するようにすることができます。<br>
-     *
-     * @param DirectEnhanceByUserIdRequest $request リクエストパラメータ
+     * @param DirectEnhanceByUserIdRequest $request
      * @return DirectEnhanceByUserIdResult
      */
     public function directEnhanceByUserId (
@@ -2727,9 +2592,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートで強化を実行<br>
-     *
-     * @param DirectEnhanceByStampSheetRequest $request リクエストパラメータ
+     * @param DirectEnhanceByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function directEnhanceByStampSheetAsync(
@@ -2744,9 +2607,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートで強化を実行<br>
-     *
-     * @param DirectEnhanceByStampSheetRequest $request リクエストパラメータ
+     * @param DirectEnhanceByStampSheetRequest $request
      * @return DirectEnhanceByStampSheetResult
      */
     public function directEnhanceByStampSheet (
@@ -2758,9 +2619,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化実行の一覧を取得<br>
-     *
-     * @param DescribeProgressesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeProgressesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeProgressesByUserIdAsync(
@@ -2775,9 +2634,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化実行の一覧を取得<br>
-     *
-     * @param DescribeProgressesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeProgressesByUserIdRequest $request
      * @return DescribeProgressesByUserIdResult
      */
     public function describeProgressesByUserId (
@@ -2789,9 +2646,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化実行を作成<br>
-     *
-     * @param CreateProgressByUserIdRequest $request リクエストパラメータ
+     * @param CreateProgressByUserIdRequest $request
      * @return PromiseInterface
      */
     public function createProgressByUserIdAsync(
@@ -2806,9 +2661,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化実行を作成<br>
-     *
-     * @param CreateProgressByUserIdRequest $request リクエストパラメータ
+     * @param CreateProgressByUserIdRequest $request
      * @return CreateProgressByUserIdResult
      */
     public function createProgressByUserId (
@@ -2820,9 +2673,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化実行を取得<br>
-     *
-     * @param GetProgressRequest $request リクエストパラメータ
+     * @param GetProgressRequest $request
      * @return PromiseInterface
      */
     public function getProgressAsync(
@@ -2837,9 +2688,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化実行を取得<br>
-     *
-     * @param GetProgressRequest $request リクエストパラメータ
+     * @param GetProgressRequest $request
      * @return GetProgressResult
      */
     public function getProgress (
@@ -2851,9 +2700,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化実行を取得<br>
-     *
-     * @param GetProgressByUserIdRequest $request リクエストパラメータ
+     * @param GetProgressByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getProgressByUserIdAsync(
@@ -2868,9 +2715,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化実行を取得<br>
-     *
-     * @param GetProgressByUserIdRequest $request リクエストパラメータ
+     * @param GetProgressByUserIdRequest $request
      * @return GetProgressByUserIdResult
      */
     public function getProgressByUserId (
@@ -2882,9 +2727,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化を開始<br>
-     *
-     * @param StartRequest $request リクエストパラメータ
+     * @param StartRequest $request
      * @return PromiseInterface
      */
     public function startAsync(
@@ -2899,9 +2742,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化を開始<br>
-     *
-     * @param StartRequest $request リクエストパラメータ
+     * @param StartRequest $request
      * @return StartResult
      */
     public function start (
@@ -2913,9 +2754,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化を開始<br>
-     *
-     * @param StartByUserIdRequest $request リクエストパラメータ
+     * @param StartByUserIdRequest $request
      * @return PromiseInterface
      */
     public function startByUserIdAsync(
@@ -2930,9 +2769,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化を開始<br>
-     *
-     * @param StartByUserIdRequest $request リクエストパラメータ
+     * @param StartByUserIdRequest $request
      * @return StartByUserIdResult
      */
     public function startByUserId (
@@ -2944,9 +2781,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化を完了<br>
-     *
-     * @param EndRequest $request リクエストパラメータ
+     * @param EndRequest $request
      * @return PromiseInterface
      */
     public function endAsync(
@@ -2961,9 +2796,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化を完了<br>
-     *
-     * @param EndRequest $request リクエストパラメータ
+     * @param EndRequest $request
      * @return EndResult
      */
     public function end (
@@ -2975,12 +2808,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化を完了<br>
-     *   <br>
-     *   開始時に受け取った強化において入手可能な報酬とその数量の"最大値"のうち、強化内で実際に入手した報酬を rewards で報告します。<br>
-     *   isComplete には強化をクリアできたかを報告します。強化に失敗した場合、rewards の値は無視して強化に設定された失敗した場合の報酬が付与されます。<br>
-     *
-     * @param EndByUserIdRequest $request リクエストパラメータ
+     * @param EndByUserIdRequest $request
      * @return PromiseInterface
      */
     public function endByUserIdAsync(
@@ -2995,12 +2823,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化を完了<br>
-     *   <br>
-     *   開始時に受け取った強化において入手可能な報酬とその数量の"最大値"のうち、強化内で実際に入手した報酬を rewards で報告します。<br>
-     *   isComplete には強化をクリアできたかを報告します。強化に失敗した場合、rewards の値は無視して強化に設定された失敗した場合の報酬が付与されます。<br>
-     *
-     * @param EndByUserIdRequest $request リクエストパラメータ
+     * @param EndByUserIdRequest $request
      * @return EndByUserIdResult
      */
     public function endByUserId (
@@ -3012,9 +2835,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化実行を取得<br>
-     *
-     * @param DeleteProgressRequest $request リクエストパラメータ
+     * @param DeleteProgressRequest $request
      * @return PromiseInterface
      */
     public function deleteProgressAsync(
@@ -3029,9 +2850,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 強化実行を取得<br>
-     *
-     * @param DeleteProgressRequest $request リクエストパラメータ
+     * @param DeleteProgressRequest $request
      * @return DeleteProgressResult
      */
     public function deleteProgress (
@@ -3043,9 +2862,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化実行を削除<br>
-     *
-     * @param DeleteProgressByUserIdRequest $request リクエストパラメータ
+     * @param DeleteProgressByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteProgressByUserIdAsync(
@@ -3060,9 +2877,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して強化実行を削除<br>
-     *
-     * @param DeleteProgressByUserIdRequest $request リクエストパラメータ
+     * @param DeleteProgressByUserIdRequest $request
      * @return DeleteProgressByUserIdResult
      */
     public function deleteProgressByUserId (
@@ -3074,9 +2889,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートで強化を開始<br>
-     *
-     * @param CreateProgressByStampSheetRequest $request リクエストパラメータ
+     * @param CreateProgressByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function createProgressByStampSheetAsync(
@@ -3091,9 +2904,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートで強化を開始<br>
-     *
-     * @param CreateProgressByStampSheetRequest $request リクエストパラメータ
+     * @param CreateProgressByStampSheetRequest $request
      * @return CreateProgressByStampSheetResult
      */
     public function createProgressByStampSheet (
@@ -3105,9 +2916,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクで 強化実行 を削除<br>
-     *
-     * @param DeleteProgressByStampTaskRequest $request リクエストパラメータ
+     * @param DeleteProgressByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function deleteProgressByStampTaskAsync(
@@ -3122,9 +2931,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクで 強化実行 を削除<br>
-     *
-     * @param DeleteProgressByStampTaskRequest $request リクエストパラメータ
+     * @param DeleteProgressByStampTaskRequest $request
      * @return DeleteProgressByStampTaskResult
      */
     public function deleteProgressByStampTask (
@@ -3136,9 +2943,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な強化レート設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -3153,9 +2958,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な強化レート設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -3167,9 +2970,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な強化レート設定を取得します<br>
-     *
-     * @param GetCurrentRateMasterRequest $request リクエストパラメータ
+     * @param GetCurrentRateMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentRateMasterAsync(
@@ -3184,9 +2985,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な強化レート設定を取得します<br>
-     *
-     * @param GetCurrentRateMasterRequest $request リクエストパラメータ
+     * @param GetCurrentRateMasterRequest $request
      * @return GetCurrentRateMasterResult
      */
     public function getCurrentRateMaster (
@@ -3198,9 +2997,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な強化レート設定を更新します<br>
-     *
-     * @param UpdateCurrentRateMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentRateMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentRateMasterAsync(
@@ -3215,9 +3012,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な強化レート設定を更新します<br>
-     *
-     * @param UpdateCurrentRateMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentRateMasterRequest $request
      * @return UpdateCurrentRateMasterResult
      */
     public function updateCurrentRateMaster (
@@ -3229,9 +3024,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な強化レート設定を更新します<br>
-     *
-     * @param UpdateCurrentRateMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentRateMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentRateMasterFromGitHubAsync(
@@ -3246,9 +3039,7 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な強化レート設定を更新します<br>
-     *
-     * @param UpdateCurrentRateMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentRateMasterFromGitHubRequest $request
      * @return UpdateCurrentRateMasterFromGitHubResult
      */
     public function updateCurrentRateMasterFromGitHub (

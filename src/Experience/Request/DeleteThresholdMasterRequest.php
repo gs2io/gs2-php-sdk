@@ -19,75 +19,51 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ランクアップ閾値マスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteThresholdMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ランクアップ閾値マスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ランクアップ閾値マスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ランクアップ閾値マスターを削除
-     * @return DeleteThresholdMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteThresholdMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ランクアップ閾値名 */
+    /** @var string */
     private $thresholdName;
 
-    /**
-     * ランクアップ閾値名を取得
-     *
-     * @return string|null ランクアップ閾値マスターを削除
-     */
-    public function getThresholdName(): ?string {
-        return $this->thresholdName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteThresholdMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getThresholdName(): ?string {
+		return $this->thresholdName;
+	}
+
+	public function setThresholdName(?string $thresholdName) {
+		$this->thresholdName = $thresholdName;
+	}
+
+	public function withThresholdName(?string $thresholdName): DeleteThresholdMasterRequest {
+		$this->thresholdName = $thresholdName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteThresholdMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteThresholdMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withThresholdName(empty($data['thresholdName']) ? null : $data['thresholdName']);
     }
 
-    /**
-     * ランクアップ閾値名を設定
-     *
-     * @param string $thresholdName ランクアップ閾値マスターを削除
-     */
-    public function setThresholdName(string $thresholdName = null) {
-        $this->thresholdName = $thresholdName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "thresholdName" => $this->getThresholdName(),
+        );
     }
-
-    /**
-     * ランクアップ閾値名を設定
-     *
-     * @param string $thresholdName ランクアップ閾値マスターを削除
-     * @return DeleteThresholdMasterRequest $this
-     */
-    public function withThresholdName(string $thresholdName = null): DeleteThresholdMasterRequest {
-        $this->setThresholdName($thresholdName);
-        return $this;
-    }
-
 }

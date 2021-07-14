@@ -20,36 +20,34 @@ namespace Gs2\Script\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Script\Model\Script;
 
-/**
- * スクリプトを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateScriptResult implements IResult {
-	/** @var Script 更新したスクリプト */
-	private $item;
+    /** @var Script */
+    private $item;
 
-	/**
-	 * 更新したスクリプトを取得
-	 *
-	 * @return Script|null スクリプトを更新します
-	 */
 	public function getItem(): ?Script {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したスクリプトを設定
-	 *
-	 * @param Script|null $item スクリプトを更新します
-	 */
 	public function setItem(?Script $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateScriptResult {
-        $result = new UpdateScriptResult();
-        $result->setItem(isset($data["item"]) ? Script::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Script $item): UpdateScriptResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateScriptResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateScriptResult())
+            ->withItem(empty($data['item']) ? null : Script::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

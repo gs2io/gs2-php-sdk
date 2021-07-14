@@ -18,38 +18,38 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\AcquireAction;
+use Gs2\Mission\Model\MissionTaskModel;
 use Gs2\Mission\Model\MissionGroupModel;
 
-/**
- * ミッショングループを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMissionGroupModelResult implements IResult {
-	/** @var MissionGroupModel ミッショングループ */
-	private $item;
+    /** @var MissionGroupModel */
+    private $item;
 
-	/**
-	 * ミッショングループを取得
-	 *
-	 * @return MissionGroupModel|null ミッショングループを取得
-	 */
 	public function getItem(): ?MissionGroupModel {
 		return $this->item;
 	}
 
-	/**
-	 * ミッショングループを設定
-	 *
-	 * @param MissionGroupModel|null $item ミッショングループを取得
-	 */
 	public function setItem(?MissionGroupModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetMissionGroupModelResult {
-        $result = new GetMissionGroupModelResult();
-        $result->setItem(isset($data["item"]) ? MissionGroupModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?MissionGroupModel $item): GetMissionGroupModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMissionGroupModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMissionGroupModelResult())
+            ->withItem(empty($data['item']) ? null : MissionGroupModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

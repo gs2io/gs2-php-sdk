@@ -19,358 +19,219 @@ namespace Gs2\Matchmaking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ギャザリング
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Gathering implements IModel {
 	/**
-     * @var string ギャザリング
+     * @var string
 	 */
-	protected $gatheringId;
-
+	private $gatheringId;
 	/**
-	 * ギャザリングを取得
-	 *
-	 * @return string|null ギャザリング
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var array
+	 */
+	private $attributeRanges;
+	/**
+     * @var array
+	 */
+	private $capacityOfRoles;
+	/**
+     * @var array
+	 */
+	private $allowUserIds;
+	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
+     * @var int
+	 */
+	private $expiresAt;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getGatheringId(): ?string {
 		return $this->gatheringId;
 	}
 
-	/**
-	 * ギャザリングを設定
-	 *
-	 * @param string|null $gatheringId ギャザリング
-	 */
 	public function setGatheringId(?string $gatheringId) {
 		$this->gatheringId = $gatheringId;
 	}
 
-	/**
-	 * ギャザリングを設定
-	 *
-	 * @param string|null $gatheringId ギャザリング
-	 * @return Gathering $this
-	 */
 	public function withGatheringId(?string $gatheringId): Gathering {
 		$this->gatheringId = $gatheringId;
 		return $this;
 	}
-	/**
-     * @var string ギャザリング名
-	 */
-	protected $name;
 
-	/**
-	 * ギャザリング名を取得
-	 *
-	 * @return string|null ギャザリング名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * ギャザリング名を設定
-	 *
-	 * @param string|null $name ギャザリング名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * ギャザリング名を設定
-	 *
-	 * @param string|null $name ギャザリング名
-	 * @return Gathering $this
-	 */
 	public function withName(?string $name): Gathering {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var AttributeRange[] 募集条件
-	 */
-	protected $attributeRanges;
 
-	/**
-	 * 募集条件を取得
-	 *
-	 * @return AttributeRange[]|null 募集条件
-	 */
 	public function getAttributeRanges(): ?array {
 		return $this->attributeRanges;
 	}
 
-	/**
-	 * 募集条件を設定
-	 *
-	 * @param AttributeRange[]|null $attributeRanges 募集条件
-	 */
 	public function setAttributeRanges(?array $attributeRanges) {
 		$this->attributeRanges = $attributeRanges;
 	}
 
-	/**
-	 * 募集条件を設定
-	 *
-	 * @param AttributeRange[]|null $attributeRanges 募集条件
-	 * @return Gathering $this
-	 */
 	public function withAttributeRanges(?array $attributeRanges): Gathering {
 		$this->attributeRanges = $attributeRanges;
 		return $this;
 	}
-	/**
-     * @var CapacityOfRole[] 参加者
-	 */
-	protected $capacityOfRoles;
 
-	/**
-	 * 参加者を取得
-	 *
-	 * @return CapacityOfRole[]|null 参加者
-	 */
 	public function getCapacityOfRoles(): ?array {
 		return $this->capacityOfRoles;
 	}
 
-	/**
-	 * 参加者を設定
-	 *
-	 * @param CapacityOfRole[]|null $capacityOfRoles 参加者
-	 */
 	public function setCapacityOfRoles(?array $capacityOfRoles) {
 		$this->capacityOfRoles = $capacityOfRoles;
 	}
 
-	/**
-	 * 参加者を設定
-	 *
-	 * @param CapacityOfRole[]|null $capacityOfRoles 参加者
-	 * @return Gathering $this
-	 */
 	public function withCapacityOfRoles(?array $capacityOfRoles): Gathering {
 		$this->capacityOfRoles = $capacityOfRoles;
 		return $this;
 	}
-	/**
-     * @var string[] 参加を許可するユーザIDリスト
-	 */
-	protected $allowUserIds;
 
-	/**
-	 * 参加を許可するユーザIDリストを取得
-	 *
-	 * @return string[]|null 参加を許可するユーザIDリスト
-	 */
 	public function getAllowUserIds(): ?array {
 		return $this->allowUserIds;
 	}
 
-	/**
-	 * 参加を許可するユーザIDリストを設定
-	 *
-	 * @param string[]|null $allowUserIds 参加を許可するユーザIDリスト
-	 */
 	public function setAllowUserIds(?array $allowUserIds) {
 		$this->allowUserIds = $allowUserIds;
 	}
 
-	/**
-	 * 参加を許可するユーザIDリストを設定
-	 *
-	 * @param string[]|null $allowUserIds 参加を許可するユーザIDリスト
-	 * @return Gathering $this
-	 */
 	public function withAllowUserIds(?array $allowUserIds): Gathering {
 		$this->allowUserIds = $allowUserIds;
 		return $this;
 	}
-	/**
-     * @var string メタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * メタデータを取得
-	 *
-	 * @return string|null メタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 * @return Gathering $this
-	 */
 	public function withMetadata(?string $metadata): Gathering {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var int ギャザリングの有効期限
-	 */
-	protected $expiresAt;
 
-	/**
-	 * ギャザリングの有効期限を取得
-	 *
-	 * @return int|null ギャザリングの有効期限
-	 */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
 
-	/**
-	 * ギャザリングの有効期限を設定
-	 *
-	 * @param int|null $expiresAt ギャザリングの有効期限
-	 */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
 
-	/**
-	 * ギャザリングの有効期限を設定
-	 *
-	 * @param int|null $expiresAt ギャザリングの有効期限
-	 * @return Gathering $this
-	 */
 	public function withExpiresAt(?int $expiresAt): Gathering {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return Gathering $this
-	 */
 	public function withCreatedAt(?int $createdAt): Gathering {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return Gathering $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): Gathering {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "gatheringId" => $this->gatheringId,
-            "name" => $this->name,
-            "attributeRanges" => array_map(
-                function (AttributeRange $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?Gathering {
+        if ($data === null) {
+            return null;
+        }
+        return (new Gathering())
+            ->withGatheringId(empty($data['gatheringId']) ? null : $data['gatheringId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withAttributeRanges(array_map(
+                function ($item) {
+                    return AttributeRange::fromJson($item);
                 },
-                $this->attributeRanges == null ? [] : $this->attributeRanges
-            ),
-            "capacityOfRoles" => array_map(
-                function (CapacityOfRole $v) {
-                    return $v->toJson();
+                array_key_exists('attributeRanges', $data) && $data['attributeRanges'] !== null ? $data['attributeRanges'] : []
+            ))
+            ->withCapacityOfRoles(array_map(
+                function ($item) {
+                    return CapacityOfRole::fromJson($item);
                 },
-                $this->capacityOfRoles == null ? [] : $this->capacityOfRoles
-            ),
-            "allowUserIds" => $this->allowUserIds,
-            "metadata" => $this->metadata,
-            "expiresAt" => $this->expiresAt,
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+                array_key_exists('capacityOfRoles', $data) && $data['capacityOfRoles'] !== null ? $data['capacityOfRoles'] : []
+            ))
+            ->withAllowUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+            ))
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt'])
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): Gathering {
-        $model = new Gathering();
-        $model->setGatheringId(isset($data["gatheringId"]) ? $data["gatheringId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setAttributeRanges(array_map(
-                function ($v) {
-                    return AttributeRange::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "gatheringId" => $this->getGatheringId(),
+            "name" => $this->getName(),
+            "attributeRanges" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["attributeRanges"]) ? $data["attributeRanges"] : []
-            )
-        );
-        $model->setCapacityOfRoles(array_map(
-                function ($v) {
-                    return CapacityOfRole::fromJson($v);
+                $this->getAttributeRanges() !== null && $this->getAttributeRanges() !== null ? $this->getAttributeRanges() : []
+            ),
+            "capacityOfRoles" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["capacityOfRoles"]) ? $data["capacityOfRoles"] : []
-            )
+                $this->getCapacityOfRoles() !== null && $this->getCapacityOfRoles() !== null ? $this->getCapacityOfRoles() : []
+            ),
+            "allowUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+            ),
+            "metadata" => $this->getMetadata(),
+            "expiresAt" => $this->getExpiresAt(),
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
         );
-        $model->setAllowUserIds(isset($data["allowUserIds"]) ? $data["allowUserIds"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setExpiresAt(isset($data["expiresAt"]) ? $data["expiresAt"] : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
     }
 }

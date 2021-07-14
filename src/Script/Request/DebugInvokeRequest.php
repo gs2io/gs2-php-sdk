@@ -19,75 +19,51 @@ namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スクリプトを実行します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DebugInvokeRequest extends Gs2BasicRequest {
-
-    /** @var string スクリプト */
+    /** @var string */
     private $script;
-
-    /**
-     * スクリプトを取得
-     *
-     * @return string|null スクリプトを実行します
-     */
-    public function getScript(): ?string {
-        return $this->script;
-    }
-
-    /**
-     * スクリプトを設定
-     *
-     * @param string $script スクリプトを実行します
-     */
-    public function setScript(string $script = null) {
-        $this->script = $script;
-    }
-
-    /**
-     * スクリプトを設定
-     *
-     * @param string $script スクリプトを実行します
-     * @return DebugInvokeRequest $this
-     */
-    public function withScript(string $script = null): DebugInvokeRequest {
-        $this->setScript($script);
-        return $this;
-    }
-
-    /** @var string None */
+    /** @var string */
     private $args;
 
-    /**
-     * Noneを取得
-     *
-     * @return string|null スクリプトを実行します
-     */
-    public function getArgs(): ?string {
-        return $this->args;
+	public function getScript(): ?string {
+		return $this->script;
+	}
+
+	public function setScript(?string $script) {
+		$this->script = $script;
+	}
+
+	public function withScript(?string $script): DebugInvokeRequest {
+		$this->script = $script;
+		return $this;
+	}
+
+	public function getArgs(): ?string {
+		return $this->args;
+	}
+
+	public function setArgs(?string $args) {
+		$this->args = $args;
+	}
+
+	public function withArgs(?string $args): DebugInvokeRequest {
+		$this->args = $args;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DebugInvokeRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DebugInvokeRequest())
+            ->withScript(empty($data['script']) ? null : $data['script'])
+            ->withArgs(empty($data['args']) ? null : $data['args']);
     }
 
-    /**
-     * Noneを設定
-     *
-     * @param string $args スクリプトを実行します
-     */
-    public function setArgs(string $args = null) {
-        $this->args = $args;
+    public function toJson(): array {
+        return array(
+            "script" => $this->getScript(),
+            "args" => $this->getArgs(),
+        );
     }
-
-    /**
-     * Noneを設定
-     *
-     * @param string $args スクリプトを実行します
-     * @return DebugInvokeRequest $this
-     */
-    public function withArgs(string $args = null): DebugInvokeRequest {
-        $this->setArgs($args);
-        return $this;
-    }
-
 }

@@ -19,15 +19,17 @@ namespace Gs2\Deploy\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * テンプレートを検証 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ValidateResult implements IResult {
 
-    public static function fromJson(array $data): ValidateResult {
-        $result = new ValidateResult();
-        return $result;
+    public static function fromJson(?array $data): ?ValidateResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ValidateResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

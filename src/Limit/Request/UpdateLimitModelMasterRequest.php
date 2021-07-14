@@ -19,267 +19,153 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 回数制限の種類マスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateLimitModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 回数制限の種類マスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 回数制限の種類マスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 回数制限の種類マスターを更新
-     * @return UpdateLimitModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateLimitModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 回数制限の種類名 */
+    /** @var string */
     private $limitName;
-
-    /**
-     * 回数制限の種類名を取得
-     *
-     * @return string|null 回数制限の種類マスターを更新
-     */
-    public function getLimitName(): ?string {
-        return $this->limitName;
-    }
-
-    /**
-     * 回数制限の種類名を設定
-     *
-     * @param string $limitName 回数制限の種類マスターを更新
-     */
-    public function setLimitName(string $limitName = null) {
-        $this->limitName = $limitName;
-    }
-
-    /**
-     * 回数制限の種類名を設定
-     *
-     * @param string $limitName 回数制限の種類マスターを更新
-     * @return UpdateLimitModelMasterRequest $this
-     */
-    public function withLimitName(string $limitName = null): UpdateLimitModelMasterRequest {
-        $this->setLimitName($limitName);
-        return $this;
-    }
-
-    /** @var string 回数制限の種類マスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * 回数制限の種類マスターの説明を取得
-     *
-     * @return string|null 回数制限の種類マスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 回数制限の種類マスターの説明を設定
-     *
-     * @param string $description 回数制限の種類マスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 回数制限の種類マスターの説明を設定
-     *
-     * @param string $description 回数制限の種類マスターを更新
-     * @return UpdateLimitModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateLimitModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 回数制限の種類のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * 回数制限の種類のメタデータを取得
-     *
-     * @return string|null 回数制限の種類マスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * 回数制限の種類のメタデータを設定
-     *
-     * @param string $metadata 回数制限の種類マスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * 回数制限の種類のメタデータを設定
-     *
-     * @param string $metadata 回数制限の種類マスターを更新
-     * @return UpdateLimitModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateLimitModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string リセットタイミング */
+    /** @var string */
     private $resetType;
-
-    /**
-     * リセットタイミングを取得
-     *
-     * @return string|null 回数制限の種類マスターを更新
-     */
-    public function getResetType(): ?string {
-        return $this->resetType;
-    }
-
-    /**
-     * リセットタイミングを設定
-     *
-     * @param string $resetType 回数制限の種類マスターを更新
-     */
-    public function setResetType(string $resetType = null) {
-        $this->resetType = $resetType;
-    }
-
-    /**
-     * リセットタイミングを設定
-     *
-     * @param string $resetType 回数制限の種類マスターを更新
-     * @return UpdateLimitModelMasterRequest $this
-     */
-    public function withResetType(string $resetType = null): UpdateLimitModelMasterRequest {
-        $this->setResetType($resetType);
-        return $this;
-    }
-
-    /** @var int リセットをする日にち */
+    /** @var int */
     private $resetDayOfMonth;
-
-    /**
-     * リセットをする日にちを取得
-     *
-     * @return int|null 回数制限の種類マスターを更新
-     */
-    public function getResetDayOfMonth(): ?int {
-        return $this->resetDayOfMonth;
-    }
-
-    /**
-     * リセットをする日にちを設定
-     *
-     * @param int $resetDayOfMonth 回数制限の種類マスターを更新
-     */
-    public function setResetDayOfMonth(int $resetDayOfMonth = null) {
-        $this->resetDayOfMonth = $resetDayOfMonth;
-    }
-
-    /**
-     * リセットをする日にちを設定
-     *
-     * @param int $resetDayOfMonth 回数制限の種類マスターを更新
-     * @return UpdateLimitModelMasterRequest $this
-     */
-    public function withResetDayOfMonth(int $resetDayOfMonth = null): UpdateLimitModelMasterRequest {
-        $this->setResetDayOfMonth($resetDayOfMonth);
-        return $this;
-    }
-
-    /** @var string リセットする曜日 */
+    /** @var string */
     private $resetDayOfWeek;
-
-    /**
-     * リセットする曜日を取得
-     *
-     * @return string|null 回数制限の種類マスターを更新
-     */
-    public function getResetDayOfWeek(): ?string {
-        return $this->resetDayOfWeek;
-    }
-
-    /**
-     * リセットする曜日を設定
-     *
-     * @param string $resetDayOfWeek 回数制限の種類マスターを更新
-     */
-    public function setResetDayOfWeek(string $resetDayOfWeek = null) {
-        $this->resetDayOfWeek = $resetDayOfWeek;
-    }
-
-    /**
-     * リセットする曜日を設定
-     *
-     * @param string $resetDayOfWeek 回数制限の種類マスターを更新
-     * @return UpdateLimitModelMasterRequest $this
-     */
-    public function withResetDayOfWeek(string $resetDayOfWeek = null): UpdateLimitModelMasterRequest {
-        $this->setResetDayOfWeek($resetDayOfWeek);
-        return $this;
-    }
-
-    /** @var int リセット時刻 */
+    /** @var int */
     private $resetHour;
 
-    /**
-     * リセット時刻を取得
-     *
-     * @return int|null 回数制限の種類マスターを更新
-     */
-    public function getResetHour(): ?int {
-        return $this->resetHour;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateLimitModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getLimitName(): ?string {
+		return $this->limitName;
+	}
+
+	public function setLimitName(?string $limitName) {
+		$this->limitName = $limitName;
+	}
+
+	public function withLimitName(?string $limitName): UpdateLimitModelMasterRequest {
+		$this->limitName = $limitName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateLimitModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateLimitModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getResetType(): ?string {
+		return $this->resetType;
+	}
+
+	public function setResetType(?string $resetType) {
+		$this->resetType = $resetType;
+	}
+
+	public function withResetType(?string $resetType): UpdateLimitModelMasterRequest {
+		$this->resetType = $resetType;
+		return $this;
+	}
+
+	public function getResetDayOfMonth(): ?int {
+		return $this->resetDayOfMonth;
+	}
+
+	public function setResetDayOfMonth(?int $resetDayOfMonth) {
+		$this->resetDayOfMonth = $resetDayOfMonth;
+	}
+
+	public function withResetDayOfMonth(?int $resetDayOfMonth): UpdateLimitModelMasterRequest {
+		$this->resetDayOfMonth = $resetDayOfMonth;
+		return $this;
+	}
+
+	public function getResetDayOfWeek(): ?string {
+		return $this->resetDayOfWeek;
+	}
+
+	public function setResetDayOfWeek(?string $resetDayOfWeek) {
+		$this->resetDayOfWeek = $resetDayOfWeek;
+	}
+
+	public function withResetDayOfWeek(?string $resetDayOfWeek): UpdateLimitModelMasterRequest {
+		$this->resetDayOfWeek = $resetDayOfWeek;
+		return $this;
+	}
+
+	public function getResetHour(): ?int {
+		return $this->resetHour;
+	}
+
+	public function setResetHour(?int $resetHour) {
+		$this->resetHour = $resetHour;
+	}
+
+	public function withResetHour(?int $resetHour): UpdateLimitModelMasterRequest {
+		$this->resetHour = $resetHour;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateLimitModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateLimitModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withLimitName(empty($data['limitName']) ? null : $data['limitName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withResetType(empty($data['resetType']) ? null : $data['resetType'])
+            ->withResetDayOfMonth(empty($data['resetDayOfMonth']) ? null : $data['resetDayOfMonth'])
+            ->withResetDayOfWeek(empty($data['resetDayOfWeek']) ? null : $data['resetDayOfWeek'])
+            ->withResetHour(empty($data['resetHour']) ? null : $data['resetHour']);
     }
 
-    /**
-     * リセット時刻を設定
-     *
-     * @param int $resetHour 回数制限の種類マスターを更新
-     */
-    public function setResetHour(int $resetHour = null) {
-        $this->resetHour = $resetHour;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "limitName" => $this->getLimitName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "resetType" => $this->getResetType(),
+            "resetDayOfMonth" => $this->getResetDayOfMonth(),
+            "resetDayOfWeek" => $this->getResetDayOfWeek(),
+            "resetHour" => $this->getResetHour(),
+        );
     }
-
-    /**
-     * リセット時刻を設定
-     *
-     * @param int $resetHour 回数制限の種類マスターを更新
-     * @return UpdateLimitModelMasterRequest $this
-     */
-    public function withResetHour(int $resetHour = null): UpdateLimitModelMasterRequest {
-        $this->setResetHour($resetHour);
-        return $this;
-    }
-
 }

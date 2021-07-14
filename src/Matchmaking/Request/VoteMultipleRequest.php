@@ -21,139 +21,105 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\SignedBallot;
 use Gs2\Matchmaking\Model\GameResult;
 
-/**
- * 対戦結果をまとめて投票します。 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class VoteMultipleRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 対戦結果をまとめて投票します。
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 対戦結果をまとめて投票します。
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 対戦結果をまとめて投票します。
-     * @return VoteMultipleRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): VoteMultipleRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var SignedBallot[] 署名付の投票用紙リスト */
+    /** @var array */
     private $signedBallots;
-
-    /**
-     * 署名付の投票用紙リストを取得
-     *
-     * @return SignedBallot[]|null 対戦結果をまとめて投票します。
-     */
-    public function getSignedBallots(): ?array {
-        return $this->signedBallots;
-    }
-
-    /**
-     * 署名付の投票用紙リストを設定
-     *
-     * @param SignedBallot[] $signedBallots 対戦結果をまとめて投票します。
-     */
-    public function setSignedBallots(array $signedBallots = null) {
-        $this->signedBallots = $signedBallots;
-    }
-
-    /**
-     * 署名付の投票用紙リストを設定
-     *
-     * @param SignedBallot[] $signedBallots 対戦結果をまとめて投票します。
-     * @return VoteMultipleRequest $this
-     */
-    public function withSignedBallots(array $signedBallots = null): VoteMultipleRequest {
-        $this->setSignedBallots($signedBallots);
-        return $this;
-    }
-
-    /** @var GameResult[] 投票内容。対戦を行ったプレイヤーグループ1に所属するユーザIDのリスト */
+    /** @var array */
     private $gameResults;
-
-    /**
-     * 投票内容。対戦を行ったプレイヤーグループ1に所属するユーザIDのリストを取得
-     *
-     * @return GameResult[]|null 対戦結果をまとめて投票します。
-     */
-    public function getGameResults(): ?array {
-        return $this->gameResults;
-    }
-
-    /**
-     * 投票内容。対戦を行ったプレイヤーグループ1に所属するユーザIDのリストを設定
-     *
-     * @param GameResult[] $gameResults 対戦結果をまとめて投票します。
-     */
-    public function setGameResults(array $gameResults = null) {
-        $this->gameResults = $gameResults;
-    }
-
-    /**
-     * 投票内容。対戦を行ったプレイヤーグループ1に所属するユーザIDのリストを設定
-     *
-     * @param GameResult[] $gameResults 対戦結果をまとめて投票します。
-     * @return VoteMultipleRequest $this
-     */
-    public function withGameResults(array $gameResults = null): VoteMultipleRequest {
-        $this->setGameResults($gameResults);
-        return $this;
-    }
-
-    /** @var string 投票用紙の署名検証に使用する暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * 投票用紙の署名検証に使用する暗号鍵 のGRNを取得
-     *
-     * @return string|null 対戦結果をまとめて投票します。
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): VoteMultipleRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getSignedBallots(): ?array {
+		return $this->signedBallots;
+	}
+
+	public function setSignedBallots(?array $signedBallots) {
+		$this->signedBallots = $signedBallots;
+	}
+
+	public function withSignedBallots(?array $signedBallots): VoteMultipleRequest {
+		$this->signedBallots = $signedBallots;
+		return $this;
+	}
+
+	public function getGameResults(): ?array {
+		return $this->gameResults;
+	}
+
+	public function setGameResults(?array $gameResults) {
+		$this->gameResults = $gameResults;
+	}
+
+	public function withGameResults(?array $gameResults): VoteMultipleRequest {
+		$this->gameResults = $gameResults;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): VoteMultipleRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?VoteMultipleRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new VoteMultipleRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withSignedBallots(array_map(
+                function ($item) {
+                    return SignedBallot::fromJson($item);
+                },
+                array_key_exists('signedBallots', $data) && $data['signedBallots'] !== null ? $data['signedBallots'] : []
+            ))
+            ->withGameResults(array_map(
+                function ($item) {
+                    return GameResult::fromJson($item);
+                },
+                array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
+            ))
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * 投票用紙の署名検証に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId 対戦結果をまとめて投票します。
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "signedBallots" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getSignedBallots() !== null && $this->getSignedBallots() !== null ? $this->getSignedBallots() : []
+            ),
+            "gameResults" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getGameResults() !== null && $this->getGameResults() !== null ? $this->getGameResults() : []
+            ),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * 投票用紙の署名検証に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId 対戦結果をまとめて投票します。
-     * @return VoteMultipleRequest $this
-     */
-    public function withKeyId(string $keyId = null): VoteMultipleRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
 }

@@ -18,173 +18,115 @@
 namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\Prize;
 
-/**
- * 排出確率テーブルマスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdatePrizeTableMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 排出確率テーブルマスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 排出確率テーブルマスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 排出確率テーブルマスターを更新
-     * @return UpdatePrizeTableMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdatePrizeTableMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 排出確率テーブル名 */
+    /** @var string */
     private $prizeTableName;
-
-    /**
-     * 排出確率テーブル名を取得
-     *
-     * @return string|null 排出確率テーブルマスターを更新
-     */
-    public function getPrizeTableName(): ?string {
-        return $this->prizeTableName;
-    }
-
-    /**
-     * 排出確率テーブル名を設定
-     *
-     * @param string $prizeTableName 排出確率テーブルマスターを更新
-     */
-    public function setPrizeTableName(string $prizeTableName = null) {
-        $this->prizeTableName = $prizeTableName;
-    }
-
-    /**
-     * 排出確率テーブル名を設定
-     *
-     * @param string $prizeTableName 排出確率テーブルマスターを更新
-     * @return UpdatePrizeTableMasterRequest $this
-     */
-    public function withPrizeTableName(string $prizeTableName = null): UpdatePrizeTableMasterRequest {
-        $this->setPrizeTableName($prizeTableName);
-        return $this;
-    }
-
-    /** @var string 排出確率テーブルマスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * 排出確率テーブルマスターの説明を取得
-     *
-     * @return string|null 排出確率テーブルマスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 排出確率テーブルマスターの説明を設定
-     *
-     * @param string $description 排出確率テーブルマスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 排出確率テーブルマスターの説明を設定
-     *
-     * @param string $description 排出確率テーブルマスターを更新
-     * @return UpdatePrizeTableMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdatePrizeTableMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 排出確率テーブルのメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * 排出確率テーブルのメタデータを取得
-     *
-     * @return string|null 排出確率テーブルマスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * 排出確率テーブルのメタデータを設定
-     *
-     * @param string $metadata 排出確率テーブルマスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * 排出確率テーブルのメタデータを設定
-     *
-     * @param string $metadata 排出確率テーブルマスターを更新
-     * @return UpdatePrizeTableMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdatePrizeTableMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var Prize[] 景品リスト */
+    /** @var array */
     private $prizes;
 
-    /**
-     * 景品リストを取得
-     *
-     * @return Prize[]|null 排出確率テーブルマスターを更新
-     */
-    public function getPrizes(): ?array {
-        return $this->prizes;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdatePrizeTableMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getPrizeTableName(): ?string {
+		return $this->prizeTableName;
+	}
+
+	public function setPrizeTableName(?string $prizeTableName) {
+		$this->prizeTableName = $prizeTableName;
+	}
+
+	public function withPrizeTableName(?string $prizeTableName): UpdatePrizeTableMasterRequest {
+		$this->prizeTableName = $prizeTableName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdatePrizeTableMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdatePrizeTableMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getPrizes(): ?array {
+		return $this->prizes;
+	}
+
+	public function setPrizes(?array $prizes) {
+		$this->prizes = $prizes;
+	}
+
+	public function withPrizes(?array $prizes): UpdatePrizeTableMasterRequest {
+		$this->prizes = $prizes;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdatePrizeTableMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdatePrizeTableMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withPrizes(array_map(
+                function ($item) {
+                    return Prize::fromJson($item);
+                },
+                array_key_exists('prizes', $data) && $data['prizes'] !== null ? $data['prizes'] : []
+            ));
     }
 
-    /**
-     * 景品リストを設定
-     *
-     * @param Prize[] $prizes 排出確率テーブルマスターを更新
-     */
-    public function setPrizes(array $prizes = null) {
-        $this->prizes = $prizes;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "prizeTableName" => $this->getPrizeTableName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "prizes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getPrizes() !== null && $this->getPrizes() !== null ? $this->getPrizes() : []
+            ),
+        );
     }
-
-    /**
-     * 景品リストを設定
-     *
-     * @param Prize[] $prizes 排出確率テーブルマスターを更新
-     * @return UpdatePrizeTableMasterRequest $this
-     */
-    public function withPrizes(array $prizes = null): UpdatePrizeTableMasterRequest {
-        $this->setPrizes($prizes);
-        return $this;
-    }
-
 }

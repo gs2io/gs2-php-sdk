@@ -21,267 +21,153 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Quest\Model\ScriptSetting;
 use Gs2\Quest\Model\LogSetting;
 
-/**
- * クエストを分類するカテゴリーを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null クエストを分類するカテゴリーを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストを分類するカテゴリーを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストを分類するカテゴリーを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null クエストを分類するカテゴリーを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description クエストを分類するカテゴリーを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description クエストを分類するカテゴリーを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): UpdateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var ScriptSetting クエスト開始したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $startQuestScript;
-
-    /**
-     * クエスト開始したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null クエストを分類するカテゴリーを更新
-     */
-    public function getStartQuestScript(): ?ScriptSetting {
-        return $this->startQuestScript;
-    }
-
-    /**
-     * クエスト開始したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $startQuestScript クエストを分類するカテゴリーを更新
-     */
-    public function setStartQuestScript(ScriptSetting $startQuestScript = null) {
-        $this->startQuestScript = $startQuestScript;
-    }
-
-    /**
-     * クエスト開始したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $startQuestScript クエストを分類するカテゴリーを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withStartQuestScript(ScriptSetting $startQuestScript = null): UpdateNamespaceRequest {
-        $this->setStartQuestScript($startQuestScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting クエストクリアしたときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $completeQuestScript;
-
-    /**
-     * クエストクリアしたときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null クエストを分類するカテゴリーを更新
-     */
-    public function getCompleteQuestScript(): ?ScriptSetting {
-        return $this->completeQuestScript;
-    }
-
-    /**
-     * クエストクリアしたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $completeQuestScript クエストを分類するカテゴリーを更新
-     */
-    public function setCompleteQuestScript(ScriptSetting $completeQuestScript = null) {
-        $this->completeQuestScript = $completeQuestScript;
-    }
-
-    /**
-     * クエストクリアしたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $completeQuestScript クエストを分類するカテゴリーを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withCompleteQuestScript(ScriptSetting $completeQuestScript = null): UpdateNamespaceRequest {
-        $this->setCompleteQuestScript($completeQuestScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting クエスト失敗したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $failedQuestScript;
-
-    /**
-     * クエスト失敗したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null クエストを分類するカテゴリーを更新
-     */
-    public function getFailedQuestScript(): ?ScriptSetting {
-        return $this->failedQuestScript;
-    }
-
-    /**
-     * クエスト失敗したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $failedQuestScript クエストを分類するカテゴリーを更新
-     */
-    public function setFailedQuestScript(ScriptSetting $failedQuestScript = null) {
-        $this->failedQuestScript = $failedQuestScript;
-    }
-
-    /**
-     * クエスト失敗したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $failedQuestScript クエストを分類するカテゴリーを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withFailedQuestScript(ScriptSetting $failedQuestScript = null): UpdateNamespaceRequest {
-        $this->setFailedQuestScript($failedQuestScript);
-        return $this;
-    }
-
-    /** @var string 報酬付与処理をジョブとして追加するキューのネームスペース のGRN */
+    /** @var string */
     private $queueNamespaceId;
-
-    /**
-     * 報酬付与処理をジョブとして追加するキューのネームスペース のGRNを取得
-     *
-     * @return string|null クエストを分類するカテゴリーを更新
-     */
-    public function getQueueNamespaceId(): ?string {
-        return $this->queueNamespaceId;
-    }
-
-    /**
-     * 報酬付与処理をジョブとして追加するキューのネームスペース のGRNを設定
-     *
-     * @param string $queueNamespaceId クエストを分類するカテゴリーを更新
-     */
-    public function setQueueNamespaceId(string $queueNamespaceId = null) {
-        $this->queueNamespaceId = $queueNamespaceId;
-    }
-
-    /**
-     * 報酬付与処理をジョブとして追加するキューのネームスペース のGRNを設定
-     *
-     * @param string $queueNamespaceId クエストを分類するカテゴリーを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withQueueNamespaceId(string $queueNamespaceId = null): UpdateNamespaceRequest {
-        $this->setQueueNamespaceId($queueNamespaceId);
-        return $this;
-    }
-
-    /** @var string 報酬付与処理のスタンプシートで使用する暗号鍵GRN */
+    /** @var string */
     private $keyId;
-
-    /**
-     * 報酬付与処理のスタンプシートで使用する暗号鍵GRNを取得
-     *
-     * @return string|null クエストを分類するカテゴリーを更新
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
-    }
-
-    /**
-     * 報酬付与処理のスタンプシートで使用する暗号鍵GRNを設定
-     *
-     * @param string $keyId クエストを分類するカテゴリーを更新
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
-    }
-
-    /**
-     * 報酬付与処理のスタンプシートで使用する暗号鍵GRNを設定
-     *
-     * @param string $keyId クエストを分類するカテゴリーを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withKeyId(string $keyId = null): UpdateNamespaceRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null クエストを分類するカテゴリーを更新
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getStartQuestScript(): ?ScriptSetting {
+		return $this->startQuestScript;
+	}
+
+	public function setStartQuestScript(?ScriptSetting $startQuestScript) {
+		$this->startQuestScript = $startQuestScript;
+	}
+
+	public function withStartQuestScript(?ScriptSetting $startQuestScript): UpdateNamespaceRequest {
+		$this->startQuestScript = $startQuestScript;
+		return $this;
+	}
+
+	public function getCompleteQuestScript(): ?ScriptSetting {
+		return $this->completeQuestScript;
+	}
+
+	public function setCompleteQuestScript(?ScriptSetting $completeQuestScript) {
+		$this->completeQuestScript = $completeQuestScript;
+	}
+
+	public function withCompleteQuestScript(?ScriptSetting $completeQuestScript): UpdateNamespaceRequest {
+		$this->completeQuestScript = $completeQuestScript;
+		return $this;
+	}
+
+	public function getFailedQuestScript(): ?ScriptSetting {
+		return $this->failedQuestScript;
+	}
+
+	public function setFailedQuestScript(?ScriptSetting $failedQuestScript) {
+		$this->failedQuestScript = $failedQuestScript;
+	}
+
+	public function withFailedQuestScript(?ScriptSetting $failedQuestScript): UpdateNamespaceRequest {
+		$this->failedQuestScript = $failedQuestScript;
+		return $this;
+	}
+
+	public function getQueueNamespaceId(): ?string {
+		return $this->queueNamespaceId;
+	}
+
+	public function setQueueNamespaceId(?string $queueNamespaceId) {
+		$this->queueNamespaceId = $queueNamespaceId;
+	}
+
+	public function withQueueNamespaceId(?string $queueNamespaceId): UpdateNamespaceRequest {
+		$this->queueNamespaceId = $queueNamespaceId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): UpdateNamespaceRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withStartQuestScript(empty($data['startQuestScript']) ? null : ScriptSetting::fromJson($data['startQuestScript']))
+            ->withCompleteQuestScript(empty($data['completeQuestScript']) ? null : ScriptSetting::fromJson($data['completeQuestScript']))
+            ->withFailedQuestScript(empty($data['failedQuestScript']) ? null : ScriptSetting::fromJson($data['failedQuestScript']))
+            ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting クエストを分類するカテゴリーを更新
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "description" => $this->getDescription(),
+            "startQuestScript" => $this->getStartQuestScript() !== null ? $this->getStartQuestScript()->toJson() : null,
+            "completeQuestScript" => $this->getCompleteQuestScript() !== null ? $this->getCompleteQuestScript()->toJson() : null,
+            "failedQuestScript" => $this->getFailedQuestScript() !== null ? $this->getFailedQuestScript()->toJson() : null,
+            "queueNamespaceId" => $this->getQueueNamespaceId(),
+            "keyId" => $this->getKeyId(),
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting クエストを分類するカテゴリーを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): UpdateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

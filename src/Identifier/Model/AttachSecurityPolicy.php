@@ -19,126 +19,85 @@ namespace Gs2\Identifier\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 割り当てられたセキュリティポリシー
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class AttachSecurityPolicy implements IModel {
 	/**
-     * @var string ユーザ のGRN
+     * @var string
 	 */
-	protected $userId;
-
+	private $userId;
 	/**
-	 * ユーザ のGRNを取得
-	 *
-	 * @return string|null ユーザ のGRN
+     * @var array
 	 */
+	private $securityPolicyIds;
+	/**
+     * @var int
+	 */
+	private $attachedAt;
+
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザ のGRNを設定
-	 *
-	 * @param string|null $userId ユーザ のGRN
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザ のGRNを設定
-	 *
-	 * @param string|null $userId ユーザ のGRN
-	 * @return AttachSecurityPolicy $this
-	 */
 	public function withUserId(?string $userId): AttachSecurityPolicy {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string[] セキュリティポリシー のGRNのリスト
-	 */
-	protected $securityPolicyIds;
 
-	/**
-	 * セキュリティポリシー のGRNのリストを取得
-	 *
-	 * @return string[]|null セキュリティポリシー のGRNのリスト
-	 */
 	public function getSecurityPolicyIds(): ?array {
 		return $this->securityPolicyIds;
 	}
 
-	/**
-	 * セキュリティポリシー のGRNのリストを設定
-	 *
-	 * @param string[]|null $securityPolicyIds セキュリティポリシー のGRNのリスト
-	 */
 	public function setSecurityPolicyIds(?array $securityPolicyIds) {
 		$this->securityPolicyIds = $securityPolicyIds;
 	}
 
-	/**
-	 * セキュリティポリシー のGRNのリストを設定
-	 *
-	 * @param string[]|null $securityPolicyIds セキュリティポリシー のGRNのリスト
-	 * @return AttachSecurityPolicy $this
-	 */
 	public function withSecurityPolicyIds(?array $securityPolicyIds): AttachSecurityPolicy {
 		$this->securityPolicyIds = $securityPolicyIds;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $attachedAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getAttachedAt(): ?int {
 		return $this->attachedAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $attachedAt 作成日時
-	 */
 	public function setAttachedAt(?int $attachedAt) {
 		$this->attachedAt = $attachedAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $attachedAt 作成日時
-	 * @return AttachSecurityPolicy $this
-	 */
 	public function withAttachedAt(?int $attachedAt): AttachSecurityPolicy {
 		$this->attachedAt = $attachedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "userId" => $this->userId,
-            "securityPolicyIds" => $this->securityPolicyIds,
-            "attachedAt" => $this->attachedAt,
-        );
+    public static function fromJson(?array $data): ?AttachSecurityPolicy {
+        if ($data === null) {
+            return null;
+        }
+        return (new AttachSecurityPolicy())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withSecurityPolicyIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('securityPolicyIds', $data) && $data['securityPolicyIds'] !== null ? $data['securityPolicyIds'] : []
+            ))
+            ->withAttachedAt(empty($data['attachedAt']) ? null : $data['attachedAt']);
     }
 
-    public static function fromJson(array $data): AttachSecurityPolicy {
-        $model = new AttachSecurityPolicy();
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setSecurityPolicyIds(isset($data["securityPolicyIds"]) ? $data["securityPolicyIds"] : null);
-        $model->setAttachedAt(isset($data["attachedAt"]) ? $data["attachedAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "securityPolicyIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getSecurityPolicyIds() !== null && $this->getSecurityPolicyIds() !== null ? $this->getSecurityPolicyIds() : []
+            ),
+            "attachedAt" => $this->getAttachedAt(),
+        );
     }
 }

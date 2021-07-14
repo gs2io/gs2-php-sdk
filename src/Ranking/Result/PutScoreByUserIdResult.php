@@ -20,36 +20,34 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Score;
 
-/**
- * ユーザーIDを指定してスコアを登録 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class PutScoreByUserIdResult implements IResult {
-	/** @var Score 登録したスコア */
-	private $item;
+    /** @var Score */
+    private $item;
 
-	/**
-	 * 登録したスコアを取得
-	 *
-	 * @return Score|null ユーザーIDを指定してスコアを登録
-	 */
 	public function getItem(): ?Score {
 		return $this->item;
 	}
 
-	/**
-	 * 登録したスコアを設定
-	 *
-	 * @param Score|null $item ユーザーIDを指定してスコアを登録
-	 */
 	public function setItem(?Score $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): PutScoreByUserIdResult {
-        $result = new PutScoreByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Score::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Score $item): PutScoreByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PutScoreByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new PutScoreByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Score::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

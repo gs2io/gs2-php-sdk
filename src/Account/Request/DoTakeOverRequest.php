@@ -19,139 +19,85 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 引き継ぎ設定を更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DoTakeOverRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 引き継ぎ設定を更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を更新
-     * @return DoTakeOverRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DoTakeOverRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var int スロット番号 */
+    /** @var int */
     private $type;
-
-    /**
-     * スロット番号を取得
-     *
-     * @return int|null 引き継ぎ設定を更新
-     */
-    public function getType(): ?int {
-        return $this->type;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を更新
-     */
-    public function setType(int $type = null) {
-        $this->type = $type;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を更新
-     * @return DoTakeOverRequest $this
-     */
-    public function withType(int $type = null): DoTakeOverRequest {
-        $this->setType($type);
-        return $this;
-    }
-
-    /** @var string 引き継ぎ用ユーザーID */
+    /** @var string */
     private $userIdentifier;
-
-    /**
-     * 引き継ぎ用ユーザーIDを取得
-     *
-     * @return string|null 引き継ぎ設定を更新
-     */
-    public function getUserIdentifier(): ?string {
-        return $this->userIdentifier;
-    }
-
-    /**
-     * 引き継ぎ用ユーザーIDを設定
-     *
-     * @param string $userIdentifier 引き継ぎ設定を更新
-     */
-    public function setUserIdentifier(string $userIdentifier = null) {
-        $this->userIdentifier = $userIdentifier;
-    }
-
-    /**
-     * 引き継ぎ用ユーザーIDを設定
-     *
-     * @param string $userIdentifier 引き継ぎ設定を更新
-     * @return DoTakeOverRequest $this
-     */
-    public function withUserIdentifier(string $userIdentifier = null): DoTakeOverRequest {
-        $this->setUserIdentifier($userIdentifier);
-        return $this;
-    }
-
-    /** @var string パスワード */
+    /** @var string */
     private $password;
 
-    /**
-     * パスワードを取得
-     *
-     * @return string|null 引き継ぎ設定を更新
-     */
-    public function getPassword(): ?string {
-        return $this->password;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DoTakeOverRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getType(): ?int {
+		return $this->type;
+	}
+
+	public function setType(?int $type) {
+		$this->type = $type;
+	}
+
+	public function withType(?int $type): DoTakeOverRequest {
+		$this->type = $type;
+		return $this;
+	}
+
+	public function getUserIdentifier(): ?string {
+		return $this->userIdentifier;
+	}
+
+	public function setUserIdentifier(?string $userIdentifier) {
+		$this->userIdentifier = $userIdentifier;
+	}
+
+	public function withUserIdentifier(?string $userIdentifier): DoTakeOverRequest {
+		$this->userIdentifier = $userIdentifier;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): DoTakeOverRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DoTakeOverRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DoTakeOverRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withUserIdentifier(empty($data['userIdentifier']) ? null : $data['userIdentifier'])
+            ->withPassword(empty($data['password']) ? null : $data['password']);
     }
 
-    /**
-     * パスワードを設定
-     *
-     * @param string $password 引き継ぎ設定を更新
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "type" => $this->getType(),
+            "userIdentifier" => $this->getUserIdentifier(),
+            "password" => $this->getPassword(),
+        );
     }
-
-    /**
-     * パスワードを設定
-     *
-     * @param string $password 引き継ぎ設定を更新
-     * @return DoTakeOverRequest $this
-     */
-    public function withPassword(string $password = null): DoTakeOverRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
 }

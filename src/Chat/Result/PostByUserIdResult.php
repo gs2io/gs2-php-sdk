@@ -20,36 +20,34 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Message;
 
-/**
- * ユーザIDを指定してメッセージを投稿 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class PostByUserIdResult implements IResult {
-	/** @var Message 投稿したメッセージ */
-	private $item;
+    /** @var Message */
+    private $item;
 
-	/**
-	 * 投稿したメッセージを取得
-	 *
-	 * @return Message|null ユーザIDを指定してメッセージを投稿
-	 */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
-	/**
-	 * 投稿したメッセージを設定
-	 *
-	 * @param Message|null $item ユーザIDを指定してメッセージを投稿
-	 */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): PostByUserIdResult {
-        $result = new PostByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Message::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Message $item): PostByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PostByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new PostByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Message::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

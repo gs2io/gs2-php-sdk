@@ -20,36 +20,34 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\Key;
 
-/**
- * 暗号鍵を新規作成します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateKeyResult implements IResult {
-	/** @var Key 作成した暗号鍵 */
-	private $item;
+    /** @var Key */
+    private $item;
 
-	/**
-	 * 作成した暗号鍵を取得
-	 *
-	 * @return Key|null 暗号鍵を新規作成します
-	 */
 	public function getItem(): ?Key {
 		return $this->item;
 	}
 
-	/**
-	 * 作成した暗号鍵を設定
-	 *
-	 * @param Key|null $item 暗号鍵を新規作成します
-	 */
 	public function setItem(?Key $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateKeyResult {
-        $result = new CreateKeyResult();
-        $result->setItem(isset($data["item"]) ? Key::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Key $item): CreateKeyResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateKeyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateKeyResult())
+            ->withItem(empty($data['item']) ? null : Key::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

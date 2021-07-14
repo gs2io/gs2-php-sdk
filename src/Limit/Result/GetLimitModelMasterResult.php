@@ -20,36 +20,34 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\LimitModelMaster;
 
-/**
- * 回数制限の種類マスターを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetLimitModelMasterResult implements IResult {
-	/** @var LimitModelMaster 回数制限の種類マスター */
-	private $item;
+    /** @var LimitModelMaster */
+    private $item;
 
-	/**
-	 * 回数制限の種類マスターを取得
-	 *
-	 * @return LimitModelMaster|null 回数制限の種類マスターを取得
-	 */
 	public function getItem(): ?LimitModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 回数制限の種類マスターを設定
-	 *
-	 * @param LimitModelMaster|null $item 回数制限の種類マスターを取得
-	 */
 	public function setItem(?LimitModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetLimitModelMasterResult {
-        $result = new GetLimitModelMasterResult();
-        $result->setItem(isset($data["item"]) ? LimitModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?LimitModelMaster $item): GetLimitModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetLimitModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetLimitModelMasterResult())
+            ->withItem(empty($data['item']) ? null : LimitModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

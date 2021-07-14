@@ -19,139 +19,85 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * アカウントを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateAccountRequest extends Gs2BasicRequest {
-
-    /** @var string メールアドレス */
+    /** @var string */
     private $email;
-
-    /**
-     * メールアドレスを取得
-     *
-     * @return string|null アカウントを新規作成
-     */
-    public function getEmail(): ?string {
-        return $this->email;
-    }
-
-    /**
-     * メールアドレスを設定
-     *
-     * @param string $email アカウントを新規作成
-     */
-    public function setEmail(string $email = null) {
-        $this->email = $email;
-    }
-
-    /**
-     * メールアドレスを設定
-     *
-     * @param string $email アカウントを新規作成
-     * @return CreateAccountRequest $this
-     */
-    public function withEmail(string $email = null): CreateAccountRequest {
-        $this->setEmail($email);
-        return $this;
-    }
-
-    /** @var string フルネーム */
+    /** @var string */
     private $fullName;
-
-    /**
-     * フルネームを取得
-     *
-     * @return string|null アカウントを新規作成
-     */
-    public function getFullName(): ?string {
-        return $this->fullName;
-    }
-
-    /**
-     * フルネームを設定
-     *
-     * @param string $fullName アカウントを新規作成
-     */
-    public function setFullName(string $fullName = null) {
-        $this->fullName = $fullName;
-    }
-
-    /**
-     * フルネームを設定
-     *
-     * @param string $fullName アカウントを新規作成
-     * @return CreateAccountRequest $this
-     */
-    public function withFullName(string $fullName = null): CreateAccountRequest {
-        $this->setFullName($fullName);
-        return $this;
-    }
-
-    /** @var string 会社名 */
+    /** @var string */
     private $companyName;
-
-    /**
-     * 会社名を取得
-     *
-     * @return string|null アカウントを新規作成
-     */
-    public function getCompanyName(): ?string {
-        return $this->companyName;
-    }
-
-    /**
-     * 会社名を設定
-     *
-     * @param string $companyName アカウントを新規作成
-     */
-    public function setCompanyName(string $companyName = null) {
-        $this->companyName = $companyName;
-    }
-
-    /**
-     * 会社名を設定
-     *
-     * @param string $companyName アカウントを新規作成
-     * @return CreateAccountRequest $this
-     */
-    public function withCompanyName(string $companyName = null): CreateAccountRequest {
-        $this->setCompanyName($companyName);
-        return $this;
-    }
-
-    /** @var string パスワード */
+    /** @var string */
     private $password;
 
-    /**
-     * パスワードを取得
-     *
-     * @return string|null アカウントを新規作成
-     */
-    public function getPassword(): ?string {
-        return $this->password;
+	public function getEmail(): ?string {
+		return $this->email;
+	}
+
+	public function setEmail(?string $email) {
+		$this->email = $email;
+	}
+
+	public function withEmail(?string $email): CreateAccountRequest {
+		$this->email = $email;
+		return $this;
+	}
+
+	public function getFullName(): ?string {
+		return $this->fullName;
+	}
+
+	public function setFullName(?string $fullName) {
+		$this->fullName = $fullName;
+	}
+
+	public function withFullName(?string $fullName): CreateAccountRequest {
+		$this->fullName = $fullName;
+		return $this;
+	}
+
+	public function getCompanyName(): ?string {
+		return $this->companyName;
+	}
+
+	public function setCompanyName(?string $companyName) {
+		$this->companyName = $companyName;
+	}
+
+	public function withCompanyName(?string $companyName): CreateAccountRequest {
+		$this->companyName = $companyName;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): CreateAccountRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateAccountRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateAccountRequest())
+            ->withEmail(empty($data['email']) ? null : $data['email'])
+            ->withFullName(empty($data['fullName']) ? null : $data['fullName'])
+            ->withCompanyName(empty($data['companyName']) ? null : $data['companyName'])
+            ->withPassword(empty($data['password']) ? null : $data['password']);
     }
 
-    /**
-     * パスワードを設定
-     *
-     * @param string $password アカウントを新規作成
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
+    public function toJson(): array {
+        return array(
+            "email" => $this->getEmail(),
+            "fullName" => $this->getFullName(),
+            "companyName" => $this->getCompanyName(),
+            "password" => $this->getPassword(),
+        );
     }
-
-    /**
-     * パスワードを設定
-     *
-     * @param string $password アカウントを新規作成
-     * @return CreateAccountRequest $this
-     */
-    public function withPassword(string $password = null): CreateAccountRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
 }

@@ -19,107 +19,68 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * クエストモデルマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetQuestModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null クエストモデルマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストモデルマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストモデルマスターを取得
-     * @return GetQuestModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetQuestModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string クエストグループモデル名 */
+    /** @var string */
     private $questGroupName;
-
-    /**
-     * クエストグループモデル名を取得
-     *
-     * @return string|null クエストモデルマスターを取得
-     */
-    public function getQuestGroupName(): ?string {
-        return $this->questGroupName;
-    }
-
-    /**
-     * クエストグループモデル名を設定
-     *
-     * @param string $questGroupName クエストモデルマスターを取得
-     */
-    public function setQuestGroupName(string $questGroupName = null) {
-        $this->questGroupName = $questGroupName;
-    }
-
-    /**
-     * クエストグループモデル名を設定
-     *
-     * @param string $questGroupName クエストモデルマスターを取得
-     * @return GetQuestModelMasterRequest $this
-     */
-    public function withQuestGroupName(string $questGroupName = null): GetQuestModelMasterRequest {
-        $this->setQuestGroupName($questGroupName);
-        return $this;
-    }
-
-    /** @var string クエスト名 */
+    /** @var string */
     private $questName;
 
-    /**
-     * クエスト名を取得
-     *
-     * @return string|null クエストモデルマスターを取得
-     */
-    public function getQuestName(): ?string {
-        return $this->questName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetQuestModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getQuestGroupName(): ?string {
+		return $this->questGroupName;
+	}
+
+	public function setQuestGroupName(?string $questGroupName) {
+		$this->questGroupName = $questGroupName;
+	}
+
+	public function withQuestGroupName(?string $questGroupName): GetQuestModelMasterRequest {
+		$this->questGroupName = $questGroupName;
+		return $this;
+	}
+
+	public function getQuestName(): ?string {
+		return $this->questName;
+	}
+
+	public function setQuestName(?string $questName) {
+		$this->questName = $questName;
+	}
+
+	public function withQuestName(?string $questName): GetQuestModelMasterRequest {
+		$this->questName = $questName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetQuestModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetQuestModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName'])
+            ->withQuestName(empty($data['questName']) ? null : $data['questName']);
     }
 
-    /**
-     * クエスト名を設定
-     *
-     * @param string $questName クエストモデルマスターを取得
-     */
-    public function setQuestName(string $questName = null) {
-        $this->questName = $questName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "questGroupName" => $this->getQuestGroupName(),
+            "questName" => $this->getQuestName(),
+        );
     }
-
-    /**
-     * クエスト名を設定
-     *
-     * @param string $questName クエストモデルマスターを取得
-     * @return GetQuestModelMasterRequest $this
-     */
-    public function withQuestName(string $questName = null): GetQuestModelMasterRequest {
-        $this->setQuestName($questName);
-        return $this;
-    }
-
 }

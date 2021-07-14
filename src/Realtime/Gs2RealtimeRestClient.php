@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Realtime\Request\DescribeNamespacesRequest;
 use Gs2\Realtime\Result\DescribeNamespacesResult;
 use Gs2\Realtime\Request\CreateNamespaceRequest;
@@ -684,9 +686,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -701,9 +701,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -715,9 +713,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -732,9 +728,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -746,9 +740,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -763,9 +755,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -777,9 +767,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -794,9 +782,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -808,9 +794,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -825,9 +809,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -839,9 +821,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -856,9 +836,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -870,9 +848,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームの一覧を取得<br>
-     *
-     * @param DescribeRoomsRequest $request リクエストパラメータ
+     * @param DescribeRoomsRequest $request
      * @return PromiseInterface
      */
     public function describeRoomsAsync(
@@ -887,9 +863,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームの一覧を取得<br>
-     *
-     * @param DescribeRoomsRequest $request リクエストパラメータ
+     * @param DescribeRoomsRequest $request
      * @return DescribeRoomsResult
      */
     public function describeRooms (
@@ -901,9 +875,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームの作成依頼。<br>
-     *
-     * @param WantRoomRequest $request リクエストパラメータ
+     * @param WantRoomRequest $request
      * @return PromiseInterface
      */
     public function wantRoomAsync(
@@ -918,9 +890,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームの作成依頼。<br>
-     *
-     * @param WantRoomRequest $request リクエストパラメータ
+     * @param WantRoomRequest $request
      * @return WantRoomResult
      */
     public function wantRoom (
@@ -932,9 +902,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを取得<br>
-     *
-     * @param GetRoomRequest $request リクエストパラメータ
+     * @param GetRoomRequest $request
      * @return PromiseInterface
      */
     public function getRoomAsync(
@@ -949,9 +917,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを取得<br>
-     *
-     * @param GetRoomRequest $request リクエストパラメータ
+     * @param GetRoomRequest $request
      * @return GetRoomResult
      */
     public function getRoom (
@@ -963,9 +929,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを削除<br>
-     *
-     * @param DeleteRoomRequest $request リクエストパラメータ
+     * @param DeleteRoomRequest $request
      * @return PromiseInterface
      */
     public function deleteRoomAsync(
@@ -980,9 +944,7 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを削除<br>
-     *
-     * @param DeleteRoomRequest $request リクエストパラメータ
+     * @param DeleteRoomRequest $request
      * @return DeleteRoomResult
      */
     public function deleteRoom (

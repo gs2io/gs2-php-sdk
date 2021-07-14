@@ -19,171 +19,85 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 引き継ぎ設定を削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteTakeOverRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 引き継ぎ設定を削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を削除
-     * @return DeleteTakeOverRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteTakeOverRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var int スロット番号 */
+    /** @var string */
+    private $accessToken;
+    /** @var int */
     private $type;
-
-    /**
-     * スロット番号を取得
-     *
-     * @return int|null 引き継ぎ設定を削除
-     */
-    public function getType(): ?int {
-        return $this->type;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を削除
-     */
-    public function setType(int $type = null) {
-        $this->type = $type;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を削除
-     * @return DeleteTakeOverRequest $this
-     */
-    public function withType(int $type = null): DeleteTakeOverRequest {
-        $this->setType($type);
-        return $this;
-    }
-
-    /** @var string 引き継ぎ用ユーザーID */
+    /** @var string */
     private $userIdentifier;
 
-    /**
-     * 引き継ぎ用ユーザーIDを取得
-     *
-     * @return string|null 引き継ぎ設定を削除
-     */
-    public function getUserIdentifier(): ?string {
-        return $this->userIdentifier;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteTakeOverRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): DeleteTakeOverRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getType(): ?int {
+		return $this->type;
+	}
+
+	public function setType(?int $type) {
+		$this->type = $type;
+	}
+
+	public function withType(?int $type): DeleteTakeOverRequest {
+		$this->type = $type;
+		return $this;
+	}
+
+	public function getUserIdentifier(): ?string {
+		return $this->userIdentifier;
+	}
+
+	public function setUserIdentifier(?string $userIdentifier) {
+		$this->userIdentifier = $userIdentifier;
+	}
+
+	public function withUserIdentifier(?string $userIdentifier): DeleteTakeOverRequest {
+		$this->userIdentifier = $userIdentifier;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteTakeOverRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteTakeOverRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withUserIdentifier(empty($data['userIdentifier']) ? null : $data['userIdentifier']);
     }
 
-    /**
-     * 引き継ぎ用ユーザーIDを設定
-     *
-     * @param string $userIdentifier 引き継ぎ設定を削除
-     */
-    public function setUserIdentifier(string $userIdentifier = null) {
-        $this->userIdentifier = $userIdentifier;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "type" => $this->getType(),
+            "userIdentifier" => $this->getUserIdentifier(),
+        );
     }
-
-    /**
-     * 引き継ぎ用ユーザーIDを設定
-     *
-     * @param string $userIdentifier 引き継ぎ設定を削除
-     * @return DeleteTakeOverRequest $this
-     */
-    public function withUserIdentifier(string $userIdentifier = null): DeleteTakeOverRequest {
-        $this->setUserIdentifier($userIdentifier);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 引き継ぎ設定を削除
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 引き継ぎ設定を削除
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 引き継ぎ設定を削除
-     * @return DeleteTakeOverRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteTakeOverRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return DeleteTakeOverRequest this
-     */
-    public function withAccessToken(string $accessToken): DeleteTakeOverRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

@@ -20,57 +20,51 @@ namespace Gs2\Money\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\Receipt;
 
-/**
- * スタンプシートを使用してレシートを記録 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RecordReceiptByStampTaskResult implements IResult {
-	/** @var Receipt レシート */
-	private $item;
-	/** @var string スタンプタスクの実行結果を記録したコンテキスト */
-	private $newContextStack;
+    /** @var Receipt */
+    private $item;
+    /** @var string */
+    private $newContextStack;
 
-	/**
-	 * レシートを取得
-	 *
-	 * @return Receipt|null スタンプシートを使用してレシートを記録
-	 */
 	public function getItem(): ?Receipt {
 		return $this->item;
 	}
 
-	/**
-	 * レシートを設定
-	 *
-	 * @param Receipt|null $item スタンプシートを使用してレシートを記録
-	 */
 	public function setItem(?Receipt $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを取得
-	 *
-	 * @return string|null スタンプシートを使用してレシートを記録
-	 */
+	public function withItem(?Receipt $item): RecordReceiptByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを設定
-	 *
-	 * @param string|null $newContextStack スタンプシートを使用してレシートを記録
-	 */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
-    public static function fromJson(array $data): RecordReceiptByStampTaskResult {
-        $result = new RecordReceiptByStampTaskResult();
-        $result->setItem(isset($data["item"]) ? Receipt::fromJson($data["item"]) : null);
-        $result->setNewContextStack(isset($data["newContextStack"]) ? $data["newContextStack"] : null);
-        return $result;
+	public function withNewContextStack(?string $newContextStack): RecordReceiptByStampTaskResult {
+		$this->newContextStack = $newContextStack;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RecordReceiptByStampTaskResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RecordReceiptByStampTaskResult())
+            ->withItem(empty($data['item']) ? null : Receipt::fromJson($data['item']))
+            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "newContextStack" => $this->getNewContextStack(),
+        );
     }
 }

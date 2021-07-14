@@ -19,267 +19,153 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 抽選の種類マスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateLotteryModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 抽選の種類マスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 抽選の種類マスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 抽選の種類マスターを更新
-     * @return UpdateLotteryModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateLotteryModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 抽選モデルの種類名 */
+    /** @var string */
     private $lotteryName;
-
-    /**
-     * 抽選モデルの種類名を取得
-     *
-     * @return string|null 抽選の種類マスターを更新
-     */
-    public function getLotteryName(): ?string {
-        return $this->lotteryName;
-    }
-
-    /**
-     * 抽選モデルの種類名を設定
-     *
-     * @param string $lotteryName 抽選の種類マスターを更新
-     */
-    public function setLotteryName(string $lotteryName = null) {
-        $this->lotteryName = $lotteryName;
-    }
-
-    /**
-     * 抽選モデルの種類名を設定
-     *
-     * @param string $lotteryName 抽選の種類マスターを更新
-     * @return UpdateLotteryModelMasterRequest $this
-     */
-    public function withLotteryName(string $lotteryName = null): UpdateLotteryModelMasterRequest {
-        $this->setLotteryName($lotteryName);
-        return $this;
-    }
-
-    /** @var string 抽選の種類マスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * 抽選の種類マスターの説明を取得
-     *
-     * @return string|null 抽選の種類マスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 抽選の種類マスターの説明を設定
-     *
-     * @param string $description 抽選の種類マスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 抽選の種類マスターの説明を設定
-     *
-     * @param string $description 抽選の種類マスターを更新
-     * @return UpdateLotteryModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateLotteryModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 抽選モデルの種類のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * 抽選モデルの種類のメタデータを取得
-     *
-     * @return string|null 抽選の種類マスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * 抽選モデルの種類のメタデータを設定
-     *
-     * @param string $metadata 抽選の種類マスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * 抽選モデルの種類のメタデータを設定
-     *
-     * @param string $metadata 抽選の種類マスターを更新
-     * @return UpdateLotteryModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateLotteryModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string 抽選モード */
+    /** @var string */
     private $mode;
-
-    /**
-     * 抽選モードを取得
-     *
-     * @return string|null 抽選の種類マスターを更新
-     */
-    public function getMode(): ?string {
-        return $this->mode;
-    }
-
-    /**
-     * 抽選モードを設定
-     *
-     * @param string $mode 抽選の種類マスターを更新
-     */
-    public function setMode(string $mode = null) {
-        $this->mode = $mode;
-    }
-
-    /**
-     * 抽選モードを設定
-     *
-     * @param string $mode 抽選の種類マスターを更新
-     * @return UpdateLotteryModelMasterRequest $this
-     */
-    public function withMode(string $mode = null): UpdateLotteryModelMasterRequest {
-        $this->setMode($mode);
-        return $this;
-    }
-
-    /** @var string 抽選方法 */
+    /** @var string */
     private $method;
-
-    /**
-     * 抽選方法を取得
-     *
-     * @return string|null 抽選の種類マスターを更新
-     */
-    public function getMethod(): ?string {
-        return $this->method;
-    }
-
-    /**
-     * 抽選方法を設定
-     *
-     * @param string $method 抽選の種類マスターを更新
-     */
-    public function setMethod(string $method = null) {
-        $this->method = $method;
-    }
-
-    /**
-     * 抽選方法を設定
-     *
-     * @param string $method 抽選の種類マスターを更新
-     * @return UpdateLotteryModelMasterRequest $this
-     */
-    public function withMethod(string $method = null): UpdateLotteryModelMasterRequest {
-        $this->setMethod($method);
-        return $this;
-    }
-
-    /** @var string 景品テーブルの名前 */
+    /** @var string */
     private $prizeTableName;
-
-    /**
-     * 景品テーブルの名前を取得
-     *
-     * @return string|null 抽選の種類マスターを更新
-     */
-    public function getPrizeTableName(): ?string {
-        return $this->prizeTableName;
-    }
-
-    /**
-     * 景品テーブルの名前を設定
-     *
-     * @param string $prizeTableName 抽選の種類マスターを更新
-     */
-    public function setPrizeTableName(string $prizeTableName = null) {
-        $this->prizeTableName = $prizeTableName;
-    }
-
-    /**
-     * 景品テーブルの名前を設定
-     *
-     * @param string $prizeTableName 抽選の種類マスターを更新
-     * @return UpdateLotteryModelMasterRequest $this
-     */
-    public function withPrizeTableName(string $prizeTableName = null): UpdateLotteryModelMasterRequest {
-        $this->setPrizeTableName($prizeTableName);
-        return $this;
-    }
-
-    /** @var string 抽選テーブルを確定するスクリプト のGRN */
+    /** @var string */
     private $choicePrizeTableScriptId;
 
-    /**
-     * 抽選テーブルを確定するスクリプト のGRNを取得
-     *
-     * @return string|null 抽選の種類マスターを更新
-     */
-    public function getChoicePrizeTableScriptId(): ?string {
-        return $this->choicePrizeTableScriptId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateLotteryModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getLotteryName(): ?string {
+		return $this->lotteryName;
+	}
+
+	public function setLotteryName(?string $lotteryName) {
+		$this->lotteryName = $lotteryName;
+	}
+
+	public function withLotteryName(?string $lotteryName): UpdateLotteryModelMasterRequest {
+		$this->lotteryName = $lotteryName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateLotteryModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateLotteryModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getMode(): ?string {
+		return $this->mode;
+	}
+
+	public function setMode(?string $mode) {
+		$this->mode = $mode;
+	}
+
+	public function withMode(?string $mode): UpdateLotteryModelMasterRequest {
+		$this->mode = $mode;
+		return $this;
+	}
+
+	public function getMethod(): ?string {
+		return $this->method;
+	}
+
+	public function setMethod(?string $method) {
+		$this->method = $method;
+	}
+
+	public function withMethod(?string $method): UpdateLotteryModelMasterRequest {
+		$this->method = $method;
+		return $this;
+	}
+
+	public function getPrizeTableName(): ?string {
+		return $this->prizeTableName;
+	}
+
+	public function setPrizeTableName(?string $prizeTableName) {
+		$this->prizeTableName = $prizeTableName;
+	}
+
+	public function withPrizeTableName(?string $prizeTableName): UpdateLotteryModelMasterRequest {
+		$this->prizeTableName = $prizeTableName;
+		return $this;
+	}
+
+	public function getChoicePrizeTableScriptId(): ?string {
+		return $this->choicePrizeTableScriptId;
+	}
+
+	public function setChoicePrizeTableScriptId(?string $choicePrizeTableScriptId) {
+		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
+	}
+
+	public function withChoicePrizeTableScriptId(?string $choicePrizeTableScriptId): UpdateLotteryModelMasterRequest {
+		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateLotteryModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateLotteryModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withLotteryName(empty($data['lotteryName']) ? null : $data['lotteryName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withMode(empty($data['mode']) ? null : $data['mode'])
+            ->withMethod(empty($data['method']) ? null : $data['method'])
+            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
+            ->withChoicePrizeTableScriptId(empty($data['choicePrizeTableScriptId']) ? null : $data['choicePrizeTableScriptId']);
     }
 
-    /**
-     * 抽選テーブルを確定するスクリプト のGRNを設定
-     *
-     * @param string $choicePrizeTableScriptId 抽選の種類マスターを更新
-     */
-    public function setChoicePrizeTableScriptId(string $choicePrizeTableScriptId = null) {
-        $this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "lotteryName" => $this->getLotteryName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "mode" => $this->getMode(),
+            "method" => $this->getMethod(),
+            "prizeTableName" => $this->getPrizeTableName(),
+            "choicePrizeTableScriptId" => $this->getChoicePrizeTableScriptId(),
+        );
     }
-
-    /**
-     * 抽選テーブルを確定するスクリプト のGRNを設定
-     *
-     * @param string $choicePrizeTableScriptId 抽選の種類マスターを更新
-     * @return UpdateLotteryModelMasterRequest $this
-     */
-    public function withChoicePrizeTableScriptId(string $choicePrizeTableScriptId = null): UpdateLotteryModelMasterRequest {
-        $this->setChoicePrizeTableScriptId($choicePrizeTableScriptId);
-        return $this;
-    }
-
 }

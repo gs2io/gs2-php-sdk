@@ -18,80 +18,72 @@
 namespace Gs2\Exchange\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Exchange\Model\ConsumeAction;
+use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModel;
 
-/**
- * スタンプシートで交換を実行 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ExchangeByStampSheetResult implements IResult {
-	/** @var RateModel 交換レートモデル */
-	private $item;
-	/** @var string 交換処理の実行に使用するスタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
+    /** @var RateModel */
+    private $item;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
 
-	/**
-	 * 交換レートモデルを取得
-	 *
-	 * @return RateModel|null スタンプシートで交換を実行
-	 */
 	public function getItem(): ?RateModel {
 		return $this->item;
 	}
 
-	/**
-	 * 交換レートモデルを設定
-	 *
-	 * @param RateModel|null $item スタンプシートで交換を実行
-	 */
 	public function setItem(?RateModel $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 交換処理の実行に使用するスタンプシートを取得
-	 *
-	 * @return string|null スタンプシートで交換を実行
-	 */
+	public function withItem(?RateModel $item): ExchangeByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * 交換処理の実行に使用するスタンプシートを設定
-	 *
-	 * @param string|null $stampSheet スタンプシートで交換を実行
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null スタンプシートで交換を実行
-	 */
+	public function withStampSheet(?string $stampSheet): ExchangeByStampSheetResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId スタンプシートで交換を実行
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-    public static function fromJson(array $data): ExchangeByStampSheetResult {
-        $result = new ExchangeByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? RateModel::fromJson($data["item"]) : null);
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        return $result;
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): ExchangeByStampSheetResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ExchangeByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ExchangeByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : RateModel::fromJson($data['item']))
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+        );
     }
 }

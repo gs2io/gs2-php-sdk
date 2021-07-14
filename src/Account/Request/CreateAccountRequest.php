@@ -19,43 +19,34 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ゲームプレイヤーアカウントを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateAccountRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ゲームプレイヤーアカウントを新規作成
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CreateAccountRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateAccountRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateAccountRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ゲームプレイヤーアカウントを新規作成
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ゲームプレイヤーアカウントを新規作成
-     * @return CreateAccountRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CreateAccountRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

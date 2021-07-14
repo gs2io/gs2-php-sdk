@@ -19,102 +19,66 @@ namespace Gs2\Matchmaking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 投票結果
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class WrittenBallot implements IModel {
 	/**
-     * @var Ballot 投票用紙
+     * @var Ballot
 	 */
-	protected $ballot;
-
+	private $ballot;
 	/**
-	 * 投票用紙を取得
-	 *
-	 * @return Ballot|null 投票用紙
+     * @var array
 	 */
+	private $gameResults;
+
 	public function getBallot(): ?Ballot {
 		return $this->ballot;
 	}
 
-	/**
-	 * 投票用紙を設定
-	 *
-	 * @param Ballot|null $ballot 投票用紙
-	 */
 	public function setBallot(?Ballot $ballot) {
 		$this->ballot = $ballot;
 	}
 
-	/**
-	 * 投票用紙を設定
-	 *
-	 * @param Ballot|null $ballot 投票用紙
-	 * @return WrittenBallot $this
-	 */
 	public function withBallot(?Ballot $ballot): WrittenBallot {
 		$this->ballot = $ballot;
 		return $this;
 	}
-	/**
-     * @var GameResult[] 投票内容。対戦結果のリスト
-	 */
-	protected $gameResults;
 
-	/**
-	 * 投票内容。対戦結果のリストを取得
-	 *
-	 * @return GameResult[]|null 投票内容。対戦結果のリスト
-	 */
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
 
-	/**
-	 * 投票内容。対戦結果のリストを設定
-	 *
-	 * @param GameResult[]|null $gameResults 投票内容。対戦結果のリスト
-	 */
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
 
-	/**
-	 * 投票内容。対戦結果のリストを設定
-	 *
-	 * @param GameResult[]|null $gameResults 投票内容。対戦結果のリスト
-	 * @return WrittenBallot $this
-	 */
 	public function withGameResults(?array $gameResults): WrittenBallot {
 		$this->gameResults = $gameResults;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "ballot" => $this->ballot->toJson(),
-            "gameResults" => array_map(
-                function (GameResult $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?WrittenBallot {
+        if ($data === null) {
+            return null;
+        }
+        return (new WrittenBallot())
+            ->withBallot(empty($data['ballot']) ? null : Ballot::fromJson($data['ballot']))
+            ->withGameResults(array_map(
+                function ($item) {
+                    return GameResult::fromJson($item);
                 },
-                $this->gameResults == null ? [] : $this->gameResults
-            ),
-        );
+                array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
+            ));
     }
 
-    public static function fromJson(array $data): WrittenBallot {
-        $model = new WrittenBallot();
-        $model->setBallot(isset($data["ballot"]) ? Ballot::fromJson($data["ballot"]) : null);
-        $model->setGameResults(array_map(
-                function ($v) {
-                    return GameResult::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "ballot" => $this->getBallot() !== null ? $this->getBallot()->toJson() : null,
+            "gameResults" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["gameResults"]) ? $data["gameResults"] : []
-            )
+                $this->getGameResults() !== null && $this->getGameResults() !== null ? $this->getGameResults() : []
+            ),
         );
-        return $model;
     }
 }

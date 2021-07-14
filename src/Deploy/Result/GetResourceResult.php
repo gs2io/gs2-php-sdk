@@ -18,38 +18,37 @@
 namespace Gs2\Deploy\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Deploy\Model\Resource_;
+use Gs2\Deploy\Model\OutputField;
+use Gs2\Deploy\Model\Resource;
 
-/**
- * 作成されたのリソースを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetResourceResult implements IResult {
-	/** @var Resource_ 作成されたのリソース */
-	private $item;
+    /** @var Resource */
+    private $item;
 
-	/**
-	 * 作成されたのリソースを取得
-	 *
-	 * @return Resource_|null 作成されたのリソースを取得
-	 */
-	public function getItem(): ?Resource_ {
+	public function getItem(): ?Resource {
 		return $this->item;
 	}
 
-	/**
-	 * 作成されたのリソースを設定
-	 *
-	 * @param Resource_|null $item 作成されたのリソースを取得
-	 */
-	public function setItem(?Resource_ $item) {
+	public function setItem(?Resource $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetResourceResult {
-        $result = new GetResourceResult();
-        $result->setItem(isset($data["item"]) ? Resource_::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Resource $item): GetResourceResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetResourceResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetResourceResult())
+            ->withItem(empty($data['item']) ? null : Resource::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

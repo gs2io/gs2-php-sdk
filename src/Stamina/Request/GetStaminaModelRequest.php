@@ -19,75 +19,51 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタミナモデルを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetStaminaModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタミナモデルを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナモデルを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナモデルを取得
-     * @return GetStaminaModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetStaminaModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナの種類名 */
+    /** @var string */
     private $staminaName;
 
-    /**
-     * スタミナの種類名を取得
-     *
-     * @return string|null スタミナモデルを取得
-     */
-    public function getStaminaName(): ?string {
-        return $this->staminaName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetStaminaModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getStaminaName(): ?string {
+		return $this->staminaName;
+	}
+
+	public function setStaminaName(?string $staminaName) {
+		$this->staminaName = $staminaName;
+	}
+
+	public function withStaminaName(?string $staminaName): GetStaminaModelRequest {
+		$this->staminaName = $staminaName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetStaminaModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetStaminaModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName']);
     }
 
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName スタミナモデルを取得
-     */
-    public function setStaminaName(string $staminaName = null) {
-        $this->staminaName = $staminaName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "staminaName" => $this->getStaminaName(),
+        );
     }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName スタミナモデルを取得
-     * @return GetStaminaModelRequest $this
-     */
-    public function withStaminaName(string $staminaName = null): GetStaminaModelRequest {
-        $this->setStaminaName($staminaName);
-        return $this;
-    }
-
 }

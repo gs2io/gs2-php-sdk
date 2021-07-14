@@ -20,36 +20,34 @@ namespace Gs2\Gateway\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Gateway\Model\FirebaseToken;
 
-/**
- * デバイストークンを設定 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetFirebaseTokenResult implements IResult {
-	/** @var FirebaseToken 作成したFirebaseデバイストークン */
-	private $item;
+    /** @var FirebaseToken */
+    private $item;
 
-	/**
-	 * 作成したFirebaseデバイストークンを取得
-	 *
-	 * @return FirebaseToken|null デバイストークンを設定
-	 */
 	public function getItem(): ?FirebaseToken {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したFirebaseデバイストークンを設定
-	 *
-	 * @param FirebaseToken|null $item デバイストークンを設定
-	 */
 	public function setItem(?FirebaseToken $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): SetFirebaseTokenResult {
-        $result = new SetFirebaseTokenResult();
-        $result->setItem(isset($data["item"]) ? FirebaseToken::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FirebaseToken $item): SetFirebaseTokenResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetFirebaseTokenResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetFirebaseTokenResult())
+            ->withItem(empty($data['item']) ? null : FirebaseToken::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

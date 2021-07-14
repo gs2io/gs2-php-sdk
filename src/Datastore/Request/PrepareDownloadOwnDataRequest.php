@@ -19,139 +19,68 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * データオブジェクトをダウンロード準備する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PrepareDownloadOwnDataRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null データオブジェクトをダウンロード準備する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクトをダウンロード準備する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクトをダウンロード準備する
-     * @return PrepareDownloadOwnDataRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PrepareDownloadOwnDataRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string データの名前 */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $dataObjectName;
 
-    /**
-     * データの名前を取得
-     *
-     * @return string|null データオブジェクトをダウンロード準備する
-     */
-    public function getDataObjectName(): ?string {
-        return $this->dataObjectName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PrepareDownloadOwnDataRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): PrepareDownloadOwnDataRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getDataObjectName(): ?string {
+		return $this->dataObjectName;
+	}
+
+	public function setDataObjectName(?string $dataObjectName) {
+		$this->dataObjectName = $dataObjectName;
+	}
+
+	public function withDataObjectName(?string $dataObjectName): PrepareDownloadOwnDataRequest {
+		$this->dataObjectName = $dataObjectName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PrepareDownloadOwnDataRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PrepareDownloadOwnDataRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName']);
     }
 
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName データオブジェクトをダウンロード準備する
-     */
-    public function setDataObjectName(string $dataObjectName = null) {
-        $this->dataObjectName = $dataObjectName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "dataObjectName" => $this->getDataObjectName(),
+        );
     }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName データオブジェクトをダウンロード準備する
-     * @return PrepareDownloadOwnDataRequest $this
-     */
-    public function withDataObjectName(string $dataObjectName = null): PrepareDownloadOwnDataRequest {
-        $this->setDataObjectName($dataObjectName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null データオブジェクトをダウンロード準備する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider データオブジェクトをダウンロード準備する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider データオブジェクトをダウンロード準備する
-     * @return PrepareDownloadOwnDataRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): PrepareDownloadOwnDataRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return PrepareDownloadOwnDataRequest this
-     */
-    public function withAccessToken(string $accessToken): PrepareDownloadOwnDataRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

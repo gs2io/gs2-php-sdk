@@ -19,203 +19,102 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 引き継ぎ設定を更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateTakeOverByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 引き継ぎ設定を更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を更新
-     * @return UpdateTakeOverByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateTakeOverByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 引き継ぎ設定を更新
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 引き継ぎ設定を更新
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 引き継ぎ設定を更新
-     * @return UpdateTakeOverByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): UpdateTakeOverByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int スロット番号 */
+    /** @var int */
     private $type;
-
-    /**
-     * スロット番号を取得
-     *
-     * @return int|null 引き継ぎ設定を更新
-     */
-    public function getType(): ?int {
-        return $this->type;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を更新
-     */
-    public function setType(int $type = null) {
-        $this->type = $type;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を更新
-     * @return UpdateTakeOverByUserIdRequest $this
-     */
-    public function withType(int $type = null): UpdateTakeOverByUserIdRequest {
-        $this->setType($type);
-        return $this;
-    }
-
-    /** @var string 古いパスワード */
+    /** @var string */
     private $oldPassword;
-
-    /**
-     * 古いパスワードを取得
-     *
-     * @return string|null 引き継ぎ設定を更新
-     */
-    public function getOldPassword(): ?string {
-        return $this->oldPassword;
-    }
-
-    /**
-     * 古いパスワードを設定
-     *
-     * @param string $oldPassword 引き継ぎ設定を更新
-     */
-    public function setOldPassword(string $oldPassword = null) {
-        $this->oldPassword = $oldPassword;
-    }
-
-    /**
-     * 古いパスワードを設定
-     *
-     * @param string $oldPassword 引き継ぎ設定を更新
-     * @return UpdateTakeOverByUserIdRequest $this
-     */
-    public function withOldPassword(string $oldPassword = null): UpdateTakeOverByUserIdRequest {
-        $this->setOldPassword($oldPassword);
-        return $this;
-    }
-
-    /** @var string 新しいパスワード */
+    /** @var string */
     private $password;
 
-    /**
-     * 新しいパスワードを取得
-     *
-     * @return string|null 引き継ぎ設定を更新
-     */
-    public function getPassword(): ?string {
-        return $this->password;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateTakeOverByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): UpdateTakeOverByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getType(): ?int {
+		return $this->type;
+	}
+
+	public function setType(?int $type) {
+		$this->type = $type;
+	}
+
+	public function withType(?int $type): UpdateTakeOverByUserIdRequest {
+		$this->type = $type;
+		return $this;
+	}
+
+	public function getOldPassword(): ?string {
+		return $this->oldPassword;
+	}
+
+	public function setOldPassword(?string $oldPassword) {
+		$this->oldPassword = $oldPassword;
+	}
+
+	public function withOldPassword(?string $oldPassword): UpdateTakeOverByUserIdRequest {
+		$this->oldPassword = $oldPassword;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): UpdateTakeOverByUserIdRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateTakeOverByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateTakeOverByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withOldPassword(empty($data['oldPassword']) ? null : $data['oldPassword'])
+            ->withPassword(empty($data['password']) ? null : $data['password']);
     }
 
-    /**
-     * 新しいパスワードを設定
-     *
-     * @param string $password 引き継ぎ設定を更新
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "type" => $this->getType(),
+            "oldPassword" => $this->getOldPassword(),
+            "password" => $this->getPassword(),
+        );
     }
-
-    /**
-     * 新しいパスワードを設定
-     *
-     * @param string $password 引き継ぎ設定を更新
-     * @return UpdateTakeOverByUserIdRequest $this
-     */
-    public function withPassword(string $password = null): UpdateTakeOverByUserIdRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 引き継ぎ設定を更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 引き継ぎ設定を更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 引き継ぎ設定を更新
-     * @return UpdateTakeOverByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateTakeOverByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

@@ -20,36 +20,34 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\Box;
 
-/**
- * ユーザIDを指定してボックスを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRawBoxByUserIdResult implements IResult {
-	/** @var Box ボックス */
-	private $item;
+    /** @var Box */
+    private $item;
 
-	/**
-	 * ボックスを取得
-	 *
-	 * @return Box|null ユーザIDを指定してボックスを取得
-	 */
 	public function getItem(): ?Box {
 		return $this->item;
 	}
 
-	/**
-	 * ボックスを設定
-	 *
-	 * @param Box|null $item ユーザIDを指定してボックスを取得
-	 */
 	public function setItem(?Box $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetRawBoxByUserIdResult {
-        $result = new GetRawBoxByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Box::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Box $item): GetRawBoxByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRawBoxByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRawBoxByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Box::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -27,32 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
-use Gs2\Mission\Request\DescribeMissionGroupModelsRequest;
-use Gs2\Mission\Result\DescribeMissionGroupModelsResult;
-use Gs2\Mission\Request\GetMissionGroupModelRequest;
-use Gs2\Mission\Result\GetMissionGroupModelResult;
-use Gs2\Mission\Request\ExportMasterRequest;
-use Gs2\Mission\Result\ExportMasterResult;
-use Gs2\Mission\Request\GetCurrentMissionMasterRequest;
-use Gs2\Mission\Result\GetCurrentMissionMasterResult;
-use Gs2\Mission\Request\UpdateCurrentMissionMasterRequest;
-use Gs2\Mission\Result\UpdateCurrentMissionMasterResult;
-use Gs2\Mission\Request\UpdateCurrentMissionMasterFromGitHubRequest;
-use Gs2\Mission\Result\UpdateCurrentMissionMasterFromGitHubResult;
-use Gs2\Mission\Request\DescribeCountersRequest;
-use Gs2\Mission\Result\DescribeCountersResult;
-use Gs2\Mission\Request\DescribeCountersByUserIdRequest;
-use Gs2\Mission\Result\DescribeCountersByUserIdResult;
-use Gs2\Mission\Request\IncreaseCounterByUserIdRequest;
-use Gs2\Mission\Result\IncreaseCounterByUserIdResult;
-use Gs2\Mission\Request\GetCounterRequest;
-use Gs2\Mission\Result\GetCounterResult;
-use Gs2\Mission\Request\GetCounterByUserIdRequest;
-use Gs2\Mission\Result\GetCounterByUserIdResult;
-use Gs2\Mission\Request\DeleteCounterByUserIdRequest;
-use Gs2\Mission\Result\DeleteCounterByUserIdResult;
-use Gs2\Mission\Request\IncreaseByStampSheetRequest;
-use Gs2\Mission\Result\IncreaseByStampSheetResult;
+
+
 use Gs2\Mission\Request\DescribeCompletesRequest;
 use Gs2\Mission\Result\DescribeCompletesResult;
 use Gs2\Mission\Request\DescribeCompletesByUserIdRequest;
@@ -81,6 +57,16 @@ use Gs2\Mission\Request\UpdateCounterModelMasterRequest;
 use Gs2\Mission\Result\UpdateCounterModelMasterResult;
 use Gs2\Mission\Request\DeleteCounterModelMasterRequest;
 use Gs2\Mission\Result\DeleteCounterModelMasterResult;
+use Gs2\Mission\Request\DescribeMissionGroupModelMastersRequest;
+use Gs2\Mission\Result\DescribeMissionGroupModelMastersResult;
+use Gs2\Mission\Request\CreateMissionGroupModelMasterRequest;
+use Gs2\Mission\Result\CreateMissionGroupModelMasterResult;
+use Gs2\Mission\Request\GetMissionGroupModelMasterRequest;
+use Gs2\Mission\Result\GetMissionGroupModelMasterResult;
+use Gs2\Mission\Request\UpdateMissionGroupModelMasterRequest;
+use Gs2\Mission\Result\UpdateMissionGroupModelMasterResult;
+use Gs2\Mission\Request\DeleteMissionGroupModelMasterRequest;
+use Gs2\Mission\Result\DeleteMissionGroupModelMasterResult;
 use Gs2\Mission\Request\DescribeNamespacesRequest;
 use Gs2\Mission\Result\DescribeNamespacesResult;
 use Gs2\Mission\Request\CreateNamespaceRequest;
@@ -93,16 +79,36 @@ use Gs2\Mission\Request\UpdateNamespaceRequest;
 use Gs2\Mission\Result\UpdateNamespaceResult;
 use Gs2\Mission\Request\DeleteNamespaceRequest;
 use Gs2\Mission\Result\DeleteNamespaceResult;
-use Gs2\Mission\Request\DescribeMissionGroupModelMastersRequest;
-use Gs2\Mission\Result\DescribeMissionGroupModelMastersResult;
-use Gs2\Mission\Request\CreateMissionGroupModelMasterRequest;
-use Gs2\Mission\Result\CreateMissionGroupModelMasterResult;
-use Gs2\Mission\Request\GetMissionGroupModelMasterRequest;
-use Gs2\Mission\Result\GetMissionGroupModelMasterResult;
-use Gs2\Mission\Request\UpdateMissionGroupModelMasterRequest;
-use Gs2\Mission\Result\UpdateMissionGroupModelMasterResult;
-use Gs2\Mission\Request\DeleteMissionGroupModelMasterRequest;
-use Gs2\Mission\Result\DeleteMissionGroupModelMasterResult;
+use Gs2\Mission\Request\DescribeCountersRequest;
+use Gs2\Mission\Result\DescribeCountersResult;
+use Gs2\Mission\Request\DescribeCountersByUserIdRequest;
+use Gs2\Mission\Result\DescribeCountersByUserIdResult;
+use Gs2\Mission\Request\IncreaseCounterByUserIdRequest;
+use Gs2\Mission\Result\IncreaseCounterByUserIdResult;
+use Gs2\Mission\Request\GetCounterRequest;
+use Gs2\Mission\Result\GetCounterResult;
+use Gs2\Mission\Request\GetCounterByUserIdRequest;
+use Gs2\Mission\Result\GetCounterByUserIdResult;
+use Gs2\Mission\Request\DeleteCounterByUserIdRequest;
+use Gs2\Mission\Result\DeleteCounterByUserIdResult;
+use Gs2\Mission\Request\IncreaseByStampSheetRequest;
+use Gs2\Mission\Result\IncreaseByStampSheetResult;
+use Gs2\Mission\Request\ExportMasterRequest;
+use Gs2\Mission\Result\ExportMasterResult;
+use Gs2\Mission\Request\GetCurrentMissionMasterRequest;
+use Gs2\Mission\Result\GetCurrentMissionMasterResult;
+use Gs2\Mission\Request\UpdateCurrentMissionMasterRequest;
+use Gs2\Mission\Result\UpdateCurrentMissionMasterResult;
+use Gs2\Mission\Request\UpdateCurrentMissionMasterFromGitHubRequest;
+use Gs2\Mission\Result\UpdateCurrentMissionMasterFromGitHubResult;
+use Gs2\Mission\Request\DescribeCounterModelsRequest;
+use Gs2\Mission\Result\DescribeCounterModelsResult;
+use Gs2\Mission\Request\GetCounterModelRequest;
+use Gs2\Mission\Result\GetCounterModelResult;
+use Gs2\Mission\Request\DescribeMissionGroupModelsRequest;
+use Gs2\Mission\Result\DescribeMissionGroupModelsResult;
+use Gs2\Mission\Request\GetMissionGroupModelRequest;
+use Gs2\Mission\Result\GetMissionGroupModelResult;
 use Gs2\Mission\Request\DescribeMissionTaskModelsRequest;
 use Gs2\Mission\Result\DescribeMissionTaskModelsResult;
 use Gs2\Mission\Request\GetMissionTaskModelRequest;
@@ -117,804 +123,6 @@ use Gs2\Mission\Request\UpdateMissionTaskModelMasterRequest;
 use Gs2\Mission\Result\UpdateMissionTaskModelMasterResult;
 use Gs2\Mission\Request\DeleteMissionTaskModelMasterRequest;
 use Gs2\Mission\Result\DeleteMissionTaskModelMasterResult;
-use Gs2\Mission\Request\DescribeCounterModelsRequest;
-use Gs2\Mission\Result\DescribeCounterModelsResult;
-use Gs2\Mission\Request\GetCounterModelRequest;
-use Gs2\Mission\Result\GetCounterModelResult;
-
-class DescribeMissionGroupModelsTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeMissionGroupModelsRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeMissionGroupModelsTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeMissionGroupModelsRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeMissionGroupModelsRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeMissionGroupModelsResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/group";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetMissionGroupModelTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetMissionGroupModelRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetMissionGroupModelTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetMissionGroupModelRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetMissionGroupModelRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetMissionGroupModelResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/group/{missionGroupName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class ExportMasterTask extends Gs2RestSessionTask {
-
-    /**
-     * @var ExportMasterRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * ExportMasterTask constructor.
-     * @param Gs2RestSession $session
-     * @param ExportMasterRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        ExportMasterRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            ExportMasterResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/export";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetCurrentMissionMasterTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetCurrentMissionMasterRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetCurrentMissionMasterTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetCurrentMissionMasterRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetCurrentMissionMasterRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetCurrentMissionMasterResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class UpdateCurrentMissionMasterTask extends Gs2RestSessionTask {
-
-    /**
-     * @var UpdateCurrentMissionMasterRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * UpdateCurrentMissionMasterTask constructor.
-     * @param Gs2RestSession $session
-     * @param UpdateCurrentMissionMasterRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        UpdateCurrentMissionMasterRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            UpdateCurrentMissionMasterResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $json = [];
-        if ($this->request->getSettings() !== null) {
-            $json["settings"] = $this->request->getSettings();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("PUT")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class UpdateCurrentMissionMasterFromGitHubTask extends Gs2RestSessionTask {
-
-    /**
-     * @var UpdateCurrentMissionMasterFromGitHubRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * UpdateCurrentMissionMasterFromGitHubTask constructor.
-     * @param Gs2RestSession $session
-     * @param UpdateCurrentMissionMasterFromGitHubRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        UpdateCurrentMissionMasterFromGitHubRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            UpdateCurrentMissionMasterFromGitHubResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/from_git_hub";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $json = [];
-        if ($this->request->getCheckoutSetting() !== null) {
-            $json["checkoutSetting"] = $this->request->getCheckoutSetting()->toJson();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("PUT")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DescribeCountersTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeCountersRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeCountersTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeCountersRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeCountersRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeCountersResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/counter";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DescribeCountersByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeCountersByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeCountersByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeCountersByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeCountersByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeCountersByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class IncreaseCounterByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var IncreaseCounterByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * IncreaseCounterByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param IncreaseCounterByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        IncreaseCounterByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            IncreaseCounterByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $json = [];
-        if ($this->request->getValue() !== null) {
-            $json["value"] = $this->request->getValue();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetCounterTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetCounterRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetCounterTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetCounterRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetCounterRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetCounterResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/counter/{counterName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetCounterByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetCounterByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetCounterByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetCounterByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetCounterByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetCounterByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DeleteCounterByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DeleteCounterByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DeleteCounterByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param DeleteCounterByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DeleteCounterByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DeleteCounterByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("DELETE")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class IncreaseByStampSheetTask extends Gs2RestSessionTask {
-
-    /**
-     * @var IncreaseByStampSheetRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * IncreaseByStampSheetTask constructor.
-     * @param Gs2RestSession $session
-     * @param IncreaseByStampSheetRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        IncreaseByStampSheetRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            IncreaseByStampSheetResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/increase";
-
-        $json = [];
-        if ($this->request->getStampSheet() !== null) {
-            $json["stampSheet"] = $this->request->getStampSheet();
-        }
-        if ($this->request->getKeyId() !== null) {
-            $json["keyId"] = $this->request->getKeyId();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
 
 class DescribeCompletesTask extends Gs2RestSessionTask {
 
@@ -976,9 +184,6 @@ class DescribeCompletesTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1043,9 +248,6 @@ class DescribeCompletesByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1115,9 +317,6 @@ class CompleteTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1184,9 +383,6 @@ class CompleteByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1244,9 +440,6 @@ class ReceiveByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1309,9 +502,6 @@ class GetCompleteTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1370,9 +560,6 @@ class GetCompleteByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1433,9 +620,6 @@ class DeleteCompleteByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1494,9 +678,6 @@ class ReceiveByStampTaskTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1807,6 +988,341 @@ class DeleteCounterModelMasterTask extends Gs2RestSessionTask {
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeMissionGroupModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeMissionGroupModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeMissionGroupModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeMissionGroupModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeMissionGroupModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeMissionGroupModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateMissionGroupModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateMissionGroupModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateMissionGroupModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateMissionGroupModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateMissionGroupModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateMissionGroupModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getResetType() !== null) {
+            $json["resetType"] = $this->request->getResetType();
+        }
+        if ($this->request->getResetDayOfMonth() !== null) {
+            $json["resetDayOfMonth"] = $this->request->getResetDayOfMonth();
+        }
+        if ($this->request->getResetDayOfWeek() !== null) {
+            $json["resetDayOfWeek"] = $this->request->getResetDayOfWeek();
+        }
+        if ($this->request->getResetHour() !== null) {
+            $json["resetHour"] = $this->request->getResetHour();
+        }
+        if ($this->request->getCompleteNotificationNamespaceId() !== null) {
+            $json["completeNotificationNamespaceId"] = $this->request->getCompleteNotificationNamespaceId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetMissionGroupModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetMissionGroupModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetMissionGroupModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetMissionGroupModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetMissionGroupModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetMissionGroupModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group/{missionGroupName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateMissionGroupModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateMissionGroupModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateMissionGroupModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateMissionGroupModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateMissionGroupModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateMissionGroupModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group/{missionGroupName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+
+        $json = [];
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getResetType() !== null) {
+            $json["resetType"] = $this->request->getResetType();
+        }
+        if ($this->request->getResetDayOfMonth() !== null) {
+            $json["resetDayOfMonth"] = $this->request->getResetDayOfMonth();
+        }
+        if ($this->request->getResetDayOfWeek() !== null) {
+            $json["resetDayOfWeek"] = $this->request->getResetDayOfWeek();
+        }
+        if ($this->request->getResetHour() !== null) {
+            $json["resetHour"] = $this->request->getResetHour();
+        }
+        if ($this->request->getCompleteNotificationNamespaceId() !== null) {
+            $json["completeNotificationNamespaceId"] = $this->request->getCompleteNotificationNamespaceId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteMissionGroupModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteMissionGroupModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteMissionGroupModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteMissionGroupModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteMissionGroupModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteMissionGroupModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group/{missionGroupName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -2221,10 +1737,10 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
     }
 }
 
-class DescribeMissionGroupModelMastersTask extends Gs2RestSessionTask {
+class DescribeCountersTask extends Gs2RestSessionTask {
 
     /**
-     * @var DescribeMissionGroupModelMastersRequest
+     * @var DescribeCountersRequest
      */
     private $request;
 
@@ -2234,17 +1750,17 @@ class DescribeMissionGroupModelMastersTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * DescribeMissionGroupModelMastersTask constructor.
+     * DescribeCountersTask constructor.
      * @param Gs2RestSession $session
-     * @param DescribeMissionGroupModelMastersRequest $request
+     * @param DescribeCountersRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        DescribeMissionGroupModelMastersRequest $request
+        DescribeCountersRequest $request
     ) {
         parent::__construct(
             $session,
-            DescribeMissionGroupModelMastersResult::class
+            DescribeCountersResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2252,9 +1768,76 @@ class DescribeMissionGroupModelMastersTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group";
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/counter";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeCountersByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeCountersByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeCountersByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeCountersByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeCountersByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeCountersByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -2284,10 +1867,10 @@ class DescribeMissionGroupModelMastersTask extends Gs2RestSessionTask {
     }
 }
 
-class CreateMissionGroupModelMasterTask extends Gs2RestSessionTask {
+class IncreaseCounterByUserIdTask extends Gs2RestSessionTask {
 
     /**
-     * @var CreateMissionGroupModelMasterRequest
+     * @var IncreaseCounterByUserIdRequest
      */
     private $request;
 
@@ -2297,17 +1880,17 @@ class CreateMissionGroupModelMasterTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * CreateMissionGroupModelMasterTask constructor.
+     * IncreaseCounterByUserIdTask constructor.
      * @param Gs2RestSession $session
-     * @param CreateMissionGroupModelMasterRequest $request
+     * @param IncreaseCounterByUserIdRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        CreateMissionGroupModelMasterRequest $request
+        IncreaseCounterByUserIdRequest $request
     ) {
         parent::__construct(
             $session,
-            CreateMissionGroupModelMasterResult::class
+            IncreaseCounterByUserIdResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2315,34 +1898,15 @@ class CreateMissionGroupModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group";
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
-        if ($this->request->getName() !== null) {
-            $json["name"] = $this->request->getName();
-        }
-        if ($this->request->getMetadata() !== null) {
-            $json["metadata"] = $this->request->getMetadata();
-        }
-        if ($this->request->getDescription() !== null) {
-            $json["description"] = $this->request->getDescription();
-        }
-        if ($this->request->getResetType() !== null) {
-            $json["resetType"] = $this->request->getResetType();
-        }
-        if ($this->request->getResetDayOfMonth() !== null) {
-            $json["resetDayOfMonth"] = $this->request->getResetDayOfMonth();
-        }
-        if ($this->request->getResetDayOfWeek() !== null) {
-            $json["resetDayOfWeek"] = $this->request->getResetDayOfWeek();
-        }
-        if ($this->request->getResetHour() !== null) {
-            $json["resetHour"] = $this->request->getResetHour();
-        }
-        if ($this->request->getCompleteNotificationNamespaceId() !== null) {
-            $json["completeNotificationNamespaceId"] = $this->request->getCompleteNotificationNamespaceId();
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2363,10 +1927,10 @@ class CreateMissionGroupModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class GetMissionGroupModelMasterTask extends Gs2RestSessionTask {
+class GetCounterTask extends Gs2RestSessionTask {
 
     /**
-     * @var GetMissionGroupModelMasterRequest
+     * @var GetCounterRequest
      */
     private $request;
 
@@ -2376,17 +1940,17 @@ class GetMissionGroupModelMasterTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * GetMissionGroupModelMasterTask constructor.
+     * GetCounterTask constructor.
      * @param Gs2RestSession $session
-     * @param GetMissionGroupModelMasterRequest $request
+     * @param GetCounterRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        GetMissionGroupModelMasterRequest $request
+        GetCounterRequest $request
     ) {
         parent::__construct(
             $session,
-            GetMissionGroupModelMasterResult::class
+            GetCounterResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2394,10 +1958,72 @@ class GetMissionGroupModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group/{missionGroupName}";
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/counter/{counterName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetCounterByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetCounterByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetCounterByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetCounterByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetCounterByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetCounterByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -2421,10 +2047,10 @@ class GetMissionGroupModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class UpdateMissionGroupModelMasterTask extends Gs2RestSessionTask {
+class DeleteCounterByUserIdTask extends Gs2RestSessionTask {
 
     /**
-     * @var UpdateMissionGroupModelMasterRequest
+     * @var DeleteCounterByUserIdRequest
      */
     private $request;
 
@@ -2434,17 +2060,17 @@ class UpdateMissionGroupModelMasterTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * UpdateMissionGroupModelMasterTask constructor.
+     * DeleteCounterByUserIdTask constructor.
      * @param Gs2RestSession $session
-     * @param UpdateMissionGroupModelMasterRequest $request
+     * @param DeleteCounterByUserIdRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        UpdateMissionGroupModelMasterRequest $request
+        DeleteCounterByUserIdRequest $request
     ) {
         parent::__construct(
             $session,
-            UpdateMissionGroupModelMasterResult::class
+            DeleteCounterByUserIdResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2452,32 +2078,245 @@ class UpdateMissionGroupModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group/{missionGroupName}";
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IncreaseByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IncreaseByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IncreaseByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param IncreaseByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IncreaseByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IncreaseByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/increase";
 
         $json = [];
-        if ($this->request->getMetadata() !== null) {
-            $json["metadata"] = $this->request->getMetadata();
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
-        if ($this->request->getDescription() !== null) {
-            $json["description"] = $this->request->getDescription();
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
         }
-        if ($this->request->getResetType() !== null) {
-            $json["resetType"] = $this->request->getResetType();
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
         }
-        if ($this->request->getResetDayOfMonth() !== null) {
-            $json["resetDayOfMonth"] = $this->request->getResetDayOfMonth();
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getResetDayOfWeek() !== null) {
-            $json["resetDayOfWeek"] = $this->request->getResetDayOfWeek();
+
+        return parent::executeImpl();
+    }
+}
+
+class ExportMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ExportMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ExportMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param ExportMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ExportMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ExportMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/export";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
         }
-        if ($this->request->getResetHour() !== null) {
-            $json["resetHour"] = $this->request->getResetHour();
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
         }
-        if ($this->request->getCompleteNotificationNamespaceId() !== null) {
-            $json["completeNotificationNamespaceId"] = $this->request->getCompleteNotificationNamespaceId();
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetCurrentMissionMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetCurrentMissionMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetCurrentMissionMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetCurrentMissionMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetCurrentMissionMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetCurrentMissionMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateCurrentMissionMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateCurrentMissionMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateCurrentMissionMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateCurrentMissionMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateCurrentMissionMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateCurrentMissionMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getSettings() !== null) {
+            $json["settings"] = $this->request->getSettings();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2498,10 +2337,10 @@ class UpdateMissionGroupModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class DeleteMissionGroupModelMasterTask extends Gs2RestSessionTask {
+class UpdateCurrentMissionMasterFromGitHubTask extends Gs2RestSessionTask {
 
     /**
-     * @var DeleteMissionGroupModelMasterRequest
+     * @var UpdateCurrentMissionMasterFromGitHubRequest
      */
     private $request;
 
@@ -2511,17 +2350,17 @@ class DeleteMissionGroupModelMasterTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * DeleteMissionGroupModelMasterTask constructor.
+     * UpdateCurrentMissionMasterFromGitHubTask constructor.
      * @param Gs2RestSession $session
-     * @param DeleteMissionGroupModelMasterRequest $request
+     * @param UpdateCurrentMissionMasterFromGitHubRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        DeleteMissionGroupModelMasterRequest $request
+        UpdateCurrentMissionMasterFromGitHubRequest $request
     ) {
         parent::__construct(
             $session,
-            DeleteMissionGroupModelMasterResult::class
+            UpdateCurrentMissionMasterFromGitHubResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2529,7 +2368,237 @@ class DeleteMissionGroupModelMasterTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/group/{missionGroupName}";
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/from_git_hub";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getCheckoutSetting() !== null) {
+            $json["checkoutSetting"] = $this->request->getCheckoutSetting()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeCounterModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeCounterModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeCounterModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeCounterModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeCounterModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeCounterModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/counter";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetCounterModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetCounterModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetCounterModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetCounterModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetCounterModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetCounterModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/counter/{counterName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeMissionGroupModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeMissionGroupModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeMissionGroupModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeMissionGroupModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeMissionGroupModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeMissionGroupModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/group";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetMissionGroupModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetMissionGroupModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetMissionGroupModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetMissionGroupModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetMissionGroupModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetMissionGroupModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/group/{missionGroupName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
@@ -2543,7 +2612,7 @@ class DeleteMissionGroupModelMasterTask extends Gs2RestSessionTask {
             $url .= '?'. http_build_query($queryStrings);
         }
 
-        $this->builder->setMethod("DELETE")
+        $this->builder->setMethod("GET")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -3023,121 +3092,6 @@ class DeleteMissionTaskModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class DescribeCounterModelsTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeCounterModelsRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeCounterModelsTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeCounterModelsRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeCounterModelsRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeCounterModelsResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/counter";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetCounterModelTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetCounterModelRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetCounterModelTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetCounterModelRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetCounterModelRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetCounterModelResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/counter/{counterName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 /**
  * GS2 Mission API クライアント
  *
@@ -3156,412 +3110,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ミッショングループの一覧を取得<br>
-     *
-     * @param DescribeMissionGroupModelsRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function describeMissionGroupModelsAsync(
-            DescribeMissionGroupModelsRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeMissionGroupModelsTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ミッショングループの一覧を取得<br>
-     *
-     * @param DescribeMissionGroupModelsRequest $request リクエストパラメータ
-     * @return DescribeMissionGroupModelsResult
-     */
-    public function describeMissionGroupModels (
-            DescribeMissionGroupModelsRequest $request
-    ): DescribeMissionGroupModelsResult {
-        return $this->describeMissionGroupModelsAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ミッショングループを取得<br>
-     *
-     * @param GetMissionGroupModelRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function getMissionGroupModelAsync(
-            GetMissionGroupModelRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetMissionGroupModelTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ミッショングループを取得<br>
-     *
-     * @param GetMissionGroupModelRequest $request リクエストパラメータ
-     * @return GetMissionGroupModelResult
-     */
-    public function getMissionGroupModel (
-            GetMissionGroupModelRequest $request
-    ): GetMissionGroupModelResult {
-        return $this->getMissionGroupModelAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * 現在有効なミッションのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function exportMasterAsync(
-            ExportMasterRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new ExportMasterTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * 現在有効なミッションのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
-     * @return ExportMasterResult
-     */
-    public function exportMaster (
-            ExportMasterRequest $request
-    ): ExportMasterResult {
-        return $this->exportMasterAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * 現在有効なミッションを取得します<br>
-     *
-     * @param GetCurrentMissionMasterRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function getCurrentMissionMasterAsync(
-            GetCurrentMissionMasterRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetCurrentMissionMasterTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * 現在有効なミッションを取得します<br>
-     *
-     * @param GetCurrentMissionMasterRequest $request リクエストパラメータ
-     * @return GetCurrentMissionMasterResult
-     */
-    public function getCurrentMissionMaster (
-            GetCurrentMissionMasterRequest $request
-    ): GetCurrentMissionMasterResult {
-        return $this->getCurrentMissionMasterAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * 現在有効なミッションを更新します<br>
-     *
-     * @param UpdateCurrentMissionMasterRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function updateCurrentMissionMasterAsync(
-            UpdateCurrentMissionMasterRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UpdateCurrentMissionMasterTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * 現在有効なミッションを更新します<br>
-     *
-     * @param UpdateCurrentMissionMasterRequest $request リクエストパラメータ
-     * @return UpdateCurrentMissionMasterResult
-     */
-    public function updateCurrentMissionMaster (
-            UpdateCurrentMissionMasterRequest $request
-    ): UpdateCurrentMissionMasterResult {
-        return $this->updateCurrentMissionMasterAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * 現在有効なミッションを更新します<br>
-     *
-     * @param UpdateCurrentMissionMasterFromGitHubRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function updateCurrentMissionMasterFromGitHubAsync(
-            UpdateCurrentMissionMasterFromGitHubRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UpdateCurrentMissionMasterFromGitHubTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * 現在有効なミッションを更新します<br>
-     *
-     * @param UpdateCurrentMissionMasterFromGitHubRequest $request リクエストパラメータ
-     * @return UpdateCurrentMissionMasterFromGitHubResult
-     */
-    public function updateCurrentMissionMasterFromGitHub (
-            UpdateCurrentMissionMasterFromGitHubRequest $request
-    ): UpdateCurrentMissionMasterFromGitHubResult {
-        return $this->updateCurrentMissionMasterFromGitHubAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * カウンターの一覧を取得<br>
-     *
-     * @param DescribeCountersRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function describeCountersAsync(
-            DescribeCountersRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeCountersTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * カウンターの一覧を取得<br>
-     *
-     * @param DescribeCountersRequest $request リクエストパラメータ
-     * @return DescribeCountersResult
-     */
-    public function describeCounters (
-            DescribeCountersRequest $request
-    ): DescribeCountersResult {
-        return $this->describeCountersAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ユーザIDを指定してカウンターの一覧を取得<br>
-     *
-     * @param DescribeCountersByUserIdRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function describeCountersByUserIdAsync(
-            DescribeCountersByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeCountersByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ユーザIDを指定してカウンターの一覧を取得<br>
-     *
-     * @param DescribeCountersByUserIdRequest $request リクエストパラメータ
-     * @return DescribeCountersByUserIdResult
-     */
-    public function describeCountersByUserId (
-            DescribeCountersByUserIdRequest $request
-    ): DescribeCountersByUserIdResult {
-        return $this->describeCountersByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * カウンターに加算<br>
-     *
-     * @param IncreaseCounterByUserIdRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function increaseCounterByUserIdAsync(
-            IncreaseCounterByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new IncreaseCounterByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * カウンターに加算<br>
-     *
-     * @param IncreaseCounterByUserIdRequest $request リクエストパラメータ
-     * @return IncreaseCounterByUserIdResult
-     */
-    public function increaseCounterByUserId (
-            IncreaseCounterByUserIdRequest $request
-    ): IncreaseCounterByUserIdResult {
-        return $this->increaseCounterByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * カウンターを取得<br>
-     *
-     * @param GetCounterRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function getCounterAsync(
-            GetCounterRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetCounterTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * カウンターを取得<br>
-     *
-     * @param GetCounterRequest $request リクエストパラメータ
-     * @return GetCounterResult
-     */
-    public function getCounter (
-            GetCounterRequest $request
-    ): GetCounterResult {
-        return $this->getCounterAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ユーザIDを指定してカウンターを取得<br>
-     *
-     * @param GetCounterByUserIdRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function getCounterByUserIdAsync(
-            GetCounterByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetCounterByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ユーザIDを指定してカウンターを取得<br>
-     *
-     * @param GetCounterByUserIdRequest $request リクエストパラメータ
-     * @return GetCounterByUserIdResult
-     */
-    public function getCounterByUserId (
-            GetCounterByUserIdRequest $request
-    ): GetCounterByUserIdResult {
-        return $this->getCounterByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * カウンターを削除<br>
-     *
-     * @param DeleteCounterByUserIdRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function deleteCounterByUserIdAsync(
-            DeleteCounterByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DeleteCounterByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * カウンターを削除<br>
-     *
-     * @param DeleteCounterByUserIdRequest $request リクエストパラメータ
-     * @return DeleteCounterByUserIdResult
-     */
-    public function deleteCounterByUserId (
-            DeleteCounterByUserIdRequest $request
-    ): DeleteCounterByUserIdResult {
-        return $this->deleteCounterByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * カウンター加算<br>
-     *
-     * @param IncreaseByStampSheetRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function increaseByStampSheetAsync(
-            IncreaseByStampSheetRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new IncreaseByStampSheetTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * カウンター加算<br>
-     *
-     * @param IncreaseByStampSheetRequest $request リクエストパラメータ
-     * @return IncreaseByStampSheetResult
-     */
-    public function increaseByStampSheet (
-            IncreaseByStampSheetRequest $request
-    ): IncreaseByStampSheetResult {
-        return $this->increaseByStampSheetAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * 達成状況の一覧を取得<br>
-     *
-     * @param DescribeCompletesRequest $request リクエストパラメータ
+     * @param DescribeCompletesRequest $request
      * @return PromiseInterface
      */
     public function describeCompletesAsync(
@@ -3576,9 +3125,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況の一覧を取得<br>
-     *
-     * @param DescribeCompletesRequest $request リクエストパラメータ
+     * @param DescribeCompletesRequest $request
      * @return DescribeCompletesResult
      */
     public function describeCompletes (
@@ -3590,9 +3137,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して達成状況の一覧を取得<br>
-     *
-     * @param DescribeCompletesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeCompletesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeCompletesByUserIdAsync(
@@ -3607,9 +3152,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して達成状況の一覧を取得<br>
-     *
-     * @param DescribeCompletesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeCompletesByUserIdRequest $request
      * @return DescribeCompletesByUserIdResult
      */
     public function describeCompletesByUserId (
@@ -3621,9 +3164,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッション達成報酬を受領するためのスタンプシートを発行<br>
-     *
-     * @param CompleteRequest $request リクエストパラメータ
+     * @param CompleteRequest $request
      * @return PromiseInterface
      */
     public function completeAsync(
@@ -3638,9 +3179,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッション達成報酬を受領するためのスタンプシートを発行<br>
-     *
-     * @param CompleteRequest $request リクエストパラメータ
+     * @param CompleteRequest $request
      * @return CompleteResult
      */
     public function complete (
@@ -3652,9 +3191,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況を新規作成<br>
-     *
-     * @param CompleteByUserIdRequest $request リクエストパラメータ
+     * @param CompleteByUserIdRequest $request
      * @return PromiseInterface
      */
     public function completeByUserIdAsync(
@@ -3669,9 +3206,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況を新規作成<br>
-     *
-     * @param CompleteByUserIdRequest $request リクエストパラメータ
+     * @param CompleteByUserIdRequest $request
      * @return CompleteByUserIdResult
      */
     public function completeByUserId (
@@ -3683,9 +3218,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッション達成報酬を受領する<br>
-     *
-     * @param ReceiveByUserIdRequest $request リクエストパラメータ
+     * @param ReceiveByUserIdRequest $request
      * @return PromiseInterface
      */
     public function receiveByUserIdAsync(
@@ -3700,9 +3233,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッション達成報酬を受領する<br>
-     *
-     * @param ReceiveByUserIdRequest $request リクエストパラメータ
+     * @param ReceiveByUserIdRequest $request
      * @return ReceiveByUserIdResult
      */
     public function receiveByUserId (
@@ -3714,9 +3245,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況を取得<br>
-     *
-     * @param GetCompleteRequest $request リクエストパラメータ
+     * @param GetCompleteRequest $request
      * @return PromiseInterface
      */
     public function getCompleteAsync(
@@ -3731,9 +3260,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況を取得<br>
-     *
-     * @param GetCompleteRequest $request リクエストパラメータ
+     * @param GetCompleteRequest $request
      * @return GetCompleteResult
      */
     public function getComplete (
@@ -3745,9 +3272,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して達成状況を取得<br>
-     *
-     * @param GetCompleteByUserIdRequest $request リクエストパラメータ
+     * @param GetCompleteByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getCompleteByUserIdAsync(
@@ -3762,9 +3287,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して達成状況を取得<br>
-     *
-     * @param GetCompleteByUserIdRequest $request リクエストパラメータ
+     * @param GetCompleteByUserIdRequest $request
      * @return GetCompleteByUserIdResult
      */
     public function getCompleteByUserId (
@@ -3776,9 +3299,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況を削除<br>
-     *
-     * @param DeleteCompleteByUserIdRequest $request リクエストパラメータ
+     * @param DeleteCompleteByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteCompleteByUserIdAsync(
@@ -3793,9 +3314,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況を削除<br>
-     *
-     * @param DeleteCompleteByUserIdRequest $request リクエストパラメータ
+     * @param DeleteCompleteByUserIdRequest $request
      * @return DeleteCompleteByUserIdResult
      */
     public function deleteCompleteByUserId (
@@ -3807,9 +3326,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況を作成<br>
-     *
-     * @param ReceiveByStampTaskRequest $request リクエストパラメータ
+     * @param ReceiveByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function receiveByStampTaskAsync(
@@ -3824,9 +3341,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 達成状況を作成<br>
-     *
-     * @param ReceiveByStampTaskRequest $request リクエストパラメータ
+     * @param ReceiveByStampTaskRequest $request
      * @return ReceiveByStampTaskResult
      */
     public function receiveByStampTask (
@@ -3838,9 +3353,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターの一覧を取得<br>
-     *
-     * @param DescribeCounterModelMastersRequest $request リクエストパラメータ
+     * @param DescribeCounterModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeCounterModelMastersAsync(
@@ -3855,9 +3368,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターの一覧を取得<br>
-     *
-     * @param DescribeCounterModelMastersRequest $request リクエストパラメータ
+     * @param DescribeCounterModelMastersRequest $request
      * @return DescribeCounterModelMastersResult
      */
     public function describeCounterModelMasters (
@@ -3869,9 +3380,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターを新規作成<br>
-     *
-     * @param CreateCounterModelMasterRequest $request リクエストパラメータ
+     * @param CreateCounterModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createCounterModelMasterAsync(
@@ -3886,9 +3395,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターを新規作成<br>
-     *
-     * @param CreateCounterModelMasterRequest $request リクエストパラメータ
+     * @param CreateCounterModelMasterRequest $request
      * @return CreateCounterModelMasterResult
      */
     public function createCounterModelMaster (
@@ -3900,9 +3407,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターを取得<br>
-     *
-     * @param GetCounterModelMasterRequest $request リクエストパラメータ
+     * @param GetCounterModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getCounterModelMasterAsync(
@@ -3917,9 +3422,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターを取得<br>
-     *
-     * @param GetCounterModelMasterRequest $request リクエストパラメータ
+     * @param GetCounterModelMasterRequest $request
      * @return GetCounterModelMasterResult
      */
     public function getCounterModelMaster (
@@ -3931,9 +3434,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターを更新<br>
-     *
-     * @param UpdateCounterModelMasterRequest $request リクエストパラメータ
+     * @param UpdateCounterModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCounterModelMasterAsync(
@@ -3948,9 +3449,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターを更新<br>
-     *
-     * @param UpdateCounterModelMasterRequest $request リクエストパラメータ
+     * @param UpdateCounterModelMasterRequest $request
      * @return UpdateCounterModelMasterResult
      */
     public function updateCounterModelMaster (
@@ -3962,9 +3461,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターを削除<br>
-     *
-     * @param DeleteCounterModelMasterRequest $request リクエストパラメータ
+     * @param DeleteCounterModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteCounterModelMasterAsync(
@@ -3979,9 +3476,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類マスターを削除<br>
-     *
-     * @param DeleteCounterModelMasterRequest $request リクエストパラメータ
+     * @param DeleteCounterModelMasterRequest $request
      * @return DeleteCounterModelMasterResult
      */
     public function deleteCounterModelMaster (
@@ -3993,195 +3488,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function describeNamespacesAsync(
-            DescribeNamespacesRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeNamespacesTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
-     * @return DescribeNamespacesResult
-     */
-    public function describeNamespaces (
-            DescribeNamespacesRequest $request
-    ): DescribeNamespacesResult {
-        return $this->describeNamespacesAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function createNamespaceAsync(
-            CreateNamespaceRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new CreateNamespaceTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
-     * @return CreateNamespaceResult
-     */
-    public function createNamespace (
-            CreateNamespaceRequest $request
-    ): CreateNamespaceResult {
-        return $this->createNamespaceAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function getNamespaceStatusAsync(
-            GetNamespaceStatusRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetNamespaceStatusTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
-     * @return GetNamespaceStatusResult
-     */
-    public function getNamespaceStatus (
-            GetNamespaceStatusRequest $request
-    ): GetNamespaceStatusResult {
-        return $this->getNamespaceStatusAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function getNamespaceAsync(
-            GetNamespaceRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetNamespaceTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
-     * @return GetNamespaceResult
-     */
-    public function getNamespace (
-            GetNamespaceRequest $request
-    ): GetNamespaceResult {
-        return $this->getNamespaceAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function updateNamespaceAsync(
-            UpdateNamespaceRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UpdateNamespaceTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
-     * @return UpdateNamespaceResult
-     */
-    public function updateNamespace (
-            UpdateNamespaceRequest $request
-    ): UpdateNamespaceResult {
-        return $this->updateNamespaceAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function deleteNamespaceAsync(
-            DeleteNamespaceRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DeleteNamespaceTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
-     * @return DeleteNamespaceResult
-     */
-    public function deleteNamespace (
-            DeleteNamespaceRequest $request
-    ): DeleteNamespaceResult {
-        return $this->deleteNamespaceAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ミッショングループマスターの一覧を取得<br>
-     *
-     * @param DescribeMissionGroupModelMastersRequest $request リクエストパラメータ
+     * @param DescribeMissionGroupModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeMissionGroupModelMastersAsync(
@@ -4196,9 +3503,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターの一覧を取得<br>
-     *
-     * @param DescribeMissionGroupModelMastersRequest $request リクエストパラメータ
+     * @param DescribeMissionGroupModelMastersRequest $request
      * @return DescribeMissionGroupModelMastersResult
      */
     public function describeMissionGroupModelMasters (
@@ -4210,9 +3515,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターを新規作成<br>
-     *
-     * @param CreateMissionGroupModelMasterRequest $request リクエストパラメータ
+     * @param CreateMissionGroupModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createMissionGroupModelMasterAsync(
@@ -4227,9 +3530,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターを新規作成<br>
-     *
-     * @param CreateMissionGroupModelMasterRequest $request リクエストパラメータ
+     * @param CreateMissionGroupModelMasterRequest $request
      * @return CreateMissionGroupModelMasterResult
      */
     public function createMissionGroupModelMaster (
@@ -4241,9 +3542,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターを取得<br>
-     *
-     * @param GetMissionGroupModelMasterRequest $request リクエストパラメータ
+     * @param GetMissionGroupModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getMissionGroupModelMasterAsync(
@@ -4258,9 +3557,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターを取得<br>
-     *
-     * @param GetMissionGroupModelMasterRequest $request リクエストパラメータ
+     * @param GetMissionGroupModelMasterRequest $request
      * @return GetMissionGroupModelMasterResult
      */
     public function getMissionGroupModelMaster (
@@ -4272,9 +3569,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターを更新<br>
-     *
-     * @param UpdateMissionGroupModelMasterRequest $request リクエストパラメータ
+     * @param UpdateMissionGroupModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateMissionGroupModelMasterAsync(
@@ -4289,9 +3584,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターを更新<br>
-     *
-     * @param UpdateMissionGroupModelMasterRequest $request リクエストパラメータ
+     * @param UpdateMissionGroupModelMasterRequest $request
      * @return UpdateMissionGroupModelMasterResult
      */
     public function updateMissionGroupModelMaster (
@@ -4303,9 +3596,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターを削除<br>
-     *
-     * @param DeleteMissionGroupModelMasterRequest $request リクエストパラメータ
+     * @param DeleteMissionGroupModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteMissionGroupModelMasterAsync(
@@ -4320,9 +3611,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッショングループマスターを削除<br>
-     *
-     * @param DeleteMissionGroupModelMasterRequest $request リクエストパラメータ
+     * @param DeleteMissionGroupModelMasterRequest $request
      * @return DeleteMissionGroupModelMasterResult
      */
     public function deleteMissionGroupModelMaster (
@@ -4334,16 +3623,14 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッションタスクの一覧を取得<br>
-     *
-     * @param DescribeMissionTaskModelsRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
-    public function describeMissionTaskModelsAsync(
-            DescribeMissionTaskModelsRequest $request
+    public function describeNamespacesAsync(
+            DescribeNamespacesRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new DescribeMissionTaskModelsTask(
+        $task = new DescribeNamespacesTask(
             $this->session,
             $request
         );
@@ -4351,30 +3638,26 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッションタスクの一覧を取得<br>
-     *
-     * @param DescribeMissionTaskModelsRequest $request リクエストパラメータ
-     * @return DescribeMissionTaskModelsResult
+     * @param DescribeNamespacesRequest $request
+     * @return DescribeNamespacesResult
      */
-    public function describeMissionTaskModels (
-            DescribeMissionTaskModelsRequest $request
-    ): DescribeMissionTaskModelsResult {
-        return $this->describeMissionTaskModelsAsync(
+    public function describeNamespaces (
+            DescribeNamespacesRequest $request
+    ): DescribeNamespacesResult {
+        return $this->describeNamespacesAsync(
             $request
         )->wait();
     }
 
     /**
-     * ミッションタスクを取得<br>
-     *
-     * @param GetMissionTaskModelRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
-    public function getMissionTaskModelAsync(
-            GetMissionTaskModelRequest $request
+    public function createNamespaceAsync(
+            CreateNamespaceRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new GetMissionTaskModelTask(
+        $task = new CreateNamespaceTask(
             $this->session,
             $request
         );
@@ -4382,30 +3665,26 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッションタスクを取得<br>
-     *
-     * @param GetMissionTaskModelRequest $request リクエストパラメータ
-     * @return GetMissionTaskModelResult
+     * @param CreateNamespaceRequest $request
+     * @return CreateNamespaceResult
      */
-    public function getMissionTaskModel (
-            GetMissionTaskModelRequest $request
-    ): GetMissionTaskModelResult {
-        return $this->getMissionTaskModelAsync(
+    public function createNamespace (
+            CreateNamespaceRequest $request
+    ): CreateNamespaceResult {
+        return $this->createNamespaceAsync(
             $request
         )->wait();
     }
 
     /**
-     * ミッションタスクマスターの一覧を取得<br>
-     *
-     * @param DescribeMissionTaskModelMastersRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
-    public function describeMissionTaskModelMastersAsync(
-            DescribeMissionTaskModelMastersRequest $request
+    public function getNamespaceStatusAsync(
+            GetNamespaceStatusRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new DescribeMissionTaskModelMastersTask(
+        $task = new GetNamespaceStatusTask(
             $this->session,
             $request
         );
@@ -4413,30 +3692,26 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッションタスクマスターの一覧を取得<br>
-     *
-     * @param DescribeMissionTaskModelMastersRequest $request リクエストパラメータ
-     * @return DescribeMissionTaskModelMastersResult
+     * @param GetNamespaceStatusRequest $request
+     * @return GetNamespaceStatusResult
      */
-    public function describeMissionTaskModelMasters (
-            DescribeMissionTaskModelMastersRequest $request
-    ): DescribeMissionTaskModelMastersResult {
-        return $this->describeMissionTaskModelMastersAsync(
+    public function getNamespaceStatus (
+            GetNamespaceStatusRequest $request
+    ): GetNamespaceStatusResult {
+        return $this->getNamespaceStatusAsync(
             $request
         )->wait();
     }
 
     /**
-     * ミッションタスクマスターを新規作成<br>
-     *
-     * @param CreateMissionTaskModelMasterRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
-    public function createMissionTaskModelMasterAsync(
-            CreateMissionTaskModelMasterRequest $request
+    public function getNamespaceAsync(
+            GetNamespaceRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new CreateMissionTaskModelMasterTask(
+        $task = new GetNamespaceTask(
             $this->session,
             $request
         );
@@ -4444,30 +3719,26 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッションタスクマスターを新規作成<br>
-     *
-     * @param CreateMissionTaskModelMasterRequest $request リクエストパラメータ
-     * @return CreateMissionTaskModelMasterResult
+     * @param GetNamespaceRequest $request
+     * @return GetNamespaceResult
      */
-    public function createMissionTaskModelMaster (
-            CreateMissionTaskModelMasterRequest $request
-    ): CreateMissionTaskModelMasterResult {
-        return $this->createMissionTaskModelMasterAsync(
+    public function getNamespace (
+            GetNamespaceRequest $request
+    ): GetNamespaceResult {
+        return $this->getNamespaceAsync(
             $request
         )->wait();
     }
 
     /**
-     * ミッションタスクマスターを取得<br>
-     *
-     * @param GetMissionTaskModelMasterRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
-    public function getMissionTaskModelMasterAsync(
-            GetMissionTaskModelMasterRequest $request
+    public function updateNamespaceAsync(
+            UpdateNamespaceRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new GetMissionTaskModelMasterTask(
+        $task = new UpdateNamespaceTask(
             $this->session,
             $request
         );
@@ -4475,30 +3746,26 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッションタスクマスターを取得<br>
-     *
-     * @param GetMissionTaskModelMasterRequest $request リクエストパラメータ
-     * @return GetMissionTaskModelMasterResult
+     * @param UpdateNamespaceRequest $request
+     * @return UpdateNamespaceResult
      */
-    public function getMissionTaskModelMaster (
-            GetMissionTaskModelMasterRequest $request
-    ): GetMissionTaskModelMasterResult {
-        return $this->getMissionTaskModelMasterAsync(
+    public function updateNamespace (
+            UpdateNamespaceRequest $request
+    ): UpdateNamespaceResult {
+        return $this->updateNamespaceAsync(
             $request
         )->wait();
     }
 
     /**
-     * ミッションタスクマスターを更新<br>
-     *
-     * @param UpdateMissionTaskModelMasterRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
-    public function updateMissionTaskModelMasterAsync(
-            UpdateMissionTaskModelMasterRequest $request
+    public function deleteNamespaceAsync(
+            DeleteNamespaceRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new UpdateMissionTaskModelMasterTask(
+        $task = new DeleteNamespaceTask(
             $this->session,
             $request
         );
@@ -4506,30 +3773,26 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッションタスクマスターを更新<br>
-     *
-     * @param UpdateMissionTaskModelMasterRequest $request リクエストパラメータ
-     * @return UpdateMissionTaskModelMasterResult
+     * @param DeleteNamespaceRequest $request
+     * @return DeleteNamespaceResult
      */
-    public function updateMissionTaskModelMaster (
-            UpdateMissionTaskModelMasterRequest $request
-    ): UpdateMissionTaskModelMasterResult {
-        return $this->updateMissionTaskModelMasterAsync(
+    public function deleteNamespace (
+            DeleteNamespaceRequest $request
+    ): DeleteNamespaceResult {
+        return $this->deleteNamespaceAsync(
             $request
         )->wait();
     }
 
     /**
-     * ミッションタスクマスターを削除<br>
-     *
-     * @param DeleteMissionTaskModelMasterRequest $request リクエストパラメータ
+     * @param DescribeCountersRequest $request
      * @return PromiseInterface
      */
-    public function deleteMissionTaskModelMasterAsync(
-            DeleteMissionTaskModelMasterRequest $request
+    public function describeCountersAsync(
+            DescribeCountersRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new DeleteMissionTaskModelMasterTask(
+        $task = new DescribeCountersTask(
             $this->session,
             $request
         );
@@ -4537,23 +3800,289 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミッションタスクマスターを削除<br>
-     *
-     * @param DeleteMissionTaskModelMasterRequest $request リクエストパラメータ
-     * @return DeleteMissionTaskModelMasterResult
+     * @param DescribeCountersRequest $request
+     * @return DescribeCountersResult
      */
-    public function deleteMissionTaskModelMaster (
-            DeleteMissionTaskModelMasterRequest $request
-    ): DeleteMissionTaskModelMasterResult {
-        return $this->deleteMissionTaskModelMasterAsync(
+    public function describeCounters (
+            DescribeCountersRequest $request
+    ): DescribeCountersResult {
+        return $this->describeCountersAsync(
             $request
         )->wait();
     }
 
     /**
-     * カウンターの種類の一覧を取得<br>
-     *
-     * @param DescribeCounterModelsRequest $request リクエストパラメータ
+     * @param DescribeCountersByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeCountersByUserIdAsync(
+            DescribeCountersByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeCountersByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeCountersByUserIdRequest $request
+     * @return DescribeCountersByUserIdResult
+     */
+    public function describeCountersByUserId (
+            DescribeCountersByUserIdRequest $request
+    ): DescribeCountersByUserIdResult {
+        return $this->describeCountersByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IncreaseCounterByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function increaseCounterByUserIdAsync(
+            IncreaseCounterByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IncreaseCounterByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IncreaseCounterByUserIdRequest $request
+     * @return IncreaseCounterByUserIdResult
+     */
+    public function increaseCounterByUserId (
+            IncreaseCounterByUserIdRequest $request
+    ): IncreaseCounterByUserIdResult {
+        return $this->increaseCounterByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetCounterRequest $request
+     * @return PromiseInterface
+     */
+    public function getCounterAsync(
+            GetCounterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetCounterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetCounterRequest $request
+     * @return GetCounterResult
+     */
+    public function getCounter (
+            GetCounterRequest $request
+    ): GetCounterResult {
+        return $this->getCounterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetCounterByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getCounterByUserIdAsync(
+            GetCounterByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetCounterByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetCounterByUserIdRequest $request
+     * @return GetCounterByUserIdResult
+     */
+    public function getCounterByUserId (
+            GetCounterByUserIdRequest $request
+    ): GetCounterByUserIdResult {
+        return $this->getCounterByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteCounterByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteCounterByUserIdAsync(
+            DeleteCounterByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteCounterByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteCounterByUserIdRequest $request
+     * @return DeleteCounterByUserIdResult
+     */
+    public function deleteCounterByUserId (
+            DeleteCounterByUserIdRequest $request
+    ): DeleteCounterByUserIdResult {
+        return $this->deleteCounterByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IncreaseByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function increaseByStampSheetAsync(
+            IncreaseByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IncreaseByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IncreaseByStampSheetRequest $request
+     * @return IncreaseByStampSheetResult
+     */
+    public function increaseByStampSheet (
+            IncreaseByStampSheetRequest $request
+    ): IncreaseByStampSheetResult {
+        return $this->increaseByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ExportMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function exportMasterAsync(
+            ExportMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ExportMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ExportMasterRequest $request
+     * @return ExportMasterResult
+     */
+    public function exportMaster (
+            ExportMasterRequest $request
+    ): ExportMasterResult {
+        return $this->exportMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetCurrentMissionMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getCurrentMissionMasterAsync(
+            GetCurrentMissionMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetCurrentMissionMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetCurrentMissionMasterRequest $request
+     * @return GetCurrentMissionMasterResult
+     */
+    public function getCurrentMissionMaster (
+            GetCurrentMissionMasterRequest $request
+    ): GetCurrentMissionMasterResult {
+        return $this->getCurrentMissionMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateCurrentMissionMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateCurrentMissionMasterAsync(
+            UpdateCurrentMissionMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCurrentMissionMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateCurrentMissionMasterRequest $request
+     * @return UpdateCurrentMissionMasterResult
+     */
+    public function updateCurrentMissionMaster (
+            UpdateCurrentMissionMasterRequest $request
+    ): UpdateCurrentMissionMasterResult {
+        return $this->updateCurrentMissionMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateCurrentMissionMasterFromGitHubRequest $request
+     * @return PromiseInterface
+     */
+    public function updateCurrentMissionMasterFromGitHubAsync(
+            UpdateCurrentMissionMasterFromGitHubRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCurrentMissionMasterFromGitHubTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateCurrentMissionMasterFromGitHubRequest $request
+     * @return UpdateCurrentMissionMasterFromGitHubResult
+     */
+    public function updateCurrentMissionMasterFromGitHub (
+            UpdateCurrentMissionMasterFromGitHubRequest $request
+    ): UpdateCurrentMissionMasterFromGitHubResult {
+        return $this->updateCurrentMissionMasterFromGitHubAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeCounterModelsRequest $request
      * @return PromiseInterface
      */
     public function describeCounterModelsAsync(
@@ -4568,9 +4097,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類の一覧を取得<br>
-     *
-     * @param DescribeCounterModelsRequest $request リクエストパラメータ
+     * @param DescribeCounterModelsRequest $request
      * @return DescribeCounterModelsResult
      */
     public function describeCounterModels (
@@ -4582,9 +4109,7 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類を取得<br>
-     *
-     * @param GetCounterModelRequest $request リクエストパラメータ
+     * @param GetCounterModelRequest $request
      * @return PromiseInterface
      */
     public function getCounterModelAsync(
@@ -4599,15 +4124,256 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの種類を取得<br>
-     *
-     * @param GetCounterModelRequest $request リクエストパラメータ
+     * @param GetCounterModelRequest $request
      * @return GetCounterModelResult
      */
     public function getCounterModel (
             GetCounterModelRequest $request
     ): GetCounterModelResult {
         return $this->getCounterModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeMissionGroupModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeMissionGroupModelsAsync(
+            DescribeMissionGroupModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeMissionGroupModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeMissionGroupModelsRequest $request
+     * @return DescribeMissionGroupModelsResult
+     */
+    public function describeMissionGroupModels (
+            DescribeMissionGroupModelsRequest $request
+    ): DescribeMissionGroupModelsResult {
+        return $this->describeMissionGroupModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetMissionGroupModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getMissionGroupModelAsync(
+            GetMissionGroupModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetMissionGroupModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetMissionGroupModelRequest $request
+     * @return GetMissionGroupModelResult
+     */
+    public function getMissionGroupModel (
+            GetMissionGroupModelRequest $request
+    ): GetMissionGroupModelResult {
+        return $this->getMissionGroupModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeMissionTaskModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeMissionTaskModelsAsync(
+            DescribeMissionTaskModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeMissionTaskModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeMissionTaskModelsRequest $request
+     * @return DescribeMissionTaskModelsResult
+     */
+    public function describeMissionTaskModels (
+            DescribeMissionTaskModelsRequest $request
+    ): DescribeMissionTaskModelsResult {
+        return $this->describeMissionTaskModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetMissionTaskModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getMissionTaskModelAsync(
+            GetMissionTaskModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetMissionTaskModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetMissionTaskModelRequest $request
+     * @return GetMissionTaskModelResult
+     */
+    public function getMissionTaskModel (
+            GetMissionTaskModelRequest $request
+    ): GetMissionTaskModelResult {
+        return $this->getMissionTaskModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeMissionTaskModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeMissionTaskModelMastersAsync(
+            DescribeMissionTaskModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeMissionTaskModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeMissionTaskModelMastersRequest $request
+     * @return DescribeMissionTaskModelMastersResult
+     */
+    public function describeMissionTaskModelMasters (
+            DescribeMissionTaskModelMastersRequest $request
+    ): DescribeMissionTaskModelMastersResult {
+        return $this->describeMissionTaskModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateMissionTaskModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createMissionTaskModelMasterAsync(
+            CreateMissionTaskModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateMissionTaskModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateMissionTaskModelMasterRequest $request
+     * @return CreateMissionTaskModelMasterResult
+     */
+    public function createMissionTaskModelMaster (
+            CreateMissionTaskModelMasterRequest $request
+    ): CreateMissionTaskModelMasterResult {
+        return $this->createMissionTaskModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetMissionTaskModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getMissionTaskModelMasterAsync(
+            GetMissionTaskModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetMissionTaskModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetMissionTaskModelMasterRequest $request
+     * @return GetMissionTaskModelMasterResult
+     */
+    public function getMissionTaskModelMaster (
+            GetMissionTaskModelMasterRequest $request
+    ): GetMissionTaskModelMasterResult {
+        return $this->getMissionTaskModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateMissionTaskModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateMissionTaskModelMasterAsync(
+            UpdateMissionTaskModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateMissionTaskModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateMissionTaskModelMasterRequest $request
+     * @return UpdateMissionTaskModelMasterResult
+     */
+    public function updateMissionTaskModelMaster (
+            UpdateMissionTaskModelMasterRequest $request
+    ): UpdateMissionTaskModelMasterResult {
+        return $this->updateMissionTaskModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteMissionTaskModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteMissionTaskModelMasterAsync(
+            DeleteMissionTaskModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteMissionTaskModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteMissionTaskModelMasterRequest $request
+     * @return DeleteMissionTaskModelMasterResult
+     */
+    public function deleteMissionTaskModelMaster (
+            DeleteMissionTaskModelMasterRequest $request
+    ): DeleteMissionTaskModelMasterResult {
+        return $this->deleteMissionTaskModelMasterAsync(
             $request
         )->wait();
     }

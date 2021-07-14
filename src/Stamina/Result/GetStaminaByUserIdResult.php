@@ -19,59 +19,56 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\MaxStaminaTable;
+use Gs2\Stamina\Model\RecoverIntervalTable;
+use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
-/**
- * ユーザIDを指定してスタミナを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetStaminaByUserIdResult implements IResult {
-	/** @var Stamina スタミナ */
-	private $item;
-	/** @var StaminaModel スタミナモデル */
-	private $staminaModel;
+    /** @var Stamina */
+    private $item;
+    /** @var StaminaModel */
+    private $staminaModel;
 
-	/**
-	 * スタミナを取得
-	 *
-	 * @return Stamina|null ユーザIDを指定してスタミナを取得
-	 */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
-	/**
-	 * スタミナを設定
-	 *
-	 * @param Stamina|null $item ユーザIDを指定してスタミナを取得
-	 */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタミナモデルを取得
-	 *
-	 * @return StaminaModel|null ユーザIDを指定してスタミナを取得
-	 */
+	public function withItem(?Stamina $item): GetStaminaByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
-	/**
-	 * スタミナモデルを設定
-	 *
-	 * @param StaminaModel|null $staminaModel ユーザIDを指定してスタミナを取得
-	 */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
-    public static function fromJson(array $data): GetStaminaByUserIdResult {
-        $result = new GetStaminaByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
-        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
-        return $result;
+	public function withStaminaModel(?StaminaModel $staminaModel): GetStaminaByUserIdResult {
+		$this->staminaModel = $staminaModel;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetStaminaByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetStaminaByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Stamina::fromJson($data['item']))
+            ->withStaminaModel(empty($data['staminaModel']) ? null : StaminaModel::fromJson($data['staminaModel']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "staminaModel" => $this->getStaminaModel() !== null ? $this->getStaminaModel()->toJson() : null,
+        );
     }
 }

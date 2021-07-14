@@ -20,63 +20,61 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendUser;
 
-/**
- * ユーザーIDを指定してフレンドを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeFriendsByUserIdResult implements IResult {
-	/** @var FriendUser[] フレンドのユーザーのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * フレンドのユーザーのリストを取得
-	 *
-	 * @return FriendUser[]|null ユーザーIDを指定してフレンドを取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * フレンドのユーザーのリストを設定
-	 *
-	 * @param FriendUser[]|null $items ユーザーIDを指定してフレンドを取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null ユーザーIDを指定してフレンドを取得
-	 */
+	public function withItems(?array $items): DescribeFriendsByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken ユーザーIDを指定してフレンドを取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeFriendsByUserIdResult {
-        $result = new DescribeFriendsByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return FriendUser::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeFriendsByUserIdResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeFriendsByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeFriendsByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return FriendUser::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

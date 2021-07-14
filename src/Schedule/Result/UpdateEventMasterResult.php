@@ -20,36 +20,34 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\EventMaster;
 
-/**
- * イベントマスターを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateEventMasterResult implements IResult {
-	/** @var EventMaster 更新したイベントマスター */
-	private $item;
+    /** @var EventMaster */
+    private $item;
 
-	/**
-	 * 更新したイベントマスターを取得
-	 *
-	 * @return EventMaster|null イベントマスターを更新
-	 */
 	public function getItem(): ?EventMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したイベントマスターを設定
-	 *
-	 * @param EventMaster|null $item イベントマスターを更新
-	 */
 	public function setItem(?EventMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateEventMasterResult {
-        $result = new UpdateEventMasterResult();
-        $result->setItem(isset($data["item"]) ? EventMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?EventMaster $item): UpdateEventMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateEventMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateEventMasterResult())
+            ->withItem(empty($data['item']) ? null : EventMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

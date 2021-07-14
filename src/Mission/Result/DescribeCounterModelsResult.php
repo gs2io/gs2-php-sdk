@@ -18,44 +18,47 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\CounterScopeModel;
 use Gs2\Mission\Model\CounterModel;
 
-/**
- * カウンターの種類の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeCounterModelsResult implements IResult {
-	/** @var CounterModel[] カウンターの種類のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * カウンターの種類のリストを取得
-	 *
-	 * @return CounterModel[]|null カウンターの種類の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * カウンターの種類のリストを設定
-	 *
-	 * @param CounterModel[]|null $items カウンターの種類の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeCounterModelsResult {
-        $result = new DescribeCounterModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return CounterModel::fromJson($v);
+	public function withItems(?array $items): DescribeCounterModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeCounterModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeCounterModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return CounterModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

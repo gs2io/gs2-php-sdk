@@ -20,42 +20,44 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Event;
 
-/**
- * ユーザIDを指定してイベントの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeEventsByUserIdResult implements IResult {
-	/** @var Event[] イベントのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * イベントのリストを取得
-	 *
-	 * @return Event[]|null ユーザIDを指定してイベントの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * イベントのリストを設定
-	 *
-	 * @param Event[]|null $items ユーザIDを指定してイベントの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeEventsByUserIdResult {
-        $result = new DescribeEventsByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Event::fromJson($v);
+	public function withItems(?array $items): DescribeEventsByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeEventsByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeEventsByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Event::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

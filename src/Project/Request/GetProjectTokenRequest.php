@@ -19,75 +19,51 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * プロジェクトトークンを発行します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetProjectTokenRequest extends Gs2BasicRequest {
-
-    /** @var string プロジェクト名 */
+    /** @var string */
     private $projectName;
-
-    /**
-     * プロジェクト名を取得
-     *
-     * @return string|null プロジェクトトークンを発行します
-     */
-    public function getProjectName(): ?string {
-        return $this->projectName;
-    }
-
-    /**
-     * プロジェクト名を設定
-     *
-     * @param string $projectName プロジェクトトークンを発行します
-     */
-    public function setProjectName(string $projectName = null) {
-        $this->projectName = $projectName;
-    }
-
-    /**
-     * プロジェクト名を設定
-     *
-     * @param string $projectName プロジェクトトークンを発行します
-     * @return GetProjectTokenRequest $this
-     */
-    public function withProjectName(string $projectName = null): GetProjectTokenRequest {
-        $this->setProjectName($projectName);
-        return $this;
-    }
-
-    /** @var string GS2アカウントトークン */
+    /** @var string */
     private $accountToken;
 
-    /**
-     * GS2アカウントトークンを取得
-     *
-     * @return string|null プロジェクトトークンを発行します
-     */
-    public function getAccountToken(): ?string {
-        return $this->accountToken;
+	public function getProjectName(): ?string {
+		return $this->projectName;
+	}
+
+	public function setProjectName(?string $projectName) {
+		$this->projectName = $projectName;
+	}
+
+	public function withProjectName(?string $projectName): GetProjectTokenRequest {
+		$this->projectName = $projectName;
+		return $this;
+	}
+
+	public function getAccountToken(): ?string {
+		return $this->accountToken;
+	}
+
+	public function setAccountToken(?string $accountToken) {
+		$this->accountToken = $accountToken;
+	}
+
+	public function withAccountToken(?string $accountToken): GetProjectTokenRequest {
+		$this->accountToken = $accountToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetProjectTokenRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetProjectTokenRequest())
+            ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
+            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
     }
 
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken プロジェクトトークンを発行します
-     */
-    public function setAccountToken(string $accountToken = null) {
-        $this->accountToken = $accountToken;
+    public function toJson(): array {
+        return array(
+            "projectName" => $this->getProjectName(),
+            "accountToken" => $this->getAccountToken(),
+        );
     }
-
-    /**
-     * GS2アカウントトークンを設定
-     *
-     * @param string $accountToken プロジェクトトークンを発行します
-     * @return GetProjectTokenRequest $this
-     */
-    public function withAccountToken(string $accountToken = null): GetProjectTokenRequest {
-        $this->setAccountToken($accountToken);
-        return $this;
-    }
-
 }

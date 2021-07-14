@@ -19,107 +19,51 @@ namespace Gs2\Auth\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 指定したユーザIDでGS2にログインし、アクセストークンを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class LoginRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     * @return LoginRequest $this
-     */
-    public function withUserId(string $userId = null): LoginRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int 現在時刻に対する補正値（現在時刻を起点とした秒数） */
+    /** @var int */
     private $timeOffset;
 
-    /**
-     * 現在時刻に対する補正値（現在時刻を起点とした秒数）を取得
-     *
-     * @return int|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function getTimeOffset(): ?int {
-        return $this->timeOffset;
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): LoginRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getTimeOffset(): ?int {
+		return $this->timeOffset;
+	}
+
+	public function setTimeOffset(?int $timeOffset) {
+		$this->timeOffset = $timeOffset;
+	}
+
+	public function withTimeOffset(?int $timeOffset): LoginRequest {
+		$this->timeOffset = $timeOffset;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?LoginRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new LoginRequest())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withTimeOffset(empty($data['timeOffset']) ? null : $data['timeOffset']);
     }
 
-    /**
-     * 現在時刻に対する補正値（現在時刻を起点とした秒数）を設定
-     *
-     * @param int $timeOffset 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function setTimeOffset(int $timeOffset = null) {
-        $this->timeOffset = $timeOffset;
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "timeOffset" => $this->getTimeOffset(),
+        );
     }
-
-    /**
-     * 現在時刻に対する補正値（現在時刻を起点とした秒数）を設定
-     *
-     * @param int $timeOffset 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     * @return LoginRequest $this
-     */
-    public function withTimeOffset(int $timeOffset = null): LoginRequest {
-        $this->setTimeOffset($timeOffset);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     * @return LoginRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): LoginRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

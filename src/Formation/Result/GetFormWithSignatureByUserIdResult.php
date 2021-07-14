@@ -18,146 +18,126 @@
 namespace Gs2\Formation\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Formation\Model\Slot;
 use Gs2\Formation\Model\Form;
 use Gs2\Formation\Model\Mold;
-use Gs2\Formation\Model\MoldModel;
+use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
+use Gs2\Formation\Model\MoldModel;
 
-/**
- * ユーザIDを指定して署名付きフォームを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetFormWithSignatureByUserIdResult implements IResult {
-	/** @var Form フォーム */
-	private $item;
-	/** @var string 署名対象の値 */
-	private $body;
-	/** @var string 署名 */
-	private $signature;
-	/** @var Mold 保存したフォーム */
-	private $mold;
-	/** @var MoldModel フォームの保存領域 */
-	private $moldModel;
-	/** @var FormModel フォームモデル */
-	private $formModel;
+    /** @var Form */
+    private $item;
+    /** @var string */
+    private $body;
+    /** @var string */
+    private $signature;
+    /** @var Mold */
+    private $mold;
+    /** @var MoldModel */
+    private $moldModel;
+    /** @var FormModel */
+    private $formModel;
 
-	/**
-	 * フォームを取得
-	 *
-	 * @return Form|null ユーザIDを指定して署名付きフォームを取得
-	 */
 	public function getItem(): ?Form {
 		return $this->item;
 	}
 
-	/**
-	 * フォームを設定
-	 *
-	 * @param Form|null $item ユーザIDを指定して署名付きフォームを取得
-	 */
 	public function setItem(?Form $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 署名対象の値を取得
-	 *
-	 * @return string|null ユーザIDを指定して署名付きフォームを取得
-	 */
+	public function withItem(?Form $item): GetFormWithSignatureByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
-	/**
-	 * 署名対象の値を設定
-	 *
-	 * @param string|null $body ユーザIDを指定して署名付きフォームを取得
-	 */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
-	/**
-	 * 署名を取得
-	 *
-	 * @return string|null ユーザIDを指定して署名付きフォームを取得
-	 */
+	public function withBody(?string $body): GetFormWithSignatureByUserIdResult {
+		$this->body = $body;
+		return $this;
+	}
+
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
-	/**
-	 * 署名を設定
-	 *
-	 * @param string|null $signature ユーザIDを指定して署名付きフォームを取得
-	 */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
-	/**
-	 * 保存したフォームを取得
-	 *
-	 * @return Mold|null ユーザIDを指定して署名付きフォームを取得
-	 */
+	public function withSignature(?string $signature): GetFormWithSignatureByUserIdResult {
+		$this->signature = $signature;
+		return $this;
+	}
+
 	public function getMold(): ?Mold {
 		return $this->mold;
 	}
 
-	/**
-	 * 保存したフォームを設定
-	 *
-	 * @param Mold|null $mold ユーザIDを指定して署名付きフォームを取得
-	 */
 	public function setMold(?Mold $mold) {
 		$this->mold = $mold;
 	}
 
-	/**
-	 * フォームの保存領域を取得
-	 *
-	 * @return MoldModel|null ユーザIDを指定して署名付きフォームを取得
-	 */
+	public function withMold(?Mold $mold): GetFormWithSignatureByUserIdResult {
+		$this->mold = $mold;
+		return $this;
+	}
+
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
-	/**
-	 * フォームの保存領域を設定
-	 *
-	 * @param MoldModel|null $moldModel ユーザIDを指定して署名付きフォームを取得
-	 */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
-	/**
-	 * フォームモデルを取得
-	 *
-	 * @return FormModel|null ユーザIDを指定して署名付きフォームを取得
-	 */
+	public function withMoldModel(?MoldModel $moldModel): GetFormWithSignatureByUserIdResult {
+		$this->moldModel = $moldModel;
+		return $this;
+	}
+
 	public function getFormModel(): ?FormModel {
 		return $this->formModel;
 	}
 
-	/**
-	 * フォームモデルを設定
-	 *
-	 * @param FormModel|null $formModel ユーザIDを指定して署名付きフォームを取得
-	 */
 	public function setFormModel(?FormModel $formModel) {
 		$this->formModel = $formModel;
 	}
 
-    public static function fromJson(array $data): GetFormWithSignatureByUserIdResult {
-        $result = new GetFormWithSignatureByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Form::fromJson($data["item"]) : null);
-        $result->setBody(isset($data["body"]) ? $data["body"] : null);
-        $result->setSignature(isset($data["signature"]) ? $data["signature"] : null);
-        $result->setMold(isset($data["mold"]) ? Mold::fromJson($data["mold"]) : null);
-        $result->setMoldModel(isset($data["moldModel"]) ? MoldModel::fromJson($data["moldModel"]) : null);
-        $result->setFormModel(isset($data["formModel"]) ? FormModel::fromJson($data["formModel"]) : null);
-        return $result;
+	public function withFormModel(?FormModel $formModel): GetFormWithSignatureByUserIdResult {
+		$this->formModel = $formModel;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetFormWithSignatureByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetFormWithSignatureByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Form::fromJson($data['item']))
+            ->withBody(empty($data['body']) ? null : $data['body'])
+            ->withSignature(empty($data['signature']) ? null : $data['signature'])
+            ->withMold(empty($data['mold']) ? null : Mold::fromJson($data['mold']))
+            ->withMoldModel(empty($data['moldModel']) ? null : MoldModel::fromJson($data['moldModel']))
+            ->withFormModel(empty($data['formModel']) ? null : FormModel::fromJson($data['formModel']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "body" => $this->getBody(),
+            "signature" => $this->getSignature(),
+            "mold" => $this->getMold() !== null ? $this->getMold()->toJson() : null,
+            "moldModel" => $this->getMoldModel() !== null ? $this->getMoldModel()->toJson() : null,
+            "formModel" => $this->getFormModel() !== null ? $this->getFormModel()->toJson() : null,
+        );
     }
 }

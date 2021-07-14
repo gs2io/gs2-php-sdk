@@ -20,36 +20,34 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Score;
 
-/**
- * スコアを登録 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class PutScoreResult implements IResult {
-	/** @var Score 登録したスコア */
-	private $item;
+    /** @var Score */
+    private $item;
 
-	/**
-	 * 登録したスコアを取得
-	 *
-	 * @return Score|null スコアを登録
-	 */
 	public function getItem(): ?Score {
 		return $this->item;
 	}
 
-	/**
-	 * 登録したスコアを設定
-	 *
-	 * @param Score|null $item スコアを登録
-	 */
 	public function setItem(?Score $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): PutScoreResult {
-        $result = new PutScoreResult();
-        $result->setItem(isset($data["item"]) ? Score::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Score $item): PutScoreResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PutScoreResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new PutScoreResult())
+            ->withItem(empty($data['item']) ? null : Score::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

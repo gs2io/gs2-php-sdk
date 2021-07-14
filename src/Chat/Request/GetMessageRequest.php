@@ -19,107 +19,68 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * メッセージを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMessageRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null メッセージを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージを取得
-     * @return GetMessageRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetMessageRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null メッセージを取得
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName メッセージを取得
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName メッセージを取得
-     * @return GetMessageRequest $this
-     */
-    public function withRoomName(string $roomName = null): GetMessageRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var string メッセージ名 */
+    /** @var string */
     private $messageName;
 
-    /**
-     * メッセージ名を取得
-     *
-     * @return string|null メッセージを取得
-     */
-    public function getMessageName(): ?string {
-        return $this->messageName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetMessageRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): GetMessageRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getMessageName(): ?string {
+		return $this->messageName;
+	}
+
+	public function setMessageName(?string $messageName) {
+		$this->messageName = $messageName;
+	}
+
+	public function withMessageName(?string $messageName): GetMessageRequest {
+		$this->messageName = $messageName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMessageRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMessageRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withMessageName(empty($data['messageName']) ? null : $data['messageName']);
     }
 
-    /**
-     * メッセージ名を設定
-     *
-     * @param string $messageName メッセージを取得
-     */
-    public function setMessageName(string $messageName = null) {
-        $this->messageName = $messageName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "messageName" => $this->getMessageName(),
+        );
     }
-
-    /**
-     * メッセージ名を設定
-     *
-     * @param string $messageName メッセージを取得
-     * @return GetMessageRequest $this
-     */
-    public function withMessageName(string $messageName = null): GetMessageRequest {
-        $this->setMessageName($messageName);
-        return $this;
-    }
-
 }

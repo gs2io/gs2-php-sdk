@@ -20,107 +20,78 @@ namespace Gs2\Matchmaking\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\GameResult;
 
-/**
- * レーティング値の再計算を実行 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PutResultRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null レーティング値の再計算を実行
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティング値の再計算を実行
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティング値の再計算を実行
-     * @return PutResultRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PutResultRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string レーティング名 */
+    /** @var string */
     private $ratingName;
-
-    /**
-     * レーティング名を取得
-     *
-     * @return string|null レーティング値の再計算を実行
-     */
-    public function getRatingName(): ?string {
-        return $this->ratingName;
-    }
-
-    /**
-     * レーティング名を設定
-     *
-     * @param string $ratingName レーティング値の再計算を実行
-     */
-    public function setRatingName(string $ratingName = null) {
-        $this->ratingName = $ratingName;
-    }
-
-    /**
-     * レーティング名を設定
-     *
-     * @param string $ratingName レーティング値の再計算を実行
-     * @return PutResultRequest $this
-     */
-    public function withRatingName(string $ratingName = null): PutResultRequest {
-        $this->setRatingName($ratingName);
-        return $this;
-    }
-
-    /** @var GameResult[] 対戦結果 */
+    /** @var array */
     private $gameResults;
 
-    /**
-     * 対戦結果を取得
-     *
-     * @return GameResult[]|null レーティング値の再計算を実行
-     */
-    public function getGameResults(): ?array {
-        return $this->gameResults;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PutResultRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRatingName(): ?string {
+		return $this->ratingName;
+	}
+
+	public function setRatingName(?string $ratingName) {
+		$this->ratingName = $ratingName;
+	}
+
+	public function withRatingName(?string $ratingName): PutResultRequest {
+		$this->ratingName = $ratingName;
+		return $this;
+	}
+
+	public function getGameResults(): ?array {
+		return $this->gameResults;
+	}
+
+	public function setGameResults(?array $gameResults) {
+		$this->gameResults = $gameResults;
+	}
+
+	public function withGameResults(?array $gameResults): PutResultRequest {
+		$this->gameResults = $gameResults;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PutResultRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PutResultRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
+            ->withGameResults(array_map(
+                function ($item) {
+                    return GameResult::fromJson($item);
+                },
+                array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
+            ));
     }
 
-    /**
-     * 対戦結果を設定
-     *
-     * @param GameResult[] $gameResults レーティング値の再計算を実行
-     */
-    public function setGameResults(array $gameResults = null) {
-        $this->gameResults = $gameResults;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "ratingName" => $this->getRatingName(),
+            "gameResults" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getGameResults() !== null && $this->getGameResults() !== null ? $this->getGameResults() : []
+            ),
+        );
     }
-
-    /**
-     * 対戦結果を設定
-     *
-     * @param GameResult[] $gameResults レーティング値の再計算を実行
-     * @return PutResultRequest $this
-     */
-    public function withGameResults(array $gameResults = null): PutResultRequest {
-        $this->setGameResults($gameResults);
-        return $this;
-    }
-
 }

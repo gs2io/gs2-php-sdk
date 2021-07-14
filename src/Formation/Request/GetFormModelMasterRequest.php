@@ -19,75 +19,51 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * フォームマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetFormModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null フォームマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォームマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォームマスターを取得
-     * @return GetFormModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetFormModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string フォーム名 */
+    /** @var string */
     private $formModelName;
 
-    /**
-     * フォーム名を取得
-     *
-     * @return string|null フォームマスターを取得
-     */
-    public function getFormModelName(): ?string {
-        return $this->formModelName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetFormModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getFormModelName(): ?string {
+		return $this->formModelName;
+	}
+
+	public function setFormModelName(?string $formModelName) {
+		$this->formModelName = $formModelName;
+	}
+
+	public function withFormModelName(?string $formModelName): GetFormModelMasterRequest {
+		$this->formModelName = $formModelName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetFormModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetFormModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withFormModelName(empty($data['formModelName']) ? null : $data['formModelName']);
     }
 
-    /**
-     * フォーム名を設定
-     *
-     * @param string $formModelName フォームマスターを取得
-     */
-    public function setFormModelName(string $formModelName = null) {
-        $this->formModelName = $formModelName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "formModelName" => $this->getFormModelName(),
+        );
     }
-
-    /**
-     * フォーム名を設定
-     *
-     * @param string $formModelName フォームマスターを取得
-     * @return GetFormModelMasterRequest $this
-     */
-    public function withFormModelName(string $formModelName = null): GetFormModelMasterRequest {
-        $this->setFormModelName($formModelName);
-        return $this;
-    }
-
 }

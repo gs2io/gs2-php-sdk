@@ -20,36 +20,34 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\MissionGroupModelMaster;
 
-/**
- * ミッショングループマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteMissionGroupModelMasterResult implements IResult {
-	/** @var MissionGroupModelMaster 削除したミッショングループ */
-	private $item;
+    /** @var MissionGroupModelMaster */
+    private $item;
 
-	/**
-	 * 削除したミッショングループを取得
-	 *
-	 * @return MissionGroupModelMaster|null ミッショングループマスターを削除
-	 */
 	public function getItem(): ?MissionGroupModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したミッショングループを設定
-	 *
-	 * @param MissionGroupModelMaster|null $item ミッショングループマスターを削除
-	 */
 	public function setItem(?MissionGroupModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteMissionGroupModelMasterResult {
-        $result = new DeleteMissionGroupModelMasterResult();
-        $result->setItem(isset($data["item"]) ? MissionGroupModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?MissionGroupModelMaster $item): DeleteMissionGroupModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteMissionGroupModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteMissionGroupModelMasterResult())
+            ->withItem(empty($data['item']) ? null : MissionGroupModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

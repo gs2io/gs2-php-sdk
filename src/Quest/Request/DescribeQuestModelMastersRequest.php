@@ -19,139 +19,85 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * クエストモデルマスターの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeQuestModelMastersRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null クエストモデルマスターの一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストモデルマスターの一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストモデルマスターの一覧を取得
-     * @return DescribeQuestModelMastersRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeQuestModelMastersRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string クエストグループモデル名 */
+    /** @var string */
     private $questGroupName;
-
-    /**
-     * クエストグループモデル名を取得
-     *
-     * @return string|null クエストモデルマスターの一覧を取得
-     */
-    public function getQuestGroupName(): ?string {
-        return $this->questGroupName;
-    }
-
-    /**
-     * クエストグループモデル名を設定
-     *
-     * @param string $questGroupName クエストモデルマスターの一覧を取得
-     */
-    public function setQuestGroupName(string $questGroupName = null) {
-        $this->questGroupName = $questGroupName;
-    }
-
-    /**
-     * クエストグループモデル名を設定
-     *
-     * @param string $questGroupName クエストモデルマスターの一覧を取得
-     * @return DescribeQuestModelMastersRequest $this
-     */
-    public function withQuestGroupName(string $questGroupName = null): DescribeQuestModelMastersRequest {
-        $this->setQuestGroupName($questGroupName);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null クエストモデルマスターの一覧を取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken クエストモデルマスターの一覧を取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken クエストモデルマスターの一覧を取得
-     * @return DescribeQuestModelMastersRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeQuestModelMastersRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null クエストモデルマスターの一覧を取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeQuestModelMastersRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getQuestGroupName(): ?string {
+		return $this->questGroupName;
+	}
+
+	public function setQuestGroupName(?string $questGroupName) {
+		$this->questGroupName = $questGroupName;
+	}
+
+	public function withQuestGroupName(?string $questGroupName): DescribeQuestModelMastersRequest {
+		$this->questGroupName = $questGroupName;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeQuestModelMastersRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeQuestModelMastersRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeQuestModelMastersRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeQuestModelMastersRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit クエストモデルマスターの一覧を取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "questGroupName" => $this->getQuestGroupName(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit クエストモデルマスターの一覧を取得
-     * @return DescribeQuestModelMastersRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeQuestModelMastersRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
 }

@@ -19,75 +19,51 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * プロジェクトトークン を取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class LoginRequest extends Gs2BasicRequest {
+    /** @var string */
+    private $clientId;
+    /** @var string */
+    private $clientSecret;
 
-    /** @var string クライアントID */
-    private $client_id;
+	public function getClientId(): ?string {
+		return $this->clientId;
+	}
 
-    /**
-     * クライアントIDを取得
-     *
-     * @return string|null プロジェクトトークン を取得します
-     */
-    public function getClientId(): ?string {
-        return $this->client_id;
+	public function setClientId(?string $clientId) {
+		$this->clientId = $clientId;
+	}
+
+	public function withClientId(?string $clientId): LoginRequest {
+		$this->clientId = $clientId;
+		return $this;
+	}
+
+	public function getClientSecret(): ?string {
+		return $this->clientSecret;
+	}
+
+	public function setClientSecret(?string $clientSecret) {
+		$this->clientSecret = $clientSecret;
+	}
+
+	public function withClientSecret(?string $clientSecret): LoginRequest {
+		$this->clientSecret = $clientSecret;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?LoginRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new LoginRequest())
+            ->withClientId(empty($data['clientId']) ? null : $data['clientId'])
+            ->withClientSecret(empty($data['clientSecret']) ? null : $data['clientSecret']);
     }
 
-    /**
-     * クライアントIDを設定
-     *
-     * @param string $clientId プロジェクトトークン を取得します
-     */
-    public function setClientId(string $clientId = null) {
-        $this->client_id = $clientId;
+    public function toJson(): array {
+        return array(
+            "clientId" => $this->getClientId(),
+            "clientSecret" => $this->getClientSecret(),
+        );
     }
-
-    /**
-     * クライアントIDを設定
-     *
-     * @param string $clientId プロジェクトトークン を取得します
-     * @return LoginRequest $this
-     */
-    public function withClientId(string $clientId = null): LoginRequest {
-        $this->setClientId($clientId);
-        return $this;
-    }
-
-    /** @var string クライアントシークレット */
-    private $client_secret;
-
-    /**
-     * クライアントシークレットを取得
-     *
-     * @return string|null プロジェクトトークン を取得します
-     */
-    public function getClientSecret(): ?string {
-        return $this->client_secret;
-    }
-
-    /**
-     * クライアントシークレットを設定
-     *
-     * @param string $clientSecret プロジェクトトークン を取得します
-     */
-    public function setClientSecret(string $clientSecret = null) {
-        $this->client_secret = $clientSecret;
-    }
-
-    /**
-     * クライアントシークレットを設定
-     *
-     * @param string $clientSecret プロジェクトトークン を取得します
-     * @return LoginRequest $this
-     */
-    public function withClientSecret(string $clientSecret = null): LoginRequest {
-        $this->setClientSecret($clientSecret);
-        return $this;
-    }
-
 }

@@ -19,36 +19,34 @@ namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 指定したアカウント名のアカウントトークンを発行 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class IssueAccountTokenResult implements IResult {
-	/** @var string GS2-Console にアクセスするのに使用するトークン */
-	private $accountToken;
+    /** @var string */
+    private $accountToken;
 
-	/**
-	 * GS2-Console にアクセスするのに使用するトークンを取得
-	 *
-	 * @return string|null 指定したアカウント名のアカウントトークンを発行
-	 */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
 
-	/**
-	 * GS2-Console にアクセスするのに使用するトークンを設定
-	 *
-	 * @param string|null $accountToken 指定したアカウント名のアカウントトークンを発行
-	 */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
 
-    public static function fromJson(array $data): IssueAccountTokenResult {
-        $result = new IssueAccountTokenResult();
-        $result->setAccountToken(isset($data["accountToken"]) ? $data["accountToken"] : null);
-        return $result;
+	public function withAccountToken(?string $accountToken): IssueAccountTokenResult {
+		$this->accountToken = $accountToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?IssueAccountTokenResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new IssueAccountTokenResult())
+            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "accountToken" => $this->getAccountToken(),
+        );
     }
 }

@@ -19,36 +19,34 @@ namespace Gs2\Deploy\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * スタックを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetStackStatusResult implements IResult {
-	/** @var string None */
-	private $status;
+    /** @var string */
+    private $status;
 
-	/**
-	 * Noneを取得
-	 *
-	 * @return string|null スタックを取得
-	 */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
 
-	/**
-	 * Noneを設定
-	 *
-	 * @param string|null $status スタックを取得
-	 */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
 
-    public static function fromJson(array $data): GetStackStatusResult {
-        $result = new GetStackStatusResult();
-        $result->setStatus(isset($data["status"]) ? $data["status"] : null);
-        return $result;
+	public function withStatus(?string $status): GetStackStatusResult {
+		$this->status = $status;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetStackStatusResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetStackStatusResult())
+            ->withStatus(empty($data['status']) ? null : $data['status']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "status" => $this->getStatus(),
+        );
     }
 }

@@ -19,277 +19,161 @@ namespace Gs2\Inventory\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * インベントリモデル
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class InventoryModel implements IModel {
 	/**
-     * @var string インベントリモデル
+     * @var string
 	 */
-	protected $inventoryModelId;
-
+	private $inventoryModelId;
 	/**
-	 * インベントリモデルを取得
-	 *
-	 * @return string|null インベントリモデル
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
+     * @var int
+	 */
+	private $initialCapacity;
+	/**
+     * @var int
+	 */
+	private $maxCapacity;
+	/**
+     * @var bool
+	 */
+	private $protectReferencedItem;
+	/**
+     * @var array
+	 */
+	private $itemModels;
+
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
 	}
 
-	/**
-	 * インベントリモデルを設定
-	 *
-	 * @param string|null $inventoryModelId インベントリモデル
-	 */
 	public function setInventoryModelId(?string $inventoryModelId) {
 		$this->inventoryModelId = $inventoryModelId;
 	}
 
-	/**
-	 * インベントリモデルを設定
-	 *
-	 * @param string|null $inventoryModelId インベントリモデル
-	 * @return InventoryModel $this
-	 */
 	public function withInventoryModelId(?string $inventoryModelId): InventoryModel {
 		$this->inventoryModelId = $inventoryModelId;
 		return $this;
 	}
-	/**
-     * @var string インベントリの種類名
-	 */
-	protected $name;
 
-	/**
-	 * インベントリの種類名を取得
-	 *
-	 * @return string|null インベントリの種類名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * インベントリの種類名を設定
-	 *
-	 * @param string|null $name インベントリの種類名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * インベントリの種類名を設定
-	 *
-	 * @param string|null $name インベントリの種類名
-	 * @return InventoryModel $this
-	 */
 	public function withName(?string $name): InventoryModel {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string インベントリの種類のメタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * インベントリの種類のメタデータを取得
-	 *
-	 * @return string|null インベントリの種類のメタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * インベントリの種類のメタデータを設定
-	 *
-	 * @param string|null $metadata インベントリの種類のメタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * インベントリの種類のメタデータを設定
-	 *
-	 * @param string|null $metadata インベントリの種類のメタデータ
-	 * @return InventoryModel $this
-	 */
 	public function withMetadata(?string $metadata): InventoryModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var int インベントリの初期サイズ
-	 */
-	protected $initialCapacity;
 
-	/**
-	 * インベントリの初期サイズを取得
-	 *
-	 * @return int|null インベントリの初期サイズ
-	 */
 	public function getInitialCapacity(): ?int {
 		return $this->initialCapacity;
 	}
 
-	/**
-	 * インベントリの初期サイズを設定
-	 *
-	 * @param int|null $initialCapacity インベントリの初期サイズ
-	 */
 	public function setInitialCapacity(?int $initialCapacity) {
 		$this->initialCapacity = $initialCapacity;
 	}
 
-	/**
-	 * インベントリの初期サイズを設定
-	 *
-	 * @param int|null $initialCapacity インベントリの初期サイズ
-	 * @return InventoryModel $this
-	 */
 	public function withInitialCapacity(?int $initialCapacity): InventoryModel {
 		$this->initialCapacity = $initialCapacity;
 		return $this;
 	}
-	/**
-     * @var int インベントリの最大サイズ
-	 */
-	protected $maxCapacity;
 
-	/**
-	 * インベントリの最大サイズを取得
-	 *
-	 * @return int|null インベントリの最大サイズ
-	 */
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
 
-	/**
-	 * インベントリの最大サイズを設定
-	 *
-	 * @param int|null $maxCapacity インベントリの最大サイズ
-	 */
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
 
-	/**
-	 * インベントリの最大サイズを設定
-	 *
-	 * @param int|null $maxCapacity インベントリの最大サイズ
-	 * @return InventoryModel $this
-	 */
 	public function withMaxCapacity(?int $maxCapacity): InventoryModel {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
-	/**
-     * @var bool 参照元が登録されているアイテムセットは削除できなくする
-	 */
-	protected $protectReferencedItem;
 
-	/**
-	 * 参照元が登録されているアイテムセットは削除できなくするを取得
-	 *
-	 * @return bool|null 参照元が登録されているアイテムセットは削除できなくする
-	 */
 	public function getProtectReferencedItem(): ?bool {
 		return $this->protectReferencedItem;
 	}
 
-	/**
-	 * 参照元が登録されているアイテムセットは削除できなくするを設定
-	 *
-	 * @param bool|null $protectReferencedItem 参照元が登録されているアイテムセットは削除できなくする
-	 */
 	public function setProtectReferencedItem(?bool $protectReferencedItem) {
 		$this->protectReferencedItem = $protectReferencedItem;
 	}
 
-	/**
-	 * 参照元が登録されているアイテムセットは削除できなくするを設定
-	 *
-	 * @param bool|null $protectReferencedItem 参照元が登録されているアイテムセットは削除できなくする
-	 * @return InventoryModel $this
-	 */
 	public function withProtectReferencedItem(?bool $protectReferencedItem): InventoryModel {
 		$this->protectReferencedItem = $protectReferencedItem;
 		return $this;
 	}
-	/**
-     * @var ItemModel[] インベントリに格納可能なアイテムモデル一覧
-	 */
-	protected $itemModels;
 
-	/**
-	 * インベントリに格納可能なアイテムモデル一覧を取得
-	 *
-	 * @return ItemModel[]|null インベントリに格納可能なアイテムモデル一覧
-	 */
 	public function getItemModels(): ?array {
 		return $this->itemModels;
 	}
 
-	/**
-	 * インベントリに格納可能なアイテムモデル一覧を設定
-	 *
-	 * @param ItemModel[]|null $itemModels インベントリに格納可能なアイテムモデル一覧
-	 */
 	public function setItemModels(?array $itemModels) {
 		$this->itemModels = $itemModels;
 	}
 
-	/**
-	 * インベントリに格納可能なアイテムモデル一覧を設定
-	 *
-	 * @param ItemModel[]|null $itemModels インベントリに格納可能なアイテムモデル一覧
-	 * @return InventoryModel $this
-	 */
 	public function withItemModels(?array $itemModels): InventoryModel {
 		$this->itemModels = $itemModels;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "inventoryModelId" => $this->inventoryModelId,
-            "name" => $this->name,
-            "metadata" => $this->metadata,
-            "initialCapacity" => $this->initialCapacity,
-            "maxCapacity" => $this->maxCapacity,
-            "protectReferencedItem" => $this->protectReferencedItem,
-            "itemModels" => array_map(
-                function (ItemModel $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?InventoryModel {
+        if ($data === null) {
+            return null;
+        }
+        return (new InventoryModel())
+            ->withInventoryModelId(empty($data['inventoryModelId']) ? null : $data['inventoryModelId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withInitialCapacity(empty($data['initialCapacity']) ? null : $data['initialCapacity'])
+            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity'])
+            ->withProtectReferencedItem(empty($data['protectReferencedItem']) ? null : $data['protectReferencedItem'])
+            ->withItemModels(array_map(
+                function ($item) {
+                    return ItemModel::fromJson($item);
                 },
-                $this->itemModels == null ? [] : $this->itemModels
-            ),
-        );
+                array_key_exists('itemModels', $data) && $data['itemModels'] !== null ? $data['itemModels'] : []
+            ));
     }
 
-    public static function fromJson(array $data): InventoryModel {
-        $model = new InventoryModel();
-        $model->setInventoryModelId(isset($data["inventoryModelId"]) ? $data["inventoryModelId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setInitialCapacity(isset($data["initialCapacity"]) ? $data["initialCapacity"] : null);
-        $model->setMaxCapacity(isset($data["maxCapacity"]) ? $data["maxCapacity"] : null);
-        $model->setProtectReferencedItem(isset($data["protectReferencedItem"]) ? $data["protectReferencedItem"] : null);
-        $model->setItemModels(array_map(
-                function ($v) {
-                    return ItemModel::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "inventoryModelId" => $this->getInventoryModelId(),
+            "name" => $this->getName(),
+            "metadata" => $this->getMetadata(),
+            "initialCapacity" => $this->getInitialCapacity(),
+            "maxCapacity" => $this->getMaxCapacity(),
+            "protectReferencedItem" => $this->getProtectReferencedItem(),
+            "itemModels" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["itemModels"]) ? $data["itemModels"] : []
-            )
+                $this->getItemModels() !== null && $this->getItemModels() !== null ? $this->getItemModels() : []
+            ),
         );
-        return $model;
     }
 }

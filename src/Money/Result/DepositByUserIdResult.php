@@ -18,38 +18,37 @@
 namespace Gs2\Money\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
-/**
- * ユーザーIDを指定してウォレットに残高を加算します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DepositByUserIdResult implements IResult {
-	/** @var Wallet 加算後のウォレット */
-	private $item;
+    /** @var Wallet */
+    private $item;
 
-	/**
-	 * 加算後のウォレットを取得
-	 *
-	 * @return Wallet|null ユーザーIDを指定してウォレットに残高を加算します
-	 */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
-	/**
-	 * 加算後のウォレットを設定
-	 *
-	 * @param Wallet|null $item ユーザーIDを指定してウォレットに残高を加算します
-	 */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DepositByUserIdResult {
-        $result = new DepositByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Wallet::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Wallet $item): DepositByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DepositByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DepositByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Wallet::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

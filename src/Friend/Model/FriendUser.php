@@ -19,126 +19,75 @@ namespace Gs2\Friend\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * フレンドのユーザー
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class FriendUser implements IModel {
 	/**
-     * @var string ユーザーID
+     * @var string
 	 */
-	protected $userId;
-
+	private $userId;
 	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
+     * @var string
 	 */
+	private $publicProfile;
+	/**
+     * @var string
+	 */
+	private $friendProfile;
+
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return FriendUser $this
-	 */
 	public function withUserId(?string $userId): FriendUser {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string 公開されるプロフィール
-	 */
-	protected $publicProfile;
 
-	/**
-	 * 公開されるプロフィールを取得
-	 *
-	 * @return string|null 公開されるプロフィール
-	 */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
 
-	/**
-	 * 公開されるプロフィールを設定
-	 *
-	 * @param string|null $publicProfile 公開されるプロフィール
-	 */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
 
-	/**
-	 * 公開されるプロフィールを設定
-	 *
-	 * @param string|null $publicProfile 公開されるプロフィール
-	 * @return FriendUser $this
-	 */
 	public function withPublicProfile(?string $publicProfile): FriendUser {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
-	/**
-     * @var string フレンド向けに公開されるプロフィール
-	 */
-	protected $friendProfile;
 
-	/**
-	 * フレンド向けに公開されるプロフィールを取得
-	 *
-	 * @return string|null フレンド向けに公開されるプロフィール
-	 */
 	public function getFriendProfile(): ?string {
 		return $this->friendProfile;
 	}
 
-	/**
-	 * フレンド向けに公開されるプロフィールを設定
-	 *
-	 * @param string|null $friendProfile フレンド向けに公開されるプロフィール
-	 */
 	public function setFriendProfile(?string $friendProfile) {
 		$this->friendProfile = $friendProfile;
 	}
 
-	/**
-	 * フレンド向けに公開されるプロフィールを設定
-	 *
-	 * @param string|null $friendProfile フレンド向けに公開されるプロフィール
-	 * @return FriendUser $this
-	 */
 	public function withFriendProfile(?string $friendProfile): FriendUser {
 		$this->friendProfile = $friendProfile;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "userId" => $this->userId,
-            "publicProfile" => $this->publicProfile,
-            "friendProfile" => $this->friendProfile,
-        );
+    public static function fromJson(?array $data): ?FriendUser {
+        if ($data === null) {
+            return null;
+        }
+        return (new FriendUser())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
+            ->withFriendProfile(empty($data['friendProfile']) ? null : $data['friendProfile']);
     }
 
-    public static function fromJson(array $data): FriendUser {
-        $model = new FriendUser();
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setPublicProfile(isset($data["publicProfile"]) ? $data["publicProfile"] : null);
-        $model->setFriendProfile(isset($data["friendProfile"]) ? $data["friendProfile"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "publicProfile" => $this->getPublicProfile(),
+            "friendProfile" => $this->getFriendProfile(),
+        );
     }
 }

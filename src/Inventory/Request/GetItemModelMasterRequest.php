@@ -19,107 +19,68 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * アイテムモデルマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetItemModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null アイテムモデルマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName アイテムモデルマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName アイテムモデルマスターを取得
-     * @return GetItemModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetItemModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリの種類名 */
+    /** @var string */
     private $inventoryName;
-
-    /**
-     * インベントリの種類名を取得
-     *
-     * @return string|null アイテムモデルマスターを取得
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName アイテムモデルマスターを取得
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName アイテムモデルマスターを取得
-     * @return GetItemModelMasterRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): GetItemModelMasterRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
-    /** @var string アイテムモデルの種類名 */
+    /** @var string */
     private $itemName;
 
-    /**
-     * アイテムモデルの種類名を取得
-     *
-     * @return string|null アイテムモデルマスターを取得
-     */
-    public function getItemName(): ?string {
-        return $this->itemName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetItemModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): GetItemModelMasterRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+	public function getItemName(): ?string {
+		return $this->itemName;
+	}
+
+	public function setItemName(?string $itemName) {
+		$this->itemName = $itemName;
+	}
+
+	public function withItemName(?string $itemName): GetItemModelMasterRequest {
+		$this->itemName = $itemName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetItemModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetItemModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
+            ->withItemName(empty($data['itemName']) ? null : $data['itemName']);
     }
 
-    /**
-     * アイテムモデルの種類名を設定
-     *
-     * @param string $itemName アイテムモデルマスターを取得
-     */
-    public function setItemName(string $itemName = null) {
-        $this->itemName = $itemName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+            "itemName" => $this->getItemName(),
+        );
     }
-
-    /**
-     * アイテムモデルの種類名を設定
-     *
-     * @param string $itemName アイテムモデルマスターを取得
-     * @return GetItemModelMasterRequest $this
-     */
-    public function withItemName(string $itemName = null): GetItemModelMasterRequest {
-        $this->setItemName($itemName);
-        return $this;
-    }
-
 }

@@ -19,171 +19,85 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定して購読を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetSubscribeByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定して購読を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して購読を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して購読を取得
-     * @return GetSubscribeByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetSubscribeByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $categoryName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null ユーザIDを指定して購読を取得
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName ユーザIDを指定して購読を取得
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName ユーザIDを指定して購読を取得
-     * @return GetSubscribeByUserIdRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): GetSubscribeByUserIdRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
-    /** @var string 購読するユーザID */
+    /** @var string */
     private $userId;
-
-    /**
-     * 購読するユーザIDを取得
-     *
-     * @return string|null ユーザIDを指定して購読を取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * 購読するユーザIDを設定
-     *
-     * @param string $userId ユーザIDを指定して購読を取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * 購読するユーザIDを設定
-     *
-     * @param string $userId ユーザIDを指定して購読を取得
-     * @return GetSubscribeByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): GetSubscribeByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 購読されるユーザID */
+    /** @var string */
     private $targetUserId;
 
-    /**
-     * 購読されるユーザIDを取得
-     *
-     * @return string|null ユーザIDを指定して購読を取得
-     */
-    public function getTargetUserId(): ?string {
-        return $this->targetUserId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetSubscribeByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): GetSubscribeByUserIdRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): GetSubscribeByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getTargetUserId(): ?string {
+		return $this->targetUserId;
+	}
+
+	public function setTargetUserId(?string $targetUserId) {
+		$this->targetUserId = $targetUserId;
+	}
+
+	public function withTargetUserId(?string $targetUserId): GetSubscribeByUserIdRequest {
+		$this->targetUserId = $targetUserId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetSubscribeByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetSubscribeByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId']);
     }
 
-    /**
-     * 購読されるユーザIDを設定
-     *
-     * @param string $targetUserId ユーザIDを指定して購読を取得
-     */
-    public function setTargetUserId(string $targetUserId = null) {
-        $this->targetUserId = $targetUserId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+            "userId" => $this->getUserId(),
+            "targetUserId" => $this->getTargetUserId(),
+        );
     }
-
-    /**
-     * 購読されるユーザIDを設定
-     *
-     * @param string $targetUserId ユーザIDを指定して購読を取得
-     * @return GetSubscribeByUserIdRequest $this
-     */
-    public function withTargetUserId(string $targetUserId = null): GetSubscribeByUserIdRequest {
-        $this->setTargetUserId($targetUserId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定して購読を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して購読を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して購読を取得
-     * @return GetSubscribeByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetSubscribeByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

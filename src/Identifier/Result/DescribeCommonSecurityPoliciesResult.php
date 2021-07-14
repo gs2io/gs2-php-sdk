@@ -20,63 +20,61 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
-/**
- * オーナーIDを指定してセキュリティポリシーの一覧を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeCommonSecurityPoliciesResult implements IResult {
-	/** @var SecurityPolicy[] セキュリティポリシーのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * セキュリティポリシーのリストを取得
-	 *
-	 * @return SecurityPolicy[]|null オーナーIDを指定してセキュリティポリシーの一覧を取得します
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * セキュリティポリシーのリストを設定
-	 *
-	 * @param SecurityPolicy[]|null $items オーナーIDを指定してセキュリティポリシーの一覧を取得します
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null オーナーIDを指定してセキュリティポリシーの一覧を取得します
-	 */
+	public function withItems(?array $items): DescribeCommonSecurityPoliciesResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken オーナーIDを指定してセキュリティポリシーの一覧を取得します
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeCommonSecurityPoliciesResult {
-        $result = new DescribeCommonSecurityPoliciesResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return SecurityPolicy::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeCommonSecurityPoliciesResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeCommonSecurityPoliciesResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeCommonSecurityPoliciesResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return SecurityPolicy::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

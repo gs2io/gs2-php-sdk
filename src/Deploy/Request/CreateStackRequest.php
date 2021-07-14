@@ -19,107 +19,68 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタックを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateStackRequest extends Gs2BasicRequest {
-
-    /** @var string スタック名 */
+    /** @var string */
     private $name;
-
-    /**
-     * スタック名を取得
-     *
-     * @return string|null スタックを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $name スタックを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $name スタックを新規作成
-     * @return CreateStackRequest $this
-     */
-    public function withName(string $name = null): CreateStackRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string スタックの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * スタックの説明を取得
-     *
-     * @return string|null スタックを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * スタックの説明を設定
-     *
-     * @param string $description スタックを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * スタックの説明を設定
-     *
-     * @param string $description スタックを新規作成
-     * @return CreateStackRequest $this
-     */
-    public function withDescription(string $description = null): CreateStackRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string テンプレートデータ */
+    /** @var string */
     private $template;
 
-    /**
-     * テンプレートデータを取得
-     *
-     * @return string|null スタックを新規作成
-     */
-    public function getTemplate(): ?string {
-        return $this->template;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateStackRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateStackRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getTemplate(): ?string {
+		return $this->template;
+	}
+
+	public function setTemplate(?string $template) {
+		$this->template = $template;
+	}
+
+	public function withTemplate(?string $template): CreateStackRequest {
+		$this->template = $template;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateStackRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateStackRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withTemplate(empty($data['template']) ? null : $data['template']);
     }
 
-    /**
-     * テンプレートデータを設定
-     *
-     * @param string $template スタックを新規作成
-     */
-    public function setTemplate(string $template = null) {
-        $this->template = $template;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "template" => $this->getTemplate(),
+        );
     }
-
-    /**
-     * テンプレートデータを設定
-     *
-     * @param string $template スタックを新規作成
-     * @return CreateStackRequest $this
-     */
-    public function withTemplate(string $template = null): CreateStackRequest {
-        $this->setTemplate($template);
-        return $this;
-    }
-
 }

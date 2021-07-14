@@ -19,139 +19,68 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * イベントを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetEventRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null イベントを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName イベントを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName イベントを取得
-     * @return GetEventRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetEventRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string イベントの種類名 */
+    /** @var string */
     private $eventName;
-
-    /**
-     * イベントの種類名を取得
-     *
-     * @return string|null イベントを取得
-     */
-    public function getEventName(): ?string {
-        return $this->eventName;
-    }
-
-    /**
-     * イベントの種類名を設定
-     *
-     * @param string $eventName イベントを取得
-     */
-    public function setEventName(string $eventName = null) {
-        $this->eventName = $eventName;
-    }
-
-    /**
-     * イベントの種類名を設定
-     *
-     * @param string $eventName イベントを取得
-     * @return GetEventRequest $this
-     */
-    public function withEventName(string $eventName = null): GetEventRequest {
-        $this->setEventName($eventName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null イベントを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider イベントを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider イベントを取得
-     * @return GetEventRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetEventRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
+    /** @var string */
     private $accessToken;
 
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetEventRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getEventName(): ?string {
+		return $this->eventName;
+	}
+
+	public function setEventName(?string $eventName) {
+		$this->eventName = $eventName;
+	}
+
+	public function withEventName(?string $eventName): GetEventRequest {
+		$this->eventName = $eventName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): GetEventRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetEventRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetEventRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withEventName(empty($data['eventName']) ? null : $data['eventName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
     }
 
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "eventName" => $this->getEventName(),
+            "accessToken" => $this->getAccessToken(),
+        );
     }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return GetEventRequest this
-     */
-    public function withAccessToken(string $accessToken): GetEventRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

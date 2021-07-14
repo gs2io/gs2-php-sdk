@@ -20,63 +20,61 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
-/**
- * ユーザIDを指定してトリガーの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeTriggersByUserIdResult implements IResult {
-	/** @var Trigger[] トリガーのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * トリガーのリストを取得
-	 *
-	 * @return Trigger[]|null ユーザIDを指定してトリガーの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * トリガーのリストを設定
-	 *
-	 * @param Trigger[]|null $items ユーザIDを指定してトリガーの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null ユーザIDを指定してトリガーの一覧を取得
-	 */
+	public function withItems(?array $items): DescribeTriggersByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken ユーザIDを指定してトリガーの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeTriggersByUserIdResult {
-        $result = new DescribeTriggersByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Trigger::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeTriggersByUserIdResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeTriggersByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeTriggersByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Trigger::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

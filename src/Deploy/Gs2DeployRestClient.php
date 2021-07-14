@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Deploy\Request\DescribeStacksRequest;
 use Gs2\Deploy\Result\DescribeStacksResult;
 use Gs2\Deploy\Request\CreateStackRequest;
@@ -1150,9 +1152,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * スタックの一覧を取得<br>
-     *
-     * @param DescribeStacksRequest $request リクエストパラメータ
+     * @param DescribeStacksRequest $request
      * @return PromiseInterface
      */
     public function describeStacksAsync(
@@ -1167,9 +1167,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックの一覧を取得<br>
-     *
-     * @param DescribeStacksRequest $request リクエストパラメータ
+     * @param DescribeStacksRequest $request
      * @return DescribeStacksResult
      */
     public function describeStacks (
@@ -1181,9 +1179,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを新規作成<br>
-     *
-     * @param CreateStackRequest $request リクエストパラメータ
+     * @param CreateStackRequest $request
      * @return PromiseInterface
      */
     public function createStackAsync(
@@ -1198,9 +1194,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを新規作成<br>
-     *
-     * @param CreateStackRequest $request リクエストパラメータ
+     * @param CreateStackRequest $request
      * @return CreateStackResult
      */
     public function createStack (
@@ -1212,9 +1206,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを新規作成<br>
-     *
-     * @param CreateStackFromGitHubRequest $request リクエストパラメータ
+     * @param CreateStackFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function createStackFromGitHubAsync(
@@ -1229,9 +1221,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを新規作成<br>
-     *
-     * @param CreateStackFromGitHubRequest $request リクエストパラメータ
+     * @param CreateStackFromGitHubRequest $request
      * @return CreateStackFromGitHubResult
      */
     public function createStackFromGitHub (
@@ -1243,12 +1233,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * テンプレートを検証<br>
-     *   <br>
-     *   このAPIの検証内容は簡易検証を行うに過ぎず、<br>
-     *   このAPIで検証をパスしたとしても、実行したらエラーが発生する場合もあります<br>
-     *
-     * @param ValidateRequest $request リクエストパラメータ
+     * @param ValidateRequest $request
      * @return PromiseInterface
      */
     public function validateAsync(
@@ -1263,12 +1248,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * テンプレートを検証<br>
-     *   <br>
-     *   このAPIの検証内容は簡易検証を行うに過ぎず、<br>
-     *   このAPIで検証をパスしたとしても、実行したらエラーが発生する場合もあります<br>
-     *
-     * @param ValidateRequest $request リクエストパラメータ
+     * @param ValidateRequest $request
      * @return ValidateResult
      */
     public function validate (
@@ -1280,9 +1260,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを取得<br>
-     *
-     * @param GetStackStatusRequest $request リクエストパラメータ
+     * @param GetStackStatusRequest $request
      * @return PromiseInterface
      */
     public function getStackStatusAsync(
@@ -1297,9 +1275,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを取得<br>
-     *
-     * @param GetStackStatusRequest $request リクエストパラメータ
+     * @param GetStackStatusRequest $request
      * @return GetStackStatusResult
      */
     public function getStackStatus (
@@ -1311,9 +1287,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを取得<br>
-     *
-     * @param GetStackRequest $request リクエストパラメータ
+     * @param GetStackRequest $request
      * @return PromiseInterface
      */
     public function getStackAsync(
@@ -1328,9 +1302,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを取得<br>
-     *
-     * @param GetStackRequest $request リクエストパラメータ
+     * @param GetStackRequest $request
      * @return GetStackResult
      */
     public function getStack (
@@ -1342,9 +1314,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを更新<br>
-     *
-     * @param UpdateStackRequest $request リクエストパラメータ
+     * @param UpdateStackRequest $request
      * @return PromiseInterface
      */
     public function updateStackAsync(
@@ -1359,9 +1329,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを更新<br>
-     *
-     * @param UpdateStackRequest $request リクエストパラメータ
+     * @param UpdateStackRequest $request
      * @return UpdateStackResult
      */
     public function updateStack (
@@ -1373,9 +1341,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを更新<br>
-     *
-     * @param UpdateStackFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateStackFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateStackFromGitHubAsync(
@@ -1390,9 +1356,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを更新<br>
-     *
-     * @param UpdateStackFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateStackFromGitHubRequest $request
      * @return UpdateStackFromGitHubResult
      */
     public function updateStackFromGitHub (
@@ -1404,12 +1368,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを削除<br>
-     *   <br>
-     *   スタックによって作成されたリソースの削除を行い、成功すればエンティティを削除します。<br>
-     *   何らかの理由でリソースの削除に失敗した場合はエンティティが残ります。<br>
-     *
-     * @param DeleteStackRequest $request リクエストパラメータ
+     * @param DeleteStackRequest $request
      * @return PromiseInterface
      */
     public function deleteStackAsync(
@@ -1424,12 +1383,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを削除<br>
-     *   <br>
-     *   スタックによって作成されたリソースの削除を行い、成功すればエンティティを削除します。<br>
-     *   何らかの理由でリソースの削除に失敗した場合はエンティティが残ります。<br>
-     *
-     * @param DeleteStackRequest $request リクエストパラメータ
+     * @param DeleteStackRequest $request
      * @return DeleteStackResult
      */
     public function deleteStack (
@@ -1441,12 +1395,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを強制的に最終削除<br>
-     *   <br>
-     *   スタックのエンティティを強制的に削除します。<br>
-     *   スタックが作成したリソースが残っていても、それらは削除されません。<br>
-     *
-     * @param ForceDeleteStackRequest $request リクエストパラメータ
+     * @param ForceDeleteStackRequest $request
      * @return PromiseInterface
      */
     public function forceDeleteStackAsync(
@@ -1461,12 +1410,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを強制的に最終削除<br>
-     *   <br>
-     *   スタックのエンティティを強制的に削除します。<br>
-     *   スタックが作成したリソースが残っていても、それらは削除されません。<br>
-     *
-     * @param ForceDeleteStackRequest $request リクエストパラメータ
+     * @param ForceDeleteStackRequest $request
      * @return ForceDeleteStackResult
      */
     public function forceDeleteStack (
@@ -1478,12 +1422,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックのリソースを削除<br>
-     *   <br>
-     *   スタックによって作成されたリソースの削除を行います。<br>
-     *   空のテンプレートでスタックを更新するのとほぼ同様の挙動ですが、スタックに適用されていたテンプレートが残るため、誤操作時に、残ったテンプレートからリソースを復元することができます。<br>
-     *
-     * @param DeleteStackResourcesRequest $request リクエストパラメータ
+     * @param DeleteStackResourcesRequest $request
      * @return PromiseInterface
      */
     public function deleteStackResourcesAsync(
@@ -1498,12 +1437,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックのリソースを削除<br>
-     *   <br>
-     *   スタックによって作成されたリソースの削除を行います。<br>
-     *   空のテンプレートでスタックを更新するのとほぼ同様の挙動ですが、スタックに適用されていたテンプレートが残るため、誤操作時に、残ったテンプレートからリソースを復元することができます。<br>
-     *
-     * @param DeleteStackResourcesRequest $request リクエストパラメータ
+     * @param DeleteStackResourcesRequest $request
      * @return DeleteStackResourcesResult
      */
     public function deleteStackResources (
@@ -1515,12 +1449,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを最終削除<br>
-     *   <br>
-     *   スタックのエンティティを削除します。<br>
-     *   リソースの残っているスタックを削除しようとするとエラーになります。<br>
-     *
-     * @param DeleteStackEntityRequest $request リクエストパラメータ
+     * @param DeleteStackEntityRequest $request
      * @return PromiseInterface
      */
     public function deleteStackEntityAsync(
@@ -1535,12 +1464,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタックを最終削除<br>
-     *   <br>
-     *   スタックのエンティティを削除します。<br>
-     *   リソースの残っているスタックを削除しようとするとエラーになります。<br>
-     *
-     * @param DeleteStackEntityRequest $request リクエストパラメータ
+     * @param DeleteStackEntityRequest $request
      * @return DeleteStackEntityResult
      */
     public function deleteStackEntity (
@@ -1552,9 +1476,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 作成されたのリソースの一覧を取得<br>
-     *
-     * @param DescribeResourcesRequest $request リクエストパラメータ
+     * @param DescribeResourcesRequest $request
      * @return PromiseInterface
      */
     public function describeResourcesAsync(
@@ -1569,9 +1491,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 作成されたのリソースの一覧を取得<br>
-     *
-     * @param DescribeResourcesRequest $request リクエストパラメータ
+     * @param DescribeResourcesRequest $request
      * @return DescribeResourcesResult
      */
     public function describeResources (
@@ -1583,9 +1503,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 作成されたのリソースを取得<br>
-     *
-     * @param GetResourceRequest $request リクエストパラメータ
+     * @param GetResourceRequest $request
      * @return PromiseInterface
      */
     public function getResourceAsync(
@@ -1600,9 +1518,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 作成されたのリソースを取得<br>
-     *
-     * @param GetResourceRequest $request リクエストパラメータ
+     * @param GetResourceRequest $request
      * @return GetResourceResult
      */
     public function getResource (
@@ -1614,9 +1530,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 発生したイベントの一覧を取得<br>
-     *
-     * @param DescribeEventsRequest $request リクエストパラメータ
+     * @param DescribeEventsRequest $request
      * @return PromiseInterface
      */
     public function describeEventsAsync(
@@ -1631,9 +1545,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 発生したイベントの一覧を取得<br>
-     *
-     * @param DescribeEventsRequest $request リクエストパラメータ
+     * @param DescribeEventsRequest $request
      * @return DescribeEventsResult
      */
     public function describeEvents (
@@ -1645,9 +1557,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 発生したイベントを取得<br>
-     *
-     * @param GetEventRequest $request リクエストパラメータ
+     * @param GetEventRequest $request
      * @return PromiseInterface
      */
     public function getEventAsync(
@@ -1662,9 +1572,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 発生したイベントを取得<br>
-     *
-     * @param GetEventRequest $request リクエストパラメータ
+     * @param GetEventRequest $request
      * @return GetEventResult
      */
     public function getEvent (
@@ -1676,9 +1584,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アウトプットの一覧を取得<br>
-     *
-     * @param DescribeOutputsRequest $request リクエストパラメータ
+     * @param DescribeOutputsRequest $request
      * @return PromiseInterface
      */
     public function describeOutputsAsync(
@@ -1693,9 +1599,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アウトプットの一覧を取得<br>
-     *
-     * @param DescribeOutputsRequest $request リクエストパラメータ
+     * @param DescribeOutputsRequest $request
      * @return DescribeOutputsResult
      */
     public function describeOutputs (
@@ -1707,9 +1611,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アウトプットを取得<br>
-     *
-     * @param GetOutputRequest $request リクエストパラメータ
+     * @param GetOutputRequest $request
      * @return PromiseInterface
      */
     public function getOutputAsync(
@@ -1724,9 +1626,7 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アウトプットを取得<br>
-     *
-     * @param GetOutputRequest $request リクエストパラメータ
+     * @param GetOutputRequest $request
      * @return GetOutputResult
      */
     public function getOutput (

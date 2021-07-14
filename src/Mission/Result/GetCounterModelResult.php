@@ -18,38 +18,37 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\CounterScopeModel;
 use Gs2\Mission\Model\CounterModel;
 
-/**
- * カウンターの種類を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCounterModelResult implements IResult {
-	/** @var CounterModel カウンターの種類 */
-	private $item;
+    /** @var CounterModel */
+    private $item;
 
-	/**
-	 * カウンターの種類を取得
-	 *
-	 * @return CounterModel|null カウンターの種類を取得
-	 */
 	public function getItem(): ?CounterModel {
 		return $this->item;
 	}
 
-	/**
-	 * カウンターの種類を設定
-	 *
-	 * @param CounterModel|null $item カウンターの種類を取得
-	 */
 	public function setItem(?CounterModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCounterModelResult {
-        $result = new GetCounterModelResult();
-        $result->setItem(isset($data["item"]) ? CounterModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CounterModel $item): GetCounterModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCounterModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCounterModelResult())
+            ->withItem(empty($data['item']) ? null : CounterModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

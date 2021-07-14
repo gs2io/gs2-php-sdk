@@ -20,42 +20,44 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\CategoryModel;
 
-/**
- * カテゴリの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeCategoryModelsResult implements IResult {
-	/** @var CategoryModel[] カテゴリのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * カテゴリのリストを取得
-	 *
-	 * @return CategoryModel[]|null カテゴリの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * カテゴリのリストを設定
-	 *
-	 * @param CategoryModel[]|null $items カテゴリの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeCategoryModelsResult {
-        $result = new DescribeCategoryModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return CategoryModel::fromJson($v);
+	public function withItems(?array $items): DescribeCategoryModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeCategoryModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeCategoryModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return CategoryModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

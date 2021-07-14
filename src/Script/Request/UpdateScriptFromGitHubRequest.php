@@ -20,139 +20,85 @@ namespace Gs2\Script\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Script\Model\GitHubCheckoutSetting;
 
-/**
- * GithHub をデータソースとしてスクリプトを更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateScriptFromGitHubRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null GithHub をデータソースとしてスクリプトを更新します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName GithHub をデータソースとしてスクリプトを更新します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName GithHub をデータソースとしてスクリプトを更新します
-     * @return UpdateScriptFromGitHubRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateScriptFromGitHubRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スクリプト名 */
+    /** @var string */
     private $scriptName;
-
-    /**
-     * スクリプト名を取得
-     *
-     * @return string|null GithHub をデータソースとしてスクリプトを更新します
-     */
-    public function getScriptName(): ?string {
-        return $this->scriptName;
-    }
-
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $scriptName GithHub をデータソースとしてスクリプトを更新します
-     */
-    public function setScriptName(string $scriptName = null) {
-        $this->scriptName = $scriptName;
-    }
-
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $scriptName GithHub をデータソースとしてスクリプトを更新します
-     * @return UpdateScriptFromGitHubRequest $this
-     */
-    public function withScriptName(string $scriptName = null): UpdateScriptFromGitHubRequest {
-        $this->setScriptName($scriptName);
-        return $this;
-    }
-
-    /** @var string 説明文 */
+    /** @var string */
     private $description;
-
-    /**
-     * 説明文を取得
-     *
-     * @return string|null GithHub をデータソースとしてスクリプトを更新します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description GithHub をデータソースとしてスクリプトを更新します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description GithHub をデータソースとしてスクリプトを更新します
-     * @return UpdateScriptFromGitHubRequest $this
-     */
-    public function withDescription(string $description = null): UpdateScriptFromGitHubRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var GitHubCheckoutSetting GitHubからソースコードをチェックアウトしてくる設定 */
+    /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
 
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を取得
-     *
-     * @return GitHubCheckoutSetting|null GithHub をデータソースとしてスクリプトを更新します
-     */
-    public function getCheckoutSetting(): ?GitHubCheckoutSetting {
-        return $this->checkoutSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateScriptFromGitHubRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getScriptName(): ?string {
+		return $this->scriptName;
+	}
+
+	public function setScriptName(?string $scriptName) {
+		$this->scriptName = $scriptName;
+	}
+
+	public function withScriptName(?string $scriptName): UpdateScriptFromGitHubRequest {
+		$this->scriptName = $scriptName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateScriptFromGitHubRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
+		return $this->checkoutSetting;
+	}
+
+	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
+		$this->checkoutSetting = $checkoutSetting;
+	}
+
+	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): UpdateScriptFromGitHubRequest {
+		$this->checkoutSetting = $checkoutSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateScriptFromGitHubRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateScriptFromGitHubRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withScriptName(empty($data['scriptName']) ? null : $data['scriptName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withCheckoutSetting(empty($data['checkoutSetting']) ? null : GitHubCheckoutSetting::fromJson($data['checkoutSetting']));
     }
 
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を設定
-     *
-     * @param GitHubCheckoutSetting $checkoutSetting GithHub をデータソースとしてスクリプトを更新します
-     */
-    public function setCheckoutSetting(GitHubCheckoutSetting $checkoutSetting = null) {
-        $this->checkoutSetting = $checkoutSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "scriptName" => $this->getScriptName(),
+            "description" => $this->getDescription(),
+            "checkoutSetting" => $this->getCheckoutSetting() !== null ? $this->getCheckoutSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を設定
-     *
-     * @param GitHubCheckoutSetting $checkoutSetting GithHub をデータソースとしてスクリプトを更新します
-     * @return UpdateScriptFromGitHubRequest $this
-     */
-    public function withCheckoutSetting(GitHubCheckoutSetting $checkoutSetting = null): UpdateScriptFromGitHubRequest {
-        $this->setCheckoutSetting($checkoutSetting);
-        return $this;
-    }
-
 }

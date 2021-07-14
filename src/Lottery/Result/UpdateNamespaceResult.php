@@ -18,38 +18,37 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\LogSetting;
 use Gs2\Lottery\Model\Namespace_;
 
-/**
- * ネームスペースを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceResult implements IResult {
-	/** @var Namespace_ 更新したネームスペース */
-	private $item;
+    /** @var Namespace_ */
+    private $item;
 
-	/**
-	 * 更新したネームスペースを取得
-	 *
-	 * @return Namespace_|null ネームスペースを更新
-	 */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したネームスペースを設定
-	 *
-	 * @param Namespace_|null $item ネームスペースを更新
-	 */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateNamespaceResult {
-        $result = new UpdateNamespaceResult();
-        $result->setItem(isset($data["item"]) ? Namespace_::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Namespace_ $item): UpdateNamespaceResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceResult())
+            ->withItem(empty($data['item']) ? null : Namespace_::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

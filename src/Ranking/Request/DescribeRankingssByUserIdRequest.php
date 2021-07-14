@@ -19,235 +19,119 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してランキングを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeRankingssByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してランキングを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してランキングを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してランキングを取得
-     * @return DescribeRankingssByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeRankingssByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $categoryName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null ユーザIDを指定してランキングを取得
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName ユーザIDを指定してランキングを取得
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName ユーザIDを指定してランキングを取得
-     * @return DescribeRankingssByUserIdRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): DescribeRankingssByUserIdRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
-    /** @var string ユーザID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザIDを取得
-     *
-     * @return string|null ユーザIDを指定してランキングを取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザIDを設定
-     *
-     * @param string $userId ユーザIDを指定してランキングを取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザIDを設定
-     *
-     * @param string $userId ユーザIDを指定してランキングを取得
-     * @return DescribeRankingssByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DescribeRankingssByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int ランキングの取得を開始するインデックス */
+    /** @var int */
     private $startIndex;
-
-    /**
-     * ランキングの取得を開始するインデックスを取得
-     *
-     * @return int|null ユーザIDを指定してランキングを取得
-     */
-    public function getStartIndex(): ?int {
-        return $this->startIndex;
-    }
-
-    /**
-     * ランキングの取得を開始するインデックスを設定
-     *
-     * @param int $startIndex ユーザIDを指定してランキングを取得
-     */
-    public function setStartIndex(int $startIndex = null) {
-        $this->startIndex = $startIndex;
-    }
-
-    /**
-     * ランキングの取得を開始するインデックスを設定
-     *
-     * @param int $startIndex ユーザIDを指定してランキングを取得
-     * @return DescribeRankingssByUserIdRequest $this
-     */
-    public function withStartIndex(int $startIndex = null): DescribeRankingssByUserIdRequest {
-        $this->setStartIndex($startIndex);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null ユーザIDを指定してランキングを取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken ユーザIDを指定してランキングを取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken ユーザIDを指定してランキングを取得
-     * @return DescribeRankingssByUserIdRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeRankingssByUserIdRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null ユーザIDを指定してランキングを取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeRankingssByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): DescribeRankingssByUserIdRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DescribeRankingssByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getStartIndex(): ?int {
+		return $this->startIndex;
+	}
+
+	public function setStartIndex(?int $startIndex) {
+		$this->startIndex = $startIndex;
+	}
+
+	public function withStartIndex(?int $startIndex): DescribeRankingssByUserIdRequest {
+		$this->startIndex = $startIndex;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeRankingssByUserIdRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeRankingssByUserIdRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeRankingssByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeRankingssByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withStartIndex(empty($data['startIndex']) ? null : $data['startIndex'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit ユーザIDを指定してランキングを取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+            "userId" => $this->getUserId(),
+            "startIndex" => $this->getStartIndex(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit ユーザIDを指定してランキングを取得
-     * @return DescribeRankingssByUserIdRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeRankingssByUserIdRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してランキングを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してランキングを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してランキングを取得
-     * @return DescribeRankingssByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DescribeRankingssByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

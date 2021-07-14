@@ -19,75 +19,51 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 経験値・ランクアップ閾値モデルを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetExperienceModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 経験値・ランクアップ閾値モデルを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 経験値・ランクアップ閾値モデルを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 経験値・ランクアップ閾値モデルを取得
-     * @return GetExperienceModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetExperienceModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 経験値の種類名 */
+    /** @var string */
     private $experienceName;
 
-    /**
-     * 経験値の種類名を取得
-     *
-     * @return string|null 経験値・ランクアップ閾値モデルを取得
-     */
-    public function getExperienceName(): ?string {
-        return $this->experienceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetExperienceModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getExperienceName(): ?string {
+		return $this->experienceName;
+	}
+
+	public function setExperienceName(?string $experienceName) {
+		$this->experienceName = $experienceName;
+	}
+
+	public function withExperienceName(?string $experienceName): GetExperienceModelRequest {
+		$this->experienceName = $experienceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetExperienceModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetExperienceModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName']);
     }
 
-    /**
-     * 経験値の種類名を設定
-     *
-     * @param string $experienceName 経験値・ランクアップ閾値モデルを取得
-     */
-    public function setExperienceName(string $experienceName = null) {
-        $this->experienceName = $experienceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "experienceName" => $this->getExperienceName(),
+        );
     }
-
-    /**
-     * 経験値の種類名を設定
-     *
-     * @param string $experienceName 経験値・ランクアップ閾値モデルを取得
-     * @return GetExperienceModelRequest $this
-     */
-    public function withExperienceName(string $experienceName = null): GetExperienceModelRequest {
-        $this->setExperienceName($experienceName);
-        return $this;
-    }
-
 }

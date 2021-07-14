@@ -20,36 +20,34 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\Inventory;
 
-/**
- * インベントリを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteInventoryByUserIdResult implements IResult {
-	/** @var Inventory インベントリ */
-	private $item;
+    /** @var Inventory */
+    private $item;
 
-	/**
-	 * インベントリを取得
-	 *
-	 * @return Inventory|null インベントリを削除
-	 */
 	public function getItem(): ?Inventory {
 		return $this->item;
 	}
 
-	/**
-	 * インベントリを設定
-	 *
-	 * @param Inventory|null $item インベントリを削除
-	 */
 	public function setItem(?Inventory $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteInventoryByUserIdResult {
-        $result = new DeleteInventoryByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Inventory::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Inventory $item): DeleteInventoryByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteInventoryByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteInventoryByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Inventory::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

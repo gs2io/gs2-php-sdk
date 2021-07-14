@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\BlackList;
 
-/**
- * ユーザーIDを指定してブラックリストからユーザを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UnregisterBlackListByUserIdResult implements IResult {
-	/** @var BlackList ブラックリスト */
-	private $item;
+    /** @var BlackList */
+    private $item;
 
-	/**
-	 * ブラックリストを取得
-	 *
-	 * @return BlackList|null ユーザーIDを指定してブラックリストからユーザを削除
-	 */
 	public function getItem(): ?BlackList {
 		return $this->item;
 	}
 
-	/**
-	 * ブラックリストを設定
-	 *
-	 * @param BlackList|null $item ユーザーIDを指定してブラックリストからユーザを削除
-	 */
 	public function setItem(?BlackList $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UnregisterBlackListByUserIdResult {
-        $result = new UnregisterBlackListByUserIdResult();
-        $result->setItem(isset($data["item"]) ? BlackList::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?BlackList $item): UnregisterBlackListByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UnregisterBlackListByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UnregisterBlackListByUserIdResult())
+            ->withItem(empty($data['item']) ? null : BlackList::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

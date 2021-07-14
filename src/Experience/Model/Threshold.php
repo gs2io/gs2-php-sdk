@@ -19,91 +19,66 @@ namespace Gs2\Experience\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ランクアップ閾値
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Threshold implements IModel {
 	/**
-     * @var string ランクアップ閾値のメタデータ
+     * @var string
 	 */
-	protected $metadata;
-
+	private $metadata;
 	/**
-	 * ランクアップ閾値のメタデータを取得
-	 *
-	 * @return string|null ランクアップ閾値のメタデータ
+     * @var array
 	 */
+	private $values;
+
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * ランクアップ閾値のメタデータを設定
-	 *
-	 * @param string|null $metadata ランクアップ閾値のメタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * ランクアップ閾値のメタデータを設定
-	 *
-	 * @param string|null $metadata ランクアップ閾値のメタデータ
-	 * @return Threshold $this
-	 */
 	public function withMetadata(?string $metadata): Threshold {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var int[] ランクアップ経験値閾値リスト
-	 */
-	protected $values;
 
-	/**
-	 * ランクアップ経験値閾値リストを取得
-	 *
-	 * @return int[]|null ランクアップ経験値閾値リスト
-	 */
 	public function getValues(): ?array {
 		return $this->values;
 	}
 
-	/**
-	 * ランクアップ経験値閾値リストを設定
-	 *
-	 * @param int[]|null $values ランクアップ経験値閾値リスト
-	 */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
 
-	/**
-	 * ランクアップ経験値閾値リストを設定
-	 *
-	 * @param int[]|null $values ランクアップ経験値閾値リスト
-	 * @return Threshold $this
-	 */
 	public function withValues(?array $values): Threshold {
 		$this->values = $values;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "metadata" => $this->metadata,
-            "values" => $this->values,
-        );
+    public static function fromJson(?array $data): ?Threshold {
+        if ($data === null) {
+            return null;
+        }
+        return (new Threshold())
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withValues(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
+            ));
     }
 
-    public static function fromJson(array $data): Threshold {
-        $model = new Threshold();
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setValues(isset($data["values"]) ? $data["values"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "metadata" => $this->getMetadata(),
+            "values" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getValues() !== null && $this->getValues() !== null ? $this->getValues() : []
+            ),
+        );
     }
 }

@@ -19,43 +19,34 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * パスワードを削除します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeletePasswordRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
 
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null パスワードを削除します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): DeletePasswordRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeletePasswordRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeletePasswordRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName']);
     }
 
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName パスワードを削除します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+        );
     }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName パスワードを削除します
-     * @return DeletePasswordRequest $this
-     */
-    public function withUserName(string $userName = null): DeletePasswordRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
 }

@@ -19,75 +19,51 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * エントリーモデルマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetEntryModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null エントリーモデルマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName エントリーモデルマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName エントリーモデルマスターを取得
-     * @return GetEntryModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetEntryModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string エントリーモデル名 */
+    /** @var string */
     private $entryName;
 
-    /**
-     * エントリーモデル名を取得
-     *
-     * @return string|null エントリーモデルマスターを取得
-     */
-    public function getEntryName(): ?string {
-        return $this->entryName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetEntryModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getEntryName(): ?string {
+		return $this->entryName;
+	}
+
+	public function setEntryName(?string $entryName) {
+		$this->entryName = $entryName;
+	}
+
+	public function withEntryName(?string $entryName): GetEntryModelMasterRequest {
+		$this->entryName = $entryName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetEntryModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetEntryModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withEntryName(empty($data['entryName']) ? null : $data['entryName']);
     }
 
-    /**
-     * エントリーモデル名を設定
-     *
-     * @param string $entryName エントリーモデルマスターを取得
-     */
-    public function setEntryName(string $entryName = null) {
-        $this->entryName = $entryName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "entryName" => $this->getEntryName(),
+        );
     }
-
-    /**
-     * エントリーモデル名を設定
-     *
-     * @param string $entryName エントリーモデルマスターを取得
-     * @return GetEntryModelMasterRequest $this
-     */
-    public function withEntryName(string $entryName = null): GetEntryModelMasterRequest {
-        $this->setEntryName($entryName);
-        return $this;
-    }
-
 }

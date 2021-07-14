@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Money\Request\DescribeNamespacesRequest;
 use Gs2\Money\Result\DescribeNamespacesResult;
 use Gs2\Money\Request\CreateNamespaceRequest;
@@ -43,8 +45,6 @@ use Gs2\Money\Request\DescribeWalletsRequest;
 use Gs2\Money\Result\DescribeWalletsResult;
 use Gs2\Money\Request\DescribeWalletsByUserIdRequest;
 use Gs2\Money\Result\DescribeWalletsByUserIdResult;
-use Gs2\Money\Request\QueryWalletsRequest;
-use Gs2\Money\Result\QueryWalletsResult;
 use Gs2\Money\Request\GetWalletRequest;
 use Gs2\Money\Result\GetWalletResult;
 use Gs2\Money\Request\GetWalletByUserIdRequest;
@@ -532,9 +532,6 @@ class DescribeWalletsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -599,78 +596,6 @@ class DescribeWalletsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class QueryWalletsTask extends Gs2RestSessionTask {
-
-    /**
-     * @var QueryWalletsRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * QueryWalletsTask constructor.
-     * @param Gs2RestSession $session
-     * @param QueryWalletsRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        QueryWalletsRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            QueryWalletsResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "money", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/wallet/query";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getUserId() !== null) {
-            $queryStrings["userId"] = $this->request->getUserId();
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -732,9 +657,6 @@ class GetWalletTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -793,9 +715,6 @@ class GetWalletByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -859,9 +778,6 @@ class DepositByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -928,9 +844,6 @@ class WithdrawTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -994,9 +907,6 @@ class WithdrawByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1056,9 +966,6 @@ class DepositByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1117,9 +1024,6 @@ class WithdrawByStampTaskTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1196,9 +1100,6 @@ class DescribeReceiptsTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1257,9 +1158,6 @@ class GetByUserIdAndTransactionIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1323,9 +1221,6 @@ class RecordReceiptTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1385,9 +1280,6 @@ class RecordReceiptByStampTaskTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1411,9 +1303,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得します<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1428,9 +1318,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得します<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1442,9 +1330,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成します<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1459,9 +1345,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成します<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1473,9 +1357,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得します<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1490,9 +1372,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得します<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1504,9 +1384,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得します<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1521,9 +1399,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得します<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1535,9 +1411,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新します<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1552,9 +1426,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新します<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1566,9 +1438,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除します<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1583,9 +1453,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除します<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1597,9 +1465,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレット一覧を取得します<br>
-     *
-     * @param DescribeWalletsRequest $request リクエストパラメータ
+     * @param DescribeWalletsRequest $request
      * @return PromiseInterface
      */
     public function describeWalletsAsync(
@@ -1614,9 +1480,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレット一覧を取得します<br>
-     *
-     * @param DescribeWalletsRequest $request リクエストパラメータ
+     * @param DescribeWalletsRequest $request
      * @return DescribeWalletsResult
      */
     public function describeWallets (
@@ -1628,9 +1492,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレット一覧を取得します<br>
-     *
-     * @param DescribeWalletsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeWalletsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeWalletsByUserIdAsync(
@@ -1645,9 +1507,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレット一覧を取得します<br>
-     *
-     * @param DescribeWalletsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeWalletsByUserIdRequest $request
      * @return DescribeWalletsByUserIdResult
      */
     public function describeWalletsByUserId (
@@ -1659,40 +1519,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレット一覧を取得します<br>
-     *
-     * @param QueryWalletsRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function queryWalletsAsync(
-            QueryWalletsRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new QueryWalletsTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ウォレット一覧を取得します<br>
-     *
-     * @param QueryWalletsRequest $request リクエストパラメータ
-     * @return QueryWalletsResult
-     */
-    public function queryWallets (
-            QueryWalletsRequest $request
-    ): QueryWalletsResult {
-        return $this->queryWalletsAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ウォレットを取得します<br>
-     *
-     * @param GetWalletRequest $request リクエストパラメータ
+     * @param GetWalletRequest $request
      * @return PromiseInterface
      */
     public function getWalletAsync(
@@ -1707,9 +1534,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレットを取得します<br>
-     *
-     * @param GetWalletRequest $request リクエストパラメータ
+     * @param GetWalletRequest $request
      * @return GetWalletResult
      */
     public function getWallet (
@@ -1721,9 +1546,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してウォレットを取得します<br>
-     *
-     * @param GetWalletByUserIdRequest $request リクエストパラメータ
+     * @param GetWalletByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getWalletByUserIdAsync(
@@ -1738,9 +1561,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してウォレットを取得します<br>
-     *
-     * @param GetWalletByUserIdRequest $request リクエストパラメータ
+     * @param GetWalletByUserIdRequest $request
      * @return GetWalletByUserIdResult
      */
     public function getWalletByUserId (
@@ -1752,9 +1573,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してウォレットに残高を加算します<br>
-     *
-     * @param DepositByUserIdRequest $request リクエストパラメータ
+     * @param DepositByUserIdRequest $request
      * @return PromiseInterface
      */
     public function depositByUserIdAsync(
@@ -1769,9 +1588,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してウォレットに残高を加算します<br>
-     *
-     * @param DepositByUserIdRequest $request リクエストパラメータ
+     * @param DepositByUserIdRequest $request
      * @return DepositByUserIdResult
      */
     public function depositByUserId (
@@ -1783,9 +1600,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレットから残高を消費します<br>
-     *
-     * @param WithdrawRequest $request リクエストパラメータ
+     * @param WithdrawRequest $request
      * @return PromiseInterface
      */
     public function withdrawAsync(
@@ -1800,9 +1615,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレットから残高を消費します<br>
-     *
-     * @param WithdrawRequest $request リクエストパラメータ
+     * @param WithdrawRequest $request
      * @return WithdrawResult
      */
     public function withdraw (
@@ -1814,9 +1627,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してウォレットから残高を消費します<br>
-     *
-     * @param WithdrawByUserIdRequest $request リクエストパラメータ
+     * @param WithdrawByUserIdRequest $request
      * @return PromiseInterface
      */
     public function withdrawByUserIdAsync(
@@ -1831,9 +1642,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定してウォレットから残高を消費します<br>
-     *
-     * @param WithdrawByUserIdRequest $request リクエストパラメータ
+     * @param WithdrawByUserIdRequest $request
      * @return WithdrawByUserIdResult
      */
     public function withdrawByUserId (
@@ -1845,9 +1654,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートを使用してウォレットに残高を加算します<br>
-     *
-     * @param DepositByStampSheetRequest $request リクエストパラメータ
+     * @param DepositByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function depositByStampSheetAsync(
@@ -1862,9 +1669,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートを使用してウォレットに残高を加算します<br>
-     *
-     * @param DepositByStampSheetRequest $request リクエストパラメータ
+     * @param DepositByStampSheetRequest $request
      * @return DepositByStampSheetResult
      */
     public function depositByStampSheet (
@@ -1876,9 +1681,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレットから残高を消費します<br>
-     *
-     * @param WithdrawByStampTaskRequest $request リクエストパラメータ
+     * @param WithdrawByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function withdrawByStampTaskAsync(
@@ -1893,9 +1696,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ウォレットから残高を消費します<br>
-     *
-     * @param WithdrawByStampTaskRequest $request リクエストパラメータ
+     * @param WithdrawByStampTaskRequest $request
      * @return WithdrawByStampTaskResult
      */
     public function withdrawByStampTask (
@@ -1907,9 +1708,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レシートの一覧を取得<br>
-     *
-     * @param DescribeReceiptsRequest $request リクエストパラメータ
+     * @param DescribeReceiptsRequest $request
      * @return PromiseInterface
      */
     public function describeReceiptsAsync(
@@ -1924,9 +1723,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レシートの一覧を取得<br>
-     *
-     * @param DescribeReceiptsRequest $request リクエストパラメータ
+     * @param DescribeReceiptsRequest $request
      * @return DescribeReceiptsResult
      */
     public function describeReceipts (
@@ -1938,9 +1735,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レシートの一覧を取得<br>
-     *
-     * @param GetByUserIdAndTransactionIdRequest $request リクエストパラメータ
+     * @param GetByUserIdAndTransactionIdRequest $request
      * @return PromiseInterface
      */
     public function getByUserIdAndTransactionIdAsync(
@@ -1955,9 +1750,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レシートの一覧を取得<br>
-     *
-     * @param GetByUserIdAndTransactionIdRequest $request リクエストパラメータ
+     * @param GetByUserIdAndTransactionIdRequest $request
      * @return GetByUserIdAndTransactionIdResult
      */
     public function getByUserIdAndTransactionId (
@@ -1969,9 +1762,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レシートを記録<br>
-     *
-     * @param RecordReceiptRequest $request リクエストパラメータ
+     * @param RecordReceiptRequest $request
      * @return PromiseInterface
      */
     public function recordReceiptAsync(
@@ -1986,9 +1777,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * レシートを記録<br>
-     *
-     * @param RecordReceiptRequest $request リクエストパラメータ
+     * @param RecordReceiptRequest $request
      * @return RecordReceiptResult
      */
     public function recordReceipt (
@@ -2000,9 +1789,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートを使用してレシートを記録<br>
-     *
-     * @param RecordReceiptByStampTaskRequest $request リクエストパラメータ
+     * @param RecordReceiptByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function recordReceiptByStampTaskAsync(
@@ -2017,9 +1804,7 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートを使用してレシートを記録<br>
-     *
-     * @param RecordReceiptByStampTaskRequest $request リクエストパラメータ
+     * @param RecordReceiptByStampTaskRequest $request
      * @return RecordReceiptByStampTaskResult
      */
     public function recordReceiptByStampTask (

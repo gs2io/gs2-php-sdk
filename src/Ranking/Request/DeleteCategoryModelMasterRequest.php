@@ -19,75 +19,51 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * カテゴリマスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteCategoryModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null カテゴリマスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カテゴリマスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カテゴリマスターを削除
-     * @return DeleteCategoryModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteCategoryModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリモデル名 */
+    /** @var string */
     private $categoryName;
 
-    /**
-     * カテゴリモデル名を取得
-     *
-     * @return string|null カテゴリマスターを削除
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteCategoryModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): DeleteCategoryModelMasterRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteCategoryModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteCategoryModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName']);
     }
 
-    /**
-     * カテゴリモデル名を設定
-     *
-     * @param string $categoryName カテゴリマスターを削除
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+        );
     }
-
-    /**
-     * カテゴリモデル名を設定
-     *
-     * @param string $categoryName カテゴリマスターを削除
-     * @return DeleteCategoryModelMasterRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): DeleteCategoryModelMasterRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
 }

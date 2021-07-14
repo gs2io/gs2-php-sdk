@@ -19,75 +19,51 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタミナ回復量テーブルマスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRecoverValueTableMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタミナ回復量テーブルマスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナ回復量テーブルマスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナ回復量テーブルマスターを削除
-     * @return DeleteRecoverValueTableMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteRecoverValueTableMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナ回復量テーブル名 */
+    /** @var string */
     private $recoverValueTableName;
 
-    /**
-     * スタミナ回復量テーブル名を取得
-     *
-     * @return string|null スタミナ回復量テーブルマスターを削除
-     */
-    public function getRecoverValueTableName(): ?string {
-        return $this->recoverValueTableName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteRecoverValueTableMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRecoverValueTableName(): ?string {
+		return $this->recoverValueTableName;
+	}
+
+	public function setRecoverValueTableName(?string $recoverValueTableName) {
+		$this->recoverValueTableName = $recoverValueTableName;
+	}
+
+	public function withRecoverValueTableName(?string $recoverValueTableName): DeleteRecoverValueTableMasterRequest {
+		$this->recoverValueTableName = $recoverValueTableName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRecoverValueTableMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRecoverValueTableMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRecoverValueTableName(empty($data['recoverValueTableName']) ? null : $data['recoverValueTableName']);
     }
 
-    /**
-     * スタミナ回復量テーブル名を設定
-     *
-     * @param string $recoverValueTableName スタミナ回復量テーブルマスターを削除
-     */
-    public function setRecoverValueTableName(string $recoverValueTableName = null) {
-        $this->recoverValueTableName = $recoverValueTableName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "recoverValueTableName" => $this->getRecoverValueTableName(),
+        );
     }
-
-    /**
-     * スタミナ回復量テーブル名を設定
-     *
-     * @param string $recoverValueTableName スタミナ回復量テーブルマスターを削除
-     * @return DeleteRecoverValueTableMasterRequest $this
-     */
-    public function withRecoverValueTableName(string $recoverValueTableName = null): DeleteRecoverValueTableMasterRequest {
-        $this->setRecoverValueTableName($recoverValueTableName);
-        return $this;
-    }
-
 }

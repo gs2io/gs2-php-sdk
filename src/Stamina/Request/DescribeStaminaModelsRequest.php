@@ -19,43 +19,34 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタミナモデルの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeStaminaModelsRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スタミナモデルの一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeStaminaModelsRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeStaminaModelsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeStaminaModelsRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナモデルの一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スタミナモデルの一覧を取得
-     * @return DescribeStaminaModelsRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeStaminaModelsRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

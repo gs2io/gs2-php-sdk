@@ -19,203 +19,102 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スコアを登録 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PutScoreRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スコアを登録
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スコアを登録
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スコアを登録
-     * @return PutScoreRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PutScoreRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $categoryName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null スコアを登録
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName スコアを登録
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName スコアを登録
-     * @return PutScoreRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): PutScoreRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
-    /** @var int スコア */
+    /** @var string */
+    private $accessToken;
+    /** @var int */
     private $score;
-
-    /**
-     * スコアを取得
-     *
-     * @return int|null スコアを登録
-     */
-    public function getScore(): ?int {
-        return $this->score;
-    }
-
-    /**
-     * スコアを設定
-     *
-     * @param int $score スコアを登録
-     */
-    public function setScore(int $score = null) {
-        $this->score = $score;
-    }
-
-    /**
-     * スコアを設定
-     *
-     * @param int $score スコアを登録
-     * @return PutScoreRequest $this
-     */
-    public function withScore(int $score = null): PutScoreRequest {
-        $this->setScore($score);
-        return $this;
-    }
-
-    /** @var string メタデータ */
+    /** @var string */
     private $metadata;
 
-    /**
-     * メタデータを取得
-     *
-     * @return string|null スコアを登録
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PutScoreRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): PutScoreRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): PutScoreRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getScore(): ?int {
+		return $this->score;
+	}
+
+	public function setScore(?int $score) {
+		$this->score = $score;
+	}
+
+	public function withScore(?int $score): PutScoreRequest {
+		$this->score = $score;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): PutScoreRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PutScoreRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PutScoreRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withScore(empty($data['score']) ? null : $data['score'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
     }
 
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata スコアを登録
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+            "accessToken" => $this->getAccessToken(),
+            "score" => $this->getScore(),
+            "metadata" => $this->getMetadata(),
+        );
     }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata スコアを登録
-     * @return PutScoreRequest $this
-     */
-    public function withMetadata(string $metadata = null): PutScoreRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null スコアを登録
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スコアを登録
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スコアを登録
-     * @return PutScoreRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): PutScoreRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return PutScoreRequest this
-     */
-    public function withAccessToken(string $accessToken): PutScoreRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

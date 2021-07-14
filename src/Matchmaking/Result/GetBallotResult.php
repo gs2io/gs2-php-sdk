@@ -20,78 +20,68 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\Ballot;
 
-/**
- * 投票用紙を取得します。 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetBallotResult implements IResult {
-	/** @var Ballot 投票用紙 */
-	private $item;
-	/** @var string 署名対象のデータ */
-	private $body;
-	/** @var string 署名データ */
-	private $signature;
+    /** @var Ballot */
+    private $item;
+    /** @var string */
+    private $body;
+    /** @var string */
+    private $signature;
 
-	/**
-	 * 投票用紙を取得
-	 *
-	 * @return Ballot|null 投票用紙を取得します。
-	 */
 	public function getItem(): ?Ballot {
 		return $this->item;
 	}
 
-	/**
-	 * 投票用紙を設定
-	 *
-	 * @param Ballot|null $item 投票用紙を取得します。
-	 */
 	public function setItem(?Ballot $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 署名対象のデータを取得
-	 *
-	 * @return string|null 投票用紙を取得します。
-	 */
+	public function withItem(?Ballot $item): GetBallotResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
-	/**
-	 * 署名対象のデータを設定
-	 *
-	 * @param string|null $body 投票用紙を取得します。
-	 */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
-	/**
-	 * 署名データを取得
-	 *
-	 * @return string|null 投票用紙を取得します。
-	 */
+	public function withBody(?string $body): GetBallotResult {
+		$this->body = $body;
+		return $this;
+	}
+
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
-	/**
-	 * 署名データを設定
-	 *
-	 * @param string|null $signature 投票用紙を取得します。
-	 */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
-    public static function fromJson(array $data): GetBallotResult {
-        $result = new GetBallotResult();
-        $result->setItem(isset($data["item"]) ? Ballot::fromJson($data["item"]) : null);
-        $result->setBody(isset($data["body"]) ? $data["body"] : null);
-        $result->setSignature(isset($data["signature"]) ? $data["signature"] : null);
-        return $result;
+	public function withSignature(?string $signature): GetBallotResult {
+		$this->signature = $signature;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetBallotResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetBallotResult())
+            ->withItem(empty($data['item']) ? null : Ballot::fromJson($data['item']))
+            ->withBody(empty($data['body']) ? null : $data['body'])
+            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "body" => $this->getBody(),
+            "signature" => $this->getSignature(),
+        );
     }
 }

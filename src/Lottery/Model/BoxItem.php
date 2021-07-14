@@ -19,137 +19,85 @@ namespace Gs2\Lottery\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ボックスから取り出したアイテム
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class BoxItem implements IModel {
 	/**
-     * @var AcquireAction[] 入手アクションのリスト
+     * @var array
 	 */
-	protected $acquireActions;
-
+	private $acquireActions;
 	/**
-	 * 入手アクションのリストを取得
-	 *
-	 * @return AcquireAction[]|null 入手アクションのリスト
+     * @var int
 	 */
+	private $remaining;
+	/**
+     * @var int
+	 */
+	private $initial;
+
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
 
-	/**
-	 * 入手アクションのリストを設定
-	 *
-	 * @param AcquireAction[]|null $acquireActions 入手アクションのリスト
-	 */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
 
-	/**
-	 * 入手アクションのリストを設定
-	 *
-	 * @param AcquireAction[]|null $acquireActions 入手アクションのリスト
-	 * @return BoxItem $this
-	 */
 	public function withAcquireActions(?array $acquireActions): BoxItem {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
-	/**
-     * @var int 残り数量
-	 */
-	protected $remaining;
 
-	/**
-	 * 残り数量を取得
-	 *
-	 * @return int|null 残り数量
-	 */
 	public function getRemaining(): ?int {
 		return $this->remaining;
 	}
 
-	/**
-	 * 残り数量を設定
-	 *
-	 * @param int|null $remaining 残り数量
-	 */
 	public function setRemaining(?int $remaining) {
 		$this->remaining = $remaining;
 	}
 
-	/**
-	 * 残り数量を設定
-	 *
-	 * @param int|null $remaining 残り数量
-	 * @return BoxItem $this
-	 */
 	public function withRemaining(?int $remaining): BoxItem {
 		$this->remaining = $remaining;
 		return $this;
 	}
-	/**
-     * @var int 初期数量
-	 */
-	protected $initial;
 
-	/**
-	 * 初期数量を取得
-	 *
-	 * @return int|null 初期数量
-	 */
 	public function getInitial(): ?int {
 		return $this->initial;
 	}
 
-	/**
-	 * 初期数量を設定
-	 *
-	 * @param int|null $initial 初期数量
-	 */
 	public function setInitial(?int $initial) {
 		$this->initial = $initial;
 	}
 
-	/**
-	 * 初期数量を設定
-	 *
-	 * @param int|null $initial 初期数量
-	 * @return BoxItem $this
-	 */
 	public function withInitial(?int $initial): BoxItem {
 		$this->initial = $initial;
 		return $this;
 	}
 
+    public static function fromJson(?array $data): ?BoxItem {
+        if ($data === null) {
+            return null;
+        }
+        return (new BoxItem())
+            ->withAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
+                },
+                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+            ))
+            ->withRemaining(empty($data['remaining']) ? null : $data['remaining'])
+            ->withInitial(empty($data['initial']) ? null : $data['initial']);
+    }
+
     public function toJson(): array {
         return array(
             "acquireActions" => array_map(
-                function (AcquireAction $v) {
-                    return $v->toJson();
+                function ($item) {
+                    return $item->toJson();
                 },
-                $this->acquireActions == null ? [] : $this->acquireActions
+                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
             ),
-            "remaining" => $this->remaining,
-            "initial" => $this->initial,
+            "remaining" => $this->getRemaining(),
+            "initial" => $this->getInitial(),
         );
-    }
-
-    public static function fromJson(array $data): BoxItem {
-        $model = new BoxItem();
-        $model->setAcquireActions(array_map(
-                function ($v) {
-                    return AcquireAction::fromJson($v);
-                },
-                isset($data["acquireActions"]) ? $data["acquireActions"] : []
-            )
-        );
-        $model->setRemaining(isset($data["remaining"]) ? $data["remaining"] : null);
-        $model->setInitial(isset($data["initial"]) ? $data["initial"] : null);
-        return $model;
     }
 }

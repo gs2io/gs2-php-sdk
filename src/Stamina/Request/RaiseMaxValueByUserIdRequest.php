@@ -19,171 +19,85 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してスタミナの最大値を加算 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class RaiseMaxValueByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してスタミナの最大値を加算
-     * @return RaiseMaxValueByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): RaiseMaxValueByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナの種類名 */
+    /** @var string */
     private $staminaName;
-
-    /**
-     * スタミナの種類名を取得
-     *
-     * @return string|null ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function getStaminaName(): ?string {
-        return $this->staminaName;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function setStaminaName(string $staminaName = null) {
-        $this->staminaName = $staminaName;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName ユーザIDを指定してスタミナの最大値を加算
-     * @return RaiseMaxValueByUserIdRequest $this
-     */
-    public function withStaminaName(string $staminaName = null): RaiseMaxValueByUserIdRequest {
-        $this->setStaminaName($staminaName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してスタミナの最大値を加算
-     * @return RaiseMaxValueByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): RaiseMaxValueByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int 上昇する最大スタミナ量 */
+    /** @var int */
     private $raiseValue;
 
-    /**
-     * 上昇する最大スタミナ量を取得
-     *
-     * @return int|null ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function getRaiseValue(): ?int {
-        return $this->raiseValue;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): RaiseMaxValueByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getStaminaName(): ?string {
+		return $this->staminaName;
+	}
+
+	public function setStaminaName(?string $staminaName) {
+		$this->staminaName = $staminaName;
+	}
+
+	public function withStaminaName(?string $staminaName): RaiseMaxValueByUserIdRequest {
+		$this->staminaName = $staminaName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): RaiseMaxValueByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getRaiseValue(): ?int {
+		return $this->raiseValue;
+	}
+
+	public function setRaiseValue(?int $raiseValue) {
+		$this->raiseValue = $raiseValue;
+	}
+
+	public function withRaiseValue(?int $raiseValue): RaiseMaxValueByUserIdRequest {
+		$this->raiseValue = $raiseValue;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RaiseMaxValueByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new RaiseMaxValueByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withRaiseValue(empty($data['raiseValue']) ? null : $data['raiseValue']);
     }
 
-    /**
-     * 上昇する最大スタミナ量を設定
-     *
-     * @param int $raiseValue ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function setRaiseValue(int $raiseValue = null) {
-        $this->raiseValue = $raiseValue;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "staminaName" => $this->getStaminaName(),
+            "userId" => $this->getUserId(),
+            "raiseValue" => $this->getRaiseValue(),
+        );
     }
-
-    /**
-     * 上昇する最大スタミナ量を設定
-     *
-     * @param int $raiseValue ユーザIDを指定してスタミナの最大値を加算
-     * @return RaiseMaxValueByUserIdRequest $this
-     */
-    public function withRaiseValue(int $raiseValue = null): RaiseMaxValueByUserIdRequest {
-        $this->setRaiseValue($raiseValue);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してスタミナの最大値を加算
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してスタミナの最大値を加算
-     * @return RaiseMaxValueByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): RaiseMaxValueByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

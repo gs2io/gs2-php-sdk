@@ -20,36 +20,34 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
-/**
- * ステータスを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetStatusResult implements IResult {
-	/** @var Status ステータス */
-	private $item;
+    /** @var Status */
+    private $item;
 
-	/**
-	 * ステータスを取得
-	 *
-	 * @return Status|null ステータスを取得
-	 */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
-	/**
-	 * ステータスを設定
-	 *
-	 * @param Status|null $item ステータスを取得
-	 */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetStatusResult {
-        $result = new GetStatusResult();
-        $result->setItem(isset($data["item"]) ? Status::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Status $item): GetStatusResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetStatusResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetStatusResult())
+            ->withItem(empty($data['item']) ? null : Status::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

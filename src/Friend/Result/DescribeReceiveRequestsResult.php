@@ -20,42 +20,44 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendRequest;
 
-/**
- * 受信したフレンドリクエストの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeReceiveRequestsResult implements IResult {
-	/** @var FriendRequest[] フレンドリクエストのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * フレンドリクエストのリストを取得
-	 *
-	 * @return FriendRequest[]|null 受信したフレンドリクエストの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * フレンドリクエストのリストを設定
-	 *
-	 * @param FriendRequest[]|null $items 受信したフレンドリクエストの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeReceiveRequestsResult {
-        $result = new DescribeReceiveRequestsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return FriendRequest::fromJson($v);
+	public function withItems(?array $items): DescribeReceiveRequestsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeReceiveRequestsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeReceiveRequestsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return FriendRequest::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

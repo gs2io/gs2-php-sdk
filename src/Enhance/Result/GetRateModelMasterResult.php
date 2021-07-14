@@ -18,38 +18,37 @@
 namespace Gs2\Enhance\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Enhance\Model\BonusRate;
 use Gs2\Enhance\Model\RateModelMaster;
 
-/**
- * 強化レートマスターを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRateModelMasterResult implements IResult {
-	/** @var RateModelMaster 強化レートマスター */
-	private $item;
+    /** @var RateModelMaster */
+    private $item;
 
-	/**
-	 * 強化レートマスターを取得
-	 *
-	 * @return RateModelMaster|null 強化レートマスターを取得
-	 */
 	public function getItem(): ?RateModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 強化レートマスターを設定
-	 *
-	 * @param RateModelMaster|null $item 強化レートマスターを取得
-	 */
 	public function setItem(?RateModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetRateModelMasterResult {
-        $result = new GetRateModelMasterResult();
-        $result->setItem(isset($data["item"]) ? RateModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?RateModelMaster $item): GetRateModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRateModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRateModelMasterResult())
+            ->withItem(empty($data['item']) ? null : RateModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

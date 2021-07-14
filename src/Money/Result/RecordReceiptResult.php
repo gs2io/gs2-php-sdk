@@ -20,36 +20,34 @@ namespace Gs2\Money\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\Receipt;
 
-/**
- * レシートを記録 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RecordReceiptResult implements IResult {
-	/** @var Receipt レシート */
-	private $item;
+    /** @var Receipt */
+    private $item;
 
-	/**
-	 * レシートを取得
-	 *
-	 * @return Receipt|null レシートを記録
-	 */
 	public function getItem(): ?Receipt {
 		return $this->item;
 	}
 
-	/**
-	 * レシートを設定
-	 *
-	 * @param Receipt|null $item レシートを記録
-	 */
 	public function setItem(?Receipt $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): RecordReceiptResult {
-        $result = new RecordReceiptResult();
-        $result->setItem(isset($data["item"]) ? Receipt::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Receipt $item): RecordReceiptResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RecordReceiptResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RecordReceiptResult())
+            ->withItem(empty($data['item']) ? null : Receipt::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

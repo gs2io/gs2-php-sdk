@@ -18,59 +18,57 @@
 namespace Gs2\Matchmaking\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Matchmaking\Model\AttributeRange;
+use Gs2\Matchmaking\Model\Attribute;
+use Gs2\Matchmaking\Model\Player;
+use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
-/**
- * Player が参加できるギャザリングを探して参加する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DoMatchmakingByPlayerResult implements IResult {
-	/** @var Gathering ギャザリング */
-	private $item;
-	/** @var string マッチメイキングの状態を保持するトークン */
-	private $matchmakingContextToken;
+    /** @var Gathering */
+    private $item;
+    /** @var string */
+    private $matchmakingContextToken;
 
-	/**
-	 * ギャザリングを取得
-	 *
-	 * @return Gathering|null Player が参加できるギャザリングを探して参加する
-	 */
 	public function getItem(): ?Gathering {
 		return $this->item;
 	}
 
-	/**
-	 * ギャザリングを設定
-	 *
-	 * @param Gathering|null $item Player が参加できるギャザリングを探して参加する
-	 */
 	public function setItem(?Gathering $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * マッチメイキングの状態を保持するトークンを取得
-	 *
-	 * @return string|null Player が参加できるギャザリングを探して参加する
-	 */
+	public function withItem(?Gathering $item): DoMatchmakingByPlayerResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
 
-	/**
-	 * マッチメイキングの状態を保持するトークンを設定
-	 *
-	 * @param string|null $matchmakingContextToken Player が参加できるギャザリングを探して参加する
-	 */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
 
-    public static function fromJson(array $data): DoMatchmakingByPlayerResult {
-        $result = new DoMatchmakingByPlayerResult();
-        $result->setItem(isset($data["item"]) ? Gathering::fromJson($data["item"]) : null);
-        $result->setMatchmakingContextToken(isset($data["matchmakingContextToken"]) ? $data["matchmakingContextToken"] : null);
-        return $result;
+	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingByPlayerResult {
+		$this->matchmakingContextToken = $matchmakingContextToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DoMatchmakingByPlayerResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DoMatchmakingByPlayerResult())
+            ->withItem(empty($data['item']) ? null : Gathering::fromJson($data['item']))
+            ->withMatchmakingContextToken(empty($data['matchmakingContextToken']) ? null : $data['matchmakingContextToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "matchmakingContextToken" => $this->getMatchmakingContextToken(),
+        );
     }
 }

@@ -19,171 +19,85 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * レシートを記録 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class RecordReceiptRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null レシートを記録
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName レシートを記録
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName レシートを記録
-     * @return RecordReceiptRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): RecordReceiptRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null レシートを記録
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId レシートを記録
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId レシートを記録
-     * @return RecordReceiptRequest $this
-     */
-    public function withUserId(string $userId = null): RecordReceiptRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string プラットフォームストアのコンテンツID */
+    /** @var string */
     private $contentsId;
-
-    /**
-     * プラットフォームストアのコンテンツIDを取得
-     *
-     * @return string|null レシートを記録
-     */
-    public function getContentsId(): ?string {
-        return $this->contentsId;
-    }
-
-    /**
-     * プラットフォームストアのコンテンツIDを設定
-     *
-     * @param string $contentsId レシートを記録
-     */
-    public function setContentsId(string $contentsId = null) {
-        $this->contentsId = $contentsId;
-    }
-
-    /**
-     * プラットフォームストアのコンテンツIDを設定
-     *
-     * @param string $contentsId レシートを記録
-     * @return RecordReceiptRequest $this
-     */
-    public function withContentsId(string $contentsId = null): RecordReceiptRequest {
-        $this->setContentsId($contentsId);
-        return $this;
-    }
-
-    /** @var string レシート */
+    /** @var string */
     private $receipt;
 
-    /**
-     * レシートを取得
-     *
-     * @return string|null レシートを記録
-     */
-    public function getReceipt(): ?string {
-        return $this->receipt;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): RecordReceiptRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): RecordReceiptRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getContentsId(): ?string {
+		return $this->contentsId;
+	}
+
+	public function setContentsId(?string $contentsId) {
+		$this->contentsId = $contentsId;
+	}
+
+	public function withContentsId(?string $contentsId): RecordReceiptRequest {
+		$this->contentsId = $contentsId;
+		return $this;
+	}
+
+	public function getReceipt(): ?string {
+		return $this->receipt;
+	}
+
+	public function setReceipt(?string $receipt) {
+		$this->receipt = $receipt;
+	}
+
+	public function withReceipt(?string $receipt): RecordReceiptRequest {
+		$this->receipt = $receipt;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RecordReceiptRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new RecordReceiptRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withContentsId(empty($data['contentsId']) ? null : $data['contentsId'])
+            ->withReceipt(empty($data['receipt']) ? null : $data['receipt']);
     }
 
-    /**
-     * レシートを設定
-     *
-     * @param string $receipt レシートを記録
-     */
-    public function setReceipt(string $receipt = null) {
-        $this->receipt = $receipt;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "contentsId" => $this->getContentsId(),
+            "receipt" => $this->getReceipt(),
+        );
     }
-
-    /**
-     * レシートを設定
-     *
-     * @param string $receipt レシートを記録
-     * @return RecordReceiptRequest $this
-     */
-    public function withReceipt(string $receipt = null): RecordReceiptRequest {
-        $this->setReceipt($receipt);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null レシートを記録
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider レシートを記録
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider レシートを記録
-     * @return RecordReceiptRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): RecordReceiptRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

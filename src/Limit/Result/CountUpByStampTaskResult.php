@@ -20,57 +20,51 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
-/**
- * スタンプシートでカウントアップ のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CountUpByStampTaskResult implements IResult {
-	/** @var Counter カウントを増やしたカウンター */
-	private $item;
-	/** @var string スタンプタスクの実行結果を記録したコンテキスト */
-	private $newContextStack;
+    /** @var Counter */
+    private $item;
+    /** @var string */
+    private $newContextStack;
 
-	/**
-	 * カウントを増やしたカウンターを取得
-	 *
-	 * @return Counter|null スタンプシートでカウントアップ
-	 */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
-	/**
-	 * カウントを増やしたカウンターを設定
-	 *
-	 * @param Counter|null $item スタンプシートでカウントアップ
-	 */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを取得
-	 *
-	 * @return string|null スタンプシートでカウントアップ
-	 */
+	public function withItem(?Counter $item): CountUpByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを設定
-	 *
-	 * @param string|null $newContextStack スタンプシートでカウントアップ
-	 */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
-    public static function fromJson(array $data): CountUpByStampTaskResult {
-        $result = new CountUpByStampTaskResult();
-        $result->setItem(isset($data["item"]) ? Counter::fromJson($data["item"]) : null);
-        $result->setNewContextStack(isset($data["newContextStack"]) ? $data["newContextStack"] : null);
-        return $result;
+	public function withNewContextStack(?string $newContextStack): CountUpByStampTaskResult {
+		$this->newContextStack = $newContextStack;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CountUpByStampTaskResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CountUpByStampTaskResult())
+            ->withItem(empty($data['item']) ? null : Counter::fromJson($data['item']))
+            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "newContextStack" => $this->getNewContextStack(),
+        );
     }
 }

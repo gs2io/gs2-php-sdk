@@ -20,36 +20,34 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\User;
 
-/**
- * ユーザを新規作成します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateUserResult implements IResult {
-	/** @var User 作成したユーザ */
-	private $item;
+    /** @var User */
+    private $item;
 
-	/**
-	 * 作成したユーザを取得
-	 *
-	 * @return User|null ユーザを新規作成します
-	 */
 	public function getItem(): ?User {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したユーザを設定
-	 *
-	 * @param User|null $item ユーザを新規作成します
-	 */
 	public function setItem(?User $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateUserResult {
-        $result = new CreateUserResult();
-        $result->setItem(isset($data["item"]) ? User::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?User $item): CreateUserResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateUserResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateUserResult())
+            ->withItem(empty($data['item']) ? null : User::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -18,238 +18,132 @@
 namespace Gs2\Inbox\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Inbox\Model\TimeSpan;
 use Gs2\Inbox\Model\AcquireAction;
+use Gs2\Inbox\Model\TimeSpan;
 
-/**
- * メッセージを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SendMessageByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null メッセージを新規作成
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージを新規作成
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージを新規作成
-     * @return SendMessageByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): SendMessageByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null メッセージを新規作成
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId メッセージを新規作成
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId メッセージを新規作成
-     * @return SendMessageByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): SendMessageByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string メッセージの内容に相当するメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * メッセージの内容に相当するメタデータを取得
-     *
-     * @return string|null メッセージを新規作成
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * メッセージの内容に相当するメタデータを設定
-     *
-     * @param string $metadata メッセージを新規作成
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * メッセージの内容に相当するメタデータを設定
-     *
-     * @param string $metadata メッセージを新規作成
-     * @return SendMessageByUserIdRequest $this
-     */
-    public function withMetadata(string $metadata = null): SendMessageByUserIdRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var AcquireAction[] 開封時に実行する入手アクション */
+    /** @var array */
     private $readAcquireActions;
-
-    /**
-     * 開封時に実行する入手アクションを取得
-     *
-     * @return AcquireAction[]|null メッセージを新規作成
-     */
-    public function getReadAcquireActions(): ?array {
-        return $this->readAcquireActions;
-    }
-
-    /**
-     * 開封時に実行する入手アクションを設定
-     *
-     * @param AcquireAction[] $readAcquireActions メッセージを新規作成
-     */
-    public function setReadAcquireActions(array $readAcquireActions = null) {
-        $this->readAcquireActions = $readAcquireActions;
-    }
-
-    /**
-     * 開封時に実行する入手アクションを設定
-     *
-     * @param AcquireAction[] $readAcquireActions メッセージを新規作成
-     * @return SendMessageByUserIdRequest $this
-     */
-    public function withReadAcquireActions(array $readAcquireActions = null): SendMessageByUserIdRequest {
-        $this->setReadAcquireActions($readAcquireActions);
-        return $this;
-    }
-
-    /** @var int メッセージの有効期限 */
+    /** @var int */
     private $expiresAt;
-
-    /**
-     * メッセージの有効期限を取得
-     *
-     * @return int|null メッセージを新規作成
-     */
-    public function getExpiresAt(): ?int {
-        return $this->expiresAt;
-    }
-
-    /**
-     * メッセージの有効期限を設定
-     *
-     * @param int $expiresAt メッセージを新規作成
-     */
-    public function setExpiresAt(int $expiresAt = null) {
-        $this->expiresAt = $expiresAt;
-    }
-
-    /**
-     * メッセージの有効期限を設定
-     *
-     * @param int $expiresAt メッセージを新規作成
-     * @return SendMessageByUserIdRequest $this
-     */
-    public function withExpiresAt(int $expiresAt = null): SendMessageByUserIdRequest {
-        $this->setExpiresAt($expiresAt);
-        return $this;
-    }
-
-    /** @var TimeSpan メッセージの有効期限までの差分 */
+    /** @var TimeSpan */
     private $expiresTimeSpan;
 
-    /**
-     * メッセージの有効期限までの差分を取得
-     *
-     * @return TimeSpan|null メッセージを新規作成
-     */
-    public function getExpiresTimeSpan(): ?TimeSpan {
-        return $this->expiresTimeSpan;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): SendMessageByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): SendMessageByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): SendMessageByUserIdRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getReadAcquireActions(): ?array {
+		return $this->readAcquireActions;
+	}
+
+	public function setReadAcquireActions(?array $readAcquireActions) {
+		$this->readAcquireActions = $readAcquireActions;
+	}
+
+	public function withReadAcquireActions(?array $readAcquireActions): SendMessageByUserIdRequest {
+		$this->readAcquireActions = $readAcquireActions;
+		return $this;
+	}
+
+	public function getExpiresAt(): ?int {
+		return $this->expiresAt;
+	}
+
+	public function setExpiresAt(?int $expiresAt) {
+		$this->expiresAt = $expiresAt;
+	}
+
+	public function withExpiresAt(?int $expiresAt): SendMessageByUserIdRequest {
+		$this->expiresAt = $expiresAt;
+		return $this;
+	}
+
+	public function getExpiresTimeSpan(): ?TimeSpan {
+		return $this->expiresTimeSpan;
+	}
+
+	public function setExpiresTimeSpan(?TimeSpan $expiresTimeSpan) {
+		$this->expiresTimeSpan = $expiresTimeSpan;
+	}
+
+	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): SendMessageByUserIdRequest {
+		$this->expiresTimeSpan = $expiresTimeSpan;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SendMessageByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SendMessageByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withReadAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
+                },
+                array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
+            ))
+            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt'])
+            ->withExpiresTimeSpan(empty($data['expiresTimeSpan']) ? null : TimeSpan::fromJson($data['expiresTimeSpan']));
     }
 
-    /**
-     * メッセージの有効期限までの差分を設定
-     *
-     * @param TimeSpan $expiresTimeSpan メッセージを新規作成
-     */
-    public function setExpiresTimeSpan(TimeSpan $expiresTimeSpan = null) {
-        $this->expiresTimeSpan = $expiresTimeSpan;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "metadata" => $this->getMetadata(),
+            "readAcquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getReadAcquireActions() !== null && $this->getReadAcquireActions() !== null ? $this->getReadAcquireActions() : []
+            ),
+            "expiresAt" => $this->getExpiresAt(),
+            "expiresTimeSpan" => $this->getExpiresTimeSpan() !== null ? $this->getExpiresTimeSpan()->toJson() : null,
+        );
     }
-
-    /**
-     * メッセージの有効期限までの差分を設定
-     *
-     * @param TimeSpan $expiresTimeSpan メッセージを新規作成
-     * @return SendMessageByUserIdRequest $this
-     */
-    public function withExpiresTimeSpan(TimeSpan $expiresTimeSpan = null): SendMessageByUserIdRequest {
-        $this->setExpiresTimeSpan($expiresTimeSpan);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null メッセージを新規作成
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider メッセージを新規作成
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider メッセージを新規作成
-     * @return SendMessageByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): SendMessageByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

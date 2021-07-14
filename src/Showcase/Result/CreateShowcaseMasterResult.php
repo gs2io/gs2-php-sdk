@@ -18,38 +18,37 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\DisplayItemMaster;
 use Gs2\Showcase\Model\ShowcaseMaster;
 
-/**
- * 陳列棚マスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateShowcaseMasterResult implements IResult {
-	/** @var ShowcaseMaster 作成した陳列棚マスター */
-	private $item;
+    /** @var ShowcaseMaster */
+    private $item;
 
-	/**
-	 * 作成した陳列棚マスターを取得
-	 *
-	 * @return ShowcaseMaster|null 陳列棚マスターを新規作成
-	 */
 	public function getItem(): ?ShowcaseMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成した陳列棚マスターを設定
-	 *
-	 * @param ShowcaseMaster|null $item 陳列棚マスターを新規作成
-	 */
 	public function setItem(?ShowcaseMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateShowcaseMasterResult {
-        $result = new CreateShowcaseMasterResult();
-        $result->setItem(isset($data["item"]) ? ShowcaseMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?ShowcaseMaster $item): CreateShowcaseMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateShowcaseMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateShowcaseMasterResult())
+            ->withItem(empty($data['item']) ? null : ShowcaseMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

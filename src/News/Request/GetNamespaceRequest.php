@@ -19,43 +19,34 @@ namespace Gs2\News\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ネームスペースを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null ネームスペースを取得します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ネームスペースを取得します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ネームスペースを取得します
-     * @return GetNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

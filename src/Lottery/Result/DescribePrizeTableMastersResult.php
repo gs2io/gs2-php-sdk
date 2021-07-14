@@ -18,65 +18,65 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\AcquireAction;
+use Gs2\Lottery\Model\Prize;
 use Gs2\Lottery\Model\PrizeTableMaster;
 
-/**
- * 排出確率テーブルマスターの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribePrizeTableMastersResult implements IResult {
-	/** @var PrizeTableMaster[] 排出確率テーブルマスターのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 排出確率テーブルマスターのリストを取得
-	 *
-	 * @return PrizeTableMaster[]|null 排出確率テーブルマスターの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 排出確率テーブルマスターのリストを設定
-	 *
-	 * @param PrizeTableMaster[]|null $items 排出確率テーブルマスターの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null 排出確率テーブルマスターの一覧を取得
-	 */
+	public function withItems(?array $items): DescribePrizeTableMastersResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken 排出確率テーブルマスターの一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribePrizeTableMastersResult {
-        $result = new DescribePrizeTableMastersResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return PrizeTableMaster::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribePrizeTableMastersResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribePrizeTableMastersResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribePrizeTableMastersResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return PrizeTableMaster::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

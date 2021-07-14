@@ -18,44 +18,47 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\InventoryModel;
 
-/**
- * インベントリモデルの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeInventoryModelsResult implements IResult {
-	/** @var InventoryModel[] インベントリモデルのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * インベントリモデルのリストを取得
-	 *
-	 * @return InventoryModel[]|null インベントリモデルの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * インベントリモデルのリストを設定
-	 *
-	 * @param InventoryModel[]|null $items インベントリモデルの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeInventoryModelsResult {
-        $result = new DescribeInventoryModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return InventoryModel::fromJson($v);
+	public function withItems(?array $items): DescribeInventoryModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeInventoryModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeInventoryModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return InventoryModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

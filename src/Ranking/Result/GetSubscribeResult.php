@@ -20,36 +20,34 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\SubscribeUser;
 
-/**
- * 購読を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetSubscribeResult implements IResult {
-	/** @var SubscribeUser 購読対象 */
-	private $item;
+    /** @var SubscribeUser */
+    private $item;
 
-	/**
-	 * 購読対象を取得
-	 *
-	 * @return SubscribeUser|null 購読を取得
-	 */
 	public function getItem(): ?SubscribeUser {
 		return $this->item;
 	}
 
-	/**
-	 * 購読対象を設定
-	 *
-	 * @param SubscribeUser|null $item 購読を取得
-	 */
 	public function setItem(?SubscribeUser $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetSubscribeResult {
-        $result = new GetSubscribeResult();
-        $result->setItem(isset($data["item"]) ? SubscribeUser::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?SubscribeUser $item): GetSubscribeResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetSubscribeResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetSubscribeResult())
+            ->withItem(empty($data['item']) ? null : SubscribeUser::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

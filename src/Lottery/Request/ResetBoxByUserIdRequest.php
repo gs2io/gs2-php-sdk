@@ -19,139 +19,68 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してボックスをリセット のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class ResetBoxByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してボックスをリセット
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してボックスをリセット
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してボックスをリセット
-     * @return ResetBoxByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): ResetBoxByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 排出確率テーブル名 */
+    /** @var string */
     private $prizeTableName;
-
-    /**
-     * 排出確率テーブル名を取得
-     *
-     * @return string|null ユーザIDを指定してボックスをリセット
-     */
-    public function getPrizeTableName(): ?string {
-        return $this->prizeTableName;
-    }
-
-    /**
-     * 排出確率テーブル名を設定
-     *
-     * @param string $prizeTableName ユーザIDを指定してボックスをリセット
-     */
-    public function setPrizeTableName(string $prizeTableName = null) {
-        $this->prizeTableName = $prizeTableName;
-    }
-
-    /**
-     * 排出確率テーブル名を設定
-     *
-     * @param string $prizeTableName ユーザIDを指定してボックスをリセット
-     * @return ResetBoxByUserIdRequest $this
-     */
-    public function withPrizeTableName(string $prizeTableName = null): ResetBoxByUserIdRequest {
-        $this->setPrizeTableName($prizeTableName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
 
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してボックスをリセット
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): ResetBoxByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getPrizeTableName(): ?string {
+		return $this->prizeTableName;
+	}
+
+	public function setPrizeTableName(?string $prizeTableName) {
+		$this->prizeTableName = $prizeTableName;
+	}
+
+	public function withPrizeTableName(?string $prizeTableName): ResetBoxByUserIdRequest {
+		$this->prizeTableName = $prizeTableName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): ResetBoxByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ResetBoxByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new ResetBoxByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してボックスをリセット
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "prizeTableName" => $this->getPrizeTableName(),
+            "userId" => $this->getUserId(),
+        );
     }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してボックスをリセット
-     * @return ResetBoxByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): ResetBoxByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してボックスをリセット
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してボックスをリセット
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してボックスをリセット
-     * @return ResetBoxByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): ResetBoxByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

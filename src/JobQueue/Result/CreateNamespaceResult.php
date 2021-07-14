@@ -18,38 +18,38 @@
 namespace Gs2\JobQueue\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\JobQueue\Model\NotificationSetting;
+use Gs2\JobQueue\Model\LogSetting;
 use Gs2\JobQueue\Model\Namespace_;
 
-/**
- * ネームスペースを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceResult implements IResult {
-	/** @var Namespace_ 作成したネームスペース */
-	private $item;
+    /** @var Namespace_ */
+    private $item;
 
-	/**
-	 * 作成したネームスペースを取得
-	 *
-	 * @return Namespace_|null ネームスペースを新規作成
-	 */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したネームスペースを設定
-	 *
-	 * @param Namespace_|null $item ネームスペースを新規作成
-	 */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateNamespaceResult {
-        $result = new CreateNamespaceResult();
-        $result->setItem(isset($data["item"]) ? Namespace_::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Namespace_ $item): CreateNamespaceResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceResult())
+            ->withItem(empty($data['item']) ? null : Namespace_::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

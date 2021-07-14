@@ -19,75 +19,51 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 回数制限の種類マスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetLimitModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 回数制限の種類マスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 回数制限の種類マスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 回数制限の種類マスターを取得
-     * @return GetLimitModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetLimitModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 回数制限の種類名 */
+    /** @var string */
     private $limitName;
 
-    /**
-     * 回数制限の種類名を取得
-     *
-     * @return string|null 回数制限の種類マスターを取得
-     */
-    public function getLimitName(): ?string {
-        return $this->limitName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetLimitModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getLimitName(): ?string {
+		return $this->limitName;
+	}
+
+	public function setLimitName(?string $limitName) {
+		$this->limitName = $limitName;
+	}
+
+	public function withLimitName(?string $limitName): GetLimitModelMasterRequest {
+		$this->limitName = $limitName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetLimitModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetLimitModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withLimitName(empty($data['limitName']) ? null : $data['limitName']);
     }
 
-    /**
-     * 回数制限の種類名を設定
-     *
-     * @param string $limitName 回数制限の種類マスターを取得
-     */
-    public function setLimitName(string $limitName = null) {
-        $this->limitName = $limitName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "limitName" => $this->getLimitName(),
+        );
     }
-
-    /**
-     * 回数制限の種類名を設定
-     *
-     * @param string $limitName 回数制限の種類マスターを取得
-     * @return GetLimitModelMasterRequest $this
-     */
-    public function withLimitName(string $limitName = null): GetLimitModelMasterRequest {
-        $this->setLimitName($limitName);
-        return $this;
-    }
-
 }

@@ -18,38 +18,41 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\ConsumeAction;
+use Gs2\Showcase\Model\AcquireAction;
+use Gs2\Showcase\Model\SalesItem;
+use Gs2\Showcase\Model\SalesItemGroup;
+use Gs2\Showcase\Model\DisplayItem;
 use Gs2\Showcase\Model\Showcase;
 
-/**
- * 陳列棚を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetShowcaseResult implements IResult {
-	/** @var Showcase 陳列棚 */
-	private $item;
+    /** @var Showcase */
+    private $item;
 
-	/**
-	 * 陳列棚を取得
-	 *
-	 * @return Showcase|null 陳列棚を取得
-	 */
 	public function getItem(): ?Showcase {
 		return $this->item;
 	}
 
-	/**
-	 * 陳列棚を設定
-	 *
-	 * @param Showcase|null $item 陳列棚を取得
-	 */
 	public function setItem(?Showcase $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetShowcaseResult {
-        $result = new GetShowcaseResult();
-        $result->setItem(isset($data["item"]) ? Showcase::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Showcase $item): GetShowcaseResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetShowcaseResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetShowcaseResult())
+            ->withItem(empty($data['item']) ? null : Showcase::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

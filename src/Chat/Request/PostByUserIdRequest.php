@@ -19,235 +19,119 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してメッセージを投稿 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PostByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してメッセージを投稿
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してメッセージを投稿
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してメッセージを投稿
-     * @return PostByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PostByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null ユーザIDを指定してメッセージを投稿
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ユーザIDを指定してメッセージを投稿
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ユーザIDを指定してメッセージを投稿
-     * @return PostByUserIdRequest $this
-     */
-    public function withRoomName(string $roomName = null): PostByUserIdRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var string 発言したユーザID */
+    /** @var string */
     private $userId;
-
-    /**
-     * 発言したユーザIDを取得
-     *
-     * @return string|null ユーザIDを指定してメッセージを投稿
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * 発言したユーザIDを設定
-     *
-     * @param string $userId ユーザIDを指定してメッセージを投稿
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * 発言したユーザIDを設定
-     *
-     * @param string $userId ユーザIDを指定してメッセージを投稿
-     * @return PostByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): PostByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int メッセージの種類を分類したい時の種類番号 */
+    /** @var int */
     private $category;
-
-    /**
-     * メッセージの種類を分類したい時の種類番号を取得
-     *
-     * @return int|null ユーザIDを指定してメッセージを投稿
-     */
-    public function getCategory(): ?int {
-        return $this->category;
-    }
-
-    /**
-     * メッセージの種類を分類したい時の種類番号を設定
-     *
-     * @param int $category ユーザIDを指定してメッセージを投稿
-     */
-    public function setCategory(int $category = null) {
-        $this->category = $category;
-    }
-
-    /**
-     * メッセージの種類を分類したい時の種類番号を設定
-     *
-     * @param int $category ユーザIDを指定してメッセージを投稿
-     * @return PostByUserIdRequest $this
-     */
-    public function withCategory(int $category = null): PostByUserIdRequest {
-        $this->setCategory($category);
-        return $this;
-    }
-
-    /** @var string メタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * メタデータを取得
-     *
-     * @return string|null ユーザIDを指定してメッセージを投稿
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata ユーザIDを指定してメッセージを投稿
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * メタデータを設定
-     *
-     * @param string $metadata ユーザIDを指定してメッセージを投稿
-     * @return PostByUserIdRequest $this
-     */
-    public function withMetadata(string $metadata = null): PostByUserIdRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string メッセージを投稿するために必要となるパスワード */
+    /** @var string */
     private $password;
 
-    /**
-     * メッセージを投稿するために必要となるパスワードを取得
-     *
-     * @return string|null ユーザIDを指定してメッセージを投稿
-     */
-    public function getPassword(): ?string {
-        return $this->password;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PostByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): PostByUserIdRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): PostByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getCategory(): ?int {
+		return $this->category;
+	}
+
+	public function setCategory(?int $category) {
+		$this->category = $category;
+	}
+
+	public function withCategory(?int $category): PostByUserIdRequest {
+		$this->category = $category;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): PostByUserIdRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): PostByUserIdRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PostByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PostByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withCategory(empty($data['category']) ? null : $data['category'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withPassword(empty($data['password']) ? null : $data['password']);
     }
 
-    /**
-     * メッセージを投稿するために必要となるパスワードを設定
-     *
-     * @param string $password ユーザIDを指定してメッセージを投稿
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "userId" => $this->getUserId(),
+            "category" => $this->getCategory(),
+            "metadata" => $this->getMetadata(),
+            "password" => $this->getPassword(),
+        );
     }
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを設定
-     *
-     * @param string $password ユーザIDを指定してメッセージを投稿
-     * @return PostByUserIdRequest $this
-     */
-    public function withPassword(string $password = null): PostByUserIdRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してメッセージを投稿
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してメッセージを投稿
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してメッセージを投稿
-     * @return PostByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): PostByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

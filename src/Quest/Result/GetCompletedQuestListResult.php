@@ -20,36 +20,34 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\CompletedQuestList;
 
-/**
- * クエスト進行を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCompletedQuestListResult implements IResult {
-	/** @var CompletedQuestList クエスト進行 */
-	private $item;
+    /** @var CompletedQuestList */
+    private $item;
 
-	/**
-	 * クエスト進行を取得
-	 *
-	 * @return CompletedQuestList|null クエスト進行を取得
-	 */
 	public function getItem(): ?CompletedQuestList {
 		return $this->item;
 	}
 
-	/**
-	 * クエスト進行を設定
-	 *
-	 * @param CompletedQuestList|null $item クエスト進行を取得
-	 */
 	public function setItem(?CompletedQuestList $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCompletedQuestListResult {
-        $result = new GetCompletedQuestListResult();
-        $result->setItem(isset($data["item"]) ? CompletedQuestList::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CompletedQuestList $item): GetCompletedQuestListResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCompletedQuestListResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCompletedQuestListResult())
+            ->withItem(empty($data['item']) ? null : CompletedQuestList::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -20,107 +20,51 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Distributor\Model\DistributeResource;
 
-/**
- * 所持品を配布する(溢れた際の救済処置無し) のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
-
-    /** @var DistributeResource 加算するリソース */
+    /** @var string */
+    private $userId;
+    /** @var DistributeResource */
     private $distributeResource;
 
-    /**
-     * 加算するリソースを取得
-     *
-     * @return DistributeResource|null 所持品を配布する(溢れた際の救済処置無し)
-     */
-    public function getDistributeResource(): ?DistributeResource {
-        return $this->distributeResource;
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DistributeWithoutOverflowProcessRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getDistributeResource(): ?DistributeResource {
+		return $this->distributeResource;
+	}
+
+	public function setDistributeResource(?DistributeResource $distributeResource) {
+		$this->distributeResource = $distributeResource;
+	}
+
+	public function withDistributeResource(?DistributeResource $distributeResource): DistributeWithoutOverflowProcessRequest {
+		$this->distributeResource = $distributeResource;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DistributeWithoutOverflowProcessRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DistributeWithoutOverflowProcessRequest())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withDistributeResource(empty($data['distributeResource']) ? null : DistributeResource::fromJson($data['distributeResource']));
     }
 
-    /**
-     * 加算するリソースを設定
-     *
-     * @param DistributeResource $distributeResource 所持品を配布する(溢れた際の救済処置無し)
-     */
-    public function setDistributeResource(DistributeResource $distributeResource = null) {
-        $this->distributeResource = $distributeResource;
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "distributeResource" => $this->getDistributeResource() !== null ? $this->getDistributeResource()->toJson() : null,
+        );
     }
-
-    /**
-     * 加算するリソースを設定
-     *
-     * @param DistributeResource $distributeResource 所持品を配布する(溢れた際の救済処置無し)
-     * @return DistributeWithoutOverflowProcessRequest $this
-     */
-    public function withDistributeResource(DistributeResource $distributeResource = null): DistributeWithoutOverflowProcessRequest {
-        $this->setDistributeResource($distributeResource);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 所持品を配布する(溢れた際の救済処置無し)
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 所持品を配布する(溢れた際の救済処置無し)
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 所持品を配布する(溢れた際の救済処置無し)
-     * @return DistributeWithoutOverflowProcessRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DistributeWithoutOverflowProcessRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return DistributeWithoutOverflowProcessRequest this
-     */
-    public function withAccessToken(string $accessToken): DistributeWithoutOverflowProcessRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

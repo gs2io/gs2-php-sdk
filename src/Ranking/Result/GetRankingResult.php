@@ -20,36 +20,34 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Ranking;
 
-/**
- * ランキングを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRankingResult implements IResult {
-	/** @var Ranking ランキング */
-	private $item;
+    /** @var Ranking */
+    private $item;
 
-	/**
-	 * ランキングを取得
-	 *
-	 * @return Ranking|null ランキングを取得
-	 */
 	public function getItem(): ?Ranking {
 		return $this->item;
 	}
 
-	/**
-	 * ランキングを設定
-	 *
-	 * @param Ranking|null $item ランキングを取得
-	 */
 	public function setItem(?Ranking $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetRankingResult {
-        $result = new GetRankingResult();
-        $result->setItem(isset($data["item"]) ? Ranking::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Ranking $item): GetRankingResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRankingResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRankingResult())
+            ->withItem(empty($data['item']) ? null : Ranking::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

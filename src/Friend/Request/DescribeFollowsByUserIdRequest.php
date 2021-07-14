@@ -19,203 +19,102 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザーIDを指定してフォローの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeFollowsByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してフォローの一覧を取得
-     * @return DescribeFollowsByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeFollowsByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してフォローの一覧を取得
-     * @return DescribeFollowsByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DescribeFollowsByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var bool プロフィールも一緒に取得するか */
+    /** @var bool */
     private $withProfile;
-
-    /**
-     * プロフィールも一緒に取得するかを取得
-     *
-     * @return bool|null ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function getWithProfile(): ?bool {
-        return $this->withProfile;
-    }
-
-    /**
-     * プロフィールも一緒に取得するかを設定
-     *
-     * @param bool $withProfile ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function setWithProfile(bool $withProfile = null) {
-        $this->withProfile = $withProfile;
-    }
-
-    /**
-     * プロフィールも一緒に取得するかを設定
-     *
-     * @param bool $withProfile ユーザーIDを指定してフォローの一覧を取得
-     * @return DescribeFollowsByUserIdRequest $this
-     */
-    public function withWithProfile(bool $withProfile = null): DescribeFollowsByUserIdRequest {
-        $this->setWithProfile($withProfile);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken ユーザーIDを指定してフォローの一覧を取得
-     * @return DescribeFollowsByUserIdRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeFollowsByUserIdRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeFollowsByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DescribeFollowsByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getWithProfile(): ?bool {
+		return $this->withProfile;
+	}
+
+	public function setWithProfile(?bool $withProfile) {
+		$this->withProfile = $withProfile;
+	}
+
+	public function withWithProfile(?bool $withProfile): DescribeFollowsByUserIdRequest {
+		$this->withProfile = $withProfile;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeFollowsByUserIdRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeFollowsByUserIdRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeFollowsByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeFollowsByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withWithProfile(empty($data['withProfile']) ? null : $data['withProfile'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "withProfile" => $this->getWithProfile(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit ユーザーIDを指定してフォローの一覧を取得
-     * @return DescribeFollowsByUserIdRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeFollowsByUserIdRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してフォローの一覧を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してフォローの一覧を取得
-     * @return DescribeFollowsByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DescribeFollowsByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

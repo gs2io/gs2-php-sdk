@@ -19,75 +19,51 @@ namespace Gs2\Watch\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 累積値を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCumulativeRequest extends Gs2BasicRequest {
-
-    /** @var string 名前 */
+    /** @var string */
     private $name;
-
-    /**
-     * 名前を取得
-     *
-     * @return string|null 累積値を取得
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * 名前を設定
-     *
-     * @param string $name 累積値を取得
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * 名前を設定
-     *
-     * @param string $name 累積値を取得
-     * @return GetCumulativeRequest $this
-     */
-    public function withName(string $name = null): GetCumulativeRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string リソースのGRN */
+    /** @var string */
     private $resourceGrn;
 
-    /**
-     * リソースのGRNを取得
-     *
-     * @return string|null 累積値を取得
-     */
-    public function getResourceGrn(): ?string {
-        return $this->resourceGrn;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): GetCumulativeRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getResourceGrn(): ?string {
+		return $this->resourceGrn;
+	}
+
+	public function setResourceGrn(?string $resourceGrn) {
+		$this->resourceGrn = $resourceGrn;
+	}
+
+	public function withResourceGrn(?string $resourceGrn): GetCumulativeRequest {
+		$this->resourceGrn = $resourceGrn;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCumulativeRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCumulativeRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withResourceGrn(empty($data['resourceGrn']) ? null : $data['resourceGrn']);
     }
 
-    /**
-     * リソースのGRNを設定
-     *
-     * @param string $resourceGrn 累積値を取得
-     */
-    public function setResourceGrn(string $resourceGrn = null) {
-        $this->resourceGrn = $resourceGrn;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "resourceGrn" => $this->getResourceGrn(),
+        );
     }
-
-    /**
-     * リソースのGRNを設定
-     *
-     * @param string $resourceGrn 累積値を取得
-     * @return GetCumulativeRequest $this
-     */
-    public function withResourceGrn(string $resourceGrn = null): GetCumulativeRequest {
-        $this->setResourceGrn($resourceGrn);
-        return $this;
-    }
-
 }

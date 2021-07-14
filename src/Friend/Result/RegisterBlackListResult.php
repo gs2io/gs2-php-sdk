@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\BlackList;
 
-/**
- * ブラックリストに登録 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RegisterBlackListResult implements IResult {
-	/** @var BlackList ブラックリスト */
-	private $item;
+    /** @var BlackList */
+    private $item;
 
-	/**
-	 * ブラックリストを取得
-	 *
-	 * @return BlackList|null ブラックリストに登録
-	 */
 	public function getItem(): ?BlackList {
 		return $this->item;
 	}
 
-	/**
-	 * ブラックリストを設定
-	 *
-	 * @param BlackList|null $item ブラックリストに登録
-	 */
 	public function setItem(?BlackList $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): RegisterBlackListResult {
-        $result = new RegisterBlackListResult();
-        $result->setItem(isset($data["item"]) ? BlackList::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?BlackList $item): RegisterBlackListResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RegisterBlackListResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RegisterBlackListResult())
+            ->withItem(empty($data['item']) ? null : BlackList::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

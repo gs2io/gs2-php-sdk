@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Experience\Request\DescribeNamespacesRequest;
 use Gs2\Experience\Result\DescribeNamespacesResult;
 use Gs2\Experience\Request\CreateNamespaceRequest;
@@ -600,8 +602,8 @@ class CreateExperienceModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMaxRankCap() !== null) {
             $json["maxRankCap"] = $this->request->getMaxRankCap();
         }
-        if ($this->request->getRankThresholdId() !== null) {
-            $json["rankThresholdId"] = $this->request->getRankThresholdId();
+        if ($this->request->getRankThresholdName() !== null) {
+            $json["rankThresholdName"] = $this->request->getRankThresholdName();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -732,8 +734,8 @@ class UpdateExperienceModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMaxRankCap() !== null) {
             $json["maxRankCap"] = $this->request->getMaxRankCap();
         }
-        if ($this->request->getRankThresholdId() !== null) {
-            $json["rankThresholdId"] = $this->request->getRankThresholdId();
+        if ($this->request->getRankThresholdName() !== null) {
+            $json["rankThresholdName"] = $this->request->getRankThresholdName();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1542,9 +1544,6 @@ class DescribeStatusesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1612,9 +1611,6 @@ class DescribeStatusesByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1677,9 +1673,6 @@ class GetStatusTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1739,9 +1732,6 @@ class GetStatusByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1808,9 +1798,6 @@ class GetStatusWithSignatureTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1871,9 +1858,6 @@ class AddExperienceByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1936,9 +1920,6 @@ class SetExperienceByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1999,9 +1980,6 @@ class AddRankCapByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2064,9 +2042,6 @@ class SetRankCapByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2127,9 +2102,6 @@ class DeleteStatusByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2188,9 +2160,6 @@ class AddExperienceByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2251,9 +2220,6 @@ class AddRankCapByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2313,9 +2279,6 @@ class SetRankCapByStampSheetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2339,9 +2302,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2356,9 +2317,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2370,9 +2329,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2387,9 +2344,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2401,9 +2356,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2418,9 +2371,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2432,9 +2383,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2449,9 +2398,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2463,9 +2410,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2480,9 +2425,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2494,9 +2437,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2511,9 +2452,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2525,9 +2464,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターの一覧を取得<br>
-     *
-     * @param DescribeExperienceModelMastersRequest $request リクエストパラメータ
+     * @param DescribeExperienceModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeExperienceModelMastersAsync(
@@ -2542,9 +2479,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターの一覧を取得<br>
-     *
-     * @param DescribeExperienceModelMastersRequest $request リクエストパラメータ
+     * @param DescribeExperienceModelMastersRequest $request
      * @return DescribeExperienceModelMastersResult
      */
     public function describeExperienceModelMasters (
@@ -2556,9 +2491,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターを新規作成<br>
-     *
-     * @param CreateExperienceModelMasterRequest $request リクエストパラメータ
+     * @param CreateExperienceModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createExperienceModelMasterAsync(
@@ -2573,9 +2506,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターを新規作成<br>
-     *
-     * @param CreateExperienceModelMasterRequest $request リクエストパラメータ
+     * @param CreateExperienceModelMasterRequest $request
      * @return CreateExperienceModelMasterResult
      */
     public function createExperienceModelMaster (
@@ -2587,9 +2518,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターを取得<br>
-     *
-     * @param GetExperienceModelMasterRequest $request リクエストパラメータ
+     * @param GetExperienceModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getExperienceModelMasterAsync(
@@ -2604,9 +2533,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターを取得<br>
-     *
-     * @param GetExperienceModelMasterRequest $request リクエストパラメータ
+     * @param GetExperienceModelMasterRequest $request
      * @return GetExperienceModelMasterResult
      */
     public function getExperienceModelMaster (
@@ -2618,9 +2545,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターを更新<br>
-     *
-     * @param UpdateExperienceModelMasterRequest $request リクエストパラメータ
+     * @param UpdateExperienceModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateExperienceModelMasterAsync(
@@ -2635,9 +2560,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターを更新<br>
-     *
-     * @param UpdateExperienceModelMasterRequest $request リクエストパラメータ
+     * @param UpdateExperienceModelMasterRequest $request
      * @return UpdateExperienceModelMasterResult
      */
     public function updateExperienceModelMaster (
@@ -2649,9 +2572,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターを削除<br>
-     *
-     * @param DeleteExperienceModelMasterRequest $request リクエストパラメータ
+     * @param DeleteExperienceModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteExperienceModelMasterAsync(
@@ -2666,9 +2587,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値の種類マスターを削除<br>
-     *
-     * @param DeleteExperienceModelMasterRequest $request リクエストパラメータ
+     * @param DeleteExperienceModelMasterRequest $request
      * @return DeleteExperienceModelMasterResult
      */
     public function deleteExperienceModelMaster (
@@ -2680,9 +2599,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値・ランクアップ閾値モデルの一覧を取得<br>
-     *
-     * @param DescribeExperienceModelsRequest $request リクエストパラメータ
+     * @param DescribeExperienceModelsRequest $request
      * @return PromiseInterface
      */
     public function describeExperienceModelsAsync(
@@ -2697,9 +2614,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値・ランクアップ閾値モデルの一覧を取得<br>
-     *
-     * @param DescribeExperienceModelsRequest $request リクエストパラメータ
+     * @param DescribeExperienceModelsRequest $request
      * @return DescribeExperienceModelsResult
      */
     public function describeExperienceModels (
@@ -2711,9 +2626,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値・ランクアップ閾値モデルを取得<br>
-     *
-     * @param GetExperienceModelRequest $request リクエストパラメータ
+     * @param GetExperienceModelRequest $request
      * @return PromiseInterface
      */
     public function getExperienceModelAsync(
@@ -2728,9 +2641,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値・ランクアップ閾値モデルを取得<br>
-     *
-     * @param GetExperienceModelRequest $request リクエストパラメータ
+     * @param GetExperienceModelRequest $request
      * @return GetExperienceModelResult
      */
     public function getExperienceModel (
@@ -2742,9 +2653,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターの一覧を取得<br>
-     *
-     * @param DescribeThresholdMastersRequest $request リクエストパラメータ
+     * @param DescribeThresholdMastersRequest $request
      * @return PromiseInterface
      */
     public function describeThresholdMastersAsync(
@@ -2759,9 +2668,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターの一覧を取得<br>
-     *
-     * @param DescribeThresholdMastersRequest $request リクエストパラメータ
+     * @param DescribeThresholdMastersRequest $request
      * @return DescribeThresholdMastersResult
      */
     public function describeThresholdMasters (
@@ -2773,9 +2680,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターを新規作成<br>
-     *
-     * @param CreateThresholdMasterRequest $request リクエストパラメータ
+     * @param CreateThresholdMasterRequest $request
      * @return PromiseInterface
      */
     public function createThresholdMasterAsync(
@@ -2790,9 +2695,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターを新規作成<br>
-     *
-     * @param CreateThresholdMasterRequest $request リクエストパラメータ
+     * @param CreateThresholdMasterRequest $request
      * @return CreateThresholdMasterResult
      */
     public function createThresholdMaster (
@@ -2804,9 +2707,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターを取得<br>
-     *
-     * @param GetThresholdMasterRequest $request リクエストパラメータ
+     * @param GetThresholdMasterRequest $request
      * @return PromiseInterface
      */
     public function getThresholdMasterAsync(
@@ -2821,9 +2722,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターを取得<br>
-     *
-     * @param GetThresholdMasterRequest $request リクエストパラメータ
+     * @param GetThresholdMasterRequest $request
      * @return GetThresholdMasterResult
      */
     public function getThresholdMaster (
@@ -2835,9 +2734,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターを更新<br>
-     *
-     * @param UpdateThresholdMasterRequest $request リクエストパラメータ
+     * @param UpdateThresholdMasterRequest $request
      * @return PromiseInterface
      */
     public function updateThresholdMasterAsync(
@@ -2852,9 +2749,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターを更新<br>
-     *
-     * @param UpdateThresholdMasterRequest $request リクエストパラメータ
+     * @param UpdateThresholdMasterRequest $request
      * @return UpdateThresholdMasterResult
      */
     public function updateThresholdMaster (
@@ -2866,9 +2761,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターを削除<br>
-     *
-     * @param DeleteThresholdMasterRequest $request リクエストパラメータ
+     * @param DeleteThresholdMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteThresholdMasterAsync(
@@ -2883,9 +2776,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクアップ閾値マスターを削除<br>
-     *
-     * @param DeleteThresholdMasterRequest $request リクエストパラメータ
+     * @param DeleteThresholdMasterRequest $request
      * @return DeleteThresholdMasterResult
      */
     public function deleteThresholdMaster (
@@ -2897,9 +2788,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な経験値設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2914,9 +2803,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な経験値設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2928,9 +2815,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な経験値設定を取得します<br>
-     *
-     * @param GetCurrentExperienceMasterRequest $request リクエストパラメータ
+     * @param GetCurrentExperienceMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentExperienceMasterAsync(
@@ -2945,9 +2830,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な経験値設定を取得します<br>
-     *
-     * @param GetCurrentExperienceMasterRequest $request リクエストパラメータ
+     * @param GetCurrentExperienceMasterRequest $request
      * @return GetCurrentExperienceMasterResult
      */
     public function getCurrentExperienceMaster (
@@ -2959,9 +2842,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な経験値設定を更新します<br>
-     *
-     * @param UpdateCurrentExperienceMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentExperienceMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentExperienceMasterAsync(
@@ -2976,9 +2857,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な経験値設定を更新します<br>
-     *
-     * @param UpdateCurrentExperienceMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentExperienceMasterRequest $request
      * @return UpdateCurrentExperienceMasterResult
      */
     public function updateCurrentExperienceMaster (
@@ -2990,9 +2869,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な経験値設定を更新します<br>
-     *
-     * @param UpdateCurrentExperienceMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentExperienceMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentExperienceMasterFromGitHubAsync(
@@ -3007,9 +2884,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な経験値設定を更新します<br>
-     *
-     * @param UpdateCurrentExperienceMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentExperienceMasterFromGitHubRequest $request
      * @return UpdateCurrentExperienceMasterFromGitHubResult
      */
     public function updateCurrentExperienceMasterFromGitHub (
@@ -3021,9 +2896,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスの一覧を取得<br>
-     *
-     * @param DescribeStatusesRequest $request リクエストパラメータ
+     * @param DescribeStatusesRequest $request
      * @return PromiseInterface
      */
     public function describeStatusesAsync(
@@ -3038,9 +2911,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスの一覧を取得<br>
-     *
-     * @param DescribeStatusesRequest $request リクエストパラメータ
+     * @param DescribeStatusesRequest $request
      * @return DescribeStatusesResult
      */
     public function describeStatuses (
@@ -3052,9 +2923,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスの一覧を取得<br>
-     *
-     * @param DescribeStatusesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeStatusesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeStatusesByUserIdAsync(
@@ -3069,9 +2938,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスの一覧を取得<br>
-     *
-     * @param DescribeStatusesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeStatusesByUserIdRequest $request
      * @return DescribeStatusesByUserIdResult
      */
     public function describeStatusesByUserId (
@@ -3083,9 +2950,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスを取得<br>
-     *
-     * @param GetStatusRequest $request リクエストパラメータ
+     * @param GetStatusRequest $request
      * @return PromiseInterface
      */
     public function getStatusAsync(
@@ -3100,9 +2965,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスを取得<br>
-     *
-     * @param GetStatusRequest $request リクエストパラメータ
+     * @param GetStatusRequest $request
      * @return GetStatusResult
      */
     public function getStatus (
@@ -3114,9 +2977,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスを取得<br>
-     *
-     * @param GetStatusByUserIdRequest $request リクエストパラメータ
+     * @param GetStatusByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getStatusByUserIdAsync(
@@ -3131,9 +2992,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスを取得<br>
-     *
-     * @param GetStatusByUserIdRequest $request リクエストパラメータ
+     * @param GetStatusByUserIdRequest $request
      * @return GetStatusByUserIdResult
      */
     public function getStatusByUserId (
@@ -3145,9 +3004,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスを取得<br>
-     *
-     * @param GetStatusWithSignatureRequest $request リクエストパラメータ
+     * @param GetStatusWithSignatureRequest $request
      * @return PromiseInterface
      */
     public function getStatusWithSignatureAsync(
@@ -3162,9 +3019,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスを取得<br>
-     *
-     * @param GetStatusWithSignatureRequest $request リクエストパラメータ
+     * @param GetStatusWithSignatureRequest $request
      * @return GetStatusWithSignatureResult
      */
     public function getStatusWithSignature (
@@ -3176,9 +3031,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値を加算<br>
-     *
-     * @param AddExperienceByUserIdRequest $request リクエストパラメータ
+     * @param AddExperienceByUserIdRequest $request
      * @return PromiseInterface
      */
     public function addExperienceByUserIdAsync(
@@ -3193,9 +3046,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値を加算<br>
-     *
-     * @param AddExperienceByUserIdRequest $request リクエストパラメータ
+     * @param AddExperienceByUserIdRequest $request
      * @return AddExperienceByUserIdResult
      */
     public function addExperienceByUserId (
@@ -3207,9 +3058,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 累計獲得経験値を設定<br>
-     *
-     * @param SetExperienceByUserIdRequest $request リクエストパラメータ
+     * @param SetExperienceByUserIdRequest $request
      * @return PromiseInterface
      */
     public function setExperienceByUserIdAsync(
@@ -3224,9 +3073,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 累計獲得経験値を設定<br>
-     *
-     * @param SetExperienceByUserIdRequest $request リクエストパラメータ
+     * @param SetExperienceByUserIdRequest $request
      * @return SetExperienceByUserIdResult
      */
     public function setExperienceByUserId (
@@ -3238,9 +3085,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクキャップを加算<br>
-     *
-     * @param AddRankCapByUserIdRequest $request リクエストパラメータ
+     * @param AddRankCapByUserIdRequest $request
      * @return PromiseInterface
      */
     public function addRankCapByUserIdAsync(
@@ -3255,9 +3100,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクキャップを加算<br>
-     *
-     * @param AddRankCapByUserIdRequest $request リクエストパラメータ
+     * @param AddRankCapByUserIdRequest $request
      * @return AddRankCapByUserIdResult
      */
     public function addRankCapByUserId (
@@ -3269,9 +3112,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクキャップを設定<br>
-     *
-     * @param SetRankCapByUserIdRequest $request リクエストパラメータ
+     * @param SetRankCapByUserIdRequest $request
      * @return PromiseInterface
      */
     public function setRankCapByUserIdAsync(
@@ -3286,9 +3127,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクキャップを設定<br>
-     *
-     * @param SetRankCapByUserIdRequest $request リクエストパラメータ
+     * @param SetRankCapByUserIdRequest $request
      * @return SetRankCapByUserIdResult
      */
     public function setRankCapByUserId (
@@ -3300,9 +3139,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスを削除<br>
-     *
-     * @param DeleteStatusByUserIdRequest $request リクエストパラメータ
+     * @param DeleteStatusByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteStatusByUserIdAsync(
@@ -3317,9 +3154,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ステータスを削除<br>
-     *
-     * @param DeleteStatusByUserIdRequest $request リクエストパラメータ
+     * @param DeleteStatusByUserIdRequest $request
      * @return DeleteStatusByUserIdResult
      */
     public function deleteStatusByUserId (
@@ -3331,9 +3166,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値を加算<br>
-     *
-     * @param AddExperienceByStampSheetRequest $request リクエストパラメータ
+     * @param AddExperienceByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function addExperienceByStampSheetAsync(
@@ -3348,9 +3181,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 経験値を加算<br>
-     *
-     * @param AddExperienceByStampSheetRequest $request リクエストパラメータ
+     * @param AddExperienceByStampSheetRequest $request
      * @return AddExperienceByStampSheetResult
      */
     public function addExperienceByStampSheet (
@@ -3362,9 +3193,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクキャップを加算<br>
-     *
-     * @param AddRankCapByStampSheetRequest $request リクエストパラメータ
+     * @param AddRankCapByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function addRankCapByStampSheetAsync(
@@ -3379,9 +3208,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクキャップを加算<br>
-     *
-     * @param AddRankCapByStampSheetRequest $request リクエストパラメータ
+     * @param AddRankCapByStampSheetRequest $request
      * @return AddRankCapByStampSheetResult
      */
     public function addRankCapByStampSheet (
@@ -3393,9 +3220,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクキャップを更新<br>
-     *
-     * @param SetRankCapByStampSheetRequest $request リクエストパラメータ
+     * @param SetRankCapByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function setRankCapByStampSheetAsync(
@@ -3410,9 +3235,7 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ランクキャップを更新<br>
-     *
-     * @param SetRankCapByStampSheetRequest $request リクエストパラメータ
+     * @param SetRankCapByStampSheetRequest $request
      * @return SetRankCapByStampSheetResult
      */
     public function setRankCapByStampSheet (

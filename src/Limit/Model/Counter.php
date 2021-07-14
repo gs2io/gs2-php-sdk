@@ -19,266 +19,151 @@ namespace Gs2\Limit\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * カウンター
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Counter implements IModel {
 	/**
-     * @var string カウンター
+     * @var string
 	 */
-	protected $counterId;
-
+	private $counterId;
 	/**
-	 * カウンターを取得
-	 *
-	 * @return string|null カウンター
+     * @var string
 	 */
+	private $limitName;
+	/**
+     * @var string
+	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $userId;
+	/**
+     * @var int
+	 */
+	private $count;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
 
-	/**
-	 * カウンターを設定
-	 *
-	 * @param string|null $counterId カウンター
-	 */
 	public function setCounterId(?string $counterId) {
 		$this->counterId = $counterId;
 	}
 
-	/**
-	 * カウンターを設定
-	 *
-	 * @param string|null $counterId カウンター
-	 * @return Counter $this
-	 */
 	public function withCounterId(?string $counterId): Counter {
 		$this->counterId = $counterId;
 		return $this;
 	}
-	/**
-     * @var string 回数制限の種類の名前
-	 */
-	protected $limitName;
 
-	/**
-	 * 回数制限の種類の名前を取得
-	 *
-	 * @return string|null 回数制限の種類の名前
-	 */
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
 
-	/**
-	 * 回数制限の種類の名前を設定
-	 *
-	 * @param string|null $limitName 回数制限の種類の名前
-	 */
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
 
-	/**
-	 * 回数制限の種類の名前を設定
-	 *
-	 * @param string|null $limitName 回数制限の種類の名前
-	 * @return Counter $this
-	 */
 	public function withLimitName(?string $limitName): Counter {
 		$this->limitName = $limitName;
 		return $this;
 	}
-	/**
-     * @var string カウンターの名前
-	 */
-	protected $name;
 
-	/**
-	 * カウンターの名前を取得
-	 *
-	 * @return string|null カウンターの名前
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * カウンターの名前を設定
-	 *
-	 * @param string|null $name カウンターの名前
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * カウンターの名前を設定
-	 *
-	 * @param string|null $name カウンターの名前
-	 * @return Counter $this
-	 */
 	public function withName(?string $name): Counter {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string ユーザーID
-	 */
-	protected $userId;
 
-	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
-	 */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return Counter $this
-	 */
 	public function withUserId(?string $userId): Counter {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var int カウント値
-	 */
-	protected $count;
 
-	/**
-	 * カウント値を取得
-	 *
-	 * @return int|null カウント値
-	 */
 	public function getCount(): ?int {
 		return $this->count;
 	}
 
-	/**
-	 * カウント値を設定
-	 *
-	 * @param int|null $count カウント値
-	 */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
 
-	/**
-	 * カウント値を設定
-	 *
-	 * @param int|null $count カウント値
-	 * @return Counter $this
-	 */
 	public function withCount(?int $count): Counter {
 		$this->count = $count;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return Counter $this
-	 */
 	public function withCreatedAt(?int $createdAt): Counter {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return Counter $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): Counter {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "counterId" => $this->counterId,
-            "limitName" => $this->limitName,
-            "name" => $this->name,
-            "userId" => $this->userId,
-            "count" => $this->count,
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+    public static function fromJson(?array $data): ?Counter {
+        if ($data === null) {
+            return null;
+        }
+        return (new Counter())
+            ->withCounterId(empty($data['counterId']) ? null : $data['counterId'])
+            ->withLimitName(empty($data['limitName']) ? null : $data['limitName'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withCount(empty($data['count']) ? null : $data['count'])
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): Counter {
-        $model = new Counter();
-        $model->setCounterId(isset($data["counterId"]) ? $data["counterId"] : null);
-        $model->setLimitName(isset($data["limitName"]) ? $data["limitName"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setCount(isset($data["count"]) ? $data["count"] : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "counterId" => $this->getCounterId(),
+            "limitName" => $this->getLimitName(),
+            "name" => $this->getName(),
+            "userId" => $this->getUserId(),
+            "count" => $this->getCount(),
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
+        );
     }
 }

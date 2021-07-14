@@ -20,36 +20,34 @@ namespace Gs2\JobQueue\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 
-/**
- * ジョブを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetJobByUserIdResult implements IResult {
-	/** @var Job ジョブ */
-	private $item;
+    /** @var Job */
+    private $item;
 
-	/**
-	 * ジョブを取得
-	 *
-	 * @return Job|null ジョブを取得
-	 */
 	public function getItem(): ?Job {
 		return $this->item;
 	}
 
-	/**
-	 * ジョブを設定
-	 *
-	 * @param Job|null $item ジョブを取得
-	 */
 	public function setItem(?Job $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetJobByUserIdResult {
-        $result = new GetJobByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Job::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Job $item): GetJobByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetJobByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetJobByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Job::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

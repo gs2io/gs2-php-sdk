@@ -18,38 +18,37 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 
-/**
- * ユーザIDを指定してクエスト挑戦を削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteProgressByUserIdResult implements IResult {
-	/** @var Progress クエスト挑戦 */
-	private $item;
+    /** @var Progress */
+    private $item;
 
-	/**
-	 * クエスト挑戦を取得
-	 *
-	 * @return Progress|null ユーザIDを指定してクエスト挑戦を削除
-	 */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
-	/**
-	 * クエスト挑戦を設定
-	 *
-	 * @param Progress|null $item ユーザIDを指定してクエスト挑戦を削除
-	 */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteProgressByUserIdResult {
-        $result = new DeleteProgressByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Progress::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Progress $item): DeleteProgressByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteProgressByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteProgressByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -18,38 +18,37 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\InventoryModel;
 
-/**
- * インベントリモデルを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetInventoryModelResult implements IResult {
-	/** @var InventoryModel インベントリモデル */
-	private $item;
+    /** @var InventoryModel */
+    private $item;
 
-	/**
-	 * インベントリモデルを取得
-	 *
-	 * @return InventoryModel|null インベントリモデルを取得
-	 */
 	public function getItem(): ?InventoryModel {
 		return $this->item;
 	}
 
-	/**
-	 * インベントリモデルを設定
-	 *
-	 * @param InventoryModel|null $item インベントリモデルを取得
-	 */
 	public function setItem(?InventoryModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetInventoryModelResult {
-        $result = new GetInventoryModelResult();
-        $result->setItem(isset($data["item"]) ? InventoryModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?InventoryModel $item): GetInventoryModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetInventoryModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetInventoryModelResult())
+            ->withItem(empty($data['item']) ? null : InventoryModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

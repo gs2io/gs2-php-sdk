@@ -19,235 +19,119 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スコアの一覧を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeScoresByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スコアの一覧を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スコアの一覧を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スコアの一覧を取得
-     * @return DescribeScoresByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeScoresByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $categoryName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null スコアの一覧を取得
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName スコアの一覧を取得
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName スコアの一覧を取得
-     * @return DescribeScoresByUserIdRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): DescribeScoresByUserIdRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
-    /** @var string ユーザID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザIDを取得
-     *
-     * @return string|null スコアの一覧を取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザIDを設定
-     *
-     * @param string $userId スコアの一覧を取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザIDを設定
-     *
-     * @param string $userId スコアの一覧を取得
-     * @return DescribeScoresByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DescribeScoresByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string スコアを獲得したユーザID */
+    /** @var string */
     private $scorerUserId;
-
-    /**
-     * スコアを獲得したユーザIDを取得
-     *
-     * @return string|null スコアの一覧を取得
-     */
-    public function getScorerUserId(): ?string {
-        return $this->scorerUserId;
-    }
-
-    /**
-     * スコアを獲得したユーザIDを設定
-     *
-     * @param string $scorerUserId スコアの一覧を取得
-     */
-    public function setScorerUserId(string $scorerUserId = null) {
-        $this->scorerUserId = $scorerUserId;
-    }
-
-    /**
-     * スコアを獲得したユーザIDを設定
-     *
-     * @param string $scorerUserId スコアの一覧を取得
-     * @return DescribeScoresByUserIdRequest $this
-     */
-    public function withScorerUserId(string $scorerUserId = null): DescribeScoresByUserIdRequest {
-        $this->setScorerUserId($scorerUserId);
-        return $this;
-    }
-
-    /** @var string データの取得を開始する位置を指定するトークン */
+    /** @var string */
     private $pageToken;
-
-    /**
-     * データの取得を開始する位置を指定するトークンを取得
-     *
-     * @return string|null スコアの一覧を取得
-     */
-    public function getPageToken(): ?string {
-        return $this->pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken スコアの一覧を取得
-     */
-    public function setPageToken(string $pageToken = null) {
-        $this->pageToken = $pageToken;
-    }
-
-    /**
-     * データの取得を開始する位置を指定するトークンを設定
-     *
-     * @param string $pageToken スコアの一覧を取得
-     * @return DescribeScoresByUserIdRequest $this
-     */
-    public function withPageToken(string $pageToken = null): DescribeScoresByUserIdRequest {
-        $this->setPageToken($pageToken);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null スコアの一覧を取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeScoresByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): DescribeScoresByUserIdRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DescribeScoresByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getScorerUserId(): ?string {
+		return $this->scorerUserId;
+	}
+
+	public function setScorerUserId(?string $scorerUserId) {
+		$this->scorerUserId = $scorerUserId;
+	}
+
+	public function withScorerUserId(?string $scorerUserId): DescribeScoresByUserIdRequest {
+		$this->scorerUserId = $scorerUserId;
+		return $this;
+	}
+
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeScoresByUserIdRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeScoresByUserIdRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeScoresByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeScoresByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withScorerUserId(empty($data['scorerUserId']) ? null : $data['scorerUserId'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit スコアの一覧を取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+            "userId" => $this->getUserId(),
+            "scorerUserId" => $this->getScorerUserId(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit スコアの一覧を取得
-     * @return DescribeScoresByUserIdRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeScoresByUserIdRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null スコアの一覧を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スコアの一覧を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スコアの一覧を取得
-     * @return DescribeScoresByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DescribeScoresByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

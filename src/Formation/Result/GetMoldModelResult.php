@@ -18,38 +18,38 @@
 namespace Gs2\Formation\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Formation\Model\SlotModel;
+use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
-/**
- * フォームの保存領域を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMoldModelResult implements IResult {
-	/** @var MoldModel フォームの保存領域 */
-	private $item;
+    /** @var MoldModel */
+    private $item;
 
-	/**
-	 * フォームの保存領域を取得
-	 *
-	 * @return MoldModel|null フォームの保存領域を取得
-	 */
 	public function getItem(): ?MoldModel {
 		return $this->item;
 	}
 
-	/**
-	 * フォームの保存領域を設定
-	 *
-	 * @param MoldModel|null $item フォームの保存領域を取得
-	 */
 	public function setItem(?MoldModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetMoldModelResult {
-        $result = new GetMoldModelResult();
-        $result->setItem(isset($data["item"]) ? MoldModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?MoldModel $item): GetMoldModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMoldModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMoldModelResult())
+            ->withItem(empty($data['item']) ? null : MoldModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

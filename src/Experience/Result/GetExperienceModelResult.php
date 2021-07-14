@@ -18,38 +18,37 @@
 namespace Gs2\Experience\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Experience\Model\Threshold;
 use Gs2\Experience\Model\ExperienceModel;
 
-/**
- * 経験値・ランクアップ閾値モデルを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetExperienceModelResult implements IResult {
-	/** @var ExperienceModel 経験値・ランクアップ閾値モデル */
-	private $item;
+    /** @var ExperienceModel */
+    private $item;
 
-	/**
-	 * 経験値・ランクアップ閾値モデルを取得
-	 *
-	 * @return ExperienceModel|null 経験値・ランクアップ閾値モデルを取得
-	 */
 	public function getItem(): ?ExperienceModel {
 		return $this->item;
 	}
 
-	/**
-	 * 経験値・ランクアップ閾値モデルを設定
-	 *
-	 * @param ExperienceModel|null $item 経験値・ランクアップ閾値モデルを取得
-	 */
 	public function setItem(?ExperienceModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetExperienceModelResult {
-        $result = new GetExperienceModelResult();
-        $result->setItem(isset($data["item"]) ? ExperienceModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?ExperienceModel $item): GetExperienceModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetExperienceModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetExperienceModelResult())
+            ->withItem(empty($data['item']) ? null : ExperienceModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

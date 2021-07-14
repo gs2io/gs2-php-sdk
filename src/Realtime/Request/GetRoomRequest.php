@@ -19,75 +19,51 @@ namespace Gs2\Realtime\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ルームを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRoomRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ルームを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ルームを取得
-     * @return GetRoomRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetRoomRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
 
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null ルームを取得
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetRoomRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): GetRoomRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRoomRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRoomRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName']);
     }
 
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ルームを取得
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+        );
     }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName ルームを取得
-     * @return GetRoomRequest $this
-     */
-    public function withRoomName(string $roomName = null): GetRoomRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
 }

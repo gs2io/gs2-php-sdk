@@ -19,78 +19,68 @@ namespace Gs2\Auth\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 指定したユーザIDでGS2にログインし、アクセストークンを取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class LoginBySignatureResult implements IResult {
-	/** @var string アクセストークン */
-	private $token;
-	/** @var string ユーザーID */
-	private $userId;
-	/** @var int 有効期限 */
-	private $expire;
+    /** @var string */
+    private $token;
+    /** @var string */
+    private $userId;
+    /** @var int */
+    private $expire;
 
-	/**
-	 * アクセストークンを取得
-	 *
-	 * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-	 */
 	public function getToken(): ?string {
 		return $this->token;
 	}
 
-	/**
-	 * アクセストークンを設定
-	 *
-	 * @param string|null $token 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-	 */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
 
-	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-	 */
+	public function withToken(?string $token): LoginBySignatureResult {
+		$this->token = $token;
+		return $this;
+	}
+
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * 有効期限を取得
-	 *
-	 * @return int|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-	 */
+	public function withUserId(?string $userId): LoginBySignatureResult {
+		$this->userId = $userId;
+		return $this;
+	}
+
 	public function getExpire(): ?int {
 		return $this->expire;
 	}
 
-	/**
-	 * 有効期限を設定
-	 *
-	 * @param int|null $expire 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-	 */
 	public function setExpire(?int $expire) {
 		$this->expire = $expire;
 	}
 
-    public static function fromJson(array $data): LoginBySignatureResult {
-        $result = new LoginBySignatureResult();
-        $result->setToken(isset($data["token"]) ? $data["token"] : null);
-        $result->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $result->setExpire(isset($data["expire"]) ? $data["expire"] : null);
-        return $result;
+	public function withExpire(?int $expire): LoginBySignatureResult {
+		$this->expire = $expire;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?LoginBySignatureResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new LoginBySignatureResult())
+            ->withToken(empty($data['token']) ? null : $data['token'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withExpire(empty($data['expire']) ? null : $data['expire']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "token" => $this->getToken(),
+            "userId" => $this->getUserId(),
+            "expire" => $this->getExpire(),
+        );
     }
 }

@@ -19,139 +19,85 @@ namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スクリプトを更新します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateScriptRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null スクリプトを更新します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スクリプトを更新します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName スクリプトを更新します
-     * @return UpdateScriptRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateScriptRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スクリプト名 */
+    /** @var string */
     private $scriptName;
-
-    /**
-     * スクリプト名を取得
-     *
-     * @return string|null スクリプトを更新します
-     */
-    public function getScriptName(): ?string {
-        return $this->scriptName;
-    }
-
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $scriptName スクリプトを更新します
-     */
-    public function setScriptName(string $scriptName = null) {
-        $this->scriptName = $scriptName;
-    }
-
-    /**
-     * スクリプト名を設定
-     *
-     * @param string $scriptName スクリプトを更新します
-     * @return UpdateScriptRequest $this
-     */
-    public function withScriptName(string $scriptName = null): UpdateScriptRequest {
-        $this->setScriptName($scriptName);
-        return $this;
-    }
-
-    /** @var string 説明文 */
+    /** @var string */
     private $description;
-
-    /**
-     * 説明文を取得
-     *
-     * @return string|null スクリプトを更新します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description スクリプトを更新します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description スクリプトを更新します
-     * @return UpdateScriptRequest $this
-     */
-    public function withDescription(string $description = null): UpdateScriptRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string Luaスクリプト */
+    /** @var string */
     private $script;
 
-    /**
-     * Luaスクリプトを取得
-     *
-     * @return string|null スクリプトを更新します
-     */
-    public function getScript(): ?string {
-        return $this->script;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateScriptRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getScriptName(): ?string {
+		return $this->scriptName;
+	}
+
+	public function setScriptName(?string $scriptName) {
+		$this->scriptName = $scriptName;
+	}
+
+	public function withScriptName(?string $scriptName): UpdateScriptRequest {
+		$this->scriptName = $scriptName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateScriptRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getScript(): ?string {
+		return $this->script;
+	}
+
+	public function setScript(?string $script) {
+		$this->script = $script;
+	}
+
+	public function withScript(?string $script): UpdateScriptRequest {
+		$this->script = $script;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateScriptRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateScriptRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withScriptName(empty($data['scriptName']) ? null : $data['scriptName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withScript(empty($data['script']) ? null : $data['script']);
     }
 
-    /**
-     * Luaスクリプトを設定
-     *
-     * @param string $script スクリプトを更新します
-     */
-    public function setScript(string $script = null) {
-        $this->script = $script;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "scriptName" => $this->getScriptName(),
+            "description" => $this->getDescription(),
+            "script" => $this->getScript(),
+        );
     }
-
-    /**
-     * Luaスクリプトを設定
-     *
-     * @param string $script スクリプトを更新します
-     * @return UpdateScriptRequest $this
-     */
-    public function withScript(string $script = null): UpdateScriptRequest {
-        $this->setScript($script);
-        return $this;
-    }
-
 }

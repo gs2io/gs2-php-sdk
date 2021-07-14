@@ -20,84 +20,78 @@ namespace Gs2\News\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\News\Model\SetCookieRequestEntry;
 
-/**
- * お知らせ記事に加算 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class WantGrantByUserIdResult implements IResult {
-	/** @var SetCookieRequestEntry[] お知らせコンテンツにアクセスするために設定の必要なクッキー のリスト */
-	private $items;
-	/** @var string お知らせコンテンツにアクセスするためのURL */
-	private $browserUrl;
-	/** @var string ZIP形式のお知らせコンテンツにアクセスするためのURL Cookieの設定は不要 */
-	private $zipUrl;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $browserUrl;
+    /** @var string */
+    private $zipUrl;
 
-	/**
-	 * お知らせコンテンツにアクセスするために設定の必要なクッキー のリストを取得
-	 *
-	 * @return SetCookieRequestEntry[]|null お知らせ記事に加算
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * お知らせコンテンツにアクセスするために設定の必要なクッキー のリストを設定
-	 *
-	 * @param SetCookieRequestEntry[]|null $items お知らせ記事に加算
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * お知らせコンテンツにアクセスするためのURLを取得
-	 *
-	 * @return string|null お知らせ記事に加算
-	 */
+	public function withItems(?array $items): WantGrantByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getBrowserUrl(): ?string {
 		return $this->browserUrl;
 	}
 
-	/**
-	 * お知らせコンテンツにアクセスするためのURLを設定
-	 *
-	 * @param string|null $browserUrl お知らせ記事に加算
-	 */
 	public function setBrowserUrl(?string $browserUrl) {
 		$this->browserUrl = $browserUrl;
 	}
 
-	/**
-	 * ZIP形式のお知らせコンテンツにアクセスするためのURL Cookieの設定は不要を取得
-	 *
-	 * @return string|null お知らせ記事に加算
-	 */
+	public function withBrowserUrl(?string $browserUrl): WantGrantByUserIdResult {
+		$this->browserUrl = $browserUrl;
+		return $this;
+	}
+
 	public function getZipUrl(): ?string {
 		return $this->zipUrl;
 	}
 
-	/**
-	 * ZIP形式のお知らせコンテンツにアクセスするためのURL Cookieの設定は不要を設定
-	 *
-	 * @param string|null $zipUrl お知らせ記事に加算
-	 */
 	public function setZipUrl(?string $zipUrl) {
 		$this->zipUrl = $zipUrl;
 	}
 
-    public static function fromJson(array $data): WantGrantByUserIdResult {
-        $result = new WantGrantByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return SetCookieRequestEntry::fromJson($v);
+	public function withZipUrl(?string $zipUrl): WantGrantByUserIdResult {
+		$this->zipUrl = $zipUrl;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?WantGrantByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new WantGrantByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return SetCookieRequestEntry::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withBrowserUrl(empty($data['browserUrl']) ? null : $data['browserUrl'])
+            ->withZipUrl(empty($data['zipUrl']) ? null : $data['zipUrl']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "browserUrl" => $this->getBrowserUrl(),
+            "zipUrl" => $this->getZipUrl(),
         );
-        $result->setBrowserUrl(isset($data["browserUrl"]) ? $data["browserUrl"] : null);
-        $result->setZipUrl(isset($data["zipUrl"]) ? $data["zipUrl"] : null);
-        return $result;
     }
 }

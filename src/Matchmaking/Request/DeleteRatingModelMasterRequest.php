@@ -19,75 +19,51 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * レーティングモデルマスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRatingModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null レーティングモデルマスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティングモデルマスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティングモデルマスターを削除
-     * @return DeleteRatingModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteRatingModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string レーティングの種類名 */
+    /** @var string */
     private $ratingName;
 
-    /**
-     * レーティングの種類名を取得
-     *
-     * @return string|null レーティングモデルマスターを削除
-     */
-    public function getRatingName(): ?string {
-        return $this->ratingName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteRatingModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRatingName(): ?string {
+		return $this->ratingName;
+	}
+
+	public function setRatingName(?string $ratingName) {
+		$this->ratingName = $ratingName;
+	}
+
+	public function withRatingName(?string $ratingName): DeleteRatingModelMasterRequest {
+		$this->ratingName = $ratingName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRatingModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRatingModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName']);
     }
 
-    /**
-     * レーティングの種類名を設定
-     *
-     * @param string $ratingName レーティングモデルマスターを削除
-     */
-    public function setRatingName(string $ratingName = null) {
-        $this->ratingName = $ratingName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "ratingName" => $this->getRatingName(),
+        );
     }
-
-    /**
-     * レーティングの種類名を設定
-     *
-     * @param string $ratingName レーティングモデルマスターを削除
-     * @return DeleteRatingModelMasterRequest $this
-     */
-    public function withRatingName(string $ratingName = null): DeleteRatingModelMasterRequest {
-        $this->setRatingName($ratingName);
-        return $this;
-    }
-
 }

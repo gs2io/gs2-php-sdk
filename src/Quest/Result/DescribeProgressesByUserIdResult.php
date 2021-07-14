@@ -18,65 +18,64 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 
-/**
- * クエスト挑戦の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeProgressesByUserIdResult implements IResult {
-	/** @var Progress[] クエスト挑戦のリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * クエスト挑戦のリストを取得
-	 *
-	 * @return Progress[]|null クエスト挑戦の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * クエスト挑戦のリストを設定
-	 *
-	 * @param Progress[]|null $items クエスト挑戦の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null クエスト挑戦の一覧を取得
-	 */
+	public function withItems(?array $items): DescribeProgressesByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken クエスト挑戦の一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeProgressesByUserIdResult {
-        $result = new DescribeProgressesByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Progress::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeProgressesByUserIdResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeProgressesByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeProgressesByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Progress::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

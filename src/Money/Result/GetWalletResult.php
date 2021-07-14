@@ -18,38 +18,37 @@
 namespace Gs2\Money\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
-/**
- * ウォレットを取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetWalletResult implements IResult {
-	/** @var Wallet ウォレット */
-	private $item;
+    /** @var Wallet */
+    private $item;
 
-	/**
-	 * ウォレットを取得
-	 *
-	 * @return Wallet|null ウォレットを取得します
-	 */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
-	/**
-	 * ウォレットを設定
-	 *
-	 * @param Wallet|null $item ウォレットを取得します
-	 */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetWalletResult {
-        $result = new GetWalletResult();
-        $result->setItem(isset($data["item"]) ? Wallet::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Wallet $item): GetWalletResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetWalletResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetWalletResult())
+            ->withItem(empty($data['item']) ? null : Wallet::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

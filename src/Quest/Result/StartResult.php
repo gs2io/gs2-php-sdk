@@ -18,58 +18,71 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\Reward;
+use Gs2\Quest\Model\Progress;
 
-/**
- * クエストを開始 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class StartResult implements IResult {
-	/** @var string クエストの開始処理の実行に使用するスタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
+    /** @var Progress */
+    private $item;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
 
-	/**
-	 * クエストの開始処理の実行に使用するスタンプシートを取得
-	 *
-	 * @return string|null クエストを開始
-	 */
+	public function getItem(): ?Progress {
+		return $this->item;
+	}
+
+	public function setItem(?Progress $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Progress $item): StartResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * クエストの開始処理の実行に使用するスタンプシートを設定
-	 *
-	 * @param string|null $stampSheet クエストを開始
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null クエストを開始
-	 */
+	public function withStampSheet(?string $stampSheet): StartResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId クエストを開始
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-    public static function fromJson(array $data): StartResult {
-        $result = new StartResult();
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        return $result;
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): StartResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?StartResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new StartResult())
+            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+        );
     }
 }

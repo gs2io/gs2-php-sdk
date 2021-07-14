@@ -20,171 +20,85 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Distributor\Model\DistributeResource;
 
-/**
- * 所持品を配布する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DistributeRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 所持品を配布する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 所持品を配布する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 所持品を配布する
-     * @return DistributeRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DistributeRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ディストリビューターの種類名 */
+    /** @var string */
     private $distributorName;
-
-    /**
-     * ディストリビューターの種類名を取得
-     *
-     * @return string|null 所持品を配布する
-     */
-    public function getDistributorName(): ?string {
-        return $this->distributorName;
-    }
-
-    /**
-     * ディストリビューターの種類名を設定
-     *
-     * @param string $distributorName 所持品を配布する
-     */
-    public function setDistributorName(string $distributorName = null) {
-        $this->distributorName = $distributorName;
-    }
-
-    /**
-     * ディストリビューターの種類名を設定
-     *
-     * @param string $distributorName 所持品を配布する
-     * @return DistributeRequest $this
-     */
-    public function withDistributorName(string $distributorName = null): DistributeRequest {
-        $this->setDistributorName($distributorName);
-        return $this;
-    }
-
-    /** @var DistributeResource 加算するリソース */
+    /** @var string */
+    private $userId;
+    /** @var DistributeResource */
     private $distributeResource;
 
-    /**
-     * 加算するリソースを取得
-     *
-     * @return DistributeResource|null 所持品を配布する
-     */
-    public function getDistributeResource(): ?DistributeResource {
-        return $this->distributeResource;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DistributeRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDistributorName(): ?string {
+		return $this->distributorName;
+	}
+
+	public function setDistributorName(?string $distributorName) {
+		$this->distributorName = $distributorName;
+	}
+
+	public function withDistributorName(?string $distributorName): DistributeRequest {
+		$this->distributorName = $distributorName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DistributeRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getDistributeResource(): ?DistributeResource {
+		return $this->distributeResource;
+	}
+
+	public function setDistributeResource(?DistributeResource $distributeResource) {
+		$this->distributeResource = $distributeResource;
+	}
+
+	public function withDistributeResource(?DistributeResource $distributeResource): DistributeRequest {
+		$this->distributeResource = $distributeResource;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DistributeRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DistributeRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDistributorName(empty($data['distributorName']) ? null : $data['distributorName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withDistributeResource(empty($data['distributeResource']) ? null : DistributeResource::fromJson($data['distributeResource']));
     }
 
-    /**
-     * 加算するリソースを設定
-     *
-     * @param DistributeResource $distributeResource 所持品を配布する
-     */
-    public function setDistributeResource(DistributeResource $distributeResource = null) {
-        $this->distributeResource = $distributeResource;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "distributorName" => $this->getDistributorName(),
+            "userId" => $this->getUserId(),
+            "distributeResource" => $this->getDistributeResource() !== null ? $this->getDistributeResource()->toJson() : null,
+        );
     }
-
-    /**
-     * 加算するリソースを設定
-     *
-     * @param DistributeResource $distributeResource 所持品を配布する
-     * @return DistributeRequest $this
-     */
-    public function withDistributeResource(DistributeResource $distributeResource = null): DistributeRequest {
-        $this->setDistributeResource($distributeResource);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 所持品を配布する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 所持品を配布する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 所持品を配布する
-     * @return DistributeRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DistributeRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return DistributeRequest this
-     */
-    public function withAccessToken(string $accessToken): DistributeRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

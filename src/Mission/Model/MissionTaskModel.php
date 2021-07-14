@@ -19,312 +19,180 @@ namespace Gs2\Mission\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ミッションタスク
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class MissionTaskModel implements IModel {
 	/**
-     * @var string ミッションタスク
+     * @var string
 	 */
-	protected $missionTaskId;
-
+	private $missionTaskId;
 	/**
-	 * ミッションタスクを取得
-	 *
-	 * @return string|null ミッションタスク
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
+     * @var string
+	 */
+	private $counterName;
+	/**
+     * @var int
+	 */
+	private $targetValue;
+	/**
+     * @var array
+	 */
+	private $completeAcquireActions;
+	/**
+     * @var string
+	 */
+	private $challengePeriodEventId;
+	/**
+     * @var string
+	 */
+	private $premiseMissionTaskName;
+
 	public function getMissionTaskId(): ?string {
 		return $this->missionTaskId;
 	}
 
-	/**
-	 * ミッションタスクを設定
-	 *
-	 * @param string|null $missionTaskId ミッションタスク
-	 */
 	public function setMissionTaskId(?string $missionTaskId) {
 		$this->missionTaskId = $missionTaskId;
 	}
 
-	/**
-	 * ミッションタスクを設定
-	 *
-	 * @param string|null $missionTaskId ミッションタスク
-	 * @return MissionTaskModel $this
-	 */
 	public function withMissionTaskId(?string $missionTaskId): MissionTaskModel {
 		$this->missionTaskId = $missionTaskId;
 		return $this;
 	}
-	/**
-     * @var string タスク名
-	 */
-	protected $name;
 
-	/**
-	 * タスク名を取得
-	 *
-	 * @return string|null タスク名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * タスク名を設定
-	 *
-	 * @param string|null $name タスク名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * タスク名を設定
-	 *
-	 * @param string|null $name タスク名
-	 * @return MissionTaskModel $this
-	 */
 	public function withName(?string $name): MissionTaskModel {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string メタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * メタデータを取得
-	 *
-	 * @return string|null メタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 * @return MissionTaskModel $this
-	 */
 	public function withMetadata(?string $metadata): MissionTaskModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var string カウンター名
-	 */
-	protected $counterName;
 
-	/**
-	 * カウンター名を取得
-	 *
-	 * @return string|null カウンター名
-	 */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
 
-	/**
-	 * カウンター名を設定
-	 *
-	 * @param string|null $counterName カウンター名
-	 */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
 
-	/**
-	 * カウンター名を設定
-	 *
-	 * @param string|null $counterName カウンター名
-	 * @return MissionTaskModel $this
-	 */
 	public function withCounterName(?string $counterName): MissionTaskModel {
 		$this->counterName = $counterName;
 		return $this;
 	}
-	/**
-     * @var int 目標値
-	 */
-	protected $targetValue;
 
-	/**
-	 * 目標値を取得
-	 *
-	 * @return int|null 目標値
-	 */
 	public function getTargetValue(): ?int {
 		return $this->targetValue;
 	}
 
-	/**
-	 * 目標値を設定
-	 *
-	 * @param int|null $targetValue 目標値
-	 */
 	public function setTargetValue(?int $targetValue) {
 		$this->targetValue = $targetValue;
 	}
 
-	/**
-	 * 目標値を設定
-	 *
-	 * @param int|null $targetValue 目標値
-	 * @return MissionTaskModel $this
-	 */
 	public function withTargetValue(?int $targetValue): MissionTaskModel {
 		$this->targetValue = $targetValue;
 		return $this;
 	}
-	/**
-     * @var AcquireAction[] ミッション達成時の報酬
-	 */
-	protected $completeAcquireActions;
 
-	/**
-	 * ミッション達成時の報酬を取得
-	 *
-	 * @return AcquireAction[]|null ミッション達成時の報酬
-	 */
 	public function getCompleteAcquireActions(): ?array {
 		return $this->completeAcquireActions;
 	}
 
-	/**
-	 * ミッション達成時の報酬を設定
-	 *
-	 * @param AcquireAction[]|null $completeAcquireActions ミッション達成時の報酬
-	 */
 	public function setCompleteAcquireActions(?array $completeAcquireActions) {
 		$this->completeAcquireActions = $completeAcquireActions;
 	}
 
-	/**
-	 * ミッション達成時の報酬を設定
-	 *
-	 * @param AcquireAction[]|null $completeAcquireActions ミッション達成時の報酬
-	 * @return MissionTaskModel $this
-	 */
 	public function withCompleteAcquireActions(?array $completeAcquireActions): MissionTaskModel {
 		$this->completeAcquireActions = $completeAcquireActions;
 		return $this;
 	}
-	/**
-     * @var string 達成報酬の受け取り可能な期間を指定するイベントマスター のGRN
-	 */
-	protected $challengePeriodEventId;
 
-	/**
-	 * 達成報酬の受け取り可能な期間を指定するイベントマスター のGRNを取得
-	 *
-	 * @return string|null 達成報酬の受け取り可能な期間を指定するイベントマスター のGRN
-	 */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
 
-	/**
-	 * 達成報酬の受け取り可能な期間を指定するイベントマスター のGRNを設定
-	 *
-	 * @param string|null $challengePeriodEventId 達成報酬の受け取り可能な期間を指定するイベントマスター のGRN
-	 */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
 
-	/**
-	 * 達成報酬の受け取り可能な期間を指定するイベントマスター のGRNを設定
-	 *
-	 * @param string|null $challengePeriodEventId 達成報酬の受け取り可能な期間を指定するイベントマスター のGRN
-	 * @return MissionTaskModel $this
-	 */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): MissionTaskModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
-	/**
-     * @var string このタスクに挑戦するために達成しておく必要のあるタスクの名前
-	 */
-	protected $premiseMissionTaskName;
 
-	/**
-	 * このタスクに挑戦するために達成しておく必要のあるタスクの名前を取得
-	 *
-	 * @return string|null このタスクに挑戦するために達成しておく必要のあるタスクの名前
-	 */
 	public function getPremiseMissionTaskName(): ?string {
 		return $this->premiseMissionTaskName;
 	}
 
-	/**
-	 * このタスクに挑戦するために達成しておく必要のあるタスクの名前を設定
-	 *
-	 * @param string|null $premiseMissionTaskName このタスクに挑戦するために達成しておく必要のあるタスクの名前
-	 */
 	public function setPremiseMissionTaskName(?string $premiseMissionTaskName) {
 		$this->premiseMissionTaskName = $premiseMissionTaskName;
 	}
 
-	/**
-	 * このタスクに挑戦するために達成しておく必要のあるタスクの名前を設定
-	 *
-	 * @param string|null $premiseMissionTaskName このタスクに挑戦するために達成しておく必要のあるタスクの名前
-	 * @return MissionTaskModel $this
-	 */
 	public function withPremiseMissionTaskName(?string $premiseMissionTaskName): MissionTaskModel {
 		$this->premiseMissionTaskName = $premiseMissionTaskName;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "missionTaskId" => $this->missionTaskId,
-            "name" => $this->name,
-            "metadata" => $this->metadata,
-            "counterName" => $this->counterName,
-            "targetValue" => $this->targetValue,
-            "completeAcquireActions" => array_map(
-                function (AcquireAction $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?MissionTaskModel {
+        if ($data === null) {
+            return null;
+        }
+        return (new MissionTaskModel())
+            ->withMissionTaskId(empty($data['missionTaskId']) ? null : $data['missionTaskId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
+            ->withTargetValue(empty($data['targetValue']) ? null : $data['targetValue'])
+            ->withCompleteAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
                 },
-                $this->completeAcquireActions == null ? [] : $this->completeAcquireActions
-            ),
-            "challengePeriodEventId" => $this->challengePeriodEventId,
-            "premiseMissionTaskName" => $this->premiseMissionTaskName,
-        );
+                array_key_exists('completeAcquireActions', $data) && $data['completeAcquireActions'] !== null ? $data['completeAcquireActions'] : []
+            ))
+            ->withChallengePeriodEventId(empty($data['challengePeriodEventId']) ? null : $data['challengePeriodEventId'])
+            ->withPremiseMissionTaskName(empty($data['premiseMissionTaskName']) ? null : $data['premiseMissionTaskName']);
     }
 
-    public static function fromJson(array $data): MissionTaskModel {
-        $model = new MissionTaskModel();
-        $model->setMissionTaskId(isset($data["missionTaskId"]) ? $data["missionTaskId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setCounterName(isset($data["counterName"]) ? $data["counterName"] : null);
-        $model->setTargetValue(isset($data["targetValue"]) ? $data["targetValue"] : null);
-        $model->setCompleteAcquireActions(array_map(
-                function ($v) {
-                    return AcquireAction::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "missionTaskId" => $this->getMissionTaskId(),
+            "name" => $this->getName(),
+            "metadata" => $this->getMetadata(),
+            "counterName" => $this->getCounterName(),
+            "targetValue" => $this->getTargetValue(),
+            "completeAcquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["completeAcquireActions"]) ? $data["completeAcquireActions"] : []
-            )
+                $this->getCompleteAcquireActions() !== null && $this->getCompleteAcquireActions() !== null ? $this->getCompleteAcquireActions() : []
+            ),
+            "challengePeriodEventId" => $this->getChallengePeriodEventId(),
+            "premiseMissionTaskName" => $this->getPremiseMissionTaskName(),
         );
-        $model->setChallengePeriodEventId(isset($data["challengePeriodEventId"]) ? $data["challengePeriodEventId"] : null);
-        $model->setPremiseMissionTaskName(isset($data["premiseMissionTaskName"]) ? $data["premiseMissionTaskName"] : null);
-        return $model;
     }
 }

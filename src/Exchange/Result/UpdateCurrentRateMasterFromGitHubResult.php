@@ -20,36 +20,34 @@ namespace Gs2\Exchange\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\CurrentRateMaster;
 
-/**
- * 現在有効な交換レート設定を更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentRateMasterFromGitHubResult implements IResult {
-	/** @var CurrentRateMaster 更新した現在有効な交換レート設定 */
-	private $item;
+    /** @var CurrentRateMaster */
+    private $item;
 
-	/**
-	 * 更新した現在有効な交換レート設定を取得
-	 *
-	 * @return CurrentRateMaster|null 現在有効な交換レート設定を更新します
-	 */
 	public function getItem(): ?CurrentRateMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した現在有効な交換レート設定を設定
-	 *
-	 * @param CurrentRateMaster|null $item 現在有効な交換レート設定を更新します
-	 */
 	public function setItem(?CurrentRateMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateCurrentRateMasterFromGitHubResult {
-        $result = new UpdateCurrentRateMasterFromGitHubResult();
-        $result->setItem(isset($data["item"]) ? CurrentRateMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentRateMaster $item): UpdateCurrentRateMasterFromGitHubResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentRateMasterFromGitHubResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentRateMasterFromGitHubResult())
+            ->withItem(empty($data['item']) ? null : CurrentRateMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

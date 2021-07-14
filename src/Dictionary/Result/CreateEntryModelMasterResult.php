@@ -20,36 +20,34 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModelMaster;
 
-/**
- * エントリーモデルマスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateEntryModelMasterResult implements IResult {
-	/** @var EntryModelMaster 作成したエントリーモデルマスター */
-	private $item;
+    /** @var EntryModelMaster */
+    private $item;
 
-	/**
-	 * 作成したエントリーモデルマスターを取得
-	 *
-	 * @return EntryModelMaster|null エントリーモデルマスターを新規作成
-	 */
 	public function getItem(): ?EntryModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したエントリーモデルマスターを設定
-	 *
-	 * @param EntryModelMaster|null $item エントリーモデルマスターを新規作成
-	 */
 	public function setItem(?EntryModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateEntryModelMasterResult {
-        $result = new CreateEntryModelMasterResult();
-        $result->setItem(isset($data["item"]) ? EntryModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?EntryModelMaster $item): CreateEntryModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateEntryModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateEntryModelMasterResult())
+            ->withItem(empty($data['item']) ? null : EntryModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

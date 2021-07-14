@@ -22,99 +22,95 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
-/**
- * スタンプシートでアイテムに参照元を追加 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AddReferenceOfItemSetByStampSheetResult implements IResult {
-	/** @var string[] この所持品の参照元リスト */
-	private $item;
-	/** @var ItemSet 参照元追加後の有効期限ごとのアイテム所持数量 */
-	private $itemSet;
-	/** @var ItemModel アイテムモデル */
-	private $itemModel;
-	/** @var Inventory インベントリ */
-	private $inventory;
+    /** @var array */
+    private $item;
+    /** @var ItemSet */
+    private $itemSet;
+    /** @var ItemModel */
+    private $itemModel;
+    /** @var Inventory */
+    private $inventory;
 
-	/**
-	 * この所持品の参照元リストを取得
-	 *
-	 * @return string[]|null スタンプシートでアイテムに参照元を追加
-	 */
 	public function getItem(): ?array {
 		return $this->item;
 	}
 
-	/**
-	 * この所持品の参照元リストを設定
-	 *
-	 * @param string[]|null $item スタンプシートでアイテムに参照元を追加
-	 */
 	public function setItem(?array $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 参照元追加後の有効期限ごとのアイテム所持数量を取得
-	 *
-	 * @return ItemSet|null スタンプシートでアイテムに参照元を追加
-	 */
+	public function withItem(?array $item): AddReferenceOfItemSetByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getItemSet(): ?ItemSet {
 		return $this->itemSet;
 	}
 
-	/**
-	 * 参照元追加後の有効期限ごとのアイテム所持数量を設定
-	 *
-	 * @param ItemSet|null $itemSet スタンプシートでアイテムに参照元を追加
-	 */
 	public function setItemSet(?ItemSet $itemSet) {
 		$this->itemSet = $itemSet;
 	}
 
-	/**
-	 * アイテムモデルを取得
-	 *
-	 * @return ItemModel|null スタンプシートでアイテムに参照元を追加
-	 */
+	public function withItemSet(?ItemSet $itemSet): AddReferenceOfItemSetByStampSheetResult {
+		$this->itemSet = $itemSet;
+		return $this;
+	}
+
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
-	/**
-	 * アイテムモデルを設定
-	 *
-	 * @param ItemModel|null $itemModel スタンプシートでアイテムに参照元を追加
-	 */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
-	/**
-	 * インベントリを取得
-	 *
-	 * @return Inventory|null スタンプシートでアイテムに参照元を追加
-	 */
+	public function withItemModel(?ItemModel $itemModel): AddReferenceOfItemSetByStampSheetResult {
+		$this->itemModel = $itemModel;
+		return $this;
+	}
+
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
-	/**
-	 * インベントリを設定
-	 *
-	 * @param Inventory|null $inventory スタンプシートでアイテムに参照元を追加
-	 */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
-    public static function fromJson(array $data): AddReferenceOfItemSetByStampSheetResult {
-        $result = new AddReferenceOfItemSetByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? $data["item"] : null);
-        $result->setItemSet(isset($data["itemSet"]) ? ItemSet::fromJson($data["itemSet"]) : null);
-        $result->setItemModel(isset($data["itemModel"]) ? ItemModel::fromJson($data["itemModel"]) : null);
-        $result->setInventory(isset($data["inventory"]) ? Inventory::fromJson($data["inventory"]) : null);
-        return $result;
+	public function withInventory(?Inventory $inventory): AddReferenceOfItemSetByStampSheetResult {
+		$this->inventory = $inventory;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AddReferenceOfItemSetByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AddReferenceOfItemSetByStampSheetResult())
+            ->withItem(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('item', $data) && $data['item'] !== null ? $data['item'] : []
+            ))
+            ->withItemSet(empty($data['itemSet']) ? null : ItemSet::fromJson($data['itemSet']))
+            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
+            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getItem() !== null && $this->getItem() !== null ? $this->getItem() : []
+            ),
+            "itemSet" => $this->getItemSet() !== null ? $this->getItemSet()->toJson() : null,
+            "itemModel" => $this->getItemModel() !== null ? $this->getItemModel()->toJson() : null,
+            "inventory" => $this->getInventory() !== null ? $this->getInventory()->toJson() : null,
+        );
     }
 }

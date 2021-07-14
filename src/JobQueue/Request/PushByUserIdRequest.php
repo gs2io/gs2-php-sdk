@@ -20,139 +20,78 @@ namespace Gs2\JobQueue\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\JobQueue\Model\JobEntry;
 
-/**
- * ユーザIDを指定してジョブを登録 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PushByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してジョブを登録
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してジョブを登録
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してジョブを登録
-     * @return PushByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PushByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してジョブを登録
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してジョブを登録
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してジョブを登録
-     * @return PushByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): PushByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var JobEntry[] 追加するジョブの一覧 */
+    /** @var array */
     private $jobs;
 
-    /**
-     * 追加するジョブの一覧を取得
-     *
-     * @return JobEntry[]|null ユーザIDを指定してジョブを登録
-     */
-    public function getJobs(): ?array {
-        return $this->jobs;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PushByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): PushByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getJobs(): ?array {
+		return $this->jobs;
+	}
+
+	public function setJobs(?array $jobs) {
+		$this->jobs = $jobs;
+	}
+
+	public function withJobs(?array $jobs): PushByUserIdRequest {
+		$this->jobs = $jobs;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PushByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PushByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withJobs(array_map(
+                function ($item) {
+                    return JobEntry::fromJson($item);
+                },
+                array_key_exists('jobs', $data) && $data['jobs'] !== null ? $data['jobs'] : []
+            ));
     }
 
-    /**
-     * 追加するジョブの一覧を設定
-     *
-     * @param JobEntry[] $jobs ユーザIDを指定してジョブを登録
-     */
-    public function setJobs(array $jobs = null) {
-        $this->jobs = $jobs;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "jobs" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getJobs() !== null && $this->getJobs() !== null ? $this->getJobs() : []
+            ),
+        );
     }
-
-    /**
-     * 追加するジョブの一覧を設定
-     *
-     * @param JobEntry[] $jobs ユーザIDを指定してジョブを登録
-     * @return PushByUserIdRequest $this
-     */
-    public function withJobs(array $jobs = null): PushByUserIdRequest {
-        $this->setJobs($jobs);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してジョブを登録
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してジョブを登録
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してジョブを登録
-     * @return PushByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): PushByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

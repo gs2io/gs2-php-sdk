@@ -19,75 +19,51 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 排出確率テーブルマスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetPrizeTableMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 排出確率テーブルマスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 排出確率テーブルマスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 排出確率テーブルマスターを取得
-     * @return GetPrizeTableMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetPrizeTableMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 排出確率テーブル名 */
+    /** @var string */
     private $prizeTableName;
 
-    /**
-     * 排出確率テーブル名を取得
-     *
-     * @return string|null 排出確率テーブルマスターを取得
-     */
-    public function getPrizeTableName(): ?string {
-        return $this->prizeTableName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetPrizeTableMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getPrizeTableName(): ?string {
+		return $this->prizeTableName;
+	}
+
+	public function setPrizeTableName(?string $prizeTableName) {
+		$this->prizeTableName = $prizeTableName;
+	}
+
+	public function withPrizeTableName(?string $prizeTableName): GetPrizeTableMasterRequest {
+		$this->prizeTableName = $prizeTableName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetPrizeTableMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetPrizeTableMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName']);
     }
 
-    /**
-     * 排出確率テーブル名を設定
-     *
-     * @param string $prizeTableName 排出確率テーブルマスターを取得
-     */
-    public function setPrizeTableName(string $prizeTableName = null) {
-        $this->prizeTableName = $prizeTableName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "prizeTableName" => $this->getPrizeTableName(),
+        );
     }
-
-    /**
-     * 排出確率テーブル名を設定
-     *
-     * @param string $prizeTableName 排出確率テーブルマスターを取得
-     * @return GetPrizeTableMasterRequest $this
-     */
-    public function withPrizeTableName(string $prizeTableName = null): GetPrizeTableMasterRequest {
-        $this->setPrizeTableName($prizeTableName);
-        return $this;
-    }
-
 }

@@ -19,107 +19,68 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * メッセージを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteMessageRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null メッセージを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージを削除
-     * @return DeleteMessageRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteMessageRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null メッセージを削除
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName メッセージを削除
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName メッセージを削除
-     * @return DeleteMessageRequest $this
-     */
-    public function withRoomName(string $roomName = null): DeleteMessageRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var string メッセージ名 */
+    /** @var string */
     private $messageName;
 
-    /**
-     * メッセージ名を取得
-     *
-     * @return string|null メッセージを削除
-     */
-    public function getMessageName(): ?string {
-        return $this->messageName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteMessageRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): DeleteMessageRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getMessageName(): ?string {
+		return $this->messageName;
+	}
+
+	public function setMessageName(?string $messageName) {
+		$this->messageName = $messageName;
+	}
+
+	public function withMessageName(?string $messageName): DeleteMessageRequest {
+		$this->messageName = $messageName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteMessageRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteMessageRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withMessageName(empty($data['messageName']) ? null : $data['messageName']);
     }
 
-    /**
-     * メッセージ名を設定
-     *
-     * @param string $messageName メッセージを削除
-     */
-    public function setMessageName(string $messageName = null) {
-        $this->messageName = $messageName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "messageName" => $this->getMessageName(),
+        );
     }
-
-    /**
-     * メッセージ名を設定
-     *
-     * @param string $messageName メッセージを削除
-     * @return DeleteMessageRequest $this
-     */
-    public function withMessageName(string $messageName = null): DeleteMessageRequest {
-        $this->setMessageName($messageName);
-        return $this;
-    }
-
 }

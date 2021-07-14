@@ -19,75 +19,51 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 商品グループマスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteSalesItemGroupMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 商品グループマスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 商品グループマスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 商品グループマスターを削除
-     * @return DeleteSalesItemGroupMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteSalesItemGroupMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 商品名 */
+    /** @var string */
     private $salesItemGroupName;
 
-    /**
-     * 商品名を取得
-     *
-     * @return string|null 商品グループマスターを削除
-     */
-    public function getSalesItemGroupName(): ?string {
-        return $this->salesItemGroupName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteSalesItemGroupMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getSalesItemGroupName(): ?string {
+		return $this->salesItemGroupName;
+	}
+
+	public function setSalesItemGroupName(?string $salesItemGroupName) {
+		$this->salesItemGroupName = $salesItemGroupName;
+	}
+
+	public function withSalesItemGroupName(?string $salesItemGroupName): DeleteSalesItemGroupMasterRequest {
+		$this->salesItemGroupName = $salesItemGroupName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteSalesItemGroupMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteSalesItemGroupMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withSalesItemGroupName(empty($data['salesItemGroupName']) ? null : $data['salesItemGroupName']);
     }
 
-    /**
-     * 商品名を設定
-     *
-     * @param string $salesItemGroupName 商品グループマスターを削除
-     */
-    public function setSalesItemGroupName(string $salesItemGroupName = null) {
-        $this->salesItemGroupName = $salesItemGroupName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "salesItemGroupName" => $this->getSalesItemGroupName(),
+        );
     }
-
-    /**
-     * 商品名を設定
-     *
-     * @param string $salesItemGroupName 商品グループマスターを削除
-     * @return DeleteSalesItemGroupMasterRequest $this
-     */
-    public function withSalesItemGroupName(string $salesItemGroupName = null): DeleteSalesItemGroupMasterRequest {
-        $this->setSalesItemGroupName($salesItemGroupName);
-        return $this;
-    }
-
 }

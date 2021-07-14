@@ -19,43 +19,17 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * GS2アカウントを削除します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteAccountRequest extends Gs2BasicRequest {
 
-    /** @var string GS2アカウントの名前 */
-    private $accountName;
-
-    /**
-     * GS2アカウントの名前を取得
-     *
-     * @return string|null GS2アカウントを削除します
-     */
-    public function getAccountName(): ?string {
-        return $this->accountName;
+    public static function fromJson(?array $data): ?DeleteAccountRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteAccountRequest());
     }
 
-    /**
-     * GS2アカウントの名前を設定
-     *
-     * @param string $accountName GS2アカウントを削除します
-     */
-    public function setAccountName(string $accountName = null) {
-        $this->accountName = $accountName;
+    public function toJson(): array {
+        return array(
+        );
     }
-
-    /**
-     * GS2アカウントの名前を設定
-     *
-     * @param string $accountName GS2アカウントを削除します
-     * @return DeleteAccountRequest $this
-     */
-    public function withAccountName(string $accountName = null): DeleteAccountRequest {
-        $this->setAccountName($accountName);
-        return $this;
-    }
-
 }

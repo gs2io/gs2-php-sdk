@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Key\Request\DescribeNamespacesRequest;
 use Gs2\Key\Result\DescribeNamespacesResult;
 use Gs2\Key\Request\CreateNamespaceRequest;
@@ -1165,9 +1167,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1182,9 +1182,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1196,9 +1194,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1213,9 +1209,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1227,9 +1221,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1244,9 +1236,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1258,9 +1248,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1275,9 +1263,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1289,9 +1275,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1306,9 +1290,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1320,9 +1302,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1337,9 +1317,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1351,9 +1329,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵の一覧を取得します<br>
-     *
-     * @param DescribeKeysRequest $request リクエストパラメータ
+     * @param DescribeKeysRequest $request
      * @return PromiseInterface
      */
     public function describeKeysAsync(
@@ -1368,9 +1344,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵の一覧を取得します<br>
-     *
-     * @param DescribeKeysRequest $request リクエストパラメータ
+     * @param DescribeKeysRequest $request
      * @return DescribeKeysResult
      */
     public function describeKeys (
@@ -1382,9 +1356,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵を新規作成します<br>
-     *
-     * @param CreateKeyRequest $request リクエストパラメータ
+     * @param CreateKeyRequest $request
      * @return PromiseInterface
      */
     public function createKeyAsync(
@@ -1399,9 +1371,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵を新規作成します<br>
-     *
-     * @param CreateKeyRequest $request リクエストパラメータ
+     * @param CreateKeyRequest $request
      * @return CreateKeyResult
      */
     public function createKey (
@@ -1413,9 +1383,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵を更新<br>
-     *
-     * @param UpdateKeyRequest $request リクエストパラメータ
+     * @param UpdateKeyRequest $request
      * @return PromiseInterface
      */
     public function updateKeyAsync(
@@ -1430,9 +1398,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵を更新<br>
-     *
-     * @param UpdateKeyRequest $request リクエストパラメータ
+     * @param UpdateKeyRequest $request
      * @return UpdateKeyResult
      */
     public function updateKey (
@@ -1444,9 +1410,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵を取得します<br>
-     *
-     * @param GetKeyRequest $request リクエストパラメータ
+     * @param GetKeyRequest $request
      * @return PromiseInterface
      */
     public function getKeyAsync(
@@ -1461,9 +1425,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵を取得します<br>
-     *
-     * @param GetKeyRequest $request リクエストパラメータ
+     * @param GetKeyRequest $request
      * @return GetKeyResult
      */
     public function getKey (
@@ -1475,9 +1437,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵を削除します<br>
-     *
-     * @param DeleteKeyRequest $request リクエストパラメータ
+     * @param DeleteKeyRequest $request
      * @return PromiseInterface
      */
     public function deleteKeyAsync(
@@ -1492,9 +1452,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 暗号鍵を削除します<br>
-     *
-     * @param DeleteKeyRequest $request リクエストパラメータ
+     * @param DeleteKeyRequest $request
      * @return DeleteKeyResult
      */
     public function deleteKey (
@@ -1506,9 +1464,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データを暗号化します<br>
-     *
-     * @param EncryptRequest $request リクエストパラメータ
+     * @param EncryptRequest $request
      * @return PromiseInterface
      */
     public function encryptAsync(
@@ -1523,9 +1479,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データを暗号化します<br>
-     *
-     * @param EncryptRequest $request リクエストパラメータ
+     * @param EncryptRequest $request
      * @return EncryptResult
      */
     public function encrypt (
@@ -1537,9 +1491,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データを復号します<br>
-     *
-     * @param DecryptRequest $request リクエストパラメータ
+     * @param DecryptRequest $request
      * @return PromiseInterface
      */
     public function decryptAsync(
@@ -1554,9 +1506,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * データを復号します<br>
-     *
-     * @param DecryptRequest $request リクエストパラメータ
+     * @param DecryptRequest $request
      * @return DecryptResult
      */
     public function decrypt (
@@ -1568,9 +1518,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーの一覧を取得します<br>
-     *
-     * @param DescribeGitHubApiKeysRequest $request リクエストパラメータ
+     * @param DescribeGitHubApiKeysRequest $request
      * @return PromiseInterface
      */
     public function describeGitHubApiKeysAsync(
@@ -1585,9 +1533,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーの一覧を取得します<br>
-     *
-     * @param DescribeGitHubApiKeysRequest $request リクエストパラメータ
+     * @param DescribeGitHubApiKeysRequest $request
      * @return DescribeGitHubApiKeysResult
      */
     public function describeGitHubApiKeys (
@@ -1599,9 +1545,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーを新規作成します<br>
-     *
-     * @param CreateGitHubApiKeyRequest $request リクエストパラメータ
+     * @param CreateGitHubApiKeyRequest $request
      * @return PromiseInterface
      */
     public function createGitHubApiKeyAsync(
@@ -1616,9 +1560,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーを新規作成します<br>
-     *
-     * @param CreateGitHubApiKeyRequest $request リクエストパラメータ
+     * @param CreateGitHubApiKeyRequest $request
      * @return CreateGitHubApiKeyResult
      */
     public function createGitHubApiKey (
@@ -1630,9 +1572,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーを更新<br>
-     *
-     * @param UpdateGitHubApiKeyRequest $request リクエストパラメータ
+     * @param UpdateGitHubApiKeyRequest $request
      * @return PromiseInterface
      */
     public function updateGitHubApiKeyAsync(
@@ -1647,9 +1587,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーを更新<br>
-     *
-     * @param UpdateGitHubApiKeyRequest $request リクエストパラメータ
+     * @param UpdateGitHubApiKeyRequest $request
      * @return UpdateGitHubApiKeyResult
      */
     public function updateGitHubApiKey (
@@ -1661,9 +1599,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーを取得します<br>
-     *
-     * @param GetGitHubApiKeyRequest $request リクエストパラメータ
+     * @param GetGitHubApiKeyRequest $request
      * @return PromiseInterface
      */
     public function getGitHubApiKeyAsync(
@@ -1678,9 +1614,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーを取得します<br>
-     *
-     * @param GetGitHubApiKeyRequest $request リクエストパラメータ
+     * @param GetGitHubApiKeyRequest $request
      * @return GetGitHubApiKeyResult
      */
     public function getGitHubApiKey (
@@ -1692,9 +1626,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーを削除します<br>
-     *
-     * @param DeleteGitHubApiKeyRequest $request リクエストパラメータ
+     * @param DeleteGitHubApiKeyRequest $request
      * @return PromiseInterface
      */
     public function deleteGitHubApiKeyAsync(
@@ -1709,9 +1641,7 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GitHub のAPIキーを削除します<br>
-     *
-     * @param DeleteGitHubApiKeyRequest $request リクエストパラメータ
+     * @param DeleteGitHubApiKeyRequest $request
      * @return DeleteGitHubApiKeyResult
      */
     public function deleteGitHubApiKey (

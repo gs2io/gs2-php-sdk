@@ -19,171 +19,102 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * レーティングモデルマスターを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateRatingModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null レーティングモデルマスターを新規作成
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティングモデルマスターを新規作成
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName レーティングモデルマスターを新規作成
-     * @return CreateRatingModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CreateRatingModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string レーティングの種類名 */
+    /** @var string */
     private $name;
-
-    /**
-     * レーティングの種類名を取得
-     *
-     * @return string|null レーティングモデルマスターを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * レーティングの種類名を設定
-     *
-     * @param string $name レーティングモデルマスターを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * レーティングの種類名を設定
-     *
-     * @param string $name レーティングモデルマスターを新規作成
-     * @return CreateRatingModelMasterRequest $this
-     */
-    public function withName(string $name = null): CreateRatingModelMasterRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string レーティングモデルマスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * レーティングモデルマスターの説明を取得
-     *
-     * @return string|null レーティングモデルマスターを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * レーティングモデルマスターの説明を設定
-     *
-     * @param string $description レーティングモデルマスターを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * レーティングモデルマスターの説明を設定
-     *
-     * @param string $description レーティングモデルマスターを新規作成
-     * @return CreateRatingModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): CreateRatingModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string レーティングの種類のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * レーティングの種類のメタデータを取得
-     *
-     * @return string|null レーティングモデルマスターを新規作成
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * レーティングの種類のメタデータを設定
-     *
-     * @param string $metadata レーティングモデルマスターを新規作成
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * レーティングの種類のメタデータを設定
-     *
-     * @param string $metadata レーティングモデルマスターを新規作成
-     * @return CreateRatingModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): CreateRatingModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var int レート値の変動の大きさ */
+    /** @var int */
     private $volatility;
 
-    /**
-     * レート値の変動の大きさを取得
-     *
-     * @return int|null レーティングモデルマスターを新規作成
-     */
-    public function getVolatility(): ?int {
-        return $this->volatility;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CreateRatingModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateRatingModelMasterRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateRatingModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): CreateRatingModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getVolatility(): ?int {
+		return $this->volatility;
+	}
+
+	public function setVolatility(?int $volatility) {
+		$this->volatility = $volatility;
+	}
+
+	public function withVolatility(?int $volatility): CreateRatingModelMasterRequest {
+		$this->volatility = $volatility;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateRatingModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateRatingModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withVolatility(empty($data['volatility']) ? null : $data['volatility']);
     }
 
-    /**
-     * レート値の変動の大きさを設定
-     *
-     * @param int $volatility レーティングモデルマスターを新規作成
-     */
-    public function setVolatility(int $volatility = null) {
-        $this->volatility = $volatility;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "volatility" => $this->getVolatility(),
+        );
     }
-
-    /**
-     * レート値の変動の大きさを設定
-     *
-     * @param int $volatility レーティングモデルマスターを新規作成
-     * @return CreateRatingModelMasterRequest $this
-     */
-    public function withVolatility(int $volatility = null): CreateRatingModelMasterRequest {
-        $this->setVolatility($volatility);
-        return $this;
-    }
-
 }

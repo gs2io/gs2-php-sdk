@@ -20,36 +20,34 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModelMaster;
 
-/**
- * エントリーモデルマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteEntryModelMasterResult implements IResult {
-	/** @var EntryModelMaster 削除したエントリーモデルマスター */
-	private $item;
+    /** @var EntryModelMaster */
+    private $item;
 
-	/**
-	 * 削除したエントリーモデルマスターを取得
-	 *
-	 * @return EntryModelMaster|null エントリーモデルマスターを削除
-	 */
 	public function getItem(): ?EntryModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したエントリーモデルマスターを設定
-	 *
-	 * @param EntryModelMaster|null $item エントリーモデルマスターを削除
-	 */
 	public function setItem(?EntryModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteEntryModelMasterResult {
-        $result = new DeleteEntryModelMasterResult();
-        $result->setItem(isset($data["item"]) ? EntryModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?EntryModelMaster $item): DeleteEntryModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteEntryModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteEntryModelMasterResult())
+            ->withItem(empty($data['item']) ? null : EntryModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

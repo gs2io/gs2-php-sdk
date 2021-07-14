@@ -20,36 +20,34 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Stack;
 
-/**
- * スタックのリソースを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteStackResourcesResult implements IResult {
-	/** @var Stack リソースを削除したスタック */
-	private $item;
+    /** @var Stack */
+    private $item;
 
-	/**
-	 * リソースを削除したスタックを取得
-	 *
-	 * @return Stack|null スタックのリソースを削除
-	 */
 	public function getItem(): ?Stack {
 		return $this->item;
 	}
 
-	/**
-	 * リソースを削除したスタックを設定
-	 *
-	 * @param Stack|null $item スタックのリソースを削除
-	 */
 	public function setItem(?Stack $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteStackResourcesResult {
-        $result = new DeleteStackResourcesResult();
-        $result->setItem(isset($data["item"]) ? Stack::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Stack $item): DeleteStackResourcesResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteStackResourcesResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteStackResourcesResult())
+            ->withItem(empty($data['item']) ? null : Stack::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

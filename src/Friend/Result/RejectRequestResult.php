@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendRequest;
 
-/**
- * フレンドリクエストを拒否 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RejectRequestResult implements IResult {
-	/** @var FriendRequest 拒否したフレンドリクエスト */
-	private $item;
+    /** @var FriendRequest */
+    private $item;
 
-	/**
-	 * 拒否したフレンドリクエストを取得
-	 *
-	 * @return FriendRequest|null フレンドリクエストを拒否
-	 */
 	public function getItem(): ?FriendRequest {
 		return $this->item;
 	}
 
-	/**
-	 * 拒否したフレンドリクエストを設定
-	 *
-	 * @param FriendRequest|null $item フレンドリクエストを拒否
-	 */
 	public function setItem(?FriendRequest $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): RejectRequestResult {
-        $result = new RejectRequestResult();
-        $result->setItem(isset($data["item"]) ? FriendRequest::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FriendRequest $item): RejectRequestResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RejectRequestResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RejectRequestResult())
+            ->withItem(empty($data['item']) ? null : FriendRequest::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

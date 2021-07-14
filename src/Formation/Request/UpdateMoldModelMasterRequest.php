@@ -19,235 +19,136 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * フォームの保存領域マスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateMoldModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null フォームの保存領域マスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォームの保存領域マスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName フォームの保存領域マスターを更新
-     * @return UpdateMoldModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateMoldModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string フォームの保存領域名 */
+    /** @var string */
     private $moldName;
-
-    /**
-     * フォームの保存領域名を取得
-     *
-     * @return string|null フォームの保存領域マスターを更新
-     */
-    public function getMoldName(): ?string {
-        return $this->moldName;
-    }
-
-    /**
-     * フォームの保存領域名を設定
-     *
-     * @param string $moldName フォームの保存領域マスターを更新
-     */
-    public function setMoldName(string $moldName = null) {
-        $this->moldName = $moldName;
-    }
-
-    /**
-     * フォームの保存領域名を設定
-     *
-     * @param string $moldName フォームの保存領域マスターを更新
-     * @return UpdateMoldModelMasterRequest $this
-     */
-    public function withMoldName(string $moldName = null): UpdateMoldModelMasterRequest {
-        $this->setMoldName($moldName);
-        return $this;
-    }
-
-    /** @var string フォームの保存領域マスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * フォームの保存領域マスターの説明を取得
-     *
-     * @return string|null フォームの保存領域マスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * フォームの保存領域マスターの説明を設定
-     *
-     * @param string $description フォームの保存領域マスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * フォームの保存領域マスターの説明を設定
-     *
-     * @param string $description フォームの保存領域マスターを更新
-     * @return UpdateMoldModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateMoldModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string フォームの保存領域のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * フォームの保存領域のメタデータを取得
-     *
-     * @return string|null フォームの保存領域マスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * フォームの保存領域のメタデータを設定
-     *
-     * @param string $metadata フォームの保存領域マスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * フォームの保存領域のメタデータを設定
-     *
-     * @param string $metadata フォームの保存領域マスターを更新
-     * @return UpdateMoldModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateMoldModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string フォーム名 */
+    /** @var string */
     private $formModelName;
-
-    /**
-     * フォーム名を取得
-     *
-     * @return string|null フォームの保存領域マスターを更新
-     */
-    public function getFormModelName(): ?string {
-        return $this->formModelName;
-    }
-
-    /**
-     * フォーム名を設定
-     *
-     * @param string $formModelName フォームの保存領域マスターを更新
-     */
-    public function setFormModelName(string $formModelName = null) {
-        $this->formModelName = $formModelName;
-    }
-
-    /**
-     * フォーム名を設定
-     *
-     * @param string $formModelName フォームの保存領域マスターを更新
-     * @return UpdateMoldModelMasterRequest $this
-     */
-    public function withFormModelName(string $formModelName = null): UpdateMoldModelMasterRequest {
-        $this->setFormModelName($formModelName);
-        return $this;
-    }
-
-    /** @var int フォームを保存できる初期キャパシティ */
+    /** @var int */
     private $initialMaxCapacity;
-
-    /**
-     * フォームを保存できる初期キャパシティを取得
-     *
-     * @return int|null フォームの保存領域マスターを更新
-     */
-    public function getInitialMaxCapacity(): ?int {
-        return $this->initialMaxCapacity;
-    }
-
-    /**
-     * フォームを保存できる初期キャパシティを設定
-     *
-     * @param int $initialMaxCapacity フォームの保存領域マスターを更新
-     */
-    public function setInitialMaxCapacity(int $initialMaxCapacity = null) {
-        $this->initialMaxCapacity = $initialMaxCapacity;
-    }
-
-    /**
-     * フォームを保存できる初期キャパシティを設定
-     *
-     * @param int $initialMaxCapacity フォームの保存領域マスターを更新
-     * @return UpdateMoldModelMasterRequest $this
-     */
-    public function withInitialMaxCapacity(int $initialMaxCapacity = null): UpdateMoldModelMasterRequest {
-        $this->setInitialMaxCapacity($initialMaxCapacity);
-        return $this;
-    }
-
-    /** @var int フォームを保存できるキャパシティ */
+    /** @var int */
     private $maxCapacity;
 
-    /**
-     * フォームを保存できるキャパシティを取得
-     *
-     * @return int|null フォームの保存領域マスターを更新
-     */
-    public function getMaxCapacity(): ?int {
-        return $this->maxCapacity;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateMoldModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getMoldName(): ?string {
+		return $this->moldName;
+	}
+
+	public function setMoldName(?string $moldName) {
+		$this->moldName = $moldName;
+	}
+
+	public function withMoldName(?string $moldName): UpdateMoldModelMasterRequest {
+		$this->moldName = $moldName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateMoldModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateMoldModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getFormModelName(): ?string {
+		return $this->formModelName;
+	}
+
+	public function setFormModelName(?string $formModelName) {
+		$this->formModelName = $formModelName;
+	}
+
+	public function withFormModelName(?string $formModelName): UpdateMoldModelMasterRequest {
+		$this->formModelName = $formModelName;
+		return $this;
+	}
+
+	public function getInitialMaxCapacity(): ?int {
+		return $this->initialMaxCapacity;
+	}
+
+	public function setInitialMaxCapacity(?int $initialMaxCapacity) {
+		$this->initialMaxCapacity = $initialMaxCapacity;
+	}
+
+	public function withInitialMaxCapacity(?int $initialMaxCapacity): UpdateMoldModelMasterRequest {
+		$this->initialMaxCapacity = $initialMaxCapacity;
+		return $this;
+	}
+
+	public function getMaxCapacity(): ?int {
+		return $this->maxCapacity;
+	}
+
+	public function setMaxCapacity(?int $maxCapacity) {
+		$this->maxCapacity = $maxCapacity;
+	}
+
+	public function withMaxCapacity(?int $maxCapacity): UpdateMoldModelMasterRequest {
+		$this->maxCapacity = $maxCapacity;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateMoldModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateMoldModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withFormModelName(empty($data['formModelName']) ? null : $data['formModelName'])
+            ->withInitialMaxCapacity(empty($data['initialMaxCapacity']) ? null : $data['initialMaxCapacity'])
+            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity']);
     }
 
-    /**
-     * フォームを保存できるキャパシティを設定
-     *
-     * @param int $maxCapacity フォームの保存領域マスターを更新
-     */
-    public function setMaxCapacity(int $maxCapacity = null) {
-        $this->maxCapacity = $maxCapacity;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "moldName" => $this->getMoldName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "formModelName" => $this->getFormModelName(),
+            "initialMaxCapacity" => $this->getInitialMaxCapacity(),
+            "maxCapacity" => $this->getMaxCapacity(),
+        );
     }
-
-    /**
-     * フォームを保存できるキャパシティを設定
-     *
-     * @param int $maxCapacity フォームの保存領域マスターを更新
-     * @return UpdateMoldModelMasterRequest $this
-     */
-    public function withMaxCapacity(int $maxCapacity = null): UpdateMoldModelMasterRequest {
-        $this->setMaxCapacity($maxCapacity);
-        return $this;
-    }
-
 }

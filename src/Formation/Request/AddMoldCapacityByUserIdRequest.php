@@ -19,171 +19,85 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定して保存したフォームのキャパシティを追加 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class AddMoldCapacityByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して保存したフォームのキャパシティを追加
-     * @return AddMoldCapacityByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): AddMoldCapacityByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定して保存したフォームのキャパシティを追加
-     * @return AddMoldCapacityByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): AddMoldCapacityByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string フォームの保存領域の名前 */
+    /** @var string */
     private $moldName;
-
-    /**
-     * フォームの保存領域の名前を取得
-     *
-     * @return string|null ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function getMoldName(): ?string {
-        return $this->moldName;
-    }
-
-    /**
-     * フォームの保存領域の名前を設定
-     *
-     * @param string $moldName ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function setMoldName(string $moldName = null) {
-        $this->moldName = $moldName;
-    }
-
-    /**
-     * フォームの保存領域の名前を設定
-     *
-     * @param string $moldName ユーザIDを指定して保存したフォームのキャパシティを追加
-     * @return AddMoldCapacityByUserIdRequest $this
-     */
-    public function withMoldName(string $moldName = null): AddMoldCapacityByUserIdRequest {
-        $this->setMoldName($moldName);
-        return $this;
-    }
-
-    /** @var int 加算するキャパシティ量 */
+    /** @var int */
     private $capacity;
 
-    /**
-     * 加算するキャパシティ量を取得
-     *
-     * @return int|null ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function getCapacity(): ?int {
-        return $this->capacity;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): AddMoldCapacityByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): AddMoldCapacityByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getMoldName(): ?string {
+		return $this->moldName;
+	}
+
+	public function setMoldName(?string $moldName) {
+		$this->moldName = $moldName;
+	}
+
+	public function withMoldName(?string $moldName): AddMoldCapacityByUserIdRequest {
+		$this->moldName = $moldName;
+		return $this;
+	}
+
+	public function getCapacity(): ?int {
+		return $this->capacity;
+	}
+
+	public function setCapacity(?int $capacity) {
+		$this->capacity = $capacity;
+	}
+
+	public function withCapacity(?int $capacity): AddMoldCapacityByUserIdRequest {
+		$this->capacity = $capacity;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AddMoldCapacityByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new AddMoldCapacityByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
+            ->withCapacity(empty($data['capacity']) ? null : $data['capacity']);
     }
 
-    /**
-     * 加算するキャパシティ量を設定
-     *
-     * @param int $capacity ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function setCapacity(int $capacity = null) {
-        $this->capacity = $capacity;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "moldName" => $this->getMoldName(),
+            "capacity" => $this->getCapacity(),
+        );
     }
-
-    /**
-     * 加算するキャパシティ量を設定
-     *
-     * @param int $capacity ユーザIDを指定して保存したフォームのキャパシティを追加
-     * @return AddMoldCapacityByUserIdRequest $this
-     */
-    public function withCapacity(int $capacity = null): AddMoldCapacityByUserIdRequest {
-        $this->setCapacity($capacity);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して保存したフォームのキャパシティを追加
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して保存したフォームのキャパシティを追加
-     * @return AddMoldCapacityByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): AddMoldCapacityByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

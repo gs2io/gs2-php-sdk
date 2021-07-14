@@ -21,203 +21,139 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 
-/**
- * 商品マスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateSalesItemMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 商品マスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 商品マスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 商品マスターを更新
-     * @return UpdateSalesItemMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateSalesItemMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 商品名 */
+    /** @var string */
     private $salesItemName;
-
-    /**
-     * 商品名を取得
-     *
-     * @return string|null 商品マスターを更新
-     */
-    public function getSalesItemName(): ?string {
-        return $this->salesItemName;
-    }
-
-    /**
-     * 商品名を設定
-     *
-     * @param string $salesItemName 商品マスターを更新
-     */
-    public function setSalesItemName(string $salesItemName = null) {
-        $this->salesItemName = $salesItemName;
-    }
-
-    /**
-     * 商品名を設定
-     *
-     * @param string $salesItemName 商品マスターを更新
-     * @return UpdateSalesItemMasterRequest $this
-     */
-    public function withSalesItemName(string $salesItemName = null): UpdateSalesItemMasterRequest {
-        $this->setSalesItemName($salesItemName);
-        return $this;
-    }
-
-    /** @var string 商品マスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * 商品マスターの説明を取得
-     *
-     * @return string|null 商品マスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 商品マスターの説明を設定
-     *
-     * @param string $description 商品マスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 商品マスターの説明を設定
-     *
-     * @param string $description 商品マスターを更新
-     * @return UpdateSalesItemMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateSalesItemMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 商品のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * 商品のメタデータを取得
-     *
-     * @return string|null 商品マスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * 商品のメタデータを設定
-     *
-     * @param string $metadata 商品マスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * 商品のメタデータを設定
-     *
-     * @param string $metadata 商品マスターを更新
-     * @return UpdateSalesItemMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateSalesItemMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var ConsumeAction[] 消費アクションリスト */
+    /** @var array */
     private $consumeActions;
-
-    /**
-     * 消費アクションリストを取得
-     *
-     * @return ConsumeAction[]|null 商品マスターを更新
-     */
-    public function getConsumeActions(): ?array {
-        return $this->consumeActions;
-    }
-
-    /**
-     * 消費アクションリストを設定
-     *
-     * @param ConsumeAction[] $consumeActions 商品マスターを更新
-     */
-    public function setConsumeActions(array $consumeActions = null) {
-        $this->consumeActions = $consumeActions;
-    }
-
-    /**
-     * 消費アクションリストを設定
-     *
-     * @param ConsumeAction[] $consumeActions 商品マスターを更新
-     * @return UpdateSalesItemMasterRequest $this
-     */
-    public function withConsumeActions(array $consumeActions = null): UpdateSalesItemMasterRequest {
-        $this->setConsumeActions($consumeActions);
-        return $this;
-    }
-
-    /** @var AcquireAction[] 入手アクションリスト */
+    /** @var array */
     private $acquireActions;
 
-    /**
-     * 入手アクションリストを取得
-     *
-     * @return AcquireAction[]|null 商品マスターを更新
-     */
-    public function getAcquireActions(): ?array {
-        return $this->acquireActions;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateSalesItemMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getSalesItemName(): ?string {
+		return $this->salesItemName;
+	}
+
+	public function setSalesItemName(?string $salesItemName) {
+		$this->salesItemName = $salesItemName;
+	}
+
+	public function withSalesItemName(?string $salesItemName): UpdateSalesItemMasterRequest {
+		$this->salesItemName = $salesItemName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateSalesItemMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateSalesItemMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getConsumeActions(): ?array {
+		return $this->consumeActions;
+	}
+
+	public function setConsumeActions(?array $consumeActions) {
+		$this->consumeActions = $consumeActions;
+	}
+
+	public function withConsumeActions(?array $consumeActions): UpdateSalesItemMasterRequest {
+		$this->consumeActions = $consumeActions;
+		return $this;
+	}
+
+	public function getAcquireActions(): ?array {
+		return $this->acquireActions;
+	}
+
+	public function setAcquireActions(?array $acquireActions) {
+		$this->acquireActions = $acquireActions;
+	}
+
+	public function withAcquireActions(?array $acquireActions): UpdateSalesItemMasterRequest {
+		$this->acquireActions = $acquireActions;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateSalesItemMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateSalesItemMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withSalesItemName(empty($data['salesItemName']) ? null : $data['salesItemName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withConsumeActions(array_map(
+                function ($item) {
+                    return ConsumeAction::fromJson($item);
+                },
+                array_key_exists('consumeActions', $data) && $data['consumeActions'] !== null ? $data['consumeActions'] : []
+            ))
+            ->withAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
+                },
+                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+            ));
     }
 
-    /**
-     * 入手アクションリストを設定
-     *
-     * @param AcquireAction[] $acquireActions 商品マスターを更新
-     */
-    public function setAcquireActions(array $acquireActions = null) {
-        $this->acquireActions = $acquireActions;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "salesItemName" => $this->getSalesItemName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "consumeActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConsumeActions() !== null && $this->getConsumeActions() !== null ? $this->getConsumeActions() : []
+            ),
+            "acquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+            ),
+        );
     }
-
-    /**
-     * 入手アクションリストを設定
-     *
-     * @param AcquireAction[] $acquireActions 商品マスターを更新
-     * @return UpdateSalesItemMasterRequest $this
-     */
-    public function withAcquireActions(array $acquireActions = null): UpdateSalesItemMasterRequest {
-        $this->setAcquireActions($acquireActions);
-        return $this;
-    }
-
 }

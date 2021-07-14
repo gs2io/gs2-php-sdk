@@ -19,203 +19,102 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザーIDを指定してプロフィールを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateProfileByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザーIDを指定してプロフィールを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してプロフィールを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してプロフィールを更新
-     * @return UpdateProfileByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateProfileByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザーIDを指定してプロフィールを更新
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してプロフィールを更新
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してプロフィールを更新
-     * @return UpdateProfileByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): UpdateProfileByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 公開されるプロフィール */
+    /** @var string */
     private $publicProfile;
-
-    /**
-     * 公開されるプロフィールを取得
-     *
-     * @return string|null ユーザーIDを指定してプロフィールを更新
-     */
-    public function getPublicProfile(): ?string {
-        return $this->publicProfile;
-    }
-
-    /**
-     * 公開されるプロフィールを設定
-     *
-     * @param string $publicProfile ユーザーIDを指定してプロフィールを更新
-     */
-    public function setPublicProfile(string $publicProfile = null) {
-        $this->publicProfile = $publicProfile;
-    }
-
-    /**
-     * 公開されるプロフィールを設定
-     *
-     * @param string $publicProfile ユーザーIDを指定してプロフィールを更新
-     * @return UpdateProfileByUserIdRequest $this
-     */
-    public function withPublicProfile(string $publicProfile = null): UpdateProfileByUserIdRequest {
-        $this->setPublicProfile($publicProfile);
-        return $this;
-    }
-
-    /** @var string フォロワー向けに公開されるプロフィール */
+    /** @var string */
     private $followerProfile;
-
-    /**
-     * フォロワー向けに公開されるプロフィールを取得
-     *
-     * @return string|null ユーザーIDを指定してプロフィールを更新
-     */
-    public function getFollowerProfile(): ?string {
-        return $this->followerProfile;
-    }
-
-    /**
-     * フォロワー向けに公開されるプロフィールを設定
-     *
-     * @param string $followerProfile ユーザーIDを指定してプロフィールを更新
-     */
-    public function setFollowerProfile(string $followerProfile = null) {
-        $this->followerProfile = $followerProfile;
-    }
-
-    /**
-     * フォロワー向けに公開されるプロフィールを設定
-     *
-     * @param string $followerProfile ユーザーIDを指定してプロフィールを更新
-     * @return UpdateProfileByUserIdRequest $this
-     */
-    public function withFollowerProfile(string $followerProfile = null): UpdateProfileByUserIdRequest {
-        $this->setFollowerProfile($followerProfile);
-        return $this;
-    }
-
-    /** @var string フレンド向けに公開されるプロフィール */
+    /** @var string */
     private $friendProfile;
 
-    /**
-     * フレンド向けに公開されるプロフィールを取得
-     *
-     * @return string|null ユーザーIDを指定してプロフィールを更新
-     */
-    public function getFriendProfile(): ?string {
-        return $this->friendProfile;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateProfileByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): UpdateProfileByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getPublicProfile(): ?string {
+		return $this->publicProfile;
+	}
+
+	public function setPublicProfile(?string $publicProfile) {
+		$this->publicProfile = $publicProfile;
+	}
+
+	public function withPublicProfile(?string $publicProfile): UpdateProfileByUserIdRequest {
+		$this->publicProfile = $publicProfile;
+		return $this;
+	}
+
+	public function getFollowerProfile(): ?string {
+		return $this->followerProfile;
+	}
+
+	public function setFollowerProfile(?string $followerProfile) {
+		$this->followerProfile = $followerProfile;
+	}
+
+	public function withFollowerProfile(?string $followerProfile): UpdateProfileByUserIdRequest {
+		$this->followerProfile = $followerProfile;
+		return $this;
+	}
+
+	public function getFriendProfile(): ?string {
+		return $this->friendProfile;
+	}
+
+	public function setFriendProfile(?string $friendProfile) {
+		$this->friendProfile = $friendProfile;
+	}
+
+	public function withFriendProfile(?string $friendProfile): UpdateProfileByUserIdRequest {
+		$this->friendProfile = $friendProfile;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateProfileByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateProfileByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
+            ->withFollowerProfile(empty($data['followerProfile']) ? null : $data['followerProfile'])
+            ->withFriendProfile(empty($data['friendProfile']) ? null : $data['friendProfile']);
     }
 
-    /**
-     * フレンド向けに公開されるプロフィールを設定
-     *
-     * @param string $friendProfile ユーザーIDを指定してプロフィールを更新
-     */
-    public function setFriendProfile(string $friendProfile = null) {
-        $this->friendProfile = $friendProfile;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "publicProfile" => $this->getPublicProfile(),
+            "followerProfile" => $this->getFollowerProfile(),
+            "friendProfile" => $this->getFriendProfile(),
+        );
     }
-
-    /**
-     * フレンド向けに公開されるプロフィールを設定
-     *
-     * @param string $friendProfile ユーザーIDを指定してプロフィールを更新
-     * @return UpdateProfileByUserIdRequest $this
-     */
-    public function withFriendProfile(string $friendProfile = null): UpdateProfileByUserIdRequest {
-        $this->setFriendProfile($friendProfile);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザーIDを指定してプロフィールを更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してプロフィールを更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してプロフィールを更新
-     * @return UpdateProfileByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateProfileByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

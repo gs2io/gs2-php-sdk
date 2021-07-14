@@ -20,42 +20,44 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModel;
 
-/**
- * エントリーモデルの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeEntryModelsResult implements IResult {
-	/** @var EntryModel[] エントリーモデルのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * エントリーモデルのリストを取得
-	 *
-	 * @return EntryModel[]|null エントリーモデルの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * エントリーモデルのリストを設定
-	 *
-	 * @param EntryModel[]|null $items エントリーモデルの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeEntryModelsResult {
-        $result = new DescribeEntryModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return EntryModel::fromJson($v);
+	public function withItems(?array $items): DescribeEntryModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeEntryModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeEntryModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return EntryModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

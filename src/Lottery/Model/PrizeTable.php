@@ -19,172 +19,104 @@ namespace Gs2\Lottery\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 排出確率テーブル
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class PrizeTable implements IModel {
 	/**
-     * @var string 排出確率テーブルマスター
+     * @var string
 	 */
-	protected $prizeTableId;
-
+	private $prizeTableId;
 	/**
-	 * 排出確率テーブルマスターを取得
-	 *
-	 * @return string|null 排出確率テーブルマスター
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
+     * @var array
+	 */
+	private $prizes;
+
 	public function getPrizeTableId(): ?string {
 		return $this->prizeTableId;
 	}
 
-	/**
-	 * 排出確率テーブルマスターを設定
-	 *
-	 * @param string|null $prizeTableId 排出確率テーブルマスター
-	 */
 	public function setPrizeTableId(?string $prizeTableId) {
 		$this->prizeTableId = $prizeTableId;
 	}
 
-	/**
-	 * 排出確率テーブルマスターを設定
-	 *
-	 * @param string|null $prizeTableId 排出確率テーブルマスター
-	 * @return PrizeTable $this
-	 */
 	public function withPrizeTableId(?string $prizeTableId): PrizeTable {
 		$this->prizeTableId = $prizeTableId;
 		return $this;
 	}
-	/**
-     * @var string 景品テーブル名
-	 */
-	protected $name;
 
-	/**
-	 * 景品テーブル名を取得
-	 *
-	 * @return string|null 景品テーブル名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * 景品テーブル名を設定
-	 *
-	 * @param string|null $name 景品テーブル名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * 景品テーブル名を設定
-	 *
-	 * @param string|null $name 景品テーブル名
-	 * @return PrizeTable $this
-	 */
 	public function withName(?string $name): PrizeTable {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string 景品テーブルのメタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * 景品テーブルのメタデータを取得
-	 *
-	 * @return string|null 景品テーブルのメタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * 景品テーブルのメタデータを設定
-	 *
-	 * @param string|null $metadata 景品テーブルのメタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * 景品テーブルのメタデータを設定
-	 *
-	 * @param string|null $metadata 景品テーブルのメタデータ
-	 * @return PrizeTable $this
-	 */
 	public function withMetadata(?string $metadata): PrizeTable {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	/**
-     * @var Prize[] 景品リスト
-	 */
-	protected $prizes;
 
-	/**
-	 * 景品リストを取得
-	 *
-	 * @return Prize[]|null 景品リスト
-	 */
 	public function getPrizes(): ?array {
 		return $this->prizes;
 	}
 
-	/**
-	 * 景品リストを設定
-	 *
-	 * @param Prize[]|null $prizes 景品リスト
-	 */
 	public function setPrizes(?array $prizes) {
 		$this->prizes = $prizes;
 	}
 
-	/**
-	 * 景品リストを設定
-	 *
-	 * @param Prize[]|null $prizes 景品リスト
-	 * @return PrizeTable $this
-	 */
 	public function withPrizes(?array $prizes): PrizeTable {
 		$this->prizes = $prizes;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "prizeTableId" => $this->prizeTableId,
-            "name" => $this->name,
-            "metadata" => $this->metadata,
-            "prizes" => array_map(
-                function (Prize $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?PrizeTable {
+        if ($data === null) {
+            return null;
+        }
+        return (new PrizeTable())
+            ->withPrizeTableId(empty($data['prizeTableId']) ? null : $data['prizeTableId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withPrizes(array_map(
+                function ($item) {
+                    return Prize::fromJson($item);
                 },
-                $this->prizes == null ? [] : $this->prizes
-            ),
-        );
+                array_key_exists('prizes', $data) && $data['prizes'] !== null ? $data['prizes'] : []
+            ));
     }
 
-    public static function fromJson(array $data): PrizeTable {
-        $model = new PrizeTable();
-        $model->setPrizeTableId(isset($data["prizeTableId"]) ? $data["prizeTableId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        $model->setPrizes(array_map(
-                function ($v) {
-                    return Prize::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "prizeTableId" => $this->getPrizeTableId(),
+            "name" => $this->getName(),
+            "metadata" => $this->getMetadata(),
+            "prizes" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["prizes"]) ? $data["prizes"] : []
-            )
+                $this->getPrizes() !== null && $this->getPrizes() !== null ? $this->getPrizes() : []
+            ),
         );
-        return $model;
     }
 }

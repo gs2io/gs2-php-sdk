@@ -19,75 +19,51 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * アウトプットを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetOutputRequest extends Gs2BasicRequest {
-
-    /** @var string スタック名 */
+    /** @var string */
     private $stackName;
-
-    /**
-     * スタック名を取得
-     *
-     * @return string|null アウトプットを取得
-     */
-    public function getStackName(): ?string {
-        return $this->stackName;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName アウトプットを取得
-     */
-    public function setStackName(string $stackName = null) {
-        $this->stackName = $stackName;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName アウトプットを取得
-     * @return GetOutputRequest $this
-     */
-    public function withStackName(string $stackName = null): GetOutputRequest {
-        $this->setStackName($stackName);
-        return $this;
-    }
-
-    /** @var string アウトプット名 */
+    /** @var string */
     private $outputName;
 
-    /**
-     * アウトプット名を取得
-     *
-     * @return string|null アウトプットを取得
-     */
-    public function getOutputName(): ?string {
-        return $this->outputName;
+	public function getStackName(): ?string {
+		return $this->stackName;
+	}
+
+	public function setStackName(?string $stackName) {
+		$this->stackName = $stackName;
+	}
+
+	public function withStackName(?string $stackName): GetOutputRequest {
+		$this->stackName = $stackName;
+		return $this;
+	}
+
+	public function getOutputName(): ?string {
+		return $this->outputName;
+	}
+
+	public function setOutputName(?string $outputName) {
+		$this->outputName = $outputName;
+	}
+
+	public function withOutputName(?string $outputName): GetOutputRequest {
+		$this->outputName = $outputName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetOutputRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetOutputRequest())
+            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
+            ->withOutputName(empty($data['outputName']) ? null : $data['outputName']);
     }
 
-    /**
-     * アウトプット名を設定
-     *
-     * @param string $outputName アウトプットを取得
-     */
-    public function setOutputName(string $outputName = null) {
-        $this->outputName = $outputName;
+    public function toJson(): array {
+        return array(
+            "stackName" => $this->getStackName(),
+            "outputName" => $this->getOutputName(),
+        );
     }
-
-    /**
-     * アウトプット名を設定
-     *
-     * @param string $outputName アウトプットを取得
-     * @return GetOutputRequest $this
-     */
-    public function withOutputName(string $outputName = null): GetOutputRequest {
-        $this->setOutputName($outputName);
-        return $this;
-    }
-
 }

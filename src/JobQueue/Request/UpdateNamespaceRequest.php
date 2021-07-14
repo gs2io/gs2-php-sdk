@@ -21,139 +21,85 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\JobQueue\Model\NotificationSetting;
 use Gs2\JobQueue\Model\LogSetting;
 
-/**
- * ネームスペースを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): UpdateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var NotificationSetting ジョブキューにジョブが登録されたときののプッシュ通知 */
+    /** @var NotificationSetting */
     private $pushNotification;
-
-    /**
-     * ジョブキューにジョブが登録されたときののプッシュ通知を取得
-     *
-     * @return NotificationSetting|null ネームスペースを更新
-     */
-    public function getPushNotification(): ?NotificationSetting {
-        return $this->pushNotification;
-    }
-
-    /**
-     * ジョブキューにジョブが登録されたときののプッシュ通知を設定
-     *
-     * @param NotificationSetting $pushNotification ネームスペースを更新
-     */
-    public function setPushNotification(NotificationSetting $pushNotification = null) {
-        $this->pushNotification = $pushNotification;
-    }
-
-    /**
-     * ジョブキューにジョブが登録されたときののプッシュ通知を設定
-     *
-     * @param NotificationSetting $pushNotification ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withPushNotification(NotificationSetting $pushNotification = null): UpdateNamespaceRequest {
-        $this->setPushNotification($pushNotification);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを更新
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getPushNotification(): ?NotificationSetting {
+		return $this->pushNotification;
+	}
+
+	public function setPushNotification(?NotificationSetting $pushNotification) {
+		$this->pushNotification = $pushNotification;
+	}
+
+	public function withPushNotification(?NotificationSetting $pushNotification): UpdateNamespaceRequest {
+		$this->pushNotification = $pushNotification;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withPushNotification(empty($data['pushNotification']) ? null : NotificationSetting::fromJson($data['pushNotification']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "description" => $this->getDescription(),
+            "pushNotification" => $this->getPushNotification() !== null ? $this->getPushNotification()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): UpdateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

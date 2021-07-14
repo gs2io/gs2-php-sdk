@@ -20,36 +20,34 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
-/**
- * カウンターを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCounterResult implements IResult {
-	/** @var Counter カウンター */
-	private $item;
+    /** @var Counter */
+    private $item;
 
-	/**
-	 * カウンターを取得
-	 *
-	 * @return Counter|null カウンターを取得
-	 */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
-	/**
-	 * カウンターを設定
-	 *
-	 * @param Counter|null $item カウンターを取得
-	 */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCounterResult {
-        $result = new GetCounterResult();
-        $result->setItem(isset($data["item"]) ? Counter::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Counter $item): GetCounterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCounterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCounterResult())
+            ->withItem(empty($data['item']) ? null : Counter::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

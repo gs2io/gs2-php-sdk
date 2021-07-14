@@ -18,109 +18,99 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
-use Gs2\Inventory\Model\ItemSet;
 
-/**
- * アイテムをインベントリに追加 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AcquireItemSetByUserIdResult implements IResult {
-	/** @var ItemSet[] 加算後の有効期限ごとのアイテム所持数量のリスト */
-	private $items;
-	/** @var ItemModel アイテムモデル */
-	private $itemModel;
-	/** @var Inventory インベントリ */
-	private $inventory;
-	/** @var int 所持数量の上限を超えて受け取れずに GS2-Inbox に転送したアイテムの数量 */
-	private $overflowCount;
+    /** @var array */
+    private $items;
+    /** @var ItemModel */
+    private $itemModel;
+    /** @var Inventory */
+    private $inventory;
+    /** @var int */
+    private $overflowCount;
 
-	/**
-	 * 加算後の有効期限ごとのアイテム所持数量のリストを取得
-	 *
-	 * @return ItemSet[]|null アイテムをインベントリに追加
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 加算後の有効期限ごとのアイテム所持数量のリストを設定
-	 *
-	 * @param ItemSet[]|null $items アイテムをインベントリに追加
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * アイテムモデルを取得
-	 *
-	 * @return ItemModel|null アイテムをインベントリに追加
-	 */
+	public function withItems(?array $items): AcquireItemSetByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
-	/**
-	 * アイテムモデルを設定
-	 *
-	 * @param ItemModel|null $itemModel アイテムをインベントリに追加
-	 */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
-	/**
-	 * インベントリを取得
-	 *
-	 * @return Inventory|null アイテムをインベントリに追加
-	 */
+	public function withItemModel(?ItemModel $itemModel): AcquireItemSetByUserIdResult {
+		$this->itemModel = $itemModel;
+		return $this;
+	}
+
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
-	/**
-	 * インベントリを設定
-	 *
-	 * @param Inventory|null $inventory アイテムをインベントリに追加
-	 */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
-	/**
-	 * 所持数量の上限を超えて受け取れずに GS2-Inbox に転送したアイテムの数量を取得
-	 *
-	 * @return int|null アイテムをインベントリに追加
-	 */
+	public function withInventory(?Inventory $inventory): AcquireItemSetByUserIdResult {
+		$this->inventory = $inventory;
+		return $this;
+	}
+
 	public function getOverflowCount(): ?int {
 		return $this->overflowCount;
 	}
 
-	/**
-	 * 所持数量の上限を超えて受け取れずに GS2-Inbox に転送したアイテムの数量を設定
-	 *
-	 * @param int|null $overflowCount アイテムをインベントリに追加
-	 */
 	public function setOverflowCount(?int $overflowCount) {
 		$this->overflowCount = $overflowCount;
 	}
 
-    public static function fromJson(array $data): AcquireItemSetByUserIdResult {
-        $result = new AcquireItemSetByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return ItemSet::fromJson($v);
+	public function withOverflowCount(?int $overflowCount): AcquireItemSetByUserIdResult {
+		$this->overflowCount = $overflowCount;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AcquireItemSetByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AcquireItemSetByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return ItemSet::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
+            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']))
+            ->withOverflowCount(empty($data['overflowCount']) ? null : $data['overflowCount']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "itemModel" => $this->getItemModel() !== null ? $this->getItemModel()->toJson() : null,
+            "inventory" => $this->getInventory() !== null ? $this->getInventory()->toJson() : null,
+            "overflowCount" => $this->getOverflowCount(),
         );
-        $result->setItemModel(isset($data["itemModel"]) ? ItemModel::fromJson($data["itemModel"]) : null);
-        $result->setInventory(isset($data["inventory"]) ? Inventory::fromJson($data["inventory"]) : null);
-        $result->setOverflowCount(isset($data["overflowCount"]) ? $data["overflowCount"] : null);
-        return $result;
     }
 }

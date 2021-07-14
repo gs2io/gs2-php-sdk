@@ -20,36 +20,34 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
-/**
- * 経験値を加算 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class AddExperienceByUserIdResult implements IResult {
-	/** @var Status 加算後のステータス */
-	private $item;
+    /** @var Status */
+    private $item;
 
-	/**
-	 * 加算後のステータスを取得
-	 *
-	 * @return Status|null 経験値を加算
-	 */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
-	/**
-	 * 加算後のステータスを設定
-	 *
-	 * @param Status|null $item 経験値を加算
-	 */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): AddExperienceByUserIdResult {
-        $result = new AddExperienceByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Status::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Status $item): AddExperienceByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?AddExperienceByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new AddExperienceByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Status::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

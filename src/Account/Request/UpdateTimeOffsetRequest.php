@@ -19,139 +19,68 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ゲームプレイヤーアカウントの現在時刻に対する補正値を更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateTimeOffsetRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     * @return UpdateTimeOffsetRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateTimeOffsetRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string アカウントID */
+    /** @var string */
     private $userId;
-
-    /**
-     * アカウントIDを取得
-     *
-     * @return string|null ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * アカウントIDを設定
-     *
-     * @param string $userId ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * アカウントIDを設定
-     *
-     * @param string $userId ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     * @return UpdateTimeOffsetRequest $this
-     */
-    public function withUserId(string $userId = null): UpdateTimeOffsetRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int 現在時刻に対する補正値（現在時刻を起点とした秒数） */
+    /** @var int */
     private $timeOffset;
 
-    /**
-     * 現在時刻に対する補正値（現在時刻を起点とした秒数）を取得
-     *
-     * @return int|null ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     */
-    public function getTimeOffset(): ?int {
-        return $this->timeOffset;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateTimeOffsetRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): UpdateTimeOffsetRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getTimeOffset(): ?int {
+		return $this->timeOffset;
+	}
+
+	public function setTimeOffset(?int $timeOffset) {
+		$this->timeOffset = $timeOffset;
+	}
+
+	public function withTimeOffset(?int $timeOffset): UpdateTimeOffsetRequest {
+		$this->timeOffset = $timeOffset;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateTimeOffsetRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateTimeOffsetRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withTimeOffset(empty($data['timeOffset']) ? null : $data['timeOffset']);
     }
 
-    /**
-     * 現在時刻に対する補正値（現在時刻を起点とした秒数）を設定
-     *
-     * @param int $timeOffset ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     */
-    public function setTimeOffset(int $timeOffset = null) {
-        $this->timeOffset = $timeOffset;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "timeOffset" => $this->getTimeOffset(),
+        );
     }
-
-    /**
-     * 現在時刻に対する補正値（現在時刻を起点とした秒数）を設定
-     *
-     * @param int $timeOffset ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     * @return UpdateTimeOffsetRequest $this
-     */
-    public function withTimeOffset(int $timeOffset = null): UpdateTimeOffsetRequest {
-        $this->setTimeOffset($timeOffset);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ゲームプレイヤーアカウントの現在時刻に対する補正値を更新
-     * @return UpdateTimeOffsetRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateTimeOffsetRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

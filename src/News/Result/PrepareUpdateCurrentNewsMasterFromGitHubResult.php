@@ -19,36 +19,34 @@ namespace Gs2\News\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 現在有効なお知らせを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class PrepareUpdateCurrentNewsMasterFromGitHubResult implements IResult {
-	/** @var string アップロード後に結果を反映する際に使用するトークン */
-	private $uploadToken;
+    /** @var string */
+    private $uploadToken;
 
-	/**
-	 * アップロード後に結果を反映する際に使用するトークンを取得
-	 *
-	 * @return string|null 現在有効なお知らせを更新します
-	 */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
-	/**
-	 * アップロード後に結果を反映する際に使用するトークンを設定
-	 *
-	 * @param string|null $uploadToken 現在有効なお知らせを更新します
-	 */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
-    public static function fromJson(array $data): PrepareUpdateCurrentNewsMasterFromGitHubResult {
-        $result = new PrepareUpdateCurrentNewsMasterFromGitHubResult();
-        $result->setUploadToken(isset($data["uploadToken"]) ? $data["uploadToken"] : null);
-        return $result;
+	public function withUploadToken(?string $uploadToken): PrepareUpdateCurrentNewsMasterFromGitHubResult {
+		$this->uploadToken = $uploadToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PrepareUpdateCurrentNewsMasterFromGitHubResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new PrepareUpdateCurrentNewsMasterFromGitHubResult())
+            ->withUploadToken(empty($data['uploadToken']) ? null : $data['uploadToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "uploadToken" => $this->getUploadToken(),
+        );
     }
 }

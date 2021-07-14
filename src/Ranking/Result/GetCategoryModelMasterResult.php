@@ -20,36 +20,34 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\CategoryModelMaster;
 
-/**
- * カテゴリマスターを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCategoryModelMasterResult implements IResult {
-	/** @var CategoryModelMaster カテゴリマスター */
-	private $item;
+    /** @var CategoryModelMaster */
+    private $item;
 
-	/**
-	 * カテゴリマスターを取得
-	 *
-	 * @return CategoryModelMaster|null カテゴリマスターを取得
-	 */
 	public function getItem(): ?CategoryModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * カテゴリマスターを設定
-	 *
-	 * @param CategoryModelMaster|null $item カテゴリマスターを取得
-	 */
 	public function setItem(?CategoryModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCategoryModelMasterResult {
-        $result = new GetCategoryModelMasterResult();
-        $result->setItem(isset($data["item"]) ? CategoryModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CategoryModelMaster $item): GetCategoryModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCategoryModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCategoryModelMasterResult())
+            ->withItem(empty($data['item']) ? null : CategoryModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

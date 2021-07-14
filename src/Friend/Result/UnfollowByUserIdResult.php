@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FollowUser;
 
-/**
- * ユーザーIDを指定してアンフォロー のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UnfollowByUserIdResult implements IResult {
-	/** @var FollowUser アンフォローしたユーザ */
-	private $item;
+    /** @var FollowUser */
+    private $item;
 
-	/**
-	 * アンフォローしたユーザを取得
-	 *
-	 * @return FollowUser|null ユーザーIDを指定してアンフォロー
-	 */
 	public function getItem(): ?FollowUser {
 		return $this->item;
 	}
 
-	/**
-	 * アンフォローしたユーザを設定
-	 *
-	 * @param FollowUser|null $item ユーザーIDを指定してアンフォロー
-	 */
 	public function setItem(?FollowUser $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UnfollowByUserIdResult {
-        $result = new UnfollowByUserIdResult();
-        $result->setItem(isset($data["item"]) ? FollowUser::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FollowUser $item): UnfollowByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UnfollowByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UnfollowByUserIdResult())
+            ->withItem(empty($data['item']) ? null : FollowUser::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

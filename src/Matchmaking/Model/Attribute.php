@@ -19,91 +19,56 @@ namespace Gs2\Matchmaking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * プレイヤーの属性値
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Attribute implements IModel {
 	/**
-     * @var string 属性名
+     * @var string
 	 */
-	protected $name;
-
+	private $name;
 	/**
-	 * 属性名を取得
-	 *
-	 * @return string|null 属性名
+     * @var int
 	 */
+	private $value;
+
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * 属性名を設定
-	 *
-	 * @param string|null $name 属性名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * 属性名を設定
-	 *
-	 * @param string|null $name 属性名
-	 * @return Attribute $this
-	 */
 	public function withName(?string $name): Attribute {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var int 属性値
-	 */
-	protected $value;
 
-	/**
-	 * 属性値を取得
-	 *
-	 * @return int|null 属性値
-	 */
 	public function getValue(): ?int {
 		return $this->value;
 	}
 
-	/**
-	 * 属性値を設定
-	 *
-	 * @param int|null $value 属性値
-	 */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
 
-	/**
-	 * 属性値を設定
-	 *
-	 * @param int|null $value 属性値
-	 * @return Attribute $this
-	 */
 	public function withValue(?int $value): Attribute {
 		$this->value = $value;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "name" => $this->name,
-            "value" => $this->value,
-        );
+    public static function fromJson(?array $data): ?Attribute {
+        if ($data === null) {
+            return null;
+        }
+        return (new Attribute())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withValue(empty($data['value']) ? null : $data['value']);
     }
 
-    public static function fromJson(array $data): Attribute {
-        $model = new Attribute();
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setValue(isset($data["value"]) ? $data["value"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "value" => $this->getValue(),
+        );
     }
 }

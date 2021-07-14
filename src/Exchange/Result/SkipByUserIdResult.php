@@ -20,78 +20,68 @@ namespace Gs2\Exchange\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Await;
 
-/**
- * 交換待機を対価を払ってスキップ のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SkipByUserIdResult implements IResult {
-	/** @var Await 交換待機 */
-	private $item;
-	/** @var string 報酬取得処理の実行に使用するスタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
+    /** @var Await */
+    private $item;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
 
-	/**
-	 * 交換待機を取得
-	 *
-	 * @return Await|null 交換待機を対価を払ってスキップ
-	 */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
-	/**
-	 * 交換待機を設定
-	 *
-	 * @param Await|null $item 交換待機を対価を払ってスキップ
-	 */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 報酬取得処理の実行に使用するスタンプシートを取得
-	 *
-	 * @return string|null 交換待機を対価を払ってスキップ
-	 */
+	public function withItem(?Await $item): SkipByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * 報酬取得処理の実行に使用するスタンプシートを設定
-	 *
-	 * @param string|null $stampSheet 交換待機を対価を払ってスキップ
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null 交換待機を対価を払ってスキップ
-	 */
+	public function withStampSheet(?string $stampSheet): SkipByUserIdResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId 交換待機を対価を払ってスキップ
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-    public static function fromJson(array $data): SkipByUserIdResult {
-        $result = new SkipByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Await::fromJson($data["item"]) : null);
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        return $result;
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): SkipByUserIdResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SkipByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SkipByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']))
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+        );
     }
 }

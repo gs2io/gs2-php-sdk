@@ -19,203 +19,129 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 配信設定マスターを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateDistributorModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 配信設定マスターを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 配信設定マスターを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 配信設定マスターを更新
-     * @return UpdateDistributorModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateDistributorModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 配信設定名 */
+    /** @var string */
     private $distributorName;
-
-    /**
-     * 配信設定名を取得
-     *
-     * @return string|null 配信設定マスターを更新
-     */
-    public function getDistributorName(): ?string {
-        return $this->distributorName;
-    }
-
-    /**
-     * 配信設定名を設定
-     *
-     * @param string $distributorName 配信設定マスターを更新
-     */
-    public function setDistributorName(string $distributorName = null) {
-        $this->distributorName = $distributorName;
-    }
-
-    /**
-     * 配信設定名を設定
-     *
-     * @param string $distributorName 配信設定マスターを更新
-     * @return UpdateDistributorModelMasterRequest $this
-     */
-    public function withDistributorName(string $distributorName = null): UpdateDistributorModelMasterRequest {
-        $this->setDistributorName($distributorName);
-        return $this;
-    }
-
-    /** @var string 配信設定マスターの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * 配信設定マスターの説明を取得
-     *
-     * @return string|null 配信設定マスターを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 配信設定マスターの説明を設定
-     *
-     * @param string $description 配信設定マスターを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 配信設定マスターの説明を設定
-     *
-     * @param string $description 配信設定マスターを更新
-     * @return UpdateDistributorModelMasterRequest $this
-     */
-    public function withDescription(string $description = null): UpdateDistributorModelMasterRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 配信設定のメタデータ */
+    /** @var string */
     private $metadata;
-
-    /**
-     * 配信設定のメタデータを取得
-     *
-     * @return string|null 配信設定マスターを更新
-     */
-    public function getMetadata(): ?string {
-        return $this->metadata;
-    }
-
-    /**
-     * 配信設定のメタデータを設定
-     *
-     * @param string $metadata 配信設定マスターを更新
-     */
-    public function setMetadata(string $metadata = null) {
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * 配信設定のメタデータを設定
-     *
-     * @param string $metadata 配信設定マスターを更新
-     * @return UpdateDistributorModelMasterRequest $this
-     */
-    public function withMetadata(string $metadata = null): UpdateDistributorModelMasterRequest {
-        $this->setMetadata($metadata);
-        return $this;
-    }
-
-    /** @var string 所持品がキャパシティをオーバーしたときに転送するプレゼントボックスのネームスペース のGRN */
+    /** @var string */
     private $inboxNamespaceId;
-
-    /**
-     * 所持品がキャパシティをオーバーしたときに転送するプレゼントボックスのネームスペース のGRNを取得
-     *
-     * @return string|null 配信設定マスターを更新
-     */
-    public function getInboxNamespaceId(): ?string {
-        return $this->inboxNamespaceId;
-    }
-
-    /**
-     * 所持品がキャパシティをオーバーしたときに転送するプレゼントボックスのネームスペース のGRNを設定
-     *
-     * @param string $inboxNamespaceId 配信設定マスターを更新
-     */
-    public function setInboxNamespaceId(string $inboxNamespaceId = null) {
-        $this->inboxNamespaceId = $inboxNamespaceId;
-    }
-
-    /**
-     * 所持品がキャパシティをオーバーしたときに転送するプレゼントボックスのネームスペース のGRNを設定
-     *
-     * @param string $inboxNamespaceId 配信設定マスターを更新
-     * @return UpdateDistributorModelMasterRequest $this
-     */
-    public function withInboxNamespaceId(string $inboxNamespaceId = null): UpdateDistributorModelMasterRequest {
-        $this->setInboxNamespaceId($inboxNamespaceId);
-        return $this;
-    }
-
-    /** @var string[] ディストリビューターを通して処理出来る対象のリソースGRNのホワイトリスト */
+    /** @var array */
     private $whiteListTargetIds;
 
-    /**
-     * ディストリビューターを通して処理出来る対象のリソースGRNのホワイトリストを取得
-     *
-     * @return string[]|null 配信設定マスターを更新
-     */
-    public function getWhiteListTargetIds(): ?array {
-        return $this->whiteListTargetIds;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateDistributorModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDistributorName(): ?string {
+		return $this->distributorName;
+	}
+
+	public function setDistributorName(?string $distributorName) {
+		$this->distributorName = $distributorName;
+	}
+
+	public function withDistributorName(?string $distributorName): UpdateDistributorModelMasterRequest {
+		$this->distributorName = $distributorName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateDistributorModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+
+	public function withMetadata(?string $metadata): UpdateDistributorModelMasterRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getInboxNamespaceId(): ?string {
+		return $this->inboxNamespaceId;
+	}
+
+	public function setInboxNamespaceId(?string $inboxNamespaceId) {
+		$this->inboxNamespaceId = $inboxNamespaceId;
+	}
+
+	public function withInboxNamespaceId(?string $inboxNamespaceId): UpdateDistributorModelMasterRequest {
+		$this->inboxNamespaceId = $inboxNamespaceId;
+		return $this;
+	}
+
+	public function getWhiteListTargetIds(): ?array {
+		return $this->whiteListTargetIds;
+	}
+
+	public function setWhiteListTargetIds(?array $whiteListTargetIds) {
+		$this->whiteListTargetIds = $whiteListTargetIds;
+	}
+
+	public function withWhiteListTargetIds(?array $whiteListTargetIds): UpdateDistributorModelMasterRequest {
+		$this->whiteListTargetIds = $whiteListTargetIds;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateDistributorModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateDistributorModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDistributorName(empty($data['distributorName']) ? null : $data['distributorName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withInboxNamespaceId(empty($data['inboxNamespaceId']) ? null : $data['inboxNamespaceId'])
+            ->withWhiteListTargetIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('whiteListTargetIds', $data) && $data['whiteListTargetIds'] !== null ? $data['whiteListTargetIds'] : []
+            ));
     }
 
-    /**
-     * ディストリビューターを通して処理出来る対象のリソースGRNのホワイトリストを設定
-     *
-     * @param string[] $whiteListTargetIds 配信設定マスターを更新
-     */
-    public function setWhiteListTargetIds(array $whiteListTargetIds = null) {
-        $this->whiteListTargetIds = $whiteListTargetIds;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "distributorName" => $this->getDistributorName(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
+            "inboxNamespaceId" => $this->getInboxNamespaceId(),
+            "whiteListTargetIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getWhiteListTargetIds() !== null && $this->getWhiteListTargetIds() !== null ? $this->getWhiteListTargetIds() : []
+            ),
+        );
     }
-
-    /**
-     * ディストリビューターを通して処理出来る対象のリソースGRNのホワイトリストを設定
-     *
-     * @param string[] $whiteListTargetIds 配信設定マスターを更新
-     * @return UpdateDistributorModelMasterRequest $this
-     */
-    public function withWhiteListTargetIds(array $whiteListTargetIds = null): UpdateDistributorModelMasterRequest {
-        $this->setWhiteListTargetIds($whiteListTargetIds);
-        return $this;
-    }
-
 }

@@ -18,80 +18,71 @@
 namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
-/**
- * メッセージを開封 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ReadMessageResult implements IResult {
-	/** @var Message メッセージ */
-	private $item;
-	/** @var string スタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
+    /** @var Message */
+    private $item;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
 
-	/**
-	 * メッセージを取得
-	 *
-	 * @return Message|null メッセージを開封
-	 */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
-	/**
-	 * メッセージを設定
-	 *
-	 * @param Message|null $item メッセージを開封
-	 */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタンプシートを取得
-	 *
-	 * @return string|null メッセージを開封
-	 */
+	public function withItem(?Message $item): ReadMessageResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * スタンプシートを設定
-	 *
-	 * @param string|null $stampSheet メッセージを開封
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null メッセージを開封
-	 */
+	public function withStampSheet(?string $stampSheet): ReadMessageResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId メッセージを開封
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-    public static function fromJson(array $data): ReadMessageResult {
-        $result = new ReadMessageResult();
-        $result->setItem(isset($data["item"]) ? Message::fromJson($data["item"]) : null);
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        return $result;
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): ReadMessageResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ReadMessageResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ReadMessageResult())
+            ->withItem(empty($data['item']) ? null : Message::fromJson($data['item']))
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+        );
     }
 }

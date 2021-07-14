@@ -20,36 +20,34 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Room;
 
-/**
- * ルームを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateRoomResult implements IResult {
-	/** @var Room 更新したルーム */
-	private $item;
+    /** @var Room */
+    private $item;
 
-	/**
-	 * 更新したルームを取得
-	 *
-	 * @return Room|null ルームを更新
-	 */
 	public function getItem(): ?Room {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したルームを設定
-	 *
-	 * @param Room|null $item ルームを更新
-	 */
 	public function setItem(?Room $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateRoomResult {
-        $result = new UpdateRoomResult();
-        $result->setItem(isset($data["item"]) ? Room::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Room $item): UpdateRoomResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateRoomResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateRoomResult())
+            ->withItem(empty($data['item']) ? null : Room::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

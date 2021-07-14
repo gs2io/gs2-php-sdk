@@ -19,171 +19,68 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 引き継ぎ設定を削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteTakeOverByUserIdentifierRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 引き継ぎ設定を削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を削除
-     * @return DeleteTakeOverByUserIdentifierRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteTakeOverByUserIdentifierRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
-    private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 引き継ぎ設定を削除
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 引き継ぎ設定を削除
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 引き継ぎ設定を削除
-     * @return DeleteTakeOverByUserIdentifierRequest $this
-     */
-    public function withUserId(string $userId = null): DeleteTakeOverByUserIdentifierRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int スロット番号 */
+    /** @var int */
     private $type;
-
-    /**
-     * スロット番号を取得
-     *
-     * @return int|null 引き継ぎ設定を削除
-     */
-    public function getType(): ?int {
-        return $this->type;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を削除
-     */
-    public function setType(int $type = null) {
-        $this->type = $type;
-    }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を削除
-     * @return DeleteTakeOverByUserIdentifierRequest $this
-     */
-    public function withType(int $type = null): DeleteTakeOverByUserIdentifierRequest {
-        $this->setType($type);
-        return $this;
-    }
-
-    /** @var string 引き継ぎ用ユーザーID */
+    /** @var string */
     private $userIdentifier;
 
-    /**
-     * 引き継ぎ用ユーザーIDを取得
-     *
-     * @return string|null 引き継ぎ設定を削除
-     */
-    public function getUserIdentifier(): ?string {
-        return $this->userIdentifier;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteTakeOverByUserIdentifierRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getType(): ?int {
+		return $this->type;
+	}
+
+	public function setType(?int $type) {
+		$this->type = $type;
+	}
+
+	public function withType(?int $type): DeleteTakeOverByUserIdentifierRequest {
+		$this->type = $type;
+		return $this;
+	}
+
+	public function getUserIdentifier(): ?string {
+		return $this->userIdentifier;
+	}
+
+	public function setUserIdentifier(?string $userIdentifier) {
+		$this->userIdentifier = $userIdentifier;
+	}
+
+	public function withUserIdentifier(?string $userIdentifier): DeleteTakeOverByUserIdentifierRequest {
+		$this->userIdentifier = $userIdentifier;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteTakeOverByUserIdentifierRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteTakeOverByUserIdentifierRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withUserIdentifier(empty($data['userIdentifier']) ? null : $data['userIdentifier']);
     }
 
-    /**
-     * 引き継ぎ用ユーザーIDを設定
-     *
-     * @param string $userIdentifier 引き継ぎ設定を削除
-     */
-    public function setUserIdentifier(string $userIdentifier = null) {
-        $this->userIdentifier = $userIdentifier;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "type" => $this->getType(),
+            "userIdentifier" => $this->getUserIdentifier(),
+        );
     }
-
-    /**
-     * 引き継ぎ用ユーザーIDを設定
-     *
-     * @param string $userIdentifier 引き継ぎ設定を削除
-     * @return DeleteTakeOverByUserIdentifierRequest $this
-     */
-    public function withUserIdentifier(string $userIdentifier = null): DeleteTakeOverByUserIdentifierRequest {
-        $this->setUserIdentifier($userIdentifier);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 引き継ぎ設定を削除
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 引き継ぎ設定を削除
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 引き継ぎ設定を削除
-     * @return DeleteTakeOverByUserIdentifierRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteTakeOverByUserIdentifierRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

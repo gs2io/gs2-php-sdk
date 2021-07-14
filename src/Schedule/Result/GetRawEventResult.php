@@ -20,36 +20,34 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Event;
 
-/**
- * イベントを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRawEventResult implements IResult {
-	/** @var Event イベント */
-	private $item;
+    /** @var Event */
+    private $item;
 
-	/**
-	 * イベントを取得
-	 *
-	 * @return Event|null イベントを取得
-	 */
 	public function getItem(): ?Event {
 		return $this->item;
 	}
 
-	/**
-	 * イベントを設定
-	 *
-	 * @param Event|null $item イベントを取得
-	 */
 	public function setItem(?Event $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetRawEventResult {
-        $result = new GetRawEventResult();
-        $result->setItem(isset($data["item"]) ? Event::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Event $item): GetRawEventResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRawEventResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRawEventResult())
+            ->withItem(empty($data['item']) ? null : Event::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

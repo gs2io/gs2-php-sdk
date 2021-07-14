@@ -19,139 +19,68 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザーIDを指定してウォレットを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetWalletByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null ユーザーIDを指定してウォレットを取得します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してウォレットを取得します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してウォレットを取得します
-     * @return GetWalletByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetWalletByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザーIDを指定してウォレットを取得します
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してウォレットを取得します
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してウォレットを取得します
-     * @return GetWalletByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): GetWalletByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int スロット番号 */
+    /** @var int */
     private $slot;
 
-    /**
-     * スロット番号を取得
-     *
-     * @return int|null ユーザーIDを指定してウォレットを取得します
-     */
-    public function getSlot(): ?int {
-        return $this->slot;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetWalletByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): GetWalletByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getSlot(): ?int {
+		return $this->slot;
+	}
+
+	public function setSlot(?int $slot) {
+		$this->slot = $slot;
+	}
+
+	public function withSlot(?int $slot): GetWalletByUserIdRequest {
+		$this->slot = $slot;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetWalletByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetWalletByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withSlot(empty($data['slot']) ? null : $data['slot']);
     }
 
-    /**
-     * スロット番号を設定
-     *
-     * @param int $slot ユーザーIDを指定してウォレットを取得します
-     */
-    public function setSlot(int $slot = null) {
-        $this->slot = $slot;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "slot" => $this->getSlot(),
+        );
     }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $slot ユーザーIDを指定してウォレットを取得します
-     * @return GetWalletByUserIdRequest $this
-     */
-    public function withSlot(int $slot = null): GetWalletByUserIdRequest {
-        $this->setSlot($slot);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザーIDを指定してウォレットを取得します
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してウォレットを取得します
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してウォレットを取得します
-     * @return GetWalletByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetWalletByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

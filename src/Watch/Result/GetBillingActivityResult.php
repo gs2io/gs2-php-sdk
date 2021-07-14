@@ -20,36 +20,34 @@ namespace Gs2\Watch\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Watch\Model\BillingActivity;
 
-/**
- * 請求にまつわるアクティビティを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetBillingActivityResult implements IResult {
-	/** @var BillingActivity 請求にまつわるアクティビティ */
-	private $item;
+    /** @var BillingActivity */
+    private $item;
 
-	/**
-	 * 請求にまつわるアクティビティを取得
-	 *
-	 * @return BillingActivity|null 請求にまつわるアクティビティを取得
-	 */
 	public function getItem(): ?BillingActivity {
 		return $this->item;
 	}
 
-	/**
-	 * 請求にまつわるアクティビティを設定
-	 *
-	 * @param BillingActivity|null $item 請求にまつわるアクティビティを取得
-	 */
 	public function setItem(?BillingActivity $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetBillingActivityResult {
-        $result = new GetBillingActivityResult();
-        $result->setItem(isset($data["item"]) ? BillingActivity::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?BillingActivity $item): GetBillingActivityResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetBillingActivityResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetBillingActivityResult())
+            ->withItem(empty($data['item']) ? null : BillingActivity::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

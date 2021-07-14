@@ -20,36 +20,34 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\CurrentFormMaster;
 
-/**
- * 現在有効なフォーム設定を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCurrentFormMasterResult implements IResult {
-	/** @var CurrentFormMaster 現在有効なフォーム設定 */
-	private $item;
+    /** @var CurrentFormMaster */
+    private $item;
 
-	/**
-	 * 現在有効なフォーム設定を取得
-	 *
-	 * @return CurrentFormMaster|null 現在有効なフォーム設定を取得します
-	 */
 	public function getItem(): ?CurrentFormMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効なフォーム設定を設定
-	 *
-	 * @param CurrentFormMaster|null $item 現在有効なフォーム設定を取得します
-	 */
 	public function setItem(?CurrentFormMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCurrentFormMasterResult {
-        $result = new GetCurrentFormMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentFormMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentFormMaster $item): GetCurrentFormMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCurrentFormMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCurrentFormMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentFormMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

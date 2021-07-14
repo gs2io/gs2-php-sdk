@@ -19,75 +19,51 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * クエストグループを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetQuestGroupModelRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null クエストグループを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストグループを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName クエストグループを取得
-     * @return GetQuestGroupModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetQuestGroupModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string クエストグループモデル名 */
+    /** @var string */
     private $questGroupName;
 
-    /**
-     * クエストグループモデル名を取得
-     *
-     * @return string|null クエストグループを取得
-     */
-    public function getQuestGroupName(): ?string {
-        return $this->questGroupName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetQuestGroupModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getQuestGroupName(): ?string {
+		return $this->questGroupName;
+	}
+
+	public function setQuestGroupName(?string $questGroupName) {
+		$this->questGroupName = $questGroupName;
+	}
+
+	public function withQuestGroupName(?string $questGroupName): GetQuestGroupModelRequest {
+		$this->questGroupName = $questGroupName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetQuestGroupModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetQuestGroupModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName']);
     }
 
-    /**
-     * クエストグループモデル名を設定
-     *
-     * @param string $questGroupName クエストグループを取得
-     */
-    public function setQuestGroupName(string $questGroupName = null) {
-        $this->questGroupName = $questGroupName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "questGroupName" => $this->getQuestGroupName(),
+        );
     }
-
-    /**
-     * クエストグループモデル名を設定
-     *
-     * @param string $questGroupName クエストグループを取得
-     * @return GetQuestGroupModelRequest $this
-     */
-    public function withQuestGroupName(string $questGroupName = null): GetQuestGroupModelRequest {
-        $this->setQuestGroupName($questGroupName);
-        return $this;
-    }
-
 }

@@ -20,36 +20,34 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModelMaster;
 
-/**
- * 配信設定マスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateDistributorModelMasterResult implements IResult {
-	/** @var DistributorModelMaster 作成した配信設定マスター */
-	private $item;
+    /** @var DistributorModelMaster */
+    private $item;
 
-	/**
-	 * 作成した配信設定マスターを取得
-	 *
-	 * @return DistributorModelMaster|null 配信設定マスターを新規作成
-	 */
 	public function getItem(): ?DistributorModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成した配信設定マスターを設定
-	 *
-	 * @param DistributorModelMaster|null $item 配信設定マスターを新規作成
-	 */
 	public function setItem(?DistributorModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateDistributorModelMasterResult {
-        $result = new CreateDistributorModelMasterResult();
-        $result->setItem(isset($data["item"]) ? DistributorModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?DistributorModelMaster $item): CreateDistributorModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateDistributorModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateDistributorModelMasterResult())
+            ->withItem(empty($data['item']) ? null : DistributorModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

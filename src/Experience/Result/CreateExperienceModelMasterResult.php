@@ -20,36 +20,34 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\ExperienceModelMaster;
 
-/**
- * 経験値の種類マスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateExperienceModelMasterResult implements IResult {
-	/** @var ExperienceModelMaster 作成した経験値の種類マスター */
-	private $item;
+    /** @var ExperienceModelMaster */
+    private $item;
 
-	/**
-	 * 作成した経験値の種類マスターを取得
-	 *
-	 * @return ExperienceModelMaster|null 経験値の種類マスターを新規作成
-	 */
 	public function getItem(): ?ExperienceModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成した経験値の種類マスターを設定
-	 *
-	 * @param ExperienceModelMaster|null $item 経験値の種類マスターを新規作成
-	 */
 	public function setItem(?ExperienceModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateExperienceModelMasterResult {
-        $result = new CreateExperienceModelMasterResult();
-        $result->setItem(isset($data["item"]) ? ExperienceModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?ExperienceModelMaster $item): CreateExperienceModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateExperienceModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateExperienceModelMasterResult())
+            ->withItem(empty($data['item']) ? null : ExperienceModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

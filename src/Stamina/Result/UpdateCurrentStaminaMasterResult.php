@@ -20,36 +20,34 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\CurrentStaminaMaster;
 
-/**
- * 現在有効なスタミナマスターを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateCurrentStaminaMasterResult implements IResult {
-	/** @var CurrentStaminaMaster 更新した現在有効なスタミナマスター */
-	private $item;
+    /** @var CurrentStaminaMaster */
+    private $item;
 
-	/**
-	 * 更新した現在有効なスタミナマスターを取得
-	 *
-	 * @return CurrentStaminaMaster|null 現在有効なスタミナマスターを更新します
-	 */
 	public function getItem(): ?CurrentStaminaMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した現在有効なスタミナマスターを設定
-	 *
-	 * @param CurrentStaminaMaster|null $item 現在有効なスタミナマスターを更新します
-	 */
 	public function setItem(?CurrentStaminaMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateCurrentStaminaMasterResult {
-        $result = new UpdateCurrentStaminaMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentStaminaMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentStaminaMaster $item): UpdateCurrentStaminaMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateCurrentStaminaMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateCurrentStaminaMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentStaminaMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

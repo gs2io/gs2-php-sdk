@@ -19,171 +19,85 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * データオブジェクト履歴を取得する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetDataObjectHistoryRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null データオブジェクト履歴を取得する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクト履歴を取得する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクト履歴を取得する
-     * @return GetDataObjectHistoryRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetDataObjectHistoryRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string データの名前 */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $dataObjectName;
-
-    /**
-     * データの名前を取得
-     *
-     * @return string|null データオブジェクト履歴を取得する
-     */
-    public function getDataObjectName(): ?string {
-        return $this->dataObjectName;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName データオブジェクト履歴を取得する
-     */
-    public function setDataObjectName(string $dataObjectName = null) {
-        $this->dataObjectName = $dataObjectName;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName データオブジェクト履歴を取得する
-     * @return GetDataObjectHistoryRequest $this
-     */
-    public function withDataObjectName(string $dataObjectName = null): GetDataObjectHistoryRequest {
-        $this->setDataObjectName($dataObjectName);
-        return $this;
-    }
-
-    /** @var string 世代ID */
+    /** @var string */
     private $generation;
 
-    /**
-     * 世代IDを取得
-     *
-     * @return string|null データオブジェクト履歴を取得する
-     */
-    public function getGeneration(): ?string {
-        return $this->generation;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetDataObjectHistoryRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): GetDataObjectHistoryRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getDataObjectName(): ?string {
+		return $this->dataObjectName;
+	}
+
+	public function setDataObjectName(?string $dataObjectName) {
+		$this->dataObjectName = $dataObjectName;
+	}
+
+	public function withDataObjectName(?string $dataObjectName): GetDataObjectHistoryRequest {
+		$this->dataObjectName = $dataObjectName;
+		return $this;
+	}
+
+	public function getGeneration(): ?string {
+		return $this->generation;
+	}
+
+	public function setGeneration(?string $generation) {
+		$this->generation = $generation;
+	}
+
+	public function withGeneration(?string $generation): GetDataObjectHistoryRequest {
+		$this->generation = $generation;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetDataObjectHistoryRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetDataObjectHistoryRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
+            ->withGeneration(empty($data['generation']) ? null : $data['generation']);
     }
 
-    /**
-     * 世代IDを設定
-     *
-     * @param string $generation データオブジェクト履歴を取得する
-     */
-    public function setGeneration(string $generation = null) {
-        $this->generation = $generation;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "dataObjectName" => $this->getDataObjectName(),
+            "generation" => $this->getGeneration(),
+        );
     }
-
-    /**
-     * 世代IDを設定
-     *
-     * @param string $generation データオブジェクト履歴を取得する
-     * @return GetDataObjectHistoryRequest $this
-     */
-    public function withGeneration(string $generation = null): GetDataObjectHistoryRequest {
-        $this->setGeneration($generation);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null データオブジェクト履歴を取得する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider データオブジェクト履歴を取得する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider データオブジェクト履歴を取得する
-     * @return GetDataObjectHistoryRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetDataObjectHistoryRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return GetDataObjectHistoryRequest this
-     */
-    public function withAccessToken(string $accessToken): GetDataObjectHistoryRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

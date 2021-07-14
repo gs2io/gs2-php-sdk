@@ -19,331 +19,197 @@ namespace Gs2\Watch\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * チャートを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetChartRequest extends Gs2BasicRequest {
-
-    /** @var string 指標 */
+    /** @var string */
     private $metrics;
-
-    /**
-     * 指標を取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getMetrics(): ?string {
-        return $this->metrics;
-    }
-
-    /**
-     * 指標を設定
-     *
-     * @param string $metrics チャートを取得
-     */
-    public function setMetrics(string $metrics = null) {
-        $this->metrics = $metrics;
-    }
-
-    /**
-     * 指標を設定
-     *
-     * @param string $metrics チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withMetrics(string $metrics = null): GetChartRequest {
-        $this->setMetrics($metrics);
-        return $this;
-    }
-
-    /** @var string リソースのGRN */
+    /** @var string */
     private $grn;
-
-    /**
-     * リソースのGRNを取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getGrn(): ?string {
-        return $this->grn;
-    }
-
-    /**
-     * リソースのGRNを設定
-     *
-     * @param string $grn チャートを取得
-     */
-    public function setGrn(string $grn = null) {
-        $this->grn = $grn;
-    }
-
-    /**
-     * リソースのGRNを設定
-     *
-     * @param string $grn チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withGrn(string $grn = null): GetChartRequest {
-        $this->setGrn($grn);
-        return $this;
-    }
-
-    /** @var string[] クエリリスト */
+    /** @var array */
     private $queries;
-
-    /**
-     * クエリリストを取得
-     *
-     * @return string[]|null チャートを取得
-     */
-    public function getQueries(): ?array {
-        return $this->queries;
-    }
-
-    /**
-     * クエリリストを設定
-     *
-     * @param string[] $queries チャートを取得
-     */
-    public function setQueries(array $queries = null) {
-        $this->queries = $queries;
-    }
-
-    /**
-     * クエリリストを設定
-     *
-     * @param string[] $queries チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withQueries(array $queries = null): GetChartRequest {
-        $this->setQueries($queries);
-        return $this;
-    }
-
-    /** @var string グルーピング対象 */
+    /** @var string */
     private $by;
-
-    /**
-     * グルーピング対象を取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getBy(): ?string {
-        return $this->by;
-    }
-
-    /**
-     * グルーピング対象を設定
-     *
-     * @param string $by チャートを取得
-     */
-    public function setBy(string $by = null) {
-        $this->by = $by;
-    }
-
-    /**
-     * グルーピング対象を設定
-     *
-     * @param string $by チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withBy(string $by = null): GetChartRequest {
-        $this->setBy($by);
-        return $this;
-    }
-
-    /** @var string データの取得期間 */
+    /** @var string */
     private $timeframe;
-
-    /**
-     * データの取得期間を取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getTimeframe(): ?string {
-        return $this->timeframe;
-    }
-
-    /**
-     * データの取得期間を設定
-     *
-     * @param string $timeframe チャートを取得
-     */
-    public function setTimeframe(string $timeframe = null) {
-        $this->timeframe = $timeframe;
-    }
-
-    /**
-     * データの取得期間を設定
-     *
-     * @param string $timeframe チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withTimeframe(string $timeframe = null): GetChartRequest {
-        $this->setTimeframe($timeframe);
-        return $this;
-    }
-
-    /** @var string グラフのサイズ */
+    /** @var string */
     private $size;
-
-    /**
-     * グラフのサイズを取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getSize(): ?string {
-        return $this->size;
-    }
-
-    /**
-     * グラフのサイズを設定
-     *
-     * @param string $size チャートを取得
-     */
-    public function setSize(string $size = null) {
-        $this->size = $size;
-    }
-
-    /**
-     * グラフのサイズを設定
-     *
-     * @param string $size チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withSize(string $size = null): GetChartRequest {
-        $this->setSize($size);
-        return $this;
-    }
-
-    /** @var string フォーマット */
+    /** @var string */
     private $format;
-
-    /**
-     * フォーマットを取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getFormat(): ?string {
-        return $this->format;
-    }
-
-    /**
-     * フォーマットを設定
-     *
-     * @param string $format チャートを取得
-     */
-    public function setFormat(string $format = null) {
-        $this->format = $format;
-    }
-
-    /**
-     * フォーマットを設定
-     *
-     * @param string $format チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withFormat(string $format = null): GetChartRequest {
-        $this->setFormat($format);
-        return $this;
-    }
-
-    /** @var string 集計方針 */
+    /** @var string */
     private $aggregator;
-
-    /**
-     * 集計方針を取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getAggregator(): ?string {
-        return $this->aggregator;
-    }
-
-    /**
-     * 集計方針を設定
-     *
-     * @param string $aggregator チャートを取得
-     */
-    public function setAggregator(string $aggregator = null) {
-        $this->aggregator = $aggregator;
-    }
-
-    /**
-     * 集計方針を設定
-     *
-     * @param string $aggregator チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withAggregator(string $aggregator = null): GetChartRequest {
-        $this->setAggregator($aggregator);
-        return $this;
-    }
-
-    /** @var string スタイル */
+    /** @var string */
     private $style;
-
-    /**
-     * スタイルを取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getStyle(): ?string {
-        return $this->style;
-    }
-
-    /**
-     * スタイルを設定
-     *
-     * @param string $style チャートを取得
-     */
-    public function setStyle(string $style = null) {
-        $this->style = $style;
-    }
-
-    /**
-     * スタイルを設定
-     *
-     * @param string $style チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withStyle(string $style = null): GetChartRequest {
-        $this->setStyle($style);
-        return $this;
-    }
-
-    /** @var string タイトル */
+    /** @var string */
     private $title;
 
-    /**
-     * タイトルを取得
-     *
-     * @return string|null チャートを取得
-     */
-    public function getTitle(): ?string {
-        return $this->title;
+	public function getMetrics(): ?string {
+		return $this->metrics;
+	}
+
+	public function setMetrics(?string $metrics) {
+		$this->metrics = $metrics;
+	}
+
+	public function withMetrics(?string $metrics): GetChartRequest {
+		$this->metrics = $metrics;
+		return $this;
+	}
+
+	public function getGrn(): ?string {
+		return $this->grn;
+	}
+
+	public function setGrn(?string $grn) {
+		$this->grn = $grn;
+	}
+
+	public function withGrn(?string $grn): GetChartRequest {
+		$this->grn = $grn;
+		return $this;
+	}
+
+	public function getQueries(): ?array {
+		return $this->queries;
+	}
+
+	public function setQueries(?array $queries) {
+		$this->queries = $queries;
+	}
+
+	public function withQueries(?array $queries): GetChartRequest {
+		$this->queries = $queries;
+		return $this;
+	}
+
+	public function getBy(): ?string {
+		return $this->by;
+	}
+
+	public function setBy(?string $by) {
+		$this->by = $by;
+	}
+
+	public function withBy(?string $by): GetChartRequest {
+		$this->by = $by;
+		return $this;
+	}
+
+	public function getTimeframe(): ?string {
+		return $this->timeframe;
+	}
+
+	public function setTimeframe(?string $timeframe) {
+		$this->timeframe = $timeframe;
+	}
+
+	public function withTimeframe(?string $timeframe): GetChartRequest {
+		$this->timeframe = $timeframe;
+		return $this;
+	}
+
+	public function getSize(): ?string {
+		return $this->size;
+	}
+
+	public function setSize(?string $size) {
+		$this->size = $size;
+	}
+
+	public function withSize(?string $size): GetChartRequest {
+		$this->size = $size;
+		return $this;
+	}
+
+	public function getFormat(): ?string {
+		return $this->format;
+	}
+
+	public function setFormat(?string $format) {
+		$this->format = $format;
+	}
+
+	public function withFormat(?string $format): GetChartRequest {
+		$this->format = $format;
+		return $this;
+	}
+
+	public function getAggregator(): ?string {
+		return $this->aggregator;
+	}
+
+	public function setAggregator(?string $aggregator) {
+		$this->aggregator = $aggregator;
+	}
+
+	public function withAggregator(?string $aggregator): GetChartRequest {
+		$this->aggregator = $aggregator;
+		return $this;
+	}
+
+	public function getStyle(): ?string {
+		return $this->style;
+	}
+
+	public function setStyle(?string $style) {
+		$this->style = $style;
+	}
+
+	public function withStyle(?string $style): GetChartRequest {
+		$this->style = $style;
+		return $this;
+	}
+
+	public function getTitle(): ?string {
+		return $this->title;
+	}
+
+	public function setTitle(?string $title) {
+		$this->title = $title;
+	}
+
+	public function withTitle(?string $title): GetChartRequest {
+		$this->title = $title;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetChartRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetChartRequest())
+            ->withMetrics(empty($data['metrics']) ? null : $data['metrics'])
+            ->withGrn(empty($data['grn']) ? null : $data['grn'])
+            ->withQueries(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('queries', $data) && $data['queries'] !== null ? $data['queries'] : []
+            ))
+            ->withBy(empty($data['by']) ? null : $data['by'])
+            ->withTimeframe(empty($data['timeframe']) ? null : $data['timeframe'])
+            ->withSize(empty($data['size']) ? null : $data['size'])
+            ->withFormat(empty($data['format']) ? null : $data['format'])
+            ->withAggregator(empty($data['aggregator']) ? null : $data['aggregator'])
+            ->withStyle(empty($data['style']) ? null : $data['style'])
+            ->withTitle(empty($data['title']) ? null : $data['title']);
     }
 
-    /**
-     * タイトルを設定
-     *
-     * @param string $title チャートを取得
-     */
-    public function setTitle(string $title = null) {
-        $this->title = $title;
+    public function toJson(): array {
+        return array(
+            "metrics" => $this->getMetrics(),
+            "grn" => $this->getGrn(),
+            "queries" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getQueries() !== null && $this->getQueries() !== null ? $this->getQueries() : []
+            ),
+            "by" => $this->getBy(),
+            "timeframe" => $this->getTimeframe(),
+            "size" => $this->getSize(),
+            "format" => $this->getFormat(),
+            "aggregator" => $this->getAggregator(),
+            "style" => $this->getStyle(),
+            "title" => $this->getTitle(),
+        );
     }
-
-    /**
-     * タイトルを設定
-     *
-     * @param string $title チャートを取得
-     * @return GetChartRequest $this
-     */
-    public function withTitle(string $title = null): GetChartRequest {
-        $this->setTitle($title);
-        return $this;
-    }
-
 }

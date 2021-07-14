@@ -18,65 +18,64 @@
 namespace Gs2\Money\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
-/**
- * ウォレット一覧を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeWalletsResult implements IResult {
-	/** @var Wallet[] ウォレットのリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * ウォレットのリストを取得
-	 *
-	 * @return Wallet[]|null ウォレット一覧を取得します
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * ウォレットのリストを設定
-	 *
-	 * @param Wallet[]|null $items ウォレット一覧を取得します
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null ウォレット一覧を取得します
-	 */
+	public function withItems(?array $items): DescribeWalletsResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken ウォレット一覧を取得します
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeWalletsResult {
-        $result = new DescribeWalletsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Wallet::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeWalletsResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeWalletsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeWalletsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Wallet::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

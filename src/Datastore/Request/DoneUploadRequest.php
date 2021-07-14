@@ -19,139 +19,68 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * データオブジェクトのアップロード完了を報告する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DoneUploadRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null データオブジェクトのアップロード完了を報告する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクトのアップロード完了を報告する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクトのアップロード完了を報告する
-     * @return DoneUploadRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DoneUploadRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string データの名前 */
+    /** @var string */
     private $dataObjectName;
-
-    /**
-     * データの名前を取得
-     *
-     * @return string|null データオブジェクトのアップロード完了を報告する
-     */
-    public function getDataObjectName(): ?string {
-        return $this->dataObjectName;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName データオブジェクトのアップロード完了を報告する
-     */
-    public function setDataObjectName(string $dataObjectName = null) {
-        $this->dataObjectName = $dataObjectName;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName データオブジェクトのアップロード完了を報告する
-     * @return DoneUploadRequest $this
-     */
-    public function withDataObjectName(string $dataObjectName = null): DoneUploadRequest {
-        $this->setDataObjectName($dataObjectName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null データオブジェクトのアップロード完了を報告する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider データオブジェクトのアップロード完了を報告する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider データオブジェクトのアップロード完了を報告する
-     * @return DoneUploadRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DoneUploadRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
+    /** @var string */
     private $accessToken;
 
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DoneUploadRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDataObjectName(): ?string {
+		return $this->dataObjectName;
+	}
+
+	public function setDataObjectName(?string $dataObjectName) {
+		$this->dataObjectName = $dataObjectName;
+	}
+
+	public function withDataObjectName(?string $dataObjectName): DoneUploadRequest {
+		$this->dataObjectName = $dataObjectName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): DoneUploadRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DoneUploadRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DoneUploadRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
     }
 
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "dataObjectName" => $this->getDataObjectName(),
+            "accessToken" => $this->getAccessToken(),
+        );
     }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return DoneUploadRequest this
-     */
-    public function withAccessToken(string $accessToken): DoneUploadRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

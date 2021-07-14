@@ -20,203 +20,112 @@ namespace Gs2\Lottery\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Lottery\Model\Config;
 
-/**
- * ユーザIDを指定して抽選を実行 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DrawByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定して抽選を実行
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して抽選を実行
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定して抽選を実行
-     * @return DrawByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DrawByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 抽選モデルの種類名 */
+    /** @var string */
     private $lotteryName;
-
-    /**
-     * 抽選モデルの種類名を取得
-     *
-     * @return string|null ユーザIDを指定して抽選を実行
-     */
-    public function getLotteryName(): ?string {
-        return $this->lotteryName;
-    }
-
-    /**
-     * 抽選モデルの種類名を設定
-     *
-     * @param string $lotteryName ユーザIDを指定して抽選を実行
-     */
-    public function setLotteryName(string $lotteryName = null) {
-        $this->lotteryName = $lotteryName;
-    }
-
-    /**
-     * 抽選モデルの種類名を設定
-     *
-     * @param string $lotteryName ユーザIDを指定して抽選を実行
-     * @return DrawByUserIdRequest $this
-     */
-    public function withLotteryName(string $lotteryName = null): DrawByUserIdRequest {
-        $this->setLotteryName($lotteryName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定して抽選を実行
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定して抽選を実行
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定して抽選を実行
-     * @return DrawByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DrawByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int 抽選回数 */
+    /** @var int */
     private $count;
-
-    /**
-     * 抽選回数を取得
-     *
-     * @return int|null ユーザIDを指定して抽選を実行
-     */
-    public function getCount(): ?int {
-        return $this->count;
-    }
-
-    /**
-     * 抽選回数を設定
-     *
-     * @param int $count ユーザIDを指定して抽選を実行
-     */
-    public function setCount(int $count = null) {
-        $this->count = $count;
-    }
-
-    /**
-     * 抽選回数を設定
-     *
-     * @param int $count ユーザIDを指定して抽選を実行
-     * @return DrawByUserIdRequest $this
-     */
-    public function withCount(int $count = null): DrawByUserIdRequest {
-        $this->setCount($count);
-        return $this;
-    }
-
-    /** @var Config[] スタンプシートのプレースホルダの適用する設定値 */
+    /** @var array */
     private $config;
 
-    /**
-     * スタンプシートのプレースホルダの適用する設定値を取得
-     *
-     * @return Config[]|null ユーザIDを指定して抽選を実行
-     */
-    public function getConfig(): ?array {
-        return $this->config;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DrawByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getLotteryName(): ?string {
+		return $this->lotteryName;
+	}
+
+	public function setLotteryName(?string $lotteryName) {
+		$this->lotteryName = $lotteryName;
+	}
+
+	public function withLotteryName(?string $lotteryName): DrawByUserIdRequest {
+		$this->lotteryName = $lotteryName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DrawByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getCount(): ?int {
+		return $this->count;
+	}
+
+	public function setCount(?int $count) {
+		$this->count = $count;
+	}
+
+	public function withCount(?int $count): DrawByUserIdRequest {
+		$this->count = $count;
+		return $this;
+	}
+
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+
+	public function withConfig(?array $config): DrawByUserIdRequest {
+		$this->config = $config;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DrawByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DrawByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withLotteryName(empty($data['lotteryName']) ? null : $data['lotteryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withCount(empty($data['count']) ? null : $data['count'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    /**
-     * スタンプシートのプレースホルダの適用する設定値を設定
-     *
-     * @param Config[] $config ユーザIDを指定して抽選を実行
-     */
-    public function setConfig(array $config = null) {
-        $this->config = $config;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "lotteryName" => $this->getLotteryName(),
+            "userId" => $this->getUserId(),
+            "count" => $this->getCount(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
+        );
     }
-
-    /**
-     * スタンプシートのプレースホルダの適用する設定値を設定
-     *
-     * @param Config[] $config ユーザIDを指定して抽選を実行
-     * @return DrawByUserIdRequest $this
-     */
-    public function withConfig(array $config = null): DrawByUserIdRequest {
-        $this->setConfig($config);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定して抽選を実行
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して抽選を実行
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定して抽選を実行
-     * @return DrawByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DrawByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

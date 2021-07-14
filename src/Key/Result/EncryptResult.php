@@ -19,36 +19,34 @@ namespace Gs2\Key\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * データを暗号化します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class EncryptResult implements IResult {
-	/** @var string 暗号化済みデータ */
-	private $data;
+    /** @var string */
+    private $data;
 
-	/**
-	 * 暗号化済みデータを取得
-	 *
-	 * @return string|null データを暗号化します
-	 */
 	public function getData(): ?string {
 		return $this->data;
 	}
 
-	/**
-	 * 暗号化済みデータを設定
-	 *
-	 * @param string|null $data データを暗号化します
-	 */
 	public function setData(?string $data) {
 		$this->data = $data;
 	}
 
-    public static function fromJson(array $data): EncryptResult {
-        $result = new EncryptResult();
-        $result->setData(isset($data["data"]) ? $data["data"] : null);
-        return $result;
+	public function withData(?string $data): EncryptResult {
+		$this->data = $data;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?EncryptResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new EncryptResult())
+            ->withData(empty($data['data']) ? null : $data['data']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "data" => $this->getData(),
+        );
     }
 }

@@ -19,59 +19,54 @@ namespace Gs2\Enhance\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\Progress;
+use Gs2\Enhance\Model\BonusRate;
 use Gs2\Enhance\Model\RateModel;
 
-/**
- * 強化実行を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetProgressResult implements IResult {
-	/** @var Progress 強化実行 */
-	private $item;
-	/** @var RateModel 強化レートモデル */
-	private $rateModel;
+    /** @var Progress */
+    private $item;
+    /** @var RateModel */
+    private $rateModel;
 
-	/**
-	 * 強化実行を取得
-	 *
-	 * @return Progress|null 強化実行を取得
-	 */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
-	/**
-	 * 強化実行を設定
-	 *
-	 * @param Progress|null $item 強化実行を取得
-	 */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 強化レートモデルを取得
-	 *
-	 * @return RateModel|null 強化実行を取得
-	 */
+	public function withItem(?Progress $item): GetProgressResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getRateModel(): ?RateModel {
 		return $this->rateModel;
 	}
 
-	/**
-	 * 強化レートモデルを設定
-	 *
-	 * @param RateModel|null $rateModel 強化実行を取得
-	 */
 	public function setRateModel(?RateModel $rateModel) {
 		$this->rateModel = $rateModel;
 	}
 
-    public static function fromJson(array $data): GetProgressResult {
-        $result = new GetProgressResult();
-        $result->setItem(isset($data["item"]) ? Progress::fromJson($data["item"]) : null);
-        $result->setRateModel(isset($data["rateModel"]) ? RateModel::fromJson($data["rateModel"]) : null);
-        return $result;
+	public function withRateModel(?RateModel $rateModel): GetProgressResult {
+		$this->rateModel = $rateModel;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetProgressResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetProgressResult())
+            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
+            ->withRateModel(empty($data['rateModel']) ? null : RateModel::fromJson($data['rateModel']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "rateModel" => $this->getRateModel() !== null ? $this->getRateModel()->toJson() : null,
+        );
     }
 }

@@ -19,75 +19,51 @@ namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 交換レートモデルを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRateModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 交換レートモデルを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 交換レートモデルを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 交換レートモデルを取得
-     * @return GetRateModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetRateModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 交換レート名 */
+    /** @var string */
     private $rateName;
 
-    /**
-     * 交換レート名を取得
-     *
-     * @return string|null 交換レートモデルを取得
-     */
-    public function getRateName(): ?string {
-        return $this->rateName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetRateModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRateName(): ?string {
+		return $this->rateName;
+	}
+
+	public function setRateName(?string $rateName) {
+		$this->rateName = $rateName;
+	}
+
+	public function withRateName(?string $rateName): GetRateModelRequest {
+		$this->rateName = $rateName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRateModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRateModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRateName(empty($data['rateName']) ? null : $data['rateName']);
     }
 
-    /**
-     * 交換レート名を設定
-     *
-     * @param string $rateName 交換レートモデルを取得
-     */
-    public function setRateName(string $rateName = null) {
-        $this->rateName = $rateName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "rateName" => $this->getRateName(),
+        );
     }
-
-    /**
-     * 交換レート名を設定
-     *
-     * @param string $rateName 交換レートモデルを取得
-     * @return GetRateModelRequest $this
-     */
-    public function withRateName(string $rateName = null): GetRateModelRequest {
-        $this->setRateName($rateName);
-        return $this;
-    }
-
 }

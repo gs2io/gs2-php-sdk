@@ -19,267 +19,136 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してスタミナを作成・更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateStaminaByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してスタミナを作成・更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してスタミナを作成・更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してスタミナを作成・更新
-     * @return UpdateStaminaByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateStaminaByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string スタミナの種類名 */
+    /** @var string */
     private $staminaName;
-
-    /**
-     * スタミナの種類名を取得
-     *
-     * @return string|null ユーザIDを指定してスタミナを作成・更新
-     */
-    public function getStaminaName(): ?string {
-        return $this->staminaName;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName ユーザIDを指定してスタミナを作成・更新
-     */
-    public function setStaminaName(string $staminaName = null) {
-        $this->staminaName = $staminaName;
-    }
-
-    /**
-     * スタミナの種類名を設定
-     *
-     * @param string $staminaName ユーザIDを指定してスタミナを作成・更新
-     * @return UpdateStaminaByUserIdRequest $this
-     */
-    public function withStaminaName(string $staminaName = null): UpdateStaminaByUserIdRequest {
-        $this->setStaminaName($staminaName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してスタミナを作成・更新
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してスタミナを作成・更新
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してスタミナを作成・更新
-     * @return UpdateStaminaByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): UpdateStaminaByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var int 最終更新時におけるスタミナ値 */
+    /** @var int */
     private $value;
-
-    /**
-     * 最終更新時におけるスタミナ値を取得
-     *
-     * @return int|null ユーザIDを指定してスタミナを作成・更新
-     */
-    public function getValue(): ?int {
-        return $this->value;
-    }
-
-    /**
-     * 最終更新時におけるスタミナ値を設定
-     *
-     * @param int $value ユーザIDを指定してスタミナを作成・更新
-     */
-    public function setValue(int $value = null) {
-        $this->value = $value;
-    }
-
-    /**
-     * 最終更新時におけるスタミナ値を設定
-     *
-     * @param int $value ユーザIDを指定してスタミナを作成・更新
-     * @return UpdateStaminaByUserIdRequest $this
-     */
-    public function withValue(int $value = null): UpdateStaminaByUserIdRequest {
-        $this->setValue($value);
-        return $this;
-    }
-
-    /** @var int スタミナの最大値 */
+    /** @var int */
     private $maxValue;
-
-    /**
-     * スタミナの最大値を取得
-     *
-     * @return int|null ユーザIDを指定してスタミナを作成・更新
-     */
-    public function getMaxValue(): ?int {
-        return $this->maxValue;
-    }
-
-    /**
-     * スタミナの最大値を設定
-     *
-     * @param int $maxValue ユーザIDを指定してスタミナを作成・更新
-     */
-    public function setMaxValue(int $maxValue = null) {
-        $this->maxValue = $maxValue;
-    }
-
-    /**
-     * スタミナの最大値を設定
-     *
-     * @param int $maxValue ユーザIDを指定してスタミナを作成・更新
-     * @return UpdateStaminaByUserIdRequest $this
-     */
-    public function withMaxValue(int $maxValue = null): UpdateStaminaByUserIdRequest {
-        $this->setMaxValue($maxValue);
-        return $this;
-    }
-
-    /** @var int スタミナの回復間隔(分) */
+    /** @var int */
     private $recoverIntervalMinutes;
-
-    /**
-     * スタミナの回復間隔(分)を取得
-     *
-     * @return int|null ユーザIDを指定してスタミナを作成・更新
-     */
-    public function getRecoverIntervalMinutes(): ?int {
-        return $this->recoverIntervalMinutes;
-    }
-
-    /**
-     * スタミナの回復間隔(分)を設定
-     *
-     * @param int $recoverIntervalMinutes ユーザIDを指定してスタミナを作成・更新
-     */
-    public function setRecoverIntervalMinutes(int $recoverIntervalMinutes = null) {
-        $this->recoverIntervalMinutes = $recoverIntervalMinutes;
-    }
-
-    /**
-     * スタミナの回復間隔(分)を設定
-     *
-     * @param int $recoverIntervalMinutes ユーザIDを指定してスタミナを作成・更新
-     * @return UpdateStaminaByUserIdRequest $this
-     */
-    public function withRecoverIntervalMinutes(int $recoverIntervalMinutes = null): UpdateStaminaByUserIdRequest {
-        $this->setRecoverIntervalMinutes($recoverIntervalMinutes);
-        return $this;
-    }
-
-    /** @var int スタミナの回復量 */
+    /** @var int */
     private $recoverValue;
 
-    /**
-     * スタミナの回復量を取得
-     *
-     * @return int|null ユーザIDを指定してスタミナを作成・更新
-     */
-    public function getRecoverValue(): ?int {
-        return $this->recoverValue;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateStaminaByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getStaminaName(): ?string {
+		return $this->staminaName;
+	}
+
+	public function setStaminaName(?string $staminaName) {
+		$this->staminaName = $staminaName;
+	}
+
+	public function withStaminaName(?string $staminaName): UpdateStaminaByUserIdRequest {
+		$this->staminaName = $staminaName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): UpdateStaminaByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getValue(): ?int {
+		return $this->value;
+	}
+
+	public function setValue(?int $value) {
+		$this->value = $value;
+	}
+
+	public function withValue(?int $value): UpdateStaminaByUserIdRequest {
+		$this->value = $value;
+		return $this;
+	}
+
+	public function getMaxValue(): ?int {
+		return $this->maxValue;
+	}
+
+	public function setMaxValue(?int $maxValue) {
+		$this->maxValue = $maxValue;
+	}
+
+	public function withMaxValue(?int $maxValue): UpdateStaminaByUserIdRequest {
+		$this->maxValue = $maxValue;
+		return $this;
+	}
+
+	public function getRecoverIntervalMinutes(): ?int {
+		return $this->recoverIntervalMinutes;
+	}
+
+	public function setRecoverIntervalMinutes(?int $recoverIntervalMinutes) {
+		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
+	}
+
+	public function withRecoverIntervalMinutes(?int $recoverIntervalMinutes): UpdateStaminaByUserIdRequest {
+		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
+		return $this;
+	}
+
+	public function getRecoverValue(): ?int {
+		return $this->recoverValue;
+	}
+
+	public function setRecoverValue(?int $recoverValue) {
+		$this->recoverValue = $recoverValue;
+	}
+
+	public function withRecoverValue(?int $recoverValue): UpdateStaminaByUserIdRequest {
+		$this->recoverValue = $recoverValue;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateStaminaByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateStaminaByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withValue(empty($data['value']) ? null : $data['value'])
+            ->withMaxValue(empty($data['maxValue']) ? null : $data['maxValue'])
+            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) ? null : $data['recoverIntervalMinutes'])
+            ->withRecoverValue(empty($data['recoverValue']) ? null : $data['recoverValue']);
     }
 
-    /**
-     * スタミナの回復量を設定
-     *
-     * @param int $recoverValue ユーザIDを指定してスタミナを作成・更新
-     */
-    public function setRecoverValue(int $recoverValue = null) {
-        $this->recoverValue = $recoverValue;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "staminaName" => $this->getStaminaName(),
+            "userId" => $this->getUserId(),
+            "value" => $this->getValue(),
+            "maxValue" => $this->getMaxValue(),
+            "recoverIntervalMinutes" => $this->getRecoverIntervalMinutes(),
+            "recoverValue" => $this->getRecoverValue(),
+        );
     }
-
-    /**
-     * スタミナの回復量を設定
-     *
-     * @param int $recoverValue ユーザIDを指定してスタミナを作成・更新
-     * @return UpdateStaminaByUserIdRequest $this
-     */
-    public function withRecoverValue(int $recoverValue = null): UpdateStaminaByUserIdRequest {
-        $this->setRecoverValue($recoverValue);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してスタミナを作成・更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してスタミナを作成・更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してスタミナを作成・更新
-     * @return UpdateStaminaByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UpdateStaminaByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

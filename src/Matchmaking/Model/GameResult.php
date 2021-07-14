@@ -19,91 +19,56 @@ namespace Gs2\Matchmaking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 対戦結果
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class GameResult implements IModel {
 	/**
-     * @var int 順位
+     * @var int
 	 */
-	protected $rank;
-
+	private $rank;
 	/**
-	 * 順位を取得
-	 *
-	 * @return int|null 順位
+     * @var string
 	 */
+	private $userId;
+
 	public function getRank(): ?int {
 		return $this->rank;
 	}
 
-	/**
-	 * 順位を設定
-	 *
-	 * @param int|null $rank 順位
-	 */
 	public function setRank(?int $rank) {
 		$this->rank = $rank;
 	}
 
-	/**
-	 * 順位を設定
-	 *
-	 * @param int|null $rank 順位
-	 * @return GameResult $this
-	 */
 	public function withRank(?int $rank): GameResult {
 		$this->rank = $rank;
 		return $this;
 	}
-	/**
-     * @var string ユーザーID
-	 */
-	protected $userId;
 
-	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
-	 */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return GameResult $this
-	 */
 	public function withUserId(?string $userId): GameResult {
 		$this->userId = $userId;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "rank" => $this->rank,
-            "userId" => $this->userId,
-        );
+    public static function fromJson(?array $data): ?GameResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GameResult())
+            ->withRank(empty($data['rank']) ? null : $data['rank'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
-    public static function fromJson(array $data): GameResult {
-        $model = new GameResult();
-        $model->setRank(isset($data["rank"]) ? $data["rank"] : null);
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "rank" => $this->getRank(),
+            "userId" => $this->getUserId(),
+        );
     }
 }

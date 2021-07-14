@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Project\Request\CreateAccountRequest;
 use Gs2\Project\Result\CreateAccountResult;
 use Gs2\Project\Request\VerifyRequest;
@@ -1461,9 +1463,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * アカウントを新規作成<br>
-     *
-     * @param CreateAccountRequest $request リクエストパラメータ
+     * @param CreateAccountRequest $request
      * @return PromiseInterface
      */
     public function createAccountAsync(
@@ -1478,9 +1478,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * アカウントを新規作成<br>
-     *
-     * @param CreateAccountRequest $request リクエストパラメータ
+     * @param CreateAccountRequest $request
      * @return CreateAccountResult
      */
     public function createAccount (
@@ -1492,9 +1490,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GS2アカウントを有効化します<br>
-     *
-     * @param VerifyRequest $request リクエストパラメータ
+     * @param VerifyRequest $request
      * @return PromiseInterface
      */
     public function verifyAsync(
@@ -1509,9 +1505,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GS2アカウントを有効化します<br>
-     *
-     * @param VerifyRequest $request リクエストパラメータ
+     * @param VerifyRequest $request
      * @return VerifyResult
      */
     public function verify (
@@ -1523,9 +1517,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * サインインします<br>
-     *
-     * @param SignInRequest $request リクエストパラメータ
+     * @param SignInRequest $request
      * @return PromiseInterface
      */
     public function signInAsync(
@@ -1540,9 +1532,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * サインインします<br>
-     *
-     * @param SignInRequest $request リクエストパラメータ
+     * @param SignInRequest $request
      * @return SignInResult
      */
     public function signIn (
@@ -1554,9 +1544,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 指定したアカウント名のアカウントトークンを発行<br>
-     *
-     * @param IssueAccountTokenRequest $request リクエストパラメータ
+     * @param IssueAccountTokenRequest $request
      * @return PromiseInterface
      */
     public function issueAccountTokenAsync(
@@ -1571,9 +1559,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 指定したアカウント名のアカウントトークンを発行<br>
-     *
-     * @param IssueAccountTokenRequest $request リクエストパラメータ
+     * @param IssueAccountTokenRequest $request
      * @return IssueAccountTokenResult
      */
     public function issueAccountToken (
@@ -1585,9 +1571,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワード再発行トークンを取得<br>
-     *
-     * @param ForgetRequest $request リクエストパラメータ
+     * @param ForgetRequest $request
      * @return PromiseInterface
      */
     public function forgetAsync(
@@ -1602,9 +1586,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワード再発行トークンを取得<br>
-     *
-     * @param ForgetRequest $request リクエストパラメータ
+     * @param ForgetRequest $request
      * @return ForgetResult
      */
     public function forget (
@@ -1616,9 +1598,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードを再発行<br>
-     *
-     * @param IssuePasswordRequest $request リクエストパラメータ
+     * @param IssuePasswordRequest $request
      * @return PromiseInterface
      */
     public function issuePasswordAsync(
@@ -1633,9 +1613,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードを再発行<br>
-     *
-     * @param IssuePasswordRequest $request リクエストパラメータ
+     * @param IssuePasswordRequest $request
      * @return IssuePasswordResult
      */
     public function issuePassword (
@@ -1647,9 +1625,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GS2アカウントを更新します<br>
-     *
-     * @param UpdateAccountRequest $request リクエストパラメータ
+     * @param UpdateAccountRequest $request
      * @return PromiseInterface
      */
     public function updateAccountAsync(
@@ -1664,9 +1640,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GS2アカウントを更新します<br>
-     *
-     * @param UpdateAccountRequest $request リクエストパラメータ
+     * @param UpdateAccountRequest $request
      * @return UpdateAccountResult
      */
     public function updateAccount (
@@ -1678,9 +1652,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GS2アカウントを削除します<br>
-     *
-     * @param DeleteAccountRequest $request リクエストパラメータ
+     * @param DeleteAccountRequest $request
      * @return PromiseInterface
      */
     public function deleteAccountAsync(
@@ -1695,9 +1667,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * GS2アカウントを削除します<br>
-     *
-     * @param DeleteAccountRequest $request リクエストパラメータ
+     * @param DeleteAccountRequest $request
      * @return DeleteAccountResult
      */
     public function deleteAccount (
@@ -1709,9 +1679,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトの一覧を取得<br>
-     *
-     * @param DescribeProjectsRequest $request リクエストパラメータ
+     * @param DescribeProjectsRequest $request
      * @return PromiseInterface
      */
     public function describeProjectsAsync(
@@ -1726,9 +1694,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトの一覧を取得<br>
-     *
-     * @param DescribeProjectsRequest $request リクエストパラメータ
+     * @param DescribeProjectsRequest $request
      * @return DescribeProjectsResult
      */
     public function describeProjects (
@@ -1740,9 +1706,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトを新規作成<br>
-     *
-     * @param CreateProjectRequest $request リクエストパラメータ
+     * @param CreateProjectRequest $request
      * @return PromiseInterface
      */
     public function createProjectAsync(
@@ -1757,9 +1721,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトを新規作成<br>
-     *
-     * @param CreateProjectRequest $request リクエストパラメータ
+     * @param CreateProjectRequest $request
      * @return CreateProjectResult
      */
     public function createProject (
@@ -1771,9 +1733,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトを取得<br>
-     *
-     * @param GetProjectRequest $request リクエストパラメータ
+     * @param GetProjectRequest $request
      * @return PromiseInterface
      */
     public function getProjectAsync(
@@ -1788,9 +1748,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトを取得<br>
-     *
-     * @param GetProjectRequest $request リクエストパラメータ
+     * @param GetProjectRequest $request
      * @return GetProjectResult
      */
     public function getProject (
@@ -1802,9 +1760,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトトークンを発行します<br>
-     *
-     * @param GetProjectTokenRequest $request リクエストパラメータ
+     * @param GetProjectTokenRequest $request
      * @return PromiseInterface
      */
     public function getProjectTokenAsync(
@@ -1819,9 +1775,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトトークンを発行します<br>
-     *
-     * @param GetProjectTokenRequest $request リクエストパラメータ
+     * @param GetProjectTokenRequest $request
      * @return GetProjectTokenResult
      */
     public function getProjectToken (
@@ -1833,9 +1787,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトトークンを発行します<br>
-     *
-     * @param GetProjectTokenByIdentifierRequest $request リクエストパラメータ
+     * @param GetProjectTokenByIdentifierRequest $request
      * @return PromiseInterface
      */
     public function getProjectTokenByIdentifierAsync(
@@ -1850,9 +1802,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトトークンを発行します<br>
-     *
-     * @param GetProjectTokenByIdentifierRequest $request リクエストパラメータ
+     * @param GetProjectTokenByIdentifierRequest $request
      * @return GetProjectTokenByIdentifierResult
      */
     public function getProjectTokenByIdentifier (
@@ -1864,9 +1814,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトを更新<br>
-     *
-     * @param UpdateProjectRequest $request リクエストパラメータ
+     * @param UpdateProjectRequest $request
      * @return PromiseInterface
      */
     public function updateProjectAsync(
@@ -1881,9 +1829,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトを更新<br>
-     *
-     * @param UpdateProjectRequest $request リクエストパラメータ
+     * @param UpdateProjectRequest $request
      * @return UpdateProjectResult
      */
     public function updateProject (
@@ -1895,9 +1841,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトを削除<br>
-     *
-     * @param DeleteProjectRequest $request リクエストパラメータ
+     * @param DeleteProjectRequest $request
      * @return PromiseInterface
      */
     public function deleteProjectAsync(
@@ -1912,9 +1856,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトを削除<br>
-     *
-     * @param DeleteProjectRequest $request リクエストパラメータ
+     * @param DeleteProjectRequest $request
      * @return DeleteProjectResult
      */
     public function deleteProject (
@@ -1926,9 +1868,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法の一覧を取得<br>
-     *
-     * @param DescribeBillingMethodsRequest $request リクエストパラメータ
+     * @param DescribeBillingMethodsRequest $request
      * @return PromiseInterface
      */
     public function describeBillingMethodsAsync(
@@ -1943,9 +1883,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法の一覧を取得<br>
-     *
-     * @param DescribeBillingMethodsRequest $request リクエストパラメータ
+     * @param DescribeBillingMethodsRequest $request
      * @return DescribeBillingMethodsResult
      */
     public function describeBillingMethods (
@@ -1957,9 +1895,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法を新規作成<br>
-     *
-     * @param CreateBillingMethodRequest $request リクエストパラメータ
+     * @param CreateBillingMethodRequest $request
      * @return PromiseInterface
      */
     public function createBillingMethodAsync(
@@ -1974,9 +1910,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法を新規作成<br>
-     *
-     * @param CreateBillingMethodRequest $request リクエストパラメータ
+     * @param CreateBillingMethodRequest $request
      * @return CreateBillingMethodResult
      */
     public function createBillingMethod (
@@ -1988,9 +1922,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法を取得<br>
-     *
-     * @param GetBillingMethodRequest $request リクエストパラメータ
+     * @param GetBillingMethodRequest $request
      * @return PromiseInterface
      */
     public function getBillingMethodAsync(
@@ -2005,9 +1937,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法を取得<br>
-     *
-     * @param GetBillingMethodRequest $request リクエストパラメータ
+     * @param GetBillingMethodRequest $request
      * @return GetBillingMethodResult
      */
     public function getBillingMethod (
@@ -2019,9 +1949,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法を更新<br>
-     *
-     * @param UpdateBillingMethodRequest $request リクエストパラメータ
+     * @param UpdateBillingMethodRequest $request
      * @return PromiseInterface
      */
     public function updateBillingMethodAsync(
@@ -2036,9 +1964,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法を更新<br>
-     *
-     * @param UpdateBillingMethodRequest $request リクエストパラメータ
+     * @param UpdateBillingMethodRequest $request
      * @return UpdateBillingMethodResult
      */
     public function updateBillingMethod (
@@ -2050,9 +1976,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法を削除<br>
-     *
-     * @param DeleteBillingMethodRequest $request リクエストパラメータ
+     * @param DeleteBillingMethodRequest $request
      * @return PromiseInterface
      */
     public function deleteBillingMethodAsync(
@@ -2067,9 +1991,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 支払い方法を削除<br>
-     *
-     * @param DeleteBillingMethodRequest $request リクエストパラメータ
+     * @param DeleteBillingMethodRequest $request
      * @return DeleteBillingMethodResult
      */
     public function deleteBillingMethod (
@@ -2081,9 +2003,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 領収書の一覧を取得<br>
-     *
-     * @param DescribeReceiptsRequest $request リクエストパラメータ
+     * @param DescribeReceiptsRequest $request
      * @return PromiseInterface
      */
     public function describeReceiptsAsync(
@@ -2098,9 +2018,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 領収書の一覧を取得<br>
-     *
-     * @param DescribeReceiptsRequest $request リクエストパラメータ
+     * @param DescribeReceiptsRequest $request
      * @return DescribeReceiptsResult
      */
     public function describeReceipts (
@@ -2112,9 +2030,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 利用状況の一覧を取得<br>
-     *
-     * @param DescribeBillingsRequest $request リクエストパラメータ
+     * @param DescribeBillingsRequest $request
      * @return PromiseInterface
      */
     public function describeBillingsAsync(
@@ -2129,9 +2045,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 利用状況の一覧を取得<br>
-     *
-     * @param DescribeBillingsRequest $request リクエストパラメータ
+     * @param DescribeBillingsRequest $request
      * @return DescribeBillingsResult
      */
     public function describeBillings (

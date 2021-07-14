@@ -20,36 +20,34 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\SubscribeUser;
 
-/**
- * ユーザIDを指定して購読の購読を解除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UnsubscribeByUserIdResult implements IResult {
-	/** @var SubscribeUser 解除した購読対象 */
-	private $item;
+    /** @var SubscribeUser */
+    private $item;
 
-	/**
-	 * 解除した購読対象を取得
-	 *
-	 * @return SubscribeUser|null ユーザIDを指定して購読の購読を解除
-	 */
 	public function getItem(): ?SubscribeUser {
 		return $this->item;
 	}
 
-	/**
-	 * 解除した購読対象を設定
-	 *
-	 * @param SubscribeUser|null $item ユーザIDを指定して購読の購読を解除
-	 */
 	public function setItem(?SubscribeUser $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UnsubscribeByUserIdResult {
-        $result = new UnsubscribeByUserIdResult();
-        $result->setItem(isset($data["item"]) ? SubscribeUser::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?SubscribeUser $item): UnsubscribeByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UnsubscribeByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UnsubscribeByUserIdResult())
+            ->withItem(empty($data['item']) ? null : SubscribeUser::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

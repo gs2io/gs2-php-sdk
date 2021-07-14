@@ -20,36 +20,34 @@ namespace Gs2\Watch\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Watch\Model\Cumulative;
 
-/**
- * 累積値を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCumulativeResult implements IResult {
-	/** @var Cumulative 累積値 */
-	private $item;
+    /** @var Cumulative */
+    private $item;
 
-	/**
-	 * 累積値を取得
-	 *
-	 * @return Cumulative|null 累積値を取得
-	 */
 	public function getItem(): ?Cumulative {
 		return $this->item;
 	}
 
-	/**
-	 * 累積値を設定
-	 *
-	 * @param Cumulative|null $item 累積値を取得
-	 */
 	public function setItem(?Cumulative $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCumulativeResult {
-        $result = new GetCumulativeResult();
-        $result->setItem(isset($data["item"]) ? Cumulative::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Cumulative $item): GetCumulativeResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCumulativeResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCumulativeResult())
+            ->withItem(empty($data['item']) ? null : Cumulative::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

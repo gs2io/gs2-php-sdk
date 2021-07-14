@@ -20,36 +20,34 @@ namespace Gs2\Realtime\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Realtime\Model\Room;
 
-/**
- * ルームの作成依頼。 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class WantRoomResult implements IResult {
-	/** @var Room ルーム */
-	private $item;
+    /** @var Room */
+    private $item;
 
-	/**
-	 * ルームを取得
-	 *
-	 * @return Room|null ルームの作成依頼。
-	 */
 	public function getItem(): ?Room {
 		return $this->item;
 	}
 
-	/**
-	 * ルームを設定
-	 *
-	 * @param Room|null $item ルームの作成依頼。
-	 */
 	public function setItem(?Room $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): WantRoomResult {
-        $result = new WantRoomResult();
-        $result->setItem(isset($data["item"]) ? Room::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Room $item): WantRoomResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?WantRoomResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new WantRoomResult())
+            ->withItem(empty($data['item']) ? null : Room::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

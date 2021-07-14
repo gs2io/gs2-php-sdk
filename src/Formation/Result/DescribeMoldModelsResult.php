@@ -18,44 +18,48 @@
 namespace Gs2\Formation\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Formation\Model\SlotModel;
+use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
-/**
- * フォームの保存領域の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeMoldModelsResult implements IResult {
-	/** @var MoldModel[] フォームの保存領域のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * フォームの保存領域のリストを取得
-	 *
-	 * @return MoldModel[]|null フォームの保存領域の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * フォームの保存領域のリストを設定
-	 *
-	 * @param MoldModel[]|null $items フォームの保存領域の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeMoldModelsResult {
-        $result = new DescribeMoldModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return MoldModel::fromJson($v);
+	public function withItems(?array $items): DescribeMoldModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeMoldModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeMoldModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return MoldModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

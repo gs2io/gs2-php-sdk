@@ -21,203 +21,119 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Version\Model\ScriptSetting;
 use Gs2\Version\Model\LogSetting;
 
-/**
- * ネームスペースを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 説明文 */
+    /** @var string */
     private $description;
-
-    /**
-     * 説明文を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description ネームスペースを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): UpdateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string バージョンチェック通過後に改めて発行するプロジェクトトークンの権限判定に使用する ユーザ のGRN */
+    /** @var string */
     private $assumeUserId;
-
-    /**
-     * バージョンチェック通過後に改めて発行するプロジェクトトークンの権限判定に使用する ユーザ のGRNを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getAssumeUserId(): ?string {
-        return $this->assumeUserId;
-    }
-
-    /**
-     * バージョンチェック通過後に改めて発行するプロジェクトトークンの権限判定に使用する ユーザ のGRNを設定
-     *
-     * @param string $assumeUserId ネームスペースを更新
-     */
-    public function setAssumeUserId(string $assumeUserId = null) {
-        $this->assumeUserId = $assumeUserId;
-    }
-
-    /**
-     * バージョンチェック通過後に改めて発行するプロジェクトトークンの権限判定に使用する ユーザ のGRNを設定
-     *
-     * @param string $assumeUserId ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withAssumeUserId(string $assumeUserId = null): UpdateNamespaceRequest {
-        $this->setAssumeUserId($assumeUserId);
-        return $this;
-    }
-
-    /** @var ScriptSetting バージョンを承認したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $acceptVersionScript;
-
-    /**
-     * バージョンを承認したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getAcceptVersionScript(): ?ScriptSetting {
-        return $this->acceptVersionScript;
-    }
-
-    /**
-     * バージョンを承認したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $acceptVersionScript ネームスペースを更新
-     */
-    public function setAcceptVersionScript(ScriptSetting $acceptVersionScript = null) {
-        $this->acceptVersionScript = $acceptVersionScript;
-    }
-
-    /**
-     * バージョンを承認したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $acceptVersionScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withAcceptVersionScript(ScriptSetting $acceptVersionScript = null): UpdateNamespaceRequest {
-        $this->setAcceptVersionScript($acceptVersionScript);
-        return $this;
-    }
-
-    /** @var string バージョンチェック時 に実行されるスクリプト のGRN */
+    /** @var string */
     private $checkVersionTriggerScriptId;
-
-    /**
-     * バージョンチェック時 に実行されるスクリプト のGRNを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getCheckVersionTriggerScriptId(): ?string {
-        return $this->checkVersionTriggerScriptId;
-    }
-
-    /**
-     * バージョンチェック時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $checkVersionTriggerScriptId ネームスペースを更新
-     */
-    public function setCheckVersionTriggerScriptId(string $checkVersionTriggerScriptId = null) {
-        $this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
-    }
-
-    /**
-     * バージョンチェック時 に実行されるスクリプト のGRNを設定
-     *
-     * @param string $checkVersionTriggerScriptId ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withCheckVersionTriggerScriptId(string $checkVersionTriggerScriptId = null): UpdateNamespaceRequest {
-        $this->setCheckVersionTriggerScriptId($checkVersionTriggerScriptId);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを更新
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getAssumeUserId(): ?string {
+		return $this->assumeUserId;
+	}
+
+	public function setAssumeUserId(?string $assumeUserId) {
+		$this->assumeUserId = $assumeUserId;
+	}
+
+	public function withAssumeUserId(?string $assumeUserId): UpdateNamespaceRequest {
+		$this->assumeUserId = $assumeUserId;
+		return $this;
+	}
+
+	public function getAcceptVersionScript(): ?ScriptSetting {
+		return $this->acceptVersionScript;
+	}
+
+	public function setAcceptVersionScript(?ScriptSetting $acceptVersionScript) {
+		$this->acceptVersionScript = $acceptVersionScript;
+	}
+
+	public function withAcceptVersionScript(?ScriptSetting $acceptVersionScript): UpdateNamespaceRequest {
+		$this->acceptVersionScript = $acceptVersionScript;
+		return $this;
+	}
+
+	public function getCheckVersionTriggerScriptId(): ?string {
+		return $this->checkVersionTriggerScriptId;
+	}
+
+	public function setCheckVersionTriggerScriptId(?string $checkVersionTriggerScriptId) {
+		$this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
+	}
+
+	public function withCheckVersionTriggerScriptId(?string $checkVersionTriggerScriptId): UpdateNamespaceRequest {
+		$this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withAssumeUserId(empty($data['assumeUserId']) ? null : $data['assumeUserId'])
+            ->withAcceptVersionScript(empty($data['acceptVersionScript']) ? null : ScriptSetting::fromJson($data['acceptVersionScript']))
+            ->withCheckVersionTriggerScriptId(empty($data['checkVersionTriggerScriptId']) ? null : $data['checkVersionTriggerScriptId'])
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "description" => $this->getDescription(),
+            "assumeUserId" => $this->getAssumeUserId(),
+            "acceptVersionScript" => $this->getAcceptVersionScript() !== null ? $this->getAcceptVersionScript()->toJson() : null,
+            "checkVersionTriggerScriptId" => $this->getCheckVersionTriggerScriptId(),
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): UpdateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

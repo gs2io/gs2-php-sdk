@@ -20,78 +20,68 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Project;
 
-/**
- * プロジェクトトークンを発行します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetProjectTokenResult implements IResult {
-	/** @var Project サインインしたプロジェクト */
-	private $item;
-	/** @var string オーナーID */
-	private $ownerId;
-	/** @var string プロジェクトトークン */
-	private $projectToken;
+    /** @var Project */
+    private $item;
+    /** @var string */
+    private $ownerId;
+    /** @var string */
+    private $projectToken;
 
-	/**
-	 * サインインしたプロジェクトを取得
-	 *
-	 * @return Project|null プロジェクトトークンを発行します
-	 */
 	public function getItem(): ?Project {
 		return $this->item;
 	}
 
-	/**
-	 * サインインしたプロジェクトを設定
-	 *
-	 * @param Project|null $item プロジェクトトークンを発行します
-	 */
 	public function setItem(?Project $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * オーナーIDを取得
-	 *
-	 * @return string|null プロジェクトトークンを発行します
-	 */
+	public function withItem(?Project $item): GetProjectTokenResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getOwnerId(): ?string {
 		return $this->ownerId;
 	}
 
-	/**
-	 * オーナーIDを設定
-	 *
-	 * @param string|null $ownerId プロジェクトトークンを発行します
-	 */
 	public function setOwnerId(?string $ownerId) {
 		$this->ownerId = $ownerId;
 	}
 
-	/**
-	 * プロジェクトトークンを取得
-	 *
-	 * @return string|null プロジェクトトークンを発行します
-	 */
+	public function withOwnerId(?string $ownerId): GetProjectTokenResult {
+		$this->ownerId = $ownerId;
+		return $this;
+	}
+
 	public function getProjectToken(): ?string {
 		return $this->projectToken;
 	}
 
-	/**
-	 * プロジェクトトークンを設定
-	 *
-	 * @param string|null $projectToken プロジェクトトークンを発行します
-	 */
 	public function setProjectToken(?string $projectToken) {
 		$this->projectToken = $projectToken;
 	}
 
-    public static function fromJson(array $data): GetProjectTokenResult {
-        $result = new GetProjectTokenResult();
-        $result->setItem(isset($data["item"]) ? Project::fromJson($data["item"]) : null);
-        $result->setOwnerId(isset($data["ownerId"]) ? $data["ownerId"] : null);
-        $result->setProjectToken(isset($data["projectToken"]) ? $data["projectToken"] : null);
-        return $result;
+	public function withProjectToken(?string $projectToken): GetProjectTokenResult {
+		$this->projectToken = $projectToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetProjectTokenResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetProjectTokenResult())
+            ->withItem(empty($data['item']) ? null : Project::fromJson($data['item']))
+            ->withOwnerId(empty($data['ownerId']) ? null : $data['ownerId'])
+            ->withProjectToken(empty($data['projectToken']) ? null : $data['projectToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "ownerId" => $this->getOwnerId(),
+            "projectToken" => $this->getProjectToken(),
+        );
     }
 }

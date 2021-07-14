@@ -20,36 +20,34 @@ namespace Gs2\Lock\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lock\Model\Mutex;
 
-/**
- * ミューテックスを解放 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UnlockResult implements IResult {
-	/** @var Mutex ミューテックス */
-	private $item;
+    /** @var Mutex */
+    private $item;
 
-	/**
-	 * ミューテックスを取得
-	 *
-	 * @return Mutex|null ミューテックスを解放
-	 */
 	public function getItem(): ?Mutex {
 		return $this->item;
 	}
 
-	/**
-	 * ミューテックスを設定
-	 *
-	 * @param Mutex|null $item ミューテックスを解放
-	 */
 	public function setItem(?Mutex $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UnlockResult {
-        $result = new UnlockResult();
-        $result->setItem(isset($data["item"]) ? Mutex::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Mutex $item): UnlockResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UnlockResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UnlockResult())
+            ->withItem(empty($data['item']) ? null : Mutex::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -20,42 +20,44 @@ namespace Gs2\JobQueue\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 
-/**
- * スタンプシートでジョブを登録 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class PushByStampSheetResult implements IResult {
-	/** @var Job[] 追加した{model_name}の一覧 */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 追加した{model_name}の一覧を取得
-	 *
-	 * @return Job[]|null スタンプシートでジョブを登録
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 追加した{model_name}の一覧を設定
-	 *
-	 * @param Job[]|null $items スタンプシートでジョブを登録
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): PushByStampSheetResult {
-        $result = new PushByStampSheetResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Job::fromJson($v);
+	public function withItems(?array $items): PushByStampSheetResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PushByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new PushByStampSheetResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Job::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

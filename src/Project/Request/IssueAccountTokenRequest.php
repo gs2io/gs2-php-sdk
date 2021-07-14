@@ -19,43 +19,34 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 指定したアカウント名のアカウントトークンを発行 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class IssueAccountTokenRequest extends Gs2BasicRequest {
-
-    /** @var string GS2アカウントの名前 */
+    /** @var string */
     private $accountName;
 
-    /**
-     * GS2アカウントの名前を取得
-     *
-     * @return string|null 指定したアカウント名のアカウントトークンを発行
-     */
-    public function getAccountName(): ?string {
-        return $this->accountName;
+	public function getAccountName(): ?string {
+		return $this->accountName;
+	}
+
+	public function setAccountName(?string $accountName) {
+		$this->accountName = $accountName;
+	}
+
+	public function withAccountName(?string $accountName): IssueAccountTokenRequest {
+		$this->accountName = $accountName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?IssueAccountTokenRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new IssueAccountTokenRequest())
+            ->withAccountName(empty($data['accountName']) ? null : $data['accountName']);
     }
 
-    /**
-     * GS2アカウントの名前を設定
-     *
-     * @param string $accountName 指定したアカウント名のアカウントトークンを発行
-     */
-    public function setAccountName(string $accountName = null) {
-        $this->accountName = $accountName;
+    public function toJson(): array {
+        return array(
+            "accountName" => $this->getAccountName(),
+        );
     }
-
-    /**
-     * GS2アカウントの名前を設定
-     *
-     * @param string $accountName 指定したアカウント名のアカウントトークンを発行
-     * @return IssueAccountTokenRequest $this
-     */
-    public function withAccountName(string $accountName = null): IssueAccountTokenRequest {
-        $this->setAccountName($accountName);
-        return $this;
-    }
-
 }

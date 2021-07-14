@@ -20,42 +20,44 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\ItemModel;
 
-/**
- * Noneの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeItemModelsResult implements IResult {
-	/** @var ItemModel[] アイテムモデルのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * アイテムモデルのリストを取得
-	 *
-	 * @return ItemModel[]|null Noneの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * アイテムモデルのリストを設定
-	 *
-	 * @param ItemModel[]|null $items Noneの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeItemModelsResult {
-        $result = new DescribeItemModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return ItemModel::fromJson($v);
+	public function withItems(?array $items): DescribeItemModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeItemModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeItemModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return ItemModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

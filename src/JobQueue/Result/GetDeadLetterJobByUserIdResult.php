@@ -18,38 +18,37 @@
 namespace Gs2\JobQueue\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\JobQueue\Model\JobResultBody;
 use Gs2\JobQueue\Model\DeadLetterJob;
 
-/**
- * デッドレタージョブを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetDeadLetterJobByUserIdResult implements IResult {
-	/** @var DeadLetterJob デッドレタージョブ */
-	private $item;
+    /** @var DeadLetterJob */
+    private $item;
 
-	/**
-	 * デッドレタージョブを取得
-	 *
-	 * @return DeadLetterJob|null デッドレタージョブを取得
-	 */
 	public function getItem(): ?DeadLetterJob {
 		return $this->item;
 	}
 
-	/**
-	 * デッドレタージョブを設定
-	 *
-	 * @param DeadLetterJob|null $item デッドレタージョブを取得
-	 */
 	public function setItem(?DeadLetterJob $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetDeadLetterJobByUserIdResult {
-        $result = new GetDeadLetterJobByUserIdResult();
-        $result->setItem(isset($data["item"]) ? DeadLetterJob::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?DeadLetterJob $item): GetDeadLetterJobByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetDeadLetterJobByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetDeadLetterJobByUserIdResult())
+            ->withItem(empty($data['item']) ? null : DeadLetterJob::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

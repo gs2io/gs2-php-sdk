@@ -19,57 +19,51 @@ namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ミッション達成報酬を受領するためのスタンプシートを発行 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CompleteResult implements IResult {
-	/** @var string ミッションの達成報酬を受領するスタンプシート */
-	private $stampSheet;
-	/** @var string スタンプシートの署名計算に使用した暗号鍵GRN */
-	private $stampSheetEncryptionKeyId;
+    /** @var string */
+    private $stampSheet;
+    /** @var string */
+    private $stampSheetEncryptionKeyId;
 
-	/**
-	 * ミッションの達成報酬を受領するスタンプシートを取得
-	 *
-	 * @return string|null ミッション達成報酬を受領するためのスタンプシートを発行
-	 */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
-	/**
-	 * ミッションの達成報酬を受領するスタンプシートを設定
-	 *
-	 * @param string|null $stampSheet ミッション達成報酬を受領するためのスタンプシートを発行
-	 */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを取得
-	 *
-	 * @return string|null ミッション達成報酬を受領するためのスタンプシートを発行
-	 */
+	public function withStampSheet(?string $stampSheet): CompleteResult {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
-	/**
-	 * スタンプシートの署名計算に使用した暗号鍵GRNを設定
-	 *
-	 * @param string|null $stampSheetEncryptionKeyId ミッション達成報酬を受領するためのスタンプシートを発行
-	 */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
-    public static function fromJson(array $data): CompleteResult {
-        $result = new CompleteResult();
-        $result->setStampSheet(isset($data["stampSheet"]) ? $data["stampSheet"] : null);
-        $result->setStampSheetEncryptionKeyId(isset($data["stampSheetEncryptionKeyId"]) ? $data["stampSheetEncryptionKeyId"] : null);
-        return $result;
+	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): CompleteResult {
+		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CompleteResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CompleteResult())
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "stampSheet" => $this->getStampSheet(),
+            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+        );
     }
 }

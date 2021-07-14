@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Account\Request\DescribeNamespacesRequest;
 use Gs2\Account\Result\DescribeNamespacesResult;
 use Gs2\Account\Request\CreateNamespaceRequest;
@@ -631,9 +633,6 @@ class UpdateTimeOffsetTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -692,9 +691,6 @@ class GetAccountTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -752,9 +748,6 @@ class DeleteAccountTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -817,9 +810,6 @@ class AuthenticationTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -887,9 +877,6 @@ class DescribeTakeOversTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -953,9 +940,6 @@ class DescribeTakeOversByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1024,9 +1008,6 @@ class CreateTakeOverTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1092,9 +1073,6 @@ class CreateTakeOverByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1156,9 +1134,6 @@ class GetTakeOverTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1217,9 +1192,6 @@ class GetTakeOverByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1286,9 +1258,6 @@ class UpdateTakeOverTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1351,9 +1320,6 @@ class UpdateTakeOverByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1419,9 +1385,6 @@ class DeleteTakeOverTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1480,9 +1443,6 @@ class DeleteTakeOverByUserIdentifierTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1569,9 +1529,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1586,9 +1544,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1600,9 +1556,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1617,9 +1571,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1631,9 +1583,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1648,9 +1598,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1662,9 +1610,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1679,9 +1625,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1693,9 +1637,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1710,9 +1652,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1724,9 +1664,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1741,9 +1679,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1755,9 +1691,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントの一覧を取得<br>
-     *
-     * @param DescribeAccountsRequest $request リクエストパラメータ
+     * @param DescribeAccountsRequest $request
      * @return PromiseInterface
      */
     public function describeAccountsAsync(
@@ -1772,9 +1706,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントの一覧を取得<br>
-     *
-     * @param DescribeAccountsRequest $request リクエストパラメータ
+     * @param DescribeAccountsRequest $request
      * @return DescribeAccountsResult
      */
     public function describeAccounts (
@@ -1786,9 +1718,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントを新規作成<br>
-     *
-     * @param CreateAccountRequest $request リクエストパラメータ
+     * @param CreateAccountRequest $request
      * @return PromiseInterface
      */
     public function createAccountAsync(
@@ -1803,9 +1733,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントを新規作成<br>
-     *
-     * @param CreateAccountRequest $request リクエストパラメータ
+     * @param CreateAccountRequest $request
      * @return CreateAccountResult
      */
     public function createAccount (
@@ -1817,9 +1745,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントの現在時刻に対する補正値を更新<br>
-     *
-     * @param UpdateTimeOffsetRequest $request リクエストパラメータ
+     * @param UpdateTimeOffsetRequest $request
      * @return PromiseInterface
      */
     public function updateTimeOffsetAsync(
@@ -1834,9 +1760,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントの現在時刻に対する補正値を更新<br>
-     *
-     * @param UpdateTimeOffsetRequest $request リクエストパラメータ
+     * @param UpdateTimeOffsetRequest $request
      * @return UpdateTimeOffsetResult
      */
     public function updateTimeOffset (
@@ -1848,9 +1772,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントを取得<br>
-     *
-     * @param GetAccountRequest $request リクエストパラメータ
+     * @param GetAccountRequest $request
      * @return PromiseInterface
      */
     public function getAccountAsync(
@@ -1865,9 +1787,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントを取得<br>
-     *
-     * @param GetAccountRequest $request リクエストパラメータ
+     * @param GetAccountRequest $request
      * @return GetAccountResult
      */
     public function getAccount (
@@ -1879,9 +1799,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントを削除<br>
-     *
-     * @param DeleteAccountRequest $request リクエストパラメータ
+     * @param DeleteAccountRequest $request
      * @return PromiseInterface
      */
     public function deleteAccountAsync(
@@ -1896,9 +1814,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントを削除<br>
-     *
-     * @param DeleteAccountRequest $request リクエストパラメータ
+     * @param DeleteAccountRequest $request
      * @return DeleteAccountResult
      */
     public function deleteAccount (
@@ -1910,9 +1826,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントを認証<br>
-     *
-     * @param AuthenticationRequest $request リクエストパラメータ
+     * @param AuthenticationRequest $request
      * @return PromiseInterface
      */
     public function authenticationAsync(
@@ -1927,9 +1841,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ゲームプレイヤーアカウントを認証<br>
-     *
-     * @param AuthenticationRequest $request リクエストパラメータ
+     * @param AuthenticationRequest $request
      * @return AuthenticationResult
      */
     public function authentication (
@@ -1941,9 +1853,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定の一覧を取得<br>
-     *
-     * @param DescribeTakeOversRequest $request リクエストパラメータ
+     * @param DescribeTakeOversRequest $request
      * @return PromiseInterface
      */
     public function describeTakeOversAsync(
@@ -1958,9 +1868,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定の一覧を取得<br>
-     *
-     * @param DescribeTakeOversRequest $request リクエストパラメータ
+     * @param DescribeTakeOversRequest $request
      * @return DescribeTakeOversResult
      */
     public function describeTakeOvers (
@@ -1972,9 +1880,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して引き継ぎ設定の一覧を取得<br>
-     *
-     * @param DescribeTakeOversByUserIdRequest $request リクエストパラメータ
+     * @param DescribeTakeOversByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeTakeOversByUserIdAsync(
@@ -1989,9 +1895,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して引き継ぎ設定の一覧を取得<br>
-     *
-     * @param DescribeTakeOversByUserIdRequest $request リクエストパラメータ
+     * @param DescribeTakeOversByUserIdRequest $request
      * @return DescribeTakeOversByUserIdResult
      */
     public function describeTakeOversByUserId (
@@ -2003,9 +1907,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を新規作成<br>
-     *
-     * @param CreateTakeOverRequest $request リクエストパラメータ
+     * @param CreateTakeOverRequest $request
      * @return PromiseInterface
      */
     public function createTakeOverAsync(
@@ -2020,9 +1922,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を新規作成<br>
-     *
-     * @param CreateTakeOverRequest $request リクエストパラメータ
+     * @param CreateTakeOverRequest $request
      * @return CreateTakeOverResult
      */
     public function createTakeOver (
@@ -2034,9 +1934,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して引き継ぎ設定を新規作成<br>
-     *
-     * @param CreateTakeOverByUserIdRequest $request リクエストパラメータ
+     * @param CreateTakeOverByUserIdRequest $request
      * @return PromiseInterface
      */
     public function createTakeOverByUserIdAsync(
@@ -2051,9 +1949,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して引き継ぎ設定を新規作成<br>
-     *
-     * @param CreateTakeOverByUserIdRequest $request リクエストパラメータ
+     * @param CreateTakeOverByUserIdRequest $request
      * @return CreateTakeOverByUserIdResult
      */
     public function createTakeOverByUserId (
@@ -2065,9 +1961,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を取得<br>
-     *
-     * @param GetTakeOverRequest $request リクエストパラメータ
+     * @param GetTakeOverRequest $request
      * @return PromiseInterface
      */
     public function getTakeOverAsync(
@@ -2082,9 +1976,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を取得<br>
-     *
-     * @param GetTakeOverRequest $request リクエストパラメータ
+     * @param GetTakeOverRequest $request
      * @return GetTakeOverResult
      */
     public function getTakeOver (
@@ -2096,9 +1988,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して引き継ぎ設定を取得<br>
-     *
-     * @param GetTakeOverByUserIdRequest $request リクエストパラメータ
+     * @param GetTakeOverByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getTakeOverByUserIdAsync(
@@ -2113,9 +2003,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザーIDを指定して引き継ぎ設定を取得<br>
-     *
-     * @param GetTakeOverByUserIdRequest $request リクエストパラメータ
+     * @param GetTakeOverByUserIdRequest $request
      * @return GetTakeOverByUserIdResult
      */
     public function getTakeOverByUserId (
@@ -2127,9 +2015,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を更新<br>
-     *
-     * @param UpdateTakeOverRequest $request リクエストパラメータ
+     * @param UpdateTakeOverRequest $request
      * @return PromiseInterface
      */
     public function updateTakeOverAsync(
@@ -2144,9 +2030,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を更新<br>
-     *
-     * @param UpdateTakeOverRequest $request リクエストパラメータ
+     * @param UpdateTakeOverRequest $request
      * @return UpdateTakeOverResult
      */
     public function updateTakeOver (
@@ -2158,9 +2042,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を更新<br>
-     *
-     * @param UpdateTakeOverByUserIdRequest $request リクエストパラメータ
+     * @param UpdateTakeOverByUserIdRequest $request
      * @return PromiseInterface
      */
     public function updateTakeOverByUserIdAsync(
@@ -2175,9 +2057,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を更新<br>
-     *
-     * @param UpdateTakeOverByUserIdRequest $request リクエストパラメータ
+     * @param UpdateTakeOverByUserIdRequest $request
      * @return UpdateTakeOverByUserIdResult
      */
     public function updateTakeOverByUserId (
@@ -2189,9 +2069,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を削除<br>
-     *
-     * @param DeleteTakeOverRequest $request リクエストパラメータ
+     * @param DeleteTakeOverRequest $request
      * @return PromiseInterface
      */
     public function deleteTakeOverAsync(
@@ -2206,9 +2084,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を削除<br>
-     *
-     * @param DeleteTakeOverRequest $request リクエストパラメータ
+     * @param DeleteTakeOverRequest $request
      * @return DeleteTakeOverResult
      */
     public function deleteTakeOver (
@@ -2220,9 +2096,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を削除<br>
-     *
-     * @param DeleteTakeOverByUserIdentifierRequest $request リクエストパラメータ
+     * @param DeleteTakeOverByUserIdentifierRequest $request
      * @return PromiseInterface
      */
     public function deleteTakeOverByUserIdentifierAsync(
@@ -2237,9 +2111,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を削除<br>
-     *
-     * @param DeleteTakeOverByUserIdentifierRequest $request リクエストパラメータ
+     * @param DeleteTakeOverByUserIdentifierRequest $request
      * @return DeleteTakeOverByUserIdentifierResult
      */
     public function deleteTakeOverByUserIdentifier (
@@ -2251,9 +2123,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を更新<br>
-     *
-     * @param DoTakeOverRequest $request リクエストパラメータ
+     * @param DoTakeOverRequest $request
      * @return PromiseInterface
      */
     public function doTakeOverAsync(
@@ -2268,9 +2138,7 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 引き継ぎ設定を更新<br>
-     *
-     * @param DoTakeOverRequest $request リクエストパラメータ
+     * @param DoTakeOverRequest $request
      * @return DoTakeOverResult
      */
     public function doTakeOver (

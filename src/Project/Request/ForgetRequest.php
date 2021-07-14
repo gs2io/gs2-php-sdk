@@ -19,43 +19,34 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * パスワード再発行トークンを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class ForgetRequest extends Gs2BasicRequest {
-
-    /** @var string メールアドレス */
+    /** @var string */
     private $email;
 
-    /**
-     * メールアドレスを取得
-     *
-     * @return string|null パスワード再発行トークンを取得
-     */
-    public function getEmail(): ?string {
-        return $this->email;
+	public function getEmail(): ?string {
+		return $this->email;
+	}
+
+	public function setEmail(?string $email) {
+		$this->email = $email;
+	}
+
+	public function withEmail(?string $email): ForgetRequest {
+		$this->email = $email;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ForgetRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new ForgetRequest())
+            ->withEmail(empty($data['email']) ? null : $data['email']);
     }
 
-    /**
-     * メールアドレスを設定
-     *
-     * @param string $email パスワード再発行トークンを取得
-     */
-    public function setEmail(string $email = null) {
-        $this->email = $email;
+    public function toJson(): array {
+        return array(
+            "email" => $this->getEmail(),
+        );
     }
-
-    /**
-     * メールアドレスを設定
-     *
-     * @param string $email パスワード再発行トークンを取得
-     * @return ForgetRequest $this
-     */
-    public function withEmail(string $email = null): ForgetRequest {
-        $this->setEmail($email);
-        return $this;
-    }
-
 }

@@ -20,36 +20,34 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\CurrentEventMaster;
 
-/**
- * 現在有効なイベントスケジュールマスターのマスターデータをエクスポートします のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ExportMasterResult implements IResult {
-	/** @var CurrentEventMaster 現在有効なイベントスケジュールマスター */
-	private $item;
+    /** @var CurrentEventMaster */
+    private $item;
 
-	/**
-	 * 現在有効なイベントスケジュールマスターを取得
-	 *
-	 * @return CurrentEventMaster|null 現在有効なイベントスケジュールマスターのマスターデータをエクスポートします
-	 */
 	public function getItem(): ?CurrentEventMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 現在有効なイベントスケジュールマスターを設定
-	 *
-	 * @param CurrentEventMaster|null $item 現在有効なイベントスケジュールマスターのマスターデータをエクスポートします
-	 */
 	public function setItem(?CurrentEventMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): ExportMasterResult {
-        $result = new ExportMasterResult();
-        $result->setItem(isset($data["item"]) ? CurrentEventMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CurrentEventMaster $item): ExportMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ExportMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ExportMasterResult())
+            ->withItem(empty($data['item']) ? null : CurrentEventMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

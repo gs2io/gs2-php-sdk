@@ -19,203 +19,102 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 有効期限ごとのアイテム所持数量を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetItemSetRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 有効期限ごとのアイテム所持数量を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 有効期限ごとのアイテム所持数量を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 有効期限ごとのアイテム所持数量を取得
-     * @return GetItemSetRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetItemSetRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリの名前 */
+    /** @var string */
     private $inventoryName;
-
-    /**
-     * インベントリの名前を取得
-     *
-     * @return string|null 有効期限ごとのアイテム所持数量を取得
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
-    }
-
-    /**
-     * インベントリの名前を設定
-     *
-     * @param string $inventoryName 有効期限ごとのアイテム所持数量を取得
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
-    }
-
-    /**
-     * インベントリの名前を設定
-     *
-     * @param string $inventoryName 有効期限ごとのアイテム所持数量を取得
-     * @return GetItemSetRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): GetItemSetRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
-    /** @var string アイテムマスターの名前 */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $itemName;
-
-    /**
-     * アイテムマスターの名前を取得
-     *
-     * @return string|null 有効期限ごとのアイテム所持数量を取得
-     */
-    public function getItemName(): ?string {
-        return $this->itemName;
-    }
-
-    /**
-     * アイテムマスターの名前を設定
-     *
-     * @param string $itemName 有効期限ごとのアイテム所持数量を取得
-     */
-    public function setItemName(string $itemName = null) {
-        $this->itemName = $itemName;
-    }
-
-    /**
-     * アイテムマスターの名前を設定
-     *
-     * @param string $itemName 有効期限ごとのアイテム所持数量を取得
-     * @return GetItemSetRequest $this
-     */
-    public function withItemName(string $itemName = null): GetItemSetRequest {
-        $this->setItemName($itemName);
-        return $this;
-    }
-
-    /** @var string アイテムセットを識別する名前 */
+    /** @var string */
     private $itemSetName;
 
-    /**
-     * アイテムセットを識別する名前を取得
-     *
-     * @return string|null 有効期限ごとのアイテム所持数量を取得
-     */
-    public function getItemSetName(): ?string {
-        return $this->itemSetName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetItemSetRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): GetItemSetRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): GetItemSetRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getItemName(): ?string {
+		return $this->itemName;
+	}
+
+	public function setItemName(?string $itemName) {
+		$this->itemName = $itemName;
+	}
+
+	public function withItemName(?string $itemName): GetItemSetRequest {
+		$this->itemName = $itemName;
+		return $this;
+	}
+
+	public function getItemSetName(): ?string {
+		return $this->itemSetName;
+	}
+
+	public function setItemSetName(?string $itemSetName) {
+		$this->itemSetName = $itemSetName;
+	}
+
+	public function withItemSetName(?string $itemSetName): GetItemSetRequest {
+		$this->itemSetName = $itemSetName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetItemSetRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetItemSetRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
+            ->withItemSetName(empty($data['itemSetName']) ? null : $data['itemSetName']);
     }
 
-    /**
-     * アイテムセットを識別する名前を設定
-     *
-     * @param string $itemSetName 有効期限ごとのアイテム所持数量を取得
-     */
-    public function setItemSetName(string $itemSetName = null) {
-        $this->itemSetName = $itemSetName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+            "accessToken" => $this->getAccessToken(),
+            "itemName" => $this->getItemName(),
+            "itemSetName" => $this->getItemSetName(),
+        );
     }
-
-    /**
-     * アイテムセットを識別する名前を設定
-     *
-     * @param string $itemSetName 有効期限ごとのアイテム所持数量を取得
-     * @return GetItemSetRequest $this
-     */
-    public function withItemSetName(string $itemSetName = null): GetItemSetRequest {
-        $this->setItemSetName($itemSetName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 有効期限ごとのアイテム所持数量を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 有効期限ごとのアイテム所持数量を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 有効期限ごとのアイテム所持数量を取得
-     * @return GetItemSetRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetItemSetRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return GetItemSetRequest this
-     */
-    public function withAccessToken(string $accessToken): GetItemSetRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

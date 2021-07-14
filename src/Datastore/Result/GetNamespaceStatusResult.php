@@ -19,36 +19,34 @@ namespace Gs2\Datastore\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ネームスペースを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetNamespaceStatusResult implements IResult {
-	/** @var string None */
-	private $status;
+    /** @var string */
+    private $status;
 
-	/**
-	 * Noneを取得
-	 *
-	 * @return string|null ネームスペースを取得
-	 */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
 
-	/**
-	 * Noneを設定
-	 *
-	 * @param string|null $status ネームスペースを取得
-	 */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
 
-    public static function fromJson(array $data): GetNamespaceStatusResult {
-        $result = new GetNamespaceStatusResult();
-        $result->setStatus(isset($data["status"]) ? $data["status"] : null);
-        return $result;
+	public function withStatus(?string $status): GetNamespaceStatusResult {
+		$this->status = $status;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetNamespaceStatusResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetNamespaceStatusResult())
+            ->withStatus(empty($data['status']) ? null : $data['status']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "status" => $this->getStatus(),
+        );
     }
 }

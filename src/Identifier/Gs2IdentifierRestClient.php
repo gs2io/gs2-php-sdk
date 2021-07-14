@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Identifier\Request\DescribeUsersRequest;
 use Gs2\Identifier\Result\DescribeUsersResult;
 use Gs2\Identifier\Request\CreateUserRequest;
@@ -1505,9 +1507,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ユーザの一覧を取得します<br>
-     *
-     * @param DescribeUsersRequest $request リクエストパラメータ
+     * @param DescribeUsersRequest $request
      * @return PromiseInterface
      */
     public function describeUsersAsync(
@@ -1522,9 +1522,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザの一覧を取得します<br>
-     *
-     * @param DescribeUsersRequest $request リクエストパラメータ
+     * @param DescribeUsersRequest $request
      * @return DescribeUsersResult
      */
     public function describeUsers (
@@ -1536,9 +1534,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザを新規作成します<br>
-     *
-     * @param CreateUserRequest $request リクエストパラメータ
+     * @param CreateUserRequest $request
      * @return PromiseInterface
      */
     public function createUserAsync(
@@ -1553,9 +1549,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザを新規作成します<br>
-     *
-     * @param CreateUserRequest $request リクエストパラメータ
+     * @param CreateUserRequest $request
      * @return CreateUserResult
      */
     public function createUser (
@@ -1567,9 +1561,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザを更新します<br>
-     *
-     * @param UpdateUserRequest $request リクエストパラメータ
+     * @param UpdateUserRequest $request
      * @return PromiseInterface
      */
     public function updateUserAsync(
@@ -1584,9 +1576,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザを更新します<br>
-     *
-     * @param UpdateUserRequest $request リクエストパラメータ
+     * @param UpdateUserRequest $request
      * @return UpdateUserResult
      */
     public function updateUser (
@@ -1598,9 +1588,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザを取得します<br>
-     *
-     * @param GetUserRequest $request リクエストパラメータ
+     * @param GetUserRequest $request
      * @return PromiseInterface
      */
     public function getUserAsync(
@@ -1615,9 +1603,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザを取得します<br>
-     *
-     * @param GetUserRequest $request リクエストパラメータ
+     * @param GetUserRequest $request
      * @return GetUserResult
      */
     public function getUser (
@@ -1629,9 +1615,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザを削除します<br>
-     *
-     * @param DeleteUserRequest $request リクエストパラメータ
+     * @param DeleteUserRequest $request
      * @return PromiseInterface
      */
     public function deleteUserAsync(
@@ -1646,9 +1630,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザを削除します<br>
-     *
-     * @param DeleteUserRequest $request リクエストパラメータ
+     * @param DeleteUserRequest $request
      * @return DeleteUserResult
      */
     public function deleteUser (
@@ -1660,9 +1642,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーの一覧を取得します<br>
-     *
-     * @param DescribeSecurityPoliciesRequest $request リクエストパラメータ
+     * @param DescribeSecurityPoliciesRequest $request
      * @return PromiseInterface
      */
     public function describeSecurityPoliciesAsync(
@@ -1677,9 +1657,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーの一覧を取得します<br>
-     *
-     * @param DescribeSecurityPoliciesRequest $request リクエストパラメータ
+     * @param DescribeSecurityPoliciesRequest $request
      * @return DescribeSecurityPoliciesResult
      */
     public function describeSecurityPolicies (
@@ -1691,9 +1669,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * オーナーIDを指定してセキュリティポリシーの一覧を取得します<br>
-     *
-     * @param DescribeCommonSecurityPoliciesRequest $request リクエストパラメータ
+     * @param DescribeCommonSecurityPoliciesRequest $request
      * @return PromiseInterface
      */
     public function describeCommonSecurityPoliciesAsync(
@@ -1708,9 +1684,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * オーナーIDを指定してセキュリティポリシーの一覧を取得します<br>
-     *
-     * @param DescribeCommonSecurityPoliciesRequest $request リクエストパラメータ
+     * @param DescribeCommonSecurityPoliciesRequest $request
      * @return DescribeCommonSecurityPoliciesResult
      */
     public function describeCommonSecurityPolicies (
@@ -1722,9 +1696,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーを新規作成します<br>
-     *
-     * @param CreateSecurityPolicyRequest $request リクエストパラメータ
+     * @param CreateSecurityPolicyRequest $request
      * @return PromiseInterface
      */
     public function createSecurityPolicyAsync(
@@ -1739,9 +1711,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーを新規作成します<br>
-     *
-     * @param CreateSecurityPolicyRequest $request リクエストパラメータ
+     * @param CreateSecurityPolicyRequest $request
      * @return CreateSecurityPolicyResult
      */
     public function createSecurityPolicy (
@@ -1753,9 +1723,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーを更新します<br>
-     *
-     * @param UpdateSecurityPolicyRequest $request リクエストパラメータ
+     * @param UpdateSecurityPolicyRequest $request
      * @return PromiseInterface
      */
     public function updateSecurityPolicyAsync(
@@ -1770,9 +1738,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーを更新します<br>
-     *
-     * @param UpdateSecurityPolicyRequest $request リクエストパラメータ
+     * @param UpdateSecurityPolicyRequest $request
      * @return UpdateSecurityPolicyResult
      */
     public function updateSecurityPolicy (
@@ -1784,9 +1750,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーを取得します<br>
-     *
-     * @param GetSecurityPolicyRequest $request リクエストパラメータ
+     * @param GetSecurityPolicyRequest $request
      * @return PromiseInterface
      */
     public function getSecurityPolicyAsync(
@@ -1801,9 +1765,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーを取得します<br>
-     *
-     * @param GetSecurityPolicyRequest $request リクエストパラメータ
+     * @param GetSecurityPolicyRequest $request
      * @return GetSecurityPolicyResult
      */
     public function getSecurityPolicy (
@@ -1815,9 +1777,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーを削除します<br>
-     *
-     * @param DeleteSecurityPolicyRequest $request リクエストパラメータ
+     * @param DeleteSecurityPolicyRequest $request
      * @return PromiseInterface
      */
     public function deleteSecurityPolicyAsync(
@@ -1832,9 +1792,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * セキュリティポリシーを削除します<br>
-     *
-     * @param DeleteSecurityPolicyRequest $request リクエストパラメータ
+     * @param DeleteSecurityPolicyRequest $request
      * @return DeleteSecurityPolicyResult
      */
     public function deleteSecurityPolicy (
@@ -1846,9 +1804,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クレデンシャルの一覧を取得します<br>
-     *
-     * @param DescribeIdentifiersRequest $request リクエストパラメータ
+     * @param DescribeIdentifiersRequest $request
      * @return PromiseInterface
      */
     public function describeIdentifiersAsync(
@@ -1863,9 +1819,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クレデンシャルの一覧を取得します<br>
-     *
-     * @param DescribeIdentifiersRequest $request リクエストパラメータ
+     * @param DescribeIdentifiersRequest $request
      * @return DescribeIdentifiersResult
      */
     public function describeIdentifiers (
@@ -1877,9 +1831,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クレデンシャルを新規作成します<br>
-     *
-     * @param CreateIdentifierRequest $request リクエストパラメータ
+     * @param CreateIdentifierRequest $request
      * @return PromiseInterface
      */
     public function createIdentifierAsync(
@@ -1894,9 +1846,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クレデンシャルを新規作成します<br>
-     *
-     * @param CreateIdentifierRequest $request リクエストパラメータ
+     * @param CreateIdentifierRequest $request
      * @return CreateIdentifierResult
      */
     public function createIdentifier (
@@ -1908,9 +1858,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クレデンシャルを取得します<br>
-     *
-     * @param GetIdentifierRequest $request リクエストパラメータ
+     * @param GetIdentifierRequest $request
      * @return PromiseInterface
      */
     public function getIdentifierAsync(
@@ -1925,9 +1873,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クレデンシャルを取得します<br>
-     *
-     * @param GetIdentifierRequest $request リクエストパラメータ
+     * @param GetIdentifierRequest $request
      * @return GetIdentifierResult
      */
     public function getIdentifier (
@@ -1939,9 +1885,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クレデンシャルを削除します<br>
-     *
-     * @param DeleteIdentifierRequest $request リクエストパラメータ
+     * @param DeleteIdentifierRequest $request
      * @return PromiseInterface
      */
     public function deleteIdentifierAsync(
@@ -1956,9 +1900,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * クレデンシャルを削除します<br>
-     *
-     * @param DeleteIdentifierRequest $request リクエストパラメータ
+     * @param DeleteIdentifierRequest $request
      * @return DeleteIdentifierResult
      */
     public function deleteIdentifier (
@@ -1970,9 +1912,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードの一覧を取得します<br>
-     *
-     * @param DescribePasswordsRequest $request リクエストパラメータ
+     * @param DescribePasswordsRequest $request
      * @return PromiseInterface
      */
     public function describePasswordsAsync(
@@ -1987,9 +1927,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードの一覧を取得します<br>
-     *
-     * @param DescribePasswordsRequest $request リクエストパラメータ
+     * @param DescribePasswordsRequest $request
      * @return DescribePasswordsResult
      */
     public function describePasswords (
@@ -2001,9 +1939,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードを新規作成します<br>
-     *
-     * @param CreatePasswordRequest $request リクエストパラメータ
+     * @param CreatePasswordRequest $request
      * @return PromiseInterface
      */
     public function createPasswordAsync(
@@ -2018,9 +1954,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードを新規作成します<br>
-     *
-     * @param CreatePasswordRequest $request リクエストパラメータ
+     * @param CreatePasswordRequest $request
      * @return CreatePasswordResult
      */
     public function createPassword (
@@ -2032,9 +1966,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードを取得します<br>
-     *
-     * @param GetPasswordRequest $request リクエストパラメータ
+     * @param GetPasswordRequest $request
      * @return PromiseInterface
      */
     public function getPasswordAsync(
@@ -2049,9 +1981,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードを取得します<br>
-     *
-     * @param GetPasswordRequest $request リクエストパラメータ
+     * @param GetPasswordRequest $request
      * @return GetPasswordResult
      */
     public function getPassword (
@@ -2063,9 +1993,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードを削除します<br>
-     *
-     * @param DeletePasswordRequest $request リクエストパラメータ
+     * @param DeletePasswordRequest $request
      * @return PromiseInterface
      */
     public function deletePasswordAsync(
@@ -2080,9 +2008,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * パスワードを削除します<br>
-     *
-     * @param DeletePasswordRequest $request リクエストパラメータ
+     * @param DeletePasswordRequest $request
      * @return DeletePasswordResult
      */
     public function deletePassword (
@@ -2094,9 +2020,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 割り当てられたセキュリティポリシーの一覧を取得します<br>
-     *
-     * @param GetHasSecurityPolicyRequest $request リクエストパラメータ
+     * @param GetHasSecurityPolicyRequest $request
      * @return PromiseInterface
      */
     public function getHasSecurityPolicyAsync(
@@ -2111,9 +2035,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 割り当てられたセキュリティポリシーの一覧を取得します<br>
-     *
-     * @param GetHasSecurityPolicyRequest $request リクエストパラメータ
+     * @param GetHasSecurityPolicyRequest $request
      * @return GetHasSecurityPolicyResult
      */
     public function getHasSecurityPolicy (
@@ -2125,9 +2047,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます<br>
-     *
-     * @param AttachSecurityPolicyRequest $request リクエストパラメータ
+     * @param AttachSecurityPolicyRequest $request
      * @return PromiseInterface
      */
     public function attachSecurityPolicyAsync(
@@ -2142,9 +2062,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 割り当てられたセキュリティポリシーを新しくユーザーに割り当てます<br>
-     *
-     * @param AttachSecurityPolicyRequest $request リクエストパラメータ
+     * @param AttachSecurityPolicyRequest $request
      * @return AttachSecurityPolicyResult
      */
     public function attachSecurityPolicy (
@@ -2156,9 +2074,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 割り当てられたセキュリティポリシーをユーザーから外します<br>
-     *
-     * @param DetachSecurityPolicyRequest $request リクエストパラメータ
+     * @param DetachSecurityPolicyRequest $request
      * @return PromiseInterface
      */
     public function detachSecurityPolicyAsync(
@@ -2173,9 +2089,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 割り当てられたセキュリティポリシーをユーザーから外します<br>
-     *
-     * @param DetachSecurityPolicyRequest $request リクエストパラメータ
+     * @param DetachSecurityPolicyRequest $request
      * @return DetachSecurityPolicyResult
      */
     public function detachSecurityPolicy (
@@ -2187,9 +2101,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトトークン を取得します<br>
-     *
-     * @param LoginRequest $request リクエストパラメータ
+     * @param LoginRequest $request
      * @return PromiseInterface
      */
     public function loginAsync(
@@ -2204,9 +2116,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトトークン を取得します<br>
-     *
-     * @param LoginRequest $request リクエストパラメータ
+     * @param LoginRequest $request
      * @return LoginResult
      */
     public function login (
@@ -2218,9 +2128,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトトークン を取得します<br>
-     *
-     * @param LoginByUserRequest $request リクエストパラメータ
+     * @param LoginByUserRequest $request
      * @return PromiseInterface
      */
     public function loginByUserAsync(
@@ -2235,9 +2143,7 @@ class Gs2IdentifierRestClient extends AbstractGs2Client {
     }
 
     /**
-     * プロジェクトトークン を取得します<br>
-     *
-     * @param LoginByUserRequest $request リクエストパラメータ
+     * @param LoginByUserRequest $request
      * @return LoginByUserResult
      */
     public function loginByUser (

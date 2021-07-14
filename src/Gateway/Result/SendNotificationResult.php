@@ -19,36 +19,34 @@ namespace Gs2\Gateway\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 通知を送信 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SendNotificationResult implements IResult {
-	/** @var string 通知に使用したプロトコル */
-	private $protocol;
+    /** @var string */
+    private $protocol;
 
-	/**
-	 * 通知に使用したプロトコルを取得
-	 *
-	 * @return string|null 通知を送信
-	 */
 	public function getProtocol(): ?string {
 		return $this->protocol;
 	}
 
-	/**
-	 * 通知に使用したプロトコルを設定
-	 *
-	 * @param string|null $protocol 通知を送信
-	 */
 	public function setProtocol(?string $protocol) {
 		$this->protocol = $protocol;
 	}
 
-    public static function fromJson(array $data): SendNotificationResult {
-        $result = new SendNotificationResult();
-        $result->setProtocol(isset($data["protocol"]) ? $data["protocol"] : null);
-        return $result;
+	public function withProtocol(?string $protocol): SendNotificationResult {
+		$this->protocol = $protocol;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SendNotificationResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SendNotificationResult())
+            ->withProtocol(empty($data['protocol']) ? null : $data['protocol']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "protocol" => $this->getProtocol(),
+        );
     }
 }

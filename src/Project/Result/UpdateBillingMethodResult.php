@@ -20,36 +20,34 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\BillingMethod;
 
-/**
- * 支払い方法を更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateBillingMethodResult implements IResult {
-	/** @var BillingMethod 更新した支払い方法 */
-	private $item;
+    /** @var BillingMethod */
+    private $item;
 
-	/**
-	 * 更新した支払い方法を取得
-	 *
-	 * @return BillingMethod|null 支払い方法を更新
-	 */
 	public function getItem(): ?BillingMethod {
 		return $this->item;
 	}
 
-	/**
-	 * 更新した支払い方法を設定
-	 *
-	 * @param BillingMethod|null $item 支払い方法を更新
-	 */
 	public function setItem(?BillingMethod $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateBillingMethodResult {
-        $result = new UpdateBillingMethodResult();
-        $result->setItem(isset($data["item"]) ? BillingMethod::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?BillingMethod $item): UpdateBillingMethodResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateBillingMethodResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateBillingMethodResult())
+            ->withItem(empty($data['item']) ? null : BillingMethod::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

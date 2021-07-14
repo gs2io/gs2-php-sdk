@@ -19,161 +19,94 @@ namespace Gs2\Deploy\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * アウトプット
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Output implements IModel {
 	/**
-     * @var string アウトプット
+     * @var string
 	 */
-	protected $outputId;
-
+	private $outputId;
 	/**
-	 * アウトプットを取得
-	 *
-	 * @return string|null アウトプット
+     * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
+	private $value;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+
 	public function getOutputId(): ?string {
 		return $this->outputId;
 	}
 
-	/**
-	 * アウトプットを設定
-	 *
-	 * @param string|null $outputId アウトプット
-	 */
 	public function setOutputId(?string $outputId) {
 		$this->outputId = $outputId;
 	}
 
-	/**
-	 * アウトプットを設定
-	 *
-	 * @param string|null $outputId アウトプット
-	 * @return Output $this
-	 */
 	public function withOutputId(?string $outputId): Output {
 		$this->outputId = $outputId;
 		return $this;
 	}
-	/**
-     * @var string アウトプット名
-	 */
-	protected $name;
 
-	/**
-	 * アウトプット名を取得
-	 *
-	 * @return string|null アウトプット名
-	 */
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * アウトプット名を設定
-	 *
-	 * @param string|null $name アウトプット名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * アウトプット名を設定
-	 *
-	 * @param string|null $name アウトプット名
-	 * @return Output $this
-	 */
 	public function withName(?string $name): Output {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string 値
-	 */
-	protected $value;
 
-	/**
-	 * 値を取得
-	 *
-	 * @return string|null 値
-	 */
 	public function getValue(): ?string {
 		return $this->value;
 	}
 
-	/**
-	 * 値を設定
-	 *
-	 * @param string|null $value 値
-	 */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
 
-	/**
-	 * 値を設定
-	 *
-	 * @param string|null $value 値
-	 * @return Output $this
-	 */
 	public function withValue(?string $value): Output {
 		$this->value = $value;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return Output $this
-	 */
 	public function withCreatedAt(?int $createdAt): Output {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "outputId" => $this->outputId,
-            "name" => $this->name,
-            "value" => $this->value,
-            "createdAt" => $this->createdAt,
-        );
+    public static function fromJson(?array $data): ?Output {
+        if ($data === null) {
+            return null;
+        }
+        return (new Output())
+            ->withOutputId(empty($data['outputId']) ? null : $data['outputId'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withValue(empty($data['value']) ? null : $data['value'])
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
     }
 
-    public static function fromJson(array $data): Output {
-        $model = new Output();
-        $model->setOutputId(isset($data["outputId"]) ? $data["outputId"] : null);
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setValue(isset($data["value"]) ? $data["value"] : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "outputId" => $this->getOutputId(),
+            "name" => $this->getName(),
+            "value" => $this->getValue(),
+            "createdAt" => $this->getCreatedAt(),
+        );
     }
 }

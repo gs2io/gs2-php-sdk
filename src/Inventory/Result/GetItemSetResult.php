@@ -18,88 +18,82 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
-use Gs2\Inventory\Model\ItemSet;
 
-/**
- * 有効期限ごとのアイテム所持数量を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetItemSetResult implements IResult {
-	/** @var ItemSet[] 有効期限毎の{model_name} */
-	private $items;
-	/** @var ItemModel アイテムモデル */
-	private $itemModel;
-	/** @var Inventory インベントリ */
-	private $inventory;
+    /** @var array */
+    private $items;
+    /** @var ItemModel */
+    private $itemModel;
+    /** @var Inventory */
+    private $inventory;
 
-	/**
-	 * 有効期限毎の{model_name}を取得
-	 *
-	 * @return ItemSet[]|null 有効期限ごとのアイテム所持数量を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 有効期限毎の{model_name}を設定
-	 *
-	 * @param ItemSet[]|null $items 有効期限ごとのアイテム所持数量を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * アイテムモデルを取得
-	 *
-	 * @return ItemModel|null 有効期限ごとのアイテム所持数量を取得
-	 */
+	public function withItems(?array $items): GetItemSetResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
-	/**
-	 * アイテムモデルを設定
-	 *
-	 * @param ItemModel|null $itemModel 有効期限ごとのアイテム所持数量を取得
-	 */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
-	/**
-	 * インベントリを取得
-	 *
-	 * @return Inventory|null 有効期限ごとのアイテム所持数量を取得
-	 */
+	public function withItemModel(?ItemModel $itemModel): GetItemSetResult {
+		$this->itemModel = $itemModel;
+		return $this;
+	}
+
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
-	/**
-	 * インベントリを設定
-	 *
-	 * @param Inventory|null $inventory 有効期限ごとのアイテム所持数量を取得
-	 */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
-    public static function fromJson(array $data): GetItemSetResult {
-        $result = new GetItemSetResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return ItemSet::fromJson($v);
+	public function withInventory(?Inventory $inventory): GetItemSetResult {
+		$this->inventory = $inventory;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetItemSetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetItemSetResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return ItemSet::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
+            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "itemModel" => $this->getItemModel() !== null ? $this->getItemModel()->toJson() : null,
+            "inventory" => $this->getInventory() !== null ? $this->getInventory()->toJson() : null,
         );
-        $result->setItemModel(isset($data["itemModel"]) ? ItemModel::fromJson($data["itemModel"]) : null);
-        $result->setInventory(isset($data["inventory"]) ? Inventory::fromJson($data["inventory"]) : null);
-        return $result;
     }
 }

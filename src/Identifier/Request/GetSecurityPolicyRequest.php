@@ -19,43 +19,34 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * セキュリティポリシーを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetSecurityPolicyRequest extends Gs2BasicRequest {
-
-    /** @var string セキュリティポリシー名 */
+    /** @var string */
     private $securityPolicyName;
 
-    /**
-     * セキュリティポリシー名を取得
-     *
-     * @return string|null セキュリティポリシーを取得します
-     */
-    public function getSecurityPolicyName(): ?string {
-        return $this->securityPolicyName;
+	public function getSecurityPolicyName(): ?string {
+		return $this->securityPolicyName;
+	}
+
+	public function setSecurityPolicyName(?string $securityPolicyName) {
+		$this->securityPolicyName = $securityPolicyName;
+	}
+
+	public function withSecurityPolicyName(?string $securityPolicyName): GetSecurityPolicyRequest {
+		$this->securityPolicyName = $securityPolicyName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetSecurityPolicyRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetSecurityPolicyRequest())
+            ->withSecurityPolicyName(empty($data['securityPolicyName']) ? null : $data['securityPolicyName']);
     }
 
-    /**
-     * セキュリティポリシー名を設定
-     *
-     * @param string $securityPolicyName セキュリティポリシーを取得します
-     */
-    public function setSecurityPolicyName(string $securityPolicyName = null) {
-        $this->securityPolicyName = $securityPolicyName;
+    public function toJson(): array {
+        return array(
+            "securityPolicyName" => $this->getSecurityPolicyName(),
+        );
     }
-
-    /**
-     * セキュリティポリシー名を設定
-     *
-     * @param string $securityPolicyName セキュリティポリシーを取得します
-     * @return GetSecurityPolicyRequest $this
-     */
-    public function withSecurityPolicyName(string $securityPolicyName = null): GetSecurityPolicyRequest {
-        $this->setSecurityPolicyName($securityPolicyName);
-        return $this;
-    }
-
 }

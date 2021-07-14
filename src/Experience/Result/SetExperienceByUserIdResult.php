@@ -20,36 +20,34 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
-/**
- * 累計獲得経験値を設定 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetExperienceByUserIdResult implements IResult {
-	/** @var Status 更新後のステータス */
-	private $item;
+    /** @var Status */
+    private $item;
 
-	/**
-	 * 更新後のステータスを取得
-	 *
-	 * @return Status|null 累計獲得経験値を設定
-	 */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
-	/**
-	 * 更新後のステータスを設定
-	 *
-	 * @param Status|null $item 累計獲得経験値を設定
-	 */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): SetExperienceByUserIdResult {
-        $result = new SetExperienceByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Status::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Status $item): SetExperienceByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetExperienceByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetExperienceByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Status::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

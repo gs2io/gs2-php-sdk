@@ -20,107 +20,68 @@ namespace Gs2\Deploy\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Deploy\Model\GitHubCheckoutSetting;
 
-/**
- * スタックを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateStackFromGitHubRequest extends Gs2BasicRequest {
-
-    /** @var string スタック名 */
+    /** @var string */
     private $name;
-
-    /**
-     * スタック名を取得
-     *
-     * @return string|null スタックを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $name スタックを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $name スタックを新規作成
-     * @return CreateStackFromGitHubRequest $this
-     */
-    public function withName(string $name = null): CreateStackFromGitHubRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string スタックの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * スタックの説明を取得
-     *
-     * @return string|null スタックを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * スタックの説明を設定
-     *
-     * @param string $description スタックを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * スタックの説明を設定
-     *
-     * @param string $description スタックを新規作成
-     * @return CreateStackFromGitHubRequest $this
-     */
-    public function withDescription(string $description = null): CreateStackFromGitHubRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var GitHubCheckoutSetting GitHubからソースコードをチェックアウトしてくる設定 */
+    /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
 
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を取得
-     *
-     * @return GitHubCheckoutSetting|null スタックを新規作成
-     */
-    public function getCheckoutSetting(): ?GitHubCheckoutSetting {
-        return $this->checkoutSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateStackFromGitHubRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateStackFromGitHubRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
+		return $this->checkoutSetting;
+	}
+
+	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
+		$this->checkoutSetting = $checkoutSetting;
+	}
+
+	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): CreateStackFromGitHubRequest {
+		$this->checkoutSetting = $checkoutSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateStackFromGitHubRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateStackFromGitHubRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withCheckoutSetting(empty($data['checkoutSetting']) ? null : GitHubCheckoutSetting::fromJson($data['checkoutSetting']));
     }
 
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を設定
-     *
-     * @param GitHubCheckoutSetting $checkoutSetting スタックを新規作成
-     */
-    public function setCheckoutSetting(GitHubCheckoutSetting $checkoutSetting = null) {
-        $this->checkoutSetting = $checkoutSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "checkoutSetting" => $this->getCheckoutSetting() !== null ? $this->getCheckoutSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * GitHubからソースコードをチェックアウトしてくる設定を設定
-     *
-     * @param GitHubCheckoutSetting $checkoutSetting スタックを新規作成
-     * @return CreateStackFromGitHubRequest $this
-     */
-    public function withCheckoutSetting(GitHubCheckoutSetting $checkoutSetting = null): CreateStackFromGitHubRequest {
-        $this->setCheckoutSetting($checkoutSetting);
-        return $this;
-    }
-
 }

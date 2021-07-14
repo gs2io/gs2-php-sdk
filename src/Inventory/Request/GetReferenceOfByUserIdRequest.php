@@ -19,235 +19,119 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 参照元を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetReferenceOfByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 参照元を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 参照元を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 参照元を取得
-     * @return GetReferenceOfByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetReferenceOfByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリの名前 */
+    /** @var string */
     private $inventoryName;
-
-    /**
-     * インベントリの名前を取得
-     *
-     * @return string|null 参照元を取得
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
-    }
-
-    /**
-     * インベントリの名前を設定
-     *
-     * @param string $inventoryName 参照元を取得
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
-    }
-
-    /**
-     * インベントリの名前を設定
-     *
-     * @param string $inventoryName 参照元を取得
-     * @return GetReferenceOfByUserIdRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): GetReferenceOfByUserIdRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 参照元を取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 参照元を取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 参照元を取得
-     * @return GetReferenceOfByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): GetReferenceOfByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string アイテムマスターの名前 */
+    /** @var string */
     private $itemName;
-
-    /**
-     * アイテムマスターの名前を取得
-     *
-     * @return string|null 参照元を取得
-     */
-    public function getItemName(): ?string {
-        return $this->itemName;
-    }
-
-    /**
-     * アイテムマスターの名前を設定
-     *
-     * @param string $itemName 参照元を取得
-     */
-    public function setItemName(string $itemName = null) {
-        $this->itemName = $itemName;
-    }
-
-    /**
-     * アイテムマスターの名前を設定
-     *
-     * @param string $itemName 参照元を取得
-     * @return GetReferenceOfByUserIdRequest $this
-     */
-    public function withItemName(string $itemName = null): GetReferenceOfByUserIdRequest {
-        $this->setItemName($itemName);
-        return $this;
-    }
-
-    /** @var string アイテムセットを識別する名前 */
+    /** @var string */
     private $itemSetName;
-
-    /**
-     * アイテムセットを識別する名前を取得
-     *
-     * @return string|null 参照元を取得
-     */
-    public function getItemSetName(): ?string {
-        return $this->itemSetName;
-    }
-
-    /**
-     * アイテムセットを識別する名前を設定
-     *
-     * @param string $itemSetName 参照元を取得
-     */
-    public function setItemSetName(string $itemSetName = null) {
-        $this->itemSetName = $itemSetName;
-    }
-
-    /**
-     * アイテムセットを識別する名前を設定
-     *
-     * @param string $itemSetName 参照元を取得
-     * @return GetReferenceOfByUserIdRequest $this
-     */
-    public function withItemSetName(string $itemSetName = null): GetReferenceOfByUserIdRequest {
-        $this->setItemSetName($itemSetName);
-        return $this;
-    }
-
-    /** @var string この所持品の参照元 */
+    /** @var string */
     private $referenceOf;
 
-    /**
-     * この所持品の参照元を取得
-     *
-     * @return string|null 参照元を取得
-     */
-    public function getReferenceOf(): ?string {
-        return $this->referenceOf;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetReferenceOfByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): GetReferenceOfByUserIdRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): GetReferenceOfByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getItemName(): ?string {
+		return $this->itemName;
+	}
+
+	public function setItemName(?string $itemName) {
+		$this->itemName = $itemName;
+	}
+
+	public function withItemName(?string $itemName): GetReferenceOfByUserIdRequest {
+		$this->itemName = $itemName;
+		return $this;
+	}
+
+	public function getItemSetName(): ?string {
+		return $this->itemSetName;
+	}
+
+	public function setItemSetName(?string $itemSetName) {
+		$this->itemSetName = $itemSetName;
+	}
+
+	public function withItemSetName(?string $itemSetName): GetReferenceOfByUserIdRequest {
+		$this->itemSetName = $itemSetName;
+		return $this;
+	}
+
+	public function getReferenceOf(): ?string {
+		return $this->referenceOf;
+	}
+
+	public function setReferenceOf(?string $referenceOf) {
+		$this->referenceOf = $referenceOf;
+	}
+
+	public function withReferenceOf(?string $referenceOf): GetReferenceOfByUserIdRequest {
+		$this->referenceOf = $referenceOf;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetReferenceOfByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetReferenceOfByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
+            ->withItemSetName(empty($data['itemSetName']) ? null : $data['itemSetName'])
+            ->withReferenceOf(empty($data['referenceOf']) ? null : $data['referenceOf']);
     }
 
-    /**
-     * この所持品の参照元を設定
-     *
-     * @param string $referenceOf 参照元を取得
-     */
-    public function setReferenceOf(string $referenceOf = null) {
-        $this->referenceOf = $referenceOf;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+            "userId" => $this->getUserId(),
+            "itemName" => $this->getItemName(),
+            "itemSetName" => $this->getItemSetName(),
+            "referenceOf" => $this->getReferenceOf(),
+        );
     }
-
-    /**
-     * この所持品の参照元を設定
-     *
-     * @param string $referenceOf 参照元を取得
-     * @return GetReferenceOfByUserIdRequest $this
-     */
-    public function withReferenceOf(string $referenceOf = null): GetReferenceOfByUserIdRequest {
-        $this->setReferenceOf($referenceOf);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 参照元を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 参照元を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 参照元を取得
-     * @return GetReferenceOfByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetReferenceOfByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

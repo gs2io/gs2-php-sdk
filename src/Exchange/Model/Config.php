@@ -19,91 +19,56 @@ namespace Gs2\Exchange\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 設定値
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Config implements IModel {
 	/**
-     * @var string 名前
+     * @var string
 	 */
-	protected $key;
-
+	private $key;
 	/**
-	 * 名前を取得
-	 *
-	 * @return string|null 名前
+     * @var string
 	 */
+	private $value;
+
 	public function getKey(): ?string {
 		return $this->key;
 	}
 
-	/**
-	 * 名前を設定
-	 *
-	 * @param string|null $key 名前
-	 */
 	public function setKey(?string $key) {
 		$this->key = $key;
 	}
 
-	/**
-	 * 名前を設定
-	 *
-	 * @param string|null $key 名前
-	 * @return Config $this
-	 */
 	public function withKey(?string $key): Config {
 		$this->key = $key;
 		return $this;
 	}
-	/**
-     * @var string 値
-	 */
-	protected $value;
 
-	/**
-	 * 値を取得
-	 *
-	 * @return string|null 値
-	 */
 	public function getValue(): ?string {
 		return $this->value;
 	}
 
-	/**
-	 * 値を設定
-	 *
-	 * @param string|null $value 値
-	 */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
 
-	/**
-	 * 値を設定
-	 *
-	 * @param string|null $value 値
-	 * @return Config $this
-	 */
 	public function withValue(?string $value): Config {
 		$this->value = $value;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "key" => $this->key,
-            "value" => $this->value,
-        );
+    public static function fromJson(?array $data): ?Config {
+        if ($data === null) {
+            return null;
+        }
+        return (new Config())
+            ->withKey(empty($data['key']) ? null : $data['key'])
+            ->withValue(empty($data['value']) ? null : $data['value']);
     }
 
-    public static function fromJson(array $data): Config {
-        $model = new Config();
-        $model->setKey(isset($data["key"]) ? $data["key"] : null);
-        $model->setValue(isset($data["value"]) ? $data["value"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "key" => $this->getKey(),
+            "value" => $this->getValue(),
+        );
     }
 }

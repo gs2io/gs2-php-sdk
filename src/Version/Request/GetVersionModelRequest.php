@@ -19,75 +19,51 @@ namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * バージョン設定を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetVersionModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null バージョン設定を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName バージョン設定を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName バージョン設定を取得
-     * @return GetVersionModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetVersionModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string バージョン名 */
+    /** @var string */
     private $versionName;
 
-    /**
-     * バージョン名を取得
-     *
-     * @return string|null バージョン設定を取得
-     */
-    public function getVersionName(): ?string {
-        return $this->versionName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetVersionModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getVersionName(): ?string {
+		return $this->versionName;
+	}
+
+	public function setVersionName(?string $versionName) {
+		$this->versionName = $versionName;
+	}
+
+	public function withVersionName(?string $versionName): GetVersionModelRequest {
+		$this->versionName = $versionName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetVersionModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetVersionModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withVersionName(empty($data['versionName']) ? null : $data['versionName']);
     }
 
-    /**
-     * バージョン名を設定
-     *
-     * @param string $versionName バージョン設定を取得
-     */
-    public function setVersionName(string $versionName = null) {
-        $this->versionName = $versionName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "versionName" => $this->getVersionName(),
+        );
     }
-
-    /**
-     * バージョン名を設定
-     *
-     * @param string $versionName バージョン設定を取得
-     * @return GetVersionModelRequest $this
-     */
-    public function withVersionName(string $versionName = null): GetVersionModelRequest {
-        $this->setVersionName($versionName);
-        return $this;
-    }
-
 }

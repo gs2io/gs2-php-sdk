@@ -19,139 +19,68 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザーIDを指定してフォロー のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class FollowByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザーIDを指定してフォロー
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してフォロー
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定してフォロー
-     * @return FollowByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): FollowByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string フォローするユーザID */
+    /** @var string */
     private $userId;
-
-    /**
-     * フォローするユーザIDを取得
-     *
-     * @return string|null ユーザーIDを指定してフォロー
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * フォローするユーザIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してフォロー
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * フォローするユーザIDを設定
-     *
-     * @param string $userId ユーザーIDを指定してフォロー
-     * @return FollowByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): FollowByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string フォローされるユーザID */
+    /** @var string */
     private $targetUserId;
 
-    /**
-     * フォローされるユーザIDを取得
-     *
-     * @return string|null ユーザーIDを指定してフォロー
-     */
-    public function getTargetUserId(): ?string {
-        return $this->targetUserId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): FollowByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): FollowByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getTargetUserId(): ?string {
+		return $this->targetUserId;
+	}
+
+	public function setTargetUserId(?string $targetUserId) {
+		$this->targetUserId = $targetUserId;
+	}
+
+	public function withTargetUserId(?string $targetUserId): FollowByUserIdRequest {
+		$this->targetUserId = $targetUserId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?FollowByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new FollowByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId']);
     }
 
-    /**
-     * フォローされるユーザIDを設定
-     *
-     * @param string $targetUserId ユーザーIDを指定してフォロー
-     */
-    public function setTargetUserId(string $targetUserId = null) {
-        $this->targetUserId = $targetUserId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "targetUserId" => $this->getTargetUserId(),
+        );
     }
-
-    /**
-     * フォローされるユーザIDを設定
-     *
-     * @param string $targetUserId ユーザーIDを指定してフォロー
-     * @return FollowByUserIdRequest $this
-     */
-    public function withTargetUserId(string $targetUserId = null): FollowByUserIdRequest {
-        $this->setTargetUserId($targetUserId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザーIDを指定してフォロー
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してフォロー
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定してフォロー
-     * @return FollowByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): FollowByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

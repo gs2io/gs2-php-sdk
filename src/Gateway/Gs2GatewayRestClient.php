@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Gateway\Request\DescribeNamespacesRequest;
 use Gs2\Gateway\Result\DescribeNamespacesResult;
 use Gs2\Gateway\Request\CreateNamespaceRequest;
@@ -47,10 +49,6 @@ use Gs2\Gateway\Request\SetUserIdRequest;
 use Gs2\Gateway\Result\SetUserIdResult;
 use Gs2\Gateway\Request\SetUserIdByUserIdRequest;
 use Gs2\Gateway\Result\SetUserIdByUserIdResult;
-use Gs2\Gateway\Request\GetWebSocketSessionRequest;
-use Gs2\Gateway\Result\GetWebSocketSessionResult;
-use Gs2\Gateway\Request\GetWebSocketSessionByConnectionIdRequest;
-use Gs2\Gateway\Result\GetWebSocketSessionByConnectionIdResult;
 use Gs2\Gateway\Request\SendNotificationRequest;
 use Gs2\Gateway\Result\SendNotificationResult;
 use Gs2\Gateway\Request\SetFirebaseTokenRequest;
@@ -490,9 +488,6 @@ class DescribeWebSocketSessionsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -557,9 +552,6 @@ class DescribeWebSocketSessionsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -621,9 +613,6 @@ class SetUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -676,124 +665,6 @@ class SetUserIdByUserIdTask extends Gs2RestSessionTask {
         $this->builder->setBody($json);
 
         $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetWebSocketSessionTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetWebSocketSessionRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetWebSocketSessionTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetWebSocketSessionRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetWebSocketSessionRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetWebSocketSessionResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "gateway", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/session";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetWebSocketSessionByConnectionIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetWebSocketSessionByConnectionIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetWebSocketSessionByConnectionIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetWebSocketSessionByConnectionIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetWebSocketSessionByConnectionIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetWebSocketSessionByConnectionIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "gateway", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/session/{connectionId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{connectionId}", $this->request->getConnectionId() === null|| strlen($this->request->getConnectionId()) == 0 ? "null" : $this->request->getConnectionId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -869,9 +740,6 @@ class SendNotificationTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -933,9 +801,6 @@ class SetFirebaseTokenTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -994,9 +859,6 @@ class SetFirebaseTokenByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1058,9 +920,6 @@ class GetFirebaseTokenTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1118,9 +977,6 @@ class GetFirebaseTokenByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1182,9 +1038,6 @@ class DeleteFirebaseTokenTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1242,9 +1095,6 @@ class DeleteFirebaseTokenByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1311,9 +1161,6 @@ class SendMobileNotificationByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1337,9 +1184,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1354,9 +1199,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1368,9 +1211,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1385,9 +1226,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1399,9 +1238,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1416,9 +1253,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1430,9 +1265,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1447,9 +1280,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1461,9 +1292,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1478,9 +1307,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1492,9 +1319,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1509,9 +1334,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1523,9 +1346,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Websocketセッションの一覧を取得<br>
-     *
-     * @param DescribeWebSocketSessionsRequest $request リクエストパラメータ
+     * @param DescribeWebSocketSessionsRequest $request
      * @return PromiseInterface
      */
     public function describeWebSocketSessionsAsync(
@@ -1540,9 +1361,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Websocketセッションの一覧を取得<br>
-     *
-     * @param DescribeWebSocketSessionsRequest $request リクエストパラメータ
+     * @param DescribeWebSocketSessionsRequest $request
      * @return DescribeWebSocketSessionsResult
      */
     public function describeWebSocketSessions (
@@ -1554,9 +1373,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してWebsocketセッションの一覧を取得<br>
-     *
-     * @param DescribeWebSocketSessionsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeWebSocketSessionsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeWebSocketSessionsByUserIdAsync(
@@ -1571,9 +1388,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してWebsocketセッションの一覧を取得<br>
-     *
-     * @param DescribeWebSocketSessionsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeWebSocketSessionsByUserIdRequest $request
      * @return DescribeWebSocketSessionsByUserIdResult
      */
     public function describeWebSocketSessionsByUserId (
@@ -1585,9 +1400,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * WebsocketセッションにユーザIDを設定<br>
-     *
-     * @param SetUserIdRequest $request リクエストパラメータ
+     * @param SetUserIdRequest $request
      * @return PromiseInterface
      */
     public function setUserIdAsync(
@@ -1602,9 +1415,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * WebsocketセッションにユーザIDを設定<br>
-     *
-     * @param SetUserIdRequest $request リクエストパラメータ
+     * @param SetUserIdRequest $request
      * @return SetUserIdResult
      */
     public function setUserId (
@@ -1616,9 +1427,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * WebsocketセッションにユーザIDを設定<br>
-     *
-     * @param SetUserIdByUserIdRequest $request リクエストパラメータ
+     * @param SetUserIdByUserIdRequest $request
      * @return PromiseInterface
      */
     public function setUserIdByUserIdAsync(
@@ -1633,9 +1442,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * WebsocketセッションにユーザIDを設定<br>
-     *
-     * @param SetUserIdByUserIdRequest $request リクエストパラメータ
+     * @param SetUserIdByUserIdRequest $request
      * @return SetUserIdByUserIdResult
      */
     public function setUserIdByUserId (
@@ -1647,71 +1454,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Websocketセッションを取得<br>
-     *
-     * @param GetWebSocketSessionRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function getWebSocketSessionAsync(
-            GetWebSocketSessionRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetWebSocketSessionTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * Websocketセッションを取得<br>
-     *
-     * @param GetWebSocketSessionRequest $request リクエストパラメータ
-     * @return GetWebSocketSessionResult
-     */
-    public function getWebSocketSession (
-            GetWebSocketSessionRequest $request
-    ): GetWebSocketSessionResult {
-        return $this->getWebSocketSessionAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * ユーザIDを指定してWebsocketセッションを取得<br>
-     *
-     * @param GetWebSocketSessionByConnectionIdRequest $request リクエストパラメータ
-     * @return PromiseInterface
-     */
-    public function getWebSocketSessionByConnectionIdAsync(
-            GetWebSocketSessionByConnectionIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetWebSocketSessionByConnectionIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * ユーザIDを指定してWebsocketセッションを取得<br>
-     *
-     * @param GetWebSocketSessionByConnectionIdRequest $request リクエストパラメータ
-     * @return GetWebSocketSessionByConnectionIdResult
-     */
-    public function getWebSocketSessionByConnectionId (
-            GetWebSocketSessionByConnectionIdRequest $request
-    ): GetWebSocketSessionByConnectionIdResult {
-        return $this->getWebSocketSessionByConnectionIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * 通知を送信<br>
-     *
-     * @param SendNotificationRequest $request リクエストパラメータ
+     * @param SendNotificationRequest $request
      * @return PromiseInterface
      */
     public function sendNotificationAsync(
@@ -1726,9 +1469,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 通知を送信<br>
-     *
-     * @param SendNotificationRequest $request リクエストパラメータ
+     * @param SendNotificationRequest $request
      * @return SendNotificationResult
      */
     public function sendNotification (
@@ -1740,9 +1481,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * デバイストークンを設定<br>
-     *
-     * @param SetFirebaseTokenRequest $request リクエストパラメータ
+     * @param SetFirebaseTokenRequest $request
      * @return PromiseInterface
      */
     public function setFirebaseTokenAsync(
@@ -1757,9 +1496,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * デバイストークンを設定<br>
-     *
-     * @param SetFirebaseTokenRequest $request リクエストパラメータ
+     * @param SetFirebaseTokenRequest $request
      * @return SetFirebaseTokenResult
      */
     public function setFirebaseToken (
@@ -1771,9 +1508,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデバイストークンを設定<br>
-     *
-     * @param SetFirebaseTokenByUserIdRequest $request リクエストパラメータ
+     * @param SetFirebaseTokenByUserIdRequest $request
      * @return PromiseInterface
      */
     public function setFirebaseTokenByUserIdAsync(
@@ -1788,9 +1523,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してデバイストークンを設定<br>
-     *
-     * @param SetFirebaseTokenByUserIdRequest $request リクエストパラメータ
+     * @param SetFirebaseTokenByUserIdRequest $request
      * @return SetFirebaseTokenByUserIdResult
      */
     public function setFirebaseTokenByUserId (
@@ -1802,9 +1535,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Firebaseデバイストークンを取得<br>
-     *
-     * @param GetFirebaseTokenRequest $request リクエストパラメータ
+     * @param GetFirebaseTokenRequest $request
      * @return PromiseInterface
      */
     public function getFirebaseTokenAsync(
@@ -1819,9 +1550,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Firebaseデバイストークンを取得<br>
-     *
-     * @param GetFirebaseTokenRequest $request リクエストパラメータ
+     * @param GetFirebaseTokenRequest $request
      * @return GetFirebaseTokenResult
      */
     public function getFirebaseToken (
@@ -1833,9 +1562,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してFirebaseデバイストークンを取得<br>
-     *
-     * @param GetFirebaseTokenByUserIdRequest $request リクエストパラメータ
+     * @param GetFirebaseTokenByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getFirebaseTokenByUserIdAsync(
@@ -1850,9 +1577,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してFirebaseデバイストークンを取得<br>
-     *
-     * @param GetFirebaseTokenByUserIdRequest $request リクエストパラメータ
+     * @param GetFirebaseTokenByUserIdRequest $request
      * @return GetFirebaseTokenByUserIdResult
      */
     public function getFirebaseTokenByUserId (
@@ -1864,9 +1589,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Firebaseデバイストークンを削除<br>
-     *
-     * @param DeleteFirebaseTokenRequest $request リクエストパラメータ
+     * @param DeleteFirebaseTokenRequest $request
      * @return PromiseInterface
      */
     public function deleteFirebaseTokenAsync(
@@ -1881,9 +1604,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Firebaseデバイストークンを削除<br>
-     *
-     * @param DeleteFirebaseTokenRequest $request リクエストパラメータ
+     * @param DeleteFirebaseTokenRequest $request
      * @return DeleteFirebaseTokenResult
      */
     public function deleteFirebaseToken (
@@ -1895,9 +1616,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してFirebaseデバイストークンを削除<br>
-     *
-     * @param DeleteFirebaseTokenByUserIdRequest $request リクエストパラメータ
+     * @param DeleteFirebaseTokenByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteFirebaseTokenByUserIdAsync(
@@ -1912,9 +1631,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してFirebaseデバイストークンを削除<br>
-     *
-     * @param DeleteFirebaseTokenByUserIdRequest $request リクエストパラメータ
+     * @param DeleteFirebaseTokenByUserIdRequest $request
      * @return DeleteFirebaseTokenByUserIdResult
      */
     public function deleteFirebaseTokenByUserId (
@@ -1926,9 +1643,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * モバイルプッシュ通知を送信<br>
-     *
-     * @param SendMobileNotificationByUserIdRequest $request リクエストパラメータ
+     * @param SendMobileNotificationByUserIdRequest $request
      * @return PromiseInterface
      */
     public function sendMobileNotificationByUserIdAsync(
@@ -1943,9 +1658,7 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
-     * モバイルプッシュ通知を送信<br>
-     *
-     * @param SendMobileNotificationByUserIdRequest $request リクエストパラメータ
+     * @param SendMobileNotificationByUserIdRequest $request
      * @return SendMobileNotificationByUserIdResult
      */
     public function sendMobileNotificationByUserId (

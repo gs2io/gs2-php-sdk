@@ -18,38 +18,38 @@
 namespace Gs2\Exchange\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Exchange\Model\ConsumeAction;
+use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModelMaster;
 
-/**
- * 交換レートマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRateModelMasterResult implements IResult {
-	/** @var RateModelMaster 削除した交換レートマスター */
-	private $item;
+    /** @var RateModelMaster */
+    private $item;
 
-	/**
-	 * 削除した交換レートマスターを取得
-	 *
-	 * @return RateModelMaster|null 交換レートマスターを削除
-	 */
 	public function getItem(): ?RateModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除した交換レートマスターを設定
-	 *
-	 * @param RateModelMaster|null $item 交換レートマスターを削除
-	 */
 	public function setItem(?RateModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteRateModelMasterResult {
-        $result = new DeleteRateModelMasterResult();
-        $result->setItem(isset($data["item"]) ? RateModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?RateModelMaster $item): DeleteRateModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRateModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRateModelMasterResult())
+            ->withItem(empty($data['item']) ? null : RateModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

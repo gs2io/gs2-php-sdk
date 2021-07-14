@@ -19,139 +19,68 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してデータオブジェクトを削除する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteDataObjectByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを削除する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してデータオブジェクトを削除する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してデータオブジェクトを削除する
-     * @return DeleteDataObjectByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteDataObjectByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを削除する
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してデータオブジェクトを削除する
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してデータオブジェクトを削除する
-     * @return DeleteDataObjectByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DeleteDataObjectByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string データの名前 */
+    /** @var string */
     private $dataObjectName;
 
-    /**
-     * データの名前を取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを削除する
-     */
-    public function getDataObjectName(): ?string {
-        return $this->dataObjectName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteDataObjectByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DeleteDataObjectByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getDataObjectName(): ?string {
+		return $this->dataObjectName;
+	}
+
+	public function setDataObjectName(?string $dataObjectName) {
+		$this->dataObjectName = $dataObjectName;
+	}
+
+	public function withDataObjectName(?string $dataObjectName): DeleteDataObjectByUserIdRequest {
+		$this->dataObjectName = $dataObjectName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteDataObjectByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteDataObjectByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName']);
     }
 
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName ユーザIDを指定してデータオブジェクトを削除する
-     */
-    public function setDataObjectName(string $dataObjectName = null) {
-        $this->dataObjectName = $dataObjectName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "dataObjectName" => $this->getDataObjectName(),
+        );
     }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $dataObjectName ユーザIDを指定してデータオブジェクトを削除する
-     * @return DeleteDataObjectByUserIdRequest $this
-     */
-    public function withDataObjectName(string $dataObjectName = null): DeleteDataObjectByUserIdRequest {
-        $this->setDataObjectName($dataObjectName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してデータオブジェクトを削除する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してデータオブジェクトを削除する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してデータオブジェクトを削除する
-     * @return DeleteDataObjectByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteDataObjectByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

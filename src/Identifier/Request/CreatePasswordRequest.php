@@ -19,75 +19,51 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * パスワードを新規作成します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreatePasswordRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
-
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null パスワードを新規作成します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName パスワードを新規作成します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
-    }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName パスワードを新規作成します
-     * @return CreatePasswordRequest $this
-     */
-    public function withUserName(string $userName = null): CreatePasswordRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
-    /** @var string パスワード */
+    /** @var string */
     private $password;
 
-    /**
-     * パスワードを取得
-     *
-     * @return string|null パスワードを新規作成します
-     */
-    public function getPassword(): ?string {
-        return $this->password;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): CreatePasswordRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): CreatePasswordRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreatePasswordRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreatePasswordRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName'])
+            ->withPassword(empty($data['password']) ? null : $data['password']);
     }
 
-    /**
-     * パスワードを設定
-     *
-     * @param string $password パスワードを新規作成します
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+            "password" => $this->getPassword(),
+        );
     }
-
-    /**
-     * パスワードを設定
-     *
-     * @param string $password パスワードを新規作成します
-     * @return CreatePasswordRequest $this
-     */
-    public function withPassword(string $password = null): CreatePasswordRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
 }

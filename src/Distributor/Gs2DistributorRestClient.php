@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Distributor\Request\DescribeNamespacesRequest;
 use Gs2\Distributor\Result\DescribeNamespacesResult;
 use Gs2\Distributor\Request\CreateNamespaceRequest;
@@ -1142,12 +1144,15 @@ class DistributeTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/{distributorName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{distributorName}", $this->request->getDistributorName() === null|| strlen($this->request->getDistributorName()) == 0 ? "null" : $this->request->getDistributorName(), $url);
 
         $json = [];
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
         if ($this->request->getDistributeResource() !== null) {
             $json["distributeResource"] = $this->request->getDistributeResource()->toJson();
         }
@@ -1164,12 +1169,6 @@ class DistributeTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1210,6 +1209,9 @@ class DistributeWithoutOverflowProcessTask extends Gs2RestSessionTask {
         $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/distribute";
 
         $json = [];
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
         if ($this->request->getDistributeResource() !== null) {
             $json["distributeResource"] = $this->request->getDistributeResource()->toJson();
         }
@@ -1226,12 +1228,6 @@ class DistributeWithoutOverflowProcessTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1294,9 +1290,6 @@ class RunStampTaskTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1357,9 +1350,6 @@ class RunStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1422,9 +1412,6 @@ class RunStampSheetExpressTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1484,9 +1471,6 @@ class RunStampTaskWithoutNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1523,7 +1507,7 @@ class RunStampSheetWithoutNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/stamp/sheet/run";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/sheet/run";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {
@@ -1545,9 +1529,6 @@ class RunStampSheetWithoutNamespaceTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1585,7 +1566,7 @@ class RunStampSheetExpressWithoutNamespaceTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/stamp/run";
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/run";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {
@@ -1607,9 +1588,6 @@ class RunStampSheetExpressWithoutNamespaceTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1634,9 +1612,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1651,9 +1627,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1665,9 +1639,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1682,9 +1654,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1696,9 +1666,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1713,9 +1681,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1727,9 +1693,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1744,9 +1708,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1758,9 +1720,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1775,9 +1735,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1789,9 +1747,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1806,9 +1762,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1820,9 +1774,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターの一覧を取得<br>
-     *
-     * @param DescribeDistributorModelMastersRequest $request リクエストパラメータ
+     * @param DescribeDistributorModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeDistributorModelMastersAsync(
@@ -1837,9 +1789,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターの一覧を取得<br>
-     *
-     * @param DescribeDistributorModelMastersRequest $request リクエストパラメータ
+     * @param DescribeDistributorModelMastersRequest $request
      * @return DescribeDistributorModelMastersResult
      */
     public function describeDistributorModelMasters (
@@ -1851,9 +1801,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターを新規作成<br>
-     *
-     * @param CreateDistributorModelMasterRequest $request リクエストパラメータ
+     * @param CreateDistributorModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createDistributorModelMasterAsync(
@@ -1868,9 +1816,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターを新規作成<br>
-     *
-     * @param CreateDistributorModelMasterRequest $request リクエストパラメータ
+     * @param CreateDistributorModelMasterRequest $request
      * @return CreateDistributorModelMasterResult
      */
     public function createDistributorModelMaster (
@@ -1882,9 +1828,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターを取得<br>
-     *
-     * @param GetDistributorModelMasterRequest $request リクエストパラメータ
+     * @param GetDistributorModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getDistributorModelMasterAsync(
@@ -1899,9 +1843,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターを取得<br>
-     *
-     * @param GetDistributorModelMasterRequest $request リクエストパラメータ
+     * @param GetDistributorModelMasterRequest $request
      * @return GetDistributorModelMasterResult
      */
     public function getDistributorModelMaster (
@@ -1913,9 +1855,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターを更新<br>
-     *
-     * @param UpdateDistributorModelMasterRequest $request リクエストパラメータ
+     * @param UpdateDistributorModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateDistributorModelMasterAsync(
@@ -1930,9 +1870,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターを更新<br>
-     *
-     * @param UpdateDistributorModelMasterRequest $request リクエストパラメータ
+     * @param UpdateDistributorModelMasterRequest $request
      * @return UpdateDistributorModelMasterResult
      */
     public function updateDistributorModelMaster (
@@ -1944,9 +1882,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターを削除<br>
-     *
-     * @param DeleteDistributorModelMasterRequest $request リクエストパラメータ
+     * @param DeleteDistributorModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteDistributorModelMasterAsync(
@@ -1961,9 +1897,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定マスターを削除<br>
-     *
-     * @param DeleteDistributorModelMasterRequest $request リクエストパラメータ
+     * @param DeleteDistributorModelMasterRequest $request
      * @return DeleteDistributorModelMasterResult
      */
     public function deleteDistributorModelMaster (
@@ -1975,9 +1909,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定の一覧を取得<br>
-     *
-     * @param DescribeDistributorModelsRequest $request リクエストパラメータ
+     * @param DescribeDistributorModelsRequest $request
      * @return PromiseInterface
      */
     public function describeDistributorModelsAsync(
@@ -1992,9 +1924,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定の一覧を取得<br>
-     *
-     * @param DescribeDistributorModelsRequest $request リクエストパラメータ
+     * @param DescribeDistributorModelsRequest $request
      * @return DescribeDistributorModelsResult
      */
     public function describeDistributorModels (
@@ -2006,9 +1936,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定を取得<br>
-     *
-     * @param GetDistributorModelRequest $request リクエストパラメータ
+     * @param GetDistributorModelRequest $request
      * @return PromiseInterface
      */
     public function getDistributorModelAsync(
@@ -2023,9 +1951,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 配信設定を取得<br>
-     *
-     * @param GetDistributorModelRequest $request リクエストパラメータ
+     * @param GetDistributorModelRequest $request
      * @return GetDistributorModelResult
      */
     public function getDistributorModel (
@@ -2037,9 +1963,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な配信設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2054,9 +1978,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な配信設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2068,9 +1990,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な配信設定を取得します<br>
-     *
-     * @param GetCurrentDistributorMasterRequest $request リクエストパラメータ
+     * @param GetCurrentDistributorMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentDistributorMasterAsync(
@@ -2085,9 +2005,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な配信設定を取得します<br>
-     *
-     * @param GetCurrentDistributorMasterRequest $request リクエストパラメータ
+     * @param GetCurrentDistributorMasterRequest $request
      * @return GetCurrentDistributorMasterResult
      */
     public function getCurrentDistributorMaster (
@@ -2099,9 +2017,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な配信設定を更新します<br>
-     *
-     * @param UpdateCurrentDistributorMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentDistributorMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentDistributorMasterAsync(
@@ -2116,9 +2032,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な配信設定を更新します<br>
-     *
-     * @param UpdateCurrentDistributorMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentDistributorMasterRequest $request
      * @return UpdateCurrentDistributorMasterResult
      */
     public function updateCurrentDistributorMaster (
@@ -2130,9 +2044,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な配信設定を更新します<br>
-     *
-     * @param UpdateCurrentDistributorMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentDistributorMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentDistributorMasterFromGitHubAsync(
@@ -2147,9 +2059,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な配信設定を更新します<br>
-     *
-     * @param UpdateCurrentDistributorMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentDistributorMasterFromGitHubRequest $request
      * @return UpdateCurrentDistributorMasterFromGitHubResult
      */
     public function updateCurrentDistributorMasterFromGitHub (
@@ -2161,9 +2071,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 所持品を配布する<br>
-     *
-     * @param DistributeRequest $request リクエストパラメータ
+     * @param DistributeRequest $request
      * @return PromiseInterface
      */
     public function distributeAsync(
@@ -2178,9 +2086,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 所持品を配布する<br>
-     *
-     * @param DistributeRequest $request リクエストパラメータ
+     * @param DistributeRequest $request
      * @return DistributeResult
      */
     public function distribute (
@@ -2192,9 +2098,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 所持品を配布する(溢れた際の救済処置無し)<br>
-     *
-     * @param DistributeWithoutOverflowProcessRequest $request リクエストパラメータ
+     * @param DistributeWithoutOverflowProcessRequest $request
      * @return PromiseInterface
      */
     public function distributeWithoutOverflowProcessAsync(
@@ -2209,9 +2113,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 所持品を配布する(溢れた際の救済処置無し)<br>
-     *
-     * @param DistributeWithoutOverflowProcessRequest $request リクエストパラメータ
+     * @param DistributeWithoutOverflowProcessRequest $request
      * @return DistributeWithoutOverflowProcessResult
      */
     public function distributeWithoutOverflowProcess (
@@ -2223,9 +2125,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートのタスクを実行する<br>
-     *
-     * @param RunStampTaskRequest $request リクエストパラメータ
+     * @param RunStampTaskRequest $request
      * @return PromiseInterface
      */
     public function runStampTaskAsync(
@@ -2240,9 +2140,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートのタスクを実行する<br>
-     *
-     * @param RunStampTaskRequest $request リクエストパラメータ
+     * @param RunStampTaskRequest $request
      * @return RunStampTaskResult
      */
     public function runStampTask (
@@ -2254,9 +2152,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートの完了を報告する<br>
-     *
-     * @param RunStampSheetRequest $request リクエストパラメータ
+     * @param RunStampSheetRequest $request
      * @return PromiseInterface
      */
     public function runStampSheetAsync(
@@ -2271,9 +2167,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートの完了を報告する<br>
-     *
-     * @param RunStampSheetRequest $request リクエストパラメータ
+     * @param RunStampSheetRequest $request
      * @return RunStampSheetResult
      */
     public function runStampSheet (
@@ -2285,9 +2179,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクおよびスタンプシートを実行する<br>
-     *
-     * @param RunStampSheetExpressRequest $request リクエストパラメータ
+     * @param RunStampSheetExpressRequest $request
      * @return PromiseInterface
      */
     public function runStampSheetExpressAsync(
@@ -2302,9 +2194,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクおよびスタンプシートを実行する<br>
-     *
-     * @param RunStampSheetExpressRequest $request リクエストパラメータ
+     * @param RunStampSheetExpressRequest $request
      * @return RunStampSheetExpressResult
      */
     public function runStampSheetExpress (
@@ -2316,12 +2206,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートのタスクを実行する<br>
-     *   <br>
-     *   ネームスペースの指定を省略することで、<br>
-     *   ログが記録できない・リソース溢れ処理が実行されないなどの副作用があります。<br>
-     *
-     * @param RunStampTaskWithoutNamespaceRequest $request リクエストパラメータ
+     * @param RunStampTaskWithoutNamespaceRequest $request
      * @return PromiseInterface
      */
     public function runStampTaskWithoutNamespaceAsync(
@@ -2336,12 +2221,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートのタスクを実行する<br>
-     *   <br>
-     *   ネームスペースの指定を省略することで、<br>
-     *   ログが記録できない・リソース溢れ処理が実行されないなどの副作用があります。<br>
-     *
-     * @param RunStampTaskWithoutNamespaceRequest $request リクエストパラメータ
+     * @param RunStampTaskWithoutNamespaceRequest $request
      * @return RunStampTaskWithoutNamespaceResult
      */
     public function runStampTaskWithoutNamespace (
@@ -2353,12 +2233,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートの完了を報告する<br>
-     *   <br>
-     *   ネームスペースの指定を省略することで、<br>
-     *   ログが記録できない・リソース溢れ処理が実行されないなどの副作用があります。<br>
-     *
-     * @param RunStampSheetWithoutNamespaceRequest $request リクエストパラメータ
+     * @param RunStampSheetWithoutNamespaceRequest $request
      * @return PromiseInterface
      */
     public function runStampSheetWithoutNamespaceAsync(
@@ -2373,12 +2248,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートの完了を報告する<br>
-     *   <br>
-     *   ネームスペースの指定を省略することで、<br>
-     *   ログが記録できない・リソース溢れ処理が実行されないなどの副作用があります。<br>
-     *
-     * @param RunStampSheetWithoutNamespaceRequest $request リクエストパラメータ
+     * @param RunStampSheetWithoutNamespaceRequest $request
      * @return RunStampSheetWithoutNamespaceResult
      */
     public function runStampSheetWithoutNamespace (
@@ -2390,9 +2260,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクおよびスタンプシートを実行する<br>
-     *
-     * @param RunStampSheetExpressWithoutNamespaceRequest $request リクエストパラメータ
+     * @param RunStampSheetExpressWithoutNamespaceRequest $request
      * @return PromiseInterface
      */
     public function runStampSheetExpressWithoutNamespaceAsync(
@@ -2407,9 +2275,7 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプタスクおよびスタンプシートを実行する<br>
-     *
-     * @param RunStampSheetExpressWithoutNamespaceRequest $request リクエストパラメータ
+     * @param RunStampSheetExpressWithoutNamespaceRequest $request
      * @return RunStampSheetExpressWithoutNamespaceResult
      */
     public function runStampSheetExpressWithoutNamespace (

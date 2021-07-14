@@ -19,15 +19,17 @@ namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ユーザーIDを指定して承認したバージョンを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteAcceptVersionByUserIdResult implements IResult {
 
-    public static function fromJson(array $data): DeleteAcceptVersionByUserIdResult {
-        $result = new DeleteAcceptVersionByUserIdResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteAcceptVersionByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteAcceptVersionByUserIdResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

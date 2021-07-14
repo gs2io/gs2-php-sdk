@@ -19,107 +19,68 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 指定したスコア付近のランキングを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeNearRankingsRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 指定したスコア付近のランキングを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 指定したスコア付近のランキングを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 指定したスコア付近のランキングを取得
-     * @return DescribeNearRankingsRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeNearRankingsRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $categoryName;
-
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null 指定したスコア付近のランキングを取得
-     */
-    public function getCategoryName(): ?string {
-        return $this->categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName 指定したスコア付近のランキングを取得
-     */
-    public function setCategoryName(string $categoryName = null) {
-        $this->categoryName = $categoryName;
-    }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $categoryName 指定したスコア付近のランキングを取得
-     * @return DescribeNearRankingsRequest $this
-     */
-    public function withCategoryName(string $categoryName = null): DescribeNearRankingsRequest {
-        $this->setCategoryName($categoryName);
-        return $this;
-    }
-
-    /** @var int スコア */
+    /** @var int */
     private $score;
 
-    /**
-     * スコアを取得
-     *
-     * @return int|null 指定したスコア付近のランキングを取得
-     */
-    public function getScore(): ?int {
-        return $this->score;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeNearRankingsRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+
+	public function withCategoryName(?string $categoryName): DescribeNearRankingsRequest {
+		$this->categoryName = $categoryName;
+		return $this;
+	}
+
+	public function getScore(): ?int {
+		return $this->score;
+	}
+
+	public function setScore(?int $score) {
+		$this->score = $score;
+	}
+
+	public function withScore(?int $score): DescribeNearRankingsRequest {
+		$this->score = $score;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeNearRankingsRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeNearRankingsRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withScore(empty($data['score']) ? null : $data['score']);
     }
 
-    /**
-     * スコアを設定
-     *
-     * @param int $score 指定したスコア付近のランキングを取得
-     */
-    public function setScore(int $score = null) {
-        $this->score = $score;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "categoryName" => $this->getCategoryName(),
+            "score" => $this->getScore(),
+        );
     }
-
-    /**
-     * スコアを設定
-     *
-     * @param int $score 指定したスコア付近のランキングを取得
-     * @return DescribeNearRankingsRequest $this
-     */
-    public function withScore(int $score = null): DescribeNearRankingsRequest {
-        $this->setScore($score);
-        return $this;
-    }
-
 }

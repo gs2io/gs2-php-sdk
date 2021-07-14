@@ -19,107 +19,68 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 投票状況を強制確定 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CommitVoteRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 投票状況を強制確定
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 投票状況を強制確定
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 投票状況を強制確定
-     * @return CommitVoteRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CommitVoteRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string レーティング名 */
+    /** @var string */
     private $ratingName;
-
-    /**
-     * レーティング名を取得
-     *
-     * @return string|null 投票状況を強制確定
-     */
-    public function getRatingName(): ?string {
-        return $this->ratingName;
-    }
-
-    /**
-     * レーティング名を設定
-     *
-     * @param string $ratingName 投票状況を強制確定
-     */
-    public function setRatingName(string $ratingName = null) {
-        $this->ratingName = $ratingName;
-    }
-
-    /**
-     * レーティング名を設定
-     *
-     * @param string $ratingName 投票状況を強制確定
-     * @return CommitVoteRequest $this
-     */
-    public function withRatingName(string $ratingName = null): CommitVoteRequest {
-        $this->setRatingName($ratingName);
-        return $this;
-    }
-
-    /** @var string 投票対象のギャザリング名 */
+    /** @var string */
     private $gatheringName;
 
-    /**
-     * 投票対象のギャザリング名を取得
-     *
-     * @return string|null 投票状況を強制確定
-     */
-    public function getGatheringName(): ?string {
-        return $this->gatheringName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CommitVoteRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRatingName(): ?string {
+		return $this->ratingName;
+	}
+
+	public function setRatingName(?string $ratingName) {
+		$this->ratingName = $ratingName;
+	}
+
+	public function withRatingName(?string $ratingName): CommitVoteRequest {
+		$this->ratingName = $ratingName;
+		return $this;
+	}
+
+	public function getGatheringName(): ?string {
+		return $this->gatheringName;
+	}
+
+	public function setGatheringName(?string $gatheringName) {
+		$this->gatheringName = $gatheringName;
+	}
+
+	public function withGatheringName(?string $gatheringName): CommitVoteRequest {
+		$this->gatheringName = $gatheringName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CommitVoteRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CommitVoteRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
+            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName']);
     }
 
-    /**
-     * 投票対象のギャザリング名を設定
-     *
-     * @param string $gatheringName 投票状況を強制確定
-     */
-    public function setGatheringName(string $gatheringName = null) {
-        $this->gatheringName = $gatheringName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "ratingName" => $this->getRatingName(),
+            "gatheringName" => $this->getGatheringName(),
+        );
     }
-
-    /**
-     * 投票対象のギャザリング名を設定
-     *
-     * @param string $gatheringName 投票状況を強制確定
-     * @return CommitVoteRequest $this
-     */
-    public function withGatheringName(string $gatheringName = null): CommitVoteRequest {
-        $this->setGatheringName($gatheringName);
-        return $this;
-    }
-
 }

@@ -19,171 +19,85 @@ namespace Gs2\Auth\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 指定したユーザIDでGS2にログインし、アクセストークンを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class LoginBySignatureRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     * @return LoginBySignatureRequest $this
-     */
-    public function withUserId(string $userId = null): LoginBySignatureRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string 署名の作成に使用した暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
-
-    /**
-     * 署名の作成に使用した暗号鍵 のGRNを取得
-     *
-     * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
-    }
-
-    /**
-     * 署名の作成に使用した暗号鍵 のGRNを設定
-     *
-     * @param string $keyId 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
-    }
-
-    /**
-     * 署名の作成に使用した暗号鍵 のGRNを設定
-     *
-     * @param string $keyId 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     * @return LoginBySignatureRequest $this
-     */
-    public function withKeyId(string $keyId = null): LoginBySignatureRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string アカウント認証情報の署名対象 */
+    /** @var string */
     private $body;
-
-    /**
-     * アカウント認証情報の署名対象を取得
-     *
-     * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function getBody(): ?string {
-        return $this->body;
-    }
-
-    /**
-     * アカウント認証情報の署名対象を設定
-     *
-     * @param string $body 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function setBody(string $body = null) {
-        $this->body = $body;
-    }
-
-    /**
-     * アカウント認証情報の署名対象を設定
-     *
-     * @param string $body 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     * @return LoginBySignatureRequest $this
-     */
-    public function withBody(string $body = null): LoginBySignatureRequest {
-        $this->setBody($body);
-        return $this;
-    }
-
-    /** @var string 署名 */
+    /** @var string */
     private $signature;
 
-    /**
-     * 署名を取得
-     *
-     * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function getSignature(): ?string {
-        return $this->signature;
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): LoginBySignatureRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): LoginBySignatureRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+	public function getBody(): ?string {
+		return $this->body;
+	}
+
+	public function setBody(?string $body) {
+		$this->body = $body;
+	}
+
+	public function withBody(?string $body): LoginBySignatureRequest {
+		$this->body = $body;
+		return $this;
+	}
+
+	public function getSignature(): ?string {
+		return $this->signature;
+	}
+
+	public function setSignature(?string $signature) {
+		$this->signature = $signature;
+	}
+
+	public function withSignature(?string $signature): LoginBySignatureRequest {
+		$this->signature = $signature;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?LoginBySignatureRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new LoginBySignatureRequest())
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withBody(empty($data['body']) ? null : $data['body'])
+            ->withSignature(empty($data['signature']) ? null : $data['signature']);
     }
 
-    /**
-     * 署名を設定
-     *
-     * @param string $signature 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function setSignature(string $signature = null) {
-        $this->signature = $signature;
+    public function toJson(): array {
+        return array(
+            "userId" => $this->getUserId(),
+            "keyId" => $this->getKeyId(),
+            "body" => $this->getBody(),
+            "signature" => $this->getSignature(),
+        );
     }
-
-    /**
-     * 署名を設定
-     *
-     * @param string $signature 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     * @return LoginBySignatureRequest $this
-     */
-    public function withSignature(string $signature = null): LoginBySignatureRequest {
-        $this->setSignature($signature);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 指定したユーザIDでGS2にログインし、アクセストークンを取得します
-     * @return LoginBySignatureRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): LoginBySignatureRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

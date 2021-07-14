@@ -20,36 +20,34 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\InventoryModelMaster;
 
-/**
- * インベントリモデルマスターを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteInventoryModelMasterResult implements IResult {
-	/** @var InventoryModelMaster 削除したインベントリモデルマスター */
-	private $item;
+    /** @var InventoryModelMaster */
+    private $item;
 
-	/**
-	 * 削除したインベントリモデルマスターを取得
-	 *
-	 * @return InventoryModelMaster|null インベントリモデルマスターを削除
-	 */
 	public function getItem(): ?InventoryModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したインベントリモデルマスターを設定
-	 *
-	 * @param InventoryModelMaster|null $item インベントリモデルマスターを削除
-	 */
 	public function setItem(?InventoryModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteInventoryModelMasterResult {
-        $result = new DeleteInventoryModelMasterResult();
-        $result->setItem(isset($data["item"]) ? InventoryModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?InventoryModelMaster $item): DeleteInventoryModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteInventoryModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteInventoryModelMasterResult())
+            ->withItem(empty($data['item']) ? null : InventoryModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

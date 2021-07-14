@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Limit\Request\DescribeNamespacesRequest;
 use Gs2\Limit\Result\DescribeNamespacesResult;
 use Gs2\Limit\Request\CreateNamespaceRequest;
@@ -499,9 +501,6 @@ class DescribeCountersTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -569,9 +568,6 @@ class DescribeCountersByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -634,9 +630,6 @@ class GetCounterTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -696,9 +689,6 @@ class GetCounterByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -766,9 +756,6 @@ class CountUpTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -833,9 +820,6 @@ class CountUpByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -896,9 +880,6 @@ class DeleteCounterByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -958,9 +939,6 @@ class CountUpByStampTaskTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1019,9 +997,6 @@ class DeleteByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1720,9 +1695,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1737,9 +1710,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1751,9 +1722,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1768,9 +1737,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1782,9 +1749,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1799,9 +1764,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1813,9 +1776,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1830,9 +1791,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1844,9 +1803,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1861,9 +1818,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1875,9 +1830,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1892,9 +1845,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1906,9 +1857,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの一覧を取得<br>
-     *
-     * @param DescribeCountersRequest $request リクエストパラメータ
+     * @param DescribeCountersRequest $request
      * @return PromiseInterface
      */
     public function describeCountersAsync(
@@ -1923,9 +1872,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの一覧を取得<br>
-     *
-     * @param DescribeCountersRequest $request リクエストパラメータ
+     * @param DescribeCountersRequest $request
      * @return DescribeCountersResult
      */
     public function describeCounters (
@@ -1937,9 +1884,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの一覧を取得<br>
-     *
-     * @param DescribeCountersByUserIdRequest $request リクエストパラメータ
+     * @param DescribeCountersByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeCountersByUserIdAsync(
@@ -1954,9 +1899,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターの一覧を取得<br>
-     *
-     * @param DescribeCountersByUserIdRequest $request リクエストパラメータ
+     * @param DescribeCountersByUserIdRequest $request
      * @return DescribeCountersByUserIdResult
      */
     public function describeCountersByUserId (
@@ -1968,9 +1911,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターを取得<br>
-     *
-     * @param GetCounterRequest $request リクエストパラメータ
+     * @param GetCounterRequest $request
      * @return PromiseInterface
      */
     public function getCounterAsync(
@@ -1985,9 +1926,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウンターを取得<br>
-     *
-     * @param GetCounterRequest $request リクエストパラメータ
+     * @param GetCounterRequest $request
      * @return GetCounterResult
      */
     public function getCounter (
@@ -1999,9 +1938,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してカウンターを取得<br>
-     *
-     * @param GetCounterByUserIdRequest $request リクエストパラメータ
+     * @param GetCounterByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getCounterByUserIdAsync(
@@ -2016,9 +1953,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してカウンターを取得<br>
-     *
-     * @param GetCounterByUserIdRequest $request リクエストパラメータ
+     * @param GetCounterByUserIdRequest $request
      * @return GetCounterByUserIdResult
      */
     public function getCounterByUserId (
@@ -2030,9 +1965,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウントアップ<br>
-     *
-     * @param CountUpRequest $request リクエストパラメータ
+     * @param CountUpRequest $request
      * @return PromiseInterface
      */
     public function countUpAsync(
@@ -2047,9 +1980,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * カウントアップ<br>
-     *
-     * @param CountUpRequest $request リクエストパラメータ
+     * @param CountUpRequest $request
      * @return CountUpResult
      */
     public function countUp (
@@ -2061,9 +1992,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してカウントアップ<br>
-     *
-     * @param CountUpByUserIdRequest $request リクエストパラメータ
+     * @param CountUpByUserIdRequest $request
      * @return PromiseInterface
      */
     public function countUpByUserIdAsync(
@@ -2078,9 +2007,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してカウントアップ<br>
-     *
-     * @param CountUpByUserIdRequest $request リクエストパラメータ
+     * @param CountUpByUserIdRequest $request
      * @return CountUpByUserIdResult
      */
     public function countUpByUserId (
@@ -2092,9 +2019,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してカウンターを削除<br>
-     *
-     * @param DeleteCounterByUserIdRequest $request リクエストパラメータ
+     * @param DeleteCounterByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteCounterByUserIdAsync(
@@ -2109,9 +2034,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してカウンターを削除<br>
-     *
-     * @param DeleteCounterByUserIdRequest $request リクエストパラメータ
+     * @param DeleteCounterByUserIdRequest $request
      * @return DeleteCounterByUserIdResult
      */
     public function deleteCounterByUserId (
@@ -2123,9 +2046,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでカウントアップ<br>
-     *
-     * @param CountUpByStampTaskRequest $request リクエストパラメータ
+     * @param CountUpByStampTaskRequest $request
      * @return PromiseInterface
      */
     public function countUpByStampTaskAsync(
@@ -2140,9 +2061,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでカウントアップ<br>
-     *
-     * @param CountUpByStampTaskRequest $request リクエストパラメータ
+     * @param CountUpByStampTaskRequest $request
      * @return CountUpByStampTaskResult
      */
     public function countUpByStampTask (
@@ -2154,9 +2073,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでカウンターを削除<br>
-     *
-     * @param DeleteByStampSheetRequest $request リクエストパラメータ
+     * @param DeleteByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function deleteByStampSheetAsync(
@@ -2171,9 +2088,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでカウンターを削除<br>
-     *
-     * @param DeleteByStampSheetRequest $request リクエストパラメータ
+     * @param DeleteByStampSheetRequest $request
      * @return DeleteByStampSheetResult
      */
     public function deleteByStampSheet (
@@ -2185,9 +2100,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターの一覧を取得<br>
-     *
-     * @param DescribeLimitModelMastersRequest $request リクエストパラメータ
+     * @param DescribeLimitModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeLimitModelMastersAsync(
@@ -2202,9 +2115,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターの一覧を取得<br>
-     *
-     * @param DescribeLimitModelMastersRequest $request リクエストパラメータ
+     * @param DescribeLimitModelMastersRequest $request
      * @return DescribeLimitModelMastersResult
      */
     public function describeLimitModelMasters (
@@ -2216,9 +2127,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターを新規作成<br>
-     *
-     * @param CreateLimitModelMasterRequest $request リクエストパラメータ
+     * @param CreateLimitModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createLimitModelMasterAsync(
@@ -2233,9 +2142,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターを新規作成<br>
-     *
-     * @param CreateLimitModelMasterRequest $request リクエストパラメータ
+     * @param CreateLimitModelMasterRequest $request
      * @return CreateLimitModelMasterResult
      */
     public function createLimitModelMaster (
@@ -2247,9 +2154,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターを取得<br>
-     *
-     * @param GetLimitModelMasterRequest $request リクエストパラメータ
+     * @param GetLimitModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getLimitModelMasterAsync(
@@ -2264,9 +2169,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターを取得<br>
-     *
-     * @param GetLimitModelMasterRequest $request リクエストパラメータ
+     * @param GetLimitModelMasterRequest $request
      * @return GetLimitModelMasterResult
      */
     public function getLimitModelMaster (
@@ -2278,9 +2181,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターを更新<br>
-     *
-     * @param UpdateLimitModelMasterRequest $request リクエストパラメータ
+     * @param UpdateLimitModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateLimitModelMasterAsync(
@@ -2295,9 +2196,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターを更新<br>
-     *
-     * @param UpdateLimitModelMasterRequest $request リクエストパラメータ
+     * @param UpdateLimitModelMasterRequest $request
      * @return UpdateLimitModelMasterResult
      */
     public function updateLimitModelMaster (
@@ -2309,9 +2208,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターを削除<br>
-     *
-     * @param DeleteLimitModelMasterRequest $request リクエストパラメータ
+     * @param DeleteLimitModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteLimitModelMasterAsync(
@@ -2326,9 +2223,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類マスターを削除<br>
-     *
-     * @param DeleteLimitModelMasterRequest $request リクエストパラメータ
+     * @param DeleteLimitModelMasterRequest $request
      * @return DeleteLimitModelMasterResult
      */
     public function deleteLimitModelMaster (
@@ -2340,9 +2235,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な回数制限設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2357,9 +2250,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な回数制限設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2371,9 +2262,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な回数制限設定を取得します<br>
-     *
-     * @param GetCurrentLimitMasterRequest $request リクエストパラメータ
+     * @param GetCurrentLimitMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentLimitMasterAsync(
@@ -2388,9 +2277,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な回数制限設定を取得します<br>
-     *
-     * @param GetCurrentLimitMasterRequest $request リクエストパラメータ
+     * @param GetCurrentLimitMasterRequest $request
      * @return GetCurrentLimitMasterResult
      */
     public function getCurrentLimitMaster (
@@ -2402,9 +2289,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な回数制限設定を更新します<br>
-     *
-     * @param UpdateCurrentLimitMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentLimitMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentLimitMasterAsync(
@@ -2419,9 +2304,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な回数制限設定を更新します<br>
-     *
-     * @param UpdateCurrentLimitMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentLimitMasterRequest $request
      * @return UpdateCurrentLimitMasterResult
      */
     public function updateCurrentLimitMaster (
@@ -2433,9 +2316,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な回数制限設定を更新します<br>
-     *
-     * @param UpdateCurrentLimitMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentLimitMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentLimitMasterFromGitHubAsync(
@@ -2450,9 +2331,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効な回数制限設定を更新します<br>
-     *
-     * @param UpdateCurrentLimitMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentLimitMasterFromGitHubRequest $request
      * @return UpdateCurrentLimitMasterFromGitHubResult
      */
     public function updateCurrentLimitMasterFromGitHub (
@@ -2464,9 +2343,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類の一覧を取得<br>
-     *
-     * @param DescribeLimitModelsRequest $request リクエストパラメータ
+     * @param DescribeLimitModelsRequest $request
      * @return PromiseInterface
      */
     public function describeLimitModelsAsync(
@@ -2481,9 +2358,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類の一覧を取得<br>
-     *
-     * @param DescribeLimitModelsRequest $request リクエストパラメータ
+     * @param DescribeLimitModelsRequest $request
      * @return DescribeLimitModelsResult
      */
     public function describeLimitModels (
@@ -2495,9 +2370,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類を取得<br>
-     *
-     * @param GetLimitModelRequest $request リクエストパラメータ
+     * @param GetLimitModelRequest $request
      * @return PromiseInterface
      */
     public function getLimitModelAsync(
@@ -2512,9 +2385,7 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 回数制限の種類を取得<br>
-     *
-     * @param GetLimitModelRequest $request リクエストパラメータ
+     * @param GetLimitModelRequest $request
      * @return GetLimitModelResult
      */
     public function getLimitModel (

@@ -19,75 +19,51 @@ namespace Gs2\Inbox\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 全ユーザに向けたメッセージを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetGlobalMessageMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 全ユーザに向けたメッセージを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 全ユーザに向けたメッセージを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 全ユーザに向けたメッセージを取得
-     * @return GetGlobalMessageMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetGlobalMessageMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string 全ユーザに向けたメッセージ名 */
+    /** @var string */
     private $globalMessageName;
 
-    /**
-     * 全ユーザに向けたメッセージ名を取得
-     *
-     * @return string|null 全ユーザに向けたメッセージを取得
-     */
-    public function getGlobalMessageName(): ?string {
-        return $this->globalMessageName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetGlobalMessageMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getGlobalMessageName(): ?string {
+		return $this->globalMessageName;
+	}
+
+	public function setGlobalMessageName(?string $globalMessageName) {
+		$this->globalMessageName = $globalMessageName;
+	}
+
+	public function withGlobalMessageName(?string $globalMessageName): GetGlobalMessageMasterRequest {
+		$this->globalMessageName = $globalMessageName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetGlobalMessageMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetGlobalMessageMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withGlobalMessageName(empty($data['globalMessageName']) ? null : $data['globalMessageName']);
     }
 
-    /**
-     * 全ユーザに向けたメッセージ名を設定
-     *
-     * @param string $globalMessageName 全ユーザに向けたメッセージを取得
-     */
-    public function setGlobalMessageName(string $globalMessageName = null) {
-        $this->globalMessageName = $globalMessageName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "globalMessageName" => $this->getGlobalMessageName(),
+        );
     }
-
-    /**
-     * 全ユーザに向けたメッセージ名を設定
-     *
-     * @param string $globalMessageName 全ユーザに向けたメッセージを取得
-     * @return GetGlobalMessageMasterRequest $this
-     */
-    public function withGlobalMessageName(string $globalMessageName = null): GetGlobalMessageMasterRequest {
-        $this->setGlobalMessageName($globalMessageName);
-        return $this;
-    }
-
 }

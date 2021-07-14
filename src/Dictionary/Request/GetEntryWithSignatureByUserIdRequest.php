@@ -19,171 +19,85 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してエントリーを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetEntryWithSignatureByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してエントリーを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してエントリーを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してエントリーを取得
-     * @return GetEntryWithSignatureByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetEntryWithSignatureByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してエントリーを取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してエントリーを取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してエントリーを取得
-     * @return GetEntryWithSignatureByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): GetEntryWithSignatureByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string エントリー名 */
+    /** @var string */
     private $entryModelName;
-
-    /**
-     * エントリー名を取得
-     *
-     * @return string|null ユーザIDを指定してエントリーを取得
-     */
-    public function getEntryModelName(): ?string {
-        return $this->entryModelName;
-    }
-
-    /**
-     * エントリー名を設定
-     *
-     * @param string $entryModelName ユーザIDを指定してエントリーを取得
-     */
-    public function setEntryModelName(string $entryModelName = null) {
-        $this->entryModelName = $entryModelName;
-    }
-
-    /**
-     * エントリー名を設定
-     *
-     * @param string $entryModelName ユーザIDを指定してエントリーを取得
-     * @return GetEntryWithSignatureByUserIdRequest $this
-     */
-    public function withEntryModelName(string $entryModelName = null): GetEntryWithSignatureByUserIdRequest {
-        $this->setEntryModelName($entryModelName);
-        return $this;
-    }
-
-    /** @var string 署名の発行に使用する暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを取得
-     *
-     * @return string|null ユーザIDを指定してエントリーを取得
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetEntryWithSignatureByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): GetEntryWithSignatureByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getEntryModelName(): ?string {
+		return $this->entryModelName;
+	}
+
+	public function setEntryModelName(?string $entryModelName) {
+		$this->entryModelName = $entryModelName;
+	}
+
+	public function withEntryModelName(?string $entryModelName): GetEntryWithSignatureByUserIdRequest {
+		$this->entryModelName = $entryModelName;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): GetEntryWithSignatureByUserIdRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetEntryWithSignatureByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetEntryWithSignatureByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withEntryModelName(empty($data['entryModelName']) ? null : $data['entryModelName'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId ユーザIDを指定してエントリーを取得
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "entryModelName" => $this->getEntryModelName(),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * 署名の発行に使用する暗号鍵 のGRNを設定
-     *
-     * @param string $keyId ユーザIDを指定してエントリーを取得
-     * @return GetEntryWithSignatureByUserIdRequest $this
-     */
-    public function withKeyId(string $keyId = null): GetEntryWithSignatureByUserIdRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してエントリーを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してエントリーを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してエントリーを取得
-     * @return GetEntryWithSignatureByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetEntryWithSignatureByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

@@ -19,75 +19,51 @@ namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * バージョンマスターを削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteVersionModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null バージョンマスターを削除
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName バージョンマスターを削除
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName バージョンマスターを削除
-     * @return DeleteVersionModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteVersionModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string バージョン名 */
+    /** @var string */
     private $versionName;
 
-    /**
-     * バージョン名を取得
-     *
-     * @return string|null バージョンマスターを削除
-     */
-    public function getVersionName(): ?string {
-        return $this->versionName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteVersionModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getVersionName(): ?string {
+		return $this->versionName;
+	}
+
+	public function setVersionName(?string $versionName) {
+		$this->versionName = $versionName;
+	}
+
+	public function withVersionName(?string $versionName): DeleteVersionModelMasterRequest {
+		$this->versionName = $versionName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteVersionModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteVersionModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withVersionName(empty($data['versionName']) ? null : $data['versionName']);
     }
 
-    /**
-     * バージョン名を設定
-     *
-     * @param string $versionName バージョンマスターを削除
-     */
-    public function setVersionName(string $versionName = null) {
-        $this->versionName = $versionName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "versionName" => $this->getVersionName(),
+        );
     }
-
-    /**
-     * バージョン名を設定
-     *
-     * @param string $versionName バージョンマスターを削除
-     * @return DeleteVersionModelMasterRequest $this
-     */
-    public function withVersionName(string $versionName = null): DeleteVersionModelMasterRequest {
-        $this->setVersionName($versionName);
-        return $this;
-    }
-
 }

@@ -19,331 +19,187 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ネームスペースを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): UpdateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string ログの書き出し方法 */
+    /** @var string */
     private $type;
-
-    /**
-     * ログの書き出し方法を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getType(): ?string {
-        return $this->type;
-    }
-
-    /**
-     * ログの書き出し方法を設定
-     *
-     * @param string $type ネームスペースを更新
-     */
-    public function setType(string $type = null) {
-        $this->type = $type;
-    }
-
-    /**
-     * ログの書き出し方法を設定
-     *
-     * @param string $type ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withType(string $type = null): UpdateNamespaceRequest {
-        $this->setType($type);
-        return $this;
-    }
-
-    /** @var string GCPのクレデンシャル */
+    /** @var string */
     private $gcpCredentialJson;
-
-    /**
-     * GCPのクレデンシャルを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getGcpCredentialJson(): ?string {
-        return $this->gcpCredentialJson;
-    }
-
-    /**
-     * GCPのクレデンシャルを設定
-     *
-     * @param string $gcpCredentialJson ネームスペースを更新
-     */
-    public function setGcpCredentialJson(string $gcpCredentialJson = null) {
-        $this->gcpCredentialJson = $gcpCredentialJson;
-    }
-
-    /**
-     * GCPのクレデンシャルを設定
-     *
-     * @param string $gcpCredentialJson ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withGcpCredentialJson(string $gcpCredentialJson = null): UpdateNamespaceRequest {
-        $this->setGcpCredentialJson($gcpCredentialJson);
-        return $this;
-    }
-
-    /** @var string BigQueryのデータセット名 */
+    /** @var string */
     private $bigQueryDatasetName;
-
-    /**
-     * BigQueryのデータセット名を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getBigQueryDatasetName(): ?string {
-        return $this->bigQueryDatasetName;
-    }
-
-    /**
-     * BigQueryのデータセット名を設定
-     *
-     * @param string $bigQueryDatasetName ネームスペースを更新
-     */
-    public function setBigQueryDatasetName(string $bigQueryDatasetName = null) {
-        $this->bigQueryDatasetName = $bigQueryDatasetName;
-    }
-
-    /**
-     * BigQueryのデータセット名を設定
-     *
-     * @param string $bigQueryDatasetName ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withBigQueryDatasetName(string $bigQueryDatasetName = null): UpdateNamespaceRequest {
-        $this->setBigQueryDatasetName($bigQueryDatasetName);
-        return $this;
-    }
-
-    /** @var int ログの保存期間(日) */
+    /** @var int */
     private $logExpireDays;
-
-    /**
-     * ログの保存期間(日)を取得
-     *
-     * @return int|null ネームスペースを更新
-     */
-    public function getLogExpireDays(): ?int {
-        return $this->logExpireDays;
-    }
-
-    /**
-     * ログの保存期間(日)を設定
-     *
-     * @param int $logExpireDays ネームスペースを更新
-     */
-    public function setLogExpireDays(int $logExpireDays = null) {
-        $this->logExpireDays = $logExpireDays;
-    }
-
-    /**
-     * ログの保存期間(日)を設定
-     *
-     * @param int $logExpireDays ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLogExpireDays(int $logExpireDays = null): UpdateNamespaceRequest {
-        $this->setLogExpireDays($logExpireDays);
-        return $this;
-    }
-
-    /** @var string AWSのリージョン */
+    /** @var string */
     private $awsRegion;
-
-    /**
-     * AWSのリージョンを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getAwsRegion(): ?string {
-        return $this->awsRegion;
-    }
-
-    /**
-     * AWSのリージョンを設定
-     *
-     * @param string $awsRegion ネームスペースを更新
-     */
-    public function setAwsRegion(string $awsRegion = null) {
-        $this->awsRegion = $awsRegion;
-    }
-
-    /**
-     * AWSのリージョンを設定
-     *
-     * @param string $awsRegion ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withAwsRegion(string $awsRegion = null): UpdateNamespaceRequest {
-        $this->setAwsRegion($awsRegion);
-        return $this;
-    }
-
-    /** @var string AWSのアクセスキーID */
+    /** @var string */
     private $awsAccessKeyId;
-
-    /**
-     * AWSのアクセスキーIDを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getAwsAccessKeyId(): ?string {
-        return $this->awsAccessKeyId;
-    }
-
-    /**
-     * AWSのアクセスキーIDを設定
-     *
-     * @param string $awsAccessKeyId ネームスペースを更新
-     */
-    public function setAwsAccessKeyId(string $awsAccessKeyId = null) {
-        $this->awsAccessKeyId = $awsAccessKeyId;
-    }
-
-    /**
-     * AWSのアクセスキーIDを設定
-     *
-     * @param string $awsAccessKeyId ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withAwsAccessKeyId(string $awsAccessKeyId = null): UpdateNamespaceRequest {
-        $this->setAwsAccessKeyId($awsAccessKeyId);
-        return $this;
-    }
-
-    /** @var string AWSのシークレットアクセスキー */
+    /** @var string */
     private $awsSecretAccessKey;
-
-    /**
-     * AWSのシークレットアクセスキーを取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getAwsSecretAccessKey(): ?string {
-        return $this->awsSecretAccessKey;
-    }
-
-    /**
-     * AWSのシークレットアクセスキーを設定
-     *
-     * @param string $awsSecretAccessKey ネームスペースを更新
-     */
-    public function setAwsSecretAccessKey(string $awsSecretAccessKey = null) {
-        $this->awsSecretAccessKey = $awsSecretAccessKey;
-    }
-
-    /**
-     * AWSのシークレットアクセスキーを設定
-     *
-     * @param string $awsSecretAccessKey ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withAwsSecretAccessKey(string $awsSecretAccessKey = null): UpdateNamespaceRequest {
-        $this->setAwsSecretAccessKey($awsSecretAccessKey);
-        return $this;
-    }
-
-    /** @var string Kinesis Firehose のストリーム名 */
+    /** @var string */
     private $firehoseStreamName;
 
-    /**
-     * Kinesis Firehose のストリーム名を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getFirehoseStreamName(): ?string {
-        return $this->firehoseStreamName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getType(): ?string {
+		return $this->type;
+	}
+
+	public function setType(?string $type) {
+		$this->type = $type;
+	}
+
+	public function withType(?string $type): UpdateNamespaceRequest {
+		$this->type = $type;
+		return $this;
+	}
+
+	public function getGcpCredentialJson(): ?string {
+		return $this->gcpCredentialJson;
+	}
+
+	public function setGcpCredentialJson(?string $gcpCredentialJson) {
+		$this->gcpCredentialJson = $gcpCredentialJson;
+	}
+
+	public function withGcpCredentialJson(?string $gcpCredentialJson): UpdateNamespaceRequest {
+		$this->gcpCredentialJson = $gcpCredentialJson;
+		return $this;
+	}
+
+	public function getBigQueryDatasetName(): ?string {
+		return $this->bigQueryDatasetName;
+	}
+
+	public function setBigQueryDatasetName(?string $bigQueryDatasetName) {
+		$this->bigQueryDatasetName = $bigQueryDatasetName;
+	}
+
+	public function withBigQueryDatasetName(?string $bigQueryDatasetName): UpdateNamespaceRequest {
+		$this->bigQueryDatasetName = $bigQueryDatasetName;
+		return $this;
+	}
+
+	public function getLogExpireDays(): ?int {
+		return $this->logExpireDays;
+	}
+
+	public function setLogExpireDays(?int $logExpireDays) {
+		$this->logExpireDays = $logExpireDays;
+	}
+
+	public function withLogExpireDays(?int $logExpireDays): UpdateNamespaceRequest {
+		$this->logExpireDays = $logExpireDays;
+		return $this;
+	}
+
+	public function getAwsRegion(): ?string {
+		return $this->awsRegion;
+	}
+
+	public function setAwsRegion(?string $awsRegion) {
+		$this->awsRegion = $awsRegion;
+	}
+
+	public function withAwsRegion(?string $awsRegion): UpdateNamespaceRequest {
+		$this->awsRegion = $awsRegion;
+		return $this;
+	}
+
+	public function getAwsAccessKeyId(): ?string {
+		return $this->awsAccessKeyId;
+	}
+
+	public function setAwsAccessKeyId(?string $awsAccessKeyId) {
+		$this->awsAccessKeyId = $awsAccessKeyId;
+	}
+
+	public function withAwsAccessKeyId(?string $awsAccessKeyId): UpdateNamespaceRequest {
+		$this->awsAccessKeyId = $awsAccessKeyId;
+		return $this;
+	}
+
+	public function getAwsSecretAccessKey(): ?string {
+		return $this->awsSecretAccessKey;
+	}
+
+	public function setAwsSecretAccessKey(?string $awsSecretAccessKey) {
+		$this->awsSecretAccessKey = $awsSecretAccessKey;
+	}
+
+	public function withAwsSecretAccessKey(?string $awsSecretAccessKey): UpdateNamespaceRequest {
+		$this->awsSecretAccessKey = $awsSecretAccessKey;
+		return $this;
+	}
+
+	public function getFirehoseStreamName(): ?string {
+		return $this->firehoseStreamName;
+	}
+
+	public function setFirehoseStreamName(?string $firehoseStreamName) {
+		$this->firehoseStreamName = $firehoseStreamName;
+	}
+
+	public function withFirehoseStreamName(?string $firehoseStreamName): UpdateNamespaceRequest {
+		$this->firehoseStreamName = $firehoseStreamName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withGcpCredentialJson(empty($data['gcpCredentialJson']) ? null : $data['gcpCredentialJson'])
+            ->withBigQueryDatasetName(empty($data['bigQueryDatasetName']) ? null : $data['bigQueryDatasetName'])
+            ->withLogExpireDays(empty($data['logExpireDays']) ? null : $data['logExpireDays'])
+            ->withAwsRegion(empty($data['awsRegion']) ? null : $data['awsRegion'])
+            ->withAwsAccessKeyId(empty($data['awsAccessKeyId']) ? null : $data['awsAccessKeyId'])
+            ->withAwsSecretAccessKey(empty($data['awsSecretAccessKey']) ? null : $data['awsSecretAccessKey'])
+            ->withFirehoseStreamName(empty($data['firehoseStreamName']) ? null : $data['firehoseStreamName']);
     }
 
-    /**
-     * Kinesis Firehose のストリーム名を設定
-     *
-     * @param string $firehoseStreamName ネームスペースを更新
-     */
-    public function setFirehoseStreamName(string $firehoseStreamName = null) {
-        $this->firehoseStreamName = $firehoseStreamName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "description" => $this->getDescription(),
+            "type" => $this->getType(),
+            "gcpCredentialJson" => $this->getGcpCredentialJson(),
+            "bigQueryDatasetName" => $this->getBigQueryDatasetName(),
+            "logExpireDays" => $this->getLogExpireDays(),
+            "awsRegion" => $this->getAwsRegion(),
+            "awsAccessKeyId" => $this->getAwsAccessKeyId(),
+            "awsSecretAccessKey" => $this->getAwsSecretAccessKey(),
+            "firehoseStreamName" => $this->getFirehoseStreamName(),
+        );
     }
-
-    /**
-     * Kinesis Firehose のストリーム名を設定
-     *
-     * @param string $firehoseStreamName ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withFirehoseStreamName(string $firehoseStreamName = null): UpdateNamespaceRequest {
-        $this->setFirehoseStreamName($firehoseStreamName);
-        return $this;
-    }
-
 }

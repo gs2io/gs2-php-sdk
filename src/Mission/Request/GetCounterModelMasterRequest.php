@@ -19,75 +19,51 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * カウンターの種類マスターを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCounterModelMasterRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null カウンターの種類マスターを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カウンターの種類マスターを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName カウンターの種類マスターを取得
-     * @return GetCounterModelMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetCounterModelMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string カウンター名 */
+    /** @var string */
     private $counterName;
 
-    /**
-     * カウンター名を取得
-     *
-     * @return string|null カウンターの種類マスターを取得
-     */
-    public function getCounterName(): ?string {
-        return $this->counterName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetCounterModelMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getCounterName(): ?string {
+		return $this->counterName;
+	}
+
+	public function setCounterName(?string $counterName) {
+		$this->counterName = $counterName;
+	}
+
+	public function withCounterName(?string $counterName): GetCounterModelMasterRequest {
+		$this->counterName = $counterName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCounterModelMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCounterModelMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withCounterName(empty($data['counterName']) ? null : $data['counterName']);
     }
 
-    /**
-     * カウンター名を設定
-     *
-     * @param string $counterName カウンターの種類マスターを取得
-     */
-    public function setCounterName(string $counterName = null) {
-        $this->counterName = $counterName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "counterName" => $this->getCounterName(),
+        );
     }
-
-    /**
-     * カウンター名を設定
-     *
-     * @param string $counterName カウンターの種類マスターを取得
-     * @return GetCounterModelMasterRequest $this
-     */
-    public function withCounterName(string $counterName = null): GetCounterModelMasterRequest {
-        $this->setCounterName($counterName);
-        return $this;
-    }
-
 }

@@ -18,44 +18,51 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\ConsumeAction;
+use Gs2\Showcase\Model\AcquireAction;
+use Gs2\Showcase\Model\SalesItem;
+use Gs2\Showcase\Model\SalesItemGroup;
+use Gs2\Showcase\Model\DisplayItem;
 use Gs2\Showcase\Model\Showcase;
 
-/**
- * ユーザIDを指定して陳列棚の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeShowcasesByUserIdResult implements IResult {
-	/** @var Showcase[] 陳列棚のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 陳列棚のリストを取得
-	 *
-	 * @return Showcase[]|null ユーザIDを指定して陳列棚の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 陳列棚のリストを設定
-	 *
-	 * @param Showcase[]|null $items ユーザIDを指定して陳列棚の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeShowcasesByUserIdResult {
-        $result = new DescribeShowcasesByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Showcase::fromJson($v);
+	public function withItems(?array $items): DescribeShowcasesByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeShowcasesByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeShowcasesByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Showcase::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

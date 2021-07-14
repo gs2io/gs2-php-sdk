@@ -20,36 +20,34 @@ namespace Gs2\Gateway\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Gateway\Model\FirebaseToken;
 
-/**
- * Firebaseデバイストークンを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteFirebaseTokenResult implements IResult {
-	/** @var FirebaseToken 削除したFirebaseデバイストークン */
-	private $item;
+    /** @var FirebaseToken */
+    private $item;
 
-	/**
-	 * 削除したFirebaseデバイストークンを取得
-	 *
-	 * @return FirebaseToken|null Firebaseデバイストークンを削除
-	 */
 	public function getItem(): ?FirebaseToken {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したFirebaseデバイストークンを設定
-	 *
-	 * @param FirebaseToken|null $item Firebaseデバイストークンを削除
-	 */
 	public function setItem(?FirebaseToken $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteFirebaseTokenResult {
-        $result = new DeleteFirebaseTokenResult();
-        $result->setItem(isset($data["item"]) ? FirebaseToken::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FirebaseToken $item): DeleteFirebaseTokenResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteFirebaseTokenResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteFirebaseTokenResult())
+            ->withItem(empty($data['item']) ? null : FirebaseToken::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -19,15 +19,17 @@ namespace Gs2\Friend\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * プロフィールを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteProfileByUserIdResult implements IResult {
 
-    public static function fromJson(array $data): DeleteProfileByUserIdResult {
-        $result = new DeleteProfileByUserIdResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteProfileByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteProfileByUserIdResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

@@ -19,80 +19,73 @@ namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
+use Gs2\Stamina\Model\MaxStaminaTable;
+use Gs2\Stamina\Model\RecoverIntervalTable;
+use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
-/**
- * スタンプシートを使用してスタミナを回復 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RecoverStaminaByStampSheetResult implements IResult {
-	/** @var Stamina スタミナ */
-	private $item;
-	/** @var StaminaModel スタミナモデル */
-	private $staminaModel;
-	/** @var int スタミナ値の上限を超えて受け取れずに GS2-Inbox に転送したスタミナ値 */
-	private $overflowValue;
+    /** @var Stamina */
+    private $item;
+    /** @var StaminaModel */
+    private $staminaModel;
+    /** @var int */
+    private $overflowValue;
 
-	/**
-	 * スタミナを取得
-	 *
-	 * @return Stamina|null スタンプシートを使用してスタミナを回復
-	 */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
-	/**
-	 * スタミナを設定
-	 *
-	 * @param Stamina|null $item スタンプシートを使用してスタミナを回復
-	 */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタミナモデルを取得
-	 *
-	 * @return StaminaModel|null スタンプシートを使用してスタミナを回復
-	 */
+	public function withItem(?Stamina $item): RecoverStaminaByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
-	/**
-	 * スタミナモデルを設定
-	 *
-	 * @param StaminaModel|null $staminaModel スタンプシートを使用してスタミナを回復
-	 */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
-	/**
-	 * スタミナ値の上限を超えて受け取れずに GS2-Inbox に転送したスタミナ値を取得
-	 *
-	 * @return int|null スタンプシートを使用してスタミナを回復
-	 */
+	public function withStaminaModel(?StaminaModel $staminaModel): RecoverStaminaByStampSheetResult {
+		$this->staminaModel = $staminaModel;
+		return $this;
+	}
+
 	public function getOverflowValue(): ?int {
 		return $this->overflowValue;
 	}
 
-	/**
-	 * スタミナ値の上限を超えて受け取れずに GS2-Inbox に転送したスタミナ値を設定
-	 *
-	 * @param int|null $overflowValue スタンプシートを使用してスタミナを回復
-	 */
 	public function setOverflowValue(?int $overflowValue) {
 		$this->overflowValue = $overflowValue;
 	}
 
-    public static function fromJson(array $data): RecoverStaminaByStampSheetResult {
-        $result = new RecoverStaminaByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? Stamina::fromJson($data["item"]) : null);
-        $result->setStaminaModel(isset($data["staminaModel"]) ? StaminaModel::fromJson($data["staminaModel"]) : null);
-        $result->setOverflowValue(isset($data["overflowValue"]) ? $data["overflowValue"] : null);
-        return $result;
+	public function withOverflowValue(?int $overflowValue): RecoverStaminaByStampSheetResult {
+		$this->overflowValue = $overflowValue;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RecoverStaminaByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RecoverStaminaByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : Stamina::fromJson($data['item']))
+            ->withStaminaModel(empty($data['staminaModel']) ? null : StaminaModel::fromJson($data['staminaModel']))
+            ->withOverflowValue(empty($data['overflowValue']) ? null : $data['overflowValue']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "staminaModel" => $this->getStaminaModel() !== null ? $this->getStaminaModel()->toJson() : null,
+            "overflowValue" => $this->getOverflowValue(),
+        );
     }
 }

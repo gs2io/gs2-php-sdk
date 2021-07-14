@@ -20,42 +20,44 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\LimitModel;
 
-/**
- * 回数制限の種類の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeLimitModelsResult implements IResult {
-	/** @var LimitModel[] 回数制限の種類のリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * 回数制限の種類のリストを取得
-	 *
-	 * @return LimitModel[]|null 回数制限の種類の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 回数制限の種類のリストを設定
-	 *
-	 * @param LimitModel[]|null $items 回数制限の種類の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeLimitModelsResult {
-        $result = new DescribeLimitModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return LimitModel::fromJson($v);
+	public function withItems(?array $items): DescribeLimitModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeLimitModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeLimitModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return LimitModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

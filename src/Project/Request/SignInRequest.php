@@ -19,75 +19,51 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * サインインします のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SignInRequest extends Gs2BasicRequest {
-
-    /** @var string メールアドレス */
+    /** @var string */
     private $email;
-
-    /**
-     * メールアドレスを取得
-     *
-     * @return string|null サインインします
-     */
-    public function getEmail(): ?string {
-        return $this->email;
-    }
-
-    /**
-     * メールアドレスを設定
-     *
-     * @param string $email サインインします
-     */
-    public function setEmail(string $email = null) {
-        $this->email = $email;
-    }
-
-    /**
-     * メールアドレスを設定
-     *
-     * @param string $email サインインします
-     * @return SignInRequest $this
-     */
-    public function withEmail(string $email = null): SignInRequest {
-        $this->setEmail($email);
-        return $this;
-    }
-
-    /** @var string パスワード */
+    /** @var string */
     private $password;
 
-    /**
-     * パスワードを取得
-     *
-     * @return string|null サインインします
-     */
-    public function getPassword(): ?string {
-        return $this->password;
+	public function getEmail(): ?string {
+		return $this->email;
+	}
+
+	public function setEmail(?string $email) {
+		$this->email = $email;
+	}
+
+	public function withEmail(?string $email): SignInRequest {
+		$this->email = $email;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): SignInRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SignInRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SignInRequest())
+            ->withEmail(empty($data['email']) ? null : $data['email'])
+            ->withPassword(empty($data['password']) ? null : $data['password']);
     }
 
-    /**
-     * パスワードを設定
-     *
-     * @param string $password サインインします
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
+    public function toJson(): array {
+        return array(
+            "email" => $this->getEmail(),
+            "password" => $this->getPassword(),
+        );
     }
-
-    /**
-     * パスワードを設定
-     *
-     * @param string $password サインインします
-     * @return SignInRequest $this
-     */
-    public function withPassword(string $password = null): SignInRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
 }

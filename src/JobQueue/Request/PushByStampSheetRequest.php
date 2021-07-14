@@ -19,107 +19,51 @@ namespace Gs2\JobQueue\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタンプシートでジョブを登録 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PushByStampSheetRequest extends Gs2BasicRequest {
-
-    /** @var string スタンプシート */
+    /** @var string */
     private $stampSheet;
-
-    /**
-     * スタンプシートを取得
-     *
-     * @return string|null スタンプシートでジョブを登録
-     */
-    public function getStampSheet(): ?string {
-        return $this->stampSheet;
-    }
-
-    /**
-     * スタンプシートを設定
-     *
-     * @param string $stampSheet スタンプシートでジョブを登録
-     */
-    public function setStampSheet(string $stampSheet = null) {
-        $this->stampSheet = $stampSheet;
-    }
-
-    /**
-     * スタンプシートを設定
-     *
-     * @param string $stampSheet スタンプシートでジョブを登録
-     * @return PushByStampSheetRequest $this
-     */
-    public function withStampSheet(string $stampSheet = null): PushByStampSheetRequest {
-        $this->setStampSheet($stampSheet);
-        return $this;
-    }
-
-    /** @var string スタンプシートの署名検証に使用する 暗号鍵 のGRN */
+    /** @var string */
     private $keyId;
 
-    /**
-     * スタンプシートの署名検証に使用する 暗号鍵 のGRNを取得
-     *
-     * @return string|null スタンプシートでジョブを登録
-     */
-    public function getKeyId(): ?string {
-        return $this->keyId;
+	public function getStampSheet(): ?string {
+		return $this->stampSheet;
+	}
+
+	public function setStampSheet(?string $stampSheet) {
+		$this->stampSheet = $stampSheet;
+	}
+
+	public function withStampSheet(?string $stampSheet): PushByStampSheetRequest {
+		$this->stampSheet = $stampSheet;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): PushByStampSheetRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PushByStampSheetRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PushByStampSheetRequest())
+            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
+            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 
-    /**
-     * スタンプシートの署名検証に使用する 暗号鍵 のGRNを設定
-     *
-     * @param string $keyId スタンプシートでジョブを登録
-     */
-    public function setKeyId(string $keyId = null) {
-        $this->keyId = $keyId;
+    public function toJson(): array {
+        return array(
+            "stampSheet" => $this->getStampSheet(),
+            "keyId" => $this->getKeyId(),
+        );
     }
-
-    /**
-     * スタンプシートの署名検証に使用する 暗号鍵 のGRNを設定
-     *
-     * @param string $keyId スタンプシートでジョブを登録
-     * @return PushByStampSheetRequest $this
-     */
-    public function withKeyId(string $keyId = null): PushByStampSheetRequest {
-        $this->setKeyId($keyId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null スタンプシートでジョブを登録
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタンプシートでジョブを登録
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider スタンプシートでジョブを登録
-     * @return PushByStampSheetRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): PushByStampSheetRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

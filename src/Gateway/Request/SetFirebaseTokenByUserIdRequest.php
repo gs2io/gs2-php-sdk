@@ -19,139 +19,68 @@ namespace Gs2\Gateway\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザIDを指定してデバイストークンを設定 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してデバイストークンを設定
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してデバイストークンを設定
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してデバイストークンを設定
-     * @return SetFirebaseTokenByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): SetFirebaseTokenByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してデバイストークンを設定
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してデバイストークンを設定
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してデバイストークンを設定
-     * @return SetFirebaseTokenByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): SetFirebaseTokenByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string Firebase Cloud Messaging のデバイストークン */
+    /** @var string */
     private $token;
 
-    /**
-     * Firebase Cloud Messaging のデバイストークンを取得
-     *
-     * @return string|null ユーザIDを指定してデバイストークンを設定
-     */
-    public function getToken(): ?string {
-        return $this->token;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): SetFirebaseTokenByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): SetFirebaseTokenByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getToken(): ?string {
+		return $this->token;
+	}
+
+	public function setToken(?string $token) {
+		$this->token = $token;
+	}
+
+	public function withToken(?string $token): SetFirebaseTokenByUserIdRequest {
+		$this->token = $token;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetFirebaseTokenByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetFirebaseTokenByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withToken(empty($data['token']) ? null : $data['token']);
     }
 
-    /**
-     * Firebase Cloud Messaging のデバイストークンを設定
-     *
-     * @param string $token ユーザIDを指定してデバイストークンを設定
-     */
-    public function setToken(string $token = null) {
-        $this->token = $token;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "token" => $this->getToken(),
+        );
     }
-
-    /**
-     * Firebase Cloud Messaging のデバイストークンを設定
-     *
-     * @param string $token ユーザIDを指定してデバイストークンを設定
-     * @return SetFirebaseTokenByUserIdRequest $this
-     */
-    public function withToken(string $token = null): SetFirebaseTokenByUserIdRequest {
-        $this->setToken($token);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してデバイストークンを設定
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してデバイストークンを設定
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してデバイストークンを設定
-     * @return SetFirebaseTokenByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): SetFirebaseTokenByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

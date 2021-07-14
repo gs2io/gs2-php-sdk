@@ -19,126 +19,75 @@ namespace Gs2\Matchmaking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ギャザリング参加可能な属性値の範囲
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class AttributeRange implements IModel {
 	/**
-     * @var string 属性名
+     * @var string
 	 */
-	protected $name;
-
+	private $name;
 	/**
-	 * 属性名を取得
-	 *
-	 * @return string|null 属性名
+     * @var int
 	 */
+	private $min;
+	/**
+     * @var int
+	 */
+	private $max;
+
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * 属性名を設定
-	 *
-	 * @param string|null $name 属性名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * 属性名を設定
-	 *
-	 * @param string|null $name 属性名
-	 * @return AttributeRange $this
-	 */
 	public function withName(?string $name): AttributeRange {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var int ギャザリング参加可能な属性値の最小値
-	 */
-	protected $min;
 
-	/**
-	 * ギャザリング参加可能な属性値の最小値を取得
-	 *
-	 * @return int|null ギャザリング参加可能な属性値の最小値
-	 */
 	public function getMin(): ?int {
 		return $this->min;
 	}
 
-	/**
-	 * ギャザリング参加可能な属性値の最小値を設定
-	 *
-	 * @param int|null $min ギャザリング参加可能な属性値の最小値
-	 */
 	public function setMin(?int $min) {
 		$this->min = $min;
 	}
 
-	/**
-	 * ギャザリング参加可能な属性値の最小値を設定
-	 *
-	 * @param int|null $min ギャザリング参加可能な属性値の最小値
-	 * @return AttributeRange $this
-	 */
 	public function withMin(?int $min): AttributeRange {
 		$this->min = $min;
 		return $this;
 	}
-	/**
-     * @var int ギャザリング参加可能な属性値の最大値
-	 */
-	protected $max;
 
-	/**
-	 * ギャザリング参加可能な属性値の最大値を取得
-	 *
-	 * @return int|null ギャザリング参加可能な属性値の最大値
-	 */
 	public function getMax(): ?int {
 		return $this->max;
 	}
 
-	/**
-	 * ギャザリング参加可能な属性値の最大値を設定
-	 *
-	 * @param int|null $max ギャザリング参加可能な属性値の最大値
-	 */
 	public function setMax(?int $max) {
 		$this->max = $max;
 	}
 
-	/**
-	 * ギャザリング参加可能な属性値の最大値を設定
-	 *
-	 * @param int|null $max ギャザリング参加可能な属性値の最大値
-	 * @return AttributeRange $this
-	 */
 	public function withMax(?int $max): AttributeRange {
 		$this->max = $max;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "name" => $this->name,
-            "min" => $this->min,
-            "max" => $this->max,
-        );
+    public static function fromJson(?array $data): ?AttributeRange {
+        if ($data === null) {
+            return null;
+        }
+        return (new AttributeRange())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withMin(empty($data['min']) ? null : $data['min'])
+            ->withMax(empty($data['max']) ? null : $data['max']);
     }
 
-    public static function fromJson(array $data): AttributeRange {
-        $model = new AttributeRange();
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setMin(isset($data["min"]) ? $data["min"] : null);
-        $model->setMax(isset($data["max"]) ? $data["max"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "min" => $this->getMin(),
+            "max" => $this->getMax(),
+        );
     }
 }

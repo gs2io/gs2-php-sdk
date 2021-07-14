@@ -20,63 +20,61 @@ namespace Gs2\Exchange\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Await;
 
-/**
- * 交換待機の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeAwaitsResult implements IResult {
-	/** @var Await[] 交換待機のリスト */
-	private $items;
-	/** @var string 次のページを取得するためのトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 交換待機のリストを取得
-	 *
-	 * @return Await[]|null 交換待機の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 交換待機のリストを設定
-	 *
-	 * @param Await[]|null $items 交換待機の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * 次のページを取得するためのトークンを取得
-	 *
-	 * @return string|null 交換待機の一覧を取得
-	 */
+	public function withItems(?array $items): DescribeAwaitsResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * 次のページを取得するためのトークンを設定
-	 *
-	 * @param string|null $nextPageToken 交換待機の一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeAwaitsResult {
-        $result = new DescribeAwaitsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return Await::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeAwaitsResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeAwaitsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeAwaitsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return Await::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

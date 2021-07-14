@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FollowUser;
 
-/**
- * フォローを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetFollowResult implements IResult {
-	/** @var FollowUser フォローしているユーザー */
-	private $item;
+    /** @var FollowUser */
+    private $item;
 
-	/**
-	 * フォローしているユーザーを取得
-	 *
-	 * @return FollowUser|null フォローを取得
-	 */
 	public function getItem(): ?FollowUser {
 		return $this->item;
 	}
 
-	/**
-	 * フォローしているユーザーを設定
-	 *
-	 * @param FollowUser|null $item フォローを取得
-	 */
 	public function setItem(?FollowUser $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetFollowResult {
-        $result = new GetFollowResult();
-        $result->setItem(isset($data["item"]) ? FollowUser::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FollowUser $item): GetFollowResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetFollowResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetFollowResult())
+            ->withItem(empty($data['item']) ? null : FollowUser::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

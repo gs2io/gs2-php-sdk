@@ -19,43 +19,34 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザを削除します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteUserRequest extends Gs2BasicRequest {
-
-    /** @var string ユーザー名 */
+    /** @var string */
     private $userName;
 
-    /**
-     * ユーザー名を取得
-     *
-     * @return string|null ユーザを削除します
-     */
-    public function getUserName(): ?string {
-        return $this->userName;
+	public function getUserName(): ?string {
+		return $this->userName;
+	}
+
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
+	}
+
+	public function withUserName(?string $userName): DeleteUserRequest {
+		$this->userName = $userName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteUserRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteUserRequest())
+            ->withUserName(empty($data['userName']) ? null : $data['userName']);
     }
 
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName ユーザを削除します
-     */
-    public function setUserName(string $userName = null) {
-        $this->userName = $userName;
+    public function toJson(): array {
+        return array(
+            "userName" => $this->getUserName(),
+        );
     }
-
-    /**
-     * ユーザー名を設定
-     *
-     * @param string $userName ユーザを削除します
-     * @return DeleteUserRequest $this
-     */
-    public function withUserName(string $userName = null): DeleteUserRequest {
-        $this->setUserName($userName);
-        return $this;
-    }
-
 }

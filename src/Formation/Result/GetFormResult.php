@@ -18,104 +18,92 @@
 namespace Gs2\Formation\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Formation\Model\Slot;
 use Gs2\Formation\Model\Form;
 use Gs2\Formation\Model\Mold;
-use Gs2\Formation\Model\MoldModel;
+use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
+use Gs2\Formation\Model\MoldModel;
 
-/**
- * フォームを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetFormResult implements IResult {
-	/** @var Form フォーム */
-	private $item;
-	/** @var Mold 保存したフォーム */
-	private $mold;
-	/** @var MoldModel フォームの保存領域 */
-	private $moldModel;
-	/** @var FormModel フォームモデル */
-	private $formModel;
+    /** @var Form */
+    private $item;
+    /** @var Mold */
+    private $mold;
+    /** @var MoldModel */
+    private $moldModel;
+    /** @var FormModel */
+    private $formModel;
 
-	/**
-	 * フォームを取得
-	 *
-	 * @return Form|null フォームを取得
-	 */
 	public function getItem(): ?Form {
 		return $this->item;
 	}
 
-	/**
-	 * フォームを設定
-	 *
-	 * @param Form|null $item フォームを取得
-	 */
 	public function setItem(?Form $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 保存したフォームを取得
-	 *
-	 * @return Mold|null フォームを取得
-	 */
+	public function withItem(?Form $item): GetFormResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getMold(): ?Mold {
 		return $this->mold;
 	}
 
-	/**
-	 * 保存したフォームを設定
-	 *
-	 * @param Mold|null $mold フォームを取得
-	 */
 	public function setMold(?Mold $mold) {
 		$this->mold = $mold;
 	}
 
-	/**
-	 * フォームの保存領域を取得
-	 *
-	 * @return MoldModel|null フォームを取得
-	 */
+	public function withMold(?Mold $mold): GetFormResult {
+		$this->mold = $mold;
+		return $this;
+	}
+
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
-	/**
-	 * フォームの保存領域を設定
-	 *
-	 * @param MoldModel|null $moldModel フォームを取得
-	 */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
-	/**
-	 * フォームモデルを取得
-	 *
-	 * @return FormModel|null フォームを取得
-	 */
+	public function withMoldModel(?MoldModel $moldModel): GetFormResult {
+		$this->moldModel = $moldModel;
+		return $this;
+	}
+
 	public function getFormModel(): ?FormModel {
 		return $this->formModel;
 	}
 
-	/**
-	 * フォームモデルを設定
-	 *
-	 * @param FormModel|null $formModel フォームを取得
-	 */
 	public function setFormModel(?FormModel $formModel) {
 		$this->formModel = $formModel;
 	}
 
-    public static function fromJson(array $data): GetFormResult {
-        $result = new GetFormResult();
-        $result->setItem(isset($data["item"]) ? Form::fromJson($data["item"]) : null);
-        $result->setMold(isset($data["mold"]) ? Mold::fromJson($data["mold"]) : null);
-        $result->setMoldModel(isset($data["moldModel"]) ? MoldModel::fromJson($data["moldModel"]) : null);
-        $result->setFormModel(isset($data["formModel"]) ? FormModel::fromJson($data["formModel"]) : null);
-        return $result;
+	public function withFormModel(?FormModel $formModel): GetFormResult {
+		$this->formModel = $formModel;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetFormResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetFormResult())
+            ->withItem(empty($data['item']) ? null : Form::fromJson($data['item']))
+            ->withMold(empty($data['mold']) ? null : Mold::fromJson($data['mold']))
+            ->withMoldModel(empty($data['moldModel']) ? null : MoldModel::fromJson($data['moldModel']))
+            ->withFormModel(empty($data['formModel']) ? null : FormModel::fromJson($data['formModel']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "mold" => $this->getMold() !== null ? $this->getMold()->toJson() : null,
+            "moldModel" => $this->getMoldModel() !== null ? $this->getMoldModel()->toJson() : null,
+            "formModel" => $this->getFormModel() !== null ? $this->getFormModel()->toJson() : null,
+        );
     }
 }

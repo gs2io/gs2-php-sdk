@@ -20,63 +20,61 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\TakeOver;
 
-/**
- * ユーザーIDを指定して引き継ぎ設定の一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeTakeOversByUserIdResult implements IResult {
-	/** @var TakeOver[] 引き継ぎ設定のリスト */
-	private $items;
-	/** @var string リストの続きを取得するためのページトークン */
-	private $nextPageToken;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	/**
-	 * 引き継ぎ設定のリストを取得
-	 *
-	 * @return TakeOver[]|null ユーザーIDを指定して引き継ぎ設定の一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * 引き継ぎ設定のリストを設定
-	 *
-	 * @param TakeOver[]|null $items ユーザーIDを指定して引き継ぎ設定の一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを取得
-	 *
-	 * @return string|null ユーザーIDを指定して引き継ぎ設定の一覧を取得
-	 */
+	public function withItems(?array $items): DescribeTakeOversByUserIdResult {
+		$this->items = $items;
+		return $this;
+	}
+
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
-	/**
-	 * リストの続きを取得するためのページトークンを設定
-	 *
-	 * @param string|null $nextPageToken ユーザーIDを指定して引き継ぎ設定の一覧を取得
-	 */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
-    public static function fromJson(array $data): DescribeTakeOversByUserIdResult {
-        $result = new DescribeTakeOversByUserIdResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return TakeOver::fromJson($v);
+	public function withNextPageToken(?string $nextPageToken): DescribeTakeOversByUserIdResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeTakeOversByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeTakeOversByUserIdResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return TakeOver::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
-        $result->setNextPageToken(isset($data["nextPageToken"]) ? $data["nextPageToken"] : null);
-        return $result;
     }
 }

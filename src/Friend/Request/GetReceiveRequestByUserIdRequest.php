@@ -19,139 +19,68 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ユーザーIDを指定して受信したフレンドリクエストを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetReceiveRequestByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザーIDを指定して受信したフレンドリクエストを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定して受信したフレンドリクエストを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザーIDを指定して受信したフレンドリクエストを取得
-     * @return GetReceiveRequestByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetReceiveRequestByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザーIDを指定して受信したフレンドリクエストを取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定して受信したフレンドリクエストを取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザーIDを指定して受信したフレンドリクエストを取得
-     * @return GetReceiveRequestByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): GetReceiveRequestByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $fromUserId;
 
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザーIDを指定して受信したフレンドリクエストを取得
-     */
-    public function getFromUserId(): ?string {
-        return $this->fromUserId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetReceiveRequestByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): GetReceiveRequestByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getFromUserId(): ?string {
+		return $this->fromUserId;
+	}
+
+	public function setFromUserId(?string $fromUserId) {
+		$this->fromUserId = $fromUserId;
+	}
+
+	public function withFromUserId(?string $fromUserId): GetReceiveRequestByUserIdRequest {
+		$this->fromUserId = $fromUserId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetReceiveRequestByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetReceiveRequestByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withFromUserId(empty($data['fromUserId']) ? null : $data['fromUserId']);
     }
 
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $fromUserId ユーザーIDを指定して受信したフレンドリクエストを取得
-     */
-    public function setFromUserId(string $fromUserId = null) {
-        $this->fromUserId = $fromUserId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "fromUserId" => $this->getFromUserId(),
+        );
     }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $fromUserId ユーザーIDを指定して受信したフレンドリクエストを取得
-     * @return GetReceiveRequestByUserIdRequest $this
-     */
-    public function withFromUserId(string $fromUserId = null): GetReceiveRequestByUserIdRequest {
-        $this->setFromUserId($fromUserId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザーIDを指定して受信したフレンドリクエストを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定して受信したフレンドリクエストを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザーIDを指定して受信したフレンドリクエストを取得
-     * @return GetReceiveRequestByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetReceiveRequestByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

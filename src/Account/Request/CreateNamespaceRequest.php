@@ -21,267 +21,153 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Account\Model\ScriptSetting;
 use Gs2\Account\Model\LogSetting;
 
-/**
- * ネームスペースを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $name;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withName(string $name = null): CreateNamespaceRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string 説明文 */
+    /** @var string */
     private $description;
-
-    /**
-     * 説明文を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * 説明文を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): CreateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var bool アカウント引き継ぎ時にパスワードを変更するか */
+    /** @var bool */
     private $changePasswordIfTakeOver;
-
-    /**
-     * アカウント引き継ぎ時にパスワードを変更するかを取得
-     *
-     * @return bool|null ネームスペースを新規作成
-     */
-    public function getChangePasswordIfTakeOver(): ?bool {
-        return $this->changePasswordIfTakeOver;
-    }
-
-    /**
-     * アカウント引き継ぎ時にパスワードを変更するかを設定
-     *
-     * @param bool $changePasswordIfTakeOver ネームスペースを新規作成
-     */
-    public function setChangePasswordIfTakeOver(bool $changePasswordIfTakeOver = null) {
-        $this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
-    }
-
-    /**
-     * アカウント引き継ぎ時にパスワードを変更するかを設定
-     *
-     * @param bool $changePasswordIfTakeOver ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withChangePasswordIfTakeOver(bool $changePasswordIfTakeOver = null): CreateNamespaceRequest {
-        $this->setChangePasswordIfTakeOver($changePasswordIfTakeOver);
-        return $this;
-    }
-
-    /** @var ScriptSetting アカウント新規作成したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $createAccountScript;
-
-    /**
-     * アカウント新規作成したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getCreateAccountScript(): ?ScriptSetting {
-        return $this->createAccountScript;
-    }
-
-    /**
-     * アカウント新規作成したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $createAccountScript ネームスペースを新規作成
-     */
-    public function setCreateAccountScript(ScriptSetting $createAccountScript = null) {
-        $this->createAccountScript = $createAccountScript;
-    }
-
-    /**
-     * アカウント新規作成したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $createAccountScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCreateAccountScript(ScriptSetting $createAccountScript = null): CreateNamespaceRequest {
-        $this->setCreateAccountScript($createAccountScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting 認証したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $authenticationScript;
-
-    /**
-     * 認証したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getAuthenticationScript(): ?ScriptSetting {
-        return $this->authenticationScript;
-    }
-
-    /**
-     * 認証したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $authenticationScript ネームスペースを新規作成
-     */
-    public function setAuthenticationScript(ScriptSetting $authenticationScript = null) {
-        $this->authenticationScript = $authenticationScript;
-    }
-
-    /**
-     * 認証したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $authenticationScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withAuthenticationScript(ScriptSetting $authenticationScript = null): CreateNamespaceRequest {
-        $this->setAuthenticationScript($authenticationScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting 引き継ぎ情報登録したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $createTakeOverScript;
-
-    /**
-     * 引き継ぎ情報登録したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getCreateTakeOverScript(): ?ScriptSetting {
-        return $this->createTakeOverScript;
-    }
-
-    /**
-     * 引き継ぎ情報登録したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $createTakeOverScript ネームスペースを新規作成
-     */
-    public function setCreateTakeOverScript(ScriptSetting $createTakeOverScript = null) {
-        $this->createTakeOverScript = $createTakeOverScript;
-    }
-
-    /**
-     * 引き継ぎ情報登録したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $createTakeOverScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCreateTakeOverScript(ScriptSetting $createTakeOverScript = null): CreateNamespaceRequest {
-        $this->setCreateTakeOverScript($createTakeOverScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting 引き継ぎ実行したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $doTakeOverScript;
-
-    /**
-     * 引き継ぎ実行したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getDoTakeOverScript(): ?ScriptSetting {
-        return $this->doTakeOverScript;
-    }
-
-    /**
-     * 引き継ぎ実行したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $doTakeOverScript ネームスペースを新規作成
-     */
-    public function setDoTakeOverScript(ScriptSetting $doTakeOverScript = null) {
-        $this->doTakeOverScript = $doTakeOverScript;
-    }
-
-    /**
-     * 引き継ぎ実行したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $doTakeOverScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDoTakeOverScript(ScriptSetting $doTakeOverScript = null): CreateNamespaceRequest {
-        $this->setDoTakeOverScript($doTakeOverScript);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを新規作成
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateNamespaceRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getChangePasswordIfTakeOver(): ?bool {
+		return $this->changePasswordIfTakeOver;
+	}
+
+	public function setChangePasswordIfTakeOver(?bool $changePasswordIfTakeOver) {
+		$this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
+	}
+
+	public function withChangePasswordIfTakeOver(?bool $changePasswordIfTakeOver): CreateNamespaceRequest {
+		$this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
+		return $this;
+	}
+
+	public function getCreateAccountScript(): ?ScriptSetting {
+		return $this->createAccountScript;
+	}
+
+	public function setCreateAccountScript(?ScriptSetting $createAccountScript) {
+		$this->createAccountScript = $createAccountScript;
+	}
+
+	public function withCreateAccountScript(?ScriptSetting $createAccountScript): CreateNamespaceRequest {
+		$this->createAccountScript = $createAccountScript;
+		return $this;
+	}
+
+	public function getAuthenticationScript(): ?ScriptSetting {
+		return $this->authenticationScript;
+	}
+
+	public function setAuthenticationScript(?ScriptSetting $authenticationScript) {
+		$this->authenticationScript = $authenticationScript;
+	}
+
+	public function withAuthenticationScript(?ScriptSetting $authenticationScript): CreateNamespaceRequest {
+		$this->authenticationScript = $authenticationScript;
+		return $this;
+	}
+
+	public function getCreateTakeOverScript(): ?ScriptSetting {
+		return $this->createTakeOverScript;
+	}
+
+	public function setCreateTakeOverScript(?ScriptSetting $createTakeOverScript) {
+		$this->createTakeOverScript = $createTakeOverScript;
+	}
+
+	public function withCreateTakeOverScript(?ScriptSetting $createTakeOverScript): CreateNamespaceRequest {
+		$this->createTakeOverScript = $createTakeOverScript;
+		return $this;
+	}
+
+	public function getDoTakeOverScript(): ?ScriptSetting {
+		return $this->doTakeOverScript;
+	}
+
+	public function setDoTakeOverScript(?ScriptSetting $doTakeOverScript) {
+		$this->doTakeOverScript = $doTakeOverScript;
+	}
+
+	public function withDoTakeOverScript(?ScriptSetting $doTakeOverScript): CreateNamespaceRequest {
+		$this->doTakeOverScript = $doTakeOverScript;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withChangePasswordIfTakeOver(empty($data['changePasswordIfTakeOver']) ? null : $data['changePasswordIfTakeOver'])
+            ->withCreateAccountScript(empty($data['createAccountScript']) ? null : ScriptSetting::fromJson($data['createAccountScript']))
+            ->withAuthenticationScript(empty($data['authenticationScript']) ? null : ScriptSetting::fromJson($data['authenticationScript']))
+            ->withCreateTakeOverScript(empty($data['createTakeOverScript']) ? null : ScriptSetting::fromJson($data['createTakeOverScript']))
+            ->withDoTakeOverScript(empty($data['doTakeOverScript']) ? null : ScriptSetting::fromJson($data['doTakeOverScript']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "changePasswordIfTakeOver" => $this->getChangePasswordIfTakeOver(),
+            "createAccountScript" => $this->getCreateAccountScript() !== null ? $this->getCreateAccountScript()->toJson() : null,
+            "authenticationScript" => $this->getAuthenticationScript() !== null ? $this->getAuthenticationScript()->toJson() : null,
+            "createTakeOverScript" => $this->getCreateTakeOverScript() !== null ? $this->getCreateTakeOverScript()->toJson() : null,
+            "doTakeOverScript" => $this->getDoTakeOverScript() !== null ? $this->getDoTakeOverScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): CreateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

@@ -22,459 +22,255 @@ use Gs2\Friend\Model\ScriptSetting;
 use Gs2\Friend\Model\NotificationSetting;
 use Gs2\Friend\Model\LogSetting;
 
-/**
- * ネームスペースを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UpdateNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを更新
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): UpdateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var ScriptSetting フォローされたときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $followScript;
-
-    /**
-     * フォローされたときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getFollowScript(): ?ScriptSetting {
-        return $this->followScript;
-    }
-
-    /**
-     * フォローされたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $followScript ネームスペースを更新
-     */
-    public function setFollowScript(ScriptSetting $followScript = null) {
-        $this->followScript = $followScript;
-    }
-
-    /**
-     * フォローされたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $followScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withFollowScript(ScriptSetting $followScript = null): UpdateNamespaceRequest {
-        $this->setFollowScript($followScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting アンフォローされたときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $unfollowScript;
-
-    /**
-     * アンフォローされたときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getUnfollowScript(): ?ScriptSetting {
-        return $this->unfollowScript;
-    }
-
-    /**
-     * アンフォローされたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $unfollowScript ネームスペースを更新
-     */
-    public function setUnfollowScript(ScriptSetting $unfollowScript = null) {
-        $this->unfollowScript = $unfollowScript;
-    }
-
-    /**
-     * アンフォローされたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $unfollowScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withUnfollowScript(ScriptSetting $unfollowScript = null): UpdateNamespaceRequest {
-        $this->setUnfollowScript($unfollowScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting フレンドリクエストを発行したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $sendRequestScript;
-
-    /**
-     * フレンドリクエストを発行したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getSendRequestScript(): ?ScriptSetting {
-        return $this->sendRequestScript;
-    }
-
-    /**
-     * フレンドリクエストを発行したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $sendRequestScript ネームスペースを更新
-     */
-    public function setSendRequestScript(ScriptSetting $sendRequestScript = null) {
-        $this->sendRequestScript = $sendRequestScript;
-    }
-
-    /**
-     * フレンドリクエストを発行したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $sendRequestScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withSendRequestScript(ScriptSetting $sendRequestScript = null): UpdateNamespaceRequest {
-        $this->setSendRequestScript($sendRequestScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting フレンドリクエストをキャンセルしたときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $cancelRequestScript;
-
-    /**
-     * フレンドリクエストをキャンセルしたときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getCancelRequestScript(): ?ScriptSetting {
-        return $this->cancelRequestScript;
-    }
-
-    /**
-     * フレンドリクエストをキャンセルしたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $cancelRequestScript ネームスペースを更新
-     */
-    public function setCancelRequestScript(ScriptSetting $cancelRequestScript = null) {
-        $this->cancelRequestScript = $cancelRequestScript;
-    }
-
-    /**
-     * フレンドリクエストをキャンセルしたときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $cancelRequestScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withCancelRequestScript(ScriptSetting $cancelRequestScript = null): UpdateNamespaceRequest {
-        $this->setCancelRequestScript($cancelRequestScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting フレンドリクエストを承諾したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $acceptRequestScript;
-
-    /**
-     * フレンドリクエストを承諾したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getAcceptRequestScript(): ?ScriptSetting {
-        return $this->acceptRequestScript;
-    }
-
-    /**
-     * フレンドリクエストを承諾したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $acceptRequestScript ネームスペースを更新
-     */
-    public function setAcceptRequestScript(ScriptSetting $acceptRequestScript = null) {
-        $this->acceptRequestScript = $acceptRequestScript;
-    }
-
-    /**
-     * フレンドリクエストを承諾したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $acceptRequestScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withAcceptRequestScript(ScriptSetting $acceptRequestScript = null): UpdateNamespaceRequest {
-        $this->setAcceptRequestScript($acceptRequestScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting フレンドリクエストを拒否したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $rejectRequestScript;
-
-    /**
-     * フレンドリクエストを拒否したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getRejectRequestScript(): ?ScriptSetting {
-        return $this->rejectRequestScript;
-    }
-
-    /**
-     * フレンドリクエストを拒否したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $rejectRequestScript ネームスペースを更新
-     */
-    public function setRejectRequestScript(ScriptSetting $rejectRequestScript = null) {
-        $this->rejectRequestScript = $rejectRequestScript;
-    }
-
-    /**
-     * フレンドリクエストを拒否したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $rejectRequestScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withRejectRequestScript(ScriptSetting $rejectRequestScript = null): UpdateNamespaceRequest {
-        $this->setRejectRequestScript($rejectRequestScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting フレンドを削除したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $deleteFriendScript;
-
-    /**
-     * フレンドを削除したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getDeleteFriendScript(): ?ScriptSetting {
-        return $this->deleteFriendScript;
-    }
-
-    /**
-     * フレンドを削除したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $deleteFriendScript ネームスペースを更新
-     */
-    public function setDeleteFriendScript(ScriptSetting $deleteFriendScript = null) {
-        $this->deleteFriendScript = $deleteFriendScript;
-    }
-
-    /**
-     * フレンドを削除したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $deleteFriendScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withDeleteFriendScript(ScriptSetting $deleteFriendScript = null): UpdateNamespaceRequest {
-        $this->setDeleteFriendScript($deleteFriendScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting プロフィールを更新したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $updateProfileScript;
-
-    /**
-     * プロフィールを更新したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを更新
-     */
-    public function getUpdateProfileScript(): ?ScriptSetting {
-        return $this->updateProfileScript;
-    }
-
-    /**
-     * プロフィールを更新したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $updateProfileScript ネームスペースを更新
-     */
-    public function setUpdateProfileScript(ScriptSetting $updateProfileScript = null) {
-        $this->updateProfileScript = $updateProfileScript;
-    }
-
-    /**
-     * プロフィールを更新したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $updateProfileScript ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withUpdateProfileScript(ScriptSetting $updateProfileScript = null): UpdateNamespaceRequest {
-        $this->setUpdateProfileScript($updateProfileScript);
-        return $this;
-    }
-
-    /** @var NotificationSetting フォローされたときのプッシュ通知 */
+    /** @var NotificationSetting */
     private $followNotification;
-
-    /**
-     * フォローされたときのプッシュ通知を取得
-     *
-     * @return NotificationSetting|null ネームスペースを更新
-     */
-    public function getFollowNotification(): ?NotificationSetting {
-        return $this->followNotification;
-    }
-
-    /**
-     * フォローされたときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $followNotification ネームスペースを更新
-     */
-    public function setFollowNotification(NotificationSetting $followNotification = null) {
-        $this->followNotification = $followNotification;
-    }
-
-    /**
-     * フォローされたときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $followNotification ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withFollowNotification(NotificationSetting $followNotification = null): UpdateNamespaceRequest {
-        $this->setFollowNotification($followNotification);
-        return $this;
-    }
-
-    /** @var NotificationSetting フレンドリクエストが届いたときのプッシュ通知 */
+    /** @var NotificationSetting */
     private $receiveRequestNotification;
-
-    /**
-     * フレンドリクエストが届いたときのプッシュ通知を取得
-     *
-     * @return NotificationSetting|null ネームスペースを更新
-     */
-    public function getReceiveRequestNotification(): ?NotificationSetting {
-        return $this->receiveRequestNotification;
-    }
-
-    /**
-     * フレンドリクエストが届いたときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $receiveRequestNotification ネームスペースを更新
-     */
-    public function setReceiveRequestNotification(NotificationSetting $receiveRequestNotification = null) {
-        $this->receiveRequestNotification = $receiveRequestNotification;
-    }
-
-    /**
-     * フレンドリクエストが届いたときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $receiveRequestNotification ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withReceiveRequestNotification(NotificationSetting $receiveRequestNotification = null): UpdateNamespaceRequest {
-        $this->setReceiveRequestNotification($receiveRequestNotification);
-        return $this;
-    }
-
-    /** @var NotificationSetting フレンドリクエストが承認されたときのプッシュ通知 */
+    /** @var NotificationSetting */
     private $acceptRequestNotification;
-
-    /**
-     * フレンドリクエストが承認されたときのプッシュ通知を取得
-     *
-     * @return NotificationSetting|null ネームスペースを更新
-     */
-    public function getAcceptRequestNotification(): ?NotificationSetting {
-        return $this->acceptRequestNotification;
-    }
-
-    /**
-     * フレンドリクエストが承認されたときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $acceptRequestNotification ネームスペースを更新
-     */
-    public function setAcceptRequestNotification(NotificationSetting $acceptRequestNotification = null) {
-        $this->acceptRequestNotification = $acceptRequestNotification;
-    }
-
-    /**
-     * フレンドリクエストが承認されたときのプッシュ通知を設定
-     *
-     * @param NotificationSetting $acceptRequestNotification ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withAcceptRequestNotification(NotificationSetting $acceptRequestNotification = null): UpdateNamespaceRequest {
-        $this->setAcceptRequestNotification($acceptRequestNotification);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを更新
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): UpdateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getFollowScript(): ?ScriptSetting {
+		return $this->followScript;
+	}
+
+	public function setFollowScript(?ScriptSetting $followScript) {
+		$this->followScript = $followScript;
+	}
+
+	public function withFollowScript(?ScriptSetting $followScript): UpdateNamespaceRequest {
+		$this->followScript = $followScript;
+		return $this;
+	}
+
+	public function getUnfollowScript(): ?ScriptSetting {
+		return $this->unfollowScript;
+	}
+
+	public function setUnfollowScript(?ScriptSetting $unfollowScript) {
+		$this->unfollowScript = $unfollowScript;
+	}
+
+	public function withUnfollowScript(?ScriptSetting $unfollowScript): UpdateNamespaceRequest {
+		$this->unfollowScript = $unfollowScript;
+		return $this;
+	}
+
+	public function getSendRequestScript(): ?ScriptSetting {
+		return $this->sendRequestScript;
+	}
+
+	public function setSendRequestScript(?ScriptSetting $sendRequestScript) {
+		$this->sendRequestScript = $sendRequestScript;
+	}
+
+	public function withSendRequestScript(?ScriptSetting $sendRequestScript): UpdateNamespaceRequest {
+		$this->sendRequestScript = $sendRequestScript;
+		return $this;
+	}
+
+	public function getCancelRequestScript(): ?ScriptSetting {
+		return $this->cancelRequestScript;
+	}
+
+	public function setCancelRequestScript(?ScriptSetting $cancelRequestScript) {
+		$this->cancelRequestScript = $cancelRequestScript;
+	}
+
+	public function withCancelRequestScript(?ScriptSetting $cancelRequestScript): UpdateNamespaceRequest {
+		$this->cancelRequestScript = $cancelRequestScript;
+		return $this;
+	}
+
+	public function getAcceptRequestScript(): ?ScriptSetting {
+		return $this->acceptRequestScript;
+	}
+
+	public function setAcceptRequestScript(?ScriptSetting $acceptRequestScript) {
+		$this->acceptRequestScript = $acceptRequestScript;
+	}
+
+	public function withAcceptRequestScript(?ScriptSetting $acceptRequestScript): UpdateNamespaceRequest {
+		$this->acceptRequestScript = $acceptRequestScript;
+		return $this;
+	}
+
+	public function getRejectRequestScript(): ?ScriptSetting {
+		return $this->rejectRequestScript;
+	}
+
+	public function setRejectRequestScript(?ScriptSetting $rejectRequestScript) {
+		$this->rejectRequestScript = $rejectRequestScript;
+	}
+
+	public function withRejectRequestScript(?ScriptSetting $rejectRequestScript): UpdateNamespaceRequest {
+		$this->rejectRequestScript = $rejectRequestScript;
+		return $this;
+	}
+
+	public function getDeleteFriendScript(): ?ScriptSetting {
+		return $this->deleteFriendScript;
+	}
+
+	public function setDeleteFriendScript(?ScriptSetting $deleteFriendScript) {
+		$this->deleteFriendScript = $deleteFriendScript;
+	}
+
+	public function withDeleteFriendScript(?ScriptSetting $deleteFriendScript): UpdateNamespaceRequest {
+		$this->deleteFriendScript = $deleteFriendScript;
+		return $this;
+	}
+
+	public function getUpdateProfileScript(): ?ScriptSetting {
+		return $this->updateProfileScript;
+	}
+
+	public function setUpdateProfileScript(?ScriptSetting $updateProfileScript) {
+		$this->updateProfileScript = $updateProfileScript;
+	}
+
+	public function withUpdateProfileScript(?ScriptSetting $updateProfileScript): UpdateNamespaceRequest {
+		$this->updateProfileScript = $updateProfileScript;
+		return $this;
+	}
+
+	public function getFollowNotification(): ?NotificationSetting {
+		return $this->followNotification;
+	}
+
+	public function setFollowNotification(?NotificationSetting $followNotification) {
+		$this->followNotification = $followNotification;
+	}
+
+	public function withFollowNotification(?NotificationSetting $followNotification): UpdateNamespaceRequest {
+		$this->followNotification = $followNotification;
+		return $this;
+	}
+
+	public function getReceiveRequestNotification(): ?NotificationSetting {
+		return $this->receiveRequestNotification;
+	}
+
+	public function setReceiveRequestNotification(?NotificationSetting $receiveRequestNotification) {
+		$this->receiveRequestNotification = $receiveRequestNotification;
+	}
+
+	public function withReceiveRequestNotification(?NotificationSetting $receiveRequestNotification): UpdateNamespaceRequest {
+		$this->receiveRequestNotification = $receiveRequestNotification;
+		return $this;
+	}
+
+	public function getAcceptRequestNotification(): ?NotificationSetting {
+		return $this->acceptRequestNotification;
+	}
+
+	public function setAcceptRequestNotification(?NotificationSetting $acceptRequestNotification) {
+		$this->acceptRequestNotification = $acceptRequestNotification;
+	}
+
+	public function withAcceptRequestNotification(?NotificationSetting $acceptRequestNotification): UpdateNamespaceRequest {
+		$this->acceptRequestNotification = $acceptRequestNotification;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withFollowScript(empty($data['followScript']) ? null : ScriptSetting::fromJson($data['followScript']))
+            ->withUnfollowScript(empty($data['unfollowScript']) ? null : ScriptSetting::fromJson($data['unfollowScript']))
+            ->withSendRequestScript(empty($data['sendRequestScript']) ? null : ScriptSetting::fromJson($data['sendRequestScript']))
+            ->withCancelRequestScript(empty($data['cancelRequestScript']) ? null : ScriptSetting::fromJson($data['cancelRequestScript']))
+            ->withAcceptRequestScript(empty($data['acceptRequestScript']) ? null : ScriptSetting::fromJson($data['acceptRequestScript']))
+            ->withRejectRequestScript(empty($data['rejectRequestScript']) ? null : ScriptSetting::fromJson($data['rejectRequestScript']))
+            ->withDeleteFriendScript(empty($data['deleteFriendScript']) ? null : ScriptSetting::fromJson($data['deleteFriendScript']))
+            ->withUpdateProfileScript(empty($data['updateProfileScript']) ? null : ScriptSetting::fromJson($data['updateProfileScript']))
+            ->withFollowNotification(empty($data['followNotification']) ? null : NotificationSetting::fromJson($data['followNotification']))
+            ->withReceiveRequestNotification(empty($data['receiveRequestNotification']) ? null : NotificationSetting::fromJson($data['receiveRequestNotification']))
+            ->withAcceptRequestNotification(empty($data['acceptRequestNotification']) ? null : NotificationSetting::fromJson($data['acceptRequestNotification']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "description" => $this->getDescription(),
+            "followScript" => $this->getFollowScript() !== null ? $this->getFollowScript()->toJson() : null,
+            "unfollowScript" => $this->getUnfollowScript() !== null ? $this->getUnfollowScript()->toJson() : null,
+            "sendRequestScript" => $this->getSendRequestScript() !== null ? $this->getSendRequestScript()->toJson() : null,
+            "cancelRequestScript" => $this->getCancelRequestScript() !== null ? $this->getCancelRequestScript()->toJson() : null,
+            "acceptRequestScript" => $this->getAcceptRequestScript() !== null ? $this->getAcceptRequestScript()->toJson() : null,
+            "rejectRequestScript" => $this->getRejectRequestScript() !== null ? $this->getRejectRequestScript()->toJson() : null,
+            "deleteFriendScript" => $this->getDeleteFriendScript() !== null ? $this->getDeleteFriendScript()->toJson() : null,
+            "updateProfileScript" => $this->getUpdateProfileScript() !== null ? $this->getUpdateProfileScript()->toJson() : null,
+            "followNotification" => $this->getFollowNotification() !== null ? $this->getFollowNotification()->toJson() : null,
+            "receiveRequestNotification" => $this->getReceiveRequestNotification() !== null ? $this->getReceiveRequestNotification()->toJson() : null,
+            "acceptRequestNotification" => $this->getAcceptRequestNotification() !== null ? $this->getAcceptRequestNotification()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを更新
-     * @return UpdateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): UpdateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

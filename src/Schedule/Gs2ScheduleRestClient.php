@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Schedule\Request\DescribeNamespacesRequest;
 use Gs2\Schedule\Result\DescribeNamespacesResult;
 use Gs2\Schedule\Request\CreateNamespaceRequest;
@@ -877,9 +879,6 @@ class DescribeTriggersTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -944,9 +943,6 @@ class DescribeTriggersByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1008,9 +1004,6 @@ class GetTriggerTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1069,9 +1062,6 @@ class GetTriggerByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1136,9 +1126,6 @@ class TriggerByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1200,9 +1187,6 @@ class DeleteTriggerTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1261,9 +1245,6 @@ class DeleteTriggerByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1325,9 +1306,6 @@ class DescribeEventsTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1385,9 +1363,6 @@ class DescribeEventsByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1507,9 +1482,6 @@ class GetEventTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1568,9 +1540,6 @@ class GetEventByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1883,9 +1852,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1900,9 +1867,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1914,9 +1879,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1931,9 +1894,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1945,9 +1906,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1962,9 +1921,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1976,9 +1933,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1993,9 +1948,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2007,9 +1960,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2024,9 +1975,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2038,9 +1987,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2055,9 +2002,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2069,9 +2014,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターの一覧を取得<br>
-     *
-     * @param DescribeEventMastersRequest $request リクエストパラメータ
+     * @param DescribeEventMastersRequest $request
      * @return PromiseInterface
      */
     public function describeEventMastersAsync(
@@ -2086,9 +2029,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターの一覧を取得<br>
-     *
-     * @param DescribeEventMastersRequest $request リクエストパラメータ
+     * @param DescribeEventMastersRequest $request
      * @return DescribeEventMastersResult
      */
     public function describeEventMasters (
@@ -2100,9 +2041,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターを新規作成<br>
-     *
-     * @param CreateEventMasterRequest $request リクエストパラメータ
+     * @param CreateEventMasterRequest $request
      * @return PromiseInterface
      */
     public function createEventMasterAsync(
@@ -2117,9 +2056,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターを新規作成<br>
-     *
-     * @param CreateEventMasterRequest $request リクエストパラメータ
+     * @param CreateEventMasterRequest $request
      * @return CreateEventMasterResult
      */
     public function createEventMaster (
@@ -2131,9 +2068,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターを取得<br>
-     *
-     * @param GetEventMasterRequest $request リクエストパラメータ
+     * @param GetEventMasterRequest $request
      * @return PromiseInterface
      */
     public function getEventMasterAsync(
@@ -2148,9 +2083,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターを取得<br>
-     *
-     * @param GetEventMasterRequest $request リクエストパラメータ
+     * @param GetEventMasterRequest $request
      * @return GetEventMasterResult
      */
     public function getEventMaster (
@@ -2162,9 +2095,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターを更新<br>
-     *
-     * @param UpdateEventMasterRequest $request リクエストパラメータ
+     * @param UpdateEventMasterRequest $request
      * @return PromiseInterface
      */
     public function updateEventMasterAsync(
@@ -2179,9 +2110,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターを更新<br>
-     *
-     * @param UpdateEventMasterRequest $request リクエストパラメータ
+     * @param UpdateEventMasterRequest $request
      * @return UpdateEventMasterResult
      */
     public function updateEventMaster (
@@ -2193,9 +2122,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターを削除<br>
-     *
-     * @param DeleteEventMasterRequest $request リクエストパラメータ
+     * @param DeleteEventMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteEventMasterAsync(
@@ -2210,9 +2137,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントマスターを削除<br>
-     *
-     * @param DeleteEventMasterRequest $request リクエストパラメータ
+     * @param DeleteEventMasterRequest $request
      * @return DeleteEventMasterResult
      */
     public function deleteEventMaster (
@@ -2224,9 +2149,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * トリガーの一覧を取得<br>
-     *
-     * @param DescribeTriggersRequest $request リクエストパラメータ
+     * @param DescribeTriggersRequest $request
      * @return PromiseInterface
      */
     public function describeTriggersAsync(
@@ -2241,9 +2164,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * トリガーの一覧を取得<br>
-     *
-     * @param DescribeTriggersRequest $request リクエストパラメータ
+     * @param DescribeTriggersRequest $request
      * @return DescribeTriggersResult
      */
     public function describeTriggers (
@@ -2255,9 +2176,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してトリガーの一覧を取得<br>
-     *
-     * @param DescribeTriggersByUserIdRequest $request リクエストパラメータ
+     * @param DescribeTriggersByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeTriggersByUserIdAsync(
@@ -2272,9 +2191,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してトリガーの一覧を取得<br>
-     *
-     * @param DescribeTriggersByUserIdRequest $request リクエストパラメータ
+     * @param DescribeTriggersByUserIdRequest $request
      * @return DescribeTriggersByUserIdResult
      */
     public function describeTriggersByUserId (
@@ -2286,9 +2203,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * トリガーを取得<br>
-     *
-     * @param GetTriggerRequest $request リクエストパラメータ
+     * @param GetTriggerRequest $request
      * @return PromiseInterface
      */
     public function getTriggerAsync(
@@ -2303,9 +2218,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * トリガーを取得<br>
-     *
-     * @param GetTriggerRequest $request リクエストパラメータ
+     * @param GetTriggerRequest $request
      * @return GetTriggerResult
      */
     public function getTrigger (
@@ -2317,9 +2230,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してトリガーを取得<br>
-     *
-     * @param GetTriggerByUserIdRequest $request リクエストパラメータ
+     * @param GetTriggerByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getTriggerByUserIdAsync(
@@ -2334,9 +2245,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してトリガーを取得<br>
-     *
-     * @param GetTriggerByUserIdRequest $request リクエストパラメータ
+     * @param GetTriggerByUserIdRequest $request
      * @return GetTriggerByUserIdResult
      */
     public function getTriggerByUserId (
@@ -2348,9 +2257,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してトリガーを登録<br>
-     *
-     * @param TriggerByUserIdRequest $request リクエストパラメータ
+     * @param TriggerByUserIdRequest $request
      * @return PromiseInterface
      */
     public function triggerByUserIdAsync(
@@ -2365,9 +2272,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してトリガーを登録<br>
-     *
-     * @param TriggerByUserIdRequest $request リクエストパラメータ
+     * @param TriggerByUserIdRequest $request
      * @return TriggerByUserIdResult
      */
     public function triggerByUserId (
@@ -2379,9 +2284,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * トリガーを削除<br>
-     *
-     * @param DeleteTriggerRequest $request リクエストパラメータ
+     * @param DeleteTriggerRequest $request
      * @return PromiseInterface
      */
     public function deleteTriggerAsync(
@@ -2396,9 +2299,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * トリガーを削除<br>
-     *
-     * @param DeleteTriggerRequest $request リクエストパラメータ
+     * @param DeleteTriggerRequest $request
      * @return DeleteTriggerResult
      */
     public function deleteTrigger (
@@ -2410,9 +2311,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してトリガーを削除<br>
-     *
-     * @param DeleteTriggerByUserIdRequest $request リクエストパラメータ
+     * @param DeleteTriggerByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteTriggerByUserIdAsync(
@@ -2427,9 +2326,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してトリガーを削除<br>
-     *
-     * @param DeleteTriggerByUserIdRequest $request リクエストパラメータ
+     * @param DeleteTriggerByUserIdRequest $request
      * @return DeleteTriggerByUserIdResult
      */
     public function deleteTriggerByUserId (
@@ -2441,9 +2338,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントの一覧を取得<br>
-     *
-     * @param DescribeEventsRequest $request リクエストパラメータ
+     * @param DescribeEventsRequest $request
      * @return PromiseInterface
      */
     public function describeEventsAsync(
@@ -2458,9 +2353,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントの一覧を取得<br>
-     *
-     * @param DescribeEventsRequest $request リクエストパラメータ
+     * @param DescribeEventsRequest $request
      * @return DescribeEventsResult
      */
     public function describeEvents (
@@ -2472,9 +2365,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してイベントの一覧を取得<br>
-     *
-     * @param DescribeEventsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeEventsByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeEventsByUserIdAsync(
@@ -2489,9 +2380,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してイベントの一覧を取得<br>
-     *
-     * @param DescribeEventsByUserIdRequest $request リクエストパラメータ
+     * @param DescribeEventsByUserIdRequest $request
      * @return DescribeEventsByUserIdResult
      */
     public function describeEventsByUserId (
@@ -2503,9 +2392,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントの一覧を取得<br>
-     *
-     * @param DescribeRawEventsRequest $request リクエストパラメータ
+     * @param DescribeRawEventsRequest $request
      * @return PromiseInterface
      */
     public function describeRawEventsAsync(
@@ -2520,9 +2407,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントの一覧を取得<br>
-     *
-     * @param DescribeRawEventsRequest $request リクエストパラメータ
+     * @param DescribeRawEventsRequest $request
      * @return DescribeRawEventsResult
      */
     public function describeRawEvents (
@@ -2534,9 +2419,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントを取得<br>
-     *
-     * @param GetEventRequest $request リクエストパラメータ
+     * @param GetEventRequest $request
      * @return PromiseInterface
      */
     public function getEventAsync(
@@ -2551,9 +2434,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントを取得<br>
-     *
-     * @param GetEventRequest $request リクエストパラメータ
+     * @param GetEventRequest $request
      * @return GetEventResult
      */
     public function getEvent (
@@ -2565,9 +2446,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してイベントを取得<br>
-     *
-     * @param GetEventByUserIdRequest $request リクエストパラメータ
+     * @param GetEventByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getEventByUserIdAsync(
@@ -2582,9 +2461,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してイベントを取得<br>
-     *
-     * @param GetEventByUserIdRequest $request リクエストパラメータ
+     * @param GetEventByUserIdRequest $request
      * @return GetEventByUserIdResult
      */
     public function getEventByUserId (
@@ -2596,9 +2473,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントを取得<br>
-     *
-     * @param GetRawEventRequest $request リクエストパラメータ
+     * @param GetRawEventRequest $request
      * @return PromiseInterface
      */
     public function getRawEventAsync(
@@ -2613,9 +2488,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * イベントを取得<br>
-     *
-     * @param GetRawEventRequest $request リクエストパラメータ
+     * @param GetRawEventRequest $request
      * @return GetRawEventResult
      */
     public function getRawEvent (
@@ -2627,9 +2500,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なイベントスケジュールマスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2644,9 +2515,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なイベントスケジュールマスターのマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2658,9 +2527,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なイベントスケジュールマスターを取得します<br>
-     *
-     * @param GetCurrentEventMasterRequest $request リクエストパラメータ
+     * @param GetCurrentEventMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentEventMasterAsync(
@@ -2675,9 +2542,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なイベントスケジュールマスターを取得します<br>
-     *
-     * @param GetCurrentEventMasterRequest $request リクエストパラメータ
+     * @param GetCurrentEventMasterRequest $request
      * @return GetCurrentEventMasterResult
      */
     public function getCurrentEventMaster (
@@ -2689,9 +2554,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なイベントスケジュールマスターを更新します<br>
-     *
-     * @param UpdateCurrentEventMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentEventMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentEventMasterAsync(
@@ -2706,9 +2569,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なイベントスケジュールマスターを更新します<br>
-     *
-     * @param UpdateCurrentEventMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentEventMasterRequest $request
      * @return UpdateCurrentEventMasterResult
      */
     public function updateCurrentEventMaster (
@@ -2720,9 +2581,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なイベントスケジュールマスターを更新します<br>
-     *
-     * @param UpdateCurrentEventMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentEventMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentEventMasterFromGitHubAsync(
@@ -2737,9 +2596,7 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なイベントスケジュールマスターを更新します<br>
-     *
-     * @param UpdateCurrentEventMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentEventMasterFromGitHubRequest $request
      * @return UpdateCurrentEventMasterFromGitHubResult
      */
     public function updateCurrentEventMasterFromGitHub (

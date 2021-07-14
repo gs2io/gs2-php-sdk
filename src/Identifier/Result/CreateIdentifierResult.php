@@ -20,57 +20,51 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\Identifier;
 
-/**
- * クレデンシャルを新規作成します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateIdentifierResult implements IResult {
-	/** @var Identifier 作成したクレデンシャル */
-	private $item;
-	/** @var string クライアントシークレット */
-	private $clientSecret;
+    /** @var Identifier */
+    private $item;
+    /** @var string */
+    private $clientSecret;
 
-	/**
-	 * 作成したクレデンシャルを取得
-	 *
-	 * @return Identifier|null クレデンシャルを新規作成します
-	 */
 	public function getItem(): ?Identifier {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したクレデンシャルを設定
-	 *
-	 * @param Identifier|null $item クレデンシャルを新規作成します
-	 */
 	public function setItem(?Identifier $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * クライアントシークレットを取得
-	 *
-	 * @return string|null クレデンシャルを新規作成します
-	 */
+	public function withItem(?Identifier $item): CreateIdentifierResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getClientSecret(): ?string {
 		return $this->clientSecret;
 	}
 
-	/**
-	 * クライアントシークレットを設定
-	 *
-	 * @param string|null $clientSecret クレデンシャルを新規作成します
-	 */
 	public function setClientSecret(?string $clientSecret) {
 		$this->clientSecret = $clientSecret;
 	}
 
-    public static function fromJson(array $data): CreateIdentifierResult {
-        $result = new CreateIdentifierResult();
-        $result->setItem(isset($data["item"]) ? Identifier::fromJson($data["item"]) : null);
-        $result->setClientSecret(isset($data["clientSecret"]) ? $data["clientSecret"] : null);
-        return $result;
+	public function withClientSecret(?string $clientSecret): CreateIdentifierResult {
+		$this->clientSecret = $clientSecret;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateIdentifierResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateIdentifierResult())
+            ->withItem(empty($data['item']) ? null : Identifier::fromJson($data['item']))
+            ->withClientSecret(empty($data['clientSecret']) ? null : $data['clientSecret']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "clientSecret" => $this->getClientSecret(),
+        );
     }
 }

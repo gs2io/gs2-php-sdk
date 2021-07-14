@@ -18,59 +18,54 @@
 namespace Gs2\Money\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
-/**
- * ウォレットから残高を消費します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class WithdrawResult implements IResult {
-	/** @var Wallet 消費後のウォレット */
-	private $item;
-	/** @var float 消費した通貨の価格 */
-	private $price;
+    /** @var Wallet */
+    private $item;
+    /** @var float */
+    private $price;
 
-	/**
-	 * 消費後のウォレットを取得
-	 *
-	 * @return Wallet|null ウォレットから残高を消費します
-	 */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
-	/**
-	 * 消費後のウォレットを設定
-	 *
-	 * @param Wallet|null $item ウォレットから残高を消費します
-	 */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * 消費した通貨の価格を取得
-	 *
-	 * @return float|null ウォレットから残高を消費します
-	 */
+	public function withItem(?Wallet $item): WithdrawResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getPrice(): ?float {
 		return $this->price;
 	}
 
-	/**
-	 * 消費した通貨の価格を設定
-	 *
-	 * @param float|null $price ウォレットから残高を消費します
-	 */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
 
-    public static function fromJson(array $data): WithdrawResult {
-        $result = new WithdrawResult();
-        $result->setItem(isset($data["item"]) ? Wallet::fromJson($data["item"]) : null);
-        $result->setPrice(isset($data["price"]) ? $data["price"] : null);
-        return $result;
+	public function withPrice(?float $price): WithdrawResult {
+		$this->price = $price;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?WithdrawResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new WithdrawResult())
+            ->withItem(empty($data['item']) ? null : Wallet::fromJson($data['item']))
+            ->withPrice(empty($data['price']) ? null : $data['price']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "price" => $this->getPrice(),
+        );
     }
 }

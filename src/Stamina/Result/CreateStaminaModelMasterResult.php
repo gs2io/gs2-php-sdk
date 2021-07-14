@@ -20,36 +20,34 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\StaminaModelMaster;
 
-/**
- * スタミナモデルマスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateStaminaModelMasterResult implements IResult {
-	/** @var StaminaModelMaster 作成したスタミナモデルマスター */
-	private $item;
+    /** @var StaminaModelMaster */
+    private $item;
 
-	/**
-	 * 作成したスタミナモデルマスターを取得
-	 *
-	 * @return StaminaModelMaster|null スタミナモデルマスターを新規作成
-	 */
 	public function getItem(): ?StaminaModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したスタミナモデルマスターを設定
-	 *
-	 * @param StaminaModelMaster|null $item スタミナモデルマスターを新規作成
-	 */
 	public function setItem(?StaminaModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateStaminaModelMasterResult {
-        $result = new CreateStaminaModelMasterResult();
-        $result->setItem(isset($data["item"]) ? StaminaModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?StaminaModelMaster $item): CreateStaminaModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateStaminaModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateStaminaModelMasterResult())
+            ->withItem(empty($data['item']) ? null : StaminaModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

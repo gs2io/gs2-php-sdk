@@ -19,91 +19,56 @@ namespace Gs2\Ranking\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 集計日時
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class CalculatedAt implements IModel {
 	/**
-     * @var string カテゴリ名
+     * @var string
 	 */
-	protected $categoryName;
-
+	private $categoryName;
 	/**
-	 * カテゴリ名を取得
-	 *
-	 * @return string|null カテゴリ名
+     * @var int
 	 */
+	private $calculatedAt;
+
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
 
-	/**
-	 * カテゴリ名を設定
-	 *
-	 * @param string|null $categoryName カテゴリ名
-	 */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
 
-	/**
-	 * カテゴリ名を設定
-	 *
-	 * @param string|null $categoryName カテゴリ名
-	 * @return CalculatedAt $this
-	 */
 	public function withCategoryName(?string $categoryName): CalculatedAt {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-	/**
-     * @var int 集計日時
-	 */
-	protected $calculatedAt;
 
-	/**
-	 * 集計日時を取得
-	 *
-	 * @return int|null 集計日時
-	 */
 	public function getCalculatedAt(): ?int {
 		return $this->calculatedAt;
 	}
 
-	/**
-	 * 集計日時を設定
-	 *
-	 * @param int|null $calculatedAt 集計日時
-	 */
 	public function setCalculatedAt(?int $calculatedAt) {
 		$this->calculatedAt = $calculatedAt;
 	}
 
-	/**
-	 * 集計日時を設定
-	 *
-	 * @param int|null $calculatedAt 集計日時
-	 * @return CalculatedAt $this
-	 */
 	public function withCalculatedAt(?int $calculatedAt): CalculatedAt {
 		$this->calculatedAt = $calculatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "categoryName" => $this->categoryName,
-            "calculatedAt" => $this->calculatedAt,
-        );
+    public static function fromJson(?array $data): ?CalculatedAt {
+        if ($data === null) {
+            return null;
+        }
+        return (new CalculatedAt())
+            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
+            ->withCalculatedAt(empty($data['calculatedAt']) ? null : $data['calculatedAt']);
     }
 
-    public static function fromJson(array $data): CalculatedAt {
-        $model = new CalculatedAt();
-        $model->setCategoryName(isset($data["categoryName"]) ? $data["categoryName"] : null);
-        $model->setCalculatedAt(isset($data["calculatedAt"]) ? $data["calculatedAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "categoryName" => $this->getCategoryName(),
+            "calculatedAt" => $this->getCalculatedAt(),
+        );
     }
 }

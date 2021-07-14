@@ -19,15 +19,17 @@ namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ボックスをリセット のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ResetBoxResult implements IResult {
 
-    public static function fromJson(array $data): ResetBoxResult {
-        $result = new ResetBoxResult();
-        return $result;
+    public static function fromJson(?array $data): ?ResetBoxResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ResetBoxResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

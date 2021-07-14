@@ -18,44 +18,49 @@
 namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Stamina\Model\MaxStaminaTable;
+use Gs2\Stamina\Model\RecoverIntervalTable;
+use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
-/**
- * スタミナモデルの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeStaminaModelsResult implements IResult {
-	/** @var StaminaModel[] スタミナモデルのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * スタミナモデルのリストを取得
-	 *
-	 * @return StaminaModel[]|null スタミナモデルの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * スタミナモデルのリストを設定
-	 *
-	 * @param StaminaModel[]|null $items スタミナモデルの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeStaminaModelsResult {
-        $result = new DescribeStaminaModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return StaminaModel::fromJson($v);
+	public function withItems(?array $items): DescribeStaminaModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeStaminaModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeStaminaModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return StaminaModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

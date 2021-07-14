@@ -18,271 +18,171 @@
 namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Matchmaking\Model\Attribute;
 use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\AttributeRange;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 
-/**
- * ギャザリングを作成して募集を開始 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateGatheringRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ギャザリングを作成して募集を開始
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ギャザリングを作成して募集を開始
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ギャザリングを作成して募集を開始
-     * @return CreateGatheringRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): CreateGatheringRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var Player 自身のプレイヤー情報 */
+    /** @var string */
+    private $accessToken;
+    /** @var Player */
     private $player;
-
-    /**
-     * 自身のプレイヤー情報を取得
-     *
-     * @return Player|null ギャザリングを作成して募集を開始
-     */
-    public function getPlayer(): ?Player {
-        return $this->player;
-    }
-
-    /**
-     * 自身のプレイヤー情報を設定
-     *
-     * @param Player $player ギャザリングを作成して募集を開始
-     */
-    public function setPlayer(Player $player = null) {
-        $this->player = $player;
-    }
-
-    /**
-     * 自身のプレイヤー情報を設定
-     *
-     * @param Player $player ギャザリングを作成して募集を開始
-     * @return CreateGatheringRequest $this
-     */
-    public function withPlayer(Player $player = null): CreateGatheringRequest {
-        $this->setPlayer($player);
-        return $this;
-    }
-
-    /** @var AttributeRange[] 募集条件 */
+    /** @var array */
     private $attributeRanges;
-
-    /**
-     * 募集条件を取得
-     *
-     * @return AttributeRange[]|null ギャザリングを作成して募集を開始
-     */
-    public function getAttributeRanges(): ?array {
-        return $this->attributeRanges;
-    }
-
-    /**
-     * 募集条件を設定
-     *
-     * @param AttributeRange[] $attributeRanges ギャザリングを作成して募集を開始
-     */
-    public function setAttributeRanges(array $attributeRanges = null) {
-        $this->attributeRanges = $attributeRanges;
-    }
-
-    /**
-     * 募集条件を設定
-     *
-     * @param AttributeRange[] $attributeRanges ギャザリングを作成して募集を開始
-     * @return CreateGatheringRequest $this
-     */
-    public function withAttributeRanges(array $attributeRanges = null): CreateGatheringRequest {
-        $this->setAttributeRanges($attributeRanges);
-        return $this;
-    }
-
-    /** @var CapacityOfRole[] 参加者 */
+    /** @var array */
     private $capacityOfRoles;
-
-    /**
-     * 参加者を取得
-     *
-     * @return CapacityOfRole[]|null ギャザリングを作成して募集を開始
-     */
-    public function getCapacityOfRoles(): ?array {
-        return $this->capacityOfRoles;
-    }
-
-    /**
-     * 参加者を設定
-     *
-     * @param CapacityOfRole[] $capacityOfRoles ギャザリングを作成して募集を開始
-     */
-    public function setCapacityOfRoles(array $capacityOfRoles = null) {
-        $this->capacityOfRoles = $capacityOfRoles;
-    }
-
-    /**
-     * 参加者を設定
-     *
-     * @param CapacityOfRole[] $capacityOfRoles ギャザリングを作成して募集を開始
-     * @return CreateGatheringRequest $this
-     */
-    public function withCapacityOfRoles(array $capacityOfRoles = null): CreateGatheringRequest {
-        $this->setCapacityOfRoles($capacityOfRoles);
-        return $this;
-    }
-
-    /** @var string[] 参加を許可するユーザIDリスト */
+    /** @var array */
     private $allowUserIds;
-
-    /**
-     * 参加を許可するユーザIDリストを取得
-     *
-     * @return string[]|null ギャザリングを作成して募集を開始
-     */
-    public function getAllowUserIds(): ?array {
-        return $this->allowUserIds;
-    }
-
-    /**
-     * 参加を許可するユーザIDリストを設定
-     *
-     * @param string[] $allowUserIds ギャザリングを作成して募集を開始
-     */
-    public function setAllowUserIds(array $allowUserIds = null) {
-        $this->allowUserIds = $allowUserIds;
-    }
-
-    /**
-     * 参加を許可するユーザIDリストを設定
-     *
-     * @param string[] $allowUserIds ギャザリングを作成して募集を開始
-     * @return CreateGatheringRequest $this
-     */
-    public function withAllowUserIds(array $allowUserIds = null): CreateGatheringRequest {
-        $this->setAllowUserIds($allowUserIds);
-        return $this;
-    }
-
-    /** @var int ギャザリングの有効期限 */
+    /** @var int */
     private $expiresAt;
 
-    /**
-     * ギャザリングの有効期限を取得
-     *
-     * @return int|null ギャザリングを作成して募集を開始
-     */
-    public function getExpiresAt(): ?int {
-        return $this->expiresAt;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): CreateGatheringRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): CreateGatheringRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getPlayer(): ?Player {
+		return $this->player;
+	}
+
+	public function setPlayer(?Player $player) {
+		$this->player = $player;
+	}
+
+	public function withPlayer(?Player $player): CreateGatheringRequest {
+		$this->player = $player;
+		return $this;
+	}
+
+	public function getAttributeRanges(): ?array {
+		return $this->attributeRanges;
+	}
+
+	public function setAttributeRanges(?array $attributeRanges) {
+		$this->attributeRanges = $attributeRanges;
+	}
+
+	public function withAttributeRanges(?array $attributeRanges): CreateGatheringRequest {
+		$this->attributeRanges = $attributeRanges;
+		return $this;
+	}
+
+	public function getCapacityOfRoles(): ?array {
+		return $this->capacityOfRoles;
+	}
+
+	public function setCapacityOfRoles(?array $capacityOfRoles) {
+		$this->capacityOfRoles = $capacityOfRoles;
+	}
+
+	public function withCapacityOfRoles(?array $capacityOfRoles): CreateGatheringRequest {
+		$this->capacityOfRoles = $capacityOfRoles;
+		return $this;
+	}
+
+	public function getAllowUserIds(): ?array {
+		return $this->allowUserIds;
+	}
+
+	public function setAllowUserIds(?array $allowUserIds) {
+		$this->allowUserIds = $allowUserIds;
+	}
+
+	public function withAllowUserIds(?array $allowUserIds): CreateGatheringRequest {
+		$this->allowUserIds = $allowUserIds;
+		return $this;
+	}
+
+	public function getExpiresAt(): ?int {
+		return $this->expiresAt;
+	}
+
+	public function setExpiresAt(?int $expiresAt) {
+		$this->expiresAt = $expiresAt;
+	}
+
+	public function withExpiresAt(?int $expiresAt): CreateGatheringRequest {
+		$this->expiresAt = $expiresAt;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateGatheringRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateGatheringRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withPlayer(empty($data['player']) ? null : Player::fromJson($data['player']))
+            ->withAttributeRanges(array_map(
+                function ($item) {
+                    return AttributeRange::fromJson($item);
+                },
+                array_key_exists('attributeRanges', $data) && $data['attributeRanges'] !== null ? $data['attributeRanges'] : []
+            ))
+            ->withCapacityOfRoles(array_map(
+                function ($item) {
+                    return CapacityOfRole::fromJson($item);
+                },
+                array_key_exists('capacityOfRoles', $data) && $data['capacityOfRoles'] !== null ? $data['capacityOfRoles'] : []
+            ))
+            ->withAllowUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+            ))
+            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt']);
     }
 
-    /**
-     * ギャザリングの有効期限を設定
-     *
-     * @param int $expiresAt ギャザリングを作成して募集を開始
-     */
-    public function setExpiresAt(int $expiresAt = null) {
-        $this->expiresAt = $expiresAt;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "player" => $this->getPlayer() !== null ? $this->getPlayer()->toJson() : null,
+            "attributeRanges" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAttributeRanges() !== null && $this->getAttributeRanges() !== null ? $this->getAttributeRanges() : []
+            ),
+            "capacityOfRoles" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getCapacityOfRoles() !== null && $this->getCapacityOfRoles() !== null ? $this->getCapacityOfRoles() : []
+            ),
+            "allowUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+            ),
+            "expiresAt" => $this->getExpiresAt(),
+        );
     }
-
-    /**
-     * ギャザリングの有効期限を設定
-     *
-     * @param int $expiresAt ギャザリングを作成して募集を開始
-     * @return CreateGatheringRequest $this
-     */
-    public function withExpiresAt(int $expiresAt = null): CreateGatheringRequest {
-        $this->setExpiresAt($expiresAt);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ギャザリングを作成して募集を開始
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ギャザリングを作成して募集を開始
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ギャザリングを作成して募集を開始
-     * @return CreateGatheringRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): CreateGatheringRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return CreateGatheringRequest this
-     */
-    public function withAccessToken(string $accessToken): CreateGatheringRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

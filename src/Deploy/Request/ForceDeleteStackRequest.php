@@ -19,43 +19,34 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * スタックを強制的に最終削除 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class ForceDeleteStackRequest extends Gs2BasicRequest {
-
-    /** @var string スタック名 */
+    /** @var string */
     private $stackName;
 
-    /**
-     * スタック名を取得
-     *
-     * @return string|null スタックを強制的に最終削除
-     */
-    public function getStackName(): ?string {
-        return $this->stackName;
+	public function getStackName(): ?string {
+		return $this->stackName;
+	}
+
+	public function setStackName(?string $stackName) {
+		$this->stackName = $stackName;
+	}
+
+	public function withStackName(?string $stackName): ForceDeleteStackRequest {
+		$this->stackName = $stackName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ForceDeleteStackRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new ForceDeleteStackRequest())
+            ->withStackName(empty($data['stackName']) ? null : $data['stackName']);
     }
 
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName スタックを強制的に最終削除
-     */
-    public function setStackName(string $stackName = null) {
-        $this->stackName = $stackName;
+    public function toJson(): array {
+        return array(
+            "stackName" => $this->getStackName(),
+        );
     }
-
-    /**
-     * スタック名を設定
-     *
-     * @param string $stackName スタックを強制的に最終削除
-     * @return ForceDeleteStackRequest $this
-     */
-    public function withStackName(string $stackName = null): ForceDeleteStackRequest {
-        $this->setStackName($stackName);
-        return $this;
-    }
-
 }

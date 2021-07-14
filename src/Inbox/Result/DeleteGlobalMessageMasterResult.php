@@ -19,15 +19,17 @@ namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * 全ユーザに向けたメッセージを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteGlobalMessageMasterResult implements IResult {
 
-    public static function fromJson(array $data): DeleteGlobalMessageMasterResult {
-        $result = new DeleteGlobalMessageMasterResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteGlobalMessageMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteGlobalMessageMasterResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

@@ -18,38 +18,37 @@
 namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Version\Model\Version;
 use Gs2\Version\Model\AcceptVersion;
 
-/**
- * ユーザーIDを指定して承認したバージョンを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetAcceptVersionByUserIdResult implements IResult {
-	/** @var AcceptVersion 承認したバージョン */
-	private $item;
+    /** @var AcceptVersion */
+    private $item;
 
-	/**
-	 * 承認したバージョンを取得
-	 *
-	 * @return AcceptVersion|null ユーザーIDを指定して承認したバージョンを取得
-	 */
 	public function getItem(): ?AcceptVersion {
 		return $this->item;
 	}
 
-	/**
-	 * 承認したバージョンを設定
-	 *
-	 * @param AcceptVersion|null $item ユーザーIDを指定して承認したバージョンを取得
-	 */
 	public function setItem(?AcceptVersion $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetAcceptVersionByUserIdResult {
-        $result = new GetAcceptVersionByUserIdResult();
-        $result->setItem(isset($data["item"]) ? AcceptVersion::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?AcceptVersion $item): GetAcceptVersionByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetAcceptVersionByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetAcceptVersionByUserIdResult())
+            ->withItem(empty($data['item']) ? null : AcceptVersion::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

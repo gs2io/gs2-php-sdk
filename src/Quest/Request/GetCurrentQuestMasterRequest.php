@@ -19,43 +19,34 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 現在有効なクエストマスターを取得します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCurrentQuestMasterRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリ名 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * カテゴリ名を取得
-     *
-     * @return string|null 現在有効なクエストマスターを取得します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetCurrentQuestMasterRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCurrentQuestMasterRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCurrentQuestMasterRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName 現在有効なクエストマスターを取得します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * カテゴリ名を設定
-     *
-     * @param string $namespaceName 現在有効なクエストマスターを取得します
-     * @return GetCurrentQuestMasterRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetCurrentQuestMasterRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

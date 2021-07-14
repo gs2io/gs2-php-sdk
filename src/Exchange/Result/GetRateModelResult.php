@@ -18,38 +18,38 @@
 namespace Gs2\Exchange\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Exchange\Model\ConsumeAction;
+use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModel;
 
-/**
- * 交換レートモデルを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetRateModelResult implements IResult {
-	/** @var RateModel 交換レートモデル */
-	private $item;
+    /** @var RateModel */
+    private $item;
 
-	/**
-	 * 交換レートモデルを取得
-	 *
-	 * @return RateModel|null 交換レートモデルを取得
-	 */
 	public function getItem(): ?RateModel {
 		return $this->item;
 	}
 
-	/**
-	 * 交換レートモデルを設定
-	 *
-	 * @param RateModel|null $item 交換レートモデルを取得
-	 */
 	public function setItem(?RateModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetRateModelResult {
-        $result = new GetRateModelResult();
-        $result->setItem(isset($data["item"]) ? RateModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?RateModel $item): GetRateModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetRateModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetRateModelResult())
+            ->withItem(empty($data['item']) ? null : RateModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

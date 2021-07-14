@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Chat\Request\DescribeNamespacesRequest;
 use Gs2\Chat\Result\DescribeNamespacesResult;
 use Gs2\Chat\Request\CreateNamespaceRequest;
@@ -616,9 +618,6 @@ class CreateRoomTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -693,9 +692,6 @@ class CreateRoomFromBackendTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -886,9 +882,6 @@ class DeleteRoomTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -949,9 +942,6 @@ class DeleteRoomFromBackendTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1088,9 +1078,6 @@ class PostTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1156,9 +1143,6 @@ class PostByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1344,9 +1328,6 @@ class DescribeSubscribesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1410,9 +1391,6 @@ class DescribeSubscribesByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1545,9 +1523,6 @@ class SubscribeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1613,9 +1588,6 @@ class SubscribeByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1677,9 +1649,6 @@ class GetSubscribeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1738,9 +1707,6 @@ class GetSubscribeByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1809,9 +1775,6 @@ class UpdateNotificationTypeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1877,9 +1840,6 @@ class UpdateNotificationTypeByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1941,9 +1901,6 @@ class UnsubscribeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2003,9 +1960,6 @@ class UnsubscribeByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2029,9 +1983,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -2046,9 +1998,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -2060,9 +2010,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -2077,9 +2025,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -2091,9 +2037,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -2108,9 +2052,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -2122,9 +2064,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -2139,9 +2079,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -2153,9 +2091,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -2170,9 +2106,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -2184,9 +2118,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -2201,9 +2133,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -2215,9 +2145,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームの一覧取得<br>
-     *
-     * @param DescribeRoomsRequest $request リクエストパラメータ
+     * @param DescribeRoomsRequest $request
      * @return PromiseInterface
      */
     public function describeRoomsAsync(
@@ -2232,9 +2160,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームの一覧取得<br>
-     *
-     * @param DescribeRoomsRequest $request リクエストパラメータ
+     * @param DescribeRoomsRequest $request
      * @return DescribeRoomsResult
      */
     public function describeRooms (
@@ -2246,9 +2172,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを作成<br>
-     *
-     * @param CreateRoomRequest $request リクエストパラメータ
+     * @param CreateRoomRequest $request
      * @return PromiseInterface
      */
     public function createRoomAsync(
@@ -2263,9 +2187,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを作成<br>
-     *
-     * @param CreateRoomRequest $request リクエストパラメータ
+     * @param CreateRoomRequest $request
      * @return CreateRoomResult
      */
     public function createRoom (
@@ -2277,9 +2199,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを作成<br>
-     *
-     * @param CreateRoomFromBackendRequest $request リクエストパラメータ
+     * @param CreateRoomFromBackendRequest $request
      * @return PromiseInterface
      */
     public function createRoomFromBackendAsync(
@@ -2294,9 +2214,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを作成<br>
-     *
-     * @param CreateRoomFromBackendRequest $request リクエストパラメータ
+     * @param CreateRoomFromBackendRequest $request
      * @return CreateRoomFromBackendResult
      */
     public function createRoomFromBackend (
@@ -2308,9 +2226,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを取得<br>
-     *
-     * @param GetRoomRequest $request リクエストパラメータ
+     * @param GetRoomRequest $request
      * @return PromiseInterface
      */
     public function getRoomAsync(
@@ -2325,9 +2241,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを取得<br>
-     *
-     * @param GetRoomRequest $request リクエストパラメータ
+     * @param GetRoomRequest $request
      * @return GetRoomResult
      */
     public function getRoom (
@@ -2339,9 +2253,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを更新<br>
-     *
-     * @param UpdateRoomRequest $request リクエストパラメータ
+     * @param UpdateRoomRequest $request
      * @return PromiseInterface
      */
     public function updateRoomAsync(
@@ -2356,9 +2268,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを更新<br>
-     *
-     * @param UpdateRoomRequest $request リクエストパラメータ
+     * @param UpdateRoomRequest $request
      * @return UpdateRoomResult
      */
     public function updateRoom (
@@ -2370,9 +2280,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを削除<br>
-     *
-     * @param DeleteRoomRequest $request リクエストパラメータ
+     * @param DeleteRoomRequest $request
      * @return PromiseInterface
      */
     public function deleteRoomAsync(
@@ -2387,9 +2295,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを削除<br>
-     *
-     * @param DeleteRoomRequest $request リクエストパラメータ
+     * @param DeleteRoomRequest $request
      * @return DeleteRoomResult
      */
     public function deleteRoom (
@@ -2401,9 +2307,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを削除<br>
-     *
-     * @param DeleteRoomFromBackendRequest $request リクエストパラメータ
+     * @param DeleteRoomFromBackendRequest $request
      * @return PromiseInterface
      */
     public function deleteRoomFromBackendAsync(
@@ -2418,9 +2322,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを削除<br>
-     *
-     * @param DeleteRoomFromBackendRequest $request リクエストパラメータ
+     * @param DeleteRoomFromBackendRequest $request
      * @return DeleteRoomFromBackendResult
      */
     public function deleteRoomFromBackend (
@@ -2432,9 +2334,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージの一覧取得<br>
-     *
-     * @param DescribeMessagesRequest $request リクエストパラメータ
+     * @param DescribeMessagesRequest $request
      * @return PromiseInterface
      */
     public function describeMessagesAsync(
@@ -2449,9 +2349,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージの一覧取得<br>
-     *
-     * @param DescribeMessagesRequest $request リクエストパラメータ
+     * @param DescribeMessagesRequest $request
      * @return DescribeMessagesResult
      */
     public function describeMessages (
@@ -2463,9 +2361,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを投稿<br>
-     *
-     * @param PostRequest $request リクエストパラメータ
+     * @param PostRequest $request
      * @return PromiseInterface
      */
     public function postAsync(
@@ -2480,9 +2376,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを投稿<br>
-     *
-     * @param PostRequest $request リクエストパラメータ
+     * @param PostRequest $request
      * @return PostResult
      */
     public function post (
@@ -2494,9 +2388,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してメッセージを投稿<br>
-     *
-     * @param PostByUserIdRequest $request リクエストパラメータ
+     * @param PostByUserIdRequest $request
      * @return PromiseInterface
      */
     public function postByUserIdAsync(
@@ -2511,9 +2403,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してメッセージを投稿<br>
-     *
-     * @param PostByUserIdRequest $request リクエストパラメータ
+     * @param PostByUserIdRequest $request
      * @return PostByUserIdResult
      */
     public function postByUserId (
@@ -2525,9 +2415,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを取得<br>
-     *
-     * @param GetMessageRequest $request リクエストパラメータ
+     * @param GetMessageRequest $request
      * @return PromiseInterface
      */
     public function getMessageAsync(
@@ -2542,9 +2430,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを取得<br>
-     *
-     * @param GetMessageRequest $request リクエストパラメータ
+     * @param GetMessageRequest $request
      * @return GetMessageResult
      */
     public function getMessage (
@@ -2556,9 +2442,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを削除<br>
-     *
-     * @param DeleteMessageRequest $request リクエストパラメータ
+     * @param DeleteMessageRequest $request
      * @return PromiseInterface
      */
     public function deleteMessageAsync(
@@ -2573,9 +2457,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * メッセージを削除<br>
-     *
-     * @param DeleteMessageRequest $request リクエストパラメータ
+     * @param DeleteMessageRequest $request
      * @return DeleteMessageResult
      */
     public function deleteMessage (
@@ -2587,9 +2469,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読しているルームの一覧取得<br>
-     *
-     * @param DescribeSubscribesRequest $request リクエストパラメータ
+     * @param DescribeSubscribesRequest $request
      * @return PromiseInterface
      */
     public function describeSubscribesAsync(
@@ -2604,9 +2484,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読しているルームの一覧取得<br>
-     *
-     * @param DescribeSubscribesRequest $request リクエストパラメータ
+     * @param DescribeSubscribesRequest $request
      * @return DescribeSubscribesResult
      */
     public function describeSubscribes (
@@ -2618,9 +2496,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読しているルームの一覧取得<br>
-     *
-     * @param DescribeSubscribesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeSubscribesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeSubscribesByUserIdAsync(
@@ -2635,9 +2511,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読しているルームの一覧取得<br>
-     *
-     * @param DescribeSubscribesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeSubscribesByUserIdRequest $request
      * @return DescribeSubscribesByUserIdResult
      */
     public function describeSubscribesByUserId (
@@ -2649,9 +2523,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルーム名を指定して購読しているユーザの一覧取得<br>
-     *
-     * @param DescribeSubscribesByRoomNameRequest $request リクエストパラメータ
+     * @param DescribeSubscribesByRoomNameRequest $request
      * @return PromiseInterface
      */
     public function describeSubscribesByRoomNameAsync(
@@ -2666,9 +2538,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルーム名を指定して購読しているユーザの一覧取得<br>
-     *
-     * @param DescribeSubscribesByRoomNameRequest $request リクエストパラメータ
+     * @param DescribeSubscribesByRoomNameRequest $request
      * @return DescribeSubscribesByRoomNameResult
      */
     public function describeSubscribesByRoomName (
@@ -2680,9 +2550,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを購読<br>
-     *
-     * @param SubscribeRequest $request リクエストパラメータ
+     * @param SubscribeRequest $request
      * @return PromiseInterface
      */
     public function subscribeAsync(
@@ -2697,9 +2565,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ルームを購読<br>
-     *
-     * @param SubscribeRequest $request リクエストパラメータ
+     * @param SubscribeRequest $request
      * @return SubscribeResult
      */
     public function subscribe (
@@ -2711,9 +2577,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してルームを購読<br>
-     *
-     * @param SubscribeByUserIdRequest $request リクエストパラメータ
+     * @param SubscribeByUserIdRequest $request
      * @return PromiseInterface
      */
     public function subscribeByUserIdAsync(
@@ -2728,9 +2592,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してルームを購読<br>
-     *
-     * @param SubscribeByUserIdRequest $request リクエストパラメータ
+     * @param SubscribeByUserIdRequest $request
      * @return SubscribeByUserIdResult
      */
     public function subscribeByUserId (
@@ -2742,9 +2604,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読を取得<br>
-     *
-     * @param GetSubscribeRequest $request リクエストパラメータ
+     * @param GetSubscribeRequest $request
      * @return PromiseInterface
      */
     public function getSubscribeAsync(
@@ -2759,9 +2619,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読を取得<br>
-     *
-     * @param GetSubscribeRequest $request リクエストパラメータ
+     * @param GetSubscribeRequest $request
      * @return GetSubscribeResult
      */
     public function getSubscribe (
@@ -2773,9 +2631,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読を取得<br>
-     *
-     * @param GetSubscribeByUserIdRequest $request リクエストパラメータ
+     * @param GetSubscribeByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getSubscribeByUserIdAsync(
@@ -2790,9 +2646,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読を取得<br>
-     *
-     * @param GetSubscribeByUserIdRequest $request リクエストパラメータ
+     * @param GetSubscribeByUserIdRequest $request
      * @return GetSubscribeByUserIdResult
      */
     public function getSubscribeByUserId (
@@ -2804,9 +2658,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 通知方法を更新<br>
-     *
-     * @param UpdateNotificationTypeRequest $request リクエストパラメータ
+     * @param UpdateNotificationTypeRequest $request
      * @return PromiseInterface
      */
     public function updateNotificationTypeAsync(
@@ -2821,9 +2673,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 通知方法を更新<br>
-     *
-     * @param UpdateNotificationTypeRequest $request リクエストパラメータ
+     * @param UpdateNotificationTypeRequest $request
      * @return UpdateNotificationTypeResult
      */
     public function updateNotificationType (
@@ -2835,9 +2685,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して通知方法を更新<br>
-     *
-     * @param UpdateNotificationTypeByUserIdRequest $request リクエストパラメータ
+     * @param UpdateNotificationTypeByUserIdRequest $request
      * @return PromiseInterface
      */
     public function updateNotificationTypeByUserIdAsync(
@@ -2852,9 +2700,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して通知方法を更新<br>
-     *
-     * @param UpdateNotificationTypeByUserIdRequest $request リクエストパラメータ
+     * @param UpdateNotificationTypeByUserIdRequest $request
      * @return UpdateNotificationTypeByUserIdResult
      */
     public function updateNotificationTypeByUserId (
@@ -2866,9 +2712,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読の購読を解除<br>
-     *
-     * @param UnsubscribeRequest $request リクエストパラメータ
+     * @param UnsubscribeRequest $request
      * @return PromiseInterface
      */
     public function unsubscribeAsync(
@@ -2883,9 +2727,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 購読の購読を解除<br>
-     *
-     * @param UnsubscribeRequest $request リクエストパラメータ
+     * @param UnsubscribeRequest $request
      * @return UnsubscribeResult
      */
     public function unsubscribe (
@@ -2897,9 +2739,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読の購読を解除<br>
-     *
-     * @param UnsubscribeByUserIdRequest $request リクエストパラメータ
+     * @param UnsubscribeByUserIdRequest $request
      * @return PromiseInterface
      */
     public function unsubscribeByUserIdAsync(
@@ -2914,9 +2754,7 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定して購読の購読を解除<br>
-     *
-     * @param UnsubscribeByUserIdRequest $request リクエストパラメータ
+     * @param UnsubscribeByUserIdRequest $request
      * @return UnsubscribeByUserIdResult
      */
     public function unsubscribeByUserId (

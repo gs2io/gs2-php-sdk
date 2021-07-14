@@ -18,38 +18,37 @@
 namespace Gs2\Formation\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModelMaster;
 
-/**
- * フォームマスターを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetFormModelMasterResult implements IResult {
-	/** @var FormModelMaster フォームマスター */
-	private $item;
+    /** @var FormModelMaster */
+    private $item;
 
-	/**
-	 * フォームマスターを取得
-	 *
-	 * @return FormModelMaster|null フォームマスターを取得
-	 */
 	public function getItem(): ?FormModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * フォームマスターを設定
-	 *
-	 * @param FormModelMaster|null $item フォームマスターを取得
-	 */
 	public function setItem(?FormModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetFormModelMasterResult {
-        $result = new GetFormModelMasterResult();
-        $result->setItem(isset($data["item"]) ? FormModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FormModelMaster $item): GetFormModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetFormModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetFormModelMasterResult())
+            ->withItem(empty($data['item']) ? null : FormModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

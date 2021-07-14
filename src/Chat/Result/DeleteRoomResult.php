@@ -20,36 +20,34 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Room;
 
-/**
- * ルームを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteRoomResult implements IResult {
-	/** @var Room 削除したルーム */
-	private $item;
+    /** @var Room */
+    private $item;
 
-	/**
-	 * 削除したルームを取得
-	 *
-	 * @return Room|null ルームを削除
-	 */
 	public function getItem(): ?Room {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したルームを設定
-	 *
-	 * @param Room|null $item ルームを削除
-	 */
 	public function setItem(?Room $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteRoomResult {
-        $result = new DeleteRoomResult();
-        $result->setItem(isset($data["item"]) ? Room::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Room $item): DeleteRoomResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteRoomResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteRoomResult())
+            ->withItem(empty($data['item']) ? null : Room::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

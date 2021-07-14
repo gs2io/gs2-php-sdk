@@ -19,43 +19,34 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ネームスペースを削除します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $namespaceName;
 
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null ネームスペースを削除します
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteNamespaceRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteNamespaceRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
     }
 
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ネームスペースを削除します
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+        );
     }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $namespaceName ネームスペースを削除します
-     * @return DeleteNamespaceRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteNamespaceRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
 }

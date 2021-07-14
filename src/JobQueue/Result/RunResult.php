@@ -21,78 +21,68 @@ use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 use Gs2\JobQueue\Model\JobResultBody;
 
-/**
- * ジョブを実行 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class RunResult implements IResult {
-	/** @var Job ジョブ */
-	private $item;
-	/** @var JobResultBody ジョブの実行結果 */
-	private $result;
-	/** @var bool None */
-	private $isLastJob;
+    /** @var Job */
+    private $item;
+    /** @var JobResultBody */
+    private $result;
+    /** @var bool */
+    private $isLastJob;
 
-	/**
-	 * ジョブを取得
-	 *
-	 * @return Job|null ジョブを実行
-	 */
 	public function getItem(): ?Job {
 		return $this->item;
 	}
 
-	/**
-	 * ジョブを設定
-	 *
-	 * @param Job|null $item ジョブを実行
-	 */
 	public function setItem(?Job $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * ジョブの実行結果を取得
-	 *
-	 * @return JobResultBody|null ジョブを実行
-	 */
+	public function withItem(?Job $item): RunResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getResult(): ?JobResultBody {
 		return $this->result;
 	}
 
-	/**
-	 * ジョブの実行結果を設定
-	 *
-	 * @param JobResultBody|null $result ジョブを実行
-	 */
 	public function setResult(?JobResultBody $result) {
 		$this->result = $result;
 	}
 
-	/**
-	 * Noneを取得
-	 *
-	 * @return bool|null ジョブを実行
-	 */
+	public function withResult(?JobResultBody $result): RunResult {
+		$this->result = $result;
+		return $this;
+	}
+
 	public function getIsLastJob(): ?bool {
 		return $this->isLastJob;
 	}
 
-	/**
-	 * Noneを設定
-	 *
-	 * @param bool|null $isLastJob ジョブを実行
-	 */
 	public function setIsLastJob(?bool $isLastJob) {
 		$this->isLastJob = $isLastJob;
 	}
 
-    public static function fromJson(array $data): RunResult {
-        $result = new RunResult();
-        $result->setItem(isset($data["item"]) ? Job::fromJson($data["item"]) : null);
-        $result->setResult(isset($data["result"]) ? JobResultBody::fromJson($data["result"]) : null);
-        $result->setIsLastJob(isset($data["isLastJob"]) ? $data["isLastJob"] : null);
-        return $result;
+	public function withIsLastJob(?bool $isLastJob): RunResult {
+		$this->isLastJob = $isLastJob;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?RunResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new RunResult())
+            ->withItem(empty($data['item']) ? null : Job::fromJson($data['item']))
+            ->withResult(empty($data['result']) ? null : JobResultBody::fromJson($data['result']))
+            ->withIsLastJob(empty($data['isLastJob']) ? null : $data['isLastJob']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "result" => $this->getResult() !== null ? $this->getResult()->toJson() : null,
+            "isLastJob" => $this->getIsLastJob(),
+        );
     }
 }

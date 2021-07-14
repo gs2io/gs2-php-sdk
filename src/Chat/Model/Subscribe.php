@@ -19,207 +19,123 @@ namespace Gs2\Chat\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 購読
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Subscribe implements IModel {
 	/**
-     * @var string 購読
+     * @var string
 	 */
-	protected $subscribeId;
-
+	private $subscribeId;
 	/**
-	 * 購読を取得
-	 *
-	 * @return string|null 購読
+     * @var string
 	 */
+	private $userId;
+	/**
+     * @var string
+	 */
+	private $roomName;
+	/**
+     * @var array
+	 */
+	private $notificationTypes;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+
 	public function getSubscribeId(): ?string {
 		return $this->subscribeId;
 	}
 
-	/**
-	 * 購読を設定
-	 *
-	 * @param string|null $subscribeId 購読
-	 */
 	public function setSubscribeId(?string $subscribeId) {
 		$this->subscribeId = $subscribeId;
 	}
 
-	/**
-	 * 購読を設定
-	 *
-	 * @param string|null $subscribeId 購読
-	 * @return Subscribe $this
-	 */
 	public function withSubscribeId(?string $subscribeId): Subscribe {
 		$this->subscribeId = $subscribeId;
 		return $this;
 	}
-	/**
-     * @var string 購読するユーザID
-	 */
-	protected $userId;
 
-	/**
-	 * 購読するユーザIDを取得
-	 *
-	 * @return string|null 購読するユーザID
-	 */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * 購読するユーザIDを設定
-	 *
-	 * @param string|null $userId 購読するユーザID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * 購読するユーザIDを設定
-	 *
-	 * @param string|null $userId 購読するユーザID
-	 * @return Subscribe $this
-	 */
 	public function withUserId(?string $userId): Subscribe {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string 購読するルーム名
-	 */
-	protected $roomName;
 
-	/**
-	 * 購読するルーム名を取得
-	 *
-	 * @return string|null 購読するルーム名
-	 */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
 
-	/**
-	 * 購読するルーム名を設定
-	 *
-	 * @param string|null $roomName 購読するルーム名
-	 */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
 
-	/**
-	 * 購読するルーム名を設定
-	 *
-	 * @param string|null $roomName 購読するルーム名
-	 * @return Subscribe $this
-	 */
 	public function withRoomName(?string $roomName): Subscribe {
 		$this->roomName = $roomName;
 		return $this;
 	}
-	/**
-     * @var NotificationType[] 新着メッセージ通知を受け取るカテゴリリスト
-	 */
-	protected $notificationTypes;
 
-	/**
-	 * 新着メッセージ通知を受け取るカテゴリリストを取得
-	 *
-	 * @return NotificationType[]|null 新着メッセージ通知を受け取るカテゴリリスト
-	 */
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
 
-	/**
-	 * 新着メッセージ通知を受け取るカテゴリリストを設定
-	 *
-	 * @param NotificationType[]|null $notificationTypes 新着メッセージ通知を受け取るカテゴリリスト
-	 */
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
 
-	/**
-	 * 新着メッセージ通知を受け取るカテゴリリストを設定
-	 *
-	 * @param NotificationType[]|null $notificationTypes 新着メッセージ通知を受け取るカテゴリリスト
-	 * @return Subscribe $this
-	 */
 	public function withNotificationTypes(?array $notificationTypes): Subscribe {
 		$this->notificationTypes = $notificationTypes;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return Subscribe $this
-	 */
 	public function withCreatedAt(?int $createdAt): Subscribe {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "subscribeId" => $this->subscribeId,
-            "userId" => $this->userId,
-            "roomName" => $this->roomName,
-            "notificationTypes" => array_map(
-                function (NotificationType $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?Subscribe {
+        if ($data === null) {
+            return null;
+        }
+        return (new Subscribe())
+            ->withSubscribeId(empty($data['subscribeId']) ? null : $data['subscribeId'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withNotificationTypes(array_map(
+                function ($item) {
+                    return NotificationType::fromJson($item);
                 },
-                $this->notificationTypes == null ? [] : $this->notificationTypes
-            ),
-            "createdAt" => $this->createdAt,
-        );
+                array_key_exists('notificationTypes', $data) && $data['notificationTypes'] !== null ? $data['notificationTypes'] : []
+            ))
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
     }
 
-    public static function fromJson(array $data): Subscribe {
-        $model = new Subscribe();
-        $model->setSubscribeId(isset($data["subscribeId"]) ? $data["subscribeId"] : null);
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setRoomName(isset($data["roomName"]) ? $data["roomName"] : null);
-        $model->setNotificationTypes(array_map(
-                function ($v) {
-                    return NotificationType::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "subscribeId" => $this->getSubscribeId(),
+            "userId" => $this->getUserId(),
+            "roomName" => $this->getRoomName(),
+            "notificationTypes" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["notificationTypes"]) ? $data["notificationTypes"] : []
-            )
+                $this->getNotificationTypes() !== null && $this->getNotificationTypes() !== null ? $this->getNotificationTypes() : []
+            ),
+            "createdAt" => $this->getCreatedAt(),
         );
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        return $model;
     }
 }

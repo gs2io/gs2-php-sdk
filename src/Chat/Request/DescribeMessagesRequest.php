@@ -19,171 +19,102 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * メッセージの一覧取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeMessagesRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null メッセージの一覧取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージの一覧取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName メッセージの一覧取得
-     * @return DescribeMessagesRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DescribeMessagesRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ルーム名 */
+    /** @var string */
     private $roomName;
-
-    /**
-     * ルーム名を取得
-     *
-     * @return string|null メッセージの一覧取得
-     */
-    public function getRoomName(): ?string {
-        return $this->roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName メッセージの一覧取得
-     */
-    public function setRoomName(string $roomName = null) {
-        $this->roomName = $roomName;
-    }
-
-    /**
-     * ルーム名を設定
-     *
-     * @param string $roomName メッセージの一覧取得
-     * @return DescribeMessagesRequest $this
-     */
-    public function withRoomName(string $roomName = null): DescribeMessagesRequest {
-        $this->setRoomName($roomName);
-        return $this;
-    }
-
-    /** @var string メッセージを投稿するために必要となるパスワード */
+    /** @var string */
     private $password;
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを取得
-     *
-     * @return string|null メッセージの一覧取得
-     */
-    public function getPassword(): ?string {
-        return $this->password;
-    }
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを設定
-     *
-     * @param string $password メッセージの一覧取得
-     */
-    public function setPassword(string $password = null) {
-        $this->password = $password;
-    }
-
-    /**
-     * メッセージを投稿するために必要となるパスワードを設定
-     *
-     * @param string $password メッセージの一覧取得
-     * @return DescribeMessagesRequest $this
-     */
-    public function withPassword(string $password = null): DescribeMessagesRequest {
-        $this->setPassword($password);
-        return $this;
-    }
-
-    /** @var int メッセージの取得を開始する時間 */
+    /** @var int */
     private $startAt;
-
-    /**
-     * メッセージの取得を開始する時間を取得
-     *
-     * @return int|null メッセージの一覧取得
-     */
-    public function getStartAt(): ?int {
-        return $this->startAt;
-    }
-
-    /**
-     * メッセージの取得を開始する時間を設定
-     *
-     * @param int $startAt メッセージの一覧取得
-     */
-    public function setStartAt(int $startAt = null) {
-        $this->startAt = $startAt;
-    }
-
-    /**
-     * メッセージの取得を開始する時間を設定
-     *
-     * @param int $startAt メッセージの一覧取得
-     * @return DescribeMessagesRequest $this
-     */
-    public function withStartAt(int $startAt = null): DescribeMessagesRequest {
-        $this->setStartAt($startAt);
-        return $this;
-    }
-
-    /** @var int データの取得件数 */
+    /** @var int */
     private $limit;
 
-    /**
-     * データの取得件数を取得
-     *
-     * @return int|null メッセージの一覧取得
-     */
-    public function getLimit(): ?int {
-        return $this->limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DescribeMessagesRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getRoomName(): ?string {
+		return $this->roomName;
+	}
+
+	public function setRoomName(?string $roomName) {
+		$this->roomName = $roomName;
+	}
+
+	public function withRoomName(?string $roomName): DescribeMessagesRequest {
+		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): DescribeMessagesRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+	public function getStartAt(): ?int {
+		return $this->startAt;
+	}
+
+	public function setStartAt(?int $startAt) {
+		$this->startAt = $startAt;
+	}
+
+	public function withStartAt(?int $startAt): DescribeMessagesRequest {
+		$this->startAt = $startAt;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeMessagesRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeMessagesRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeMessagesRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withPassword(empty($data['password']) ? null : $data['password'])
+            ->withStartAt(empty($data['startAt']) ? null : $data['startAt'])
+            ->withLimit(empty($data['limit']) ? null : $data['limit']);
     }
 
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit メッセージの一覧取得
-     */
-    public function setLimit(int $limit = null) {
-        $this->limit = $limit;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "roomName" => $this->getRoomName(),
+            "password" => $this->getPassword(),
+            "startAt" => $this->getStartAt(),
+            "limit" => $this->getLimit(),
+        );
     }
-
-    /**
-     * データの取得件数を設定
-     *
-     * @param int $limit メッセージの一覧取得
-     * @return DescribeMessagesRequest $this
-     */
-    public function withLimit(int $limit = null): DescribeMessagesRequest {
-        $this->setLimit($limit);
-        return $this;
-    }
-
 }

@@ -18,38 +18,38 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\AcquireAction;
+use Gs2\Lottery\Model\Prize;
 use Gs2\Lottery\Model\PrizeTable;
 
-/**
- * 排出確率テーブルを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetPrizeTableResult implements IResult {
-	/** @var PrizeTable 排出確率テーブル */
-	private $item;
+    /** @var PrizeTable */
+    private $item;
 
-	/**
-	 * 排出確率テーブルを取得
-	 *
-	 * @return PrizeTable|null 排出確率テーブルを取得
-	 */
 	public function getItem(): ?PrizeTable {
 		return $this->item;
 	}
 
-	/**
-	 * 排出確率テーブルを設定
-	 *
-	 * @param PrizeTable|null $item 排出確率テーブルを取得
-	 */
 	public function setItem(?PrizeTable $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetPrizeTableResult {
-        $result = new GetPrizeTableResult();
-        $result->setItem(isset($data["item"]) ? PrizeTable::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?PrizeTable $item): GetPrizeTableResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetPrizeTableResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetPrizeTableResult())
+            ->withItem(empty($data['item']) ? null : PrizeTable::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

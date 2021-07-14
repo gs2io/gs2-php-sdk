@@ -19,126 +19,75 @@ namespace Gs2\Formation\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * スロット
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Slot implements IModel {
 	/**
-     * @var string スロットモデル名
+     * @var string
 	 */
-	protected $name;
-
+	private $name;
 	/**
-	 * スロットモデル名を取得
-	 *
-	 * @return string|null スロットモデル名
+     * @var string
 	 */
+	private $propertyId;
+	/**
+     * @var string
+	 */
+	private $metadata;
+
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * スロットモデル名を設定
-	 *
-	 * @param string|null $name スロットモデル名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * スロットモデル名を設定
-	 *
-	 * @param string|null $name スロットモデル名
-	 * @return Slot $this
-	 */
 	public function withName(?string $name): Slot {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var string プロパティID
-	 */
-	protected $propertyId;
 
-	/**
-	 * プロパティIDを取得
-	 *
-	 * @return string|null プロパティID
-	 */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
 
-	/**
-	 * プロパティIDを設定
-	 *
-	 * @param string|null $propertyId プロパティID
-	 */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
 
-	/**
-	 * プロパティIDを設定
-	 *
-	 * @param string|null $propertyId プロパティID
-	 * @return Slot $this
-	 */
 	public function withPropertyId(?string $propertyId): Slot {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-	/**
-     * @var string メタデータ
-	 */
-	protected $metadata;
 
-	/**
-	 * メタデータを取得
-	 *
-	 * @return string|null メタデータ
-	 */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * メタデータを設定
-	 *
-	 * @param string|null $metadata メタデータ
-	 * @return Slot $this
-	 */
 	public function withMetadata(?string $metadata): Slot {
 		$this->metadata = $metadata;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "name" => $this->name,
-            "propertyId" => $this->propertyId,
-            "metadata" => $this->metadata,
-        );
+    public static function fromJson(?array $data): ?Slot {
+        if ($data === null) {
+            return null;
+        }
+        return (new Slot())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
+            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
     }
 
-    public static function fromJson(array $data): Slot {
-        $model = new Slot();
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setPropertyId(isset($data["propertyId"]) ? $data["propertyId"] : null);
-        $model->setMetadata(isset($data["metadata"]) ? $data["metadata"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "propertyId" => $this->getPropertyId(),
+            "metadata" => $this->getMetadata(),
+        );
     }
 }

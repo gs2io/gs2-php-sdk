@@ -21,171 +21,102 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Dictionary\Model\ScriptSetting;
 use Gs2\Dictionary\Model\LogSetting;
 
-/**
- * ネームスペースを新規作成 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $name;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $name ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withName(string $name = null): CreateNamespaceRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを新規作成
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): CreateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var ScriptSetting エントリー登録時に実行するスクリプト */
+    /** @var ScriptSetting */
     private $entryScript;
-
-    /**
-     * エントリー登録時に実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getEntryScript(): ?ScriptSetting {
-        return $this->entryScript;
-    }
-
-    /**
-     * エントリー登録時に実行するスクリプトを設定
-     *
-     * @param ScriptSetting $entryScript ネームスペースを新規作成
-     */
-    public function setEntryScript(ScriptSetting $entryScript = null) {
-        $this->entryScript = $entryScript;
-    }
-
-    /**
-     * エントリー登録時に実行するスクリプトを設定
-     *
-     * @param ScriptSetting $entryScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withEntryScript(ScriptSetting $entryScript = null): CreateNamespaceRequest {
-        $this->setEntryScript($entryScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting 登録済みのエントリーを再度登録しようとした時に実行するスクリプト */
+    /** @var ScriptSetting */
     private $duplicateEntryScript;
-
-    /**
-     * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成
-     */
-    public function getDuplicateEntryScript(): ?ScriptSetting {
-        return $this->duplicateEntryScript;
-    }
-
-    /**
-     * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを設定
-     *
-     * @param ScriptSetting $duplicateEntryScript ネームスペースを新規作成
-     */
-    public function setDuplicateEntryScript(ScriptSetting $duplicateEntryScript = null) {
-        $this->duplicateEntryScript = $duplicateEntryScript;
-    }
-
-    /**
-     * 登録済みのエントリーを再度登録しようとした時に実行するスクリプトを設定
-     *
-     * @param ScriptSetting $duplicateEntryScript ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDuplicateEntryScript(ScriptSetting $duplicateEntryScript = null): CreateNamespaceRequest {
-        $this->setDuplicateEntryScript($duplicateEntryScript);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを新規作成
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateNamespaceRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getEntryScript(): ?ScriptSetting {
+		return $this->entryScript;
+	}
+
+	public function setEntryScript(?ScriptSetting $entryScript) {
+		$this->entryScript = $entryScript;
+	}
+
+	public function withEntryScript(?ScriptSetting $entryScript): CreateNamespaceRequest {
+		$this->entryScript = $entryScript;
+		return $this;
+	}
+
+	public function getDuplicateEntryScript(): ?ScriptSetting {
+		return $this->duplicateEntryScript;
+	}
+
+	public function setDuplicateEntryScript(?ScriptSetting $duplicateEntryScript) {
+		$this->duplicateEntryScript = $duplicateEntryScript;
+	}
+
+	public function withDuplicateEntryScript(?ScriptSetting $duplicateEntryScript): CreateNamespaceRequest {
+		$this->duplicateEntryScript = $duplicateEntryScript;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withEntryScript(empty($data['entryScript']) ? null : ScriptSetting::fromJson($data['entryScript']))
+            ->withDuplicateEntryScript(empty($data['duplicateEntryScript']) ? null : ScriptSetting::fromJson($data['duplicateEntryScript']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "entryScript" => $this->getEntryScript() !== null ? $this->getEntryScript()->toJson() : null,
+            "duplicateEntryScript" => $this->getDuplicateEntryScript() !== null ? $this->getDuplicateEntryScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): CreateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

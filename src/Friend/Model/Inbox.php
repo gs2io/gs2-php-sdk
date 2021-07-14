@@ -19,196 +19,123 @@ namespace Gs2\Friend\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * フレンドリクエストの受信ボックス
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Inbox implements IModel {
 	/**
-     * @var string フレンドリクエストの受信ボックス
+     * @var string
 	 */
-	protected $inboxId;
-
+	private $inboxId;
 	/**
-	 * フレンドリクエストの受信ボックスを取得
-	 *
-	 * @return string|null フレンドリクエストの受信ボックス
+     * @var string
 	 */
+	private $userId;
+	/**
+     * @var array
+	 */
+	private $fromUserIds;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getInboxId(): ?string {
 		return $this->inboxId;
 	}
 
-	/**
-	 * フレンドリクエストの受信ボックスを設定
-	 *
-	 * @param string|null $inboxId フレンドリクエストの受信ボックス
-	 */
 	public function setInboxId(?string $inboxId) {
 		$this->inboxId = $inboxId;
 	}
 
-	/**
-	 * フレンドリクエストの受信ボックスを設定
-	 *
-	 * @param string|null $inboxId フレンドリクエストの受信ボックス
-	 * @return Inbox $this
-	 */
 	public function withInboxId(?string $inboxId): Inbox {
 		$this->inboxId = $inboxId;
 		return $this;
 	}
-	/**
-     * @var string ユーザーID
-	 */
-	protected $userId;
 
-	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
-	 */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return Inbox $this
-	 */
 	public function withUserId(?string $userId): Inbox {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string[] フレンドリクエストを送ってきたユーザーIDリスト
-	 */
-	protected $fromUserIds;
 
-	/**
-	 * フレンドリクエストを送ってきたユーザーIDリストを取得
-	 *
-	 * @return string[]|null フレンドリクエストを送ってきたユーザーIDリスト
-	 */
 	public function getFromUserIds(): ?array {
 		return $this->fromUserIds;
 	}
 
-	/**
-	 * フレンドリクエストを送ってきたユーザーIDリストを設定
-	 *
-	 * @param string[]|null $fromUserIds フレンドリクエストを送ってきたユーザーIDリスト
-	 */
 	public function setFromUserIds(?array $fromUserIds) {
 		$this->fromUserIds = $fromUserIds;
 	}
 
-	/**
-	 * フレンドリクエストを送ってきたユーザーIDリストを設定
-	 *
-	 * @param string[]|null $fromUserIds フレンドリクエストを送ってきたユーザーIDリスト
-	 * @return Inbox $this
-	 */
 	public function withFromUserIds(?array $fromUserIds): Inbox {
 		$this->fromUserIds = $fromUserIds;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return Inbox $this
-	 */
 	public function withCreatedAt(?int $createdAt): Inbox {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return Inbox $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): Inbox {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "inboxId" => $this->inboxId,
-            "userId" => $this->userId,
-            "fromUserIds" => $this->fromUserIds,
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+    public static function fromJson(?array $data): ?Inbox {
+        if ($data === null) {
+            return null;
+        }
+        return (new Inbox())
+            ->withInboxId(empty($data['inboxId']) ? null : $data['inboxId'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withFromUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('fromUserIds', $data) && $data['fromUserIds'] !== null ? $data['fromUserIds'] : []
+            ))
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): Inbox {
-        $model = new Inbox();
-        $model->setInboxId(isset($data["inboxId"]) ? $data["inboxId"] : null);
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setFromUserIds(isset($data["fromUserIds"]) ? $data["fromUserIds"] : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "inboxId" => $this->getInboxId(),
+            "userId" => $this->getUserId(),
+            "fromUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getFromUserIds() !== null && $this->getFromUserIds() !== null ? $this->getFromUserIds() : []
+            ),
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
+        );
     }
 }

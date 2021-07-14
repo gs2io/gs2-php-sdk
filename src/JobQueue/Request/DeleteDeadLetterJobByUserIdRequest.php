@@ -19,139 +19,68 @@ namespace Gs2\JobQueue\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * デッドレタージョブを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteDeadLetterJobByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null デッドレタージョブを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName デッドレタージョブを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName デッドレタージョブを取得
-     * @return DeleteDeadLetterJobByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): DeleteDeadLetterJobByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null デッドレタージョブを取得
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId デッドレタージョブを取得
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId デッドレタージョブを取得
-     * @return DeleteDeadLetterJobByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): DeleteDeadLetterJobByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string ジョブの名前 */
+    /** @var string */
     private $deadLetterJobName;
 
-    /**
-     * ジョブの名前を取得
-     *
-     * @return string|null デッドレタージョブを取得
-     */
-    public function getDeadLetterJobName(): ?string {
-        return $this->deadLetterJobName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): DeleteDeadLetterJobByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DeleteDeadLetterJobByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getDeadLetterJobName(): ?string {
+		return $this->deadLetterJobName;
+	}
+
+	public function setDeadLetterJobName(?string $deadLetterJobName) {
+		$this->deadLetterJobName = $deadLetterJobName;
+	}
+
+	public function withDeadLetterJobName(?string $deadLetterJobName): DeleteDeadLetterJobByUserIdRequest {
+		$this->deadLetterJobName = $deadLetterJobName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteDeadLetterJobByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteDeadLetterJobByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withDeadLetterJobName(empty($data['deadLetterJobName']) ? null : $data['deadLetterJobName']);
     }
 
-    /**
-     * ジョブの名前を設定
-     *
-     * @param string $deadLetterJobName デッドレタージョブを取得
-     */
-    public function setDeadLetterJobName(string $deadLetterJobName = null) {
-        $this->deadLetterJobName = $deadLetterJobName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "deadLetterJobName" => $this->getDeadLetterJobName(),
+        );
     }
-
-    /**
-     * ジョブの名前を設定
-     *
-     * @param string $deadLetterJobName デッドレタージョブを取得
-     * @return DeleteDeadLetterJobByUserIdRequest $this
-     */
-    public function withDeadLetterJobName(string $deadLetterJobName = null): DeleteDeadLetterJobByUserIdRequest {
-        $this->setDeadLetterJobName($deadLetterJobName);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null デッドレタージョブを取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider デッドレタージョブを取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider デッドレタージョブを取得
-     * @return DeleteDeadLetterJobByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): DeleteDeadLetterJobByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

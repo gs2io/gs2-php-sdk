@@ -19,126 +19,75 @@ namespace Gs2\Chat\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * プッシュ通知設定
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class NotificationSetting implements IModel {
 	/**
-     * @var string プッシュ通知に使用する GS2-Gateway のネームスペース のGRN
+     * @var string
 	 */
-	protected $gatewayNamespaceId;
-
+	private $gatewayNamespaceId;
 	/**
-	 * プッシュ通知に使用する GS2-Gateway のネームスペース のGRNを取得
-	 *
-	 * @return string|null プッシュ通知に使用する GS2-Gateway のネームスペース のGRN
+     * @var bool
 	 */
+	private $enableTransferMobileNotification;
+	/**
+     * @var string
+	 */
+	private $sound;
+
 	public function getGatewayNamespaceId(): ?string {
 		return $this->gatewayNamespaceId;
 	}
 
-	/**
-	 * プッシュ通知に使用する GS2-Gateway のネームスペース のGRNを設定
-	 *
-	 * @param string|null $gatewayNamespaceId プッシュ通知に使用する GS2-Gateway のネームスペース のGRN
-	 */
 	public function setGatewayNamespaceId(?string $gatewayNamespaceId) {
 		$this->gatewayNamespaceId = $gatewayNamespaceId;
 	}
 
-	/**
-	 * プッシュ通知に使用する GS2-Gateway のネームスペース のGRNを設定
-	 *
-	 * @param string|null $gatewayNamespaceId プッシュ通知に使用する GS2-Gateway のネームスペース のGRN
-	 * @return NotificationSetting $this
-	 */
 	public function withGatewayNamespaceId(?string $gatewayNamespaceId): NotificationSetting {
 		$this->gatewayNamespaceId = $gatewayNamespaceId;
 		return $this;
 	}
-	/**
-     * @var bool モバイルプッシュ通知へ転送するか
-	 */
-	protected $enableTransferMobileNotification;
 
-	/**
-	 * モバイルプッシュ通知へ転送するかを取得
-	 *
-	 * @return bool|null モバイルプッシュ通知へ転送するか
-	 */
 	public function getEnableTransferMobileNotification(): ?bool {
 		return $this->enableTransferMobileNotification;
 	}
 
-	/**
-	 * モバイルプッシュ通知へ転送するかを設定
-	 *
-	 * @param bool|null $enableTransferMobileNotification モバイルプッシュ通知へ転送するか
-	 */
 	public function setEnableTransferMobileNotification(?bool $enableTransferMobileNotification) {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 	}
 
-	/**
-	 * モバイルプッシュ通知へ転送するかを設定
-	 *
-	 * @param bool|null $enableTransferMobileNotification モバイルプッシュ通知へ転送するか
-	 * @return NotificationSetting $this
-	 */
 	public function withEnableTransferMobileNotification(?bool $enableTransferMobileNotification): NotificationSetting {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 		return $this;
 	}
-	/**
-     * @var string モバイルプッシュ通知で使用するサウンドファイル名
-	 */
-	protected $sound;
 
-	/**
-	 * モバイルプッシュ通知で使用するサウンドファイル名を取得
-	 *
-	 * @return string|null モバイルプッシュ通知で使用するサウンドファイル名
-	 */
 	public function getSound(): ?string {
 		return $this->sound;
 	}
 
-	/**
-	 * モバイルプッシュ通知で使用するサウンドファイル名を設定
-	 *
-	 * @param string|null $sound モバイルプッシュ通知で使用するサウンドファイル名
-	 */
 	public function setSound(?string $sound) {
 		$this->sound = $sound;
 	}
 
-	/**
-	 * モバイルプッシュ通知で使用するサウンドファイル名を設定
-	 *
-	 * @param string|null $sound モバイルプッシュ通知で使用するサウンドファイル名
-	 * @return NotificationSetting $this
-	 */
 	public function withSound(?string $sound): NotificationSetting {
 		$this->sound = $sound;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "gatewayNamespaceId" => $this->gatewayNamespaceId,
-            "enableTransferMobileNotification" => $this->enableTransferMobileNotification,
-            "sound" => $this->sound,
-        );
+    public static function fromJson(?array $data): ?NotificationSetting {
+        if ($data === null) {
+            return null;
+        }
+        return (new NotificationSetting())
+            ->withGatewayNamespaceId(empty($data['gatewayNamespaceId']) ? null : $data['gatewayNamespaceId'])
+            ->withEnableTransferMobileNotification(empty($data['enableTransferMobileNotification']) ? null : $data['enableTransferMobileNotification'])
+            ->withSound(empty($data['sound']) ? null : $data['sound']);
     }
 
-    public static function fromJson(array $data): NotificationSetting {
-        $model = new NotificationSetting();
-        $model->setGatewayNamespaceId(isset($data["gatewayNamespaceId"]) ? $data["gatewayNamespaceId"] : null);
-        $model->setEnableTransferMobileNotification(isset($data["enableTransferMobileNotification"]) ? $data["enableTransferMobileNotification"] : null);
-        $model->setSound(isset($data["sound"]) ? $data["sound"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "gatewayNamespaceId" => $this->getGatewayNamespaceId(),
+            "enableTransferMobileNotification" => $this->getEnableTransferMobileNotification(),
+            "sound" => $this->getSound(),
+        );
     }
 }

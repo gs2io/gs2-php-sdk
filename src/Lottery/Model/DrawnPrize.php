@@ -19,67 +19,47 @@ namespace Gs2\Lottery\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 排出された景品
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class DrawnPrize implements IModel {
 	/**
-     * @var AcquireAction[] 入手アクションのリスト
+     * @var array
 	 */
-	protected $acquireActions;
+	private $acquireActions;
 
-	/**
-	 * 入手アクションのリストを取得
-	 *
-	 * @return AcquireAction[]|null 入手アクションのリスト
-	 */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
 
-	/**
-	 * 入手アクションのリストを設定
-	 *
-	 * @param AcquireAction[]|null $acquireActions 入手アクションのリスト
-	 */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
 
-	/**
-	 * 入手アクションのリストを設定
-	 *
-	 * @param AcquireAction[]|null $acquireActions 入手アクションのリスト
-	 * @return DrawnPrize $this
-	 */
 	public function withAcquireActions(?array $acquireActions): DrawnPrize {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
 
+    public static function fromJson(?array $data): ?DrawnPrize {
+        if ($data === null) {
+            return null;
+        }
+        return (new DrawnPrize())
+            ->withAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
+                },
+                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+            ));
+    }
+
     public function toJson(): array {
         return array(
             "acquireActions" => array_map(
-                function (AcquireAction $v) {
-                    return $v->toJson();
+                function ($item) {
+                    return $item->toJson();
                 },
-                $this->acquireActions == null ? [] : $this->acquireActions
+                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
             ),
         );
-    }
-
-    public static function fromJson(array $data): DrawnPrize {
-        $model = new DrawnPrize();
-        $model->setAcquireActions(array_map(
-                function ($v) {
-                    return AcquireAction::fromJson($v);
-                },
-                isset($data["acquireActions"]) ? $data["acquireActions"] : []
-            )
-        );
-        return $model;
     }
 }

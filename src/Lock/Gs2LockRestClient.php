@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Lock\Request\DescribeNamespacesRequest;
 use Gs2\Lock\Result\DescribeNamespacesResult;
 use Gs2\Lock\Request\CreateNamespaceRequest;
@@ -474,9 +476,6 @@ class DescribeMutexesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -540,9 +539,6 @@ class DescribeMutexesByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -609,9 +605,6 @@ class LockTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -675,9 +668,6 @@ class LockByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -740,9 +730,6 @@ class UnlockTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -802,9 +789,6 @@ class UnlockByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -867,9 +851,6 @@ class GetMutexTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -909,8 +890,8 @@ class GetMutexByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace('{service}', "lock", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/mutex/{propertyId}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -928,9 +909,6 @@ class GetMutexByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -991,9 +969,6 @@ class DeleteMutexByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1017,9 +992,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1034,9 +1007,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1048,9 +1019,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1065,9 +1034,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1079,9 +1046,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1096,9 +1061,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの状態を取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1110,9 +1073,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1127,9 +1088,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1141,9 +1100,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1158,9 +1115,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1172,9 +1127,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1189,9 +1142,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1203,9 +1154,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスの一覧を取得<br>
-     *
-     * @param DescribeMutexesRequest $request リクエストパラメータ
+     * @param DescribeMutexesRequest $request
      * @return PromiseInterface
      */
     public function describeMutexesAsync(
@@ -1220,9 +1169,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスの一覧を取得<br>
-     *
-     * @param DescribeMutexesRequest $request リクエストパラメータ
+     * @param DescribeMutexesRequest $request
      * @return DescribeMutexesResult
      */
     public function describeMutexes (
@@ -1234,9 +1181,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスの一覧を取得<br>
-     *
-     * @param DescribeMutexesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeMutexesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeMutexesByUserIdAsync(
@@ -1251,9 +1196,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスの一覧を取得<br>
-     *
-     * @param DescribeMutexesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeMutexesByUserIdRequest $request
      * @return DescribeMutexesByUserIdResult
      */
     public function describeMutexesByUserId (
@@ -1265,9 +1208,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスを取得<br>
-     *
-     * @param LockRequest $request リクエストパラメータ
+     * @param LockRequest $request
      * @return PromiseInterface
      */
     public function lockAsync(
@@ -1282,9 +1223,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスを取得<br>
-     *
-     * @param LockRequest $request リクエストパラメータ
+     * @param LockRequest $request
      * @return LockResult
      */
     public function lock (
@@ -1296,9 +1235,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してミューテックスを取得<br>
-     *
-     * @param LockByUserIdRequest $request リクエストパラメータ
+     * @param LockByUserIdRequest $request
      * @return PromiseInterface
      */
     public function lockByUserIdAsync(
@@ -1313,9 +1250,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してミューテックスを取得<br>
-     *
-     * @param LockByUserIdRequest $request リクエストパラメータ
+     * @param LockByUserIdRequest $request
      * @return LockByUserIdResult
      */
     public function lockByUserId (
@@ -1327,9 +1262,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスを解放<br>
-     *
-     * @param UnlockRequest $request リクエストパラメータ
+     * @param UnlockRequest $request
      * @return PromiseInterface
      */
     public function unlockAsync(
@@ -1344,9 +1277,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスを解放<br>
-     *
-     * @param UnlockRequest $request リクエストパラメータ
+     * @param UnlockRequest $request
      * @return UnlockResult
      */
     public function unlock (
@@ -1358,9 +1289,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してミューテックスを解放<br>
-     *
-     * @param UnlockByUserIdRequest $request リクエストパラメータ
+     * @param UnlockByUserIdRequest $request
      * @return PromiseInterface
      */
     public function unlockByUserIdAsync(
@@ -1375,9 +1304,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してミューテックスを解放<br>
-     *
-     * @param UnlockByUserIdRequest $request リクエストパラメータ
+     * @param UnlockByUserIdRequest $request
      * @return UnlockByUserIdResult
      */
     public function unlockByUserId (
@@ -1389,9 +1316,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスを取得<br>
-     *
-     * @param GetMutexRequest $request リクエストパラメータ
+     * @param GetMutexRequest $request
      * @return PromiseInterface
      */
     public function getMutexAsync(
@@ -1406,9 +1331,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスを取得<br>
-     *
-     * @param GetMutexRequest $request リクエストパラメータ
+     * @param GetMutexRequest $request
      * @return GetMutexResult
      */
     public function getMutex (
@@ -1420,9 +1343,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してミューテックスを取得<br>
-     *
-     * @param GetMutexByUserIdRequest $request リクエストパラメータ
+     * @param GetMutexByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getMutexByUserIdAsync(
@@ -1437,9 +1358,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してミューテックスを取得<br>
-     *
-     * @param GetMutexByUserIdRequest $request リクエストパラメータ
+     * @param GetMutexByUserIdRequest $request
      * @return GetMutexByUserIdResult
      */
     public function getMutexByUserId (
@@ -1451,9 +1370,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスを削除<br>
-     *
-     * @param DeleteMutexByUserIdRequest $request リクエストパラメータ
+     * @param DeleteMutexByUserIdRequest $request
      * @return PromiseInterface
      */
     public function deleteMutexByUserIdAsync(
@@ -1468,9 +1385,7 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ミューテックスを削除<br>
-     *
-     * @param DeleteMutexByUserIdRequest $request リクエストパラメータ
+     * @param DeleteMutexByUserIdRequest $request
      * @return DeleteMutexByUserIdResult
      */
     public function deleteMutexByUserId (

@@ -20,36 +20,34 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\RecoverValueTableMaster;
 
-/**
- * スタミナ回復量テーブルマスターを更新 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateRecoverValueTableMasterResult implements IResult {
-	/** @var RecoverValueTableMaster 更新したスタミナ回復量テーブルマスター */
-	private $item;
+    /** @var RecoverValueTableMaster */
+    private $item;
 
-	/**
-	 * 更新したスタミナ回復量テーブルマスターを取得
-	 *
-	 * @return RecoverValueTableMaster|null スタミナ回復量テーブルマスターを更新
-	 */
 	public function getItem(): ?RecoverValueTableMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 更新したスタミナ回復量テーブルマスターを設定
-	 *
-	 * @param RecoverValueTableMaster|null $item スタミナ回復量テーブルマスターを更新
-	 */
 	public function setItem(?RecoverValueTableMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateRecoverValueTableMasterResult {
-        $result = new UpdateRecoverValueTableMasterResult();
-        $result->setItem(isset($data["item"]) ? RecoverValueTableMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?RecoverValueTableMaster $item): UpdateRecoverValueTableMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateRecoverValueTableMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateRecoverValueTableMasterResult())
+            ->withItem(empty($data['item']) ? null : RecoverValueTableMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

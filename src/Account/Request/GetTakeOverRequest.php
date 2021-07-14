@@ -19,139 +19,68 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * 引き継ぎ設定を取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetTakeOverRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null 引き継ぎ設定を取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName 引き継ぎ設定を取得
-     * @return GetTakeOverRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetTakeOverRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var int スロット番号 */
+    /** @var string */
+    private $accessToken;
+    /** @var int */
     private $type;
 
-    /**
-     * スロット番号を取得
-     *
-     * @return int|null 引き継ぎ設定を取得
-     */
-    public function getType(): ?int {
-        return $this->type;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetTakeOverRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): GetTakeOverRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getType(): ?int {
+		return $this->type;
+	}
+
+	public function setType(?int $type) {
+		$this->type = $type;
+	}
+
+	public function withType(?int $type): GetTakeOverRequest {
+		$this->type = $type;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetTakeOverRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetTakeOverRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withType(empty($data['type']) ? null : $data['type']);
     }
 
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を取得
-     */
-    public function setType(int $type = null) {
-        $this->type = $type;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "type" => $this->getType(),
+        );
     }
-
-    /**
-     * スロット番号を設定
-     *
-     * @param int $type 引き継ぎ設定を取得
-     * @return GetTakeOverRequest $this
-     */
-    public function withType(int $type = null): GetTakeOverRequest {
-        $this->setType($type);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null 引き継ぎ設定を取得
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 引き継ぎ設定を取得
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider 引き継ぎ設定を取得
-     * @return GetTakeOverRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): GetTakeOverRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return GetTakeOverRequest this
-     */
-    public function withAccessToken(string $accessToken): GetTakeOverRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

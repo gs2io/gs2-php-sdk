@@ -18,38 +18,39 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\AcquireAction;
+use Gs2\Quest\Model\Contents;
+use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModel;
 
-/**
- * クエストモデルを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetQuestModelResult implements IResult {
-	/** @var QuestModel None */
-	private $item;
+    /** @var QuestModel */
+    private $item;
 
-	/**
-	 * Noneを取得
-	 *
-	 * @return QuestModel|null クエストモデルを取得
-	 */
 	public function getItem(): ?QuestModel {
 		return $this->item;
 	}
 
-	/**
-	 * Noneを設定
-	 *
-	 * @param QuestModel|null $item クエストモデルを取得
-	 */
 	public function setItem(?QuestModel $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetQuestModelResult {
-        $result = new GetQuestModelResult();
-        $result->setItem(isset($data["item"]) ? QuestModel::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?QuestModel $item): GetQuestModelResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetQuestModelResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetQuestModelResult())
+            ->withItem(empty($data['item']) ? null : QuestModel::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

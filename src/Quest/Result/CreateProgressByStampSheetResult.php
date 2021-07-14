@@ -18,38 +18,37 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 
-/**
- * スタンプシートでクエストを開始 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateProgressByStampSheetResult implements IResult {
-	/** @var Progress クエスト挑戦 */
-	private $item;
+    /** @var Progress */
+    private $item;
 
-	/**
-	 * クエスト挑戦を取得
-	 *
-	 * @return Progress|null スタンプシートでクエストを開始
-	 */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
-	/**
-	 * クエスト挑戦を設定
-	 *
-	 * @param Progress|null $item スタンプシートでクエストを開始
-	 */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateProgressByStampSheetResult {
-        $result = new CreateProgressByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? Progress::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Progress $item): CreateProgressByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateProgressByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateProgressByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

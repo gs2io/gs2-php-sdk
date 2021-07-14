@@ -21,395 +21,221 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Money\Model\ScriptSetting;
 use Gs2\Money\Model\LogSetting;
 
-/**
- * ネームスペースを新規作成します のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペースの名前 */
+    /** @var string */
     private $name;
-
-    /**
-     * ネームスペースの名前を取得
-     *
-     * @return string|null ネームスペースを新規作成します
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $name ネームスペースを新規作成します
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * ネームスペースの名前を設定
-     *
-     * @param string $name ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withName(string $name = null): CreateNamespaceRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string ネームスペースの説明 */
+    /** @var string */
     private $description;
-
-    /**
-     * ネームスペースの説明を取得
-     *
-     * @return string|null ネームスペースを新規作成します
-     */
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成します
-     */
-    public function setDescription(string $description = null) {
-        $this->description = $description;
-    }
-
-    /**
-     * ネームスペースの説明を設定
-     *
-     * @param string $description ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDescription(string $description = null): CreateNamespaceRequest {
-        $this->setDescription($description);
-        return $this;
-    }
-
-    /** @var string 消費優先度 */
+    /** @var string */
     private $priority;
-
-    /**
-     * 消費優先度を取得
-     *
-     * @return string|null ネームスペースを新規作成します
-     */
-    public function getPriority(): ?string {
-        return $this->priority;
-    }
-
-    /**
-     * 消費優先度を設定
-     *
-     * @param string $priority ネームスペースを新規作成します
-     */
-    public function setPriority(string $priority = null) {
-        $this->priority = $priority;
-    }
-
-    /**
-     * 消費優先度を設定
-     *
-     * @param string $priority ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withPriority(string $priority = null): CreateNamespaceRequest {
-        $this->setPriority($priority);
-        return $this;
-    }
-
-    /** @var bool 無償課金通貨を異なるスロットで共有するか */
+    /** @var bool */
     private $shareFree;
-
-    /**
-     * 無償課金通貨を異なるスロットで共有するかを取得
-     *
-     * @return bool|null ネームスペースを新規作成します
-     */
-    public function getShareFree(): ?bool {
-        return $this->shareFree;
-    }
-
-    /**
-     * 無償課金通貨を異なるスロットで共有するかを設定
-     *
-     * @param bool $shareFree ネームスペースを新規作成します
-     */
-    public function setShareFree(bool $shareFree = null) {
-        $this->shareFree = $shareFree;
-    }
-
-    /**
-     * 無償課金通貨を異なるスロットで共有するかを設定
-     *
-     * @param bool $shareFree ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withShareFree(bool $shareFree = null): CreateNamespaceRequest {
-        $this->setShareFree($shareFree);
-        return $this;
-    }
-
-    /** @var string 通貨の種類 */
+    /** @var string */
     private $currency;
-
-    /**
-     * 通貨の種類を取得
-     *
-     * @return string|null ネームスペースを新規作成します
-     */
-    public function getCurrency(): ?string {
-        return $this->currency;
-    }
-
-    /**
-     * 通貨の種類を設定
-     *
-     * @param string $currency ネームスペースを新規作成します
-     */
-    public function setCurrency(string $currency = null) {
-        $this->currency = $currency;
-    }
-
-    /**
-     * 通貨の種類を設定
-     *
-     * @param string $currency ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCurrency(string $currency = null): CreateNamespaceRequest {
-        $this->setCurrency($currency);
-        return $this;
-    }
-
-    /** @var string Apple AppStore のバンドルID */
+    /** @var string */
     private $appleKey;
-
-    /**
-     * Apple AppStore のバンドルIDを取得
-     *
-     * @return string|null ネームスペースを新規作成します
-     */
-    public function getAppleKey(): ?string {
-        return $this->appleKey;
-    }
-
-    /**
-     * Apple AppStore のバンドルIDを設定
-     *
-     * @param string $appleKey ネームスペースを新規作成します
-     */
-    public function setAppleKey(string $appleKey = null) {
-        $this->appleKey = $appleKey;
-    }
-
-    /**
-     * Apple AppStore のバンドルIDを設定
-     *
-     * @param string $appleKey ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withAppleKey(string $appleKey = null): CreateNamespaceRequest {
-        $this->setAppleKey($appleKey);
-        return $this;
-    }
-
-    /** @var string Google PlayStore の秘密鍵 */
+    /** @var string */
     private $googleKey;
-
-    /**
-     * Google PlayStore の秘密鍵を取得
-     *
-     * @return string|null ネームスペースを新規作成します
-     */
-    public function getGoogleKey(): ?string {
-        return $this->googleKey;
-    }
-
-    /**
-     * Google PlayStore の秘密鍵を設定
-     *
-     * @param string $googleKey ネームスペースを新規作成します
-     */
-    public function setGoogleKey(string $googleKey = null) {
-        $this->googleKey = $googleKey;
-    }
-
-    /**
-     * Google PlayStore の秘密鍵を設定
-     *
-     * @param string $googleKey ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withGoogleKey(string $googleKey = null): CreateNamespaceRequest {
-        $this->setGoogleKey($googleKey);
-        return $this;
-    }
-
-    /** @var bool UnityEditorが出力する偽のレシートで決済できるようにするか */
+    /** @var bool */
     private $enableFakeReceipt;
-
-    /**
-     * UnityEditorが出力する偽のレシートで決済できるようにするかを取得
-     *
-     * @return bool|null ネームスペースを新規作成します
-     */
-    public function getEnableFakeReceipt(): ?bool {
-        return $this->enableFakeReceipt;
-    }
-
-    /**
-     * UnityEditorが出力する偽のレシートで決済できるようにするかを設定
-     *
-     * @param bool $enableFakeReceipt ネームスペースを新規作成します
-     */
-    public function setEnableFakeReceipt(bool $enableFakeReceipt = null) {
-        $this->enableFakeReceipt = $enableFakeReceipt;
-    }
-
-    /**
-     * UnityEditorが出力する偽のレシートで決済できるようにするかを設定
-     *
-     * @param bool $enableFakeReceipt ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withEnableFakeReceipt(bool $enableFakeReceipt = null): CreateNamespaceRequest {
-        $this->setEnableFakeReceipt($enableFakeReceipt);
-        return $this;
-    }
-
-    /** @var ScriptSetting ウォレット新規作成したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $createWalletScript;
-
-    /**
-     * ウォレット新規作成したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成します
-     */
-    public function getCreateWalletScript(): ?ScriptSetting {
-        return $this->createWalletScript;
-    }
-
-    /**
-     * ウォレット新規作成したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $createWalletScript ネームスペースを新規作成します
-     */
-    public function setCreateWalletScript(ScriptSetting $createWalletScript = null) {
-        $this->createWalletScript = $createWalletScript;
-    }
-
-    /**
-     * ウォレット新規作成したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $createWalletScript ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withCreateWalletScript(ScriptSetting $createWalletScript = null): CreateNamespaceRequest {
-        $this->setCreateWalletScript($createWalletScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting ウォレット残高加算したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $depositScript;
-
-    /**
-     * ウォレット残高加算したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成します
-     */
-    public function getDepositScript(): ?ScriptSetting {
-        return $this->depositScript;
-    }
-
-    /**
-     * ウォレット残高加算したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $depositScript ネームスペースを新規作成します
-     */
-    public function setDepositScript(ScriptSetting $depositScript = null) {
-        $this->depositScript = $depositScript;
-    }
-
-    /**
-     * ウォレット残高加算したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $depositScript ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withDepositScript(ScriptSetting $depositScript = null): CreateNamespaceRequest {
-        $this->setDepositScript($depositScript);
-        return $this;
-    }
-
-    /** @var ScriptSetting ウォレット残高消費したときに実行するスクリプト */
+    /** @var ScriptSetting */
     private $withdrawScript;
-
-    /**
-     * ウォレット残高消費したときに実行するスクリプトを取得
-     *
-     * @return ScriptSetting|null ネームスペースを新規作成します
-     */
-    public function getWithdrawScript(): ?ScriptSetting {
-        return $this->withdrawScript;
-    }
-
-    /**
-     * ウォレット残高消費したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $withdrawScript ネームスペースを新規作成します
-     */
-    public function setWithdrawScript(ScriptSetting $withdrawScript = null) {
-        $this->withdrawScript = $withdrawScript;
-    }
-
-    /**
-     * ウォレット残高消費したときに実行するスクリプトを設定
-     *
-     * @param ScriptSetting $withdrawScript ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withWithdrawScript(ScriptSetting $withdrawScript = null): CreateNamespaceRequest {
-        $this->setWithdrawScript($withdrawScript);
-        return $this;
-    }
-
-    /** @var LogSetting ログの出力設定 */
+    /** @var LogSetting */
     private $logSetting;
 
-    /**
-     * ログの出力設定を取得
-     *
-     * @return LogSetting|null ネームスペースを新規作成します
-     */
-    public function getLogSetting(): ?LogSetting {
-        return $this->logSetting;
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): CreateNamespaceRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+
+	public function getPriority(): ?string {
+		return $this->priority;
+	}
+
+	public function setPriority(?string $priority) {
+		$this->priority = $priority;
+	}
+
+	public function withPriority(?string $priority): CreateNamespaceRequest {
+		$this->priority = $priority;
+		return $this;
+	}
+
+	public function getShareFree(): ?bool {
+		return $this->shareFree;
+	}
+
+	public function setShareFree(?bool $shareFree) {
+		$this->shareFree = $shareFree;
+	}
+
+	public function withShareFree(?bool $shareFree): CreateNamespaceRequest {
+		$this->shareFree = $shareFree;
+		return $this;
+	}
+
+	public function getCurrency(): ?string {
+		return $this->currency;
+	}
+
+	public function setCurrency(?string $currency) {
+		$this->currency = $currency;
+	}
+
+	public function withCurrency(?string $currency): CreateNamespaceRequest {
+		$this->currency = $currency;
+		return $this;
+	}
+
+	public function getAppleKey(): ?string {
+		return $this->appleKey;
+	}
+
+	public function setAppleKey(?string $appleKey) {
+		$this->appleKey = $appleKey;
+	}
+
+	public function withAppleKey(?string $appleKey): CreateNamespaceRequest {
+		$this->appleKey = $appleKey;
+		return $this;
+	}
+
+	public function getGoogleKey(): ?string {
+		return $this->googleKey;
+	}
+
+	public function setGoogleKey(?string $googleKey) {
+		$this->googleKey = $googleKey;
+	}
+
+	public function withGoogleKey(?string $googleKey): CreateNamespaceRequest {
+		$this->googleKey = $googleKey;
+		return $this;
+	}
+
+	public function getEnableFakeReceipt(): ?bool {
+		return $this->enableFakeReceipt;
+	}
+
+	public function setEnableFakeReceipt(?bool $enableFakeReceipt) {
+		$this->enableFakeReceipt = $enableFakeReceipt;
+	}
+
+	public function withEnableFakeReceipt(?bool $enableFakeReceipt): CreateNamespaceRequest {
+		$this->enableFakeReceipt = $enableFakeReceipt;
+		return $this;
+	}
+
+	public function getCreateWalletScript(): ?ScriptSetting {
+		return $this->createWalletScript;
+	}
+
+	public function setCreateWalletScript(?ScriptSetting $createWalletScript) {
+		$this->createWalletScript = $createWalletScript;
+	}
+
+	public function withCreateWalletScript(?ScriptSetting $createWalletScript): CreateNamespaceRequest {
+		$this->createWalletScript = $createWalletScript;
+		return $this;
+	}
+
+	public function getDepositScript(): ?ScriptSetting {
+		return $this->depositScript;
+	}
+
+	public function setDepositScript(?ScriptSetting $depositScript) {
+		$this->depositScript = $depositScript;
+	}
+
+	public function withDepositScript(?ScriptSetting $depositScript): CreateNamespaceRequest {
+		$this->depositScript = $depositScript;
+		return $this;
+	}
+
+	public function getWithdrawScript(): ?ScriptSetting {
+		return $this->withdrawScript;
+	}
+
+	public function setWithdrawScript(?ScriptSetting $withdrawScript) {
+		$this->withdrawScript = $withdrawScript;
+	}
+
+	public function withWithdrawScript(?ScriptSetting $withdrawScript): CreateNamespaceRequest {
+		$this->withdrawScript = $withdrawScript;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateNamespaceRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateNamespaceRequest())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withPriority(empty($data['priority']) ? null : $data['priority'])
+            ->withShareFree(empty($data['shareFree']) ? null : $data['shareFree'])
+            ->withCurrency(empty($data['currency']) ? null : $data['currency'])
+            ->withAppleKey(empty($data['appleKey']) ? null : $data['appleKey'])
+            ->withGoogleKey(empty($data['googleKey']) ? null : $data['googleKey'])
+            ->withEnableFakeReceipt(empty($data['enableFakeReceipt']) ? null : $data['enableFakeReceipt'])
+            ->withCreateWalletScript(empty($data['createWalletScript']) ? null : ScriptSetting::fromJson($data['createWalletScript']))
+            ->withDepositScript(empty($data['depositScript']) ? null : ScriptSetting::fromJson($data['depositScript']))
+            ->withWithdrawScript(empty($data['withdrawScript']) ? null : ScriptSetting::fromJson($data['withdrawScript']))
+            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成します
-     */
-    public function setLogSetting(LogSetting $logSetting = null) {
-        $this->logSetting = $logSetting;
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "priority" => $this->getPriority(),
+            "shareFree" => $this->getShareFree(),
+            "currency" => $this->getCurrency(),
+            "appleKey" => $this->getAppleKey(),
+            "googleKey" => $this->getGoogleKey(),
+            "enableFakeReceipt" => $this->getEnableFakeReceipt(),
+            "createWalletScript" => $this->getCreateWalletScript() !== null ? $this->getCreateWalletScript()->toJson() : null,
+            "depositScript" => $this->getDepositScript() !== null ? $this->getDepositScript()->toJson() : null,
+            "withdrawScript" => $this->getWithdrawScript() !== null ? $this->getWithdrawScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+        );
     }
-
-    /**
-     * ログの出力設定を設定
-     *
-     * @param LogSetting $logSetting ネームスペースを新規作成します
-     * @return CreateNamespaceRequest $this
-     */
-    public function withLogSetting(LogSetting $logSetting = null): CreateNamespaceRequest {
-        $this->setLogSetting($logSetting);
-        return $this;
-    }
-
 }

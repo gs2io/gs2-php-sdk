@@ -20,36 +20,34 @@ namespace Gs2\Showcase\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\SalesItemGroupMaster;
 
-/**
- * 商品グループマスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateSalesItemGroupMasterResult implements IResult {
-	/** @var SalesItemGroupMaster 作成した商品グループマスター */
-	private $item;
+    /** @var SalesItemGroupMaster */
+    private $item;
 
-	/**
-	 * 作成した商品グループマスターを取得
-	 *
-	 * @return SalesItemGroupMaster|null 商品グループマスターを新規作成
-	 */
 	public function getItem(): ?SalesItemGroupMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成した商品グループマスターを設定
-	 *
-	 * @param SalesItemGroupMaster|null $item 商品グループマスターを新規作成
-	 */
 	public function setItem(?SalesItemGroupMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateSalesItemGroupMasterResult {
-        $result = new CreateSalesItemGroupMasterResult();
-        $result->setItem(isset($data["item"]) ? SalesItemGroupMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?SalesItemGroupMaster $item): CreateSalesItemGroupMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateSalesItemGroupMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateSalesItemGroupMasterResult())
+            ->withItem(empty($data['item']) ? null : SalesItemGroupMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

@@ -18,38 +18,37 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModelMaster;
 
-/**
- * ミッションタスクマスターを新規作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateMissionTaskModelMasterResult implements IResult {
-	/** @var MissionTaskModelMaster 作成したミッションタスクマスター */
-	private $item;
+    /** @var MissionTaskModelMaster */
+    private $item;
 
-	/**
-	 * 作成したミッションタスクマスターを取得
-	 *
-	 * @return MissionTaskModelMaster|null ミッションタスクマスターを新規作成
-	 */
 	public function getItem(): ?MissionTaskModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * 作成したミッションタスクマスターを設定
-	 *
-	 * @param MissionTaskModelMaster|null $item ミッションタスクマスターを新規作成
-	 */
 	public function setItem(?MissionTaskModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateMissionTaskModelMasterResult {
-        $result = new CreateMissionTaskModelMasterResult();
-        $result->setItem(isset($data["item"]) ? MissionTaskModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?MissionTaskModelMaster $item): CreateMissionTaskModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateMissionTaskModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateMissionTaskModelMasterResult())
+            ->withItem(empty($data['item']) ? null : MissionTaskModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

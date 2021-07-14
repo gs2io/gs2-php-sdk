@@ -18,38 +18,37 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\CounterScopeModel;
 use Gs2\Mission\Model\CounterModelMaster;
 
-/**
- * カウンターの種類マスターを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetCounterModelMasterResult implements IResult {
-	/** @var CounterModelMaster カウンターの種類マスター */
-	private $item;
+    /** @var CounterModelMaster */
+    private $item;
 
-	/**
-	 * カウンターの種類マスターを取得
-	 *
-	 * @return CounterModelMaster|null カウンターの種類マスターを取得
-	 */
 	public function getItem(): ?CounterModelMaster {
 		return $this->item;
 	}
 
-	/**
-	 * カウンターの種類マスターを設定
-	 *
-	 * @param CounterModelMaster|null $item カウンターの種類マスターを取得
-	 */
 	public function setItem(?CounterModelMaster $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetCounterModelMasterResult {
-        $result = new GetCounterModelMasterResult();
-        $result->setItem(isset($data["item"]) ? CounterModelMaster::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?CounterModelMaster $item): GetCounterModelMasterResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetCounterModelMasterResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetCounterModelMasterResult())
+            ->withItem(empty($data['item']) ? null : CounterModelMaster::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

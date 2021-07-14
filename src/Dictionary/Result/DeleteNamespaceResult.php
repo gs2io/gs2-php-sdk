@@ -18,38 +18,38 @@
 namespace Gs2\Dictionary\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Dictionary\Model\ScriptSetting;
+use Gs2\Dictionary\Model\LogSetting;
 use Gs2\Dictionary\Model\Namespace_;
 
-/**
- * ネームスペースを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteNamespaceResult implements IResult {
-	/** @var Namespace_ 削除したネームスペース */
-	private $item;
+    /** @var Namespace_ */
+    private $item;
 
-	/**
-	 * 削除したネームスペースを取得
-	 *
-	 * @return Namespace_|null ネームスペースを削除
-	 */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
-	/**
-	 * 削除したネームスペースを設定
-	 *
-	 * @param Namespace_|null $item ネームスペースを削除
-	 */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): DeleteNamespaceResult {
-        $result = new DeleteNamespaceResult();
-        $result->setItem(isset($data["item"]) ? Namespace_::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Namespace_ $item): DeleteNamespaceResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteNamespaceResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteNamespaceResult())
+            ->withItem(empty($data['item']) ? null : Namespace_::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

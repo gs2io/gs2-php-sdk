@@ -19,107 +19,68 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * Noneを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetItemModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null Noneを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName Noneを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName Noneを取得
-     * @return GetItemModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetItemModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string インベントリの種類名 */
+    /** @var string */
     private $inventoryName;
-
-    /**
-     * インベントリの種類名を取得
-     *
-     * @return string|null Noneを取得
-     */
-    public function getInventoryName(): ?string {
-        return $this->inventoryName;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName Noneを取得
-     */
-    public function setInventoryName(string $inventoryName = null) {
-        $this->inventoryName = $inventoryName;
-    }
-
-    /**
-     * インベントリの種類名を設定
-     *
-     * @param string $inventoryName Noneを取得
-     * @return GetItemModelRequest $this
-     */
-    public function withInventoryName(string $inventoryName = null): GetItemModelRequest {
-        $this->setInventoryName($inventoryName);
-        return $this;
-    }
-
-    /** @var string アイテムモデルの種類名 */
+    /** @var string */
     private $itemName;
 
-    /**
-     * アイテムモデルの種類名を取得
-     *
-     * @return string|null Noneを取得
-     */
-    public function getItemName(): ?string {
-        return $this->itemName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetItemModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getInventoryName(): ?string {
+		return $this->inventoryName;
+	}
+
+	public function setInventoryName(?string $inventoryName) {
+		$this->inventoryName = $inventoryName;
+	}
+
+	public function withInventoryName(?string $inventoryName): GetItemModelRequest {
+		$this->inventoryName = $inventoryName;
+		return $this;
+	}
+
+	public function getItemName(): ?string {
+		return $this->itemName;
+	}
+
+	public function setItemName(?string $itemName) {
+		$this->itemName = $itemName;
+	}
+
+	public function withItemName(?string $itemName): GetItemModelRequest {
+		$this->itemName = $itemName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetItemModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetItemModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
+            ->withItemName(empty($data['itemName']) ? null : $data['itemName']);
     }
 
-    /**
-     * アイテムモデルの種類名を設定
-     *
-     * @param string $itemName Noneを取得
-     */
-    public function setItemName(string $itemName = null) {
-        $this->itemName = $itemName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "inventoryName" => $this->getInventoryName(),
+            "itemName" => $this->getItemName(),
+        );
     }
-
-    /**
-     * アイテムモデルの種類名を設定
-     *
-     * @param string $itemName Noneを取得
-     * @return GetItemModelRequest $this
-     */
-    public function withItemName(string $itemName = null): GetItemModelRequest {
-        $this->setItemName($itemName);
-        return $this;
-    }
-
 }

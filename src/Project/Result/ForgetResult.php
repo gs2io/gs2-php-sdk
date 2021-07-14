@@ -19,36 +19,34 @@ namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * パスワード再発行トークンを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class ForgetResult implements IResult {
-	/** @var string パスワードを再発行するために必要なトークン */
-	private $issuePasswordToken;
+    /** @var string */
+    private $issuePasswordToken;
 
-	/**
-	 * パスワードを再発行するために必要なトークンを取得
-	 *
-	 * @return string|null パスワード再発行トークンを取得
-	 */
 	public function getIssuePasswordToken(): ?string {
 		return $this->issuePasswordToken;
 	}
 
-	/**
-	 * パスワードを再発行するために必要なトークンを設定
-	 *
-	 * @param string|null $issuePasswordToken パスワード再発行トークンを取得
-	 */
 	public function setIssuePasswordToken(?string $issuePasswordToken) {
 		$this->issuePasswordToken = $issuePasswordToken;
 	}
 
-    public static function fromJson(array $data): ForgetResult {
-        $result = new ForgetResult();
-        $result->setIssuePasswordToken(isset($data["issuePasswordToken"]) ? $data["issuePasswordToken"] : null);
-        return $result;
+	public function withIssuePasswordToken(?string $issuePasswordToken): ForgetResult {
+		$this->issuePasswordToken = $issuePasswordToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ForgetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new ForgetResult())
+            ->withIssuePasswordToken(empty($data['issuePasswordToken']) ? null : $data['issuePasswordToken']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "issuePasswordToken" => $this->getIssuePasswordToken(),
+        );
     }
 }

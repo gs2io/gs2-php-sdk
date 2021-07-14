@@ -20,42 +20,44 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
-/**
- * 割り当てられたセキュリティポリシーの一覧を取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetHasSecurityPolicyResult implements IResult {
-	/** @var SecurityPolicy[] セキュリティポリシーのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * セキュリティポリシーのリストを取得
-	 *
-	 * @return SecurityPolicy[]|null 割り当てられたセキュリティポリシーの一覧を取得します
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * セキュリティポリシーのリストを設定
-	 *
-	 * @param SecurityPolicy[]|null $items 割り当てられたセキュリティポリシーの一覧を取得します
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): GetHasSecurityPolicyResult {
-        $result = new GetHasSecurityPolicyResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return SecurityPolicy::fromJson($v);
+	public function withItems(?array $items): GetHasSecurityPolicyResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetHasSecurityPolicyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetHasSecurityPolicyResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return SecurityPolicy::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

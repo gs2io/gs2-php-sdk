@@ -19,171 +19,85 @@ namespace Gs2\Lock\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ミューテックスを解放 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class UnlockRequest extends Gs2BasicRequest {
-
-    /** @var string カテゴリー名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * カテゴリー名を取得
-     *
-     * @return string|null ミューテックスを解放
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * カテゴリー名を設定
-     *
-     * @param string $namespaceName ミューテックスを解放
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * カテゴリー名を設定
-     *
-     * @param string $namespaceName ミューテックスを解放
-     * @return UnlockRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): UnlockRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string プロパティID */
+    /** @var string */
     private $propertyId;
-
-    /**
-     * プロパティIDを取得
-     *
-     * @return string|null ミューテックスを解放
-     */
-    public function getPropertyId(): ?string {
-        return $this->propertyId;
-    }
-
-    /**
-     * プロパティIDを設定
-     *
-     * @param string $propertyId ミューテックスを解放
-     */
-    public function setPropertyId(string $propertyId = null) {
-        $this->propertyId = $propertyId;
-    }
-
-    /**
-     * プロパティIDを設定
-     *
-     * @param string $propertyId ミューテックスを解放
-     * @return UnlockRequest $this
-     */
-    public function withPropertyId(string $propertyId = null): UnlockRequest {
-        $this->setPropertyId($propertyId);
-        return $this;
-    }
-
-    /** @var string ロックを取得したトランザクションID */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $transactionId;
 
-    /**
-     * ロックを取得したトランザクションIDを取得
-     *
-     * @return string|null ミューテックスを解放
-     */
-    public function getTransactionId(): ?string {
-        return $this->transactionId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): UnlockRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getPropertyId(): ?string {
+		return $this->propertyId;
+	}
+
+	public function setPropertyId(?string $propertyId) {
+		$this->propertyId = $propertyId;
+	}
+
+	public function withPropertyId(?string $propertyId): UnlockRequest {
+		$this->propertyId = $propertyId;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): UnlockRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getTransactionId(): ?string {
+		return $this->transactionId;
+	}
+
+	public function setTransactionId(?string $transactionId) {
+		$this->transactionId = $transactionId;
+	}
+
+	public function withTransactionId(?string $transactionId): UnlockRequest {
+		$this->transactionId = $transactionId;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UnlockRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new UnlockRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId']);
     }
 
-    /**
-     * ロックを取得したトランザクションIDを設定
-     *
-     * @param string $transactionId ミューテックスを解放
-     */
-    public function setTransactionId(string $transactionId = null) {
-        $this->transactionId = $transactionId;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "propertyId" => $this->getPropertyId(),
+            "accessToken" => $this->getAccessToken(),
+            "transactionId" => $this->getTransactionId(),
+        );
     }
-
-    /**
-     * ロックを取得したトランザクションIDを設定
-     *
-     * @param string $transactionId ミューテックスを解放
-     * @return UnlockRequest $this
-     */
-    public function withTransactionId(string $transactionId = null): UnlockRequest {
-        $this->setTransactionId($transactionId);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ミューテックスを解放
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ミューテックスを解放
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ミューテックスを解放
-     * @return UnlockRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): UnlockRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return UnlockRequest this
-     */
-    public function withAccessToken(string $accessToken): UnlockRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

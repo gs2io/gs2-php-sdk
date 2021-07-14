@@ -18,92 +18,92 @@
 namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Version\Model\Version;
+use Gs2\Version\Model\VersionModel;
 use Gs2\Version\Model\Status;
 
-/**
- * バージョンチェック のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CheckVersionResult implements IResult {
-	/** @var string プロジェクトトークン */
-	private $projectToken;
-	/** @var Status[] バージョンの検証結果のリスト */
-	private $warnings;
-	/** @var Status[] バージョンの検証結果のリスト */
-	private $errors;
+    /** @var string */
+    private $projectToken;
+    /** @var array */
+    private $warnings;
+    /** @var array */
+    private $errors;
 
-	/**
-	 * プロジェクトトークンを取得
-	 *
-	 * @return string|null バージョンチェック
-	 */
 	public function getProjectToken(): ?string {
 		return $this->projectToken;
 	}
 
-	/**
-	 * プロジェクトトークンを設定
-	 *
-	 * @param string|null $projectToken バージョンチェック
-	 */
 	public function setProjectToken(?string $projectToken) {
 		$this->projectToken = $projectToken;
 	}
 
-	/**
-	 * バージョンの検証結果のリストを取得
-	 *
-	 * @return Status[]|null バージョンチェック
-	 */
+	public function withProjectToken(?string $projectToken): CheckVersionResult {
+		$this->projectToken = $projectToken;
+		return $this;
+	}
+
 	public function getWarnings(): ?array {
 		return $this->warnings;
 	}
 
-	/**
-	 * バージョンの検証結果のリストを設定
-	 *
-	 * @param Status[]|null $warnings バージョンチェック
-	 */
 	public function setWarnings(?array $warnings) {
 		$this->warnings = $warnings;
 	}
 
-	/**
-	 * バージョンの検証結果のリストを取得
-	 *
-	 * @return Status[]|null バージョンチェック
-	 */
+	public function withWarnings(?array $warnings): CheckVersionResult {
+		$this->warnings = $warnings;
+		return $this;
+	}
+
 	public function getErrors(): ?array {
 		return $this->errors;
 	}
 
-	/**
-	 * バージョンの検証結果のリストを設定
-	 *
-	 * @param Status[]|null $errors バージョンチェック
-	 */
 	public function setErrors(?array $errors) {
 		$this->errors = $errors;
 	}
 
-    public static function fromJson(array $data): CheckVersionResult {
-        $result = new CheckVersionResult();
-        $result->setProjectToken(isset($data["projectToken"]) ? $data["projectToken"] : null);
-        $result->setWarnings(array_map(
-                function ($v) {
-                    return Status::fromJson($v);
+	public function withErrors(?array $errors): CheckVersionResult {
+		$this->errors = $errors;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CheckVersionResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CheckVersionResult())
+            ->withProjectToken(empty($data['projectToken']) ? null : $data['projectToken'])
+            ->withWarnings(array_map(
+                function ($item) {
+                    return Status::fromJson($item);
                 },
-                isset($data["warnings"]) ? $data["warnings"] : []
-            )
-        );
-        $result->setErrors(array_map(
-                function ($v) {
-                    return Status::fromJson($v);
+                array_key_exists('warnings', $data) && $data['warnings'] !== null ? $data['warnings'] : []
+            ))
+            ->withErrors(array_map(
+                function ($item) {
+                    return Status::fromJson($item);
                 },
-                isset($data["errors"]) ? $data["errors"] : []
-            )
+                array_key_exists('errors', $data) && $data['errors'] !== null ? $data['errors'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "projectToken" => $this->getProjectToken(),
+            "warnings" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getWarnings() !== null && $this->getWarnings() !== null ? $this->getWarnings() : []
+            ),
+            "errors" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getErrors() !== null && $this->getErrors() !== null ? $this->getErrors() : []
+            ),
         );
-        return $result;
     }
 }

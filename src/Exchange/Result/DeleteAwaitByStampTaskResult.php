@@ -20,57 +20,51 @@ namespace Gs2\Exchange\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Await;
 
-/**
- * スタンプタスクで 交換待機 を削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteAwaitByStampTaskResult implements IResult {
-	/** @var Await 交換待機 */
-	private $item;
-	/** @var string スタンプタスクの実行結果を記録したコンテキスト */
-	private $newContextStack;
+    /** @var Await */
+    private $item;
+    /** @var string */
+    private $newContextStack;
 
-	/**
-	 * 交換待機を取得
-	 *
-	 * @return Await|null スタンプタスクで 交換待機 を削除
-	 */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
-	/**
-	 * 交換待機を設定
-	 *
-	 * @param Await|null $item スタンプタスクで 交換待機 を削除
-	 */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを取得
-	 *
-	 * @return string|null スタンプタスクで 交換待機 を削除
-	 */
+	public function withItem(?Await $item): DeleteAwaitByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
-	/**
-	 * スタンプタスクの実行結果を記録したコンテキストを設定
-	 *
-	 * @param string|null $newContextStack スタンプタスクで 交換待機 を削除
-	 */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
-    public static function fromJson(array $data): DeleteAwaitByStampTaskResult {
-        $result = new DeleteAwaitByStampTaskResult();
-        $result->setItem(isset($data["item"]) ? Await::fromJson($data["item"]) : null);
-        $result->setNewContextStack(isset($data["newContextStack"]) ? $data["newContextStack"] : null);
-        return $result;
+	public function withNewContextStack(?string $newContextStack): DeleteAwaitByStampTaskResult {
+		$this->newContextStack = $newContextStack;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteAwaitByStampTaskResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteAwaitByStampTaskResult())
+            ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']))
+            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "newContextStack" => $this->getNewContextStack(),
+        );
     }
 }

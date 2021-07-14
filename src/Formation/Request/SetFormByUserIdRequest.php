@@ -20,203 +20,112 @@ namespace Gs2\Formation\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Formation\Model\Slot;
 
-/**
- * ユーザIDを指定してフォームを更新 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class SetFormByUserIdRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ユーザIDを指定してフォームを更新
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してフォームを更新
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ユーザIDを指定してフォームを更新
-     * @return SetFormByUserIdRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): SetFormByUserIdRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string ユーザーID */
+    /** @var string */
     private $userId;
-
-    /**
-     * ユーザーIDを取得
-     *
-     * @return string|null ユーザIDを指定してフォームを更新
-     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してフォームを更新
-     */
-    public function setUserId(string $userId = null) {
-        $this->userId = $userId;
-    }
-
-    /**
-     * ユーザーIDを設定
-     *
-     * @param string $userId ユーザIDを指定してフォームを更新
-     * @return SetFormByUserIdRequest $this
-     */
-    public function withUserId(string $userId = null): SetFormByUserIdRequest {
-        $this->setUserId($userId);
-        return $this;
-    }
-
-    /** @var string フォームの保存領域の名前 */
+    /** @var string */
     private $moldName;
-
-    /**
-     * フォームの保存領域の名前を取得
-     *
-     * @return string|null ユーザIDを指定してフォームを更新
-     */
-    public function getMoldName(): ?string {
-        return $this->moldName;
-    }
-
-    /**
-     * フォームの保存領域の名前を設定
-     *
-     * @param string $moldName ユーザIDを指定してフォームを更新
-     */
-    public function setMoldName(string $moldName = null) {
-        $this->moldName = $moldName;
-    }
-
-    /**
-     * フォームの保存領域の名前を設定
-     *
-     * @param string $moldName ユーザIDを指定してフォームを更新
-     * @return SetFormByUserIdRequest $this
-     */
-    public function withMoldName(string $moldName = null): SetFormByUserIdRequest {
-        $this->setMoldName($moldName);
-        return $this;
-    }
-
-    /** @var int 保存領域のインデックス */
+    /** @var int */
     private $index;
-
-    /**
-     * 保存領域のインデックスを取得
-     *
-     * @return int|null ユーザIDを指定してフォームを更新
-     */
-    public function getIndex(): ?int {
-        return $this->index;
-    }
-
-    /**
-     * 保存領域のインデックスを設定
-     *
-     * @param int $index ユーザIDを指定してフォームを更新
-     */
-    public function setIndex(int $index = null) {
-        $this->index = $index;
-    }
-
-    /**
-     * 保存領域のインデックスを設定
-     *
-     * @param int $index ユーザIDを指定してフォームを更新
-     * @return SetFormByUserIdRequest $this
-     */
-    public function withIndex(int $index = null): SetFormByUserIdRequest {
-        $this->setIndex($index);
-        return $this;
-    }
-
-    /** @var Slot[] スロットリスト */
+    /** @var array */
     private $slots;
 
-    /**
-     * スロットリストを取得
-     *
-     * @return Slot[]|null ユーザIDを指定してフォームを更新
-     */
-    public function getSlots(): ?array {
-        return $this->slots;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): SetFormByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): SetFormByUserIdRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getMoldName(): ?string {
+		return $this->moldName;
+	}
+
+	public function setMoldName(?string $moldName) {
+		$this->moldName = $moldName;
+	}
+
+	public function withMoldName(?string $moldName): SetFormByUserIdRequest {
+		$this->moldName = $moldName;
+		return $this;
+	}
+
+	public function getIndex(): ?int {
+		return $this->index;
+	}
+
+	public function setIndex(?int $index) {
+		$this->index = $index;
+	}
+
+	public function withIndex(?int $index): SetFormByUserIdRequest {
+		$this->index = $index;
+		return $this;
+	}
+
+	public function getSlots(): ?array {
+		return $this->slots;
+	}
+
+	public function setSlots(?array $slots) {
+		$this->slots = $slots;
+	}
+
+	public function withSlots(?array $slots): SetFormByUserIdRequest {
+		$this->slots = $slots;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SetFormByUserIdRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new SetFormByUserIdRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
+            ->withIndex(empty($data['index']) ? null : $data['index'])
+            ->withSlots(array_map(
+                function ($item) {
+                    return Slot::fromJson($item);
+                },
+                array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
+            ));
     }
 
-    /**
-     * スロットリストを設定
-     *
-     * @param Slot[] $slots ユーザIDを指定してフォームを更新
-     */
-    public function setSlots(array $slots = null) {
-        $this->slots = $slots;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "userId" => $this->getUserId(),
+            "moldName" => $this->getMoldName(),
+            "index" => $this->getIndex(),
+            "slots" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
+            ),
+        );
     }
-
-    /**
-     * スロットリストを設定
-     *
-     * @param Slot[] $slots ユーザIDを指定してフォームを更新
-     * @return SetFormByUserIdRequest $this
-     */
-    public function withSlots(array $slots = null): SetFormByUserIdRequest {
-        $this->setSlots($slots);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null ユーザIDを指定してフォームを更新
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してフォームを更新
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider ユーザIDを指定してフォームを更新
-     * @return SetFormByUserIdRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): SetFormByUserIdRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
 }

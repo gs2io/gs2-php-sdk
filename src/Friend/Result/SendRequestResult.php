@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendRequest;
 
-/**
- * フレンドリクエストを送信 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class SendRequestResult implements IResult {
-	/** @var FriendRequest 送信したフレンドリクエスト */
-	private $item;
+    /** @var FriendRequest */
+    private $item;
 
-	/**
-	 * 送信したフレンドリクエストを取得
-	 *
-	 * @return FriendRequest|null フレンドリクエストを送信
-	 */
 	public function getItem(): ?FriendRequest {
 		return $this->item;
 	}
 
-	/**
-	 * 送信したフレンドリクエストを設定
-	 *
-	 * @param FriendRequest|null $item フレンドリクエストを送信
-	 */
 	public function setItem(?FriendRequest $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): SendRequestResult {
-        $result = new SendRequestResult();
-        $result->setItem(isset($data["item"]) ? FriendRequest::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?FriendRequest $item): SendRequestResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?SendRequestResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new SendRequestResult())
+            ->withItem(empty($data['item']) ? null : FriendRequest::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

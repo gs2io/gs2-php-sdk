@@ -19,91 +19,56 @@ namespace Gs2\Lottery\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 排出レート
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Probability implements IModel {
 	/**
-     * @var DrawnPrize 景品の種類
+     * @var DrawnPrize
 	 */
-	protected $prize;
-
+	private $prize;
 	/**
-	 * 景品の種類を取得
-	 *
-	 * @return DrawnPrize|null 景品の種類
+     * @var float
 	 */
+	private $rate;
+
 	public function getPrize(): ?DrawnPrize {
 		return $this->prize;
 	}
 
-	/**
-	 * 景品の種類を設定
-	 *
-	 * @param DrawnPrize|null $prize 景品の種類
-	 */
 	public function setPrize(?DrawnPrize $prize) {
 		$this->prize = $prize;
 	}
 
-	/**
-	 * 景品の種類を設定
-	 *
-	 * @param DrawnPrize|null $prize 景品の種類
-	 * @return Probability $this
-	 */
 	public function withPrize(?DrawnPrize $prize): Probability {
 		$this->prize = $prize;
 		return $this;
 	}
-	/**
-     * @var float 排出確率(0.0〜1.0)
-	 */
-	protected $rate;
 
-	/**
-	 * 排出確率(0.0〜1.0)を取得
-	 *
-	 * @return float|null 排出確率(0.0〜1.0)
-	 */
 	public function getRate(): ?float {
 		return $this->rate;
 	}
 
-	/**
-	 * 排出確率(0.0〜1.0)を設定
-	 *
-	 * @param float|null $rate 排出確率(0.0〜1.0)
-	 */
 	public function setRate(?float $rate) {
 		$this->rate = $rate;
 	}
 
-	/**
-	 * 排出確率(0.0〜1.0)を設定
-	 *
-	 * @param float|null $rate 排出確率(0.0〜1.0)
-	 * @return Probability $this
-	 */
 	public function withRate(?float $rate): Probability {
 		$this->rate = $rate;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "prize" => $this->prize->toJson(),
-            "rate" => $this->rate,
-        );
+    public static function fromJson(?array $data): ?Probability {
+        if ($data === null) {
+            return null;
+        }
+        return (new Probability())
+            ->withPrize(empty($data['prize']) ? null : DrawnPrize::fromJson($data['prize']))
+            ->withRate(empty($data['rate']) ? null : $data['rate']);
     }
 
-    public static function fromJson(array $data): Probability {
-        $model = new Probability();
-        $model->setPrize(isset($data["prize"]) ? DrawnPrize::fromJson($data["prize"]) : null);
-        $model->setRate(isset($data["rate"]) ? $data["rate"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "prize" => $this->getPrize() !== null ? $this->getPrize()->toJson() : null,
+            "rate" => $this->getRate(),
+        );
     }
 }

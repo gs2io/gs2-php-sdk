@@ -19,102 +19,66 @@ namespace Gs2\Formation\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 入手アクションコンフィグ
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class AcquireActionConfig implements IModel {
 	/**
-     * @var string スロット名
+     * @var string
 	 */
-	protected $name;
-
+	private $name;
 	/**
-	 * スロット名を取得
-	 *
-	 * @return string|null スロット名
+     * @var array
 	 */
+	private $config;
+
 	public function getName(): ?string {
 		return $this->name;
 	}
 
-	/**
-	 * スロット名を設定
-	 *
-	 * @param string|null $name スロット名
-	 */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
 
-	/**
-	 * スロット名を設定
-	 *
-	 * @param string|null $name スロット名
-	 * @return AcquireActionConfig $this
-	 */
 	public function withName(?string $name): AcquireActionConfig {
 		$this->name = $name;
 		return $this;
 	}
-	/**
-     * @var Config[] スタンプシートに使用するコンフィグ
-	 */
-	protected $config;
 
-	/**
-	 * スタンプシートに使用するコンフィグを取得
-	 *
-	 * @return Config[]|null スタンプシートに使用するコンフィグ
-	 */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
 
-	/**
-	 * スタンプシートに使用するコンフィグを設定
-	 *
-	 * @param Config[]|null $config スタンプシートに使用するコンフィグ
-	 */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
 
-	/**
-	 * スタンプシートに使用するコンフィグを設定
-	 *
-	 * @param Config[]|null $config スタンプシートに使用するコンフィグ
-	 * @return AcquireActionConfig $this
-	 */
 	public function withConfig(?array $config): AcquireActionConfig {
 		$this->config = $config;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "name" => $this->name,
-            "config" => array_map(
-                function (Config $v) {
-                    return $v->toJson();
+    public static function fromJson(?array $data): ?AcquireActionConfig {
+        if ($data === null) {
+            return null;
+        }
+        return (new AcquireActionConfig())
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
                 },
-                $this->config == null ? [] : $this->config
-            ),
-        );
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
-    public static function fromJson(array $data): AcquireActionConfig {
-        $model = new AcquireActionConfig();
-        $model->setName(isset($data["name"]) ? $data["name"] : null);
-        $model->setConfig(array_map(
-                function ($v) {
-                    return Config::fromJson($v);
+    public function toJson(): array {
+        return array(
+            "name" => $this->getName(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
                 },
-                isset($data["config"]) ? $data["config"] : []
-            )
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
         );
-        return $model;
     }
 }

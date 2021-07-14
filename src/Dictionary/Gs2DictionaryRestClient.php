@@ -27,6 +27,8 @@ use Gs2\Core\Net\Gs2RestSessionTask;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response;
+
+
 use Gs2\Dictionary\Request\DescribeNamespacesRequest;
 use Gs2\Dictionary\Result\DescribeNamespacesResult;
 use Gs2\Dictionary\Request\CreateNamespaceRequest;
@@ -928,9 +930,6 @@ class DescribeEntriesTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -994,9 +993,6 @@ class DescribeEntriesByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1062,9 +1058,6 @@ class AddEntriesByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1126,9 +1119,6 @@ class GetEntryTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1187,9 +1177,6 @@ class GetEntryByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1255,9 +1242,6 @@ class GetEntryWithSignatureTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1320,9 +1304,6 @@ class GetEntryWithSignatureByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -1380,9 +1361,6 @@ class ResetByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1442,9 +1420,6 @@ class AddEntriesByStampSheetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1699,9 +1674,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
 	}
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
      */
     public function describeNamespacesAsync(
@@ -1716,9 +1689,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースの一覧を取得<br>
-     *
-     * @param DescribeNamespacesRequest $request リクエストパラメータ
+     * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
      */
     public function describeNamespaces (
@@ -1730,9 +1701,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function createNamespaceAsync(
@@ -1747,9 +1716,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを新規作成<br>
-     *
-     * @param CreateNamespaceRequest $request リクエストパラメータ
+     * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
      */
     public function createNamespace (
@@ -1761,9 +1728,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceStatusAsync(
@@ -1778,9 +1743,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceStatusRequest $request リクエストパラメータ
+     * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
      */
     public function getNamespaceStatus (
@@ -1792,9 +1755,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return PromiseInterface
      */
     public function getNamespaceAsync(
@@ -1809,9 +1770,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを取得<br>
-     *
-     * @param GetNamespaceRequest $request リクエストパラメータ
+     * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
      */
     public function getNamespace (
@@ -1823,9 +1782,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
      */
     public function updateNamespaceAsync(
@@ -1840,9 +1797,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを更新<br>
-     *
-     * @param UpdateNamespaceRequest $request リクエストパラメータ
+     * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
      */
     public function updateNamespace (
@@ -1854,9 +1809,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
      */
     public function deleteNamespaceAsync(
@@ -1871,9 +1824,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ネームスペースを削除<br>
-     *
-     * @param DeleteNamespaceRequest $request リクエストパラメータ
+     * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
      */
     public function deleteNamespace (
@@ -1885,9 +1836,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルの一覧を取得<br>
-     *
-     * @param DescribeEntryModelsRequest $request リクエストパラメータ
+     * @param DescribeEntryModelsRequest $request
      * @return PromiseInterface
      */
     public function describeEntryModelsAsync(
@@ -1902,9 +1851,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルの一覧を取得<br>
-     *
-     * @param DescribeEntryModelsRequest $request リクエストパラメータ
+     * @param DescribeEntryModelsRequest $request
      * @return DescribeEntryModelsResult
      */
     public function describeEntryModels (
@@ -1916,9 +1863,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルを取得<br>
-     *
-     * @param GetEntryModelRequest $request リクエストパラメータ
+     * @param GetEntryModelRequest $request
      * @return PromiseInterface
      */
     public function getEntryModelAsync(
@@ -1933,9 +1878,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルを取得<br>
-     *
-     * @param GetEntryModelRequest $request リクエストパラメータ
+     * @param GetEntryModelRequest $request
      * @return GetEntryModelResult
      */
     public function getEntryModel (
@@ -1947,9 +1890,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeEntryModelMastersRequest $request リクエストパラメータ
+     * @param DescribeEntryModelMastersRequest $request
      * @return PromiseInterface
      */
     public function describeEntryModelMastersAsync(
@@ -1964,9 +1905,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターの一覧を取得<br>
-     *
-     * @param DescribeEntryModelMastersRequest $request リクエストパラメータ
+     * @param DescribeEntryModelMastersRequest $request
      * @return DescribeEntryModelMastersResult
      */
     public function describeEntryModelMasters (
@@ -1978,9 +1917,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターを新規作成<br>
-     *
-     * @param CreateEntryModelMasterRequest $request リクエストパラメータ
+     * @param CreateEntryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function createEntryModelMasterAsync(
@@ -1995,9 +1932,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターを新規作成<br>
-     *
-     * @param CreateEntryModelMasterRequest $request リクエストパラメータ
+     * @param CreateEntryModelMasterRequest $request
      * @return CreateEntryModelMasterResult
      */
     public function createEntryModelMaster (
@@ -2009,9 +1944,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターを取得<br>
-     *
-     * @param GetEntryModelMasterRequest $request リクエストパラメータ
+     * @param GetEntryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function getEntryModelMasterAsync(
@@ -2026,9 +1959,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターを取得<br>
-     *
-     * @param GetEntryModelMasterRequest $request リクエストパラメータ
+     * @param GetEntryModelMasterRequest $request
      * @return GetEntryModelMasterResult
      */
     public function getEntryModelMaster (
@@ -2040,9 +1971,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターを更新<br>
-     *
-     * @param UpdateEntryModelMasterRequest $request リクエストパラメータ
+     * @param UpdateEntryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function updateEntryModelMasterAsync(
@@ -2057,9 +1986,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターを更新<br>
-     *
-     * @param UpdateEntryModelMasterRequest $request リクエストパラメータ
+     * @param UpdateEntryModelMasterRequest $request
      * @return UpdateEntryModelMasterResult
      */
     public function updateEntryModelMaster (
@@ -2071,9 +1998,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターを削除<br>
-     *
-     * @param DeleteEntryModelMasterRequest $request リクエストパラメータ
+     * @param DeleteEntryModelMasterRequest $request
      * @return PromiseInterface
      */
     public function deleteEntryModelMasterAsync(
@@ -2088,9 +2013,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーモデルマスターを削除<br>
-     *
-     * @param DeleteEntryModelMasterRequest $request リクエストパラメータ
+     * @param DeleteEntryModelMasterRequest $request
      * @return DeleteEntryModelMasterResult
      */
     public function deleteEntryModelMaster (
@@ -2102,9 +2025,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーの一覧を取得<br>
-     *
-     * @param DescribeEntriesRequest $request リクエストパラメータ
+     * @param DescribeEntriesRequest $request
      * @return PromiseInterface
      */
     public function describeEntriesAsync(
@@ -2119,9 +2040,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーの一覧を取得<br>
-     *
-     * @param DescribeEntriesRequest $request リクエストパラメータ
+     * @param DescribeEntriesRequest $request
      * @return DescribeEntriesResult
      */
     public function describeEntries (
@@ -2133,9 +2052,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してエントリーの一覧を取得<br>
-     *
-     * @param DescribeEntriesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeEntriesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function describeEntriesByUserIdAsync(
@@ -2150,9 +2067,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してエントリーの一覧を取得<br>
-     *
-     * @param DescribeEntriesByUserIdRequest $request リクエストパラメータ
+     * @param DescribeEntriesByUserIdRequest $request
      * @return DescribeEntriesByUserIdResult
      */
     public function describeEntriesByUserId (
@@ -2164,9 +2079,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してエントリーを入手済みとして登録<br>
-     *
-     * @param AddEntriesByUserIdRequest $request リクエストパラメータ
+     * @param AddEntriesByUserIdRequest $request
      * @return PromiseInterface
      */
     public function addEntriesByUserIdAsync(
@@ -2181,9 +2094,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してエントリーを入手済みとして登録<br>
-     *
-     * @param AddEntriesByUserIdRequest $request リクエストパラメータ
+     * @param AddEntriesByUserIdRequest $request
      * @return AddEntriesByUserIdResult
      */
     public function addEntriesByUserId (
@@ -2195,9 +2106,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーを取得<br>
-     *
-     * @param GetEntryRequest $request リクエストパラメータ
+     * @param GetEntryRequest $request
      * @return PromiseInterface
      */
     public function getEntryAsync(
@@ -2212,9 +2121,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーを取得<br>
-     *
-     * @param GetEntryRequest $request リクエストパラメータ
+     * @param GetEntryRequest $request
      * @return GetEntryResult
      */
     public function getEntry (
@@ -2226,9 +2133,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してエントリーを取得<br>
-     *
-     * @param GetEntryByUserIdRequest $request リクエストパラメータ
+     * @param GetEntryByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getEntryByUserIdAsync(
@@ -2243,9 +2148,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してエントリーを取得<br>
-     *
-     * @param GetEntryByUserIdRequest $request リクエストパラメータ
+     * @param GetEntryByUserIdRequest $request
      * @return GetEntryByUserIdResult
      */
     public function getEntryByUserId (
@@ -2257,9 +2160,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーを取得<br>
-     *
-     * @param GetEntryWithSignatureRequest $request リクエストパラメータ
+     * @param GetEntryWithSignatureRequest $request
      * @return PromiseInterface
      */
     public function getEntryWithSignatureAsync(
@@ -2274,9 +2175,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーを取得<br>
-     *
-     * @param GetEntryWithSignatureRequest $request リクエストパラメータ
+     * @param GetEntryWithSignatureRequest $request
      * @return GetEntryWithSignatureResult
      */
     public function getEntryWithSignature (
@@ -2288,9 +2187,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してエントリーを取得<br>
-     *
-     * @param GetEntryWithSignatureByUserIdRequest $request リクエストパラメータ
+     * @param GetEntryWithSignatureByUserIdRequest $request
      * @return PromiseInterface
      */
     public function getEntryWithSignatureByUserIdAsync(
@@ -2305,9 +2202,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * ユーザIDを指定してエントリーを取得<br>
-     *
-     * @param GetEntryWithSignatureByUserIdRequest $request リクエストパラメータ
+     * @param GetEntryWithSignatureByUserIdRequest $request
      * @return GetEntryWithSignatureByUserIdResult
      */
     public function getEntryWithSignatureByUserId (
@@ -2319,9 +2214,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーをリセット<br>
-     *
-     * @param ResetByUserIdRequest $request リクエストパラメータ
+     * @param ResetByUserIdRequest $request
      * @return PromiseInterface
      */
     public function resetByUserIdAsync(
@@ -2336,9 +2229,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * エントリーをリセット<br>
-     *
-     * @param ResetByUserIdRequest $request リクエストパラメータ
+     * @param ResetByUserIdRequest $request
      * @return ResetByUserIdResult
      */
     public function resetByUserId (
@@ -2350,9 +2241,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでエントリーを追加<br>
-     *
-     * @param AddEntriesByStampSheetRequest $request リクエストパラメータ
+     * @param AddEntriesByStampSheetRequest $request
      * @return PromiseInterface
      */
     public function addEntriesByStampSheetAsync(
@@ -2367,9 +2256,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * スタンプシートでエントリーを追加<br>
-     *
-     * @param AddEntriesByStampSheetRequest $request リクエストパラメータ
+     * @param AddEntriesByStampSheetRequest $request
      * @return AddEntriesByStampSheetResult
      */
     public function addEntriesByStampSheet (
@@ -2381,9 +2268,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なエントリー設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return PromiseInterface
      */
     public function exportMasterAsync(
@@ -2398,9 +2283,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なエントリー設定のマスターデータをエクスポートします<br>
-     *
-     * @param ExportMasterRequest $request リクエストパラメータ
+     * @param ExportMasterRequest $request
      * @return ExportMasterResult
      */
     public function exportMaster (
@@ -2412,9 +2295,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なエントリー設定を取得します<br>
-     *
-     * @param GetCurrentEntryMasterRequest $request リクエストパラメータ
+     * @param GetCurrentEntryMasterRequest $request
      * @return PromiseInterface
      */
     public function getCurrentEntryMasterAsync(
@@ -2429,9 +2310,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なエントリー設定を取得します<br>
-     *
-     * @param GetCurrentEntryMasterRequest $request リクエストパラメータ
+     * @param GetCurrentEntryMasterRequest $request
      * @return GetCurrentEntryMasterResult
      */
     public function getCurrentEntryMaster (
@@ -2443,9 +2322,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なエントリー設定を更新します<br>
-     *
-     * @param UpdateCurrentEntryMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentEntryMasterRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentEntryMasterAsync(
@@ -2460,9 +2337,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なエントリー設定を更新します<br>
-     *
-     * @param UpdateCurrentEntryMasterRequest $request リクエストパラメータ
+     * @param UpdateCurrentEntryMasterRequest $request
      * @return UpdateCurrentEntryMasterResult
      */
     public function updateCurrentEntryMaster (
@@ -2474,9 +2349,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なエントリー設定を更新します<br>
-     *
-     * @param UpdateCurrentEntryMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentEntryMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
     public function updateCurrentEntryMasterFromGitHubAsync(
@@ -2491,9 +2364,7 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * 現在有効なエントリー設定を更新します<br>
-     *
-     * @param UpdateCurrentEntryMasterFromGitHubRequest $request リクエストパラメータ
+     * @param UpdateCurrentEntryMasterFromGitHubRequest $request
      * @return UpdateCurrentEntryMasterFromGitHubResult
      */
     public function updateCurrentEntryMasterFromGitHub (

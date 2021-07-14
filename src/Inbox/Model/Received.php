@@ -19,196 +19,123 @@ namespace Gs2\Inbox\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * 受信済みグローバルメッセージ名
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class Received implements IModel {
 	/**
-     * @var string 受信済みグローバルメッセージ名
+     * @var string
 	 */
-	protected $receivedId;
-
+	private $receivedId;
 	/**
-	 * 受信済みグローバルメッセージ名を取得
-	 *
-	 * @return string|null 受信済みグローバルメッセージ名
+     * @var string
 	 */
+	private $userId;
+	/**
+     * @var array
+	 */
+	private $receivedGlobalMessageNames;
+	/**
+     * @var int
+	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $updatedAt;
+
 	public function getReceivedId(): ?string {
 		return $this->receivedId;
 	}
 
-	/**
-	 * 受信済みグローバルメッセージ名を設定
-	 *
-	 * @param string|null $receivedId 受信済みグローバルメッセージ名
-	 */
 	public function setReceivedId(?string $receivedId) {
 		$this->receivedId = $receivedId;
 	}
 
-	/**
-	 * 受信済みグローバルメッセージ名を設定
-	 *
-	 * @param string|null $receivedId 受信済みグローバルメッセージ名
-	 * @return Received $this
-	 */
 	public function withReceivedId(?string $receivedId): Received {
 		$this->receivedId = $receivedId;
 		return $this;
 	}
-	/**
-     * @var string ユーザーID
-	 */
-	protected $userId;
 
-	/**
-	 * ユーザーIDを取得
-	 *
-	 * @return string|null ユーザーID
-	 */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
-	/**
-	 * ユーザーIDを設定
-	 *
-	 * @param string|null $userId ユーザーID
-	 * @return Received $this
-	 */
 	public function withUserId(?string $userId): Received {
 		$this->userId = $userId;
 		return $this;
 	}
-	/**
-     * @var string[] 受信したグローバルメッセージ名
-	 */
-	protected $receivedGlobalMessageNames;
 
-	/**
-	 * 受信したグローバルメッセージ名を取得
-	 *
-	 * @return string[]|null 受信したグローバルメッセージ名
-	 */
 	public function getReceivedGlobalMessageNames(): ?array {
 		return $this->receivedGlobalMessageNames;
 	}
 
-	/**
-	 * 受信したグローバルメッセージ名を設定
-	 *
-	 * @param string[]|null $receivedGlobalMessageNames 受信したグローバルメッセージ名
-	 */
 	public function setReceivedGlobalMessageNames(?array $receivedGlobalMessageNames) {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 	}
 
-	/**
-	 * 受信したグローバルメッセージ名を設定
-	 *
-	 * @param string[]|null $receivedGlobalMessageNames 受信したグローバルメッセージ名
-	 * @return Received $this
-	 */
 	public function withReceivedGlobalMessageNames(?array $receivedGlobalMessageNames): Received {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 		return $this;
 	}
-	/**
-     * @var int 作成日時
-	 */
-	protected $createdAt;
 
-	/**
-	 * 作成日時を取得
-	 *
-	 * @return int|null 作成日時
-	 */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
 
-	/**
-	 * 作成日時を設定
-	 *
-	 * @param int|null $createdAt 作成日時
-	 * @return Received $this
-	 */
 	public function withCreatedAt(?int $createdAt): Received {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-	/**
-     * @var int 最終更新日時
-	 */
-	protected $updatedAt;
 
-	/**
-	 * 最終更新日時を取得
-	 *
-	 * @return int|null 最終更新日時
-	 */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * 最終更新日時を設定
-	 *
-	 * @param int|null $updatedAt 最終更新日時
-	 * @return Received $this
-	 */
 	public function withUpdatedAt(?int $updatedAt): Received {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "receivedId" => $this->receivedId,
-            "userId" => $this->userId,
-            "receivedGlobalMessageNames" => $this->receivedGlobalMessageNames,
-            "createdAt" => $this->createdAt,
-            "updatedAt" => $this->updatedAt,
-        );
+    public static function fromJson(?array $data): ?Received {
+        if ($data === null) {
+            return null;
+        }
+        return (new Received())
+            ->withReceivedId(empty($data['receivedId']) ? null : $data['receivedId'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withReceivedGlobalMessageNames(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('receivedGlobalMessageNames', $data) && $data['receivedGlobalMessageNames'] !== null ? $data['receivedGlobalMessageNames'] : []
+            ))
+            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
     }
 
-    public static function fromJson(array $data): Received {
-        $model = new Received();
-        $model->setReceivedId(isset($data["receivedId"]) ? $data["receivedId"] : null);
-        $model->setUserId(isset($data["userId"]) ? $data["userId"] : null);
-        $model->setReceivedGlobalMessageNames(isset($data["receivedGlobalMessageNames"]) ? $data["receivedGlobalMessageNames"] : null);
-        $model->setCreatedAt(isset($data["createdAt"]) ? $data["createdAt"] : null);
-        $model->setUpdatedAt(isset($data["updatedAt"]) ? $data["updatedAt"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "receivedId" => $this->getReceivedId(),
+            "userId" => $this->getUserId(),
+            "receivedGlobalMessageNames" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getReceivedGlobalMessageNames() !== null && $this->getReceivedGlobalMessageNames() !== null ? $this->getReceivedGlobalMessageNames() : []
+            ),
+            "createdAt" => $this->getCreatedAt(),
+            "updatedAt" => $this->getUpdatedAt(),
+        );
     }
 }

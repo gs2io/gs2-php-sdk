@@ -19,15 +19,17 @@ namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * パスワードを削除します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeletePasswordResult implements IResult {
 
-    public static function fromJson(array $data): DeletePasswordResult {
-        $result = new DeletePasswordResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeletePasswordResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeletePasswordResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

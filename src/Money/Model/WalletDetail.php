@@ -19,91 +19,56 @@ namespace Gs2\Money\Model;
 
 use Gs2\Core\Model\IModel;
 
-/**
- * ウォレットの詳細
- *
- * @author Game Server Services, Inc.
- *
- */
+
 class WalletDetail implements IModel {
 	/**
-     * @var float 単価
+     * @var float
 	 */
-	protected $price;
-
+	private $price;
 	/**
-	 * 単価を取得
-	 *
-	 * @return float|null 単価
+     * @var int
 	 */
+	private $count;
+
 	public function getPrice(): ?float {
 		return $this->price;
 	}
 
-	/**
-	 * 単価を設定
-	 *
-	 * @param float|null $price 単価
-	 */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
 
-	/**
-	 * 単価を設定
-	 *
-	 * @param float|null $price 単価
-	 * @return WalletDetail $this
-	 */
 	public function withPrice(?float $price): WalletDetail {
 		$this->price = $price;
 		return $this;
 	}
-	/**
-     * @var int 所持量
-	 */
-	protected $count;
 
-	/**
-	 * 所持量を取得
-	 *
-	 * @return int|null 所持量
-	 */
 	public function getCount(): ?int {
 		return $this->count;
 	}
 
-	/**
-	 * 所持量を設定
-	 *
-	 * @param int|null $count 所持量
-	 */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
 
-	/**
-	 * 所持量を設定
-	 *
-	 * @param int|null $count 所持量
-	 * @return WalletDetail $this
-	 */
 	public function withCount(?int $count): WalletDetail {
 		$this->count = $count;
 		return $this;
 	}
 
-    public function toJson(): array {
-        return array(
-            "price" => $this->price,
-            "count" => $this->count,
-        );
+    public static function fromJson(?array $data): ?WalletDetail {
+        if ($data === null) {
+            return null;
+        }
+        return (new WalletDetail())
+            ->withPrice(empty($data['price']) ? null : $data['price'])
+            ->withCount(empty($data['count']) ? null : $data['count']);
     }
 
-    public static function fromJson(array $data): WalletDetail {
-        $model = new WalletDetail();
-        $model->setPrice(isset($data["price"]) ? $data["price"] : null);
-        $model->setCount(isset($data["count"]) ? $data["count"] : null);
-        return $model;
+    public function toJson(): array {
+        return array(
+            "price" => $this->getPrice(),
+            "count" => $this->getCount(),
+        );
     }
 }

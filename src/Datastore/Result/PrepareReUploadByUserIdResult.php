@@ -20,57 +20,51 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
-/**
- * ユーザIDを指定してデータオブジェクトを再アップロード準備する のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class PrepareReUploadByUserIdResult implements IResult {
-	/** @var DataObject データオブジェクト */
-	private $item;
-	/** @var string アップロード処理の実行に使用するURL */
-	private $uploadUrl;
+    /** @var DataObject */
+    private $item;
+    /** @var string */
+    private $uploadUrl;
 
-	/**
-	 * データオブジェクトを取得
-	 *
-	 * @return DataObject|null ユーザIDを指定してデータオブジェクトを再アップロード準備する
-	 */
 	public function getItem(): ?DataObject {
 		return $this->item;
 	}
 
-	/**
-	 * データオブジェクトを設定
-	 *
-	 * @param DataObject|null $item ユーザIDを指定してデータオブジェクトを再アップロード準備する
-	 */
 	public function setItem(?DataObject $item) {
 		$this->item = $item;
 	}
 
-	/**
-	 * アップロード処理の実行に使用するURLを取得
-	 *
-	 * @return string|null ユーザIDを指定してデータオブジェクトを再アップロード準備する
-	 */
+	public function withItem(?DataObject $item): PrepareReUploadByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
-	/**
-	 * アップロード処理の実行に使用するURLを設定
-	 *
-	 * @param string|null $uploadUrl ユーザIDを指定してデータオブジェクトを再アップロード準備する
-	 */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
-    public static function fromJson(array $data): PrepareReUploadByUserIdResult {
-        $result = new PrepareReUploadByUserIdResult();
-        $result->setItem(isset($data["item"]) ? DataObject::fromJson($data["item"]) : null);
-        $result->setUploadUrl(isset($data["uploadUrl"]) ? $data["uploadUrl"] : null);
-        return $result;
+	public function withUploadUrl(?string $uploadUrl): PrepareReUploadByUserIdResult {
+		$this->uploadUrl = $uploadUrl;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PrepareReUploadByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new PrepareReUploadByUserIdResult())
+            ->withItem(empty($data['item']) ? null : DataObject::fromJson($data['item']))
+            ->withUploadUrl(empty($data['uploadUrl']) ? null : $data['uploadUrl']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "uploadUrl" => $this->getUploadUrl(),
+        );
     }
 }

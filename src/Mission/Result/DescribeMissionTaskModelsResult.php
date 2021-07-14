@@ -18,44 +18,47 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModel;
 
-/**
- * ミッションタスクの一覧を取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DescribeMissionTaskModelsResult implements IResult {
-	/** @var MissionTaskModel[] ミッションタスクのリスト */
-	private $items;
+    /** @var array */
+    private $items;
 
-	/**
-	 * ミッションタスクのリストを取得
-	 *
-	 * @return MissionTaskModel[]|null ミッションタスクの一覧を取得
-	 */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-	/**
-	 * ミッションタスクのリストを設定
-	 *
-	 * @param MissionTaskModel[]|null $items ミッションタスクの一覧を取得
-	 */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
-    public static function fromJson(array $data): DescribeMissionTaskModelsResult {
-        $result = new DescribeMissionTaskModelsResult();
-        $result->setItems(array_map(
-                function ($v) {
-                    return MissionTaskModel::fromJson($v);
+	public function withItems(?array $items): DescribeMissionTaskModelsResult {
+		$this->items = $items;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DescribeMissionTaskModelsResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DescribeMissionTaskModelsResult())
+            ->withItems(array_map(
+                function ($item) {
+                    return MissionTaskModel::fromJson($item);
                 },
-                isset($data["items"]) ? $data["items"] : []
-            )
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ));
+    }
+
+    public function toJson(): array {
+        return array(
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
         );
-        return $result;
     }
 }

@@ -19,107 +19,68 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * ミッションタスクを取得 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetMissionTaskModelRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null ミッションタスクを取得
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ミッションタスクを取得
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName ミッションタスクを取得
-     * @return GetMissionTaskModelRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): GetMissionTaskModelRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string グループ名 */
+    /** @var string */
     private $missionGroupName;
-
-    /**
-     * グループ名を取得
-     *
-     * @return string|null ミッションタスクを取得
-     */
-    public function getMissionGroupName(): ?string {
-        return $this->missionGroupName;
-    }
-
-    /**
-     * グループ名を設定
-     *
-     * @param string $missionGroupName ミッションタスクを取得
-     */
-    public function setMissionGroupName(string $missionGroupName = null) {
-        $this->missionGroupName = $missionGroupName;
-    }
-
-    /**
-     * グループ名を設定
-     *
-     * @param string $missionGroupName ミッションタスクを取得
-     * @return GetMissionTaskModelRequest $this
-     */
-    public function withMissionGroupName(string $missionGroupName = null): GetMissionTaskModelRequest {
-        $this->setMissionGroupName($missionGroupName);
-        return $this;
-    }
-
-    /** @var string タスク名 */
+    /** @var string */
     private $missionTaskName;
 
-    /**
-     * タスク名を取得
-     *
-     * @return string|null ミッションタスクを取得
-     */
-    public function getMissionTaskName(): ?string {
-        return $this->missionTaskName;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): GetMissionTaskModelRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getMissionGroupName(): ?string {
+		return $this->missionGroupName;
+	}
+
+	public function setMissionGroupName(?string $missionGroupName) {
+		$this->missionGroupName = $missionGroupName;
+	}
+
+	public function withMissionGroupName(?string $missionGroupName): GetMissionTaskModelRequest {
+		$this->missionGroupName = $missionGroupName;
+		return $this;
+	}
+
+	public function getMissionTaskName(): ?string {
+		return $this->missionTaskName;
+	}
+
+	public function setMissionTaskName(?string $missionTaskName) {
+		$this->missionTaskName = $missionTaskName;
+	}
+
+	public function withMissionTaskName(?string $missionTaskName): GetMissionTaskModelRequest {
+		$this->missionTaskName = $missionTaskName;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetMissionTaskModelRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetMissionTaskModelRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName'])
+            ->withMissionTaskName(empty($data['missionTaskName']) ? null : $data['missionTaskName']);
     }
 
-    /**
-     * タスク名を設定
-     *
-     * @param string $missionTaskName ミッションタスクを取得
-     */
-    public function setMissionTaskName(string $missionTaskName = null) {
-        $this->missionTaskName = $missionTaskName;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "missionGroupName" => $this->getMissionGroupName(),
+            "missionTaskName" => $this->getMissionTaskName(),
+        );
     }
-
-    /**
-     * タスク名を設定
-     *
-     * @param string $missionTaskName ミッションタスクを取得
-     * @return GetMissionTaskModelRequest $this
-     */
-    public function withMissionTaskName(string $missionTaskName = null): GetMissionTaskModelRequest {
-        $this->setMissionTaskName($missionTaskName);
-        return $this;
-    }
-
 }

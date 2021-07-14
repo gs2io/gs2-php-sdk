@@ -19,267 +19,146 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * データオブジェクトをアップロード準備する のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class PrepareUploadRequest extends Gs2BasicRequest {
-
-    /** @var string ネームスペース名 */
+    /** @var string */
     private $namespaceName;
-
-    /**
-     * ネームスペース名を取得
-     *
-     * @return string|null データオブジェクトをアップロード準備する
-     */
-    public function getNamespaceName(): ?string {
-        return $this->namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクトをアップロード準備する
-     */
-    public function setNamespaceName(string $namespaceName = null) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    /**
-     * ネームスペース名を設定
-     *
-     * @param string $namespaceName データオブジェクトをアップロード準備する
-     * @return PrepareUploadRequest $this
-     */
-    public function withNamespaceName(string $namespaceName = null): PrepareUploadRequest {
-        $this->setNamespaceName($namespaceName);
-        return $this;
-    }
-
-    /** @var string データの名前 */
+    /** @var string */
+    private $accessToken;
+    /** @var string */
     private $name;
-
-    /**
-     * データの名前を取得
-     *
-     * @return string|null データオブジェクトをアップロード準備する
-     */
-    public function getName(): ?string {
-        return $this->name;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $name データオブジェクトをアップロード準備する
-     */
-    public function setName(string $name = null) {
-        $this->name = $name;
-    }
-
-    /**
-     * データの名前を設定
-     *
-     * @param string $name データオブジェクトをアップロード準備する
-     * @return PrepareUploadRequest $this
-     */
-    public function withName(string $name = null): PrepareUploadRequest {
-        $this->setName($name);
-        return $this;
-    }
-
-    /** @var string アップロードするデータの MIME-Type */
+    /** @var string */
     private $contentType;
-
-    /**
-     * アップロードするデータの MIME-Typeを取得
-     *
-     * @return string|null データオブジェクトをアップロード準備する
-     */
-    public function getContentType(): ?string {
-        return $this->contentType;
-    }
-
-    /**
-     * アップロードするデータの MIME-Typeを設定
-     *
-     * @param string $contentType データオブジェクトをアップロード準備する
-     */
-    public function setContentType(string $contentType = null) {
-        $this->contentType = $contentType;
-    }
-
-    /**
-     * アップロードするデータの MIME-Typeを設定
-     *
-     * @param string $contentType データオブジェクトをアップロード準備する
-     * @return PrepareUploadRequest $this
-     */
-    public function withContentType(string $contentType = null): PrepareUploadRequest {
-        $this->setContentType($contentType);
-        return $this;
-    }
-
-    /** @var string ファイルのアクセス権 */
+    /** @var string */
     private $scope;
-
-    /**
-     * ファイルのアクセス権を取得
-     *
-     * @return string|null データオブジェクトをアップロード準備する
-     */
-    public function getScope(): ?string {
-        return $this->scope;
-    }
-
-    /**
-     * ファイルのアクセス権を設定
-     *
-     * @param string $scope データオブジェクトをアップロード準備する
-     */
-    public function setScope(string $scope = null) {
-        $this->scope = $scope;
-    }
-
-    /**
-     * ファイルのアクセス権を設定
-     *
-     * @param string $scope データオブジェクトをアップロード準備する
-     * @return PrepareUploadRequest $this
-     */
-    public function withScope(string $scope = null): PrepareUploadRequest {
-        $this->setScope($scope);
-        return $this;
-    }
-
-    /** @var string[] 公開するユーザIDリスト */
+    /** @var array */
     private $allowUserIds;
-
-    /**
-     * 公開するユーザIDリストを取得
-     *
-     * @return string[]|null データオブジェクトをアップロード準備する
-     */
-    public function getAllowUserIds(): ?array {
-        return $this->allowUserIds;
-    }
-
-    /**
-     * 公開するユーザIDリストを設定
-     *
-     * @param string[] $allowUserIds データオブジェクトをアップロード準備する
-     */
-    public function setAllowUserIds(array $allowUserIds = null) {
-        $this->allowUserIds = $allowUserIds;
-    }
-
-    /**
-     * 公開するユーザIDリストを設定
-     *
-     * @param string[] $allowUserIds データオブジェクトをアップロード準備する
-     * @return PrepareUploadRequest $this
-     */
-    public function withAllowUserIds(array $allowUserIds = null): PrepareUploadRequest {
-        $this->setAllowUserIds($allowUserIds);
-        return $this;
-    }
-
-    /** @var bool 既にデータが存在する場合にエラーとするか、データを更新するか */
+    /** @var bool */
     private $updateIfExists;
 
-    /**
-     * 既にデータが存在する場合にエラーとするか、データを更新するかを取得
-     *
-     * @return bool|null データオブジェクトをアップロード準備する
-     */
-    public function getUpdateIfExists(): ?bool {
-        return $this->updateIfExists;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+
+	public function withNamespaceName(?string $namespaceName): PrepareUploadRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): PrepareUploadRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): PrepareUploadRequest {
+		$this->name = $name;
+		return $this;
+	}
+
+	public function getContentType(): ?string {
+		return $this->contentType;
+	}
+
+	public function setContentType(?string $contentType) {
+		$this->contentType = $contentType;
+	}
+
+	public function withContentType(?string $contentType): PrepareUploadRequest {
+		$this->contentType = $contentType;
+		return $this;
+	}
+
+	public function getScope(): ?string {
+		return $this->scope;
+	}
+
+	public function setScope(?string $scope) {
+		$this->scope = $scope;
+	}
+
+	public function withScope(?string $scope): PrepareUploadRequest {
+		$this->scope = $scope;
+		return $this;
+	}
+
+	public function getAllowUserIds(): ?array {
+		return $this->allowUserIds;
+	}
+
+	public function setAllowUserIds(?array $allowUserIds) {
+		$this->allowUserIds = $allowUserIds;
+	}
+
+	public function withAllowUserIds(?array $allowUserIds): PrepareUploadRequest {
+		$this->allowUserIds = $allowUserIds;
+		return $this;
+	}
+
+	public function getUpdateIfExists(): ?bool {
+		return $this->updateIfExists;
+	}
+
+	public function setUpdateIfExists(?bool $updateIfExists) {
+		$this->updateIfExists = $updateIfExists;
+	}
+
+	public function withUpdateIfExists(?bool $updateIfExists): PrepareUploadRequest {
+		$this->updateIfExists = $updateIfExists;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?PrepareUploadRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new PrepareUploadRequest())
+            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withContentType(empty($data['contentType']) ? null : $data['contentType'])
+            ->withScope(empty($data['scope']) ? null : $data['scope'])
+            ->withAllowUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+            ))
+            ->withUpdateIfExists(empty($data['updateIfExists']) ? null : $data['updateIfExists']);
     }
 
-    /**
-     * 既にデータが存在する場合にエラーとするか、データを更新するかを設定
-     *
-     * @param bool $updateIfExists データオブジェクトをアップロード準備する
-     */
-    public function setUpdateIfExists(bool $updateIfExists = null) {
-        $this->updateIfExists = $updateIfExists;
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "name" => $this->getName(),
+            "contentType" => $this->getContentType(),
+            "scope" => $this->getScope(),
+            "allowUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+            ),
+            "updateIfExists" => $this->getUpdateIfExists(),
+        );
     }
-
-    /**
-     * 既にデータが存在する場合にエラーとするか、データを更新するかを設定
-     *
-     * @param bool $updateIfExists データオブジェクトをアップロード準備する
-     * @return PrepareUploadRequest $this
-     */
-    public function withUpdateIfExists(bool $updateIfExists = null): PrepareUploadRequest {
-        $this->setUpdateIfExists($updateIfExists);
-        return $this;
-    }
-
-    /** @var string 重複実行回避機能に使用するID */
-    private $xGs2DuplicationAvoider;
-
-    /**
-     * 重複実行回避機能に使用するIDを取得
-     *
-     * @return string|null データオブジェクトをアップロード準備する
-     */
-    public function getDuplicationAvoider(): ?string {
-        return $this->xGs2DuplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider データオブジェクトをアップロード準備する
-     */
-    public function setDuplicationAvoider(string $duplicationAvoider = null) {
-        $this->xGs2DuplicationAvoider = $duplicationAvoider;
-    }
-
-    /**
-     * 重複実行回避機能に使用するIDを設定
-     *
-     * @param string $duplicationAvoider データオブジェクトをアップロード準備する
-     * @return PrepareUploadRequest $this
-     */
-    public function withDuplicationAvoider(string $duplicationAvoider = null): PrepareUploadRequest {
-        $this->setDuplicationAvoider($duplicationAvoider);
-        return $this;
-    }
-
-    /** @var string アクセストークン */
-    private $accessToken;
-
-    /**
-     * アクセストークンを取得
-     *
-     * @return string アクセストークン
-     */
-    public function getAccessToken(): string {
-        return $this->accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     */
-    public function setAccessToken(string $accessToken) {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * アクセストークンを設定
-     *
-     * @param string $accessToken アクセストークン
-     * @return PrepareUploadRequest this
-     */
-    public function withAccessToken(string $accessToken): PrepareUploadRequest {
-        $this->setAccessToken($accessToken);
-        return $this;
-    }
-
 }

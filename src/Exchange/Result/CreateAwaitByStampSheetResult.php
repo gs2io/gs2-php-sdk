@@ -20,36 +20,51 @@ namespace Gs2\Exchange\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Await;
 
-/**
- * スタンプシートで交換待機 を作成 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class CreateAwaitByStampSheetResult implements IResult {
-	/** @var Await 交換待機 */
-	private $item;
+    /** @var Await */
+    private $item;
+    /** @var int */
+    private $unlockAt;
 
-	/**
-	 * 交換待機を取得
-	 *
-	 * @return Await|null スタンプシートで交換待機 を作成
-	 */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
-	/**
-	 * 交換待機を設定
-	 *
-	 * @param Await|null $item スタンプシートで交換待機 を作成
-	 */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): CreateAwaitByStampSheetResult {
-        $result = new CreateAwaitByStampSheetResult();
-        $result->setItem(isset($data["item"]) ? Await::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Await $item): CreateAwaitByStampSheetResult {
+		$this->item = $item;
+		return $this;
+	}
+
+	public function getUnlockAt(): ?int {
+		return $this->unlockAt;
+	}
+
+	public function setUnlockAt(?int $unlockAt) {
+		$this->unlockAt = $unlockAt;
+	}
+
+	public function withUnlockAt(?int $unlockAt): CreateAwaitByStampSheetResult {
+		$this->unlockAt = $unlockAt;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?CreateAwaitByStampSheetResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new CreateAwaitByStampSheetResult())
+            ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']))
+            ->withUnlockAt(empty($data['unlockAt']) ? null : $data['unlockAt']);
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "unlockAt" => $this->getUnlockAt(),
+        );
     }
 }

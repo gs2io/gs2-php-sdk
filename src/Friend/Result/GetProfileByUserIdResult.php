@@ -20,36 +20,34 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\Profile;
 
-/**
- * ユーザーIDを指定してプロフィールを取得 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetProfileByUserIdResult implements IResult {
-	/** @var Profile プロフィール */
-	private $item;
+    /** @var Profile */
+    private $item;
 
-	/**
-	 * プロフィールを取得
-	 *
-	 * @return Profile|null ユーザーIDを指定してプロフィールを取得
-	 */
 	public function getItem(): ?Profile {
 		return $this->item;
 	}
 
-	/**
-	 * プロフィールを設定
-	 *
-	 * @param Profile|null $item ユーザーIDを指定してプロフィールを取得
-	 */
 	public function setItem(?Profile $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetProfileByUserIdResult {
-        $result = new GetProfileByUserIdResult();
-        $result->setItem(isset($data["item"]) ? Profile::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Profile $item): GetProfileByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetProfileByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetProfileByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Profile::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

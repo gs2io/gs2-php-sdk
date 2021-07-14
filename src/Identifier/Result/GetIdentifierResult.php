@@ -20,36 +20,34 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\Identifier;
 
-/**
- * クレデンシャルを取得します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class GetIdentifierResult implements IResult {
-	/** @var Identifier クレデンシャル */
-	private $item;
+    /** @var Identifier */
+    private $item;
 
-	/**
-	 * クレデンシャルを取得
-	 *
-	 * @return Identifier|null クレデンシャルを取得します
-	 */
 	public function getItem(): ?Identifier {
 		return $this->item;
 	}
 
-	/**
-	 * クレデンシャルを設定
-	 *
-	 * @param Identifier|null $item クレデンシャルを取得します
-	 */
 	public function setItem(?Identifier $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): GetIdentifierResult {
-        $result = new GetIdentifierResult();
-        $result->setItem(isset($data["item"]) ? Identifier::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?Identifier $item): GetIdentifierResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?GetIdentifierResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new GetIdentifierResult())
+            ->withItem(empty($data['item']) ? null : Identifier::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

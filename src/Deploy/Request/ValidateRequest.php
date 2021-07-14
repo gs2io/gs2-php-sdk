@@ -19,43 +19,34 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/**
- * テンプレートを検証 のリクエストモデル
- *
- * @author Game Server Services, Inc.
- */
 class ValidateRequest extends Gs2BasicRequest {
-
-    /** @var string テンプレートデータ */
+    /** @var string */
     private $template;
 
-    /**
-     * テンプレートデータを取得
-     *
-     * @return string|null テンプレートを検証
-     */
-    public function getTemplate(): ?string {
-        return $this->template;
+	public function getTemplate(): ?string {
+		return $this->template;
+	}
+
+	public function setTemplate(?string $template) {
+		$this->template = $template;
+	}
+
+	public function withTemplate(?string $template): ValidateRequest {
+		$this->template = $template;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?ValidateRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new ValidateRequest())
+            ->withTemplate(empty($data['template']) ? null : $data['template']);
     }
 
-    /**
-     * テンプレートデータを設定
-     *
-     * @param string $template テンプレートを検証
-     */
-    public function setTemplate(string $template = null) {
-        $this->template = $template;
+    public function toJson(): array {
+        return array(
+            "template" => $this->getTemplate(),
+        );
     }
-
-    /**
-     * テンプレートデータを設定
-     *
-     * @param string $template テンプレートを検証
-     * @return ValidateRequest $this
-     */
-    public function withTemplate(string $template = null): ValidateRequest {
-        $this->setTemplate($template);
-        return $this;
-    }
-
 }

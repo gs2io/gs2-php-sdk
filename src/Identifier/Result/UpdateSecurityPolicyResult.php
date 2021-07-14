@@ -20,36 +20,34 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
-/**
- * セキュリティポリシーを更新します のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class UpdateSecurityPolicyResult implements IResult {
-	/** @var SecurityPolicy 更新後のセキュリティポリシー */
-	private $item;
+    /** @var SecurityPolicy */
+    private $item;
 
-	/**
-	 * 更新後のセキュリティポリシーを取得
-	 *
-	 * @return SecurityPolicy|null セキュリティポリシーを更新します
-	 */
 	public function getItem(): ?SecurityPolicy {
 		return $this->item;
 	}
 
-	/**
-	 * 更新後のセキュリティポリシーを設定
-	 *
-	 * @param SecurityPolicy|null $item セキュリティポリシーを更新します
-	 */
 	public function setItem(?SecurityPolicy $item) {
 		$this->item = $item;
 	}
 
-    public static function fromJson(array $data): UpdateSecurityPolicyResult {
-        $result = new UpdateSecurityPolicyResult();
-        $result->setItem(isset($data["item"]) ? SecurityPolicy::fromJson($data["item"]) : null);
-        return $result;
+	public function withItem(?SecurityPolicy $item): UpdateSecurityPolicyResult {
+		$this->item = $item;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?UpdateSecurityPolicyResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new UpdateSecurityPolicyResult())
+            ->withItem(empty($data['item']) ? null : SecurityPolicy::fromJson($data['item']));
+    }
+
+    public function toJson(): array {
+        return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+        );
     }
 }

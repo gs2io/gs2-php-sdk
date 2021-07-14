@@ -19,15 +19,17 @@ namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
 
-/**
- * ユーザーIDを指定してメッセージを削除 のレスポンスモデル
- *
- * @author Game Server Services, Inc.
- */
 class DeleteMessageByUserIdResult implements IResult {
 
-    public static function fromJson(array $data): DeleteMessageByUserIdResult {
-        $result = new DeleteMessageByUserIdResult();
-        return $result;
+    public static function fromJson(?array $data): ?DeleteMessageByUserIdResult {
+        if ($data === null) {
+            return null;
+        }
+        return (new DeleteMessageByUserIdResult());
+    }
+
+    public function toJson(): array {
+        return array(
+        );
     }
 }

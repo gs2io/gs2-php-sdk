@@ -218,13 +218,13 @@ class Receipt implements IModel {
             ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withType(empty($data['type']) ? null : $data['type'])
-            ->withSlot(empty($data['slot']) ? null : $data['slot'])
-            ->withPrice(empty($data['price']) ? null : $data['price'])
-            ->withPaid(empty($data['paid']) ? null : $data['paid'])
-            ->withFree(empty($data['free']) ? null : $data['free'])
-            ->withTotal(empty($data['total']) ? null : $data['total'])
+            ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot'])
+            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price'])
+            ->withPaid(empty($data['paid']) && $data['paid'] !== 0 ? null : $data['paid'])
+            ->withFree(empty($data['free']) && $data['free'] !== 0 ? null : $data['free'])
+            ->withTotal(empty($data['total']) && $data['total'] !== 0 ? null : $data['total'])
             ->withContentsId(empty($data['contentsId']) ? null : $data['contentsId'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

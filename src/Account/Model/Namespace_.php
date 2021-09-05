@@ -223,8 +223,8 @@ class Namespace_ implements IModel {
             ->withCreateTakeOverScript(empty($data['createTakeOverScript']) ? null : ScriptSetting::fromJson($data['createTakeOverScript']))
             ->withDoTakeOverScript(empty($data['doTakeOverScript']) ? null : ScriptSetting::fromJson($data['doTakeOverScript']))
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

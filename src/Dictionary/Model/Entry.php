@@ -98,7 +98,7 @@ class Entry implements IModel {
             ->withEntryId(empty($data['entryId']) ? null : $data['entryId'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withName(empty($data['name']) ? null : $data['name'])
-            ->withAcquiredAt(empty($data['acquiredAt']) ? null : $data['acquiredAt']);
+            ->withAcquiredAt(empty($data['acquiredAt']) && $data['acquiredAt'] !== 0 ? null : $data['acquiredAt']);
     }
 
     public function toJson(): array {

@@ -167,7 +167,7 @@ class MissionTaskModel implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
-            ->withTargetValue(empty($data['targetValue']) ? null : $data['targetValue'])
+            ->withTargetValue(empty($data['targetValue']) && $data['targetValue'] !== 0 ? null : $data['targetValue'])
             ->withCompleteAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);

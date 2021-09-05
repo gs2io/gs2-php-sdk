@@ -50,10 +50,6 @@ class Job implements IModel {
 	 */
 	private $maxTryCount;
 	/**
-     * @var float
-	 */
-	private $index;
-	/**
      * @var int
 	 */
 	private $createdAt;
@@ -153,19 +149,6 @@ class Job implements IModel {
 		return $this;
 	}
 
-	public function getIndex(): ?float {
-		return $this->index;
-	}
-
-	public function setIndex(?float $index) {
-		$this->index = $index;
-	}
-
-	public function withIndex(?float $index): Job {
-		$this->index = $index;
-		return $this;
-	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -202,11 +185,10 @@ class Job implements IModel {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withScriptId(empty($data['scriptId']) ? null : $data['scriptId'])
             ->withArgs(empty($data['args']) ? null : $data['args'])
-            ->withCurrentRetryCount(empty($data['currentRetryCount']) ? null : $data['currentRetryCount'])
-            ->withMaxTryCount(empty($data['maxTryCount']) ? null : $data['maxTryCount'])
-            ->withIndex(empty($data['index']) ? null : $data['index'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCurrentRetryCount(empty($data['currentRetryCount']) && $data['currentRetryCount'] !== 0 ? null : $data['currentRetryCount'])
+            ->withMaxTryCount(empty($data['maxTryCount']) && $data['maxTryCount'] !== 0 ? null : $data['maxTryCount'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {
@@ -218,7 +200,6 @@ class Job implements IModel {
             "args" => $this->getArgs(),
             "currentRetryCount" => $this->getCurrentRetryCount(),
             "maxTryCount" => $this->getMaxTryCount(),
-            "index" => $this->getIndex(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

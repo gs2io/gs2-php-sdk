@@ -78,9 +78,9 @@ class TimeSpan implements IModel {
             return null;
         }
         return (new TimeSpan())
-            ->withDays(empty($data['days']) ? null : $data['days'])
-            ->withHours(empty($data['hours']) ? null : $data['hours'])
-            ->withMinutes(empty($data['minutes']) ? null : $data['minutes']);
+            ->withDays(empty($data['days']) && $data['days'] !== 0 ? null : $data['days'])
+            ->withHours(empty($data['hours']) && $data['hours'] !== 0 ? null : $data['hours'])
+            ->withMinutes(empty($data['minutes']) && $data['minutes'] !== 0 ? null : $data['minutes']);
     }
 
     public function toJson(): array {

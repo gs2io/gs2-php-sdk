@@ -103,8 +103,8 @@ class WithdrawByUserIdRequest extends Gs2BasicRequest {
         return (new WithdrawByUserIdRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withSlot(empty($data['slot']) ? null : $data['slot'])
-            ->withCount(empty($data['count']) ? null : $data['count'])
+            ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot'])
+            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
             ->withPaidOnly(empty($data['paidOnly']) ? null : $data['paidOnly']);
     }
 

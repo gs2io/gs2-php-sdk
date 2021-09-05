@@ -98,7 +98,7 @@ class Identifier implements IModel {
             ->withClientId(empty($data['clientId']) ? null : $data['clientId'])
             ->withUserName(empty($data['userName']) ? null : $data['userName'])
             ->withClientSecret(empty($data['clientSecret']) ? null : $data['clientSecret'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

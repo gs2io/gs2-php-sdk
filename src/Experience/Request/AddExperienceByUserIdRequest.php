@@ -105,7 +105,7 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
             ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withExperienceValue(empty($data['experienceValue']) ? null : $data['experienceValue']);
+            ->withExperienceValue(empty($data['experienceValue']) && $data['experienceValue'] !== 0 ? null : $data['experienceValue']);
     }
 
     public function toJson(): array {

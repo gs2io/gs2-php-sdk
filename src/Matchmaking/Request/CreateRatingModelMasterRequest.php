@@ -105,7 +105,7 @@ class CreateRatingModelMasterRequest extends Gs2BasicRequest {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withVolatility(empty($data['volatility']) ? null : $data['volatility']);
+            ->withVolatility(empty($data['volatility']) && $data['volatility'] !== 0 ? null : $data['volatility']);
     }
 
     public function toJson(): array {

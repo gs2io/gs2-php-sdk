@@ -132,9 +132,9 @@ class Rating implements IModel {
             ->withRatingId(empty($data['ratingId']) ? null : $data['ratingId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRateValue(empty($data['rateValue']) ? null : $data['rateValue'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withRateValue(empty($data['rateValue']) && $data['rateValue'] !== 0 ? null : $data['rateValue'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

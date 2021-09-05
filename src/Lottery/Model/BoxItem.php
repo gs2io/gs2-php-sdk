@@ -84,8 +84,8 @@ class BoxItem implements IModel {
                 },
                 array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
             ))
-            ->withRemaining(empty($data['remaining']) ? null : $data['remaining'])
-            ->withInitial(empty($data['initial']) ? null : $data['initial']);
+            ->withRemaining(empty($data['remaining']) && $data['remaining'] !== 0 ? null : $data['remaining'])
+            ->withInitial(empty($data['initial']) && $data['initial'] !== 0 ? null : $data['initial']);
     }
 
     public function toJson(): array {

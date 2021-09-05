@@ -94,8 +94,8 @@ class QueryExecuteStampTaskLogResult implements IResult {
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
             ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken'])
-            ->withTotalCount(empty($data['totalCount']) ? null : $data['totalCount'])
-            ->withScanSize(empty($data['scanSize']) ? null : $data['scanSize']);
+            ->withTotalCount(empty($data['totalCount']) && $data['totalCount'] !== 0 ? null : $data['totalCount'])
+            ->withScanSize(empty($data['scanSize']) && $data['scanSize'] !== 0 ? null : $data['scanSize']);
     }
 
     public function toJson(): array {

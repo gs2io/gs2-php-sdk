@@ -103,9 +103,9 @@ class DescribeFollowsRequest extends Gs2BasicRequest {
         return (new DescribeFollowsRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withWithProfile(empty($data['withProfile']) ? null : $data['withProfile'])
+            ->withWithProfile($data['withProfile'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

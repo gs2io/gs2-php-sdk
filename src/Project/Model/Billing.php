@@ -250,17 +250,17 @@ class Billing implements IModel {
         return (new Billing())
             ->withBillingId(empty($data['billingId']) ? null : $data['billingId'])
             ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
-            ->withYear(empty($data['year']) ? null : $data['year'])
-            ->withMonth(empty($data['month']) ? null : $data['month'])
+            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
+            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
             ->withRegion(empty($data['region']) ? null : $data['region'])
             ->withService(empty($data['service']) ? null : $data['service'])
             ->withActivityType(empty($data['activityType']) ? null : $data['activityType'])
-            ->withUnit(empty($data['unit']) ? null : $data['unit'])
+            ->withUnit(empty($data['unit']) && $data['unit'] !== 0 ? null : $data['unit'])
             ->withUnitName(empty($data['unitName']) ? null : $data['unitName'])
-            ->withPrice(empty($data['price']) ? null : $data['price'])
+            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price'])
             ->withCurrency(empty($data['currency']) ? null : $data['currency'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

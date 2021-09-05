@@ -156,8 +156,8 @@ class GlobalMessageMaster implements IModel {
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
             ->withExpiresTimeSpan(empty($data['expiresTimeSpan']) ? null : TimeSpan::fromJson($data['expiresTimeSpan']))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
     }
 
     public function toJson(): array {

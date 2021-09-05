@@ -73,7 +73,7 @@ class GetTakeOverByUserIdRequest extends Gs2BasicRequest {
         return (new GetTakeOverByUserIdRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withType(empty($data['type']) ? null : $data['type']);
+            ->withType(empty($data['type']) && $data['type'] !== 0 ? null : $data['type']);
     }
 
     public function toJson(): array {

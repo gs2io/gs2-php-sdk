@@ -58,7 +58,7 @@ class CreateAwaitByStampSheetResult implements IResult {
         }
         return (new CreateAwaitByStampSheetResult())
             ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']))
-            ->withUnlockAt(empty($data['unlockAt']) ? null : $data['unlockAt']);
+            ->withUnlockAt(empty($data['unlockAt']) && $data['unlockAt'] !== 0 ? null : $data['unlockAt']);
     }
 
     public function toJson(): array {

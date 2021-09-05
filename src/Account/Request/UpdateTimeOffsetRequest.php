@@ -73,7 +73,7 @@ class UpdateTimeOffsetRequest extends Gs2BasicRequest {
         return (new UpdateTimeOffsetRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTimeOffset(empty($data['timeOffset']) ? null : $data['timeOffset']);
+            ->withTimeOffset(empty($data['timeOffset']) && $data['timeOffset'] !== 0 ? null : $data['timeOffset']);
     }
 
     public function toJson(): array {

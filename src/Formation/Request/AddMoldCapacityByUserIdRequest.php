@@ -89,7 +89,7 @@ class AddMoldCapacityByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
-            ->withCapacity(empty($data['capacity']) ? null : $data['capacity']);
+            ->withCapacity(empty($data['capacity']) && $data['capacity'] !== 0 ? null : $data['capacity']);
     }
 
     public function toJson(): array {

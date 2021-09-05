@@ -61,7 +61,7 @@ class NotificationType implements IModel {
             return null;
         }
         return (new NotificationType())
-            ->withCategory(empty($data['category']) ? null : $data['category'])
+            ->withCategory(empty($data['category']) && $data['category'] !== 0 ? null : $data['category'])
             ->withEnableTransferMobilePushNotification(empty($data['enableTransferMobilePushNotification']) ? null : $data['enableTransferMobilePushNotification']);
     }
 

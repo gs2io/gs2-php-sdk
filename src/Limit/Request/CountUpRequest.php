@@ -120,8 +120,8 @@ class CountUpRequest extends Gs2BasicRequest {
             ->withLimitName(empty($data['limitName']) ? null : $data['limitName'])
             ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withCountUpValue(empty($data['countUpValue']) ? null : $data['countUpValue'])
-            ->withMaxValue(empty($data['maxValue']) ? null : $data['maxValue']);
+            ->withCountUpValue(empty($data['countUpValue']) && $data['countUpValue'] !== 0 ? null : $data['countUpValue'])
+            ->withMaxValue(empty($data['maxValue']) && $data['maxValue'] !== 0 ? null : $data['maxValue']);
     }
 
     public function toJson(): array {

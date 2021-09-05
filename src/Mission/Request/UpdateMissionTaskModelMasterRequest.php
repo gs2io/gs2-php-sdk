@@ -183,7 +183,7 @@ class UpdateMissionTaskModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
-            ->withTargetValue(empty($data['targetValue']) ? null : $data['targetValue'])
+            ->withTargetValue(empty($data['targetValue']) && $data['targetValue'] !== 0 ? null : $data['targetValue'])
             ->withCompleteAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);

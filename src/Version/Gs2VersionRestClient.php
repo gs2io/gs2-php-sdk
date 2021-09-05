@@ -1142,13 +1142,11 @@ class AcceptByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/acceptVersion";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
         if ($this->request->getVersionName() !== null) {
             $json["versionName"] = $this->request->getVersionName();
-        }
-        if ($this->request->getUserId() !== null) {
-            $json["userId"] = $this->request->getUserId();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

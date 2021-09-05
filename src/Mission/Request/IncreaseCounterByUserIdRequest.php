@@ -89,7 +89,7 @@ class IncreaseCounterByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withValue(empty($data['value']) ? null : $data['value']);
+            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value']);
     }
 
     public function toJson(): array {

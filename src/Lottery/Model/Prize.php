@@ -121,7 +121,7 @@ class Prize implements IModel {
                 array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
             ))
             ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
-            ->withWeight(empty($data['weight']) ? null : $data['weight']);
+            ->withWeight(empty($data['weight']) && $data['weight'] !== 0 ? null : $data['weight']);
     }
 
     public function toJson(): array {

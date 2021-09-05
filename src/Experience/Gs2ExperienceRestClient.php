@@ -83,6 +83,8 @@ use Gs2\Experience\Request\GetStatusByUserIdRequest;
 use Gs2\Experience\Result\GetStatusByUserIdResult;
 use Gs2\Experience\Request\GetStatusWithSignatureRequest;
 use Gs2\Experience\Result\GetStatusWithSignatureResult;
+use Gs2\Experience\Request\GetStatusWithSignatureByUserIdRequest;
+use Gs2\Experience\Result\GetStatusWithSignatureByUserIdResult;
 use Gs2\Experience\Request\AddExperienceByUserIdRequest;
 use Gs2\Experience\Result\AddExperienceByUserIdResult;
 use Gs2\Experience\Request\SetExperienceByUserIdRequest;
@@ -1803,6 +1805,69 @@ class GetStatusWithSignatureTask extends Gs2RestSessionTask {
     }
 }
 
+class GetStatusWithSignatureByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetStatusWithSignatureByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetStatusWithSignatureByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetStatusWithSignatureByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetStatusWithSignatureByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetStatusWithSignatureByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/model/{experienceName}/property/{propertyId}/signature";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{experienceName}", $this->request->getExperienceName() === null|| strlen($this->request->getExperienceName()) == 0 ? "null" : $this->request->getExperienceName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $queryStrings["keyId"] = $this->request->getKeyId();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class AddExperienceByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -3026,6 +3091,33 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
             GetStatusWithSignatureRequest $request
     ): GetStatusWithSignatureResult {
         return $this->getStatusWithSignatureAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetStatusWithSignatureByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getStatusWithSignatureByUserIdAsync(
+            GetStatusWithSignatureByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetStatusWithSignatureByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetStatusWithSignatureByUserIdRequest $request
+     * @return GetStatusWithSignatureByUserIdResult
+     */
+    public function getStatusWithSignatureByUserId (
+            GetStatusWithSignatureByUserIdRequest $request
+    ): GetStatusWithSignatureByUserIdResult {
+        return $this->getStatusWithSignatureByUserIdAsync(
             $request
         )->wait();
     }

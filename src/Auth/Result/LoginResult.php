@@ -73,7 +73,7 @@ class LoginResult implements IResult {
         return (new LoginResult())
             ->withToken(empty($data['token']) ? null : $data['token'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withExpire(empty($data['expire']) ? null : $data['expire']);
+            ->withExpire(empty($data['expire']) && $data['expire'] !== 0 ? null : $data['expire']);
     }
 
     public function toJson(): array {

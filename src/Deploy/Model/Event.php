@@ -134,7 +134,7 @@ class Event implements IModel {
             ->withResourceName(empty($data['resourceName']) ? null : $data['resourceName'])
             ->withType(empty($data['type']) ? null : $data['type'])
             ->withMessage(empty($data['message']) ? null : $data['message'])
-            ->withEventAt(empty($data['eventAt']) ? null : $data['eventAt']);
+            ->withEventAt(empty($data['eventAt']) && $data['eventAt'] !== 0 ? null : $data['eventAt']);
     }
 
     public function toJson(): array {

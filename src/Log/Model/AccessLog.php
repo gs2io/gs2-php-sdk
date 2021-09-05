@@ -146,7 +146,7 @@ class AccessLog implements IModel {
             return null;
         }
         return (new AccessLog())
-            ->withTimestamp(empty($data['timestamp']) ? null : $data['timestamp'])
+            ->withTimestamp(empty($data['timestamp']) && $data['timestamp'] !== 0 ? null : $data['timestamp'])
             ->withRequestId(empty($data['requestId']) ? null : $data['requestId'])
             ->withService(empty($data['service']) ? null : $data['service'])
             ->withMethod(empty($data['method']) ? null : $data['method'])

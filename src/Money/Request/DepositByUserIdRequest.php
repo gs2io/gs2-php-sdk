@@ -103,9 +103,9 @@ class DepositByUserIdRequest extends Gs2BasicRequest {
         return (new DepositByUserIdRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withSlot(empty($data['slot']) ? null : $data['slot'])
-            ->withPrice(empty($data['price']) ? null : $data['price'])
-            ->withCount(empty($data['count']) ? null : $data['count']);
+            ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot'])
+            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price'])
+            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count']);
     }
 
     public function toJson(): array {

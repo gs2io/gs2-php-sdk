@@ -80,7 +80,7 @@ class Password implements IModel {
         return (new Password())
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withUserName(empty($data['userName']) ? null : $data['userName'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

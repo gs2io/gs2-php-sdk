@@ -55,6 +55,8 @@ use Gs2\Matchmaking\Request\DoMatchmakingByPlayerRequest;
 use Gs2\Matchmaking\Result\DoMatchmakingByPlayerResult;
 use Gs2\Matchmaking\Request\DoMatchmakingRequest;
 use Gs2\Matchmaking\Result\DoMatchmakingResult;
+use Gs2\Matchmaking\Request\DoMatchmakingByUserIdRequest;
+use Gs2\Matchmaking\Result\DoMatchmakingByUserIdResult;
 use Gs2\Matchmaking\Request\GetGatheringRequest;
 use Gs2\Matchmaking\Result\GetGatheringResult;
 use Gs2\Matchmaking\Request\CancelMatchmakingRequest;
@@ -1011,6 +1013,68 @@ class DoMatchmakingTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DoMatchmakingByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DoMatchmakingByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DoMatchmakingByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DoMatchmakingByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DoMatchmakingByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DoMatchmakingByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/gathering/do";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getPlayer() !== null) {
+            $json["player"] = $this->request->getPlayer()->toJson();
+        }
+        if ($this->request->getMatchmakingContextToken() !== null) {
+            $json["matchmakingContextToken"] = $this->request->getMatchmakingContextToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -2979,6 +3043,33 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
             DoMatchmakingRequest $request
     ): DoMatchmakingResult {
         return $this->doMatchmakingAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DoMatchmakingByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function doMatchmakingByUserIdAsync(
+            DoMatchmakingByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DoMatchmakingByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DoMatchmakingByUserIdRequest $request
+     * @return DoMatchmakingByUserIdResult
+     */
+    public function doMatchmakingByUserId (
+            DoMatchmakingByUserIdRequest $request
+    ): DoMatchmakingByUserIdResult {
+        return $this->doMatchmakingByUserIdAsync(
             $request
         )->wait();
     }

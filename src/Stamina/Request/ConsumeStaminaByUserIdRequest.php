@@ -89,7 +89,7 @@ class ConsumeStaminaByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withConsumeValue(empty($data['consumeValue']) ? null : $data['consumeValue']);
+            ->withConsumeValue(empty($data['consumeValue']) && $data['consumeValue'] !== 0 ? null : $data['consumeValue']);
     }
 
     public function toJson(): array {

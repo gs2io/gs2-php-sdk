@@ -149,8 +149,8 @@ class InventoryModel implements IModel {
             ->withInventoryModelId(empty($data['inventoryModelId']) ? null : $data['inventoryModelId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withInitialCapacity(empty($data['initialCapacity']) ? null : $data['initialCapacity'])
-            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity'])
+            ->withInitialCapacity(empty($data['initialCapacity']) && $data['initialCapacity'] !== 0 ? null : $data['initialCapacity'])
+            ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
             ->withProtectReferencedItem(empty($data['protectReferencedItem']) ? null : $data['protectReferencedItem'])
             ->withItemModels(array_map(
                 function ($item) {

@@ -331,8 +331,8 @@ class Namespace_ implements IModel {
             ->withReceiveRequestNotification(empty($data['receiveRequestNotification']) ? null : NotificationSetting::fromJson($data['receiveRequestNotification']))
             ->withAcceptRequestNotification(empty($data['acceptRequestNotification']) ? null : NotificationSetting::fromJson($data['acceptRequestNotification']))
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

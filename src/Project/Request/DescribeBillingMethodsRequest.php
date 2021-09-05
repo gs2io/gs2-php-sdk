@@ -73,7 +73,7 @@ class DescribeBillingMethodsRequest extends Gs2BasicRequest {
         return (new DescribeBillingMethodsRequest())
             ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

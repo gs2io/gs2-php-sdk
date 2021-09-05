@@ -150,9 +150,9 @@ class Message implements IModel {
             ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCategory(empty($data['category']) ? null : $data['category'])
+            ->withCategory(empty($data['category']) && $data['category'] !== 0 ? null : $data['category'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

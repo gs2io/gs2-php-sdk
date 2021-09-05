@@ -156,7 +156,7 @@ class CreateGatheringByUserIdRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
-            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt']);
+            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
     }
 
     public function toJson(): array {

@@ -13,6 +13,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 
 namespace Gs2\Identifier;
@@ -1406,10 +1408,10 @@ class LoginTask extends Gs2RestSessionTask {
 
         $json = [];
         if ($this->request->getClientId() !== null) {
-            $json["clientId"] = $this->request->getClientId();
+            $json["client_id"] = $this->request->getClientId();
         }
         if ($this->request->getClientSecret() !== null) {
-            $json["clientSecret"] = $this->request->getClientSecret();
+            $json["client_secret"] = $this->request->getClientSecret();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

@@ -120,7 +120,7 @@ class GetBallotByUserIdRequest extends Gs2BasicRequest {
             ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
             ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withNumberOfPlayer(empty($data['numberOfPlayer']) ? null : $data['numberOfPlayer'])
+            ->withNumberOfPlayer(empty($data['numberOfPlayer']) && $data['numberOfPlayer'] !== 0 ? null : $data['numberOfPlayer'])
             ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 

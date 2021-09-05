@@ -271,17 +271,17 @@ class UpdateEventMasterRequest extends Gs2BasicRequest {
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withScheduleType(empty($data['scheduleType']) ? null : $data['scheduleType'])
-            ->withAbsoluteBegin(empty($data['absoluteBegin']) ? null : $data['absoluteBegin'])
-            ->withAbsoluteEnd(empty($data['absoluteEnd']) ? null : $data['absoluteEnd'])
+            ->withAbsoluteBegin(empty($data['absoluteBegin']) && $data['absoluteBegin'] !== 0 ? null : $data['absoluteBegin'])
+            ->withAbsoluteEnd(empty($data['absoluteEnd']) && $data['absoluteEnd'] !== 0 ? null : $data['absoluteEnd'])
             ->withRepeatType(empty($data['repeatType']) ? null : $data['repeatType'])
-            ->withRepeatBeginDayOfMonth(empty($data['repeatBeginDayOfMonth']) ? null : $data['repeatBeginDayOfMonth'])
-            ->withRepeatEndDayOfMonth(empty($data['repeatEndDayOfMonth']) ? null : $data['repeatEndDayOfMonth'])
+            ->withRepeatBeginDayOfMonth(empty($data['repeatBeginDayOfMonth']) && $data['repeatBeginDayOfMonth'] !== 0 ? null : $data['repeatBeginDayOfMonth'])
+            ->withRepeatEndDayOfMonth(empty($data['repeatEndDayOfMonth']) && $data['repeatEndDayOfMonth'] !== 0 ? null : $data['repeatEndDayOfMonth'])
             ->withRepeatBeginDayOfWeek(empty($data['repeatBeginDayOfWeek']) ? null : $data['repeatBeginDayOfWeek'])
             ->withRepeatEndDayOfWeek(empty($data['repeatEndDayOfWeek']) ? null : $data['repeatEndDayOfWeek'])
-            ->withRepeatBeginHour(empty($data['repeatBeginHour']) ? null : $data['repeatBeginHour'])
-            ->withRepeatEndHour(empty($data['repeatEndHour']) ? null : $data['repeatEndHour'])
+            ->withRepeatBeginHour(empty($data['repeatBeginHour']) && $data['repeatBeginHour'] !== 0 ? null : $data['repeatBeginHour'])
+            ->withRepeatEndHour(empty($data['repeatEndHour']) && $data['repeatEndHour'] !== 0 ? null : $data['repeatEndHour'])
             ->withRelativeTriggerName(empty($data['relativeTriggerName']) ? null : $data['relativeTriggerName'])
-            ->withRelativeDuration(empty($data['relativeDuration']) ? null : $data['relativeDuration']);
+            ->withRelativeDuration(empty($data['relativeDuration']) && $data['relativeDuration'] !== 0 ? null : $data['relativeDuration']);
     }
 
     public function toJson(): array {

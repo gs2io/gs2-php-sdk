@@ -79,8 +79,8 @@ class ScopedValue implements IModel {
         }
         return (new ScopedValue())
             ->withResetType(empty($data['resetType']) ? null : $data['resetType'])
-            ->withValue(empty($data['value']) ? null : $data['value'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

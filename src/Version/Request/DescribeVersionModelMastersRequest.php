@@ -73,7 +73,7 @@ class DescribeVersionModelMastersRequest extends Gs2BasicRequest {
         return (new DescribeVersionModelMastersRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

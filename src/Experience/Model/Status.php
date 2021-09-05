@@ -184,11 +184,11 @@ class Status implements IModel {
             ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withExperienceValue(empty($data['experienceValue']) ? null : $data['experienceValue'])
-            ->withRankValue(empty($data['rankValue']) ? null : $data['rankValue'])
-            ->withRankCapValue(empty($data['rankCapValue']) ? null : $data['rankCapValue'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withExperienceValue(empty($data['experienceValue']) && $data['experienceValue'] !== 0 ? null : $data['experienceValue'])
+            ->withRankValue(empty($data['rankValue']) && $data['rankValue'] !== 0 ? null : $data['rankValue'])
+            ->withRankCapValue(empty($data['rankCapValue']) && $data['rankCapValue'] !== 0 ? null : $data['rankCapValue'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

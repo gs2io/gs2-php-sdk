@@ -85,7 +85,7 @@ class AttachSecurityPolicy implements IModel {
                 },
                 array_key_exists('securityPolicyIds', $data) && $data['securityPolicyIds'] !== null ? $data['securityPolicyIds'] : []
             ))
-            ->withAttachedAt(empty($data['attachedAt']) ? null : $data['attachedAt']);
+            ->withAttachedAt(empty($data['attachedAt']) && $data['attachedAt'] !== 0 ? null : $data['attachedAt']);
     }
 
     public function toJson(): array {

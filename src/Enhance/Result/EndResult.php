@@ -105,8 +105,8 @@ class EndResult implements IResult {
             ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
             ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
             ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId'])
-            ->withAcquireExperience(empty($data['acquireExperience']) ? null : $data['acquireExperience'])
-            ->withBonusRate(empty($data['bonusRate']) ? null : $data['bonusRate']);
+            ->withAcquireExperience(empty($data['acquireExperience']) && $data['acquireExperience'] !== 0 ? null : $data['acquireExperience'])
+            ->withBonusRate(empty($data['bonusRate']) && $data['bonusRate'] !== 0 ? null : $data['bonusRate']);
     }
 
     public function toJson(): array {

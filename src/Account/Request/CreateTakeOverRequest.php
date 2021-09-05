@@ -103,7 +103,7 @@ class CreateTakeOverRequest extends Gs2BasicRequest {
         return (new CreateTakeOverRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withType(empty($data['type']) && $data['type'] !== 0 ? null : $data['type'])
             ->withUserIdentifier(empty($data['userIdentifier']) ? null : $data['userIdentifier'])
             ->withPassword(empty($data['password']) ? null : $data['password']);
     }

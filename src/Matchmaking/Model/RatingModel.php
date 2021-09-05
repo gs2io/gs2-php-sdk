@@ -98,7 +98,7 @@ class RatingModel implements IModel {
             ->withRatingModelId(empty($data['ratingModelId']) ? null : $data['ratingModelId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withVolatility(empty($data['volatility']) ? null : $data['volatility']);
+            ->withVolatility(empty($data['volatility']) && $data['volatility'] !== 0 ? null : $data['volatility']);
     }
 
     public function toJson(): array {

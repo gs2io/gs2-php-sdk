@@ -105,7 +105,7 @@ class SetRankCapByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
             ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withRankCapValue(empty($data['rankCapValue']) ? null : $data['rankCapValue']);
+            ->withRankCapValue(empty($data['rankCapValue']) && $data['rankCapValue'] !== 0 ? null : $data['rankCapValue']);
     }
 
     public function toJson(): array {

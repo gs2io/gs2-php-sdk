@@ -89,7 +89,7 @@ class SetRecoverIntervalByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) ? null : $data['recoverIntervalMinutes']);
+            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) && $data['recoverIntervalMinutes'] !== 0 ? null : $data['recoverIntervalMinutes']);
     }
 
     public function toJson(): array {

@@ -59,7 +59,7 @@ class WithdrawResult implements IResult {
         }
         return (new WithdrawResult())
             ->withItem(empty($data['item']) ? null : Wallet::fromJson($data['item']))
-            ->withPrice(empty($data['price']) ? null : $data['price']);
+            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price']);
     }
 
     public function toJson(): array {

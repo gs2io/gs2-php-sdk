@@ -190,9 +190,9 @@ class MissionGroupModel implements IModel {
                 array_key_exists('tasks', $data) && $data['tasks'] !== null ? $data['tasks'] : []
             ))
             ->withResetType(empty($data['resetType']) ? null : $data['resetType'])
-            ->withResetDayOfMonth(empty($data['resetDayOfMonth']) ? null : $data['resetDayOfMonth'])
+            ->withResetDayOfMonth(empty($data['resetDayOfMonth']) && $data['resetDayOfMonth'] !== 0 ? null : $data['resetDayOfMonth'])
             ->withResetDayOfWeek(empty($data['resetDayOfWeek']) ? null : $data['resetDayOfWeek'])
-            ->withResetHour(empty($data['resetHour']) ? null : $data['resetHour'])
+            ->withResetHour(empty($data['resetHour']) && $data['resetHour'] !== 0 ? null : $data['resetHour'])
             ->withCompleteNotificationNamespaceId(empty($data['completeNotificationNamespaceId']) ? null : $data['completeNotificationNamespaceId']);
     }
 

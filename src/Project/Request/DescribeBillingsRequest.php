@@ -118,8 +118,8 @@ class DescribeBillingsRequest extends Gs2BasicRequest {
         return (new DescribeBillingsRequest())
             ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
             ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
-            ->withYear(empty($data['year']) ? null : $data['year'])
-            ->withMonth(empty($data['month']) ? null : $data['month'])
+            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
+            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
             ->withRegion(empty($data['region']) ? null : $data['region'])
             ->withService(empty($data['service']) ? null : $data['service']);
     }

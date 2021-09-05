@@ -97,7 +97,7 @@ class AcquireItemSetByStampSheetResult implements IResult {
             ))
             ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
             ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']))
-            ->withOverflowCount(empty($data['overflowCount']) ? null : $data['overflowCount']);
+            ->withOverflowCount(empty($data['overflowCount']) && $data['overflowCount'] !== 0 ? null : $data['overflowCount']);
     }
 
     public function toJson(): array {

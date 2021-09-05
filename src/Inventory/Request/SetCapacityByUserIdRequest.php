@@ -89,7 +89,7 @@ class SetCapacityByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withNewCapacityValue(empty($data['newCapacityValue']) ? null : $data['newCapacityValue']);
+            ->withNewCapacityValue(empty($data['newCapacityValue']) && $data['newCapacityValue'] !== 0 ? null : $data['newCapacityValue']);
     }
 
     public function toJson(): array {

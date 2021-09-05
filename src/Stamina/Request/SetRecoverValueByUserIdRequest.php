@@ -89,7 +89,7 @@ class SetRecoverValueByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRecoverValue(empty($data['recoverValue']) ? null : $data['recoverValue']);
+            ->withRecoverValue(empty($data['recoverValue']) && $data['recoverValue'] !== 0 ? null : $data['recoverValue']);
     }
 
     public function toJson(): array {

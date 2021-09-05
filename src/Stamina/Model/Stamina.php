@@ -234,15 +234,15 @@ class Stamina implements IModel {
             ->withStaminaId(empty($data['staminaId']) ? null : $data['staminaId'])
             ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withValue(empty($data['value']) ? null : $data['value'])
-            ->withMaxValue(empty($data['maxValue']) ? null : $data['maxValue'])
-            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) ? null : $data['recoverIntervalMinutes'])
-            ->withRecoverValue(empty($data['recoverValue']) ? null : $data['recoverValue'])
-            ->withOverflowValue(empty($data['overflowValue']) ? null : $data['overflowValue'])
-            ->withNextRecoverAt(empty($data['nextRecoverAt']) ? null : $data['nextRecoverAt'])
-            ->withLastRecoveredAt(empty($data['lastRecoveredAt']) ? null : $data['lastRecoveredAt'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value'])
+            ->withMaxValue(empty($data['maxValue']) && $data['maxValue'] !== 0 ? null : $data['maxValue'])
+            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) && $data['recoverIntervalMinutes'] !== 0 ? null : $data['recoverIntervalMinutes'])
+            ->withRecoverValue(empty($data['recoverValue']) && $data['recoverValue'] !== 0 ? null : $data['recoverValue'])
+            ->withOverflowValue(empty($data['overflowValue']) && $data['overflowValue'] !== 0 ? null : $data['overflowValue'])
+            ->withNextRecoverAt(empty($data['nextRecoverAt']) && $data['nextRecoverAt'] !== 0 ? null : $data['nextRecoverAt'])
+            ->withLastRecoveredAt(empty($data['lastRecoveredAt']) && $data['lastRecoveredAt'] !== 0 ? null : $data['lastRecoveredAt'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

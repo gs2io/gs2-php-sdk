@@ -184,7 +184,7 @@ class Progress implements IModel {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
             ->withQuestModelId(empty($data['questModelId']) ? null : $data['questModelId'])
-            ->withRandomSeed(empty($data['randomSeed']) ? null : $data['randomSeed'])
+            ->withRandomSeed(empty($data['randomSeed']) && $data['randomSeed'] !== 0 ? null : $data['randomSeed'])
             ->withRewards(array_map(
                 function ($item) {
                     return Reward::fromJson($item);
@@ -192,8 +192,8 @@ class Progress implements IModel {
                 array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
             ))
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

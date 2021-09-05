@@ -254,13 +254,13 @@ class Namespace_ implements IModel {
             ->withType(empty($data['type']) ? null : $data['type'])
             ->withGcpCredentialJson(empty($data['gcpCredentialJson']) ? null : $data['gcpCredentialJson'])
             ->withBigQueryDatasetName(empty($data['bigQueryDatasetName']) ? null : $data['bigQueryDatasetName'])
-            ->withLogExpireDays(empty($data['logExpireDays']) ? null : $data['logExpireDays'])
+            ->withLogExpireDays(empty($data['logExpireDays']) && $data['logExpireDays'] !== 0 ? null : $data['logExpireDays'])
             ->withAwsRegion(empty($data['awsRegion']) ? null : $data['awsRegion'])
             ->withAwsAccessKeyId(empty($data['awsAccessKeyId']) ? null : $data['awsAccessKeyId'])
             ->withAwsSecretAccessKey(empty($data['awsSecretAccessKey']) ? null : $data['awsSecretAccessKey'])
             ->withFirehoseStreamName(empty($data['firehoseStreamName']) ? null : $data['firehoseStreamName'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

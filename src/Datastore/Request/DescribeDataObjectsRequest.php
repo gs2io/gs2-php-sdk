@@ -105,7 +105,7 @@ class DescribeDataObjectsRequest extends Gs2BasicRequest {
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
             ->withStatus(empty($data['status']) ? null : $data['status'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

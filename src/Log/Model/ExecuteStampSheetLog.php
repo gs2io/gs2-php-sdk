@@ -146,7 +146,7 @@ class ExecuteStampSheetLog implements IModel {
             return null;
         }
         return (new ExecuteStampSheetLog())
-            ->withTimestamp(empty($data['timestamp']) ? null : $data['timestamp'])
+            ->withTimestamp(empty($data['timestamp']) && $data['timestamp'] !== 0 ? null : $data['timestamp'])
             ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
             ->withService(empty($data['service']) ? null : $data['service'])
             ->withMethod(empty($data['method']) ? null : $data['method'])

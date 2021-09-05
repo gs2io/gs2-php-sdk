@@ -14,6 +14,7 @@ use Gs2\Core\Exception\QuotaLimitExceededException;
 use Gs2\Core\Exception\RequestTimeoutException;
 use Gs2\Core\Exception\ServiceUnavailableException;
 use Gs2\Core\Exception\UnauthorizedException;
+use Gs2\Core\Exception\UnknownException;
 
 class Gs2RestResponse extends Gs2Response {
 
@@ -38,6 +39,10 @@ class Gs2RestResponse extends Gs2Response {
         }
         catch (Exception $e)
         {
+            $errorMessage = $message;
+        }
+
+        if (is_null($errorMessage)) {
             $errorMessage = $message;
         }
 
@@ -68,6 +73,9 @@ class Gs2RestResponse extends Gs2Response {
                 break;
             case 503:
                 $this->exception = new ServiceUnavailableException($errorMessage);
+                break;
+            default:
+                $this->exception = new UnknownException($errorMessage ?? "");
                 break;
         }
     }

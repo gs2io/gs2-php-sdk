@@ -120,7 +120,7 @@ class ConsumeItemSetByUserIdRequest extends Gs2BasicRequest {
             ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
-            ->withConsumeCount(empty($data['consumeCount']) ? null : $data['consumeCount'])
+            ->withConsumeCount(empty($data['consumeCount']) && $data['consumeCount'] !== 0 ? null : $data['consumeCount'])
             ->withItemSetName(empty($data['itemSetName']) ? null : $data['itemSetName']);
     }
 

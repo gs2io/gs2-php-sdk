@@ -131,15 +131,15 @@ class Form implements IModel {
         return (new Form())
             ->withFormId(empty($data['formId']) ? null : $data['formId'])
             ->withName(empty($data['name']) ? null : $data['name'])
-            ->withIndex(empty($data['index']) ? null : $data['index'])
+            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index'])
             ->withSlots(array_map(
                 function ($item) {
                     return Slot::fromJson($item);
                 },
                 array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

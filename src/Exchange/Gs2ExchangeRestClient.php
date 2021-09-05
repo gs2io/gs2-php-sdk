@@ -999,6 +999,8 @@ class ExchangeTask extends Gs2RestSessionTask {
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
 
+        var_dump($url);
+
         $json = [];
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();

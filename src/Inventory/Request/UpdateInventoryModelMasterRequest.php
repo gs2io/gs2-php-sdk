@@ -135,8 +135,8 @@ class UpdateInventoryModelMasterRequest extends Gs2BasicRequest {
             ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withInitialCapacity(empty($data['initialCapacity']) ? null : $data['initialCapacity'])
-            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity'])
+            ->withInitialCapacity(empty($data['initialCapacity']) && $data['initialCapacity'] !== 0 ? null : $data['initialCapacity'])
+            ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
             ->withProtectReferencedItem(empty($data['protectReferencedItem']) ? null : $data['protectReferencedItem']);
     }
 

@@ -150,9 +150,9 @@ class LimitModel implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withResetType(empty($data['resetType']) ? null : $data['resetType'])
-            ->withResetDayOfMonth(empty($data['resetDayOfMonth']) ? null : $data['resetDayOfMonth'])
+            ->withResetDayOfMonth(empty($data['resetDayOfMonth']) && $data['resetDayOfMonth'] !== 0 ? null : $data['resetDayOfMonth'])
             ->withResetDayOfWeek(empty($data['resetDayOfWeek']) ? null : $data['resetDayOfWeek'])
-            ->withResetHour(empty($data['resetHour']) ? null : $data['resetHour']);
+            ->withResetHour(empty($data['resetHour']) && $data['resetHour'] !== 0 ? null : $data['resetHour']);
     }
 
     public function toJson(): array {

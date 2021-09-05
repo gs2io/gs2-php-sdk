@@ -38,9 +38,15 @@ abstract class Gs2Exception extends RuntimeException {
         if ($errors) {
             foreach ($errors as $error) {
                 $e = new RequestError();
-                $e->setComponent($error["component"]);
-                $e->setMessage($error["message"]);
-                array_push($this->errors, $e);
+                if (is_string($error)) {
+                    $e->setComponent("unknown");
+                    $e->setMessage($error);
+                    array_push($this->errors, $e);
+                } else {
+                    $e->setComponent($error["component"]);
+                    $e->setMessage($error["message"]);
+                    array_push($this->errors, $e);
+                }
             }
         }
 	}

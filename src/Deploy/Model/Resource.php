@@ -234,7 +234,7 @@ class Resource implements IModel {
                 array_key_exists('outputFields', $data) && $data['outputFields'] !== null ? $data['outputFields'] : []
             ))
             ->withWorkId(empty($data['workId']) ? null : $data['workId'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

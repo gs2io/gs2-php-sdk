@@ -89,7 +89,7 @@ class GetFollowByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId'])
-            ->withWithProfile(empty($data['withProfile']) ? null : $data['withProfile']);
+            ->withWithProfile($data['withProfile']);
     }
 
     public function toJson(): array {

@@ -130,11 +130,11 @@ class BillingActivity implements IModel {
         }
         return (new BillingActivity())
             ->withBillingActivityId(empty($data['billingActivityId']) ? null : $data['billingActivityId'])
-            ->withYear(empty($data['year']) ? null : $data['year'])
-            ->withMonth(empty($data['month']) ? null : $data['month'])
+            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
+            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
             ->withService(empty($data['service']) ? null : $data['service'])
             ->withActivityType(empty($data['activityType']) ? null : $data['activityType'])
-            ->withValue(empty($data['value']) ? null : $data['value']);
+            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value']);
     }
 
     public function toJson(): array {

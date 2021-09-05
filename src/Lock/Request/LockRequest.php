@@ -105,7 +105,7 @@ class LockRequest extends Gs2BasicRequest {
             ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
             ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
-            ->withTtl(empty($data['ttl']) ? null : $data['ttl']);
+            ->withTtl(empty($data['ttl']) && $data['ttl'] !== 0 ? null : $data['ttl']);
     }
 
     public function toJson(): array {

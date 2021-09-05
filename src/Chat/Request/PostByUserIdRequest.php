@@ -119,7 +119,7 @@ class PostByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCategory(empty($data['category']) ? null : $data['category'])
+            ->withCategory(empty($data['category']) && $data['category'] !== 0 ? null : $data['category'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withPassword(empty($data['password']) ? null : $data['password']);
     }

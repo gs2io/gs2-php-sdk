@@ -134,10 +134,10 @@ class UpdateStaminaByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withValue(empty($data['value']) ? null : $data['value'])
-            ->withMaxValue(empty($data['maxValue']) ? null : $data['maxValue'])
-            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) ? null : $data['recoverIntervalMinutes'])
-            ->withRecoverValue(empty($data['recoverValue']) ? null : $data['recoverValue']);
+            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value'])
+            ->withMaxValue(empty($data['maxValue']) && $data['maxValue'] !== 0 ? null : $data['maxValue'])
+            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) && $data['recoverIntervalMinutes'] !== 0 ? null : $data['recoverIntervalMinutes'])
+            ->withRecoverValue(empty($data['recoverValue']) && $data['recoverValue'] !== 0 ? null : $data['recoverValue']);
     }
 
     public function toJson(): array {

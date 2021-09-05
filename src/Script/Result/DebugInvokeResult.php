@@ -101,10 +101,10 @@ class DebugInvokeResult implements IResult {
             return null;
         }
         return (new DebugInvokeResult())
-            ->withCode(empty($data['code']) ? null : $data['code'])
+            ->withCode(empty($data['code']) && $data['code'] !== 0 ? null : $data['code'])
             ->withResult(empty($data['result']) ? null : $data['result'])
-            ->withExecuteTime(empty($data['executeTime']) ? null : $data['executeTime'])
-            ->withCharged(empty($data['charged']) ? null : $data['charged'])
+            ->withExecuteTime(empty($data['executeTime']) && $data['executeTime'] !== 0 ? null : $data['executeTime'])
+            ->withCharged(empty($data['charged']) && $data['charged'] !== 0 ? null : $data['charged'])
             ->withOutput(array_map(
                 function ($item) {
                     return $item;

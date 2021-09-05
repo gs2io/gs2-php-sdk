@@ -105,7 +105,7 @@ class ExchangeRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withCount(empty($data['count']) ? null : $data['count'])
+            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

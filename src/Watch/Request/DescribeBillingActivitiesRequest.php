@@ -101,11 +101,11 @@ class DescribeBillingActivitiesRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeBillingActivitiesRequest())
-            ->withYear(empty($data['year']) ? null : $data['year'])
-            ->withMonth(empty($data['month']) ? null : $data['month'])
+            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
+            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
             ->withService(empty($data['service']) ? null : $data['service'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

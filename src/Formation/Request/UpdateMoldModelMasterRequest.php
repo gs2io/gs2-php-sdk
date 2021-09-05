@@ -136,8 +136,8 @@ class UpdateMoldModelMasterRequest extends Gs2BasicRequest {
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withFormModelName(empty($data['formModelName']) ? null : $data['formModelName'])
-            ->withInitialMaxCapacity(empty($data['initialMaxCapacity']) ? null : $data['initialMaxCapacity'])
-            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity']);
+            ->withInitialMaxCapacity(empty($data['initialMaxCapacity']) && $data['initialMaxCapacity'] !== 0 ? null : $data['initialMaxCapacity'])
+            ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity']);
     }
 
     public function toJson(): array {

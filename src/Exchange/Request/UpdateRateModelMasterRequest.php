@@ -183,7 +183,7 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withTimingType(empty($data['timingType']) ? null : $data['timingType'])
-            ->withLockTime(empty($data['lockTime']) ? null : $data['lockTime'])
+            ->withLockTime(empty($data['lockTime']) && $data['lockTime'] !== 0 ? null : $data['lockTime'])
             ->withEnableSkip(empty($data['enableSkip']) ? null : $data['enableSkip'])
             ->withSkipConsumeActions(array_map(
                 function ($item) {

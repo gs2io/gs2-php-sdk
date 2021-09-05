@@ -133,7 +133,7 @@ class News implements IModel {
             ->withContent(empty($data['content']) ? null : $data['content'])
             ->withTitle(empty($data['title']) ? null : $data['title'])
             ->withScheduleEventId(empty($data['scheduleEventId']) ? null : $data['scheduleEventId'])
-            ->withTimestamp(empty($data['timestamp']) ? null : $data['timestamp'])
+            ->withTimestamp(empty($data['timestamp']) && $data['timestamp'] !== 0 ? null : $data['timestamp'])
             ->withFrontMatter(empty($data['frontMatter']) ? null : $data['frontMatter']);
     }
 

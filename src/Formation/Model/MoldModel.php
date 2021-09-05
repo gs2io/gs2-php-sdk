@@ -132,8 +132,8 @@ class MoldModel implements IModel {
             ->withMoldModelId(empty($data['moldModelId']) ? null : $data['moldModelId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withInitialMaxCapacity(empty($data['initialMaxCapacity']) ? null : $data['initialMaxCapacity'])
-            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity'])
+            ->withInitialMaxCapacity(empty($data['initialMaxCapacity']) && $data['initialMaxCapacity'] !== 0 ? null : $data['initialMaxCapacity'])
+            ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
             ->withFormModel(empty($data['formModel']) ? null : FormModel::fromJson($data['formModel']));
     }
 

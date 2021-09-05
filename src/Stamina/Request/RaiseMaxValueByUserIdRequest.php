@@ -89,7 +89,7 @@ class RaiseMaxValueByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRaiseValue(empty($data['raiseValue']) ? null : $data['raiseValue']);
+            ->withRaiseValue(empty($data['raiseValue']) && $data['raiseValue'] !== 0 ? null : $data['raiseValue']);
     }
 
     public function toJson(): array {

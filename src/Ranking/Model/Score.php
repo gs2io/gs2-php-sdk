@@ -168,9 +168,9 @@ class Score implements IModel {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withUniqueId(empty($data['uniqueId']) ? null : $data['uniqueId'])
             ->withScorerUserId(empty($data['scorerUserId']) ? null : $data['scorerUserId'])
-            ->withScore(empty($data['score']) ? null : $data['score'])
+            ->withScore(empty($data['score']) && $data['score'] !== 0 ? null : $data['score'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

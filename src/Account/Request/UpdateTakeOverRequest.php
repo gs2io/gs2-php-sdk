@@ -103,7 +103,7 @@ class UpdateTakeOverRequest extends Gs2BasicRequest {
         return (new UpdateTakeOverRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withType(empty($data['type']) && $data['type'] !== 0 ? null : $data['type'])
             ->withOldPassword(empty($data['oldPassword']) ? null : $data['oldPassword'])
             ->withPassword(empty($data['password']) ? null : $data['password']);
     }

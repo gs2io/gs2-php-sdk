@@ -166,9 +166,9 @@ class CreateMissionGroupModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withResetType(empty($data['resetType']) ? null : $data['resetType'])
-            ->withResetDayOfMonth(empty($data['resetDayOfMonth']) ? null : $data['resetDayOfMonth'])
+            ->withResetDayOfMonth(empty($data['resetDayOfMonth']) && $data['resetDayOfMonth'] !== 0 ? null : $data['resetDayOfMonth'])
             ->withResetDayOfWeek(empty($data['resetDayOfWeek']) ? null : $data['resetDayOfWeek'])
-            ->withResetHour(empty($data['resetHour']) ? null : $data['resetHour'])
+            ->withResetHour(empty($data['resetHour']) && $data['resetHour'] !== 0 ? null : $data['resetHour'])
             ->withCompleteNotificationNamespaceId(empty($data['completeNotificationNamespaceId']) ? null : $data['completeNotificationNamespaceId']);
     }
 

@@ -105,7 +105,7 @@ class DrawByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withLotteryName(empty($data['lotteryName']) ? null : $data['lotteryName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCount(empty($data['count']) ? null : $data['count'])
+            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

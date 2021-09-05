@@ -104,8 +104,8 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
             ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withStartAt(empty($data['startAt']) ? null : $data['startAt'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withStartAt(empty($data['startAt']) && $data['startAt'] !== 0 ? null : $data['startAt'])
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

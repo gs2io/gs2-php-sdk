@@ -74,7 +74,7 @@ class PrepareDownloadByUserIdAndDataObjectNameResult implements IResult {
         return (new PrepareDownloadByUserIdAndDataObjectNameResult())
             ->withItem(empty($data['item']) ? null : DataObject::fromJson($data['item']))
             ->withFileUrl(empty($data['fileUrl']) ? null : $data['fileUrl'])
-            ->withContentLength(empty($data['contentLength']) ? null : $data['contentLength']);
+            ->withContentLength(empty($data['contentLength']) && $data['contentLength'] !== 0 ? null : $data['contentLength']);
     }
 
     public function toJson(): array {

@@ -115,8 +115,8 @@ class Trigger implements IModel {
             ->withTriggerId(empty($data['triggerId']) ? null : $data['triggerId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
     }
 
     public function toJson(): array {

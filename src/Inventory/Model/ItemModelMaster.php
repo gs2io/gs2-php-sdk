@@ -202,11 +202,11 @@ class ItemModelMaster implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withStackingLimit(empty($data['stackingLimit']) ? null : $data['stackingLimit'])
+            ->withStackingLimit(empty($data['stackingLimit']) && $data['stackingLimit'] !== 0 ? null : $data['stackingLimit'])
             ->withAllowMultipleStacks(empty($data['allowMultipleStacks']) ? null : $data['allowMultipleStacks'])
-            ->withSortValue(empty($data['sortValue']) ? null : $data['sortValue'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withSortValue(empty($data['sortValue']) && $data['sortValue'] !== 0 ? null : $data['sortValue'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

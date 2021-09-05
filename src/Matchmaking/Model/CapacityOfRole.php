@@ -102,7 +102,7 @@ class CapacityOfRole implements IModel {
                 },
                 array_key_exists('roleAliases', $data) && $data['roleAliases'] !== null ? $data['roleAliases'] : []
             ))
-            ->withCapacity(empty($data['capacity']) ? null : $data['capacity'])
+            ->withCapacity(empty($data['capacity']) && $data['capacity'] !== 0 ? null : $data['capacity'])
             ->withParticipants(array_map(
                 function ($item) {
                     return Player::fromJson($item);

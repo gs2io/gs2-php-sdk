@@ -339,18 +339,18 @@ class EventMaster implements IModel {
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withScheduleType(empty($data['scheduleType']) ? null : $data['scheduleType'])
             ->withRepeatType(empty($data['repeatType']) ? null : $data['repeatType'])
-            ->withAbsoluteBegin(empty($data['absoluteBegin']) ? null : $data['absoluteBegin'])
-            ->withAbsoluteEnd(empty($data['absoluteEnd']) ? null : $data['absoluteEnd'])
-            ->withRepeatBeginDayOfMonth(empty($data['repeatBeginDayOfMonth']) ? null : $data['repeatBeginDayOfMonth'])
-            ->withRepeatEndDayOfMonth(empty($data['repeatEndDayOfMonth']) ? null : $data['repeatEndDayOfMonth'])
+            ->withAbsoluteBegin(empty($data['absoluteBegin']) && $data['absoluteBegin'] !== 0 ? null : $data['absoluteBegin'])
+            ->withAbsoluteEnd(empty($data['absoluteEnd']) && $data['absoluteEnd'] !== 0 ? null : $data['absoluteEnd'])
+            ->withRepeatBeginDayOfMonth(empty($data['repeatBeginDayOfMonth']) && $data['repeatBeginDayOfMonth'] !== 0 ? null : $data['repeatBeginDayOfMonth'])
+            ->withRepeatEndDayOfMonth(empty($data['repeatEndDayOfMonth']) && $data['repeatEndDayOfMonth'] !== 0 ? null : $data['repeatEndDayOfMonth'])
             ->withRepeatBeginDayOfWeek(empty($data['repeatBeginDayOfWeek']) ? null : $data['repeatBeginDayOfWeek'])
             ->withRepeatEndDayOfWeek(empty($data['repeatEndDayOfWeek']) ? null : $data['repeatEndDayOfWeek'])
-            ->withRepeatBeginHour(empty($data['repeatBeginHour']) ? null : $data['repeatBeginHour'])
-            ->withRepeatEndHour(empty($data['repeatEndHour']) ? null : $data['repeatEndHour'])
+            ->withRepeatBeginHour(empty($data['repeatBeginHour']) && $data['repeatBeginHour'] !== 0 ? null : $data['repeatBeginHour'])
+            ->withRepeatEndHour(empty($data['repeatEndHour']) && $data['repeatEndHour'] !== 0 ? null : $data['repeatEndHour'])
             ->withRelativeTriggerName(empty($data['relativeTriggerName']) ? null : $data['relativeTriggerName'])
-            ->withRelativeDuration(empty($data['relativeDuration']) ? null : $data['relativeDuration'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withRelativeDuration(empty($data['relativeDuration']) && $data['relativeDuration'] !== 0 ? null : $data['relativeDuration'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

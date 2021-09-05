@@ -41,8 +41,6 @@ use Gs2\Friend\Request\UpdateNamespaceRequest;
 use Gs2\Friend\Result\UpdateNamespaceResult;
 use Gs2\Friend\Request\DeleteNamespaceRequest;
 use Gs2\Friend\Result\DeleteNamespaceResult;
-use Gs2\Friend\Request\DescribeProfilesRequest;
-use Gs2\Friend\Result\DescribeProfilesResult;
 use Gs2\Friend\Request\GetProfileRequest;
 use Gs2\Friend\Result\GetProfileResult;
 use Gs2\Friend\Request\GetProfileByUserIdRequest;
@@ -549,69 +547,6 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
     }
 }
 
-class DescribeProfilesTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeProfilesRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeProfilesTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeProfilesRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeProfilesRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeProfilesResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/profile";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class GetProfileTask extends Gs2RestSessionTask {
 
     /**
@@ -1018,7 +953,7 @@ class DescribeFollowsTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile();
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -1088,7 +1023,7 @@ class DescribeFollowsByUserIdTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile();
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -1155,7 +1090,7 @@ class GetFollowTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile();
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
 
         if (count($queryStrings) > 0) {
@@ -1220,7 +1155,7 @@ class GetFollowByUserIdTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile();
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
 
         if (count($queryStrings) > 0) {
@@ -1516,7 +1451,7 @@ class DescribeFriendsTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile();
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -1586,7 +1521,7 @@ class DescribeFriendsByUserIdTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile();
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -1653,7 +1588,7 @@ class GetFriendTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile();
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
 
         if (count($queryStrings) > 0) {
@@ -1718,7 +1653,7 @@ class GetFriendByUserIdTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile();
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
 
         if (count($queryStrings) > 0) {
@@ -3335,33 +3270,6 @@ class Gs2FriendRestClient extends AbstractGs2Client {
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
         return $this->deleteNamespaceAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param DescribeProfilesRequest $request
-     * @return PromiseInterface
-     */
-    public function describeProfilesAsync(
-            DescribeProfilesRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeProfilesTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeProfilesRequest $request
-     * @return DescribeProfilesResult
-     */
-    public function describeProfiles (
-            DescribeProfilesRequest $request
-    ): DescribeProfilesResult {
-        return $this->describeProfilesAsync(
             $request
         )->wait();
     }

@@ -187,8 +187,8 @@ class Namespace_ implements IModel {
             ->withServerSpec(empty($data['serverSpec']) ? null : $data['serverSpec'])
             ->withCreateNotification(empty($data['createNotification']) ? null : NotificationSetting::fromJson($data['createNotification']))
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

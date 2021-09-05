@@ -169,8 +169,8 @@ class Namespace_ implements IModel {
             ->withEntryScript(empty($data['entryScript']) ? null : ScriptSetting::fromJson($data['entryScript']))
             ->withDuplicateEntryScript(empty($data['duplicateEntryScript']) ? null : ScriptSetting::fromJson($data['duplicateEntryScript']))
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

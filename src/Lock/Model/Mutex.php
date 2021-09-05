@@ -116,7 +116,7 @@ class Mutex implements IModel {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
             ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

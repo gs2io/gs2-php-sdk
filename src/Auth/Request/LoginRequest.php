@@ -57,7 +57,7 @@ class LoginRequest extends Gs2BasicRequest {
         }
         return (new LoginRequest())
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTimeOffset(empty($data['timeOffset']) ? null : $data['timeOffset']);
+            ->withTimeOffset(empty($data['timeOffset']) && $data['timeOffset'] !== 0 ? null : $data['timeOffset']);
     }
 
     public function toJson(): array {

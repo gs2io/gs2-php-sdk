@@ -133,11 +133,11 @@ class DescribeReceiptsRequest extends Gs2BasicRequest {
         return (new DescribeReceiptsRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withSlot(empty($data['slot']) ? null : $data['slot'])
-            ->withBegin(empty($data['begin']) ? null : $data['begin'])
-            ->withEnd(empty($data['end']) ? null : $data['end'])
+            ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot'])
+            ->withBegin(empty($data['begin']) && $data['begin'] !== 0 ? null : $data['begin'])
+            ->withEnd(empty($data['end']) && $data['end'] !== 0 ? null : $data['end'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

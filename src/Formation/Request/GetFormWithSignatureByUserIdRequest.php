@@ -104,7 +104,7 @@ class GetFormWithSignatureByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
-            ->withIndex(empty($data['index']) ? null : $data['index'])
+            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index'])
             ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
     }
 

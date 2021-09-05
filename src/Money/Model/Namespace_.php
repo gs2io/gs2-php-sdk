@@ -311,10 +311,10 @@ class Namespace_ implements IModel {
             ->withCreateWalletScript(empty($data['createWalletScript']) ? null : ScriptSetting::fromJson($data['createWalletScript']))
             ->withDepositScript(empty($data['depositScript']) ? null : ScriptSetting::fromJson($data['depositScript']))
             ->withWithdrawScript(empty($data['withdrawScript']) ? null : ScriptSetting::fromJson($data['withdrawScript']))
-            ->withBalance(empty($data['balance']) ? null : $data['balance'])
+            ->withBalance(empty($data['balance']) && $data['balance'] !== 0 ? null : $data['balance'])
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

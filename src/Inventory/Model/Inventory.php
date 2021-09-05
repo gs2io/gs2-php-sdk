@@ -149,10 +149,10 @@ class Inventory implements IModel {
             ->withInventoryId(empty($data['inventoryId']) ? null : $data['inventoryId'])
             ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCurrentInventoryCapacityUsage(empty($data['currentInventoryCapacityUsage']) ? null : $data['currentInventoryCapacityUsage'])
-            ->withCurrentInventoryMaxCapacity(empty($data['currentInventoryMaxCapacity']) ? null : $data['currentInventoryMaxCapacity'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCurrentInventoryCapacityUsage(empty($data['currentInventoryCapacityUsage']) && $data['currentInventoryCapacityUsage'] !== 0 ? null : $data['currentInventoryCapacityUsage'])
+            ->withCurrentInventoryMaxCapacity(empty($data['currentInventoryMaxCapacity']) && $data['currentInventoryMaxCapacity'] !== 0 ? null : $data['currentInventoryMaxCapacity'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

@@ -150,9 +150,9 @@ class Counter implements IModel {
             ->withLimitName(empty($data['limitName']) ? null : $data['limitName'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCount(empty($data['count']) ? null : $data['count'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

@@ -131,10 +131,10 @@ class TakeOver implements IModel {
         return (new TakeOver())
             ->withTakeOverId(empty($data['takeOverId']) ? null : $data['takeOverId'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withType(empty($data['type']) && $data['type'] !== 0 ? null : $data['type'])
             ->withUserIdentifier(empty($data['userIdentifier']) ? null : $data['userIdentifier'])
             ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

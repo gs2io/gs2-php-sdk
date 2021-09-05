@@ -133,8 +133,8 @@ class Await implements IModel {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
             ->withName(empty($data['name']) ? null : $data['name'])
-            ->withCount(empty($data['count']) ? null : $data['count'])
-            ->withExchangedAt(empty($data['exchangedAt']) ? null : $data['exchangedAt']);
+            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
+            ->withExchangedAt(empty($data['exchangedAt']) && $data['exchangedAt'] !== 0 ? null : $data['exchangedAt']);
     }
 
     public function toJson(): array {

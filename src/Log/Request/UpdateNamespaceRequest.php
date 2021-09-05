@@ -181,7 +181,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withType(empty($data['type']) ? null : $data['type'])
             ->withGcpCredentialJson(empty($data['gcpCredentialJson']) ? null : $data['gcpCredentialJson'])
             ->withBigQueryDatasetName(empty($data['bigQueryDatasetName']) ? null : $data['bigQueryDatasetName'])
-            ->withLogExpireDays(empty($data['logExpireDays']) ? null : $data['logExpireDays'])
+            ->withLogExpireDays(empty($data['logExpireDays']) && $data['logExpireDays'] !== 0 ? null : $data['logExpireDays'])
             ->withAwsRegion(empty($data['awsRegion']) ? null : $data['awsRegion'])
             ->withAwsAccessKeyId(empty($data['awsAccessKeyId']) ? null : $data['awsAccessKeyId'])
             ->withAwsSecretAccessKey(empty($data['awsSecretAccessKey']) ? null : $data['awsSecretAccessKey'])

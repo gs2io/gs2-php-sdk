@@ -190,7 +190,7 @@ class RateModel implements IModel {
                 array_key_exists('consumeActions', $data) && $data['consumeActions'] !== null ? $data['consumeActions'] : []
             ))
             ->withTimingType(empty($data['timingType']) ? null : $data['timingType'])
-            ->withLockTime(empty($data['lockTime']) ? null : $data['lockTime'])
+            ->withLockTime(empty($data['lockTime']) && $data['lockTime'] !== 0 ? null : $data['lockTime'])
             ->withEnableSkip(empty($data['enableSkip']) ? null : $data['enableSkip'])
             ->withSkipConsumeActions(array_map(
                 function ($item) {

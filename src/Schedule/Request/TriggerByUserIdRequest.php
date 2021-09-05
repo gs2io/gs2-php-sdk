@@ -105,7 +105,7 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
             ->withTriggerName(empty($data['triggerName']) ? null : $data['triggerName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withTriggerStrategy(empty($data['triggerStrategy']) ? null : $data['triggerStrategy'])
-            ->withTtl(empty($data['ttl']) ? null : $data['ttl']);
+            ->withTtl(empty($data['ttl']) && $data['ttl'] !== 0 ? null : $data['ttl']);
     }
 
     public function toJson(): array {

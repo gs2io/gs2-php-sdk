@@ -166,7 +166,7 @@ class Room implements IModel {
             ->withRoomId(empty($data['roomId']) ? null : $data['roomId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withIpAddress(empty($data['ipAddress']) ? null : $data['ipAddress'])
-            ->withPort(empty($data['port']) ? null : $data['port'])
+            ->withPort(empty($data['port']) && $data['port'] !== 0 ? null : $data['port'])
             ->withEncryptionKey(empty($data['encryptionKey']) ? null : $data['encryptionKey'])
             ->withNotificationUserIds(array_map(
                 function ($item) {
@@ -174,8 +174,8 @@ class Room implements IModel {
                 },
                 array_key_exists('notificationUserIds', $data) && $data['notificationUserIds'] !== null ? $data['notificationUserIds'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

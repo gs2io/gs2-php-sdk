@@ -201,12 +201,12 @@ class ExperienceModelMaster implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withDefaultExperience(empty($data['defaultExperience']) ? null : $data['defaultExperience'])
-            ->withDefaultRankCap(empty($data['defaultRankCap']) ? null : $data['defaultRankCap'])
-            ->withMaxRankCap(empty($data['maxRankCap']) ? null : $data['maxRankCap'])
+            ->withDefaultExperience(empty($data['defaultExperience']) && $data['defaultExperience'] !== 0 ? null : $data['defaultExperience'])
+            ->withDefaultRankCap(empty($data['defaultRankCap']) && $data['defaultRankCap'] !== 0 ? null : $data['defaultRankCap'])
+            ->withMaxRankCap(empty($data['maxRankCap']) && $data['maxRankCap'] !== 0 ? null : $data['maxRankCap'])
             ->withRankThresholdName(empty($data['rankThresholdName']) ? null : $data['rankThresholdName'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

@@ -146,7 +146,7 @@ class ExecuteStampTaskLog implements IModel {
             return null;
         }
         return (new ExecuteStampTaskLog())
-            ->withTimestamp(empty($data['timestamp']) ? null : $data['timestamp'])
+            ->withTimestamp(empty($data['timestamp']) && $data['timestamp'] !== 0 ? null : $data['timestamp'])
             ->withTaskId(empty($data['taskId']) ? null : $data['taskId'])
             ->withService(empty($data['service']) ? null : $data['service'])
             ->withMethod(empty($data['method']) ? null : $data['method'])

@@ -80,7 +80,7 @@ class JobEntry implements IModel {
         return (new JobEntry())
             ->withScriptId(empty($data['scriptId']) ? null : $data['scriptId'])
             ->withArgs(empty($data['args']) ? null : $data['args'])
-            ->withMaxTryCount(empty($data['maxTryCount']) ? null : $data['maxTryCount']);
+            ->withMaxTryCount(empty($data['maxTryCount']) && $data['maxTryCount'] !== 0 ? null : $data['maxTryCount']);
     }
 
     public function toJson(): array {

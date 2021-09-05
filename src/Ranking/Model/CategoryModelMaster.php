@@ -320,19 +320,19 @@ class CategoryModelMaster implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withMinimumValue(empty($data['minimumValue']) ? null : $data['minimumValue'])
-            ->withMaximumValue(empty($data['maximumValue']) ? null : $data['maximumValue'])
+            ->withMinimumValue(empty($data['minimumValue']) && $data['minimumValue'] !== 0 ? null : $data['minimumValue'])
+            ->withMaximumValue(empty($data['maximumValue']) && $data['maximumValue'] !== 0 ? null : $data['maximumValue'])
             ->withOrderDirection(empty($data['orderDirection']) ? null : $data['orderDirection'])
             ->withScope(empty($data['scope']) ? null : $data['scope'])
             ->withUniqueByUserId(empty($data['uniqueByUserId']) ? null : $data['uniqueByUserId'])
-            ->withCalculateFixedTimingHour(empty($data['calculateFixedTimingHour']) ? null : $data['calculateFixedTimingHour'])
-            ->withCalculateFixedTimingMinute(empty($data['calculateFixedTimingMinute']) ? null : $data['calculateFixedTimingMinute'])
-            ->withCalculateIntervalMinutes(empty($data['calculateIntervalMinutes']) ? null : $data['calculateIntervalMinutes'])
+            ->withCalculateFixedTimingHour(empty($data['calculateFixedTimingHour']) && $data['calculateFixedTimingHour'] !== 0 ? null : $data['calculateFixedTimingHour'])
+            ->withCalculateFixedTimingMinute(empty($data['calculateFixedTimingMinute']) && $data['calculateFixedTimingMinute'] !== 0 ? null : $data['calculateFixedTimingMinute'])
+            ->withCalculateIntervalMinutes(empty($data['calculateIntervalMinutes']) && $data['calculateIntervalMinutes'] !== 0 ? null : $data['calculateIntervalMinutes'])
             ->withEntryPeriodEventId(empty($data['entryPeriodEventId']) ? null : $data['entryPeriodEventId'])
             ->withAccessPeriodEventId(empty($data['accessPeriodEventId']) ? null : $data['accessPeriodEventId'])
             ->withGeneration(empty($data['generation']) ? null : $data['generation'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

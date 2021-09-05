@@ -151,8 +151,8 @@ class Profile implements IModel {
             ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
             ->withFollowerProfile(empty($data['followerProfile']) ? null : $data['followerProfile'])
             ->withFriendProfile(empty($data['friendProfile']) ? null : $data['friendProfile'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

@@ -166,11 +166,11 @@ class Receipt implements IModel {
             ->withReceiptId(empty($data['receiptId']) ? null : $data['receiptId'])
             ->withAccountName(empty($data['accountName']) ? null : $data['accountName'])
             ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDate(empty($data['date']) ? null : $data['date'])
+            ->withDate(empty($data['date']) && $data['date'] !== 0 ? null : $data['date'])
             ->withAmount(empty($data['amount']) ? null : $data['amount'])
             ->withPdfUrl(empty($data['pdfUrl']) ? null : $data['pdfUrl'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

@@ -115,8 +115,8 @@ class DataObjectHistory implements IModel {
             ->withDataObjectHistoryId(empty($data['dataObjectHistoryId']) ? null : $data['dataObjectHistoryId'])
             ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
             ->withGeneration(empty($data['generation']) ? null : $data['generation'])
-            ->withContentLength(empty($data['contentLength']) ? null : $data['contentLength'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withContentLength(empty($data['contentLength']) && $data['contentLength'] !== 0 ? null : $data['contentLength'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

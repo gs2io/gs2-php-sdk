@@ -181,11 +181,11 @@ class CountIssueStampSheetLogRequest extends Gs2BasicRequest {
             ->withMethod(empty($data['method']) ? null : $data['method'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withAction(empty($data['action']) ? null : $data['action'])
-            ->withBegin(empty($data['begin']) ? null : $data['begin'])
-            ->withEnd(empty($data['end']) ? null : $data['end'])
+            ->withBegin(empty($data['begin']) && $data['begin'] !== 0 ? null : $data['begin'])
+            ->withEnd(empty($data['end']) && $data['end'] !== 0 ? null : $data['end'])
             ->withLongTerm(empty($data['longTerm']) ? null : $data['longTerm'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

@@ -121,7 +121,7 @@ class Subscribe implements IModel {
                 },
                 array_key_exists('notificationTypes', $data) && $data['notificationTypes'] !== null ? $data['notificationTypes'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

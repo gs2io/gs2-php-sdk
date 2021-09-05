@@ -115,8 +115,8 @@ class Account implements IModel {
             ->withAccountId(empty($data['accountId']) ? null : $data['accountId'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withTimeOffset(empty($data['timeOffset']) ? null : $data['timeOffset'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withTimeOffset(empty($data['timeOffset']) && $data['timeOffset'] !== 0 ? null : $data['timeOffset'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

@@ -219,17 +219,17 @@ class ItemSet implements IModel {
             ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
-            ->withCount(empty($data['count']) ? null : $data['count'])
+            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
             ->withReferenceOf(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('referenceOf', $data) && $data['referenceOf'] !== null ? $data['referenceOf'] : []
             ))
-            ->withSortValue(empty($data['sortValue']) ? null : $data['sortValue'])
-            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withSortValue(empty($data['sortValue']) && $data['sortValue'] !== 0 ? null : $data['sortValue'])
+            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

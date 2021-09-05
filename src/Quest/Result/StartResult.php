@@ -18,29 +18,12 @@
 namespace Gs2\Quest\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Quest\Model\Reward;
-use Gs2\Quest\Model\Progress;
 
 class StartResult implements IResult {
-    /** @var Progress */
-    private $item;
     /** @var string */
     private $stampSheet;
     /** @var string */
     private $stampSheetEncryptionKeyId;
-
-	public function getItem(): ?Progress {
-		return $this->item;
-	}
-
-	public function setItem(?Progress $item) {
-		$this->item = $item;
-	}
-
-	public function withItem(?Progress $item): StartResult {
-		$this->item = $item;
-		return $this;
-	}
 
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
@@ -73,14 +56,12 @@ class StartResult implements IResult {
             return null;
         }
         return (new StartResult())
-            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
             ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
             ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
     }
 
     public function toJson(): array {
         return array(
-            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
         );

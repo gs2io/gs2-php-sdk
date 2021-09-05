@@ -74,7 +74,7 @@ class WithdrawByStampTaskResult implements IResult {
         }
         return (new WithdrawByStampTaskResult())
             ->withItem(empty($data['item']) ? null : Wallet::fromJson($data['item']))
-            ->withPrice(empty($data['price']) ? null : $data['price'])
+            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price'])
             ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
     }
 

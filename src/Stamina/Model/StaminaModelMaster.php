@@ -269,16 +269,16 @@ class StaminaModelMaster implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) ? null : $data['recoverIntervalMinutes'])
-            ->withRecoverValue(empty($data['recoverValue']) ? null : $data['recoverValue'])
-            ->withInitialCapacity(empty($data['initialCapacity']) ? null : $data['initialCapacity'])
+            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) && $data['recoverIntervalMinutes'] !== 0 ? null : $data['recoverIntervalMinutes'])
+            ->withRecoverValue(empty($data['recoverValue']) && $data['recoverValue'] !== 0 ? null : $data['recoverValue'])
+            ->withInitialCapacity(empty($data['initialCapacity']) && $data['initialCapacity'] !== 0 ? null : $data['initialCapacity'])
             ->withIsOverflow(empty($data['isOverflow']) ? null : $data['isOverflow'])
-            ->withMaxCapacity(empty($data['maxCapacity']) ? null : $data['maxCapacity'])
+            ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
             ->withMaxStaminaTableName(empty($data['maxStaminaTableName']) ? null : $data['maxStaminaTableName'])
             ->withRecoverIntervalTableName(empty($data['recoverIntervalTableName']) ? null : $data['recoverIntervalTableName'])
             ->withRecoverValueTableName(empty($data['recoverValueTableName']) ? null : $data['recoverValueTableName'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

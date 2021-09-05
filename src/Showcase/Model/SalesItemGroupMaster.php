@@ -156,8 +156,8 @@ class SalesItemGroupMaster implements IModel {
                 },
                 array_key_exists('salesItemNames', $data) && $data['salesItemNames'] !== null ? $data['salesItemNames'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

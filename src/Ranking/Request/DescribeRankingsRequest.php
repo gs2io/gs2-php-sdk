@@ -119,9 +119,9 @@ class DescribeRankingsRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withStartIndex(empty($data['startIndex']) ? null : $data['startIndex'])
+            ->withStartIndex(empty($data['startIndex']) && $data['startIndex'] !== 0 ? null : $data['startIndex'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) ? null : $data['limit']);
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {

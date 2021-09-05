@@ -89,7 +89,7 @@ class GetFriendRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
             ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId'])
-            ->withWithProfile(empty($data['withProfile']) ? null : $data['withProfile']);
+            ->withWithProfile($data['withProfile']);
     }
 
     public function toJson(): array {

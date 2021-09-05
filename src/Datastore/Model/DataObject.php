@@ -44,10 +44,6 @@ class DataObject implements IModel {
 	/**
      * @var string
 	 */
-	private $platform;
-	/**
-     * @var string
-	 */
 	private $status;
 	/**
      * @var string
@@ -131,19 +127,6 @@ class DataObject implements IModel {
 		return $this;
 	}
 
-	public function getPlatform(): ?string {
-		return $this->platform;
-	}
-
-	public function setPlatform(?string $platform) {
-		$this->platform = $platform;
-	}
-
-	public function withPlatform(?string $platform): DataObject {
-		$this->platform = $platform;
-		return $this;
-	}
-
 	public function getStatus(): ?string {
 		return $this->status;
 	}
@@ -224,12 +207,11 @@ class DataObject implements IModel {
                 },
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
-            ->withPlatform(empty($data['platform']) ? null : $data['platform'])
             ->withStatus(empty($data['status']) ? null : $data['status'])
             ->withGeneration(empty($data['generation']) ? null : $data['generation'])
             ->withPreviousGeneration(empty($data['previousGeneration']) ? null : $data['previousGeneration'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {
@@ -244,7 +226,6 @@ class DataObject implements IModel {
                 },
                 $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
             ),
-            "platform" => $this->getPlatform(),
             "status" => $this->getStatus(),
             "generation" => $this->getGeneration(),
             "previousGeneration" => $this->getPreviousGeneration(),

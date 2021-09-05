@@ -98,7 +98,7 @@ class Ballot implements IModel {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
             ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName'])
-            ->withNumberOfPlayer(empty($data['numberOfPlayer']) ? null : $data['numberOfPlayer']);
+            ->withNumberOfPlayer(empty($data['numberOfPlayer']) && $data['numberOfPlayer'] !== 0 ? null : $data['numberOfPlayer']);
     }
 
     public function toJson(): array {

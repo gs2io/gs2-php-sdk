@@ -129,12 +129,12 @@ class Ranking implements IModel {
             return null;
         }
         return (new Ranking())
-            ->withRank(empty($data['rank']) ? null : $data['rank'])
-            ->withIndex(empty($data['index']) ? null : $data['index'])
+            ->withRank(empty($data['rank']) && $data['rank'] !== 0 ? null : $data['rank'])
+            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withScore(empty($data['score']) ? null : $data['score'])
+            ->withScore(empty($data['score']) && $data['score'] !== 0 ? null : $data['score'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

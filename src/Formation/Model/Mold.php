@@ -132,9 +132,9 @@ class Mold implements IModel {
             ->withMoldId(empty($data['moldId']) ? null : $data['moldId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCapacity(empty($data['capacity']) ? null : $data['capacity'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCapacity(empty($data['capacity']) && $data['capacity'] !== 0 ? null : $data['capacity'])
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

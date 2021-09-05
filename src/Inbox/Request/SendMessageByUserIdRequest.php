@@ -127,7 +127,7 @@ class SendMessageByUserIdRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
-            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt'])
+            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt'])
             ->withExpiresTimeSpan(empty($data['expiresTimeSpan']) ? null : TimeSpan::fromJson($data['expiresTimeSpan']));
     }
 

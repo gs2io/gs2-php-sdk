@@ -98,7 +98,7 @@ class Output implements IModel {
             ->withOutputId(empty($data['outputId']) ? null : $data['outputId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withValue(empty($data['value']) ? null : $data['value'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
     public function toJson(): array {

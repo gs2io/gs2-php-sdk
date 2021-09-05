@@ -89,7 +89,7 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withCount(empty($data['count']) ? null : $data['count']);
+            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count']);
     }
 
     public function toJson(): array {

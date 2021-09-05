@@ -85,7 +85,7 @@ class Contents implements IModel {
                 },
                 array_key_exists('completeAcquireActions', $data) && $data['completeAcquireActions'] !== null ? $data['completeAcquireActions'] : []
             ))
-            ->withWeight(empty($data['weight']) ? null : $data['weight']);
+            ->withWeight(empty($data['weight']) && $data['weight'] !== 0 ? null : $data['weight']);
     }
 
     public function toJson(): array {

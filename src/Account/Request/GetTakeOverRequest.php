@@ -73,7 +73,7 @@ class GetTakeOverRequest extends Gs2BasicRequest {
         return (new GetTakeOverRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withType(empty($data['type']) ? null : $data['type']);
+            ->withType(empty($data['type']) && $data['type'] !== 0 ? null : $data['type']);
     }
 
     public function toJson(): array {

@@ -132,9 +132,9 @@ class ItemModel implements IModel {
             ->withItemModelId(empty($data['itemModelId']) ? null : $data['itemModelId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withStackingLimit(empty($data['stackingLimit']) ? null : $data['stackingLimit'])
+            ->withStackingLimit(empty($data['stackingLimit']) && $data['stackingLimit'] !== 0 ? null : $data['stackingLimit'])
             ->withAllowMultipleStacks(empty($data['allowMultipleStacks']) ? null : $data['allowMultipleStacks'])
-            ->withSortValue(empty($data['sortValue']) ? null : $data['sortValue']);
+            ->withSortValue(empty($data['sortValue']) && $data['sortValue'] !== 0 ? null : $data['sortValue']);
     }
 
     public function toJson(): array {

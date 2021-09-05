@@ -133,8 +133,8 @@ class Script implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withScript(empty($data['script']) ? null : $data['script'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

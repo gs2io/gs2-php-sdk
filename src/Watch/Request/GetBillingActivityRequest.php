@@ -86,8 +86,8 @@ class GetBillingActivityRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetBillingActivityRequest())
-            ->withYear(empty($data['year']) ? null : $data['year'])
-            ->withMonth(empty($data['month']) ? null : $data['month'])
+            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
+            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
             ->withService(empty($data['service']) ? null : $data['service'])
             ->withActivityType(empty($data['activityType']) ? null : $data['activityType']);
     }

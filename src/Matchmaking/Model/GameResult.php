@@ -61,7 +61,7 @@ class GameResult implements IModel {
             return null;
         }
         return (new GameResult())
-            ->withRank(empty($data['rank']) ? null : $data['rank'])
+            ->withRank(empty($data['rank']) && $data['rank'] !== 0 ? null : $data['rank'])
             ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 

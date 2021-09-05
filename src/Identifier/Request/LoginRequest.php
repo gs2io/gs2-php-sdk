@@ -13,6 +13,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 
 namespace Gs2\Identifier\Request;
@@ -56,14 +58,14 @@ class LoginRequest extends Gs2BasicRequest {
             return null;
         }
         return (new LoginRequest())
-            ->withClientId(empty($data['clientId']) ? null : $data['clientId'])
-            ->withClientSecret(empty($data['clientSecret']) ? null : $data['clientSecret']);
+            ->withClientId(empty($data['client_id']) ? null : $data['client_id'])
+            ->withClientSecret(empty($data['client_secret']) ? null : $data['client_secret']);
     }
 
     public function toJson(): array {
         return array(
-            "clientId" => $this->getClientId(),
-            "clientSecret" => $this->getClientSecret(),
+            "client_id" => $this->getClientId(),
+            "client_secret" => $this->getClientSecret(),
         );
     }
 }

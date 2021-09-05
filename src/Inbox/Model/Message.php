@@ -191,9 +191,9 @@ class Message implements IModel {
                 },
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
-            ->withReceivedAt(empty($data['receivedAt']) ? null : $data['receivedAt'])
-            ->withReadAt(empty($data['readAt']) ? null : $data['readAt'])
-            ->withExpiresAt(empty($data['expiresAt']) ? null : $data['expiresAt']);
+            ->withReceivedAt(empty($data['receivedAt']) && $data['receivedAt'] !== 0 ? null : $data['receivedAt'])
+            ->withReadAt(empty($data['readAt']) && $data['readAt'] !== 0 ? null : $data['readAt'])
+            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
     }
 
     public function toJson(): array {

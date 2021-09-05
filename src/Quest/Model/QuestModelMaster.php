@@ -261,8 +261,8 @@ class QuestModelMaster implements IModel {
                 },
                 array_key_exists('premiseQuestNames', $data) && $data['premiseQuestNames'] !== null ? $data['premiseQuestNames'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

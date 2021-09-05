@@ -73,7 +73,7 @@ class GetWalletRequest extends Gs2BasicRequest {
         return (new GetWalletRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withSlot(empty($data['slot']) ? null : $data['slot']);
+            ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot']);
     }
 
     public function toJson(): array {

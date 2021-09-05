@@ -219,7 +219,7 @@ class MissionTaskModelMaster implements IModel {
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
-            ->withTargetValue(empty($data['targetValue']) ? null : $data['targetValue'])
+            ->withTargetValue(empty($data['targetValue']) && $data['targetValue'] !== 0 ? null : $data['targetValue'])
             ->withCompleteAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
@@ -228,8 +228,8 @@ class MissionTaskModelMaster implements IModel {
             ))
             ->withChallengePeriodEventId(empty($data['challengePeriodEventId']) ? null : $data['challengePeriodEventId'])
             ->withPremiseMissionTaskName(empty($data['premiseMissionTaskName']) ? null : $data['premiseMissionTaskName'])
-            ->withCreatedAt(empty($data['createdAt']) ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) ? null : $data['updatedAt']);
+            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
+            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
     public function toJson(): array {

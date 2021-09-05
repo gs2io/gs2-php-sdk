@@ -104,7 +104,7 @@ class PutScoreRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withScore(empty($data['score']) ? null : $data['score'])
+            ->withScore(empty($data['score']) && $data['score'] !== 0 ? null : $data['score'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
     }
 

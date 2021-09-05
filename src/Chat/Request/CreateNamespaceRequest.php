@@ -181,7 +181,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withAllowCreateRoom(empty($data['allowCreateRoom']) ? null : $data['allowCreateRoom'])
+            ->withAllowCreateRoom($data['allowCreateRoom'])
             ->withPostMessageScript(empty($data['postMessageScript']) ? null : ScriptSetting::fromJson($data['postMessageScript']))
             ->withCreateRoomScript(empty($data['createRoomScript']) ? null : ScriptSetting::fromJson($data['createRoomScript']))
             ->withDeleteRoomScript(empty($data['deleteRoomScript']) ? null : ScriptSetting::fromJson($data['deleteRoomScript']))

@@ -142,7 +142,7 @@ class PrepareUploadRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
-            ->withUpdateIfExists(empty($data['updateIfExists']) ? null : $data['updateIfExists']);
+            ->withUpdateIfExists($data['updateIfExists']);
     }
 
     public function toJson(): array {

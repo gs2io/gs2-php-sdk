@@ -134,8 +134,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withEnableAwaitExchange(empty($data['enableAwaitExchange']) ? null : $data['enableAwaitExchange'])
-            ->withEnableDirectExchange(empty($data['enableDirectExchange']) ? null : $data['enableDirectExchange'])
+            ->withEnableAwaitExchange($data['enableAwaitExchange'])
+            ->withEnableDirectExchange($data['enableDirectExchange'])
             ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
             ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));

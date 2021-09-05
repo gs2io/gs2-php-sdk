@@ -302,7 +302,7 @@ class Namespace_ implements IModel {
             ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withEnableRating(empty($data['enableRating']) ? null : $data['enableRating'])
+            ->withEnableRating($data['enableRating'])
             ->withCreateGatheringTriggerType(empty($data['createGatheringTriggerType']) ? null : $data['createGatheringTriggerType'])
             ->withCreateGatheringTriggerRealtimeNamespaceId(empty($data['createGatheringTriggerRealtimeNamespaceId']) ? null : $data['createGatheringTriggerRealtimeNamespaceId'])
             ->withCreateGatheringTriggerScriptId(empty($data['createGatheringTriggerScriptId']) ? null : $data['createGatheringTriggerScriptId'])

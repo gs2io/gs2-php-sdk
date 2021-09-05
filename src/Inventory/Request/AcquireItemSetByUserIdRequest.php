@@ -152,7 +152,7 @@ class AcquireItemSetByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withAcquireCount(empty($data['acquireCount']) && $data['acquireCount'] !== 0 ? null : $data['acquireCount'])
             ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt'])
-            ->withCreateNewItemSet(empty($data['createNewItemSet']) ? null : $data['createNewItemSet'])
+            ->withCreateNewItemSet($data['createNewItemSet'])
             ->withItemSetName(empty($data['itemSetName']) ? null : $data['itemSetName']);
     }
 

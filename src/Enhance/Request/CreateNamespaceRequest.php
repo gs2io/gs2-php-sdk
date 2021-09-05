@@ -119,7 +119,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withEnableDirectEnhance(empty($data['enableDirectEnhance']) ? null : $data['enableDirectEnhance'])
+            ->withEnableDirectEnhance($data['enableDirectEnhance'])
             ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
             ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));

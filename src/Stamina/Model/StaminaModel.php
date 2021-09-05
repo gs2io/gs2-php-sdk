@@ -220,7 +220,7 @@ class StaminaModel implements IModel {
             ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) && $data['recoverIntervalMinutes'] !== 0 ? null : $data['recoverIntervalMinutes'])
             ->withRecoverValue(empty($data['recoverValue']) && $data['recoverValue'] !== 0 ? null : $data['recoverValue'])
             ->withInitialCapacity(empty($data['initialCapacity']) && $data['initialCapacity'] !== 0 ? null : $data['initialCapacity'])
-            ->withIsOverflow(empty($data['isOverflow']) ? null : $data['isOverflow'])
+            ->withIsOverflow($data['isOverflow'])
             ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
             ->withMaxStaminaTable(empty($data['maxStaminaTable']) ? null : MaxStaminaTable::fromJson($data['maxStaminaTable']))
             ->withRecoverIntervalTable(empty($data['recoverIntervalTable']) ? null : RecoverIntervalTable::fromJson($data['recoverIntervalTable']))

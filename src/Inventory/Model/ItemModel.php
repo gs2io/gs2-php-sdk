@@ -133,7 +133,7 @@ class ItemModel implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withStackingLimit(empty($data['stackingLimit']) && $data['stackingLimit'] !== 0 ? null : $data['stackingLimit'])
-            ->withAllowMultipleStacks(empty($data['allowMultipleStacks']) ? null : $data['allowMultipleStacks'])
+            ->withAllowMultipleStacks($data['allowMultipleStacks'])
             ->withSortValue(empty($data['sortValue']) && $data['sortValue'] !== 0 ? null : $data['sortValue']);
     }
 

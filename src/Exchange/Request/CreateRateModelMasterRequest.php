@@ -184,7 +184,7 @@ class CreateRateModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withTimingType(empty($data['timingType']) ? null : $data['timingType'])
             ->withLockTime(empty($data['lockTime']) && $data['lockTime'] !== 0 ? null : $data['lockTime'])
-            ->withEnableSkip(empty($data['enableSkip']) ? null : $data['enableSkip'])
+            ->withEnableSkip($data['enableSkip'])
             ->withSkipConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);

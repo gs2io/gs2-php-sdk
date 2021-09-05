@@ -239,7 +239,7 @@ class VersionModelMaster implements IModel {
             ->withErrorVersion(empty($data['errorVersion']) ? null : Version::fromJson($data['errorVersion']))
             ->withScope(empty($data['scope']) ? null : $data['scope'])
             ->withCurrentVersion(empty($data['currentVersion']) ? null : Version::fromJson($data['currentVersion']))
-            ->withNeedSignature(empty($data['needSignature']) ? null : $data['needSignature'])
+            ->withNeedSignature($data['needSignature'])
             ->withSignatureKeyId(empty($data['signatureKeyId']) ? null : $data['signatureKeyId'])
             ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
             ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);

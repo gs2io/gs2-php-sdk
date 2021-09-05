@@ -225,7 +225,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withEnableRating(empty($data['enableRating']) ? null : $data['enableRating'])
+            ->withEnableRating($data['enableRating'])
             ->withCreateGatheringTriggerType(empty($data['createGatheringTriggerType']) ? null : $data['createGatheringTriggerType'])
             ->withCreateGatheringTriggerRealtimeNamespaceId(empty($data['createGatheringTriggerRealtimeNamespaceId']) ? null : $data['createGatheringTriggerRealtimeNamespaceId'])
             ->withCreateGatheringTriggerScriptId(empty($data['createGatheringTriggerScriptId']) ? null : $data['createGatheringTriggerScriptId'])

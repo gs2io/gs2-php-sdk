@@ -73,7 +73,7 @@ class SetUserIdRequest extends Gs2BasicRequest {
         return (new SetUserIdRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withAllowConcurrentAccess(empty($data['allowConcurrentAccess']) ? null : $data['allowConcurrentAccess']);
+            ->withAllowConcurrentAccess($data['allowConcurrentAccess']);
     }
 
     public function toJson(): array {

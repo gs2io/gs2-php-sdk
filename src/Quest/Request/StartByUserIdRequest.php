@@ -121,7 +121,7 @@ class StartByUserIdRequest extends Gs2BasicRequest {
             ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName'])
             ->withQuestName(empty($data['questName']) ? null : $data['questName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withForce(empty($data['force']) ? null : $data['force'])
+            ->withForce($data['force'])
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

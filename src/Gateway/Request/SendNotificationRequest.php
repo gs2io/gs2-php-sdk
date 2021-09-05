@@ -120,7 +120,7 @@ class SendNotificationRequest extends Gs2BasicRequest {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withSubject(empty($data['subject']) ? null : $data['subject'])
             ->withPayload(empty($data['payload']) ? null : $data['payload'])
-            ->withEnableTransferMobileNotification(empty($data['enableTransferMobileNotification']) ? null : $data['enableTransferMobileNotification'])
+            ->withEnableTransferMobileNotification($data['enableTransferMobileNotification'])
             ->withSound(empty($data['sound']) ? null : $data['sound']);
     }
 

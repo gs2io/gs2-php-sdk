@@ -324,7 +324,7 @@ class CategoryModelMaster implements IModel {
             ->withMaximumValue(empty($data['maximumValue']) && $data['maximumValue'] !== 0 ? null : $data['maximumValue'])
             ->withOrderDirection(empty($data['orderDirection']) ? null : $data['orderDirection'])
             ->withScope(empty($data['scope']) ? null : $data['scope'])
-            ->withUniqueByUserId(empty($data['uniqueByUserId']) ? null : $data['uniqueByUserId'])
+            ->withUniqueByUserId($data['uniqueByUserId'])
             ->withCalculateFixedTimingHour(empty($data['calculateFixedTimingHour']) && $data['calculateFixedTimingHour'] !== 0 ? null : $data['calculateFixedTimingHour'])
             ->withCalculateFixedTimingMinute(empty($data['calculateFixedTimingMinute']) && $data['calculateFixedTimingMinute'] !== 0 ? null : $data['calculateFixedTimingMinute'])
             ->withCalculateIntervalMinutes(empty($data['calculateIntervalMinutes']) && $data['calculateIntervalMinutes'] !== 0 ? null : $data['calculateIntervalMinutes'])

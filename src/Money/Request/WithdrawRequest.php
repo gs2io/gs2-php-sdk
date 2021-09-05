@@ -105,7 +105,7 @@ class WithdrawRequest extends Gs2BasicRequest {
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
             ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot'])
             ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
-            ->withPaidOnly(empty($data['paidOnly']) ? null : $data['paidOnly']);
+            ->withPaidOnly($data['paidOnly']);
     }
 
     public function toJson(): array {

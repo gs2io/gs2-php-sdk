@@ -183,7 +183,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withPriority(empty($data['priority']) ? null : $data['priority'])
             ->withAppleKey(empty($data['appleKey']) ? null : $data['appleKey'])
             ->withGoogleKey(empty($data['googleKey']) ? null : $data['googleKey'])
-            ->withEnableFakeReceipt(empty($data['enableFakeReceipt']) ? null : $data['enableFakeReceipt'])
+            ->withEnableFakeReceipt($data['enableFakeReceipt'])
             ->withCreateWalletScript(empty($data['createWalletScript']) ? null : ScriptSetting::fromJson($data['createWalletScript']))
             ->withDepositScript(empty($data['depositScript']) ? null : ScriptSetting::fromJson($data['depositScript']))
             ->withWithdrawScript(empty($data['withdrawScript']) ? null : ScriptSetting::fromJson($data['withdrawScript']))

@@ -186,7 +186,7 @@ class InventoryModelMaster implements IModel {
             ->withDescription(empty($data['description']) ? null : $data['description'])
             ->withInitialCapacity(empty($data['initialCapacity']) && $data['initialCapacity'] !== 0 ? null : $data['initialCapacity'])
             ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
-            ->withProtectReferencedItem(empty($data['protectReferencedItem']) ? null : $data['protectReferencedItem'])
+            ->withProtectReferencedItem($data['protectReferencedItem'])
             ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
             ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }

@@ -185,7 +185,7 @@ class CreateVersionModelMasterRequest extends Gs2BasicRequest {
             ->withErrorVersion(empty($data['errorVersion']) ? null : Version::fromJson($data['errorVersion']))
             ->withScope(empty($data['scope']) ? null : $data['scope'])
             ->withCurrentVersion(empty($data['currentVersion']) ? null : Version::fromJson($data['currentVersion']))
-            ->withNeedSignature(empty($data['needSignature']) ? null : $data['needSignature'])
+            ->withNeedSignature($data['needSignature'])
             ->withSignatureKeyId(empty($data['signatureKeyId']) ? null : $data['signatureKeyId']);
     }
 

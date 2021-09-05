@@ -137,7 +137,7 @@ class CreateInventoryModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withInitialCapacity(empty($data['initialCapacity']) && $data['initialCapacity'] !== 0 ? null : $data['initialCapacity'])
             ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
-            ->withProtectReferencedItem(empty($data['protectReferencedItem']) ? null : $data['protectReferencedItem']);
+            ->withProtectReferencedItem($data['protectReferencedItem']);
     }
 
     public function toJson(): array {

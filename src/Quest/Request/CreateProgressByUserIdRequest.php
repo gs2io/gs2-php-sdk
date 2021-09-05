@@ -105,7 +105,7 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withQuestModelId(empty($data['questModelId']) ? null : $data['questModelId'])
-            ->withForce(empty($data['force']) ? null : $data['force'])
+            ->withForce($data['force'])
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

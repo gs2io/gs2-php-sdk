@@ -183,7 +183,7 @@ class QueryIssueStampSheetLogRequest extends Gs2BasicRequest {
             ->withAction(empty($data['action']) ? null : $data['action'])
             ->withBegin(empty($data['begin']) && $data['begin'] !== 0 ? null : $data['begin'])
             ->withEnd(empty($data['end']) && $data['end'] !== 0 ? null : $data['end'])
-            ->withLongTerm(empty($data['longTerm']) ? null : $data['longTerm'])
+            ->withLongTerm($data['longTerm'])
             ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
             ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }

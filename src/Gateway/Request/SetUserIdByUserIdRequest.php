@@ -73,7 +73,7 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
         return (new SetUserIdByUserIdRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withAllowConcurrentAccess(empty($data['allowConcurrentAccess']) ? null : $data['allowConcurrentAccess']);
+            ->withAllowConcurrentAccess($data['allowConcurrentAccess']);
     }
 
     public function toJson(): array {

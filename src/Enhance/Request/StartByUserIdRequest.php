@@ -143,7 +143,7 @@ class StartByUserIdRequest extends Gs2BasicRequest {
                 array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
             ))
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withForce(empty($data['force']) ? null : $data['force'])
+            ->withForce($data['force'])
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

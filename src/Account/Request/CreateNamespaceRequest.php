@@ -150,7 +150,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withChangePasswordIfTakeOver(empty($data['changePasswordIfTakeOver']) ? null : $data['changePasswordIfTakeOver'])
+            ->withChangePasswordIfTakeOver($data['changePasswordIfTakeOver'])
             ->withCreateAccountScript(empty($data['createAccountScript']) ? null : ScriptSetting::fromJson($data['createAccountScript']))
             ->withAuthenticationScript(empty($data['authenticationScript']) ? null : ScriptSetting::fromJson($data['authenticationScript']))
             ->withCreateTakeOverScript(empty($data['createTakeOverScript']) ? null : ScriptSetting::fromJson($data['createTakeOverScript']))

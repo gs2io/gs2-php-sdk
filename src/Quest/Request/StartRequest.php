@@ -121,7 +121,7 @@ class StartRequest extends Gs2BasicRequest {
             ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName'])
             ->withQuestName(empty($data['questName']) ? null : $data['questName'])
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withForce(empty($data['force']) ? null : $data['force'])
+            ->withForce($data['force'])
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

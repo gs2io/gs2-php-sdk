@@ -143,7 +143,7 @@ class StartRequest extends Gs2BasicRequest {
                 array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
             ))
             ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withForce(empty($data['force']) ? null : $data['force'])
+            ->withForce($data['force'])
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

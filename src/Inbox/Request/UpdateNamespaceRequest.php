@@ -181,7 +181,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withIsAutomaticDeletingEnabled(empty($data['isAutomaticDeletingEnabled']) ? null : $data['isAutomaticDeletingEnabled'])
+            ->withIsAutomaticDeletingEnabled($data['isAutomaticDeletingEnabled'])
             ->withReceiveMessageScript(empty($data['receiveMessageScript']) ? null : ScriptSetting::fromJson($data['receiveMessageScript']))
             ->withReadMessageScript(empty($data['readMessageScript']) ? null : ScriptSetting::fromJson($data['readMessageScript']))
             ->withDeleteMessageScript(empty($data['deleteMessageScript']) ? null : ScriptSetting::fromJson($data['deleteMessageScript']))

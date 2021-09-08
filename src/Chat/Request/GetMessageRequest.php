@@ -26,6 +26,10 @@ class GetMessageRequest extends Gs2BasicRequest {
     private $roomName;
     /** @var string */
     private $messageName;
+    /** @var string */
+    private $password;
+    /** @var string */
+    private $accessToken;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -66,6 +70,32 @@ class GetMessageRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getPassword(): ?string {
+		return $this->password;
+	}
+
+	public function setPassword(?string $password) {
+		$this->password = $password;
+	}
+
+	public function withPassword(?string $password): GetMessageRequest {
+		$this->password = $password;
+		return $this;
+	}
+
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+
+	public function withAccessToken(?string $accessToken): GetMessageRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?GetMessageRequest {
         if ($data === null) {
             return null;
@@ -73,7 +103,9 @@ class GetMessageRequest extends Gs2BasicRequest {
         return (new GetMessageRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
-            ->withMessageName(empty($data['messageName']) ? null : $data['messageName']);
+            ->withMessageName(empty($data['messageName']) ? null : $data['messageName'])
+            ->withPassword(empty($data['password']) ? null : $data['password'])
+            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
     }
 
     public function toJson(): array {
@@ -81,6 +113,8 @@ class GetMessageRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "roomName" => $this->getRoomName(),
             "messageName" => $this->getMessageName(),
+            "password" => $this->getPassword(),
+            "accessToken" => $this->getAccessToken(),
         );
     }
 }

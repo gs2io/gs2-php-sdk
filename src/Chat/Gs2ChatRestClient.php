@@ -51,18 +51,24 @@ use Gs2\Chat\Request\GetRoomRequest;
 use Gs2\Chat\Result\GetRoomResult;
 use Gs2\Chat\Request\UpdateRoomRequest;
 use Gs2\Chat\Result\UpdateRoomResult;
+use Gs2\Chat\Request\UpdateRoomFromBackendRequest;
+use Gs2\Chat\Result\UpdateRoomFromBackendResult;
 use Gs2\Chat\Request\DeleteRoomRequest;
 use Gs2\Chat\Result\DeleteRoomResult;
 use Gs2\Chat\Request\DeleteRoomFromBackendRequest;
 use Gs2\Chat\Result\DeleteRoomFromBackendResult;
 use Gs2\Chat\Request\DescribeMessagesRequest;
 use Gs2\Chat\Result\DescribeMessagesResult;
+use Gs2\Chat\Request\DescribeMessagesByUserIdRequest;
+use Gs2\Chat\Result\DescribeMessagesByUserIdResult;
 use Gs2\Chat\Request\PostRequest;
 use Gs2\Chat\Result\PostResult;
 use Gs2\Chat\Request\PostByUserIdRequest;
 use Gs2\Chat\Result\PostByUserIdResult;
 use Gs2\Chat\Request\GetMessageRequest;
 use Gs2\Chat\Result\GetMessageResult;
+use Gs2\Chat\Request\GetMessageByUserIdRequest;
+use Gs2\Chat\Result\GetMessageByUserIdResult;
 use Gs2\Chat\Request\DeleteMessageRequest;
 use Gs2\Chat\Result\DeleteMessageResult;
 use Gs2\Chat\Request\DescribeSubscribesRequest;
@@ -787,6 +793,79 @@ class UpdateRoomTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/room/{roomName}/user";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{roomName}", $this->request->getRoomName() === null|| strlen($this->request->getRoomName()) == 0 ? "null" : $this->request->getRoomName(), $url);
+
+        $json = [];
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getPassword() !== null) {
+            $json["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getWhiteListUserIds() !== null) {
+            $array = [];
+            foreach ($this->request->getWhiteListUserIds() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["whiteListUserIds"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateRoomFromBackendTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateRoomFromBackendRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateRoomFromBackendTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateRoomFromBackendRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateRoomFromBackendRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateRoomFromBackendResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
         $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/room/{roomName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
@@ -806,6 +885,9 @@ class UpdateRoomTask extends Gs2RestSessionTask {
                 array_push($array, $item);
             }
             $json["whiteListUserIds"] = $array;
+        }
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1010,6 +1092,79 @@ class DescribeMessagesTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeMessagesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeMessagesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeMessagesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeMessagesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeMessagesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeMessagesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/room/{roomName}/message/get";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{roomName}", $this->request->getRoomName() === null|| strlen($this->request->getRoomName()) == 0 ? "null" : $this->request->getRoomName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPassword() !== null) {
+            $queryStrings["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getUserId() !== null) {
+            $queryStrings["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getStartAt() !== null) {
+            $queryStrings["startAt"] = $this->request->getStartAt();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
 
         return parent::executeImpl();
     }
@@ -1189,6 +1344,77 @@ class GetMessageTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPassword() !== null) {
+            $queryStrings["password"] = $this->request->getPassword();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetMessageByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetMessageByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetMessageByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetMessageByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetMessageByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetMessageByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/room/{roomName}/message/{messageName}/get";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{roomName}", $this->request->getRoomName() === null|| strlen($this->request->getRoomName()) == 0 ? "null" : $this->request->getRoomName(), $url);
+        $url = str_replace("{messageName}", $this->request->getMessageName() === null|| strlen($this->request->getMessageName()) == 0 ? "null" : $this->request->getMessageName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPassword() !== null) {
+            $queryStrings["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getUserId() !== null) {
+            $queryStrings["userId"] = $this->request->getUserId();
         }
 
         if (count($queryStrings) > 0) {
@@ -2280,6 +2506,33 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param UpdateRoomFromBackendRequest $request
+     * @return PromiseInterface
+     */
+    public function updateRoomFromBackendAsync(
+            UpdateRoomFromBackendRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateRoomFromBackendTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateRoomFromBackendRequest $request
+     * @return UpdateRoomFromBackendResult
+     */
+    public function updateRoomFromBackend (
+            UpdateRoomFromBackendRequest $request
+    ): UpdateRoomFromBackendResult {
+        return $this->updateRoomFromBackendAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteRoomRequest $request
      * @return PromiseInterface
      */
@@ -2361,6 +2614,33 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DescribeMessagesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeMessagesByUserIdAsync(
+            DescribeMessagesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeMessagesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeMessagesByUserIdRequest $request
+     * @return DescribeMessagesByUserIdResult
+     */
+    public function describeMessagesByUserId (
+            DescribeMessagesByUserIdRequest $request
+    ): DescribeMessagesByUserIdResult {
+        return $this->describeMessagesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param PostRequest $request
      * @return PromiseInterface
      */
@@ -2437,6 +2717,33 @@ class Gs2ChatRestClient extends AbstractGs2Client {
             GetMessageRequest $request
     ): GetMessageResult {
         return $this->getMessageAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetMessageByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getMessageByUserIdAsync(
+            GetMessageByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetMessageByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetMessageByUserIdRequest $request
+     * @return GetMessageByUserIdResult
+     */
+    public function getMessageByUserId (
+            GetMessageByUserIdRequest $request
+    ): GetMessageByUserIdResult {
+        return $this->getMessageByUserIdAsync(
             $request
         )->wait();
     }

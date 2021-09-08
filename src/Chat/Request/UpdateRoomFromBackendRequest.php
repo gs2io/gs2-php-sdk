@@ -19,7 +19,7 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class UpdateRoomRequest extends Gs2BasicRequest {
+class UpdateRoomFromBackendRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
@@ -31,7 +31,7 @@ class UpdateRoomRequest extends Gs2BasicRequest {
     /** @var array */
     private $whiteListUserIds;
     /** @var string */
-    private $accessToken;
+    private $userId;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -41,7 +41,7 @@ class UpdateRoomRequest extends Gs2BasicRequest {
 		$this->namespaceName = $namespaceName;
 	}
 
-	public function withNamespaceName(?string $namespaceName): UpdateRoomRequest {
+	public function withNamespaceName(?string $namespaceName): UpdateRoomFromBackendRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -54,7 +54,7 @@ class UpdateRoomRequest extends Gs2BasicRequest {
 		$this->roomName = $roomName;
 	}
 
-	public function withRoomName(?string $roomName): UpdateRoomRequest {
+	public function withRoomName(?string $roomName): UpdateRoomFromBackendRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
@@ -67,7 +67,7 @@ class UpdateRoomRequest extends Gs2BasicRequest {
 		$this->metadata = $metadata;
 	}
 
-	public function withMetadata(?string $metadata): UpdateRoomRequest {
+	public function withMetadata(?string $metadata): UpdateRoomFromBackendRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
@@ -80,7 +80,7 @@ class UpdateRoomRequest extends Gs2BasicRequest {
 		$this->password = $password;
 	}
 
-	public function withPassword(?string $password): UpdateRoomRequest {
+	public function withPassword(?string $password): UpdateRoomFromBackendRequest {
 		$this->password = $password;
 		return $this;
 	}
@@ -93,29 +93,29 @@ class UpdateRoomRequest extends Gs2BasicRequest {
 		$this->whiteListUserIds = $whiteListUserIds;
 	}
 
-	public function withWhiteListUserIds(?array $whiteListUserIds): UpdateRoomRequest {
+	public function withWhiteListUserIds(?array $whiteListUserIds): UpdateRoomFromBackendRequest {
 		$this->whiteListUserIds = $whiteListUserIds;
 		return $this;
 	}
 
-	public function getAccessToken(): ?string {
-		return $this->accessToken;
+	public function getUserId(): ?string {
+		return $this->userId;
 	}
 
-	public function setAccessToken(?string $accessToken) {
-		$this->accessToken = $accessToken;
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
 	}
 
-	public function withAccessToken(?string $accessToken): UpdateRoomRequest {
-		$this->accessToken = $accessToken;
+	public function withUserId(?string $userId): UpdateRoomFromBackendRequest {
+		$this->userId = $userId;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?UpdateRoomRequest {
+    public static function fromJson(?array $data): ?UpdateRoomFromBackendRequest {
         if ($data === null) {
             return null;
         }
-        return (new UpdateRoomRequest())
+        return (new UpdateRoomFromBackendRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
@@ -126,7 +126,7 @@ class UpdateRoomRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('whiteListUserIds', $data) && $data['whiteListUserIds'] !== null ? $data['whiteListUserIds'] : []
             ))
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
     public function toJson(): array {
@@ -141,7 +141,7 @@ class UpdateRoomRequest extends Gs2BasicRequest {
                 },
                 $this->getWhiteListUserIds() !== null && $this->getWhiteListUserIds() !== null ? $this->getWhiteListUserIds() : []
             ),
-            "accessToken" => $this->getAccessToken(),
+            "userId" => $this->getUserId(),
         );
     }
 }

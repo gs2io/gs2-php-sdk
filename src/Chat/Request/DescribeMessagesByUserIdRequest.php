@@ -19,7 +19,7 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class DescribeMessagesRequest extends Gs2BasicRequest {
+class DescribeMessagesByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
@@ -27,7 +27,7 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
     /** @var string */
     private $password;
     /** @var string */
-    private $accessToken;
+    private $userId;
     /** @var int */
     private $startAt;
     /** @var int */
@@ -41,7 +41,7 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 		$this->namespaceName = $namespaceName;
 	}
 
-	public function withNamespaceName(?string $namespaceName): DescribeMessagesRequest {
+	public function withNamespaceName(?string $namespaceName): DescribeMessagesByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -54,7 +54,7 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 		$this->roomName = $roomName;
 	}
 
-	public function withRoomName(?string $roomName): DescribeMessagesRequest {
+	public function withRoomName(?string $roomName): DescribeMessagesByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
@@ -67,21 +67,21 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 		$this->password = $password;
 	}
 
-	public function withPassword(?string $password): DescribeMessagesRequest {
+	public function withPassword(?string $password): DescribeMessagesByUserIdRequest {
 		$this->password = $password;
 		return $this;
 	}
 
-	public function getAccessToken(): ?string {
-		return $this->accessToken;
+	public function getUserId(): ?string {
+		return $this->userId;
 	}
 
-	public function setAccessToken(?string $accessToken) {
-		$this->accessToken = $accessToken;
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
 	}
 
-	public function withAccessToken(?string $accessToken): DescribeMessagesRequest {
-		$this->accessToken = $accessToken;
+	public function withUserId(?string $userId): DescribeMessagesByUserIdRequest {
+		$this->userId = $userId;
 		return $this;
 	}
 
@@ -93,7 +93,7 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 		$this->startAt = $startAt;
 	}
 
-	public function withStartAt(?int $startAt): DescribeMessagesRequest {
+	public function withStartAt(?int $startAt): DescribeMessagesByUserIdRequest {
 		$this->startAt = $startAt;
 		return $this;
 	}
@@ -106,20 +106,20 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 		$this->limit = $limit;
 	}
 
-	public function withLimit(?int $limit): DescribeMessagesRequest {
+	public function withLimit(?int $limit): DescribeMessagesByUserIdRequest {
 		$this->limit = $limit;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?DescribeMessagesRequest {
+    public static function fromJson(?array $data): ?DescribeMessagesByUserIdRequest {
         if ($data === null) {
             return null;
         }
-        return (new DescribeMessagesRequest())
+        return (new DescribeMessagesByUserIdRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
             ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withStartAt(empty($data['startAt']) && $data['startAt'] !== 0 ? null : $data['startAt'])
             ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
@@ -129,7 +129,7 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "roomName" => $this->getRoomName(),
             "password" => $this->getPassword(),
-            "accessToken" => $this->getAccessToken(),
+            "userId" => $this->getUserId(),
             "startAt" => $this->getStartAt(),
             "limit" => $this->getLimit(),
         );

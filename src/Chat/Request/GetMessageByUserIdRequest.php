@@ -19,19 +19,17 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class DescribeMessagesRequest extends Gs2BasicRequest {
+class GetMessageByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
     private $roomName;
     /** @var string */
+    private $messageName;
+    /** @var string */
     private $password;
     /** @var string */
-    private $accessToken;
-    /** @var int */
-    private $startAt;
-    /** @var int */
-    private $limit;
+    private $userId;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -41,7 +39,7 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 		$this->namespaceName = $namespaceName;
 	}
 
-	public function withNamespaceName(?string $namespaceName): DescribeMessagesRequest {
+	public function withNamespaceName(?string $namespaceName): GetMessageByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -54,8 +52,21 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 		$this->roomName = $roomName;
 	}
 
-	public function withRoomName(?string $roomName): DescribeMessagesRequest {
+	public function withRoomName(?string $roomName): GetMessageByUserIdRequest {
 		$this->roomName = $roomName;
+		return $this;
+	}
+
+	public function getMessageName(): ?string {
+		return $this->messageName;
+	}
+
+	public function setMessageName(?string $messageName) {
+		$this->messageName = $messageName;
+	}
+
+	public function withMessageName(?string $messageName): GetMessageByUserIdRequest {
+		$this->messageName = $messageName;
 		return $this;
 	}
 
@@ -67,71 +78,43 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 		$this->password = $password;
 	}
 
-	public function withPassword(?string $password): DescribeMessagesRequest {
+	public function withPassword(?string $password): GetMessageByUserIdRequest {
 		$this->password = $password;
 		return $this;
 	}
 
-	public function getAccessToken(): ?string {
-		return $this->accessToken;
+	public function getUserId(): ?string {
+		return $this->userId;
 	}
 
-	public function setAccessToken(?string $accessToken) {
-		$this->accessToken = $accessToken;
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
 	}
 
-	public function withAccessToken(?string $accessToken): DescribeMessagesRequest {
-		$this->accessToken = $accessToken;
+	public function withUserId(?string $userId): GetMessageByUserIdRequest {
+		$this->userId = $userId;
 		return $this;
 	}
 
-	public function getStartAt(): ?int {
-		return $this->startAt;
-	}
-
-	public function setStartAt(?int $startAt) {
-		$this->startAt = $startAt;
-	}
-
-	public function withStartAt(?int $startAt): DescribeMessagesRequest {
-		$this->startAt = $startAt;
-		return $this;
-	}
-
-	public function getLimit(): ?int {
-		return $this->limit;
-	}
-
-	public function setLimit(?int $limit) {
-		$this->limit = $limit;
-	}
-
-	public function withLimit(?int $limit): DescribeMessagesRequest {
-		$this->limit = $limit;
-		return $this;
-	}
-
-    public static function fromJson(?array $data): ?DescribeMessagesRequest {
+    public static function fromJson(?array $data): ?GetMessageByUserIdRequest {
         if ($data === null) {
             return null;
         }
-        return (new DescribeMessagesRequest())
+        return (new GetMessageByUserIdRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withMessageName(empty($data['messageName']) ? null : $data['messageName'])
             ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withStartAt(empty($data['startAt']) && $data['startAt'] !== 0 ? null : $data['startAt'])
-            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
+            ->withUserId(empty($data['userId']) ? null : $data['userId']);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "roomName" => $this->getRoomName(),
+            "messageName" => $this->getMessageName(),
             "password" => $this->getPassword(),
-            "accessToken" => $this->getAccessToken(),
-            "startAt" => $this->getStartAt(),
-            "limit" => $this->getLimit(),
+            "userId" => $this->getUserId(),
         );
     }
 }

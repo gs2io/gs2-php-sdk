@@ -23,6 +23,8 @@ use Gs2\Friend\Model\FriendRequest;
 class DescribeReceiveRequestsResult implements IResult {
     /** @var array */
     private $items;
+    /** @var string */
+    private $nextPageToken;
 
 	public function getItems(): ?array {
 		return $this->items;
@@ -37,6 +39,19 @@ class DescribeReceiveRequestsResult implements IResult {
 		return $this;
 	}
 
+	public function getNextPageToken(): ?string {
+		return $this->nextPageToken;
+	}
+
+	public function setNextPageToken(?string $nextPageToken) {
+		$this->nextPageToken = $nextPageToken;
+	}
+
+	public function withNextPageToken(?string $nextPageToken): DescribeReceiveRequestsResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?DescribeReceiveRequestsResult {
         if ($data === null) {
             return null;
@@ -47,7 +62,8 @@ class DescribeReceiveRequestsResult implements IResult {
                     return FriendRequest::fromJson($item);
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
-            ));
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
     }
 
     public function toJson(): array {
@@ -58,6 +74,7 @@ class DescribeReceiveRequestsResult implements IResult {
                 },
                 $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
             ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
     }
 }

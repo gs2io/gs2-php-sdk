@@ -22,13 +22,13 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class CountExecuteStampTaskLogRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
-    /** @var string */
+    /** @var bool */
     private $service;
-    /** @var string */
+    /** @var bool */
     private $method;
-    /** @var string */
+    /** @var bool */
     private $userId;
-    /** @var string */
+    /** @var bool */
     private $action;
     /** @var int */
     private $begin;
@@ -54,54 +54,54 @@ class CountExecuteStampTaskLogRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
-	public function getService(): ?string {
+	public function getService(): ?bool {
 		return $this->service;
 	}
 
-	public function setService(?string $service) {
+	public function setService(?bool $service) {
 		$this->service = $service;
 	}
 
-	public function withService(?string $service): CountExecuteStampTaskLogRequest {
+	public function withService(?bool $service): CountExecuteStampTaskLogRequest {
 		$this->service = $service;
 		return $this;
 	}
 
-	public function getMethod(): ?string {
+	public function getMethod(): ?bool {
 		return $this->method;
 	}
 
-	public function setMethod(?string $method) {
+	public function setMethod(?bool $method) {
 		$this->method = $method;
 	}
 
-	public function withMethod(?string $method): CountExecuteStampTaskLogRequest {
+	public function withMethod(?bool $method): CountExecuteStampTaskLogRequest {
 		$this->method = $method;
 		return $this;
 	}
 
-	public function getUserId(): ?string {
+	public function getUserId(): ?bool {
 		return $this->userId;
 	}
 
-	public function setUserId(?string $userId) {
+	public function setUserId(?bool $userId) {
 		$this->userId = $userId;
 	}
 
-	public function withUserId(?string $userId): CountExecuteStampTaskLogRequest {
+	public function withUserId(?bool $userId): CountExecuteStampTaskLogRequest {
 		$this->userId = $userId;
 		return $this;
 	}
 
-	public function getAction(): ?string {
+	public function getAction(): ?bool {
 		return $this->action;
 	}
 
-	public function setAction(?string $action) {
+	public function setAction(?bool $action) {
 		$this->action = $action;
 	}
 
-	public function withAction(?string $action): CountExecuteStampTaskLogRequest {
+	public function withAction(?bool $action): CountExecuteStampTaskLogRequest {
 		$this->action = $action;
 		return $this;
 	}
@@ -177,10 +177,10 @@ class CountExecuteStampTaskLogRequest extends Gs2BasicRequest {
         }
         return (new CountExecuteStampTaskLogRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withService(empty($data['service']) ? null : $data['service'])
-            ->withMethod(empty($data['method']) ? null : $data['method'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withAction(empty($data['action']) ? null : $data['action'])
+            ->withService($data['service'])
+            ->withMethod($data['method'])
+            ->withUserId($data['userId'])
+            ->withAction($data['action'])
             ->withBegin(empty($data['begin']) && $data['begin'] !== 0 ? null : $data['begin'])
             ->withEnd(empty($data['end']) && $data['end'] !== 0 ? null : $data['end'])
             ->withLongTerm($data['longTerm'])

@@ -1832,6 +1832,12 @@ class DescribeSendRequestsTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);
@@ -1892,6 +1898,12 @@ class DescribeSendRequestsByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
         }
 
         if (count($queryStrings) > 0) {
@@ -2306,6 +2318,12 @@ class DescribeReceiveRequestsTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);
@@ -2366,6 +2384,12 @@ class DescribeReceiveRequestsByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
         }
 
         if (count($queryStrings) > 0) {

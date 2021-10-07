@@ -57,6 +57,8 @@ use Gs2\Log\Request\QueryExecuteStampTaskLogRequest;
 use Gs2\Log\Result\QueryExecuteStampTaskLogResult;
 use Gs2\Log\Request\CountExecuteStampTaskLogRequest;
 use Gs2\Log\Result\CountExecuteStampTaskLogResult;
+use Gs2\Log\Request\PutLogRequest;
+use Gs2\Log\Result\PutLogResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -576,13 +578,13 @@ class CountAccessLogTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getService() !== null) {
-            $queryStrings["service"] = $this->request->getService();
+            $queryStrings["service"] = $this->request->getService() ? "true" : "false";
         }
         if ($this->request->getMethod() !== null) {
-            $queryStrings["method"] = $this->request->getMethod();
+            $queryStrings["method"] = $this->request->getMethod() ? "true" : "false";
         }
         if ($this->request->getUserId() !== null) {
-            $queryStrings["userId"] = $this->request->getUserId();
+            $queryStrings["userId"] = $this->request->getUserId() ? "true" : "false";
         }
         if ($this->request->getBegin() !== null) {
             $queryStrings["begin"] = $this->request->getBegin();
@@ -741,16 +743,16 @@ class CountIssueStampSheetLogTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getService() !== null) {
-            $queryStrings["service"] = $this->request->getService();
+            $queryStrings["service"] = $this->request->getService() ? "true" : "false";
         }
         if ($this->request->getMethod() !== null) {
-            $queryStrings["method"] = $this->request->getMethod();
+            $queryStrings["method"] = $this->request->getMethod() ? "true" : "false";
         }
         if ($this->request->getUserId() !== null) {
-            $queryStrings["userId"] = $this->request->getUserId();
+            $queryStrings["userId"] = $this->request->getUserId() ? "true" : "false";
         }
         if ($this->request->getAction() !== null) {
-            $queryStrings["action"] = $this->request->getAction();
+            $queryStrings["action"] = $this->request->getAction() ? "true" : "false";
         }
         if ($this->request->getBegin() !== null) {
             $queryStrings["begin"] = $this->request->getBegin();
@@ -909,16 +911,16 @@ class CountExecuteStampSheetLogTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getService() !== null) {
-            $queryStrings["service"] = $this->request->getService();
+            $queryStrings["service"] = $this->request->getService() ? "true" : "false";
         }
         if ($this->request->getMethod() !== null) {
-            $queryStrings["method"] = $this->request->getMethod();
+            $queryStrings["method"] = $this->request->getMethod() ? "true" : "false";
         }
         if ($this->request->getUserId() !== null) {
-            $queryStrings["userId"] = $this->request->getUserId();
+            $queryStrings["userId"] = $this->request->getUserId() ? "true" : "false";
         }
         if ($this->request->getAction() !== null) {
-            $queryStrings["action"] = $this->request->getAction();
+            $queryStrings["action"] = $this->request->getAction() ? "true" : "false";
         }
         if ($this->request->getBegin() !== null) {
             $queryStrings["begin"] = $this->request->getBegin();
@@ -1077,16 +1079,16 @@ class CountExecuteStampTaskLogTask extends Gs2RestSessionTask {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
         if ($this->request->getService() !== null) {
-            $queryStrings["service"] = $this->request->getService();
+            $queryStrings["service"] = $this->request->getService() ? "true" : "false";
         }
         if ($this->request->getMethod() !== null) {
-            $queryStrings["method"] = $this->request->getMethod();
+            $queryStrings["method"] = $this->request->getMethod() ? "true" : "false";
         }
         if ($this->request->getUserId() !== null) {
-            $queryStrings["userId"] = $this->request->getUserId();
+            $queryStrings["userId"] = $this->request->getUserId() ? "true" : "false";
         }
         if ($this->request->getAction() !== null) {
-            $queryStrings["action"] = $this->request->getAction();
+            $queryStrings["action"] = $this->request->getAction() ? "true" : "false";
         }
         if ($this->request->getBegin() !== null) {
             $queryStrings["begin"] = $this->request->getBegin();
@@ -1109,6 +1111,68 @@ class CountExecuteStampTaskLogTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PutLogTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PutLogRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PutLogTask constructor.
+     * @param Gs2RestSession $session
+     * @param PutLogRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PutLogRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PutLogResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/log/put";
+
+        $json = [];
+        if ($this->request->getLoggingNamespaceId() !== null) {
+            $json["loggingNamespaceId"] = $this->request->getLoggingNamespaceId();
+        }
+        if ($this->request->getLogCategory() !== null) {
+            $json["logCategory"] = $this->request->getLogCategory();
+        }
+        if ($this->request->getPayload() !== null) {
+            $json["payload"] = $this->request->getPayload();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -1512,6 +1576,33 @@ class Gs2LogRestClient extends AbstractGs2Client {
             CountExecuteStampTaskLogRequest $request
     ): CountExecuteStampTaskLogResult {
         return $this->countExecuteStampTaskLogAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PutLogRequest $request
+     * @return PromiseInterface
+     */
+    public function putLogAsync(
+            PutLogRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PutLogTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PutLogRequest $request
+     * @return PutLogResult
+     */
+    public function putLog (
+            PutLogRequest $request
+    ): PutLogResult {
+        return $this->putLogAsync(
             $request
         )->wait();
     }

@@ -15,41 +15,21 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Enhance\Result;
+namespace Gs2\Ranking\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Enhance\Model\ScriptSetting;
-use Gs2\Enhance\Model\LogSetting;
-use Gs2\Enhance\Model\Namespace_;
 
-class GetNamespaceResult implements IResult {
-    /** @var Namespace_ */
-    private $item;
+class CalcRankingResult implements IResult {
 
-	public function getItem(): ?Namespace_ {
-		return $this->item;
-	}
-
-	public function setItem(?Namespace_ $item) {
-		$this->item = $item;
-	}
-
-	public function withItem(?Namespace_ $item): GetNamespaceResult {
-		$this->item = $item;
-		return $this;
-	}
-
-    public static function fromJson(?array $data): ?GetNamespaceResult {
+    public static function fromJson(?array $data): ?CalcRankingResult {
         if ($data === null) {
             return null;
         }
-        return (new GetNamespaceResult())
-            ->withItem(empty($data['item']) ? null : Namespace_::fromJson($data['item']));
+        return (new CalcRankingResult());
     }
 
     public function toJson(): array {
         return array(
-            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

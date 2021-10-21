@@ -38,6 +38,10 @@ class Subscribe implements IModel {
 	 */
 	private $targetUserIds;
 	/**
+     * @var array
+	 */
+	private $subscribedUserIds;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -94,6 +98,19 @@ class Subscribe implements IModel {
 		return $this;
 	}
 
+	public function getSubscribedUserIds(): ?array {
+		return $this->subscribedUserIds;
+	}
+
+	public function setSubscribedUserIds(?array $subscribedUserIds) {
+		$this->subscribedUserIds = $subscribedUserIds;
+	}
+
+	public function withSubscribedUserIds(?array $subscribedUserIds): Subscribe {
+		$this->subscribedUserIds = $subscribedUserIds;
+		return $this;
+	}
+
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -121,6 +138,12 @@ class Subscribe implements IModel {
                 },
                 array_key_exists('targetUserIds', $data) && $data['targetUserIds'] !== null ? $data['targetUserIds'] : []
             ))
+            ->withSubscribedUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('subscribedUserIds', $data) && $data['subscribedUserIds'] !== null ? $data['subscribedUserIds'] : []
+            ))
             ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
     }
 
@@ -134,6 +157,12 @@ class Subscribe implements IModel {
                     return $item;
                 },
                 $this->getTargetUserIds() !== null && $this->getTargetUserIds() !== null ? $this->getTargetUserIds() : []
+            ),
+            "subscribedUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getSubscribedUserIds() !== null && $this->getSubscribedUserIds() !== null ? $this->getSubscribedUserIds() : []
             ),
             "createdAt" => $this->getCreatedAt(),
         );

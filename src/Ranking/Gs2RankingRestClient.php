@@ -93,6 +93,8 @@ use Gs2\Ranking\Request\PutScoreRequest;
 use Gs2\Ranking\Result\PutScoreResult;
 use Gs2\Ranking\Request\PutScoreByUserIdRequest;
 use Gs2\Ranking\Result\PutScoreByUserIdResult;
+use Gs2\Ranking\Request\CalcRankingRequest;
+use Gs2\Ranking\Result\CalcRankingResult;
 use Gs2\Ranking\Request\ExportMasterRequest;
 use Gs2\Ranking\Result\ExportMasterResult;
 use Gs2\Ranking\Request\GetCurrentRankingMasterRequest;
@@ -2134,6 +2136,62 @@ class PutScoreByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class CalcRankingTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CalcRankingRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CalcRankingTask constructor.
+     * @param Gs2RestSession $session
+     * @param CalcRankingRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CalcRankingRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CalcRankingResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/category/{categoryName}/calc/ranking";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ExportMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -3241,6 +3299,33 @@ class Gs2RankingRestClient extends AbstractGs2Client {
             PutScoreByUserIdRequest $request
     ): PutScoreByUserIdResult {
         return $this->putScoreByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CalcRankingRequest $request
+     * @return PromiseInterface
+     */
+    public function calcRankingAsync(
+            CalcRankingRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CalcRankingTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CalcRankingRequest $request
+     * @return CalcRankingResult
+     */
+    public function calcRanking (
+            CalcRankingRequest $request
+    ): CalcRankingResult {
+        return $this->calcRankingAsync(
             $request
         )->wait();
     }

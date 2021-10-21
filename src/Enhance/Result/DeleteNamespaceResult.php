@@ -18,6 +18,7 @@
 namespace Gs2\Enhance\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Enhance\Model\ScriptSetting;
 use Gs2\Enhance\Model\LogSetting;
 use Gs2\Enhance\Model\Namespace_;
 

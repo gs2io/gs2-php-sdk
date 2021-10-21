@@ -18,6 +18,7 @@
 namespace Gs2\Enhance\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Enhance\Model\ScriptSetting;
 use Gs2\Enhance\Model\LogSetting;
 
 class UpdateNamespaceRequest extends Gs2BasicRequest {
@@ -31,6 +32,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $queueNamespaceId;
     /** @var string */
     private $keyId;
+    /** @var ScriptSetting */
+    private $enhanceScript;
     /** @var LogSetting */
     private $logSetting;
 
@@ -99,6 +102,19 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getEnhanceScript(): ?ScriptSetting {
+		return $this->enhanceScript;
+	}
+
+	public function setEnhanceScript(?ScriptSetting $enhanceScript) {
+		$this->enhanceScript = $enhanceScript;
+	}
+
+	public function withEnhanceScript(?ScriptSetting $enhanceScript): UpdateNamespaceRequest {
+		$this->enhanceScript = $enhanceScript;
+		return $this;
+	}
+
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -122,6 +138,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withEnableDirectEnhance($data['enableDirectEnhance'])
             ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
             ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withEnhanceScript(empty($data['enhanceScript']) ? null : ScriptSetting::fromJson($data['enhanceScript']))
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
@@ -132,6 +149,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "enableDirectEnhance" => $this->getEnableDirectEnhance(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),
+            "enhanceScript" => $this->getEnhanceScript() !== null ? $this->getEnhanceScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

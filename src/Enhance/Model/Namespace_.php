@@ -46,6 +46,10 @@ class Namespace_ implements IModel {
 	 */
 	private $keyId;
 	/**
+     * @var ScriptSetting
+	 */
+	private $enhanceScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -136,6 +140,19 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getEnhanceScript(): ?ScriptSetting {
+		return $this->enhanceScript;
+	}
+
+	public function setEnhanceScript(?ScriptSetting $enhanceScript) {
+		$this->enhanceScript = $enhanceScript;
+	}
+
+	public function withEnhanceScript(?ScriptSetting $enhanceScript): Namespace_ {
+		$this->enhanceScript = $enhanceScript;
+		return $this;
+	}
+
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -186,6 +203,7 @@ class Namespace_ implements IModel {
             ->withEnableDirectEnhance($data['enableDirectEnhance'])
             ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
             ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withEnhanceScript(empty($data['enhanceScript']) ? null : ScriptSetting::fromJson($data['enhanceScript']))
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
             ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
             ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
@@ -199,6 +217,7 @@ class Namespace_ implements IModel {
             "enableDirectEnhance" => $this->getEnableDirectEnhance(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),
+            "enhanceScript" => $this->getEnhanceScript() !== null ? $this->getEnhanceScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

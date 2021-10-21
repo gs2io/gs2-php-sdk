@@ -20,16 +20,33 @@ namespace Gs2\Project\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 
 class DeleteAccountRequest extends Gs2BasicRequest {
+    /** @var string */
+    private $accountToken;
+
+	public function getAccountToken(): ?string {
+		return $this->accountToken;
+	}
+
+	public function setAccountToken(?string $accountToken) {
+		$this->accountToken = $accountToken;
+	}
+
+	public function withAccountToken(?string $accountToken): DeleteAccountRequest {
+		$this->accountToken = $accountToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteAccountRequest {
         if ($data === null) {
             return null;
         }
-        return (new DeleteAccountRequest());
+        return (new DeleteAccountRequest())
+            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
     }
 
     public function toJson(): array {
         return array(
+            "accountToken" => $this->getAccountToken(),
         );
     }
 }

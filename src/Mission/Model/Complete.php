@@ -44,6 +44,10 @@ class Complete implements IModel {
 	/**
      * @var int
 	 */
+	private $nextResetAt;
+	/**
+     * @var int
+	 */
 	private $createdAt;
 	/**
      * @var int
@@ -115,6 +119,19 @@ class Complete implements IModel {
 		return $this;
 	}
 
+	public function getNextResetAt(): ?int {
+		return $this->nextResetAt;
+	}
+
+	public function setNextResetAt(?int $nextResetAt) {
+		$this->nextResetAt = $nextResetAt;
+	}
+
+	public function withNextResetAt(?int $nextResetAt): Complete {
+		$this->nextResetAt = $nextResetAt;
+		return $this;
+	}
+
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -161,6 +178,7 @@ class Complete implements IModel {
                 },
                 array_key_exists('receivedMissionTaskNames', $data) && $data['receivedMissionTaskNames'] !== null ? $data['receivedMissionTaskNames'] : []
             ))
+            ->withNextResetAt(empty($data['nextResetAt']) && $data['nextResetAt'] !== 0 ? null : $data['nextResetAt'])
             ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
             ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
@@ -182,6 +200,7 @@ class Complete implements IModel {
                 },
                 $this->getReceivedMissionTaskNames() !== null && $this->getReceivedMissionTaskNames() !== null ? $this->getReceivedMissionTaskNames() : []
             ),
+            "nextResetAt" => $this->getNextResetAt(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

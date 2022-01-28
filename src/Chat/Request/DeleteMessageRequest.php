@@ -25,6 +25,8 @@ class DeleteMessageRequest extends Gs2BasicRequest {
     /** @var string */
     private $roomName;
     /** @var string */
+    private $userId;
+    /** @var string */
     private $messageName;
 
 	public function getNamespaceName(): ?string {
@@ -53,6 +55,19 @@ class DeleteMessageRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+
+	public function withUserId(?string $userId): DeleteMessageRequest {
+		$this->userId = $userId;
+		return $this;
+	}
+
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
@@ -73,6 +88,7 @@ class DeleteMessageRequest extends Gs2BasicRequest {
         return (new DeleteMessageRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
             ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withMessageName(empty($data['messageName']) ? null : $data['messageName']);
     }
 
@@ -80,6 +96,7 @@ class DeleteMessageRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "roomName" => $this->getRoomName(),
+            "userId" => $this->getUserId(),
             "messageName" => $this->getMessageName(),
         );
     }

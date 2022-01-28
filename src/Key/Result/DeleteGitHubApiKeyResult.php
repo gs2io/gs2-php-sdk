@@ -18,18 +18,36 @@
 namespace Gs2\Key\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Key\Model\GitHubApiKey;
 
 class DeleteGitHubApiKeyResult implements IResult {
+    /** @var GitHubApiKey */
+    private $item;
+
+	public function getItem(): ?GitHubApiKey {
+		return $this->item;
+	}
+
+	public function setItem(?GitHubApiKey $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?GitHubApiKey $item): DeleteGitHubApiKeyResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteGitHubApiKeyResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteGitHubApiKeyResult());
+        return (new DeleteGitHubApiKeyResult())
+            ->withItem(empty($data['item']) ? null : GitHubApiKey::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

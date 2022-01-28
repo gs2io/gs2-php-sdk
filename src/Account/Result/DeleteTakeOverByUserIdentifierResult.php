@@ -18,18 +18,36 @@
 namespace Gs2\Account\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Account\Model\TakeOver;
 
 class DeleteTakeOverByUserIdentifierResult implements IResult {
+    /** @var TakeOver */
+    private $item;
+
+	public function getItem(): ?TakeOver {
+		return $this->item;
+	}
+
+	public function setItem(?TakeOver $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?TakeOver $item): DeleteTakeOverByUserIdentifierResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteTakeOverByUserIdentifierResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteTakeOverByUserIdentifierResult());
+        return (new DeleteTakeOverByUserIdentifierResult())
+            ->withItem(empty($data['item']) ? null : TakeOver::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

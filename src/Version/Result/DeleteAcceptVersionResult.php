@@ -18,18 +18,37 @@
 namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Version\Model\Version;
+use Gs2\Version\Model\AcceptVersion;
 
 class DeleteAcceptVersionResult implements IResult {
+    /** @var AcceptVersion */
+    private $item;
+
+	public function getItem(): ?AcceptVersion {
+		return $this->item;
+	}
+
+	public function setItem(?AcceptVersion $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?AcceptVersion $item): DeleteAcceptVersionResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteAcceptVersionResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteAcceptVersionResult());
+        return (new DeleteAcceptVersionResult())
+            ->withItem(empty($data['item']) ? null : AcceptVersion::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

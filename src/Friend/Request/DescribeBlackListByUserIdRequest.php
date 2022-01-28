@@ -24,6 +24,10 @@ class DescribeBlackListByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $userId;
+    /** @var string */
+    private $pageToken;
+    /** @var int */
+    private $limit;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -51,19 +55,49 @@ class DescribeBlackListByUserIdRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+
+	public function withPageToken(?string $pageToken): DescribeBlackListByUserIdRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+
+	public function withLimit(?int $limit): DescribeBlackListByUserIdRequest {
+		$this->limit = $limit;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?DescribeBlackListByUserIdRequest {
         if ($data === null) {
             return null;
         }
         return (new DescribeBlackListByUserIdRequest())
             ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId']);
+            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
+            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
         );
     }
 }

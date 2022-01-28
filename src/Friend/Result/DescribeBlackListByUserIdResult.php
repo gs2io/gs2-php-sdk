@@ -22,6 +22,8 @@ use Gs2\Core\Model\IResult;
 class DescribeBlackListByUserIdResult implements IResult {
     /** @var array */
     private $items;
+    /** @var string */
+    private $nextPageToken;
 
 	public function getItems(): ?array {
 		return $this->items;
@@ -36,6 +38,19 @@ class DescribeBlackListByUserIdResult implements IResult {
 		return $this;
 	}
 
+	public function getNextPageToken(): ?string {
+		return $this->nextPageToken;
+	}
+
+	public function setNextPageToken(?string $nextPageToken) {
+		$this->nextPageToken = $nextPageToken;
+	}
+
+	public function withNextPageToken(?string $nextPageToken): DescribeBlackListByUserIdResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?DescribeBlackListByUserIdResult {
         if ($data === null) {
             return null;
@@ -46,7 +61,8 @@ class DescribeBlackListByUserIdResult implements IResult {
                     return $item;
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
-            ));
+            ))
+            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
     }
 
     public function toJson(): array {
@@ -57,6 +73,7 @@ class DescribeBlackListByUserIdResult implements IResult {
                 },
                 $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
             ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
     }
 }

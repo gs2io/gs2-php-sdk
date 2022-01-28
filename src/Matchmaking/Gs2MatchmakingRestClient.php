@@ -654,6 +654,9 @@ class CreateGatheringTask extends Gs2RestSessionTask {
         if ($this->request->getExpiresAt() !== null) {
             $json["expiresAt"] = $this->request->getExpiresAt();
         }
+        if ($this->request->getExpiresAtTimeSpan() !== null) {
+            $json["expiresAtTimeSpan"] = $this->request->getExpiresAtTimeSpan()->toJson();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -742,6 +745,9 @@ class CreateGatheringByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getExpiresAt() !== null) {
             $json["expiresAt"] = $this->request->getExpiresAt();
+        }
+        if ($this->request->getExpiresAtTimeSpan() !== null) {
+            $json["expiresAtTimeSpan"] = $this->request->getExpiresAtTimeSpan()->toJson();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

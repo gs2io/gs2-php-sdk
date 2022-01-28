@@ -45,10 +45,6 @@ class InventoryModel implements IModel {
      * @var bool
 	 */
 	private $protectReferencedItem;
-	/**
-     * @var array
-	 */
-	private $itemModels;
 
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
@@ -128,19 +124,6 @@ class InventoryModel implements IModel {
 		return $this;
 	}
 
-	public function getItemModels(): ?array {
-		return $this->itemModels;
-	}
-
-	public function setItemModels(?array $itemModels) {
-		$this->itemModels = $itemModels;
-	}
-
-	public function withItemModels(?array $itemModels): InventoryModel {
-		$this->itemModels = $itemModels;
-		return $this;
-	}
-
     public static function fromJson(?array $data): ?InventoryModel {
         if ($data === null) {
             return null;
@@ -151,13 +134,7 @@ class InventoryModel implements IModel {
             ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
             ->withInitialCapacity(empty($data['initialCapacity']) && $data['initialCapacity'] !== 0 ? null : $data['initialCapacity'])
             ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
-            ->withProtectReferencedItem($data['protectReferencedItem'])
-            ->withItemModels(array_map(
-                function ($item) {
-                    return ItemModel::fromJson($item);
-                },
-                array_key_exists('itemModels', $data) && $data['itemModels'] !== null ? $data['itemModels'] : []
-            ));
+            ->withProtectReferencedItem($data['protectReferencedItem']);
     }
 
     public function toJson(): array {
@@ -168,12 +145,6 @@ class InventoryModel implements IModel {
             "initialCapacity" => $this->getInitialCapacity(),
             "maxCapacity" => $this->getMaxCapacity(),
             "protectReferencedItem" => $this->getProtectReferencedItem(),
-            "itemModels" => array_map(
-                function ($item) {
-                    return $item->toJson();
-                },
-                $this->getItemModels() !== null && $this->getItemModels() !== null ? $this->getItemModels() : []
-            ),
         );
     }
 }

@@ -22,6 +22,7 @@ use Gs2\Matchmaking\Model\Attribute;
 use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\AttributeRange;
 use Gs2\Matchmaking\Model\CapacityOfRole;
+use Gs2\Matchmaking\Model\TimeSpan;
 
 class CreateGatheringRequest extends Gs2BasicRequest {
     /** @var string */
@@ -38,6 +39,8 @@ class CreateGatheringRequest extends Gs2BasicRequest {
     private $allowUserIds;
     /** @var int */
     private $expiresAt;
+    /** @var TimeSpan */
+    private $expiresAtTimeSpan;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -130,6 +133,19 @@ class CreateGatheringRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getExpiresAtTimeSpan(): ?TimeSpan {
+		return $this->expiresAtTimeSpan;
+	}
+
+	public function setExpiresAtTimeSpan(?TimeSpan $expiresAtTimeSpan) {
+		$this->expiresAtTimeSpan = $expiresAtTimeSpan;
+	}
+
+	public function withExpiresAtTimeSpan(?TimeSpan $expiresAtTimeSpan): CreateGatheringRequest {
+		$this->expiresAtTimeSpan = $expiresAtTimeSpan;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?CreateGatheringRequest {
         if ($data === null) {
             return null;
@@ -156,7 +172,8 @@ class CreateGatheringRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
+            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt'])
+            ->withExpiresAtTimeSpan(empty($data['expiresAtTimeSpan']) ? null : TimeSpan::fromJson($data['expiresAtTimeSpan']));
     }
 
     public function toJson(): array {
@@ -183,6 +200,7 @@ class CreateGatheringRequest extends Gs2BasicRequest {
                 $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
             ),
             "expiresAt" => $this->getExpiresAt(),
+            "expiresAtTimeSpan" => $this->getExpiresAtTimeSpan() !== null ? $this->getExpiresAtTimeSpan()->toJson() : null,
         );
     }
 }

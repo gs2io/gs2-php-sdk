@@ -18,18 +18,37 @@
 namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inbox\Model\AcquireAction;
+use Gs2\Inbox\Model\Message;
 
 class DeleteMessageResult implements IResult {
+    /** @var Message */
+    private $item;
+
+	public function getItem(): ?Message {
+		return $this->item;
+	}
+
+	public function setItem(?Message $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Message $item): DeleteMessageResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteMessageResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteMessageResult());
+        return (new DeleteMessageResult())
+            ->withItem(empty($data['item']) ? null : Message::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

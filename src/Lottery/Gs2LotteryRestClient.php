@@ -85,12 +85,12 @@ use Gs2\Lottery\Request\GetPrizeTableRequest;
 use Gs2\Lottery\Result\GetPrizeTableResult;
 use Gs2\Lottery\Request\DrawByUserIdRequest;
 use Gs2\Lottery\Result\DrawByUserIdResult;
+use Gs2\Lottery\Request\DrawByStampSheetRequest;
+use Gs2\Lottery\Result\DrawByStampSheetResult;
 use Gs2\Lottery\Request\DescribeProbabilitiesRequest;
 use Gs2\Lottery\Result\DescribeProbabilitiesResult;
 use Gs2\Lottery\Request\DescribeProbabilitiesByUserIdRequest;
 use Gs2\Lottery\Result\DescribeProbabilitiesByUserIdResult;
-use Gs2\Lottery\Request\DrawByStampSheetRequest;
-use Gs2\Lottery\Result\DrawByStampSheetResult;
 use Gs2\Lottery\Request\ExportMasterRequest;
 use Gs2\Lottery\Result\ExportMasterResult;
 use Gs2\Lottery\Request\GetCurrentLotteryMasterRequest;
@@ -1856,6 +1856,65 @@ class DrawByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DrawByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DrawByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DrawByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param DrawByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DrawByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DrawByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/draw";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeProbabilitiesTask extends Gs2RestSessionTask {
 
     /**
@@ -1964,65 +2023,6 @@ class DescribeProbabilitiesByUserIdTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DrawByStampSheetTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DrawByStampSheetRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DrawByStampSheetTask constructor.
-     * @param Gs2RestSession $session
-     * @param DrawByStampSheetRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DrawByStampSheetRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DrawByStampSheetResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/draw";
-
-        $json = [];
-        if ($this->request->getStampSheet() !== null) {
-            $json["stampSheet"] = $this->request->getStampSheet();
-        }
-        if ($this->request->getKeyId() !== null) {
-            $json["keyId"] = $this->request->getKeyId();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -3039,6 +3039,33 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DrawByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function drawByStampSheetAsync(
+            DrawByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DrawByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DrawByStampSheetRequest $request
+     * @return DrawByStampSheetResult
+     */
+    public function drawByStampSheet (
+            DrawByStampSheetRequest $request
+    ): DrawByStampSheetResult {
+        return $this->drawByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DescribeProbabilitiesRequest $request
      * @return PromiseInterface
      */
@@ -3088,33 +3115,6 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
             DescribeProbabilitiesByUserIdRequest $request
     ): DescribeProbabilitiesByUserIdResult {
         return $this->describeProbabilitiesByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param DrawByStampSheetRequest $request
-     * @return PromiseInterface
-     */
-    public function drawByStampSheetAsync(
-            DrawByStampSheetRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DrawByStampSheetTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DrawByStampSheetRequest $request
-     * @return DrawByStampSheetResult
-     */
-    public function drawByStampSheet (
-            DrawByStampSheetRequest $request
-    ): DrawByStampSheetResult {
-        return $this->drawByStampSheetAsync(
             $request
         )->wait();
     }

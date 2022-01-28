@@ -1475,6 +1475,9 @@ class DeleteMessageTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getUserId() !== null) {
+            $queryStrings["userId"] = $this->request->getUserId();
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);

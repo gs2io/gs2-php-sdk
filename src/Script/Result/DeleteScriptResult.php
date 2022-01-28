@@ -18,18 +18,36 @@
 namespace Gs2\Script\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Script\Model\Script;
 
 class DeleteScriptResult implements IResult {
+    /** @var Script */
+    private $item;
+
+	public function getItem(): ?Script {
+		return $this->item;
+	}
+
+	public function setItem(?Script $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Script $item): DeleteScriptResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteScriptResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteScriptResult());
+        return (new DeleteScriptResult())
+            ->withItem(empty($data['item']) ? null : Script::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

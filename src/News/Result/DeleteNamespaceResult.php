@@ -18,18 +18,37 @@
 namespace Gs2\News\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\News\Model\LogSetting;
+use Gs2\News\Model\Namespace_;
 
 class DeleteNamespaceResult implements IResult {
+    /** @var Namespace_ */
+    private $item;
+
+	public function getItem(): ?Namespace_ {
+		return $this->item;
+	}
+
+	public function setItem(?Namespace_ $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Namespace_ $item): DeleteNamespaceResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteNamespaceResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteNamespaceResult());
+        return (new DeleteNamespaceResult())
+            ->withItem(empty($data['item']) ? null : Namespace_::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

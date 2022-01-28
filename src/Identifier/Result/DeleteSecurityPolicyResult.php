@@ -18,18 +18,36 @@
 namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Identifier\Model\SecurityPolicy;
 
 class DeleteSecurityPolicyResult implements IResult {
+    /** @var SecurityPolicy */
+    private $item;
+
+	public function getItem(): ?SecurityPolicy {
+		return $this->item;
+	}
+
+	public function setItem(?SecurityPolicy $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?SecurityPolicy $item): DeleteSecurityPolicyResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteSecurityPolicyResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteSecurityPolicyResult());
+        return (new DeleteSecurityPolicyResult())
+            ->withItem(empty($data['item']) ? null : SecurityPolicy::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

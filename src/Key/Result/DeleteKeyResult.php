@@ -18,18 +18,36 @@
 namespace Gs2\Key\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Key\Model\Key;
 
 class DeleteKeyResult implements IResult {
+    /** @var Key */
+    private $item;
+
+	public function getItem(): ?Key {
+		return $this->item;
+	}
+
+	public function setItem(?Key $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Key $item): DeleteKeyResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteKeyResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteKeyResult());
+        return (new DeleteKeyResult())
+            ->withItem(empty($data['item']) ? null : Key::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

@@ -18,18 +18,36 @@
 namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Identifier\Model\Password;
 
 class DeletePasswordResult implements IResult {
+    /** @var Password */
+    private $item;
+
+	public function getItem(): ?Password {
+		return $this->item;
+	}
+
+	public function setItem(?Password $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Password $item): DeletePasswordResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeletePasswordResult {
         if ($data === null) {
             return null;
         }
-        return (new DeletePasswordResult());
+        return (new DeletePasswordResult())
+            ->withItem(empty($data['item']) ? null : Password::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

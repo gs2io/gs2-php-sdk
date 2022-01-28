@@ -113,6 +113,12 @@ use Gs2\Inventory\Request\ConsumeItemSetRequest;
 use Gs2\Inventory\Result\ConsumeItemSetResult;
 use Gs2\Inventory\Request\ConsumeItemSetByUserIdRequest;
 use Gs2\Inventory\Result\ConsumeItemSetByUserIdResult;
+use Gs2\Inventory\Request\DeleteItemSetByUserIdRequest;
+use Gs2\Inventory\Result\DeleteItemSetByUserIdResult;
+use Gs2\Inventory\Request\AcquireItemSetByStampSheetRequest;
+use Gs2\Inventory\Result\AcquireItemSetByStampSheetResult;
+use Gs2\Inventory\Request\ConsumeItemSetByStampTaskRequest;
+use Gs2\Inventory\Result\ConsumeItemSetByStampTaskResult;
 use Gs2\Inventory\Request\DescribeReferenceOfRequest;
 use Gs2\Inventory\Result\DescribeReferenceOfResult;
 use Gs2\Inventory\Request\DescribeReferenceOfByUserIdRequest;
@@ -133,16 +139,10 @@ use Gs2\Inventory\Request\DeleteReferenceOfRequest;
 use Gs2\Inventory\Result\DeleteReferenceOfResult;
 use Gs2\Inventory\Request\DeleteReferenceOfByUserIdRequest;
 use Gs2\Inventory\Result\DeleteReferenceOfByUserIdResult;
-use Gs2\Inventory\Request\DeleteItemSetByUserIdRequest;
-use Gs2\Inventory\Result\DeleteItemSetByUserIdResult;
-use Gs2\Inventory\Request\AcquireItemSetByStampSheetRequest;
-use Gs2\Inventory\Result\AcquireItemSetByStampSheetResult;
 use Gs2\Inventory\Request\AddReferenceOfItemSetByStampSheetRequest;
 use Gs2\Inventory\Result\AddReferenceOfItemSetByStampSheetResult;
 use Gs2\Inventory\Request\DeleteReferenceOfItemSetByStampSheetRequest;
 use Gs2\Inventory\Result\DeleteReferenceOfItemSetByStampSheetResult;
-use Gs2\Inventory\Request\ConsumeItemSetByStampTaskRequest;
-use Gs2\Inventory\Result\ConsumeItemSetByStampTaskResult;
 use Gs2\Inventory\Request\VerifyReferenceOfByStampTaskRequest;
 use Gs2\Inventory\Result\VerifyReferenceOfByStampTaskResult;
 
@@ -2773,6 +2773,187 @@ class ConsumeItemSetByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DeleteItemSetByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteItemSetByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteItemSetByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteItemSetByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteItemSetByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteItemSetByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getItemSetName() !== null) {
+            $queryStrings["itemSetName"] = $this->request->getItemSetName();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireItemSetByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireItemSetByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireItemSetByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireItemSetByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireItemSetByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireItemSetByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/item/acquire";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ConsumeItemSetByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ConsumeItemSetByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ConsumeItemSetByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param ConsumeItemSetByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ConsumeItemSetByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ConsumeItemSetByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/item/consume";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeReferenceOfTask extends Gs2RestSessionTask {
 
     /**
@@ -3399,128 +3580,6 @@ class DeleteReferenceOfByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
-class DeleteItemSetByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DeleteItemSetByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DeleteItemSetByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param DeleteItemSetByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DeleteItemSetByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DeleteItemSetByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getItemSetName() !== null) {
-            $queryStrings["itemSetName"] = $this->request->getItemSetName();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("DELETE")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class AcquireItemSetByStampSheetTask extends Gs2RestSessionTask {
-
-    /**
-     * @var AcquireItemSetByStampSheetRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * AcquireItemSetByStampSheetTask constructor.
-     * @param Gs2RestSession $session
-     * @param AcquireItemSetByStampSheetRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        AcquireItemSetByStampSheetRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            AcquireItemSetByStampSheetResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/item/acquire";
-
-        $json = [];
-        if ($this->request->getStampSheet() !== null) {
-            $json["stampSheet"] = $this->request->getStampSheet();
-        }
-        if ($this->request->getKeyId() !== null) {
-            $json["keyId"] = $this->request->getKeyId();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class AddReferenceOfItemSetByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -3616,65 +3675,6 @@ class DeleteReferenceOfItemSetByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
-        }
-        if ($this->request->getKeyId() !== null) {
-            $json["keyId"] = $this->request->getKeyId();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class ConsumeItemSetByStampTaskTask extends Gs2RestSessionTask {
-
-    /**
-     * @var ConsumeItemSetByStampTaskRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * ConsumeItemSetByStampTaskTask constructor.
-     * @param Gs2RestSession $session
-     * @param ConsumeItemSetByStampTaskRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        ConsumeItemSetByStampTaskRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            ConsumeItemSetByStampTaskResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/item/consume";
-
-        $json = [];
-        if ($this->request->getStampTask() !== null) {
-            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -4909,6 +4909,87 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DeleteItemSetByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteItemSetByUserIdAsync(
+            DeleteItemSetByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteItemSetByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteItemSetByUserIdRequest $request
+     * @return DeleteItemSetByUserIdResult
+     */
+    public function deleteItemSetByUserId (
+            DeleteItemSetByUserIdRequest $request
+    ): DeleteItemSetByUserIdResult {
+        return $this->deleteItemSetByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AcquireItemSetByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function acquireItemSetByStampSheetAsync(
+            AcquireItemSetByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireItemSetByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AcquireItemSetByStampSheetRequest $request
+     * @return AcquireItemSetByStampSheetResult
+     */
+    public function acquireItemSetByStampSheet (
+            AcquireItemSetByStampSheetRequest $request
+    ): AcquireItemSetByStampSheetResult {
+        return $this->acquireItemSetByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ConsumeItemSetByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function consumeItemSetByStampTaskAsync(
+            ConsumeItemSetByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ConsumeItemSetByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ConsumeItemSetByStampTaskRequest $request
+     * @return ConsumeItemSetByStampTaskResult
+     */
+    public function consumeItemSetByStampTask (
+            ConsumeItemSetByStampTaskRequest $request
+    ): ConsumeItemSetByStampTaskResult {
+        return $this->consumeItemSetByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DescribeReferenceOfRequest $request
      * @return PromiseInterface
      */
@@ -5179,60 +5260,6 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param DeleteItemSetByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function deleteItemSetByUserIdAsync(
-            DeleteItemSetByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DeleteItemSetByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DeleteItemSetByUserIdRequest $request
-     * @return DeleteItemSetByUserIdResult
-     */
-    public function deleteItemSetByUserId (
-            DeleteItemSetByUserIdRequest $request
-    ): DeleteItemSetByUserIdResult {
-        return $this->deleteItemSetByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param AcquireItemSetByStampSheetRequest $request
-     * @return PromiseInterface
-     */
-    public function acquireItemSetByStampSheetAsync(
-            AcquireItemSetByStampSheetRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new AcquireItemSetByStampSheetTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param AcquireItemSetByStampSheetRequest $request
-     * @return AcquireItemSetByStampSheetResult
-     */
-    public function acquireItemSetByStampSheet (
-            AcquireItemSetByStampSheetRequest $request
-    ): AcquireItemSetByStampSheetResult {
-        return $this->acquireItemSetByStampSheetAsync(
-            $request
-        )->wait();
-    }
-
-    /**
      * @param AddReferenceOfItemSetByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -5282,33 +5309,6 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             DeleteReferenceOfItemSetByStampSheetRequest $request
     ): DeleteReferenceOfItemSetByStampSheetResult {
         return $this->deleteReferenceOfItemSetByStampSheetAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param ConsumeItemSetByStampTaskRequest $request
-     * @return PromiseInterface
-     */
-    public function consumeItemSetByStampTaskAsync(
-            ConsumeItemSetByStampTaskRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new ConsumeItemSetByStampTaskTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param ConsumeItemSetByStampTaskRequest $request
-     * @return ConsumeItemSetByStampTaskResult
-     */
-    public function consumeItemSetByStampTask (
-            ConsumeItemSetByStampTaskRequest $request
-    ): ConsumeItemSetByStampTaskResult {
-        return $this->consumeItemSetByStampTaskAsync(
             $request
         )->wait();
     }

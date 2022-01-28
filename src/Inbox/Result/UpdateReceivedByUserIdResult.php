@@ -18,18 +18,36 @@
 namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inbox\Model\Received;
 
 class UpdateReceivedByUserIdResult implements IResult {
+    /** @var Received */
+    private $item;
+
+	public function getItem(): ?Received {
+		return $this->item;
+	}
+
+	public function setItem(?Received $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Received $item): UpdateReceivedByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?UpdateReceivedByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new UpdateReceivedByUserIdResult());
+        return (new UpdateReceivedByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Received::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

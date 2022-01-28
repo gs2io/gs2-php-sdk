@@ -18,18 +18,36 @@
 namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Identifier\Model\User;
 
 class DeleteUserResult implements IResult {
+    /** @var User */
+    private $item;
+
+	public function getItem(): ?User {
+		return $this->item;
+	}
+
+	public function setItem(?User $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?User $item): DeleteUserResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteUserResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteUserResult());
+        return (new DeleteUserResult())
+            ->withItem(empty($data['item']) ? null : User::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

@@ -18,18 +18,36 @@
 namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Stamina\Model\Stamina;
 
 class DeleteStaminaByUserIdResult implements IResult {
+    /** @var Stamina */
+    private $item;
+
+	public function getItem(): ?Stamina {
+		return $this->item;
+	}
+
+	public function setItem(?Stamina $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Stamina $item): DeleteStaminaByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteStaminaByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteStaminaByUserIdResult());
+        return (new DeleteStaminaByUserIdResult())
+            ->withItem(empty($data['item']) ? null : Stamina::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

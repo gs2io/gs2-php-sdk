@@ -18,18 +18,36 @@
 namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Identifier\Model\Identifier;
 
 class DeleteIdentifierResult implements IResult {
+    /** @var Identifier */
+    private $item;
+
+	public function getItem(): ?Identifier {
+		return $this->item;
+	}
+
+	public function setItem(?Identifier $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Identifier $item): DeleteIdentifierResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteIdentifierResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteIdentifierResult());
+        return (new DeleteIdentifierResult())
+            ->withItem(empty($data['item']) ? null : Identifier::fromJson($data['item']));
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

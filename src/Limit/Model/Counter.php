@@ -44,6 +44,10 @@ class Counter implements IModel {
 	/**
      * @var int
 	 */
+	private $nextResetAt;
+	/**
+     * @var int
+	 */
 	private $createdAt;
 	/**
      * @var int
@@ -115,6 +119,19 @@ class Counter implements IModel {
 		return $this;
 	}
 
+	public function getNextResetAt(): ?int {
+		return $this->nextResetAt;
+	}
+
+	public function setNextResetAt(?int $nextResetAt) {
+		$this->nextResetAt = $nextResetAt;
+	}
+
+	public function withNextResetAt(?int $nextResetAt): Counter {
+		$this->nextResetAt = $nextResetAt;
+		return $this;
+	}
+
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -151,6 +168,7 @@ class Counter implements IModel {
             ->withName(empty($data['name']) ? null : $data['name'])
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
+            ->withNextResetAt(empty($data['nextResetAt']) && $data['nextResetAt'] !== 0 ? null : $data['nextResetAt'])
             ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
             ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
@@ -162,6 +180,7 @@ class Counter implements IModel {
             "name" => $this->getName(),
             "userId" => $this->getUserId(),
             "count" => $this->getCount(),
+            "nextResetAt" => $this->getNextResetAt(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

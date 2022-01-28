@@ -51,8 +51,22 @@ use Gs2\Friend\Request\UpdateProfileByUserIdRequest;
 use Gs2\Friend\Result\UpdateProfileByUserIdResult;
 use Gs2\Friend\Request\DeleteProfileByUserIdRequest;
 use Gs2\Friend\Result\DeleteProfileByUserIdResult;
-use Gs2\Friend\Request\GetPublicProfileRequest;
-use Gs2\Friend\Result\GetPublicProfileResult;
+use Gs2\Friend\Request\DescribeFriendsRequest;
+use Gs2\Friend\Result\DescribeFriendsResult;
+use Gs2\Friend\Request\DescribeFriendsByUserIdRequest;
+use Gs2\Friend\Result\DescribeFriendsByUserIdResult;
+use Gs2\Friend\Request\DescribeBlackListRequest;
+use Gs2\Friend\Result\DescribeBlackListResult;
+use Gs2\Friend\Request\DescribeBlackListByUserIdRequest;
+use Gs2\Friend\Result\DescribeBlackListByUserIdResult;
+use Gs2\Friend\Request\RegisterBlackListRequest;
+use Gs2\Friend\Result\RegisterBlackListResult;
+use Gs2\Friend\Request\RegisterBlackListByUserIdRequest;
+use Gs2\Friend\Result\RegisterBlackListByUserIdResult;
+use Gs2\Friend\Request\UnregisterBlackListRequest;
+use Gs2\Friend\Result\UnregisterBlackListResult;
+use Gs2\Friend\Request\UnregisterBlackListByUserIdRequest;
+use Gs2\Friend\Result\UnregisterBlackListByUserIdResult;
 use Gs2\Friend\Request\DescribeFollowsRequest;
 use Gs2\Friend\Result\DescribeFollowsResult;
 use Gs2\Friend\Request\DescribeFollowsByUserIdRequest;
@@ -69,10 +83,6 @@ use Gs2\Friend\Request\UnfollowRequest;
 use Gs2\Friend\Result\UnfollowResult;
 use Gs2\Friend\Request\UnfollowByUserIdRequest;
 use Gs2\Friend\Result\UnfollowByUserIdResult;
-use Gs2\Friend\Request\DescribeFriendsRequest;
-use Gs2\Friend\Result\DescribeFriendsResult;
-use Gs2\Friend\Request\DescribeFriendsByUserIdRequest;
-use Gs2\Friend\Result\DescribeFriendsByUserIdResult;
 use Gs2\Friend\Request\GetFriendRequest;
 use Gs2\Friend\Result\GetFriendResult;
 use Gs2\Friend\Request\GetFriendByUserIdRequest;
@@ -113,18 +123,8 @@ use Gs2\Friend\Request\RejectRequestRequest;
 use Gs2\Friend\Result\RejectRequestResult;
 use Gs2\Friend\Request\RejectRequestByUserIdRequest;
 use Gs2\Friend\Result\RejectRequestByUserIdResult;
-use Gs2\Friend\Request\DescribeBlackListRequest;
-use Gs2\Friend\Result\DescribeBlackListResult;
-use Gs2\Friend\Request\DescribeBlackListByUserIdRequest;
-use Gs2\Friend\Result\DescribeBlackListByUserIdResult;
-use Gs2\Friend\Request\RegisterBlackListRequest;
-use Gs2\Friend\Result\RegisterBlackListResult;
-use Gs2\Friend\Request\RegisterBlackListByUserIdRequest;
-use Gs2\Friend\Result\RegisterBlackListByUserIdResult;
-use Gs2\Friend\Request\UnregisterBlackListRequest;
-use Gs2\Friend\Result\UnregisterBlackListResult;
-use Gs2\Friend\Request\UnregisterBlackListByUserIdRequest;
-use Gs2\Friend\Result\UnregisterBlackListByUserIdResult;
+use Gs2\Friend\Request\GetPublicProfileRequest;
+use Gs2\Friend\Result\GetPublicProfileResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -855,10 +855,10 @@ class DeleteProfileByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
-class GetPublicProfileTask extends Gs2RestSessionTask {
+class DescribeFriendsTask extends Gs2RestSessionTask {
 
     /**
-     * @var GetPublicProfileRequest
+     * @var DescribeFriendsRequest
      */
     private $request;
 
@@ -868,17 +868,17 @@ class GetPublicProfileTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * GetPublicProfileTask constructor.
+     * DescribeFriendsTask constructor.
      * @param Gs2RestSession $session
-     * @param GetPublicProfileRequest $request
+     * @param DescribeFriendsRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        GetPublicProfileRequest $request
+        DescribeFriendsRequest $request
     ) {
         parent::__construct(
             $session,
-            GetPublicProfileResult::class
+            DescribeFriendsResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -886,10 +886,392 @@ class GetPublicProfileTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/profile/public";
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/friend";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeFriendsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeFriendsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeFriendsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeFriendsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeFriendsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeFriendsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/friend";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeBlackListTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeBlackListRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeBlackListTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeBlackListRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeBlackListRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeBlackListResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/blackList";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeBlackListByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeBlackListByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeBlackListByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeBlackListByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeBlackListByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeBlackListByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/blackList";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RegisterBlackListTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RegisterBlackListRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RegisterBlackListTask constructor.
+     * @param Gs2RestSession $session
+     * @param RegisterBlackListRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RegisterBlackListRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RegisterBlackListResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/blackList/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RegisterBlackListByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RegisterBlackListByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RegisterBlackListByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param RegisterBlackListByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RegisterBlackListByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RegisterBlackListByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/blackList/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnregisterBlackListTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnregisterBlackListRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnregisterBlackListTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnregisterBlackListRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnregisterBlackListRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnregisterBlackListResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/blackList/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -900,7 +1282,69 @@ class GetPublicProfileTask extends Gs2RestSessionTask {
             $url .= '?'. http_build_query($queryStrings);
         }
 
-        $this->builder->setMethod("GET")
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnregisterBlackListByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnregisterBlackListByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnregisterBlackListByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnregisterBlackListByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnregisterBlackListByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnregisterBlackListByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/blackList/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -1399,142 +1843,6 @@ class UnfollowByUserIdTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("DELETE")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DescribeFriendsTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeFriendsRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeFriendsTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeFriendsRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeFriendsRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeFriendsResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/friend";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DescribeFriendsByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeFriendsByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeFriendsByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeFriendsByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeFriendsByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeFriendsByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/friend";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getWithProfile() !== null) {
-            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -2765,10 +3073,10 @@ class RejectRequestByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
-class DescribeBlackListTask extends Gs2RestSessionTask {
+class GetPublicProfileTask extends Gs2RestSessionTask {
 
     /**
-     * @var DescribeBlackListRequest
+     * @var GetPublicProfileRequest
      */
     private $request;
 
@@ -2778,17 +3086,17 @@ class DescribeBlackListTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * DescribeBlackListTask constructor.
+     * GetPublicProfileTask constructor.
      * @param Gs2RestSession $session
-     * @param DescribeBlackListRequest $request
+     * @param GetPublicProfileRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        DescribeBlackListRequest $request
+        GetPublicProfileRequest $request
     ) {
         parent::__construct(
             $session,
-            DescribeBlackListResult::class
+            GetPublicProfileResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2796,67 +3104,7 @@ class DescribeBlackListTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/blackList";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DescribeBlackListByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeBlackListByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeBlackListByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeBlackListByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeBlackListByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeBlackListByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/blackList";
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/profile/public";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
@@ -2871,242 +3119,6 @@ class DescribeBlackListByUserIdTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class RegisterBlackListTask extends Gs2RestSessionTask {
-
-    /**
-     * @var RegisterBlackListRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * RegisterBlackListTask constructor.
-     * @param Gs2RestSession $session
-     * @param RegisterBlackListRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        RegisterBlackListRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            RegisterBlackListResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/blackList/{targetUserId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
-
-        $json = [];
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class RegisterBlackListByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var RegisterBlackListByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * RegisterBlackListByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param RegisterBlackListByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        RegisterBlackListByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            RegisterBlackListByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/blackList/{targetUserId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
-
-        $json = [];
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class UnregisterBlackListTask extends Gs2RestSessionTask {
-
-    /**
-     * @var UnregisterBlackListRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * UnregisterBlackListTask constructor.
-     * @param Gs2RestSession $session
-     * @param UnregisterBlackListRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        UnregisterBlackListRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            UnregisterBlackListResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/blackList/{targetUserId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("DELETE")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class UnregisterBlackListByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var UnregisterBlackListByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * UnregisterBlackListByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param UnregisterBlackListByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        UnregisterBlackListByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            UnregisterBlackListByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/blackList/{targetUserId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("DELETE")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -3434,14 +3446,14 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param GetPublicProfileRequest $request
+     * @param DescribeFriendsRequest $request
      * @return PromiseInterface
      */
-    public function getPublicProfileAsync(
-            GetPublicProfileRequest $request
+    public function describeFriendsAsync(
+            DescribeFriendsRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new GetPublicProfileTask(
+        $task = new DescribeFriendsTask(
             $this->session,
             $request
         );
@@ -3449,13 +3461,202 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param GetPublicProfileRequest $request
-     * @return GetPublicProfileResult
+     * @param DescribeFriendsRequest $request
+     * @return DescribeFriendsResult
      */
-    public function getPublicProfile (
-            GetPublicProfileRequest $request
-    ): GetPublicProfileResult {
-        return $this->getPublicProfileAsync(
+    public function describeFriends (
+            DescribeFriendsRequest $request
+    ): DescribeFriendsResult {
+        return $this->describeFriendsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeFriendsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeFriendsByUserIdAsync(
+            DescribeFriendsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeFriendsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeFriendsByUserIdRequest $request
+     * @return DescribeFriendsByUserIdResult
+     */
+    public function describeFriendsByUserId (
+            DescribeFriendsByUserIdRequest $request
+    ): DescribeFriendsByUserIdResult {
+        return $this->describeFriendsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeBlackListRequest $request
+     * @return PromiseInterface
+     */
+    public function describeBlackListAsync(
+            DescribeBlackListRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeBlackListTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeBlackListRequest $request
+     * @return DescribeBlackListResult
+     */
+    public function describeBlackList (
+            DescribeBlackListRequest $request
+    ): DescribeBlackListResult {
+        return $this->describeBlackListAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeBlackListByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeBlackListByUserIdAsync(
+            DescribeBlackListByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeBlackListByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeBlackListByUserIdRequest $request
+     * @return DescribeBlackListByUserIdResult
+     */
+    public function describeBlackListByUserId (
+            DescribeBlackListByUserIdRequest $request
+    ): DescribeBlackListByUserIdResult {
+        return $this->describeBlackListByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RegisterBlackListRequest $request
+     * @return PromiseInterface
+     */
+    public function registerBlackListAsync(
+            RegisterBlackListRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RegisterBlackListTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RegisterBlackListRequest $request
+     * @return RegisterBlackListResult
+     */
+    public function registerBlackList (
+            RegisterBlackListRequest $request
+    ): RegisterBlackListResult {
+        return $this->registerBlackListAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RegisterBlackListByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function registerBlackListByUserIdAsync(
+            RegisterBlackListByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RegisterBlackListByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RegisterBlackListByUserIdRequest $request
+     * @return RegisterBlackListByUserIdResult
+     */
+    public function registerBlackListByUserId (
+            RegisterBlackListByUserIdRequest $request
+    ): RegisterBlackListByUserIdResult {
+        return $this->registerBlackListByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnregisterBlackListRequest $request
+     * @return PromiseInterface
+     */
+    public function unregisterBlackListAsync(
+            UnregisterBlackListRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnregisterBlackListTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnregisterBlackListRequest $request
+     * @return UnregisterBlackListResult
+     */
+    public function unregisterBlackList (
+            UnregisterBlackListRequest $request
+    ): UnregisterBlackListResult {
+        return $this->unregisterBlackListAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnregisterBlackListByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function unregisterBlackListByUserIdAsync(
+            UnregisterBlackListByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnregisterBlackListByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnregisterBlackListByUserIdRequest $request
+     * @return UnregisterBlackListByUserIdResult
+     */
+    public function unregisterBlackListByUserId (
+            UnregisterBlackListByUserIdRequest $request
+    ): UnregisterBlackListByUserIdResult {
+        return $this->unregisterBlackListByUserIdAsync(
             $request
         )->wait();
     }
@@ -3672,60 +3873,6 @@ class Gs2FriendRestClient extends AbstractGs2Client {
             UnfollowByUserIdRequest $request
     ): UnfollowByUserIdResult {
         return $this->unfollowByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param DescribeFriendsRequest $request
-     * @return PromiseInterface
-     */
-    public function describeFriendsAsync(
-            DescribeFriendsRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeFriendsTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeFriendsRequest $request
-     * @return DescribeFriendsResult
-     */
-    public function describeFriends (
-            DescribeFriendsRequest $request
-    ): DescribeFriendsResult {
-        return $this->describeFriendsAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param DescribeFriendsByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function describeFriendsByUserIdAsync(
-            DescribeFriendsByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeFriendsByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeFriendsByUserIdRequest $request
-     * @return DescribeFriendsByUserIdResult
-     */
-    public function describeFriendsByUserId (
-            DescribeFriendsByUserIdRequest $request
-    ): DescribeFriendsByUserIdResult {
-        return $this->describeFriendsByUserIdAsync(
             $request
         )->wait();
     }
@@ -4271,14 +4418,14 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param DescribeBlackListRequest $request
+     * @param GetPublicProfileRequest $request
      * @return PromiseInterface
      */
-    public function describeBlackListAsync(
-            DescribeBlackListRequest $request
+    public function getPublicProfileAsync(
+            GetPublicProfileRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new DescribeBlackListTask(
+        $task = new GetPublicProfileTask(
             $this->session,
             $request
         );
@@ -4286,148 +4433,13 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param DescribeBlackListRequest $request
-     * @return DescribeBlackListResult
+     * @param GetPublicProfileRequest $request
+     * @return GetPublicProfileResult
      */
-    public function describeBlackList (
-            DescribeBlackListRequest $request
-    ): DescribeBlackListResult {
-        return $this->describeBlackListAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param DescribeBlackListByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function describeBlackListByUserIdAsync(
-            DescribeBlackListByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeBlackListByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeBlackListByUserIdRequest $request
-     * @return DescribeBlackListByUserIdResult
-     */
-    public function describeBlackListByUserId (
-            DescribeBlackListByUserIdRequest $request
-    ): DescribeBlackListByUserIdResult {
-        return $this->describeBlackListByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param RegisterBlackListRequest $request
-     * @return PromiseInterface
-     */
-    public function registerBlackListAsync(
-            RegisterBlackListRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new RegisterBlackListTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param RegisterBlackListRequest $request
-     * @return RegisterBlackListResult
-     */
-    public function registerBlackList (
-            RegisterBlackListRequest $request
-    ): RegisterBlackListResult {
-        return $this->registerBlackListAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param RegisterBlackListByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function registerBlackListByUserIdAsync(
-            RegisterBlackListByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new RegisterBlackListByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param RegisterBlackListByUserIdRequest $request
-     * @return RegisterBlackListByUserIdResult
-     */
-    public function registerBlackListByUserId (
-            RegisterBlackListByUserIdRequest $request
-    ): RegisterBlackListByUserIdResult {
-        return $this->registerBlackListByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param UnregisterBlackListRequest $request
-     * @return PromiseInterface
-     */
-    public function unregisterBlackListAsync(
-            UnregisterBlackListRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UnregisterBlackListTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param UnregisterBlackListRequest $request
-     * @return UnregisterBlackListResult
-     */
-    public function unregisterBlackList (
-            UnregisterBlackListRequest $request
-    ): UnregisterBlackListResult {
-        return $this->unregisterBlackListAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param UnregisterBlackListByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function unregisterBlackListByUserIdAsync(
-            UnregisterBlackListByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UnregisterBlackListByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param UnregisterBlackListByUserIdRequest $request
-     * @return UnregisterBlackListByUserIdResult
-     */
-    public function unregisterBlackListByUserId (
-            UnregisterBlackListByUserIdRequest $request
-    ): UnregisterBlackListByUserIdResult {
-        return $this->unregisterBlackListByUserIdAsync(
+    public function getPublicProfile (
+            GetPublicProfileRequest $request
+    ): GetPublicProfileResult {
+        return $this->getPublicProfileAsync(
             $request
         )->wait();
     }

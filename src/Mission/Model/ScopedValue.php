@@ -32,6 +32,10 @@ class ScopedValue implements IModel {
 	/**
      * @var int
 	 */
+	private $nextResetAt;
+	/**
+     * @var int
+	 */
 	private $updatedAt;
 
 	public function getResetType(): ?string {
@@ -60,6 +64,19 @@ class ScopedValue implements IModel {
 		return $this;
 	}
 
+	public function getNextResetAt(): ?int {
+		return $this->nextResetAt;
+	}
+
+	public function setNextResetAt(?int $nextResetAt) {
+		$this->nextResetAt = $nextResetAt;
+	}
+
+	public function withNextResetAt(?int $nextResetAt): ScopedValue {
+		$this->nextResetAt = $nextResetAt;
+		return $this;
+	}
+
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
@@ -80,6 +97,7 @@ class ScopedValue implements IModel {
         return (new ScopedValue())
             ->withResetType(empty($data['resetType']) ? null : $data['resetType'])
             ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value'])
+            ->withNextResetAt(empty($data['nextResetAt']) && $data['nextResetAt'] !== 0 ? null : $data['nextResetAt'])
             ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
 
@@ -87,6 +105,7 @@ class ScopedValue implements IModel {
         return array(
             "resetType" => $this->getResetType(),
             "value" => $this->getValue(),
+            "nextResetAt" => $this->getNextResetAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );
     }

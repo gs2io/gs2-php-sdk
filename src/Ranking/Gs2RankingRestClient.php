@@ -55,22 +55,10 @@ use Gs2\Ranking\Request\UpdateCategoryModelMasterRequest;
 use Gs2\Ranking\Result\UpdateCategoryModelMasterResult;
 use Gs2\Ranking\Request\DeleteCategoryModelMasterRequest;
 use Gs2\Ranking\Result\DeleteCategoryModelMasterResult;
-use Gs2\Ranking\Request\DescribeSubscribesByCategoryNameRequest;
-use Gs2\Ranking\Result\DescribeSubscribesByCategoryNameResult;
-use Gs2\Ranking\Request\DescribeSubscribesByCategoryNameAndUserIdRequest;
-use Gs2\Ranking\Result\DescribeSubscribesByCategoryNameAndUserIdResult;
 use Gs2\Ranking\Request\SubscribeRequest;
 use Gs2\Ranking\Result\SubscribeResult;
 use Gs2\Ranking\Request\SubscribeByUserIdRequest;
 use Gs2\Ranking\Result\SubscribeByUserIdResult;
-use Gs2\Ranking\Request\GetSubscribeRequest;
-use Gs2\Ranking\Result\GetSubscribeResult;
-use Gs2\Ranking\Request\GetSubscribeByUserIdRequest;
-use Gs2\Ranking\Result\GetSubscribeByUserIdResult;
-use Gs2\Ranking\Request\UnsubscribeRequest;
-use Gs2\Ranking\Result\UnsubscribeResult;
-use Gs2\Ranking\Request\UnsubscribeByUserIdRequest;
-use Gs2\Ranking\Result\UnsubscribeByUserIdResult;
 use Gs2\Ranking\Request\DescribeScoresRequest;
 use Gs2\Ranking\Result\DescribeScoresResult;
 use Gs2\Ranking\Request\DescribeScoresByUserIdRequest;
@@ -103,6 +91,18 @@ use Gs2\Ranking\Request\UpdateCurrentRankingMasterRequest;
 use Gs2\Ranking\Result\UpdateCurrentRankingMasterResult;
 use Gs2\Ranking\Request\UpdateCurrentRankingMasterFromGitHubRequest;
 use Gs2\Ranking\Result\UpdateCurrentRankingMasterFromGitHubResult;
+use Gs2\Ranking\Request\GetSubscribeRequest;
+use Gs2\Ranking\Result\GetSubscribeResult;
+use Gs2\Ranking\Request\GetSubscribeByUserIdRequest;
+use Gs2\Ranking\Result\GetSubscribeByUserIdResult;
+use Gs2\Ranking\Request\UnsubscribeRequest;
+use Gs2\Ranking\Result\UnsubscribeResult;
+use Gs2\Ranking\Request\UnsubscribeByUserIdRequest;
+use Gs2\Ranking\Result\UnsubscribeByUserIdResult;
+use Gs2\Ranking\Request\DescribeSubscribesByCategoryNameRequest;
+use Gs2\Ranking\Result\DescribeSubscribesByCategoryNameResult;
+use Gs2\Ranking\Request\DescribeSubscribesByCategoryNameAndUserIdRequest;
+use Gs2\Ranking\Result\DescribeSubscribesByCategoryNameAndUserIdResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -945,126 +945,6 @@ class DeleteCategoryModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class DescribeSubscribesByCategoryNameTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeSubscribesByCategoryNameRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeSubscribesByCategoryNameTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeSubscribesByCategoryNameRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeSubscribesByCategoryNameRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeSubscribesByCategoryNameResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/subscribe/category/{categoryName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DescribeSubscribesByCategoryNameAndUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeSubscribesByCategoryNameAndUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeSubscribesByCategoryNameAndUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeSubscribesByCategoryNameAndUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeSubscribesByCategoryNameAndUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/subscribe/category/{categoryName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class SubscribeTask extends Gs2RestSessionTask {
 
     /**
@@ -1171,250 +1051,6 @@ class SubscribeByUserIdTask extends Gs2RestSessionTask {
         $this->builder->setBody($json);
 
         $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetSubscribeTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetSubscribeRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetSubscribeTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetSubscribeRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetSubscribeRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetSubscribeResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/subscribe/category/{categoryName}/target/{targetUserId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
-        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetSubscribeByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetSubscribeByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetSubscribeByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetSubscribeByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetSubscribeByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetSubscribeByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/subscribe/category/{categoryName}/target/{targetUserId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class UnsubscribeTask extends Gs2RestSessionTask {
-
-    /**
-     * @var UnsubscribeRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * UnsubscribeTask constructor.
-     * @param Gs2RestSession $session
-     * @param UnsubscribeRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        UnsubscribeRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            UnsubscribeResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/subscribe/category/{categoryName}/target/{targetUserId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
-        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("DELETE")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class UnsubscribeByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var UnsubscribeByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * UnsubscribeByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param UnsubscribeByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        UnsubscribeByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            UnsubscribeByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/subscribe/category/{categoryName}/target/{targetUserId}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("DELETE")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -2422,6 +2058,370 @@ class UpdateCurrentRankingMasterFromGitHubTask extends Gs2RestSessionTask {
     }
 }
 
+class GetSubscribeTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSubscribeRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSubscribeTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSubscribeRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSubscribeRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSubscribeResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/subscribe/category/{categoryName}/target/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSubscribeByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSubscribeByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSubscribeByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSubscribeByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSubscribeByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSubscribeByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/subscribe/category/{categoryName}/target/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnsubscribeTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnsubscribeRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnsubscribeTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnsubscribeRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnsubscribeRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnsubscribeResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/subscribe/category/{categoryName}/target/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnsubscribeByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnsubscribeByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnsubscribeByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnsubscribeByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnsubscribeByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnsubscribeByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/subscribe/category/{categoryName}/target/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSubscribesByCategoryNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSubscribesByCategoryNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSubscribesByCategoryNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSubscribesByCategoryNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSubscribesByCategoryNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSubscribesByCategoryNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/subscribe/category/{categoryName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSubscribesByCategoryNameAndUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSubscribesByCategoryNameAndUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSubscribesByCategoryNameAndUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSubscribesByCategoryNameAndUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSubscribesByCategoryNameAndUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/subscribe/category/{categoryName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Ranking API クライアント
  *
@@ -2791,60 +2791,6 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param DescribeSubscribesByCategoryNameRequest $request
-     * @return PromiseInterface
-     */
-    public function describeSubscribesByCategoryNameAsync(
-            DescribeSubscribesByCategoryNameRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeSubscribesByCategoryNameTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeSubscribesByCategoryNameRequest $request
-     * @return DescribeSubscribesByCategoryNameResult
-     */
-    public function describeSubscribesByCategoryName (
-            DescribeSubscribesByCategoryNameRequest $request
-    ): DescribeSubscribesByCategoryNameResult {
-        return $this->describeSubscribesByCategoryNameAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function describeSubscribesByCategoryNameAndUserIdAsync(
-            DescribeSubscribesByCategoryNameAndUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeSubscribesByCategoryNameAndUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
-     * @return DescribeSubscribesByCategoryNameAndUserIdResult
-     */
-    public function describeSubscribesByCategoryNameAndUserId (
-            DescribeSubscribesByCategoryNameAndUserIdRequest $request
-    ): DescribeSubscribesByCategoryNameAndUserIdResult {
-        return $this->describeSubscribesByCategoryNameAndUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
      * @param SubscribeRequest $request
      * @return PromiseInterface
      */
@@ -2894,114 +2840,6 @@ class Gs2RankingRestClient extends AbstractGs2Client {
             SubscribeByUserIdRequest $request
     ): SubscribeByUserIdResult {
         return $this->subscribeByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param GetSubscribeRequest $request
-     * @return PromiseInterface
-     */
-    public function getSubscribeAsync(
-            GetSubscribeRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetSubscribeTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param GetSubscribeRequest $request
-     * @return GetSubscribeResult
-     */
-    public function getSubscribe (
-            GetSubscribeRequest $request
-    ): GetSubscribeResult {
-        return $this->getSubscribeAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param GetSubscribeByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function getSubscribeByUserIdAsync(
-            GetSubscribeByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetSubscribeByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param GetSubscribeByUserIdRequest $request
-     * @return GetSubscribeByUserIdResult
-     */
-    public function getSubscribeByUserId (
-            GetSubscribeByUserIdRequest $request
-    ): GetSubscribeByUserIdResult {
-        return $this->getSubscribeByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param UnsubscribeRequest $request
-     * @return PromiseInterface
-     */
-    public function unsubscribeAsync(
-            UnsubscribeRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UnsubscribeTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param UnsubscribeRequest $request
-     * @return UnsubscribeResult
-     */
-    public function unsubscribe (
-            UnsubscribeRequest $request
-    ): UnsubscribeResult {
-        return $this->unsubscribeAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param UnsubscribeByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function unsubscribeByUserIdAsync(
-            UnsubscribeByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UnsubscribeByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param UnsubscribeByUserIdRequest $request
-     * @return UnsubscribeByUserIdResult
-     */
-    public function unsubscribeByUserId (
-            UnsubscribeByUserIdRequest $request
-    ): UnsubscribeByUserIdResult {
-        return $this->unsubscribeByUserIdAsync(
             $request
         )->wait();
     }
@@ -3434,6 +3272,168 @@ class Gs2RankingRestClient extends AbstractGs2Client {
             UpdateCurrentRankingMasterFromGitHubRequest $request
     ): UpdateCurrentRankingMasterFromGitHubResult {
         return $this->updateCurrentRankingMasterFromGitHubAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSubscribeRequest $request
+     * @return PromiseInterface
+     */
+    public function getSubscribeAsync(
+            GetSubscribeRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSubscribeTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSubscribeRequest $request
+     * @return GetSubscribeResult
+     */
+    public function getSubscribe (
+            GetSubscribeRequest $request
+    ): GetSubscribeResult {
+        return $this->getSubscribeAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSubscribeByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getSubscribeByUserIdAsync(
+            GetSubscribeByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSubscribeByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSubscribeByUserIdRequest $request
+     * @return GetSubscribeByUserIdResult
+     */
+    public function getSubscribeByUserId (
+            GetSubscribeByUserIdRequest $request
+    ): GetSubscribeByUserIdResult {
+        return $this->getSubscribeByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnsubscribeRequest $request
+     * @return PromiseInterface
+     */
+    public function unsubscribeAsync(
+            UnsubscribeRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnsubscribeTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnsubscribeRequest $request
+     * @return UnsubscribeResult
+     */
+    public function unsubscribe (
+            UnsubscribeRequest $request
+    ): UnsubscribeResult {
+        return $this->unsubscribeAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnsubscribeByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function unsubscribeByUserIdAsync(
+            UnsubscribeByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnsubscribeByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnsubscribeByUserIdRequest $request
+     * @return UnsubscribeByUserIdResult
+     */
+    public function unsubscribeByUserId (
+            UnsubscribeByUserIdRequest $request
+    ): UnsubscribeByUserIdResult {
+        return $this->unsubscribeByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSubscribesByCategoryNameRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSubscribesByCategoryNameAsync(
+            DescribeSubscribesByCategoryNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSubscribesByCategoryNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSubscribesByCategoryNameRequest $request
+     * @return DescribeSubscribesByCategoryNameResult
+     */
+    public function describeSubscribesByCategoryName (
+            DescribeSubscribesByCategoryNameRequest $request
+    ): DescribeSubscribesByCategoryNameResult {
+        return $this->describeSubscribesByCategoryNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSubscribesByCategoryNameAndUserIdAsync(
+            DescribeSubscribesByCategoryNameAndUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSubscribesByCategoryNameAndUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
+     * @return DescribeSubscribesByCategoryNameAndUserIdResult
+     */
+    public function describeSubscribesByCategoryNameAndUserId (
+            DescribeSubscribesByCategoryNameAndUserIdRequest $request
+    ): DescribeSubscribesByCategoryNameAndUserIdResult {
+        return $this->describeSubscribesByCategoryNameAndUserIdAsync(
             $request
         )->wait();
     }

@@ -7,7 +7,7 @@ namespace Gs2\Core\Net;
 use GuzzleHttp\Client;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Request;
-use function GuzzleHttp\Psr7\stream_for;
+use GuzzleHttp\Psr7\Utils;
 
 class HttpTask {
 
@@ -50,9 +50,9 @@ class HttpTask {
      */
     public function setBody(array $body) {
         if (count($body) == 0) {
-            $this->request = $this->request->withBody(stream_for("{}"));
+            $this->request = $this->request->withBody(Utils::streamFor("{}"));
         } else {
-            $this->request = $this->request->withBody(stream_for(json_encode($body)));
+            $this->request = $this->request->withBody(Utils::streamFor(json_encode($body)));
         }
     }
 }

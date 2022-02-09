@@ -50,7 +50,7 @@ class IssueStampSheetLog implements IModel {
 	 */
 	private $args;
 	/**
-     * @var string
+     * @var array
 	 */
 	private $tasks;
 
@@ -145,15 +145,15 @@ class IssueStampSheetLog implements IModel {
 		return $this;
 	}
 
-	public function getTasks(): ?string {
+	public function getTasks(): ?array {
 		return $this->tasks;
 	}
 
-	public function setTasks(?string $tasks) {
+	public function setTasks(?array $tasks) {
 		$this->tasks = $tasks;
 	}
 
-	public function withTasks(?string $tasks): IssueStampSheetLog {
+	public function withTasks(?array $tasks): IssueStampSheetLog {
 		$this->tasks = $tasks;
 		return $this;
 	}
@@ -170,7 +170,12 @@ class IssueStampSheetLog implements IModel {
             ->withUserId(empty($data['userId']) ? null : $data['userId'])
             ->withAction(empty($data['action']) ? null : $data['action'])
             ->withArgs(empty($data['args']) ? null : $data['args'])
-            ->withTasks(empty($data['tasks']) ? null : $data['tasks']);
+            ->withTasks(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('tasks', $data) && $data['tasks'] !== null ? $data['tasks'] : []
+            ));
     }
 
     public function toJson(): array {
@@ -182,7 +187,12 @@ class IssueStampSheetLog implements IModel {
             "userId" => $this->getUserId(),
             "action" => $this->getAction(),
             "args" => $this->getArgs(),
-            "tasks" => $this->getTasks(),
+            "tasks" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getTasks() !== null && $this->getTasks() !== null ? $this->getTasks() : []
+            ),
         );
     }
 }

@@ -66,6 +66,10 @@ class Namespace_ implements IModel {
 	 */
 	private $firehoseStreamName;
 	/**
+     * @var string
+	 */
+	private $status;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -217,6 +221,19 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getStatus(): ?string {
+		return $this->status;
+	}
+
+	public function setStatus(?string $status) {
+		$this->status = $status;
+	}
+
+	public function withStatus(?string $status): Namespace_ {
+		$this->status = $status;
+		return $this;
+	}
+
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -259,6 +276,7 @@ class Namespace_ implements IModel {
             ->withAwsAccessKeyId(empty($data['awsAccessKeyId']) ? null : $data['awsAccessKeyId'])
             ->withAwsSecretAccessKey(empty($data['awsSecretAccessKey']) ? null : $data['awsSecretAccessKey'])
             ->withFirehoseStreamName(empty($data['firehoseStreamName']) ? null : $data['firehoseStreamName'])
+            ->withStatus(empty($data['status']) ? null : $data['status'])
             ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
             ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
     }
@@ -276,6 +294,7 @@ class Namespace_ implements IModel {
             "awsAccessKeyId" => $this->getAwsAccessKeyId(),
             "awsSecretAccessKey" => $this->getAwsSecretAccessKey(),
             "firehoseStreamName" => $this->getFirehoseStreamName(),
+            "status" => $this->getStatus(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

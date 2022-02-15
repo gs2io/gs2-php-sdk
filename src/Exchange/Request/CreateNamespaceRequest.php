@@ -18,6 +18,7 @@
 namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Exchange\Model\ScriptSetting;
 use Gs2\Exchange\Model\LogSetting;
 
 class CreateNamespaceRequest extends Gs2BasicRequest {
@@ -33,6 +34,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $queueNamespaceId;
     /** @var string */
     private $keyId;
+    /** @var ScriptSetting */
+    private $exchangeScript;
     /** @var LogSetting */
     private $logSetting;
 
@@ -114,6 +117,19 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getExchangeScript(): ?ScriptSetting {
+		return $this->exchangeScript;
+	}
+
+	public function setExchangeScript(?ScriptSetting $exchangeScript) {
+		$this->exchangeScript = $exchangeScript;
+	}
+
+	public function withExchangeScript(?ScriptSetting $exchangeScript): CreateNamespaceRequest {
+		$this->exchangeScript = $exchangeScript;
+		return $this;
+	}
+
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -138,6 +154,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withEnableDirectExchange($data['enableDirectExchange'])
             ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
             ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withExchangeScript(empty($data['exchangeScript']) ? null : ScriptSetting::fromJson($data['exchangeScript']))
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
     }
 
@@ -149,6 +166,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "enableDirectExchange" => $this->getEnableDirectExchange(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),
+            "exchangeScript" => $this->getExchangeScript() !== null ? $this->getExchangeScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

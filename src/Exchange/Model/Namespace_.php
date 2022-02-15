@@ -50,6 +50,10 @@ class Namespace_ implements IModel {
 	 */
 	private $keyId;
 	/**
+     * @var ScriptSetting
+	 */
+	private $exchangeScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -153,6 +157,19 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getExchangeScript(): ?ScriptSetting {
+		return $this->exchangeScript;
+	}
+
+	public function setExchangeScript(?ScriptSetting $exchangeScript) {
+		$this->exchangeScript = $exchangeScript;
+	}
+
+	public function withExchangeScript(?ScriptSetting $exchangeScript): Namespace_ {
+		$this->exchangeScript = $exchangeScript;
+		return $this;
+	}
+
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -204,6 +221,7 @@ class Namespace_ implements IModel {
             ->withEnableAwaitExchange($data['enableAwaitExchange'])
             ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
             ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withExchangeScript(empty($data['exchangeScript']) ? null : ScriptSetting::fromJson($data['exchangeScript']))
             ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
             ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
             ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
@@ -218,6 +236,7 @@ class Namespace_ implements IModel {
             "enableAwaitExchange" => $this->getEnableAwaitExchange(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),
+            "exchangeScript" => $this->getExchangeScript() !== null ? $this->getExchangeScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

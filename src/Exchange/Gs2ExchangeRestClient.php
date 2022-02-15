@@ -211,6 +211,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
         }
+        if ($this->request->getExchangeScript() !== null) {
+            $json["exchangeScript"] = $this->request->getExchangeScript()->toJson();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -397,6 +400,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getExchangeScript() !== null) {
+            $json["exchangeScript"] = $this->request->getExchangeScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

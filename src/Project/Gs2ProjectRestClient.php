@@ -120,6 +120,9 @@ class CreateAccountTask extends Gs2RestSessionTask {
         if ($this->request->getPassword() !== null) {
             $json["password"] = $this->request->getPassword();
         }
+        if ($this->request->getLang() !== null) {
+            $json["lang"] = $this->request->getLang();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -346,6 +349,9 @@ class ForgetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getEmail() !== null) {
             $json["email"] = $this->request->getEmail();
+        }
+        if ($this->request->getLang() !== null) {
+            $json["lang"] = $this->request->getLang();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

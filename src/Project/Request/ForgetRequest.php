@@ -22,6 +22,8 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class ForgetRequest extends Gs2BasicRequest {
     /** @var string */
     private $email;
+    /** @var string */
+    private $lang;
 
 	public function getEmail(): ?string {
 		return $this->email;
@@ -36,17 +38,32 @@ class ForgetRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getLang(): ?string {
+		return $this->lang;
+	}
+
+	public function setLang(?string $lang) {
+		$this->lang = $lang;
+	}
+
+	public function withLang(?string $lang): ForgetRequest {
+		$this->lang = $lang;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?ForgetRequest {
         if ($data === null) {
             return null;
         }
         return (new ForgetRequest())
-            ->withEmail(empty($data['email']) ? null : $data['email']);
+            ->withEmail(empty($data['email']) ? null : $data['email'])
+            ->withLang(empty($data['lang']) ? null : $data['lang']);
     }
 
     public function toJson(): array {
         return array(
             "email" => $this->getEmail(),
+            "lang" => $this->getLang(),
         );
     }
 }

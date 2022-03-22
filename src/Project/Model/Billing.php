@@ -50,7 +50,7 @@ class Billing implements IModel {
 	 */
 	private $activityType;
 	/**
-     * @var int
+     * @var float
 	 */
 	private $unit;
 	/**
@@ -165,15 +165,15 @@ class Billing implements IModel {
 		return $this;
 	}
 
-	public function getUnit(): ?int {
+	public function getUnit(): ?float {
 		return $this->unit;
 	}
 
-	public function setUnit(?int $unit) {
+	public function setUnit(?float $unit) {
 		$this->unit = $unit;
 	}
 
-	public function withUnit(?int $unit): Billing {
+	public function withUnit(?float $unit): Billing {
 		$this->unit = $unit;
 		return $this;
 	}

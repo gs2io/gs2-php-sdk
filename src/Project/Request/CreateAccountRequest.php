@@ -28,6 +28,8 @@ class CreateAccountRequest extends Gs2BasicRequest {
     private $companyName;
     /** @var string */
     private $password;
+    /** @var string */
+    private $lang;
 
 	public function getEmail(): ?string {
 		return $this->email;
@@ -81,6 +83,19 @@ class CreateAccountRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getLang(): ?string {
+		return $this->lang;
+	}
+
+	public function setLang(?string $lang) {
+		$this->lang = $lang;
+	}
+
+	public function withLang(?string $lang): CreateAccountRequest {
+		$this->lang = $lang;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?CreateAccountRequest {
         if ($data === null) {
             return null;
@@ -89,7 +104,8 @@ class CreateAccountRequest extends Gs2BasicRequest {
             ->withEmail(empty($data['email']) ? null : $data['email'])
             ->withFullName(empty($data['fullName']) ? null : $data['fullName'])
             ->withCompanyName(empty($data['companyName']) ? null : $data['companyName'])
-            ->withPassword(empty($data['password']) ? null : $data['password']);
+            ->withPassword(empty($data['password']) ? null : $data['password'])
+            ->withLang(empty($data['lang']) ? null : $data['lang']);
     }
 
     public function toJson(): array {
@@ -98,6 +114,7 @@ class CreateAccountRequest extends Gs2BasicRequest {
             "fullName" => $this->getFullName(),
             "companyName" => $this->getCompanyName(),
             "password" => $this->getPassword(),
+            "lang" => $this->getLang(),
         );
     }
 }

@@ -42,7 +42,7 @@ class CreateItemModelMasterResult implements IResult {
             return null;
         }
         return (new CreateItemModelMasterResult())
-            ->withItem(empty($data['item']) ? null : ItemModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? ItemModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

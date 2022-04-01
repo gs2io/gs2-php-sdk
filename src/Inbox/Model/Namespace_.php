@@ -248,19 +248,19 @@ class Namespace_ implements IModel {
             return null;
         }
         return (new Namespace_())
-            ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withIsAutomaticDeletingEnabled($data['isAutomaticDeletingEnabled'])
-            ->withReceiveMessageScript(empty($data['receiveMessageScript']) ? null : ScriptSetting::fromJson($data['receiveMessageScript']))
-            ->withReadMessageScript(empty($data['readMessageScript']) ? null : ScriptSetting::fromJson($data['readMessageScript']))
-            ->withDeleteMessageScript(empty($data['deleteMessageScript']) ? null : ScriptSetting::fromJson($data['deleteMessageScript']))
-            ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
-            ->withReceiveNotification(empty($data['receiveNotification']) ? null : NotificationSetting::fromJson($data['receiveNotification']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withReceiveMessageScript(array_key_exists('receiveMessageScript', $data) && $data['receiveMessageScript'] !== null ? ScriptSetting::fromJson($data['receiveMessageScript']) : null)
+            ->withReadMessageScript(array_key_exists('readMessageScript', $data) && $data['readMessageScript'] !== null ? ScriptSetting::fromJson($data['readMessageScript']) : null)
+            ->withDeleteMessageScript(array_key_exists('deleteMessageScript', $data) && $data['deleteMessageScript'] !== null ? ScriptSetting::fromJson($data['deleteMessageScript']) : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withReceiveNotification(array_key_exists('receiveNotification', $data) && $data['receiveNotification'] !== null ? NotificationSetting::fromJson($data['receiveNotification']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

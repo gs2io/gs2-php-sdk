@@ -41,7 +41,7 @@ class ForgetResult implements IResult {
             return null;
         }
         return (new ForgetResult())
-            ->withIssuePasswordToken(empty($data['issuePasswordToken']) ? null : $data['issuePasswordToken']);
+            ->withIssuePasswordToken(array_key_exists('issuePasswordToken', $data) && $data['issuePasswordToken'] !== null ? $data['issuePasswordToken'] : null);
     }
 
     public function toJson(): array {

@@ -71,9 +71,9 @@ class UpdateStackRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateStackRequest())
-            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withTemplate(empty($data['template']) ? null : $data['template']);
+            ->withStackName(array_key_exists('stackName', $data) && $data['stackName'] !== null ? $data['stackName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null);
     }
 
     public function toJson(): array {

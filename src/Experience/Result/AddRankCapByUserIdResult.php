@@ -42,7 +42,7 @@ class AddRankCapByUserIdResult implements IResult {
             return null;
         }
         return (new AddRankCapByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Status::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Status::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

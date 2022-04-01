@@ -86,10 +86,10 @@ class PrepareReUploadRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PrepareReUploadRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withContentType(empty($data['contentType']) ? null : $data['contentType']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withContentType(array_key_exists('contentType', $data) && $data['contentType'] !== null ? $data['contentType'] : null);
     }
 
     public function toJson(): array {

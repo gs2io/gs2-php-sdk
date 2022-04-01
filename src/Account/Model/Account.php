@@ -112,11 +112,11 @@ class Account implements IModel {
             return null;
         }
         return (new Account())
-            ->withAccountId(empty($data['accountId']) ? null : $data['accountId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withTimeOffset(empty($data['timeOffset']) && $data['timeOffset'] !== 0 ? null : $data['timeOffset'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withAccountId(array_key_exists('accountId', $data) && $data['accountId'] !== null ? $data['accountId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
+            ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

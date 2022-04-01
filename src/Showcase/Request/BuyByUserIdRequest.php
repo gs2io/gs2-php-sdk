@@ -102,10 +102,10 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new BuyByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withShowcaseName(empty($data['showcaseName']) ? null : $data['showcaseName'])
-            ->withDisplayItemId(empty($data['displayItemId']) ? null : $data['displayItemId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null)
+            ->withDisplayItemId(array_key_exists('displayItemId', $data) && $data['displayItemId'] !== null ? $data['displayItemId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

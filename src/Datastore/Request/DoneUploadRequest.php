@@ -71,9 +71,9 @@ class DoneUploadRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DoneUploadRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
     }
 
     public function toJson(): array {

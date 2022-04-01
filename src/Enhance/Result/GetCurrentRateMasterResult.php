@@ -42,7 +42,7 @@ class GetCurrentRateMasterResult implements IResult {
             return null;
         }
         return (new GetCurrentRateMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentRateMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentRateMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

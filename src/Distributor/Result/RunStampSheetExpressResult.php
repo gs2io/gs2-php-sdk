@@ -62,7 +62,7 @@ class RunStampSheetExpressResult implements IResult {
                 },
                 array_key_exists('taskResults', $data) && $data['taskResults'] !== null ? $data['taskResults'] : []
             ))
-            ->withSheetResult(empty($data['sheetResult']) ? null : $data['sheetResult']);
+            ->withSheetResult(array_key_exists('sheetResult', $data) && $data['sheetResult'] !== null ? $data['sheetResult'] : null);
     }
 
     public function toJson(): array {

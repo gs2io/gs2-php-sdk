@@ -86,9 +86,9 @@ class GetFriendByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetFriendByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null)
             ->withWithProfile($data['withProfile']);
     }
 

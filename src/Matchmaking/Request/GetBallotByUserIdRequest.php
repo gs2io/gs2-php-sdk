@@ -116,12 +116,12 @@ class GetBallotByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetBallotByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
-            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withNumberOfPlayer(empty($data['numberOfPlayer']) && $data['numberOfPlayer'] !== 0 ? null : $data['numberOfPlayer'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRatingName(array_key_exists('ratingName', $data) && $data['ratingName'] !== null ? $data['ratingName'] : null)
+            ->withGatheringName(array_key_exists('gatheringName', $data) && $data['gatheringName'] !== null ? $data['gatheringName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withNumberOfPlayer(array_key_exists('numberOfPlayer', $data) && $data['numberOfPlayer'] !== null ? $data['numberOfPlayer'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {

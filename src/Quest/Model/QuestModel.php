@@ -163,16 +163,16 @@ class QuestModel implements IModel {
             return null;
         }
         return (new QuestModel())
-            ->withQuestModelId(empty($data['questModelId']) ? null : $data['questModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withQuestModelId(array_key_exists('questModelId', $data) && $data['questModelId'] !== null ? $data['questModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withContents(array_map(
                 function ($item) {
                     return Contents::fromJson($item);
                 },
                 array_key_exists('contents', $data) && $data['contents'] !== null ? $data['contents'] : []
             ))
-            ->withChallengePeriodEventId(empty($data['challengePeriodEventId']) ? null : $data['challengePeriodEventId'])
+            ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);

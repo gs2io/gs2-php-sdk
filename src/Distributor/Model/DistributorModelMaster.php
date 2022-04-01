@@ -163,19 +163,19 @@ class DistributorModelMaster implements IModel {
             return null;
         }
         return (new DistributorModelMaster())
-            ->withDistributorModelId(empty($data['distributorModelId']) ? null : $data['distributorModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withInboxNamespaceId(empty($data['inboxNamespaceId']) ? null : $data['inboxNamespaceId'])
+            ->withDistributorModelId(array_key_exists('distributorModelId', $data) && $data['distributorModelId'] !== null ? $data['distributorModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withInboxNamespaceId(array_key_exists('inboxNamespaceId', $data) && $data['inboxNamespaceId'] !== null ? $data['inboxNamespaceId'] : null)
             ->withWhiteListTargetIds(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('whiteListTargetIds', $data) && $data['whiteListTargetIds'] !== null ? $data['whiteListTargetIds'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

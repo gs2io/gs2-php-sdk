@@ -146,13 +146,13 @@ class Profile implements IModel {
             return null;
         }
         return (new Profile())
-            ->withProfileId(empty($data['profileId']) ? null : $data['profileId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
-            ->withFollowerProfile(empty($data['followerProfile']) ? null : $data['followerProfile'])
-            ->withFriendProfile(empty($data['friendProfile']) ? null : $data['friendProfile'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withProfileId(array_key_exists('profileId', $data) && $data['profileId'] !== null ? $data['profileId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPublicProfile(array_key_exists('publicProfile', $data) && $data['publicProfile'] !== null ? $data['publicProfile'] : null)
+            ->withFollowerProfile(array_key_exists('followerProfile', $data) && $data['followerProfile'] !== null ? $data['followerProfile'] : null)
+            ->withFriendProfile(array_key_exists('friendProfile', $data) && $data['friendProfile'] !== null ? $data['friendProfile'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

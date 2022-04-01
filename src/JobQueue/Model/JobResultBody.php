@@ -95,10 +95,10 @@ class JobResultBody implements IModel {
             return null;
         }
         return (new JobResultBody())
-            ->withTryNumber(empty($data['tryNumber']) && $data['tryNumber'] !== 0 ? null : $data['tryNumber'])
-            ->withStatusCode(empty($data['statusCode']) && $data['statusCode'] !== 0 ? null : $data['statusCode'])
-            ->withResult(empty($data['result']) ? null : $data['result'])
-            ->withTryAt(empty($data['tryAt']) && $data['tryAt'] !== 0 ? null : $data['tryAt']);
+            ->withTryNumber(array_key_exists('tryNumber', $data) && $data['tryNumber'] !== null ? $data['tryNumber'] : null)
+            ->withStatusCode(array_key_exists('statusCode', $data) && $data['statusCode'] !== null ? $data['statusCode'] : null)
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null)
+            ->withTryAt(array_key_exists('tryAt', $data) && $data['tryAt'] !== null ? $data['tryAt'] : null);
     }
 
     public function toJson(): array {

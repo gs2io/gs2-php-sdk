@@ -101,10 +101,10 @@ class UpdateDataObjectRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateDataObjectRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withScope(empty($data['scope']) ? null : $data['scope'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
             ->withAllowUserIds(array_map(
                 function ($item) {
                     return $item;

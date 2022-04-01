@@ -42,7 +42,7 @@ class CreateQuestGroupModelMasterResult implements IResult {
             return null;
         }
         return (new CreateQuestGroupModelMasterResult())
-            ->withItem(empty($data['item']) ? null : QuestGroupModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? QuestGroupModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

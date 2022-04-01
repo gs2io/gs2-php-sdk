@@ -56,8 +56,8 @@ class RunStampTaskResult implements IResult {
             return null;
         }
         return (new RunStampTaskResult())
-            ->withContextStack(empty($data['contextStack']) ? null : $data['contextStack'])
-            ->withResult(empty($data['result']) ? null : $data['result']);
+            ->withContextStack(array_key_exists('contextStack', $data) && $data['contextStack'] !== null ? $data['contextStack'] : null)
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class InvokeScriptRequest extends Gs2BasicRequest {
             return null;
         }
         return (new InvokeScriptRequest())
-            ->withScriptId(empty($data['scriptId']) ? null : $data['scriptId'])
-            ->withArgs(empty($data['args']) ? null : $data['args']);
+            ->withScriptId(array_key_exists('scriptId', $data) && $data['scriptId'] !== null ? $data['scriptId'] : null)
+            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null);
     }
 
     public function toJson(): array {

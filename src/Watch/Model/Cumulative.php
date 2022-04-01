@@ -112,11 +112,11 @@ class Cumulative implements IModel {
             return null;
         }
         return (new Cumulative())
-            ->withCumulativeId(empty($data['cumulativeId']) ? null : $data['cumulativeId'])
-            ->withResourceGrn(empty($data['resourceGrn']) ? null : $data['resourceGrn'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCumulativeId(array_key_exists('cumulativeId', $data) && $data['cumulativeId'] !== null ? $data['cumulativeId'] : null)
+            ->withResourceGrn(array_key_exists('resourceGrn', $data) && $data['resourceGrn'] !== null ? $data['resourceGrn'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

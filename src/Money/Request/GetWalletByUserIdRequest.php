@@ -71,9 +71,9 @@ class GetWalletByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetWalletByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null);
     }
 
     public function toJson(): array {

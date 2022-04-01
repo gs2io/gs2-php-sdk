@@ -78,9 +78,9 @@ class AccessToken implements IModel {
             return null;
         }
         return (new AccessToken())
-            ->withToken(empty($data['token']) ? null : $data['token'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withExpire(empty($data['expire']) && $data['expire'] !== 0 ? null : $data['expire']);
+            ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withExpire(array_key_exists('expire', $data) && $data['expire'] !== null ? $data['expire'] : null);
     }
 
     public function toJson(): array {

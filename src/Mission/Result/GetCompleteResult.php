@@ -42,7 +42,7 @@ class GetCompleteResult implements IResult {
             return null;
         }
         return (new GetCompleteResult())
-            ->withItem(empty($data['item']) ? null : Complete::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Complete::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

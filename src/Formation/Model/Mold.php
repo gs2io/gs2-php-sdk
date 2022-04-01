@@ -129,12 +129,12 @@ class Mold implements IModel {
             return null;
         }
         return (new Mold())
-            ->withMoldId(empty($data['moldId']) ? null : $data['moldId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCapacity(empty($data['capacity']) && $data['capacity'] !== 0 ? null : $data['capacity'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withMoldId(array_key_exists('moldId', $data) && $data['moldId'] !== null ? $data['moldId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withCapacity(array_key_exists('capacity', $data) && $data['capacity'] !== null ? $data['capacity'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

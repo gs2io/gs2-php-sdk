@@ -231,18 +231,18 @@ class Stamina implements IModel {
             return null;
         }
         return (new Stamina())
-            ->withStaminaId(empty($data['staminaId']) ? null : $data['staminaId'])
-            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value'])
-            ->withMaxValue(empty($data['maxValue']) && $data['maxValue'] !== 0 ? null : $data['maxValue'])
-            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) && $data['recoverIntervalMinutes'] !== 0 ? null : $data['recoverIntervalMinutes'])
-            ->withRecoverValue(empty($data['recoverValue']) && $data['recoverValue'] !== 0 ? null : $data['recoverValue'])
-            ->withOverflowValue(empty($data['overflowValue']) && $data['overflowValue'] !== 0 ? null : $data['overflowValue'])
-            ->withNextRecoverAt(empty($data['nextRecoverAt']) && $data['nextRecoverAt'] !== 0 ? null : $data['nextRecoverAt'])
-            ->withLastRecoveredAt(empty($data['lastRecoveredAt']) && $data['lastRecoveredAt'] !== 0 ? null : $data['lastRecoveredAt'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withStaminaId(array_key_exists('staminaId', $data) && $data['staminaId'] !== null ? $data['staminaId'] : null)
+            ->withStaminaName(array_key_exists('staminaName', $data) && $data['staminaName'] !== null ? $data['staminaName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
+            ->withMaxValue(array_key_exists('maxValue', $data) && $data['maxValue'] !== null ? $data['maxValue'] : null)
+            ->withRecoverIntervalMinutes(array_key_exists('recoverIntervalMinutes', $data) && $data['recoverIntervalMinutes'] !== null ? $data['recoverIntervalMinutes'] : null)
+            ->withRecoverValue(array_key_exists('recoverValue', $data) && $data['recoverValue'] !== null ? $data['recoverValue'] : null)
+            ->withOverflowValue(array_key_exists('overflowValue', $data) && $data['overflowValue'] !== null ? $data['overflowValue'] : null)
+            ->withNextRecoverAt(array_key_exists('nextRecoverAt', $data) && $data['nextRecoverAt'] !== null ? $data['nextRecoverAt'] : null)
+            ->withLastRecoveredAt(array_key_exists('lastRecoveredAt', $data) && $data['lastRecoveredAt'] !== null ? $data['lastRecoveredAt'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

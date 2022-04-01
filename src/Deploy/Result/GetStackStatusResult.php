@@ -41,7 +41,7 @@ class GetStackStatusResult implements IResult {
             return null;
         }
         return (new GetStackStatusResult())
-            ->withStatus(empty($data['status']) ? null : $data['status']);
+            ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null);
     }
 
     public function toJson(): array {

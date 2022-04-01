@@ -42,7 +42,7 @@ class VoteMultipleResult implements IResult {
             return null;
         }
         return (new VoteMultipleResult())
-            ->withItem(empty($data['item']) ? null : Ballot::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Ballot::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

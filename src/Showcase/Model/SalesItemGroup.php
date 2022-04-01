@@ -78,8 +78,8 @@ class SalesItemGroup implements IModel {
             return null;
         }
         return (new SalesItemGroup())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withSalesItems(array_map(
                 function ($item) {
                     return SalesItem::fromJson($item);

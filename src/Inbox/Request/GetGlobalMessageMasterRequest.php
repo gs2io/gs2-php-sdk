@@ -56,8 +56,8 @@ class GetGlobalMessageMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetGlobalMessageMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withGlobalMessageName(empty($data['globalMessageName']) ? null : $data['globalMessageName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withGlobalMessageName(array_key_exists('globalMessageName', $data) && $data['globalMessageName'] !== null ? $data['globalMessageName'] : null);
     }
 
     public function toJson(): array {

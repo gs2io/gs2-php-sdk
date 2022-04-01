@@ -42,7 +42,7 @@ class GetCurrentEventMasterResult implements IResult {
             return null;
         }
         return (new GetCurrentEventMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentEventMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentEventMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

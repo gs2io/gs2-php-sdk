@@ -116,12 +116,12 @@ class DescribeBillingsRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeBillingsRequest())
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
-            ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
-            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
-            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
-            ->withRegion(empty($data['region']) ? null : $data['region'])
-            ->withService(empty($data['service']) ? null : $data['service']);
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null)
+            ->withProjectName(array_key_exists('projectName', $data) && $data['projectName'] !== null ? $data['projectName'] : null)
+            ->withYear(array_key_exists('year', $data) && $data['year'] !== null ? $data['year'] : null)
+            ->withMonth(array_key_exists('month', $data) && $data['month'] !== null ? $data['month'] : null)
+            ->withRegion(array_key_exists('region', $data) && $data['region'] !== null ? $data['region'] : null)
+            ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class GetExperienceModelRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetExperienceModelRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null);
     }
 
     public function toJson(): array {

@@ -43,7 +43,7 @@ class GetWalletResult implements IResult {
             return null;
         }
         return (new GetWalletResult())
-            ->withItem(empty($data['item']) ? null : Wallet::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Wallet::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

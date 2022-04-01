@@ -86,10 +86,10 @@ class DeleteTakeOverRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteTakeOverRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withType(empty($data['type']) && $data['type'] !== 0 ? null : $data['type'])
-            ->withUserIdentifier(empty($data['userIdentifier']) ? null : $data['userIdentifier']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withUserIdentifier(array_key_exists('userIdentifier', $data) && $data['userIdentifier'] !== null ? $data['userIdentifier'] : null);
     }
 
     public function toJson(): array {

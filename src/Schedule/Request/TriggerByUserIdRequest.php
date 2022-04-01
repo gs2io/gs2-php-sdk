@@ -101,11 +101,11 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new TriggerByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withTriggerName(empty($data['triggerName']) ? null : $data['triggerName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTriggerStrategy(empty($data['triggerStrategy']) ? null : $data['triggerStrategy'])
-            ->withTtl(empty($data['ttl']) && $data['ttl'] !== 0 ? null : $data['ttl']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withTriggerName(array_key_exists('triggerName', $data) && $data['triggerName'] !== null ? $data['triggerName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTriggerStrategy(array_key_exists('triggerStrategy', $data) && $data['triggerStrategy'] !== null ? $data['triggerStrategy'] : null)
+            ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null);
     }
 
     public function toJson(): array {

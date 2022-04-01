@@ -248,19 +248,19 @@ class Namespace_ implements IModel {
             return null;
         }
         return (new Namespace_())
-            ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAllowCreateRoom($data['allowCreateRoom'])
-            ->withPostMessageScript(empty($data['postMessageScript']) ? null : ScriptSetting::fromJson($data['postMessageScript']))
-            ->withCreateRoomScript(empty($data['createRoomScript']) ? null : ScriptSetting::fromJson($data['createRoomScript']))
-            ->withDeleteRoomScript(empty($data['deleteRoomScript']) ? null : ScriptSetting::fromJson($data['deleteRoomScript']))
-            ->withSubscribeRoomScript(empty($data['subscribeRoomScript']) ? null : ScriptSetting::fromJson($data['subscribeRoomScript']))
-            ->withUnsubscribeRoomScript(empty($data['unsubscribeRoomScript']) ? null : ScriptSetting::fromJson($data['unsubscribeRoomScript']))
-            ->withPostNotification(empty($data['postNotification']) ? null : NotificationSetting::fromJson($data['postNotification']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withPostMessageScript(array_key_exists('postMessageScript', $data) && $data['postMessageScript'] !== null ? ScriptSetting::fromJson($data['postMessageScript']) : null)
+            ->withCreateRoomScript(array_key_exists('createRoomScript', $data) && $data['createRoomScript'] !== null ? ScriptSetting::fromJson($data['createRoomScript']) : null)
+            ->withDeleteRoomScript(array_key_exists('deleteRoomScript', $data) && $data['deleteRoomScript'] !== null ? ScriptSetting::fromJson($data['deleteRoomScript']) : null)
+            ->withSubscribeRoomScript(array_key_exists('subscribeRoomScript', $data) && $data['subscribeRoomScript'] !== null ? ScriptSetting::fromJson($data['subscribeRoomScript']) : null)
+            ->withUnsubscribeRoomScript(array_key_exists('unsubscribeRoomScript', $data) && $data['unsubscribeRoomScript'] !== null ? ScriptSetting::fromJson($data['unsubscribeRoomScript']) : null)
+            ->withPostNotification(array_key_exists('postNotification', $data) && $data['postNotification'] !== null ? NotificationSetting::fromJson($data['postNotification']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

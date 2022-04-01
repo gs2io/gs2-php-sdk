@@ -149,13 +149,13 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AcquireActionsToFormPropertiesRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
-            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index'])
-            ->withAcquireAction(empty($data['acquireAction']) ? null : AcquireAction::fromJson($data['acquireAction']))
-            ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
+            ->withAcquireAction(array_key_exists('acquireAction', $data) && $data['acquireAction'] !== null ? AcquireAction::fromJson($data['acquireAction']) : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return AcquireActionConfig::fromJson($item);

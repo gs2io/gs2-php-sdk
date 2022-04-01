@@ -56,8 +56,8 @@ class DeleteRateModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteRateModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null);
     }
 
     public function toJson(): array {

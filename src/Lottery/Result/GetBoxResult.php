@@ -44,7 +44,7 @@ class GetBoxResult implements IResult {
             return null;
         }
         return (new GetBoxResult())
-            ->withItem(empty($data['item']) ? null : BoxItems::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? BoxItems::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

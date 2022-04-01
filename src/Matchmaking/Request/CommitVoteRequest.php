@@ -71,9 +71,9 @@ class CommitVoteRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CommitVoteRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
-            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRatingName(array_key_exists('ratingName', $data) && $data['ratingName'] !== null ? $data['ratingName'] : null)
+            ->withGatheringName(array_key_exists('gatheringName', $data) && $data['gatheringName'] !== null ? $data['gatheringName'] : null);
     }
 
     public function toJson(): array {

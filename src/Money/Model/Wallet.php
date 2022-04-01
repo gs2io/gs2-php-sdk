@@ -163,19 +163,19 @@ class Wallet implements IModel {
             return null;
         }
         return (new Wallet())
-            ->withWalletId(empty($data['walletId']) ? null : $data['walletId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot'])
-            ->withPaid(empty($data['paid']) && $data['paid'] !== 0 ? null : $data['paid'])
-            ->withFree(empty($data['free']) && $data['free'] !== 0 ? null : $data['free'])
+            ->withWalletId(array_key_exists('walletId', $data) && $data['walletId'] !== null ? $data['walletId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
+            ->withPaid(array_key_exists('paid', $data) && $data['paid'] !== null ? $data['paid'] : null)
+            ->withFree(array_key_exists('free', $data) && $data['free'] !== null ? $data['free'] : null)
             ->withDetail(array_map(
                 function ($item) {
                     return WalletDetail::fromJson($item);
                 },
                 array_key_exists('detail', $data) && $data['detail'] !== null ? $data['detail'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

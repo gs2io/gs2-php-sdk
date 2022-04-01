@@ -103,11 +103,11 @@ class DirectEnhanceResult implements IResult {
             return null;
         }
         return (new DirectEnhanceResult())
-            ->withItem(empty($data['item']) ? null : RateModel::fromJson($data['item']))
-            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
-            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId'])
-            ->withAcquireExperience(empty($data['acquireExperience']) && $data['acquireExperience'] !== 0 ? null : $data['acquireExperience'])
-            ->withBonusRate(empty($data['bonusRate']) && $data['bonusRate'] !== 0 ? null : $data['bonusRate']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? RateModel::fromJson($data['item']) : null)
+            ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
+            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
+            ->withAcquireExperience(array_key_exists('acquireExperience', $data) && $data['acquireExperience'] !== null ? $data['acquireExperience'] : null)
+            ->withBonusRate(array_key_exists('bonusRate', $data) && $data['bonusRate'] !== null ? $data['bonusRate'] : null);
     }
 
     public function toJson(): array {

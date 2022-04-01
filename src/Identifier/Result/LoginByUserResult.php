@@ -42,7 +42,7 @@ class LoginByUserResult implements IResult {
             return null;
         }
         return (new LoginByUserResult())
-            ->withItem(empty($data['item']) ? null : ProjectToken::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? ProjectToken::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

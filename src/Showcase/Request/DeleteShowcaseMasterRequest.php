@@ -56,8 +56,8 @@ class DeleteShowcaseMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteShowcaseMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withShowcaseName(empty($data['showcaseName']) ? null : $data['showcaseName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null);
     }
 
     public function toJson(): array {

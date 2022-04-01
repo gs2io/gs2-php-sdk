@@ -71,9 +71,9 @@ class UpdateSecurityPolicyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateSecurityPolicyRequest())
-            ->withSecurityPolicyName(empty($data['securityPolicyName']) ? null : $data['securityPolicyName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withPolicy(empty($data['policy']) ? null : $data['policy']);
+            ->withSecurityPolicyName(array_key_exists('securityPolicyName', $data) && $data['securityPolicyName'] !== null ? $data['securityPolicyName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withPolicy(array_key_exists('policy', $data) && $data['policy'] !== null ? $data['policy'] : null);
     }
 
     public function toJson(): array {

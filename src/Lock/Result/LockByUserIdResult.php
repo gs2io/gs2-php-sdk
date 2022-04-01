@@ -42,7 +42,7 @@ class LockByUserIdResult implements IResult {
             return null;
         }
         return (new LockByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Mutex::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Mutex::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

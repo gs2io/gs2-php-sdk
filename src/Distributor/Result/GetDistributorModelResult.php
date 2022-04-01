@@ -42,7 +42,7 @@ class GetDistributorModelResult implements IResult {
             return null;
         }
         return (new GetDistributorModelResult())
-            ->withItem(empty($data['item']) ? null : DistributorModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? DistributorModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

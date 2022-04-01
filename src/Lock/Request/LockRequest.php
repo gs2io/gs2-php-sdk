@@ -101,11 +101,11 @@ class LockRequest extends Gs2BasicRequest {
             return null;
         }
         return (new LockRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
-            ->withTtl(empty($data['ttl']) && $data['ttl'] !== 0 ? null : $data['ttl']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
+            ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null);
     }
 
     public function toJson(): array {

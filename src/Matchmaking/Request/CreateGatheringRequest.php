@@ -151,9 +151,9 @@ class CreateGatheringRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateGatheringRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withPlayer(empty($data['player']) ? null : Player::fromJson($data['player']))
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withPlayer(array_key_exists('player', $data) && $data['player'] !== null ? Player::fromJson($data['player']) : null)
             ->withAttributeRanges(array_map(
                 function ($item) {
                     return AttributeRange::fromJson($item);
@@ -172,8 +172,8 @@ class CreateGatheringRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt'])
-            ->withExpiresAtTimeSpan(empty($data['expiresAtTimeSpan']) ? null : TimeSpan::fromJson($data['expiresAtTimeSpan']));
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withExpiresAtTimeSpan(array_key_exists('expiresAtTimeSpan', $data) && $data['expiresAtTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresAtTimeSpan']) : null);
     }
 
     public function toJson(): array {

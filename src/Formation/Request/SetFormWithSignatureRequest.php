@@ -117,17 +117,17 @@ class SetFormWithSignatureRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SetFormWithSignatureRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
-            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
             ->withSlots(array_map(
                 function ($item) {
                     return SlotWithSignature::fromJson($item);
                 },
                 array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
             ))
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {

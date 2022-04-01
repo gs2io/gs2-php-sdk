@@ -95,9 +95,9 @@ class BoxItems implements IModel {
             return null;
         }
         return (new BoxItems())
-            ->withBoxId(empty($data['boxId']) ? null : $data['boxId'])
-            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withBoxId(array_key_exists('boxId', $data) && $data['boxId'] !== null ? $data['boxId'] : null)
+            ->withPrizeTableName(array_key_exists('prizeTableName', $data) && $data['prizeTableName'] !== null ? $data['prizeTableName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withItems(array_map(
                 function ($item) {
                     return BoxItem::fromJson($item);

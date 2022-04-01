@@ -42,7 +42,7 @@ class GetInventoryModelResult implements IResult {
             return null;
         }
         return (new GetInventoryModelResult())
-            ->withItem(empty($data['item']) ? null : InventoryModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? InventoryModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

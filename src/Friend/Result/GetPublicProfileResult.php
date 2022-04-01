@@ -42,7 +42,7 @@ class GetPublicProfileResult implements IResult {
             return null;
         }
         return (new GetPublicProfileResult())
-            ->withItem(empty($data['item']) ? null : PublicProfile::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? PublicProfile::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

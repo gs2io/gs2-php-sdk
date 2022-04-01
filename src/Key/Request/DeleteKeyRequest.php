@@ -56,8 +56,8 @@ class DeleteKeyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteKeyRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withKeyName(empty($data['keyName']) ? null : $data['keyName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withKeyName(array_key_exists('keyName', $data) && $data['keyName'] !== null ? $data['keyName'] : null);
     }
 
     public function toJson(): array {

@@ -178,16 +178,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateNamespaceRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withPriority(empty($data['priority']) ? null : $data['priority'])
-            ->withAppleKey(empty($data['appleKey']) ? null : $data['appleKey'])
-            ->withGoogleKey(empty($data['googleKey']) ? null : $data['googleKey'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withPriority(array_key_exists('priority', $data) && $data['priority'] !== null ? $data['priority'] : null)
+            ->withAppleKey(array_key_exists('appleKey', $data) && $data['appleKey'] !== null ? $data['appleKey'] : null)
+            ->withGoogleKey(array_key_exists('googleKey', $data) && $data['googleKey'] !== null ? $data['googleKey'] : null)
             ->withEnableFakeReceipt($data['enableFakeReceipt'])
-            ->withCreateWalletScript(empty($data['createWalletScript']) ? null : ScriptSetting::fromJson($data['createWalletScript']))
-            ->withDepositScript(empty($data['depositScript']) ? null : ScriptSetting::fromJson($data['depositScript']))
-            ->withWithdrawScript(empty($data['withdrawScript']) ? null : ScriptSetting::fromJson($data['withdrawScript']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
+            ->withCreateWalletScript(array_key_exists('createWalletScript', $data) && $data['createWalletScript'] !== null ? ScriptSetting::fromJson($data['createWalletScript']) : null)
+            ->withDepositScript(array_key_exists('depositScript', $data) && $data['depositScript'] !== null ? ScriptSetting::fromJson($data['depositScript']) : null)
+            ->withWithdrawScript(array_key_exists('withdrawScript', $data) && $data['withdrawScript'] !== null ? ScriptSetting::fromJson($data['withdrawScript']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
     public function toJson(): array {

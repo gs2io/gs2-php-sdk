@@ -56,8 +56,8 @@ class DeleteReferenceOfItemSetByStampSheetRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteReferenceOfItemSetByStampSheetRequest())
-            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
+            ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {

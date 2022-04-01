@@ -86,10 +86,10 @@ class LoginBySignatureRequest extends Gs2BasicRequest {
             return null;
         }
         return (new LoginBySignatureRequest())
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
-            ->withBody(empty($data['body']) ? null : $data['body'])
-            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
+            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
     }
 
     public function toJson(): array {

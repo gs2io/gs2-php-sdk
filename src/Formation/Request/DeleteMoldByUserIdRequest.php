@@ -71,9 +71,9 @@ class DeleteMoldByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteMoldByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withMoldName(empty($data['moldName']) ? null : $data['moldName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null);
     }
 
     public function toJson(): array {

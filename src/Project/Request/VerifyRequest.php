@@ -41,7 +41,7 @@ class VerifyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new VerifyRequest())
-            ->withVerifyToken(empty($data['verifyToken']) ? null : $data['verifyToken']);
+            ->withVerifyToken(array_key_exists('verifyToken', $data) && $data['verifyToken'] !== null ? $data['verifyToken'] : null);
     }
 
     public function toJson(): array {

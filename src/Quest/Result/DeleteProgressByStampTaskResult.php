@@ -58,8 +58,8 @@ class DeleteProgressByStampTaskResult implements IResult {
             return null;
         }
         return (new DeleteProgressByStampTaskResult())
-            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
-            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Progress::fromJson($data['item']) : null)
+            ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {

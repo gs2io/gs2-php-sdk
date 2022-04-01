@@ -180,8 +180,8 @@ class Gathering implements IModel {
             return null;
         }
         return (new Gathering())
-            ->withGatheringId(empty($data['gatheringId']) ? null : $data['gatheringId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withGatheringId(array_key_exists('gatheringId', $data) && $data['gatheringId'] !== null ? $data['gatheringId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withAttributeRanges(array_map(
                 function ($item) {
                     return AttributeRange::fromJson($item);
@@ -200,10 +200,10 @@ class Gathering implements IModel {
                 },
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

@@ -87,9 +87,9 @@ class UpdateNotificationTypeByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateNotificationTypeByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withNotificationTypes(array_map(
                 function ($item) {
                     return NotificationType::fromJson($item);

@@ -61,8 +61,8 @@ class SetCookieRequestEntry implements IModel {
             return null;
         }
         return (new SetCookieRequestEntry())
-            ->withKey(empty($data['key']) ? null : $data['key'])
-            ->withValue(empty($data['value']) ? null : $data['value']);
+            ->withKey(array_key_exists('key', $data) && $data['key'] !== null ? $data['key'] : null)
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null);
     }
 
     public function toJson(): array {

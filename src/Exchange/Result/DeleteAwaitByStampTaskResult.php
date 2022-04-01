@@ -57,8 +57,8 @@ class DeleteAwaitByStampTaskResult implements IResult {
             return null;
         }
         return (new DeleteAwaitByStampTaskResult())
-            ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']))
-            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null)
+            ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {

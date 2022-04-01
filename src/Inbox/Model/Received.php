@@ -112,16 +112,16 @@ class Received implements IModel {
             return null;
         }
         return (new Received())
-            ->withReceivedId(empty($data['receivedId']) ? null : $data['receivedId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withReceivedId(array_key_exists('receivedId', $data) && $data['receivedId'] !== null ? $data['receivedId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withReceivedGlobalMessageNames(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('receivedGlobalMessageNames', $data) && $data['receivedGlobalMessageNames'] !== null ? $data['receivedGlobalMessageNames'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

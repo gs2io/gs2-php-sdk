@@ -71,9 +71,9 @@ class DeleteJobByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteJobByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withJobName(empty($data['jobName']) ? null : $data['jobName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withJobName(array_key_exists('jobName', $data) && $data['jobName'] !== null ? $data['jobName'] : null);
     }
 
     public function toJson(): array {

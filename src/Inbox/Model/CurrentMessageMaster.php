@@ -61,8 +61,8 @@ class CurrentMessageMaster implements IModel {
             return null;
         }
         return (new CurrentMessageMaster())
-            ->withNamespaceId(empty($data['namespaceId']) ? null : $data['namespaceId'])
-            ->withSettings(empty($data['settings']) ? null : $data['settings']);
+            ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
+            ->withSettings(array_key_exists('settings', $data) && $data['settings'] !== null ? $data['settings'] : null);
     }
 
     public function toJson(): array {

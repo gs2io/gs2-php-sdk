@@ -112,11 +112,11 @@ class DataObjectHistory implements IModel {
             return null;
         }
         return (new DataObjectHistory())
-            ->withDataObjectHistoryId(empty($data['dataObjectHistoryId']) ? null : $data['dataObjectHistoryId'])
-            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
-            ->withGeneration(empty($data['generation']) ? null : $data['generation'])
-            ->withContentLength(empty($data['contentLength']) && $data['contentLength'] !== 0 ? null : $data['contentLength'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withDataObjectHistoryId(array_key_exists('dataObjectHistoryId', $data) && $data['dataObjectHistoryId'] !== null ? $data['dataObjectHistoryId'] : null)
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
+            ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null)
+            ->withContentLength(array_key_exists('contentLength', $data) && $data['contentLength'] !== null ? $data['contentLength'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

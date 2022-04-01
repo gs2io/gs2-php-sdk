@@ -56,8 +56,8 @@ class CalcRankingRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CalcRankingRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null);
     }
 
     public function toJson(): array {

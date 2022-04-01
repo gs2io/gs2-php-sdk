@@ -103,10 +103,10 @@ class UpdatePrizeTableMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdatePrizeTableMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withPrizeTableName(array_key_exists('prizeTableName', $data) && $data['prizeTableName'] !== null ? $data['prizeTableName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withPrizes(array_map(
                 function ($item) {
                     return Prize::fromJson($item);

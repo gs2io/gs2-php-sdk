@@ -117,10 +117,10 @@ class StartRequest extends Gs2BasicRequest {
             return null;
         }
         return (new StartRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName'])
-            ->withQuestName(empty($data['questName']) ? null : $data['questName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withQuestGroupName(array_key_exists('questGroupName', $data) && $data['questGroupName'] !== null ? $data['questGroupName'] : null)
+            ->withQuestName(array_key_exists('questName', $data) && $data['questName'] !== null ? $data['questName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withForce($data['force'])
             ->withConfig(array_map(
                 function ($item) {

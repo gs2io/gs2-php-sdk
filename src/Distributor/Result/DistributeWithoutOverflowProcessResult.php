@@ -57,8 +57,8 @@ class DistributeWithoutOverflowProcessResult implements IResult {
             return null;
         }
         return (new DistributeWithoutOverflowProcessResult())
-            ->withDistributeResource(empty($data['distributeResource']) ? null : DistributeResource::fromJson($data['distributeResource']))
-            ->withResult(empty($data['result']) ? null : $data['result']);
+            ->withDistributeResource(array_key_exists('distributeResource', $data) && $data['distributeResource'] !== null ? DistributeResource::fromJson($data['distributeResource']) : null)
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null);
     }
 
     public function toJson(): array {

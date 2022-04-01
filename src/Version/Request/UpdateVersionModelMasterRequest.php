@@ -177,16 +177,16 @@ class UpdateVersionModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateVersionModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withVersionName(empty($data['versionName']) ? null : $data['versionName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withWarningVersion(empty($data['warningVersion']) ? null : Version::fromJson($data['warningVersion']))
-            ->withErrorVersion(empty($data['errorVersion']) ? null : Version::fromJson($data['errorVersion']))
-            ->withScope(empty($data['scope']) ? null : $data['scope'])
-            ->withCurrentVersion(empty($data['currentVersion']) ? null : Version::fromJson($data['currentVersion']))
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withWarningVersion(array_key_exists('warningVersion', $data) && $data['warningVersion'] !== null ? Version::fromJson($data['warningVersion']) : null)
+            ->withErrorVersion(array_key_exists('errorVersion', $data) && $data['errorVersion'] !== null ? Version::fromJson($data['errorVersion']) : null)
+            ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
+            ->withCurrentVersion(array_key_exists('currentVersion', $data) && $data['currentVersion'] !== null ? Version::fromJson($data['currentVersion']) : null)
             ->withNeedSignature($data['needSignature'])
-            ->withSignatureKeyId(empty($data['signatureKeyId']) ? null : $data['signatureKeyId']);
+            ->withSignatureKeyId(array_key_exists('signatureKeyId', $data) && $data['signatureKeyId'] !== null ? $data['signatureKeyId'] : null);
     }
 
     public function toJson(): array {

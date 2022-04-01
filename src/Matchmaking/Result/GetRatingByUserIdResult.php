@@ -42,7 +42,7 @@ class GetRatingByUserIdResult implements IResult {
             return null;
         }
         return (new GetRatingByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Rating::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Rating::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

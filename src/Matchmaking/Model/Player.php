@@ -95,14 +95,14 @@ class Player implements IModel {
             return null;
         }
         return (new Player())
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withAttributes(array_map(
                 function ($item) {
                     return Attribute::fromJson($item);
                 },
                 array_key_exists('attributes', $data) && $data['attributes'] !== null ? $data['attributes'] : []
             ))
-            ->withRoleName(empty($data['roleName']) ? null : $data['roleName'])
+            ->withRoleName(array_key_exists('roleName', $data) && $data['roleName'] !== null ? $data['roleName'] : null)
             ->withDenyUserIds(array_map(
                 function ($item) {
                     return $item;

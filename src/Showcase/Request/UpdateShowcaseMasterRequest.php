@@ -117,17 +117,17 @@ class UpdateShowcaseMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateShowcaseMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withShowcaseName(empty($data['showcaseName']) ? null : $data['showcaseName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDisplayItems(array_map(
                 function ($item) {
                     return DisplayItemMaster::fromJson($item);
                 },
                 array_key_exists('displayItems', $data) && $data['displayItems'] !== null ? $data['displayItems'] : []
             ))
-            ->withSalesPeriodEventId(empty($data['salesPeriodEventId']) ? null : $data['salesPeriodEventId']);
+            ->withSalesPeriodEventId(array_key_exists('salesPeriodEventId', $data) && $data['salesPeriodEventId'] !== null ? $data['salesPeriodEventId'] : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class DeleteScriptRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteScriptRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withScriptName(empty($data['scriptName']) ? null : $data['scriptName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withScriptName(array_key_exists('scriptName', $data) && $data['scriptName'] !== null ? $data['scriptName'] : null);
     }
 
     public function toJson(): array {

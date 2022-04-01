@@ -71,9 +71,9 @@ class GetMissionTaskModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetMissionTaskModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName'])
-            ->withMissionTaskName(empty($data['missionTaskName']) ? null : $data['missionTaskName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
+            ->withMissionTaskName(array_key_exists('missionTaskName', $data) && $data['missionTaskName'] !== null ? $data['missionTaskName'] : null);
     }
 
     public function toJson(): array {

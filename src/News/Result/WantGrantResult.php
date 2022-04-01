@@ -78,8 +78,8 @@ class WantGrantResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
-            ->withBrowserUrl(empty($data['browserUrl']) ? null : $data['browserUrl'])
-            ->withZipUrl(empty($data['zipUrl']) ? null : $data['zipUrl']);
+            ->withBrowserUrl(array_key_exists('browserUrl', $data) && $data['browserUrl'] !== null ? $data['browserUrl'] : null)
+            ->withZipUrl(array_key_exists('zipUrl', $data) && $data['zipUrl'] !== null ? $data['zipUrl'] : null);
     }
 
     public function toJson(): array {

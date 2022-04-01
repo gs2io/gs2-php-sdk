@@ -78,9 +78,9 @@ class Chart implements IModel {
             return null;
         }
         return (new Chart())
-            ->withChartId(empty($data['chartId']) ? null : $data['chartId'])
-            ->withEmbedId(empty($data['embedId']) ? null : $data['embedId'])
-            ->withHtml(empty($data['html']) ? null : $data['html']);
+            ->withChartId(array_key_exists('chartId', $data) && $data['chartId'] !== null ? $data['chartId'] : null)
+            ->withEmbedId(array_key_exists('embedId', $data) && $data['embedId'] !== null ? $data['embedId'] : null)
+            ->withHtml(array_key_exists('html', $data) && $data['html'] !== null ? $data['html'] : null);
     }
 
     public function toJson(): array {

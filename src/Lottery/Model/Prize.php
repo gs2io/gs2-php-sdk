@@ -112,16 +112,16 @@ class Prize implements IModel {
             return null;
         }
         return (new Prize())
-            ->withPrizeId(empty($data['prizeId']) ? null : $data['prizeId'])
-            ->withType(empty($data['type']) ? null : $data['type'])
+            ->withPrizeId(array_key_exists('prizeId', $data) && $data['prizeId'] !== null ? $data['prizeId'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
             ->withAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
                 array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
             ))
-            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
-            ->withWeight(empty($data['weight']) && $data['weight'] !== 0 ? null : $data['weight']);
+            ->withPrizeTableName(array_key_exists('prizeTableName', $data) && $data['prizeTableName'] !== null ? $data['prizeTableName'] : null)
+            ->withWeight(array_key_exists('weight', $data) && $data['weight'] !== null ? $data['weight'] : null);
     }
 
     public function toJson(): array {

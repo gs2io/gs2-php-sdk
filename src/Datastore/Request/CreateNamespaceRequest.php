@@ -88,10 +88,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateNamespaceRequest())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']))
-            ->withDoneUploadScript(empty($data['doneUploadScript']) ? null : ScriptSetting::fromJson($data['doneUploadScript']));
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
+            ->withDoneUploadScript(array_key_exists('doneUploadScript', $data) && $data['doneUploadScript'] !== null ? ScriptSetting::fromJson($data['doneUploadScript']) : null);
     }
 
     public function toJson(): array {

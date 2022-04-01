@@ -42,7 +42,7 @@ class DeleteAwaitByUserIdResult implements IResult {
             return null;
         }
         return (new DeleteAwaitByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

@@ -163,14 +163,14 @@ class Receipt implements IModel {
             return null;
         }
         return (new Receipt())
-            ->withReceiptId(empty($data['receiptId']) ? null : $data['receiptId'])
-            ->withAccountName(empty($data['accountName']) ? null : $data['accountName'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDate(empty($data['date']) && $data['date'] !== 0 ? null : $data['date'])
-            ->withAmount(empty($data['amount']) ? null : $data['amount'])
-            ->withPdfUrl(empty($data['pdfUrl']) ? null : $data['pdfUrl'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withReceiptId(array_key_exists('receiptId', $data) && $data['receiptId'] !== null ? $data['receiptId'] : null)
+            ->withAccountName(array_key_exists('accountName', $data) && $data['accountName'] !== null ? $data['accountName'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDate(array_key_exists('date', $data) && $data['date'] !== null ? $data['date'] : null)
+            ->withAmount(array_key_exists('amount', $data) && $data['amount'] !== null ? $data['amount'] : null)
+            ->withPdfUrl(array_key_exists('pdfUrl', $data) && $data['pdfUrl'] !== null ? $data['pdfUrl'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

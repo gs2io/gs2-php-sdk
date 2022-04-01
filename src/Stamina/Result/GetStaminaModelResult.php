@@ -45,7 +45,7 @@ class GetStaminaModelResult implements IResult {
             return null;
         }
         return (new GetStaminaModelResult())
-            ->withItem(empty($data['item']) ? null : StaminaModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? StaminaModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

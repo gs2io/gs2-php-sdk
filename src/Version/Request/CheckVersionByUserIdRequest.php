@@ -73,8 +73,8 @@ class CheckVersionByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CheckVersionByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetVersions(array_map(
                 function ($item) {
                     return TargetVersion::fromJson($item);

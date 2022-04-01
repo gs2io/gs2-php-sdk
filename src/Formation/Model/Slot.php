@@ -78,9 +78,9 @@ class Slot implements IModel {
             return null;
         }
         return (new Slot())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
 
     public function toJson(): array {

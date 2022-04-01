@@ -61,8 +61,8 @@ class DoMatchmakingResult implements IResult {
             return null;
         }
         return (new DoMatchmakingResult())
-            ->withItem(empty($data['item']) ? null : Gathering::fromJson($data['item']))
-            ->withMatchmakingContextToken(empty($data['matchmakingContextToken']) ? null : $data['matchmakingContextToken']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Gathering::fromJson($data['item']) : null)
+            ->withMatchmakingContextToken(array_key_exists('matchmakingContextToken', $data) && $data['matchmakingContextToken'] !== null ? $data['matchmakingContextToken'] : null);
     }
 
     public function toJson(): array {

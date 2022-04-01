@@ -112,11 +112,11 @@ class DisplayItemMaster implements IModel {
             return null;
         }
         return (new DisplayItemMaster())
-            ->withDisplayItemId(empty($data['displayItemId']) ? null : $data['displayItemId'])
-            ->withType(empty($data['type']) ? null : $data['type'])
-            ->withSalesItemName(empty($data['salesItemName']) ? null : $data['salesItemName'])
-            ->withSalesItemGroupName(empty($data['salesItemGroupName']) ? null : $data['salesItemGroupName'])
-            ->withSalesPeriodEventId(empty($data['salesPeriodEventId']) ? null : $data['salesPeriodEventId']);
+            ->withDisplayItemId(array_key_exists('displayItemId', $data) && $data['displayItemId'] !== null ? $data['displayItemId'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withSalesItemName(array_key_exists('salesItemName', $data) && $data['salesItemName'] !== null ? $data['salesItemName'] : null)
+            ->withSalesItemGroupName(array_key_exists('salesItemGroupName', $data) && $data['salesItemGroupName'] !== null ? $data['salesItemGroupName'] : null)
+            ->withSalesPeriodEventId(array_key_exists('salesPeriodEventId', $data) && $data['salesPeriodEventId'] !== null ? $data['salesPeriodEventId'] : null);
     }
 
     public function toJson(): array {

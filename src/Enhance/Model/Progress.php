@@ -163,14 +163,14 @@ class Progress implements IModel {
             return null;
         }
         return (new Progress())
-            ->withProgressId(empty($data['progressId']) ? null : $data['progressId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withExperienceValue(empty($data['experienceValue']) && $data['experienceValue'] !== 0 ? null : $data['experienceValue'])
-            ->withRate(empty($data['rate']) && $data['rate'] !== 0 ? null : $data['rate'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withProgressId(array_key_exists('progressId', $data) && $data['progressId'] !== null ? $data['progressId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null)
+            ->withRate(array_key_exists('rate', $data) && $data['rate'] !== null ? $data['rate'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

@@ -101,11 +101,11 @@ class UpdateTakeOverByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateTakeOverByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withType(empty($data['type']) && $data['type'] !== 0 ? null : $data['type'])
-            ->withOldPassword(empty($data['oldPassword']) ? null : $data['oldPassword'])
-            ->withPassword(empty($data['password']) ? null : $data['password']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withOldPassword(array_key_exists('oldPassword', $data) && $data['oldPassword'] !== null ? $data['oldPassword'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null);
     }
 
     public function toJson(): array {

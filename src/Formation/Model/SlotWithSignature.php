@@ -112,11 +112,11 @@ class SlotWithSignature implements IModel {
             return null;
         }
         return (new SlotWithSignature())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withPropertyType(empty($data['propertyType']) ? null : $data['propertyType'])
-            ->withBody(empty($data['body']) ? null : $data['body'])
-            ->withSignature(empty($data['signature']) ? null : $data['signature'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withPropertyType(array_key_exists('propertyType', $data) && $data['propertyType'] !== null ? $data['propertyType'] : null)
+            ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
+            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
 
     public function toJson(): array {

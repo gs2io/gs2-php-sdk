@@ -71,9 +71,9 @@ class DeleteDataObjectByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteDataObjectByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null);
     }
 
     public function toJson(): array {

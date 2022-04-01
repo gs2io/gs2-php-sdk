@@ -43,7 +43,7 @@ class AcceptResult implements IResult {
             return null;
         }
         return (new AcceptResult())
-            ->withItem(empty($data['item']) ? null : AcceptVersion::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? AcceptVersion::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

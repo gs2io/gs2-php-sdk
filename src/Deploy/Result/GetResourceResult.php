@@ -43,7 +43,7 @@ class GetResourceResult implements IResult {
             return null;
         }
         return (new GetResourceResult())
-            ->withItem(empty($data['item']) ? null : Resource::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Resource::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

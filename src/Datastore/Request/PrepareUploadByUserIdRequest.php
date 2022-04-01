@@ -131,11 +131,11 @@ class PrepareUploadByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PrepareUploadByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withContentType(empty($data['contentType']) ? null : $data['contentType'])
-            ->withScope(empty($data['scope']) ? null : $data['scope'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withContentType(array_key_exists('contentType', $data) && $data['contentType'] !== null ? $data['contentType'] : null)
+            ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
             ->withAllowUserIds(array_map(
                 function ($item) {
                     return $item;

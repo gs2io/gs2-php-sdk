@@ -56,8 +56,8 @@ class UpdateCurrentVersionMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateCurrentVersionMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withSettings(empty($data['settings']) ? null : $data['settings']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withSettings(array_key_exists('settings', $data) && $data['settings'] !== null ? $data['settings'] : null);
     }
 
     public function toJson(): array {

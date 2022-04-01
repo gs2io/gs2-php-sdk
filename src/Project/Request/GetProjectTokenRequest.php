@@ -56,8 +56,8 @@ class GetProjectTokenRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetProjectTokenRequest())
-            ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
+            ->withProjectName(array_key_exists('projectName', $data) && $data['projectName'] !== null ? $data['projectName'] : null)
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null);
     }
 
     public function toJson(): array {

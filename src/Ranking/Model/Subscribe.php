@@ -129,9 +129,9 @@ class Subscribe implements IModel {
             return null;
         }
         return (new Subscribe())
-            ->withSubscribeId(empty($data['subscribeId']) ? null : $data['subscribeId'])
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withSubscribeId(array_key_exists('subscribeId', $data) && $data['subscribeId'] !== null ? $data['subscribeId'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetUserIds(array_map(
                 function ($item) {
                     return $item;
@@ -144,7 +144,7 @@ class Subscribe implements IModel {
                 },
                 array_key_exists('subscribedUserIds', $data) && $data['subscribedUserIds'] !== null ? $data['subscribedUserIds'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

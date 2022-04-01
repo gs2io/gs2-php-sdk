@@ -112,11 +112,11 @@ class Trigger implements IModel {
             return null;
         }
         return (new Trigger())
-            ->withTriggerId(empty($data['triggerId']) ? null : $data['triggerId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
+            ->withTriggerId(array_key_exists('triggerId', $data) && $data['triggerId'] !== null ? $data['triggerId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
     }
 
     public function toJson(): array {

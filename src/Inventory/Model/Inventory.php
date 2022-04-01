@@ -146,13 +146,13 @@ class Inventory implements IModel {
             return null;
         }
         return (new Inventory())
-            ->withInventoryId(empty($data['inventoryId']) ? null : $data['inventoryId'])
-            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCurrentInventoryCapacityUsage(empty($data['currentInventoryCapacityUsage']) && $data['currentInventoryCapacityUsage'] !== 0 ? null : $data['currentInventoryCapacityUsage'])
-            ->withCurrentInventoryMaxCapacity(empty($data['currentInventoryMaxCapacity']) && $data['currentInventoryMaxCapacity'] !== 0 ? null : $data['currentInventoryMaxCapacity'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withInventoryId(array_key_exists('inventoryId', $data) && $data['inventoryId'] !== null ? $data['inventoryId'] : null)
+            ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withCurrentInventoryCapacityUsage(array_key_exists('currentInventoryCapacityUsage', $data) && $data['currentInventoryCapacityUsage'] !== null ? $data['currentInventoryCapacityUsage'] : null)
+            ->withCurrentInventoryMaxCapacity(array_key_exists('currentInventoryMaxCapacity', $data) && $data['currentInventoryMaxCapacity'] !== null ? $data['currentInventoryMaxCapacity'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

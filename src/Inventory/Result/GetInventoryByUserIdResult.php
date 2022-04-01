@@ -42,7 +42,7 @@ class GetInventoryByUserIdResult implements IResult {
             return null;
         }
         return (new GetInventoryByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Inventory::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Inventory::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

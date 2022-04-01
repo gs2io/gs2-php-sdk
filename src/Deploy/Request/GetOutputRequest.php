@@ -56,8 +56,8 @@ class GetOutputRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetOutputRequest())
-            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
-            ->withOutputName(empty($data['outputName']) ? null : $data['outputName']);
+            ->withStackName(array_key_exists('stackName', $data) && $data['stackName'] !== null ? $data['stackName'] : null)
+            ->withOutputName(array_key_exists('outputName', $data) && $data['outputName'] !== null ? $data['outputName'] : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class DeleteMissionGroupModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteMissionGroupModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null);
     }
 
     public function toJson(): array {

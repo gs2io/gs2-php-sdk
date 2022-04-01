@@ -102,10 +102,10 @@ class AcquireForceByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AcquireForceByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withAwaitName(empty($data['awaitName']) ? null : $data['awaitName'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withAwaitName(array_key_exists('awaitName', $data) && $data['awaitName'] !== null ? $data['awaitName'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

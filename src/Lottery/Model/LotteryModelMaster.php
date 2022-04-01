@@ -197,16 +197,16 @@ class LotteryModelMaster implements IModel {
             return null;
         }
         return (new LotteryModelMaster())
-            ->withLotteryModelId(empty($data['lotteryModelId']) ? null : $data['lotteryModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMode(empty($data['mode']) ? null : $data['mode'])
-            ->withMethod(empty($data['method']) ? null : $data['method'])
-            ->withPrizeTableName(empty($data['prizeTableName']) ? null : $data['prizeTableName'])
-            ->withChoicePrizeTableScriptId(empty($data['choicePrizeTableScriptId']) ? null : $data['choicePrizeTableScriptId'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withLotteryModelId(array_key_exists('lotteryModelId', $data) && $data['lotteryModelId'] !== null ? $data['lotteryModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMode(array_key_exists('mode', $data) && $data['mode'] !== null ? $data['mode'] : null)
+            ->withMethod(array_key_exists('method', $data) && $data['method'] !== null ? $data['method'] : null)
+            ->withPrizeTableName(array_key_exists('prizeTableName', $data) && $data['prizeTableName'] !== null ? $data['prizeTableName'] : null)
+            ->withChoicePrizeTableScriptId(array_key_exists('choicePrizeTableScriptId', $data) && $data['choicePrizeTableScriptId'] !== null ? $data['choicePrizeTableScriptId'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

@@ -117,17 +117,17 @@ class UpdateCounterModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateCounterModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withScopes(array_map(
                 function ($item) {
                     return CounterScopeModel::fromJson($item);
                 },
                 array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
             ))
-            ->withChallengePeriodEventId(empty($data['challengePeriodEventId']) ? null : $data['challengePeriodEventId']);
+            ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null);
     }
 
     public function toJson(): array {

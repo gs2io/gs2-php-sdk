@@ -72,9 +72,9 @@ class GetProjectTokenResult implements IResult {
             return null;
         }
         return (new GetProjectTokenResult())
-            ->withItem(empty($data['item']) ? null : Project::fromJson($data['item']))
-            ->withOwnerId(empty($data['ownerId']) ? null : $data['ownerId'])
-            ->withProjectToken(empty($data['projectToken']) ? null : $data['projectToken']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Project::fromJson($data['item']) : null)
+            ->withOwnerId(array_key_exists('ownerId', $data) && $data['ownerId'] !== null ? $data['ownerId'] : null)
+            ->withProjectToken(array_key_exists('projectToken', $data) && $data['projectToken'] !== null ? $data['projectToken'] : null);
     }
 
     public function toJson(): array {

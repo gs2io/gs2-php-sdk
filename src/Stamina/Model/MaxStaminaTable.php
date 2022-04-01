@@ -112,10 +112,10 @@ class MaxStaminaTable implements IModel {
             return null;
         }
         return (new MaxStaminaTable())
-            ->withMaxStaminaTableId(empty($data['maxStaminaTableId']) ? null : $data['maxStaminaTableId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withExperienceModelId(empty($data['experienceModelId']) ? null : $data['experienceModelId'])
+            ->withMaxStaminaTableId(array_key_exists('maxStaminaTableId', $data) && $data['maxStaminaTableId'] !== null ? $data['maxStaminaTableId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
             ->withValues(array_map(
                 function ($item) {
                     return $item;

@@ -72,8 +72,8 @@ class PushByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PushByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withJobs(array_map(
                 function ($item) {
                     return JobEntry::fromJson($item);

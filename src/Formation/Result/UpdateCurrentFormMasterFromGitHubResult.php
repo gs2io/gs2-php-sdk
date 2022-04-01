@@ -42,7 +42,7 @@ class UpdateCurrentFormMasterFromGitHubResult implements IResult {
             return null;
         }
         return (new UpdateCurrentFormMasterFromGitHubResult())
-            ->withItem(empty($data['item']) ? null : CurrentFormMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentFormMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

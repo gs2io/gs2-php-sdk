@@ -42,7 +42,7 @@ class CreateUserResult implements IResult {
             return null;
         }
         return (new CreateUserResult())
-            ->withItem(empty($data['item']) ? null : User::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? User::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

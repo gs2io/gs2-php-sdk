@@ -43,7 +43,7 @@ class DeleteProgressResult implements IResult {
             return null;
         }
         return (new DeleteProgressResult())
-            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Progress::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

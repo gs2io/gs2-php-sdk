@@ -163,19 +163,19 @@ class Room implements IModel {
             return null;
         }
         return (new Room())
-            ->withRoomId(empty($data['roomId']) ? null : $data['roomId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withIpAddress(empty($data['ipAddress']) ? null : $data['ipAddress'])
-            ->withPort(empty($data['port']) && $data['port'] !== 0 ? null : $data['port'])
-            ->withEncryptionKey(empty($data['encryptionKey']) ? null : $data['encryptionKey'])
+            ->withRoomId(array_key_exists('roomId', $data) && $data['roomId'] !== null ? $data['roomId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withIpAddress(array_key_exists('ipAddress', $data) && $data['ipAddress'] !== null ? $data['ipAddress'] : null)
+            ->withPort(array_key_exists('port', $data) && $data['port'] !== null ? $data['port'] : null)
+            ->withEncryptionKey(array_key_exists('encryptionKey', $data) && $data['encryptionKey'] !== null ? $data['encryptionKey'] : null)
             ->withNotificationUserIds(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('notificationUserIds', $data) && $data['notificationUserIds'] !== null ? $data['notificationUserIds'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

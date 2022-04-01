@@ -129,12 +129,12 @@ class AcceptVersion implements IModel {
             return null;
         }
         return (new AcceptVersion())
-            ->withAcceptVersionId(empty($data['acceptVersionId']) ? null : $data['acceptVersionId'])
-            ->withVersionName(empty($data['versionName']) ? null : $data['versionName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withVersion(empty($data['version']) ? null : Version::fromJson($data['version']))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withAcceptVersionId(array_key_exists('acceptVersionId', $data) && $data['acceptVersionId'] !== null ? $data['acceptVersionId'] : null)
+            ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withVersion(array_key_exists('version', $data) && $data['version'] !== null ? Version::fromJson($data['version']) : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

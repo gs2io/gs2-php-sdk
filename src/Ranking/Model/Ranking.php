@@ -129,12 +129,12 @@ class Ranking implements IModel {
             return null;
         }
         return (new Ranking())
-            ->withRank(empty($data['rank']) && $data['rank'] !== 0 ? null : $data['rank'])
-            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withScore(empty($data['score']) && $data['score'] !== 0 ? null : $data['score'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withRank(array_key_exists('rank', $data) && $data['rank'] !== null ? $data['rank'] : null)
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

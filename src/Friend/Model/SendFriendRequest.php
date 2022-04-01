@@ -61,8 +61,8 @@ class SendFriendRequest implements IModel {
             return null;
         }
         return (new SendFriendRequest())
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId']);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null);
     }
 
     public function toJson(): array {

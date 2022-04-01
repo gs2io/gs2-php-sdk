@@ -41,7 +41,7 @@ class DeleteSecurityPolicyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteSecurityPolicyRequest())
-            ->withSecurityPolicyName(empty($data['securityPolicyName']) ? null : $data['securityPolicyName']);
+            ->withSecurityPolicyName(array_key_exists('securityPolicyName', $data) && $data['securityPolicyName'] !== null ? $data['securityPolicyName'] : null);
     }
 
     public function toJson(): array {

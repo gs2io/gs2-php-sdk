@@ -101,11 +101,11 @@ class UpdateAccountRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateAccountRequest())
-            ->withEmail(empty($data['email']) ? null : $data['email'])
-            ->withFullName(empty($data['fullName']) ? null : $data['fullName'])
-            ->withCompanyName(empty($data['companyName']) ? null : $data['companyName'])
-            ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
+            ->withEmail(array_key_exists('email', $data) && $data['email'] !== null ? $data['email'] : null)
+            ->withFullName(array_key_exists('fullName', $data) && $data['fullName'] !== null ? $data['fullName'] : null)
+            ->withCompanyName(array_key_exists('companyName', $data) && $data['companyName'] !== null ? $data['companyName'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null);
     }
 
     public function toJson(): array {

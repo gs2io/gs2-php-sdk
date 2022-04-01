@@ -56,8 +56,8 @@ class GetVersionModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetVersionModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withVersionName(empty($data['versionName']) ? null : $data['versionName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null);
     }
 
     public function toJson(): array {

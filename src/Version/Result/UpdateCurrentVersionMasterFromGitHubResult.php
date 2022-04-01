@@ -42,7 +42,7 @@ class UpdateCurrentVersionMasterFromGitHubResult implements IResult {
             return null;
         }
         return (new UpdateCurrentVersionMasterFromGitHubResult())
-            ->withItem(empty($data['item']) ? null : CurrentVersionMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentVersionMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

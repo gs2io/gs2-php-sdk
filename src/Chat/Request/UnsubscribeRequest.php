@@ -71,9 +71,9 @@ class UnsubscribeRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UnsubscribeRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
     }
 
     public function toJson(): array {

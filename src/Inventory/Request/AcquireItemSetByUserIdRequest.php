@@ -146,14 +146,14 @@ class AcquireItemSetByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AcquireItemSetByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
-            ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withAcquireCount(empty($data['acquireCount']) && $data['acquireCount'] !== 0 ? null : $data['acquireCount'])
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
+            ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withAcquireCount(array_key_exists('acquireCount', $data) && $data['acquireCount'] !== null ? $data['acquireCount'] : null)
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
             ->withCreateNewItemSet($data['createNewItemSet'])
-            ->withItemSetName(empty($data['itemSetName']) ? null : $data['itemSetName']);
+            ->withItemSetName(array_key_exists('itemSetName', $data) && $data['itemSetName'] !== null ? $data['itemSetName'] : null);
     }
 
     public function toJson(): array {

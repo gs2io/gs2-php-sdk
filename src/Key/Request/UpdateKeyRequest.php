@@ -71,9 +71,9 @@ class UpdateKeyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateKeyRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withKeyName(empty($data['keyName']) ? null : $data['keyName'])
-            ->withDescription(empty($data['description']) ? null : $data['description']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withKeyName(array_key_exists('keyName', $data) && $data['keyName'] !== null ? $data['keyName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null);
     }
 
     public function toJson(): array {

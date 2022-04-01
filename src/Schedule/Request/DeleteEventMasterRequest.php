@@ -56,8 +56,8 @@ class DeleteEventMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteEventMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withEventName(empty($data['eventName']) ? null : $data['eventName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withEventName(array_key_exists('eventName', $data) && $data['eventName'] !== null ? $data['eventName'] : null);
     }
 
     public function toJson(): array {

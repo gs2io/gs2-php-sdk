@@ -42,7 +42,7 @@ class UpdateStaminaModelMasterResult implements IResult {
             return null;
         }
         return (new UpdateStaminaModelMasterResult())
-            ->withItem(empty($data['item']) ? null : StaminaModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? StaminaModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

@@ -146,13 +146,13 @@ class ExperienceModel implements IModel {
             return null;
         }
         return (new ExperienceModel())
-            ->withExperienceModelId(empty($data['experienceModelId']) ? null : $data['experienceModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withDefaultExperience(empty($data['defaultExperience']) && $data['defaultExperience'] !== 0 ? null : $data['defaultExperience'])
-            ->withDefaultRankCap(empty($data['defaultRankCap']) && $data['defaultRankCap'] !== 0 ? null : $data['defaultRankCap'])
-            ->withMaxRankCap(empty($data['maxRankCap']) && $data['maxRankCap'] !== 0 ? null : $data['maxRankCap'])
-            ->withRankThreshold(empty($data['rankThreshold']) ? null : Threshold::fromJson($data['rankThreshold']));
+            ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withDefaultExperience(array_key_exists('defaultExperience', $data) && $data['defaultExperience'] !== null ? $data['defaultExperience'] : null)
+            ->withDefaultRankCap(array_key_exists('defaultRankCap', $data) && $data['defaultRankCap'] !== null ? $data['defaultRankCap'] : null)
+            ->withMaxRankCap(array_key_exists('maxRankCap', $data) && $data['maxRankCap'] !== null ? $data['maxRankCap'] : null)
+            ->withRankThreshold(array_key_exists('rankThreshold', $data) && $data['rankThreshold'] !== null ? Threshold::fromJson($data['rankThreshold']) : null);
     }
 
     public function toJson(): array {

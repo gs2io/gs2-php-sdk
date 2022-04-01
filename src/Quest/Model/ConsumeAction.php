@@ -61,8 +61,8 @@ class ConsumeAction implements IModel {
             return null;
         }
         return (new ConsumeAction())
-            ->withAction(empty($data['action']) ? null : $data['action'])
-            ->withRequest(empty($data['request']) ? null : $data['request']);
+            ->withAction(array_key_exists('action', $data) && $data['action'] !== null ? $data['action'] : null)
+            ->withRequest(array_key_exists('request', $data) && $data['request'] !== null ? $data['request'] : null);
     }
 
     public function toJson(): array {

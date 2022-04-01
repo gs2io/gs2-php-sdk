@@ -133,16 +133,16 @@ class StartByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new StartByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withTargetItemSetId(empty($data['targetItemSetId']) ? null : $data['targetItemSetId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withTargetItemSetId(array_key_exists('targetItemSetId', $data) && $data['targetItemSetId'] !== null ? $data['targetItemSetId'] : null)
             ->withMaterials(array_map(
                 function ($item) {
                     return Material::fromJson($item);
                 },
                 array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
             ))
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withForce($data['force'])
             ->withConfig(array_map(
                 function ($item) {

@@ -101,11 +101,11 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SendMobileNotificationByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withSubject(empty($data['subject']) ? null : $data['subject'])
-            ->withPayload(empty($data['payload']) ? null : $data['payload'])
-            ->withSound(empty($data['sound']) ? null : $data['sound']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withSubject(array_key_exists('subject', $data) && $data['subject'] !== null ? $data['subject'] : null)
+            ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null)
+            ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null);
     }
 
     public function toJson(): array {

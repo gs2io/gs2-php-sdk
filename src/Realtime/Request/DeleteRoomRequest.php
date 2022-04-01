@@ -56,8 +56,8 @@ class DeleteRoomRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteRoomRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRoomName(empty($data['roomName']) ? null : $data['roomName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null);
     }
 
     public function toJson(): array {

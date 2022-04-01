@@ -163,14 +163,14 @@ class Score implements IModel {
             return null;
         }
         return (new Score())
-            ->withScoreId(empty($data['scoreId']) ? null : $data['scoreId'])
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withUniqueId(empty($data['uniqueId']) ? null : $data['uniqueId'])
-            ->withScorerUserId(empty($data['scorerUserId']) ? null : $data['scorerUserId'])
-            ->withScore(empty($data['score']) && $data['score'] !== 0 ? null : $data['score'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withScoreId(array_key_exists('scoreId', $data) && $data['scoreId'] !== null ? $data['scoreId'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withUniqueId(array_key_exists('uniqueId', $data) && $data['uniqueId'] !== null ? $data['uniqueId'] : null)
+            ->withScorerUserId(array_key_exists('scorerUserId', $data) && $data['scorerUserId'] !== null ? $data['scorerUserId'] : null)
+            ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

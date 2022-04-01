@@ -112,11 +112,11 @@ class ExecuteStampTaskLogCount implements IModel {
             return null;
         }
         return (new ExecuteStampTaskLogCount())
-            ->withService(empty($data['service']) ? null : $data['service'])
-            ->withMethod(empty($data['method']) ? null : $data['method'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withAction(empty($data['action']) ? null : $data['action'])
-            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count']);
+            ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null)
+            ->withMethod(array_key_exists('method', $data) && $data['method'] !== null ? $data['method'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withAction(array_key_exists('action', $data) && $data['action'] !== null ? $data['action'] : null)
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
     }
 
     public function toJson(): array {

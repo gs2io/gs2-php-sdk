@@ -86,10 +86,10 @@ class UpdateScriptRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateScriptRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withScriptName(empty($data['scriptName']) ? null : $data['scriptName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withScript(empty($data['script']) ? null : $data['script']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withScriptName(array_key_exists('scriptName', $data) && $data['scriptName'] !== null ? $data['scriptName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withScript(array_key_exists('script', $data) && $data['script'] !== null ? $data['script'] : null);
     }
 
     public function toJson(): array {

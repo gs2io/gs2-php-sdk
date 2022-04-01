@@ -101,11 +101,11 @@ class UpdateGitHubApiKeyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateGitHubApiKeyRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withApiKeyName(empty($data['apiKeyName']) ? null : $data['apiKeyName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withApiKey(empty($data['apiKey']) ? null : $data['apiKey'])
-            ->withEncryptionKeyName(empty($data['encryptionKeyName']) ? null : $data['encryptionKeyName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withApiKeyName(array_key_exists('apiKeyName', $data) && $data['apiKeyName'] !== null ? $data['apiKeyName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withApiKey(array_key_exists('apiKey', $data) && $data['apiKey'] !== null ? $data['apiKey'] : null)
+            ->withEncryptionKeyName(array_key_exists('encryptionKeyName', $data) && $data['encryptionKeyName'] !== null ? $data['encryptionKeyName'] : null);
     }
 
     public function toJson(): array {

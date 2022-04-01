@@ -86,10 +86,10 @@ class GetEntryWithSignatureByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetEntryWithSignatureByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withEntryModelName(empty($data['entryModelName']) ? null : $data['entryModelName'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withEntryModelName(array_key_exists('entryModelName', $data) && $data['entryModelName'] !== null ? $data['entryModelName'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {

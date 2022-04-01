@@ -56,8 +56,8 @@ class GetCounterModelRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetCounterModelRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withCounterName(empty($data['counterName']) ? null : $data['counterName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null);
     }
 
     public function toJson(): array {

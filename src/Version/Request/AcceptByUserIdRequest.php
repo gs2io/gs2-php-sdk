@@ -71,9 +71,9 @@ class AcceptByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AcceptByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withVersionName(empty($data['versionName']) ? null : $data['versionName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
     }
 
     public function toJson(): array {

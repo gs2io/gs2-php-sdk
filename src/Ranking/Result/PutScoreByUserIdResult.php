@@ -42,7 +42,7 @@ class PutScoreByUserIdResult implements IResult {
             return null;
         }
         return (new PutScoreByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Score::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Score::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

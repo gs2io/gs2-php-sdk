@@ -122,12 +122,12 @@ class GetFormWithSignatureByUserIdResult implements IResult {
             return null;
         }
         return (new GetFormWithSignatureByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Form::fromJson($data['item']))
-            ->withBody(empty($data['body']) ? null : $data['body'])
-            ->withSignature(empty($data['signature']) ? null : $data['signature'])
-            ->withMold(empty($data['mold']) ? null : Mold::fromJson($data['mold']))
-            ->withMoldModel(empty($data['moldModel']) ? null : MoldModel::fromJson($data['moldModel']))
-            ->withFormModel(empty($data['formModel']) ? null : FormModel::fromJson($data['formModel']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Form::fromJson($data['item']) : null)
+            ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
+            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null)
+            ->withMold(array_key_exists('mold', $data) && $data['mold'] !== null ? Mold::fromJson($data['mold']) : null)
+            ->withMoldModel(array_key_exists('moldModel', $data) && $data['moldModel'] !== null ? MoldModel::fromJson($data['moldModel']) : null)
+            ->withFormModel(array_key_exists('formModel', $data) && $data['formModel'] !== null ? FormModel::fromJson($data['formModel']) : null);
     }
 
     public function toJson(): array {

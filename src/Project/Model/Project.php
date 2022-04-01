@@ -214,17 +214,17 @@ class Project implements IModel {
             return null;
         }
         return (new Project())
-            ->withProjectId(empty($data['projectId']) ? null : $data['projectId'])
-            ->withAccountName(empty($data['accountName']) ? null : $data['accountName'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withPlan(empty($data['plan']) ? null : $data['plan'])
-            ->withBillingMethodName(empty($data['billingMethodName']) ? null : $data['billingMethodName'])
-            ->withEnableEventBridge(empty($data['enableEventBridge']) ? null : $data['enableEventBridge'])
-            ->withEventBridgeAwsAccountId(empty($data['eventBridgeAwsAccountId']) ? null : $data['eventBridgeAwsAccountId'])
-            ->withEventBridgeAwsRegion(empty($data['eventBridgeAwsRegion']) ? null : $data['eventBridgeAwsRegion'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withProjectId(array_key_exists('projectId', $data) && $data['projectId'] !== null ? $data['projectId'] : null)
+            ->withAccountName(array_key_exists('accountName', $data) && $data['accountName'] !== null ? $data['accountName'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withPlan(array_key_exists('plan', $data) && $data['plan'] !== null ? $data['plan'] : null)
+            ->withBillingMethodName(array_key_exists('billingMethodName', $data) && $data['billingMethodName'] !== null ? $data['billingMethodName'] : null)
+            ->withEnableEventBridge(array_key_exists('enableEventBridge', $data) && $data['enableEventBridge'] !== null ? $data['enableEventBridge'] : null)
+            ->withEventBridgeAwsAccountId(array_key_exists('eventBridgeAwsAccountId', $data) && $data['eventBridgeAwsAccountId'] !== null ? $data['eventBridgeAwsAccountId'] : null)
+            ->withEventBridgeAwsRegion(array_key_exists('eventBridgeAwsRegion', $data) && $data['eventBridgeAwsRegion'] !== null ? $data['eventBridgeAwsRegion'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

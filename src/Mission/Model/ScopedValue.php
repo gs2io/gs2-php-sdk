@@ -95,10 +95,10 @@ class ScopedValue implements IModel {
             return null;
         }
         return (new ScopedValue())
-            ->withResetType(empty($data['resetType']) ? null : $data['resetType'])
-            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value'])
-            ->withNextResetAt(empty($data['nextResetAt']) && $data['nextResetAt'] !== 0 ? null : $data['nextResetAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withResetType(array_key_exists('resetType', $data) && $data['resetType'] !== null ? $data['resetType'] : null)
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
+            ->withNextResetAt(array_key_exists('nextResetAt', $data) && $data['nextResetAt'] !== null ? $data['nextResetAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

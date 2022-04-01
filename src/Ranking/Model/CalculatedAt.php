@@ -61,8 +61,8 @@ class CalculatedAt implements IModel {
             return null;
         }
         return (new CalculatedAt())
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withCalculatedAt(empty($data['calculatedAt']) && $data['calculatedAt'] !== 0 ? null : $data['calculatedAt']);
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withCalculatedAt(array_key_exists('calculatedAt', $data) && $data['calculatedAt'] !== null ? $data['calculatedAt'] : null);
     }
 
     public function toJson(): array {

@@ -239,20 +239,20 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateNamespaceRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withFollowScript(empty($data['followScript']) ? null : ScriptSetting::fromJson($data['followScript']))
-            ->withUnfollowScript(empty($data['unfollowScript']) ? null : ScriptSetting::fromJson($data['unfollowScript']))
-            ->withSendRequestScript(empty($data['sendRequestScript']) ? null : ScriptSetting::fromJson($data['sendRequestScript']))
-            ->withCancelRequestScript(empty($data['cancelRequestScript']) ? null : ScriptSetting::fromJson($data['cancelRequestScript']))
-            ->withAcceptRequestScript(empty($data['acceptRequestScript']) ? null : ScriptSetting::fromJson($data['acceptRequestScript']))
-            ->withRejectRequestScript(empty($data['rejectRequestScript']) ? null : ScriptSetting::fromJson($data['rejectRequestScript']))
-            ->withDeleteFriendScript(empty($data['deleteFriendScript']) ? null : ScriptSetting::fromJson($data['deleteFriendScript']))
-            ->withUpdateProfileScript(empty($data['updateProfileScript']) ? null : ScriptSetting::fromJson($data['updateProfileScript']))
-            ->withFollowNotification(empty($data['followNotification']) ? null : NotificationSetting::fromJson($data['followNotification']))
-            ->withReceiveRequestNotification(empty($data['receiveRequestNotification']) ? null : NotificationSetting::fromJson($data['receiveRequestNotification']))
-            ->withAcceptRequestNotification(empty($data['acceptRequestNotification']) ? null : NotificationSetting::fromJson($data['acceptRequestNotification']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withFollowScript(array_key_exists('followScript', $data) && $data['followScript'] !== null ? ScriptSetting::fromJson($data['followScript']) : null)
+            ->withUnfollowScript(array_key_exists('unfollowScript', $data) && $data['unfollowScript'] !== null ? ScriptSetting::fromJson($data['unfollowScript']) : null)
+            ->withSendRequestScript(array_key_exists('sendRequestScript', $data) && $data['sendRequestScript'] !== null ? ScriptSetting::fromJson($data['sendRequestScript']) : null)
+            ->withCancelRequestScript(array_key_exists('cancelRequestScript', $data) && $data['cancelRequestScript'] !== null ? ScriptSetting::fromJson($data['cancelRequestScript']) : null)
+            ->withAcceptRequestScript(array_key_exists('acceptRequestScript', $data) && $data['acceptRequestScript'] !== null ? ScriptSetting::fromJson($data['acceptRequestScript']) : null)
+            ->withRejectRequestScript(array_key_exists('rejectRequestScript', $data) && $data['rejectRequestScript'] !== null ? ScriptSetting::fromJson($data['rejectRequestScript']) : null)
+            ->withDeleteFriendScript(array_key_exists('deleteFriendScript', $data) && $data['deleteFriendScript'] !== null ? ScriptSetting::fromJson($data['deleteFriendScript']) : null)
+            ->withUpdateProfileScript(array_key_exists('updateProfileScript', $data) && $data['updateProfileScript'] !== null ? ScriptSetting::fromJson($data['updateProfileScript']) : null)
+            ->withFollowNotification(array_key_exists('followNotification', $data) && $data['followNotification'] !== null ? NotificationSetting::fromJson($data['followNotification']) : null)
+            ->withReceiveRequestNotification(array_key_exists('receiveRequestNotification', $data) && $data['receiveRequestNotification'] !== null ? NotificationSetting::fromJson($data['receiveRequestNotification']) : null)
+            ->withAcceptRequestNotification(array_key_exists('acceptRequestNotification', $data) && $data['acceptRequestNotification'] !== null ? NotificationSetting::fromJson($data['acceptRequestNotification']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
     public function toJson(): array {

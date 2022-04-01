@@ -176,16 +176,16 @@ class CountExecuteStampTaskLogRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CountExecuteStampTaskLogRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withService($data['service'])
             ->withMethod($data['method'])
             ->withUserId($data['userId'])
             ->withAction($data['action'])
-            ->withBegin(empty($data['begin']) && $data['begin'] !== 0 ? null : $data['begin'])
-            ->withEnd(empty($data['end']) && $data['end'] !== 0 ? null : $data['end'])
+            ->withBegin(array_key_exists('begin', $data) && $data['begin'] !== null ? $data['begin'] : null)
+            ->withEnd(array_key_exists('end', $data) && $data['end'] !== null ? $data['end'] : null)
             ->withLongTerm($data['longTerm'])
-            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
+            ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
+            ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {

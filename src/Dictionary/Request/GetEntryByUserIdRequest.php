@@ -71,9 +71,9 @@ class GetEntryByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetEntryByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withEntryModelName(empty($data['entryModelName']) ? null : $data['entryModelName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withEntryModelName(array_key_exists('entryModelName', $data) && $data['entryModelName'] !== null ? $data['entryModelName'] : null);
     }
 
     public function toJson(): array {

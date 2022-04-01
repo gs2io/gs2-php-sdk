@@ -42,7 +42,7 @@ class DeleteRoomResult implements IResult {
             return null;
         }
         return (new DeleteRoomResult())
-            ->withItem(empty($data['item']) ? null : Room::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Room::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

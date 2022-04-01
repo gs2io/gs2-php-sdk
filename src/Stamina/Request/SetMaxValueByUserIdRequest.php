@@ -86,10 +86,10 @@ class SetMaxValueByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SetMaxValueByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withMaxValue(empty($data['maxValue']) && $data['maxValue'] !== 0 ? null : $data['maxValue']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withStaminaName(array_key_exists('staminaName', $data) && $data['staminaName'] !== null ? $data['staminaName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withMaxValue(array_key_exists('maxValue', $data) && $data['maxValue'] !== null ? $data['maxValue'] : null);
     }
 
     public function toJson(): array {

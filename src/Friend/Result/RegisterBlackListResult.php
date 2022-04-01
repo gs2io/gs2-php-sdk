@@ -42,7 +42,7 @@ class RegisterBlackListResult implements IResult {
             return null;
         }
         return (new RegisterBlackListResult())
-            ->withItem(empty($data['item']) ? null : BlackList::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? BlackList::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

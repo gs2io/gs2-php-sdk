@@ -74,7 +74,7 @@ class CheckVersionResult implements IResult {
             return null;
         }
         return (new CheckVersionResult())
-            ->withProjectToken(empty($data['projectToken']) ? null : $data['projectToken'])
+            ->withProjectToken(array_key_exists('projectToken', $data) && $data['projectToken'] !== null ? $data['projectToken'] : null)
             ->withWarnings(array_map(
                 function ($item) {
                     return Status::fromJson($item);

@@ -61,8 +61,8 @@ class SignedBallot implements IModel {
             return null;
         }
         return (new SignedBallot())
-            ->withBody(empty($data['body']) ? null : $data['body'])
-            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+            ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
+            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
     }
 
     public function toJson(): array {

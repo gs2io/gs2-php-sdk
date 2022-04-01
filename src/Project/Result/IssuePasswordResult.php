@@ -41,7 +41,7 @@ class IssuePasswordResult implements IResult {
             return null;
         }
         return (new IssuePasswordResult())
-            ->withNewPassword(empty($data['newPassword']) ? null : $data['newPassword']);
+            ->withNewPassword(array_key_exists('newPassword', $data) && $data['newPassword'] !== null ? $data['newPassword'] : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class GetEventRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetEventRequest())
-            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
-            ->withEventName(empty($data['eventName']) ? null : $data['eventName']);
+            ->withStackName(array_key_exists('stackName', $data) && $data['stackName'] !== null ? $data['stackName'] : null)
+            ->withEventName(array_key_exists('eventName', $data) && $data['eventName'] !== null ? $data['eventName'] : null);
     }
 
     public function toJson(): array {

@@ -102,10 +102,10 @@ class BuyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new BuyRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withShowcaseName(empty($data['showcaseName']) ? null : $data['showcaseName'])
-            ->withDisplayItemId(empty($data['displayItemId']) ? null : $data['displayItemId'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null)
+            ->withDisplayItemId(array_key_exists('displayItemId', $data) && $data['displayItemId'] !== null ? $data['displayItemId'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

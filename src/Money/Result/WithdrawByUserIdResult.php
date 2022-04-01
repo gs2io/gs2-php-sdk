@@ -58,8 +58,8 @@ class WithdrawByUserIdResult implements IResult {
             return null;
         }
         return (new WithdrawByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Wallet::fromJson($data['item']))
-            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Wallet::fromJson($data['item']) : null)
+            ->withPrice(array_key_exists('price', $data) && $data['price'] !== null ? $data['price'] : null);
     }
 
     public function toJson(): array {

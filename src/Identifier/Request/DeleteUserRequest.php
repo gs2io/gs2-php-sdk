@@ -41,7 +41,7 @@ class DeleteUserRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteUserRequest())
-            ->withUserName(empty($data['userName']) ? null : $data['userName']);
+            ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null);
     }
 
     public function toJson(): array {

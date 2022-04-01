@@ -61,8 +61,8 @@ class WalletDetail implements IModel {
             return null;
         }
         return (new WalletDetail())
-            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price'])
-            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count']);
+            ->withPrice(array_key_exists('price', $data) && $data['price'] !== null ? $data['price'] : null)
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
     }
 
     public function toJson(): array {

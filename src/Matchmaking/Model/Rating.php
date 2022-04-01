@@ -129,12 +129,12 @@ class Rating implements IModel {
             return null;
         }
         return (new Rating())
-            ->withRatingId(empty($data['ratingId']) ? null : $data['ratingId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRateValue(empty($data['rateValue']) && $data['rateValue'] !== 0 ? null : $data['rateValue'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withRatingId(array_key_exists('ratingId', $data) && $data['ratingId'] !== null ? $data['ratingId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withRateValue(array_key_exists('rateValue', $data) && $data['rateValue'] !== null ? $data['rateValue'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

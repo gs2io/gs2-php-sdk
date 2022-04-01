@@ -95,10 +95,10 @@ class Identifier implements IModel {
             return null;
         }
         return (new Identifier())
-            ->withClientId(empty($data['clientId']) ? null : $data['clientId'])
-            ->withUserName(empty($data['userName']) ? null : $data['userName'])
-            ->withClientSecret(empty($data['clientSecret']) ? null : $data['clientSecret'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withClientId(array_key_exists('clientId', $data) && $data['clientId'] !== null ? $data['clientId'] : null)
+            ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
+            ->withClientSecret(array_key_exists('clientSecret', $data) && $data['clientSecret'] !== null ? $data['clientSecret'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

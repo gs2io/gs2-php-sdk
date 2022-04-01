@@ -56,8 +56,8 @@ class DeleteGitHubApiKeyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteGitHubApiKeyRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withApiKeyName(empty($data['apiKeyName']) ? null : $data['apiKeyName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withApiKeyName(array_key_exists('apiKeyName', $data) && $data['apiKeyName'] !== null ? $data['apiKeyName'] : null);
     }
 
     public function toJson(): array {

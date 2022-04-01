@@ -88,7 +88,7 @@ class VoteMultipleRequest extends Gs2BasicRequest {
             return null;
         }
         return (new VoteMultipleRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withSignedBallots(array_map(
                 function ($item) {
                     return SignedBallot::fromJson($item);
@@ -101,7 +101,7 @@ class VoteMultipleRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
             ))
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {

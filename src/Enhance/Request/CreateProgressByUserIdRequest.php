@@ -117,10 +117,10 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateProgressByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withTargetItemSetId(empty($data['targetItemSetId']) ? null : $data['targetItemSetId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withTargetItemSetId(array_key_exists('targetItemSetId', $data) && $data['targetItemSetId'] !== null ? $data['targetItemSetId'] : null)
             ->withMaterials(array_map(
                 function ($item) {
                     return Material::fromJson($item);

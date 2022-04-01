@@ -101,11 +101,11 @@ class DescribeFormsByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeFormsByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
+            ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {

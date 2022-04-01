@@ -71,9 +71,9 @@ class GetShowcaseByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetShowcaseByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withShowcaseName(empty($data['showcaseName']) ? null : $data['showcaseName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
     }
 
     public function toJson(): array {

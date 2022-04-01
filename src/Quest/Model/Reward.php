@@ -95,10 +95,10 @@ class Reward implements IModel {
             return null;
         }
         return (new Reward())
-            ->withAction(empty($data['action']) ? null : $data['action'])
-            ->withRequest(empty($data['request']) ? null : $data['request'])
-            ->withItemId(empty($data['itemId']) ? null : $data['itemId'])
-            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value']);
+            ->withAction(array_key_exists('action', $data) && $data['action'] !== null ? $data['action'] : null)
+            ->withRequest(array_key_exists('request', $data) && $data['request'] !== null ? $data['request'] : null)
+            ->withItemId(array_key_exists('itemId', $data) && $data['itemId'] !== null ? $data['itemId'] : null)
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null);
     }
 
     public function toJson(): array {

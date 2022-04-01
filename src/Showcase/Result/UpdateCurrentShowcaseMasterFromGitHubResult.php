@@ -42,7 +42,7 @@ class UpdateCurrentShowcaseMasterFromGitHubResult implements IResult {
             return null;
         }
         return (new UpdateCurrentShowcaseMasterFromGitHubResult())
-            ->withItem(empty($data['item']) ? null : CurrentShowcaseMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentShowcaseMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

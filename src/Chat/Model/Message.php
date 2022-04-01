@@ -146,13 +146,13 @@ class Message implements IModel {
             return null;
         }
         return (new Message())
-            ->withMessageId(empty($data['messageId']) ? null : $data['messageId'])
-            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCategory(empty($data['category']) && $data['category'] !== 0 ? null : $data['category'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withMessageId(array_key_exists('messageId', $data) && $data['messageId'] !== null ? $data['messageId'] : null)
+            ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withCategory(array_key_exists('category', $data) && $data['category'] !== null ? $data['category'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

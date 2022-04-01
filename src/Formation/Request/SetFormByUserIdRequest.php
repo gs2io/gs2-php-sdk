@@ -102,10 +102,10 @@ class SetFormByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SetFormByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
-            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
             ->withSlots(array_map(
                 function ($item) {
                     return Slot::fromJson($item);

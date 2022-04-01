@@ -42,7 +42,7 @@ class GetRecoverIntervalTableMasterResult implements IResult {
             return null;
         }
         return (new GetRecoverIntervalTableMasterResult())
-            ->withItem(empty($data['item']) ? null : RecoverIntervalTableMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? RecoverIntervalTableMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

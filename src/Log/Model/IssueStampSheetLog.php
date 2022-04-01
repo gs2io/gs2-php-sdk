@@ -163,13 +163,13 @@ class IssueStampSheetLog implements IModel {
             return null;
         }
         return (new IssueStampSheetLog())
-            ->withTimestamp(empty($data['timestamp']) && $data['timestamp'] !== 0 ? null : $data['timestamp'])
-            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
-            ->withService(empty($data['service']) ? null : $data['service'])
-            ->withMethod(empty($data['method']) ? null : $data['method'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withAction(empty($data['action']) ? null : $data['action'])
-            ->withArgs(empty($data['args']) ? null : $data['args'])
+            ->withTimestamp(array_key_exists('timestamp', $data) && $data['timestamp'] !== null ? $data['timestamp'] : null)
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
+            ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null)
+            ->withMethod(array_key_exists('method', $data) && $data['method'] !== null ? $data['method'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withAction(array_key_exists('action', $data) && $data['action'] !== null ? $data['action'] : null)
+            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
             ->withTasks(array_map(
                 function ($item) {
                     return $item;

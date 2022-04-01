@@ -78,14 +78,14 @@ class Contents implements IModel {
             return null;
         }
         return (new Contents())
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withCompleteAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
                 array_key_exists('completeAcquireActions', $data) && $data['completeAcquireActions'] !== null ? $data['completeAcquireActions'] : []
             ))
-            ->withWeight(empty($data['weight']) && $data['weight'] !== 0 ? null : $data['weight']);
+            ->withWeight(array_key_exists('weight', $data) && $data['weight'] !== null ? $data['weight'] : null);
     }
 
     public function toJson(): array {

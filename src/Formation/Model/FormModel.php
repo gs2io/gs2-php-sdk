@@ -95,9 +95,9 @@ class FormModel implements IModel {
             return null;
         }
         return (new FormModel())
-            ->withFormModelId(empty($data['formModelId']) ? null : $data['formModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withFormModelId(array_key_exists('formModelId', $data) && $data['formModelId'] !== null ? $data['formModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withSlots(array_map(
                 function ($item) {
                     return SlotModel::fromJson($item);

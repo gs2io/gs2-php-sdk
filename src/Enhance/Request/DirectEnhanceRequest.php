@@ -118,10 +118,10 @@ class DirectEnhanceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DirectEnhanceRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withTargetItemSetId(empty($data['targetItemSetId']) ? null : $data['targetItemSetId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withTargetItemSetId(array_key_exists('targetItemSetId', $data) && $data['targetItemSetId'] !== null ? $data['targetItemSetId'] : null)
             ->withMaterials(array_map(
                 function ($item) {
                     return Material::fromJson($item);

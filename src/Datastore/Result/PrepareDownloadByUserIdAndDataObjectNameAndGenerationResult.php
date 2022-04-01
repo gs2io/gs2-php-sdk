@@ -72,9 +72,9 @@ class PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult implements IRe
             return null;
         }
         return (new PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult())
-            ->withItem(empty($data['item']) ? null : DataObject::fromJson($data['item']))
-            ->withFileUrl(empty($data['fileUrl']) ? null : $data['fileUrl'])
-            ->withContentLength(empty($data['contentLength']) && $data['contentLength'] !== 0 ? null : $data['contentLength']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? DataObject::fromJson($data['item']) : null)
+            ->withFileUrl(array_key_exists('fileUrl', $data) && $data['fileUrl'] !== null ? $data['fileUrl'] : null)
+            ->withContentLength(array_key_exists('contentLength', $data) && $data['contentLength'] !== null ? $data['contentLength'] : null);
     }
 
     public function toJson(): array {

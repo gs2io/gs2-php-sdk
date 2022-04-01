@@ -87,9 +87,9 @@ class ReadMessageByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new ReadMessageByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withMessageName(empty($data['messageName']) ? null : $data['messageName'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withMessageName(array_key_exists('messageName', $data) && $data['messageName'] !== null ? $data['messageName'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

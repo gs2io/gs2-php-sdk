@@ -43,7 +43,7 @@ class DeleteMessageResult implements IResult {
             return null;
         }
         return (new DeleteMessageResult())
-            ->withItem(empty($data['item']) ? null : Message::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Message::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

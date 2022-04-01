@@ -101,11 +101,11 @@ class GetScoreRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetScoreRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withScorerUserId(empty($data['scorerUserId']) ? null : $data['scorerUserId'])
-            ->withUniqueId(empty($data['uniqueId']) ? null : $data['uniqueId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withScorerUserId(array_key_exists('scorerUserId', $data) && $data['scorerUserId'] !== null ? $data['scorerUserId'] : null)
+            ->withUniqueId(array_key_exists('uniqueId', $data) && $data['uniqueId'] !== null ? $data['uniqueId'] : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class GetThresholdMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetThresholdMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withThresholdName(empty($data['thresholdName']) ? null : $data['thresholdName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withThresholdName(array_key_exists('thresholdName', $data) && $data['thresholdName'] !== null ? $data['thresholdName'] : null);
     }
 
     public function toJson(): array {

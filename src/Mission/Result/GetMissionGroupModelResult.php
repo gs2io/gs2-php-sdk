@@ -44,7 +44,7 @@ class GetMissionGroupModelResult implements IResult {
             return null;
         }
         return (new GetMissionGroupModelResult())
-            ->withItem(empty($data['item']) ? null : MissionGroupModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? MissionGroupModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

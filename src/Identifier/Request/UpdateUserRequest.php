@@ -56,8 +56,8 @@ class UpdateUserRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateUserRequest())
-            ->withUserName(empty($data['userName']) ? null : $data['userName'])
-            ->withDescription(empty($data['description']) ? null : $data['description']);
+            ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null);
     }
 
     public function toJson(): array {

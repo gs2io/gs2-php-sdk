@@ -42,7 +42,7 @@ class DeleteCategoryModelMasterResult implements IResult {
             return null;
         }
         return (new DeleteCategoryModelMasterResult())
-            ->withItem(empty($data['item']) ? null : CategoryModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CategoryModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

@@ -129,17 +129,17 @@ class CompletedQuestList implements IModel {
             return null;
         }
         return (new CompletedQuestList())
-            ->withCompletedQuestListId(empty($data['completedQuestListId']) ? null : $data['completedQuestListId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName'])
+            ->withCompletedQuestListId(array_key_exists('completedQuestListId', $data) && $data['completedQuestListId'] !== null ? $data['completedQuestListId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withQuestGroupName(array_key_exists('questGroupName', $data) && $data['questGroupName'] !== null ? $data['questGroupName'] : null)
             ->withCompleteQuestNames(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('completeQuestNames', $data) && $data['completeQuestNames'] !== null ? $data['completeQuestNames'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

@@ -42,7 +42,7 @@ class GetCurrentEntryMasterResult implements IResult {
             return null;
         }
         return (new GetCurrentEntryMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentEntryMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentEntryMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

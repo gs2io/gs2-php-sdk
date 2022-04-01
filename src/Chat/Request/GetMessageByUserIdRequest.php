@@ -101,11 +101,11 @@ class GetMessageByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetMessageByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
-            ->withMessageName(empty($data['messageName']) ? null : $data['messageName'])
-            ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
+            ->withMessageName(array_key_exists('messageName', $data) && $data['messageName'] !== null ? $data['messageName'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
     }
 
     public function toJson(): array {

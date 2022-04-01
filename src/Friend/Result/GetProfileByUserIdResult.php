@@ -42,7 +42,7 @@ class GetProfileByUserIdResult implements IResult {
             return null;
         }
         return (new GetProfileByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Profile::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Profile::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

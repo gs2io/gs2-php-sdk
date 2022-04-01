@@ -61,8 +61,8 @@ class BonusRate implements IModel {
             return null;
         }
         return (new BonusRate())
-            ->withRate(empty($data['rate']) && $data['rate'] !== 0 ? null : $data['rate'])
-            ->withWeight(empty($data['weight']) && $data['weight'] !== 0 ? null : $data['weight']);
+            ->withRate(array_key_exists('rate', $data) && $data['rate'] !== null ? $data['rate'] : null)
+            ->withWeight(array_key_exists('weight', $data) && $data['weight'] !== null ? $data['weight'] : null);
     }
 
     public function toJson(): array {

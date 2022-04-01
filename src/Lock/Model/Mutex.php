@@ -112,11 +112,11 @@ class Mutex implements IModel {
             return null;
         }
         return (new Mutex())
-            ->withMutexId(empty($data['mutexId']) ? null : $data['mutexId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withMutexId(array_key_exists('mutexId', $data) && $data['mutexId'] !== null ? $data['mutexId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

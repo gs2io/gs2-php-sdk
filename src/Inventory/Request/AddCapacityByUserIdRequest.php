@@ -86,10 +86,10 @@ class AddCapacityByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AddCapacityByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withAddCapacityValue(empty($data['addCapacityValue']) && $data['addCapacityValue'] !== 0 ? null : $data['addCapacityValue']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withAddCapacityValue(array_key_exists('addCapacityValue', $data) && $data['addCapacityValue'] !== null ? $data['addCapacityValue'] : null);
     }
 
     public function toJson(): array {

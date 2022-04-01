@@ -78,9 +78,9 @@ class GetProgressByUserIdResult implements IResult {
             return null;
         }
         return (new GetProgressByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
-            ->withQuestGroup(empty($data['questGroup']) ? null : QuestGroupModel::fromJson($data['questGroup']))
-            ->withQuest(empty($data['quest']) ? null : QuestModel::fromJson($data['quest']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Progress::fromJson($data['item']) : null)
+            ->withQuestGroup(array_key_exists('questGroup', $data) && $data['questGroup'] !== null ? QuestGroupModel::fromJson($data['questGroup']) : null)
+            ->withQuest(array_key_exists('quest', $data) && $data['quest'] !== null ? QuestModel::fromJson($data['quest']) : null);
     }
 
     public function toJson(): array {

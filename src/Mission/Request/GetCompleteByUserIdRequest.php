@@ -71,9 +71,9 @@ class GetCompleteByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetCompleteByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
     }
 
     public function toJson(): array {

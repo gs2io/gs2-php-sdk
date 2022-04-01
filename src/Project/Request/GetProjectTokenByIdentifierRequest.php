@@ -86,10 +86,10 @@ class GetProjectTokenByIdentifierRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetProjectTokenByIdentifierRequest())
-            ->withAccountName(empty($data['accountName']) ? null : $data['accountName'])
-            ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
-            ->withUserName(empty($data['userName']) ? null : $data['userName'])
-            ->withPassword(empty($data['password']) ? null : $data['password']);
+            ->withAccountName(array_key_exists('accountName', $data) && $data['accountName'] !== null ? $data['accountName'] : null)
+            ->withProjectName(array_key_exists('projectName', $data) && $data['projectName'] !== null ? $data['projectName'] : null)
+            ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null);
     }
 
     public function toJson(): array {

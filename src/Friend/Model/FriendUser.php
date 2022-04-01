@@ -78,9 +78,9 @@ class FriendUser implements IModel {
             return null;
         }
         return (new FriendUser())
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
-            ->withFriendProfile(empty($data['friendProfile']) ? null : $data['friendProfile']);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPublicProfile(array_key_exists('publicProfile', $data) && $data['publicProfile'] !== null ? $data['publicProfile'] : null)
+            ->withFriendProfile(array_key_exists('friendProfile', $data) && $data['friendProfile'] !== null ? $data['friendProfile'] : null);
     }
 
     public function toJson(): array {

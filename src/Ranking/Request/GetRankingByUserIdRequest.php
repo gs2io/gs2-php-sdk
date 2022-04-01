@@ -101,11 +101,11 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetRankingByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withScorerUserId(empty($data['scorerUserId']) ? null : $data['scorerUserId'])
-            ->withUniqueId(empty($data['uniqueId']) ? null : $data['uniqueId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withScorerUserId(array_key_exists('scorerUserId', $data) && $data['scorerUserId'] !== null ? $data['scorerUserId'] : null)
+            ->withUniqueId(array_key_exists('uniqueId', $data) && $data['uniqueId'] !== null ? $data['uniqueId'] : null);
     }
 
     public function toJson(): array {

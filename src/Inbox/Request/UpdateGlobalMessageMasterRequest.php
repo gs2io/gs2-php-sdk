@@ -118,17 +118,17 @@ class UpdateGlobalMessageMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateGlobalMessageMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withGlobalMessageName(empty($data['globalMessageName']) ? null : $data['globalMessageName'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withGlobalMessageName(array_key_exists('globalMessageName', $data) && $data['globalMessageName'] !== null ? $data['globalMessageName'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withReadAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
-            ->withExpiresTimeSpan(empty($data['expiresTimeSpan']) ? null : TimeSpan::fromJson($data['expiresTimeSpan']))
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
+            ->withExpiresTimeSpan(array_key_exists('expiresTimeSpan', $data) && $data['expiresTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresTimeSpan']) : null)
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
     }
 
     public function toJson(): array {

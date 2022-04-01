@@ -214,17 +214,17 @@ class Receipt implements IModel {
             return null;
         }
         return (new Receipt())
-            ->withReceiptId(empty($data['receiptId']) ? null : $data['receiptId'])
-            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withType(empty($data['type']) ? null : $data['type'])
-            ->withSlot(empty($data['slot']) && $data['slot'] !== 0 ? null : $data['slot'])
-            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price'])
-            ->withPaid(empty($data['paid']) && $data['paid'] !== 0 ? null : $data['paid'])
-            ->withFree(empty($data['free']) && $data['free'] !== 0 ? null : $data['free'])
-            ->withTotal(empty($data['total']) && $data['total'] !== 0 ? null : $data['total'])
-            ->withContentsId(empty($data['contentsId']) ? null : $data['contentsId'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withReceiptId(array_key_exists('receiptId', $data) && $data['receiptId'] !== null ? $data['receiptId'] : null)
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
+            ->withPrice(array_key_exists('price', $data) && $data['price'] !== null ? $data['price'] : null)
+            ->withPaid(array_key_exists('paid', $data) && $data['paid'] !== null ? $data['paid'] : null)
+            ->withFree(array_key_exists('free', $data) && $data['free'] !== null ? $data['free'] : null)
+            ->withTotal(array_key_exists('total', $data) && $data['total'] !== null ? $data['total'] : null)
+            ->withContentsId(array_key_exists('contentsId', $data) && $data['contentsId'] !== null ? $data['contentsId'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

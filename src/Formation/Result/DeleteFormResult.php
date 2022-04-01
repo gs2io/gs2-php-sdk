@@ -92,10 +92,10 @@ class DeleteFormResult implements IResult {
             return null;
         }
         return (new DeleteFormResult())
-            ->withItem(empty($data['item']) ? null : Form::fromJson($data['item']))
-            ->withMold(empty($data['mold']) ? null : Mold::fromJson($data['mold']))
-            ->withMoldModel(empty($data['moldModel']) ? null : MoldModel::fromJson($data['moldModel']))
-            ->withFormModel(empty($data['formModel']) ? null : FormModel::fromJson($data['formModel']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Form::fromJson($data['item']) : null)
+            ->withMold(array_key_exists('mold', $data) && $data['mold'] !== null ? Mold::fromJson($data['mold']) : null)
+            ->withMoldModel(array_key_exists('moldModel', $data) && $data['moldModel'] !== null ? MoldModel::fromJson($data['moldModel']) : null)
+            ->withFormModel(array_key_exists('formModel', $data) && $data['formModel'] !== null ? FormModel::fromJson($data['formModel']) : null);
     }
 
     public function toJson(): array {

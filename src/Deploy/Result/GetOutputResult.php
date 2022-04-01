@@ -42,7 +42,7 @@ class GetOutputResult implements IResult {
             return null;
         }
         return (new GetOutputResult())
-            ->withItem(empty($data['item']) ? null : Output::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Output::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

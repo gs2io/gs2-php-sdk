@@ -78,9 +78,9 @@ class SlotModel implements IModel {
             return null;
         }
         return (new SlotModel())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withPropertyRegex(empty($data['propertyRegex']) ? null : $data['propertyRegex'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withPropertyRegex(array_key_exists('propertyRegex', $data) && $data['propertyRegex'] !== null ? $data['propertyRegex'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
 
     public function toJson(): array {

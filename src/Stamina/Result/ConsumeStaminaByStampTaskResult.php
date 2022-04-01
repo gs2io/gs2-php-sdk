@@ -76,9 +76,9 @@ class ConsumeStaminaByStampTaskResult implements IResult {
             return null;
         }
         return (new ConsumeStaminaByStampTaskResult())
-            ->withItem(empty($data['item']) ? null : Stamina::fromJson($data['item']))
-            ->withStaminaModel(empty($data['staminaModel']) ? null : StaminaModel::fromJson($data['staminaModel']))
-            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Stamina::fromJson($data['item']) : null)
+            ->withStaminaModel(array_key_exists('staminaModel', $data) && $data['staminaModel'] !== null ? StaminaModel::fromJson($data['staminaModel']) : null)
+            ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {

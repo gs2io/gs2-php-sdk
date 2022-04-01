@@ -56,8 +56,8 @@ class GetStaminaModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetStaminaModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withStaminaName(array_key_exists('staminaName', $data) && $data['staminaName'] !== null ? $data['staminaName'] : null);
     }
 
     public function toJson(): array {

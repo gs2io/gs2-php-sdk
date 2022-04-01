@@ -146,13 +146,13 @@ class GitHubCheckoutSetting implements IModel {
             return null;
         }
         return (new GitHubCheckoutSetting())
-            ->withApiKeyId(empty($data['apiKeyId']) ? null : $data['apiKeyId'])
-            ->withRepositoryName(empty($data['repositoryName']) ? null : $data['repositoryName'])
-            ->withSourcePath(empty($data['sourcePath']) ? null : $data['sourcePath'])
-            ->withReferenceType(empty($data['referenceType']) ? null : $data['referenceType'])
-            ->withCommitHash(empty($data['commitHash']) ? null : $data['commitHash'])
-            ->withBranchName(empty($data['branchName']) ? null : $data['branchName'])
-            ->withTagName(empty($data['tagName']) ? null : $data['tagName']);
+            ->withApiKeyId(array_key_exists('apiKeyId', $data) && $data['apiKeyId'] !== null ? $data['apiKeyId'] : null)
+            ->withRepositoryName(array_key_exists('repositoryName', $data) && $data['repositoryName'] !== null ? $data['repositoryName'] : null)
+            ->withSourcePath(array_key_exists('sourcePath', $data) && $data['sourcePath'] !== null ? $data['sourcePath'] : null)
+            ->withReferenceType(array_key_exists('referenceType', $data) && $data['referenceType'] !== null ? $data['referenceType'] : null)
+            ->withCommitHash(array_key_exists('commitHash', $data) && $data['commitHash'] !== null ? $data['commitHash'] : null)
+            ->withBranchName(array_key_exists('branchName', $data) && $data['branchName'] !== null ? $data['branchName'] : null)
+            ->withTagName(array_key_exists('tagName', $data) && $data['tagName'] !== null ? $data['tagName'] : null);
     }
 
     public function toJson(): array {

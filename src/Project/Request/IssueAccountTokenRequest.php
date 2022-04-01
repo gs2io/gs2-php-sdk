@@ -41,7 +41,7 @@ class IssueAccountTokenRequest extends Gs2BasicRequest {
             return null;
         }
         return (new IssueAccountTokenRequest())
-            ->withAccountName(empty($data['accountName']) ? null : $data['accountName']);
+            ->withAccountName(array_key_exists('accountName', $data) && $data['accountName'] !== null ? $data['accountName'] : null);
     }
 
     public function toJson(): array {

@@ -180,15 +180,15 @@ class VersionModel implements IModel {
             return null;
         }
         return (new VersionModel())
-            ->withVersionModelId(empty($data['versionModelId']) ? null : $data['versionModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withWarningVersion(empty($data['warningVersion']) ? null : Version::fromJson($data['warningVersion']))
-            ->withErrorVersion(empty($data['errorVersion']) ? null : Version::fromJson($data['errorVersion']))
-            ->withScope(empty($data['scope']) ? null : $data['scope'])
-            ->withCurrentVersion(empty($data['currentVersion']) ? null : Version::fromJson($data['currentVersion']))
+            ->withVersionModelId(array_key_exists('versionModelId', $data) && $data['versionModelId'] !== null ? $data['versionModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withWarningVersion(array_key_exists('warningVersion', $data) && $data['warningVersion'] !== null ? Version::fromJson($data['warningVersion']) : null)
+            ->withErrorVersion(array_key_exists('errorVersion', $data) && $data['errorVersion'] !== null ? Version::fromJson($data['errorVersion']) : null)
+            ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
+            ->withCurrentVersion(array_key_exists('currentVersion', $data) && $data['currentVersion'] !== null ? Version::fromJson($data['currentVersion']) : null)
             ->withNeedSignature($data['needSignature'])
-            ->withSignatureKeyId(empty($data['signatureKeyId']) ? null : $data['signatureKeyId']);
+            ->withSignatureKeyId(array_key_exists('signatureKeyId', $data) && $data['signatureKeyId'] !== null ? $data['signatureKeyId'] : null);
     }
 
     public function toJson(): array {

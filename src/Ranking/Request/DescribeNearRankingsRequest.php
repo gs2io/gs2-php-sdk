@@ -71,9 +71,9 @@ class DescribeNearRankingsRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeNearRankingsRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withScore(empty($data['score']) && $data['score'] !== 0 ? null : $data['score']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null);
     }
 
     public function toJson(): array {

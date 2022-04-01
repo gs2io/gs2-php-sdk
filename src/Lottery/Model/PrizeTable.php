@@ -95,9 +95,9 @@ class PrizeTable implements IModel {
             return null;
         }
         return (new PrizeTable())
-            ->withPrizeTableId(empty($data['prizeTableId']) ? null : $data['prizeTableId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withPrizeTableId(array_key_exists('prizeTableId', $data) && $data['prizeTableId'] !== null ? $data['prizeTableId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withPrizes(array_map(
                 function ($item) {
                     return Prize::fromJson($item);

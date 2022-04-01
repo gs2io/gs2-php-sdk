@@ -95,10 +95,10 @@ class TargetVersion implements IModel {
             return null;
         }
         return (new TargetVersion())
-            ->withVersionName(empty($data['versionName']) ? null : $data['versionName'])
-            ->withVersion(empty($data['version']) ? null : Version::fromJson($data['version']))
-            ->withBody(empty($data['body']) ? null : $data['body'])
-            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+            ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
+            ->withVersion(array_key_exists('version', $data) && $data['version'] !== null ? Version::fromJson($data['version']) : null)
+            ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
+            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
     }
 
     public function toJson(): array {

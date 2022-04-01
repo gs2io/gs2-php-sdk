@@ -148,14 +148,14 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateNamespaceRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withExperienceCapScriptId(empty($data['experienceCapScriptId']) ? null : $data['experienceCapScriptId'])
-            ->withChangeExperienceScript(empty($data['changeExperienceScript']) ? null : ScriptSetting::fromJson($data['changeExperienceScript']))
-            ->withChangeRankScript(empty($data['changeRankScript']) ? null : ScriptSetting::fromJson($data['changeRankScript']))
-            ->withChangeRankCapScript(empty($data['changeRankCapScript']) ? null : ScriptSetting::fromJson($data['changeRankCapScript']))
-            ->withOverflowExperienceScript(empty($data['overflowExperienceScript']) ? null : ScriptSetting::fromJson($data['overflowExperienceScript']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withExperienceCapScriptId(array_key_exists('experienceCapScriptId', $data) && $data['experienceCapScriptId'] !== null ? $data['experienceCapScriptId'] : null)
+            ->withChangeExperienceScript(array_key_exists('changeExperienceScript', $data) && $data['changeExperienceScript'] !== null ? ScriptSetting::fromJson($data['changeExperienceScript']) : null)
+            ->withChangeRankScript(array_key_exists('changeRankScript', $data) && $data['changeRankScript'] !== null ? ScriptSetting::fromJson($data['changeRankScript']) : null)
+            ->withChangeRankCapScript(array_key_exists('changeRankCapScript', $data) && $data['changeRankCapScript'] !== null ? ScriptSetting::fromJson($data['changeRankCapScript']) : null)
+            ->withOverflowExperienceScript(array_key_exists('overflowExperienceScript', $data) && $data['overflowExperienceScript'] !== null ? ScriptSetting::fromJson($data['overflowExperienceScript']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
     public function toJson(): array {

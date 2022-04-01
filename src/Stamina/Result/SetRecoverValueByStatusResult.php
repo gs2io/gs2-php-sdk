@@ -61,8 +61,8 @@ class SetRecoverValueByStatusResult implements IResult {
             return null;
         }
         return (new SetRecoverValueByStatusResult())
-            ->withItem(empty($data['item']) ? null : Stamina::fromJson($data['item']))
-            ->withStaminaModel(empty($data['staminaModel']) ? null : StaminaModel::fromJson($data['staminaModel']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Stamina::fromJson($data['item']) : null)
+            ->withStaminaModel(array_key_exists('staminaModel', $data) && $data['staminaModel'] !== null ? StaminaModel::fromJson($data['staminaModel']) : null);
     }
 
     public function toJson(): array {

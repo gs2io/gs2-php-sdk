@@ -43,7 +43,7 @@ class IncreaseByStampSheetResult implements IResult {
             return null;
         }
         return (new IncreaseByStampSheetResult())
-            ->withItem(empty($data['item']) ? null : Counter::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Counter::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

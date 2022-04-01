@@ -164,15 +164,15 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateNamespaceRequest())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMissionCompleteScript(empty($data['missionCompleteScript']) ? null : ScriptSetting::fromJson($data['missionCompleteScript']))
-            ->withCounterIncrementScript(empty($data['counterIncrementScript']) ? null : ScriptSetting::fromJson($data['counterIncrementScript']))
-            ->withReceiveRewardsScript(empty($data['receiveRewardsScript']) ? null : ScriptSetting::fromJson($data['receiveRewardsScript']))
-            ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
-            ->withCompleteNotification(empty($data['completeNotification']) ? null : NotificationSetting::fromJson($data['completeNotification']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMissionCompleteScript(array_key_exists('missionCompleteScript', $data) && $data['missionCompleteScript'] !== null ? ScriptSetting::fromJson($data['missionCompleteScript']) : null)
+            ->withCounterIncrementScript(array_key_exists('counterIncrementScript', $data) && $data['counterIncrementScript'] !== null ? ScriptSetting::fromJson($data['counterIncrementScript']) : null)
+            ->withReceiveRewardsScript(array_key_exists('receiveRewardsScript', $data) && $data['receiveRewardsScript'] !== null ? ScriptSetting::fromJson($data['receiveRewardsScript']) : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withCompleteNotification(array_key_exists('completeNotification', $data) && $data['completeNotification'] !== null ? NotificationSetting::fromJson($data['completeNotification']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
     public function toJson(): array {

@@ -86,10 +86,10 @@ class PrepareDownloadByGenerationAndUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PrepareDownloadByGenerationAndUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withDataObjectId(empty($data['dataObjectId']) ? null : $data['dataObjectId'])
-            ->withGeneration(empty($data['generation']) ? null : $data['generation']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withDataObjectId(array_key_exists('dataObjectId', $data) && $data['dataObjectId'] !== null ? $data['dataObjectId'] : null)
+            ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null);
     }
 
     public function toJson(): array {

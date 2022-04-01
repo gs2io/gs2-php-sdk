@@ -73,9 +73,9 @@ class DoMatchmakingByPlayerRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DoMatchmakingByPlayerRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withPlayer(empty($data['player']) ? null : Player::fromJson($data['player']))
-            ->withMatchmakingContextToken(empty($data['matchmakingContextToken']) ? null : $data['matchmakingContextToken']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withPlayer(array_key_exists('player', $data) && $data['player'] !== null ? Player::fromJson($data['player']) : null)
+            ->withMatchmakingContextToken(array_key_exists('matchmakingContextToken', $data) && $data['matchmakingContextToken'] !== null ? $data['matchmakingContextToken'] : null);
     }
 
     public function toJson(): array {

@@ -46,7 +46,7 @@ class GetGatheringResult implements IResult {
             return null;
         }
         return (new GetGatheringResult())
-            ->withItem(empty($data['item']) ? null : Gathering::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Gathering::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

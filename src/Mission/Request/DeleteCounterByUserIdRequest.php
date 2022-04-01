@@ -71,9 +71,9 @@ class DeleteCounterByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteCounterByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCounterName(empty($data['counterName']) ? null : $data['counterName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null);
     }
 
     public function toJson(): array {

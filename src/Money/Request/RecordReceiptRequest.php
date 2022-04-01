@@ -86,10 +86,10 @@ class RecordReceiptRequest extends Gs2BasicRequest {
             return null;
         }
         return (new RecordReceiptRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withContentsId(empty($data['contentsId']) ? null : $data['contentsId'])
-            ->withReceipt(empty($data['receipt']) ? null : $data['receipt']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withContentsId(array_key_exists('contentsId', $data) && $data['contentsId'] !== null ? $data['contentsId'] : null)
+            ->withReceipt(array_key_exists('receipt', $data) && $data['receipt'] !== null ? $data['receipt'] : null);
     }
 
     public function toJson(): array {

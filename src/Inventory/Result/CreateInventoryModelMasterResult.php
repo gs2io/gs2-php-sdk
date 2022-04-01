@@ -42,7 +42,7 @@ class CreateInventoryModelMasterResult implements IResult {
             return null;
         }
         return (new CreateInventoryModelMasterResult())
-            ->withItem(empty($data['item']) ? null : InventoryModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? InventoryModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

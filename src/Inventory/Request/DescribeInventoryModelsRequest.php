@@ -41,7 +41,7 @@ class DescribeInventoryModelsRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeInventoryModelsRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null);
     }
 
     public function toJson(): array {

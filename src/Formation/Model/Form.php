@@ -129,17 +129,17 @@ class Form implements IModel {
             return null;
         }
         return (new Form())
-            ->withFormId(empty($data['formId']) ? null : $data['formId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index'])
+            ->withFormId(array_key_exists('formId', $data) && $data['formId'] !== null ? $data['formId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
             ->withSlots(array_map(
                 function ($item) {
                     return Slot::fromJson($item);
                 },
                 array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

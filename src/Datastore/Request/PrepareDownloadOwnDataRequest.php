@@ -71,9 +71,9 @@ class PrepareDownloadOwnDataRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PrepareDownloadOwnDataRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null);
     }
 
     public function toJson(): array {

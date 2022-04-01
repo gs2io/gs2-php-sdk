@@ -110,10 +110,10 @@ class VerifyReferenceOfByStampTaskResult implements IResult {
                 },
                 array_key_exists('item', $data) && $data['item'] !== null ? $data['item'] : []
             ))
-            ->withItemSet(empty($data['itemSet']) ? null : ItemSet::fromJson($data['itemSet']))
-            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
-            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']))
-            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+            ->withItemSet(array_key_exists('itemSet', $data) && $data['itemSet'] !== null ? ItemSet::fromJson($data['itemSet']) : null)
+            ->withItemModel(array_key_exists('itemModel', $data) && $data['itemModel'] !== null ? ItemModel::fromJson($data['itemModel']) : null)
+            ->withInventory(array_key_exists('inventory', $data) && $data['inventory'] !== null ? Inventory::fromJson($data['inventory']) : null)
+            ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {

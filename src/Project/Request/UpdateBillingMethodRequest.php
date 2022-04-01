@@ -71,9 +71,9 @@ class UpdateBillingMethodRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateBillingMethodRequest())
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
-            ->withBillingMethodName(empty($data['billingMethodName']) ? null : $data['billingMethodName'])
-            ->withDescription(empty($data['description']) ? null : $data['description']);
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null)
+            ->withBillingMethodName(array_key_exists('billingMethodName', $data) && $data['billingMethodName'] !== null ? $data['billingMethodName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null);
     }
 
     public function toJson(): array {

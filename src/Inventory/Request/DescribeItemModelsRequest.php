@@ -56,8 +56,8 @@ class DescribeItemModelsRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeItemModelsRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null);
     }
 
     public function toJson(): array {

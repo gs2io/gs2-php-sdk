@@ -56,8 +56,8 @@ class DeleteDistributorModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteDistributorModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDistributorName(empty($data['distributorName']) ? null : $data['distributorName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDistributorName(array_key_exists('distributorName', $data) && $data['distributorName'] !== null ? $data['distributorName'] : null);
     }
 
     public function toJson(): array {

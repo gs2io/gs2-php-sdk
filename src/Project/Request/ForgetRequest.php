@@ -56,8 +56,8 @@ class ForgetRequest extends Gs2BasicRequest {
             return null;
         }
         return (new ForgetRequest())
-            ->withEmail(empty($data['email']) ? null : $data['email'])
-            ->withLang(empty($data['lang']) ? null : $data['lang']);
+            ->withEmail(array_key_exists('email', $data) && $data['email'] !== null ? $data['email'] : null)
+            ->withLang(array_key_exists('lang', $data) && $data['lang'] !== null ? $data['lang'] : null);
     }
 
     public function toJson(): array {

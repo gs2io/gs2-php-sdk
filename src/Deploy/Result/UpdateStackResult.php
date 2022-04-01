@@ -42,7 +42,7 @@ class UpdateStackResult implements IResult {
             return null;
         }
         return (new UpdateStackResult())
-            ->withItem(empty($data['item']) ? null : Stack::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Stack::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

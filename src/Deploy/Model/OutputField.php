@@ -61,8 +61,8 @@ class OutputField implements IModel {
             return null;
         }
         return (new OutputField())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withFieldName(empty($data['fieldName']) ? null : $data['fieldName']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withFieldName(array_key_exists('fieldName', $data) && $data['fieldName'] !== null ? $data['fieldName'] : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class DebugInvokeRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DebugInvokeRequest())
-            ->withScript(empty($data['script']) ? null : $data['script'])
-            ->withArgs(empty($data['args']) ? null : $data['args']);
+            ->withScript(array_key_exists('script', $data) && $data['script'] !== null ? $data['script'] : null)
+            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null);
     }
 
     public function toJson(): array {

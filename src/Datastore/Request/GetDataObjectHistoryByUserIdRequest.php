@@ -86,10 +86,10 @@ class GetDataObjectHistoryByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetDataObjectHistoryByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
-            ->withGeneration(empty($data['generation']) ? null : $data['generation']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
+            ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null);
     }
 
     public function toJson(): array {

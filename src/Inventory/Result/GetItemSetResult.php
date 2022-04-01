@@ -80,8 +80,8 @@ class GetItemSetResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
-            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
-            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']));
+            ->withItemModel(array_key_exists('itemModel', $data) && $data['itemModel'] !== null ? ItemModel::fromJson($data['itemModel']) : null)
+            ->withInventory(array_key_exists('inventory', $data) && $data['inventory'] !== null ? Inventory::fromJson($data['inventory']) : null);
     }
 
     public function toJson(): array {

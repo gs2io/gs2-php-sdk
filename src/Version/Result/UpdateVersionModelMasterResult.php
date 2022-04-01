@@ -43,7 +43,7 @@ class UpdateVersionModelMasterResult implements IResult {
             return null;
         }
         return (new UpdateVersionModelMasterResult())
-            ->withItem(empty($data['item']) ? null : VersionModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? VersionModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

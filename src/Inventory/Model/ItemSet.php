@@ -214,22 +214,22 @@ class ItemSet implements IModel {
             return null;
         }
         return (new ItemSet())
-            ->withItemSetId(empty($data['itemSetId']) ? null : $data['itemSetId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
-            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
+            ->withItemSetId(array_key_exists('itemSetId', $data) && $data['itemSetId'] !== null ? $data['itemSetId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
             ->withReferenceOf(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('referenceOf', $data) && $data['referenceOf'] !== null ? $data['referenceOf'] : []
             ))
-            ->withSortValue(empty($data['sortValue']) && $data['sortValue'] !== 0 ? null : $data['sortValue'])
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withSortValue(array_key_exists('sortValue', $data) && $data['sortValue'] !== null ? $data['sortValue'] : null)
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

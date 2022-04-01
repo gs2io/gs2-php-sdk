@@ -42,7 +42,7 @@ class SetUserIdByUserIdResult implements IResult {
             return null;
         }
         return (new SetUserIdByUserIdResult())
-            ->withItem(empty($data['item']) ? null : WebSocketSession::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? WebSocketSession::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

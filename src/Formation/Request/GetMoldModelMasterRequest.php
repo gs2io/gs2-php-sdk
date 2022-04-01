@@ -56,8 +56,8 @@ class GetMoldModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetMoldModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withMoldName(empty($data['moldName']) ? null : $data['moldName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null);
     }
 
     public function toJson(): array {

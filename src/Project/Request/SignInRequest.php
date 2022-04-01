@@ -56,8 +56,8 @@ class SignInRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SignInRequest())
-            ->withEmail(empty($data['email']) ? null : $data['email'])
-            ->withPassword(empty($data['password']) ? null : $data['password']);
+            ->withEmail(array_key_exists('email', $data) && $data['email'] !== null ? $data['email'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null);
     }
 
     public function toJson(): array {

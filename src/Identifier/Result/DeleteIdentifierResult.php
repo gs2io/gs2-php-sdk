@@ -42,7 +42,7 @@ class DeleteIdentifierResult implements IResult {
             return null;
         }
         return (new DeleteIdentifierResult())
-            ->withItem(empty($data['item']) ? null : Identifier::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Identifier::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

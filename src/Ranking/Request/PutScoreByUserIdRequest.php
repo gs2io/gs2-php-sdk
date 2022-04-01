@@ -101,11 +101,11 @@ class PutScoreByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PutScoreByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withScore(empty($data['score']) && $data['score'] !== 0 ? null : $data['score'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
 
     public function toJson(): array {

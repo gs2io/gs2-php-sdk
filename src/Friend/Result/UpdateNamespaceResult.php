@@ -45,7 +45,7 @@ class UpdateNamespaceResult implements IResult {
             return null;
         }
         return (new UpdateNamespaceResult())
-            ->withItem(empty($data['item']) ? null : Namespace_::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Namespace_::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

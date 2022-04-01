@@ -43,7 +43,7 @@ class GetFormModelMasterResult implements IResult {
             return null;
         }
         return (new GetFormModelMasterResult())
-            ->withItem(empty($data['item']) ? null : FormModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? FormModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

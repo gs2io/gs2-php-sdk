@@ -112,16 +112,16 @@ class Follow implements IModel {
             return null;
         }
         return (new Follow())
-            ->withFollowId(empty($data['followId']) ? null : $data['followId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withFollowId(array_key_exists('followId', $data) && $data['followId'] !== null ? $data['followId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetUserIds(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('targetUserIds', $data) && $data['targetUserIds'] !== null ? $data['targetUserIds'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

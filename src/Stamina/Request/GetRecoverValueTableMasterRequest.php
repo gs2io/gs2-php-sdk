@@ -56,8 +56,8 @@ class GetRecoverValueTableMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetRecoverValueTableMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRecoverValueTableName(empty($data['recoverValueTableName']) ? null : $data['recoverValueTableName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRecoverValueTableName(array_key_exists('recoverValueTableName', $data) && $data['recoverValueTableName'] !== null ? $data['recoverValueTableName'] : null);
     }
 
     public function toJson(): array {

@@ -96,9 +96,9 @@ class DrawByStampSheetResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
-            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
-            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId'])
-            ->withBoxItems(empty($data['boxItems']) ? null : BoxItems::fromJson($data['boxItems']));
+            ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
+            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
+            ->withBoxItems(array_key_exists('boxItems', $data) && $data['boxItems'] !== null ? BoxItems::fromJson($data['boxItems']) : null);
     }
 
     public function toJson(): array {

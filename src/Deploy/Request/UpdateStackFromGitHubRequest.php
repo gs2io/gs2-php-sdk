@@ -72,9 +72,9 @@ class UpdateStackFromGitHubRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateStackFromGitHubRequest())
-            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withCheckoutSetting(empty($data['checkoutSetting']) ? null : GitHubCheckoutSetting::fromJson($data['checkoutSetting']));
+            ->withStackName(array_key_exists('stackName', $data) && $data['stackName'] !== null ? $data['stackName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withCheckoutSetting(array_key_exists('checkoutSetting', $data) && $data['checkoutSetting'] !== null ? GitHubCheckoutSetting::fromJson($data['checkoutSetting']) : null);
     }
 
     public function toJson(): array {

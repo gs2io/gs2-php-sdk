@@ -129,12 +129,12 @@ class BillingActivity implements IModel {
             return null;
         }
         return (new BillingActivity())
-            ->withBillingActivityId(empty($data['billingActivityId']) ? null : $data['billingActivityId'])
-            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
-            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
-            ->withService(empty($data['service']) ? null : $data['service'])
-            ->withActivityType(empty($data['activityType']) ? null : $data['activityType'])
-            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value']);
+            ->withBillingActivityId(array_key_exists('billingActivityId', $data) && $data['billingActivityId'] !== null ? $data['billingActivityId'] : null)
+            ->withYear(array_key_exists('year', $data) && $data['year'] !== null ? $data['year'] : null)
+            ->withMonth(array_key_exists('month', $data) && $data['month'] !== null ? $data['month'] : null)
+            ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null)
+            ->withActivityType(array_key_exists('activityType', $data) && $data['activityType'] !== null ? $data['activityType'] : null)
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null);
     }
 
     public function toJson(): array {

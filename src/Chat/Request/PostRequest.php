@@ -116,12 +116,12 @@ class PostRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PostRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withCategory(empty($data['category']) && $data['category'] !== 0 ? null : $data['category'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withPassword(empty($data['password']) ? null : $data['password']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withCategory(array_key_exists('category', $data) && $data['category'] !== null ? $data['category'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null);
     }
 
     public function toJson(): array {

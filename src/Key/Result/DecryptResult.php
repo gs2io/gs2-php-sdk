@@ -41,7 +41,7 @@ class DecryptResult implements IResult {
             return null;
         }
         return (new DecryptResult())
-            ->withData(empty($data['data']) ? null : $data['data']);
+            ->withData(array_key_exists('data', $data) && $data['data'] !== null ? $data['data'] : null);
     }
 
     public function toJson(): array {

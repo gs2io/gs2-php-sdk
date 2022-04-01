@@ -56,8 +56,8 @@ class AttachSecurityPolicyRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AttachSecurityPolicyRequest())
-            ->withUserName(empty($data['userName']) ? null : $data['userName'])
-            ->withSecurityPolicyId(empty($data['securityPolicyId']) ? null : $data['securityPolicyId']);
+            ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
+            ->withSecurityPolicyId(array_key_exists('securityPolicyId', $data) && $data['securityPolicyId'] !== null ? $data['securityPolicyId'] : null);
     }
 
     public function toJson(): array {

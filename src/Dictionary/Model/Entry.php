@@ -95,10 +95,10 @@ class Entry implements IModel {
             return null;
         }
         return (new Entry())
-            ->withEntryId(empty($data['entryId']) ? null : $data['entryId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withAcquiredAt(empty($data['acquiredAt']) && $data['acquiredAt'] !== 0 ? null : $data['acquiredAt']);
+            ->withEntryId(array_key_exists('entryId', $data) && $data['entryId'] !== null ? $data['entryId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withAcquiredAt(array_key_exists('acquiredAt', $data) && $data['acquiredAt'] !== null ? $data['acquiredAt'] : null);
     }
 
     public function toJson(): array {

@@ -42,7 +42,7 @@ class DoneUploadByUserIdResult implements IResult {
             return null;
         }
         return (new DoneUploadByUserIdResult())
-            ->withItem(empty($data['item']) ? null : DataObject::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? DataObject::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

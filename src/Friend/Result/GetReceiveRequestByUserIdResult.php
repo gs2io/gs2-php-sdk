@@ -42,7 +42,7 @@ class GetReceiveRequestByUserIdResult implements IResult {
             return null;
         }
         return (new GetReceiveRequestByUserIdResult())
-            ->withItem(empty($data['item']) ? null : FriendRequest::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? FriendRequest::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

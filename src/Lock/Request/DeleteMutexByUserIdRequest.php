@@ -71,9 +71,9 @@ class DeleteMutexByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteMutexByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null);
     }
 
     public function toJson(): array {

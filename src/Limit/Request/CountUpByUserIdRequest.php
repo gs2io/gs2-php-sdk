@@ -116,12 +116,12 @@ class CountUpByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CountUpByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withLimitName(empty($data['limitName']) ? null : $data['limitName'])
-            ->withCounterName(empty($data['counterName']) ? null : $data['counterName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withCountUpValue(empty($data['countUpValue']) && $data['countUpValue'] !== 0 ? null : $data['countUpValue'])
-            ->withMaxValue(empty($data['maxValue']) && $data['maxValue'] !== 0 ? null : $data['maxValue']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withLimitName(array_key_exists('limitName', $data) && $data['limitName'] !== null ? $data['limitName'] : null)
+            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withCountUpValue(array_key_exists('countUpValue', $data) && $data['countUpValue'] !== null ? $data['countUpValue'] : null)
+            ->withMaxValue(array_key_exists('maxValue', $data) && $data['maxValue'] !== null ? $data['maxValue'] : null);
     }
 
     public function toJson(): array {

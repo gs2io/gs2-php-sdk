@@ -71,9 +71,9 @@ class GetAcceptVersionByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetAcceptVersionByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withVersionName(empty($data['versionName']) ? null : $data['versionName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null);
     }
 
     public function toJson(): array {

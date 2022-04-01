@@ -163,9 +163,9 @@ class Complete implements IModel {
             return null;
         }
         return (new Complete())
-            ->withCompleteId(empty($data['completeId']) ? null : $data['completeId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName'])
+            ->withCompleteId(array_key_exists('completeId', $data) && $data['completeId'] !== null ? $data['completeId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
             ->withCompletedMissionTaskNames(array_map(
                 function ($item) {
                     return $item;
@@ -178,9 +178,9 @@ class Complete implements IModel {
                 },
                 array_key_exists('receivedMissionTaskNames', $data) && $data['receivedMissionTaskNames'] !== null ? $data['receivedMissionTaskNames'] : []
             ))
-            ->withNextResetAt(empty($data['nextResetAt']) && $data['nextResetAt'] !== 0 ? null : $data['nextResetAt'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withNextResetAt(array_key_exists('nextResetAt', $data) && $data['nextResetAt'] !== null ? $data['nextResetAt'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

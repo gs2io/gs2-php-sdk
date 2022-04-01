@@ -102,16 +102,16 @@ class VoteRequest extends Gs2BasicRequest {
             return null;
         }
         return (new VoteRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withBallotBody(empty($data['ballotBody']) ? null : $data['ballotBody'])
-            ->withBallotSignature(empty($data['ballotSignature']) ? null : $data['ballotSignature'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withBallotBody(array_key_exists('ballotBody', $data) && $data['ballotBody'] !== null ? $data['ballotBody'] : null)
+            ->withBallotSignature(array_key_exists('ballotSignature', $data) && $data['ballotSignature'] !== null ? $data['ballotSignature'] : null)
             ->withGameResults(array_map(
                 function ($item) {
                     return GameResult::fromJson($item);
                 },
                 array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
             ))
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {

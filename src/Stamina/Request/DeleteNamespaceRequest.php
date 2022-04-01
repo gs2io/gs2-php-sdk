@@ -41,7 +41,7 @@ class DeleteNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteNamespaceRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null);
     }
 
     public function toJson(): array {

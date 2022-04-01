@@ -57,8 +57,8 @@ class ReceiveByStampTaskResult implements IResult {
             return null;
         }
         return (new ReceiveByStampTaskResult())
-            ->withItem(empty($data['item']) ? null : Complete::fromJson($data['item']))
-            ->withNewContextStack(empty($data['newContextStack']) ? null : $data['newContextStack']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Complete::fromJson($data['item']) : null)
+            ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {

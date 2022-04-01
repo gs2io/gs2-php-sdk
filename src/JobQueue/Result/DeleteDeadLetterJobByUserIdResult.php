@@ -43,7 +43,7 @@ class DeleteDeadLetterJobByUserIdResult implements IResult {
             return null;
         }
         return (new DeleteDeadLetterJobByUserIdResult())
-            ->withItem(empty($data['item']) ? null : DeadLetterJob::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? DeadLetterJob::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

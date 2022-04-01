@@ -102,10 +102,10 @@ class SkipRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SkipRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withAwaitName(empty($data['awaitName']) ? null : $data['awaitName'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withAwaitName(array_key_exists('awaitName', $data) && $data['awaitName'] !== null ? $data['awaitName'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

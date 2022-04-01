@@ -42,7 +42,7 @@ class GetDataObjectHistoryByUserIdResult implements IResult {
             return null;
         }
         return (new GetDataObjectHistoryByUserIdResult())
-            ->withItem(empty($data['item']) ? null : DataObjectHistory::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? DataObjectHistory::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

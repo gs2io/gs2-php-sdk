@@ -42,7 +42,7 @@ class GetReceivedByUserIdResult implements IResult {
             return null;
         }
         return (new GetReceivedByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Received::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Received::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

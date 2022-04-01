@@ -86,10 +86,10 @@ class GetFormRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetFormRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withMoldName(empty($data['moldName']) ? null : $data['moldName'])
-            ->withIndex(empty($data['index']) && $data['index'] !== 0 ? null : $data['index']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null);
     }
 
     public function toJson(): array {

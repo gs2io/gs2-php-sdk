@@ -57,8 +57,8 @@ class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DistributeWithoutOverflowProcessRequest())
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withDistributeResource(empty($data['distributeResource']) ? null : DistributeResource::fromJson($data['distributeResource']));
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withDistributeResource(array_key_exists('distributeResource', $data) && $data['distributeResource'] !== null ? DistributeResource::fromJson($data['distributeResource']) : null);
     }
 
     public function toJson(): array {

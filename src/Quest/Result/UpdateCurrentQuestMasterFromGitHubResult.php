@@ -42,7 +42,7 @@ class UpdateCurrentQuestMasterFromGitHubResult implements IResult {
             return null;
         }
         return (new UpdateCurrentQuestMasterFromGitHubResult())
-            ->withItem(empty($data['item']) ? null : CurrentQuestMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentQuestMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

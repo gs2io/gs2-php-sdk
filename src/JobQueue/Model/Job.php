@@ -180,15 +180,15 @@ class Job implements IModel {
             return null;
         }
         return (new Job())
-            ->withJobId(empty($data['jobId']) ? null : $data['jobId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withScriptId(empty($data['scriptId']) ? null : $data['scriptId'])
-            ->withArgs(empty($data['args']) ? null : $data['args'])
-            ->withCurrentRetryCount(empty($data['currentRetryCount']) && $data['currentRetryCount'] !== 0 ? null : $data['currentRetryCount'])
-            ->withMaxTryCount(empty($data['maxTryCount']) && $data['maxTryCount'] !== 0 ? null : $data['maxTryCount'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withJobId(array_key_exists('jobId', $data) && $data['jobId'] !== null ? $data['jobId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withScriptId(array_key_exists('scriptId', $data) && $data['scriptId'] !== null ? $data['scriptId'] : null)
+            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
+            ->withCurrentRetryCount(array_key_exists('currentRetryCount', $data) && $data['currentRetryCount'] !== null ? $data['currentRetryCount'] : null)
+            ->withMaxTryCount(array_key_exists('maxTryCount', $data) && $data['maxTryCount'] !== null ? $data['maxTryCount'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

@@ -42,7 +42,7 @@ class UpdateCategoryModelMasterResult implements IResult {
             return null;
         }
         return (new UpdateCategoryModelMasterResult())
-            ->withItem(empty($data['item']) ? null : CategoryModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CategoryModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

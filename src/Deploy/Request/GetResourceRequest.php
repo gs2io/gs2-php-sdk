@@ -56,8 +56,8 @@ class GetResourceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetResourceRequest())
-            ->withStackName(empty($data['stackName']) ? null : $data['stackName'])
-            ->withResourceName(empty($data['resourceName']) ? null : $data['resourceName']);
+            ->withStackName(array_key_exists('stackName', $data) && $data['stackName'] !== null ? $data['stackName'] : null)
+            ->withResourceName(array_key_exists('resourceName', $data) && $data['resourceName'] !== null ? $data['resourceName'] : null);
     }
 
     public function toJson(): array {

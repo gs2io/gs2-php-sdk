@@ -42,7 +42,7 @@ class UpdateSecurityPolicyResult implements IResult {
             return null;
         }
         return (new UpdateSecurityPolicyResult())
-            ->withItem(empty($data['item']) ? null : SecurityPolicy::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SecurityPolicy::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

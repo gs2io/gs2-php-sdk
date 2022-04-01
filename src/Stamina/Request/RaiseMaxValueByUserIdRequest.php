@@ -86,10 +86,10 @@ class RaiseMaxValueByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new RaiseMaxValueByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRaiseValue(empty($data['raiseValue']) && $data['raiseValue'] !== 0 ? null : $data['raiseValue']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withStaminaName(array_key_exists('staminaName', $data) && $data['staminaName'] !== null ? $data['staminaName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withRaiseValue(array_key_exists('raiseValue', $data) && $data['raiseValue'] !== null ? $data['raiseValue'] : null);
     }
 
     public function toJson(): array {

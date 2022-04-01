@@ -78,9 +78,9 @@ class SubscribeUser implements IModel {
             return null;
         }
         return (new SubscribeUser())
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId']);
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null);
     }
 
     public function toJson(): array {

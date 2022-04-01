@@ -42,7 +42,7 @@ class RecordReceiptResult implements IResult {
             return null;
         }
         return (new RecordReceiptResult())
-            ->withItem(empty($data['item']) ? null : Receipt::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Receipt::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

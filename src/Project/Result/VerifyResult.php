@@ -42,7 +42,7 @@ class VerifyResult implements IResult {
             return null;
         }
         return (new VerifyResult())
-            ->withItem(empty($data['item']) ? null : Account::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Account::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

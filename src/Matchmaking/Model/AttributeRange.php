@@ -78,9 +78,9 @@ class AttributeRange implements IModel {
             return null;
         }
         return (new AttributeRange())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMin(empty($data['min']) && $data['min'] !== 0 ? null : $data['min'])
-            ->withMax(empty($data['max']) && $data['max'] !== 0 ? null : $data['max']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMin(array_key_exists('min', $data) && $data['min'] !== null ? $data['min'] : null)
+            ->withMax(array_key_exists('max', $data) && $data['max'] !== null ? $data['max'] : null);
     }
 
     public function toJson(): array {

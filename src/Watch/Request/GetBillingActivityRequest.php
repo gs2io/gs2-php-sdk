@@ -86,10 +86,10 @@ class GetBillingActivityRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetBillingActivityRequest())
-            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
-            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
-            ->withService(empty($data['service']) ? null : $data['service'])
-            ->withActivityType(empty($data['activityType']) ? null : $data['activityType']);
+            ->withYear(array_key_exists('year', $data) && $data['year'] !== null ? $data['year'] : null)
+            ->withMonth(array_key_exists('month', $data) && $data['month'] !== null ? $data['month'] : null)
+            ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null)
+            ->withActivityType(array_key_exists('activityType', $data) && $data['activityType'] !== null ? $data['activityType'] : null);
     }
 
     public function toJson(): array {

@@ -177,20 +177,20 @@ class CreateRateModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateRateModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withTargetInventoryModelId(empty($data['targetInventoryModelId']) ? null : $data['targetInventoryModelId'])
-            ->withAcquireExperienceSuffix(empty($data['acquireExperienceSuffix']) ? null : $data['acquireExperienceSuffix'])
-            ->withMaterialInventoryModelId(empty($data['materialInventoryModelId']) ? null : $data['materialInventoryModelId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withTargetInventoryModelId(array_key_exists('targetInventoryModelId', $data) && $data['targetInventoryModelId'] !== null ? $data['targetInventoryModelId'] : null)
+            ->withAcquireExperienceSuffix(array_key_exists('acquireExperienceSuffix', $data) && $data['acquireExperienceSuffix'] !== null ? $data['acquireExperienceSuffix'] : null)
+            ->withMaterialInventoryModelId(array_key_exists('materialInventoryModelId', $data) && $data['materialInventoryModelId'] !== null ? $data['materialInventoryModelId'] : null)
             ->withAcquireExperienceHierarchy(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('acquireExperienceHierarchy', $data) && $data['acquireExperienceHierarchy'] !== null ? $data['acquireExperienceHierarchy'] : []
             ))
-            ->withExperienceModelId(empty($data['experienceModelId']) ? null : $data['experienceModelId'])
+            ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
             ->withBonusRates(array_map(
                 function ($item) {
                     return BonusRate::fromJson($item);

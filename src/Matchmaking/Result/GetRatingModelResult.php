@@ -42,7 +42,7 @@ class GetRatingModelResult implements IResult {
             return null;
         }
         return (new GetRatingModelResult())
-            ->withItem(empty($data['item']) ? null : RatingModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? RatingModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

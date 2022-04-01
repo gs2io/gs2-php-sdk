@@ -87,10 +87,10 @@ class UpdateScriptFromGitHubRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateScriptFromGitHubRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withScriptName(empty($data['scriptName']) ? null : $data['scriptName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withCheckoutSetting(empty($data['checkoutSetting']) ? null : GitHubCheckoutSetting::fromJson($data['checkoutSetting']));
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withScriptName(array_key_exists('scriptName', $data) && $data['scriptName'] !== null ? $data['scriptName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withCheckoutSetting(array_key_exists('checkoutSetting', $data) && $data['checkoutSetting'] !== null ? GitHubCheckoutSetting::fromJson($data['checkoutSetting']) : null);
     }
 
     public function toJson(): array {

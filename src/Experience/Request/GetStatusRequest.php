@@ -86,10 +86,10 @@ class GetStatusRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetStatusRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null);
     }
 
     public function toJson(): array {

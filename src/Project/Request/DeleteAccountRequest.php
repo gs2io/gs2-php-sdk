@@ -41,7 +41,7 @@ class DeleteAccountRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteAccountRequest())
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null);
     }
 
     public function toJson(): array {

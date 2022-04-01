@@ -42,7 +42,7 @@ class UpdateCurrentQuestMasterResult implements IResult {
             return null;
         }
         return (new UpdateCurrentQuestMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentQuestMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentQuestMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

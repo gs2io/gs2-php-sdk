@@ -72,9 +72,9 @@ class GetBallotResult implements IResult {
             return null;
         }
         return (new GetBallotResult())
-            ->withItem(empty($data['item']) ? null : Ballot::fromJson($data['item']))
-            ->withBody(empty($data['body']) ? null : $data['body'])
-            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Ballot::fromJson($data['item']) : null)
+            ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
+            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
     }
 
     public function toJson(): array {

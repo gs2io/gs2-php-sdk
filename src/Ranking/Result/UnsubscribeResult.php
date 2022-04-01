@@ -42,7 +42,7 @@ class UnsubscribeResult implements IResult {
             return null;
         }
         return (new UnsubscribeResult())
-            ->withItem(empty($data['item']) ? null : SubscribeUser::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SubscribeUser::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

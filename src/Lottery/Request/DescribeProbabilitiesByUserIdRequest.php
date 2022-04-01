@@ -71,9 +71,9 @@ class DescribeProbabilitiesByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeProbabilitiesByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withLotteryName(empty($data['lotteryName']) ? null : $data['lotteryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withLotteryName(array_key_exists('lotteryName', $data) && $data['lotteryName'] !== null ? $data['lotteryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
     }
 
     public function toJson(): array {

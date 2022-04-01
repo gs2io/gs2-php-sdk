@@ -61,8 +61,8 @@ class PublicProfile implements IModel {
             return null;
         }
         return (new PublicProfile())
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile']);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPublicProfile(array_key_exists('publicProfile', $data) && $data['publicProfile'] !== null ? $data['publicProfile'] : null);
     }
 
     public function toJson(): array {

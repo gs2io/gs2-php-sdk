@@ -73,9 +73,9 @@ class EndResult implements IResult {
             return null;
         }
         return (new EndResult())
-            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
-            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
-            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Progress::fromJson($data['item']) : null)
+            ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
+            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null);
     }
 
     public function toJson(): array {

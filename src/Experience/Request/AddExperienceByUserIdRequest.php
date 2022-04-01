@@ -101,11 +101,11 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AddExperienceByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withExperienceValue(empty($data['experienceValue']) && $data['experienceValue'] !== 0 ? null : $data['experienceValue']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null);
     }
 
     public function toJson(): array {

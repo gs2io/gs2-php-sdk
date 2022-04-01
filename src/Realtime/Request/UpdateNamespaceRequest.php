@@ -118,12 +118,12 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateNamespaceRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withServerType(empty($data['serverType']) ? null : $data['serverType'])
-            ->withServerSpec(empty($data['serverSpec']) ? null : $data['serverSpec'])
-            ->withCreateNotification(empty($data['createNotification']) ? null : NotificationSetting::fromJson($data['createNotification']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withServerType(array_key_exists('serverType', $data) && $data['serverType'] !== null ? $data['serverType'] : null)
+            ->withServerSpec(array_key_exists('serverSpec', $data) && $data['serverSpec'] !== null ? $data['serverSpec'] : null)
+            ->withCreateNotification(array_key_exists('createNotification', $data) && $data['createNotification'] !== null ? NotificationSetting::fromJson($data['createNotification']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
     public function toJson(): array {

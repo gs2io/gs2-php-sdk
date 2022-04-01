@@ -56,8 +56,8 @@ class PrepareUpdateCurrentNewsMasterResult implements IResult {
             return null;
         }
         return (new PrepareUpdateCurrentNewsMasterResult())
-            ->withUploadToken(empty($data['uploadToken']) ? null : $data['uploadToken'])
-            ->withTemplateUploadUrl(empty($data['templateUploadUrl']) ? null : $data['templateUploadUrl']);
+            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null)
+            ->withTemplateUploadUrl(array_key_exists('templateUploadUrl', $data) && $data['templateUploadUrl'] !== null ? $data['templateUploadUrl'] : null);
     }
 
     public function toJson(): array {

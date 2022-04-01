@@ -71,9 +71,9 @@ class SetFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SetFirebaseTokenByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withToken(empty($data['token']) ? null : $data['token']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null);
     }
 
     public function toJson(): array {

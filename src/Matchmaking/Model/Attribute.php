@@ -61,8 +61,8 @@ class Attribute implements IModel {
             return null;
         }
         return (new Attribute())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withValue(empty($data['value']) && $data['value'] !== 0 ? null : $data['value']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null);
     }
 
     public function toJson(): array {

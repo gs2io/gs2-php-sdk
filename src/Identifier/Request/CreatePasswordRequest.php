@@ -56,8 +56,8 @@ class CreatePasswordRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreatePasswordRequest())
-            ->withUserName(empty($data['userName']) ? null : $data['userName'])
-            ->withPassword(empty($data['password']) ? null : $data['password']);
+            ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null);
     }
 
     public function toJson(): array {

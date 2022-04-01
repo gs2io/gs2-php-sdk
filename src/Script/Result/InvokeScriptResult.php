@@ -101,10 +101,10 @@ class InvokeScriptResult implements IResult {
             return null;
         }
         return (new InvokeScriptResult())
-            ->withCode(empty($data['code']) && $data['code'] !== 0 ? null : $data['code'])
-            ->withResult(empty($data['result']) ? null : $data['result'])
-            ->withExecuteTime(empty($data['executeTime']) && $data['executeTime'] !== 0 ? null : $data['executeTime'])
-            ->withCharged(empty($data['charged']) && $data['charged'] !== 0 ? null : $data['charged'])
+            ->withCode(array_key_exists('code', $data) && $data['code'] !== null ? $data['code'] : null)
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null)
+            ->withExecuteTime(array_key_exists('executeTime', $data) && $data['executeTime'] !== null ? $data['executeTime'] : null)
+            ->withCharged(array_key_exists('charged', $data) && $data['charged'] !== null ? $data['charged'] : null)
             ->withOutput(array_map(
                 function ($item) {
                     return $item;

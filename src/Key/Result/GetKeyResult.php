@@ -42,7 +42,7 @@ class GetKeyResult implements IResult {
             return null;
         }
         return (new GetKeyResult())
-            ->withItem(empty($data['item']) ? null : Key::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Key::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

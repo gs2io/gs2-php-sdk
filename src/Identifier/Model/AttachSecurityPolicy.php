@@ -78,14 +78,14 @@ class AttachSecurityPolicy implements IModel {
             return null;
         }
         return (new AttachSecurityPolicy())
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withSecurityPolicyIds(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('securityPolicyIds', $data) && $data['securityPolicyIds'] !== null ? $data['securityPolicyIds'] : []
             ))
-            ->withAttachedAt(empty($data['attachedAt']) && $data['attachedAt'] !== 0 ? null : $data['attachedAt']);
+            ->withAttachedAt(array_key_exists('attachedAt', $data) && $data['attachedAt'] !== null ? $data['attachedAt'] : null);
     }
 
     public function toJson(): array {

@@ -110,10 +110,10 @@ class GetItemWithSignatureByUserIdResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
-            ->withItemModel(empty($data['itemModel']) ? null : ItemModel::fromJson($data['itemModel']))
-            ->withInventory(empty($data['inventory']) ? null : Inventory::fromJson($data['inventory']))
-            ->withBody(empty($data['body']) ? null : $data['body'])
-            ->withSignature(empty($data['signature']) ? null : $data['signature']);
+            ->withItemModel(array_key_exists('itemModel', $data) && $data['itemModel'] !== null ? ItemModel::fromJson($data['itemModel']) : null)
+            ->withInventory(array_key_exists('inventory', $data) && $data['inventory'] !== null ? Inventory::fromJson($data['inventory']) : null)
+            ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
+            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
     }
 
     public function toJson(): array {

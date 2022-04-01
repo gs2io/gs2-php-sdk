@@ -112,16 +112,16 @@ class Subscribe implements IModel {
             return null;
         }
         return (new Subscribe())
-            ->withSubscribeId(empty($data['subscribeId']) ? null : $data['subscribeId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
+            ->withSubscribeId(array_key_exists('subscribeId', $data) && $data['subscribeId'] !== null ? $data['subscribeId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
             ->withNotificationTypes(array_map(
                 function ($item) {
                     return NotificationType::fromJson($item);
                 },
                 array_key_exists('notificationTypes', $data) && $data['notificationTypes'] !== null ? $data['notificationTypes'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

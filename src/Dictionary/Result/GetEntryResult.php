@@ -42,7 +42,7 @@ class GetEntryResult implements IResult {
             return null;
         }
         return (new GetEntryResult())
-            ->withItem(empty($data['item']) ? null : Entry::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Entry::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

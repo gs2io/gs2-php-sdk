@@ -129,12 +129,12 @@ class TakeOver implements IModel {
             return null;
         }
         return (new TakeOver())
-            ->withTakeOverId(empty($data['takeOverId']) ? null : $data['takeOverId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withType(empty($data['type']) && $data['type'] !== 0 ? null : $data['type'])
-            ->withUserIdentifier(empty($data['userIdentifier']) ? null : $data['userIdentifier'])
-            ->withPassword(empty($data['password']) ? null : $data['password'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withTakeOverId(array_key_exists('takeOverId', $data) && $data['takeOverId'] !== null ? $data['takeOverId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withUserIdentifier(array_key_exists('userIdentifier', $data) && $data['userIdentifier'] !== null ? $data['userIdentifier'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

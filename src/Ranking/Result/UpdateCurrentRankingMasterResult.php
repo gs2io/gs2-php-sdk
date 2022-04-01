@@ -42,7 +42,7 @@ class UpdateCurrentRankingMasterResult implements IResult {
             return null;
         }
         return (new UpdateCurrentRankingMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentRankingMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentRankingMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

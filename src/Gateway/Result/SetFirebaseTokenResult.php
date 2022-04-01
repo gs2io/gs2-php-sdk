@@ -42,7 +42,7 @@ class SetFirebaseTokenResult implements IResult {
             return null;
         }
         return (new SetFirebaseTokenResult())
-            ->withItem(empty($data['item']) ? null : FirebaseToken::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? FirebaseToken::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

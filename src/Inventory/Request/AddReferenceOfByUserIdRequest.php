@@ -116,12 +116,12 @@ class AddReferenceOfByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AddReferenceOfByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
-            ->withItemSetName(empty($data['itemSetName']) ? null : $data['itemSetName'])
-            ->withReferenceOf(empty($data['referenceOf']) ? null : $data['referenceOf']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
+            ->withItemSetName(array_key_exists('itemSetName', $data) && $data['itemSetName'] !== null ? $data['itemSetName'] : null)
+            ->withReferenceOf(array_key_exists('referenceOf', $data) && $data['referenceOf'] !== null ? $data['referenceOf'] : null);
     }
 
     public function toJson(): array {

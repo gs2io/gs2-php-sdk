@@ -102,10 +102,10 @@ class CompleteRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CompleteRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withMissionGroupName(empty($data['missionGroupName']) ? null : $data['missionGroupName'])
-            ->withMissionTaskName(empty($data['missionTaskName']) ? null : $data['missionTaskName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
+            ->withMissionTaskName(array_key_exists('missionTaskName', $data) && $data['missionTaskName'] !== null ? $data['missionTaskName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

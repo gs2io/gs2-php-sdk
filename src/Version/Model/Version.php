@@ -78,9 +78,9 @@ class Version implements IModel {
             return null;
         }
         return (new Version())
-            ->withMajor(empty($data['major']) && $data['major'] !== 0 ? null : $data['major'])
-            ->withMinor(empty($data['minor']) && $data['minor'] !== 0 ? null : $data['minor'])
-            ->withMicro(empty($data['micro']) && $data['micro'] !== 0 ? null : $data['micro']);
+            ->withMajor(array_key_exists('major', $data) && $data['major'] !== null ? $data['major'] : null)
+            ->withMinor(array_key_exists('minor', $data) && $data['minor'] !== null ? $data['minor'] : null)
+            ->withMicro(array_key_exists('micro', $data) && $data['micro'] !== null ? $data['micro'] : null);
     }
 
     public function toJson(): array {

@@ -41,7 +41,7 @@ class DeleteStackResourcesRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteStackResourcesRequest())
-            ->withStackName(empty($data['stackName']) ? null : $data['stackName']);
+            ->withStackName(array_key_exists('stackName', $data) && $data['stackName'] !== null ? $data['stackName'] : null);
     }
 
     public function toJson(): array {

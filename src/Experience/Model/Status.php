@@ -52,6 +52,10 @@ class Status implements IModel {
 	/**
      * @var int
 	 */
+	private $nextRankUpExperienceValue;
+	/**
+     * @var int
+	 */
 	private $createdAt;
 	/**
      * @var int
@@ -149,6 +153,19 @@ class Status implements IModel {
 		return $this;
 	}
 
+	public function getNextRankUpExperienceValue(): ?int {
+		return $this->nextRankUpExperienceValue;
+	}
+
+	public function setNextRankUpExperienceValue(?int $nextRankUpExperienceValue) {
+		$this->nextRankUpExperienceValue = $nextRankUpExperienceValue;
+	}
+
+	public function withNextRankUpExperienceValue(?int $nextRankUpExperienceValue): Status {
+		$this->nextRankUpExperienceValue = $nextRankUpExperienceValue;
+		return $this;
+	}
+
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -180,15 +197,16 @@ class Status implements IModel {
             return null;
         }
         return (new Status())
-            ->withStatusId(empty($data['statusId']) ? null : $data['statusId'])
-            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withExperienceValue(empty($data['experienceValue']) && $data['experienceValue'] !== 0 ? null : $data['experienceValue'])
-            ->withRankValue(empty($data['rankValue']) && $data['rankValue'] !== 0 ? null : $data['rankValue'])
-            ->withRankCapValue(empty($data['rankCapValue']) && $data['rankCapValue'] !== 0 ? null : $data['rankCapValue'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withStatusId(array_key_exists('statusId', $data) && $data['statusId'] !== null ? $data['statusId'] : null)
+            ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null)
+            ->withRankValue(array_key_exists('rankValue', $data) && $data['rankValue'] !== null ? $data['rankValue'] : null)
+            ->withRankCapValue(array_key_exists('rankCapValue', $data) && $data['rankCapValue'] !== null ? $data['rankCapValue'] : null)
+            ->withNextRankUpExperienceValue(array_key_exists('nextRankUpExperienceValue', $data) && $data['nextRankUpExperienceValue'] !== null ? $data['nextRankUpExperienceValue'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {
@@ -200,6 +218,7 @@ class Status implements IModel {
             "experienceValue" => $this->getExperienceValue(),
             "rankValue" => $this->getRankValue(),
             "rankCapValue" => $this->getRankCapValue(),
+            "nextRankUpExperienceValue" => $this->getNextRankUpExperienceValue(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

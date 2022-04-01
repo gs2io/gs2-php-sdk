@@ -41,7 +41,7 @@ class IssueAccountTokenResult implements IResult {
             return null;
         }
         return (new IssueAccountTokenResult())
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null);
     }
 
     public function toJson(): array {

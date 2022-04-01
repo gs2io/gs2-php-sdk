@@ -101,11 +101,11 @@ class CreateBillingMethodRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateBillingMethodRequest())
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMethodType(empty($data['methodType']) ? null : $data['methodType'])
-            ->withCardCustomerId(empty($data['cardCustomerId']) ? null : $data['cardCustomerId'])
-            ->withPartnerId(empty($data['partnerId']) ? null : $data['partnerId']);
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMethodType(array_key_exists('methodType', $data) && $data['methodType'] !== null ? $data['methodType'] : null)
+            ->withCardCustomerId(array_key_exists('cardCustomerId', $data) && $data['cardCustomerId'] !== null ? $data['cardCustomerId'] : null)
+            ->withPartnerId(array_key_exists('partnerId', $data) && $data['partnerId'] !== null ? $data['partnerId'] : null);
     }
 
     public function toJson(): array {

@@ -61,8 +61,8 @@ class Probability implements IModel {
             return null;
         }
         return (new Probability())
-            ->withPrize(empty($data['prize']) ? null : DrawnPrize::fromJson($data['prize']))
-            ->withRate(empty($data['rate']) && $data['rate'] !== 0 ? null : $data['rate']);
+            ->withPrize(array_key_exists('prize', $data) && $data['prize'] !== null ? DrawnPrize::fromJson($data['prize']) : null)
+            ->withRate(array_key_exists('rate', $data) && $data['rate'] !== null ? $data['rate'] : null);
     }
 
     public function toJson(): array {

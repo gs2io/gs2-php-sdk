@@ -103,11 +103,11 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateNamespaceRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withUpdateMoldScript(empty($data['updateMoldScript']) ? null : ScriptSetting::fromJson($data['updateMoldScript']))
-            ->withUpdateFormScript(empty($data['updateFormScript']) ? null : ScriptSetting::fromJson($data['updateFormScript']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withUpdateMoldScript(array_key_exists('updateMoldScript', $data) && $data['updateMoldScript'] !== null ? ScriptSetting::fromJson($data['updateMoldScript']) : null)
+            ->withUpdateFormScript(array_key_exists('updateFormScript', $data) && $data['updateFormScript'] !== null ? ScriptSetting::fromJson($data['updateFormScript']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
     public function toJson(): array {

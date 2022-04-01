@@ -56,8 +56,8 @@ class UpdateCurrentNewsMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateCurrentNewsMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUploadToken(empty($data['uploadToken']) ? null : $data['uploadToken']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null);
     }
 
     public function toJson(): array {

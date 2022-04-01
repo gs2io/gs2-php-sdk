@@ -86,9 +86,9 @@ class GetFollowRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetFollowRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withTargetUserId(empty($data['targetUserId']) ? null : $data['targetUserId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null)
             ->withWithProfile($data['withProfile']);
     }
 

@@ -61,8 +61,8 @@ class Material implements IModel {
             return null;
         }
         return (new Material())
-            ->withMaterialItemSetId(empty($data['materialItemSetId']) ? null : $data['materialItemSetId'])
-            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count']);
+            ->withMaterialItemSetId(array_key_exists('materialItemSetId', $data) && $data['materialItemSetId'] !== null ? $data['materialItemSetId'] : null)
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
     }
 
     public function toJson(): array {

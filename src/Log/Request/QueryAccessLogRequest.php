@@ -161,15 +161,15 @@ class QueryAccessLogRequest extends Gs2BasicRequest {
             return null;
         }
         return (new QueryAccessLogRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withService(empty($data['service']) ? null : $data['service'])
-            ->withMethod(empty($data['method']) ? null : $data['method'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withBegin(empty($data['begin']) && $data['begin'] !== 0 ? null : $data['begin'])
-            ->withEnd(empty($data['end']) && $data['end'] !== 0 ? null : $data['end'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null)
+            ->withMethod(array_key_exists('method', $data) && $data['method'] !== null ? $data['method'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withBegin(array_key_exists('begin', $data) && $data['begin'] !== null ? $data['begin'] : null)
+            ->withEnd(array_key_exists('end', $data) && $data['end'] !== null ? $data['end'] : null)
             ->withLongTerm($data['longTerm'])
-            ->withPageToken(empty($data['pageToken']) ? null : $data['pageToken'])
-            ->withLimit(empty($data['limit']) && $data['limit'] !== 0 ? null : $data['limit']);
+            ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
+            ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {

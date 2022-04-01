@@ -56,8 +56,8 @@ class GetLimitModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetLimitModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withLimitName(empty($data['limitName']) ? null : $data['limitName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withLimitName(array_key_exists('limitName', $data) && $data['limitName'] !== null ? $data['limitName'] : null);
     }
 
     public function toJson(): array {

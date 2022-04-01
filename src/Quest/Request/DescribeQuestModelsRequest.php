@@ -56,8 +56,8 @@ class DescribeQuestModelsRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeQuestModelsRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withQuestGroupName(empty($data['questGroupName']) ? null : $data['questGroupName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withQuestGroupName(array_key_exists('questGroupName', $data) && $data['questGroupName'] !== null ? $data['questGroupName'] : null);
     }
 
     public function toJson(): array {

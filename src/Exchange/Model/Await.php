@@ -129,12 +129,12 @@ class Await implements IModel {
             return null;
         }
         return (new Await())
-            ->withAwaitId(empty($data['awaitId']) ? null : $data['awaitId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
-            ->withExchangedAt(empty($data['exchangedAt']) && $data['exchangedAt'] !== 0 ? null : $data['exchangedAt']);
+            ->withAwaitId(array_key_exists('awaitId', $data) && $data['awaitId'] !== null ? $data['awaitId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withExchangedAt(array_key_exists('exchangedAt', $data) && $data['exchangedAt'] !== null ? $data['exchangedAt'] : null);
     }
 
     public function toJson(): array {

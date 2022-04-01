@@ -56,8 +56,8 @@ class DeleteBillingMethodRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteBillingMethodRequest())
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken'])
-            ->withBillingMethodName(empty($data['billingMethodName']) ? null : $data['billingMethodName']);
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null)
+            ->withBillingMethodName(array_key_exists('billingMethodName', $data) && $data['billingMethodName'] !== null ? $data['billingMethodName'] : null);
     }
 
     public function toJson(): array {

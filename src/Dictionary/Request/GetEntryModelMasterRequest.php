@@ -56,8 +56,8 @@ class GetEntryModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetEntryModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withEntryName(empty($data['entryName']) ? null : $data['entryName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withEntryName(array_key_exists('entryName', $data) && $data['entryName'] !== null ? $data['entryName'] : null);
     }
 
     public function toJson(): array {

@@ -42,7 +42,7 @@ class UpdateCurrentDistributorMasterResult implements IResult {
             return null;
         }
         return (new UpdateCurrentDistributorMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentDistributorMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentDistributorMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

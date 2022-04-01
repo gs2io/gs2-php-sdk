@@ -146,14 +146,14 @@ class UpdateExperienceModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateExperienceModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withDefaultExperience(empty($data['defaultExperience']) && $data['defaultExperience'] !== 0 ? null : $data['defaultExperience'])
-            ->withDefaultRankCap(empty($data['defaultRankCap']) && $data['defaultRankCap'] !== 0 ? null : $data['defaultRankCap'])
-            ->withMaxRankCap(empty($data['maxRankCap']) && $data['maxRankCap'] !== 0 ? null : $data['maxRankCap'])
-            ->withRankThresholdName(empty($data['rankThresholdName']) ? null : $data['rankThresholdName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withDefaultExperience(array_key_exists('defaultExperience', $data) && $data['defaultExperience'] !== null ? $data['defaultExperience'] : null)
+            ->withDefaultRankCap(array_key_exists('defaultRankCap', $data) && $data['defaultRankCap'] !== null ? $data['defaultRankCap'] : null)
+            ->withMaxRankCap(array_key_exists('maxRankCap', $data) && $data['maxRankCap'] !== null ? $data['maxRankCap'] : null)
+            ->withRankThresholdName(array_key_exists('rankThresholdName', $data) && $data['rankThresholdName'] !== null ? $data['rankThresholdName'] : null);
     }
 
     public function toJson(): array {

@@ -116,12 +116,12 @@ class SetRecoverIntervalByStatusRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SetRecoverIntervalByStatusRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
-            ->withSignedStatusBody(empty($data['signedStatusBody']) ? null : $data['signedStatusBody'])
-            ->withSignedStatusSignature(empty($data['signedStatusSignature']) ? null : $data['signedStatusSignature']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withStaminaName(array_key_exists('staminaName', $data) && $data['staminaName'] !== null ? $data['staminaName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withSignedStatusBody(array_key_exists('signedStatusBody', $data) && $data['signedStatusBody'] !== null ? $data['signedStatusBody'] : null)
+            ->withSignedStatusSignature(array_key_exists('signedStatusSignature', $data) && $data['signedStatusSignature'] !== null ? $data['signedStatusSignature'] : null);
     }
 
     public function toJson(): array {

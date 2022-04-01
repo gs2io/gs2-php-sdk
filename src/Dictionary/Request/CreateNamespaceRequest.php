@@ -103,11 +103,11 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateNamespaceRequest())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withEntryScript(empty($data['entryScript']) ? null : ScriptSetting::fromJson($data['entryScript']))
-            ->withDuplicateEntryScript(empty($data['duplicateEntryScript']) ? null : ScriptSetting::fromJson($data['duplicateEntryScript']))
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withEntryScript(array_key_exists('entryScript', $data) && $data['entryScript'] !== null ? ScriptSetting::fromJson($data['entryScript']) : null)
+            ->withDuplicateEntryScript(array_key_exists('duplicateEntryScript', $data) && $data['duplicateEntryScript'] !== null ? ScriptSetting::fromJson($data['duplicateEntryScript']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
     public function toJson(): array {

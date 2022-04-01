@@ -129,12 +129,12 @@ class News implements IModel {
             return null;
         }
         return (new News())
-            ->withSection(empty($data['section']) ? null : $data['section'])
-            ->withContent(empty($data['content']) ? null : $data['content'])
-            ->withTitle(empty($data['title']) ? null : $data['title'])
-            ->withScheduleEventId(empty($data['scheduleEventId']) ? null : $data['scheduleEventId'])
-            ->withTimestamp(empty($data['timestamp']) && $data['timestamp'] !== 0 ? null : $data['timestamp'])
-            ->withFrontMatter(empty($data['frontMatter']) ? null : $data['frontMatter']);
+            ->withSection(array_key_exists('section', $data) && $data['section'] !== null ? $data['section'] : null)
+            ->withContent(array_key_exists('content', $data) && $data['content'] !== null ? $data['content'] : null)
+            ->withTitle(array_key_exists('title', $data) && $data['title'] !== null ? $data['title'] : null)
+            ->withScheduleEventId(array_key_exists('scheduleEventId', $data) && $data['scheduleEventId'] !== null ? $data['scheduleEventId'] : null)
+            ->withTimestamp(array_key_exists('timestamp', $data) && $data['timestamp'] !== null ? $data['timestamp'] : null)
+            ->withFrontMatter(array_key_exists('frontMatter', $data) && $data['frontMatter'] !== null ? $data['frontMatter'] : null);
     }
 
     public function toJson(): array {

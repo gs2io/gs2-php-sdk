@@ -214,17 +214,17 @@ class StaminaModel implements IModel {
             return null;
         }
         return (new StaminaModel())
-            ->withStaminaModelId(empty($data['staminaModelId']) ? null : $data['staminaModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withRecoverIntervalMinutes(empty($data['recoverIntervalMinutes']) && $data['recoverIntervalMinutes'] !== 0 ? null : $data['recoverIntervalMinutes'])
-            ->withRecoverValue(empty($data['recoverValue']) && $data['recoverValue'] !== 0 ? null : $data['recoverValue'])
-            ->withInitialCapacity(empty($data['initialCapacity']) && $data['initialCapacity'] !== 0 ? null : $data['initialCapacity'])
+            ->withStaminaModelId(array_key_exists('staminaModelId', $data) && $data['staminaModelId'] !== null ? $data['staminaModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withRecoverIntervalMinutes(array_key_exists('recoverIntervalMinutes', $data) && $data['recoverIntervalMinutes'] !== null ? $data['recoverIntervalMinutes'] : null)
+            ->withRecoverValue(array_key_exists('recoverValue', $data) && $data['recoverValue'] !== null ? $data['recoverValue'] : null)
+            ->withInitialCapacity(array_key_exists('initialCapacity', $data) && $data['initialCapacity'] !== null ? $data['initialCapacity'] : null)
             ->withIsOverflow($data['isOverflow'])
-            ->withMaxCapacity(empty($data['maxCapacity']) && $data['maxCapacity'] !== 0 ? null : $data['maxCapacity'])
-            ->withMaxStaminaTable(empty($data['maxStaminaTable']) ? null : MaxStaminaTable::fromJson($data['maxStaminaTable']))
-            ->withRecoverIntervalTable(empty($data['recoverIntervalTable']) ? null : RecoverIntervalTable::fromJson($data['recoverIntervalTable']))
-            ->withRecoverValueTable(empty($data['recoverValueTable']) ? null : RecoverValueTable::fromJson($data['recoverValueTable']));
+            ->withMaxCapacity(array_key_exists('maxCapacity', $data) && $data['maxCapacity'] !== null ? $data['maxCapacity'] : null)
+            ->withMaxStaminaTable(array_key_exists('maxStaminaTable', $data) && $data['maxStaminaTable'] !== null ? MaxStaminaTable::fromJson($data['maxStaminaTable']) : null)
+            ->withRecoverIntervalTable(array_key_exists('recoverIntervalTable', $data) && $data['recoverIntervalTable'] !== null ? RecoverIntervalTable::fromJson($data['recoverIntervalTable']) : null)
+            ->withRecoverValueTable(array_key_exists('recoverValueTable', $data) && $data['recoverValueTable'] !== null ? RecoverValueTable::fromJson($data['recoverValueTable']) : null);
     }
 
     public function toJson(): array {

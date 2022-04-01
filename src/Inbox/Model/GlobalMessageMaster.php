@@ -146,18 +146,18 @@ class GlobalMessageMaster implements IModel {
             return null;
         }
         return (new GlobalMessageMaster())
-            ->withGlobalMessageId(empty($data['globalMessageId']) ? null : $data['globalMessageId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withGlobalMessageId(array_key_exists('globalMessageId', $data) && $data['globalMessageId'] !== null ? $data['globalMessageId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withReadAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
-            ->withExpiresTimeSpan(empty($data['expiresTimeSpan']) ? null : TimeSpan::fromJson($data['expiresTimeSpan']))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
+            ->withExpiresTimeSpan(array_key_exists('expiresTimeSpan', $data) && $data['expiresTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresTimeSpan']) : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
     }
 
     public function toJson(): array {

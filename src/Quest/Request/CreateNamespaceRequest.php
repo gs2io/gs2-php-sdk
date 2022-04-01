@@ -148,14 +148,14 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateNamespaceRequest())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withStartQuestScript(empty($data['startQuestScript']) ? null : ScriptSetting::fromJson($data['startQuestScript']))
-            ->withCompleteQuestScript(empty($data['completeQuestScript']) ? null : ScriptSetting::fromJson($data['completeQuestScript']))
-            ->withFailedQuestScript(empty($data['failedQuestScript']) ? null : ScriptSetting::fromJson($data['failedQuestScript']))
-            ->withQueueNamespaceId(empty($data['queueNamespaceId']) ? null : $data['queueNamespaceId'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId'])
-            ->withLogSetting(empty($data['logSetting']) ? null : LogSetting::fromJson($data['logSetting']));
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withStartQuestScript(array_key_exists('startQuestScript', $data) && $data['startQuestScript'] !== null ? ScriptSetting::fromJson($data['startQuestScript']) : null)
+            ->withCompleteQuestScript(array_key_exists('completeQuestScript', $data) && $data['completeQuestScript'] !== null ? ScriptSetting::fromJson($data['completeQuestScript']) : null)
+            ->withFailedQuestScript(array_key_exists('failedQuestScript', $data) && $data['failedQuestScript'] !== null ? ScriptSetting::fromJson($data['failedQuestScript']) : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
     public function toJson(): array {

@@ -61,7 +61,7 @@ class AcquireActionConfig implements IModel {
             return null;
         }
         return (new AcquireActionConfig())
-            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

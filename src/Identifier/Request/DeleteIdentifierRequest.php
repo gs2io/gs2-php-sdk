@@ -56,8 +56,8 @@ class DeleteIdentifierRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteIdentifierRequest())
-            ->withUserName(empty($data['userName']) ? null : $data['userName'])
-            ->withClientId(empty($data['clientId']) ? null : $data['clientId']);
+            ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
+            ->withClientId(array_key_exists('clientId', $data) && $data['clientId'] !== null ? $data['clientId'] : null);
     }
 
     public function toJson(): array {

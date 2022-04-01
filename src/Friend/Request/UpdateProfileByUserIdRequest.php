@@ -101,11 +101,11 @@ class UpdateProfileByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateProfileByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
-            ->withFollowerProfile(empty($data['followerProfile']) ? null : $data['followerProfile'])
-            ->withFriendProfile(empty($data['friendProfile']) ? null : $data['friendProfile']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPublicProfile(array_key_exists('publicProfile', $data) && $data['publicProfile'] !== null ? $data['publicProfile'] : null)
+            ->withFollowerProfile(array_key_exists('followerProfile', $data) && $data['followerProfile'] !== null ? $data['followerProfile'] : null)
+            ->withFriendProfile(array_key_exists('friendProfile', $data) && $data['friendProfile'] !== null ? $data['friendProfile'] : null);
     }
 
     public function toJson(): array {

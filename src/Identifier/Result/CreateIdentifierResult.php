@@ -57,8 +57,8 @@ class CreateIdentifierResult implements IResult {
             return null;
         }
         return (new CreateIdentifierResult())
-            ->withItem(empty($data['item']) ? null : Identifier::fromJson($data['item']))
-            ->withClientSecret(empty($data['clientSecret']) ? null : $data['clientSecret']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Identifier::fromJson($data['item']) : null)
+            ->withClientSecret(array_key_exists('clientSecret', $data) && $data['clientSecret'] !== null ? $data['clientSecret'] : null);
     }
 
     public function toJson(): array {

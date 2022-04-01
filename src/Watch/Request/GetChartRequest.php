@@ -176,21 +176,21 @@ class GetChartRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetChartRequest())
-            ->withMetrics(empty($data['metrics']) ? null : $data['metrics'])
-            ->withGrn(empty($data['grn']) ? null : $data['grn'])
+            ->withMetrics(array_key_exists('metrics', $data) && $data['metrics'] !== null ? $data['metrics'] : null)
+            ->withGrn(array_key_exists('grn', $data) && $data['grn'] !== null ? $data['grn'] : null)
             ->withQueries(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('queries', $data) && $data['queries'] !== null ? $data['queries'] : []
             ))
-            ->withBy(empty($data['by']) ? null : $data['by'])
-            ->withTimeframe(empty($data['timeframe']) ? null : $data['timeframe'])
-            ->withSize(empty($data['size']) ? null : $data['size'])
-            ->withFormat(empty($data['format']) ? null : $data['format'])
-            ->withAggregator(empty($data['aggregator']) ? null : $data['aggregator'])
-            ->withStyle(empty($data['style']) ? null : $data['style'])
-            ->withTitle(empty($data['title']) ? null : $data['title']);
+            ->withBy(array_key_exists('by', $data) && $data['by'] !== null ? $data['by'] : null)
+            ->withTimeframe(array_key_exists('timeframe', $data) && $data['timeframe'] !== null ? $data['timeframe'] : null)
+            ->withSize(array_key_exists('size', $data) && $data['size'] !== null ? $data['size'] : null)
+            ->withFormat(array_key_exists('format', $data) && $data['format'] !== null ? $data['format'] : null)
+            ->withAggregator(array_key_exists('aggregator', $data) && $data['aggregator'] !== null ? $data['aggregator'] : null)
+            ->withStyle(array_key_exists('style', $data) && $data['style'] !== null ? $data['style'] : null)
+            ->withTitle(array_key_exists('title', $data) && $data['title'] !== null ? $data['title'] : null);
     }
 
     public function toJson(): array {

@@ -180,17 +180,17 @@ class RateModel implements IModel {
             return null;
         }
         return (new RateModel())
-            ->withRateModelId(empty($data['rateModelId']) ? null : $data['rateModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withRateModelId(array_key_exists('rateModelId', $data) && $data['rateModelId'] !== null ? $data['rateModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
                 array_key_exists('consumeActions', $data) && $data['consumeActions'] !== null ? $data['consumeActions'] : []
             ))
-            ->withTimingType(empty($data['timingType']) ? null : $data['timingType'])
-            ->withLockTime(empty($data['lockTime']) && $data['lockTime'] !== 0 ? null : $data['lockTime'])
+            ->withTimingType(array_key_exists('timingType', $data) && $data['timingType'] !== null ? $data['timingType'] : null)
+            ->withLockTime(array_key_exists('lockTime', $data) && $data['lockTime'] !== null ? $data['lockTime'] : null)
             ->withEnableSkip($data['enableSkip'])
             ->withSkipConsumeActions(array_map(
                 function ($item) {

@@ -116,12 +116,12 @@ class ConsumeItemSetByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new ConsumeItemSetByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withInventoryName(empty($data['inventoryName']) ? null : $data['inventoryName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withItemName(empty($data['itemName']) ? null : $data['itemName'])
-            ->withConsumeCount(empty($data['consumeCount']) && $data['consumeCount'] !== 0 ? null : $data['consumeCount'])
-            ->withItemSetName(empty($data['itemSetName']) ? null : $data['itemSetName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
+            ->withConsumeCount(array_key_exists('consumeCount', $data) && $data['consumeCount'] !== null ? $data['consumeCount'] : null)
+            ->withItemSetName(array_key_exists('itemSetName', $data) && $data['itemSetName'] !== null ? $data['itemSetName'] : null);
     }
 
     public function toJson(): array {

@@ -42,7 +42,7 @@ class DeleteMissionGroupModelMasterResult implements IResult {
             return null;
         }
         return (new DeleteMissionGroupModelMasterResult())
-            ->withItem(empty($data['item']) ? null : MissionGroupModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? MissionGroupModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

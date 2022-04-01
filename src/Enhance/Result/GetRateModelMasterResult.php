@@ -43,7 +43,7 @@ class GetRateModelMasterResult implements IResult {
             return null;
         }
         return (new GetRateModelMasterResult())
-            ->withItem(empty($data['item']) ? null : RateModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? RateModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

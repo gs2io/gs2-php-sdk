@@ -61,7 +61,7 @@ class WrittenBallot implements IModel {
             return null;
         }
         return (new WrittenBallot())
-            ->withBallot(empty($data['ballot']) ? null : Ballot::fromJson($data['ballot']))
+            ->withBallot(array_key_exists('ballot', $data) && $data['ballot'] !== null ? Ballot::fromJson($data['ballot']) : null)
             ->withGameResults(array_map(
                 function ($item) {
                     return GameResult::fromJson($item);

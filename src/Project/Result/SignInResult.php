@@ -57,8 +57,8 @@ class SignInResult implements IResult {
             return null;
         }
         return (new SignInResult())
-            ->withItem(empty($data['item']) ? null : Account::fromJson($data['item']))
-            ->withAccountToken(empty($data['accountToken']) ? null : $data['accountToken']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Account::fromJson($data['item']) : null)
+            ->withAccountToken(array_key_exists('accountToken', $data) && $data['accountToken'] !== null ? $data['accountToken'] : null);
     }
 
     public function toJson(): array {

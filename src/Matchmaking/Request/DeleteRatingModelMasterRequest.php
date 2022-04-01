@@ -56,8 +56,8 @@ class DeleteRatingModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteRatingModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRatingName(array_key_exists('ratingName', $data) && $data['ratingName'] !== null ? $data['ratingName'] : null);
     }
 
     public function toJson(): array {

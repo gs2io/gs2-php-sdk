@@ -56,8 +56,8 @@ class RestoreDataObjectRequest extends Gs2BasicRequest {
             return null;
         }
         return (new RestoreDataObjectRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDataObjectId(empty($data['dataObjectId']) ? null : $data['dataObjectId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDataObjectId(array_key_exists('dataObjectId', $data) && $data['dataObjectId'] !== null ? $data['dataObjectId'] : null);
     }
 
     public function toJson(): array {

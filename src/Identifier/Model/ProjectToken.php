@@ -44,7 +44,7 @@ class ProjectToken implements IModel {
             return null;
         }
         return (new ProjectToken())
-            ->withToken(empty($data['token']) ? null : $data['token']);
+            ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null);
     }
 
     public function toJson(): array {

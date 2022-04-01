@@ -59,8 +59,8 @@ class GetProgressByUserIdResult implements IResult {
             return null;
         }
         return (new GetProgressByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Progress::fromJson($data['item']))
-            ->withRateModel(empty($data['rateModel']) ? null : RateModel::fromJson($data['rateModel']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Progress::fromJson($data['item']) : null)
+            ->withRateModel(array_key_exists('rateModel', $data) && $data['rateModel'] !== null ? RateModel::fromJson($data['rateModel']) : null);
     }
 
     public function toJson(): array {

@@ -65,7 +65,7 @@ class DescribeGlobalMessageMastersResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
-            ->withNextPageToken(empty($data['nextPageToken']) ? null : $data['nextPageToken']);
+            ->withNextPageToken(array_key_exists('nextPageToken', $data) && $data['nextPageToken'] !== null ? $data['nextPageToken'] : null);
     }
 
     public function toJson(): array {

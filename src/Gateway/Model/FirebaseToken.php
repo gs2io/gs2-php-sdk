@@ -112,11 +112,11 @@ class FirebaseToken implements IModel {
             return null;
         }
         return (new FirebaseToken())
-            ->withFirebaseTokenId(empty($data['firebaseTokenId']) ? null : $data['firebaseTokenId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withToken(empty($data['token']) ? null : $data['token'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withFirebaseTokenId(array_key_exists('firebaseTokenId', $data) && $data['firebaseTokenId'] !== null ? $data['firebaseTokenId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

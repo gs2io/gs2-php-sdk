@@ -101,11 +101,11 @@ class SetRankCapByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new SetRankCapByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withRankCapValue(empty($data['rankCapValue']) && $data['rankCapValue'] !== 0 ? null : $data['rankCapValue']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withRankCapValue(array_key_exists('rankCapValue', $data) && $data['rankCapValue'] !== null ? $data['rankCapValue'] : null);
     }
 
     public function toJson(): array {

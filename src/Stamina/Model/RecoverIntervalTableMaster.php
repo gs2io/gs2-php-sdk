@@ -163,19 +163,19 @@ class RecoverIntervalTableMaster implements IModel {
             return null;
         }
         return (new RecoverIntervalTableMaster())
-            ->withRecoverIntervalTableId(empty($data['recoverIntervalTableId']) ? null : $data['recoverIntervalTableId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withExperienceModelId(empty($data['experienceModelId']) ? null : $data['experienceModelId'])
+            ->withRecoverIntervalTableId(array_key_exists('recoverIntervalTableId', $data) && $data['recoverIntervalTableId'] !== null ? $data['recoverIntervalTableId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
             ->withValues(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

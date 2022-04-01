@@ -42,7 +42,7 @@ class GetCurrentRatingModelMasterResult implements IResult {
             return null;
         }
         return (new GetCurrentRatingModelMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentRatingModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentRatingModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

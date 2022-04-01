@@ -76,9 +76,9 @@ class RecoverStaminaByUserIdResult implements IResult {
             return null;
         }
         return (new RecoverStaminaByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Stamina::fromJson($data['item']))
-            ->withStaminaModel(empty($data['staminaModel']) ? null : StaminaModel::fromJson($data['staminaModel']))
-            ->withOverflowValue(empty($data['overflowValue']) && $data['overflowValue'] !== 0 ? null : $data['overflowValue']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Stamina::fromJson($data['item']) : null)
+            ->withStaminaModel(array_key_exists('staminaModel', $data) && $data['staminaModel'] !== null ? StaminaModel::fromJson($data['staminaModel']) : null)
+            ->withOverflowValue(array_key_exists('overflowValue', $data) && $data['overflowValue'] !== null ? $data['overflowValue'] : null);
     }
 
     public function toJson(): array {

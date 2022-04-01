@@ -95,8 +95,8 @@ class SalesItem implements IModel {
             return null;
         }
         return (new SalesItem())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);

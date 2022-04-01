@@ -56,8 +56,8 @@ class DeleteSalesItemMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteSalesItemMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withSalesItemName(empty($data['salesItemName']) ? null : $data['salesItemName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withSalesItemName(array_key_exists('salesItemName', $data) && $data['salesItemName'] !== null ? $data['salesItemName'] : null);
     }
 
     public function toJson(): array {

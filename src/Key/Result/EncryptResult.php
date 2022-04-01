@@ -41,7 +41,7 @@ class EncryptResult implements IResult {
             return null;
         }
         return (new EncryptResult())
-            ->withData(empty($data['data']) ? null : $data['data']);
+            ->withData(array_key_exists('data', $data) && $data['data'] !== null ? $data['data'] : null);
     }
 
     public function toJson(): array {

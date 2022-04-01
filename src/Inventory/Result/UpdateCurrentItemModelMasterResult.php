@@ -42,7 +42,7 @@ class UpdateCurrentItemModelMasterResult implements IResult {
             return null;
         }
         return (new UpdateCurrentItemModelMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentItemModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentItemModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

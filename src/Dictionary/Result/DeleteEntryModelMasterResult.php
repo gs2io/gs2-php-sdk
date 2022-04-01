@@ -42,7 +42,7 @@ class DeleteEntryModelMasterResult implements IResult {
             return null;
         }
         return (new DeleteEntryModelMasterResult())
-            ->withItem(empty($data['item']) ? null : EntryModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? EntryModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

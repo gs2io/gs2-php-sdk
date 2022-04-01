@@ -56,8 +56,8 @@ class GetSalesItemGroupMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetSalesItemGroupMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withSalesItemGroupName(empty($data['salesItemGroupName']) ? null : $data['salesItemGroupName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withSalesItemGroupName(array_key_exists('salesItemGroupName', $data) && $data['salesItemGroupName'] !== null ? $data['salesItemGroupName'] : null);
     }
 
     public function toJson(): array {

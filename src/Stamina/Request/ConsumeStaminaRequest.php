@@ -86,10 +86,10 @@ class ConsumeStaminaRequest extends Gs2BasicRequest {
             return null;
         }
         return (new ConsumeStaminaRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withStaminaName(empty($data['staminaName']) ? null : $data['staminaName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withConsumeValue(empty($data['consumeValue']) && $data['consumeValue'] !== 0 ? null : $data['consumeValue']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withStaminaName(array_key_exists('staminaName', $data) && $data['staminaName'] !== null ? $data['staminaName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withConsumeValue(array_key_exists('consumeValue', $data) && $data['consumeValue'] !== null ? $data['consumeValue'] : null);
     }
 
     public function toJson(): array {

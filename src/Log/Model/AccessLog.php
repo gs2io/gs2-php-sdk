@@ -146,13 +146,13 @@ class AccessLog implements IModel {
             return null;
         }
         return (new AccessLog())
-            ->withTimestamp(empty($data['timestamp']) && $data['timestamp'] !== 0 ? null : $data['timestamp'])
-            ->withRequestId(empty($data['requestId']) ? null : $data['requestId'])
-            ->withService(empty($data['service']) ? null : $data['service'])
-            ->withMethod(empty($data['method']) ? null : $data['method'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withRequest(empty($data['request']) ? null : $data['request'])
-            ->withResult(empty($data['result']) ? null : $data['result']);
+            ->withTimestamp(array_key_exists('timestamp', $data) && $data['timestamp'] !== null ? $data['timestamp'] : null)
+            ->withRequestId(array_key_exists('requestId', $data) && $data['requestId'] !== null ? $data['requestId'] : null)
+            ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null)
+            ->withMethod(array_key_exists('method', $data) && $data['method'] !== null ? $data['method'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withRequest(array_key_exists('request', $data) && $data['request'] !== null ? $data['request'] : null)
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null);
     }
 
     public function toJson(): array {

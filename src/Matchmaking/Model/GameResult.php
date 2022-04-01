@@ -61,8 +61,8 @@ class GameResult implements IModel {
             return null;
         }
         return (new GameResult())
-            ->withRank(empty($data['rank']) && $data['rank'] !== 0 ? null : $data['rank'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId']);
+            ->withRank(array_key_exists('rank', $data) && $data['rank'] !== null ? $data['rank'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
     }
 
     public function toJson(): array {

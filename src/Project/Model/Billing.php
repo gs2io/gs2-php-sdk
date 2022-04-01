@@ -248,19 +248,19 @@ class Billing implements IModel {
             return null;
         }
         return (new Billing())
-            ->withBillingId(empty($data['billingId']) ? null : $data['billingId'])
-            ->withProjectName(empty($data['projectName']) ? null : $data['projectName'])
-            ->withYear(empty($data['year']) && $data['year'] !== 0 ? null : $data['year'])
-            ->withMonth(empty($data['month']) && $data['month'] !== 0 ? null : $data['month'])
-            ->withRegion(empty($data['region']) ? null : $data['region'])
-            ->withService(empty($data['service']) ? null : $data['service'])
-            ->withActivityType(empty($data['activityType']) ? null : $data['activityType'])
-            ->withUnit(empty($data['unit']) && $data['unit'] !== 0 ? null : $data['unit'])
-            ->withUnitName(empty($data['unitName']) ? null : $data['unitName'])
-            ->withPrice(empty($data['price']) && $data['price'] !== 0 ? null : $data['price'])
-            ->withCurrency(empty($data['currency']) ? null : $data['currency'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withBillingId(array_key_exists('billingId', $data) && $data['billingId'] !== null ? $data['billingId'] : null)
+            ->withProjectName(array_key_exists('projectName', $data) && $data['projectName'] !== null ? $data['projectName'] : null)
+            ->withYear(array_key_exists('year', $data) && $data['year'] !== null ? $data['year'] : null)
+            ->withMonth(array_key_exists('month', $data) && $data['month'] !== null ? $data['month'] : null)
+            ->withRegion(array_key_exists('region', $data) && $data['region'] !== null ? $data['region'] : null)
+            ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null)
+            ->withActivityType(array_key_exists('activityType', $data) && $data['activityType'] !== null ? $data['activityType'] : null)
+            ->withUnit(array_key_exists('unit', $data) && $data['unit'] !== null ? $data['unit'] : null)
+            ->withUnitName(array_key_exists('unitName', $data) && $data['unitName'] !== null ? $data['unitName'] : null)
+            ->withPrice(array_key_exists('price', $data) && $data['price'] !== null ? $data['price'] : null)
+            ->withCurrency(array_key_exists('currency', $data) && $data['currency'] !== null ? $data['currency'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

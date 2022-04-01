@@ -56,8 +56,8 @@ class GetLotteryModelRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetLotteryModelRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withLotteryName(empty($data['lotteryName']) ? null : $data['lotteryName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withLotteryName(array_key_exists('lotteryName', $data) && $data['lotteryName'] !== null ? $data['lotteryName'] : null);
     }
 
     public function toJson(): array {

@@ -42,7 +42,7 @@ class DeleteDistributorModelMasterResult implements IResult {
             return null;
         }
         return (new DeleteDistributorModelMasterResult())
-            ->withItem(empty($data['item']) ? null : DistributorModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? DistributorModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

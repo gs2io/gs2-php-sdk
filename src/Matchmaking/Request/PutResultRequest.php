@@ -72,8 +72,8 @@ class PutResultRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PutResultRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRatingName(array_key_exists('ratingName', $data) && $data['ratingName'] !== null ? $data['ratingName'] : null)
             ->withGameResults(array_map(
                 function ($item) {
                     return GameResult::fromJson($item);

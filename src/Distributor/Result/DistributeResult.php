@@ -72,9 +72,9 @@ class DistributeResult implements IResult {
             return null;
         }
         return (new DistributeResult())
-            ->withDistributeResource(empty($data['distributeResource']) ? null : DistributeResource::fromJson($data['distributeResource']))
-            ->withInboxNamespaceId(empty($data['inboxNamespaceId']) ? null : $data['inboxNamespaceId'])
-            ->withResult(empty($data['result']) ? null : $data['result']);
+            ->withDistributeResource(array_key_exists('distributeResource', $data) && $data['distributeResource'] !== null ? DistributeResource::fromJson($data['distributeResource']) : null)
+            ->withInboxNamespaceId(array_key_exists('inboxNamespaceId', $data) && $data['inboxNamespaceId'] !== null ? $data['inboxNamespaceId'] : null)
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null);
     }
 
     public function toJson(): array {

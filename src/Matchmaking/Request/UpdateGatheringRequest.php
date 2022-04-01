@@ -87,9 +87,9 @@ class UpdateGatheringRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateGatheringRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withGatheringName(array_key_exists('gatheringName', $data) && $data['gatheringName'] !== null ? $data['gatheringName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withAttributeRanges(array_map(
                 function ($item) {
                     return AttributeRange::fromJson($item);

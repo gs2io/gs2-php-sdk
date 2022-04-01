@@ -129,12 +129,12 @@ class JobResult implements IModel {
             return null;
         }
         return (new JobResult())
-            ->withJobResultId(empty($data['jobResultId']) ? null : $data['jobResultId'])
-            ->withJobId(empty($data['jobId']) ? null : $data['jobId'])
-            ->withTryNumber(empty($data['tryNumber']) && $data['tryNumber'] !== 0 ? null : $data['tryNumber'])
-            ->withStatusCode(empty($data['statusCode']) && $data['statusCode'] !== 0 ? null : $data['statusCode'])
-            ->withResult(empty($data['result']) ? null : $data['result'])
-            ->withTryAt(empty($data['tryAt']) && $data['tryAt'] !== 0 ? null : $data['tryAt']);
+            ->withJobResultId(array_key_exists('jobResultId', $data) && $data['jobResultId'] !== null ? $data['jobResultId'] : null)
+            ->withJobId(array_key_exists('jobId', $data) && $data['jobId'] !== null ? $data['jobId'] : null)
+            ->withTryNumber(array_key_exists('tryNumber', $data) && $data['tryNumber'] !== null ? $data['tryNumber'] : null)
+            ->withStatusCode(array_key_exists('statusCode', $data) && $data['statusCode'] !== null ? $data['statusCode'] : null)
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null)
+            ->withTryAt(array_key_exists('tryAt', $data) && $data['tryAt'] !== null ? $data['tryAt'] : null);
     }
 
     public function toJson(): array {

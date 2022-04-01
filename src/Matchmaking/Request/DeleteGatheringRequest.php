@@ -56,8 +56,8 @@ class DeleteGatheringRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteGatheringRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withGatheringName(array_key_exists('gatheringName', $data) && $data['gatheringName'] !== null ? $data['gatheringName'] : null);
     }
 
     public function toJson(): array {

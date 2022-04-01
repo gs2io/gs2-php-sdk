@@ -56,8 +56,8 @@ class GetFormModelMasterRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetFormModelMasterRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withFormModelName(empty($data['formModelName']) ? null : $data['formModelName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withFormModelName(array_key_exists('formModelName', $data) && $data['formModelName'] !== null ? $data['formModelName'] : null);
     }
 
     public function toJson(): array {

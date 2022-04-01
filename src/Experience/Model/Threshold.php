@@ -61,7 +61,7 @@ class Threshold implements IModel {
             return null;
         }
         return (new Threshold())
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withValues(array_map(
                 function ($item) {
                     return $item;

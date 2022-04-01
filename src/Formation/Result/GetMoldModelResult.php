@@ -44,7 +44,7 @@ class GetMoldModelResult implements IResult {
             return null;
         }
         return (new GetMoldModelResult())
-            ->withItem(empty($data['item']) ? null : MoldModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? MoldModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

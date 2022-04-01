@@ -41,7 +41,7 @@ class ValidateRequest extends Gs2BasicRequest {
             return null;
         }
         return (new ValidateRequest())
-            ->withTemplate(empty($data['template']) ? null : $data['template']);
+            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null);
     }
 
     public function toJson(): array {

@@ -44,7 +44,7 @@ class GetRateModelResult implements IResult {
             return null;
         }
         return (new GetRateModelResult())
-            ->withItem(empty($data['item']) ? null : RateModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? RateModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

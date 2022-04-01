@@ -129,12 +129,12 @@ class Event implements IModel {
             return null;
         }
         return (new Event())
-            ->withEventId(empty($data['eventId']) ? null : $data['eventId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withResourceName(empty($data['resourceName']) ? null : $data['resourceName'])
-            ->withType(empty($data['type']) ? null : $data['type'])
-            ->withMessage(empty($data['message']) ? null : $data['message'])
-            ->withEventAt(empty($data['eventAt']) && $data['eventAt'] !== 0 ? null : $data['eventAt']);
+            ->withEventId(array_key_exists('eventId', $data) && $data['eventId'] !== null ? $data['eventId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withResourceName(array_key_exists('resourceName', $data) && $data['resourceName'] !== null ? $data['resourceName'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withMessage(array_key_exists('message', $data) && $data['message'] !== null ? $data['message'] : null)
+            ->withEventAt(array_key_exists('eventAt', $data) && $data['eventAt'] !== null ? $data['eventAt'] : null);
     }
 
     public function toJson(): array {

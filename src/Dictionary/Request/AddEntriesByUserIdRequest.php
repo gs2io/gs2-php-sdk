@@ -71,8 +71,8 @@ class AddEntriesByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new AddEntriesByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withEntryModelNames(array_map(
                 function ($item) {
                     return $item;

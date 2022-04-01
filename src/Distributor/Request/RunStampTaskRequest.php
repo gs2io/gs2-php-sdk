@@ -71,9 +71,9 @@ class RunStampTaskRequest extends Gs2BasicRequest {
             return null;
         }
         return (new RunStampTaskRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withStampTask(empty($data['stampTask']) ? null : $data['stampTask'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withStampTask(array_key_exists('stampTask', $data) && $data['stampTask'] !== null ? $data['stampTask'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {

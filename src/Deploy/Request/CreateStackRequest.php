@@ -71,9 +71,9 @@ class CreateStackRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateStackRequest())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withTemplate(empty($data['template']) ? null : $data['template']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null);
     }
 
     public function toJson(): array {

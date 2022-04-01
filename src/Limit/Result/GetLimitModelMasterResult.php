@@ -42,7 +42,7 @@ class GetLimitModelMasterResult implements IResult {
             return null;
         }
         return (new GetLimitModelMasterResult())
-            ->withItem(empty($data['item']) ? null : LimitModelMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? LimitModelMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

@@ -78,9 +78,9 @@ class FollowUser implements IModel {
             return null;
         }
         return (new FollowUser())
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withPublicProfile(empty($data['publicProfile']) ? null : $data['publicProfile'])
-            ->withFollowerProfile(empty($data['followerProfile']) ? null : $data['followerProfile']);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPublicProfile(array_key_exists('publicProfile', $data) && $data['publicProfile'] !== null ? $data['publicProfile'] : null)
+            ->withFollowerProfile(array_key_exists('followerProfile', $data) && $data['followerProfile'] !== null ? $data['followerProfile'] : null);
     }
 
     public function toJson(): array {

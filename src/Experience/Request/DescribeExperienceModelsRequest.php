@@ -41,7 +41,7 @@ class DescribeExperienceModelsRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeExperienceModelsRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null);
     }
 
     public function toJson(): array {

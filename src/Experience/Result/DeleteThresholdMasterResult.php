@@ -42,7 +42,7 @@ class DeleteThresholdMasterResult implements IResult {
             return null;
         }
         return (new DeleteThresholdMasterResult())
-            ->withItem(empty($data['item']) ? null : ThresholdMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? ThresholdMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

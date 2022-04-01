@@ -42,7 +42,7 @@ class UpdateCurrentExperienceMasterFromGitHubResult implements IResult {
             return null;
         }
         return (new UpdateCurrentExperienceMasterFromGitHubResult())
-            ->withItem(empty($data['item']) ? null : CurrentExperienceMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentExperienceMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

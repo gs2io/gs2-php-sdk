@@ -71,8 +71,8 @@ class WantRoomRequest extends Gs2BasicRequest {
             return null;
         }
         return (new WantRoomRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withNotificationUserIds(array_map(
                 function ($item) {
                     return $item;

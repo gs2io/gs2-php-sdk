@@ -116,17 +116,17 @@ class UpdateRoomRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateRoomRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRoomName(empty($data['roomName']) ? null : $data['roomName'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
-            ->withPassword(empty($data['password']) ? null : $data['password'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withWhiteListUserIds(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('whiteListUserIds', $data) && $data['whiteListUserIds'] !== null ? $data['whiteListUserIds'] : []
             ))
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken']);
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
     }
 
     public function toJson(): array {

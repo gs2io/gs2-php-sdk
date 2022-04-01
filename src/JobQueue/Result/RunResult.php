@@ -73,8 +73,8 @@ class RunResult implements IResult {
             return null;
         }
         return (new RunResult())
-            ->withItem(empty($data['item']) ? null : Job::fromJson($data['item']))
-            ->withResult(empty($data['result']) ? null : JobResultBody::fromJson($data['result']))
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Job::fromJson($data['item']) : null)
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? JobResultBody::fromJson($data['result']) : null)
             ->withIsLastJob($data['isLastJob']);
     }
 

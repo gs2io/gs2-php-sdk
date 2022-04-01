@@ -95,10 +95,10 @@ class ScriptSetting implements IModel {
             return null;
         }
         return (new ScriptSetting())
-            ->withTriggerScriptId(empty($data['triggerScriptId']) ? null : $data['triggerScriptId'])
-            ->withDoneTriggerTargetType(empty($data['doneTriggerTargetType']) ? null : $data['doneTriggerTargetType'])
-            ->withDoneTriggerScriptId(empty($data['doneTriggerScriptId']) ? null : $data['doneTriggerScriptId'])
-            ->withDoneTriggerQueueNamespaceId(empty($data['doneTriggerQueueNamespaceId']) ? null : $data['doneTriggerQueueNamespaceId']);
+            ->withTriggerScriptId(array_key_exists('triggerScriptId', $data) && $data['triggerScriptId'] !== null ? $data['triggerScriptId'] : null)
+            ->withDoneTriggerTargetType(array_key_exists('doneTriggerTargetType', $data) && $data['doneTriggerTargetType'] !== null ? $data['doneTriggerTargetType'] : null)
+            ->withDoneTriggerScriptId(array_key_exists('doneTriggerScriptId', $data) && $data['doneTriggerScriptId'] !== null ? $data['doneTriggerScriptId'] : null)
+            ->withDoneTriggerQueueNamespaceId(array_key_exists('doneTriggerQueueNamespaceId', $data) && $data['doneTriggerQueueNamespaceId'] !== null ? $data['doneTriggerQueueNamespaceId'] : null);
     }
 
     public function toJson(): array {

@@ -101,11 +101,11 @@ class GetStatusWithSignatureRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetStatusWithSignatureRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withExperienceName(empty($data['experienceName']) ? null : $data['experienceName'])
-            ->withPropertyId(empty($data['propertyId']) ? null : $data['propertyId'])
-            ->withKeyId(empty($data['keyId']) ? null : $data['keyId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {

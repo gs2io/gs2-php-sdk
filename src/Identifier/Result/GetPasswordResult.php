@@ -42,7 +42,7 @@ class GetPasswordResult implements IResult {
             return null;
         }
         return (new GetPasswordResult())
-            ->withItem(empty($data['item']) ? null : Password::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Password::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

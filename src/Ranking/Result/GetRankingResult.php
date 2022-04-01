@@ -42,7 +42,7 @@ class GetRankingResult implements IResult {
             return null;
         }
         return (new GetRankingResult())
-            ->withItem(empty($data['item']) ? null : Ranking::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Ranking::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class CreateUserRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CreateUserRequest())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null);
     }
 
     public function toJson(): array {

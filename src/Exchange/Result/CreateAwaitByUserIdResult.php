@@ -57,8 +57,8 @@ class CreateAwaitByUserIdResult implements IResult {
             return null;
         }
         return (new CreateAwaitByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Await::fromJson($data['item']))
-            ->withUnlockAt(empty($data['unlockAt']) && $data['unlockAt'] !== 0 ? null : $data['unlockAt']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null)
+            ->withUnlockAt(array_key_exists('unlockAt', $data) && $data['unlockAt'] !== null ? $data['unlockAt'] : null);
     }
 
     public function toJson(): array {

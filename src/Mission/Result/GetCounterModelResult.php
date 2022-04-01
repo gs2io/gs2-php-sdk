@@ -43,7 +43,7 @@ class GetCounterModelResult implements IResult {
             return null;
         }
         return (new GetCounterModelResult())
-            ->withItem(empty($data['item']) ? null : CounterModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CounterModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

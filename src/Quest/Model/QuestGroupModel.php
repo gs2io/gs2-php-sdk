@@ -112,16 +112,16 @@ class QuestGroupModel implements IModel {
             return null;
         }
         return (new QuestGroupModel())
-            ->withQuestGroupModelId(empty($data['questGroupModelId']) ? null : $data['questGroupModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withQuestGroupModelId(array_key_exists('questGroupModelId', $data) && $data['questGroupModelId'] !== null ? $data['questGroupModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withQuests(array_map(
                 function ($item) {
                     return QuestModel::fromJson($item);
                 },
                 array_key_exists('quests', $data) && $data['quests'] !== null ? $data['quests'] : []
             ))
-            ->withChallengePeriodEventId(empty($data['challengePeriodEventId']) ? null : $data['challengePeriodEventId']);
+            ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null);
     }
 
     public function toJson(): array {

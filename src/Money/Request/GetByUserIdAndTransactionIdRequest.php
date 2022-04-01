@@ -71,9 +71,9 @@ class GetByUserIdAndTransactionIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetByUserIdAndTransactionIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTransactionId(empty($data['transactionId']) ? null : $data['transactionId']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null);
     }
 
     public function toJson(): array {

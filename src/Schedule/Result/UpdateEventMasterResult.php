@@ -42,7 +42,7 @@ class UpdateEventMasterResult implements IResult {
             return null;
         }
         return (new UpdateEventMasterResult())
-            ->withItem(empty($data['item']) ? null : EventMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? EventMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

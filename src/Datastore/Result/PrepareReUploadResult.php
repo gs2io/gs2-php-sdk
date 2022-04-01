@@ -57,8 +57,8 @@ class PrepareReUploadResult implements IResult {
             return null;
         }
         return (new PrepareReUploadResult())
-            ->withItem(empty($data['item']) ? null : DataObject::fromJson($data['item']))
-            ->withUploadUrl(empty($data['uploadUrl']) ? null : $data['uploadUrl']);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? DataObject::fromJson($data['item']) : null)
+            ->withUploadUrl(array_key_exists('uploadUrl', $data) && $data['uploadUrl'] !== null ? $data['uploadUrl'] : null);
     }
 
     public function toJson(): array {

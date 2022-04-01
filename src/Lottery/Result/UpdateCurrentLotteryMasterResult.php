@@ -42,7 +42,7 @@ class UpdateCurrentLotteryMasterResult implements IResult {
             return null;
         }
         return (new UpdateCurrentLotteryMasterResult())
-            ->withItem(empty($data['item']) ? null : CurrentLotteryMaster::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentLotteryMaster::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

@@ -101,11 +101,11 @@ class PutScoreRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PutScoreRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withCategoryName(empty($data['categoryName']) ? null : $data['categoryName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withScore(empty($data['score']) && $data['score'] !== 0 ? null : $data['score'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
 
     public function toJson(): array {

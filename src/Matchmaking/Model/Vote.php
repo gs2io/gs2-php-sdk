@@ -129,17 +129,17 @@ class Vote implements IModel {
             return null;
         }
         return (new Vote())
-            ->withVoteId(empty($data['voteId']) ? null : $data['voteId'])
-            ->withRatingName(empty($data['ratingName']) ? null : $data['ratingName'])
-            ->withGatheringName(empty($data['gatheringName']) ? null : $data['gatheringName'])
+            ->withVoteId(array_key_exists('voteId', $data) && $data['voteId'] !== null ? $data['voteId'] : null)
+            ->withRatingName(array_key_exists('ratingName', $data) && $data['ratingName'] !== null ? $data['ratingName'] : null)
+            ->withGatheringName(array_key_exists('gatheringName', $data) && $data['gatheringName'] !== null ? $data['gatheringName'] : null)
             ->withWrittenBallots(array_map(
                 function ($item) {
                     return WrittenBallot::fromJson($item);
                 },
                 array_key_exists('writtenBallots', $data) && $data['writtenBallots'] !== null ? $data['writtenBallots'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

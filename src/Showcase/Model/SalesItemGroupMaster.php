@@ -146,18 +146,18 @@ class SalesItemGroupMaster implements IModel {
             return null;
         }
         return (new SalesItemGroupMaster())
-            ->withSalesItemGroupId(empty($data['salesItemGroupId']) ? null : $data['salesItemGroupId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withSalesItemGroupId(array_key_exists('salesItemGroupId', $data) && $data['salesItemGroupId'] !== null ? $data['salesItemGroupId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withSalesItemNames(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('salesItemNames', $data) && $data['salesItemNames'] !== null ? $data['salesItemNames'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

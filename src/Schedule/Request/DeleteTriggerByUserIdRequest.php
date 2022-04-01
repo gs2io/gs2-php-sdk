@@ -71,9 +71,9 @@ class DeleteTriggerByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DeleteTriggerByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTriggerName(empty($data['triggerName']) ? null : $data['triggerName']);
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTriggerName(array_key_exists('triggerName', $data) && $data['triggerName'] !== null ? $data['triggerName'] : null);
     }
 
     public function toJson(): array {

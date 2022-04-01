@@ -42,7 +42,7 @@ class GetTriggerByUserIdResult implements IResult {
             return null;
         }
         return (new GetTriggerByUserIdResult())
-            ->withItem(empty($data['item']) ? null : Trigger::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Trigger::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

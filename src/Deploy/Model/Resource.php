@@ -214,13 +214,13 @@ class Resource implements IModel {
             return null;
         }
         return (new Resource())
-            ->withResourceId(empty($data['resourceId']) ? null : $data['resourceId'])
-            ->withType(empty($data['type']) ? null : $data['type'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withRequest(empty($data['request']) ? null : $data['request'])
-            ->withResponse(empty($data['response']) ? null : $data['response'])
-            ->withRollbackContext(empty($data['rollbackContext']) ? null : $data['rollbackContext'])
-            ->withRollbackRequest(empty($data['rollbackRequest']) ? null : $data['rollbackRequest'])
+            ->withResourceId(array_key_exists('resourceId', $data) && $data['resourceId'] !== null ? $data['resourceId'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withRequest(array_key_exists('request', $data) && $data['request'] !== null ? $data['request'] : null)
+            ->withResponse(array_key_exists('response', $data) && $data['response'] !== null ? $data['response'] : null)
+            ->withRollbackContext(array_key_exists('rollbackContext', $data) && $data['rollbackContext'] !== null ? $data['rollbackContext'] : null)
+            ->withRollbackRequest(array_key_exists('rollbackRequest', $data) && $data['rollbackRequest'] !== null ? $data['rollbackRequest'] : null)
             ->withRollbackAfter(array_map(
                 function ($item) {
                     return $item;
@@ -233,8 +233,8 @@ class Resource implements IModel {
                 },
                 array_key_exists('outputFields', $data) && $data['outputFields'] !== null ? $data['outputFields'] : []
             ))
-            ->withWorkId(empty($data['workId']) ? null : $data['workId'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt']);
+            ->withWorkId(array_key_exists('workId', $data) && $data['workId'] !== null ? $data['workId'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {

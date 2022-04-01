@@ -118,10 +118,10 @@ class DirectEnhanceByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DirectEnhanceByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withTargetItemSetId(empty($data['targetItemSetId']) ? null : $data['targetItemSetId'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTargetItemSetId(array_key_exists('targetItemSetId', $data) && $data['targetItemSetId'] !== null ? $data['targetItemSetId'] : null)
             ->withMaterials(array_map(
                 function ($item) {
                     return Material::fromJson($item);

@@ -101,10 +101,10 @@ class UpdateDataObjectByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new UpdateDataObjectByUserIdRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withDataObjectName(empty($data['dataObjectName']) ? null : $data['dataObjectName'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withScope(empty($data['scope']) ? null : $data['scope'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
             ->withAllowUserIds(array_map(
                 function ($item) {
                     return $item;

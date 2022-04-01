@@ -44,7 +44,7 @@ class LogSetting implements IModel {
             return null;
         }
         return (new LogSetting())
-            ->withLoggingNamespaceId(empty($data['loggingNamespaceId']) ? null : $data['loggingNamespaceId']);
+            ->withLoggingNamespaceId(array_key_exists('loggingNamespaceId', $data) && $data['loggingNamespaceId'] !== null ? $data['loggingNamespaceId'] : null);
     }
 
     public function toJson(): array {

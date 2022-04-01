@@ -112,11 +112,11 @@ class DisplayItem implements IModel {
             return null;
         }
         return (new DisplayItem())
-            ->withDisplayItemId(empty($data['displayItemId']) ? null : $data['displayItemId'])
-            ->withType(empty($data['type']) ? null : $data['type'])
-            ->withSalesItem(empty($data['salesItem']) ? null : SalesItem::fromJson($data['salesItem']))
-            ->withSalesItemGroup(empty($data['salesItemGroup']) ? null : SalesItemGroup::fromJson($data['salesItemGroup']))
-            ->withSalesPeriodEventId(empty($data['salesPeriodEventId']) ? null : $data['salesPeriodEventId']);
+            ->withDisplayItemId(array_key_exists('displayItemId', $data) && $data['displayItemId'] !== null ? $data['displayItemId'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withSalesItem(array_key_exists('salesItem', $data) && $data['salesItem'] !== null ? SalesItem::fromJson($data['salesItem']) : null)
+            ->withSalesItemGroup(array_key_exists('salesItemGroup', $data) && $data['salesItemGroup'] !== null ? SalesItemGroup::fromJson($data['salesItemGroup']) : null)
+            ->withSalesPeriodEventId(array_key_exists('salesPeriodEventId', $data) && $data['salesPeriodEventId'] !== null ? $data['salesPeriodEventId'] : null);
     }
 
     public function toJson(): array {

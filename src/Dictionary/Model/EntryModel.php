@@ -78,9 +78,9 @@ class EntryModel implements IModel {
             return null;
         }
         return (new EntryModel())
-            ->withEntryModelId(empty($data['entryModelId']) ? null : $data['entryModelId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata']);
+            ->withEntryModelId(array_key_exists('entryModelId', $data) && $data['entryModelId'] !== null ? $data['entryModelId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
 
     public function toJson(): array {

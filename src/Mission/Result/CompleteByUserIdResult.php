@@ -56,8 +56,8 @@ class CompleteByUserIdResult implements IResult {
             return null;
         }
         return (new CompleteByUserIdResult())
-            ->withStampSheet(empty($data['stampSheet']) ? null : $data['stampSheet'])
-            ->withStampSheetEncryptionKeyId(empty($data['stampSheetEncryptionKeyId']) ? null : $data['stampSheetEncryptionKeyId']);
+            ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
+            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null);
     }
 
     public function toJson(): array {

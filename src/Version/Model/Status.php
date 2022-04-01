@@ -61,8 +61,8 @@ class Status implements IModel {
             return null;
         }
         return (new Status())
-            ->withVersionModel(empty($data['versionModel']) ? null : VersionModel::fromJson($data['versionModel']))
-            ->withCurrentVersion(empty($data['currentVersion']) ? null : Version::fromJson($data['currentVersion']));
+            ->withVersionModel(array_key_exists('versionModel', $data) && $data['versionModel'] !== null ? VersionModel::fromJson($data['versionModel']) : null)
+            ->withCurrentVersion(array_key_exists('currentVersion', $data) && $data['currentVersion'] !== null ? Version::fromJson($data['currentVersion']) : null);
     }
 
     public function toJson(): array {

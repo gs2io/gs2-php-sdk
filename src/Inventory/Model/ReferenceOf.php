@@ -61,8 +61,8 @@ class ReferenceOf implements IModel {
             return null;
         }
         return (new ReferenceOf())
-            ->withReferenceOfId(empty($data['referenceOfId']) ? null : $data['referenceOfId'])
-            ->withName(empty($data['name']) ? null : $data['name']);
+            ->withReferenceOfId(array_key_exists('referenceOfId', $data) && $data['referenceOfId'] !== null ? $data['referenceOfId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null);
     }
 
     public function toJson(): array {

@@ -56,8 +56,8 @@ class GetCumulativeRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetCumulativeRequest())
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withResourceGrn(empty($data['resourceGrn']) ? null : $data['resourceGrn']);
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withResourceGrn(array_key_exists('resourceGrn', $data) && $data['resourceGrn'] !== null ? $data['resourceGrn'] : null);
     }
 
     public function toJson(): array {

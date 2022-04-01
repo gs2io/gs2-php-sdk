@@ -71,9 +71,9 @@ class PutLogRequest extends Gs2BasicRequest {
             return null;
         }
         return (new PutLogRequest())
-            ->withLoggingNamespaceId(empty($data['loggingNamespaceId']) ? null : $data['loggingNamespaceId'])
-            ->withLogCategory(empty($data['logCategory']) ? null : $data['logCategory'])
-            ->withPayload(empty($data['payload']) ? null : $data['payload']);
+            ->withLoggingNamespaceId(array_key_exists('loggingNamespaceId', $data) && $data['loggingNamespaceId'] !== null ? $data['loggingNamespaceId'] : null)
+            ->withLogCategory(array_key_exists('logCategory', $data) && $data['logCategory'] !== null ? $data['logCategory'] : null)
+            ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null);
     }
 
     public function toJson(): array {

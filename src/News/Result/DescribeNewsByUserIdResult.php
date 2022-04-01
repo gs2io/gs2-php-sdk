@@ -78,8 +78,8 @@ class DescribeNewsByUserIdResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
-            ->withContentHash(empty($data['contentHash']) ? null : $data['contentHash'])
-            ->withTemplateHash(empty($data['templateHash']) ? null : $data['templateHash']);
+            ->withContentHash(array_key_exists('contentHash', $data) && $data['contentHash'] !== null ? $data['contentHash'] : null)
+            ->withTemplateHash(array_key_exists('templateHash', $data) && $data['templateHash'] !== null ? $data['templateHash'] : null);
     }
 
     public function toJson(): array {

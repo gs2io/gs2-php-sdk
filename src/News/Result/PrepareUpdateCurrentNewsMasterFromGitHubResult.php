@@ -41,7 +41,7 @@ class PrepareUpdateCurrentNewsMasterFromGitHubResult implements IResult {
             return null;
         }
         return (new PrepareUpdateCurrentNewsMasterFromGitHubResult())
-            ->withUploadToken(empty($data['uploadToken']) ? null : $data['uploadToken']);
+            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null);
     }
 
     public function toJson(): array {

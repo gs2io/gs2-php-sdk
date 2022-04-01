@@ -102,10 +102,10 @@ class ExchangeRequest extends Gs2BasicRequest {
             return null;
         }
         return (new ExchangeRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withRateName(empty($data['rateName']) ? null : $data['rateName'])
-            ->withAccessToken(empty($data['accessToken']) ? null : $data['accessToken'])
-            ->withCount(empty($data['count']) && $data['count'] !== 0 ? null : $data['count'])
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

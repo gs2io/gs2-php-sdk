@@ -41,7 +41,7 @@ class SendNotificationResult implements IResult {
             return null;
         }
         return (new SendNotificationResult())
-            ->withProtocol(empty($data['protocol']) ? null : $data['protocol']);
+            ->withProtocol(array_key_exists('protocol', $data) && $data['protocol'] !== null ? $data['protocol'] : null);
     }
 
     public function toJson(): array {

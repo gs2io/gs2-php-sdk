@@ -180,15 +180,15 @@ class Account implements IModel {
             return null;
         }
         return (new Account())
-            ->withAccountId(empty($data['accountId']) ? null : $data['accountId'])
-            ->withOwnerId(empty($data['ownerId']) ? null : $data['ownerId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withEmail(empty($data['email']) ? null : $data['email'])
-            ->withFullName(empty($data['fullName']) ? null : $data['fullName'])
-            ->withCompanyName(empty($data['companyName']) ? null : $data['companyName'])
-            ->withStatus(empty($data['status']) ? null : $data['status'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withAccountId(array_key_exists('accountId', $data) && $data['accountId'] !== null ? $data['accountId'] : null)
+            ->withOwnerId(array_key_exists('ownerId', $data) && $data['ownerId'] !== null ? $data['ownerId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withEmail(array_key_exists('email', $data) && $data['email'] !== null ? $data['email'] : null)
+            ->withFullName(array_key_exists('fullName', $data) && $data['fullName'] !== null ? $data['fullName'] : null)
+            ->withCompanyName(array_key_exists('companyName', $data) && $data['companyName'] !== null ? $data['companyName'] : null)
+            ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

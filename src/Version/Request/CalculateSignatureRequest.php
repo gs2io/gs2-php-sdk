@@ -72,9 +72,9 @@ class CalculateSignatureRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CalculateSignatureRequest())
-            ->withNamespaceName(empty($data['namespaceName']) ? null : $data['namespaceName'])
-            ->withVersionName(empty($data['versionName']) ? null : $data['versionName'])
-            ->withVersion(empty($data['version']) ? null : Version::fromJson($data['version']));
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
+            ->withVersion(array_key_exists('version', $data) && $data['version'] !== null ? Version::fromJson($data['version']) : null);
     }
 
     public function toJson(): array {

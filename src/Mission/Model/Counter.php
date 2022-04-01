@@ -129,17 +129,17 @@ class Counter implements IModel {
             return null;
         }
         return (new Counter())
-            ->withCounterId(empty($data['counterId']) ? null : $data['counterId'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
+            ->withCounterId(array_key_exists('counterId', $data) && $data['counterId'] !== null ? $data['counterId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withValues(array_map(
                 function ($item) {
                     return ScopedValue::fromJson($item);
                 },
                 array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
             ))
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

@@ -180,10 +180,10 @@ class Message implements IModel {
             return null;
         }
         return (new Message())
-            ->withMessageId(empty($data['messageId']) ? null : $data['messageId'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withUserId(empty($data['userId']) ? null : $data['userId'])
-            ->withMetadata(empty($data['metadata']) ? null : $data['metadata'])
+            ->withMessageId(array_key_exists('messageId', $data) && $data['messageId'] !== null ? $data['messageId'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withIsRead($data['isRead'])
             ->withReadAcquireActions(array_map(
                 function ($item) {
@@ -191,9 +191,9 @@ class Message implements IModel {
                 },
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
-            ->withReceivedAt(empty($data['receivedAt']) && $data['receivedAt'] !== 0 ? null : $data['receivedAt'])
-            ->withReadAt(empty($data['readAt']) && $data['readAt'] !== 0 ? null : $data['readAt'])
-            ->withExpiresAt(empty($data['expiresAt']) && $data['expiresAt'] !== 0 ? null : $data['expiresAt']);
+            ->withReceivedAt(array_key_exists('receivedAt', $data) && $data['receivedAt'] !== null ? $data['receivedAt'] : null)
+            ->withReadAt(array_key_exists('readAt', $data) && $data['readAt'] !== null ? $data['readAt'] : null)
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
     }
 
     public function toJson(): array {

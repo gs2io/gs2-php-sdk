@@ -42,7 +42,7 @@ class GetLotteryModelResult implements IResult {
             return null;
         }
         return (new GetLotteryModelResult())
-            ->withItem(empty($data['item']) ? null : LotteryModel::fromJson($data['item']));
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? LotteryModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

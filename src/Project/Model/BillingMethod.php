@@ -214,17 +214,17 @@ class BillingMethod implements IModel {
             return null;
         }
         return (new BillingMethod())
-            ->withBillingMethodId(empty($data['billingMethodId']) ? null : $data['billingMethodId'])
-            ->withAccountName(empty($data['accountName']) ? null : $data['accountName'])
-            ->withName(empty($data['name']) ? null : $data['name'])
-            ->withDescription(empty($data['description']) ? null : $data['description'])
-            ->withMethodType(empty($data['methodType']) ? null : $data['methodType'])
-            ->withCardSignatureName(empty($data['cardSignatureName']) ? null : $data['cardSignatureName'])
-            ->withCardBrand(empty($data['cardBrand']) ? null : $data['cardBrand'])
-            ->withCardLast4(empty($data['cardLast4']) ? null : $data['cardLast4'])
-            ->withPartnerId(empty($data['partnerId']) ? null : $data['partnerId'])
-            ->withCreatedAt(empty($data['createdAt']) && $data['createdAt'] !== 0 ? null : $data['createdAt'])
-            ->withUpdatedAt(empty($data['updatedAt']) && $data['updatedAt'] !== 0 ? null : $data['updatedAt']);
+            ->withBillingMethodId(array_key_exists('billingMethodId', $data) && $data['billingMethodId'] !== null ? $data['billingMethodId'] : null)
+            ->withAccountName(array_key_exists('accountName', $data) && $data['accountName'] !== null ? $data['accountName'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMethodType(array_key_exists('methodType', $data) && $data['methodType'] !== null ? $data['methodType'] : null)
+            ->withCardSignatureName(array_key_exists('cardSignatureName', $data) && $data['cardSignatureName'] !== null ? $data['cardSignatureName'] : null)
+            ->withCardBrand(array_key_exists('cardBrand', $data) && $data['cardBrand'] !== null ? $data['cardBrand'] : null)
+            ->withCardLast4(array_key_exists('cardLast4', $data) && $data['cardLast4'] !== null ? $data['cardLast4'] : null)
+            ->withPartnerId(array_key_exists('partnerId', $data) && $data['partnerId'] !== null ? $data['partnerId'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {

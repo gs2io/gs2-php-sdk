@@ -41,7 +41,7 @@ class RunStampSheetWithoutNamespaceResult implements IResult {
             return null;
         }
         return (new RunStampSheetWithoutNamespaceResult())
-            ->withResult(empty($data['result']) ? null : $data['result']);
+            ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null);
     }
 
     public function toJson(): array {

@@ -32,6 +32,10 @@ class Receipt implements IModel {
 	/**
      * @var string
 	 */
+	private $purchaseToken;
+	/**
+     * @var string
+	 */
 	private $userId;
 	/**
      * @var string
@@ -89,6 +93,19 @@ class Receipt implements IModel {
 
 	public function withTransactionId(?string $transactionId): Receipt {
 		$this->transactionId = $transactionId;
+		return $this;
+	}
+
+	public function getPurchaseToken(): ?string {
+		return $this->purchaseToken;
+	}
+
+	public function setPurchaseToken(?string $purchaseToken) {
+		$this->purchaseToken = $purchaseToken;
+	}
+
+	public function withPurchaseToken(?string $purchaseToken): Receipt {
+		$this->purchaseToken = $purchaseToken;
 		return $this;
 	}
 
@@ -216,6 +233,7 @@ class Receipt implements IModel {
         return (new Receipt())
             ->withReceiptId(array_key_exists('receiptId', $data) && $data['receiptId'] !== null ? $data['receiptId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
+            ->withPurchaseToken(array_key_exists('purchaseToken', $data) && $data['purchaseToken'] !== null ? $data['purchaseToken'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
             ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
@@ -231,6 +249,7 @@ class Receipt implements IModel {
         return array(
             "receiptId" => $this->getReceiptId(),
             "transactionId" => $this->getTransactionId(),
+            "purchaseToken" => $this->getPurchaseToken(),
             "userId" => $this->getUserId(),
             "type" => $this->getType(),
             "slot" => $this->getSlot(),

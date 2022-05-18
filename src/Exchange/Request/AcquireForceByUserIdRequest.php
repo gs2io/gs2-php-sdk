@@ -31,6 +31,8 @@ class AcquireForceByUserIdRequest extends Gs2BasicRequest {
     private $awaitName;
     /** @var array */
     private $config;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,19 @@ class AcquireForceByUserIdRequest extends Gs2BasicRequest {
 
 	public function withConfig(?array $config): AcquireForceByUserIdRequest {
 		$this->config = $config;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): AcquireForceByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

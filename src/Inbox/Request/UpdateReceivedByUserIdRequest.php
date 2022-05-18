@@ -26,6 +26,8 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var array */
     private $receivedGlobalMessageNames;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
 
 	public function withReceivedGlobalMessageNames(?array $receivedGlobalMessageNames): UpdateReceivedByUserIdRequest {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): UpdateReceivedByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

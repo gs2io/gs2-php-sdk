@@ -28,6 +28,8 @@ class DeleteStatusByUserIdRequest extends Gs2BasicRequest {
     private $experienceName;
     /** @var string */
     private $propertyId;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class DeleteStatusByUserIdRequest extends Gs2BasicRequest {
 
 	public function withPropertyId(?string $propertyId): DeleteStatusByUserIdRequest {
 		$this->propertyId = $propertyId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteStatusByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

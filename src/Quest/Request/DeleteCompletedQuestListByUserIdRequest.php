@@ -26,6 +26,8 @@ class DeleteCompletedQuestListByUserIdRequest extends Gs2BasicRequest {
     private $questGroupName;
     /** @var string */
     private $userId;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class DeleteCompletedQuestListByUserIdRequest extends Gs2BasicRequest {
 
 	public function withUserId(?string $userId): DeleteCompletedQuestListByUserIdRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteCompletedQuestListByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

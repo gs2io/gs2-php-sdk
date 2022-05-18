@@ -28,6 +28,8 @@ class SetRecoverIntervalByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $recoverIntervalMinutes;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class SetRecoverIntervalByUserIdRequest extends Gs2BasicRequest {
 
 	public function withRecoverIntervalMinutes(?int $recoverIntervalMinutes): SetRecoverIntervalByUserIdRequest {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetRecoverIntervalByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

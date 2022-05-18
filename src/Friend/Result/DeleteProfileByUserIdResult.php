@@ -18,18 +18,36 @@
 namespace Gs2\Friend\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Friend\Model\Profile;
 
 class DeleteProfileByUserIdResult implements IResult {
+    /** @var Profile */
+    private $item;
+
+	public function getItem(): ?Profile {
+		return $this->item;
+	}
+
+	public function setItem(?Profile $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Profile $item): DeleteProfileByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteProfileByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteProfileByUserIdResult());
+        return (new DeleteProfileByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Profile::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

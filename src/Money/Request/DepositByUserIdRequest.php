@@ -30,6 +30,8 @@ class DepositByUserIdRequest extends Gs2BasicRequest {
     private $price;
     /** @var int */
     private $count;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -93,6 +95,19 @@ class DepositByUserIdRequest extends Gs2BasicRequest {
 
 	public function withCount(?int $count): DepositByUserIdRequest {
 		$this->count = $count;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DepositByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

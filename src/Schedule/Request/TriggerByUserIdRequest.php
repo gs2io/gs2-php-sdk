@@ -30,6 +30,8 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
     private $triggerStrategy;
     /** @var int */
     private $ttl;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -93,6 +95,19 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
 
 	public function withTtl(?int $ttl): TriggerByUserIdRequest {
 		$this->ttl = $ttl;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): TriggerByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

@@ -28,6 +28,8 @@ class IncreaseCounterByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $value;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class IncreaseCounterByUserIdRequest extends Gs2BasicRequest {
 
 	public function withValue(?int $value): IncreaseCounterByUserIdRequest {
 		$this->value = $value;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): IncreaseCounterByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

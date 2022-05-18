@@ -28,6 +28,8 @@ class DeleteFormByUserIdRequest extends Gs2BasicRequest {
     private $moldName;
     /** @var int */
     private $index;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class DeleteFormByUserIdRequest extends Gs2BasicRequest {
 
 	public function withIndex(?int $index): DeleteFormByUserIdRequest {
 		$this->index = $index;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteFormByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

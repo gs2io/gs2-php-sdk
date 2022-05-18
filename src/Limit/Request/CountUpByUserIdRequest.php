@@ -32,6 +32,8 @@ class CountUpByUserIdRequest extends Gs2BasicRequest {
     private $countUpValue;
     /** @var int */
     private $maxValue;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -108,6 +110,19 @@ class CountUpByUserIdRequest extends Gs2BasicRequest {
 
 	public function withMaxValue(?int $maxValue): CountUpByUserIdRequest {
 		$this->maxValue = $maxValue;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): CountUpByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

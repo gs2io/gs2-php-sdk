@@ -24,6 +24,8 @@ class DeleteProfileByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $userId;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -48,6 +50,19 @@ class DeleteProfileByUserIdRequest extends Gs2BasicRequest {
 
 	public function withUserId(?string $userId): DeleteProfileByUserIdRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteProfileByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

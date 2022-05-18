@@ -28,6 +28,8 @@ class SetMoldCapacityByUserIdRequest extends Gs2BasicRequest {
     private $moldName;
     /** @var int */
     private $capacity;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class SetMoldCapacityByUserIdRequest extends Gs2BasicRequest {
 
 	public function withCapacity(?int $capacity): SetMoldCapacityByUserIdRequest {
 		$this->capacity = $capacity;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetMoldCapacityByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

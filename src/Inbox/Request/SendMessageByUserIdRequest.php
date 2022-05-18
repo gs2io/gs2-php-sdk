@@ -34,6 +34,8 @@ class SendMessageByUserIdRequest extends Gs2BasicRequest {
     private $expiresAt;
     /** @var TimeSpan */
     private $expiresTimeSpan;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -110,6 +112,19 @@ class SendMessageByUserIdRequest extends Gs2BasicRequest {
 
 	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): SendMessageByUserIdRequest {
 		$this->expiresTimeSpan = $expiresTimeSpan;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SendMessageByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

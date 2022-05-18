@@ -28,6 +28,8 @@ class PrepareDownloadByGenerationAndUserIdRequest extends Gs2BasicRequest {
     private $dataObjectId;
     /** @var string */
     private $generation;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class PrepareDownloadByGenerationAndUserIdRequest extends Gs2BasicRequest {
 
 	public function withGeneration(?string $generation): PrepareDownloadByGenerationAndUserIdRequest {
 		$this->generation = $generation;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): PrepareDownloadByGenerationAndUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

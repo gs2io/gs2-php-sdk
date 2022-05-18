@@ -26,6 +26,8 @@ class AddEntriesByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var array */
     private $entryModelNames;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class AddEntriesByUserIdRequest extends Gs2BasicRequest {
 
 	public function withEntryModelNames(?array $entryModelNames): AddEntriesByUserIdRequest {
 		$this->entryModelNames = $entryModelNames;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): AddEntriesByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

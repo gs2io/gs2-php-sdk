@@ -28,6 +28,8 @@ class UnlockByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $transactionId;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class UnlockByUserIdRequest extends Gs2BasicRequest {
 
 	public function withTransactionId(?string $transactionId): UnlockByUserIdRequest {
 		$this->transactionId = $transactionId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): UnlockByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

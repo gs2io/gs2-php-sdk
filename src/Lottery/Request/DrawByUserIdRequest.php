@@ -31,6 +31,8 @@ class DrawByUserIdRequest extends Gs2BasicRequest {
     private $count;
     /** @var array */
     private $config;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,19 @@ class DrawByUserIdRequest extends Gs2BasicRequest {
 
 	public function withConfig(?array $config): DrawByUserIdRequest {
 		$this->config = $config;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DrawByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

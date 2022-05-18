@@ -38,6 +38,10 @@ class Namespace_ implements IModel {
 	 */
 	private $changePasswordIfTakeOver;
 	/**
+     * @var bool
+	 */
+	private $differentUserIdForLoginAndDataRetention;
+	/**
      * @var ScriptSetting
 	 */
 	private $createAccountScript;
@@ -115,6 +119,19 @@ class Namespace_ implements IModel {
 
 	public function withChangePasswordIfTakeOver(?bool $changePasswordIfTakeOver): Namespace_ {
 		$this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
+		return $this;
+	}
+
+	public function getDifferentUserIdForLoginAndDataRetention(): ?bool {
+		return $this->differentUserIdForLoginAndDataRetention;
+	}
+
+	public function setDifferentUserIdForLoginAndDataRetention(?bool $differentUserIdForLoginAndDataRetention) {
+		$this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
+	}
+
+	public function withDifferentUserIdForLoginAndDataRetention(?bool $differentUserIdForLoginAndDataRetention): Namespace_ {
+		$this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
 		return $this;
 	}
 
@@ -218,6 +235,7 @@ class Namespace_ implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withChangePasswordIfTakeOver($data['changePasswordIfTakeOver'])
+            ->withDifferentUserIdForLoginAndDataRetention($data['differentUserIdForLoginAndDataRetention'])
             ->withCreateAccountScript(array_key_exists('createAccountScript', $data) && $data['createAccountScript'] !== null ? ScriptSetting::fromJson($data['createAccountScript']) : null)
             ->withAuthenticationScript(array_key_exists('authenticationScript', $data) && $data['authenticationScript'] !== null ? ScriptSetting::fromJson($data['authenticationScript']) : null)
             ->withCreateTakeOverScript(array_key_exists('createTakeOverScript', $data) && $data['createTakeOverScript'] !== null ? ScriptSetting::fromJson($data['createTakeOverScript']) : null)
@@ -233,6 +251,7 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "changePasswordIfTakeOver" => $this->getChangePasswordIfTakeOver(),
+            "differentUserIdForLoginAndDataRetention" => $this->getDifferentUserIdForLoginAndDataRetention(),
             "createAccountScript" => $this->getCreateAccountScript() !== null ? $this->getCreateAccountScript()->toJson() : null,
             "authenticationScript" => $this->getAuthenticationScript() !== null ? $this->getAuthenticationScript()->toJson() : null,
             "createTakeOverScript" => $this->getCreateTakeOverScript() !== null ? $this->getCreateTakeOverScript()->toJson() : null,

@@ -15,19 +15,15 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Friend\Request;
+namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class DeleteRequestByUserIdRequest extends Gs2BasicRequest {
+class DeleteDataOwnerByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
     private $userId;
-    /** @var string */
-    private $targetUserId;
-    /** @var string */
-    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -37,7 +33,7 @@ class DeleteRequestByUserIdRequest extends Gs2BasicRequest {
 		$this->namespaceName = $namespaceName;
 	}
 
-	public function withNamespaceName(?string $namespaceName): DeleteRequestByUserIdRequest {
+	public function withNamespaceName(?string $namespaceName): DeleteDataOwnerByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -50,52 +46,24 @@ class DeleteRequestByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 	}
 
-	public function withUserId(?string $userId): DeleteRequestByUserIdRequest {
+	public function withUserId(?string $userId): DeleteDataOwnerByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
 
-	public function getTargetUserId(): ?string {
-		return $this->targetUserId;
-	}
-
-	public function setTargetUserId(?string $targetUserId) {
-		$this->targetUserId = $targetUserId;
-	}
-
-	public function withTargetUserId(?string $targetUserId): DeleteRequestByUserIdRequest {
-		$this->targetUserId = $targetUserId;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteRequestByUserIdRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
-		return $this;
-	}
-
-    public static function fromJson(?array $data): ?DeleteRequestByUserIdRequest {
+    public static function fromJson(?array $data): ?DeleteDataOwnerByUserIdRequest {
         if ($data === null) {
             return null;
         }
-        return (new DeleteRequestByUserIdRequest())
+        return (new DeleteDataOwnerByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "targetUserId" => $this->getTargetUserId(),
         );
     }
 }

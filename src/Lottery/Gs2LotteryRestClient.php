@@ -69,8 +69,6 @@ use Gs2\Lottery\Request\GetBoxRequest;
 use Gs2\Lottery\Result\GetBoxResult;
 use Gs2\Lottery\Request\GetBoxByUserIdRequest;
 use Gs2\Lottery\Result\GetBoxByUserIdResult;
-use Gs2\Lottery\Request\GetRawBoxByUserIdRequest;
-use Gs2\Lottery\Result\GetRawBoxByUserIdResult;
 use Gs2\Lottery\Request\ResetBoxRequest;
 use Gs2\Lottery\Result\ResetBoxResult;
 use Gs2\Lottery\Request\ResetBoxByUserIdRequest;
@@ -1379,65 +1377,6 @@ class GetBoxByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
-class GetRawBoxByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetRawBoxByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetRawBoxByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetRawBoxByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetRawBoxByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetRawBoxByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/box/{prizeTableName}/raw";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class ResetBoxTask extends Gs2RestSessionTask {
 
     /**
@@ -1552,6 +1491,9 @@ class ResetBoxByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1850,6 +1792,9 @@ class DrawByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2818,33 +2763,6 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
             GetBoxByUserIdRequest $request
     ): GetBoxByUserIdResult {
         return $this->getBoxByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param GetRawBoxByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function getRawBoxByUserIdAsync(
-            GetRawBoxByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetRawBoxByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param GetRawBoxByUserIdRequest $request
-     * @return GetRawBoxByUserIdResult
-     */
-    public function getRawBoxByUserId (
-            GetRawBoxByUserIdRequest $request
-    ): GetRawBoxByUserIdResult {
-        return $this->getRawBoxByUserIdAsync(
             $request
         )->wait();
     }

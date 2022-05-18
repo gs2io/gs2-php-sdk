@@ -32,6 +32,8 @@ class PostByUserIdRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var string */
     private $password;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -108,6 +110,19 @@ class PostByUserIdRequest extends Gs2BasicRequest {
 
 	public function withPassword(?string $password): PostByUserIdRequest {
 		$this->password = $password;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): PostByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

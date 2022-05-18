@@ -31,6 +31,8 @@ class CompleteByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var array */
     private $config;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,19 @@ class CompleteByUserIdRequest extends Gs2BasicRequest {
 
 	public function withConfig(?array $config): CompleteByUserIdRequest {
 		$this->config = $config;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): CompleteByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

@@ -32,6 +32,8 @@ class SendNotificationRequest extends Gs2BasicRequest {
     private $enableTransferMobileNotification;
     /** @var string */
     private $sound;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -108,6 +110,19 @@ class SendNotificationRequest extends Gs2BasicRequest {
 
 	public function withSound(?string $sound): SendNotificationRequest {
 		$this->sound = $sound;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SendNotificationRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

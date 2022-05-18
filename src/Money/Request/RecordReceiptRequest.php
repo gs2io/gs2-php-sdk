@@ -28,6 +28,8 @@ class RecordReceiptRequest extends Gs2BasicRequest {
     private $contentsId;
     /** @var string */
     private $receipt;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class RecordReceiptRequest extends Gs2BasicRequest {
 
 	public function withReceipt(?string $receipt): RecordReceiptRequest {
 		$this->receipt = $receipt;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): RecordReceiptRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

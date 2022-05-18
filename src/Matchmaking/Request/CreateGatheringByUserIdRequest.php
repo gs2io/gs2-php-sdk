@@ -41,6 +41,8 @@ class CreateGatheringByUserIdRequest extends Gs2BasicRequest {
     private $expiresAt;
     /** @var TimeSpan */
     private $expiresAtTimeSpan;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -143,6 +145,19 @@ class CreateGatheringByUserIdRequest extends Gs2BasicRequest {
 
 	public function withExpiresAtTimeSpan(?TimeSpan $expiresAtTimeSpan): CreateGatheringByUserIdRequest {
 		$this->expiresAtTimeSpan = $expiresAtTimeSpan;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): CreateGatheringByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

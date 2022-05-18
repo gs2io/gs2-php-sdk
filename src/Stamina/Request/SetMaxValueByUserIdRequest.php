@@ -28,6 +28,8 @@ class SetMaxValueByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $maxValue;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class SetMaxValueByUserIdRequest extends Gs2BasicRequest {
 
 	public function withMaxValue(?int $maxValue): SetMaxValueByUserIdRequest {
 		$this->maxValue = $maxValue;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetMaxValueByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

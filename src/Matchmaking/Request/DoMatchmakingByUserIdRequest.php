@@ -30,6 +30,8 @@ class DoMatchmakingByUserIdRequest extends Gs2BasicRequest {
     private $player;
     /** @var string */
     private $matchmakingContextToken;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -80,6 +82,19 @@ class DoMatchmakingByUserIdRequest extends Gs2BasicRequest {
 
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingByUserIdRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DoMatchmakingByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

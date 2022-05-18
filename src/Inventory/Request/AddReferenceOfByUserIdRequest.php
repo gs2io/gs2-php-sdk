@@ -32,6 +32,8 @@ class AddReferenceOfByUserIdRequest extends Gs2BasicRequest {
     private $itemSetName;
     /** @var string */
     private $referenceOf;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -108,6 +110,19 @@ class AddReferenceOfByUserIdRequest extends Gs2BasicRequest {
 
 	public function withReferenceOf(?string $referenceOf): AddReferenceOfByUserIdRequest {
 		$this->referenceOf = $referenceOf;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): AddReferenceOfByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

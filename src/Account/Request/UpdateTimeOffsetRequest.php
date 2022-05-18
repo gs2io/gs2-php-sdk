@@ -26,6 +26,8 @@ class UpdateTimeOffsetRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $timeOffset;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class UpdateTimeOffsetRequest extends Gs2BasicRequest {
 
 	public function withTimeOffset(?int $timeOffset): UpdateTimeOffsetRequest {
 		$this->timeOffset = $timeOffset;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): UpdateTimeOffsetRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

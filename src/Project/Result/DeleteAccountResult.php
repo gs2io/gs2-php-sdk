@@ -18,18 +18,36 @@
 namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Project\Model\Account;
 
 class DeleteAccountResult implements IResult {
+    /** @var Account */
+    private $item;
+
+	public function getItem(): ?Account {
+		return $this->item;
+	}
+
+	public function setItem(?Account $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Account $item): DeleteAccountResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DeleteAccountResult {
         if ($data === null) {
             return null;
         }
-        return (new DeleteAccountResult());
+        return (new DeleteAccountResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Account::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

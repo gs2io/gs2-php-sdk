@@ -31,6 +31,8 @@ class SetFormByUserIdRequest extends Gs2BasicRequest {
     private $index;
     /** @var array */
     private $slots;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,19 @@ class SetFormByUserIdRequest extends Gs2BasicRequest {
 
 	public function withSlots(?array $slots): SetFormByUserIdRequest {
 		$this->slots = $slots;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetFormByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

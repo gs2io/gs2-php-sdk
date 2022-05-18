@@ -29,6 +29,8 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var array */
     private $attributeRanges;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -79,6 +81,19 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
 
 	public function withAttributeRanges(?array $attributeRanges): UpdateGatheringByUserIdRequest {
 		$this->attributeRanges = $attributeRanges;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): UpdateGatheringByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

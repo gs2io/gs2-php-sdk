@@ -28,6 +28,8 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
     private $rateName;
     /** @var int */
     private $count;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
 
 	public function withCount(?int $count): CreateAwaitByUserIdRequest {
 		$this->count = $count;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): CreateAwaitByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

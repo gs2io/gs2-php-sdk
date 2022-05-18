@@ -28,6 +28,8 @@ class DeleteAwaitByUserIdRequest extends Gs2BasicRequest {
     private $rateName;
     /** @var string */
     private $awaitName;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class DeleteAwaitByUserIdRequest extends Gs2BasicRequest {
 
 	public function withAwaitName(?string $awaitName): DeleteAwaitByUserIdRequest {
 		$this->awaitName = $awaitName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteAwaitByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

@@ -30,6 +30,10 @@ class Box implements IModel {
 	 */
 	private $prizeTableName;
 	/**
+     * @var int
+	 */
+	private $index;
+	/**
      * @var string
 	 */
 	private $userId;
@@ -69,6 +73,19 @@ class Box implements IModel {
 
 	public function withPrizeTableName(?string $prizeTableName): Box {
 		$this->prizeTableName = $prizeTableName;
+		return $this;
+	}
+
+	public function getIndex(): ?int {
+		return $this->index;
+	}
+
+	public function setIndex(?int $index) {
+		$this->index = $index;
+	}
+
+	public function withIndex(?int $index): Box {
+		$this->index = $index;
 		return $this;
 	}
 
@@ -131,6 +148,7 @@ class Box implements IModel {
         return (new Box())
             ->withBoxId(array_key_exists('boxId', $data) && $data['boxId'] !== null ? $data['boxId'] : null)
             ->withPrizeTableName(array_key_exists('prizeTableName', $data) && $data['prizeTableName'] !== null ? $data['prizeTableName'] : null)
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withDrawnIndexes(array_map(
                 function ($item) {
@@ -146,6 +164,7 @@ class Box implements IModel {
         return array(
             "boxId" => $this->getBoxId(),
             "prizeTableName" => $this->getPrizeTableName(),
+            "index" => $this->getIndex(),
             "userId" => $this->getUserId(),
             "drawnIndexes" => array_map(
                 function ($item) {

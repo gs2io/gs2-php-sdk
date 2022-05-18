@@ -28,6 +28,8 @@ class SetRecoverValueByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $recoverValue;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class SetRecoverValueByUserIdRequest extends Gs2BasicRequest {
 
 	public function withRecoverValue(?int $recoverValue): SetRecoverValueByUserIdRequest {
 		$this->recoverValue = $recoverValue;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetRecoverValueByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

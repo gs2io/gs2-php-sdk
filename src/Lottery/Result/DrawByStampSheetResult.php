@@ -20,8 +20,6 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\DrawnPrize;
-use Gs2\Lottery\Model\BoxItem;
-use Gs2\Lottery\Model\BoxItems;
 
 class DrawByStampSheetResult implements IResult {
     /** @var array */
@@ -30,8 +28,6 @@ class DrawByStampSheetResult implements IResult {
     private $stampSheet;
     /** @var string */
     private $stampSheetEncryptionKeyId;
-    /** @var BoxItems */
-    private $boxItems;
 
 	public function getItems(): ?array {
 		return $this->items;
@@ -72,19 +68,6 @@ class DrawByStampSheetResult implements IResult {
 		return $this;
 	}
 
-	public function getBoxItems(): ?BoxItems {
-		return $this->boxItems;
-	}
-
-	public function setBoxItems(?BoxItems $boxItems) {
-		$this->boxItems = $boxItems;
-	}
-
-	public function withBoxItems(?BoxItems $boxItems): DrawByStampSheetResult {
-		$this->boxItems = $boxItems;
-		return $this;
-	}
-
     public static function fromJson(?array $data): ?DrawByStampSheetResult {
         if ($data === null) {
             return null;
@@ -97,8 +80,7 @@ class DrawByStampSheetResult implements IResult {
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
-            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
-            ->withBoxItems(array_key_exists('boxItems', $data) && $data['boxItems'] !== null ? BoxItems::fromJson($data['boxItems']) : null);
+            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null);
     }
 
     public function toJson(): array {
@@ -111,7 +93,6 @@ class DrawByStampSheetResult implements IResult {
             ),
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
-            "boxItems" => $this->getBoxItems() !== null ? $this->getBoxItems()->toJson() : null,
         );
     }
 }

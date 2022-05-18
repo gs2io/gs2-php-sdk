@@ -27,6 +27,8 @@ class PushByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var array */
     private $jobs;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -64,6 +66,19 @@ class PushByUserIdRequest extends Gs2BasicRequest {
 
 	public function withJobs(?array $jobs): PushByUserIdRequest {
 		$this->jobs = $jobs;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): PushByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

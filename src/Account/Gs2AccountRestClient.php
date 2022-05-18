@@ -75,6 +75,10 @@ use Gs2\Account\Request\DeleteTakeOverByUserIdentifierRequest;
 use Gs2\Account\Result\DeleteTakeOverByUserIdentifierResult;
 use Gs2\Account\Request\DoTakeOverRequest;
 use Gs2\Account\Result\DoTakeOverResult;
+use Gs2\Account\Request\GetDataOwnerByUserIdRequest;
+use Gs2\Account\Result\GetDataOwnerByUserIdResult;
+use Gs2\Account\Request\DeleteDataOwnerByUserIdRequest;
+use Gs2\Account\Result\DeleteDataOwnerByUserIdResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -179,6 +183,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getChangePasswordIfTakeOver() !== null) {
             $json["changePasswordIfTakeOver"] = $this->request->getChangePasswordIfTakeOver();
+        }
+        if ($this->request->getDifferentUserIdForLoginAndDataRetention() !== null) {
+            $json["differentUserIdForLoginAndDataRetention"] = $this->request->getDifferentUserIdForLoginAndDataRetention();
         }
         if ($this->request->getCreateAccountScript() !== null) {
             $json["createAccountScript"] = $this->request->getCreateAccountScript()->toJson();
@@ -369,6 +376,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getChangePasswordIfTakeOver() !== null) {
             $json["changePasswordIfTakeOver"] = $this->request->getChangePasswordIfTakeOver();
+        }
+        if ($this->request->getDifferentUserIdForLoginAndDataRetention() !== null) {
+            $json["differentUserIdForLoginAndDataRetention"] = $this->request->getDifferentUserIdForLoginAndDataRetention();
         }
         if ($this->request->getCreateAccountScript() !== null) {
             $json["createAccountScript"] = $this->request->getCreateAccountScript()->toJson();
@@ -632,6 +642,9 @@ class UpdateTimeOffsetTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1073,6 +1086,9 @@ class CreateTakeOverByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -1321,6 +1337,9 @@ class UpdateTakeOverByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -1444,6 +1463,9 @@ class DeleteTakeOverByUserIdentifierTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -1499,6 +1521,122 @@ class DoTakeOverTask extends Gs2RestSessionTask {
         $this->builder->setBody($json);
 
         $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetDataOwnerByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetDataOwnerByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetDataOwnerByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetDataOwnerByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetDataOwnerByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetDataOwnerByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/dataOwner";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteDataOwnerByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteDataOwnerByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteDataOwnerByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteDataOwnerByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteDataOwnerByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteDataOwnerByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/dataOwner";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -2145,6 +2283,60 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             DoTakeOverRequest $request
     ): DoTakeOverResult {
         return $this->doTakeOverAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetDataOwnerByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getDataOwnerByUserIdAsync(
+            GetDataOwnerByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetDataOwnerByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetDataOwnerByUserIdRequest $request
+     * @return GetDataOwnerByUserIdResult
+     */
+    public function getDataOwnerByUserId (
+            GetDataOwnerByUserIdRequest $request
+    ): GetDataOwnerByUserIdResult {
+        return $this->getDataOwnerByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteDataOwnerByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteDataOwnerByUserIdAsync(
+            DeleteDataOwnerByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteDataOwnerByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteDataOwnerByUserIdRequest $request
+     * @return DeleteDataOwnerByUserIdResult
+     */
+    public function deleteDataOwnerByUserId (
+            DeleteDataOwnerByUserIdRequest $request
+    ): DeleteDataOwnerByUserIdResult {
+        return $this->deleteDataOwnerByUserIdAsync(
             $request
         )->wait();
     }

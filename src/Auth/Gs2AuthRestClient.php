@@ -127,9 +127,6 @@ class LoginBySignatureTask extends Gs2RestSessionTask {
         $url = str_replace('{service}', "auth", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/login/signed";
 
         $json = [];
-        if ($this->request->getUserId() !== null) {
-            $json["userId"] = $this->request->getUserId();
-        }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
         }

@@ -26,6 +26,8 @@ class DeleteTriggerByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $triggerName;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class DeleteTriggerByUserIdRequest extends Gs2BasicRequest {
 
 	public function withTriggerName(?string $triggerName): DeleteTriggerByUserIdRequest {
 		$this->triggerName = $triggerName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteTriggerByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

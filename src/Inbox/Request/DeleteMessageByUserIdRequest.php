@@ -26,6 +26,8 @@ class DeleteMessageByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $messageName;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class DeleteMessageByUserIdRequest extends Gs2BasicRequest {
 
 	public function withMessageName(?string $messageName): DeleteMessageByUserIdRequest {
 		$this->messageName = $messageName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteMessageByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

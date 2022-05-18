@@ -28,6 +28,8 @@ class AddCapacityByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $addCapacityValue;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -78,6 +80,19 @@ class AddCapacityByUserIdRequest extends Gs2BasicRequest {
 
 	public function withAddCapacityValue(?int $addCapacityValue): AddCapacityByUserIdRequest {
 		$this->addCapacityValue = $addCapacityValue;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): AddCapacityByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

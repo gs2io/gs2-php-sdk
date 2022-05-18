@@ -15,38 +15,39 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Ranking\Result;
+namespace Gs2\Account\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Account\Model\DataOwner;
 
-class CalcRankingResult implements IResult {
-    /** @var bool */
-    private $processing;
+class GetDataOwnerByUserIdResult implements IResult {
+    /** @var DataOwner */
+    private $item;
 
-	public function getProcessing(): ?bool {
-		return $this->processing;
+	public function getItem(): ?DataOwner {
+		return $this->item;
 	}
 
-	public function setProcessing(?bool $processing) {
-		$this->processing = $processing;
+	public function setItem(?DataOwner $item) {
+		$this->item = $item;
 	}
 
-	public function withProcessing(?bool $processing): CalcRankingResult {
-		$this->processing = $processing;
+	public function withItem(?DataOwner $item): GetDataOwnerByUserIdResult {
+		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?CalcRankingResult {
+    public static function fromJson(?array $data): ?GetDataOwnerByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new CalcRankingResult())
-            ->withProcessing($data['processing']);
+        return (new GetDataOwnerByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? DataOwner::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
-            "processing" => $this->getProcessing(),
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

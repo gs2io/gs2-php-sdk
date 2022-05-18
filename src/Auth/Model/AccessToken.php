@@ -33,6 +33,10 @@ class AccessToken implements IModel {
      * @var int
 	 */
 	private $expire;
+	/**
+     * @var int
+	 */
+	private $timeOffset;
 
 	public function getToken(): ?string {
 		return $this->token;
@@ -73,6 +77,19 @@ class AccessToken implements IModel {
 		return $this;
 	}
 
+	public function getTimeOffset(): ?int {
+		return $this->timeOffset;
+	}
+
+	public function setTimeOffset(?int $timeOffset) {
+		$this->timeOffset = $timeOffset;
+	}
+
+	public function withTimeOffset(?int $timeOffset): AccessToken {
+		$this->timeOffset = $timeOffset;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?AccessToken {
         if ($data === null) {
             return null;
@@ -80,7 +97,8 @@ class AccessToken implements IModel {
         return (new AccessToken())
             ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withExpire(array_key_exists('expire', $data) && $data['expire'] !== null ? $data['expire'] : null);
+            ->withExpire(array_key_exists('expire', $data) && $data['expire'] !== null ? $data['expire'] : null)
+            ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null);
     }
 
     public function toJson(): array {
@@ -88,6 +106,7 @@ class AccessToken implements IModel {
             "token" => $this->getToken(),
             "userId" => $this->getUserId(),
             "expire" => $this->getExpire(),
+            "timeOffset" => $this->getTimeOffset(),
         );
     }
 }

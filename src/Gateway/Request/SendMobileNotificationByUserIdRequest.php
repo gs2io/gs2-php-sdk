@@ -30,6 +30,8 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
     private $payload;
     /** @var string */
     private $sound;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -93,6 +95,19 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
 
 	public function withSound(?string $sound): SendMobileNotificationByUserIdRequest {
 		$this->sound = $sound;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SendMobileNotificationByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

@@ -26,6 +26,8 @@ class DeleteRatingRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $ratingName;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class DeleteRatingRequest extends Gs2BasicRequest {
 
 	public function withRatingName(?string $ratingName): DeleteRatingRequest {
 		$this->ratingName = $ratingName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteRatingRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

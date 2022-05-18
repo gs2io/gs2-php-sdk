@@ -33,6 +33,8 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
     private $materials;
     /** @var bool */
     private $force;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -109,6 +111,19 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
 
 	public function withForce(?bool $force): CreateProgressByUserIdRequest {
 		$this->force = $force;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): CreateProgressByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

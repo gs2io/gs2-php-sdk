@@ -39,6 +39,8 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
     private $keyId;
     /** @var array */
     private $config;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -141,6 +143,19 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
 
 	public function withConfig(?array $config): AcquireActionsToFormPropertiesRequest {
 		$this->config = $config;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): AcquireActionsToFormPropertiesRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

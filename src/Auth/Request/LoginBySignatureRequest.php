@@ -21,26 +21,11 @@ use Gs2\Core\Control\Gs2BasicRequest;
 
 class LoginBySignatureRequest extends Gs2BasicRequest {
     /** @var string */
-    private $userId;
-    /** @var string */
     private $keyId;
     /** @var string */
     private $body;
     /** @var string */
     private $signature;
-
-	public function getUserId(): ?string {
-		return $this->userId;
-	}
-
-	public function setUserId(?string $userId) {
-		$this->userId = $userId;
-	}
-
-	public function withUserId(?string $userId): LoginBySignatureRequest {
-		$this->userId = $userId;
-		return $this;
-	}
 
 	public function getKeyId(): ?string {
 		return $this->keyId;
@@ -86,7 +71,6 @@ class LoginBySignatureRequest extends Gs2BasicRequest {
             return null;
         }
         return (new LoginBySignatureRequest())
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
             ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
@@ -94,7 +78,6 @@ class LoginBySignatureRequest extends Gs2BasicRequest {
 
     public function toJson(): array {
         return array(
-            "userId" => $this->getUserId(),
             "keyId" => $this->getKeyId(),
             "body" => $this->getBody(),
             "signature" => $this->getSignature(),

@@ -20,33 +20,16 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 
 class ForgetResult implements IResult {
-    /** @var string */
-    private $issuePasswordToken;
-
-	public function getIssuePasswordToken(): ?string {
-		return $this->issuePasswordToken;
-	}
-
-	public function setIssuePasswordToken(?string $issuePasswordToken) {
-		$this->issuePasswordToken = $issuePasswordToken;
-	}
-
-	public function withIssuePasswordToken(?string $issuePasswordToken): ForgetResult {
-		$this->issuePasswordToken = $issuePasswordToken;
-		return $this;
-	}
 
     public static function fromJson(?array $data): ?ForgetResult {
         if ($data === null) {
             return null;
         }
-        return (new ForgetResult())
-            ->withIssuePasswordToken(array_key_exists('issuePasswordToken', $data) && $data['issuePasswordToken'] !== null ? $data['issuePasswordToken'] : null);
+        return (new ForgetResult());
     }
 
     public function toJson(): array {
         return array(
-            "issuePasswordToken" => $this->getIssuePasswordToken(),
         );
     }
 }

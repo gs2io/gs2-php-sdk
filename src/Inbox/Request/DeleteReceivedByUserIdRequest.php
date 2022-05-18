@@ -24,6 +24,8 @@ class DeleteReceivedByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $userId;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -48,6 +50,19 @@ class DeleteReceivedByUserIdRequest extends Gs2BasicRequest {
 
 	public function withUserId(?string $userId): DeleteReceivedByUserIdRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteReceivedByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

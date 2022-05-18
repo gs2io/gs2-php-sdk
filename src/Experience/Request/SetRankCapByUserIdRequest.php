@@ -30,6 +30,8 @@ class SetRankCapByUserIdRequest extends Gs2BasicRequest {
     private $propertyId;
     /** @var int */
     private $rankCapValue;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -93,6 +95,19 @@ class SetRankCapByUserIdRequest extends Gs2BasicRequest {
 
 	public function withRankCapValue(?int $rankCapValue): SetRankCapByUserIdRequest {
 		$this->rankCapValue = $rankCapValue;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetRankCapByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

@@ -29,6 +29,8 @@ class ReadMessageByUserIdRequest extends Gs2BasicRequest {
     private $messageName;
     /** @var array */
     private $config;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -79,6 +81,19 @@ class ReadMessageByUserIdRequest extends Gs2BasicRequest {
 
 	public function withConfig(?array $config): ReadMessageByUserIdRequest {
 		$this->config = $config;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): ReadMessageByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

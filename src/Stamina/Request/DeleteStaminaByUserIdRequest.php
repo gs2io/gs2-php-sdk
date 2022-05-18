@@ -26,6 +26,8 @@ class DeleteStaminaByUserIdRequest extends Gs2BasicRequest {
     private $staminaName;
     /** @var string */
     private $userId;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class DeleteStaminaByUserIdRequest extends Gs2BasicRequest {
 
 	public function withUserId(?string $userId): DeleteStaminaByUserIdRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteStaminaByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

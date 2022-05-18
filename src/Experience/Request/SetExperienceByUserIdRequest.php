@@ -30,6 +30,8 @@ class SetExperienceByUserIdRequest extends Gs2BasicRequest {
     private $propertyId;
     /** @var int */
     private $experienceValue;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -93,6 +95,19 @@ class SetExperienceByUserIdRequest extends Gs2BasicRequest {
 
 	public function withExperienceValue(?int $experienceValue): SetExperienceByUserIdRequest {
 		$this->experienceValue = $experienceValue;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetExperienceByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

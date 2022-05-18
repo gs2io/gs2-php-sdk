@@ -26,6 +26,8 @@ class DeleteCompleteByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $missionGroupName;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -63,6 +65,19 @@ class DeleteCompleteByUserIdRequest extends Gs2BasicRequest {
 
 	public function withMissionGroupName(?string $missionGroupName): DeleteCompleteByUserIdRequest {
 		$this->missionGroupName = $missionGroupName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteCompleteByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

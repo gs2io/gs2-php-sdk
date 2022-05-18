@@ -30,6 +30,8 @@ class UpdateTakeOverByUserIdRequest extends Gs2BasicRequest {
     private $oldPassword;
     /** @var string */
     private $password;
+    /** @var string */
+    private $duplicationAvoider;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -93,6 +95,19 @@ class UpdateTakeOverByUserIdRequest extends Gs2BasicRequest {
 
 	public function withPassword(?string $password): UpdateTakeOverByUserIdRequest {
 		$this->password = $password;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): UpdateTakeOverByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

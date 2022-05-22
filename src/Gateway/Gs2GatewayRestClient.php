@@ -51,6 +51,10 @@ use Gs2\Gateway\Request\SetUserIdByUserIdRequest;
 use Gs2\Gateway\Result\SetUserIdByUserIdResult;
 use Gs2\Gateway\Request\SendNotificationRequest;
 use Gs2\Gateway\Result\SendNotificationResult;
+use Gs2\Gateway\Request\DisconnectByUserIdRequest;
+use Gs2\Gateway\Result\DisconnectByUserIdResult;
+use Gs2\Gateway\Request\DisconnectAllRequest;
+use Gs2\Gateway\Result\DisconnectAllResult;
 use Gs2\Gateway\Request\SetFirebaseTokenRequest;
 use Gs2\Gateway\Result\SetFirebaseTokenResult;
 use Gs2\Gateway\Request\SetFirebaseTokenByUserIdRequest;
@@ -745,6 +749,124 @@ class SendNotificationTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DisconnectByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DisconnectByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DisconnectByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DisconnectByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DisconnectByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DisconnectByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "gateway", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/session/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DisconnectAllTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DisconnectAllRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DisconnectAllTask constructor.
+     * @param Gs2RestSession $session
+     * @param DisconnectAllRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DisconnectAllRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DisconnectAllResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "gateway", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/session";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -1491,6 +1613,60 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
             SendNotificationRequest $request
     ): SendNotificationResult {
         return $this->sendNotificationAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DisconnectByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function disconnectByUserIdAsync(
+            DisconnectByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DisconnectByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DisconnectByUserIdRequest $request
+     * @return DisconnectByUserIdResult
+     */
+    public function disconnectByUserId (
+            DisconnectByUserIdRequest $request
+    ): DisconnectByUserIdResult {
+        return $this->disconnectByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DisconnectAllRequest $request
+     * @return PromiseInterface
+     */
+    public function disconnectAllAsync(
+            DisconnectAllRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DisconnectAllTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DisconnectAllRequest $request
+     * @return DisconnectAllResult
+     */
+    public function disconnectAll (
+            DisconnectAllRequest $request
+    ): DisconnectAllResult {
+        return $this->disconnectAllAsync(
             $request
         )->wait();
     }

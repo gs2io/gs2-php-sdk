@@ -38,6 +38,10 @@ class Account implements IModel {
 	 */
 	private $timeOffset;
 	/**
+     * @var bool
+	 */
+	private $banned;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -94,6 +98,19 @@ class Account implements IModel {
 		return $this;
 	}
 
+	public function getBanned(): ?bool {
+		return $this->banned;
+	}
+
+	public function setBanned(?bool $banned) {
+		$this->banned = $banned;
+	}
+
+	public function withBanned(?bool $banned): Account {
+		$this->banned = $banned;
+		return $this;
+	}
+
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -116,6 +133,7 @@ class Account implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null)
+            ->withBanned($data['banned'])
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
@@ -125,6 +143,7 @@ class Account implements IModel {
             "userId" => $this->getUserId(),
             "password" => $this->getPassword(),
             "timeOffset" => $this->getTimeOffset(),
+            "banned" => $this->getBanned(),
             "createdAt" => $this->getCreatedAt(),
         );
     }

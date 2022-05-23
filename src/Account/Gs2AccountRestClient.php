@@ -47,6 +47,8 @@ use Gs2\Account\Request\CreateAccountRequest;
 use Gs2\Account\Result\CreateAccountResult;
 use Gs2\Account\Request\UpdateTimeOffsetRequest;
 use Gs2\Account\Result\UpdateTimeOffsetResult;
+use Gs2\Account\Request\UpdateBannedRequest;
+use Gs2\Account\Result\UpdateBannedResult;
 use Gs2\Account\Request\GetAccountRequest;
 use Gs2\Account\Result\GetAccountResult;
 use Gs2\Account\Request\DeleteAccountRequest;
@@ -628,6 +630,68 @@ class UpdateTimeOffsetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getTimeOffset() !== null) {
             $json["timeOffset"] = $this->request->getTimeOffset();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateBannedTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateBannedRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateBannedTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateBannedRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateBannedRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateBannedResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/banned";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getBanned() !== null) {
+            $json["banned"] = $this->request->getBanned();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1905,6 +1969,33 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             UpdateTimeOffsetRequest $request
     ): UpdateTimeOffsetResult {
         return $this->updateTimeOffsetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateBannedRequest $request
+     * @return PromiseInterface
+     */
+    public function updateBannedAsync(
+            UpdateBannedRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateBannedTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateBannedRequest $request
+     * @return UpdateBannedResult
+     */
+    public function updateBanned (
+            UpdateBannedRequest $request
+    ): UpdateBannedResult {
+        return $this->updateBannedAsync(
             $request
         )->wait();
     }

@@ -25,6 +25,10 @@ class EndRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $accessToken;
+    /** @var string */
+    private $rateName;
+    /** @var string */
+    private $progressName;
     /** @var array */
     private $config;
 
@@ -54,6 +58,32 @@ class EndRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getRateName(): ?string {
+		return $this->rateName;
+	}
+
+	public function setRateName(?string $rateName) {
+		$this->rateName = $rateName;
+	}
+
+	public function withRateName(?string $rateName): EndRequest {
+		$this->rateName = $rateName;
+		return $this;
+	}
+
+	public function getProgressName(): ?string {
+		return $this->progressName;
+	}
+
+	public function setProgressName(?string $progressName) {
+		$this->progressName = $progressName;
+	}
+
+	public function withProgressName(?string $progressName): EndRequest {
+		$this->progressName = $progressName;
+		return $this;
+	}
+
 	public function getConfig(): ?array {
 		return $this->config;
 	}
@@ -74,6 +104,8 @@ class EndRequest extends Gs2BasicRequest {
         return (new EndRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withProgressName(array_key_exists('progressName', $data) && $data['progressName'] !== null ? $data['progressName'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);
@@ -86,6 +118,8 @@ class EndRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
+            "rateName" => $this->getRateName(),
+            "progressName" => $this->getProgressName(),
             "config" => array_map(
                 function ($item) {
                     return $item->toJson();

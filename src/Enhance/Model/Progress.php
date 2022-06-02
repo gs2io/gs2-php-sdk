@@ -36,6 +36,10 @@ class Progress implements IModel {
 	/**
      * @var string
 	 */
+	private $name;
+	/**
+     * @var string
+	 */
 	private $propertyId;
 	/**
      * @var int
@@ -90,6 +94,19 @@ class Progress implements IModel {
 
 	public function withRateName(?string $rateName): Progress {
 		$this->rateName = $rateName;
+		return $this;
+	}
+
+	public function getName(): ?string {
+		return $this->name;
+	}
+
+	public function setName(?string $name) {
+		$this->name = $name;
+	}
+
+	public function withName(?string $name): Progress {
+		$this->name = $name;
 		return $this;
 	}
 
@@ -166,6 +183,7 @@ class Progress implements IModel {
             ->withProgressId(array_key_exists('progressId', $data) && $data['progressId'] !== null ? $data['progressId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
+            ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null)
             ->withRate(array_key_exists('rate', $data) && $data['rate'] !== null ? $data['rate'] : null)
@@ -178,6 +196,7 @@ class Progress implements IModel {
             "progressId" => $this->getProgressId(),
             "userId" => $this->getUserId(),
             "rateName" => $this->getRateName(),
+            "name" => $this->getName(),
             "propertyId" => $this->getPropertyId(),
             "experienceValue" => $this->getExperienceValue(),
             "rate" => $this->getRate(),

@@ -18,6 +18,7 @@
 namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Distributor\Model\NotificationSetting;
 use Gs2\Distributor\Model\LogSetting;
 
 class CreateNamespaceRequest extends Gs2BasicRequest {
@@ -27,6 +28,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $assumeUserId;
+    /** @var NotificationSetting */
+    private $autoRunStampSheetNotification;
     /** @var LogSetting */
     private $logSetting;
 
@@ -69,6 +72,19 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getAutoRunStampSheetNotification(): ?NotificationSetting {
+		return $this->autoRunStampSheetNotification;
+	}
+
+	public function setAutoRunStampSheetNotification(?NotificationSetting $autoRunStampSheetNotification) {
+		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
+	}
+
+	public function withAutoRunStampSheetNotification(?NotificationSetting $autoRunStampSheetNotification): CreateNamespaceRequest {
+		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
+		return $this;
+	}
+
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -90,6 +106,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAssumeUserId(array_key_exists('assumeUserId', $data) && $data['assumeUserId'] !== null ? $data['assumeUserId'] : null)
+            ->withAutoRunStampSheetNotification(array_key_exists('autoRunStampSheetNotification', $data) && $data['autoRunStampSheetNotification'] !== null ? NotificationSetting::fromJson($data['autoRunStampSheetNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -98,6 +115,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "assumeUserId" => $this->getAssumeUserId(),
+            "autoRunStampSheetNotification" => $this->getAutoRunStampSheetNotification() !== null ? $this->getAutoRunStampSheetNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

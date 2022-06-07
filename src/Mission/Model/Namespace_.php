@@ -34,6 +34,10 @@ class Namespace_ implements IModel {
 	 */
 	private $description;
 	/**
+     * @var TransactionSetting
+	 */
+	private $transactionSetting;
+	/**
      * @var ScriptSetting
 	 */
 	private $missionCompleteScript;
@@ -45,14 +49,6 @@ class Namespace_ implements IModel {
      * @var ScriptSetting
 	 */
 	private $receiveRewardsScript;
-	/**
-     * @var string
-	 */
-	private $queueNamespaceId;
-	/**
-     * @var string
-	 */
-	private $keyId;
 	/**
      * @var NotificationSetting
 	 */
@@ -69,6 +65,14 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var string
+	 */
+	private $queueNamespaceId;
+	/**
+     * @var string
+	 */
+	private $keyId;
 
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
@@ -109,6 +113,19 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
+		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+
 	public function getMissionCompleteScript(): ?ScriptSetting {
 		return $this->missionCompleteScript;
 	}
@@ -145,32 +162,6 @@ class Namespace_ implements IModel {
 
 	public function withReceiveRewardsScript(?ScriptSetting $receiveRewardsScript): Namespace_ {
 		$this->receiveRewardsScript = $receiveRewardsScript;
-		return $this;
-	}
-
-	public function getQueueNamespaceId(): ?string {
-		return $this->queueNamespaceId;
-	}
-
-	public function setQueueNamespaceId(?string $queueNamespaceId) {
-		$this->queueNamespaceId = $queueNamespaceId;
-	}
-
-	public function withQueueNamespaceId(?string $queueNamespaceId): Namespace_ {
-		$this->queueNamespaceId = $queueNamespaceId;
-		return $this;
-	}
-
-	public function getKeyId(): ?string {
-		return $this->keyId;
-	}
-
-	public function setKeyId(?string $keyId) {
-		$this->keyId = $keyId;
-	}
-
-	public function withKeyId(?string $keyId): Namespace_ {
-		$this->keyId = $keyId;
 		return $this;
 	}
 
@@ -226,6 +217,32 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getQueueNamespaceId(): ?string {
+		return $this->queueNamespaceId;
+	}
+
+	public function setQueueNamespaceId(?string $queueNamespaceId) {
+		$this->queueNamespaceId = $queueNamespaceId;
+	}
+
+	public function withQueueNamespaceId(?string $queueNamespaceId): Namespace_ {
+		$this->queueNamespaceId = $queueNamespaceId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): Namespace_ {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?Namespace_ {
         if ($data === null) {
             return null;
@@ -234,15 +251,16 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withMissionCompleteScript(array_key_exists('missionCompleteScript', $data) && $data['missionCompleteScript'] !== null ? ScriptSetting::fromJson($data['missionCompleteScript']) : null)
             ->withCounterIncrementScript(array_key_exists('counterIncrementScript', $data) && $data['counterIncrementScript'] !== null ? ScriptSetting::fromJson($data['counterIncrementScript']) : null)
             ->withReceiveRewardsScript(array_key_exists('receiveRewardsScript', $data) && $data['receiveRewardsScript'] !== null ? ScriptSetting::fromJson($data['receiveRewardsScript']) : null)
-            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withCompleteNotification(array_key_exists('completeNotification', $data) && $data['completeNotification'] !== null ? NotificationSetting::fromJson($data['completeNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {
@@ -250,15 +268,16 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "missionCompleteScript" => $this->getMissionCompleteScript() !== null ? $this->getMissionCompleteScript()->toJson() : null,
             "counterIncrementScript" => $this->getCounterIncrementScript() !== null ? $this->getCounterIncrementScript()->toJson() : null,
             "receiveRewardsScript" => $this->getReceiveRewardsScript() !== null ? $this->getReceiveRewardsScript()->toJson() : null,
-            "queueNamespaceId" => $this->getQueueNamespaceId(),
-            "keyId" => $this->getKeyId(),
             "completeNotification" => $this->getCompleteNotification() !== null ? $this->getCompleteNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "queueNamespaceId" => $this->getQueueNamespaceId(),
+            "keyId" => $this->getKeyId(),
         );
     }
 }

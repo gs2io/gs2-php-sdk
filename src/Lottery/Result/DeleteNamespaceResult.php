@@ -18,6 +18,7 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\TransactionSetting;
 use Gs2\Lottery\Model\LogSetting;
 use Gs2\Lottery\Model\Namespace_;
 

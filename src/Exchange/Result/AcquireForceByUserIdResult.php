@@ -24,9 +24,13 @@ class AcquireForceByUserIdResult implements IResult {
     /** @var Await */
     private $item;
     /** @var string */
+    private $transactionId;
+    /** @var string */
     private $stampSheet;
     /** @var string */
     private $stampSheetEncryptionKeyId;
+    /** @var bool */
+    private $autoRunStampSheet;
 
 	public function getItem(): ?Await {
 		return $this->item;
@@ -38,6 +42,19 @@ class AcquireForceByUserIdResult implements IResult {
 
 	public function withItem(?Await $item): AcquireForceByUserIdResult {
 		$this->item = $item;
+		return $this;
+	}
+
+	public function getTransactionId(): ?string {
+		return $this->transactionId;
+	}
+
+	public function setTransactionId(?string $transactionId) {
+		$this->transactionId = $transactionId;
+	}
+
+	public function withTransactionId(?string $transactionId): AcquireForceByUserIdResult {
+		$this->transactionId = $transactionId;
 		return $this;
 	}
 
@@ -67,21 +84,38 @@ class AcquireForceByUserIdResult implements IResult {
 		return $this;
 	}
 
+	public function getAutoRunStampSheet(): ?bool {
+		return $this->autoRunStampSheet;
+	}
+
+	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
+		$this->autoRunStampSheet = $autoRunStampSheet;
+	}
+
+	public function withAutoRunStampSheet(?bool $autoRunStampSheet): AcquireForceByUserIdResult {
+		$this->autoRunStampSheet = $autoRunStampSheet;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?AcquireForceByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new AcquireForceByUserIdResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null)
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
-            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null);
+            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
+            ->withAutoRunStampSheet(array_key_exists('autoRunStampSheet', $data) ? $data['autoRunStampSheet'] : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "transactionId" => $this->getTransactionId(),
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+            "autoRunStampSheet" => $this->getAutoRunStampSheet(),
         );
     }
 }

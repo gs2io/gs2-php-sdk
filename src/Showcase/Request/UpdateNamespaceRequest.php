@@ -18,6 +18,7 @@
 namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Showcase\Model\TransactionSetting;
 use Gs2\Showcase\Model\LogSetting;
 
 class UpdateNamespaceRequest extends Gs2BasicRequest {
@@ -25,12 +26,14 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
+    /** @var LogSetting */
+    private $logSetting;
     /** @var string */
     private $queueNamespaceId;
     /** @var string */
     private $keyId;
-    /** @var LogSetting */
-    private $logSetting;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -55,6 +58,32 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
 		return $this;
 	}
 
@@ -84,19 +113,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
-	public function getLogSetting(): ?LogSetting {
-		return $this->logSetting;
-	}
-
-	public function setLogSetting(?LogSetting $logSetting) {
-		$this->logSetting = $logSetting;
-	}
-
-	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
-		$this->logSetting = $logSetting;
-		return $this;
-	}
-
     public static function fromJson(?array $data): ?UpdateNamespaceRequest {
         if ($data === null) {
             return null;
@@ -104,18 +120,20 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
-            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),
-            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }
 }

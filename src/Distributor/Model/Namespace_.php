@@ -38,6 +38,10 @@ class Namespace_ implements IModel {
 	 */
 	private $assumeUserId;
 	/**
+     * @var NotificationSetting
+	 */
+	private $autoRunStampSheetNotification;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -102,6 +106,19 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getAutoRunStampSheetNotification(): ?NotificationSetting {
+		return $this->autoRunStampSheetNotification;
+	}
+
+	public function setAutoRunStampSheetNotification(?NotificationSetting $autoRunStampSheetNotification) {
+		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
+	}
+
+	public function withAutoRunStampSheetNotification(?NotificationSetting $autoRunStampSheetNotification): Namespace_ {
+		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
+		return $this;
+	}
+
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -150,6 +167,7 @@ class Namespace_ implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAssumeUserId(array_key_exists('assumeUserId', $data) && $data['assumeUserId'] !== null ? $data['assumeUserId'] : null)
+            ->withAutoRunStampSheetNotification(array_key_exists('autoRunStampSheetNotification', $data) && $data['autoRunStampSheetNotification'] !== null ? NotificationSetting::fromJson($data['autoRunStampSheetNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
@@ -161,6 +179,7 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "assumeUserId" => $this->getAssumeUserId(),
+            "autoRunStampSheetNotification" => $this->getAutoRunStampSheetNotification() !== null ? $this->getAutoRunStampSheetNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

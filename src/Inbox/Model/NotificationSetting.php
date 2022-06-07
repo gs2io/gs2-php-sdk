@@ -79,7 +79,7 @@ class NotificationSetting implements IModel {
         }
         return (new NotificationSetting())
             ->withGatewayNamespaceId(array_key_exists('gatewayNamespaceId', $data) && $data['gatewayNamespaceId'] !== null ? $data['gatewayNamespaceId'] : null)
-            ->withEnableTransferMobileNotification($data['enableTransferMobileNotification'])
+            ->withEnableTransferMobileNotification(array_key_exists('enableTransferMobileNotification', $data) ? $data['enableTransferMobileNotification'] : null)
             ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null);
     }
 

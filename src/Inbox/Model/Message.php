@@ -184,7 +184,7 @@ class Message implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withIsRead($data['isRead'])
+            ->withIsRead(array_key_exists('isRead', $data) ? $data['isRead'] : null)
             ->withReadAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);

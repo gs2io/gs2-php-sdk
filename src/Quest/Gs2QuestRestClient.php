@@ -213,6 +213,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
+        }
         if ($this->request->getStartQuestScript() !== null) {
             $json["startQuestScript"] = $this->request->getStartQuestScript()->toJson();
         }
@@ -222,14 +225,14 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getFailedQuestScript() !== null) {
             $json["failedQuestScript"] = $this->request->getFailedQuestScript()->toJson();
         }
+        if ($this->request->getLogSetting() !== null) {
+            $json["logSetting"] = $this->request->getLogSetting()->toJson();
+        }
         if ($this->request->getQueueNamespaceId() !== null) {
             $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
-        }
-        if ($this->request->getLogSetting() !== null) {
-            $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -403,6 +406,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
+        }
         if ($this->request->getStartQuestScript() !== null) {
             $json["startQuestScript"] = $this->request->getStartQuestScript()->toJson();
         }
@@ -412,14 +418,14 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getFailedQuestScript() !== null) {
             $json["failedQuestScript"] = $this->request->getFailedQuestScript()->toJson();
         }
+        if ($this->request->getLogSetting() !== null) {
+            $json["logSetting"] = $this->request->getLogSetting()->toJson();
+        }
         if ($this->request->getQueueNamespaceId() !== null) {
             $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
-        }
-        if ($this->request->getLogSetting() !== null) {
-            $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

@@ -127,7 +127,7 @@ class EndRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
             ))
-            ->withIsComplete($data['isComplete'])
+            ->withIsComplete(array_key_exists('isComplete', $data) ? $data['isComplete'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

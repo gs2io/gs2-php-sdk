@@ -25,9 +25,13 @@ class DrawByStampSheetResult implements IResult {
     /** @var array */
     private $items;
     /** @var string */
+    private $transactionId;
+    /** @var string */
     private $stampSheet;
     /** @var string */
     private $stampSheetEncryptionKeyId;
+    /** @var bool */
+    private $autoRunStampSheet;
 
 	public function getItems(): ?array {
 		return $this->items;
@@ -39,6 +43,19 @@ class DrawByStampSheetResult implements IResult {
 
 	public function withItems(?array $items): DrawByStampSheetResult {
 		$this->items = $items;
+		return $this;
+	}
+
+	public function getTransactionId(): ?string {
+		return $this->transactionId;
+	}
+
+	public function setTransactionId(?string $transactionId) {
+		$this->transactionId = $transactionId;
+	}
+
+	public function withTransactionId(?string $transactionId): DrawByStampSheetResult {
+		$this->transactionId = $transactionId;
 		return $this;
 	}
 
@@ -68,6 +85,19 @@ class DrawByStampSheetResult implements IResult {
 		return $this;
 	}
 
+	public function getAutoRunStampSheet(): ?bool {
+		return $this->autoRunStampSheet;
+	}
+
+	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
+		$this->autoRunStampSheet = $autoRunStampSheet;
+	}
+
+	public function withAutoRunStampSheet(?bool $autoRunStampSheet): DrawByStampSheetResult {
+		$this->autoRunStampSheet = $autoRunStampSheet;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?DrawByStampSheetResult {
         if ($data === null) {
             return null;
@@ -79,8 +109,10 @@ class DrawByStampSheetResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
-            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null);
+            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
+            ->withAutoRunStampSheet(array_key_exists('autoRunStampSheet', $data) ? $data['autoRunStampSheet'] : null);
     }
 
     public function toJson(): array {
@@ -91,8 +123,10 @@ class DrawByStampSheetResult implements IResult {
                 },
                 $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
             ),
+            "transactionId" => $this->getTransactionId(),
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+            "autoRunStampSheet" => $this->getAutoRunStampSheet(),
         );
     }
 }

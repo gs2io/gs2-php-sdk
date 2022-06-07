@@ -18,6 +18,7 @@
 namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Lottery\Model\TransactionSetting;
 use Gs2\Lottery\Model\LogSetting;
 
 class UpdateNamespaceRequest extends Gs2BasicRequest {
@@ -25,16 +26,18 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
-    /** @var string */
-    private $queueNamespaceId;
-    /** @var string */
-    private $keyId;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var string */
     private $lotteryTriggerScriptId;
     /** @var string */
     private $choicePrizeTableScriptId;
     /** @var LogSetting */
     private $logSetting;
+    /** @var string */
+    private $queueNamespaceId;
+    /** @var string */
+    private $keyId;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -62,29 +65,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
-	public function getQueueNamespaceId(): ?string {
-		return $this->queueNamespaceId;
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
 	}
 
-	public function setQueueNamespaceId(?string $queueNamespaceId) {
-		$this->queueNamespaceId = $queueNamespaceId;
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
 	}
 
-	public function withQueueNamespaceId(?string $queueNamespaceId): UpdateNamespaceRequest {
-		$this->queueNamespaceId = $queueNamespaceId;
-		return $this;
-	}
-
-	public function getKeyId(): ?string {
-		return $this->keyId;
-	}
-
-	public function setKeyId(?string $keyId) {
-		$this->keyId = $keyId;
-	}
-
-	public function withKeyId(?string $keyId): UpdateNamespaceRequest {
-		$this->keyId = $keyId;
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 
@@ -127,6 +117,32 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getQueueNamespaceId(): ?string {
+		return $this->queueNamespaceId;
+	}
+
+	public function setQueueNamespaceId(?string $queueNamespaceId) {
+		$this->queueNamespaceId = $queueNamespaceId;
+	}
+
+	public function withQueueNamespaceId(?string $queueNamespaceId): UpdateNamespaceRequest {
+		$this->queueNamespaceId = $queueNamespaceId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): UpdateNamespaceRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?UpdateNamespaceRequest {
         if ($data === null) {
             return null;
@@ -134,22 +150,24 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withLotteryTriggerScriptId(array_key_exists('lotteryTriggerScriptId', $data) && $data['lotteryTriggerScriptId'] !== null ? $data['lotteryTriggerScriptId'] : null)
             ->withChoicePrizeTableScriptId(array_key_exists('choicePrizeTableScriptId', $data) && $data['choicePrizeTableScriptId'] !== null ? $data['choicePrizeTableScriptId'] : null)
-            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
-            "queueNamespaceId" => $this->getQueueNamespaceId(),
-            "keyId" => $this->getKeyId(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "lotteryTriggerScriptId" => $this->getLotteryTriggerScriptId(),
             "choicePrizeTableScriptId" => $this->getChoicePrizeTableScriptId(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+            "queueNamespaceId" => $this->getQueueNamespaceId(),
+            "keyId" => $this->getKeyId(),
         );
     }
 }

@@ -219,6 +219,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
+        }
         if ($this->request->getUpdateMoldScript() !== null) {
             $json["updateMoldScript"] = $this->request->getUpdateMoldScript()->toJson();
         }
@@ -399,6 +402,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getUpdateMoldScript() !== null) {
             $json["updateMoldScript"] = $this->request->getUpdateMoldScript()->toJson();
@@ -2654,12 +2660,6 @@ class AcquireActionsToFormPropertiesTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getAcquireAction() !== null) {
             $json["acquireAction"] = $this->request->getAcquireAction()->toJson();
-        }
-        if ($this->request->getQueueNamespaceId() !== null) {
-            $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
-        }
-        if ($this->request->getKeyId() !== null) {
-            $json["keyId"] = $this->request->getKeyId();
         }
         if ($this->request->getConfig() !== null) {
             $array = [];

@@ -18,6 +18,7 @@
 namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Mission\Model\TransactionSetting;
 use Gs2\Mission\Model\ScriptSetting;
 use Gs2\Mission\Model\NotificationSetting;
 use Gs2\Mission\Model\LogSetting;
@@ -27,20 +28,22 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var ScriptSetting */
     private $missionCompleteScript;
     /** @var ScriptSetting */
     private $counterIncrementScript;
     /** @var ScriptSetting */
     private $receiveRewardsScript;
-    /** @var string */
-    private $queueNamespaceId;
-    /** @var string */
-    private $keyId;
     /** @var NotificationSetting */
     private $completeNotification;
     /** @var LogSetting */
     private $logSetting;
+    /** @var string */
+    private $queueNamespaceId;
+    /** @var string */
+    private $keyId;
 
 	public function getName(): ?string {
 		return $this->name;
@@ -65,6 +68,19 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 
@@ -107,32 +123,6 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
-	public function getQueueNamespaceId(): ?string {
-		return $this->queueNamespaceId;
-	}
-
-	public function setQueueNamespaceId(?string $queueNamespaceId) {
-		$this->queueNamespaceId = $queueNamespaceId;
-	}
-
-	public function withQueueNamespaceId(?string $queueNamespaceId): CreateNamespaceRequest {
-		$this->queueNamespaceId = $queueNamespaceId;
-		return $this;
-	}
-
-	public function getKeyId(): ?string {
-		return $this->keyId;
-	}
-
-	public function setKeyId(?string $keyId) {
-		$this->keyId = $keyId;
-	}
-
-	public function withKeyId(?string $keyId): CreateNamespaceRequest {
-		$this->keyId = $keyId;
-		return $this;
-	}
-
 	public function getCompleteNotification(): ?NotificationSetting {
 		return $this->completeNotification;
 	}
@@ -159,6 +149,32 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getQueueNamespaceId(): ?string {
+		return $this->queueNamespaceId;
+	}
+
+	public function setQueueNamespaceId(?string $queueNamespaceId) {
+		$this->queueNamespaceId = $queueNamespaceId;
+	}
+
+	public function withQueueNamespaceId(?string $queueNamespaceId): CreateNamespaceRequest {
+		$this->queueNamespaceId = $queueNamespaceId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): CreateNamespaceRequest {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?CreateNamespaceRequest {
         if ($data === null) {
             return null;
@@ -166,26 +182,28 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withMissionCompleteScript(array_key_exists('missionCompleteScript', $data) && $data['missionCompleteScript'] !== null ? ScriptSetting::fromJson($data['missionCompleteScript']) : null)
             ->withCounterIncrementScript(array_key_exists('counterIncrementScript', $data) && $data['counterIncrementScript'] !== null ? ScriptSetting::fromJson($data['counterIncrementScript']) : null)
             ->withReceiveRewardsScript(array_key_exists('receiveRewardsScript', $data) && $data['receiveRewardsScript'] !== null ? ScriptSetting::fromJson($data['receiveRewardsScript']) : null)
-            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withCompleteNotification(array_key_exists('completeNotification', $data) && $data['completeNotification'] !== null ? NotificationSetting::fromJson($data['completeNotification']) : null)
-            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {
         return array(
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "missionCompleteScript" => $this->getMissionCompleteScript() !== null ? $this->getMissionCompleteScript()->toJson() : null,
             "counterIncrementScript" => $this->getCounterIncrementScript() !== null ? $this->getCounterIncrementScript()->toJson() : null,
             "receiveRewardsScript" => $this->getReceiveRewardsScript() !== null ? $this->getReceiveRewardsScript()->toJson() : null,
-            "queueNamespaceId" => $this->getQueueNamespaceId(),
-            "keyId" => $this->getKeyId(),
             "completeNotification" => $this->getCompleteNotification() !== null ? $this->getCompleteNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+            "queueNamespaceId" => $this->getQueueNamespaceId(),
+            "keyId" => $this->getKeyId(),
         );
     }
 }

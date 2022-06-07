@@ -205,17 +205,20 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getEnableDirectExchange() !== null) {
             $json["enableDirectExchange"] = $this->request->getEnableDirectExchange();
         }
-        if ($this->request->getQueueNamespaceId() !== null) {
-            $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
-        }
-        if ($this->request->getKeyId() !== null) {
-            $json["keyId"] = $this->request->getKeyId();
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getExchangeScript() !== null) {
             $json["exchangeScript"] = $this->request->getExchangeScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
+        }
+        if ($this->request->getQueueNamespaceId() !== null) {
+            $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -395,17 +398,20 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getEnableDirectExchange() !== null) {
             $json["enableDirectExchange"] = $this->request->getEnableDirectExchange();
         }
-        if ($this->request->getQueueNamespaceId() !== null) {
-            $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
-        }
-        if ($this->request->getKeyId() !== null) {
-            $json["keyId"] = $this->request->getKeyId();
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getExchangeScript() !== null) {
             $json["exchangeScript"] = $this->request->getExchangeScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
+        }
+        if ($this->request->getQueueNamespaceId() !== null) {
+            $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

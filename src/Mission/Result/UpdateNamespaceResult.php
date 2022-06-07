@@ -18,6 +18,7 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\TransactionSetting;
 use Gs2\Mission\Model\ScriptSetting;
 use Gs2\Mission\Model\NotificationSetting;
 use Gs2\Mission\Model\LogSetting;

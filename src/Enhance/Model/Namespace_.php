@@ -38,13 +38,9 @@ class Namespace_ implements IModel {
 	 */
 	private $enableDirectEnhance;
 	/**
-     * @var string
+     * @var TransactionSetting
 	 */
-	private $queueNamespaceId;
-	/**
-     * @var string
-	 */
-	private $keyId;
+	private $transactionSetting;
 	/**
      * @var ScriptSetting
 	 */
@@ -61,6 +57,14 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var string
+	 */
+	private $queueNamespaceId;
+	/**
+     * @var string
+	 */
+	private $keyId;
 
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
@@ -114,29 +118,16 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
-	public function getQueueNamespaceId(): ?string {
-		return $this->queueNamespaceId;
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
 	}
 
-	public function setQueueNamespaceId(?string $queueNamespaceId) {
-		$this->queueNamespaceId = $queueNamespaceId;
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
 	}
 
-	public function withQueueNamespaceId(?string $queueNamespaceId): Namespace_ {
-		$this->queueNamespaceId = $queueNamespaceId;
-		return $this;
-	}
-
-	public function getKeyId(): ?string {
-		return $this->keyId;
-	}
-
-	public function setKeyId(?string $keyId) {
-		$this->keyId = $keyId;
-	}
-
-	public function withKeyId(?string $keyId): Namespace_ {
-		$this->keyId = $keyId;
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 
@@ -192,6 +183,32 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getQueueNamespaceId(): ?string {
+		return $this->queueNamespaceId;
+	}
+
+	public function setQueueNamespaceId(?string $queueNamespaceId) {
+		$this->queueNamespaceId = $queueNamespaceId;
+	}
+
+	public function withQueueNamespaceId(?string $queueNamespaceId): Namespace_ {
+		$this->queueNamespaceId = $queueNamespaceId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): Namespace_ {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?Namespace_ {
         if ($data === null) {
             return null;
@@ -200,13 +217,14 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withEnableDirectEnhance($data['enableDirectEnhance'])
-            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withEnableDirectEnhance(array_key_exists('enableDirectEnhance', $data) ? $data['enableDirectEnhance'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withEnhanceScript(array_key_exists('enhanceScript', $data) && $data['enhanceScript'] !== null ? ScriptSetting::fromJson($data['enhanceScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {
@@ -215,12 +233,13 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "enableDirectEnhance" => $this->getEnableDirectEnhance(),
-            "queueNamespaceId" => $this->getQueueNamespaceId(),
-            "keyId" => $this->getKeyId(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "enhanceScript" => $this->getEnhanceScript() !== null ? $this->getEnhanceScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "queueNamespaceId" => $this->getQueueNamespaceId(),
+            "keyId" => $this->getKeyId(),
         );
     }
 }

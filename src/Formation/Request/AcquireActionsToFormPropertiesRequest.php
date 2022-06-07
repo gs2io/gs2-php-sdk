@@ -33,10 +33,6 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
     private $index;
     /** @var AcquireAction */
     private $acquireAction;
-    /** @var string */
-    private $queueNamespaceId;
-    /** @var string */
-    private $keyId;
     /** @var array */
     private $config;
     /** @var string */
@@ -107,32 +103,6 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
-	public function getQueueNamespaceId(): ?string {
-		return $this->queueNamespaceId;
-	}
-
-	public function setQueueNamespaceId(?string $queueNamespaceId) {
-		$this->queueNamespaceId = $queueNamespaceId;
-	}
-
-	public function withQueueNamespaceId(?string $queueNamespaceId): AcquireActionsToFormPropertiesRequest {
-		$this->queueNamespaceId = $queueNamespaceId;
-		return $this;
-	}
-
-	public function getKeyId(): ?string {
-		return $this->keyId;
-	}
-
-	public function setKeyId(?string $keyId) {
-		$this->keyId = $keyId;
-	}
-
-	public function withKeyId(?string $keyId): AcquireActionsToFormPropertiesRequest {
-		$this->keyId = $keyId;
-		return $this;
-	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
@@ -169,8 +139,6 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
             ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
             ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
             ->withAcquireAction(array_key_exists('acquireAction', $data) && $data['acquireAction'] !== null ? AcquireAction::fromJson($data['acquireAction']) : null)
-            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return AcquireActionConfig::fromJson($item);
@@ -186,8 +154,6 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
             "moldName" => $this->getMoldName(),
             "index" => $this->getIndex(),
             "acquireAction" => $this->getAcquireAction() !== null ? $this->getAcquireAction()->toJson() : null,
-            "queueNamespaceId" => $this->getQueueNamespaceId(),
-            "keyId" => $this->getKeyId(),
             "config" => array_map(
                 function ($item) {
                     return $item->toJson();

@@ -18,6 +18,7 @@
 namespace Gs2\Inbox\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inbox\Model\TransactionSetting;
 use Gs2\Inbox\Model\ScriptSetting;
 use Gs2\Inbox\Model\NotificationSetting;
 use Gs2\Inbox\Model\LogSetting;

@@ -24,9 +24,13 @@ class EndByUserIdResult implements IResult {
     /** @var Progress */
     private $item;
     /** @var string */
+    private $transactionId;
+    /** @var string */
     private $stampSheet;
     /** @var string */
     private $stampSheetEncryptionKeyId;
+    /** @var bool */
+    private $autoRunStampSheet;
     /** @var int */
     private $acquireExperience;
     /** @var float */
@@ -42,6 +46,19 @@ class EndByUserIdResult implements IResult {
 
 	public function withItem(?Progress $item): EndByUserIdResult {
 		$this->item = $item;
+		return $this;
+	}
+
+	public function getTransactionId(): ?string {
+		return $this->transactionId;
+	}
+
+	public function setTransactionId(?string $transactionId) {
+		$this->transactionId = $transactionId;
+	}
+
+	public function withTransactionId(?string $transactionId): EndByUserIdResult {
+		$this->transactionId = $transactionId;
 		return $this;
 	}
 
@@ -68,6 +85,19 @@ class EndByUserIdResult implements IResult {
 
 	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): EndByUserIdResult {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
+		return $this;
+	}
+
+	public function getAutoRunStampSheet(): ?bool {
+		return $this->autoRunStampSheet;
+	}
+
+	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
+		$this->autoRunStampSheet = $autoRunStampSheet;
+	}
+
+	public function withAutoRunStampSheet(?bool $autoRunStampSheet): EndByUserIdResult {
+		$this->autoRunStampSheet = $autoRunStampSheet;
 		return $this;
 	}
 
@@ -103,8 +133,10 @@ class EndByUserIdResult implements IResult {
         }
         return (new EndByUserIdResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Progress::fromJson($data['item']) : null)
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
             ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
+            ->withAutoRunStampSheet(array_key_exists('autoRunStampSheet', $data) ? $data['autoRunStampSheet'] : null)
             ->withAcquireExperience(array_key_exists('acquireExperience', $data) && $data['acquireExperience'] !== null ? $data['acquireExperience'] : null)
             ->withBonusRate(array_key_exists('bonusRate', $data) && $data['bonusRate'] !== null ? $data['bonusRate'] : null);
     }
@@ -112,8 +144,10 @@ class EndByUserIdResult implements IResult {
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "transactionId" => $this->getTransactionId(),
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
+            "autoRunStampSheet" => $this->getAutoRunStampSheet(),
             "acquireExperience" => $this->getAcquireExperience(),
             "bonusRate" => $this->getBonusRate(),
         );

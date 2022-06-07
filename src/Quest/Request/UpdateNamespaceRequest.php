@@ -18,6 +18,7 @@
 namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Quest\Model\TransactionSetting;
 use Gs2\Quest\Model\ScriptSetting;
 use Gs2\Quest\Model\LogSetting;
 
@@ -26,18 +27,20 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var ScriptSetting */
     private $startQuestScript;
     /** @var ScriptSetting */
     private $completeQuestScript;
     /** @var ScriptSetting */
     private $failedQuestScript;
+    /** @var LogSetting */
+    private $logSetting;
     /** @var string */
     private $queueNamespaceId;
     /** @var string */
     private $keyId;
-    /** @var LogSetting */
-    private $logSetting;
 
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -62,6 +65,19 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 
@@ -104,6 +120,19 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
+	public function getLogSetting(): ?LogSetting {
+		return $this->logSetting;
+	}
+
+	public function setLogSetting(?LogSetting $logSetting) {
+		$this->logSetting = $logSetting;
+	}
+
+	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
+		$this->logSetting = $logSetting;
+		return $this;
+	}
+
 	public function getQueueNamespaceId(): ?string {
 		return $this->queueNamespaceId;
 	}
@@ -130,19 +159,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
 
-	public function getLogSetting(): ?LogSetting {
-		return $this->logSetting;
-	}
-
-	public function setLogSetting(?LogSetting $logSetting) {
-		$this->logSetting = $logSetting;
-	}
-
-	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
-		$this->logSetting = $logSetting;
-		return $this;
-	}
-
     public static function fromJson(?array $data): ?UpdateNamespaceRequest {
         if ($data === null) {
             return null;
@@ -150,24 +166,26 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withStartQuestScript(array_key_exists('startQuestScript', $data) && $data['startQuestScript'] !== null ? ScriptSetting::fromJson($data['startQuestScript']) : null)
             ->withCompleteQuestScript(array_key_exists('completeQuestScript', $data) && $data['completeQuestScript'] !== null ? ScriptSetting::fromJson($data['completeQuestScript']) : null)
             ->withFailedQuestScript(array_key_exists('failedQuestScript', $data) && $data['failedQuestScript'] !== null ? ScriptSetting::fromJson($data['failedQuestScript']) : null)
+            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
-            ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "startQuestScript" => $this->getStartQuestScript() !== null ? $this->getStartQuestScript()->toJson() : null,
             "completeQuestScript" => $this->getCompleteQuestScript() !== null ? $this->getCompleteQuestScript()->toJson() : null,
             "failedQuestScript" => $this->getFailedQuestScript() !== null ? $this->getFailedQuestScript()->toJson() : null,
+            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),
-            "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }
 }

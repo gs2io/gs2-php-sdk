@@ -38,6 +38,10 @@ class Namespace_ implements IModel {
 	 */
 	private $isAutomaticDeletingEnabled;
 	/**
+     * @var TransactionSetting
+	 */
+	private $transactionSetting;
+	/**
      * @var ScriptSetting
 	 */
 	private $receiveMessageScript;
@@ -49,14 +53,6 @@ class Namespace_ implements IModel {
      * @var ScriptSetting
 	 */
 	private $deleteMessageScript;
-	/**
-     * @var string
-	 */
-	private $queueNamespaceId;
-	/**
-     * @var string
-	 */
-	private $keyId;
 	/**
      * @var NotificationSetting
 	 */
@@ -73,6 +69,14 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var string
+	 */
+	private $queueNamespaceId;
+	/**
+     * @var string
+	 */
+	private $keyId;
 
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
@@ -126,6 +130,19 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
+		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+
 	public function getReceiveMessageScript(): ?ScriptSetting {
 		return $this->receiveMessageScript;
 	}
@@ -162,32 +179,6 @@ class Namespace_ implements IModel {
 
 	public function withDeleteMessageScript(?ScriptSetting $deleteMessageScript): Namespace_ {
 		$this->deleteMessageScript = $deleteMessageScript;
-		return $this;
-	}
-
-	public function getQueueNamespaceId(): ?string {
-		return $this->queueNamespaceId;
-	}
-
-	public function setQueueNamespaceId(?string $queueNamespaceId) {
-		$this->queueNamespaceId = $queueNamespaceId;
-	}
-
-	public function withQueueNamespaceId(?string $queueNamespaceId): Namespace_ {
-		$this->queueNamespaceId = $queueNamespaceId;
-		return $this;
-	}
-
-	public function getKeyId(): ?string {
-		return $this->keyId;
-	}
-
-	public function setKeyId(?string $keyId) {
-		$this->keyId = $keyId;
-	}
-
-	public function withKeyId(?string $keyId): Namespace_ {
-		$this->keyId = $keyId;
 		return $this;
 	}
 
@@ -243,6 +234,32 @@ class Namespace_ implements IModel {
 		return $this;
 	}
 
+	public function getQueueNamespaceId(): ?string {
+		return $this->queueNamespaceId;
+	}
+
+	public function setQueueNamespaceId(?string $queueNamespaceId) {
+		$this->queueNamespaceId = $queueNamespaceId;
+	}
+
+	public function withQueueNamespaceId(?string $queueNamespaceId): Namespace_ {
+		$this->queueNamespaceId = $queueNamespaceId;
+		return $this;
+	}
+
+	public function getKeyId(): ?string {
+		return $this->keyId;
+	}
+
+	public function setKeyId(?string $keyId) {
+		$this->keyId = $keyId;
+	}
+
+	public function withKeyId(?string $keyId): Namespace_ {
+		$this->keyId = $keyId;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?Namespace_ {
         if ($data === null) {
             return null;
@@ -251,16 +268,17 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withIsAutomaticDeletingEnabled($data['isAutomaticDeletingEnabled'])
+            ->withIsAutomaticDeletingEnabled(array_key_exists('isAutomaticDeletingEnabled', $data) ? $data['isAutomaticDeletingEnabled'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withReceiveMessageScript(array_key_exists('receiveMessageScript', $data) && $data['receiveMessageScript'] !== null ? ScriptSetting::fromJson($data['receiveMessageScript']) : null)
             ->withReadMessageScript(array_key_exists('readMessageScript', $data) && $data['readMessageScript'] !== null ? ScriptSetting::fromJson($data['readMessageScript']) : null)
             ->withDeleteMessageScript(array_key_exists('deleteMessageScript', $data) && $data['deleteMessageScript'] !== null ? ScriptSetting::fromJson($data['deleteMessageScript']) : null)
-            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withReceiveNotification(array_key_exists('receiveNotification', $data) && $data['receiveNotification'] !== null ? NotificationSetting::fromJson($data['receiveNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
 
     public function toJson(): array {
@@ -269,15 +287,16 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "isAutomaticDeletingEnabled" => $this->getIsAutomaticDeletingEnabled(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "receiveMessageScript" => $this->getReceiveMessageScript() !== null ? $this->getReceiveMessageScript()->toJson() : null,
             "readMessageScript" => $this->getReadMessageScript() !== null ? $this->getReadMessageScript()->toJson() : null,
             "deleteMessageScript" => $this->getDeleteMessageScript() !== null ? $this->getDeleteMessageScript()->toJson() : null,
-            "queueNamespaceId" => $this->getQueueNamespaceId(),
-            "keyId" => $this->getKeyId(),
             "receiveNotification" => $this->getReceiveNotification() !== null ? $this->getReceiveNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "queueNamespaceId" => $this->getQueueNamespaceId(),
+            "keyId" => $this->getKeyId(),
         );
     }
 }

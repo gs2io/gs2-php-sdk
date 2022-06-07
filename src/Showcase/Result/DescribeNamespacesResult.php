@@ -18,6 +18,7 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\TransactionSetting;
 use Gs2\Showcase\Model\LogSetting;
 use Gs2\Showcase\Model\Namespace_;
 

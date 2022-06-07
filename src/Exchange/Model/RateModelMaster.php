@@ -243,7 +243,7 @@ class RateModelMaster implements IModel {
             ))
             ->withTimingType(array_key_exists('timingType', $data) && $data['timingType'] !== null ? $data['timingType'] : null)
             ->withLockTime(array_key_exists('lockTime', $data) && $data['lockTime'] !== null ? $data['lockTime'] : null)
-            ->withEnableSkip($data['enableSkip'])
+            ->withEnableSkip(array_key_exists('enableSkip', $data) ? $data['enableSkip'] : null)
             ->withSkipConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);

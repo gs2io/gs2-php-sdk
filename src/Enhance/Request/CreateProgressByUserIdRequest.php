@@ -142,7 +142,7 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
             ))
-            ->withForce($data['force']);
+            ->withForce(array_key_exists('force', $data) ? $data['force'] : null);
     }
 
     public function toJson(): array {

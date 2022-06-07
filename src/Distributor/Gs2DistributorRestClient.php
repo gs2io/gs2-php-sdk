@@ -79,6 +79,10 @@ use Gs2\Distributor\Request\RunStampSheetWithoutNamespaceRequest;
 use Gs2\Distributor\Result\RunStampSheetWithoutNamespaceResult;
 use Gs2\Distributor\Request\RunStampSheetExpressWithoutNamespaceRequest;
 use Gs2\Distributor\Result\RunStampSheetExpressWithoutNamespaceResult;
+use Gs2\Distributor\Request\GetStampSheetResultRequest;
+use Gs2\Distributor\Result\GetStampSheetResultResult;
+use Gs2\Distributor\Request\GetStampSheetResultByUserIdRequest;
+use Gs2\Distributor\Result\GetStampSheetResultByUserIdResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -183,6 +187,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAssumeUserId() !== null) {
             $json["assumeUserId"] = $this->request->getAssumeUserId();
+        }
+        if ($this->request->getAutoRunStampSheetNotification() !== null) {
+            $json["autoRunStampSheetNotification"] = $this->request->getAutoRunStampSheetNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -361,6 +368,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAssumeUserId() !== null) {
             $json["assumeUserId"] = $this->request->getAssumeUserId();
+        }
+        if ($this->request->getAutoRunStampSheetNotification() !== null) {
+            $json["autoRunStampSheetNotification"] = $this->request->getAutoRunStampSheetNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -1594,6 +1604,126 @@ class RunStampSheetExpressWithoutNamespaceTask extends Gs2RestSessionTask {
     }
 }
 
+class GetStampSheetResultTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetStampSheetResultRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetStampSheetResultTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetStampSheetResultRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetStampSheetResultRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetStampSheetResultResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stampSheet/{transactionId}/result";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetStampSheetResultByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetStampSheetResultByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetStampSheetResultByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetStampSheetResultByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetStampSheetResultByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetStampSheetResultByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/stampSheet/{transactionId}/result";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Distributor API クライアント
  *
@@ -2282,6 +2412,60 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             RunStampSheetExpressWithoutNamespaceRequest $request
     ): RunStampSheetExpressWithoutNamespaceResult {
         return $this->runStampSheetExpressWithoutNamespaceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetStampSheetResultRequest $request
+     * @return PromiseInterface
+     */
+    public function getStampSheetResultAsync(
+            GetStampSheetResultRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetStampSheetResultTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetStampSheetResultRequest $request
+     * @return GetStampSheetResultResult
+     */
+    public function getStampSheetResult (
+            GetStampSheetResultRequest $request
+    ): GetStampSheetResultResult {
+        return $this->getStampSheetResultAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetStampSheetResultByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getStampSheetResultByUserIdAsync(
+            GetStampSheetResultByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetStampSheetResultByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetStampSheetResultByUserIdRequest $request
+     * @return GetStampSheetResultByUserIdResult
+     */
+    public function getStampSheetResultByUserId (
+            GetStampSheetResultByUserIdRequest $request
+    ): GetStampSheetResultByUserIdResult {
+        return $this->getStampSheetResultByUserIdAsync(
             $request
         )->wait();
     }

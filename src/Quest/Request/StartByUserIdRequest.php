@@ -136,7 +136,7 @@ class StartByUserIdRequest extends Gs2BasicRequest {
             ->withQuestGroupName(array_key_exists('questGroupName', $data) && $data['questGroupName'] !== null ? $data['questGroupName'] : null)
             ->withQuestName(array_key_exists('questName', $data) && $data['questName'] !== null ? $data['questName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withForce($data['force'])
+            ->withForce(array_key_exists('force', $data) ? $data['force'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);

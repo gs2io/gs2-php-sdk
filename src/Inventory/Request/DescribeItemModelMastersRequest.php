@@ -28,54 +28,42 @@ class DescribeItemModelMastersRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeItemModelMastersRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): DescribeItemModelMastersRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeItemModelMastersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeItemModelMastersRequest {
 		$this->limit = $limit;
 		return $this;

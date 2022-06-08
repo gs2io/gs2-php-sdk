@@ -24,28 +24,22 @@ class DescribeSecurityPoliciesRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeSecurityPoliciesRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeSecurityPoliciesRequest {
 		$this->limit = $limit;
 		return $this;

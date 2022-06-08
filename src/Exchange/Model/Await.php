@@ -45,80 +45,62 @@ class Await implements IModel {
      * @var int
 	 */
 	private $exchangedAt;
-
 	public function getAwaitId(): ?string {
 		return $this->awaitId;
 	}
-
 	public function setAwaitId(?string $awaitId) {
 		$this->awaitId = $awaitId;
 	}
-
 	public function withAwaitId(?string $awaitId): Await {
 		$this->awaitId = $awaitId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Await {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): Await {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Await {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): Await {
 		$this->count = $count;
 		return $this;
 	}
-
 	public function getExchangedAt(): ?int {
 		return $this->exchangedAt;
 	}
-
 	public function setExchangedAt(?int $exchangedAt) {
 		$this->exchangedAt = $exchangedAt;
 	}
-
 	public function withExchangedAt(?int $exchangedAt): Await {
 		$this->exchangedAt = $exchangedAt;
 		return $this;

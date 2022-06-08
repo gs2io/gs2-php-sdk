@@ -45,80 +45,62 @@ class JobResult implements IModel {
      * @var int
 	 */
 	private $tryAt;
-
 	public function getJobResultId(): ?string {
 		return $this->jobResultId;
 	}
-
 	public function setJobResultId(?string $jobResultId) {
 		$this->jobResultId = $jobResultId;
 	}
-
 	public function withJobResultId(?string $jobResultId): JobResult {
 		$this->jobResultId = $jobResultId;
 		return $this;
 	}
-
 	public function getJobId(): ?string {
 		return $this->jobId;
 	}
-
 	public function setJobId(?string $jobId) {
 		$this->jobId = $jobId;
 	}
-
 	public function withJobId(?string $jobId): JobResult {
 		$this->jobId = $jobId;
 		return $this;
 	}
-
 	public function getTryNumber(): ?int {
 		return $this->tryNumber;
 	}
-
 	public function setTryNumber(?int $tryNumber) {
 		$this->tryNumber = $tryNumber;
 	}
-
 	public function withTryNumber(?int $tryNumber): JobResult {
 		$this->tryNumber = $tryNumber;
 		return $this;
 	}
-
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
-
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
-
 	public function withStatusCode(?int $statusCode): JobResult {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
-
 	public function getResult(): ?string {
 		return $this->result;
 	}
-
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
-
 	public function withResult(?string $result): JobResult {
 		$this->result = $result;
 		return $this;
 	}
-
 	public function getTryAt(): ?int {
 		return $this->tryAt;
 	}
-
 	public function setTryAt(?int $tryAt) {
 		$this->tryAt = $tryAt;
 	}
-
 	public function withTryAt(?int $tryAt): JobResult {
 		$this->tryAt = $tryAt;
 		return $this;

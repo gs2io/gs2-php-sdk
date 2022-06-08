@@ -28,54 +28,42 @@ class AuthenticationRequest extends Gs2BasicRequest {
     private $keyId;
     /** @var string */
     private $password;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): AuthenticationRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AuthenticationRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): AuthenticationRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): AuthenticationRequest {
 		$this->password = $password;
 		return $this;

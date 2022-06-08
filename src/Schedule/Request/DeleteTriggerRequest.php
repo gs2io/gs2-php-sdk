@@ -26,41 +26,32 @@ class DeleteTriggerRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $triggerName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteTriggerRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DeleteTriggerRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
-
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
-
 	public function withTriggerName(?string $triggerName): DeleteTriggerRequest {
 		$this->triggerName = $triggerName;
 		return $this;

@@ -26,41 +26,32 @@ class DecryptRequest extends Gs2BasicRequest {
     private $keyName;
     /** @var string */
     private $data;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DecryptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getKeyName(): ?string {
 		return $this->keyName;
 	}
-
 	public function setKeyName(?string $keyName) {
 		$this->keyName = $keyName;
 	}
-
 	public function withKeyName(?string $keyName): DecryptRequest {
 		$this->keyName = $keyName;
 		return $this;
 	}
-
 	public function getData(): ?string {
 		return $this->data;
 	}
-
 	public function setData(?string $data) {
 		$this->data = $data;
 	}
-
 	public function withData(?string $data): DecryptRequest {
 		$this->data = $data;
 		return $this;

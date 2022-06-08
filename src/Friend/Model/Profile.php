@@ -49,93 +49,72 @@ class Profile implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getProfileId(): ?string {
 		return $this->profileId;
 	}
-
 	public function setProfileId(?string $profileId) {
 		$this->profileId = $profileId;
 	}
-
 	public function withProfileId(?string $profileId): Profile {
 		$this->profileId = $profileId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Profile {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
-
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
-
 	public function withPublicProfile(?string $publicProfile): Profile {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
-
 	public function getFollowerProfile(): ?string {
 		return $this->followerProfile;
 	}
-
 	public function setFollowerProfile(?string $followerProfile) {
 		$this->followerProfile = $followerProfile;
 	}
-
 	public function withFollowerProfile(?string $followerProfile): Profile {
 		$this->followerProfile = $followerProfile;
 		return $this;
 	}
-
 	public function getFriendProfile(): ?string {
 		return $this->friendProfile;
 	}
-
 	public function setFriendProfile(?string $friendProfile) {
 		$this->friendProfile = $friendProfile;
 	}
-
 	public function withFriendProfile(?string $friendProfile): Profile {
 		$this->friendProfile = $friendProfile;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Profile {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Profile {
 		$this->updatedAt = $updatedAt;
 		return $this;

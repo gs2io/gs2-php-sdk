@@ -33,41 +33,32 @@ class TimeSpan implements IModel {
      * @var int
 	 */
 	private $minutes;
-
 	public function getDays(): ?int {
 		return $this->days;
 	}
-
 	public function setDays(?int $days) {
 		$this->days = $days;
 	}
-
 	public function withDays(?int $days): TimeSpan {
 		$this->days = $days;
 		return $this;
 	}
-
 	public function getHours(): ?int {
 		return $this->hours;
 	}
-
 	public function setHours(?int $hours) {
 		$this->hours = $hours;
 	}
-
 	public function withHours(?int $hours): TimeSpan {
 		$this->hours = $hours;
 		return $this;
 	}
-
 	public function getMinutes(): ?int {
 		return $this->minutes;
 	}
-
 	public function setMinutes(?int $minutes) {
 		$this->minutes = $minutes;
 	}
-
 	public function withMinutes(?int $minutes): TimeSpan {
 		$this->minutes = $minutes;
 		return $this;

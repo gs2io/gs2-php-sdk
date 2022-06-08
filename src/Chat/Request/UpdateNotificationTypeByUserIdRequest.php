@@ -31,54 +31,42 @@ class UpdateNotificationTypeByUserIdRequest extends Gs2BasicRequest {
     private $notificationTypes;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateNotificationTypeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): UpdateNotificationTypeByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateNotificationTypeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
-
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
-
 	public function withNotificationTypes(?array $notificationTypes): UpdateNotificationTypeByUserIdRequest {
 		$this->notificationTypes = $notificationTypes;
 		return $this;

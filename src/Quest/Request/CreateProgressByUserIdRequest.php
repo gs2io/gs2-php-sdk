@@ -33,67 +33,52 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateProgressByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): CreateProgressByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getQuestModelId(): ?string {
 		return $this->questModelId;
 	}
-
 	public function setQuestModelId(?string $questModelId) {
 		$this->questModelId = $questModelId;
 	}
-
 	public function withQuestModelId(?string $questModelId): CreateProgressByUserIdRequest {
 		$this->questModelId = $questModelId;
 		return $this;
 	}
-
 	public function getForce(): ?bool {
 		return $this->force;
 	}
-
 	public function setForce(?bool $force) {
 		$this->force = $force;
 	}
-
 	public function withForce(?bool $force): CreateProgressByUserIdRequest {
 		$this->force = $force;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): CreateProgressByUserIdRequest {
 		$this->config = $config;
 		return $this;

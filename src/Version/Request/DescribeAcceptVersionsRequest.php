@@ -28,54 +28,42 @@ class DescribeAcceptVersionsRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeAcceptVersionsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DescribeAcceptVersionsRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeAcceptVersionsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeAcceptVersionsRequest {
 		$this->limit = $limit;
 		return $this;

@@ -41,67 +41,52 @@ class QuestGroupModel implements IModel {
      * @var string
 	 */
 	private $challengePeriodEventId;
-
 	public function getQuestGroupModelId(): ?string {
 		return $this->questGroupModelId;
 	}
-
 	public function setQuestGroupModelId(?string $questGroupModelId) {
 		$this->questGroupModelId = $questGroupModelId;
 	}
-
 	public function withQuestGroupModelId(?string $questGroupModelId): QuestGroupModel {
 		$this->questGroupModelId = $questGroupModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): QuestGroupModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): QuestGroupModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getQuests(): ?array {
 		return $this->quests;
 	}
-
 	public function setQuests(?array $quests) {
 		$this->quests = $quests;
 	}
-
 	public function withQuests(?array $quests): QuestGroupModel {
 		$this->quests = $quests;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): QuestGroupModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

@@ -24,28 +24,22 @@ class DeleteSalesItemGroupMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $salesItemGroupName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteSalesItemGroupMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getSalesItemGroupName(): ?string {
 		return $this->salesItemGroupName;
 	}
-
 	public function setSalesItemGroupName(?string $salesItemGroupName) {
 		$this->salesItemGroupName = $salesItemGroupName;
 	}
-
 	public function withSalesItemGroupName(?string $salesItemGroupName): DeleteSalesItemGroupMasterRequest {
 		$this->salesItemGroupName = $salesItemGroupName;
 		return $this;

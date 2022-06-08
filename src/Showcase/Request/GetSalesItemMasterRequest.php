@@ -24,28 +24,22 @@ class GetSalesItemMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $salesItemName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetSalesItemMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getSalesItemName(): ?string {
 		return $this->salesItemName;
 	}
-
 	public function setSalesItemName(?string $salesItemName) {
 		$this->salesItemName = $salesItemName;
 	}
-
 	public function withSalesItemName(?string $salesItemName): GetSalesItemMasterRequest {
 		$this->salesItemName = $salesItemName;
 		return $this;

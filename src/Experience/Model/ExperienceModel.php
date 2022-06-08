@@ -49,93 +49,72 @@ class ExperienceModel implements IModel {
      * @var Threshold
 	 */
 	private $rankThreshold;
-
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
-
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
-
 	public function withExperienceModelId(?string $experienceModelId): ExperienceModel {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): ExperienceModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): ExperienceModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDefaultExperience(): ?int {
 		return $this->defaultExperience;
 	}
-
 	public function setDefaultExperience(?int $defaultExperience) {
 		$this->defaultExperience = $defaultExperience;
 	}
-
 	public function withDefaultExperience(?int $defaultExperience): ExperienceModel {
 		$this->defaultExperience = $defaultExperience;
 		return $this;
 	}
-
 	public function getDefaultRankCap(): ?int {
 		return $this->defaultRankCap;
 	}
-
 	public function setDefaultRankCap(?int $defaultRankCap) {
 		$this->defaultRankCap = $defaultRankCap;
 	}
-
 	public function withDefaultRankCap(?int $defaultRankCap): ExperienceModel {
 		$this->defaultRankCap = $defaultRankCap;
 		return $this;
 	}
-
 	public function getMaxRankCap(): ?int {
 		return $this->maxRankCap;
 	}
-
 	public function setMaxRankCap(?int $maxRankCap) {
 		$this->maxRankCap = $maxRankCap;
 	}
-
 	public function withMaxRankCap(?int $maxRankCap): ExperienceModel {
 		$this->maxRankCap = $maxRankCap;
 		return $this;
 	}
-
 	public function getRankThreshold(): ?Threshold {
 		return $this->rankThreshold;
 	}
-
 	public function setRankThreshold(?Threshold $rankThreshold) {
 		$this->rankThreshold = $rankThreshold;
 	}
-
 	public function withRankThreshold(?Threshold $rankThreshold): ExperienceModel {
 		$this->rankThreshold = $rankThreshold;
 		return $this;

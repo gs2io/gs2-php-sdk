@@ -28,54 +28,42 @@ class GetProgressByUserIdRequest extends Gs2BasicRequest {
     private $rateName;
     /** @var string */
     private $progressName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetProgressByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetProgressByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): GetProgressByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getProgressName(): ?string {
 		return $this->progressName;
 	}
-
 	public function setProgressName(?string $progressName) {
 		$this->progressName = $progressName;
 	}
-
 	public function withProgressName(?string $progressName): GetProgressByUserIdRequest {
 		$this->progressName = $progressName;
 		return $this;

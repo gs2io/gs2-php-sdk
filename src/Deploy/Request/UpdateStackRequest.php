@@ -26,41 +26,32 @@ class UpdateStackRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $template;
-
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
-
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
-
 	public function withStackName(?string $stackName): UpdateStackRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateStackRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
-
 	public function setTemplate(?string $template) {
 		$this->template = $template;
 	}
-
 	public function withTemplate(?string $template): UpdateStackRequest {
 		$this->template = $template;
 		return $this;

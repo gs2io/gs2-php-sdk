@@ -32,67 +32,52 @@ class SetRankCapByUserIdRequest extends Gs2BasicRequest {
     private $rankCapValue;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetRankCapByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SetRankCapByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
-
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
-
 	public function withExperienceName(?string $experienceName): SetRankCapByUserIdRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): SetRankCapByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getRankCapValue(): ?int {
 		return $this->rankCapValue;
 	}
-
 	public function setRankCapValue(?int $rankCapValue) {
 		$this->rankCapValue = $rankCapValue;
 	}
-
 	public function withRankCapValue(?int $rankCapValue): SetRankCapByUserIdRequest {
 		$this->rankCapValue = $rankCapValue;
 		return $this;

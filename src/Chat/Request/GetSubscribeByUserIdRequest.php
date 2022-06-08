@@ -26,41 +26,32 @@ class GetSubscribeByUserIdRequest extends Gs2BasicRequest {
     private $roomName;
     /** @var string */
     private $userId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetSubscribeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): GetSubscribeByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetSubscribeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;

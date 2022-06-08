@@ -37,54 +37,42 @@ class Entry implements IModel {
      * @var int
 	 */
 	private $acquiredAt;
-
 	public function getEntryId(): ?string {
 		return $this->entryId;
 	}
-
 	public function setEntryId(?string $entryId) {
 		$this->entryId = $entryId;
 	}
-
 	public function withEntryId(?string $entryId): Entry {
 		$this->entryId = $entryId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Entry {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Entry {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getAcquiredAt(): ?int {
 		return $this->acquiredAt;
 	}
-
 	public function setAcquiredAt(?int $acquiredAt) {
 		$this->acquiredAt = $acquiredAt;
 	}
-
 	public function withAcquiredAt(?int $acquiredAt): Entry {
 		$this->acquiredAt = $acquiredAt;
 		return $this;

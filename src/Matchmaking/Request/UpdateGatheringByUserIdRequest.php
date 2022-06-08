@@ -31,54 +31,42 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
     private $attributeRanges;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateGatheringByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
-
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
-
 	public function withGatheringName(?string $gatheringName): UpdateGatheringByUserIdRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateGatheringByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getAttributeRanges(): ?array {
 		return $this->attributeRanges;
 	}
-
 	public function setAttributeRanges(?array $attributeRanges) {
 		$this->attributeRanges = $attributeRanges;
 	}
-
 	public function withAttributeRanges(?array $attributeRanges): UpdateGatheringByUserIdRequest {
 		$this->attributeRanges = $attributeRanges;
 		return $this;

@@ -33,41 +33,32 @@ class EntryModel implements IModel {
      * @var string
 	 */
 	private $metadata;
-
 	public function getEntryModelId(): ?string {
 		return $this->entryModelId;
 	}
-
 	public function setEntryModelId(?string $entryModelId) {
 		$this->entryModelId = $entryModelId;
 	}
-
 	public function withEntryModelId(?string $entryModelId): EntryModel {
 		$this->entryModelId = $entryModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): EntryModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): EntryModel {
 		$this->metadata = $metadata;
 		return $this;

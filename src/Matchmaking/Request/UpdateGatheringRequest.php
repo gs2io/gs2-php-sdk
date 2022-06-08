@@ -29,54 +29,42 @@ class UpdateGatheringRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var array */
     private $attributeRanges;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateGatheringRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
-
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
-
 	public function withGatheringName(?string $gatheringName): UpdateGatheringRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): UpdateGatheringRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getAttributeRanges(): ?array {
 		return $this->attributeRanges;
 	}
-
 	public function setAttributeRanges(?array $attributeRanges) {
 		$this->attributeRanges = $attributeRanges;
 	}
-
 	public function withAttributeRanges(?array $attributeRanges): UpdateGatheringRequest {
 		$this->attributeRanges = $attributeRanges;
 		return $this;

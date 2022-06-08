@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class DescribeInventoryModelsRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeInventoryModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

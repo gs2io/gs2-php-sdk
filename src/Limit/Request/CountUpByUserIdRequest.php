@@ -34,80 +34,62 @@ class CountUpByUserIdRequest extends Gs2BasicRequest {
     private $maxValue;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CountUpByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
-
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
-
 	public function withLimitName(?string $limitName): CountUpByUserIdRequest {
 		$this->limitName = $limitName;
 		return $this;
 	}
-
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
-
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
-
 	public function withCounterName(?string $counterName): CountUpByUserIdRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): CountUpByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCountUpValue(): ?int {
 		return $this->countUpValue;
 	}
-
 	public function setCountUpValue(?int $countUpValue) {
 		$this->countUpValue = $countUpValue;
 	}
-
 	public function withCountUpValue(?int $countUpValue): CountUpByUserIdRequest {
 		$this->countUpValue = $countUpValue;
 		return $this;
 	}
-
 	public function getMaxValue(): ?int {
 		return $this->maxValue;
 	}
-
 	public function setMaxValue(?int $maxValue) {
 		$this->maxValue = $maxValue;
 	}
-
 	public function withMaxValue(?int $maxValue): CountUpByUserIdRequest {
 		$this->maxValue = $maxValue;
 		return $this;

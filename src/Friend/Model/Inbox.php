@@ -41,67 +41,52 @@ class Inbox implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getInboxId(): ?string {
 		return $this->inboxId;
 	}
-
 	public function setInboxId(?string $inboxId) {
 		$this->inboxId = $inboxId;
 	}
-
 	public function withInboxId(?string $inboxId): Inbox {
 		$this->inboxId = $inboxId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Inbox {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getFromUserIds(): ?array {
 		return $this->fromUserIds;
 	}
-
 	public function setFromUserIds(?array $fromUserIds) {
 		$this->fromUserIds = $fromUserIds;
 	}
-
 	public function withFromUserIds(?array $fromUserIds): Inbox {
 		$this->fromUserIds = $fromUserIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Inbox {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Inbox {
 		$this->updatedAt = $updatedAt;
 		return $this;

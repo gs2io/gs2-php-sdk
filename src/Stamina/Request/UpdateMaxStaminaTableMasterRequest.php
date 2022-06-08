@@ -32,80 +32,62 @@ class UpdateMaxStaminaTableMasterRequest extends Gs2BasicRequest {
     private $experienceModelId;
     /** @var array */
     private $values;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateMaxStaminaTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getMaxStaminaTableName(): ?string {
 		return $this->maxStaminaTableName;
 	}
-
 	public function setMaxStaminaTableName(?string $maxStaminaTableName) {
 		$this->maxStaminaTableName = $maxStaminaTableName;
 	}
-
 	public function withMaxStaminaTableName(?string $maxStaminaTableName): UpdateMaxStaminaTableMasterRequest {
 		$this->maxStaminaTableName = $maxStaminaTableName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateMaxStaminaTableMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateMaxStaminaTableMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
-
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
-
 	public function withExperienceModelId(?string $experienceModelId): UpdateMaxStaminaTableMasterRequest {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-
 	public function getValues(): ?array {
 		return $this->values;
 	}
-
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
-
 	public function withValues(?array $values): UpdateMaxStaminaTableMasterRequest {
 		$this->values = $values;
 		return $this;

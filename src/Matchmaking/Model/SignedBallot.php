@@ -29,28 +29,22 @@ class SignedBallot implements IModel {
      * @var string
 	 */
 	private $signature;
-
 	public function getBody(): ?string {
 		return $this->body;
 	}
-
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
-
 	public function withBody(?string $body): SignedBallot {
 		$this->body = $body;
 		return $this;
 	}
-
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
-
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
-
 	public function withSignature(?string $signature): SignedBallot {
 		$this->signature = $signature;
 		return $this;

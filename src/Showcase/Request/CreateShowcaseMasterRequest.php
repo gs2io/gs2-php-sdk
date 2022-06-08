@@ -33,80 +33,62 @@ class CreateShowcaseMasterRequest extends Gs2BasicRequest {
     private $displayItems;
     /** @var string */
     private $salesPeriodEventId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateShowcaseMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateShowcaseMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateShowcaseMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateShowcaseMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDisplayItems(): ?array {
 		return $this->displayItems;
 	}
-
 	public function setDisplayItems(?array $displayItems) {
 		$this->displayItems = $displayItems;
 	}
-
 	public function withDisplayItems(?array $displayItems): CreateShowcaseMasterRequest {
 		$this->displayItems = $displayItems;
 		return $this;
 	}
-
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
-
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
-
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): CreateShowcaseMasterRequest {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;

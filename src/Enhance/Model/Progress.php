@@ -57,119 +57,92 @@ class Progress implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getProgressId(): ?string {
 		return $this->progressId;
 	}
-
 	public function setProgressId(?string $progressId) {
 		$this->progressId = $progressId;
 	}
-
 	public function withProgressId(?string $progressId): Progress {
 		$this->progressId = $progressId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Progress {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): Progress {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Progress {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): Progress {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getExperienceValue(): ?int {
 		return $this->experienceValue;
 	}
-
 	public function setExperienceValue(?int $experienceValue) {
 		$this->experienceValue = $experienceValue;
 	}
-
 	public function withExperienceValue(?int $experienceValue): Progress {
 		$this->experienceValue = $experienceValue;
 		return $this;
 	}
-
 	public function getRate(): ?float {
 		return $this->rate;
 	}
-
 	public function setRate(?float $rate) {
 		$this->rate = $rate;
 	}
-
 	public function withRate(?float $rate): Progress {
 		$this->rate = $rate;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Progress {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Progress {
 		$this->updatedAt = $updatedAt;
 		return $this;

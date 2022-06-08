@@ -24,28 +24,22 @@ class GetEventRequest extends Gs2BasicRequest {
     private $stackName;
     /** @var string */
     private $eventName;
-
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
-
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
-
 	public function withStackName(?string $stackName): GetEventRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
-
 	public function getEventName(): ?string {
 		return $this->eventName;
 	}
-
 	public function setEventName(?string $eventName) {
 		$this->eventName = $eventName;
 	}
-
 	public function withEventName(?string $eventName): GetEventRequest {
 		$this->eventName = $eventName;
 		return $this;

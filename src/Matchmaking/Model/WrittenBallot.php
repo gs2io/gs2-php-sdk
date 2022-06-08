@@ -29,28 +29,22 @@ class WrittenBallot implements IModel {
      * @var array
 	 */
 	private $gameResults;
-
 	public function getBallot(): ?Ballot {
 		return $this->ballot;
 	}
-
 	public function setBallot(?Ballot $ballot) {
 		$this->ballot = $ballot;
 	}
-
 	public function withBallot(?Ballot $ballot): WrittenBallot {
 		$this->ballot = $ballot;
 		return $this;
 	}
-
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
-
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
-
 	public function withGameResults(?array $gameResults): WrittenBallot {
 		$this->gameResults = $gameResults;
 		return $this;

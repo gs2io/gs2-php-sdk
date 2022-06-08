@@ -29,28 +29,22 @@ class OutputField implements IModel {
      * @var string
 	 */
 	private $fieldName;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): OutputField {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getFieldName(): ?string {
 		return $this->fieldName;
 	}
-
 	public function setFieldName(?string $fieldName) {
 		$this->fieldName = $fieldName;
 	}
-
 	public function withFieldName(?string $fieldName): OutputField {
 		$this->fieldName = $fieldName;
 		return $this;

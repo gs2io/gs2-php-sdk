@@ -49,93 +49,72 @@ class SalesItemGroupMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getSalesItemGroupId(): ?string {
 		return $this->salesItemGroupId;
 	}
-
 	public function setSalesItemGroupId(?string $salesItemGroupId) {
 		$this->salesItemGroupId = $salesItemGroupId;
 	}
-
 	public function withSalesItemGroupId(?string $salesItemGroupId): SalesItemGroupMaster {
 		$this->salesItemGroupId = $salesItemGroupId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): SalesItemGroupMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): SalesItemGroupMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): SalesItemGroupMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getSalesItemNames(): ?array {
 		return $this->salesItemNames;
 	}
-
 	public function setSalesItemNames(?array $salesItemNames) {
 		$this->salesItemNames = $salesItemNames;
 	}
-
 	public function withSalesItemNames(?array $salesItemNames): SalesItemGroupMaster {
 		$this->salesItemNames = $salesItemNames;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): SalesItemGroupMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): SalesItemGroupMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

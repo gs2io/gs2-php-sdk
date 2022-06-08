@@ -31,54 +31,42 @@ class SubscribeByUserIdRequest extends Gs2BasicRequest {
     private $notificationTypes;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SubscribeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): SubscribeByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SubscribeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
-
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
-
 	public function withNotificationTypes(?array $notificationTypes): SubscribeByUserIdRequest {
 		$this->notificationTypes = $notificationTypes;
 		return $this;

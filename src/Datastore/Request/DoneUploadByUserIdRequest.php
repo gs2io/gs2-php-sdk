@@ -28,41 +28,32 @@ class DoneUploadByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DoneUploadByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
-
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
-
 	public function withDataObjectName(?string $dataObjectName): DoneUploadByUserIdRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DoneUploadByUserIdRequest {
 		$this->userId = $userId;
 		return $this;

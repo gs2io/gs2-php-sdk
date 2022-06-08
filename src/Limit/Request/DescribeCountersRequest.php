@@ -30,67 +30,52 @@ class DescribeCountersRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeCountersRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DescribeCountersRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
-
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
-
 	public function withLimitName(?string $limitName): DescribeCountersRequest {
 		$this->limitName = $limitName;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeCountersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeCountersRequest {
 		$this->limit = $limit;
 		return $this;

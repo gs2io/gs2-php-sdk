@@ -45,80 +45,62 @@ class Vote implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getVoteId(): ?string {
 		return $this->voteId;
 	}
-
 	public function setVoteId(?string $voteId) {
 		$this->voteId = $voteId;
 	}
-
 	public function withVoteId(?string $voteId): Vote {
 		$this->voteId = $voteId;
 		return $this;
 	}
-
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
-
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
-
 	public function withRatingName(?string $ratingName): Vote {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
-
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
-
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
-
 	public function withGatheringName(?string $gatheringName): Vote {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
-
 	public function getWrittenBallots(): ?array {
 		return $this->writtenBallots;
 	}
-
 	public function setWrittenBallots(?array $writtenBallots) {
 		$this->writtenBallots = $writtenBallots;
 	}
-
 	public function withWrittenBallots(?array $writtenBallots): Vote {
 		$this->writtenBallots = $writtenBallots;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Vote {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Vote {
 		$this->updatedAt = $updatedAt;
 		return $this;

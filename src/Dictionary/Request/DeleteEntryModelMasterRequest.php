@@ -24,28 +24,22 @@ class DeleteEntryModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $entryName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteEntryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getEntryName(): ?string {
 		return $this->entryName;
 	}
-
 	public function setEntryName(?string $entryName) {
 		$this->entryName = $entryName;
 	}
-
 	public function withEntryName(?string $entryName): DeleteEntryModelMasterRequest {
 		$this->entryName = $entryName;
 		return $this;

@@ -32,67 +32,52 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
     private $sound;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SendMobileNotificationByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SendMobileNotificationByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getSubject(): ?string {
 		return $this->subject;
 	}
-
 	public function setSubject(?string $subject) {
 		$this->subject = $subject;
 	}
-
 	public function withSubject(?string $subject): SendMobileNotificationByUserIdRequest {
 		$this->subject = $subject;
 		return $this;
 	}
-
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
-
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
-
 	public function withPayload(?string $payload): SendMobileNotificationByUserIdRequest {
 		$this->payload = $payload;
 		return $this;
 	}
-
 	public function getSound(): ?string {
 		return $this->sound;
 	}
-
 	public function setSound(?string $sound) {
 		$this->sound = $sound;
 	}
-
 	public function withSound(?string $sound): SendMobileNotificationByUserIdRequest {
 		$this->sound = $sound;
 		return $this;

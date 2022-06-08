@@ -30,54 +30,42 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
     private $count;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateAwaitByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): CreateAwaitByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): CreateAwaitByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): CreateAwaitByUserIdRequest {
 		$this->count = $count;
 		return $this;

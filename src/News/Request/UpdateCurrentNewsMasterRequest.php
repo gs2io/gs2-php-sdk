@@ -24,28 +24,22 @@ class UpdateCurrentNewsMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $uploadToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentNewsMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
-
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
-
 	public function withUploadToken(?string $uploadToken): UpdateCurrentNewsMasterRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;

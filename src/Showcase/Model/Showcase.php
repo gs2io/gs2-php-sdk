@@ -41,67 +41,52 @@ class Showcase implements IModel {
      * @var array
 	 */
 	private $displayItems;
-
 	public function getShowcaseId(): ?string {
 		return $this->showcaseId;
 	}
-
 	public function setShowcaseId(?string $showcaseId) {
 		$this->showcaseId = $showcaseId;
 	}
-
 	public function withShowcaseId(?string $showcaseId): Showcase {
 		$this->showcaseId = $showcaseId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Showcase {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Showcase {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
-
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
-
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): Showcase {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;
 	}
-
 	public function getDisplayItems(): ?array {
 		return $this->displayItems;
 	}
-
 	public function setDisplayItems(?array $displayItems) {
 		$this->displayItems = $displayItems;
 	}
-
 	public function withDisplayItems(?array $displayItems): Showcase {
 		$this->displayItems = $displayItems;
 		return $this;

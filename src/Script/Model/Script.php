@@ -45,80 +45,62 @@ class Script implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
-
 	public function setScriptId(?string $scriptId) {
 		$this->scriptId = $scriptId;
 	}
-
 	public function withScriptId(?string $scriptId): Script {
 		$this->scriptId = $scriptId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Script {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): Script {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getScript(): ?string {
 		return $this->script;
 	}
-
 	public function setScript(?string $script) {
 		$this->script = $script;
 	}
-
 	public function withScript(?string $script): Script {
 		$this->script = $script;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Script {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Script {
 		$this->updatedAt = $updatedAt;
 		return $this;

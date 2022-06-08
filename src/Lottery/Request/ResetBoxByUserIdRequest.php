@@ -28,41 +28,32 @@ class ResetBoxByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): ResetBoxByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
-
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
-
 	public function withPrizeTableName(?string $prizeTableName): ResetBoxByUserIdRequest {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): ResetBoxByUserIdRequest {
 		$this->userId = $userId;
 		return $this;

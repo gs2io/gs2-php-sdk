@@ -24,28 +24,22 @@ class ConsumeItemSetByStampTaskRequest extends Gs2BasicRequest {
     private $stampTask;
     /** @var string */
     private $keyId;
-
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
-
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
-
 	public function withStampTask(?string $stampTask): ConsumeItemSetByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): ConsumeItemSetByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

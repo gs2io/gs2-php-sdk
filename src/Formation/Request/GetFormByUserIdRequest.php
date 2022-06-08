@@ -28,54 +28,42 @@ class GetFormByUserIdRequest extends Gs2BasicRequest {
     private $moldName;
     /** @var int */
     private $index;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetFormByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetFormByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): GetFormByUserIdRequest {
 		$this->moldName = $moldName;
 		return $this;
 	}
-
 	public function getIndex(): ?int {
 		return $this->index;
 	}
-
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
-
 	public function withIndex(?int $index): GetFormByUserIdRequest {
 		$this->index = $index;
 		return $this;

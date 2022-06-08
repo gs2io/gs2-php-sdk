@@ -57,119 +57,92 @@ class Progress implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getProgressId(): ?string {
 		return $this->progressId;
 	}
-
 	public function setProgressId(?string $progressId) {
 		$this->progressId = $progressId;
 	}
-
 	public function withProgressId(?string $progressId): Progress {
 		$this->progressId = $progressId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Progress {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): Progress {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getQuestModelId(): ?string {
 		return $this->questModelId;
 	}
-
 	public function setQuestModelId(?string $questModelId) {
 		$this->questModelId = $questModelId;
 	}
-
 	public function withQuestModelId(?string $questModelId): Progress {
 		$this->questModelId = $questModelId;
 		return $this;
 	}
-
 	public function getRandomSeed(): ?int {
 		return $this->randomSeed;
 	}
-
 	public function setRandomSeed(?int $randomSeed) {
 		$this->randomSeed = $randomSeed;
 	}
-
 	public function withRandomSeed(?int $randomSeed): Progress {
 		$this->randomSeed = $randomSeed;
 		return $this;
 	}
-
 	public function getRewards(): ?array {
 		return $this->rewards;
 	}
-
 	public function setRewards(?array $rewards) {
 		$this->rewards = $rewards;
 	}
-
 	public function withRewards(?array $rewards): Progress {
 		$this->rewards = $rewards;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Progress {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Progress {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Progress {
 		$this->updatedAt = $updatedAt;
 		return $this;

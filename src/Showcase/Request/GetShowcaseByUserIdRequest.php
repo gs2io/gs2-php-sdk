@@ -26,41 +26,32 @@ class GetShowcaseByUserIdRequest extends Gs2BasicRequest {
     private $showcaseName;
     /** @var string */
     private $userId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetShowcaseByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
-
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
-
 	public function withShowcaseName(?string $showcaseName): GetShowcaseByUserIdRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetShowcaseByUserIdRequest {
 		$this->userId = $userId;
 		return $this;

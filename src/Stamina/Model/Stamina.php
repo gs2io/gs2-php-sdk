@@ -69,158 +69,122 @@ class Stamina implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getStaminaId(): ?string {
 		return $this->staminaId;
 	}
-
 	public function setStaminaId(?string $staminaId) {
 		$this->staminaId = $staminaId;
 	}
-
 	public function withStaminaId(?string $staminaId): Stamina {
 		$this->staminaId = $staminaId;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): Stamina {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Stamina {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getValue(): ?int {
 		return $this->value;
 	}
-
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?int $value): Stamina {
 		$this->value = $value;
 		return $this;
 	}
-
 	public function getMaxValue(): ?int {
 		return $this->maxValue;
 	}
-
 	public function setMaxValue(?int $maxValue) {
 		$this->maxValue = $maxValue;
 	}
-
 	public function withMaxValue(?int $maxValue): Stamina {
 		$this->maxValue = $maxValue;
 		return $this;
 	}
-
 	public function getRecoverIntervalMinutes(): ?int {
 		return $this->recoverIntervalMinutes;
 	}
-
 	public function setRecoverIntervalMinutes(?int $recoverIntervalMinutes) {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
 	}
-
 	public function withRecoverIntervalMinutes(?int $recoverIntervalMinutes): Stamina {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
 		return $this;
 	}
-
 	public function getRecoverValue(): ?int {
 		return $this->recoverValue;
 	}
-
 	public function setRecoverValue(?int $recoverValue) {
 		$this->recoverValue = $recoverValue;
 	}
-
 	public function withRecoverValue(?int $recoverValue): Stamina {
 		$this->recoverValue = $recoverValue;
 		return $this;
 	}
-
 	public function getOverflowValue(): ?int {
 		return $this->overflowValue;
 	}
-
 	public function setOverflowValue(?int $overflowValue) {
 		$this->overflowValue = $overflowValue;
 	}
-
 	public function withOverflowValue(?int $overflowValue): Stamina {
 		$this->overflowValue = $overflowValue;
 		return $this;
 	}
-
 	public function getNextRecoverAt(): ?int {
 		return $this->nextRecoverAt;
 	}
-
 	public function setNextRecoverAt(?int $nextRecoverAt) {
 		$this->nextRecoverAt = $nextRecoverAt;
 	}
-
 	public function withNextRecoverAt(?int $nextRecoverAt): Stamina {
 		$this->nextRecoverAt = $nextRecoverAt;
 		return $this;
 	}
-
 	public function getLastRecoveredAt(): ?int {
 		return $this->lastRecoveredAt;
 	}
-
 	public function setLastRecoveredAt(?int $lastRecoveredAt) {
 		$this->lastRecoveredAt = $lastRecoveredAt;
 	}
-
 	public function withLastRecoveredAt(?int $lastRecoveredAt): Stamina {
 		$this->lastRecoveredAt = $lastRecoveredAt;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Stamina {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Stamina {
 		$this->updatedAt = $updatedAt;
 		return $this;

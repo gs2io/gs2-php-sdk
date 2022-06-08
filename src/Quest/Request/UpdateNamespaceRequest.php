@@ -41,119 +41,110 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $queueNamespaceId;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
-
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
-
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
-
 	public function getStartQuestScript(): ?ScriptSetting {
 		return $this->startQuestScript;
 	}
-
 	public function setStartQuestScript(?ScriptSetting $startQuestScript) {
 		$this->startQuestScript = $startQuestScript;
 	}
-
 	public function withStartQuestScript(?ScriptSetting $startQuestScript): UpdateNamespaceRequest {
 		$this->startQuestScript = $startQuestScript;
 		return $this;
 	}
-
 	public function getCompleteQuestScript(): ?ScriptSetting {
 		return $this->completeQuestScript;
 	}
-
 	public function setCompleteQuestScript(?ScriptSetting $completeQuestScript) {
 		$this->completeQuestScript = $completeQuestScript;
 	}
-
 	public function withCompleteQuestScript(?ScriptSetting $completeQuestScript): UpdateNamespaceRequest {
 		$this->completeQuestScript = $completeQuestScript;
 		return $this;
 	}
-
 	public function getFailedQuestScript(): ?ScriptSetting {
 		return $this->failedQuestScript;
 	}
-
 	public function setFailedQuestScript(?ScriptSetting $failedQuestScript) {
 		$this->failedQuestScript = $failedQuestScript;
 	}
-
 	public function withFailedQuestScript(?ScriptSetting $failedQuestScript): UpdateNamespaceRequest {
 		$this->failedQuestScript = $failedQuestScript;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function getQueueNamespaceId(): ?string {
 		return $this->queueNamespaceId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function setQueueNamespaceId(?string $queueNamespaceId) {
 		$this->queueNamespaceId = $queueNamespaceId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function withQueueNamespaceId(?string $queueNamespaceId): UpdateNamespaceRequest {
 		$this->queueNamespaceId = $queueNamespaceId;
 		return $this;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function withKeyId(?string $keyId): UpdateNamespaceRequest {
 		$this->keyId = $keyId;
 		return $this;

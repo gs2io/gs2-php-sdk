@@ -26,41 +26,32 @@ class GetCompleteRequest extends Gs2BasicRequest {
     private $missionGroupName;
     /** @var string */
     private $accessToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetCompleteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
-
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
-
 	public function withMissionGroupName(?string $missionGroupName): GetCompleteRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetCompleteRequest {
 		$this->accessToken = $accessToken;
 		return $this;

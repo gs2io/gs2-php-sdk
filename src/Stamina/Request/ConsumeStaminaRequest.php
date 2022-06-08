@@ -28,54 +28,42 @@ class ConsumeStaminaRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var int */
     private $consumeValue;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): ConsumeStaminaRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): ConsumeStaminaRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): ConsumeStaminaRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getConsumeValue(): ?int {
 		return $this->consumeValue;
 	}
-
 	public function setConsumeValue(?int $consumeValue) {
 		$this->consumeValue = $consumeValue;
 	}
-
 	public function withConsumeValue(?int $consumeValue): ConsumeStaminaRequest {
 		$this->consumeValue = $consumeValue;
 		return $this;

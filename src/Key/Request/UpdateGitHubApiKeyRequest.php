@@ -30,67 +30,52 @@ class UpdateGitHubApiKeyRequest extends Gs2BasicRequest {
     private $apiKey;
     /** @var string */
     private $encryptionKeyName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateGitHubApiKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getApiKeyName(): ?string {
 		return $this->apiKeyName;
 	}
-
 	public function setApiKeyName(?string $apiKeyName) {
 		$this->apiKeyName = $apiKeyName;
 	}
-
 	public function withApiKeyName(?string $apiKeyName): UpdateGitHubApiKeyRequest {
 		$this->apiKeyName = $apiKeyName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateGitHubApiKeyRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getApiKey(): ?string {
 		return $this->apiKey;
 	}
-
 	public function setApiKey(?string $apiKey) {
 		$this->apiKey = $apiKey;
 	}
-
 	public function withApiKey(?string $apiKey): UpdateGitHubApiKeyRequest {
 		$this->apiKey = $apiKey;
 		return $this;
 	}
-
 	public function getEncryptionKeyName(): ?string {
 		return $this->encryptionKeyName;
 	}
-
 	public function setEncryptionKeyName(?string $encryptionKeyName) {
 		$this->encryptionKeyName = $encryptionKeyName;
 	}
-
 	public function withEncryptionKeyName(?string $encryptionKeyName): UpdateGitHubApiKeyRequest {
 		$this->encryptionKeyName = $encryptionKeyName;
 		return $this;

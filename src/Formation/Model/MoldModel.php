@@ -45,80 +45,62 @@ class MoldModel implements IModel {
      * @var FormModel
 	 */
 	private $formModel;
-
 	public function getMoldModelId(): ?string {
 		return $this->moldModelId;
 	}
-
 	public function setMoldModelId(?string $moldModelId) {
 		$this->moldModelId = $moldModelId;
 	}
-
 	public function withMoldModelId(?string $moldModelId): MoldModel {
 		$this->moldModelId = $moldModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): MoldModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): MoldModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getInitialMaxCapacity(): ?int {
 		return $this->initialMaxCapacity;
 	}
-
 	public function setInitialMaxCapacity(?int $initialMaxCapacity) {
 		$this->initialMaxCapacity = $initialMaxCapacity;
 	}
-
 	public function withInitialMaxCapacity(?int $initialMaxCapacity): MoldModel {
 		$this->initialMaxCapacity = $initialMaxCapacity;
 		return $this;
 	}
-
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
-
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
-
 	public function withMaxCapacity(?int $maxCapacity): MoldModel {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
-
 	public function getFormModel(): ?FormModel {
 		return $this->formModel;
 	}
-
 	public function setFormModel(?FormModel $formModel) {
 		$this->formModel = $formModel;
 	}
-
 	public function withFormModel(?FormModel $formModel): MoldModel {
 		$this->formModel = $formModel;
 		return $this;

@@ -26,41 +26,32 @@ class DescribeSubscribesByCategoryNameRequest extends Gs2BasicRequest {
     private $categoryName;
     /** @var string */
     private $accessToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeSubscribesByCategoryNameRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): DescribeSubscribesByCategoryNameRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DescribeSubscribesByCategoryNameRequest {
 		$this->accessToken = $accessToken;
 		return $this;

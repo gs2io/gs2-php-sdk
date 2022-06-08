@@ -24,28 +24,22 @@ class GetRawEventRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $eventName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetRawEventRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getEventName(): ?string {
 		return $this->eventName;
 	}
-
 	public function setEventName(?string $eventName) {
 		$this->eventName = $eventName;
 	}
-
 	public function withEventName(?string $eventName): GetRawEventRequest {
 		$this->eventName = $eventName;
 		return $this;

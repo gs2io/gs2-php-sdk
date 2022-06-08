@@ -31,67 +31,52 @@ class UpdateFormModelMasterRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var array */
     private $slots;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateFormModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getFormModelName(): ?string {
 		return $this->formModelName;
 	}
-
 	public function setFormModelName(?string $formModelName) {
 		$this->formModelName = $formModelName;
 	}
-
 	public function withFormModelName(?string $formModelName): UpdateFormModelMasterRequest {
 		$this->formModelName = $formModelName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateFormModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateFormModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
-
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
-
 	public function withSlots(?array $slots): UpdateFormModelMasterRequest {
 		$this->slots = $slots;
 		return $this;

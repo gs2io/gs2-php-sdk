@@ -29,28 +29,22 @@ class BonusRate implements IModel {
      * @var int
 	 */
 	private $weight;
-
 	public function getRate(): ?float {
 		return $this->rate;
 	}
-
 	public function setRate(?float $rate) {
 		$this->rate = $rate;
 	}
-
 	public function withRate(?float $rate): BonusRate {
 		$this->rate = $rate;
 		return $this;
 	}
-
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
-
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
-
 	public function withWeight(?int $weight): BonusRate {
 		$this->weight = $weight;
 		return $this;

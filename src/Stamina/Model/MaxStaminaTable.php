@@ -41,67 +41,52 @@ class MaxStaminaTable implements IModel {
      * @var array
 	 */
 	private $values;
-
 	public function getMaxStaminaTableId(): ?string {
 		return $this->maxStaminaTableId;
 	}
-
 	public function setMaxStaminaTableId(?string $maxStaminaTableId) {
 		$this->maxStaminaTableId = $maxStaminaTableId;
 	}
-
 	public function withMaxStaminaTableId(?string $maxStaminaTableId): MaxStaminaTable {
 		$this->maxStaminaTableId = $maxStaminaTableId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): MaxStaminaTable {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): MaxStaminaTable {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
-
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
-
 	public function withExperienceModelId(?string $experienceModelId): MaxStaminaTable {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-
 	public function getValues(): ?array {
 		return $this->values;
 	}
-
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
-
 	public function withValues(?array $values): MaxStaminaTable {
 		$this->values = $values;
 		return $this;

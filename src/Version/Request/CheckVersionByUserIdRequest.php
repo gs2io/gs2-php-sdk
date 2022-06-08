@@ -30,41 +30,32 @@ class CheckVersionByUserIdRequest extends Gs2BasicRequest {
     private $targetVersions;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CheckVersionByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): CheckVersionByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetVersions(): ?array {
 		return $this->targetVersions;
 	}
-
 	public function setTargetVersions(?array $targetVersions) {
 		$this->targetVersions = $targetVersions;
 	}
-
 	public function withTargetVersions(?array $targetVersions): CheckVersionByUserIdRequest {
 		$this->targetVersions = $targetVersions;
 		return $this;

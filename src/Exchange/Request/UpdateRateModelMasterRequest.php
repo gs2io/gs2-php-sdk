@@ -42,132 +42,102 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
     private $acquireActions;
     /** @var array */
     private $consumeActions;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateRateModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): UpdateRateModelMasterRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateRateModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateRateModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getTimingType(): ?string {
 		return $this->timingType;
 	}
-
 	public function setTimingType(?string $timingType) {
 		$this->timingType = $timingType;
 	}
-
 	public function withTimingType(?string $timingType): UpdateRateModelMasterRequest {
 		$this->timingType = $timingType;
 		return $this;
 	}
-
 	public function getLockTime(): ?int {
 		return $this->lockTime;
 	}
-
 	public function setLockTime(?int $lockTime) {
 		$this->lockTime = $lockTime;
 	}
-
 	public function withLockTime(?int $lockTime): UpdateRateModelMasterRequest {
 		$this->lockTime = $lockTime;
 		return $this;
 	}
-
 	public function getEnableSkip(): ?bool {
 		return $this->enableSkip;
 	}
-
 	public function setEnableSkip(?bool $enableSkip) {
 		$this->enableSkip = $enableSkip;
 	}
-
 	public function withEnableSkip(?bool $enableSkip): UpdateRateModelMasterRequest {
 		$this->enableSkip = $enableSkip;
 		return $this;
 	}
-
 	public function getSkipConsumeActions(): ?array {
 		return $this->skipConsumeActions;
 	}
-
 	public function setSkipConsumeActions(?array $skipConsumeActions) {
 		$this->skipConsumeActions = $skipConsumeActions;
 	}
-
 	public function withSkipConsumeActions(?array $skipConsumeActions): UpdateRateModelMasterRequest {
 		$this->skipConsumeActions = $skipConsumeActions;
 		return $this;
 	}
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): UpdateRateModelMasterRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
-
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
-
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
-
 	public function withConsumeActions(?array $consumeActions): UpdateRateModelMasterRequest {
 		$this->consumeActions = $consumeActions;
 		return $this;

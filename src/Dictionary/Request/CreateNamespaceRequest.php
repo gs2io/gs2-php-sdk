@@ -32,67 +32,52 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $duplicateEntryScript;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getEntryScript(): ?ScriptSetting {
 		return $this->entryScript;
 	}
-
 	public function setEntryScript(?ScriptSetting $entryScript) {
 		$this->entryScript = $entryScript;
 	}
-
 	public function withEntryScript(?ScriptSetting $entryScript): CreateNamespaceRequest {
 		$this->entryScript = $entryScript;
 		return $this;
 	}
-
 	public function getDuplicateEntryScript(): ?ScriptSetting {
 		return $this->duplicateEntryScript;
 	}
-
 	public function setDuplicateEntryScript(?ScriptSetting $duplicateEntryScript) {
 		$this->duplicateEntryScript = $duplicateEntryScript;
 	}
-
 	public function withDuplicateEntryScript(?ScriptSetting $duplicateEntryScript): CreateNamespaceRequest {
 		$this->duplicateEntryScript = $duplicateEntryScript;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

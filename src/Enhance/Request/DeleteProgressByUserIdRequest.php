@@ -30,54 +30,42 @@ class DeleteProgressByUserIdRequest extends Gs2BasicRequest {
     private $progressName;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteProgressByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DeleteProgressByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): DeleteProgressByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getProgressName(): ?string {
 		return $this->progressName;
 	}
-
 	public function setProgressName(?string $progressName) {
 		$this->progressName = $progressName;
 	}
-
 	public function withProgressName(?string $progressName): DeleteProgressByUserIdRequest {
 		$this->progressName = $progressName;
 		return $this;

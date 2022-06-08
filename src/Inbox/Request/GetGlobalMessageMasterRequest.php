@@ -24,28 +24,22 @@ class GetGlobalMessageMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $globalMessageName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetGlobalMessageMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getGlobalMessageName(): ?string {
 		return $this->globalMessageName;
 	}
-
 	public function setGlobalMessageName(?string $globalMessageName) {
 		$this->globalMessageName = $globalMessageName;
 	}
-
 	public function withGlobalMessageName(?string $globalMessageName): GetGlobalMessageMasterRequest {
 		$this->globalMessageName = $globalMessageName;
 		return $this;

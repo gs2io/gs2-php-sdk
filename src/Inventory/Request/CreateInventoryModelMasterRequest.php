@@ -34,93 +34,72 @@ class CreateInventoryModelMasterRequest extends Gs2BasicRequest {
     private $maxCapacity;
     /** @var bool */
     private $protectReferencedItem;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateInventoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateInventoryModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateInventoryModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateInventoryModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getInitialCapacity(): ?int {
 		return $this->initialCapacity;
 	}
-
 	public function setInitialCapacity(?int $initialCapacity) {
 		$this->initialCapacity = $initialCapacity;
 	}
-
 	public function withInitialCapacity(?int $initialCapacity): CreateInventoryModelMasterRequest {
 		$this->initialCapacity = $initialCapacity;
 		return $this;
 	}
-
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
-
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
-
 	public function withMaxCapacity(?int $maxCapacity): CreateInventoryModelMasterRequest {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
-
 	public function getProtectReferencedItem(): ?bool {
 		return $this->protectReferencedItem;
 	}
-
 	public function setProtectReferencedItem(?bool $protectReferencedItem) {
 		$this->protectReferencedItem = $protectReferencedItem;
 	}
-
 	public function withProtectReferencedItem(?bool $protectReferencedItem): CreateInventoryModelMasterRequest {
 		$this->protectReferencedItem = $protectReferencedItem;
 		return $this;
@@ -137,7 +116,7 @@ class CreateInventoryModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withInitialCapacity(array_key_exists('initialCapacity', $data) && $data['initialCapacity'] !== null ? $data['initialCapacity'] : null)
             ->withMaxCapacity(array_key_exists('maxCapacity', $data) && $data['maxCapacity'] !== null ? $data['maxCapacity'] : null)
-            ->withProtectReferencedItem($data['protectReferencedItem']);
+            ->withProtectReferencedItem(array_key_exists('protectReferencedItem', $data) ? $data['protectReferencedItem'] : null);
     }
 
     public function toJson(): array {

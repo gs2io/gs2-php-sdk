@@ -29,28 +29,22 @@ class NotificationType implements IModel {
      * @var bool
 	 */
 	private $enableTransferMobilePushNotification;
-
 	public function getCategory(): ?int {
 		return $this->category;
 	}
-
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
-
 	public function withCategory(?int $category): NotificationType {
 		$this->category = $category;
 		return $this;
 	}
-
 	public function getEnableTransferMobilePushNotification(): ?bool {
 		return $this->enableTransferMobilePushNotification;
 	}
-
 	public function setEnableTransferMobilePushNotification(?bool $enableTransferMobilePushNotification) {
 		$this->enableTransferMobilePushNotification = $enableTransferMobilePushNotification;
 	}
-
 	public function withEnableTransferMobilePushNotification(?bool $enableTransferMobilePushNotification): NotificationType {
 		$this->enableTransferMobilePushNotification = $enableTransferMobilePushNotification;
 		return $this;
@@ -62,7 +56,7 @@ class NotificationType implements IModel {
         }
         return (new NotificationType())
             ->withCategory(array_key_exists('category', $data) && $data['category'] !== null ? $data['category'] : null)
-            ->withEnableTransferMobilePushNotification($data['enableTransferMobilePushNotification']);
+            ->withEnableTransferMobilePushNotification(array_key_exists('enableTransferMobilePushNotification', $data) ? $data['enableTransferMobilePushNotification'] : null);
     }
 
     public function toJson(): array {

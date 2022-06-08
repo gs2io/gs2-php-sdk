@@ -36,93 +36,72 @@ class UpdateStaminaByUserIdRequest extends Gs2BasicRequest {
     private $recoverValue;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateStaminaByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): UpdateStaminaByUserIdRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateStaminaByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getValue(): ?int {
 		return $this->value;
 	}
-
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?int $value): UpdateStaminaByUserIdRequest {
 		$this->value = $value;
 		return $this;
 	}
-
 	public function getMaxValue(): ?int {
 		return $this->maxValue;
 	}
-
 	public function setMaxValue(?int $maxValue) {
 		$this->maxValue = $maxValue;
 	}
-
 	public function withMaxValue(?int $maxValue): UpdateStaminaByUserIdRequest {
 		$this->maxValue = $maxValue;
 		return $this;
 	}
-
 	public function getRecoverIntervalMinutes(): ?int {
 		return $this->recoverIntervalMinutes;
 	}
-
 	public function setRecoverIntervalMinutes(?int $recoverIntervalMinutes) {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
 	}
-
 	public function withRecoverIntervalMinutes(?int $recoverIntervalMinutes): UpdateStaminaByUserIdRequest {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
 		return $this;
 	}
-
 	public function getRecoverValue(): ?int {
 		return $this->recoverValue;
 	}
-
 	public function setRecoverValue(?int $recoverValue) {
 		$this->recoverValue = $recoverValue;
 	}
-
 	public function withRecoverValue(?int $recoverValue): UpdateStaminaByUserIdRequest {
 		$this->recoverValue = $recoverValue;
 		return $this;

@@ -30,67 +30,52 @@ class UpdateQuestGroupModelMasterRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var string */
     private $challengePeriodEventId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateQuestGroupModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
-
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
-
 	public function withQuestGroupName(?string $questGroupName): UpdateQuestGroupModelMasterRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateQuestGroupModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateQuestGroupModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): UpdateQuestGroupModelMasterRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

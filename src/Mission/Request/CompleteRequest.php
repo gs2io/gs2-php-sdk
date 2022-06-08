@@ -31,67 +31,52 @@ class CompleteRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var array */
     private $config;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CompleteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
-
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
-
 	public function withMissionGroupName(?string $missionGroupName): CompleteRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
-
 	public function getMissionTaskName(): ?string {
 		return $this->missionTaskName;
 	}
-
 	public function setMissionTaskName(?string $missionTaskName) {
 		$this->missionTaskName = $missionTaskName;
 	}
-
 	public function withMissionTaskName(?string $missionTaskName): CompleteRequest {
 		$this->missionTaskName = $missionTaskName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): CompleteRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): CompleteRequest {
 		$this->config = $config;
 		return $this;

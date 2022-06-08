@@ -30,54 +30,42 @@ class RecordReceiptRequest extends Gs2BasicRequest {
     private $receipt;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): RecordReceiptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): RecordReceiptRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getContentsId(): ?string {
 		return $this->contentsId;
 	}
-
 	public function setContentsId(?string $contentsId) {
 		$this->contentsId = $contentsId;
 	}
-
 	public function withContentsId(?string $contentsId): RecordReceiptRequest {
 		$this->contentsId = $contentsId;
 		return $this;
 	}
-
 	public function getReceipt(): ?string {
 		return $this->receipt;
 	}
-
 	public function setReceipt(?string $receipt) {
 		$this->receipt = $receipt;
 	}
-
 	public function withReceipt(?string $receipt): RecordReceiptRequest {
 		$this->receipt = $receipt;
 		return $this;

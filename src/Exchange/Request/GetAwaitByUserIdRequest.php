@@ -28,54 +28,42 @@ class GetAwaitByUserIdRequest extends Gs2BasicRequest {
     private $rateName;
     /** @var string */
     private $awaitName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetAwaitByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetAwaitByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): GetAwaitByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getAwaitName(): ?string {
 		return $this->awaitName;
 	}
-
 	public function setAwaitName(?string $awaitName) {
 		$this->awaitName = $awaitName;
 	}
-
 	public function withAwaitName(?string $awaitName): GetAwaitByUserIdRequest {
 		$this->awaitName = $awaitName;
 		return $this;

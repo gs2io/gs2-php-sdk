@@ -37,54 +37,42 @@ class Reward implements IModel {
      * @var int
 	 */
 	private $value;
-
 	public function getAction(): ?string {
 		return $this->action;
 	}
-
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
-
 	public function withAction(?string $action): Reward {
 		$this->action = $action;
 		return $this;
 	}
-
 	public function getRequest(): ?string {
 		return $this->request;
 	}
-
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
-
 	public function withRequest(?string $request): Reward {
 		$this->request = $request;
 		return $this;
 	}
-
 	public function getItemId(): ?string {
 		return $this->itemId;
 	}
-
 	public function setItemId(?string $itemId) {
 		$this->itemId = $itemId;
 	}
-
 	public function withItemId(?string $itemId): Reward {
 		$this->itemId = $itemId;
 		return $this;
 	}
-
 	public function getValue(): ?int {
 		return $this->value;
 	}
-
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?int $value): Reward {
 		$this->value = $value;
 		return $this;

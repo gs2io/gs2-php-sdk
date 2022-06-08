@@ -30,67 +30,52 @@ class UpdateSalesItemGroupMasterRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var array */
     private $salesItemNames;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateSalesItemGroupMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getSalesItemGroupName(): ?string {
 		return $this->salesItemGroupName;
 	}
-
 	public function setSalesItemGroupName(?string $salesItemGroupName) {
 		$this->salesItemGroupName = $salesItemGroupName;
 	}
-
 	public function withSalesItemGroupName(?string $salesItemGroupName): UpdateSalesItemGroupMasterRequest {
 		$this->salesItemGroupName = $salesItemGroupName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateSalesItemGroupMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateSalesItemGroupMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getSalesItemNames(): ?array {
 		return $this->salesItemNames;
 	}
-
 	public function setSalesItemNames(?array $salesItemNames) {
 		$this->salesItemNames = $salesItemNames;
 	}
-
 	public function withSalesItemNames(?array $salesItemNames): UpdateSalesItemGroupMasterRequest {
 		$this->salesItemNames = $salesItemNames;
 		return $this;

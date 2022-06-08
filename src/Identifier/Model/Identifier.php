@@ -37,54 +37,42 @@ class Identifier implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getClientId(): ?string {
 		return $this->clientId;
 	}
-
 	public function setClientId(?string $clientId) {
 		$this->clientId = $clientId;
 	}
-
 	public function withClientId(?string $clientId): Identifier {
 		$this->clientId = $clientId;
 		return $this;
 	}
-
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
-
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-
 	public function withUserName(?string $userName): Identifier {
 		$this->userName = $userName;
 		return $this;
 	}
-
 	public function getClientSecret(): ?string {
 		return $this->clientSecret;
 	}
-
 	public function setClientSecret(?string $clientSecret) {
 		$this->clientSecret = $clientSecret;
 	}
-
 	public function withClientSecret(?string $clientSecret): Identifier {
 		$this->clientSecret = $clientSecret;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Identifier {
 		$this->createdAt = $createdAt;
 		return $this;

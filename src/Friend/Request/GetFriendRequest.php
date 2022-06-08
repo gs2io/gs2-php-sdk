@@ -28,54 +28,42 @@ class GetFriendRequest extends Gs2BasicRequest {
     private $targetUserId;
     /** @var bool */
     private $withProfile;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetFriendRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetFriendRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
-
 	public function withTargetUserId(?string $targetUserId): GetFriendRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
-
 	public function getWithProfile(): ?bool {
 		return $this->withProfile;
 	}
-
 	public function setWithProfile(?bool $withProfile) {
 		$this->withProfile = $withProfile;
 	}
-
 	public function withWithProfile(?bool $withProfile): GetFriendRequest {
 		$this->withProfile = $withProfile;
 		return $this;
@@ -89,7 +77,7 @@ class GetFriendRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null)
-            ->withWithProfile($data['withProfile']);
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null);
     }
 
     public function toJson(): array {

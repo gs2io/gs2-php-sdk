@@ -30,67 +30,52 @@ class DescribeReferenceOfByUserIdRequest extends Gs2BasicRequest {
     private $itemName;
     /** @var string */
     private $itemSetName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeReferenceOfByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): DescribeReferenceOfByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DescribeReferenceOfByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
-
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
-
 	public function withItemName(?string $itemName): DescribeReferenceOfByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
-
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
-
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
-
 	public function withItemSetName(?string $itemSetName): DescribeReferenceOfByUserIdRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;

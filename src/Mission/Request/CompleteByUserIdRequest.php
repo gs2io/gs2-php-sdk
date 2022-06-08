@@ -33,67 +33,52 @@ class CompleteByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CompleteByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
-
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
-
 	public function withMissionGroupName(?string $missionGroupName): CompleteByUserIdRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
-
 	public function getMissionTaskName(): ?string {
 		return $this->missionTaskName;
 	}
-
 	public function setMissionTaskName(?string $missionTaskName) {
 		$this->missionTaskName = $missionTaskName;
 	}
-
 	public function withMissionTaskName(?string $missionTaskName): CompleteByUserIdRequest {
 		$this->missionTaskName = $missionTaskName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): CompleteByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): CompleteByUserIdRequest {
 		$this->config = $config;
 		return $this;

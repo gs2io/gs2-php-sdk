@@ -28,54 +28,42 @@ class UpdateEntryModelMasterRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $metadata;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateEntryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getEntryName(): ?string {
 		return $this->entryName;
 	}
-
 	public function setEntryName(?string $entryName) {
 		$this->entryName = $entryName;
 	}
-
 	public function withEntryName(?string $entryName): UpdateEntryModelMasterRequest {
 		$this->entryName = $entryName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateEntryModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateEntryModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;

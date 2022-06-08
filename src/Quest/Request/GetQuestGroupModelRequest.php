@@ -24,28 +24,22 @@ class GetQuestGroupModelRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $questGroupName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetQuestGroupModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
-
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
-
 	public function withQuestGroupName(?string $questGroupName): GetQuestGroupModelRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;

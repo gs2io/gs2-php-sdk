@@ -53,106 +53,82 @@ class ShowcaseMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getShowcaseId(): ?string {
 		return $this->showcaseId;
 	}
-
 	public function setShowcaseId(?string $showcaseId) {
 		$this->showcaseId = $showcaseId;
 	}
-
 	public function withShowcaseId(?string $showcaseId): ShowcaseMaster {
 		$this->showcaseId = $showcaseId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): ShowcaseMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): ShowcaseMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): ShowcaseMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
-
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
-
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): ShowcaseMaster {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;
 	}
-
 	public function getDisplayItems(): ?array {
 		return $this->displayItems;
 	}
-
 	public function setDisplayItems(?array $displayItems) {
 		$this->displayItems = $displayItems;
 	}
-
 	public function withDisplayItems(?array $displayItems): ShowcaseMaster {
 		$this->displayItems = $displayItems;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): ShowcaseMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): ShowcaseMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

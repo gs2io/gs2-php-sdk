@@ -38,106 +38,82 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $overflowExperienceScript;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getExperienceCapScriptId(): ?string {
 		return $this->experienceCapScriptId;
 	}
-
 	public function setExperienceCapScriptId(?string $experienceCapScriptId) {
 		$this->experienceCapScriptId = $experienceCapScriptId;
 	}
-
 	public function withExperienceCapScriptId(?string $experienceCapScriptId): CreateNamespaceRequest {
 		$this->experienceCapScriptId = $experienceCapScriptId;
 		return $this;
 	}
-
 	public function getChangeExperienceScript(): ?ScriptSetting {
 		return $this->changeExperienceScript;
 	}
-
 	public function setChangeExperienceScript(?ScriptSetting $changeExperienceScript) {
 		$this->changeExperienceScript = $changeExperienceScript;
 	}
-
 	public function withChangeExperienceScript(?ScriptSetting $changeExperienceScript): CreateNamespaceRequest {
 		$this->changeExperienceScript = $changeExperienceScript;
 		return $this;
 	}
-
 	public function getChangeRankScript(): ?ScriptSetting {
 		return $this->changeRankScript;
 	}
-
 	public function setChangeRankScript(?ScriptSetting $changeRankScript) {
 		$this->changeRankScript = $changeRankScript;
 	}
-
 	public function withChangeRankScript(?ScriptSetting $changeRankScript): CreateNamespaceRequest {
 		$this->changeRankScript = $changeRankScript;
 		return $this;
 	}
-
 	public function getChangeRankCapScript(): ?ScriptSetting {
 		return $this->changeRankCapScript;
 	}
-
 	public function setChangeRankCapScript(?ScriptSetting $changeRankCapScript) {
 		$this->changeRankCapScript = $changeRankCapScript;
 	}
-
 	public function withChangeRankCapScript(?ScriptSetting $changeRankCapScript): CreateNamespaceRequest {
 		$this->changeRankCapScript = $changeRankCapScript;
 		return $this;
 	}
-
 	public function getOverflowExperienceScript(): ?ScriptSetting {
 		return $this->overflowExperienceScript;
 	}
-
 	public function setOverflowExperienceScript(?ScriptSetting $overflowExperienceScript) {
 		$this->overflowExperienceScript = $overflowExperienceScript;
 	}
-
 	public function withOverflowExperienceScript(?ScriptSetting $overflowExperienceScript): CreateNamespaceRequest {
 		$this->overflowExperienceScript = $overflowExperienceScript;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

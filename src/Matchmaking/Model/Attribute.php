@@ -29,28 +29,22 @@ class Attribute implements IModel {
      * @var int
 	 */
 	private $value;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Attribute {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getValue(): ?int {
 		return $this->value;
 	}
-
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?int $value): Attribute {
 		$this->value = $value;
 		return $this;

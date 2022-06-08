@@ -37,54 +37,42 @@ class DataOwner implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getDataOwnerId(): ?string {
 		return $this->dataOwnerId;
 	}
-
 	public function setDataOwnerId(?string $dataOwnerId) {
 		$this->dataOwnerId = $dataOwnerId;
 	}
-
 	public function withDataOwnerId(?string $dataOwnerId): DataOwner {
 		$this->dataOwnerId = $dataOwnerId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DataOwner {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): DataOwner {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): DataOwner {
 		$this->createdAt = $createdAt;
 		return $this;

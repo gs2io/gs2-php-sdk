@@ -36,106 +36,82 @@ class CreateExperienceModelMasterRequest extends Gs2BasicRequest {
     private $maxRankCap;
     /** @var string */
     private $rankThresholdName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateExperienceModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateExperienceModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateExperienceModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateExperienceModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDefaultExperience(): ?int {
 		return $this->defaultExperience;
 	}
-
 	public function setDefaultExperience(?int $defaultExperience) {
 		$this->defaultExperience = $defaultExperience;
 	}
-
 	public function withDefaultExperience(?int $defaultExperience): CreateExperienceModelMasterRequest {
 		$this->defaultExperience = $defaultExperience;
 		return $this;
 	}
-
 	public function getDefaultRankCap(): ?int {
 		return $this->defaultRankCap;
 	}
-
 	public function setDefaultRankCap(?int $defaultRankCap) {
 		$this->defaultRankCap = $defaultRankCap;
 	}
-
 	public function withDefaultRankCap(?int $defaultRankCap): CreateExperienceModelMasterRequest {
 		$this->defaultRankCap = $defaultRankCap;
 		return $this;
 	}
-
 	public function getMaxRankCap(): ?int {
 		return $this->maxRankCap;
 	}
-
 	public function setMaxRankCap(?int $maxRankCap) {
 		$this->maxRankCap = $maxRankCap;
 	}
-
 	public function withMaxRankCap(?int $maxRankCap): CreateExperienceModelMasterRequest {
 		$this->maxRankCap = $maxRankCap;
 		return $this;
 	}
-
 	public function getRankThresholdName(): ?string {
 		return $this->rankThresholdName;
 	}
-
 	public function setRankThresholdName(?string $rankThresholdName) {
 		$this->rankThresholdName = $rankThresholdName;
 	}
-
 	public function withRankThresholdName(?string $rankThresholdName): CreateExperienceModelMasterRequest {
 		$this->rankThresholdName = $rankThresholdName;
 		return $this;

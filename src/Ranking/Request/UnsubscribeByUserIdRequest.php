@@ -30,54 +30,42 @@ class UnsubscribeByUserIdRequest extends Gs2BasicRequest {
     private $targetUserId;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UnsubscribeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): UnsubscribeByUserIdRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UnsubscribeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
-
 	public function withTargetUserId(?string $targetUserId): UnsubscribeByUserIdRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;

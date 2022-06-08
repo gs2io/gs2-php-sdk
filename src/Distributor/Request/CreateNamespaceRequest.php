@@ -32,67 +32,52 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $autoRunStampSheetNotification;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getAssumeUserId(): ?string {
 		return $this->assumeUserId;
 	}
-
 	public function setAssumeUserId(?string $assumeUserId) {
 		$this->assumeUserId = $assumeUserId;
 	}
-
 	public function withAssumeUserId(?string $assumeUserId): CreateNamespaceRequest {
 		$this->assumeUserId = $assumeUserId;
 		return $this;
 	}
-
 	public function getAutoRunStampSheetNotification(): ?NotificationSetting {
 		return $this->autoRunStampSheetNotification;
 	}
-
 	public function setAutoRunStampSheetNotification(?NotificationSetting $autoRunStampSheetNotification) {
 		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
 	}
-
 	public function withAutoRunStampSheetNotification(?NotificationSetting $autoRunStampSheetNotification): CreateNamespaceRequest {
 		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

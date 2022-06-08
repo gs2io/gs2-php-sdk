@@ -29,28 +29,22 @@ class WalletDetail implements IModel {
      * @var int
 	 */
 	private $count;
-
 	public function getPrice(): ?float {
 		return $this->price;
 	}
-
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
-
 	public function withPrice(?float $price): WalletDetail {
 		$this->price = $price;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): WalletDetail {
 		$this->count = $count;
 		return $this;

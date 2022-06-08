@@ -35,80 +35,62 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $updateFormScript;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
-
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
-
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
-
 	public function getUpdateMoldScript(): ?ScriptSetting {
 		return $this->updateMoldScript;
 	}
-
 	public function setUpdateMoldScript(?ScriptSetting $updateMoldScript) {
 		$this->updateMoldScript = $updateMoldScript;
 	}
-
 	public function withUpdateMoldScript(?ScriptSetting $updateMoldScript): UpdateNamespaceRequest {
 		$this->updateMoldScript = $updateMoldScript;
 		return $this;
 	}
-
 	public function getUpdateFormScript(): ?ScriptSetting {
 		return $this->updateFormScript;
 	}
-
 	public function setUpdateFormScript(?ScriptSetting $updateFormScript) {
 		$this->updateFormScript = $updateFormScript;
 	}
-
 	public function withUpdateFormScript(?ScriptSetting $updateFormScript): UpdateNamespaceRequest {
 		$this->updateFormScript = $updateFormScript;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

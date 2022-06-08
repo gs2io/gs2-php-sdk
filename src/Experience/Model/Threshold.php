@@ -29,28 +29,22 @@ class Threshold implements IModel {
      * @var array
 	 */
 	private $values;
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Threshold {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getValues(): ?array {
 		return $this->values;
 	}
-
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
-
 	public function withValues(?array $values): Threshold {
 		$this->values = $values;
 		return $this;

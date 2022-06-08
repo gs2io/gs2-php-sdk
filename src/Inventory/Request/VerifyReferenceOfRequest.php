@@ -34,93 +34,72 @@ class VerifyReferenceOfRequest extends Gs2BasicRequest {
     private $referenceOf;
     /** @var string */
     private $verifyType;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): VerifyReferenceOfRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): VerifyReferenceOfRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): VerifyReferenceOfRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
-
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
-
 	public function withItemName(?string $itemName): VerifyReferenceOfRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
-
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
-
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
-
 	public function withItemSetName(?string $itemSetName): VerifyReferenceOfRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;
 	}
-
 	public function getReferenceOf(): ?string {
 		return $this->referenceOf;
 	}
-
 	public function setReferenceOf(?string $referenceOf) {
 		$this->referenceOf = $referenceOf;
 	}
-
 	public function withReferenceOf(?string $referenceOf): VerifyReferenceOfRequest {
 		$this->referenceOf = $referenceOf;
 		return $this;
 	}
-
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
-
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
-
 	public function withVerifyType(?string $verifyType): VerifyReferenceOfRequest {
 		$this->verifyType = $verifyType;
 		return $this;

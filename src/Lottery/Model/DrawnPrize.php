@@ -25,15 +25,12 @@ class DrawnPrize implements IModel {
      * @var array
 	 */
 	private $acquireActions;
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): DrawnPrize {
 		$this->acquireActions = $acquireActions;
 		return $this;

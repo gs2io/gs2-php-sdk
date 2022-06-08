@@ -53,106 +53,82 @@ class MaxStaminaTableMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getMaxStaminaTableId(): ?string {
 		return $this->maxStaminaTableId;
 	}
-
 	public function setMaxStaminaTableId(?string $maxStaminaTableId) {
 		$this->maxStaminaTableId = $maxStaminaTableId;
 	}
-
 	public function withMaxStaminaTableId(?string $maxStaminaTableId): MaxStaminaTableMaster {
 		$this->maxStaminaTableId = $maxStaminaTableId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): MaxStaminaTableMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): MaxStaminaTableMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): MaxStaminaTableMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
-
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
-
 	public function withExperienceModelId(?string $experienceModelId): MaxStaminaTableMaster {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-
 	public function getValues(): ?array {
 		return $this->values;
 	}
-
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
-
 	public function withValues(?array $values): MaxStaminaTableMaster {
 		$this->values = $values;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): MaxStaminaTableMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): MaxStaminaTableMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

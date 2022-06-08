@@ -45,80 +45,62 @@ class Account implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getAccountId(): ?string {
 		return $this->accountId;
 	}
-
 	public function setAccountId(?string $accountId) {
 		$this->accountId = $accountId;
 	}
-
 	public function withAccountId(?string $accountId): Account {
 		$this->accountId = $accountId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Account {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): Account {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getTimeOffset(): ?int {
 		return $this->timeOffset;
 	}
-
 	public function setTimeOffset(?int $timeOffset) {
 		$this->timeOffset = $timeOffset;
 	}
-
 	public function withTimeOffset(?int $timeOffset): Account {
 		$this->timeOffset = $timeOffset;
 		return $this;
 	}
-
 	public function getBanned(): ?bool {
 		return $this->banned;
 	}
-
 	public function setBanned(?bool $banned) {
 		$this->banned = $banned;
 	}
-
 	public function withBanned(?bool $banned): Account {
 		$this->banned = $banned;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Account {
 		$this->createdAt = $createdAt;
 		return $this;
@@ -133,7 +115,7 @@ class Account implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null)
-            ->withBanned($data['banned'])
+            ->withBanned(array_key_exists('banned', $data) ? $data['banned'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 

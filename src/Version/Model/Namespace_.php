@@ -57,119 +57,92 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
-
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
-
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getAssumeUserId(): ?string {
 		return $this->assumeUserId;
 	}
-
 	public function setAssumeUserId(?string $assumeUserId) {
 		$this->assumeUserId = $assumeUserId;
 	}
-
 	public function withAssumeUserId(?string $assumeUserId): Namespace_ {
 		$this->assumeUserId = $assumeUserId;
 		return $this;
 	}
-
 	public function getAcceptVersionScript(): ?ScriptSetting {
 		return $this->acceptVersionScript;
 	}
-
 	public function setAcceptVersionScript(?ScriptSetting $acceptVersionScript) {
 		$this->acceptVersionScript = $acceptVersionScript;
 	}
-
 	public function withAcceptVersionScript(?ScriptSetting $acceptVersionScript): Namespace_ {
 		$this->acceptVersionScript = $acceptVersionScript;
 		return $this;
 	}
-
 	public function getCheckVersionTriggerScriptId(): ?string {
 		return $this->checkVersionTriggerScriptId;
 	}
-
 	public function setCheckVersionTriggerScriptId(?string $checkVersionTriggerScriptId) {
 		$this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
 	}
-
 	public function withCheckVersionTriggerScriptId(?string $checkVersionTriggerScriptId): Namespace_ {
 		$this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;

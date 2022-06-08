@@ -45,80 +45,62 @@ class GitHubApiKey implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getApiKeyId(): ?string {
 		return $this->apiKeyId;
 	}
-
 	public function setApiKeyId(?string $apiKeyId) {
 		$this->apiKeyId = $apiKeyId;
 	}
-
 	public function withApiKeyId(?string $apiKeyId): GitHubApiKey {
 		$this->apiKeyId = $apiKeyId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): GitHubApiKey {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): GitHubApiKey {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getEncryptionKeyName(): ?string {
 		return $this->encryptionKeyName;
 	}
-
 	public function setEncryptionKeyName(?string $encryptionKeyName) {
 		$this->encryptionKeyName = $encryptionKeyName;
 	}
-
 	public function withEncryptionKeyName(?string $encryptionKeyName): GitHubApiKey {
 		$this->encryptionKeyName = $encryptionKeyName;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): GitHubApiKey {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): GitHubApiKey {
 		$this->updatedAt = $updatedAt;
 		return $this;

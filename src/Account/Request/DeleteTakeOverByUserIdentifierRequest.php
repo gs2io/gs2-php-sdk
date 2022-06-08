@@ -28,41 +28,32 @@ class DeleteTakeOverByUserIdentifierRequest extends Gs2BasicRequest {
     private $userIdentifier;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteTakeOverByUserIdentifierRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getType(): ?int {
 		return $this->type;
 	}
-
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?int $type): DeleteTakeOverByUserIdentifierRequest {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getUserIdentifier(): ?string {
 		return $this->userIdentifier;
 	}
-
 	public function setUserIdentifier(?string $userIdentifier) {
 		$this->userIdentifier = $userIdentifier;
 	}
-
 	public function withUserIdentifier(?string $userIdentifier): DeleteTakeOverByUserIdentifierRequest {
 		$this->userIdentifier = $userIdentifier;
 		return $this;

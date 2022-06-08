@@ -33,41 +33,32 @@ class NotificationSetting implements IModel {
      * @var string
 	 */
 	private $sound;
-
 	public function getGatewayNamespaceId(): ?string {
 		return $this->gatewayNamespaceId;
 	}
-
 	public function setGatewayNamespaceId(?string $gatewayNamespaceId) {
 		$this->gatewayNamespaceId = $gatewayNamespaceId;
 	}
-
 	public function withGatewayNamespaceId(?string $gatewayNamespaceId): NotificationSetting {
 		$this->gatewayNamespaceId = $gatewayNamespaceId;
 		return $this;
 	}
-
 	public function getEnableTransferMobileNotification(): ?bool {
 		return $this->enableTransferMobileNotification;
 	}
-
 	public function setEnableTransferMobileNotification(?bool $enableTransferMobileNotification) {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 	}
-
 	public function withEnableTransferMobileNotification(?bool $enableTransferMobileNotification): NotificationSetting {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 		return $this;
 	}
-
 	public function getSound(): ?string {
 		return $this->sound;
 	}
-
 	public function setSound(?string $sound) {
 		$this->sound = $sound;
 	}
-
 	public function withSound(?string $sound): NotificationSetting {
 		$this->sound = $sound;
 		return $this;
@@ -79,7 +70,7 @@ class NotificationSetting implements IModel {
         }
         return (new NotificationSetting())
             ->withGatewayNamespaceId(array_key_exists('gatewayNamespaceId', $data) && $data['gatewayNamespaceId'] !== null ? $data['gatewayNamespaceId'] : null)
-            ->withEnableTransferMobileNotification($data['enableTransferMobileNotification'])
+            ->withEnableTransferMobileNotification(array_key_exists('enableTransferMobileNotification', $data) ? $data['enableTransferMobileNotification'] : null)
             ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null);
     }
 

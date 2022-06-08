@@ -61,132 +61,102 @@ class Status implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getStatusId(): ?string {
 		return $this->statusId;
 	}
-
 	public function setStatusId(?string $statusId) {
 		$this->statusId = $statusId;
 	}
-
 	public function withStatusId(?string $statusId): Status {
 		$this->statusId = $statusId;
 		return $this;
 	}
-
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
-
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
-
 	public function withExperienceName(?string $experienceName): Status {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Status {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): Status {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getExperienceValue(): ?int {
 		return $this->experienceValue;
 	}
-
 	public function setExperienceValue(?int $experienceValue) {
 		$this->experienceValue = $experienceValue;
 	}
-
 	public function withExperienceValue(?int $experienceValue): Status {
 		$this->experienceValue = $experienceValue;
 		return $this;
 	}
-
 	public function getRankValue(): ?int {
 		return $this->rankValue;
 	}
-
 	public function setRankValue(?int $rankValue) {
 		$this->rankValue = $rankValue;
 	}
-
 	public function withRankValue(?int $rankValue): Status {
 		$this->rankValue = $rankValue;
 		return $this;
 	}
-
 	public function getRankCapValue(): ?int {
 		return $this->rankCapValue;
 	}
-
 	public function setRankCapValue(?int $rankCapValue) {
 		$this->rankCapValue = $rankCapValue;
 	}
-
 	public function withRankCapValue(?int $rankCapValue): Status {
 		$this->rankCapValue = $rankCapValue;
 		return $this;
 	}
-
 	public function getNextRankUpExperienceValue(): ?int {
 		return $this->nextRankUpExperienceValue;
 	}
-
 	public function setNextRankUpExperienceValue(?int $nextRankUpExperienceValue) {
 		$this->nextRankUpExperienceValue = $nextRankUpExperienceValue;
 	}
-
 	public function withNextRankUpExperienceValue(?int $nextRankUpExperienceValue): Status {
 		$this->nextRankUpExperienceValue = $nextRankUpExperienceValue;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Status {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Status {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -41,67 +41,52 @@ class Friend implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getFriendId(): ?string {
 		return $this->friendId;
 	}
-
 	public function setFriendId(?string $friendId) {
 		$this->friendId = $friendId;
 	}
-
 	public function withFriendId(?string $friendId): Friend {
 		$this->friendId = $friendId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Friend {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserIds(): ?array {
 		return $this->targetUserIds;
 	}
-
 	public function setTargetUserIds(?array $targetUserIds) {
 		$this->targetUserIds = $targetUserIds;
 	}
-
 	public function withTargetUserIds(?array $targetUserIds): Friend {
 		$this->targetUserIds = $targetUserIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Friend {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Friend {
 		$this->updatedAt = $updatedAt;
 		return $this;

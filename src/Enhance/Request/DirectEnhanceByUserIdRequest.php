@@ -36,80 +36,62 @@ class DirectEnhanceByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DirectEnhanceByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): DirectEnhanceByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DirectEnhanceByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetItemSetId(): ?string {
 		return $this->targetItemSetId;
 	}
-
 	public function setTargetItemSetId(?string $targetItemSetId) {
 		$this->targetItemSetId = $targetItemSetId;
 	}
-
 	public function withTargetItemSetId(?string $targetItemSetId): DirectEnhanceByUserIdRequest {
 		$this->targetItemSetId = $targetItemSetId;
 		return $this;
 	}
-
 	public function getMaterials(): ?array {
 		return $this->materials;
 	}
-
 	public function setMaterials(?array $materials) {
 		$this->materials = $materials;
 	}
-
 	public function withMaterials(?array $materials): DirectEnhanceByUserIdRequest {
 		$this->materials = $materials;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): DirectEnhanceByUserIdRequest {
 		$this->config = $config;
 		return $this;

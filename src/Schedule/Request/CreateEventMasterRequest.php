@@ -52,210 +52,162 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
     private $relativeTriggerName;
     /** @var int */
     private $relativeDuration;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateEventMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateEventMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateEventMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateEventMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getScheduleType(): ?string {
 		return $this->scheduleType;
 	}
-
 	public function setScheduleType(?string $scheduleType) {
 		$this->scheduleType = $scheduleType;
 	}
-
 	public function withScheduleType(?string $scheduleType): CreateEventMasterRequest {
 		$this->scheduleType = $scheduleType;
 		return $this;
 	}
-
 	public function getAbsoluteBegin(): ?int {
 		return $this->absoluteBegin;
 	}
-
 	public function setAbsoluteBegin(?int $absoluteBegin) {
 		$this->absoluteBegin = $absoluteBegin;
 	}
-
 	public function withAbsoluteBegin(?int $absoluteBegin): CreateEventMasterRequest {
 		$this->absoluteBegin = $absoluteBegin;
 		return $this;
 	}
-
 	public function getAbsoluteEnd(): ?int {
 		return $this->absoluteEnd;
 	}
-
 	public function setAbsoluteEnd(?int $absoluteEnd) {
 		$this->absoluteEnd = $absoluteEnd;
 	}
-
 	public function withAbsoluteEnd(?int $absoluteEnd): CreateEventMasterRequest {
 		$this->absoluteEnd = $absoluteEnd;
 		return $this;
 	}
-
 	public function getRepeatType(): ?string {
 		return $this->repeatType;
 	}
-
 	public function setRepeatType(?string $repeatType) {
 		$this->repeatType = $repeatType;
 	}
-
 	public function withRepeatType(?string $repeatType): CreateEventMasterRequest {
 		$this->repeatType = $repeatType;
 		return $this;
 	}
-
 	public function getRepeatBeginDayOfMonth(): ?int {
 		return $this->repeatBeginDayOfMonth;
 	}
-
 	public function setRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth) {
 		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
 	}
-
 	public function withRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth): CreateEventMasterRequest {
 		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
 		return $this;
 	}
-
 	public function getRepeatEndDayOfMonth(): ?int {
 		return $this->repeatEndDayOfMonth;
 	}
-
 	public function setRepeatEndDayOfMonth(?int $repeatEndDayOfMonth) {
 		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
 	}
-
 	public function withRepeatEndDayOfMonth(?int $repeatEndDayOfMonth): CreateEventMasterRequest {
 		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
 		return $this;
 	}
-
 	public function getRepeatBeginDayOfWeek(): ?string {
 		return $this->repeatBeginDayOfWeek;
 	}
-
 	public function setRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek) {
 		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
 	}
-
 	public function withRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek): CreateEventMasterRequest {
 		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
 		return $this;
 	}
-
 	public function getRepeatEndDayOfWeek(): ?string {
 		return $this->repeatEndDayOfWeek;
 	}
-
 	public function setRepeatEndDayOfWeek(?string $repeatEndDayOfWeek) {
 		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
 	}
-
 	public function withRepeatEndDayOfWeek(?string $repeatEndDayOfWeek): CreateEventMasterRequest {
 		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
 		return $this;
 	}
-
 	public function getRepeatBeginHour(): ?int {
 		return $this->repeatBeginHour;
 	}
-
 	public function setRepeatBeginHour(?int $repeatBeginHour) {
 		$this->repeatBeginHour = $repeatBeginHour;
 	}
-
 	public function withRepeatBeginHour(?int $repeatBeginHour): CreateEventMasterRequest {
 		$this->repeatBeginHour = $repeatBeginHour;
 		return $this;
 	}
-
 	public function getRepeatEndHour(): ?int {
 		return $this->repeatEndHour;
 	}
-
 	public function setRepeatEndHour(?int $repeatEndHour) {
 		$this->repeatEndHour = $repeatEndHour;
 	}
-
 	public function withRepeatEndHour(?int $repeatEndHour): CreateEventMasterRequest {
 		$this->repeatEndHour = $repeatEndHour;
 		return $this;
 	}
-
 	public function getRelativeTriggerName(): ?string {
 		return $this->relativeTriggerName;
 	}
-
 	public function setRelativeTriggerName(?string $relativeTriggerName) {
 		$this->relativeTriggerName = $relativeTriggerName;
 	}
-
 	public function withRelativeTriggerName(?string $relativeTriggerName): CreateEventMasterRequest {
 		$this->relativeTriggerName = $relativeTriggerName;
 		return $this;
 	}
-
 	public function getRelativeDuration(): ?int {
 		return $this->relativeDuration;
 	}
-
 	public function setRelativeDuration(?int $relativeDuration) {
 		$this->relativeDuration = $relativeDuration;
 	}
-
 	public function withRelativeDuration(?int $relativeDuration): CreateEventMasterRequest {
 		$this->relativeDuration = $relativeDuration;
 		return $this;

@@ -28,41 +28,32 @@ class DeleteTriggerByUserIdRequest extends Gs2BasicRequest {
     private $triggerName;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteTriggerByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DeleteTriggerByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
-
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
-
 	public function withTriggerName(?string $triggerName): DeleteTriggerByUserIdRequest {
 		$this->triggerName = $triggerName;
 		return $this;

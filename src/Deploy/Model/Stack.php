@@ -49,93 +49,72 @@ class Stack implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getStackId(): ?string {
 		return $this->stackId;
 	}
-
 	public function setStackId(?string $stackId) {
 		$this->stackId = $stackId;
 	}
-
 	public function withStackId(?string $stackId): Stack {
 		$this->stackId = $stackId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Stack {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): Stack {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
-
 	public function setTemplate(?string $template) {
 		$this->template = $template;
 	}
-
 	public function withTemplate(?string $template): Stack {
 		$this->template = $template;
 		return $this;
 	}
-
 	public function getStatus(): ?string {
 		return $this->status;
 	}
-
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
-
 	public function withStatus(?string $status): Stack {
 		$this->status = $status;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Stack {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Stack {
 		$this->updatedAt = $updatedAt;
 		return $this;

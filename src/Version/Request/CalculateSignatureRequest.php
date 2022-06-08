@@ -27,41 +27,32 @@ class CalculateSignatureRequest extends Gs2BasicRequest {
     private $versionName;
     /** @var Version */
     private $version;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CalculateSignatureRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
-
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
-
 	public function withVersionName(?string $versionName): CalculateSignatureRequest {
 		$this->versionName = $versionName;
 		return $this;
 	}
-
 	public function getVersion(): ?Version {
 		return $this->version;
 	}
-
 	public function setVersion(?Version $version) {
 		$this->version = $version;
 	}
-
 	public function withVersion(?Version $version): CalculateSignatureRequest {
 		$this->version = $version;
 		return $this;

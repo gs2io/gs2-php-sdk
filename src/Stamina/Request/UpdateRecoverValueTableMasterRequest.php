@@ -32,80 +32,62 @@ class UpdateRecoverValueTableMasterRequest extends Gs2BasicRequest {
     private $experienceModelId;
     /** @var array */
     private $values;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateRecoverValueTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRecoverValueTableName(): ?string {
 		return $this->recoverValueTableName;
 	}
-
 	public function setRecoverValueTableName(?string $recoverValueTableName) {
 		$this->recoverValueTableName = $recoverValueTableName;
 	}
-
 	public function withRecoverValueTableName(?string $recoverValueTableName): UpdateRecoverValueTableMasterRequest {
 		$this->recoverValueTableName = $recoverValueTableName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateRecoverValueTableMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateRecoverValueTableMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
-
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
-
 	public function withExperienceModelId(?string $experienceModelId): UpdateRecoverValueTableMasterRequest {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-
 	public function getValues(): ?array {
 		return $this->values;
 	}
-
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
-
 	public function withValues(?array $values): UpdateRecoverValueTableMasterRequest {
 		$this->values = $values;
 		return $this;

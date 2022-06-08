@@ -45,80 +45,62 @@ class EntryModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getEntryModelId(): ?string {
 		return $this->entryModelId;
 	}
-
 	public function setEntryModelId(?string $entryModelId) {
 		$this->entryModelId = $entryModelId;
 	}
-
 	public function withEntryModelId(?string $entryModelId): EntryModelMaster {
 		$this->entryModelId = $entryModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): EntryModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): EntryModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): EntryModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): EntryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): EntryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

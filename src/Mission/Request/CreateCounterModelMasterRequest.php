@@ -33,80 +33,62 @@ class CreateCounterModelMasterRequest extends Gs2BasicRequest {
     private $scopes;
     /** @var string */
     private $challengePeriodEventId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateCounterModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateCounterModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateCounterModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateCounterModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
-
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
-
 	public function withScopes(?array $scopes): CreateCounterModelMasterRequest {
 		$this->scopes = $scopes;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CreateCounterModelMasterRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

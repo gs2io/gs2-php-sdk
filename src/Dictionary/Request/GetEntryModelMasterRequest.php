@@ -24,28 +24,22 @@ class GetEntryModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $entryName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetEntryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getEntryName(): ?string {
 		return $this->entryName;
 	}
-
 	public function setEntryName(?string $entryName) {
 		$this->entryName = $entryName;
 	}
-
 	public function withEntryName(?string $entryName): GetEntryModelMasterRequest {
 		$this->entryName = $entryName;
 		return $this;

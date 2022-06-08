@@ -24,28 +24,22 @@ class UpdateUserRequest extends Gs2BasicRequest {
     private $userName;
     /** @var string */
     private $description;
-
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
-
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-
 	public function withUserName(?string $userName): UpdateUserRequest {
 		$this->userName = $userName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateUserRequest {
 		$this->description = $description;
 		return $this;

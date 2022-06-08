@@ -26,41 +26,32 @@ class GetWalletRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var int */
     private $slot;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetWalletRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetWalletRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
-
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
-
 	public function withSlot(?int $slot): GetWalletRequest {
 		$this->slot = $slot;
 		return $this;

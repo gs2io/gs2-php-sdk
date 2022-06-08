@@ -53,106 +53,82 @@ class QuestModel implements IModel {
      * @var array
 	 */
 	private $premiseQuestNames;
-
 	public function getQuestModelId(): ?string {
 		return $this->questModelId;
 	}
-
 	public function setQuestModelId(?string $questModelId) {
 		$this->questModelId = $questModelId;
 	}
-
 	public function withQuestModelId(?string $questModelId): QuestModel {
 		$this->questModelId = $questModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): QuestModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): QuestModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getContents(): ?array {
 		return $this->contents;
 	}
-
 	public function setContents(?array $contents) {
 		$this->contents = $contents;
 	}
-
 	public function withContents(?array $contents): QuestModel {
 		$this->contents = $contents;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): QuestModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
-
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
-
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
-
 	public function withConsumeActions(?array $consumeActions): QuestModel {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
-
 	public function getFailedAcquireActions(): ?array {
 		return $this->failedAcquireActions;
 	}
-
 	public function setFailedAcquireActions(?array $failedAcquireActions) {
 		$this->failedAcquireActions = $failedAcquireActions;
 	}
-
 	public function withFailedAcquireActions(?array $failedAcquireActions): QuestModel {
 		$this->failedAcquireActions = $failedAcquireActions;
 		return $this;
 	}
-
 	public function getPremiseQuestNames(): ?array {
 		return $this->premiseQuestNames;
 	}
-
 	public function setPremiseQuestNames(?array $premiseQuestNames) {
 		$this->premiseQuestNames = $premiseQuestNames;
 	}
-
 	public function withPremiseQuestNames(?array $premiseQuestNames): QuestModel {
 		$this->premiseQuestNames = $premiseQuestNames;
 		return $this;

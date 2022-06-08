@@ -45,80 +45,62 @@ class AcceptVersion implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getAcceptVersionId(): ?string {
 		return $this->acceptVersionId;
 	}
-
 	public function setAcceptVersionId(?string $acceptVersionId) {
 		$this->acceptVersionId = $acceptVersionId;
 	}
-
 	public function withAcceptVersionId(?string $acceptVersionId): AcceptVersion {
 		$this->acceptVersionId = $acceptVersionId;
 		return $this;
 	}
-
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
-
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
-
 	public function withVersionName(?string $versionName): AcceptVersion {
 		$this->versionName = $versionName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AcceptVersion {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getVersion(): ?Version {
 		return $this->version;
 	}
-
 	public function setVersion(?Version $version) {
 		$this->version = $version;
 	}
-
 	public function withVersion(?Version $version): AcceptVersion {
 		$this->version = $version;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): AcceptVersion {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): AcceptVersion {
 		$this->updatedAt = $updatedAt;
 		return $this;

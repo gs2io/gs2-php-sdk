@@ -53,106 +53,82 @@ class Room implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getRoomId(): ?string {
 		return $this->roomId;
 	}
-
 	public function setRoomId(?string $roomId) {
 		$this->roomId = $roomId;
 	}
-
 	public function withRoomId(?string $roomId): Room {
 		$this->roomId = $roomId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Room {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Room {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Room {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): Room {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getWhiteListUserIds(): ?array {
 		return $this->whiteListUserIds;
 	}
-
 	public function setWhiteListUserIds(?array $whiteListUserIds) {
 		$this->whiteListUserIds = $whiteListUserIds;
 	}
-
 	public function withWhiteListUserIds(?array $whiteListUserIds): Room {
 		$this->whiteListUserIds = $whiteListUserIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Room {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Room {
 		$this->updatedAt = $updatedAt;
 		return $this;

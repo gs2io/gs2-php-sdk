@@ -26,41 +26,32 @@ class GetMoldByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $moldName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetMoldByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetMoldByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): GetMoldByUserIdRequest {
 		$this->moldName = $moldName;
 		return $this;

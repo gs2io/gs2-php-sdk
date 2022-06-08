@@ -33,41 +33,32 @@ class Slot implements IModel {
      * @var string
 	 */
 	private $metadata;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Slot {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): Slot {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Slot {
 		$this->metadata = $metadata;
 		return $this;

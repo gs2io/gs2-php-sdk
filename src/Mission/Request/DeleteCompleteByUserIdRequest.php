@@ -28,41 +28,32 @@ class DeleteCompleteByUserIdRequest extends Gs2BasicRequest {
     private $missionGroupName;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteCompleteByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DeleteCompleteByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
-
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
-
 	public function withMissionGroupName(?string $missionGroupName): DeleteCompleteByUserIdRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;

@@ -28,41 +28,32 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
     private $receivedGlobalMessageNames;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateReceivedByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateReceivedByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getReceivedGlobalMessageNames(): ?array {
 		return $this->receivedGlobalMessageNames;
 	}
-
 	public function setReceivedGlobalMessageNames(?array $receivedGlobalMessageNames) {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 	}
-
 	public function withReceivedGlobalMessageNames(?array $receivedGlobalMessageNames): UpdateReceivedByUserIdRequest {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 		return $this;

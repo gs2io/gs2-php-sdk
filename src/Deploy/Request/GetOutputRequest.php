@@ -24,28 +24,22 @@ class GetOutputRequest extends Gs2BasicRequest {
     private $stackName;
     /** @var string */
     private $outputName;
-
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
-
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
-
 	public function withStackName(?string $stackName): GetOutputRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
-
 	public function getOutputName(): ?string {
 		return $this->outputName;
 	}
-
 	public function setOutputName(?string $outputName) {
 		$this->outputName = $outputName;
 	}
-
 	public function withOutputName(?string $outputName): GetOutputRequest {
 		$this->outputName = $outputName;
 		return $this;

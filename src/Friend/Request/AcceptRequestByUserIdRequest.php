@@ -28,41 +28,32 @@ class AcceptRequestByUserIdRequest extends Gs2BasicRequest {
     private $fromUserId;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): AcceptRequestByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AcceptRequestByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getFromUserId(): ?string {
 		return $this->fromUserId;
 	}
-
 	public function setFromUserId(?string $fromUserId) {
 		$this->fromUserId = $fromUserId;
 	}
-
 	public function withFromUserId(?string $fromUserId): AcceptRequestByUserIdRequest {
 		$this->fromUserId = $fromUserId;
 		return $this;

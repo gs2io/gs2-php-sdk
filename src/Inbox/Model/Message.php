@@ -57,119 +57,92 @@ class Message implements IModel {
      * @var int
 	 */
 	private $expiresAt;
-
 	public function getMessageId(): ?string {
 		return $this->messageId;
 	}
-
 	public function setMessageId(?string $messageId) {
 		$this->messageId = $messageId;
 	}
-
 	public function withMessageId(?string $messageId): Message {
 		$this->messageId = $messageId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Message {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Message {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Message {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getIsRead(): ?bool {
 		return $this->isRead;
 	}
-
 	public function setIsRead(?bool $isRead) {
 		$this->isRead = $isRead;
 	}
-
 	public function withIsRead(?bool $isRead): Message {
 		$this->isRead = $isRead;
 		return $this;
 	}
-
 	public function getReadAcquireActions(): ?array {
 		return $this->readAcquireActions;
 	}
-
 	public function setReadAcquireActions(?array $readAcquireActions) {
 		$this->readAcquireActions = $readAcquireActions;
 	}
-
 	public function withReadAcquireActions(?array $readAcquireActions): Message {
 		$this->readAcquireActions = $readAcquireActions;
 		return $this;
 	}
-
 	public function getReceivedAt(): ?int {
 		return $this->receivedAt;
 	}
-
 	public function setReceivedAt(?int $receivedAt) {
 		$this->receivedAt = $receivedAt;
 	}
-
 	public function withReceivedAt(?int $receivedAt): Message {
 		$this->receivedAt = $receivedAt;
 		return $this;
 	}
-
 	public function getReadAt(): ?int {
 		return $this->readAt;
 	}
-
 	public function setReadAt(?int $readAt) {
 		$this->readAt = $readAt;
 	}
-
 	public function withReadAt(?int $readAt): Message {
 		$this->readAt = $readAt;
 		return $this;
 	}
-
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
-
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
-
 	public function withExpiresAt(?int $expiresAt): Message {
 		$this->expiresAt = $expiresAt;
 		return $this;

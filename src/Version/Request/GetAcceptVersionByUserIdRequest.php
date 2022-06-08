@@ -26,41 +26,32 @@ class GetAcceptVersionByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $versionName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetAcceptVersionByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetAcceptVersionByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
-
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
-
 	public function withVersionName(?string $versionName): GetAcceptVersionByUserIdRequest {
 		$this->versionName = $versionName;
 		return $this;

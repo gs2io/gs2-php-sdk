@@ -34,80 +34,62 @@ class PostByUserIdRequest extends Gs2BasicRequest {
     private $password;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PostByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): PostByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): PostByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCategory(): ?int {
 		return $this->category;
 	}
-
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
-
 	public function withCategory(?int $category): PostByUserIdRequest {
 		$this->category = $category;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): PostByUserIdRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): PostByUserIdRequest {
 		$this->password = $password;
 		return $this;

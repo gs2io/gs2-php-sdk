@@ -49,93 +49,72 @@ class RatingModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getRatingModelId(): ?string {
 		return $this->ratingModelId;
 	}
-
 	public function setRatingModelId(?string $ratingModelId) {
 		$this->ratingModelId = $ratingModelId;
 	}
-
 	public function withRatingModelId(?string $ratingModelId): RatingModelMaster {
 		$this->ratingModelId = $ratingModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): RatingModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): RatingModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): RatingModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getVolatility(): ?int {
 		return $this->volatility;
 	}
-
 	public function setVolatility(?int $volatility) {
 		$this->volatility = $volatility;
 	}
-
 	public function withVolatility(?int $volatility): RatingModelMaster {
 		$this->volatility = $volatility;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): RatingModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): RatingModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

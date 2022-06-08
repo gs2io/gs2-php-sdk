@@ -29,28 +29,22 @@ class CurrentDistributorMaster implements IModel {
      * @var string
 	 */
 	private $settings;
-
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
-
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
-
 	public function withNamespaceId(?string $namespaceId): CurrentDistributorMaster {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
-
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
-
 	public function withSettings(?string $settings): CurrentDistributorMaster {
 		$this->settings = $settings;
 		return $this;

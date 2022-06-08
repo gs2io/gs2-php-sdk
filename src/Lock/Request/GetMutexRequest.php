@@ -26,41 +26,32 @@ class GetMutexRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $propertyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetMutexRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetMutexRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): GetMutexRequest {
 		$this->propertyId = $propertyId;
 		return $this;

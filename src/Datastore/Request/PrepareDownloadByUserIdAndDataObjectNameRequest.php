@@ -28,41 +28,32 @@ class PrepareDownloadByUserIdAndDataObjectNameRequest extends Gs2BasicRequest {
     private $dataObjectName;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PrepareDownloadByUserIdAndDataObjectNameRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): PrepareDownloadByUserIdAndDataObjectNameRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
-
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
-
 	public function withDataObjectName(?string $dataObjectName): PrepareDownloadByUserIdAndDataObjectNameRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;

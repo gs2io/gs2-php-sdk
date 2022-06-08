@@ -49,93 +49,72 @@ class Message implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getMessageId(): ?string {
 		return $this->messageId;
 	}
-
 	public function setMessageId(?string $messageId) {
 		$this->messageId = $messageId;
 	}
-
 	public function withMessageId(?string $messageId): Message {
 		$this->messageId = $messageId;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): Message {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Message {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Message {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCategory(): ?int {
 		return $this->category;
 	}
-
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
-
 	public function withCategory(?int $category): Message {
 		$this->category = $category;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Message {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Message {
 		$this->createdAt = $createdAt;
 		return $this;

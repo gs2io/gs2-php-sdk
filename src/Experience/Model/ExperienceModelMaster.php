@@ -61,132 +61,102 @@ class ExperienceModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
-
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
-
 	public function withExperienceModelId(?string $experienceModelId): ExperienceModelMaster {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): ExperienceModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): ExperienceModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): ExperienceModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDefaultExperience(): ?int {
 		return $this->defaultExperience;
 	}
-
 	public function setDefaultExperience(?int $defaultExperience) {
 		$this->defaultExperience = $defaultExperience;
 	}
-
 	public function withDefaultExperience(?int $defaultExperience): ExperienceModelMaster {
 		$this->defaultExperience = $defaultExperience;
 		return $this;
 	}
-
 	public function getDefaultRankCap(): ?int {
 		return $this->defaultRankCap;
 	}
-
 	public function setDefaultRankCap(?int $defaultRankCap) {
 		$this->defaultRankCap = $defaultRankCap;
 	}
-
 	public function withDefaultRankCap(?int $defaultRankCap): ExperienceModelMaster {
 		$this->defaultRankCap = $defaultRankCap;
 		return $this;
 	}
-
 	public function getMaxRankCap(): ?int {
 		return $this->maxRankCap;
 	}
-
 	public function setMaxRankCap(?int $maxRankCap) {
 		$this->maxRankCap = $maxRankCap;
 	}
-
 	public function withMaxRankCap(?int $maxRankCap): ExperienceModelMaster {
 		$this->maxRankCap = $maxRankCap;
 		return $this;
 	}
-
 	public function getRankThresholdName(): ?string {
 		return $this->rankThresholdName;
 	}
-
 	public function setRankThresholdName(?string $rankThresholdName) {
 		$this->rankThresholdName = $rankThresholdName;
 	}
-
 	public function withRankThresholdName(?string $rankThresholdName): ExperienceModelMaster {
 		$this->rankThresholdName = $rankThresholdName;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): ExperienceModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): ExperienceModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

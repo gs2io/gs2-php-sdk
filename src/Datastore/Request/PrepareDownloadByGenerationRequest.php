@@ -28,54 +28,42 @@ class PrepareDownloadByGenerationRequest extends Gs2BasicRequest {
     private $dataObjectId;
     /** @var string */
     private $generation;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PrepareDownloadByGenerationRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): PrepareDownloadByGenerationRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getDataObjectId(): ?string {
 		return $this->dataObjectId;
 	}
-
 	public function setDataObjectId(?string $dataObjectId) {
 		$this->dataObjectId = $dataObjectId;
 	}
-
 	public function withDataObjectId(?string $dataObjectId): PrepareDownloadByGenerationRequest {
 		$this->dataObjectId = $dataObjectId;
 		return $this;
 	}
-
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
-
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
-
 	public function withGeneration(?string $generation): PrepareDownloadByGenerationRequest {
 		$this->generation = $generation;
 		return $this;

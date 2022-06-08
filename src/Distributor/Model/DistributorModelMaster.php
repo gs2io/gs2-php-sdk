@@ -53,106 +53,82 @@ class DistributorModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getDistributorModelId(): ?string {
 		return $this->distributorModelId;
 	}
-
 	public function setDistributorModelId(?string $distributorModelId) {
 		$this->distributorModelId = $distributorModelId;
 	}
-
 	public function withDistributorModelId(?string $distributorModelId): DistributorModelMaster {
 		$this->distributorModelId = $distributorModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): DistributorModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): DistributorModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): DistributorModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getInboxNamespaceId(): ?string {
 		return $this->inboxNamespaceId;
 	}
-
 	public function setInboxNamespaceId(?string $inboxNamespaceId) {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 	}
-
 	public function withInboxNamespaceId(?string $inboxNamespaceId): DistributorModelMaster {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 		return $this;
 	}
-
 	public function getWhiteListTargetIds(): ?array {
 		return $this->whiteListTargetIds;
 	}
-
 	public function setWhiteListTargetIds(?array $whiteListTargetIds) {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 	}
-
 	public function withWhiteListTargetIds(?array $whiteListTargetIds): DistributorModelMaster {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): DistributorModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): DistributorModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -61,132 +61,102 @@ class RateModel implements IModel {
      * @var array
 	 */
 	private $bonusRates;
-
 	public function getRateModelId(): ?string {
 		return $this->rateModelId;
 	}
-
 	public function setRateModelId(?string $rateModelId) {
 		$this->rateModelId = $rateModelId;
 	}
-
 	public function withRateModelId(?string $rateModelId): RateModel {
 		$this->rateModelId = $rateModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): RateModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): RateModel {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): RateModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getTargetInventoryModelId(): ?string {
 		return $this->targetInventoryModelId;
 	}
-
 	public function setTargetInventoryModelId(?string $targetInventoryModelId) {
 		$this->targetInventoryModelId = $targetInventoryModelId;
 	}
-
 	public function withTargetInventoryModelId(?string $targetInventoryModelId): RateModel {
 		$this->targetInventoryModelId = $targetInventoryModelId;
 		return $this;
 	}
-
 	public function getAcquireExperienceSuffix(): ?string {
 		return $this->acquireExperienceSuffix;
 	}
-
 	public function setAcquireExperienceSuffix(?string $acquireExperienceSuffix) {
 		$this->acquireExperienceSuffix = $acquireExperienceSuffix;
 	}
-
 	public function withAcquireExperienceSuffix(?string $acquireExperienceSuffix): RateModel {
 		$this->acquireExperienceSuffix = $acquireExperienceSuffix;
 		return $this;
 	}
-
 	public function getMaterialInventoryModelId(): ?string {
 		return $this->materialInventoryModelId;
 	}
-
 	public function setMaterialInventoryModelId(?string $materialInventoryModelId) {
 		$this->materialInventoryModelId = $materialInventoryModelId;
 	}
-
 	public function withMaterialInventoryModelId(?string $materialInventoryModelId): RateModel {
 		$this->materialInventoryModelId = $materialInventoryModelId;
 		return $this;
 	}
-
 	public function getAcquireExperienceHierarchy(): ?array {
 		return $this->acquireExperienceHierarchy;
 	}
-
 	public function setAcquireExperienceHierarchy(?array $acquireExperienceHierarchy) {
 		$this->acquireExperienceHierarchy = $acquireExperienceHierarchy;
 	}
-
 	public function withAcquireExperienceHierarchy(?array $acquireExperienceHierarchy): RateModel {
 		$this->acquireExperienceHierarchy = $acquireExperienceHierarchy;
 		return $this;
 	}
-
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
-
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
-
 	public function withExperienceModelId(?string $experienceModelId): RateModel {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-
 	public function getBonusRates(): ?array {
 		return $this->bonusRates;
 	}
-
 	public function setBonusRates(?array $bonusRates) {
 		$this->bonusRates = $bonusRates;
 	}
-
 	public function withBonusRates(?array $bonusRates): RateModel {
 		$this->bonusRates = $bonusRates;
 		return $this;

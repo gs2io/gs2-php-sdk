@@ -34,80 +34,62 @@ class EndRequest extends Gs2BasicRequest {
     private $isComplete;
     /** @var array */
     private $config;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): EndRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): EndRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): EndRequest {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getRewards(): ?array {
 		return $this->rewards;
 	}
-
 	public function setRewards(?array $rewards) {
 		$this->rewards = $rewards;
 	}
-
 	public function withRewards(?array $rewards): EndRequest {
 		$this->rewards = $rewards;
 		return $this;
 	}
-
 	public function getIsComplete(): ?bool {
 		return $this->isComplete;
 	}
-
 	public function setIsComplete(?bool $isComplete) {
 		$this->isComplete = $isComplete;
 	}
-
 	public function withIsComplete(?bool $isComplete): EndRequest {
 		$this->isComplete = $isComplete;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): EndRequest {
 		$this->config = $config;
 		return $this;

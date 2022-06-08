@@ -24,28 +24,22 @@ class GetRecoverValueTableMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $recoverValueTableName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetRecoverValueTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRecoverValueTableName(): ?string {
 		return $this->recoverValueTableName;
 	}
-
 	public function setRecoverValueTableName(?string $recoverValueTableName) {
 		$this->recoverValueTableName = $recoverValueTableName;
 	}
-
 	public function withRecoverValueTableName(?string $recoverValueTableName): GetRecoverValueTableMasterRequest {
 		$this->recoverValueTableName = $recoverValueTableName;
 		return $this;

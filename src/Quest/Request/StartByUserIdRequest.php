@@ -35,80 +35,62 @@ class StartByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): StartByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
-
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
-
 	public function withQuestGroupName(?string $questGroupName): StartByUserIdRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
-
 	public function getQuestName(): ?string {
 		return $this->questName;
 	}
-
 	public function setQuestName(?string $questName) {
 		$this->questName = $questName;
 	}
-
 	public function withQuestName(?string $questName): StartByUserIdRequest {
 		$this->questName = $questName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): StartByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getForce(): ?bool {
 		return $this->force;
 	}
-
 	public function setForce(?bool $force) {
 		$this->force = $force;
 	}
-
 	public function withForce(?bool $force): StartByUserIdRequest {
 		$this->force = $force;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): StartByUserIdRequest {
 		$this->config = $config;
 		return $this;

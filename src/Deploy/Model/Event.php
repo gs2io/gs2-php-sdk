@@ -45,80 +45,62 @@ class Event implements IModel {
      * @var int
 	 */
 	private $eventAt;
-
 	public function getEventId(): ?string {
 		return $this->eventId;
 	}
-
 	public function setEventId(?string $eventId) {
 		$this->eventId = $eventId;
 	}
-
 	public function withEventId(?string $eventId): Event {
 		$this->eventId = $eventId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Event {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getResourceName(): ?string {
 		return $this->resourceName;
 	}
-
 	public function setResourceName(?string $resourceName) {
 		$this->resourceName = $resourceName;
 	}
-
 	public function withResourceName(?string $resourceName): Event {
 		$this->resourceName = $resourceName;
 		return $this;
 	}
-
 	public function getType(): ?string {
 		return $this->type;
 	}
-
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?string $type): Event {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getMessage(): ?string {
 		return $this->message;
 	}
-
 	public function setMessage(?string $message) {
 		$this->message = $message;
 	}
-
 	public function withMessage(?string $message): Event {
 		$this->message = $message;
 		return $this;
 	}
-
 	public function getEventAt(): ?int {
 		return $this->eventAt;
 	}
-
 	public function setEventAt(?int $eventAt) {
 		$this->eventAt = $eventAt;
 	}
-
 	public function withEventAt(?int $eventAt): Event {
 		$this->eventAt = $eventAt;
 		return $this;

@@ -24,28 +24,22 @@ class GetFormModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $formModelName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetFormModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getFormModelName(): ?string {
 		return $this->formModelName;
 	}
-
 	public function setFormModelName(?string $formModelName) {
 		$this->formModelName = $formModelName;
 	}
-
 	public function withFormModelName(?string $formModelName): GetFormModelMasterRequest {
 		$this->formModelName = $formModelName;
 		return $this;

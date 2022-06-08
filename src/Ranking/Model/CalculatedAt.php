@@ -29,28 +29,22 @@ class CalculatedAt implements IModel {
      * @var int
 	 */
 	private $calculatedAt;
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): CalculatedAt {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getCalculatedAt(): ?int {
 		return $this->calculatedAt;
 	}
-
 	public function setCalculatedAt(?int $calculatedAt) {
 		$this->calculatedAt = $calculatedAt;
 	}
-
 	public function withCalculatedAt(?int $calculatedAt): CalculatedAt {
 		$this->calculatedAt = $calculatedAt;
 		return $this;

@@ -24,28 +24,22 @@ class GetRatingModelRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $ratingName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetRatingModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
-
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
-
 	public function withRatingName(?string $ratingName): GetRatingModelRequest {
 		$this->ratingName = $ratingName;
 		return $this;

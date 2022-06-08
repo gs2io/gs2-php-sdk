@@ -24,28 +24,22 @@ class GetLotteryModelRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $lotteryName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetLotteryModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getLotteryName(): ?string {
 		return $this->lotteryName;
 	}
-
 	public function setLotteryName(?string $lotteryName) {
 		$this->lotteryName = $lotteryName;
 	}
-
 	public function withLotteryName(?string $lotteryName): GetLotteryModelRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;

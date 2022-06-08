@@ -49,93 +49,72 @@ class GlobalMessageMaster implements IModel {
      * @var int
 	 */
 	private $expiresAt;
-
 	public function getGlobalMessageId(): ?string {
 		return $this->globalMessageId;
 	}
-
 	public function setGlobalMessageId(?string $globalMessageId) {
 		$this->globalMessageId = $globalMessageId;
 	}
-
 	public function withGlobalMessageId(?string $globalMessageId): GlobalMessageMaster {
 		$this->globalMessageId = $globalMessageId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): GlobalMessageMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): GlobalMessageMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getReadAcquireActions(): ?array {
 		return $this->readAcquireActions;
 	}
-
 	public function setReadAcquireActions(?array $readAcquireActions) {
 		$this->readAcquireActions = $readAcquireActions;
 	}
-
 	public function withReadAcquireActions(?array $readAcquireActions): GlobalMessageMaster {
 		$this->readAcquireActions = $readAcquireActions;
 		return $this;
 	}
-
 	public function getExpiresTimeSpan(): ?TimeSpan {
 		return $this->expiresTimeSpan;
 	}
-
 	public function setExpiresTimeSpan(?TimeSpan $expiresTimeSpan) {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 	}
-
 	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): GlobalMessageMaster {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): GlobalMessageMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
-
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
-
 	public function withExpiresAt(?int $expiresAt): GlobalMessageMaster {
 		$this->expiresAt = $expiresAt;
 		return $this;

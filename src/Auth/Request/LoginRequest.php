@@ -24,28 +24,22 @@ class LoginRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $timeOffset;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): LoginRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTimeOffset(): ?int {
 		return $this->timeOffset;
 	}
-
 	public function setTimeOffset(?int $timeOffset) {
 		$this->timeOffset = $timeOffset;
 	}
-
 	public function withTimeOffset(?int $timeOffset): LoginRequest {
 		$this->timeOffset = $timeOffset;
 		return $this;

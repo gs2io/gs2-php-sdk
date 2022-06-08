@@ -34,80 +34,62 @@ class UpdateSalesItemMasterRequest extends Gs2BasicRequest {
     private $consumeActions;
     /** @var array */
     private $acquireActions;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateSalesItemMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getSalesItemName(): ?string {
 		return $this->salesItemName;
 	}
-
 	public function setSalesItemName(?string $salesItemName) {
 		$this->salesItemName = $salesItemName;
 	}
-
 	public function withSalesItemName(?string $salesItemName): UpdateSalesItemMasterRequest {
 		$this->salesItemName = $salesItemName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateSalesItemMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateSalesItemMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
-
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
-
 	public function withConsumeActions(?array $consumeActions): UpdateSalesItemMasterRequest {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): UpdateSalesItemMasterRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;

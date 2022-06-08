@@ -26,41 +26,32 @@ class DescribeIdentifiersRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
-
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-
 	public function withUserName(?string $userName): DescribeIdentifiersRequest {
 		$this->userName = $userName;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeIdentifiersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeIdentifiersRequest {
 		$this->limit = $limit;
 		return $this;

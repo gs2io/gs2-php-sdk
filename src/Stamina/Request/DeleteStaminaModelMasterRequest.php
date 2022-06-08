@@ -24,28 +24,22 @@ class DeleteStaminaModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $staminaName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteStaminaModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): DeleteStaminaModelMasterRequest {
 		$this->staminaName = $staminaName;
 		return $this;

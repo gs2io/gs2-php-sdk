@@ -24,28 +24,22 @@ class GetMaxStaminaTableMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $maxStaminaTableName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetMaxStaminaTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getMaxStaminaTableName(): ?string {
 		return $this->maxStaminaTableName;
 	}
-
 	public function setMaxStaminaTableName(?string $maxStaminaTableName) {
 		$this->maxStaminaTableName = $maxStaminaTableName;
 	}
-
 	public function withMaxStaminaTableName(?string $maxStaminaTableName): GetMaxStaminaTableMasterRequest {
 		$this->maxStaminaTableName = $maxStaminaTableName;
 		return $this;

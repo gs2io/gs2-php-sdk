@@ -26,41 +26,32 @@ class GetMoldRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $moldName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetMoldRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetMoldRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): GetMoldRequest {
 		$this->moldName = $moldName;
 		return $this;

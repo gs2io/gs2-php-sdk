@@ -24,28 +24,22 @@ class CreateUserRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateUserRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateUserRequest {
 		$this->description = $description;
 		return $this;

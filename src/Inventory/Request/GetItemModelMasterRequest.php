@@ -26,41 +26,32 @@ class GetItemModelMasterRequest extends Gs2BasicRequest {
     private $inventoryName;
     /** @var string */
     private $itemName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetItemModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): GetItemModelMasterRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
-
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
-
 	public function withItemName(?string $itemName): GetItemModelMasterRequest {
 		$this->itemName = $itemName;
 		return $this;

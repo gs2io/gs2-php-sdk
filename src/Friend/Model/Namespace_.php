@@ -89,223 +89,172 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
-
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
-
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getFollowScript(): ?ScriptSetting {
 		return $this->followScript;
 	}
-
 	public function setFollowScript(?ScriptSetting $followScript) {
 		$this->followScript = $followScript;
 	}
-
 	public function withFollowScript(?ScriptSetting $followScript): Namespace_ {
 		$this->followScript = $followScript;
 		return $this;
 	}
-
 	public function getUnfollowScript(): ?ScriptSetting {
 		return $this->unfollowScript;
 	}
-
 	public function setUnfollowScript(?ScriptSetting $unfollowScript) {
 		$this->unfollowScript = $unfollowScript;
 	}
-
 	public function withUnfollowScript(?ScriptSetting $unfollowScript): Namespace_ {
 		$this->unfollowScript = $unfollowScript;
 		return $this;
 	}
-
 	public function getSendRequestScript(): ?ScriptSetting {
 		return $this->sendRequestScript;
 	}
-
 	public function setSendRequestScript(?ScriptSetting $sendRequestScript) {
 		$this->sendRequestScript = $sendRequestScript;
 	}
-
 	public function withSendRequestScript(?ScriptSetting $sendRequestScript): Namespace_ {
 		$this->sendRequestScript = $sendRequestScript;
 		return $this;
 	}
-
 	public function getCancelRequestScript(): ?ScriptSetting {
 		return $this->cancelRequestScript;
 	}
-
 	public function setCancelRequestScript(?ScriptSetting $cancelRequestScript) {
 		$this->cancelRequestScript = $cancelRequestScript;
 	}
-
 	public function withCancelRequestScript(?ScriptSetting $cancelRequestScript): Namespace_ {
 		$this->cancelRequestScript = $cancelRequestScript;
 		return $this;
 	}
-
 	public function getAcceptRequestScript(): ?ScriptSetting {
 		return $this->acceptRequestScript;
 	}
-
 	public function setAcceptRequestScript(?ScriptSetting $acceptRequestScript) {
 		$this->acceptRequestScript = $acceptRequestScript;
 	}
-
 	public function withAcceptRequestScript(?ScriptSetting $acceptRequestScript): Namespace_ {
 		$this->acceptRequestScript = $acceptRequestScript;
 		return $this;
 	}
-
 	public function getRejectRequestScript(): ?ScriptSetting {
 		return $this->rejectRequestScript;
 	}
-
 	public function setRejectRequestScript(?ScriptSetting $rejectRequestScript) {
 		$this->rejectRequestScript = $rejectRequestScript;
 	}
-
 	public function withRejectRequestScript(?ScriptSetting $rejectRequestScript): Namespace_ {
 		$this->rejectRequestScript = $rejectRequestScript;
 		return $this;
 	}
-
 	public function getDeleteFriendScript(): ?ScriptSetting {
 		return $this->deleteFriendScript;
 	}
-
 	public function setDeleteFriendScript(?ScriptSetting $deleteFriendScript) {
 		$this->deleteFriendScript = $deleteFriendScript;
 	}
-
 	public function withDeleteFriendScript(?ScriptSetting $deleteFriendScript): Namespace_ {
 		$this->deleteFriendScript = $deleteFriendScript;
 		return $this;
 	}
-
 	public function getUpdateProfileScript(): ?ScriptSetting {
 		return $this->updateProfileScript;
 	}
-
 	public function setUpdateProfileScript(?ScriptSetting $updateProfileScript) {
 		$this->updateProfileScript = $updateProfileScript;
 	}
-
 	public function withUpdateProfileScript(?ScriptSetting $updateProfileScript): Namespace_ {
 		$this->updateProfileScript = $updateProfileScript;
 		return $this;
 	}
-
 	public function getFollowNotification(): ?NotificationSetting {
 		return $this->followNotification;
 	}
-
 	public function setFollowNotification(?NotificationSetting $followNotification) {
 		$this->followNotification = $followNotification;
 	}
-
 	public function withFollowNotification(?NotificationSetting $followNotification): Namespace_ {
 		$this->followNotification = $followNotification;
 		return $this;
 	}
-
 	public function getReceiveRequestNotification(): ?NotificationSetting {
 		return $this->receiveRequestNotification;
 	}
-
 	public function setReceiveRequestNotification(?NotificationSetting $receiveRequestNotification) {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 	}
-
 	public function withReceiveRequestNotification(?NotificationSetting $receiveRequestNotification): Namespace_ {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 		return $this;
 	}
-
 	public function getAcceptRequestNotification(): ?NotificationSetting {
 		return $this->acceptRequestNotification;
 	}
-
 	public function setAcceptRequestNotification(?NotificationSetting $acceptRequestNotification) {
 		$this->acceptRequestNotification = $acceptRequestNotification;
 	}
-
 	public function withAcceptRequestNotification(?NotificationSetting $acceptRequestNotification): Namespace_ {
 		$this->acceptRequestNotification = $acceptRequestNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -37,54 +37,42 @@ class AccessToken implements IModel {
      * @var int
 	 */
 	private $timeOffset;
-
 	public function getToken(): ?string {
 		return $this->token;
 	}
-
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
-
 	public function withToken(?string $token): AccessToken {
 		$this->token = $token;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AccessToken {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getExpire(): ?int {
 		return $this->expire;
 	}
-
 	public function setExpire(?int $expire) {
 		$this->expire = $expire;
 	}
-
 	public function withExpire(?int $expire): AccessToken {
 		$this->expire = $expire;
 		return $this;
 	}
-
 	public function getTimeOffset(): ?int {
 		return $this->timeOffset;
 	}
-
 	public function setTimeOffset(?int $timeOffset) {
 		$this->timeOffset = $timeOffset;
 	}
-
 	public function withTimeOffset(?int $timeOffset): AccessToken {
 		$this->timeOffset = $timeOffset;
 		return $this;

@@ -41,67 +41,52 @@ class Mutex implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getMutexId(): ?string {
 		return $this->mutexId;
 	}
-
 	public function setMutexId(?string $mutexId) {
 		$this->mutexId = $mutexId;
 	}
-
 	public function withMutexId(?string $mutexId): Mutex {
 		$this->mutexId = $mutexId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Mutex {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): Mutex {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): Mutex {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Mutex {
 		$this->createdAt = $createdAt;
 		return $this;

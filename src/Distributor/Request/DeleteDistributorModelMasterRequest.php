@@ -24,28 +24,22 @@ class DeleteDistributorModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $distributorName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteDistributorModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDistributorName(): ?string {
 		return $this->distributorName;
 	}
-
 	public function setDistributorName(?string $distributorName) {
 		$this->distributorName = $distributorName;
 	}
-
 	public function withDistributorName(?string $distributorName): DeleteDistributorModelMasterRequest {
 		$this->distributorName = $distributorName;
 		return $this;

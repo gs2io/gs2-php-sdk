@@ -53,106 +53,82 @@ class Counter implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
-
 	public function setCounterId(?string $counterId) {
 		$this->counterId = $counterId;
 	}
-
 	public function withCounterId(?string $counterId): Counter {
 		$this->counterId = $counterId;
 		return $this;
 	}
-
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
-
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
-
 	public function withLimitName(?string $limitName): Counter {
 		$this->limitName = $limitName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Counter {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Counter {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): Counter {
 		$this->count = $count;
 		return $this;
 	}
-
 	public function getNextResetAt(): ?int {
 		return $this->nextResetAt;
 	}
-
 	public function setNextResetAt(?int $nextResetAt) {
 		$this->nextResetAt = $nextResetAt;
 	}
-
 	public function withNextResetAt(?int $nextResetAt): Counter {
 		$this->nextResetAt = $nextResetAt;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Counter {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Counter {
 		$this->updatedAt = $updatedAt;
 		return $this;

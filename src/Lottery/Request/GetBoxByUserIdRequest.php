@@ -26,41 +26,32 @@ class GetBoxByUserIdRequest extends Gs2BasicRequest {
     private $prizeTableName;
     /** @var string */
     private $userId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetBoxByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
-
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
-
 	public function withPrizeTableName(?string $prizeTableName): GetBoxByUserIdRequest {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetBoxByUserIdRequest {
 		$this->userId = $userId;
 		return $this;

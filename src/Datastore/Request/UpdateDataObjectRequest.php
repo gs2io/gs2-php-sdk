@@ -30,67 +30,52 @@ class UpdateDataObjectRequest extends Gs2BasicRequest {
     private $scope;
     /** @var array */
     private $allowUserIds;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateDataObjectRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
-
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
-
 	public function withDataObjectName(?string $dataObjectName): UpdateDataObjectRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): UpdateDataObjectRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getScope(): ?string {
 		return $this->scope;
 	}
-
 	public function setScope(?string $scope) {
 		$this->scope = $scope;
 	}
-
 	public function withScope(?string $scope): UpdateDataObjectRequest {
 		$this->scope = $scope;
 		return $this;
 	}
-
 	public function getAllowUserIds(): ?array {
 		return $this->allowUserIds;
 	}
-
 	public function setAllowUserIds(?array $allowUserIds) {
 		$this->allowUserIds = $allowUserIds;
 	}
-
 	public function withAllowUserIds(?array $allowUserIds): UpdateDataObjectRequest {
 		$this->allowUserIds = $allowUserIds;
 		return $this;

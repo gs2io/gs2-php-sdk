@@ -34,80 +34,62 @@ class DirectEnhanceRequest extends Gs2BasicRequest {
     private $materials;
     /** @var array */
     private $config;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DirectEnhanceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): DirectEnhanceRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DirectEnhanceRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getTargetItemSetId(): ?string {
 		return $this->targetItemSetId;
 	}
-
 	public function setTargetItemSetId(?string $targetItemSetId) {
 		$this->targetItemSetId = $targetItemSetId;
 	}
-
 	public function withTargetItemSetId(?string $targetItemSetId): DirectEnhanceRequest {
 		$this->targetItemSetId = $targetItemSetId;
 		return $this;
 	}
-
 	public function getMaterials(): ?array {
 		return $this->materials;
 	}
-
 	public function setMaterials(?array $materials) {
 		$this->materials = $materials;
 	}
-
 	public function withMaterials(?array $materials): DirectEnhanceRequest {
 		$this->materials = $materials;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): DirectEnhanceRequest {
 		$this->config = $config;
 		return $this;

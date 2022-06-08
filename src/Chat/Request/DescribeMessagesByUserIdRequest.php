@@ -32,80 +32,62 @@ class DescribeMessagesByUserIdRequest extends Gs2BasicRequest {
     private $startAt;
     /** @var int */
     private $limit;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeMessagesByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): DescribeMessagesByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): DescribeMessagesByUserIdRequest {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DescribeMessagesByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getStartAt(): ?int {
 		return $this->startAt;
 	}
-
 	public function setStartAt(?int $startAt) {
 		$this->startAt = $startAt;
 	}
-
 	public function withStartAt(?int $startAt): DescribeMessagesByUserIdRequest {
 		$this->startAt = $startAt;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeMessagesByUserIdRequest {
 		$this->limit = $limit;
 		return $this;

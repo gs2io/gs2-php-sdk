@@ -29,28 +29,22 @@ class Material implements IModel {
      * @var int
 	 */
 	private $count;
-
 	public function getMaterialItemSetId(): ?string {
 		return $this->materialItemSetId;
 	}
-
 	public function setMaterialItemSetId(?string $materialItemSetId) {
 		$this->materialItemSetId = $materialItemSetId;
 	}
-
 	public function withMaterialItemSetId(?string $materialItemSetId): Material {
 		$this->materialItemSetId = $materialItemSetId;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): Material {
 		$this->count = $count;
 		return $this;

@@ -26,41 +26,32 @@ class RejectRequestRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $fromUserId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): RejectRequestRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): RejectRequestRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getFromUserId(): ?string {
 		return $this->fromUserId;
 	}
-
 	public function setFromUserId(?string $fromUserId) {
 		$this->fromUserId = $fromUserId;
 	}
-
 	public function withFromUserId(?string $fromUserId): RejectRequestRequest {
 		$this->fromUserId = $fromUserId;
 		return $this;

@@ -57,119 +57,92 @@ class Gathering implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getGatheringId(): ?string {
 		return $this->gatheringId;
 	}
-
 	public function setGatheringId(?string $gatheringId) {
 		$this->gatheringId = $gatheringId;
 	}
-
 	public function withGatheringId(?string $gatheringId): Gathering {
 		$this->gatheringId = $gatheringId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Gathering {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getAttributeRanges(): ?array {
 		return $this->attributeRanges;
 	}
-
 	public function setAttributeRanges(?array $attributeRanges) {
 		$this->attributeRanges = $attributeRanges;
 	}
-
 	public function withAttributeRanges(?array $attributeRanges): Gathering {
 		$this->attributeRanges = $attributeRanges;
 		return $this;
 	}
-
 	public function getCapacityOfRoles(): ?array {
 		return $this->capacityOfRoles;
 	}
-
 	public function setCapacityOfRoles(?array $capacityOfRoles) {
 		$this->capacityOfRoles = $capacityOfRoles;
 	}
-
 	public function withCapacityOfRoles(?array $capacityOfRoles): Gathering {
 		$this->capacityOfRoles = $capacityOfRoles;
 		return $this;
 	}
-
 	public function getAllowUserIds(): ?array {
 		return $this->allowUserIds;
 	}
-
 	public function setAllowUserIds(?array $allowUserIds) {
 		$this->allowUserIds = $allowUserIds;
 	}
-
 	public function withAllowUserIds(?array $allowUserIds): Gathering {
 		$this->allowUserIds = $allowUserIds;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Gathering {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
-
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
-
 	public function withExpiresAt(?int $expiresAt): Gathering {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Gathering {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Gathering {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -26,41 +26,32 @@ class AcceptRequest extends Gs2BasicRequest {
     private $versionName;
     /** @var string */
     private $accessToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): AcceptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
-
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
-
 	public function withVersionName(?string $versionName): AcceptRequest {
 		$this->versionName = $versionName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): AcceptRequest {
 		$this->accessToken = $accessToken;
 		return $this;

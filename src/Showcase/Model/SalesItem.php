@@ -37,54 +37,42 @@ class SalesItem implements IModel {
      * @var array
 	 */
 	private $acquireActions;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): SalesItem {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): SalesItem {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
-
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
-
 	public function withConsumeActions(?array $consumeActions): SalesItem {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): SalesItem {
 		$this->acquireActions = $acquireActions;
 		return $this;

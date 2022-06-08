@@ -38,119 +38,92 @@ class CreateMissionGroupModelMasterRequest extends Gs2BasicRequest {
     private $resetHour;
     /** @var string */
     private $completeNotificationNamespaceId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateMissionGroupModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateMissionGroupModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateMissionGroupModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateMissionGroupModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
-
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
-
 	public function withResetType(?string $resetType): CreateMissionGroupModelMasterRequest {
 		$this->resetType = $resetType;
 		return $this;
 	}
-
 	public function getResetDayOfMonth(): ?int {
 		return $this->resetDayOfMonth;
 	}
-
 	public function setResetDayOfMonth(?int $resetDayOfMonth) {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 	}
-
 	public function withResetDayOfMonth(?int $resetDayOfMonth): CreateMissionGroupModelMasterRequest {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 		return $this;
 	}
-
 	public function getResetDayOfWeek(): ?string {
 		return $this->resetDayOfWeek;
 	}
-
 	public function setResetDayOfWeek(?string $resetDayOfWeek) {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 	}
-
 	public function withResetDayOfWeek(?string $resetDayOfWeek): CreateMissionGroupModelMasterRequest {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 		return $this;
 	}
-
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
-
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
-
 	public function withResetHour(?int $resetHour): CreateMissionGroupModelMasterRequest {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
-
 	public function getCompleteNotificationNamespaceId(): ?string {
 		return $this->completeNotificationNamespaceId;
 	}
-
 	public function setCompleteNotificationNamespaceId(?string $completeNotificationNamespaceId) {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 	}
-
 	public function withCompleteNotificationNamespaceId(?string $completeNotificationNamespaceId): CreateMissionGroupModelMasterRequest {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 		return $this;

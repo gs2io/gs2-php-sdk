@@ -33,41 +33,32 @@ class FriendUser implements IModel {
      * @var string
 	 */
 	private $friendProfile;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): FriendUser {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
-
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
-
 	public function withPublicProfile(?string $publicProfile): FriendUser {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
-
 	public function getFriendProfile(): ?string {
 		return $this->friendProfile;
 	}
-
 	public function setFriendProfile(?string $friendProfile) {
 		$this->friendProfile = $friendProfile;
 	}
-
 	public function withFriendProfile(?string $friendProfile): FriendUser {
 		$this->friendProfile = $friendProfile;
 		return $this;

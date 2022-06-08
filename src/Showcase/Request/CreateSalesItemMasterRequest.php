@@ -34,80 +34,62 @@ class CreateSalesItemMasterRequest extends Gs2BasicRequest {
     private $consumeActions;
     /** @var array */
     private $acquireActions;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateSalesItemMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateSalesItemMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateSalesItemMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateSalesItemMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
-
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
-
 	public function withConsumeActions(?array $consumeActions): CreateSalesItemMasterRequest {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): CreateSalesItemMasterRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;

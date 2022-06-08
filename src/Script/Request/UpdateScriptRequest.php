@@ -28,54 +28,42 @@ class UpdateScriptRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $script;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateScriptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getScriptName(): ?string {
 		return $this->scriptName;
 	}
-
 	public function setScriptName(?string $scriptName) {
 		$this->scriptName = $scriptName;
 	}
-
 	public function withScriptName(?string $scriptName): UpdateScriptRequest {
 		$this->scriptName = $scriptName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateScriptRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getScript(): ?string {
 		return $this->script;
 	}
-
 	public function setScript(?string $script) {
 		$this->script = $script;
 	}
-
 	public function withScript(?string $script): UpdateScriptRequest {
 		$this->script = $script;
 		return $this;

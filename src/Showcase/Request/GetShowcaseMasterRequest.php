@@ -24,28 +24,22 @@ class GetShowcaseMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $showcaseName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetShowcaseMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
-
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
-
 	public function withShowcaseName(?string $showcaseName): GetShowcaseMasterRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;

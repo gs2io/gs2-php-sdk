@@ -26,41 +26,32 @@ class GetCounterRequest extends Gs2BasicRequest {
     private $counterName;
     /** @var string */
     private $accessToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetCounterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
-
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
-
 	public function withCounterName(?string $counterName): GetCounterRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetCounterRequest {
 		$this->accessToken = $accessToken;
 		return $this;

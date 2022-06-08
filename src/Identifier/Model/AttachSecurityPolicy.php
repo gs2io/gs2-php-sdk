@@ -33,41 +33,32 @@ class AttachSecurityPolicy implements IModel {
      * @var int
 	 */
 	private $attachedAt;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AttachSecurityPolicy {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getSecurityPolicyIds(): ?array {
 		return $this->securityPolicyIds;
 	}
-
 	public function setSecurityPolicyIds(?array $securityPolicyIds) {
 		$this->securityPolicyIds = $securityPolicyIds;
 	}
-
 	public function withSecurityPolicyIds(?array $securityPolicyIds): AttachSecurityPolicy {
 		$this->securityPolicyIds = $securityPolicyIds;
 		return $this;
 	}
-
 	public function getAttachedAt(): ?int {
 		return $this->attachedAt;
 	}
-
 	public function setAttachedAt(?int $attachedAt) {
 		$this->attachedAt = $attachedAt;
 	}
-
 	public function withAttachedAt(?int $attachedAt): AttachSecurityPolicy {
 		$this->attachedAt = $attachedAt;
 		return $this;

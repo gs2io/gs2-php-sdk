@@ -26,41 +26,32 @@ class GetShowcaseRequest extends Gs2BasicRequest {
     private $showcaseName;
     /** @var string */
     private $accessToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetShowcaseRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
-
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
-
 	public function withShowcaseName(?string $showcaseName): GetShowcaseRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetShowcaseRequest {
 		$this->accessToken = $accessToken;
 		return $this;

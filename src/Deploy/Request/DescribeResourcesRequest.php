@@ -26,41 +26,32 @@ class DescribeResourcesRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
-
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
-
 	public function withStackName(?string $stackName): DescribeResourcesRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeResourcesRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeResourcesRequest {
 		$this->limit = $limit;
 		return $this;

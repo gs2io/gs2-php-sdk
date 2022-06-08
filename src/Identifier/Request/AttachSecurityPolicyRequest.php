@@ -24,28 +24,22 @@ class AttachSecurityPolicyRequest extends Gs2BasicRequest {
     private $userName;
     /** @var string */
     private $securityPolicyId;
-
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
-
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-
 	public function withUserName(?string $userName): AttachSecurityPolicyRequest {
 		$this->userName = $userName;
 		return $this;
 	}
-
 	public function getSecurityPolicyId(): ?string {
 		return $this->securityPolicyId;
 	}
-
 	public function setSecurityPolicyId(?string $securityPolicyId) {
 		$this->securityPolicyId = $securityPolicyId;
 	}
-
 	public function withSecurityPolicyId(?string $securityPolicyId): AttachSecurityPolicyRequest {
 		$this->securityPolicyId = $securityPolicyId;
 		return $this;

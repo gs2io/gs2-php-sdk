@@ -28,41 +28,32 @@ class CheckVersionRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var array */
     private $targetVersions;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CheckVersionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): CheckVersionRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getTargetVersions(): ?array {
 		return $this->targetVersions;
 	}
-
 	public function setTargetVersions(?array $targetVersions) {
 		$this->targetVersions = $targetVersions;
 	}
-
 	public function withTargetVersions(?array $targetVersions): CheckVersionRequest {
 		$this->targetVersions = $targetVersions;
 		return $this;

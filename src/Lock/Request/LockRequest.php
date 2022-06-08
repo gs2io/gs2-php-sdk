@@ -30,67 +30,52 @@ class LockRequest extends Gs2BasicRequest {
     private $transactionId;
     /** @var int */
     private $ttl;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): LockRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): LockRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): LockRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): LockRequest {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getTtl(): ?int {
 		return $this->ttl;
 	}
-
 	public function setTtl(?int $ttl) {
 		$this->ttl = $ttl;
 	}
-
 	public function withTtl(?int $ttl): LockRequest {
 		$this->ttl = $ttl;
 		return $this;

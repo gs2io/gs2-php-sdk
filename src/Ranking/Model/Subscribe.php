@@ -45,80 +45,62 @@ class Subscribe implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getSubscribeId(): ?string {
 		return $this->subscribeId;
 	}
-
 	public function setSubscribeId(?string $subscribeId) {
 		$this->subscribeId = $subscribeId;
 	}
-
 	public function withSubscribeId(?string $subscribeId): Subscribe {
 		$this->subscribeId = $subscribeId;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): Subscribe {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Subscribe {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserIds(): ?array {
 		return $this->targetUserIds;
 	}
-
 	public function setTargetUserIds(?array $targetUserIds) {
 		$this->targetUserIds = $targetUserIds;
 	}
-
 	public function withTargetUserIds(?array $targetUserIds): Subscribe {
 		$this->targetUserIds = $targetUserIds;
 		return $this;
 	}
-
 	public function getSubscribedUserIds(): ?array {
 		return $this->subscribedUserIds;
 	}
-
 	public function setSubscribedUserIds(?array $subscribedUserIds) {
 		$this->subscribedUserIds = $subscribedUserIds;
 	}
-
 	public function withSubscribedUserIds(?array $subscribedUserIds): Subscribe {
 		$this->subscribedUserIds = $subscribedUserIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Subscribe {
 		$this->createdAt = $createdAt;
 		return $this;

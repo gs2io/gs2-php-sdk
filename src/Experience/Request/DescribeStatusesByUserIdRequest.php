@@ -30,67 +30,52 @@ class DescribeStatusesByUserIdRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeStatusesByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
-
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
-
 	public function withExperienceName(?string $experienceName): DescribeStatusesByUserIdRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DescribeStatusesByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeStatusesByUserIdRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeStatusesByUserIdRequest {
 		$this->limit = $limit;
 		return $this;

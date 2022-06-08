@@ -24,28 +24,22 @@ class GetRateModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $rateName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetRateModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): GetRateModelMasterRequest {
 		$this->rateName = $rateName;
 		return $this;

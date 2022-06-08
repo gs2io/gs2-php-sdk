@@ -41,7 +41,7 @@ class CalcRankingResult implements IResult {
             return null;
         }
         return (new CalcRankingResult())
-            ->withProcessing($data['processing']);
+            ->withProcessing(array_key_exists('processing', $data) ? $data['processing'] : null);
     }
 
     public function toJson(): array {

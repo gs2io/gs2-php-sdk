@@ -29,28 +29,22 @@ class FriendRequest implements IModel {
      * @var string
 	 */
 	private $targetUserId;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): FriendRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
-
 	public function withTargetUserId(?string $targetUserId): FriendRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;

@@ -26,41 +26,32 @@ class OpenMessageRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $messageName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): OpenMessageRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): OpenMessageRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
-
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
-
 	public function withMessageName(?string $messageName): OpenMessageRequest {
 		$this->messageName = $messageName;
 		return $this;

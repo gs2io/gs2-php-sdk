@@ -24,28 +24,22 @@ class DeleteScriptRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $scriptName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteScriptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getScriptName(): ?string {
 		return $this->scriptName;
 	}
-
 	public function setScriptName(?string $scriptName) {
 		$this->scriptName = $scriptName;
 	}
-
 	public function withScriptName(?string $scriptName): DeleteScriptRequest {
 		$this->scriptName = $scriptName;
 		return $this;

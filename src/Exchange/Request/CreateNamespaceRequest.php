@@ -41,119 +41,110 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $queueNamespaceId;
     /** @var string */
     private $keyId;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getEnableAwaitExchange(): ?bool {
 		return $this->enableAwaitExchange;
 	}
-
 	public function setEnableAwaitExchange(?bool $enableAwaitExchange) {
 		$this->enableAwaitExchange = $enableAwaitExchange;
 	}
-
 	public function withEnableAwaitExchange(?bool $enableAwaitExchange): CreateNamespaceRequest {
 		$this->enableAwaitExchange = $enableAwaitExchange;
 		return $this;
 	}
-
 	public function getEnableDirectExchange(): ?bool {
 		return $this->enableDirectExchange;
 	}
-
 	public function setEnableDirectExchange(?bool $enableDirectExchange) {
 		$this->enableDirectExchange = $enableDirectExchange;
 	}
-
 	public function withEnableDirectExchange(?bool $enableDirectExchange): CreateNamespaceRequest {
 		$this->enableDirectExchange = $enableDirectExchange;
 		return $this;
 	}
-
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
-
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
-
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
-
 	public function getExchangeScript(): ?ScriptSetting {
 		return $this->exchangeScript;
 	}
-
 	public function setExchangeScript(?ScriptSetting $exchangeScript) {
 		$this->exchangeScript = $exchangeScript;
 	}
-
 	public function withExchangeScript(?ScriptSetting $exchangeScript): CreateNamespaceRequest {
 		$this->exchangeScript = $exchangeScript;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function getQueueNamespaceId(): ?string {
 		return $this->queueNamespaceId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function setQueueNamespaceId(?string $queueNamespaceId) {
 		$this->queueNamespaceId = $queueNamespaceId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function withQueueNamespaceId(?string $queueNamespaceId): CreateNamespaceRequest {
 		$this->queueNamespaceId = $queueNamespaceId;
 		return $this;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function withKeyId(?string $keyId): CreateNamespaceRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -33,80 +33,62 @@ class StartRequest extends Gs2BasicRequest {
     private $force;
     /** @var array */
     private $config;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): StartRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
-
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
-
 	public function withQuestGroupName(?string $questGroupName): StartRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
-
 	public function getQuestName(): ?string {
 		return $this->questName;
 	}
-
 	public function setQuestName(?string $questName) {
 		$this->questName = $questName;
 	}
-
 	public function withQuestName(?string $questName): StartRequest {
 		$this->questName = $questName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): StartRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getForce(): ?bool {
 		return $this->force;
 	}
-
 	public function setForce(?bool $force) {
 		$this->force = $force;
 	}
-
 	public function withForce(?bool $force): StartRequest {
 		$this->force = $force;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): StartRequest {
 		$this->config = $config;
 		return $this;

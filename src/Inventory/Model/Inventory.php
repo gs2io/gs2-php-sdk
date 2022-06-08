@@ -49,93 +49,72 @@ class Inventory implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getInventoryId(): ?string {
 		return $this->inventoryId;
 	}
-
 	public function setInventoryId(?string $inventoryId) {
 		$this->inventoryId = $inventoryId;
 	}
-
 	public function withInventoryId(?string $inventoryId): Inventory {
 		$this->inventoryId = $inventoryId;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): Inventory {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Inventory {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCurrentInventoryCapacityUsage(): ?int {
 		return $this->currentInventoryCapacityUsage;
 	}
-
 	public function setCurrentInventoryCapacityUsage(?int $currentInventoryCapacityUsage) {
 		$this->currentInventoryCapacityUsage = $currentInventoryCapacityUsage;
 	}
-
 	public function withCurrentInventoryCapacityUsage(?int $currentInventoryCapacityUsage): Inventory {
 		$this->currentInventoryCapacityUsage = $currentInventoryCapacityUsage;
 		return $this;
 	}
-
 	public function getCurrentInventoryMaxCapacity(): ?int {
 		return $this->currentInventoryMaxCapacity;
 	}
-
 	public function setCurrentInventoryMaxCapacity(?int $currentInventoryMaxCapacity) {
 		$this->currentInventoryMaxCapacity = $currentInventoryMaxCapacity;
 	}
-
 	public function withCurrentInventoryMaxCapacity(?int $currentInventoryMaxCapacity): Inventory {
 		$this->currentInventoryMaxCapacity = $currentInventoryMaxCapacity;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Inventory {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Inventory {
 		$this->updatedAt = $updatedAt;
 		return $this;

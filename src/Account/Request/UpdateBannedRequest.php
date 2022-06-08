@@ -28,41 +28,32 @@ class UpdateBannedRequest extends Gs2BasicRequest {
     private $banned;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateBannedRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateBannedRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getBanned(): ?bool {
 		return $this->banned;
 	}
-
 	public function setBanned(?bool $banned) {
 		$this->banned = $banned;
 	}
-
 	public function withBanned(?bool $banned): UpdateBannedRequest {
 		$this->banned = $banned;
 		return $this;
@@ -88,7 +79,7 @@ class UpdateBannedRequest extends Gs2BasicRequest {
         return (new UpdateBannedRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withBanned($data['banned']);
+            ->withBanned(array_key_exists('banned', $data) ? $data['banned'] : null);
     }
 
     public function toJson(): array {

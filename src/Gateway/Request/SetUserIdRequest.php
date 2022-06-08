@@ -26,41 +26,32 @@ class SetUserIdRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var bool */
     private $allowConcurrentAccess;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): SetUserIdRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getAllowConcurrentAccess(): ?bool {
 		return $this->allowConcurrentAccess;
 	}
-
 	public function setAllowConcurrentAccess(?bool $allowConcurrentAccess) {
 		$this->allowConcurrentAccess = $allowConcurrentAccess;
 	}
-
 	public function withAllowConcurrentAccess(?bool $allowConcurrentAccess): SetUserIdRequest {
 		$this->allowConcurrentAccess = $allowConcurrentAccess;
 		return $this;
@@ -73,7 +64,7 @@ class SetUserIdRequest extends Gs2BasicRequest {
         return (new SetUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withAllowConcurrentAccess($data['allowConcurrentAccess']);
+            ->withAllowConcurrentAccess(array_key_exists('allowConcurrentAccess', $data) ? $data['allowConcurrentAccess'] : null);
     }
 
     public function toJson(): array {

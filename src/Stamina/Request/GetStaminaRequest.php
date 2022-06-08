@@ -26,41 +26,32 @@ class GetStaminaRequest extends Gs2BasicRequest {
     private $staminaName;
     /** @var string */
     private $accessToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetStaminaRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): GetStaminaRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetStaminaRequest {
 		$this->accessToken = $accessToken;
 		return $this;

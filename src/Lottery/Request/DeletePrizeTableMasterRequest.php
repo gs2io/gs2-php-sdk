@@ -24,28 +24,22 @@ class DeletePrizeTableMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $prizeTableName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeletePrizeTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
-
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
-
 	public function withPrizeTableName(?string $prizeTableName): DeletePrizeTableMasterRequest {
 		$this->prizeTableName = $prizeTableName;
 		return $this;

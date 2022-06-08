@@ -28,54 +28,42 @@ class DeleteTakeOverRequest extends Gs2BasicRequest {
     private $type;
     /** @var string */
     private $userIdentifier;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteTakeOverRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DeleteTakeOverRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getType(): ?int {
 		return $this->type;
 	}
-
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?int $type): DeleteTakeOverRequest {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getUserIdentifier(): ?string {
 		return $this->userIdentifier;
 	}
-
 	public function setUserIdentifier(?string $userIdentifier) {
 		$this->userIdentifier = $userIdentifier;
 	}
-
 	public function withUserIdentifier(?string $userIdentifier): DeleteTakeOverRequest {
 		$this->userIdentifier = $userIdentifier;
 		return $this;

@@ -34,80 +34,62 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $createNotification;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getServerType(): ?string {
 		return $this->serverType;
 	}
-
 	public function setServerType(?string $serverType) {
 		$this->serverType = $serverType;
 	}
-
 	public function withServerType(?string $serverType): CreateNamespaceRequest {
 		$this->serverType = $serverType;
 		return $this;
 	}
-
 	public function getServerSpec(): ?string {
 		return $this->serverSpec;
 	}
-
 	public function setServerSpec(?string $serverSpec) {
 		$this->serverSpec = $serverSpec;
 	}
-
 	public function withServerSpec(?string $serverSpec): CreateNamespaceRequest {
 		$this->serverSpec = $serverSpec;
 		return $this;
 	}
-
 	public function getCreateNotification(): ?NotificationSetting {
 		return $this->createNotification;
 	}
-
 	public function setCreateNotification(?NotificationSetting $createNotification) {
 		$this->createNotification = $createNotification;
 	}
-
 	public function withCreateNotification(?NotificationSetting $createNotification): CreateNamespaceRequest {
 		$this->createNotification = $createNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

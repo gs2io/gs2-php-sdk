@@ -41,67 +41,52 @@ class DistributorModel implements IModel {
      * @var array
 	 */
 	private $whiteListTargetIds;
-
 	public function getDistributorModelId(): ?string {
 		return $this->distributorModelId;
 	}
-
 	public function setDistributorModelId(?string $distributorModelId) {
 		$this->distributorModelId = $distributorModelId;
 	}
-
 	public function withDistributorModelId(?string $distributorModelId): DistributorModel {
 		$this->distributorModelId = $distributorModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): DistributorModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): DistributorModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getInboxNamespaceId(): ?string {
 		return $this->inboxNamespaceId;
 	}
-
 	public function setInboxNamespaceId(?string $inboxNamespaceId) {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 	}
-
 	public function withInboxNamespaceId(?string $inboxNamespaceId): DistributorModel {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 		return $this;
 	}
-
 	public function getWhiteListTargetIds(): ?array {
 		return $this->whiteListTargetIds;
 	}
-
 	public function setWhiteListTargetIds(?array $whiteListTargetIds) {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 	}
-
 	public function withWhiteListTargetIds(?array $whiteListTargetIds): DistributorModel {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 		return $this;

@@ -26,41 +26,32 @@ class DescribeProbabilitiesRequest extends Gs2BasicRequest {
     private $lotteryName;
     /** @var string */
     private $accessToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeProbabilitiesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getLotteryName(): ?string {
 		return $this->lotteryName;
 	}
-
 	public function setLotteryName(?string $lotteryName) {
 		$this->lotteryName = $lotteryName;
 	}
-
 	public function withLotteryName(?string $lotteryName): DescribeProbabilitiesRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DescribeProbabilitiesRequest {
 		$this->accessToken = $accessToken;
 		return $this;

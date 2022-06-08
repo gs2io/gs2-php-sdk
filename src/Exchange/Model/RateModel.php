@@ -57,119 +57,92 @@ class RateModel implements IModel {
      * @var array
 	 */
 	private $acquireActions;
-
 	public function getRateModelId(): ?string {
 		return $this->rateModelId;
 	}
-
 	public function setRateModelId(?string $rateModelId) {
 		$this->rateModelId = $rateModelId;
 	}
-
 	public function withRateModelId(?string $rateModelId): RateModel {
 		$this->rateModelId = $rateModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): RateModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): RateModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
-
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
-
 	public function withConsumeActions(?array $consumeActions): RateModel {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
-
 	public function getTimingType(): ?string {
 		return $this->timingType;
 	}
-
 	public function setTimingType(?string $timingType) {
 		$this->timingType = $timingType;
 	}
-
 	public function withTimingType(?string $timingType): RateModel {
 		$this->timingType = $timingType;
 		return $this;
 	}
-
 	public function getLockTime(): ?int {
 		return $this->lockTime;
 	}
-
 	public function setLockTime(?int $lockTime) {
 		$this->lockTime = $lockTime;
 	}
-
 	public function withLockTime(?int $lockTime): RateModel {
 		$this->lockTime = $lockTime;
 		return $this;
 	}
-
 	public function getEnableSkip(): ?bool {
 		return $this->enableSkip;
 	}
-
 	public function setEnableSkip(?bool $enableSkip) {
 		$this->enableSkip = $enableSkip;
 	}
-
 	public function withEnableSkip(?bool $enableSkip): RateModel {
 		$this->enableSkip = $enableSkip;
 		return $this;
 	}
-
 	public function getSkipConsumeActions(): ?array {
 		return $this->skipConsumeActions;
 	}
-
 	public function setSkipConsumeActions(?array $skipConsumeActions) {
 		$this->skipConsumeActions = $skipConsumeActions;
 	}
-
 	public function withSkipConsumeActions(?array $skipConsumeActions): RateModel {
 		$this->skipConsumeActions = $skipConsumeActions;
 		return $this;
 	}
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): RateModel {
 		$this->acquireActions = $acquireActions;
 		return $this;

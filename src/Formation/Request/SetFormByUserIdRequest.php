@@ -33,67 +33,52 @@ class SetFormByUserIdRequest extends Gs2BasicRequest {
     private $slots;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetFormByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SetFormByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): SetFormByUserIdRequest {
 		$this->moldName = $moldName;
 		return $this;
 	}
-
 	public function getIndex(): ?int {
 		return $this->index;
 	}
-
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
-
 	public function withIndex(?int $index): SetFormByUserIdRequest {
 		$this->index = $index;
 		return $this;
 	}
-
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
-
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
-
 	public function withSlots(?array $slots): SetFormByUserIdRequest {
 		$this->slots = $slots;
 		return $this;

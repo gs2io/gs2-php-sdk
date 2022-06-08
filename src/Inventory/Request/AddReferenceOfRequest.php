@@ -32,80 +32,62 @@ class AddReferenceOfRequest extends Gs2BasicRequest {
     private $itemSetName;
     /** @var string */
     private $referenceOf;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): AddReferenceOfRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): AddReferenceOfRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): AddReferenceOfRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
-
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
-
 	public function withItemName(?string $itemName): AddReferenceOfRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
-
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
-
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
-
 	public function withItemSetName(?string $itemSetName): AddReferenceOfRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;
 	}
-
 	public function getReferenceOf(): ?string {
 		return $this->referenceOf;
 	}
-
 	public function setReferenceOf(?string $referenceOf) {
 		$this->referenceOf = $referenceOf;
 	}
-
 	public function withReferenceOf(?string $referenceOf): AddReferenceOfRequest {
 		$this->referenceOf = $referenceOf;
 		return $this;

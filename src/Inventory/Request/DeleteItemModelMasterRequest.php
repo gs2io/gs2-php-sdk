@@ -26,41 +26,32 @@ class DeleteItemModelMasterRequest extends Gs2BasicRequest {
     private $inventoryName;
     /** @var string */
     private $itemName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteItemModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): DeleteItemModelMasterRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
-
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
-
 	public function withItemName(?string $itemName): DeleteItemModelMasterRequest {
 		$this->itemName = $itemName;
 		return $this;

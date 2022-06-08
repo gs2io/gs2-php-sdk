@@ -34,93 +34,72 @@ class UpdateMoldModelMasterRequest extends Gs2BasicRequest {
     private $initialMaxCapacity;
     /** @var int */
     private $maxCapacity;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateMoldModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): UpdateMoldModelMasterRequest {
 		$this->moldName = $moldName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateMoldModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateMoldModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getFormModelName(): ?string {
 		return $this->formModelName;
 	}
-
 	public function setFormModelName(?string $formModelName) {
 		$this->formModelName = $formModelName;
 	}
-
 	public function withFormModelName(?string $formModelName): UpdateMoldModelMasterRequest {
 		$this->formModelName = $formModelName;
 		return $this;
 	}
-
 	public function getInitialMaxCapacity(): ?int {
 		return $this->initialMaxCapacity;
 	}
-
 	public function setInitialMaxCapacity(?int $initialMaxCapacity) {
 		$this->initialMaxCapacity = $initialMaxCapacity;
 	}
-
 	public function withInitialMaxCapacity(?int $initialMaxCapacity): UpdateMoldModelMasterRequest {
 		$this->initialMaxCapacity = $initialMaxCapacity;
 		return $this;
 	}
-
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
-
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
-
 	public function withMaxCapacity(?int $maxCapacity): UpdateMoldModelMasterRequest {
 		$this->maxCapacity = $maxCapacity;
 		return $this;

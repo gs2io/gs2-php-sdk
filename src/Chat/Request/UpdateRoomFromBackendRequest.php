@@ -32,80 +32,62 @@ class UpdateRoomFromBackendRequest extends Gs2BasicRequest {
     private $whiteListUserIds;
     /** @var string */
     private $userId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateRoomFromBackendRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): UpdateRoomFromBackendRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateRoomFromBackendRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): UpdateRoomFromBackendRequest {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getWhiteListUserIds(): ?array {
 		return $this->whiteListUserIds;
 	}
-
 	public function setWhiteListUserIds(?array $whiteListUserIds) {
 		$this->whiteListUserIds = $whiteListUserIds;
 	}
-
 	public function withWhiteListUserIds(?array $whiteListUserIds): UpdateRoomFromBackendRequest {
 		$this->whiteListUserIds = $whiteListUserIds;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateRoomFromBackendRequest {
 		$this->userId = $userId;
 		return $this;

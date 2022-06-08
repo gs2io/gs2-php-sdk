@@ -29,28 +29,22 @@ class Status implements IModel {
      * @var Version
 	 */
 	private $currentVersion;
-
 	public function getVersionModel(): ?VersionModel {
 		return $this->versionModel;
 	}
-
 	public function setVersionModel(?VersionModel $versionModel) {
 		$this->versionModel = $versionModel;
 	}
-
 	public function withVersionModel(?VersionModel $versionModel): Status {
 		$this->versionModel = $versionModel;
 		return $this;
 	}
-
 	public function getCurrentVersion(): ?Version {
 		return $this->currentVersion;
 	}
-
 	public function setCurrentVersion(?Version $currentVersion) {
 		$this->currentVersion = $currentVersion;
 	}
-
 	public function withCurrentVersion(?Version $currentVersion): Status {
 		$this->currentVersion = $currentVersion;
 		return $this;

@@ -28,54 +28,42 @@ class GetFriendByUserIdRequest extends Gs2BasicRequest {
     private $targetUserId;
     /** @var bool */
     private $withProfile;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetFriendByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetFriendByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
-
 	public function withTargetUserId(?string $targetUserId): GetFriendByUserIdRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
-
 	public function getWithProfile(): ?bool {
 		return $this->withProfile;
 	}
-
 	public function setWithProfile(?bool $withProfile) {
 		$this->withProfile = $withProfile;
 	}
-
 	public function withWithProfile(?bool $withProfile): GetFriendByUserIdRequest {
 		$this->withProfile = $withProfile;
 		return $this;
@@ -89,7 +77,7 @@ class GetFriendByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null)
-            ->withWithProfile($data['withProfile']);
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null);
     }
 
     public function toJson(): array {

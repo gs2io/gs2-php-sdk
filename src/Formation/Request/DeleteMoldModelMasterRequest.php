@@ -24,28 +24,22 @@ class DeleteMoldModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $moldName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteMoldModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): DeleteMoldModelMasterRequest {
 		$this->moldName = $moldName;
 		return $this;

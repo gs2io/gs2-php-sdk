@@ -26,41 +26,32 @@ class GetMissionTaskModelRequest extends Gs2BasicRequest {
     private $missionGroupName;
     /** @var string */
     private $missionTaskName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetMissionTaskModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
-
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
-
 	public function withMissionGroupName(?string $missionGroupName): GetMissionTaskModelRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
-
 	public function getMissionTaskName(): ?string {
 		return $this->missionTaskName;
 	}
-
 	public function setMissionTaskName(?string $missionTaskName) {
 		$this->missionTaskName = $missionTaskName;
 	}
-
 	public function withMissionTaskName(?string $missionTaskName): GetMissionTaskModelRequest {
 		$this->missionTaskName = $missionTaskName;
 		return $this;

@@ -32,67 +32,52 @@ class UpdateProfileByUserIdRequest extends Gs2BasicRequest {
     private $friendProfile;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateProfileByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateProfileByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
-
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
-
 	public function withPublicProfile(?string $publicProfile): UpdateProfileByUserIdRequest {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
-
 	public function getFollowerProfile(): ?string {
 		return $this->followerProfile;
 	}
-
 	public function setFollowerProfile(?string $followerProfile) {
 		$this->followerProfile = $followerProfile;
 	}
-
 	public function withFollowerProfile(?string $followerProfile): UpdateProfileByUserIdRequest {
 		$this->followerProfile = $followerProfile;
 		return $this;
 	}
-
 	public function getFriendProfile(): ?string {
 		return $this->friendProfile;
 	}
-
 	public function setFriendProfile(?string $friendProfile) {
 		$this->friendProfile = $friendProfile;
 	}
-
 	public function withFriendProfile(?string $friendProfile): UpdateProfileByUserIdRequest {
 		$this->friendProfile = $friendProfile;
 		return $this;

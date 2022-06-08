@@ -28,54 +28,42 @@ class GetDataObjectHistoryByUserIdRequest extends Gs2BasicRequest {
     private $dataObjectName;
     /** @var string */
     private $generation;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetDataObjectHistoryByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetDataObjectHistoryByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
-
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
-
 	public function withDataObjectName(?string $dataObjectName): GetDataObjectHistoryByUserIdRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
-
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
-
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
-
 	public function withGeneration(?string $generation): GetDataObjectHistoryByUserIdRequest {
 		$this->generation = $generation;
 		return $this;

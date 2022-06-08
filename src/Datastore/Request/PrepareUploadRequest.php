@@ -34,93 +34,72 @@ class PrepareUploadRequest extends Gs2BasicRequest {
     private $allowUserIds;
     /** @var bool */
     private $updateIfExists;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PrepareUploadRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): PrepareUploadRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): PrepareUploadRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getContentType(): ?string {
 		return $this->contentType;
 	}
-
 	public function setContentType(?string $contentType) {
 		$this->contentType = $contentType;
 	}
-
 	public function withContentType(?string $contentType): PrepareUploadRequest {
 		$this->contentType = $contentType;
 		return $this;
 	}
-
 	public function getScope(): ?string {
 		return $this->scope;
 	}
-
 	public function setScope(?string $scope) {
 		$this->scope = $scope;
 	}
-
 	public function withScope(?string $scope): PrepareUploadRequest {
 		$this->scope = $scope;
 		return $this;
 	}
-
 	public function getAllowUserIds(): ?array {
 		return $this->allowUserIds;
 	}
-
 	public function setAllowUserIds(?array $allowUserIds) {
 		$this->allowUserIds = $allowUserIds;
 	}
-
 	public function withAllowUserIds(?array $allowUserIds): PrepareUploadRequest {
 		$this->allowUserIds = $allowUserIds;
 		return $this;
 	}
-
 	public function getUpdateIfExists(): ?bool {
 		return $this->updateIfExists;
 	}
-
 	public function setUpdateIfExists(?bool $updateIfExists) {
 		$this->updateIfExists = $updateIfExists;
 	}
-
 	public function withUpdateIfExists(?bool $updateIfExists): PrepareUploadRequest {
 		$this->updateIfExists = $updateIfExists;
 		return $this;
@@ -142,7 +121,7 @@ class PrepareUploadRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
-            ->withUpdateIfExists($data['updateIfExists']);
+            ->withUpdateIfExists(array_key_exists('updateIfExists', $data) ? $data['updateIfExists'] : null);
     }
 
     public function toJson(): array {

@@ -30,67 +30,52 @@ class UpdateProfileRequest extends Gs2BasicRequest {
     private $followerProfile;
     /** @var string */
     private $friendProfile;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateProfileRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): UpdateProfileRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
-
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
-
 	public function withPublicProfile(?string $publicProfile): UpdateProfileRequest {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
-
 	public function getFollowerProfile(): ?string {
 		return $this->followerProfile;
 	}
-
 	public function setFollowerProfile(?string $followerProfile) {
 		$this->followerProfile = $followerProfile;
 	}
-
 	public function withFollowerProfile(?string $followerProfile): UpdateProfileRequest {
 		$this->followerProfile = $followerProfile;
 		return $this;
 	}
-
 	public function getFriendProfile(): ?string {
 		return $this->friendProfile;
 	}
-
 	public function setFriendProfile(?string $friendProfile) {
 		$this->friendProfile = $friendProfile;
 	}
-
 	public function withFriendProfile(?string $friendProfile): UpdateProfileRequest {
 		$this->friendProfile = $friendProfile;
 		return $this;

@@ -32,54 +32,42 @@ class DoMatchmakingByUserIdRequest extends Gs2BasicRequest {
     private $matchmakingContextToken;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DoMatchmakingByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DoMatchmakingByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPlayer(): ?Player {
 		return $this->player;
 	}
-
 	public function setPlayer(?Player $player) {
 		$this->player = $player;
 	}
-
 	public function withPlayer(?Player $player): DoMatchmakingByUserIdRequest {
 		$this->player = $player;
 		return $this;
 	}
-
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
-
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
-
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingByUserIdRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;

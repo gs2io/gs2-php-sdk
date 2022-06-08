@@ -32,67 +32,52 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
     private $ttl;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): TriggerByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
-
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
-
 	public function withTriggerName(?string $triggerName): TriggerByUserIdRequest {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): TriggerByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTriggerStrategy(): ?string {
 		return $this->triggerStrategy;
 	}
-
 	public function setTriggerStrategy(?string $triggerStrategy) {
 		$this->triggerStrategy = $triggerStrategy;
 	}
-
 	public function withTriggerStrategy(?string $triggerStrategy): TriggerByUserIdRequest {
 		$this->triggerStrategy = $triggerStrategy;
 		return $this;
 	}
-
 	public function getTtl(): ?int {
 		return $this->ttl;
 	}
-
 	public function setTtl(?int $ttl) {
 		$this->ttl = $ttl;
 	}
-
 	public function withTtl(?int $ttl): TriggerByUserIdRequest {
 		$this->ttl = $ttl;
 		return $this;

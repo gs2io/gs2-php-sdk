@@ -77,184 +77,142 @@ class CategoryModel implements IModel {
      * @var string
 	 */
 	private $generation;
-
 	public function getCategoryModelId(): ?string {
 		return $this->categoryModelId;
 	}
-
 	public function setCategoryModelId(?string $categoryModelId) {
 		$this->categoryModelId = $categoryModelId;
 	}
-
 	public function withCategoryModelId(?string $categoryModelId): CategoryModel {
 		$this->categoryModelId = $categoryModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CategoryModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CategoryModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getMinimumValue(): ?int {
 		return $this->minimumValue;
 	}
-
 	public function setMinimumValue(?int $minimumValue) {
 		$this->minimumValue = $minimumValue;
 	}
-
 	public function withMinimumValue(?int $minimumValue): CategoryModel {
 		$this->minimumValue = $minimumValue;
 		return $this;
 	}
-
 	public function getMaximumValue(): ?int {
 		return $this->maximumValue;
 	}
-
 	public function setMaximumValue(?int $maximumValue) {
 		$this->maximumValue = $maximumValue;
 	}
-
 	public function withMaximumValue(?int $maximumValue): CategoryModel {
 		$this->maximumValue = $maximumValue;
 		return $this;
 	}
-
 	public function getOrderDirection(): ?string {
 		return $this->orderDirection;
 	}
-
 	public function setOrderDirection(?string $orderDirection) {
 		$this->orderDirection = $orderDirection;
 	}
-
 	public function withOrderDirection(?string $orderDirection): CategoryModel {
 		$this->orderDirection = $orderDirection;
 		return $this;
 	}
-
 	public function getScope(): ?string {
 		return $this->scope;
 	}
-
 	public function setScope(?string $scope) {
 		$this->scope = $scope;
 	}
-
 	public function withScope(?string $scope): CategoryModel {
 		$this->scope = $scope;
 		return $this;
 	}
-
 	public function getUniqueByUserId(): ?bool {
 		return $this->uniqueByUserId;
 	}
-
 	public function setUniqueByUserId(?bool $uniqueByUserId) {
 		$this->uniqueByUserId = $uniqueByUserId;
 	}
-
 	public function withUniqueByUserId(?bool $uniqueByUserId): CategoryModel {
 		$this->uniqueByUserId = $uniqueByUserId;
 		return $this;
 	}
-
 	public function getCalculateFixedTimingHour(): ?int {
 		return $this->calculateFixedTimingHour;
 	}
-
 	public function setCalculateFixedTimingHour(?int $calculateFixedTimingHour) {
 		$this->calculateFixedTimingHour = $calculateFixedTimingHour;
 	}
-
 	public function withCalculateFixedTimingHour(?int $calculateFixedTimingHour): CategoryModel {
 		$this->calculateFixedTimingHour = $calculateFixedTimingHour;
 		return $this;
 	}
-
 	public function getCalculateFixedTimingMinute(): ?int {
 		return $this->calculateFixedTimingMinute;
 	}
-
 	public function setCalculateFixedTimingMinute(?int $calculateFixedTimingMinute) {
 		$this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
 	}
-
 	public function withCalculateFixedTimingMinute(?int $calculateFixedTimingMinute): CategoryModel {
 		$this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
 		return $this;
 	}
-
 	public function getCalculateIntervalMinutes(): ?int {
 		return $this->calculateIntervalMinutes;
 	}
-
 	public function setCalculateIntervalMinutes(?int $calculateIntervalMinutes) {
 		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
 	}
-
 	public function withCalculateIntervalMinutes(?int $calculateIntervalMinutes): CategoryModel {
 		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
 		return $this;
 	}
-
 	public function getEntryPeriodEventId(): ?string {
 		return $this->entryPeriodEventId;
 	}
-
 	public function setEntryPeriodEventId(?string $entryPeriodEventId) {
 		$this->entryPeriodEventId = $entryPeriodEventId;
 	}
-
 	public function withEntryPeriodEventId(?string $entryPeriodEventId): CategoryModel {
 		$this->entryPeriodEventId = $entryPeriodEventId;
 		return $this;
 	}
-
 	public function getAccessPeriodEventId(): ?string {
 		return $this->accessPeriodEventId;
 	}
-
 	public function setAccessPeriodEventId(?string $accessPeriodEventId) {
 		$this->accessPeriodEventId = $accessPeriodEventId;
 	}
-
 	public function withAccessPeriodEventId(?string $accessPeriodEventId): CategoryModel {
 		$this->accessPeriodEventId = $accessPeriodEventId;
 		return $this;
 	}
-
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
-
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
-
 	public function withGeneration(?string $generation): CategoryModel {
 		$this->generation = $generation;
 		return $this;
@@ -272,7 +230,7 @@ class CategoryModel implements IModel {
             ->withMaximumValue(array_key_exists('maximumValue', $data) && $data['maximumValue'] !== null ? $data['maximumValue'] : null)
             ->withOrderDirection(array_key_exists('orderDirection', $data) && $data['orderDirection'] !== null ? $data['orderDirection'] : null)
             ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
-            ->withUniqueByUserId($data['uniqueByUserId'])
+            ->withUniqueByUserId(array_key_exists('uniqueByUserId', $data) ? $data['uniqueByUserId'] : null)
             ->withCalculateFixedTimingHour(array_key_exists('calculateFixedTimingHour', $data) && $data['calculateFixedTimingHour'] !== null ? $data['calculateFixedTimingHour'] : null)
             ->withCalculateFixedTimingMinute(array_key_exists('calculateFixedTimingMinute', $data) && $data['calculateFixedTimingMinute'] !== null ? $data['calculateFixedTimingMinute'] : null)
             ->withCalculateIntervalMinutes(array_key_exists('calculateIntervalMinutes', $data) && $data['calculateIntervalMinutes'] !== null ? $data['calculateIntervalMinutes'] : null)

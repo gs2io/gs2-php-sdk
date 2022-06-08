@@ -57,119 +57,92 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
-
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
-
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getServerType(): ?string {
 		return $this->serverType;
 	}
-
 	public function setServerType(?string $serverType) {
 		$this->serverType = $serverType;
 	}
-
 	public function withServerType(?string $serverType): Namespace_ {
 		$this->serverType = $serverType;
 		return $this;
 	}
-
 	public function getServerSpec(): ?string {
 		return $this->serverSpec;
 	}
-
 	public function setServerSpec(?string $serverSpec) {
 		$this->serverSpec = $serverSpec;
 	}
-
 	public function withServerSpec(?string $serverSpec): Namespace_ {
 		$this->serverSpec = $serverSpec;
 		return $this;
 	}
-
 	public function getCreateNotification(): ?NotificationSetting {
 		return $this->createNotification;
 	}
-
 	public function setCreateNotification(?NotificationSetting $createNotification) {
 		$this->createNotification = $createNotification;
 	}
-
 	public function withCreateNotification(?NotificationSetting $createNotification): Namespace_ {
 		$this->createNotification = $createNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;

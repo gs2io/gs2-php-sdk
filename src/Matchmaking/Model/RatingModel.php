@@ -37,54 +37,42 @@ class RatingModel implements IModel {
      * @var int
 	 */
 	private $volatility;
-
 	public function getRatingModelId(): ?string {
 		return $this->ratingModelId;
 	}
-
 	public function setRatingModelId(?string $ratingModelId) {
 		$this->ratingModelId = $ratingModelId;
 	}
-
 	public function withRatingModelId(?string $ratingModelId): RatingModel {
 		$this->ratingModelId = $ratingModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): RatingModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): RatingModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getVolatility(): ?int {
 		return $this->volatility;
 	}
-
 	public function setVolatility(?int $volatility) {
 		$this->volatility = $volatility;
 	}
-
 	public function withVolatility(?int $volatility): RatingModel {
 		$this->volatility = $volatility;
 		return $this;

@@ -32,67 +32,52 @@ class PutScoreByUserIdRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PutScoreByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): PutScoreByUserIdRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): PutScoreByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getScore(): ?int {
 		return $this->score;
 	}
-
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
-
 	public function withScore(?int $score): PutScoreByUserIdRequest {
 		$this->score = $score;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): PutScoreByUserIdRequest {
 		$this->metadata = $metadata;
 		return $this;

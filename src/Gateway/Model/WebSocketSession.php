@@ -45,80 +45,62 @@ class WebSocketSession implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getWebSocketSessionId(): ?string {
 		return $this->webSocketSessionId;
 	}
-
 	public function setWebSocketSessionId(?string $webSocketSessionId) {
 		$this->webSocketSessionId = $webSocketSessionId;
 	}
-
 	public function withWebSocketSessionId(?string $webSocketSessionId): WebSocketSession {
 		$this->webSocketSessionId = $webSocketSessionId;
 		return $this;
 	}
-
 	public function getConnectionId(): ?string {
 		return $this->connectionId;
 	}
-
 	public function setConnectionId(?string $connectionId) {
 		$this->connectionId = $connectionId;
 	}
-
 	public function withConnectionId(?string $connectionId): WebSocketSession {
 		$this->connectionId = $connectionId;
 		return $this;
 	}
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): WebSocketSession {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): WebSocketSession {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): WebSocketSession {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): WebSocketSession {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -26,41 +26,32 @@ class RunStampTaskRequest extends Gs2BasicRequest {
     private $stampTask;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): RunStampTaskRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
-
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
-
 	public function withStampTask(?string $stampTask): RunStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): RunStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -32,80 +32,62 @@ class CreateRoomFromBackendRequest extends Gs2BasicRequest {
     private $password;
     /** @var array */
     private $whiteListUserIds;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateRoomFromBackendRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateRoomFromBackendRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): CreateRoomFromBackendRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateRoomFromBackendRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): CreateRoomFromBackendRequest {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getWhiteListUserIds(): ?array {
 		return $this->whiteListUserIds;
 	}
-
 	public function setWhiteListUserIds(?array $whiteListUserIds) {
 		$this->whiteListUserIds = $whiteListUserIds;
 	}
-
 	public function withWhiteListUserIds(?array $whiteListUserIds): CreateRoomFromBackendRequest {
 		$this->whiteListUserIds = $whiteListUserIds;
 		return $this;

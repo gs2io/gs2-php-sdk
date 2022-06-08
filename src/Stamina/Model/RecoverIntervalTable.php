@@ -41,67 +41,52 @@ class RecoverIntervalTable implements IModel {
      * @var array
 	 */
 	private $values;
-
 	public function getRecoverIntervalTableId(): ?string {
 		return $this->recoverIntervalTableId;
 	}
-
 	public function setRecoverIntervalTableId(?string $recoverIntervalTableId) {
 		$this->recoverIntervalTableId = $recoverIntervalTableId;
 	}
-
 	public function withRecoverIntervalTableId(?string $recoverIntervalTableId): RecoverIntervalTable {
 		$this->recoverIntervalTableId = $recoverIntervalTableId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): RecoverIntervalTable {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): RecoverIntervalTable {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
-
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
-
 	public function withExperienceModelId(?string $experienceModelId): RecoverIntervalTable {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
-
 	public function getValues(): ?array {
 		return $this->values;
 	}
-
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
-
 	public function withValues(?array $values): RecoverIntervalTable {
 		$this->values = $values;
 		return $this;

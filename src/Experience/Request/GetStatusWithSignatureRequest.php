@@ -30,67 +30,52 @@ class GetStatusWithSignatureRequest extends Gs2BasicRequest {
     private $propertyId;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetStatusWithSignatureRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetStatusWithSignatureRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
-
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
-
 	public function withExperienceName(?string $experienceName): GetStatusWithSignatureRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): GetStatusWithSignatureRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): GetStatusWithSignatureRequest {
 		$this->keyId = $keyId;
 		return $this;

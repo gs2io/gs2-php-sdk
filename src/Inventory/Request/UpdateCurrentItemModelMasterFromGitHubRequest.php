@@ -25,28 +25,22 @@ class UpdateCurrentItemModelMasterFromGitHubRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentItemModelMasterFromGitHubRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
-
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
-
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): UpdateCurrentItemModelMasterFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;

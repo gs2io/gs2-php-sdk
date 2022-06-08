@@ -31,67 +31,52 @@ class VoteRequest extends Gs2BasicRequest {
     private $gameResults;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): VoteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getBallotBody(): ?string {
 		return $this->ballotBody;
 	}
-
 	public function setBallotBody(?string $ballotBody) {
 		$this->ballotBody = $ballotBody;
 	}
-
 	public function withBallotBody(?string $ballotBody): VoteRequest {
 		$this->ballotBody = $ballotBody;
 		return $this;
 	}
-
 	public function getBallotSignature(): ?string {
 		return $this->ballotSignature;
 	}
-
 	public function setBallotSignature(?string $ballotSignature) {
 		$this->ballotSignature = $ballotSignature;
 	}
-
 	public function withBallotSignature(?string $ballotSignature): VoteRequest {
 		$this->ballotSignature = $ballotSignature;
 		return $this;
 	}
-
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
-
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
-
 	public function withGameResults(?array $gameResults): VoteRequest {
 		$this->gameResults = $gameResults;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): VoteRequest {
 		$this->keyId = $keyId;
 		return $this;

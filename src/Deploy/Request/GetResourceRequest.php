@@ -24,28 +24,22 @@ class GetResourceRequest extends Gs2BasicRequest {
     private $stackName;
     /** @var string */
     private $resourceName;
-
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
-
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
-
 	public function withStackName(?string $stackName): GetResourceRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
-
 	public function getResourceName(): ?string {
 		return $this->resourceName;
 	}
-
 	public function setResourceName(?string $resourceName) {
 		$this->resourceName = $resourceName;
 	}
-
 	public function withResourceName(?string $resourceName): GetResourceRequest {
 		$this->resourceName = $resourceName;
 		return $this;

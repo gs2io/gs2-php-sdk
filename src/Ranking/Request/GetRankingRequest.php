@@ -30,67 +30,52 @@ class GetRankingRequest extends Gs2BasicRequest {
     private $scorerUserId;
     /** @var string */
     private $uniqueId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetRankingRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): GetRankingRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetRankingRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getScorerUserId(): ?string {
 		return $this->scorerUserId;
 	}
-
 	public function setScorerUserId(?string $scorerUserId) {
 		$this->scorerUserId = $scorerUserId;
 	}
-
 	public function withScorerUserId(?string $scorerUserId): GetRankingRequest {
 		$this->scorerUserId = $scorerUserId;
 		return $this;
 	}
-
 	public function getUniqueId(): ?string {
 		return $this->uniqueId;
 	}
-
 	public function setUniqueId(?string $uniqueId) {
 		$this->uniqueId = $uniqueId;
 	}
-
 	public function withUniqueId(?string $uniqueId): GetRankingRequest {
 		$this->uniqueId = $uniqueId;
 		return $this;

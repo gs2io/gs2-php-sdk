@@ -43,132 +43,102 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $postNotification;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getAllowCreateRoom(): ?bool {
 		return $this->allowCreateRoom;
 	}
-
 	public function setAllowCreateRoom(?bool $allowCreateRoom) {
 		$this->allowCreateRoom = $allowCreateRoom;
 	}
-
 	public function withAllowCreateRoom(?bool $allowCreateRoom): UpdateNamespaceRequest {
 		$this->allowCreateRoom = $allowCreateRoom;
 		return $this;
 	}
-
 	public function getPostMessageScript(): ?ScriptSetting {
 		return $this->postMessageScript;
 	}
-
 	public function setPostMessageScript(?ScriptSetting $postMessageScript) {
 		$this->postMessageScript = $postMessageScript;
 	}
-
 	public function withPostMessageScript(?ScriptSetting $postMessageScript): UpdateNamespaceRequest {
 		$this->postMessageScript = $postMessageScript;
 		return $this;
 	}
-
 	public function getCreateRoomScript(): ?ScriptSetting {
 		return $this->createRoomScript;
 	}
-
 	public function setCreateRoomScript(?ScriptSetting $createRoomScript) {
 		$this->createRoomScript = $createRoomScript;
 	}
-
 	public function withCreateRoomScript(?ScriptSetting $createRoomScript): UpdateNamespaceRequest {
 		$this->createRoomScript = $createRoomScript;
 		return $this;
 	}
-
 	public function getDeleteRoomScript(): ?ScriptSetting {
 		return $this->deleteRoomScript;
 	}
-
 	public function setDeleteRoomScript(?ScriptSetting $deleteRoomScript) {
 		$this->deleteRoomScript = $deleteRoomScript;
 	}
-
 	public function withDeleteRoomScript(?ScriptSetting $deleteRoomScript): UpdateNamespaceRequest {
 		$this->deleteRoomScript = $deleteRoomScript;
 		return $this;
 	}
-
 	public function getSubscribeRoomScript(): ?ScriptSetting {
 		return $this->subscribeRoomScript;
 	}
-
 	public function setSubscribeRoomScript(?ScriptSetting $subscribeRoomScript) {
 		$this->subscribeRoomScript = $subscribeRoomScript;
 	}
-
 	public function withSubscribeRoomScript(?ScriptSetting $subscribeRoomScript): UpdateNamespaceRequest {
 		$this->subscribeRoomScript = $subscribeRoomScript;
 		return $this;
 	}
-
 	public function getUnsubscribeRoomScript(): ?ScriptSetting {
 		return $this->unsubscribeRoomScript;
 	}
-
 	public function setUnsubscribeRoomScript(?ScriptSetting $unsubscribeRoomScript) {
 		$this->unsubscribeRoomScript = $unsubscribeRoomScript;
 	}
-
 	public function withUnsubscribeRoomScript(?ScriptSetting $unsubscribeRoomScript): UpdateNamespaceRequest {
 		$this->unsubscribeRoomScript = $unsubscribeRoomScript;
 		return $this;
 	}
-
 	public function getPostNotification(): ?NotificationSetting {
 		return $this->postNotification;
 	}
-
 	public function setPostNotification(?NotificationSetting $postNotification) {
 		$this->postNotification = $postNotification;
 	}
-
 	public function withPostNotification(?NotificationSetting $postNotification): UpdateNamespaceRequest {
 		$this->postNotification = $postNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;
@@ -181,7 +151,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withAllowCreateRoom($data['allowCreateRoom'])
+            ->withAllowCreateRoom(array_key_exists('allowCreateRoom', $data) ? $data['allowCreateRoom'] : null)
             ->withPostMessageScript(array_key_exists('postMessageScript', $data) && $data['postMessageScript'] !== null ? ScriptSetting::fromJson($data['postMessageScript']) : null)
             ->withCreateRoomScript(array_key_exists('createRoomScript', $data) && $data['createRoomScript'] !== null ? ScriptSetting::fromJson($data['createRoomScript']) : null)
             ->withDeleteRoomScript(array_key_exists('deleteRoomScript', $data) && $data['deleteRoomScript'] !== null ? ScriptSetting::fromJson($data['deleteRoomScript']) : null)

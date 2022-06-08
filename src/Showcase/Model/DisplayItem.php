@@ -41,67 +41,52 @@ class DisplayItem implements IModel {
      * @var string
 	 */
 	private $salesPeriodEventId;
-
 	public function getDisplayItemId(): ?string {
 		return $this->displayItemId;
 	}
-
 	public function setDisplayItemId(?string $displayItemId) {
 		$this->displayItemId = $displayItemId;
 	}
-
 	public function withDisplayItemId(?string $displayItemId): DisplayItem {
 		$this->displayItemId = $displayItemId;
 		return $this;
 	}
-
 	public function getType(): ?string {
 		return $this->type;
 	}
-
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?string $type): DisplayItem {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getSalesItem(): ?SalesItem {
 		return $this->salesItem;
 	}
-
 	public function setSalesItem(?SalesItem $salesItem) {
 		$this->salesItem = $salesItem;
 	}
-
 	public function withSalesItem(?SalesItem $salesItem): DisplayItem {
 		$this->salesItem = $salesItem;
 		return $this;
 	}
-
 	public function getSalesItemGroup(): ?SalesItemGroup {
 		return $this->salesItemGroup;
 	}
-
 	public function setSalesItemGroup(?SalesItemGroup $salesItemGroup) {
 		$this->salesItemGroup = $salesItemGroup;
 	}
-
 	public function withSalesItemGroup(?SalesItemGroup $salesItemGroup): DisplayItem {
 		$this->salesItemGroup = $salesItemGroup;
 		return $this;
 	}
-
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
-
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
-
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): DisplayItem {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;

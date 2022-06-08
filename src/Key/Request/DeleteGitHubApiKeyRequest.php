@@ -24,28 +24,22 @@ class DeleteGitHubApiKeyRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $apiKeyName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteGitHubApiKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getApiKeyName(): ?string {
 		return $this->apiKeyName;
 	}
-
 	public function setApiKeyName(?string $apiKeyName) {
 		$this->apiKeyName = $apiKeyName;
 	}
-
 	public function withApiKeyName(?string $apiKeyName): DeleteGitHubApiKeyRequest {
 		$this->apiKeyName = $apiKeyName;
 		return $this;

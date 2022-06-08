@@ -24,28 +24,22 @@ class GetRecoverIntervalTableMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $recoverIntervalTableName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetRecoverIntervalTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRecoverIntervalTableName(): ?string {
 		return $this->recoverIntervalTableName;
 	}
-
 	public function setRecoverIntervalTableName(?string $recoverIntervalTableName) {
 		$this->recoverIntervalTableName = $recoverIntervalTableName;
 	}
-
 	public function withRecoverIntervalTableName(?string $recoverIntervalTableName): GetRecoverIntervalTableMasterRequest {
 		$this->recoverIntervalTableName = $recoverIntervalTableName;
 		return $this;

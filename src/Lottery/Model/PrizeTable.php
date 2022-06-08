@@ -37,54 +37,42 @@ class PrizeTable implements IModel {
      * @var array
 	 */
 	private $prizes;
-
 	public function getPrizeTableId(): ?string {
 		return $this->prizeTableId;
 	}
-
 	public function setPrizeTableId(?string $prizeTableId) {
 		$this->prizeTableId = $prizeTableId;
 	}
-
 	public function withPrizeTableId(?string $prizeTableId): PrizeTable {
 		$this->prizeTableId = $prizeTableId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): PrizeTable {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): PrizeTable {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getPrizes(): ?array {
 		return $this->prizes;
 	}
-
 	public function setPrizes(?array $prizes) {
 		$this->prizes = $prizes;
 	}
-
 	public function withPrizes(?array $prizes): PrizeTable {
 		$this->prizes = $prizes;
 		return $this;

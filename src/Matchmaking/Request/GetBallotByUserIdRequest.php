@@ -32,80 +32,62 @@ class GetBallotByUserIdRequest extends Gs2BasicRequest {
     private $numberOfPlayer;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetBallotByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
-
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
-
 	public function withRatingName(?string $ratingName): GetBallotByUserIdRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
-
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
-
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
-
 	public function withGatheringName(?string $gatheringName): GetBallotByUserIdRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetBallotByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getNumberOfPlayer(): ?int {
 		return $this->numberOfPlayer;
 	}
-
 	public function setNumberOfPlayer(?int $numberOfPlayer) {
 		$this->numberOfPlayer = $numberOfPlayer;
 	}
-
 	public function withNumberOfPlayer(?int $numberOfPlayer): GetBallotByUserIdRequest {
 		$this->numberOfPlayer = $numberOfPlayer;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): GetBallotByUserIdRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -53,106 +53,82 @@ class Wallet implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getWalletId(): ?string {
 		return $this->walletId;
 	}
-
 	public function setWalletId(?string $walletId) {
 		$this->walletId = $walletId;
 	}
-
 	public function withWalletId(?string $walletId): Wallet {
 		$this->walletId = $walletId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Wallet {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
-
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
-
 	public function withSlot(?int $slot): Wallet {
 		$this->slot = $slot;
 		return $this;
 	}
-
 	public function getPaid(): ?int {
 		return $this->paid;
 	}
-
 	public function setPaid(?int $paid) {
 		$this->paid = $paid;
 	}
-
 	public function withPaid(?int $paid): Wallet {
 		$this->paid = $paid;
 		return $this;
 	}
-
 	public function getFree(): ?int {
 		return $this->free;
 	}
-
 	public function setFree(?int $free) {
 		$this->free = $free;
 	}
-
 	public function withFree(?int $free): Wallet {
 		$this->free = $free;
 		return $this;
 	}
-
 	public function getDetail(): ?array {
 		return $this->detail;
 	}
-
 	public function setDetail(?array $detail) {
 		$this->detail = $detail;
 	}
-
 	public function withDetail(?array $detail): Wallet {
 		$this->detail = $detail;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Wallet {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Wallet {
 		$this->updatedAt = $updatedAt;
 		return $this;

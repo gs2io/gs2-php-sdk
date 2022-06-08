@@ -41,67 +41,52 @@ class Subscribe implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getSubscribeId(): ?string {
 		return $this->subscribeId;
 	}
-
 	public function setSubscribeId(?string $subscribeId) {
 		$this->subscribeId = $subscribeId;
 	}
-
 	public function withSubscribeId(?string $subscribeId): Subscribe {
 		$this->subscribeId = $subscribeId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Subscribe {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): Subscribe {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
-
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
-
 	public function withNotificationTypes(?array $notificationTypes): Subscribe {
 		$this->notificationTypes = $notificationTypes;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Subscribe {
 		$this->createdAt = $createdAt;
 		return $this;

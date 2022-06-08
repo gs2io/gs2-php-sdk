@@ -24,28 +24,22 @@ class GetCategoryModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $categoryName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetCategoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): GetCategoryModelMasterRequest {
 		$this->categoryName = $categoryName;
 		return $this;

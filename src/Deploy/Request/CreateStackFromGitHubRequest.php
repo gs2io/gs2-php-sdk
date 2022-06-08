@@ -27,41 +27,32 @@ class CreateStackFromGitHubRequest extends Gs2BasicRequest {
     private $description;
     /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateStackFromGitHubRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateStackFromGitHubRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
-
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
-
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): CreateStackFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;

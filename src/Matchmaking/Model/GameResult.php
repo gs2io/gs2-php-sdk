@@ -29,28 +29,22 @@ class GameResult implements IModel {
      * @var string
 	 */
 	private $userId;
-
 	public function getRank(): ?int {
 		return $this->rank;
 	}
-
 	public function setRank(?int $rank) {
 		$this->rank = $rank;
 	}
-
 	public function withRank(?int $rank): GameResult {
 		$this->rank = $rank;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GameResult {
 		$this->userId = $userId;
 		return $this;

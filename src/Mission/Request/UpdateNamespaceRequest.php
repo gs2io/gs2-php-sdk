@@ -44,132 +44,120 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $queueNamespaceId;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
-
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
-
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
-
 	public function getMissionCompleteScript(): ?ScriptSetting {
 		return $this->missionCompleteScript;
 	}
-
 	public function setMissionCompleteScript(?ScriptSetting $missionCompleteScript) {
 		$this->missionCompleteScript = $missionCompleteScript;
 	}
-
 	public function withMissionCompleteScript(?ScriptSetting $missionCompleteScript): UpdateNamespaceRequest {
 		$this->missionCompleteScript = $missionCompleteScript;
 		return $this;
 	}
-
 	public function getCounterIncrementScript(): ?ScriptSetting {
 		return $this->counterIncrementScript;
 	}
-
 	public function setCounterIncrementScript(?ScriptSetting $counterIncrementScript) {
 		$this->counterIncrementScript = $counterIncrementScript;
 	}
-
 	public function withCounterIncrementScript(?ScriptSetting $counterIncrementScript): UpdateNamespaceRequest {
 		$this->counterIncrementScript = $counterIncrementScript;
 		return $this;
 	}
-
 	public function getReceiveRewardsScript(): ?ScriptSetting {
 		return $this->receiveRewardsScript;
 	}
-
 	public function setReceiveRewardsScript(?ScriptSetting $receiveRewardsScript) {
 		$this->receiveRewardsScript = $receiveRewardsScript;
 	}
-
 	public function withReceiveRewardsScript(?ScriptSetting $receiveRewardsScript): UpdateNamespaceRequest {
 		$this->receiveRewardsScript = $receiveRewardsScript;
 		return $this;
 	}
-
 	public function getCompleteNotification(): ?NotificationSetting {
 		return $this->completeNotification;
 	}
-
 	public function setCompleteNotification(?NotificationSetting $completeNotification) {
 		$this->completeNotification = $completeNotification;
 	}
-
 	public function withCompleteNotification(?NotificationSetting $completeNotification): UpdateNamespaceRequest {
 		$this->completeNotification = $completeNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function getQueueNamespaceId(): ?string {
 		return $this->queueNamespaceId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function setQueueNamespaceId(?string $queueNamespaceId) {
 		$this->queueNamespaceId = $queueNamespaceId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function withQueueNamespaceId(?string $queueNamespaceId): UpdateNamespaceRequest {
 		$this->queueNamespaceId = $queueNamespaceId;
 		return $this;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
+    /**
+     * @deprecated
+     */
 	public function withKeyId(?string $keyId): UpdateNamespaceRequest {
 		$this->keyId = $keyId;
 		return $this;

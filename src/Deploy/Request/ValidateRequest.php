@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class ValidateRequest extends Gs2BasicRequest {
     /** @var string */
     private $template;
-
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
-
 	public function setTemplate(?string $template) {
 		$this->template = $template;
 	}
-
 	public function withTemplate(?string $template): ValidateRequest {
 		$this->template = $template;
 		return $this;

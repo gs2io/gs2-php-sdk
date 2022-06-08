@@ -41,67 +41,52 @@ class DataObjectHistory implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getDataObjectHistoryId(): ?string {
 		return $this->dataObjectHistoryId;
 	}
-
 	public function setDataObjectHistoryId(?string $dataObjectHistoryId) {
 		$this->dataObjectHistoryId = $dataObjectHistoryId;
 	}
-
 	public function withDataObjectHistoryId(?string $dataObjectHistoryId): DataObjectHistory {
 		$this->dataObjectHistoryId = $dataObjectHistoryId;
 		return $this;
 	}
-
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
-
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
-
 	public function withDataObjectName(?string $dataObjectName): DataObjectHistory {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
-
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
-
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
-
 	public function withGeneration(?string $generation): DataObjectHistory {
 		$this->generation = $generation;
 		return $this;
 	}
-
 	public function getContentLength(): ?int {
 		return $this->contentLength;
 	}
-
 	public function setContentLength(?int $contentLength) {
 		$this->contentLength = $contentLength;
 	}
-
 	public function withContentLength(?int $contentLength): DataObjectHistory {
 		$this->contentLength = $contentLength;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): DataObjectHistory {
 		$this->createdAt = $createdAt;
 		return $this;

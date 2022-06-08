@@ -24,28 +24,22 @@ class DeleteVersionModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $versionName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteVersionModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
-
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
-
 	public function withVersionName(?string $versionName): DeleteVersionModelMasterRequest {
 		$this->versionName = $versionName;
 		return $this;

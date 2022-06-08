@@ -32,80 +32,62 @@ class CreateDistributorModelMasterRequest extends Gs2BasicRequest {
     private $inboxNamespaceId;
     /** @var array */
     private $whiteListTargetIds;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateDistributorModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateDistributorModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateDistributorModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateDistributorModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getInboxNamespaceId(): ?string {
 		return $this->inboxNamespaceId;
 	}
-
 	public function setInboxNamespaceId(?string $inboxNamespaceId) {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 	}
-
 	public function withInboxNamespaceId(?string $inboxNamespaceId): CreateDistributorModelMasterRequest {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 		return $this;
 	}
-
 	public function getWhiteListTargetIds(): ?array {
 		return $this->whiteListTargetIds;
 	}
-
 	public function setWhiteListTargetIds(?array $whiteListTargetIds) {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 	}
-
 	public function withWhiteListTargetIds(?array $whiteListTargetIds): CreateDistributorModelMasterRequest {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 		return $this;

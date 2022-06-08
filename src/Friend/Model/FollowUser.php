@@ -33,41 +33,32 @@ class FollowUser implements IModel {
      * @var string
 	 */
 	private $followerProfile;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): FollowUser {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
-
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
-
 	public function withPublicProfile(?string $publicProfile): FollowUser {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
-
 	public function getFollowerProfile(): ?string {
 		return $this->followerProfile;
 	}
-
 	public function setFollowerProfile(?string $followerProfile) {
 		$this->followerProfile = $followerProfile;
 	}
-
 	public function withFollowerProfile(?string $followerProfile): FollowUser {
 		$this->followerProfile = $followerProfile;
 		return $this;

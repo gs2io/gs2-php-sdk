@@ -24,28 +24,22 @@ class InvokeScriptRequest extends Gs2BasicRequest {
     private $scriptId;
     /** @var string */
     private $args;
-
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
-
 	public function setScriptId(?string $scriptId) {
 		$this->scriptId = $scriptId;
 	}
-
 	public function withScriptId(?string $scriptId): InvokeScriptRequest {
 		$this->scriptId = $scriptId;
 		return $this;
 	}
-
 	public function getArgs(): ?string {
 		return $this->args;
 	}
-
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
-
 	public function withArgs(?string $args): InvokeScriptRequest {
 		$this->args = $args;
 		return $this;

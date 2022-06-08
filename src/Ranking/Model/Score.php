@@ -53,106 +53,82 @@ class Score implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getScoreId(): ?string {
 		return $this->scoreId;
 	}
-
 	public function setScoreId(?string $scoreId) {
 		$this->scoreId = $scoreId;
 	}
-
 	public function withScoreId(?string $scoreId): Score {
 		$this->scoreId = $scoreId;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): Score {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Score {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getUniqueId(): ?string {
 		return $this->uniqueId;
 	}
-
 	public function setUniqueId(?string $uniqueId) {
 		$this->uniqueId = $uniqueId;
 	}
-
 	public function withUniqueId(?string $uniqueId): Score {
 		$this->uniqueId = $uniqueId;
 		return $this;
 	}
-
 	public function getScorerUserId(): ?string {
 		return $this->scorerUserId;
 	}
-
 	public function setScorerUserId(?string $scorerUserId) {
 		$this->scorerUserId = $scorerUserId;
 	}
-
 	public function withScorerUserId(?string $scorerUserId): Score {
 		$this->scorerUserId = $scorerUserId;
 		return $this;
 	}
-
 	public function getScore(): ?int {
 		return $this->score;
 	}
-
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
-
 	public function withScore(?int $score): Score {
 		$this->score = $score;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Score {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Score {
 		$this->createdAt = $createdAt;
 		return $this;

@@ -45,80 +45,62 @@ class TakeOver implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getTakeOverId(): ?string {
 		return $this->takeOverId;
 	}
-
 	public function setTakeOverId(?string $takeOverId) {
 		$this->takeOverId = $takeOverId;
 	}
-
 	public function withTakeOverId(?string $takeOverId): TakeOver {
 		$this->takeOverId = $takeOverId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): TakeOver {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getType(): ?int {
 		return $this->type;
 	}
-
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?int $type): TakeOver {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getUserIdentifier(): ?string {
 		return $this->userIdentifier;
 	}
-
 	public function setUserIdentifier(?string $userIdentifier) {
 		$this->userIdentifier = $userIdentifier;
 	}
-
 	public function withUserIdentifier(?string $userIdentifier): TakeOver {
 		$this->userIdentifier = $userIdentifier;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): TakeOver {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): TakeOver {
 		$this->createdAt = $createdAt;
 		return $this;

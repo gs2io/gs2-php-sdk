@@ -24,28 +24,22 @@ class GetIdentifierRequest extends Gs2BasicRequest {
     private $userName;
     /** @var string */
     private $clientId;
-
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
-
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-
 	public function withUserName(?string $userName): GetIdentifierRequest {
 		$this->userName = $userName;
 		return $this;
 	}
-
 	public function getClientId(): ?string {
 		return $this->clientId;
 	}
-
 	public function setClientId(?string $clientId) {
 		$this->clientId = $clientId;
 	}
-
 	public function withClientId(?string $clientId): GetIdentifierRequest {
 		$this->clientId = $clientId;
 		return $this;

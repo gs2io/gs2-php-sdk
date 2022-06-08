@@ -33,41 +33,32 @@ class JobEntry implements IModel {
      * @var int
 	 */
 	private $maxTryCount;
-
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
-
 	public function setScriptId(?string $scriptId) {
 		$this->scriptId = $scriptId;
 	}
-
 	public function withScriptId(?string $scriptId): JobEntry {
 		$this->scriptId = $scriptId;
 		return $this;
 	}
-
 	public function getArgs(): ?string {
 		return $this->args;
 	}
-
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
-
 	public function withArgs(?string $args): JobEntry {
 		$this->args = $args;
 		return $this;
 	}
-
 	public function getMaxTryCount(): ?int {
 		return $this->maxTryCount;
 	}
-
 	public function setMaxTryCount(?int $maxTryCount) {
 		$this->maxTryCount = $maxTryCount;
 	}
-
 	public function withMaxTryCount(?int $maxTryCount): JobEntry {
 		$this->maxTryCount = $maxTryCount;
 		return $this;

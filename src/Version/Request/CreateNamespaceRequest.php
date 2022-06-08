@@ -34,80 +34,62 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $checkVersionTriggerScriptId;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getAssumeUserId(): ?string {
 		return $this->assumeUserId;
 	}
-
 	public function setAssumeUserId(?string $assumeUserId) {
 		$this->assumeUserId = $assumeUserId;
 	}
-
 	public function withAssumeUserId(?string $assumeUserId): CreateNamespaceRequest {
 		$this->assumeUserId = $assumeUserId;
 		return $this;
 	}
-
 	public function getAcceptVersionScript(): ?ScriptSetting {
 		return $this->acceptVersionScript;
 	}
-
 	public function setAcceptVersionScript(?ScriptSetting $acceptVersionScript) {
 		$this->acceptVersionScript = $acceptVersionScript;
 	}
-
 	public function withAcceptVersionScript(?ScriptSetting $acceptVersionScript): CreateNamespaceRequest {
 		$this->acceptVersionScript = $acceptVersionScript;
 		return $this;
 	}
-
 	public function getCheckVersionTriggerScriptId(): ?string {
 		return $this->checkVersionTriggerScriptId;
 	}
-
 	public function setCheckVersionTriggerScriptId(?string $checkVersionTriggerScriptId) {
 		$this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
 	}
-
 	public function withCheckVersionTriggerScriptId(?string $checkVersionTriggerScriptId): CreateNamespaceRequest {
 		$this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

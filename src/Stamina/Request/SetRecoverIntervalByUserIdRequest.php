@@ -30,54 +30,42 @@ class SetRecoverIntervalByUserIdRequest extends Gs2BasicRequest {
     private $recoverIntervalMinutes;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetRecoverIntervalByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): SetRecoverIntervalByUserIdRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SetRecoverIntervalByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRecoverIntervalMinutes(): ?int {
 		return $this->recoverIntervalMinutes;
 	}
-
 	public function setRecoverIntervalMinutes(?int $recoverIntervalMinutes) {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
 	}
-
 	public function withRecoverIntervalMinutes(?int $recoverIntervalMinutes): SetRecoverIntervalByUserIdRequest {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
 		return $this;

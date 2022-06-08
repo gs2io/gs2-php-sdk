@@ -34,80 +34,62 @@ class CreateGlobalMessageMasterRequest extends Gs2BasicRequest {
     private $expiresTimeSpan;
     /** @var int */
     private $expiresAt;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateGlobalMessageMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateGlobalMessageMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateGlobalMessageMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getReadAcquireActions(): ?array {
 		return $this->readAcquireActions;
 	}
-
 	public function setReadAcquireActions(?array $readAcquireActions) {
 		$this->readAcquireActions = $readAcquireActions;
 	}
-
 	public function withReadAcquireActions(?array $readAcquireActions): CreateGlobalMessageMasterRequest {
 		$this->readAcquireActions = $readAcquireActions;
 		return $this;
 	}
-
 	public function getExpiresTimeSpan(): ?TimeSpan {
 		return $this->expiresTimeSpan;
 	}
-
 	public function setExpiresTimeSpan(?TimeSpan $expiresTimeSpan) {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 	}
-
 	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): CreateGlobalMessageMasterRequest {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 		return $this;
 	}
-
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
-
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
-
 	public function withExpiresAt(?int $expiresAt): CreateGlobalMessageMasterRequest {
 		$this->expiresAt = $expiresAt;
 		return $this;

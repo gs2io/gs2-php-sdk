@@ -29,28 +29,22 @@ class ReferenceOf implements IModel {
      * @var string
 	 */
 	private $name;
-
 	public function getReferenceOfId(): ?string {
 		return $this->referenceOfId;
 	}
-
 	public function setReferenceOfId(?string $referenceOfId) {
 		$this->referenceOfId = $referenceOfId;
 	}
-
 	public function withReferenceOfId(?string $referenceOfId): ReferenceOf {
 		$this->referenceOfId = $referenceOfId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): ReferenceOf {
 		$this->name = $name;
 		return $this;

@@ -41,132 +41,102 @@ class CreateVersionModelMasterRequest extends Gs2BasicRequest {
     private $needSignature;
     /** @var string */
     private $signatureKeyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateVersionModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateVersionModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateVersionModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateVersionModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getWarningVersion(): ?Version {
 		return $this->warningVersion;
 	}
-
 	public function setWarningVersion(?Version $warningVersion) {
 		$this->warningVersion = $warningVersion;
 	}
-
 	public function withWarningVersion(?Version $warningVersion): CreateVersionModelMasterRequest {
 		$this->warningVersion = $warningVersion;
 		return $this;
 	}
-
 	public function getErrorVersion(): ?Version {
 		return $this->errorVersion;
 	}
-
 	public function setErrorVersion(?Version $errorVersion) {
 		$this->errorVersion = $errorVersion;
 	}
-
 	public function withErrorVersion(?Version $errorVersion): CreateVersionModelMasterRequest {
 		$this->errorVersion = $errorVersion;
 		return $this;
 	}
-
 	public function getScope(): ?string {
 		return $this->scope;
 	}
-
 	public function setScope(?string $scope) {
 		$this->scope = $scope;
 	}
-
 	public function withScope(?string $scope): CreateVersionModelMasterRequest {
 		$this->scope = $scope;
 		return $this;
 	}
-
 	public function getCurrentVersion(): ?Version {
 		return $this->currentVersion;
 	}
-
 	public function setCurrentVersion(?Version $currentVersion) {
 		$this->currentVersion = $currentVersion;
 	}
-
 	public function withCurrentVersion(?Version $currentVersion): CreateVersionModelMasterRequest {
 		$this->currentVersion = $currentVersion;
 		return $this;
 	}
-
 	public function getNeedSignature(): ?bool {
 		return $this->needSignature;
 	}
-
 	public function setNeedSignature(?bool $needSignature) {
 		$this->needSignature = $needSignature;
 	}
-
 	public function withNeedSignature(?bool $needSignature): CreateVersionModelMasterRequest {
 		$this->needSignature = $needSignature;
 		return $this;
 	}
-
 	public function getSignatureKeyId(): ?string {
 		return $this->signatureKeyId;
 	}
-
 	public function setSignatureKeyId(?string $signatureKeyId) {
 		$this->signatureKeyId = $signatureKeyId;
 	}
-
 	public function withSignatureKeyId(?string $signatureKeyId): CreateVersionModelMasterRequest {
 		$this->signatureKeyId = $signatureKeyId;
 		return $this;
@@ -185,7 +155,7 @@ class CreateVersionModelMasterRequest extends Gs2BasicRequest {
             ->withErrorVersion(array_key_exists('errorVersion', $data) && $data['errorVersion'] !== null ? Version::fromJson($data['errorVersion']) : null)
             ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
             ->withCurrentVersion(array_key_exists('currentVersion', $data) && $data['currentVersion'] !== null ? Version::fromJson($data['currentVersion']) : null)
-            ->withNeedSignature($data['needSignature'])
+            ->withNeedSignature(array_key_exists('needSignature', $data) ? $data['needSignature'] : null)
             ->withSignatureKeyId(array_key_exists('signatureKeyId', $data) && $data['signatureKeyId'] !== null ? $data['signatureKeyId'] : null);
     }
 

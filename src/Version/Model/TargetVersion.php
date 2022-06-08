@@ -37,54 +37,42 @@ class TargetVersion implements IModel {
      * @var string
 	 */
 	private $signature;
-
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
-
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
-
 	public function withVersionName(?string $versionName): TargetVersion {
 		$this->versionName = $versionName;
 		return $this;
 	}
-
 	public function getVersion(): ?Version {
 		return $this->version;
 	}
-
 	public function setVersion(?Version $version) {
 		$this->version = $version;
 	}
-
 	public function withVersion(?Version $version): TargetVersion {
 		$this->version = $version;
 		return $this;
 	}
-
 	public function getBody(): ?string {
 		return $this->body;
 	}
-
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
-
 	public function withBody(?string $body): TargetVersion {
 		$this->body = $body;
 		return $this;
 	}
-
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
-
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
-
 	public function withSignature(?string $signature): TargetVersion {
 		$this->signature = $signature;
 		return $this;

@@ -24,28 +24,22 @@ class UpdateCurrentExperienceMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $settings;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentExperienceMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
-
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
-
 	public function withSettings(?string $settings): UpdateCurrentExperienceMasterRequest {
 		$this->settings = $settings;
 		return $this;

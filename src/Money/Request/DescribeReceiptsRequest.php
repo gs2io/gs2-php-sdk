@@ -34,93 +34,72 @@ class DescribeReceiptsRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeReceiptsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DescribeReceiptsRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
-
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
-
 	public function withSlot(?int $slot): DescribeReceiptsRequest {
 		$this->slot = $slot;
 		return $this;
 	}
-
 	public function getBegin(): ?int {
 		return $this->begin;
 	}
-
 	public function setBegin(?int $begin) {
 		$this->begin = $begin;
 	}
-
 	public function withBegin(?int $begin): DescribeReceiptsRequest {
 		$this->begin = $begin;
 		return $this;
 	}
-
 	public function getEnd(): ?int {
 		return $this->end;
 	}
-
 	public function setEnd(?int $end) {
 		$this->end = $end;
 	}
-
 	public function withEnd(?int $end): DescribeReceiptsRequest {
 		$this->end = $end;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeReceiptsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeReceiptsRequest {
 		$this->limit = $limit;
 		return $this;

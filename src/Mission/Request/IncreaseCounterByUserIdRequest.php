@@ -30,54 +30,42 @@ class IncreaseCounterByUserIdRequest extends Gs2BasicRequest {
     private $value;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): IncreaseCounterByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
-
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
-
 	public function withCounterName(?string $counterName): IncreaseCounterByUserIdRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): IncreaseCounterByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getValue(): ?int {
 		return $this->value;
 	}
-
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?int $value): IncreaseCounterByUserIdRequest {
 		$this->value = $value;
 		return $this;

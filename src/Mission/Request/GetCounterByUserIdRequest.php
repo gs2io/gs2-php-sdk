@@ -26,41 +26,32 @@ class GetCounterByUserIdRequest extends Gs2BasicRequest {
     private $counterName;
     /** @var string */
     private $userId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetCounterByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
-
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
-
 	public function withCounterName(?string $counterName): GetCounterByUserIdRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetCounterByUserIdRequest {
 		$this->userId = $userId;
 		return $this;

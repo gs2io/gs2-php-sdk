@@ -30,54 +30,42 @@ class PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest extends Gs2Ba
     private $generation;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
-
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
-
 	public function withDataObjectName(?string $dataObjectName): PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
-
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
-
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
-
 	public function withGeneration(?string $generation): PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest {
 		$this->generation = $generation;
 		return $this;

@@ -24,28 +24,22 @@ class GetCounterModelRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $counterName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetCounterModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
-
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
-
 	public function withCounterName(?string $counterName): GetCounterModelRequest {
 		$this->counterName = $counterName;
 		return $this;

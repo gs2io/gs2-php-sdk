@@ -26,41 +26,32 @@ class GetDeadLetterJobByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $deadLetterJobName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetDeadLetterJobByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetDeadLetterJobByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getDeadLetterJobName(): ?string {
 		return $this->deadLetterJobName;
 	}
-
 	public function setDeadLetterJobName(?string $deadLetterJobName) {
 		$this->deadLetterJobName = $deadLetterJobName;
 	}
-
 	public function withDeadLetterJobName(?string $deadLetterJobName): GetDeadLetterJobByUserIdRequest {
 		$this->deadLetterJobName = $deadLetterJobName;
 		return $this;

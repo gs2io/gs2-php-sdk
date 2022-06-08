@@ -30,54 +30,42 @@ class ConsumeStaminaByUserIdRequest extends Gs2BasicRequest {
     private $consumeValue;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): ConsumeStaminaByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): ConsumeStaminaByUserIdRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): ConsumeStaminaByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getConsumeValue(): ?int {
 		return $this->consumeValue;
 	}
-
 	public function setConsumeValue(?int $consumeValue) {
 		$this->consumeValue = $consumeValue;
 	}
-
 	public function withConsumeValue(?int $consumeValue): ConsumeStaminaByUserIdRequest {
 		$this->consumeValue = $consumeValue;
 		return $this;

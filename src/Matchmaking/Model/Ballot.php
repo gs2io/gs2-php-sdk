@@ -37,54 +37,42 @@ class Ballot implements IModel {
      * @var int
 	 */
 	private $numberOfPlayer;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Ballot {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
-
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
-
 	public function withRatingName(?string $ratingName): Ballot {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
-
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
-
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
-
 	public function withGatheringName(?string $gatheringName): Ballot {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
-
 	public function getNumberOfPlayer(): ?int {
 		return $this->numberOfPlayer;
 	}
-
 	public function setNumberOfPlayer(?int $numberOfPlayer) {
 		$this->numberOfPlayer = $numberOfPlayer;
 	}
-
 	public function withNumberOfPlayer(?int $numberOfPlayer): Ballot {
 		$this->numberOfPlayer = $numberOfPlayer;
 		return $this;

@@ -26,41 +26,32 @@ class GetTriggerByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $triggerName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetTriggerByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetTriggerByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
-
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
-
 	public function withTriggerName(?string $triggerName): GetTriggerByUserIdRequest {
 		$this->triggerName = $triggerName;
 		return $this;

@@ -31,54 +31,42 @@ class ReadMessageByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): ReadMessageByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): ReadMessageByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
-
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
-
 	public function withMessageName(?string $messageName): ReadMessageByUserIdRequest {
 		$this->messageName = $messageName;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): ReadMessageByUserIdRequest {
 		$this->config = $config;
 		return $this;

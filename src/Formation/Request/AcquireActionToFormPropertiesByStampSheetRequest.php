@@ -24,28 +24,22 @@ class AcquireActionToFormPropertiesByStampSheetRequest extends Gs2BasicRequest {
     private $stampSheet;
     /** @var string */
     private $keyId;
-
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
-
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
-
 	public function withStampSheet(?string $stampSheet): AcquireActionToFormPropertiesByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): AcquireActionToFormPropertiesByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

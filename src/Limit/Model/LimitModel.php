@@ -49,93 +49,72 @@ class LimitModel implements IModel {
      * @var int
 	 */
 	private $resetHour;
-
 	public function getLimitModelId(): ?string {
 		return $this->limitModelId;
 	}
-
 	public function setLimitModelId(?string $limitModelId) {
 		$this->limitModelId = $limitModelId;
 	}
-
 	public function withLimitModelId(?string $limitModelId): LimitModel {
 		$this->limitModelId = $limitModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): LimitModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): LimitModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
-
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
-
 	public function withResetType(?string $resetType): LimitModel {
 		$this->resetType = $resetType;
 		return $this;
 	}
-
 	public function getResetDayOfMonth(): ?int {
 		return $this->resetDayOfMonth;
 	}
-
 	public function setResetDayOfMonth(?int $resetDayOfMonth) {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 	}
-
 	public function withResetDayOfMonth(?int $resetDayOfMonth): LimitModel {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 		return $this;
 	}
-
 	public function getResetDayOfWeek(): ?string {
 		return $this->resetDayOfWeek;
 	}
-
 	public function setResetDayOfWeek(?string $resetDayOfWeek) {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 	}
-
 	public function withResetDayOfWeek(?string $resetDayOfWeek): LimitModel {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 		return $this;
 	}
-
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
-
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
-
 	public function withResetHour(?int $resetHour): LimitModel {
 		$this->resetHour = $resetHour;
 		return $this;

@@ -25,15 +25,12 @@ class LogSetting implements IModel {
      * @var string
 	 */
 	private $loggingNamespaceId;
-
 	public function getLoggingNamespaceId(): ?string {
 		return $this->loggingNamespaceId;
 	}
-
 	public function setLoggingNamespaceId(?string $loggingNamespaceId) {
 		$this->loggingNamespaceId = $loggingNamespaceId;
 	}
-
 	public function withLoggingNamespaceId(?string $loggingNamespaceId): LogSetting {
 		$this->loggingNamespaceId = $loggingNamespaceId;
 		return $this;

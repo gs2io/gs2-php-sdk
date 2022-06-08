@@ -33,41 +33,32 @@ class SalesItemGroup implements IModel {
      * @var array
 	 */
 	private $salesItems;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): SalesItemGroup {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): SalesItemGroup {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getSalesItems(): ?array {
 		return $this->salesItems;
 	}
-
 	public function setSalesItems(?array $salesItems) {
 		$this->salesItems = $salesItems;
 	}
-
 	public function withSalesItems(?array $salesItems): SalesItemGroup {
 		$this->salesItems = $salesItems;
 		return $this;

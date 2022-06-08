@@ -37,54 +37,42 @@ class JobResultBody implements IModel {
      * @var int
 	 */
 	private $tryAt;
-
 	public function getTryNumber(): ?int {
 		return $this->tryNumber;
 	}
-
 	public function setTryNumber(?int $tryNumber) {
 		$this->tryNumber = $tryNumber;
 	}
-
 	public function withTryNumber(?int $tryNumber): JobResultBody {
 		$this->tryNumber = $tryNumber;
 		return $this;
 	}
-
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
-
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
-
 	public function withStatusCode(?int $statusCode): JobResultBody {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
-
 	public function getResult(): ?string {
 		return $this->result;
 	}
-
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
-
 	public function withResult(?string $result): JobResultBody {
 		$this->result = $result;
 		return $this;
 	}
-
 	public function getTryAt(): ?int {
 		return $this->tryAt;
 	}
-
 	public function setTryAt(?int $tryAt) {
 		$this->tryAt = $tryAt;
 	}
-
 	public function withTryAt(?int $tryAt): JobResultBody {
 		$this->tryAt = $tryAt;
 		return $this;

@@ -30,67 +30,52 @@ class GetMessageRequest extends Gs2BasicRequest {
     private $password;
     /** @var string */
     private $accessToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetMessageRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): GetMessageRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
-
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
-
 	public function withMessageName(?string $messageName): GetMessageRequest {
 		$this->messageName = $messageName;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): GetMessageRequest {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetMessageRequest {
 		$this->accessToken = $accessToken;
 		return $this;

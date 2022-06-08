@@ -26,41 +26,32 @@ class WantRoomRequest extends Gs2BasicRequest {
     private $name;
     /** @var array */
     private $notificationUserIds;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): WantRoomRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): WantRoomRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getNotificationUserIds(): ?array {
 		return $this->notificationUserIds;
 	}
-
 	public function setNotificationUserIds(?array $notificationUserIds) {
 		$this->notificationUserIds = $notificationUserIds;
 	}
-
 	public function withNotificationUserIds(?array $notificationUserIds): WantRoomRequest {
 		$this->notificationUserIds = $notificationUserIds;
 		return $this;

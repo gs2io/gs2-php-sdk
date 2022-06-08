@@ -29,54 +29,42 @@ class DistributeRequest extends Gs2BasicRequest {
     private $userId;
     /** @var DistributeResource */
     private $distributeResource;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DistributeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDistributorName(): ?string {
 		return $this->distributorName;
 	}
-
 	public function setDistributorName(?string $distributorName) {
 		$this->distributorName = $distributorName;
 	}
-
 	public function withDistributorName(?string $distributorName): DistributeRequest {
 		$this->distributorName = $distributorName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DistributeRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getDistributeResource(): ?DistributeResource {
 		return $this->distributeResource;
 	}
-
 	public function setDistributeResource(?DistributeResource $distributeResource) {
 		$this->distributeResource = $distributeResource;
 	}
-
 	public function withDistributeResource(?DistributeResource $distributeResource): DistributeRequest {
 		$this->distributeResource = $distributeResource;
 		return $this;

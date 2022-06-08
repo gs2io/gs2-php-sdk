@@ -30,67 +30,52 @@ class UpdateRatingModelMasterRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var int */
     private $volatility;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateRatingModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
-
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
-
 	public function withRatingName(?string $ratingName): UpdateRatingModelMasterRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateRatingModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateRatingModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getVolatility(): ?int {
 		return $this->volatility;
 	}
-
 	public function setVolatility(?int $volatility) {
 		$this->volatility = $volatility;
 	}
-
 	public function withVolatility(?int $volatility): UpdateRatingModelMasterRequest {
 		$this->volatility = $volatility;
 		return $this;

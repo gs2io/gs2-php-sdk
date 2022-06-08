@@ -28,54 +28,42 @@ class GetEntryWithSignatureByUserIdRequest extends Gs2BasicRequest {
     private $entryModelName;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetEntryWithSignatureByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetEntryWithSignatureByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getEntryModelName(): ?string {
 		return $this->entryModelName;
 	}
-
 	public function setEntryModelName(?string $entryModelName) {
 		$this->entryModelName = $entryModelName;
 	}
-
 	public function withEntryModelName(?string $entryModelName): GetEntryWithSignatureByUserIdRequest {
 		$this->entryModelName = $entryModelName;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): GetEntryWithSignatureByUserIdRequest {
 		$this->keyId = $keyId;
 		return $this;

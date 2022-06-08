@@ -36,93 +36,72 @@ class StartRequest extends Gs2BasicRequest {
     private $force;
     /** @var array */
     private $config;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): StartRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): StartRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getTargetItemSetId(): ?string {
 		return $this->targetItemSetId;
 	}
-
 	public function setTargetItemSetId(?string $targetItemSetId) {
 		$this->targetItemSetId = $targetItemSetId;
 	}
-
 	public function withTargetItemSetId(?string $targetItemSetId): StartRequest {
 		$this->targetItemSetId = $targetItemSetId;
 		return $this;
 	}
-
 	public function getMaterials(): ?array {
 		return $this->materials;
 	}
-
 	public function setMaterials(?array $materials) {
 		$this->materials = $materials;
 	}
-
 	public function withMaterials(?array $materials): StartRequest {
 		$this->materials = $materials;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): StartRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getForce(): ?bool {
 		return $this->force;
 	}
-
 	public function setForce(?bool $force) {
 		$this->force = $force;
 	}
-
 	public function withForce(?bool $force): StartRequest {
 		$this->force = $force;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): StartRequest {
 		$this->config = $config;
 		return $this;

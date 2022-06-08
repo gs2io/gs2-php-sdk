@@ -33,67 +33,52 @@ class DrawByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DrawByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getLotteryName(): ?string {
 		return $this->lotteryName;
 	}
-
 	public function setLotteryName(?string $lotteryName) {
 		$this->lotteryName = $lotteryName;
 	}
-
 	public function withLotteryName(?string $lotteryName): DrawByUserIdRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DrawByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): DrawByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): DrawByUserIdRequest {
 		$this->config = $config;
 		return $this;

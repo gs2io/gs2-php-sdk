@@ -37,54 +37,42 @@ class CounterScopeModel implements IModel {
      * @var int
 	 */
 	private $resetHour;
-
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
-
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
-
 	public function withResetType(?string $resetType): CounterScopeModel {
 		$this->resetType = $resetType;
 		return $this;
 	}
-
 	public function getResetDayOfMonth(): ?int {
 		return $this->resetDayOfMonth;
 	}
-
 	public function setResetDayOfMonth(?int $resetDayOfMonth) {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 	}
-
 	public function withResetDayOfMonth(?int $resetDayOfMonth): CounterScopeModel {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 		return $this;
 	}
-
 	public function getResetDayOfWeek(): ?string {
 		return $this->resetDayOfWeek;
 	}
-
 	public function setResetDayOfWeek(?string $resetDayOfWeek) {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 	}
-
 	public function withResetDayOfWeek(?string $resetDayOfWeek): CounterScopeModel {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 		return $this;
 	}
-
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
-
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
-
 	public function withResetHour(?int $resetHour): CounterScopeModel {
 		$this->resetHour = $resetHour;
 		return $this;

@@ -32,67 +32,52 @@ class UpdatePrizeTableMasterRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var array */
     private $prizes;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdatePrizeTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
-
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
-
 	public function withPrizeTableName(?string $prizeTableName): UpdatePrizeTableMasterRequest {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdatePrizeTableMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdatePrizeTableMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getPrizes(): ?array {
 		return $this->prizes;
 	}
-
 	public function setPrizes(?array $prizes) {
 		$this->prizes = $prizes;
 	}
-
 	public function withPrizes(?array $prizes): UpdatePrizeTableMasterRequest {
 		$this->prizes = $prizes;
 		return $this;

@@ -28,54 +28,42 @@ class CreateScriptRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $script;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateScriptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateScriptRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateScriptRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getScript(): ?string {
 		return $this->script;
 	}
-
 	public function setScript(?string $script) {
 		$this->script = $script;
 	}
-
 	public function withScript(?string $script): CreateScriptRequest {
 		$this->script = $script;
 		return $this;

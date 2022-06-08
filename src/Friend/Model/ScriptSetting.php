@@ -37,54 +37,42 @@ class ScriptSetting implements IModel {
      * @var string
 	 */
 	private $doneTriggerQueueNamespaceId;
-
 	public function getTriggerScriptId(): ?string {
 		return $this->triggerScriptId;
 	}
-
 	public function setTriggerScriptId(?string $triggerScriptId) {
 		$this->triggerScriptId = $triggerScriptId;
 	}
-
 	public function withTriggerScriptId(?string $triggerScriptId): ScriptSetting {
 		$this->triggerScriptId = $triggerScriptId;
 		return $this;
 	}
-
 	public function getDoneTriggerTargetType(): ?string {
 		return $this->doneTriggerTargetType;
 	}
-
 	public function setDoneTriggerTargetType(?string $doneTriggerTargetType) {
 		$this->doneTriggerTargetType = $doneTriggerTargetType;
 	}
-
 	public function withDoneTriggerTargetType(?string $doneTriggerTargetType): ScriptSetting {
 		$this->doneTriggerTargetType = $doneTriggerTargetType;
 		return $this;
 	}
-
 	public function getDoneTriggerScriptId(): ?string {
 		return $this->doneTriggerScriptId;
 	}
-
 	public function setDoneTriggerScriptId(?string $doneTriggerScriptId) {
 		$this->doneTriggerScriptId = $doneTriggerScriptId;
 	}
-
 	public function withDoneTriggerScriptId(?string $doneTriggerScriptId): ScriptSetting {
 		$this->doneTriggerScriptId = $doneTriggerScriptId;
 		return $this;
 	}
-
 	public function getDoneTriggerQueueNamespaceId(): ?string {
 		return $this->doneTriggerQueueNamespaceId;
 	}
-
 	public function setDoneTriggerQueueNamespaceId(?string $doneTriggerQueueNamespaceId) {
 		$this->doneTriggerQueueNamespaceId = $doneTriggerQueueNamespaceId;
 	}
-
 	public function withDoneTriggerQueueNamespaceId(?string $doneTriggerQueueNamespaceId): ScriptSetting {
 		$this->doneTriggerQueueNamespaceId = $doneTriggerQueueNamespaceId;
 		return $this;

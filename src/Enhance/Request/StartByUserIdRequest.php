@@ -38,93 +38,72 @@ class StartByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): StartByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): StartByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getTargetItemSetId(): ?string {
 		return $this->targetItemSetId;
 	}
-
 	public function setTargetItemSetId(?string $targetItemSetId) {
 		$this->targetItemSetId = $targetItemSetId;
 	}
-
 	public function withTargetItemSetId(?string $targetItemSetId): StartByUserIdRequest {
 		$this->targetItemSetId = $targetItemSetId;
 		return $this;
 	}
-
 	public function getMaterials(): ?array {
 		return $this->materials;
 	}
-
 	public function setMaterials(?array $materials) {
 		$this->materials = $materials;
 	}
-
 	public function withMaterials(?array $materials): StartByUserIdRequest {
 		$this->materials = $materials;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): StartByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getForce(): ?bool {
 		return $this->force;
 	}
-
 	public function setForce(?bool $force) {
 		$this->force = $force;
 	}
-
 	public function withForce(?bool $force): StartByUserIdRequest {
 		$this->force = $force;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): StartByUserIdRequest {
 		$this->config = $config;
 		return $this;

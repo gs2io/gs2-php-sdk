@@ -28,41 +28,32 @@ class UpdateTimeOffsetRequest extends Gs2BasicRequest {
     private $timeOffset;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateTimeOffsetRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateTimeOffsetRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTimeOffset(): ?int {
 		return $this->timeOffset;
 	}
-
 	public function setTimeOffset(?int $timeOffset) {
 		$this->timeOffset = $timeOffset;
 	}
-
 	public function withTimeOffset(?int $timeOffset): UpdateTimeOffsetRequest {
 		$this->timeOffset = $timeOffset;
 		return $this;

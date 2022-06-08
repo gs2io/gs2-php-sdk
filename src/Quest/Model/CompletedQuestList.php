@@ -45,80 +45,62 @@ class CompletedQuestList implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getCompletedQuestListId(): ?string {
 		return $this->completedQuestListId;
 	}
-
 	public function setCompletedQuestListId(?string $completedQuestListId) {
 		$this->completedQuestListId = $completedQuestListId;
 	}
-
 	public function withCompletedQuestListId(?string $completedQuestListId): CompletedQuestList {
 		$this->completedQuestListId = $completedQuestListId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): CompletedQuestList {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
-
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
-
 	public function withQuestGroupName(?string $questGroupName): CompletedQuestList {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
-
 	public function getCompleteQuestNames(): ?array {
 		return $this->completeQuestNames;
 	}
-
 	public function setCompleteQuestNames(?array $completeQuestNames) {
 		$this->completeQuestNames = $completeQuestNames;
 	}
-
 	public function withCompleteQuestNames(?array $completeQuestNames): CompletedQuestList {
 		$this->completeQuestNames = $completeQuestNames;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): CompletedQuestList {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): CompletedQuestList {
 		$this->updatedAt = $updatedAt;
 		return $this;

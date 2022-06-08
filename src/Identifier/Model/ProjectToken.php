@@ -25,15 +25,12 @@ class ProjectToken implements IModel {
      * @var string
 	 */
 	private $token;
-
 	public function getToken(): ?string {
 		return $this->token;
 	}
-
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
-
 	public function withToken(?string $token): ProjectToken {
 		$this->token = $token;
 		return $this;

@@ -26,41 +26,32 @@ class GetReceiveRequestByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $fromUserId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetReceiveRequestByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetReceiveRequestByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getFromUserId(): ?string {
 		return $this->fromUserId;
 	}
-
 	public function setFromUserId(?string $fromUserId) {
 		$this->fromUserId = $fromUserId;
 	}
-
 	public function withFromUserId(?string $fromUserId): GetReceiveRequestByUserIdRequest {
 		$this->fromUserId = $fromUserId;
 		return $this;

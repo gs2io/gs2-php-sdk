@@ -34,80 +34,62 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $consumeScript;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getAcquireScript(): ?ScriptSetting {
 		return $this->acquireScript;
 	}
-
 	public function setAcquireScript(?ScriptSetting $acquireScript) {
 		$this->acquireScript = $acquireScript;
 	}
-
 	public function withAcquireScript(?ScriptSetting $acquireScript): CreateNamespaceRequest {
 		$this->acquireScript = $acquireScript;
 		return $this;
 	}
-
 	public function getOverflowScript(): ?ScriptSetting {
 		return $this->overflowScript;
 	}
-
 	public function setOverflowScript(?ScriptSetting $overflowScript) {
 		$this->overflowScript = $overflowScript;
 	}
-
 	public function withOverflowScript(?ScriptSetting $overflowScript): CreateNamespaceRequest {
 		$this->overflowScript = $overflowScript;
 		return $this;
 	}
-
 	public function getConsumeScript(): ?ScriptSetting {
 		return $this->consumeScript;
 	}
-
 	public function setConsumeScript(?ScriptSetting $consumeScript) {
 		$this->consumeScript = $consumeScript;
 	}
-
 	public function withConsumeScript(?ScriptSetting $consumeScript): CreateNamespaceRequest {
 		$this->consumeScript = $consumeScript;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

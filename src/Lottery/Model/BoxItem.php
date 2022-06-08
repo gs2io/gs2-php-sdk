@@ -33,41 +33,32 @@ class BoxItem implements IModel {
      * @var int
 	 */
 	private $initial;
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): BoxItem {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
-
 	public function getRemaining(): ?int {
 		return $this->remaining;
 	}
-
 	public function setRemaining(?int $remaining) {
 		$this->remaining = $remaining;
 	}
-
 	public function withRemaining(?int $remaining): BoxItem {
 		$this->remaining = $remaining;
 		return $this;
 	}
-
 	public function getInitial(): ?int {
 		return $this->initial;
 	}
-
 	public function setInitial(?int $initial) {
 		$this->initial = $initial;
 	}
-
 	public function withInitial(?int $initial): BoxItem {
 		$this->initial = $initial;
 		return $this;

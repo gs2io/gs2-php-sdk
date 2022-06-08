@@ -24,28 +24,22 @@ class LoginByUserRequest extends Gs2BasicRequest {
     private $userName;
     /** @var string */
     private $password;
-
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
-
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-
 	public function withUserName(?string $userName): LoginByUserRequest {
 		$this->userName = $userName;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): LoginByUserRequest {
 		$this->password = $password;
 		return $this;

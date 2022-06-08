@@ -30,67 +30,52 @@ class GetScoreByUserIdRequest extends Gs2BasicRequest {
     private $scorerUserId;
     /** @var string */
     private $uniqueId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetScoreByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): GetScoreByUserIdRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetScoreByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getScorerUserId(): ?string {
 		return $this->scorerUserId;
 	}
-
 	public function setScorerUserId(?string $scorerUserId) {
 		$this->scorerUserId = $scorerUserId;
 	}
-
 	public function withScorerUserId(?string $scorerUserId): GetScoreByUserIdRequest {
 		$this->scorerUserId = $scorerUserId;
 		return $this;
 	}
-
 	public function getUniqueId(): ?string {
 		return $this->uniqueId;
 	}
-
 	public function setUniqueId(?string $uniqueId) {
 		$this->uniqueId = $uniqueId;
 	}
-
 	public function withUniqueId(?string $uniqueId): GetScoreByUserIdRequest {
 		$this->uniqueId = $uniqueId;
 		return $this;

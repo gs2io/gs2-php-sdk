@@ -61,132 +61,102 @@ class DataObject implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getDataObjectId(): ?string {
 		return $this->dataObjectId;
 	}
-
 	public function setDataObjectId(?string $dataObjectId) {
 		$this->dataObjectId = $dataObjectId;
 	}
-
 	public function withDataObjectId(?string $dataObjectId): DataObject {
 		$this->dataObjectId = $dataObjectId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): DataObject {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DataObject {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getScope(): ?string {
 		return $this->scope;
 	}
-
 	public function setScope(?string $scope) {
 		$this->scope = $scope;
 	}
-
 	public function withScope(?string $scope): DataObject {
 		$this->scope = $scope;
 		return $this;
 	}
-
 	public function getAllowUserIds(): ?array {
 		return $this->allowUserIds;
 	}
-
 	public function setAllowUserIds(?array $allowUserIds) {
 		$this->allowUserIds = $allowUserIds;
 	}
-
 	public function withAllowUserIds(?array $allowUserIds): DataObject {
 		$this->allowUserIds = $allowUserIds;
 		return $this;
 	}
-
 	public function getStatus(): ?string {
 		return $this->status;
 	}
-
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
-
 	public function withStatus(?string $status): DataObject {
 		$this->status = $status;
 		return $this;
 	}
-
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
-
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
-
 	public function withGeneration(?string $generation): DataObject {
 		$this->generation = $generation;
 		return $this;
 	}
-
 	public function getPreviousGeneration(): ?string {
 		return $this->previousGeneration;
 	}
-
 	public function setPreviousGeneration(?string $previousGeneration) {
 		$this->previousGeneration = $previousGeneration;
 	}
-
 	public function withPreviousGeneration(?string $previousGeneration): DataObject {
 		$this->previousGeneration = $previousGeneration;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): DataObject {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): DataObject {
 		$this->updatedAt = $updatedAt;
 		return $this;

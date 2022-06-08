@@ -26,41 +26,32 @@ class LoginBySignatureRequest extends Gs2BasicRequest {
     private $body;
     /** @var string */
     private $signature;
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): LoginBySignatureRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
-
 	public function getBody(): ?string {
 		return $this->body;
 	}
-
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
-
 	public function withBody(?string $body): LoginBySignatureRequest {
 		$this->body = $body;
 		return $this;
 	}
-
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
-
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
-
 	public function withSignature(?string $signature): LoginBySignatureRequest {
 		$this->signature = $signature;
 		return $this;

@@ -29,41 +29,32 @@ class PushByUserIdRequest extends Gs2BasicRequest {
     private $jobs;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PushByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): PushByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getJobs(): ?array {
 		return $this->jobs;
 	}
-
 	public function setJobs(?array $jobs) {
 		$this->jobs = $jobs;
 	}
-
 	public function withJobs(?array $jobs): PushByUserIdRequest {
 		$this->jobs = $jobs;
 		return $this;

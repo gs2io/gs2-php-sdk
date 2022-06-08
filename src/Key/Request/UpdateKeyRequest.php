@@ -26,41 +26,32 @@ class UpdateKeyRequest extends Gs2BasicRequest {
     private $keyName;
     /** @var string */
     private $description;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getKeyName(): ?string {
 		return $this->keyName;
 	}
-
 	public function setKeyName(?string $keyName) {
 		$this->keyName = $keyName;
 	}
-
 	public function withKeyName(?string $keyName): UpdateKeyRequest {
 		$this->keyName = $keyName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateKeyRequest {
 		$this->description = $description;
 		return $this;

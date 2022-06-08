@@ -41,67 +41,52 @@ class BlackList implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getBlackListId(): ?string {
 		return $this->blackListId;
 	}
-
 	public function setBlackListId(?string $blackListId) {
 		$this->blackListId = $blackListId;
 	}
-
 	public function withBlackListId(?string $blackListId): BlackList {
 		$this->blackListId = $blackListId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): BlackList {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserIds(): ?array {
 		return $this->targetUserIds;
 	}
-
 	public function setTargetUserIds(?array $targetUserIds) {
 		$this->targetUserIds = $targetUserIds;
 	}
-
 	public function withTargetUserIds(?array $targetUserIds): BlackList {
 		$this->targetUserIds = $targetUserIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): BlackList {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): BlackList {
 		$this->updatedAt = $updatedAt;
 		return $this;

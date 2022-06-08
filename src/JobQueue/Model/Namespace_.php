@@ -34,6 +34,14 @@ class Namespace_ implements IModel {
 	 */
 	private $description;
 	/**
+     * @var bool
+	 */
+	private $enableAutoRun;
+	/**
+     * @var NotificationSetting
+	 */
+	private $runNotification;
+	/**
      * @var NotificationSetting
 	 */
 	private $pushNotification;
@@ -49,93 +57,92 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
-
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
-
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
-
+	public function getEnableAutoRun(): ?bool {
+		return $this->enableAutoRun;
+	}
+	public function setEnableAutoRun(?bool $enableAutoRun) {
+		$this->enableAutoRun = $enableAutoRun;
+	}
+	public function withEnableAutoRun(?bool $enableAutoRun): Namespace_ {
+		$this->enableAutoRun = $enableAutoRun;
+		return $this;
+	}
+	public function getRunNotification(): ?NotificationSetting {
+		return $this->runNotification;
+	}
+	public function setRunNotification(?NotificationSetting $runNotification) {
+		$this->runNotification = $runNotification;
+	}
+	public function withRunNotification(?NotificationSetting $runNotification): Namespace_ {
+		$this->runNotification = $runNotification;
+		return $this;
+	}
 	public function getPushNotification(): ?NotificationSetting {
 		return $this->pushNotification;
 	}
-
 	public function setPushNotification(?NotificationSetting $pushNotification) {
 		$this->pushNotification = $pushNotification;
 	}
-
 	public function withPushNotification(?NotificationSetting $pushNotification): Namespace_ {
 		$this->pushNotification = $pushNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;
@@ -149,6 +156,8 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withEnableAutoRun(array_key_exists('enableAutoRun', $data) ? $data['enableAutoRun'] : null)
+            ->withRunNotification(array_key_exists('runNotification', $data) && $data['runNotification'] !== null ? NotificationSetting::fromJson($data['runNotification']) : null)
             ->withPushNotification(array_key_exists('pushNotification', $data) && $data['pushNotification'] !== null ? NotificationSetting::fromJson($data['pushNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -160,6 +169,8 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "enableAutoRun" => $this->getEnableAutoRun(),
+            "runNotification" => $this->getRunNotification() !== null ? $this->getRunNotification()->toJson() : null,
             "pushNotification" => $this->getPushNotification() !== null ? $this->getPushNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),

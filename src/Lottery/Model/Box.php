@@ -49,93 +49,72 @@ class Box implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getBoxId(): ?string {
 		return $this->boxId;
 	}
-
 	public function setBoxId(?string $boxId) {
 		$this->boxId = $boxId;
 	}
-
 	public function withBoxId(?string $boxId): Box {
 		$this->boxId = $boxId;
 		return $this;
 	}
-
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
-
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
-
 	public function withPrizeTableName(?string $prizeTableName): Box {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
-
 	public function getIndex(): ?int {
 		return $this->index;
 	}
-
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
-
 	public function withIndex(?int $index): Box {
 		$this->index = $index;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Box {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getDrawnIndexes(): ?array {
 		return $this->drawnIndexes;
 	}
-
 	public function setDrawnIndexes(?array $drawnIndexes) {
 		$this->drawnIndexes = $drawnIndexes;
 	}
-
 	public function withDrawnIndexes(?array $drawnIndexes): Box {
 		$this->drawnIndexes = $drawnIndexes;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Box {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Box {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -25,28 +25,22 @@ class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
     private $userId;
     /** @var DistributeResource */
     private $distributeResource;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DistributeWithoutOverflowProcessRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getDistributeResource(): ?DistributeResource {
 		return $this->distributeResource;
 	}
-
 	public function setDistributeResource(?DistributeResource $distributeResource) {
 		$this->distributeResource = $distributeResource;
 	}
-
 	public function withDistributeResource(?DistributeResource $distributeResource): DistributeWithoutOverflowProcessRequest {
 		$this->distributeResource = $distributeResource;
 		return $this;

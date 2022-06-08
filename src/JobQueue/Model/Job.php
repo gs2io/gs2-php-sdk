@@ -57,119 +57,92 @@ class Job implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getJobId(): ?string {
 		return $this->jobId;
 	}
-
 	public function setJobId(?string $jobId) {
 		$this->jobId = $jobId;
 	}
-
 	public function withJobId(?string $jobId): Job {
 		$this->jobId = $jobId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Job {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Job {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
-
 	public function setScriptId(?string $scriptId) {
 		$this->scriptId = $scriptId;
 	}
-
 	public function withScriptId(?string $scriptId): Job {
 		$this->scriptId = $scriptId;
 		return $this;
 	}
-
 	public function getArgs(): ?string {
 		return $this->args;
 	}
-
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
-
 	public function withArgs(?string $args): Job {
 		$this->args = $args;
 		return $this;
 	}
-
 	public function getCurrentRetryCount(): ?int {
 		return $this->currentRetryCount;
 	}
-
 	public function setCurrentRetryCount(?int $currentRetryCount) {
 		$this->currentRetryCount = $currentRetryCount;
 	}
-
 	public function withCurrentRetryCount(?int $currentRetryCount): Job {
 		$this->currentRetryCount = $currentRetryCount;
 		return $this;
 	}
-
 	public function getMaxTryCount(): ?int {
 		return $this->maxTryCount;
 	}
-
 	public function setMaxTryCount(?int $maxTryCount) {
 		$this->maxTryCount = $maxTryCount;
 	}
-
 	public function withMaxTryCount(?int $maxTryCount): Job {
 		$this->maxTryCount = $maxTryCount;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Job {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Job {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -30,54 +30,42 @@ class SetRecoverValueByUserIdRequest extends Gs2BasicRequest {
     private $recoverValue;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetRecoverValueByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): SetRecoverValueByUserIdRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SetRecoverValueByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRecoverValue(): ?int {
 		return $this->recoverValue;
 	}
-
 	public function setRecoverValue(?int $recoverValue) {
 		$this->recoverValue = $recoverValue;
 	}
-
 	public function withRecoverValue(?int $recoverValue): SetRecoverValueByUserIdRequest {
 		$this->recoverValue = $recoverValue;
 		return $this;

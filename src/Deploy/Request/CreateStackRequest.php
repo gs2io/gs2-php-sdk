@@ -26,41 +26,32 @@ class CreateStackRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $template;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateStackRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateStackRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
-
 	public function setTemplate(?string $template) {
 		$this->template = $template;
 	}
-
 	public function withTemplate(?string $template): CreateStackRequest {
 		$this->template = $template;
 		return $this;

@@ -57,119 +57,92 @@ class InventoryModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
 	}
-
 	public function setInventoryModelId(?string $inventoryModelId) {
 		$this->inventoryModelId = $inventoryModelId;
 	}
-
 	public function withInventoryModelId(?string $inventoryModelId): InventoryModelMaster {
 		$this->inventoryModelId = $inventoryModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): InventoryModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): InventoryModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): InventoryModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getInitialCapacity(): ?int {
 		return $this->initialCapacity;
 	}
-
 	public function setInitialCapacity(?int $initialCapacity) {
 		$this->initialCapacity = $initialCapacity;
 	}
-
 	public function withInitialCapacity(?int $initialCapacity): InventoryModelMaster {
 		$this->initialCapacity = $initialCapacity;
 		return $this;
 	}
-
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
-
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
-
 	public function withMaxCapacity(?int $maxCapacity): InventoryModelMaster {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
-
 	public function getProtectReferencedItem(): ?bool {
 		return $this->protectReferencedItem;
 	}
-
 	public function setProtectReferencedItem(?bool $protectReferencedItem) {
 		$this->protectReferencedItem = $protectReferencedItem;
 	}
-
 	public function withProtectReferencedItem(?bool $protectReferencedItem): InventoryModelMaster {
 		$this->protectReferencedItem = $protectReferencedItem;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): InventoryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): InventoryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
@@ -186,7 +159,7 @@ class InventoryModelMaster implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withInitialCapacity(array_key_exists('initialCapacity', $data) && $data['initialCapacity'] !== null ? $data['initialCapacity'] : null)
             ->withMaxCapacity(array_key_exists('maxCapacity', $data) && $data['maxCapacity'] !== null ? $data['maxCapacity'] : null)
-            ->withProtectReferencedItem($data['protectReferencedItem'])
+            ->withProtectReferencedItem(array_key_exists('protectReferencedItem', $data) ? $data['protectReferencedItem'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }

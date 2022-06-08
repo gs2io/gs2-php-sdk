@@ -33,80 +33,62 @@ class UpdateCounterModelMasterRequest extends Gs2BasicRequest {
     private $scopes;
     /** @var string */
     private $challengePeriodEventId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateCounterModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
-
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
-
 	public function withCounterName(?string $counterName): UpdateCounterModelMasterRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateCounterModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateCounterModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
-
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
-
 	public function withScopes(?array $scopes): UpdateCounterModelMasterRequest {
 		$this->scopes = $scopes;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): UpdateCounterModelMasterRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

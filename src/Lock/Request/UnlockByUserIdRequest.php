@@ -30,54 +30,42 @@ class UnlockByUserIdRequest extends Gs2BasicRequest {
     private $transactionId;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UnlockByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): UnlockByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UnlockByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): UnlockByUserIdRequest {
 		$this->transactionId = $transactionId;
 		return $this;

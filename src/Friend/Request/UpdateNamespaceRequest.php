@@ -51,184 +51,142 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $acceptRequestNotification;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getFollowScript(): ?ScriptSetting {
 		return $this->followScript;
 	}
-
 	public function setFollowScript(?ScriptSetting $followScript) {
 		$this->followScript = $followScript;
 	}
-
 	public function withFollowScript(?ScriptSetting $followScript): UpdateNamespaceRequest {
 		$this->followScript = $followScript;
 		return $this;
 	}
-
 	public function getUnfollowScript(): ?ScriptSetting {
 		return $this->unfollowScript;
 	}
-
 	public function setUnfollowScript(?ScriptSetting $unfollowScript) {
 		$this->unfollowScript = $unfollowScript;
 	}
-
 	public function withUnfollowScript(?ScriptSetting $unfollowScript): UpdateNamespaceRequest {
 		$this->unfollowScript = $unfollowScript;
 		return $this;
 	}
-
 	public function getSendRequestScript(): ?ScriptSetting {
 		return $this->sendRequestScript;
 	}
-
 	public function setSendRequestScript(?ScriptSetting $sendRequestScript) {
 		$this->sendRequestScript = $sendRequestScript;
 	}
-
 	public function withSendRequestScript(?ScriptSetting $sendRequestScript): UpdateNamespaceRequest {
 		$this->sendRequestScript = $sendRequestScript;
 		return $this;
 	}
-
 	public function getCancelRequestScript(): ?ScriptSetting {
 		return $this->cancelRequestScript;
 	}
-
 	public function setCancelRequestScript(?ScriptSetting $cancelRequestScript) {
 		$this->cancelRequestScript = $cancelRequestScript;
 	}
-
 	public function withCancelRequestScript(?ScriptSetting $cancelRequestScript): UpdateNamespaceRequest {
 		$this->cancelRequestScript = $cancelRequestScript;
 		return $this;
 	}
-
 	public function getAcceptRequestScript(): ?ScriptSetting {
 		return $this->acceptRequestScript;
 	}
-
 	public function setAcceptRequestScript(?ScriptSetting $acceptRequestScript) {
 		$this->acceptRequestScript = $acceptRequestScript;
 	}
-
 	public function withAcceptRequestScript(?ScriptSetting $acceptRequestScript): UpdateNamespaceRequest {
 		$this->acceptRequestScript = $acceptRequestScript;
 		return $this;
 	}
-
 	public function getRejectRequestScript(): ?ScriptSetting {
 		return $this->rejectRequestScript;
 	}
-
 	public function setRejectRequestScript(?ScriptSetting $rejectRequestScript) {
 		$this->rejectRequestScript = $rejectRequestScript;
 	}
-
 	public function withRejectRequestScript(?ScriptSetting $rejectRequestScript): UpdateNamespaceRequest {
 		$this->rejectRequestScript = $rejectRequestScript;
 		return $this;
 	}
-
 	public function getDeleteFriendScript(): ?ScriptSetting {
 		return $this->deleteFriendScript;
 	}
-
 	public function setDeleteFriendScript(?ScriptSetting $deleteFriendScript) {
 		$this->deleteFriendScript = $deleteFriendScript;
 	}
-
 	public function withDeleteFriendScript(?ScriptSetting $deleteFriendScript): UpdateNamespaceRequest {
 		$this->deleteFriendScript = $deleteFriendScript;
 		return $this;
 	}
-
 	public function getUpdateProfileScript(): ?ScriptSetting {
 		return $this->updateProfileScript;
 	}
-
 	public function setUpdateProfileScript(?ScriptSetting $updateProfileScript) {
 		$this->updateProfileScript = $updateProfileScript;
 	}
-
 	public function withUpdateProfileScript(?ScriptSetting $updateProfileScript): UpdateNamespaceRequest {
 		$this->updateProfileScript = $updateProfileScript;
 		return $this;
 	}
-
 	public function getFollowNotification(): ?NotificationSetting {
 		return $this->followNotification;
 	}
-
 	public function setFollowNotification(?NotificationSetting $followNotification) {
 		$this->followNotification = $followNotification;
 	}
-
 	public function withFollowNotification(?NotificationSetting $followNotification): UpdateNamespaceRequest {
 		$this->followNotification = $followNotification;
 		return $this;
 	}
-
 	public function getReceiveRequestNotification(): ?NotificationSetting {
 		return $this->receiveRequestNotification;
 	}
-
 	public function setReceiveRequestNotification(?NotificationSetting $receiveRequestNotification) {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 	}
-
 	public function withReceiveRequestNotification(?NotificationSetting $receiveRequestNotification): UpdateNamespaceRequest {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 		return $this;
 	}
-
 	public function getAcceptRequestNotification(): ?NotificationSetting {
 		return $this->acceptRequestNotification;
 	}
-
 	public function setAcceptRequestNotification(?NotificationSetting $acceptRequestNotification) {
 		$this->acceptRequestNotification = $acceptRequestNotification;
 	}
-
 	public function withAcceptRequestNotification(?NotificationSetting $acceptRequestNotification): UpdateNamespaceRequest {
 		$this->acceptRequestNotification = $acceptRequestNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

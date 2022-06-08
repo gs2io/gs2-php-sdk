@@ -57,119 +57,92 @@ class MissionGroupModel implements IModel {
      * @var string
 	 */
 	private $completeNotificationNamespaceId;
-
 	public function getMissionGroupId(): ?string {
 		return $this->missionGroupId;
 	}
-
 	public function setMissionGroupId(?string $missionGroupId) {
 		$this->missionGroupId = $missionGroupId;
 	}
-
 	public function withMissionGroupId(?string $missionGroupId): MissionGroupModel {
 		$this->missionGroupId = $missionGroupId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): MissionGroupModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): MissionGroupModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getTasks(): ?array {
 		return $this->tasks;
 	}
-
 	public function setTasks(?array $tasks) {
 		$this->tasks = $tasks;
 	}
-
 	public function withTasks(?array $tasks): MissionGroupModel {
 		$this->tasks = $tasks;
 		return $this;
 	}
-
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
-
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
-
 	public function withResetType(?string $resetType): MissionGroupModel {
 		$this->resetType = $resetType;
 		return $this;
 	}
-
 	public function getResetDayOfMonth(): ?int {
 		return $this->resetDayOfMonth;
 	}
-
 	public function setResetDayOfMonth(?int $resetDayOfMonth) {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 	}
-
 	public function withResetDayOfMonth(?int $resetDayOfMonth): MissionGroupModel {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 		return $this;
 	}
-
 	public function getResetDayOfWeek(): ?string {
 		return $this->resetDayOfWeek;
 	}
-
 	public function setResetDayOfWeek(?string $resetDayOfWeek) {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 	}
-
 	public function withResetDayOfWeek(?string $resetDayOfWeek): MissionGroupModel {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 		return $this;
 	}
-
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
-
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
-
 	public function withResetHour(?int $resetHour): MissionGroupModel {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
-
 	public function getCompleteNotificationNamespaceId(): ?string {
 		return $this->completeNotificationNamespaceId;
 	}
-
 	public function setCompleteNotificationNamespaceId(?string $completeNotificationNamespaceId) {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 	}
-
 	public function withCompleteNotificationNamespaceId(?string $completeNotificationNamespaceId): MissionGroupModel {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 		return $this;

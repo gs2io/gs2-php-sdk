@@ -36,80 +36,62 @@ class EndByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): EndByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): EndByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): EndByUserIdRequest {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getRewards(): ?array {
 		return $this->rewards;
 	}
-
 	public function setRewards(?array $rewards) {
 		$this->rewards = $rewards;
 	}
-
 	public function withRewards(?array $rewards): EndByUserIdRequest {
 		$this->rewards = $rewards;
 		return $this;
 	}
-
 	public function getIsComplete(): ?bool {
 		return $this->isComplete;
 	}
-
 	public function setIsComplete(?bool $isComplete) {
 		$this->isComplete = $isComplete;
 	}
-
 	public function withIsComplete(?bool $isComplete): EndByUserIdRequest {
 		$this->isComplete = $isComplete;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): EndByUserIdRequest {
 		$this->config = $config;
 		return $this;

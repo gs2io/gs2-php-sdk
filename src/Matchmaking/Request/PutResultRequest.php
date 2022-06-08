@@ -27,41 +27,32 @@ class PutResultRequest extends Gs2BasicRequest {
     private $ratingName;
     /** @var array */
     private $gameResults;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PutResultRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
-
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
-
 	public function withRatingName(?string $ratingName): PutResultRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
-
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
-
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
-
 	public function withGameResults(?array $gameResults): PutResultRequest {
 		$this->gameResults = $gameResults;
 		return $this;

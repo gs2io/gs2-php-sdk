@@ -37,54 +37,42 @@ class BoxItems implements IModel {
      * @var array
 	 */
 	private $items;
-
 	public function getBoxId(): ?string {
 		return $this->boxId;
 	}
-
 	public function setBoxId(?string $boxId) {
 		$this->boxId = $boxId;
 	}
-
 	public function withBoxId(?string $boxId): BoxItems {
 		$this->boxId = $boxId;
 		return $this;
 	}
-
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
-
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
-
 	public function withPrizeTableName(?string $prizeTableName): BoxItems {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): BoxItems {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getItems(): ?array {
 		return $this->items;
 	}
-
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
-
 	public function withItems(?array $items): BoxItems {
 		$this->items = $items;
 		return $this;

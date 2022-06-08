@@ -40,119 +40,92 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $doTakeOverScript;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getChangePasswordIfTakeOver(): ?bool {
 		return $this->changePasswordIfTakeOver;
 	}
-
 	public function setChangePasswordIfTakeOver(?bool $changePasswordIfTakeOver) {
 		$this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
 	}
-
 	public function withChangePasswordIfTakeOver(?bool $changePasswordIfTakeOver): CreateNamespaceRequest {
 		$this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
 		return $this;
 	}
-
 	public function getDifferentUserIdForLoginAndDataRetention(): ?bool {
 		return $this->differentUserIdForLoginAndDataRetention;
 	}
-
 	public function setDifferentUserIdForLoginAndDataRetention(?bool $differentUserIdForLoginAndDataRetention) {
 		$this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
 	}
-
 	public function withDifferentUserIdForLoginAndDataRetention(?bool $differentUserIdForLoginAndDataRetention): CreateNamespaceRequest {
 		$this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
 		return $this;
 	}
-
 	public function getCreateAccountScript(): ?ScriptSetting {
 		return $this->createAccountScript;
 	}
-
 	public function setCreateAccountScript(?ScriptSetting $createAccountScript) {
 		$this->createAccountScript = $createAccountScript;
 	}
-
 	public function withCreateAccountScript(?ScriptSetting $createAccountScript): CreateNamespaceRequest {
 		$this->createAccountScript = $createAccountScript;
 		return $this;
 	}
-
 	public function getAuthenticationScript(): ?ScriptSetting {
 		return $this->authenticationScript;
 	}
-
 	public function setAuthenticationScript(?ScriptSetting $authenticationScript) {
 		$this->authenticationScript = $authenticationScript;
 	}
-
 	public function withAuthenticationScript(?ScriptSetting $authenticationScript): CreateNamespaceRequest {
 		$this->authenticationScript = $authenticationScript;
 		return $this;
 	}
-
 	public function getCreateTakeOverScript(): ?ScriptSetting {
 		return $this->createTakeOverScript;
 	}
-
 	public function setCreateTakeOverScript(?ScriptSetting $createTakeOverScript) {
 		$this->createTakeOverScript = $createTakeOverScript;
 	}
-
 	public function withCreateTakeOverScript(?ScriptSetting $createTakeOverScript): CreateNamespaceRequest {
 		$this->createTakeOverScript = $createTakeOverScript;
 		return $this;
 	}
-
 	public function getDoTakeOverScript(): ?ScriptSetting {
 		return $this->doTakeOverScript;
 	}
-
 	public function setDoTakeOverScript(?ScriptSetting $doTakeOverScript) {
 		$this->doTakeOverScript = $doTakeOverScript;
 	}
-
 	public function withDoTakeOverScript(?ScriptSetting $doTakeOverScript): CreateNamespaceRequest {
 		$this->doTakeOverScript = $doTakeOverScript;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;
@@ -165,8 +138,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withChangePasswordIfTakeOver($data['changePasswordIfTakeOver'])
-            ->withDifferentUserIdForLoginAndDataRetention($data['differentUserIdForLoginAndDataRetention'])
+            ->withChangePasswordIfTakeOver(array_key_exists('changePasswordIfTakeOver', $data) ? $data['changePasswordIfTakeOver'] : null)
+            ->withDifferentUserIdForLoginAndDataRetention(array_key_exists('differentUserIdForLoginAndDataRetention', $data) ? $data['differentUserIdForLoginAndDataRetention'] : null)
             ->withCreateAccountScript(array_key_exists('createAccountScript', $data) && $data['createAccountScript'] !== null ? ScriptSetting::fromJson($data['createAccountScript']) : null)
             ->withAuthenticationScript(array_key_exists('authenticationScript', $data) && $data['authenticationScript'] !== null ? ScriptSetting::fromJson($data['authenticationScript']) : null)
             ->withCreateTakeOverScript(array_key_exists('createTakeOverScript', $data) && $data['createTakeOverScript'] !== null ? ScriptSetting::fromJson($data['createTakeOverScript']) : null)

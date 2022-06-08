@@ -29,54 +29,42 @@ class SubscribeRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var array */
     private $notificationTypes;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SubscribeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): SubscribeRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): SubscribeRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
-
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
-
 	public function withNotificationTypes(?array $notificationTypes): SubscribeRequest {
 		$this->notificationTypes = $notificationTypes;
 		return $this;

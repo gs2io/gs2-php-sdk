@@ -26,41 +26,32 @@ class CommitVoteRequest extends Gs2BasicRequest {
     private $ratingName;
     /** @var string */
     private $gatheringName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CommitVoteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
-
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
-
 	public function withRatingName(?string $ratingName): CommitVoteRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
-
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
-
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
-
 	public function withGatheringName(?string $gatheringName): CommitVoteRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;

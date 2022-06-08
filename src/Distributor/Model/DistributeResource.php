@@ -29,28 +29,22 @@ class DistributeResource implements IModel {
      * @var string
 	 */
 	private $request;
-
 	public function getAction(): ?string {
 		return $this->action;
 	}
-
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
-
 	public function withAction(?string $action): DistributeResource {
 		$this->action = $action;
 		return $this;
 	}
-
 	public function getRequest(): ?string {
 		return $this->request;
 	}
-
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
-
 	public function withRequest(?string $request): DistributeResource {
 		$this->request = $request;
 		return $this;

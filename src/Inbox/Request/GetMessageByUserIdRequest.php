@@ -26,41 +26,32 @@ class GetMessageByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $messageName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetMessageByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetMessageByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
-
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
-
 	public function withMessageName(?string $messageName): GetMessageByUserIdRequest {
 		$this->messageName = $messageName;
 		return $this;

@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class DeleteStackEntityRequest extends Gs2BasicRequest {
     /** @var string */
     private $stackName;
-
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
-
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
-
 	public function withStackName(?string $stackName): DeleteStackEntityRequest {
 		$this->stackName = $stackName;
 		return $this;

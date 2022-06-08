@@ -28,54 +28,42 @@ class DeleteAwaitRequest extends Gs2BasicRequest {
     private $rateName;
     /** @var string */
     private $awaitName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteAwaitRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DeleteAwaitRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): DeleteAwaitRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getAwaitName(): ?string {
 		return $this->awaitName;
 	}
-
 	public function setAwaitName(?string $awaitName) {
 		$this->awaitName = $awaitName;
 	}
-
 	public function withAwaitName(?string $awaitName): DeleteAwaitRequest {
 		$this->awaitName = $awaitName;
 		return $this;

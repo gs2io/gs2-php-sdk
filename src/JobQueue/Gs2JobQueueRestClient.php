@@ -55,6 +55,10 @@ use Gs2\JobQueue\Request\DeleteJobByUserIdRequest;
 use Gs2\JobQueue\Result\DeleteJobByUserIdResult;
 use Gs2\JobQueue\Request\PushByStampSheetRequest;
 use Gs2\JobQueue\Result\PushByStampSheetResult;
+use Gs2\JobQueue\Request\GetJobResultRequest;
+use Gs2\JobQueue\Result\GetJobResultResult;
+use Gs2\JobQueue\Request\GetJobResultByUserIdRequest;
+use Gs2\JobQueue\Result\GetJobResultByUserIdResult;
 use Gs2\JobQueue\Request\DescribeDeadLetterJobsByUserIdRequest;
 use Gs2\JobQueue\Result\DescribeDeadLetterJobsByUserIdResult;
 use Gs2\JobQueue\Request\GetDeadLetterJobByUserIdRequest;
@@ -163,8 +167,14 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getEnableAutoRun() !== null) {
+            $json["enableAutoRun"] = $this->request->getEnableAutoRun();
+        }
         if ($this->request->getPushNotification() !== null) {
             $json["pushNotification"] = $this->request->getPushNotification()->toJson();
+        }
+        if ($this->request->getRunNotification() !== null) {
+            $json["runNotification"] = $this->request->getRunNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -341,8 +351,14 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getEnableAutoRun() !== null) {
+            $json["enableAutoRun"] = $this->request->getEnableAutoRun();
+        }
         if ($this->request->getPushNotification() !== null) {
             $json["pushNotification"] = $this->request->getPushNotification()->toJson();
+        }
+        if ($this->request->getRunNotification() !== null) {
+            $json["runNotification"] = $this->request->getRunNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -839,6 +855,126 @@ class PushByStampSheetTask extends Gs2RestSessionTask {
         $this->builder->setBody($json);
 
         $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetJobResultTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetJobResultRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetJobResultTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetJobResultRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetJobResultRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetJobResultResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "job-queue", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/job/{jobName}/result";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{jobName}", $this->request->getJobName() === null|| strlen($this->request->getJobName()) == 0 ? "null" : $this->request->getJobName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetJobResultByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetJobResultByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetJobResultByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetJobResultByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetJobResultByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetJobResultByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "job-queue", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/job/{jobName}/result";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{jobName}", $this->request->getJobName() === null|| strlen($this->request->getJobName()) == 0 ? "null" : $this->request->getJobName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -1400,6 +1536,60 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
             PushByStampSheetRequest $request
     ): PushByStampSheetResult {
         return $this->pushByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetJobResultRequest $request
+     * @return PromiseInterface
+     */
+    public function getJobResultAsync(
+            GetJobResultRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetJobResultTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetJobResultRequest $request
+     * @return GetJobResultResult
+     */
+    public function getJobResult (
+            GetJobResultRequest $request
+    ): GetJobResultResult {
+        return $this->getJobResultAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetJobResultByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getJobResultByUserIdAsync(
+            GetJobResultByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetJobResultByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetJobResultByUserIdRequest $request
+     * @return GetJobResultByUserIdResult
+     */
+    public function getJobResultByUserId (
+            GetJobResultByUserIdRequest $request
+    ): GetJobResultByUserIdResult {
+        return $this->getJobResultByUserIdAsync(
             $request
         )->wait();
     }

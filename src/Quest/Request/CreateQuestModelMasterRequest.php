@@ -43,132 +43,102 @@ class CreateQuestModelMasterRequest extends Gs2BasicRequest {
     private $failedAcquireActions;
     /** @var array */
     private $premiseQuestNames;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateQuestModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
-
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
-
 	public function withQuestGroupName(?string $questGroupName): CreateQuestModelMasterRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateQuestModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateQuestModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateQuestModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getContents(): ?array {
 		return $this->contents;
 	}
-
 	public function setContents(?array $contents) {
 		$this->contents = $contents;
 	}
-
 	public function withContents(?array $contents): CreateQuestModelMasterRequest {
 		$this->contents = $contents;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CreateQuestModelMasterRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
-
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
-
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
-
 	public function withConsumeActions(?array $consumeActions): CreateQuestModelMasterRequest {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
-
 	public function getFailedAcquireActions(): ?array {
 		return $this->failedAcquireActions;
 	}
-
 	public function setFailedAcquireActions(?array $failedAcquireActions) {
 		$this->failedAcquireActions = $failedAcquireActions;
 	}
-
 	public function withFailedAcquireActions(?array $failedAcquireActions): CreateQuestModelMasterRequest {
 		$this->failedAcquireActions = $failedAcquireActions;
 		return $this;
 	}
-
 	public function getPremiseQuestNames(): ?array {
 		return $this->premiseQuestNames;
 	}
-
 	public function setPremiseQuestNames(?array $premiseQuestNames) {
 		$this->premiseQuestNames = $premiseQuestNames;
 	}
-
 	public function withPremiseQuestNames(?array $premiseQuestNames): CreateQuestModelMasterRequest {
 		$this->premiseQuestNames = $premiseQuestNames;
 		return $this;

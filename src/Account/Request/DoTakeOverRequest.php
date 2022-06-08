@@ -28,54 +28,42 @@ class DoTakeOverRequest extends Gs2BasicRequest {
     private $userIdentifier;
     /** @var string */
     private $password;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DoTakeOverRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getType(): ?int {
 		return $this->type;
 	}
-
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?int $type): DoTakeOverRequest {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getUserIdentifier(): ?string {
 		return $this->userIdentifier;
 	}
-
 	public function setUserIdentifier(?string $userIdentifier) {
 		$this->userIdentifier = $userIdentifier;
 	}
-
 	public function withUserIdentifier(?string $userIdentifier): DoTakeOverRequest {
 		$this->userIdentifier = $userIdentifier;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): DoTakeOverRequest {
 		$this->password = $password;
 		return $this;

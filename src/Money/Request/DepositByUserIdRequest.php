@@ -32,67 +32,52 @@ class DepositByUserIdRequest extends Gs2BasicRequest {
     private $count;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DepositByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DepositByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
-
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
-
 	public function withSlot(?int $slot): DepositByUserIdRequest {
 		$this->slot = $slot;
 		return $this;
 	}
-
 	public function getPrice(): ?float {
 		return $this->price;
 	}
-
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
-
 	public function withPrice(?float $price): DepositByUserIdRequest {
 		$this->price = $price;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): DepositByUserIdRequest {
 		$this->count = $count;
 		return $this;

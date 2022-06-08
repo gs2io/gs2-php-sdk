@@ -27,41 +27,32 @@ class UpdateStackFromGitHubRequest extends Gs2BasicRequest {
     private $description;
     /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
-
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
-
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
-
 	public function withStackName(?string $stackName): UpdateStackFromGitHubRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateStackFromGitHubRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
-
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
-
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): UpdateStackFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;

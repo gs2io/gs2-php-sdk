@@ -37,54 +37,42 @@ class CapacityOfRole implements IModel {
      * @var array
 	 */
 	private $participants;
-
 	public function getRoleName(): ?string {
 		return $this->roleName;
 	}
-
 	public function setRoleName(?string $roleName) {
 		$this->roleName = $roleName;
 	}
-
 	public function withRoleName(?string $roleName): CapacityOfRole {
 		$this->roleName = $roleName;
 		return $this;
 	}
-
 	public function getRoleAliases(): ?array {
 		return $this->roleAliases;
 	}
-
 	public function setRoleAliases(?array $roleAliases) {
 		$this->roleAliases = $roleAliases;
 	}
-
 	public function withRoleAliases(?array $roleAliases): CapacityOfRole {
 		$this->roleAliases = $roleAliases;
 		return $this;
 	}
-
 	public function getCapacity(): ?int {
 		return $this->capacity;
 	}
-
 	public function setCapacity(?int $capacity) {
 		$this->capacity = $capacity;
 	}
-
 	public function withCapacity(?int $capacity): CapacityOfRole {
 		$this->capacity = $capacity;
 		return $this;
 	}
-
 	public function getParticipants(): ?array {
 		return $this->participants;
 	}
-
 	public function setParticipants(?array $participants) {
 		$this->participants = $participants;
 	}
-
 	public function withParticipants(?array $participants): CapacityOfRole {
 		$this->participants = $participants;
 		return $this;

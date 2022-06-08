@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class DescribeQuestGroupModelsRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeQuestGroupModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

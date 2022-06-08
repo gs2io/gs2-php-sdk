@@ -32,80 +32,62 @@ class GetReferenceOfByUserIdRequest extends Gs2BasicRequest {
     private $itemSetName;
     /** @var string */
     private $referenceOf;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetReferenceOfByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): GetReferenceOfByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetReferenceOfByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
-
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
-
 	public function withItemName(?string $itemName): GetReferenceOfByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
-
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
-
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
-
 	public function withItemSetName(?string $itemSetName): GetReferenceOfByUserIdRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;
 	}
-
 	public function getReferenceOf(): ?string {
 		return $this->referenceOf;
 	}
-
 	public function setReferenceOf(?string $referenceOf) {
 		$this->referenceOf = $referenceOf;
 	}
-
 	public function withReferenceOf(?string $referenceOf): GetReferenceOfByUserIdRequest {
 		$this->referenceOf = $referenceOf;
 		return $this;

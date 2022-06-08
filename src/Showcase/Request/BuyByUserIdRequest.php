@@ -31,67 +31,52 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var array */
     private $config;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): BuyByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
-
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
-
 	public function withShowcaseName(?string $showcaseName): BuyByUserIdRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
-
 	public function getDisplayItemId(): ?string {
 		return $this->displayItemId;
 	}
-
 	public function setDisplayItemId(?string $displayItemId) {
 		$this->displayItemId = $displayItemId;
 	}
-
 	public function withDisplayItemId(?string $displayItemId): BuyByUserIdRequest {
 		$this->displayItemId = $displayItemId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): BuyByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): BuyByUserIdRequest {
 		$this->config = $config;
 		return $this;

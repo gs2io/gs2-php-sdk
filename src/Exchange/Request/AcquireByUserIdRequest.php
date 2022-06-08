@@ -33,67 +33,52 @@ class AcquireByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): AcquireByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AcquireByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): AcquireByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getAwaitName(): ?string {
 		return $this->awaitName;
 	}
-
 	public function setAwaitName(?string $awaitName) {
 		$this->awaitName = $awaitName;
 	}
-
 	public function withAwaitName(?string $awaitName): AcquireByUserIdRequest {
 		$this->awaitName = $awaitName;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): AcquireByUserIdRequest {
 		$this->config = $config;
 		return $this;

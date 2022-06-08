@@ -33,41 +33,32 @@ class Contents implements IModel {
      * @var int
 	 */
 	private $weight;
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Contents {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getCompleteAcquireActions(): ?array {
 		return $this->completeAcquireActions;
 	}
-
 	public function setCompleteAcquireActions(?array $completeAcquireActions) {
 		$this->completeAcquireActions = $completeAcquireActions;
 	}
-
 	public function withCompleteAcquireActions(?array $completeAcquireActions): Contents {
 		$this->completeAcquireActions = $completeAcquireActions;
 		return $this;
 	}
-
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
-
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
-
 	public function withWeight(?int $weight): Contents {
 		$this->weight = $weight;
 		return $this;

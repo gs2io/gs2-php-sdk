@@ -33,41 +33,32 @@ class Version implements IModel {
      * @var int
 	 */
 	private $micro;
-
 	public function getMajor(): ?int {
 		return $this->major;
 	}
-
 	public function setMajor(?int $major) {
 		$this->major = $major;
 	}
-
 	public function withMajor(?int $major): Version {
 		$this->major = $major;
 		return $this;
 	}
-
 	public function getMinor(): ?int {
 		return $this->minor;
 	}
-
 	public function setMinor(?int $minor) {
 		$this->minor = $minor;
 	}
-
 	public function withMinor(?int $minor): Version {
 		$this->minor = $minor;
 		return $this;
 	}
-
 	public function getMicro(): ?int {
 		return $this->micro;
 	}
-
 	public function setMicro(?int $micro) {
 		$this->micro = $micro;
 	}
-
 	public function withMicro(?int $micro): Version {
 		$this->micro = $micro;
 		return $this;

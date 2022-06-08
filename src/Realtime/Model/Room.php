@@ -53,106 +53,82 @@ class Room implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getRoomId(): ?string {
 		return $this->roomId;
 	}
-
 	public function setRoomId(?string $roomId) {
 		$this->roomId = $roomId;
 	}
-
 	public function withRoomId(?string $roomId): Room {
 		$this->roomId = $roomId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Room {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getIpAddress(): ?string {
 		return $this->ipAddress;
 	}
-
 	public function setIpAddress(?string $ipAddress) {
 		$this->ipAddress = $ipAddress;
 	}
-
 	public function withIpAddress(?string $ipAddress): Room {
 		$this->ipAddress = $ipAddress;
 		return $this;
 	}
-
 	public function getPort(): ?int {
 		return $this->port;
 	}
-
 	public function setPort(?int $port) {
 		$this->port = $port;
 	}
-
 	public function withPort(?int $port): Room {
 		$this->port = $port;
 		return $this;
 	}
-
 	public function getEncryptionKey(): ?string {
 		return $this->encryptionKey;
 	}
-
 	public function setEncryptionKey(?string $encryptionKey) {
 		$this->encryptionKey = $encryptionKey;
 	}
-
 	public function withEncryptionKey(?string $encryptionKey): Room {
 		$this->encryptionKey = $encryptionKey;
 		return $this;
 	}
-
 	public function getNotificationUserIds(): ?array {
 		return $this->notificationUserIds;
 	}
-
 	public function setNotificationUserIds(?array $notificationUserIds) {
 		$this->notificationUserIds = $notificationUserIds;
 	}
-
 	public function withNotificationUserIds(?array $notificationUserIds): Room {
 		$this->notificationUserIds = $notificationUserIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Room {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Room {
 		$this->updatedAt = $updatedAt;
 		return $this;

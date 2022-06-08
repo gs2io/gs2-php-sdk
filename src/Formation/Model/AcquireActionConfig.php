@@ -29,28 +29,22 @@ class AcquireActionConfig implements IModel {
      * @var array
 	 */
 	private $config;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): AcquireActionConfig {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): AcquireActionConfig {
 		$this->config = $config;
 		return $this;

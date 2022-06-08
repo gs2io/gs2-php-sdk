@@ -24,28 +24,22 @@ class DeleteLimitModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $limitName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteLimitModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
-
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
-
 	public function withLimitName(?string $limitName): DeleteLimitModelMasterRequest {
 		$this->limitName = $limitName;
 		return $this;

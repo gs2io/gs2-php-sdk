@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class GetSecurityPolicyRequest extends Gs2BasicRequest {
     /** @var string */
     private $securityPolicyName;
-
 	public function getSecurityPolicyName(): ?string {
 		return $this->securityPolicyName;
 	}
-
 	public function setSecurityPolicyName(?string $securityPolicyName) {
 		$this->securityPolicyName = $securityPolicyName;
 	}
-
 	public function withSecurityPolicyName(?string $securityPolicyName): GetSecurityPolicyRequest {
 		$this->securityPolicyName = $securityPolicyName;
 		return $this;

@@ -45,80 +45,62 @@ class Form implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getFormId(): ?string {
 		return $this->formId;
 	}
-
 	public function setFormId(?string $formId) {
 		$this->formId = $formId;
 	}
-
 	public function withFormId(?string $formId): Form {
 		$this->formId = $formId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Form {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getIndex(): ?int {
 		return $this->index;
 	}
-
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
-
 	public function withIndex(?int $index): Form {
 		$this->index = $index;
 		return $this;
 	}
-
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
-
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
-
 	public function withSlots(?array $slots): Form {
 		$this->slots = $slots;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Form {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Form {
 		$this->updatedAt = $updatedAt;
 		return $this;

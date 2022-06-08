@@ -24,28 +24,22 @@ class DebugInvokeRequest extends Gs2BasicRequest {
     private $script;
     /** @var string */
     private $args;
-
 	public function getScript(): ?string {
 		return $this->script;
 	}
-
 	public function setScript(?string $script) {
 		$this->script = $script;
 	}
-
 	public function withScript(?string $script): DebugInvokeRequest {
 		$this->script = $script;
 		return $this;
 	}
-
 	public function getArgs(): ?string {
 		return $this->args;
 	}
-
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
-
 	public function withArgs(?string $args): DebugInvokeRequest {
 		$this->args = $args;
 		return $this;

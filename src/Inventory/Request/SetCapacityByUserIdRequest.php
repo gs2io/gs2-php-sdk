@@ -30,54 +30,42 @@ class SetCapacityByUserIdRequest extends Gs2BasicRequest {
     private $newCapacityValue;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetCapacityByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
-
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-
 	public function withInventoryName(?string $inventoryName): SetCapacityByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SetCapacityByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getNewCapacityValue(): ?int {
 		return $this->newCapacityValue;
 	}
-
 	public function setNewCapacityValue(?int $newCapacityValue) {
 		$this->newCapacityValue = $newCapacityValue;
 	}
-
 	public function withNewCapacityValue(?int $newCapacityValue): SetCapacityByUserIdRequest {
 		$this->newCapacityValue = $newCapacityValue;
 		return $this;

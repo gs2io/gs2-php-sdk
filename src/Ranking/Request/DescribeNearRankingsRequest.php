@@ -26,41 +26,32 @@ class DescribeNearRankingsRequest extends Gs2BasicRequest {
     private $categoryName;
     /** @var int */
     private $score;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeNearRankingsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): DescribeNearRankingsRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getScore(): ?int {
 		return $this->score;
 	}
-
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
-
 	public function withScore(?int $score): DescribeNearRankingsRequest {
 		$this->score = $score;
 		return $this;

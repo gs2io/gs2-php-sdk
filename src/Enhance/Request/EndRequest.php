@@ -31,67 +31,52 @@ class EndRequest extends Gs2BasicRequest {
     private $progressName;
     /** @var array */
     private $config;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): EndRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): EndRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
-
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
-
 	public function withRateName(?string $rateName): EndRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
-
 	public function getProgressName(): ?string {
 		return $this->progressName;
 	}
-
 	public function setProgressName(?string $progressName) {
 		$this->progressName = $progressName;
 	}
-
 	public function withProgressName(?string $progressName): EndRequest {
 		$this->progressName = $progressName;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): EndRequest {
 		$this->config = $config;
 		return $this;

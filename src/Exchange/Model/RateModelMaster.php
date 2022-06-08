@@ -69,158 +69,122 @@ class RateModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getRateModelId(): ?string {
 		return $this->rateModelId;
 	}
-
 	public function setRateModelId(?string $rateModelId) {
 		$this->rateModelId = $rateModelId;
 	}
-
 	public function withRateModelId(?string $rateModelId): RateModelMaster {
 		$this->rateModelId = $rateModelId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): RateModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): RateModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): RateModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
-
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
-
 	public function withConsumeActions(?array $consumeActions): RateModelMaster {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
-
 	public function getTimingType(): ?string {
 		return $this->timingType;
 	}
-
 	public function setTimingType(?string $timingType) {
 		$this->timingType = $timingType;
 	}
-
 	public function withTimingType(?string $timingType): RateModelMaster {
 		$this->timingType = $timingType;
 		return $this;
 	}
-
 	public function getLockTime(): ?int {
 		return $this->lockTime;
 	}
-
 	public function setLockTime(?int $lockTime) {
 		$this->lockTime = $lockTime;
 	}
-
 	public function withLockTime(?int $lockTime): RateModelMaster {
 		$this->lockTime = $lockTime;
 		return $this;
 	}
-
 	public function getEnableSkip(): ?bool {
 		return $this->enableSkip;
 	}
-
 	public function setEnableSkip(?bool $enableSkip) {
 		$this->enableSkip = $enableSkip;
 	}
-
 	public function withEnableSkip(?bool $enableSkip): RateModelMaster {
 		$this->enableSkip = $enableSkip;
 		return $this;
 	}
-
 	public function getSkipConsumeActions(): ?array {
 		return $this->skipConsumeActions;
 	}
-
 	public function setSkipConsumeActions(?array $skipConsumeActions) {
 		$this->skipConsumeActions = $skipConsumeActions;
 	}
-
 	public function withSkipConsumeActions(?array $skipConsumeActions): RateModelMaster {
 		$this->skipConsumeActions = $skipConsumeActions;
 		return $this;
 	}
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): RateModelMaster {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): RateModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): RateModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

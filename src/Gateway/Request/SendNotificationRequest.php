@@ -34,80 +34,62 @@ class SendNotificationRequest extends Gs2BasicRequest {
     private $sound;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SendNotificationRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SendNotificationRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getSubject(): ?string {
 		return $this->subject;
 	}
-
 	public function setSubject(?string $subject) {
 		$this->subject = $subject;
 	}
-
 	public function withSubject(?string $subject): SendNotificationRequest {
 		$this->subject = $subject;
 		return $this;
 	}
-
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
-
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
-
 	public function withPayload(?string $payload): SendNotificationRequest {
 		$this->payload = $payload;
 		return $this;
 	}
-
 	public function getEnableTransferMobileNotification(): ?bool {
 		return $this->enableTransferMobileNotification;
 	}
-
 	public function setEnableTransferMobileNotification(?bool $enableTransferMobileNotification) {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 	}
-
 	public function withEnableTransferMobileNotification(?bool $enableTransferMobileNotification): SendNotificationRequest {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 		return $this;
 	}
-
 	public function getSound(): ?string {
 		return $this->sound;
 	}
-
 	public function setSound(?string $sound) {
 		$this->sound = $sound;
 	}
-
 	public function withSound(?string $sound): SendNotificationRequest {
 		$this->sound = $sound;
 		return $this;
@@ -135,7 +117,7 @@ class SendNotificationRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withSubject(array_key_exists('subject', $data) && $data['subject'] !== null ? $data['subject'] : null)
             ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null)
-            ->withEnableTransferMobileNotification($data['enableTransferMobileNotification'])
+            ->withEnableTransferMobileNotification(array_key_exists('enableTransferMobileNotification', $data) ? $data['enableTransferMobileNotification'] : null)
             ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null);
     }
 

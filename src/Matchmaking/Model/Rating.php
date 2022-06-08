@@ -45,80 +45,62 @@ class Rating implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getRatingId(): ?string {
 		return $this->ratingId;
 	}
-
 	public function setRatingId(?string $ratingId) {
 		$this->ratingId = $ratingId;
 	}
-
 	public function withRatingId(?string $ratingId): Rating {
 		$this->ratingId = $ratingId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Rating {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Rating {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRateValue(): ?float {
 		return $this->rateValue;
 	}
-
 	public function setRateValue(?float $rateValue) {
 		$this->rateValue = $rateValue;
 	}
-
 	public function withRateValue(?float $rateValue): Rating {
 		$this->rateValue = $rateValue;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Rating {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Rating {
 		$this->updatedAt = $updatedAt;
 		return $this;

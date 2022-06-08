@@ -28,41 +28,32 @@ class DeleteMessageByUserIdRequest extends Gs2BasicRequest {
     private $messageName;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteMessageByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DeleteMessageByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
-
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
-
 	public function withMessageName(?string $messageName): DeleteMessageByUserIdRequest {
 		$this->messageName = $messageName;
 		return $this;

@@ -53,106 +53,82 @@ class CounterModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
-
 	public function setCounterId(?string $counterId) {
 		$this->counterId = $counterId;
 	}
-
 	public function withCounterId(?string $counterId): CounterModelMaster {
 		$this->counterId = $counterId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CounterModelMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CounterModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CounterModelMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
-
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
-
 	public function withScopes(?array $scopes): CounterModelMaster {
 		$this->scopes = $scopes;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CounterModelMaster {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): CounterModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): CounterModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

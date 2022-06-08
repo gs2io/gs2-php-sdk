@@ -53,106 +53,82 @@ class Complete implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getCompleteId(): ?string {
 		return $this->completeId;
 	}
-
 	public function setCompleteId(?string $completeId) {
 		$this->completeId = $completeId;
 	}
-
 	public function withCompleteId(?string $completeId): Complete {
 		$this->completeId = $completeId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Complete {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
-
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
-
 	public function withMissionGroupName(?string $missionGroupName): Complete {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
-
 	public function getCompletedMissionTaskNames(): ?array {
 		return $this->completedMissionTaskNames;
 	}
-
 	public function setCompletedMissionTaskNames(?array $completedMissionTaskNames) {
 		$this->completedMissionTaskNames = $completedMissionTaskNames;
 	}
-
 	public function withCompletedMissionTaskNames(?array $completedMissionTaskNames): Complete {
 		$this->completedMissionTaskNames = $completedMissionTaskNames;
 		return $this;
 	}
-
 	public function getReceivedMissionTaskNames(): ?array {
 		return $this->receivedMissionTaskNames;
 	}
-
 	public function setReceivedMissionTaskNames(?array $receivedMissionTaskNames) {
 		$this->receivedMissionTaskNames = $receivedMissionTaskNames;
 	}
-
 	public function withReceivedMissionTaskNames(?array $receivedMissionTaskNames): Complete {
 		$this->receivedMissionTaskNames = $receivedMissionTaskNames;
 		return $this;
 	}
-
 	public function getNextResetAt(): ?int {
 		return $this->nextResetAt;
 	}
-
 	public function setNextResetAt(?int $nextResetAt) {
 		$this->nextResetAt = $nextResetAt;
 	}
-
 	public function withNextResetAt(?int $nextResetAt): Complete {
 		$this->nextResetAt = $nextResetAt;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Complete {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Complete {
 		$this->updatedAt = $updatedAt;
 		return $this;

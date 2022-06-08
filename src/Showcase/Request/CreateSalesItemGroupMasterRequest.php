@@ -30,67 +30,52 @@ class CreateSalesItemGroupMasterRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var array */
     private $salesItemNames;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateSalesItemGroupMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateSalesItemGroupMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateSalesItemGroupMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CreateSalesItemGroupMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getSalesItemNames(): ?array {
 		return $this->salesItemNames;
 	}
-
 	public function setSalesItemNames(?array $salesItemNames) {
 		$this->salesItemNames = $salesItemNames;
 	}
-
 	public function withSalesItemNames(?array $salesItemNames): CreateSalesItemGroupMasterRequest {
 		$this->salesItemNames = $salesItemNames;
 		return $this;

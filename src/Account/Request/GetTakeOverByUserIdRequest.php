@@ -26,41 +26,32 @@ class GetTakeOverByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $type;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetTakeOverByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetTakeOverByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getType(): ?int {
 		return $this->type;
 	}
-
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?int $type): GetTakeOverByUserIdRequest {
 		$this->type = $type;
 		return $this;

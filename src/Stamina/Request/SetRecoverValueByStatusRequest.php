@@ -32,80 +32,62 @@ class SetRecoverValueByStatusRequest extends Gs2BasicRequest {
     private $signedStatusBody;
     /** @var string */
     private $signedStatusSignature;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetRecoverValueByStatusRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): SetRecoverValueByStatusRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): SetRecoverValueByStatusRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): SetRecoverValueByStatusRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
-
 	public function getSignedStatusBody(): ?string {
 		return $this->signedStatusBody;
 	}
-
 	public function setSignedStatusBody(?string $signedStatusBody) {
 		$this->signedStatusBody = $signedStatusBody;
 	}
-
 	public function withSignedStatusBody(?string $signedStatusBody): SetRecoverValueByStatusRequest {
 		$this->signedStatusBody = $signedStatusBody;
 		return $this;
 	}
-
 	public function getSignedStatusSignature(): ?string {
 		return $this->signedStatusSignature;
 	}
-
 	public function setSignedStatusSignature(?string $signedStatusSignature) {
 		$this->signedStatusSignature = $signedStatusSignature;
 	}
-
 	public function withSignedStatusSignature(?string $signedStatusSignature): SetRecoverValueByStatusRequest {
 		$this->signedStatusSignature = $signedStatusSignature;
 		return $this;

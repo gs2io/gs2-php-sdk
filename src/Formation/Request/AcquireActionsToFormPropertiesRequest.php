@@ -37,80 +37,62 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): AcquireActionsToFormPropertiesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AcquireActionsToFormPropertiesRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): AcquireActionsToFormPropertiesRequest {
 		$this->moldName = $moldName;
 		return $this;
 	}
-
 	public function getIndex(): ?int {
 		return $this->index;
 	}
-
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
-
 	public function withIndex(?int $index): AcquireActionsToFormPropertiesRequest {
 		$this->index = $index;
 		return $this;
 	}
-
 	public function getAcquireAction(): ?AcquireAction {
 		return $this->acquireAction;
 	}
-
 	public function setAcquireAction(?AcquireAction $acquireAction) {
 		$this->acquireAction = $acquireAction;
 	}
-
 	public function withAcquireAction(?AcquireAction $acquireAction): AcquireActionsToFormPropertiesRequest {
 		$this->acquireAction = $acquireAction;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): AcquireActionsToFormPropertiesRequest {
 		$this->config = $config;
 		return $this;

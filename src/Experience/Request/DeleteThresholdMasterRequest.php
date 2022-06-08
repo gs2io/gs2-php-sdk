@@ -24,28 +24,22 @@ class DeleteThresholdMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $thresholdName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteThresholdMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getThresholdName(): ?string {
 		return $this->thresholdName;
 	}
-
 	public function setThresholdName(?string $thresholdName) {
 		$this->thresholdName = $thresholdName;
 	}
-
 	public function withThresholdName(?string $thresholdName): DeleteThresholdMasterRequest {
 		$this->thresholdName = $thresholdName;
 		return $this;

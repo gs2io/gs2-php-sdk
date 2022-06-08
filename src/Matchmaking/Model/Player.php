@@ -37,54 +37,42 @@ class Player implements IModel {
      * @var array
 	 */
 	private $denyUserIds;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Player {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getAttributes(): ?array {
 		return $this->attributes;
 	}
-
 	public function setAttributes(?array $attributes) {
 		$this->attributes = $attributes;
 	}
-
 	public function withAttributes(?array $attributes): Player {
 		$this->attributes = $attributes;
 		return $this;
 	}
-
 	public function getRoleName(): ?string {
 		return $this->roleName;
 	}
-
 	public function setRoleName(?string $roleName) {
 		$this->roleName = $roleName;
 	}
-
 	public function withRoleName(?string $roleName): Player {
 		$this->roleName = $roleName;
 		return $this;
 	}
-
 	public function getDenyUserIds(): ?array {
 		return $this->denyUserIds;
 	}
-
 	public function setDenyUserIds(?array $denyUserIds) {
 		$this->denyUserIds = $denyUserIds;
 	}
-
 	public function withDenyUserIds(?array $denyUserIds): Player {
 		$this->denyUserIds = $denyUserIds;
 		return $this;

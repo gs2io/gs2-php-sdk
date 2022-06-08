@@ -29,28 +29,22 @@ class PublicProfile implements IModel {
      * @var string
 	 */
 	private $publicProfile;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): PublicProfile {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
-
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
-
 	public function withPublicProfile(?string $publicProfile): PublicProfile {
 		$this->publicProfile = $publicProfile;
 		return $this;

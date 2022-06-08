@@ -30,54 +30,42 @@ class VoteMultipleRequest extends Gs2BasicRequest {
     private $gameResults;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): VoteMultipleRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getSignedBallots(): ?array {
 		return $this->signedBallots;
 	}
-
 	public function setSignedBallots(?array $signedBallots) {
 		$this->signedBallots = $signedBallots;
 	}
-
 	public function withSignedBallots(?array $signedBallots): VoteMultipleRequest {
 		$this->signedBallots = $signedBallots;
 		return $this;
 	}
-
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
-
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
-
 	public function withGameResults(?array $gameResults): VoteMultipleRequest {
 		$this->gameResults = $gameResults;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): VoteMultipleRequest {
 		$this->keyId = $keyId;
 		return $this;

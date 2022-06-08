@@ -37,54 +37,42 @@ class Output implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getOutputId(): ?string {
 		return $this->outputId;
 	}
-
 	public function setOutputId(?string $outputId) {
 		$this->outputId = $outputId;
 	}
-
 	public function withOutputId(?string $outputId): Output {
 		$this->outputId = $outputId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Output {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getValue(): ?string {
 		return $this->value;
 	}
-
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?string $value): Output {
 		$this->value = $value;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Output {
 		$this->createdAt = $createdAt;
 		return $this;

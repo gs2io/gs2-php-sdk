@@ -45,80 +45,62 @@ class GlobalMessage implements IModel {
      * @var int
 	 */
 	private $expiresAt;
-
 	public function getGlobalMessageId(): ?string {
 		return $this->globalMessageId;
 	}
-
 	public function setGlobalMessageId(?string $globalMessageId) {
 		$this->globalMessageId = $globalMessageId;
 	}
-
 	public function withGlobalMessageId(?string $globalMessageId): GlobalMessage {
 		$this->globalMessageId = $globalMessageId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): GlobalMessage {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): GlobalMessage {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getReadAcquireActions(): ?array {
 		return $this->readAcquireActions;
 	}
-
 	public function setReadAcquireActions(?array $readAcquireActions) {
 		$this->readAcquireActions = $readAcquireActions;
 	}
-
 	public function withReadAcquireActions(?array $readAcquireActions): GlobalMessage {
 		$this->readAcquireActions = $readAcquireActions;
 		return $this;
 	}
-
 	public function getExpiresTimeSpan(): ?TimeSpan {
 		return $this->expiresTimeSpan;
 	}
-
 	public function setExpiresTimeSpan(?TimeSpan $expiresTimeSpan) {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 	}
-
 	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): GlobalMessage {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 		return $this;
 	}
-
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
-
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
-
 	public function withExpiresAt(?int $expiresAt): GlobalMessage {
 		$this->expiresAt = $expiresAt;
 		return $this;

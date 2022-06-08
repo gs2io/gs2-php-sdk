@@ -32,80 +32,62 @@ class CountUpRequest extends Gs2BasicRequest {
     private $countUpValue;
     /** @var int */
     private $maxValue;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CountUpRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
-
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
-
 	public function withLimitName(?string $limitName): CountUpRequest {
 		$this->limitName = $limitName;
 		return $this;
 	}
-
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
-
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
-
 	public function withCounterName(?string $counterName): CountUpRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): CountUpRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getCountUpValue(): ?int {
 		return $this->countUpValue;
 	}
-
 	public function setCountUpValue(?int $countUpValue) {
 		$this->countUpValue = $countUpValue;
 	}
-
 	public function withCountUpValue(?int $countUpValue): CountUpRequest {
 		$this->countUpValue = $countUpValue;
 		return $this;
 	}
-
 	public function getMaxValue(): ?int {
 		return $this->maxValue;
 	}
-
 	public function setMaxValue(?int $maxValue) {
 		$this->maxValue = $maxValue;
 	}
-
 	public function withMaxValue(?int $maxValue): CountUpRequest {
 		$this->maxValue = $maxValue;
 		return $this;

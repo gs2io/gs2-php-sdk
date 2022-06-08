@@ -24,28 +24,22 @@ class GetExperienceModelMasterRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $experienceName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetExperienceModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
-
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
-
 	public function withExperienceName(?string $experienceName): GetExperienceModelMasterRequest {
 		$this->experienceName = $experienceName;
 		return $this;

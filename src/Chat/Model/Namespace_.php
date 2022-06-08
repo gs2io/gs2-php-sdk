@@ -73,171 +73,132 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
-
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
-
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getAllowCreateRoom(): ?bool {
 		return $this->allowCreateRoom;
 	}
-
 	public function setAllowCreateRoom(?bool $allowCreateRoom) {
 		$this->allowCreateRoom = $allowCreateRoom;
 	}
-
 	public function withAllowCreateRoom(?bool $allowCreateRoom): Namespace_ {
 		$this->allowCreateRoom = $allowCreateRoom;
 		return $this;
 	}
-
 	public function getPostMessageScript(): ?ScriptSetting {
 		return $this->postMessageScript;
 	}
-
 	public function setPostMessageScript(?ScriptSetting $postMessageScript) {
 		$this->postMessageScript = $postMessageScript;
 	}
-
 	public function withPostMessageScript(?ScriptSetting $postMessageScript): Namespace_ {
 		$this->postMessageScript = $postMessageScript;
 		return $this;
 	}
-
 	public function getCreateRoomScript(): ?ScriptSetting {
 		return $this->createRoomScript;
 	}
-
 	public function setCreateRoomScript(?ScriptSetting $createRoomScript) {
 		$this->createRoomScript = $createRoomScript;
 	}
-
 	public function withCreateRoomScript(?ScriptSetting $createRoomScript): Namespace_ {
 		$this->createRoomScript = $createRoomScript;
 		return $this;
 	}
-
 	public function getDeleteRoomScript(): ?ScriptSetting {
 		return $this->deleteRoomScript;
 	}
-
 	public function setDeleteRoomScript(?ScriptSetting $deleteRoomScript) {
 		$this->deleteRoomScript = $deleteRoomScript;
 	}
-
 	public function withDeleteRoomScript(?ScriptSetting $deleteRoomScript): Namespace_ {
 		$this->deleteRoomScript = $deleteRoomScript;
 		return $this;
 	}
-
 	public function getSubscribeRoomScript(): ?ScriptSetting {
 		return $this->subscribeRoomScript;
 	}
-
 	public function setSubscribeRoomScript(?ScriptSetting $subscribeRoomScript) {
 		$this->subscribeRoomScript = $subscribeRoomScript;
 	}
-
 	public function withSubscribeRoomScript(?ScriptSetting $subscribeRoomScript): Namespace_ {
 		$this->subscribeRoomScript = $subscribeRoomScript;
 		return $this;
 	}
-
 	public function getUnsubscribeRoomScript(): ?ScriptSetting {
 		return $this->unsubscribeRoomScript;
 	}
-
 	public function setUnsubscribeRoomScript(?ScriptSetting $unsubscribeRoomScript) {
 		$this->unsubscribeRoomScript = $unsubscribeRoomScript;
 	}
-
 	public function withUnsubscribeRoomScript(?ScriptSetting $unsubscribeRoomScript): Namespace_ {
 		$this->unsubscribeRoomScript = $unsubscribeRoomScript;
 		return $this;
 	}
-
 	public function getPostNotification(): ?NotificationSetting {
 		return $this->postNotification;
 	}
-
 	public function setPostNotification(?NotificationSetting $postNotification) {
 		$this->postNotification = $postNotification;
 	}
-
 	public function withPostNotification(?NotificationSetting $postNotification): Namespace_ {
 		$this->postNotification = $postNotification;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;
@@ -251,7 +212,7 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withAllowCreateRoom($data['allowCreateRoom'])
+            ->withAllowCreateRoom(array_key_exists('allowCreateRoom', $data) ? $data['allowCreateRoom'] : null)
             ->withPostMessageScript(array_key_exists('postMessageScript', $data) && $data['postMessageScript'] !== null ? ScriptSetting::fromJson($data['postMessageScript']) : null)
             ->withCreateRoomScript(array_key_exists('createRoomScript', $data) && $data['createRoomScript'] !== null ? ScriptSetting::fromJson($data['createRoomScript']) : null)
             ->withDeleteRoomScript(array_key_exists('deleteRoomScript', $data) && $data['deleteRoomScript'] !== null ? ScriptSetting::fromJson($data['deleteRoomScript']) : null)

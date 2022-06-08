@@ -81,197 +81,152 @@ class Event implements IModel {
      * @var int
 	 */
 	private $relativeDuration;
-
 	public function getEventId(): ?string {
 		return $this->eventId;
 	}
-
 	public function setEventId(?string $eventId) {
 		$this->eventId = $eventId;
 	}
-
 	public function withEventId(?string $eventId): Event {
 		$this->eventId = $eventId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Event {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Event {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getScheduleType(): ?string {
 		return $this->scheduleType;
 	}
-
 	public function setScheduleType(?string $scheduleType) {
 		$this->scheduleType = $scheduleType;
 	}
-
 	public function withScheduleType(?string $scheduleType): Event {
 		$this->scheduleType = $scheduleType;
 		return $this;
 	}
-
 	public function getRepeatType(): ?string {
 		return $this->repeatType;
 	}
-
 	public function setRepeatType(?string $repeatType) {
 		$this->repeatType = $repeatType;
 	}
-
 	public function withRepeatType(?string $repeatType): Event {
 		$this->repeatType = $repeatType;
 		return $this;
 	}
-
 	public function getAbsoluteBegin(): ?int {
 		return $this->absoluteBegin;
 	}
-
 	public function setAbsoluteBegin(?int $absoluteBegin) {
 		$this->absoluteBegin = $absoluteBegin;
 	}
-
 	public function withAbsoluteBegin(?int $absoluteBegin): Event {
 		$this->absoluteBegin = $absoluteBegin;
 		return $this;
 	}
-
 	public function getAbsoluteEnd(): ?int {
 		return $this->absoluteEnd;
 	}
-
 	public function setAbsoluteEnd(?int $absoluteEnd) {
 		$this->absoluteEnd = $absoluteEnd;
 	}
-
 	public function withAbsoluteEnd(?int $absoluteEnd): Event {
 		$this->absoluteEnd = $absoluteEnd;
 		return $this;
 	}
-
 	public function getRepeatBeginDayOfMonth(): ?int {
 		return $this->repeatBeginDayOfMonth;
 	}
-
 	public function setRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth) {
 		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
 	}
-
 	public function withRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth): Event {
 		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
 		return $this;
 	}
-
 	public function getRepeatEndDayOfMonth(): ?int {
 		return $this->repeatEndDayOfMonth;
 	}
-
 	public function setRepeatEndDayOfMonth(?int $repeatEndDayOfMonth) {
 		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
 	}
-
 	public function withRepeatEndDayOfMonth(?int $repeatEndDayOfMonth): Event {
 		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
 		return $this;
 	}
-
 	public function getRepeatBeginDayOfWeek(): ?string {
 		return $this->repeatBeginDayOfWeek;
 	}
-
 	public function setRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek) {
 		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
 	}
-
 	public function withRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek): Event {
 		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
 		return $this;
 	}
-
 	public function getRepeatEndDayOfWeek(): ?string {
 		return $this->repeatEndDayOfWeek;
 	}
-
 	public function setRepeatEndDayOfWeek(?string $repeatEndDayOfWeek) {
 		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
 	}
-
 	public function withRepeatEndDayOfWeek(?string $repeatEndDayOfWeek): Event {
 		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
 		return $this;
 	}
-
 	public function getRepeatBeginHour(): ?int {
 		return $this->repeatBeginHour;
 	}
-
 	public function setRepeatBeginHour(?int $repeatBeginHour) {
 		$this->repeatBeginHour = $repeatBeginHour;
 	}
-
 	public function withRepeatBeginHour(?int $repeatBeginHour): Event {
 		$this->repeatBeginHour = $repeatBeginHour;
 		return $this;
 	}
-
 	public function getRepeatEndHour(): ?int {
 		return $this->repeatEndHour;
 	}
-
 	public function setRepeatEndHour(?int $repeatEndHour) {
 		$this->repeatEndHour = $repeatEndHour;
 	}
-
 	public function withRepeatEndHour(?int $repeatEndHour): Event {
 		$this->repeatEndHour = $repeatEndHour;
 		return $this;
 	}
-
 	public function getRelativeTriggerName(): ?string {
 		return $this->relativeTriggerName;
 	}
-
 	public function setRelativeTriggerName(?string $relativeTriggerName) {
 		$this->relativeTriggerName = $relativeTriggerName;
 	}
-
 	public function withRelativeTriggerName(?string $relativeTriggerName): Event {
 		$this->relativeTriggerName = $relativeTriggerName;
 		return $this;
 	}
-
 	public function getRelativeDuration(): ?int {
 		return $this->relativeDuration;
 	}
-
 	public function setRelativeDuration(?int $relativeDuration) {
 		$this->relativeDuration = $relativeDuration;
 	}
-
 	public function withRelativeDuration(?int $relativeDuration): Event {
 		$this->relativeDuration = $relativeDuration;
 		return $this;

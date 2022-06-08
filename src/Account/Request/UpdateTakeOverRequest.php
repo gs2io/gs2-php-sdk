@@ -30,67 +30,52 @@ class UpdateTakeOverRequest extends Gs2BasicRequest {
     private $oldPassword;
     /** @var string */
     private $password;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateTakeOverRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): UpdateTakeOverRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getType(): ?int {
 		return $this->type;
 	}
-
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?int $type): UpdateTakeOverRequest {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getOldPassword(): ?string {
 		return $this->oldPassword;
 	}
-
 	public function setOldPassword(?string $oldPassword) {
 		$this->oldPassword = $oldPassword;
 	}
-
 	public function withOldPassword(?string $oldPassword): UpdateTakeOverRequest {
 		$this->oldPassword = $oldPassword;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): UpdateTakeOverRequest {
 		$this->password = $password;
 		return $this;

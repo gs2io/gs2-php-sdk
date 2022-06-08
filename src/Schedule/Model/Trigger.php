@@ -41,67 +41,52 @@ class Trigger implements IModel {
      * @var int
 	 */
 	private $expiresAt;
-
 	public function getTriggerId(): ?string {
 		return $this->triggerId;
 	}
-
 	public function setTriggerId(?string $triggerId) {
 		$this->triggerId = $triggerId;
 	}
-
 	public function withTriggerId(?string $triggerId): Trigger {
 		$this->triggerId = $triggerId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Trigger {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Trigger {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Trigger {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
-
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
-
 	public function withExpiresAt(?int $expiresAt): Trigger {
 		$this->expiresAt = $expiresAt;
 		return $this;

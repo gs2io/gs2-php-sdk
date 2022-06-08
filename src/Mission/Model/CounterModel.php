@@ -41,67 +41,52 @@ class CounterModel implements IModel {
      * @var string
 	 */
 	private $challengePeriodEventId;
-
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
-
 	public function setCounterId(?string $counterId) {
 		$this->counterId = $counterId;
 	}
-
 	public function withCounterId(?string $counterId): CounterModel {
 		$this->counterId = $counterId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CounterModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): CounterModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
-
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
-
 	public function withScopes(?array $scopes): CounterModel {
 		$this->scopes = $scopes;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CounterModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

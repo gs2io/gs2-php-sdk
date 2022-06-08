@@ -37,54 +37,42 @@ class TransactionSetting implements IModel {
      * @var string
 	 */
 	private $queueNamespaceId;
-
 	public function getEnableAutoRun(): ?bool {
 		return $this->enableAutoRun;
 	}
-
 	public function setEnableAutoRun(?bool $enableAutoRun) {
 		$this->enableAutoRun = $enableAutoRun;
 	}
-
 	public function withEnableAutoRun(?bool $enableAutoRun): TransactionSetting {
 		$this->enableAutoRun = $enableAutoRun;
 		return $this;
 	}
-
 	public function getDistributorNamespaceId(): ?string {
 		return $this->distributorNamespaceId;
 	}
-
 	public function setDistributorNamespaceId(?string $distributorNamespaceId) {
 		$this->distributorNamespaceId = $distributorNamespaceId;
 	}
-
 	public function withDistributorNamespaceId(?string $distributorNamespaceId): TransactionSetting {
 		$this->distributorNamespaceId = $distributorNamespaceId;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): TransactionSetting {
 		$this->keyId = $keyId;
 		return $this;
 	}
-
 	public function getQueueNamespaceId(): ?string {
 		return $this->queueNamespaceId;
 	}
-
 	public function setQueueNamespaceId(?string $queueNamespaceId) {
 		$this->queueNamespaceId = $queueNamespaceId;
 	}
-
 	public function withQueueNamespaceId(?string $queueNamespaceId): TransactionSetting {
 		$this->queueNamespaceId = $queueNamespaceId;
 		return $this;

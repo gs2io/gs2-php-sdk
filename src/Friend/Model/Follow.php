@@ -41,67 +41,52 @@ class Follow implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getFollowId(): ?string {
 		return $this->followId;
 	}
-
 	public function setFollowId(?string $followId) {
 		$this->followId = $followId;
 	}
-
 	public function withFollowId(?string $followId): Follow {
 		$this->followId = $followId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Follow {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserIds(): ?array {
 		return $this->targetUserIds;
 	}
-
 	public function setTargetUserIds(?array $targetUserIds) {
 		$this->targetUserIds = $targetUserIds;
 	}
-
 	public function withTargetUserIds(?array $targetUserIds): Follow {
 		$this->targetUserIds = $targetUserIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Follow {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Follow {
 		$this->updatedAt = $updatedAt;
 		return $this;

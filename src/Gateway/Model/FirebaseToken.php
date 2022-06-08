@@ -41,67 +41,52 @@ class FirebaseToken implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getFirebaseTokenId(): ?string {
 		return $this->firebaseTokenId;
 	}
-
 	public function setFirebaseTokenId(?string $firebaseTokenId) {
 		$this->firebaseTokenId = $firebaseTokenId;
 	}
-
 	public function withFirebaseTokenId(?string $firebaseTokenId): FirebaseToken {
 		$this->firebaseTokenId = $firebaseTokenId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): FirebaseToken {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getToken(): ?string {
 		return $this->token;
 	}
-
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
-
 	public function withToken(?string $token): FirebaseToken {
 		$this->token = $token;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): FirebaseToken {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): FirebaseToken {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -41,106 +41,82 @@ class CreateGatheringRequest extends Gs2BasicRequest {
     private $expiresAt;
     /** @var TimeSpan */
     private $expiresAtTimeSpan;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CreateGatheringRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): CreateGatheringRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getPlayer(): ?Player {
 		return $this->player;
 	}
-
 	public function setPlayer(?Player $player) {
 		$this->player = $player;
 	}
-
 	public function withPlayer(?Player $player): CreateGatheringRequest {
 		$this->player = $player;
 		return $this;
 	}
-
 	public function getAttributeRanges(): ?array {
 		return $this->attributeRanges;
 	}
-
 	public function setAttributeRanges(?array $attributeRanges) {
 		$this->attributeRanges = $attributeRanges;
 	}
-
 	public function withAttributeRanges(?array $attributeRanges): CreateGatheringRequest {
 		$this->attributeRanges = $attributeRanges;
 		return $this;
 	}
-
 	public function getCapacityOfRoles(): ?array {
 		return $this->capacityOfRoles;
 	}
-
 	public function setCapacityOfRoles(?array $capacityOfRoles) {
 		$this->capacityOfRoles = $capacityOfRoles;
 	}
-
 	public function withCapacityOfRoles(?array $capacityOfRoles): CreateGatheringRequest {
 		$this->capacityOfRoles = $capacityOfRoles;
 		return $this;
 	}
-
 	public function getAllowUserIds(): ?array {
 		return $this->allowUserIds;
 	}
-
 	public function setAllowUserIds(?array $allowUserIds) {
 		$this->allowUserIds = $allowUserIds;
 	}
-
 	public function withAllowUserIds(?array $allowUserIds): CreateGatheringRequest {
 		$this->allowUserIds = $allowUserIds;
 		return $this;
 	}
-
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
-
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
-
 	public function withExpiresAt(?int $expiresAt): CreateGatheringRequest {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
-
 	public function getExpiresAtTimeSpan(): ?TimeSpan {
 		return $this->expiresAtTimeSpan;
 	}
-
 	public function setExpiresAtTimeSpan(?TimeSpan $expiresAtTimeSpan) {
 		$this->expiresAtTimeSpan = $expiresAtTimeSpan;
 	}
-
 	public function withExpiresAtTimeSpan(?TimeSpan $expiresAtTimeSpan): CreateGatheringRequest {
 		$this->expiresAtTimeSpan = $expiresAtTimeSpan;
 		return $this;

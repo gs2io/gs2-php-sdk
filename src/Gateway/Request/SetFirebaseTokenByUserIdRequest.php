@@ -28,41 +28,32 @@ class SetFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
     private $token;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetFirebaseTokenByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SetFirebaseTokenByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getToken(): ?string {
 		return $this->token;
 	}
-
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
-
 	public function withToken(?string $token): SetFirebaseTokenByUserIdRequest {
 		$this->token = $token;
 		return $this;

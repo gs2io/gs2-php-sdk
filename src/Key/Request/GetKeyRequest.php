@@ -24,28 +24,22 @@ class GetKeyRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $keyName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getKeyName(): ?string {
 		return $this->keyName;
 	}
-
 	public function setKeyName(?string $keyName) {
 		$this->keyName = $keyName;
 	}
-
 	public function withKeyName(?string $keyName): GetKeyRequest {
 		$this->keyName = $keyName;
 		return $this;

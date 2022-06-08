@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class GetPasswordRequest extends Gs2BasicRequest {
     /** @var string */
     private $userName;
-
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
-
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-
 	public function withUserName(?string $userName): GetPasswordRequest {
 		$this->userName = $userName;
 		return $this;

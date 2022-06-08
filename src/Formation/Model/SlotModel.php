@@ -33,41 +33,32 @@ class SlotModel implements IModel {
      * @var string
 	 */
 	private $metadata;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): SlotModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getPropertyRegex(): ?string {
 		return $this->propertyRegex;
 	}
-
 	public function setPropertyRegex(?string $propertyRegex) {
 		$this->propertyRegex = $propertyRegex;
 	}
-
 	public function withPropertyRegex(?string $propertyRegex): SlotModel {
 		$this->propertyRegex = $propertyRegex;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): SlotModel {
 		$this->metadata = $metadata;
 		return $this;

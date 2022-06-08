@@ -30,54 +30,42 @@ class SetMaxValueByUserIdRequest extends Gs2BasicRequest {
     private $maxValue;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetMaxValueByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
-
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
-
 	public function withStaminaName(?string $staminaName): SetMaxValueByUserIdRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SetMaxValueByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMaxValue(): ?int {
 		return $this->maxValue;
 	}
-
 	public function setMaxValue(?int $maxValue) {
 		$this->maxValue = $maxValue;
 	}
-
 	public function withMaxValue(?int $maxValue): SetMaxValueByUserIdRequest {
 		$this->maxValue = $maxValue;
 		return $this;

@@ -30,67 +30,52 @@ class WithdrawRequest extends Gs2BasicRequest {
     private $count;
     /** @var bool */
     private $paidOnly;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): WithdrawRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): WithdrawRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
-
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
-
 	public function withSlot(?int $slot): WithdrawRequest {
 		$this->slot = $slot;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): WithdrawRequest {
 		$this->count = $count;
 		return $this;
 	}
-
 	public function getPaidOnly(): ?bool {
 		return $this->paidOnly;
 	}
-
 	public function setPaidOnly(?bool $paidOnly) {
 		$this->paidOnly = $paidOnly;
 	}
-
 	public function withPaidOnly(?bool $paidOnly): WithdrawRequest {
 		$this->paidOnly = $paidOnly;
 		return $this;
@@ -105,7 +90,7 @@ class WithdrawRequest extends Gs2BasicRequest {
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
             ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
-            ->withPaidOnly($data['paidOnly']);
+            ->withPaidOnly(array_key_exists('paidOnly', $data) ? $data['paidOnly'] : null);
     }
 
     public function toJson(): array {

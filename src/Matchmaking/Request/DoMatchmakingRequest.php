@@ -30,54 +30,42 @@ class DoMatchmakingRequest extends Gs2BasicRequest {
     private $player;
     /** @var string */
     private $matchmakingContextToken;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DoMatchmakingRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): DoMatchmakingRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getPlayer(): ?Player {
 		return $this->player;
 	}
-
 	public function setPlayer(?Player $player) {
 		$this->player = $player;
 	}
-
 	public function withPlayer(?Player $player): DoMatchmakingRequest {
 		$this->player = $player;
 		return $this;
 	}
-
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
-
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
-
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;

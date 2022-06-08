@@ -30,67 +30,52 @@ class PutScoreRequest extends Gs2BasicRequest {
     private $score;
     /** @var string */
     private $metadata;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PutScoreRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
-
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
-
 	public function withCategoryName(?string $categoryName): PutScoreRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): PutScoreRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getScore(): ?int {
 		return $this->score;
 	}
-
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
-
 	public function withScore(?int $score): PutScoreRequest {
 		$this->score = $score;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): PutScoreRequest {
 		$this->metadata = $metadata;
 		return $this;

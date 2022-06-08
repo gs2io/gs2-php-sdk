@@ -45,80 +45,62 @@ class Ranking implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getRank(): ?int {
 		return $this->rank;
 	}
-
 	public function setRank(?int $rank) {
 		$this->rank = $rank;
 	}
-
 	public function withRank(?int $rank): Ranking {
 		$this->rank = $rank;
 		return $this;
 	}
-
 	public function getIndex(): ?int {
 		return $this->index;
 	}
-
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
-
 	public function withIndex(?int $index): Ranking {
 		$this->index = $index;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Ranking {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getScore(): ?int {
 		return $this->score;
 	}
-
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
-
 	public function withScore(?int $score): Ranking {
 		$this->score = $score;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): Ranking {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Ranking {
 		$this->createdAt = $createdAt;
 		return $this;

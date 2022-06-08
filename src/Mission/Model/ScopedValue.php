@@ -37,54 +37,42 @@ class ScopedValue implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
-
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
-
 	public function withResetType(?string $resetType): ScopedValue {
 		$this->resetType = $resetType;
 		return $this;
 	}
-
 	public function getValue(): ?int {
 		return $this->value;
 	}
-
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?int $value): ScopedValue {
 		$this->value = $value;
 		return $this;
 	}
-
 	public function getNextResetAt(): ?int {
 		return $this->nextResetAt;
 	}
-
 	public function setNextResetAt(?int $nextResetAt) {
 		$this->nextResetAt = $nextResetAt;
 	}
-
 	public function withNextResetAt(?int $nextResetAt): ScopedValue {
 		$this->nextResetAt = $nextResetAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): ScopedValue {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -30,54 +30,42 @@ class PrepareReUploadByUserIdRequest extends Gs2BasicRequest {
     private $contentType;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PrepareReUploadByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
-
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
-
 	public function withDataObjectName(?string $dataObjectName): PrepareReUploadByUserIdRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): PrepareReUploadByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getContentType(): ?string {
 		return $this->contentType;
 	}
-
 	public function setContentType(?string $contentType) {
 		$this->contentType = $contentType;
 	}
-
 	public function withContentType(?string $contentType): PrepareReUploadByUserIdRequest {
 		$this->contentType = $contentType;
 		return $this;

@@ -25,28 +25,22 @@ class UpdateCurrentRankingMasterFromGitHubRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentRankingMasterFromGitHubRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
-
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
-
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): UpdateCurrentRankingMasterFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;

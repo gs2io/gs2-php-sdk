@@ -30,67 +30,52 @@ class UpdateThresholdMasterRequest extends Gs2BasicRequest {
     private $metadata;
     /** @var array */
     private $values;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateThresholdMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getThresholdName(): ?string {
 		return $this->thresholdName;
 	}
-
 	public function setThresholdName(?string $thresholdName) {
 		$this->thresholdName = $thresholdName;
 	}
-
 	public function withThresholdName(?string $thresholdName): UpdateThresholdMasterRequest {
 		$this->thresholdName = $thresholdName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateThresholdMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): UpdateThresholdMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getValues(): ?array {
 		return $this->values;
 	}
-
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
-
 	public function withValues(?array $values): UpdateThresholdMasterRequest {
 		$this->values = $values;
 		return $this;

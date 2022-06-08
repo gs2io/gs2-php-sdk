@@ -30,54 +30,42 @@ class AddMoldCapacityByUserIdRequest extends Gs2BasicRequest {
     private $capacity;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): AddMoldCapacityByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AddMoldCapacityByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): AddMoldCapacityByUserIdRequest {
 		$this->moldName = $moldName;
 		return $this;
 	}
-
 	public function getCapacity(): ?int {
 		return $this->capacity;
 	}
-
 	public function setCapacity(?int $capacity) {
 		$this->capacity = $capacity;
 	}
-
 	public function withCapacity(?int $capacity): AddMoldCapacityByUserIdRequest {
 		$this->capacity = $capacity;
 		return $this;

@@ -29,54 +29,42 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $firebaseSecret;
     /** @var LogSetting */
     private $logSetting;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getFirebaseSecret(): ?string {
 		return $this->firebaseSecret;
 	}
-
 	public function setFirebaseSecret(?string $firebaseSecret) {
 		$this->firebaseSecret = $firebaseSecret;
 	}
-
 	public function withFirebaseSecret(?string $firebaseSecret): UpdateNamespaceRequest {
 		$this->firebaseSecret = $firebaseSecret;
 		return $this;
 	}
-
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
-
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
-
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

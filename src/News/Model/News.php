@@ -45,80 +45,62 @@ class News implements IModel {
      * @var string
 	 */
 	private $frontMatter;
-
 	public function getSection(): ?string {
 		return $this->section;
 	}
-
 	public function setSection(?string $section) {
 		$this->section = $section;
 	}
-
 	public function withSection(?string $section): News {
 		$this->section = $section;
 		return $this;
 	}
-
 	public function getContent(): ?string {
 		return $this->content;
 	}
-
 	public function setContent(?string $content) {
 		$this->content = $content;
 	}
-
 	public function withContent(?string $content): News {
 		$this->content = $content;
 		return $this;
 	}
-
 	public function getTitle(): ?string {
 		return $this->title;
 	}
-
 	public function setTitle(?string $title) {
 		$this->title = $title;
 	}
-
 	public function withTitle(?string $title): News {
 		$this->title = $title;
 		return $this;
 	}
-
 	public function getScheduleEventId(): ?string {
 		return $this->scheduleEventId;
 	}
-
 	public function setScheduleEventId(?string $scheduleEventId) {
 		$this->scheduleEventId = $scheduleEventId;
 	}
-
 	public function withScheduleEventId(?string $scheduleEventId): News {
 		$this->scheduleEventId = $scheduleEventId;
 		return $this;
 	}
-
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
-
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
-
 	public function withTimestamp(?int $timestamp): News {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
-
 	public function getFrontMatter(): ?string {
 		return $this->frontMatter;
 	}
-
 	public function setFrontMatter(?string $frontMatter) {
 		$this->frontMatter = $frontMatter;
 	}
-
 	public function withFrontMatter(?string $frontMatter): News {
 		$this->frontMatter = $frontMatter;
 		return $this;

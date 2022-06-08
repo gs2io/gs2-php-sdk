@@ -75,7 +75,7 @@ class RunResult implements IResult {
         return (new RunResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Job::fromJson($data['item']) : null)
             ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? JobResultBody::fromJson($data['result']) : null)
-            ->withIsLastJob($data['isLastJob']);
+            ->withIsLastJob(array_key_exists('isLastJob', $data) ? $data['isLastJob'] : null);
     }
 
     public function toJson(): array {

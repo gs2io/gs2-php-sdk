@@ -53,106 +53,82 @@ class MissionTaskModel implements IModel {
      * @var string
 	 */
 	private $premiseMissionTaskName;
-
 	public function getMissionTaskId(): ?string {
 		return $this->missionTaskId;
 	}
-
 	public function setMissionTaskId(?string $missionTaskId) {
 		$this->missionTaskId = $missionTaskId;
 	}
-
 	public function withMissionTaskId(?string $missionTaskId): MissionTaskModel {
 		$this->missionTaskId = $missionTaskId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): MissionTaskModel {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): MissionTaskModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
-
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
-
 	public function withCounterName(?string $counterName): MissionTaskModel {
 		$this->counterName = $counterName;
 		return $this;
 	}
-
 	public function getTargetValue(): ?int {
 		return $this->targetValue;
 	}
-
 	public function setTargetValue(?int $targetValue) {
 		$this->targetValue = $targetValue;
 	}
-
 	public function withTargetValue(?int $targetValue): MissionTaskModel {
 		$this->targetValue = $targetValue;
 		return $this;
 	}
-
 	public function getCompleteAcquireActions(): ?array {
 		return $this->completeAcquireActions;
 	}
-
 	public function setCompleteAcquireActions(?array $completeAcquireActions) {
 		$this->completeAcquireActions = $completeAcquireActions;
 	}
-
 	public function withCompleteAcquireActions(?array $completeAcquireActions): MissionTaskModel {
 		$this->completeAcquireActions = $completeAcquireActions;
 		return $this;
 	}
-
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
-
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
-
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): MissionTaskModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
-
 	public function getPremiseMissionTaskName(): ?string {
 		return $this->premiseMissionTaskName;
 	}
-
 	public function setPremiseMissionTaskName(?string $premiseMissionTaskName) {
 		$this->premiseMissionTaskName = $premiseMissionTaskName;
 	}
-
 	public function withPremiseMissionTaskName(?string $premiseMissionTaskName): MissionTaskModel {
 		$this->premiseMissionTaskName = $premiseMissionTaskName;
 		return $this;

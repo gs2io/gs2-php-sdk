@@ -41,67 +41,52 @@ class SendBox implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getSendBoxId(): ?string {
 		return $this->sendBoxId;
 	}
-
 	public function setSendBoxId(?string $sendBoxId) {
 		$this->sendBoxId = $sendBoxId;
 	}
-
 	public function withSendBoxId(?string $sendBoxId): SendBox {
 		$this->sendBoxId = $sendBoxId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): SendBox {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserIds(): ?array {
 		return $this->targetUserIds;
 	}
-
 	public function setTargetUserIds(?array $targetUserIds) {
 		$this->targetUserIds = $targetUserIds;
 	}
-
 	public function withTargetUserIds(?array $targetUserIds): SendBox {
 		$this->targetUserIds = $targetUserIds;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): SendBox {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): SendBox {
 		$this->updatedAt = $updatedAt;
 		return $this;

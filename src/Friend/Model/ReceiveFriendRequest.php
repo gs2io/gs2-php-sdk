@@ -29,28 +29,22 @@ class ReceiveFriendRequest implements IModel {
      * @var string
 	 */
 	private $targetUserId;
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): ReceiveFriendRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
-
 	public function withTargetUserId(?string $targetUserId): ReceiveFriendRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;

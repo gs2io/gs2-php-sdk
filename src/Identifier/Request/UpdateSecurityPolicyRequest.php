@@ -26,41 +26,32 @@ class UpdateSecurityPolicyRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $policy;
-
 	public function getSecurityPolicyName(): ?string {
 		return $this->securityPolicyName;
 	}
-
 	public function setSecurityPolicyName(?string $securityPolicyName) {
 		$this->securityPolicyName = $securityPolicyName;
 	}
-
 	public function withSecurityPolicyName(?string $securityPolicyName): UpdateSecurityPolicyRequest {
 		$this->securityPolicyName = $securityPolicyName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateSecurityPolicyRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getPolicy(): ?string {
 		return $this->policy;
 	}
-
 	public function setPolicy(?string $policy) {
 		$this->policy = $policy;
 	}
-
 	public function withPolicy(?string $policy): UpdateSecurityPolicyRequest {
 		$this->policy = $policy;
 		return $this;

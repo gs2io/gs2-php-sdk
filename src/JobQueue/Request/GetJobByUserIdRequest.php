@@ -26,41 +26,32 @@ class GetJobByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $jobName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetJobByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): GetJobByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getJobName(): ?string {
 		return $this->jobName;
 	}
-
 	public function setJobName(?string $jobName) {
 		$this->jobName = $jobName;
 	}
-
 	public function withJobName(?string $jobName): GetJobByUserIdRequest {
 		$this->jobName = $jobName;
 		return $this;

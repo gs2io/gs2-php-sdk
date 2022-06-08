@@ -45,80 +45,62 @@ class SecurityPolicy implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getSecurityPolicyId(): ?string {
 		return $this->securityPolicyId;
 	}
-
 	public function setSecurityPolicyId(?string $securityPolicyId) {
 		$this->securityPolicyId = $securityPolicyId;
 	}
-
 	public function withSecurityPolicyId(?string $securityPolicyId): SecurityPolicy {
 		$this->securityPolicyId = $securityPolicyId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): SecurityPolicy {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): SecurityPolicy {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getPolicy(): ?string {
 		return $this->policy;
 	}
-
 	public function setPolicy(?string $policy) {
 		$this->policy = $policy;
 	}
-
 	public function withPolicy(?string $policy): SecurityPolicy {
 		$this->policy = $policy;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): SecurityPolicy {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): SecurityPolicy {
 		$this->updatedAt = $updatedAt;
 		return $this;

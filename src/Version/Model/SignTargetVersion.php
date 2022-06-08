@@ -37,54 +37,42 @@ class SignTargetVersion implements IModel {
      * @var Version
 	 */
 	private $version;
-
 	public function getRegion(): ?string {
 		return $this->region;
 	}
-
 	public function setRegion(?string $region) {
 		$this->region = $region;
 	}
-
 	public function withRegion(?string $region): SignTargetVersion {
 		$this->region = $region;
 		return $this;
 	}
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SignTargetVersion {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
-
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
-
 	public function withVersionName(?string $versionName): SignTargetVersion {
 		$this->versionName = $versionName;
 		return $this;
 	}
-
 	public function getVersion(): ?Version {
 		return $this->version;
 	}
-
 	public function setVersion(?Version $version) {
 		$this->version = $version;
 	}
-
 	public function withVersion(?Version $version): SignTargetVersion {
 		$this->version = $version;
 		return $this;

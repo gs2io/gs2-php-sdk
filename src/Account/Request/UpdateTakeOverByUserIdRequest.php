@@ -32,67 +32,52 @@ class UpdateTakeOverByUserIdRequest extends Gs2BasicRequest {
     private $password;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateTakeOverByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): UpdateTakeOverByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getType(): ?int {
 		return $this->type;
 	}
-
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?int $type): UpdateTakeOverByUserIdRequest {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getOldPassword(): ?string {
 		return $this->oldPassword;
 	}
-
 	public function setOldPassword(?string $oldPassword) {
 		$this->oldPassword = $oldPassword;
 	}
-
 	public function withOldPassword(?string $oldPassword): UpdateTakeOverByUserIdRequest {
 		$this->oldPassword = $oldPassword;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): UpdateTakeOverByUserIdRequest {
 		$this->password = $password;
 		return $this;

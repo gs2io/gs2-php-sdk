@@ -32,67 +32,52 @@ class LockByUserIdRequest extends Gs2BasicRequest {
     private $ttl;
     /** @var string */
     private $duplicationAvoider;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): LockByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
-
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
-
 	public function withPropertyId(?string $propertyId): LockByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): LockByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): LockByUserIdRequest {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getTtl(): ?int {
 		return $this->ttl;
 	}
-
 	public function setTtl(?int $ttl) {
 		$this->ttl = $ttl;
 	}
-
 	public function withTtl(?int $ttl): LockByUserIdRequest {
 		$this->ttl = $ttl;
 		return $this;

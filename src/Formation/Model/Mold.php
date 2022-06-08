@@ -45,80 +45,62 @@ class Mold implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getMoldId(): ?string {
 		return $this->moldId;
 	}
-
 	public function setMoldId(?string $moldId) {
 		$this->moldId = $moldId;
 	}
-
 	public function withMoldId(?string $moldId): Mold {
 		$this->moldId = $moldId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Mold {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Mold {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getCapacity(): ?int {
 		return $this->capacity;
 	}
-
 	public function setCapacity(?int $capacity) {
 		$this->capacity = $capacity;
 	}
-
 	public function withCapacity(?int $capacity): Mold {
 		$this->capacity = $capacity;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Mold {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Mold {
 		$this->updatedAt = $updatedAt;
 		return $this;

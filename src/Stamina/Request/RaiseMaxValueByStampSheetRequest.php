@@ -24,28 +24,22 @@ class RaiseMaxValueByStampSheetRequest extends Gs2BasicRequest {
     private $stampSheet;
     /** @var string */
     private $keyId;
-
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
-
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
-
 	public function withStampSheet(?string $stampSheet): RaiseMaxValueByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): RaiseMaxValueByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

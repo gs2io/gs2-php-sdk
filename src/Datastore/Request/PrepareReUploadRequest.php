@@ -28,54 +28,42 @@ class PrepareReUploadRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $contentType;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): PrepareReUploadRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
-
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
-
 	public function withDataObjectName(?string $dataObjectName): PrepareReUploadRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): PrepareReUploadRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getContentType(): ?string {
 		return $this->contentType;
 	}
-
 	public function setContentType(?string $contentType) {
 		$this->contentType = $contentType;
 	}
-
 	public function withContentType(?string $contentType): PrepareReUploadRequest {
 		$this->contentType = $contentType;
 		return $this;

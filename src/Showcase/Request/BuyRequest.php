@@ -31,67 +31,52 @@ class BuyRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var array */
     private $config;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): BuyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
-
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
-
 	public function withShowcaseName(?string $showcaseName): BuyRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
-
 	public function getDisplayItemId(): ?string {
 		return $this->displayItemId;
 	}
-
 	public function setDisplayItemId(?string $displayItemId) {
 		$this->displayItemId = $displayItemId;
 	}
-
 	public function withDisplayItemId(?string $displayItemId): BuyRequest {
 		$this->displayItemId = $displayItemId;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): BuyRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getConfig(): ?array {
 		return $this->config;
 	}
-
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
-
 	public function withConfig(?array $config): BuyRequest {
 		$this->config = $config;
 		return $this;

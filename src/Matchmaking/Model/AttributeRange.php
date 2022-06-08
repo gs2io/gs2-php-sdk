@@ -33,41 +33,32 @@ class AttributeRange implements IModel {
      * @var int
 	 */
 	private $max;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): AttributeRange {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMin(): ?int {
 		return $this->min;
 	}
-
 	public function setMin(?int $min) {
 		$this->min = $min;
 	}
-
 	public function withMin(?int $min): AttributeRange {
 		$this->min = $min;
 		return $this;
 	}
-
 	public function getMax(): ?int {
 		return $this->max;
 	}
-
 	public function setMax(?int $max) {
 		$this->max = $max;
 	}
-
 	public function withMax(?int $max): AttributeRange {
 		$this->max = $max;
 		return $this;

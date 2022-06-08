@@ -41,67 +41,52 @@ class DisplayItemMaster implements IModel {
      * @var string
 	 */
 	private $salesPeriodEventId;
-
 	public function getDisplayItemId(): ?string {
 		return $this->displayItemId;
 	}
-
 	public function setDisplayItemId(?string $displayItemId) {
 		$this->displayItemId = $displayItemId;
 	}
-
 	public function withDisplayItemId(?string $displayItemId): DisplayItemMaster {
 		$this->displayItemId = $displayItemId;
 		return $this;
 	}
-
 	public function getType(): ?string {
 		return $this->type;
 	}
-
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?string $type): DisplayItemMaster {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getSalesItemName(): ?string {
 		return $this->salesItemName;
 	}
-
 	public function setSalesItemName(?string $salesItemName) {
 		$this->salesItemName = $salesItemName;
 	}
-
 	public function withSalesItemName(?string $salesItemName): DisplayItemMaster {
 		$this->salesItemName = $salesItemName;
 		return $this;
 	}
-
 	public function getSalesItemGroupName(): ?string {
 		return $this->salesItemGroupName;
 	}
-
 	public function setSalesItemGroupName(?string $salesItemGroupName) {
 		$this->salesItemGroupName = $salesItemGroupName;
 	}
-
 	public function withSalesItemGroupName(?string $salesItemGroupName): DisplayItemMaster {
 		$this->salesItemGroupName = $salesItemGroupName;
 		return $this;
 	}
-
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
-
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
-
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): DisplayItemMaster {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;

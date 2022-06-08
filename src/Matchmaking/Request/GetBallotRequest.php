@@ -32,80 +32,62 @@ class GetBallotRequest extends Gs2BasicRequest {
     private $numberOfPlayer;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): GetBallotRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
-
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
-
 	public function withRatingName(?string $ratingName): GetBallotRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
-
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
-
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
-
 	public function withGatheringName(?string $gatheringName): GetBallotRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): GetBallotRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getNumberOfPlayer(): ?int {
 		return $this->numberOfPlayer;
 	}
-
 	public function setNumberOfPlayer(?int $numberOfPlayer) {
 		$this->numberOfPlayer = $numberOfPlayer;
 	}
-
 	public function withNumberOfPlayer(?int $numberOfPlayer): GetBallotRequest {
 		$this->numberOfPlayer = $numberOfPlayer;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): GetBallotRequest {
 		$this->keyId = $keyId;
 		return $this;

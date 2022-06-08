@@ -29,54 +29,42 @@ class UpdateNotificationTypeRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var array */
     private $notificationTypes;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): UpdateNotificationTypeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
-
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
-
 	public function withRoomName(?string $roomName): UpdateNotificationTypeRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): UpdateNotificationTypeRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
-
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
-
 	public function withNotificationTypes(?array $notificationTypes): UpdateNotificationTypeRequest {
 		$this->notificationTypes = $notificationTypes;
 		return $this;

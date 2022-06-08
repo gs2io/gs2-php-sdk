@@ -49,93 +49,72 @@ class StampSheetResult implements IModel {
      * @var int
 	 */
 	private $createdAt;
-
 	public function getStampSheetResultId(): ?string {
 		return $this->stampSheetResultId;
 	}
-
 	public function setStampSheetResultId(?string $stampSheetResultId) {
 		$this->stampSheetResultId = $stampSheetResultId;
 	}
-
 	public function withStampSheetResultId(?string $stampSheetResultId): StampSheetResult {
 		$this->stampSheetResultId = $stampSheetResultId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): StampSheetResult {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): StampSheetResult {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getTaskResults(): ?array {
 		return $this->taskResults;
 	}
-
 	public function setTaskResults(?array $taskResults) {
 		$this->taskResults = $taskResults;
 	}
-
 	public function withTaskResults(?array $taskResults): StampSheetResult {
 		$this->taskResults = $taskResults;
 		return $this;
 	}
-
 	public function getSheetResult(): ?string {
 		return $this->sheetResult;
 	}
-
 	public function setSheetResult(?string $sheetResult) {
 		$this->sheetResult = $sheetResult;
 	}
-
 	public function withSheetResult(?string $sheetResult): StampSheetResult {
 		$this->sheetResult = $sheetResult;
 		return $this;
 	}
-
 	public function getNextTransactionId(): ?string {
 		return $this->nextTransactionId;
 	}
-
 	public function setNextTransactionId(?string $nextTransactionId) {
 		$this->nextTransactionId = $nextTransactionId;
 	}
-
 	public function withNextTransactionId(?string $nextTransactionId): StampSheetResult {
 		$this->nextTransactionId = $nextTransactionId;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): StampSheetResult {
 		$this->createdAt = $createdAt;
 		return $this;

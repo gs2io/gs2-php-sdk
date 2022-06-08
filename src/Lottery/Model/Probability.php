@@ -29,28 +29,22 @@ class Probability implements IModel {
      * @var float
 	 */
 	private $rate;
-
 	public function getPrize(): ?DrawnPrize {
 		return $this->prize;
 	}
-
 	public function setPrize(?DrawnPrize $prize) {
 		$this->prize = $prize;
 	}
-
 	public function withPrize(?DrawnPrize $prize): Probability {
 		$this->prize = $prize;
 		return $this;
 	}
-
 	public function getRate(): ?float {
 		return $this->rate;
 	}
-
 	public function setRate(?float $rate) {
 		$this->rate = $rate;
 	}
-
 	public function withRate(?float $rate): Probability {
 		$this->rate = $rate;
 		return $this;

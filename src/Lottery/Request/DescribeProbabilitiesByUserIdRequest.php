@@ -26,41 +26,32 @@ class DescribeProbabilitiesByUserIdRequest extends Gs2BasicRequest {
     private $lotteryName;
     /** @var string */
     private $userId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeProbabilitiesByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getLotteryName(): ?string {
 		return $this->lotteryName;
 	}
-
 	public function setLotteryName(?string $lotteryName) {
 		$this->lotteryName = $lotteryName;
 	}
-
 	public function withLotteryName(?string $lotteryName): DescribeProbabilitiesByUserIdRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DescribeProbabilitiesByUserIdRequest {
 		$this->userId = $userId;
 		return $this;

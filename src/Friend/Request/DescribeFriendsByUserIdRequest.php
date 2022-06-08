@@ -30,67 +30,52 @@ class DescribeFriendsByUserIdRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DescribeFriendsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): DescribeFriendsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getWithProfile(): ?bool {
 		return $this->withProfile;
 	}
-
 	public function setWithProfile(?bool $withProfile) {
 		$this->withProfile = $withProfile;
 	}
-
 	public function withWithProfile(?bool $withProfile): DescribeFriendsByUserIdRequest {
 		$this->withProfile = $withProfile;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeFriendsByUserIdRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeFriendsByUserIdRequest {
 		$this->limit = $limit;
 		return $this;
@@ -103,7 +88,7 @@ class DescribeFriendsByUserIdRequest extends Gs2BasicRequest {
         return (new DescribeFriendsByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withWithProfile($data['withProfile'])
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }

@@ -41,67 +41,52 @@ class Prize implements IModel {
      * @var int
 	 */
 	private $weight;
-
 	public function getPrizeId(): ?string {
 		return $this->prizeId;
 	}
-
 	public function setPrizeId(?string $prizeId) {
 		$this->prizeId = $prizeId;
 	}
-
 	public function withPrizeId(?string $prizeId): Prize {
 		$this->prizeId = $prizeId;
 		return $this;
 	}
-
 	public function getType(): ?string {
 		return $this->type;
 	}
-
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?string $type): Prize {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
-
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
-
 	public function withAcquireActions(?array $acquireActions): Prize {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
-
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
-
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
-
 	public function withPrizeTableName(?string $prizeTableName): Prize {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
-
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
-
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
-
 	public function withWeight(?int $weight): Prize {
 		$this->weight = $weight;
 		return $this;

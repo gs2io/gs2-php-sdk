@@ -33,80 +33,62 @@ class SetFormWithSignatureRequest extends Gs2BasicRequest {
     private $slots;
     /** @var string */
     private $keyId;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): SetFormWithSignatureRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
-
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-
 	public function withAccessToken(?string $accessToken): SetFormWithSignatureRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-
 	public function getMoldName(): ?string {
 		return $this->moldName;
 	}
-
 	public function setMoldName(?string $moldName) {
 		$this->moldName = $moldName;
 	}
-
 	public function withMoldName(?string $moldName): SetFormWithSignatureRequest {
 		$this->moldName = $moldName;
 		return $this;
 	}
-
 	public function getIndex(): ?int {
 		return $this->index;
 	}
-
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
-
 	public function withIndex(?int $index): SetFormWithSignatureRequest {
 		$this->index = $index;
 		return $this;
 	}
-
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
-
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
-
 	public function withSlots(?array $slots): SetFormWithSignatureRequest {
 		$this->slots = $slots;
 		return $this;
 	}
-
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
-
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-
 	public function withKeyId(?string $keyId): SetFormWithSignatureRequest {
 		$this->keyId = $keyId;
 		return $this;

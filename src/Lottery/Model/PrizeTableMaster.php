@@ -49,93 +49,72 @@ class PrizeTableMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getPrizeTableId(): ?string {
 		return $this->prizeTableId;
 	}
-
 	public function setPrizeTableId(?string $prizeTableId) {
 		$this->prizeTableId = $prizeTableId;
 	}
-
 	public function withPrizeTableId(?string $prizeTableId): PrizeTableMaster {
 		$this->prizeTableId = $prizeTableId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): PrizeTableMaster {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
-
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-
 	public function withMetadata(?string $metadata): PrizeTableMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): PrizeTableMaster {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getPrizes(): ?array {
 		return $this->prizes;
 	}
-
 	public function setPrizes(?array $prizes) {
 		$this->prizes = $prizes;
 	}
-
 	public function withPrizes(?array $prizes): PrizeTableMaster {
 		$this->prizes = $prizes;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): PrizeTableMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): PrizeTableMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;

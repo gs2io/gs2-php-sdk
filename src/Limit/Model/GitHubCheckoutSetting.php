@@ -49,93 +49,72 @@ class GitHubCheckoutSetting implements IModel {
      * @var string
 	 */
 	private $tagName;
-
 	public function getApiKeyId(): ?string {
 		return $this->apiKeyId;
 	}
-
 	public function setApiKeyId(?string $apiKeyId) {
 		$this->apiKeyId = $apiKeyId;
 	}
-
 	public function withApiKeyId(?string $apiKeyId): GitHubCheckoutSetting {
 		$this->apiKeyId = $apiKeyId;
 		return $this;
 	}
-
 	public function getRepositoryName(): ?string {
 		return $this->repositoryName;
 	}
-
 	public function setRepositoryName(?string $repositoryName) {
 		$this->repositoryName = $repositoryName;
 	}
-
 	public function withRepositoryName(?string $repositoryName): GitHubCheckoutSetting {
 		$this->repositoryName = $repositoryName;
 		return $this;
 	}
-
 	public function getSourcePath(): ?string {
 		return $this->sourcePath;
 	}
-
 	public function setSourcePath(?string $sourcePath) {
 		$this->sourcePath = $sourcePath;
 	}
-
 	public function withSourcePath(?string $sourcePath): GitHubCheckoutSetting {
 		$this->sourcePath = $sourcePath;
 		return $this;
 	}
-
 	public function getReferenceType(): ?string {
 		return $this->referenceType;
 	}
-
 	public function setReferenceType(?string $referenceType) {
 		$this->referenceType = $referenceType;
 	}
-
 	public function withReferenceType(?string $referenceType): GitHubCheckoutSetting {
 		$this->referenceType = $referenceType;
 		return $this;
 	}
-
 	public function getCommitHash(): ?string {
 		return $this->commitHash;
 	}
-
 	public function setCommitHash(?string $commitHash) {
 		$this->commitHash = $commitHash;
 	}
-
 	public function withCommitHash(?string $commitHash): GitHubCheckoutSetting {
 		$this->commitHash = $commitHash;
 		return $this;
 	}
-
 	public function getBranchName(): ?string {
 		return $this->branchName;
 	}
-
 	public function setBranchName(?string $branchName) {
 		$this->branchName = $branchName;
 	}
-
 	public function withBranchName(?string $branchName): GitHubCheckoutSetting {
 		$this->branchName = $branchName;
 		return $this;
 	}
-
 	public function getTagName(): ?string {
 		return $this->tagName;
 	}
-
 	public function setTagName(?string $tagName) {
 		$this->tagName = $tagName;
 	}
-
 	public function withTagName(?string $tagName): GitHubCheckoutSetting {
 		$this->tagName = $tagName;
 		return $this;

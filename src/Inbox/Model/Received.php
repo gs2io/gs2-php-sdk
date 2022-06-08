@@ -41,67 +41,52 @@ class Received implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getReceivedId(): ?string {
 		return $this->receivedId;
 	}
-
 	public function setReceivedId(?string $receivedId) {
 		$this->receivedId = $receivedId;
 	}
-
 	public function withReceivedId(?string $receivedId): Received {
 		$this->receivedId = $receivedId;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): Received {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getReceivedGlobalMessageNames(): ?array {
 		return $this->receivedGlobalMessageNames;
 	}
-
 	public function setReceivedGlobalMessageNames(?array $receivedGlobalMessageNames) {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 	}
-
 	public function withReceivedGlobalMessageNames(?array $receivedGlobalMessageNames): Received {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Received {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Received {
 		$this->updatedAt = $updatedAt;
 		return $this;

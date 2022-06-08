@@ -24,28 +24,22 @@ class DeleteGatheringRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $gatheringName;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): DeleteGatheringRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
-
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
-
 	public function withGatheringName(?string $gatheringName): DeleteGatheringRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;

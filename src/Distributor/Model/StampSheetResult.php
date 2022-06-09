@@ -36,6 +36,14 @@ class StampSheetResult implements IModel {
 	/**
      * @var array
 	 */
+	private $taskRequests;
+	/**
+     * @var AcquireAction
+	 */
+	private $sheetRequest;
+	/**
+     * @var array
+	 */
 	private $taskResults;
 	/**
      * @var string
@@ -77,6 +85,26 @@ class StampSheetResult implements IModel {
 	}
 	public function withTransactionId(?string $transactionId): StampSheetResult {
 		$this->transactionId = $transactionId;
+		return $this;
+	}
+	public function getTaskRequests(): ?array {
+		return $this->taskRequests;
+	}
+	public function setTaskRequests(?array $taskRequests) {
+		$this->taskRequests = $taskRequests;
+	}
+	public function withTaskRequests(?array $taskRequests): StampSheetResult {
+		$this->taskRequests = $taskRequests;
+		return $this;
+	}
+	public function getSheetRequest(): ?AcquireAction {
+		return $this->sheetRequest;
+	}
+	public function setSheetRequest(?AcquireAction $sheetRequest) {
+		$this->sheetRequest = $sheetRequest;
+	}
+	public function withSheetRequest(?AcquireAction $sheetRequest): StampSheetResult {
+		$this->sheetRequest = $sheetRequest;
 		return $this;
 	}
 	public function getTaskResults(): ?array {
@@ -128,6 +156,13 @@ class StampSheetResult implements IModel {
             ->withStampSheetResultId(array_key_exists('stampSheetResultId', $data) && $data['stampSheetResultId'] !== null ? $data['stampSheetResultId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
+            ->withTaskRequests(array_map(
+                function ($item) {
+                    return ConsumeAction::fromJson($item);
+                },
+                array_key_exists('taskRequests', $data) && $data['taskRequests'] !== null ? $data['taskRequests'] : []
+            ))
+            ->withSheetRequest(array_key_exists('sheetRequest', $data) && $data['sheetRequest'] !== null ? AcquireAction::fromJson($data['sheetRequest']) : null)
             ->withTaskResults(array_map(
                 function ($item) {
                     return $item;
@@ -144,6 +179,13 @@ class StampSheetResult implements IModel {
             "stampSheetResultId" => $this->getStampSheetResultId(),
             "userId" => $this->getUserId(),
             "transactionId" => $this->getTransactionId(),
+            "taskRequests" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getTaskRequests() !== null && $this->getTaskRequests() !== null ? $this->getTaskRequests() : []
+            ),
+            "sheetRequest" => $this->getSheetRequest() !== null ? $this->getSheetRequest()->toJson() : null,
             "taskResults" => array_map(
                 function ($item) {
                     return $item;

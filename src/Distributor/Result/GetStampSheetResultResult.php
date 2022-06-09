@@ -18,6 +18,8 @@
 namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\ConsumeAction;
+use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Distributor\Model\StampSheetResult;
 
 class GetStampSheetResultResult implements IResult {

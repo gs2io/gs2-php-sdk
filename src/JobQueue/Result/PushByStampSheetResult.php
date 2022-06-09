@@ -23,6 +23,8 @@ use Gs2\JobQueue\Model\Job;
 class PushByStampSheetResult implements IResult {
     /** @var array */
     private $items;
+    /** @var bool */
+    private $autoRun;
 
 	public function getItems(): ?array {
 		return $this->items;
@@ -37,6 +39,19 @@ class PushByStampSheetResult implements IResult {
 		return $this;
 	}
 
+	public function getAutoRun(): ?bool {
+		return $this->autoRun;
+	}
+
+	public function setAutoRun(?bool $autoRun) {
+		$this->autoRun = $autoRun;
+	}
+
+	public function withAutoRun(?bool $autoRun): PushByStampSheetResult {
+		$this->autoRun = $autoRun;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?PushByStampSheetResult {
         if ($data === null) {
             return null;
@@ -47,7 +62,8 @@ class PushByStampSheetResult implements IResult {
                     return Job::fromJson($item);
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
-            ));
+            ))
+            ->withAutoRun(array_key_exists('autoRun', $data) ? $data['autoRun'] : null);
     }
 
     public function toJson(): array {
@@ -58,6 +74,7 @@ class PushByStampSheetResult implements IResult {
                 },
                 $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
             ),
+            "autoRun" => $this->getAutoRun(),
         );
     }
 }

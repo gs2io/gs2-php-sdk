@@ -30,6 +30,14 @@ class JobResult implements IModel {
 	 */
 	private $jobId;
 	/**
+     * @var string
+	 */
+	private $scriptId;
+	/**
+     * @var string
+	 */
+	private $args;
+	/**
      * @var int
 	 */
 	private $tryNumber;
@@ -63,6 +71,26 @@ class JobResult implements IModel {
 	}
 	public function withJobId(?string $jobId): JobResult {
 		$this->jobId = $jobId;
+		return $this;
+	}
+	public function getScriptId(): ?string {
+		return $this->scriptId;
+	}
+	public function setScriptId(?string $scriptId) {
+		$this->scriptId = $scriptId;
+	}
+	public function withScriptId(?string $scriptId): JobResult {
+		$this->scriptId = $scriptId;
+		return $this;
+	}
+	public function getArgs(): ?string {
+		return $this->args;
+	}
+	public function setArgs(?string $args) {
+		$this->args = $args;
+	}
+	public function withArgs(?string $args): JobResult {
+		$this->args = $args;
 		return $this;
 	}
 	public function getTryNumber(): ?int {
@@ -113,6 +141,8 @@ class JobResult implements IModel {
         return (new JobResult())
             ->withJobResultId(array_key_exists('jobResultId', $data) && $data['jobResultId'] !== null ? $data['jobResultId'] : null)
             ->withJobId(array_key_exists('jobId', $data) && $data['jobId'] !== null ? $data['jobId'] : null)
+            ->withScriptId(array_key_exists('scriptId', $data) && $data['scriptId'] !== null ? $data['scriptId'] : null)
+            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
             ->withTryNumber(array_key_exists('tryNumber', $data) && $data['tryNumber'] !== null ? $data['tryNumber'] : null)
             ->withStatusCode(array_key_exists('statusCode', $data) && $data['statusCode'] !== null ? $data['statusCode'] : null)
             ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null)
@@ -123,6 +153,8 @@ class JobResult implements IModel {
         return array(
             "jobResultId" => $this->getJobResultId(),
             "jobId" => $this->getJobId(),
+            "scriptId" => $this->getScriptId(),
+            "args" => $this->getArgs(),
             "tryNumber" => $this->getTryNumber(),
             "statusCode" => $this->getStatusCode(),
             "result" => $this->getResult(),

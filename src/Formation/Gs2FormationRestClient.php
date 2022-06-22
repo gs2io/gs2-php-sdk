@@ -41,6 +41,10 @@ use Gs2\Formation\Request\UpdateNamespaceRequest;
 use Gs2\Formation\Result\UpdateNamespaceResult;
 use Gs2\Formation\Request\DeleteNamespaceRequest;
 use Gs2\Formation\Result\DeleteNamespaceResult;
+use Gs2\Formation\Request\DescribeFormModelsRequest;
+use Gs2\Formation\Result\DescribeFormModelsResult;
+use Gs2\Formation\Request\GetFormModelRequest;
+use Gs2\Formation\Result\GetFormModelResult;
 use Gs2\Formation\Request\DescribeFormModelMastersRequest;
 use Gs2\Formation\Result\DescribeFormModelMastersResult;
 use Gs2\Formation\Request\CreateFormModelMasterRequest;
@@ -117,6 +121,30 @@ use Gs2\Formation\Request\DeleteFormByUserIdRequest;
 use Gs2\Formation\Result\DeleteFormByUserIdResult;
 use Gs2\Formation\Request\AcquireActionToFormPropertiesByStampSheetRequest;
 use Gs2\Formation\Result\AcquireActionToFormPropertiesByStampSheetResult;
+use Gs2\Formation\Request\DescribePropertyFormsRequest;
+use Gs2\Formation\Result\DescribePropertyFormsResult;
+use Gs2\Formation\Request\DescribePropertyFormsByUserIdRequest;
+use Gs2\Formation\Result\DescribePropertyFormsByUserIdResult;
+use Gs2\Formation\Request\GetPropertyFormRequest;
+use Gs2\Formation\Result\GetPropertyFormResult;
+use Gs2\Formation\Request\GetPropertyFormByUserIdRequest;
+use Gs2\Formation\Result\GetPropertyFormByUserIdResult;
+use Gs2\Formation\Request\GetPropertyFormWithSignatureRequest;
+use Gs2\Formation\Result\GetPropertyFormWithSignatureResult;
+use Gs2\Formation\Request\GetPropertyFormWithSignatureByUserIdRequest;
+use Gs2\Formation\Result\GetPropertyFormWithSignatureByUserIdResult;
+use Gs2\Formation\Request\SetPropertyFormByUserIdRequest;
+use Gs2\Formation\Result\SetPropertyFormByUserIdResult;
+use Gs2\Formation\Request\SetPropertyFormWithSignatureRequest;
+use Gs2\Formation\Result\SetPropertyFormWithSignatureResult;
+use Gs2\Formation\Request\AcquireActionsToPropertyFormPropertiesRequest;
+use Gs2\Formation\Result\AcquireActionsToPropertyFormPropertiesResult;
+use Gs2\Formation\Request\DeletePropertyFormRequest;
+use Gs2\Formation\Result\DeletePropertyFormResult;
+use Gs2\Formation\Request\DeletePropertyFormByUserIdRequest;
+use Gs2\Formation\Result\DeletePropertyFormByUserIdResult;
+use Gs2\Formation\Request\AcquireActionToPropertyFormPropertiesByStampSheetRequest;
+use Gs2\Formation\Result\AcquireActionToPropertyFormPropertiesByStampSheetResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -479,6 +507,121 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeFormModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeFormModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeFormModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeFormModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeFormModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeFormModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/form";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetFormModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetFormModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetFormModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetFormModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetFormModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetFormModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/form/{formModelName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -2875,6 +3018,784 @@ class AcquireActionToFormPropertiesByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribePropertyFormsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribePropertyFormsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribePropertyFormsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribePropertyFormsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribePropertyFormsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribePropertyFormsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/property/{formModelName}/form";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribePropertyFormsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribePropertyFormsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribePropertyFormsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribePropertyFormsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribePropertyFormsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribePropertyFormsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/property/{formModelName}/form";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetPropertyFormTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetPropertyFormRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetPropertyFormTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetPropertyFormRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetPropertyFormRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetPropertyFormResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/property/{formModelName}/form/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetPropertyFormByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetPropertyFormByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetPropertyFormByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetPropertyFormByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetPropertyFormByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetPropertyFormByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/property/{formModelName}/form/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetPropertyFormWithSignatureTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetPropertyFormWithSignatureRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetPropertyFormWithSignatureTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetPropertyFormWithSignatureRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetPropertyFormWithSignatureRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetPropertyFormWithSignatureResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/property/{formModelName}/form/{propertyId}/signature";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $queryStrings["keyId"] = $this->request->getKeyId();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetPropertyFormWithSignatureByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetPropertyFormWithSignatureByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetPropertyFormWithSignatureByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetPropertyFormWithSignatureByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetPropertyFormWithSignatureByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetPropertyFormWithSignatureByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/property/{formModelName}/form/{propertyId}/signature";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $queryStrings["keyId"] = $this->request->getKeyId();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SetPropertyFormByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetPropertyFormByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetPropertyFormByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetPropertyFormByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetPropertyFormByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetPropertyFormByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/property/{formModelName}/form/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getSlots() !== null) {
+            $array = [];
+            foreach ($this->request->getSlots() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["slots"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SetPropertyFormWithSignatureTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetPropertyFormWithSignatureRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetPropertyFormWithSignatureTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetPropertyFormWithSignatureRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetPropertyFormWithSignatureRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetPropertyFormWithSignatureResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/property/{formModelName}/form/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getSlots() !== null) {
+            $array = [];
+            foreach ($this->request->getSlots() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["slots"] = $array;
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireActionsToPropertyFormPropertiesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireActionsToPropertyFormPropertiesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireActionsToPropertyFormPropertiesTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireActionsToPropertyFormPropertiesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireActionsToPropertyFormPropertiesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireActionsToPropertyFormPropertiesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/property/{formModelName}/form/{propertyId}/stamp/delegate";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getAcquireAction() !== null) {
+            $json["acquireAction"] = $this->request->getAcquireAction()->toJson();
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeletePropertyFormTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeletePropertyFormRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeletePropertyFormTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeletePropertyFormRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeletePropertyFormRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeletePropertyFormResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/property/{formModelName}/form/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeletePropertyFormByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeletePropertyFormByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeletePropertyFormByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeletePropertyFormByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeletePropertyFormByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeletePropertyFormByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/property/{formModelName}/form/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{formModelName}", $this->request->getFormModelName() === null|| strlen($this->request->getFormModelName()) == 0 ? "null" : $this->request->getFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireActionToPropertyFormPropertiesByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireActionToPropertyFormPropertiesByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireActionToPropertyFormPropertiesByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireActionToPropertyFormPropertiesByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/property/form/acquire";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Formation API クライアント
  *
@@ -3050,6 +3971,60 @@ class Gs2FormationRestClient extends AbstractGs2Client {
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
         return $this->deleteNamespaceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeFormModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeFormModelsAsync(
+            DescribeFormModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeFormModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeFormModelsRequest $request
+     * @return DescribeFormModelsResult
+     */
+    public function describeFormModels (
+            DescribeFormModelsRequest $request
+    ): DescribeFormModelsResult {
+        return $this->describeFormModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetFormModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getFormModelAsync(
+            GetFormModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetFormModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetFormModelRequest $request
+     * @return GetFormModelResult
+     */
+    public function getFormModel (
+            GetFormModelRequest $request
+    ): GetFormModelResult {
+        return $this->getFormModelAsync(
             $request
         )->wait();
     }
@@ -4076,6 +5051,330 @@ class Gs2FormationRestClient extends AbstractGs2Client {
             AcquireActionToFormPropertiesByStampSheetRequest $request
     ): AcquireActionToFormPropertiesByStampSheetResult {
         return $this->acquireActionToFormPropertiesByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribePropertyFormsRequest $request
+     * @return PromiseInterface
+     */
+    public function describePropertyFormsAsync(
+            DescribePropertyFormsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribePropertyFormsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribePropertyFormsRequest $request
+     * @return DescribePropertyFormsResult
+     */
+    public function describePropertyForms (
+            DescribePropertyFormsRequest $request
+    ): DescribePropertyFormsResult {
+        return $this->describePropertyFormsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribePropertyFormsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describePropertyFormsByUserIdAsync(
+            DescribePropertyFormsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribePropertyFormsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribePropertyFormsByUserIdRequest $request
+     * @return DescribePropertyFormsByUserIdResult
+     */
+    public function describePropertyFormsByUserId (
+            DescribePropertyFormsByUserIdRequest $request
+    ): DescribePropertyFormsByUserIdResult {
+        return $this->describePropertyFormsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetPropertyFormRequest $request
+     * @return PromiseInterface
+     */
+    public function getPropertyFormAsync(
+            GetPropertyFormRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetPropertyFormTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetPropertyFormRequest $request
+     * @return GetPropertyFormResult
+     */
+    public function getPropertyForm (
+            GetPropertyFormRequest $request
+    ): GetPropertyFormResult {
+        return $this->getPropertyFormAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetPropertyFormByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getPropertyFormByUserIdAsync(
+            GetPropertyFormByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetPropertyFormByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetPropertyFormByUserIdRequest $request
+     * @return GetPropertyFormByUserIdResult
+     */
+    public function getPropertyFormByUserId (
+            GetPropertyFormByUserIdRequest $request
+    ): GetPropertyFormByUserIdResult {
+        return $this->getPropertyFormByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetPropertyFormWithSignatureRequest $request
+     * @return PromiseInterface
+     */
+    public function getPropertyFormWithSignatureAsync(
+            GetPropertyFormWithSignatureRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetPropertyFormWithSignatureTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetPropertyFormWithSignatureRequest $request
+     * @return GetPropertyFormWithSignatureResult
+     */
+    public function getPropertyFormWithSignature (
+            GetPropertyFormWithSignatureRequest $request
+    ): GetPropertyFormWithSignatureResult {
+        return $this->getPropertyFormWithSignatureAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetPropertyFormWithSignatureByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getPropertyFormWithSignatureByUserIdAsync(
+            GetPropertyFormWithSignatureByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetPropertyFormWithSignatureByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetPropertyFormWithSignatureByUserIdRequest $request
+     * @return GetPropertyFormWithSignatureByUserIdResult
+     */
+    public function getPropertyFormWithSignatureByUserId (
+            GetPropertyFormWithSignatureByUserIdRequest $request
+    ): GetPropertyFormWithSignatureByUserIdResult {
+        return $this->getPropertyFormWithSignatureByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetPropertyFormByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function setPropertyFormByUserIdAsync(
+            SetPropertyFormByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetPropertyFormByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetPropertyFormByUserIdRequest $request
+     * @return SetPropertyFormByUserIdResult
+     */
+    public function setPropertyFormByUserId (
+            SetPropertyFormByUserIdRequest $request
+    ): SetPropertyFormByUserIdResult {
+        return $this->setPropertyFormByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetPropertyFormWithSignatureRequest $request
+     * @return PromiseInterface
+     */
+    public function setPropertyFormWithSignatureAsync(
+            SetPropertyFormWithSignatureRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetPropertyFormWithSignatureTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetPropertyFormWithSignatureRequest $request
+     * @return SetPropertyFormWithSignatureResult
+     */
+    public function setPropertyFormWithSignature (
+            SetPropertyFormWithSignatureRequest $request
+    ): SetPropertyFormWithSignatureResult {
+        return $this->setPropertyFormWithSignatureAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AcquireActionsToPropertyFormPropertiesRequest $request
+     * @return PromiseInterface
+     */
+    public function acquireActionsToPropertyFormPropertiesAsync(
+            AcquireActionsToPropertyFormPropertiesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireActionsToPropertyFormPropertiesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AcquireActionsToPropertyFormPropertiesRequest $request
+     * @return AcquireActionsToPropertyFormPropertiesResult
+     */
+    public function acquireActionsToPropertyFormProperties (
+            AcquireActionsToPropertyFormPropertiesRequest $request
+    ): AcquireActionsToPropertyFormPropertiesResult {
+        return $this->acquireActionsToPropertyFormPropertiesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeletePropertyFormRequest $request
+     * @return PromiseInterface
+     */
+    public function deletePropertyFormAsync(
+            DeletePropertyFormRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeletePropertyFormTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeletePropertyFormRequest $request
+     * @return DeletePropertyFormResult
+     */
+    public function deletePropertyForm (
+            DeletePropertyFormRequest $request
+    ): DeletePropertyFormResult {
+        return $this->deletePropertyFormAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeletePropertyFormByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deletePropertyFormByUserIdAsync(
+            DeletePropertyFormByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeletePropertyFormByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeletePropertyFormByUserIdRequest $request
+     * @return DeletePropertyFormByUserIdResult
+     */
+    public function deletePropertyFormByUserId (
+            DeletePropertyFormByUserIdRequest $request
+    ): DeletePropertyFormByUserIdResult {
+        return $this->deletePropertyFormByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function acquireActionToPropertyFormPropertiesByStampSheetAsync(
+            AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireActionToPropertyFormPropertiesByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
+     * @return AcquireActionToPropertyFormPropertiesByStampSheetResult
+     */
+    public function acquireActionToPropertyFormPropertiesByStampSheet (
+            AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
+    ): AcquireActionToPropertyFormPropertiesByStampSheetResult {
+        return $this->acquireActionToPropertyFormPropertiesByStampSheetAsync(
             $request
         )->wait();
     }

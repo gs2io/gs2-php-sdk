@@ -49,6 +49,10 @@ class Inventory implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getInventoryId(): ?string {
 		return $this->inventoryId;
 	}
@@ -119,6 +123,16 @@ class Inventory implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Inventory {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Inventory {
         if ($data === null) {
@@ -131,7 +145,8 @@ class Inventory implements IModel {
             ->withCurrentInventoryCapacityUsage(array_key_exists('currentInventoryCapacityUsage', $data) && $data['currentInventoryCapacityUsage'] !== null ? $data['currentInventoryCapacityUsage'] : null)
             ->withCurrentInventoryMaxCapacity(array_key_exists('currentInventoryMaxCapacity', $data) && $data['currentInventoryMaxCapacity'] !== null ? $data['currentInventoryMaxCapacity'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +158,7 @@ class Inventory implements IModel {
             "currentInventoryMaxCapacity" => $this->getCurrentInventoryMaxCapacity(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

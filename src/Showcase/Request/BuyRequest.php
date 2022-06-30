@@ -29,6 +29,8 @@ class BuyRequest extends Gs2BasicRequest {
     private $displayItemId;
     /** @var string */
     private $accessToken;
+    /** @var int */
+    private $quantity;
     /** @var array */
     private $config;
 	public function getNamespaceName(): ?string {
@@ -71,6 +73,16 @@ class BuyRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+	public function getQuantity(): ?int {
+		return $this->quantity;
+	}
+	public function setQuantity(?int $quantity) {
+		$this->quantity = $quantity;
+	}
+	public function withQuantity(?int $quantity): BuyRequest {
+		$this->quantity = $quantity;
+		return $this;
+	}
 	public function getConfig(): ?array {
 		return $this->config;
 	}
@@ -91,6 +103,7 @@ class BuyRequest extends Gs2BasicRequest {
             ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null)
             ->withDisplayItemId(array_key_exists('displayItemId', $data) && $data['displayItemId'] !== null ? $data['displayItemId'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withQuantity(array_key_exists('quantity', $data) && $data['quantity'] !== null ? $data['quantity'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);
@@ -105,6 +118,7 @@ class BuyRequest extends Gs2BasicRequest {
             "showcaseName" => $this->getShowcaseName(),
             "displayItemId" => $this->getDisplayItemId(),
             "accessToken" => $this->getAccessToken(),
+            "quantity" => $this->getQuantity(),
             "config" => array_map(
                 function ($item) {
                     return $item->toJson();

@@ -1956,6 +1956,9 @@ class BuyTask extends Gs2RestSessionTask {
         $url = str_replace("{displayItemId}", $this->request->getDisplayItemId() === null|| strlen($this->request->getDisplayItemId()) == 0 ? "null" : $this->request->getDisplayItemId(), $url);
 
         $json = [];
+        if ($this->request->getQuantity() !== null) {
+            $json["quantity"] = $this->request->getQuantity();
+        }
         if ($this->request->getConfig() !== null) {
             $array = [];
             foreach ($this->request->getConfig() as $item)
@@ -2025,6 +2028,9 @@ class BuyByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
+        if ($this->request->getQuantity() !== null) {
+            $json["quantity"] = $this->request->getQuantity();
+        }
         if ($this->request->getConfig() !== null) {
             $array = [];
             foreach ($this->request->getConfig() as $item)

@@ -29,6 +29,8 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
     private $displayItemId;
     /** @var string */
     private $userId;
+    /** @var int */
+    private $quantity;
     /** @var array */
     private $config;
 	public function getNamespaceName(): ?string {
@@ -71,6 +73,16 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getQuantity(): ?int {
+		return $this->quantity;
+	}
+	public function setQuantity(?int $quantity) {
+		$this->quantity = $quantity;
+	}
+	public function withQuantity(?int $quantity): BuyByUserIdRequest {
+		$this->quantity = $quantity;
+		return $this;
+	}
 	public function getConfig(): ?array {
 		return $this->config;
 	}
@@ -91,6 +103,7 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
             ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null)
             ->withDisplayItemId(array_key_exists('displayItemId', $data) && $data['displayItemId'] !== null ? $data['displayItemId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withQuantity(array_key_exists('quantity', $data) && $data['quantity'] !== null ? $data['quantity'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);
@@ -105,6 +118,7 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
             "showcaseName" => $this->getShowcaseName(),
             "displayItemId" => $this->getDisplayItemId(),
             "userId" => $this->getUserId(),
+            "quantity" => $this->getQuantity(),
             "config" => array_map(
                 function ($item) {
                     return $item->toJson();

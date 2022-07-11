@@ -1,6 +1,6 @@
 {
   "name": "gs2/gs2-php-sdk",
-  "version": "1.4.77",
+  "version": "1.4.78",
   "license": "Apache-2.0",
   "require": {
     "php": ">= 8.0",

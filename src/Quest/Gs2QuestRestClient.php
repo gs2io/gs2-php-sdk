@@ -935,6 +935,14 @@ class CreateQuestModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getChallengePeriodEventId() !== null) {
             $json["challengePeriodEventId"] = $this->request->getChallengePeriodEventId();
         }
+        if ($this->request->getFirstCompleteAcquireActions() !== null) {
+            $array = [];
+            foreach ($this->request->getFirstCompleteAcquireActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["firstCompleteAcquireActions"] = $array;
+        }
         if ($this->request->getConsumeActions() !== null) {
             $array = [];
             foreach ($this->request->getConsumeActions() as $item)
@@ -1091,6 +1099,14 @@ class UpdateQuestModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getChallengePeriodEventId() !== null) {
             $json["challengePeriodEventId"] = $this->request->getChallengePeriodEventId();
+        }
+        if ($this->request->getFirstCompleteAcquireActions() !== null) {
+            $array = [];
+            foreach ($this->request->getFirstCompleteAcquireActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["firstCompleteAcquireActions"] = $array;
         }
         if ($this->request->getConsumeActions() !== null) {
             $array = [];

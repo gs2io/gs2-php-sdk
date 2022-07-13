@@ -38,6 +38,8 @@ class CreateQuestModelMasterRequest extends Gs2BasicRequest {
     /** @var string */
     private $challengePeriodEventId;
     /** @var array */
+    private $firstCompleteAcquireActions;
+    /** @var array */
     private $consumeActions;
     /** @var array */
     private $failedAcquireActions;
@@ -113,6 +115,16 @@ class CreateQuestModelMasterRequest extends Gs2BasicRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
+	public function getFirstCompleteAcquireActions(): ?array {
+		return $this->firstCompleteAcquireActions;
+	}
+	public function setFirstCompleteAcquireActions(?array $firstCompleteAcquireActions) {
+		$this->firstCompleteAcquireActions = $firstCompleteAcquireActions;
+	}
+	public function withFirstCompleteAcquireActions(?array $firstCompleteAcquireActions): CreateQuestModelMasterRequest {
+		$this->firstCompleteAcquireActions = $firstCompleteAcquireActions;
+		return $this;
+	}
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
@@ -161,6 +173,12 @@ class CreateQuestModelMasterRequest extends Gs2BasicRequest {
                 array_key_exists('contents', $data) && $data['contents'] !== null ? $data['contents'] : []
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
+            ->withFirstCompleteAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
+                },
+                array_key_exists('firstCompleteAcquireActions', $data) && $data['firstCompleteAcquireActions'] !== null ? $data['firstCompleteAcquireActions'] : []
+            ))
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -195,6 +213,12 @@ class CreateQuestModelMasterRequest extends Gs2BasicRequest {
                 $this->getContents() !== null && $this->getContents() !== null ? $this->getContents() : []
             ),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
+            "firstCompleteAcquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getFirstCompleteAcquireActions() !== null && $this->getFirstCompleteAcquireActions() !== null ? $this->getFirstCompleteAcquireActions() : []
+            ),
             "consumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

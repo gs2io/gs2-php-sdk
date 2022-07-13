@@ -52,6 +52,10 @@ class QuestModelMaster implements IModel {
 	/**
      * @var array
 	 */
+	private $firstCompleteAcquireActions;
+	/**
+     * @var array
+	 */
 	private $consumeActions;
 	/**
      * @var array
@@ -139,6 +143,16 @@ class QuestModelMaster implements IModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
+	public function getFirstCompleteAcquireActions(): ?array {
+		return $this->firstCompleteAcquireActions;
+	}
+	public function setFirstCompleteAcquireActions(?array $firstCompleteAcquireActions) {
+		$this->firstCompleteAcquireActions = $firstCompleteAcquireActions;
+	}
+	public function withFirstCompleteAcquireActions(?array $firstCompleteAcquireActions): QuestModelMaster {
+		$this->firstCompleteAcquireActions = $firstCompleteAcquireActions;
+		return $this;
+	}
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
@@ -207,6 +221,12 @@ class QuestModelMaster implements IModel {
                 array_key_exists('contents', $data) && $data['contents'] !== null ? $data['contents'] : []
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
+            ->withFirstCompleteAcquireActions(array_map(
+                function ($item) {
+                    return AcquireAction::fromJson($item);
+                },
+                array_key_exists('firstCompleteAcquireActions', $data) && $data['firstCompleteAcquireActions'] !== null ? $data['firstCompleteAcquireActions'] : []
+            ))
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -243,6 +263,12 @@ class QuestModelMaster implements IModel {
                 $this->getContents() !== null && $this->getContents() !== null ? $this->getContents() : []
             ),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
+            "firstCompleteAcquireActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getFirstCompleteAcquireActions() !== null && $this->getFirstCompleteAcquireActions() !== null ? $this->getFirstCompleteAcquireActions() : []
+            ),
             "consumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

@@ -97,6 +97,12 @@ use Gs2\Lottery\Request\UpdateCurrentLotteryMasterRequest;
 use Gs2\Lottery\Result\UpdateCurrentLotteryMasterResult;
 use Gs2\Lottery\Request\UpdateCurrentLotteryMasterFromGitHubRequest;
 use Gs2\Lottery\Result\UpdateCurrentLotteryMasterFromGitHubResult;
+use Gs2\Lottery\Request\DescribePrizeLimitsRequest;
+use Gs2\Lottery\Result\DescribePrizeLimitsResult;
+use Gs2\Lottery\Request\GetPrizeLimitRequest;
+use Gs2\Lottery\Result\GetPrizeLimitResult;
+use Gs2\Lottery\Request\ResetPrizeLimitRequest;
+use Gs2\Lottery\Result\ResetPrizeLimitResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -2216,6 +2222,188 @@ class UpdateCurrentLotteryMasterFromGitHubTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribePrizeLimitsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribePrizeLimitsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribePrizeLimitsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribePrizeLimitsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribePrizeLimitsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribePrizeLimitsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/prizeLimit/{prizeTableName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetPrizeLimitTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetPrizeLimitRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetPrizeLimitTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetPrizeLimitRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetPrizeLimitRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetPrizeLimitResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/prizeLimit/{prizeTableName}/{prizeId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
+        $url = str_replace("{prizeId}", $this->request->getPrizeId() === null|| strlen($this->request->getPrizeId()) == 0 ? "null" : $this->request->getPrizeId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ResetPrizeLimitTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetPrizeLimitRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetPrizeLimitTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetPrizeLimitRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetPrizeLimitRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetPrizeLimitResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/prizeLimit/{prizeTableName}/{prizeId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
+        $url = str_replace("{prizeId}", $this->request->getPrizeId() === null|| strlen($this->request->getPrizeId()) == 0 ? "null" : $this->request->getPrizeId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Lottery API クライアント
  *
@@ -3147,6 +3335,87 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
             UpdateCurrentLotteryMasterFromGitHubRequest $request
     ): UpdateCurrentLotteryMasterFromGitHubResult {
         return $this->updateCurrentLotteryMasterFromGitHubAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribePrizeLimitsRequest $request
+     * @return PromiseInterface
+     */
+    public function describePrizeLimitsAsync(
+            DescribePrizeLimitsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribePrizeLimitsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribePrizeLimitsRequest $request
+     * @return DescribePrizeLimitsResult
+     */
+    public function describePrizeLimits (
+            DescribePrizeLimitsRequest $request
+    ): DescribePrizeLimitsResult {
+        return $this->describePrizeLimitsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetPrizeLimitRequest $request
+     * @return PromiseInterface
+     */
+    public function getPrizeLimitAsync(
+            GetPrizeLimitRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetPrizeLimitTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetPrizeLimitRequest $request
+     * @return GetPrizeLimitResult
+     */
+    public function getPrizeLimit (
+            GetPrizeLimitRequest $request
+    ): GetPrizeLimitResult {
+        return $this->getPrizeLimitAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ResetPrizeLimitRequest $request
+     * @return PromiseInterface
+     */
+    public function resetPrizeLimitAsync(
+            ResetPrizeLimitRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetPrizeLimitTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetPrizeLimitRequest $request
+     * @return ResetPrizeLimitResult
+     */
+    public function resetPrizeLimit (
+            ResetPrizeLimitRequest $request
+    ): ResetPrizeLimitResult {
+        return $this->resetPrizeLimitAsync(
             $request
         )->wait();
     }

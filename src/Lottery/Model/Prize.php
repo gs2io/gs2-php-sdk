@@ -34,6 +34,14 @@ class Prize implements IModel {
 	 */
 	private $acquireActions;
 	/**
+     * @var int
+	 */
+	private $drawnLimit;
+	/**
+     * @var string
+	 */
+	private $limitFailOverPrizeId;
+	/**
      * @var string
 	 */
 	private $prizeTableName;
@@ -71,6 +79,26 @@ class Prize implements IModel {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+	public function getDrawnLimit(): ?int {
+		return $this->drawnLimit;
+	}
+	public function setDrawnLimit(?int $drawnLimit) {
+		$this->drawnLimit = $drawnLimit;
+	}
+	public function withDrawnLimit(?int $drawnLimit): Prize {
+		$this->drawnLimit = $drawnLimit;
+		return $this;
+	}
+	public function getLimitFailOverPrizeId(): ?string {
+		return $this->limitFailOverPrizeId;
+	}
+	public function setLimitFailOverPrizeId(?string $limitFailOverPrizeId) {
+		$this->limitFailOverPrizeId = $limitFailOverPrizeId;
+	}
+	public function withLimitFailOverPrizeId(?string $limitFailOverPrizeId): Prize {
+		$this->limitFailOverPrizeId = $limitFailOverPrizeId;
+		return $this;
+	}
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
@@ -105,6 +133,8 @@ class Prize implements IModel {
                 },
                 array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
             ))
+            ->withDrawnLimit(array_key_exists('drawnLimit', $data) && $data['drawnLimit'] !== null ? $data['drawnLimit'] : null)
+            ->withLimitFailOverPrizeId(array_key_exists('limitFailOverPrizeId', $data) && $data['limitFailOverPrizeId'] !== null ? $data['limitFailOverPrizeId'] : null)
             ->withPrizeTableName(array_key_exists('prizeTableName', $data) && $data['prizeTableName'] !== null ? $data['prizeTableName'] : null)
             ->withWeight(array_key_exists('weight', $data) && $data['weight'] !== null ? $data['weight'] : null);
     }
@@ -119,6 +149,8 @@ class Prize implements IModel {
                 },
                 $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
             ),
+            "drawnLimit" => $this->getDrawnLimit(),
+            "limitFailOverPrizeId" => $this->getLimitFailOverPrizeId(),
             "prizeTableName" => $this->getPrizeTableName(),
             "weight" => $this->getWeight(),
         );

@@ -53,106 +53,82 @@ class IssueStampSheetLog implements IModel {
      * @var array
 	 */
 	private $tasks;
-
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
-
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
-
 	public function withTimestamp(?int $timestamp): IssueStampSheetLog {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): IssueStampSheetLog {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): IssueStampSheetLog {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getMethod(): ?string {
 		return $this->method;
 	}
-
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
-
 	public function withMethod(?string $method): IssueStampSheetLog {
 		$this->method = $method;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): IssueStampSheetLog {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getAction(): ?string {
 		return $this->action;
 	}
-
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
-
 	public function withAction(?string $action): IssueStampSheetLog {
 		$this->action = $action;
 		return $this;
 	}
-
 	public function getArgs(): ?string {
 		return $this->args;
 	}
-
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
-
 	public function withArgs(?string $args): IssueStampSheetLog {
 		$this->args = $args;
 		return $this;
 	}
-
 	public function getTasks(): ?array {
 		return $this->tasks;
 	}
-
 	public function setTasks(?array $tasks) {
 		$this->tasks = $tasks;
 	}
-
 	public function withTasks(?array $tasks): IssueStampSheetLog {
 		$this->tasks = $tasks;
 		return $this;

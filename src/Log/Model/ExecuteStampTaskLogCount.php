@@ -41,67 +41,52 @@ class ExecuteStampTaskLogCount implements IModel {
      * @var int
 	 */
 	private $count;
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): ExecuteStampTaskLogCount {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getMethod(): ?string {
 		return $this->method;
 	}
-
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
-
 	public function withMethod(?string $method): ExecuteStampTaskLogCount {
 		$this->method = $method;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): ExecuteStampTaskLogCount {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getAction(): ?string {
 		return $this->action;
 	}
-
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
-
 	public function withAction(?string $action): ExecuteStampTaskLogCount {
 		$this->action = $action;
 		return $this;
 	}
-
 	public function getCount(): ?int {
 		return $this->count;
 	}
-
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
-
 	public function withCount(?int $count): ExecuteStampTaskLogCount {
 		$this->count = $count;
 		return $this;

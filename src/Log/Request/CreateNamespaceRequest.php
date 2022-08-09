@@ -40,132 +40,102 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $awsSecretAccessKey;
     /** @var string */
     private $firehoseStreamName;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getType(): ?string {
 		return $this->type;
 	}
-
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?string $type): CreateNamespaceRequest {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getGcpCredentialJson(): ?string {
 		return $this->gcpCredentialJson;
 	}
-
 	public function setGcpCredentialJson(?string $gcpCredentialJson) {
 		$this->gcpCredentialJson = $gcpCredentialJson;
 	}
-
 	public function withGcpCredentialJson(?string $gcpCredentialJson): CreateNamespaceRequest {
 		$this->gcpCredentialJson = $gcpCredentialJson;
 		return $this;
 	}
-
 	public function getBigQueryDatasetName(): ?string {
 		return $this->bigQueryDatasetName;
 	}
-
 	public function setBigQueryDatasetName(?string $bigQueryDatasetName) {
 		$this->bigQueryDatasetName = $bigQueryDatasetName;
 	}
-
 	public function withBigQueryDatasetName(?string $bigQueryDatasetName): CreateNamespaceRequest {
 		$this->bigQueryDatasetName = $bigQueryDatasetName;
 		return $this;
 	}
-
 	public function getLogExpireDays(): ?int {
 		return $this->logExpireDays;
 	}
-
 	public function setLogExpireDays(?int $logExpireDays) {
 		$this->logExpireDays = $logExpireDays;
 	}
-
 	public function withLogExpireDays(?int $logExpireDays): CreateNamespaceRequest {
 		$this->logExpireDays = $logExpireDays;
 		return $this;
 	}
-
 	public function getAwsRegion(): ?string {
 		return $this->awsRegion;
 	}
-
 	public function setAwsRegion(?string $awsRegion) {
 		$this->awsRegion = $awsRegion;
 	}
-
 	public function withAwsRegion(?string $awsRegion): CreateNamespaceRequest {
 		$this->awsRegion = $awsRegion;
 		return $this;
 	}
-
 	public function getAwsAccessKeyId(): ?string {
 		return $this->awsAccessKeyId;
 	}
-
 	public function setAwsAccessKeyId(?string $awsAccessKeyId) {
 		$this->awsAccessKeyId = $awsAccessKeyId;
 	}
-
 	public function withAwsAccessKeyId(?string $awsAccessKeyId): CreateNamespaceRequest {
 		$this->awsAccessKeyId = $awsAccessKeyId;
 		return $this;
 	}
-
 	public function getAwsSecretAccessKey(): ?string {
 		return $this->awsSecretAccessKey;
 	}
-
 	public function setAwsSecretAccessKey(?string $awsSecretAccessKey) {
 		$this->awsSecretAccessKey = $awsSecretAccessKey;
 	}
-
 	public function withAwsSecretAccessKey(?string $awsSecretAccessKey): CreateNamespaceRequest {
 		$this->awsSecretAccessKey = $awsSecretAccessKey;
 		return $this;
 	}
-
 	public function getFirehoseStreamName(): ?string {
 		return $this->firehoseStreamName;
 	}
-
 	public function setFirehoseStreamName(?string $firehoseStreamName) {
 		$this->firehoseStreamName = $firehoseStreamName;
 	}
-
 	public function withFirehoseStreamName(?string $firehoseStreamName): CreateNamespaceRequest {
 		$this->firehoseStreamName = $firehoseStreamName;
 		return $this;

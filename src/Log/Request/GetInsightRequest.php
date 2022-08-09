@@ -19,31 +19,45 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class GetNamespaceStatusRequest extends Gs2BasicRequest {
+class GetInsightRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
+    /** @var string */
+    private $insightName;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): GetNamespaceStatusRequest {
+	public function withNamespaceName(?string $namespaceName): GetInsightRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+	public function getInsightName(): ?string {
+		return $this->insightName;
+	}
+	public function setInsightName(?string $insightName) {
+		$this->insightName = $insightName;
+	}
+	public function withInsightName(?string $insightName): GetInsightRequest {
+		$this->insightName = $insightName;
+		return $this;
+	}
 
-    public static function fromJson(?array $data): ?GetNamespaceStatusRequest {
+    public static function fromJson(?array $data): ?GetInsightRequest {
         if ($data === null) {
             return null;
         }
-        return (new GetNamespaceStatusRequest())
-            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null);
+        return (new GetInsightRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withInsightName(array_key_exists('insightName', $data) && $data['insightName'] !== null ? $data['insightName'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
+            "insightName" => $this->getInsightName(),
         );
     }
 }

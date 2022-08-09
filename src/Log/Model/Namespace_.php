@@ -77,184 +77,142 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
-
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
-
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getType(): ?string {
 		return $this->type;
 	}
-
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
-
 	public function withType(?string $type): Namespace_ {
 		$this->type = $type;
 		return $this;
 	}
-
 	public function getGcpCredentialJson(): ?string {
 		return $this->gcpCredentialJson;
 	}
-
 	public function setGcpCredentialJson(?string $gcpCredentialJson) {
 		$this->gcpCredentialJson = $gcpCredentialJson;
 	}
-
 	public function withGcpCredentialJson(?string $gcpCredentialJson): Namespace_ {
 		$this->gcpCredentialJson = $gcpCredentialJson;
 		return $this;
 	}
-
 	public function getBigQueryDatasetName(): ?string {
 		return $this->bigQueryDatasetName;
 	}
-
 	public function setBigQueryDatasetName(?string $bigQueryDatasetName) {
 		$this->bigQueryDatasetName = $bigQueryDatasetName;
 	}
-
 	public function withBigQueryDatasetName(?string $bigQueryDatasetName): Namespace_ {
 		$this->bigQueryDatasetName = $bigQueryDatasetName;
 		return $this;
 	}
-
 	public function getLogExpireDays(): ?int {
 		return $this->logExpireDays;
 	}
-
 	public function setLogExpireDays(?int $logExpireDays) {
 		$this->logExpireDays = $logExpireDays;
 	}
-
 	public function withLogExpireDays(?int $logExpireDays): Namespace_ {
 		$this->logExpireDays = $logExpireDays;
 		return $this;
 	}
-
 	public function getAwsRegion(): ?string {
 		return $this->awsRegion;
 	}
-
 	public function setAwsRegion(?string $awsRegion) {
 		$this->awsRegion = $awsRegion;
 	}
-
 	public function withAwsRegion(?string $awsRegion): Namespace_ {
 		$this->awsRegion = $awsRegion;
 		return $this;
 	}
-
 	public function getAwsAccessKeyId(): ?string {
 		return $this->awsAccessKeyId;
 	}
-
 	public function setAwsAccessKeyId(?string $awsAccessKeyId) {
 		$this->awsAccessKeyId = $awsAccessKeyId;
 	}
-
 	public function withAwsAccessKeyId(?string $awsAccessKeyId): Namespace_ {
 		$this->awsAccessKeyId = $awsAccessKeyId;
 		return $this;
 	}
-
 	public function getAwsSecretAccessKey(): ?string {
 		return $this->awsSecretAccessKey;
 	}
-
 	public function setAwsSecretAccessKey(?string $awsSecretAccessKey) {
 		$this->awsSecretAccessKey = $awsSecretAccessKey;
 	}
-
 	public function withAwsSecretAccessKey(?string $awsSecretAccessKey): Namespace_ {
 		$this->awsSecretAccessKey = $awsSecretAccessKey;
 		return $this;
 	}
-
 	public function getFirehoseStreamName(): ?string {
 		return $this->firehoseStreamName;
 	}
-
 	public function setFirehoseStreamName(?string $firehoseStreamName) {
 		$this->firehoseStreamName = $firehoseStreamName;
 	}
-
 	public function withFirehoseStreamName(?string $firehoseStreamName): Namespace_ {
 		$this->firehoseStreamName = $firehoseStreamName;
 		return $this;
 	}
-
 	public function getStatus(): ?string {
 		return $this->status;
 	}
-
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
-
 	public function withStatus(?string $status): Namespace_ {
 		$this->status = $status;
 		return $this;
 	}
-
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
-
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;

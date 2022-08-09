@@ -19,18 +19,30 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class DescribeNamespacesRequest extends Gs2BasicRequest {
+class DescribeInsightsRequest extends Gs2BasicRequest {
+    /** @var string */
+    private $namespaceName;
     /** @var string */
     private $pageToken;
     /** @var int */
     private $limit;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+	public function withNamespaceName(?string $namespaceName): DescribeInsightsRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-	public function withPageToken(?string $pageToken): DescribeNamespacesRequest {
+	public function withPageToken(?string $pageToken): DescribeInsightsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
@@ -40,22 +52,24 @@ class DescribeNamespacesRequest extends Gs2BasicRequest {
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-	public function withLimit(?int $limit): DescribeNamespacesRequest {
+	public function withLimit(?int $limit): DescribeInsightsRequest {
 		$this->limit = $limit;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?DescribeNamespacesRequest {
+    public static function fromJson(?array $data): ?DescribeInsightsRequest {
         if ($data === null) {
             return null;
         }
-        return (new DescribeNamespacesRequest())
+        return (new DescribeInsightsRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "namespaceName" => $this->getNamespaceName(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
         );

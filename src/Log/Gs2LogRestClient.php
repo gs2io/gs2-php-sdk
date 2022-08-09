@@ -59,6 +59,14 @@ use Gs2\Log\Request\CountExecuteStampTaskLogRequest;
 use Gs2\Log\Result\CountExecuteStampTaskLogResult;
 use Gs2\Log\Request\PutLogRequest;
 use Gs2\Log\Result\PutLogResult;
+use Gs2\Log\Request\DescribeInsightsRequest;
+use Gs2\Log\Result\DescribeInsightsResult;
+use Gs2\Log\Request\CreateInsightRequest;
+use Gs2\Log\Result\CreateInsightResult;
+use Gs2\Log\Request\GetInsightRequest;
+use Gs2\Log\Result\GetInsightResult;
+use Gs2\Log\Request\DeleteInsightRequest;
+use Gs2\Log\Result\DeleteInsightResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -1185,6 +1193,240 @@ class PutLogTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeInsightsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeInsightsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeInsightsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeInsightsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeInsightsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeInsightsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/insight";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateInsightTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateInsightRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateInsightTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateInsightRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateInsightRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateInsightResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/insight/{insightName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetInsightTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetInsightRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetInsightTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetInsightRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetInsightRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetInsightResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/insight/{insightName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{insightName}", $this->request->getInsightName() === null|| strlen($this->request->getInsightName()) == 0 ? "null" : $this->request->getInsightName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteInsightTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteInsightRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteInsightTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteInsightRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteInsightRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteInsightResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/insight/{insightName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{insightName}", $this->request->getInsightName() === null|| strlen($this->request->getInsightName()) == 0 ? "null" : $this->request->getInsightName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Log API クライアント
  *
@@ -1603,6 +1845,114 @@ class Gs2LogRestClient extends AbstractGs2Client {
             PutLogRequest $request
     ): PutLogResult {
         return $this->putLogAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeInsightsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeInsightsAsync(
+            DescribeInsightsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeInsightsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeInsightsRequest $request
+     * @return DescribeInsightsResult
+     */
+    public function describeInsights (
+            DescribeInsightsRequest $request
+    ): DescribeInsightsResult {
+        return $this->describeInsightsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateInsightRequest $request
+     * @return PromiseInterface
+     */
+    public function createInsightAsync(
+            CreateInsightRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateInsightTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateInsightRequest $request
+     * @return CreateInsightResult
+     */
+    public function createInsight (
+            CreateInsightRequest $request
+    ): CreateInsightResult {
+        return $this->createInsightAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetInsightRequest $request
+     * @return PromiseInterface
+     */
+    public function getInsightAsync(
+            GetInsightRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetInsightTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetInsightRequest $request
+     * @return GetInsightResult
+     */
+    public function getInsight (
+            GetInsightRequest $request
+    ): GetInsightResult {
+        return $this->getInsightAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteInsightRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteInsightAsync(
+            DeleteInsightRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteInsightTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteInsightRequest $request
+     * @return DeleteInsightResult
+     */
+    public function deleteInsight (
+            DeleteInsightRequest $request
+    ): DeleteInsightResult {
+        return $this->deleteInsightAsync(
             $request
         )->wait();
     }

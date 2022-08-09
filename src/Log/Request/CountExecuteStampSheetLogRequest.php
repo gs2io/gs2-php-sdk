@@ -40,132 +40,102 @@ class CountExecuteStampSheetLogRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
-
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-
 	public function withNamespaceName(?string $namespaceName): CountExecuteStampSheetLogRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-
 	public function getService(): ?bool {
 		return $this->service;
 	}
-
 	public function setService(?bool $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?bool $service): CountExecuteStampSheetLogRequest {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getMethod(): ?bool {
 		return $this->method;
 	}
-
 	public function setMethod(?bool $method) {
 		$this->method = $method;
 	}
-
 	public function withMethod(?bool $method): CountExecuteStampSheetLogRequest {
 		$this->method = $method;
 		return $this;
 	}
-
 	public function getUserId(): ?bool {
 		return $this->userId;
 	}
-
 	public function setUserId(?bool $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?bool $userId): CountExecuteStampSheetLogRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getAction(): ?bool {
 		return $this->action;
 	}
-
 	public function setAction(?bool $action) {
 		$this->action = $action;
 	}
-
 	public function withAction(?bool $action): CountExecuteStampSheetLogRequest {
 		$this->action = $action;
 		return $this;
 	}
-
 	public function getBegin(): ?int {
 		return $this->begin;
 	}
-
 	public function setBegin(?int $begin) {
 		$this->begin = $begin;
 	}
-
 	public function withBegin(?int $begin): CountExecuteStampSheetLogRequest {
 		$this->begin = $begin;
 		return $this;
 	}
-
 	public function getEnd(): ?int {
 		return $this->end;
 	}
-
 	public function setEnd(?int $end) {
 		$this->end = $end;
 	}
-
 	public function withEnd(?int $end): CountExecuteStampSheetLogRequest {
 		$this->end = $end;
 		return $this;
 	}
-
 	public function getLongTerm(): ?bool {
 		return $this->longTerm;
 	}
-
 	public function setLongTerm(?bool $longTerm) {
 		$this->longTerm = $longTerm;
 	}
-
 	public function withLongTerm(?bool $longTerm): CountExecuteStampSheetLogRequest {
 		$this->longTerm = $longTerm;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): CountExecuteStampSheetLogRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): CountExecuteStampSheetLogRequest {
 		$this->limit = $limit;
 		return $this;
@@ -177,13 +147,13 @@ class CountExecuteStampSheetLogRequest extends Gs2BasicRequest {
         }
         return (new CountExecuteStampSheetLogRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withService($data['service'])
-            ->withMethod($data['method'])
-            ->withUserId($data['userId'])
-            ->withAction($data['action'])
+            ->withService(array_key_exists('service', $data) ? $data['service'] : null)
+            ->withMethod(array_key_exists('method', $data) ? $data['method'] : null)
+            ->withUserId(array_key_exists('userId', $data) ? $data['userId'] : null)
+            ->withAction(array_key_exists('action', $data) ? $data['action'] : null)
             ->withBegin(array_key_exists('begin', $data) && $data['begin'] !== null ? $data['begin'] : null)
             ->withEnd(array_key_exists('end', $data) && $data['end'] !== null ? $data['end'] : null)
-            ->withLongTerm($data['longTerm'])
+            ->withLongTerm(array_key_exists('longTerm', $data) ? $data['longTerm'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }

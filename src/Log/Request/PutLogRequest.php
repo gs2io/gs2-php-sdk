@@ -26,41 +26,32 @@ class PutLogRequest extends Gs2BasicRequest {
     private $logCategory;
     /** @var string */
     private $payload;
-
 	public function getLoggingNamespaceId(): ?string {
 		return $this->loggingNamespaceId;
 	}
-
 	public function setLoggingNamespaceId(?string $loggingNamespaceId) {
 		$this->loggingNamespaceId = $loggingNamespaceId;
 	}
-
 	public function withLoggingNamespaceId(?string $loggingNamespaceId): PutLogRequest {
 		$this->loggingNamespaceId = $loggingNamespaceId;
 		return $this;
 	}
-
 	public function getLogCategory(): ?string {
 		return $this->logCategory;
 	}
-
 	public function setLogCategory(?string $logCategory) {
 		$this->logCategory = $logCategory;
 	}
-
 	public function withLogCategory(?string $logCategory): PutLogRequest {
 		$this->logCategory = $logCategory;
 		return $this;
 	}
-
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
-
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
-
 	public function withPayload(?string $payload): PutLogRequest {
 		$this->payload = $payload;
 		return $this;

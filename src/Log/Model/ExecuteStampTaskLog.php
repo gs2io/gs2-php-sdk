@@ -49,93 +49,72 @@ class ExecuteStampTaskLog implements IModel {
      * @var string
 	 */
 	private $args;
-
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
-
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
-
 	public function withTimestamp(?int $timestamp): ExecuteStampTaskLog {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
-
 	public function getTaskId(): ?string {
 		return $this->taskId;
 	}
-
 	public function setTaskId(?string $taskId) {
 		$this->taskId = $taskId;
 	}
-
 	public function withTaskId(?string $taskId): ExecuteStampTaskLog {
 		$this->taskId = $taskId;
 		return $this;
 	}
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): ExecuteStampTaskLog {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getMethod(): ?string {
 		return $this->method;
 	}
-
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
-
 	public function withMethod(?string $method): ExecuteStampTaskLog {
 		$this->method = $method;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): ExecuteStampTaskLog {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getAction(): ?string {
 		return $this->action;
 	}
-
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
-
 	public function withAction(?string $action): ExecuteStampTaskLog {
 		$this->action = $action;
 		return $this;
 	}
-
 	public function getArgs(): ?string {
 		return $this->args;
 	}
-
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
-
 	public function withArgs(?string $args): ExecuteStampTaskLog {
 		$this->args = $args;
 		return $this;

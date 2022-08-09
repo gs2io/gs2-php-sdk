@@ -49,93 +49,72 @@ class ExecuteStampSheetLog implements IModel {
      * @var string
 	 */
 	private $args;
-
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
-
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
-
 	public function withTimestamp(?int $timestamp): ExecuteStampSheetLog {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
-
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
-
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
-
 	public function withTransactionId(?string $transactionId): ExecuteStampSheetLog {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): ExecuteStampSheetLog {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getMethod(): ?string {
 		return $this->method;
 	}
-
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
-
 	public function withMethod(?string $method): ExecuteStampSheetLog {
 		$this->method = $method;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): ExecuteStampSheetLog {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getAction(): ?string {
 		return $this->action;
 	}
-
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
-
 	public function withAction(?string $action): ExecuteStampSheetLog {
 		$this->action = $action;
 		return $this;
 	}
-
 	public function getArgs(): ?string {
 		return $this->args;
 	}
-
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
-
 	public function withArgs(?string $args): ExecuteStampSheetLog {
 		$this->args = $args;
 		return $this;

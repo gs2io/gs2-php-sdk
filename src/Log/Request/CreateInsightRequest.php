@@ -19,7 +19,7 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class GetNamespaceStatusRequest extends Gs2BasicRequest {
+class CreateInsightRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
 	public function getNamespaceName(): ?string {
@@ -28,16 +28,16 @@ class GetNamespaceStatusRequest extends Gs2BasicRequest {
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): GetNamespaceStatusRequest {
+	public function withNamespaceName(?string $namespaceName): CreateInsightRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?GetNamespaceStatusRequest {
+    public static function fromJson(?array $data): ?CreateInsightRequest {
         if ($data === null) {
             return null;
         }
-        return (new GetNamespaceStatusRequest())
+        return (new CreateInsightRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null);
     }
 

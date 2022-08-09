@@ -49,93 +49,72 @@ class AccessLog implements IModel {
      * @var string
 	 */
 	private $result;
-
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
-
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
-
 	public function withTimestamp(?int $timestamp): AccessLog {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
-
 	public function getRequestId(): ?string {
 		return $this->requestId;
 	}
-
 	public function setRequestId(?string $requestId) {
 		$this->requestId = $requestId;
 	}
-
 	public function withRequestId(?string $requestId): AccessLog {
 		$this->requestId = $requestId;
 		return $this;
 	}
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): AccessLog {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getMethod(): ?string {
 		return $this->method;
 	}
-
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
-
 	public function withMethod(?string $method): AccessLog {
 		$this->method = $method;
 		return $this;
 	}
-
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
-
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-
 	public function withUserId(?string $userId): AccessLog {
 		$this->userId = $userId;
 		return $this;
 	}
-
 	public function getRequest(): ?string {
 		return $this->request;
 	}
-
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
-
 	public function withRequest(?string $request): AccessLog {
 		$this->request = $request;
 		return $this;
 	}
-
 	public function getResult(): ?string {
 		return $this->result;
 	}
-
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
-
 	public function withResult(?string $result): AccessLog {
 		$this->result = $result;
 		return $this;

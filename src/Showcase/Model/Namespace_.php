@@ -38,6 +38,10 @@ class Namespace_ implements IModel {
 	 */
 	private $transactionSetting;
 	/**
+     * @var ScriptSetting
+	 */
+	private $buyScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -95,6 +99,16 @@ class Namespace_ implements IModel {
 	}
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getBuyScript(): ?ScriptSetting {
+		return $this->buyScript;
+	}
+	public function setBuyScript(?ScriptSetting $buyScript) {
+		$this->buyScript = $buyScript;
+	}
+	public function withBuyScript(?ScriptSetting $buyScript): Namespace_ {
+		$this->buyScript = $buyScript;
 		return $this;
 	}
 	public function getLogSetting(): ?LogSetting {
@@ -175,6 +189,7 @@ class Namespace_ implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withBuyScript(array_key_exists('buyScript', $data) && $data['buyScript'] !== null ? ScriptSetting::fromJson($data['buyScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -188,6 +203,7 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "buyScript" => $this->getBuyScript() !== null ? $this->getBuyScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

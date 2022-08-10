@@ -196,6 +196,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getTransactionSetting() !== null) {
             $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
+        if ($this->request->getBuyScript() !== null) {
+            $json["buyScript"] = $this->request->getBuyScript()->toJson();
+        }
         if ($this->request->getQueueNamespaceId() !== null) {
             $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
         }
@@ -379,6 +382,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTransactionSetting() !== null) {
             $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
+        }
+        if ($this->request->getBuyScript() !== null) {
+            $json["buyScript"] = $this->request->getBuyScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

@@ -19,6 +19,7 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Showcase\Model\TransactionSetting;
+use Gs2\Showcase\Model\ScriptSetting;
 use Gs2\Showcase\Model\LogSetting;
 
 class CreateNamespaceRequest extends Gs2BasicRequest {
@@ -28,6 +29,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $description;
     /** @var TransactionSetting */
     private $transactionSetting;
+    /** @var ScriptSetting */
+    private $buyScript;
     /** @var string */
     private $queueNamespaceId;
     /** @var string */
@@ -62,6 +65,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getBuyScript(): ?ScriptSetting {
+		return $this->buyScript;
+	}
+	public function setBuyScript(?ScriptSetting $buyScript) {
+		$this->buyScript = $buyScript;
+	}
+	public function withBuyScript(?ScriptSetting $buyScript): CreateNamespaceRequest {
+		$this->buyScript = $buyScript;
 		return $this;
 	}
     /**
@@ -121,6 +134,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withBuyScript(array_key_exists('buyScript', $data) && $data['buyScript'] !== null ? ScriptSetting::fromJson($data['buyScript']) : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
@@ -131,6 +145,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "buyScript" => $this->getBuyScript() !== null ? $this->getBuyScript()->toJson() : null,
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,

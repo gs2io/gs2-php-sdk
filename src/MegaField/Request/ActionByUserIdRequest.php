@@ -34,8 +34,8 @@ class ActionByUserIdRequest extends Gs2BasicRequest {
     private $layerModelName;
     /** @var MyPosition */
     private $position;
-    /** @var Scope */
-    private $scope;
+    /** @var array */
+    private $scopes;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -88,14 +88,14 @@ class ActionByUserIdRequest extends Gs2BasicRequest {
 		$this->position = $position;
 		return $this;
 	}
-	public function getScope(): ?Scope {
-		return $this->scope;
+	public function getScopes(): ?array {
+		return $this->scopes;
 	}
-	public function setScope(?Scope $scope) {
-		$this->scope = $scope;
+	public function setScopes(?array $scopes) {
+		$this->scopes = $scopes;
 	}
-	public function withScope(?Scope $scope): ActionByUserIdRequest {
-		$this->scope = $scope;
+	public function withScopes(?array $scopes): ActionByUserIdRequest {
+		$this->scopes = $scopes;
 		return $this;
 	}
 
@@ -122,7 +122,12 @@ class ActionByUserIdRequest extends Gs2BasicRequest {
             ->withAreaModelName(array_key_exists('areaModelName', $data) && $data['areaModelName'] !== null ? $data['areaModelName'] : null)
             ->withLayerModelName(array_key_exists('layerModelName', $data) && $data['layerModelName'] !== null ? $data['layerModelName'] : null)
             ->withPosition(array_key_exists('position', $data) && $data['position'] !== null ? MyPosition::fromJson($data['position']) : null)
-            ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? Scope::fromJson($data['scope']) : null);
+            ->withScopes(array_map(
+                function ($item) {
+                    return Scope::fromJson($item);
+                },
+                array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
+            ));
     }
 
     public function toJson(): array {
@@ -132,7 +137,12 @@ class ActionByUserIdRequest extends Gs2BasicRequest {
             "areaModelName" => $this->getAreaModelName(),
             "layerModelName" => $this->getLayerModelName(),
             "position" => $this->getPosition() !== null ? $this->getPosition()->toJson() : null,
-            "scope" => $this->getScope() !== null ? $this->getScope()->toJson() : null,
+            "scopes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
+            ),
         );
     }
 }

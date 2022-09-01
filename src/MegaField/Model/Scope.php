@@ -22,6 +22,10 @@ use Gs2\Core\Model\IModel;
 
 class Scope implements IModel {
 	/**
+     * @var string
+	 */
+	private $layerName;
+	/**
      * @var float
 	 */
 	private $r;
@@ -29,6 +33,16 @@ class Scope implements IModel {
      * @var int
 	 */
 	private $limit;
+	public function getLayerName(): ?string {
+		return $this->layerName;
+	}
+	public function setLayerName(?string $layerName) {
+		$this->layerName = $layerName;
+	}
+	public function withLayerName(?string $layerName): Scope {
+		$this->layerName = $layerName;
+		return $this;
+	}
 	public function getR(): ?float {
 		return $this->r;
 	}
@@ -55,12 +69,14 @@ class Scope implements IModel {
             return null;
         }
         return (new Scope())
+            ->withLayerName(array_key_exists('layerName', $data) && $data['layerName'] !== null ? $data['layerName'] : null)
             ->withR(array_key_exists('r', $data) && $data['r'] !== null ? $data['r'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "layerName" => $this->getLayerName(),
             "r" => $this->getR(),
             "limit" => $this->getLimit(),
         );

@@ -1980,8 +1980,13 @@ class ActionTask extends Gs2RestSessionTask {
         if ($this->request->getPosition() !== null) {
             $json["position"] = $this->request->getPosition()->toJson();
         }
-        if ($this->request->getScope() !== null) {
-            $json["scope"] = $this->request->getScope()->toJson();
+        if ($this->request->getScopes() !== null) {
+            $array = [];
+            foreach ($this->request->getScopes() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["scopes"] = $array;
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2047,8 +2052,13 @@ class ActionByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getPosition() !== null) {
             $json["position"] = $this->request->getPosition()->toJson();
         }
-        if ($this->request->getScope() !== null) {
-            $json["scope"] = $this->request->getScope()->toJson();
+        if ($this->request->getScopes() !== null) {
+            $array = [];
+            foreach ($this->request->getScopes() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["scopes"] = $array;
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

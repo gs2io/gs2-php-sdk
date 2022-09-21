@@ -47,8 +47,12 @@ use Gs2\SerialKey\Request\GetIssueJobRequest;
 use Gs2\SerialKey\Result\GetIssueJobResult;
 use Gs2\SerialKey\Request\IssueRequest;
 use Gs2\SerialKey\Result\IssueResult;
-use Gs2\SerialKey\Request\DescribeSerialCodesRequest;
-use Gs2\SerialKey\Result\DescribeSerialCodesResult;
+use Gs2\SerialKey\Request\DescribeSerialKeysRequest;
+use Gs2\SerialKey\Result\DescribeSerialKeysResult;
+use Gs2\SerialKey\Request\DownloadSerialCodesRequest;
+use Gs2\SerialKey\Result\DownloadSerialCodesResult;
+use Gs2\SerialKey\Request\GetSerialKeyRequest;
+use Gs2\SerialKey\Result\GetSerialKeyResult;
 use Gs2\SerialKey\Request\UseRequest;
 use Gs2\SerialKey\Result\UseResult;
 use Gs2\SerialKey\Request\UseByUserIdRequest;
@@ -618,10 +622,10 @@ class IssueTask extends Gs2RestSessionTask {
     }
 }
 
-class DescribeSerialCodesTask extends Gs2RestSessionTask {
+class DescribeSerialKeysTask extends Gs2RestSessionTask {
 
     /**
-     * @var DescribeSerialCodesRequest
+     * @var DescribeSerialKeysRequest
      */
     private $request;
 
@@ -631,17 +635,17 @@ class DescribeSerialCodesTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * DescribeSerialCodesTask constructor.
+     * DescribeSerialKeysTask constructor.
      * @param Gs2RestSession $session
-     * @param DescribeSerialCodesRequest $request
+     * @param DescribeSerialKeysRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        DescribeSerialCodesRequest $request
+        DescribeSerialKeysRequest $request
     ) {
         parent::__construct(
             $session,
-            DescribeSerialCodesResult::class
+            DescribeSerialKeysResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -649,7 +653,7 @@ class DescribeSerialCodesTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/campaign/{campaignModelName}/issue/{issueJobName}/serialCode";
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/campaign/{campaignModelName}/issue/{issueJobName}/serialKey";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{campaignModelName}", $this->request->getCampaignModelName() === null|| strlen($this->request->getCampaignModelName()) == 0 ? "null" : $this->request->getCampaignModelName(), $url);
@@ -664,6 +668,123 @@ class DescribeSerialCodesTask extends Gs2RestSessionTask {
         }
         if ($this->request->getLimit() !== null) {
             $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DownloadSerialCodesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DownloadSerialCodesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DownloadSerialCodesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DownloadSerialCodesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DownloadSerialCodesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DownloadSerialCodesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/campaign/{campaignModelName}/issue/{issueJobName}/serialCode/download";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{campaignModelName}", $this->request->getCampaignModelName() === null|| strlen($this->request->getCampaignModelName()) == 0 ? "null" : $this->request->getCampaignModelName(), $url);
+        $url = str_replace("{issueJobName}", $this->request->getIssueJobName() === null|| strlen($this->request->getIssueJobName()) == 0 ? "null" : $this->request->getIssueJobName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSerialKeyTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSerialKeyRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSerialKeyTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSerialKeyRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSerialKeyRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSerialKeyResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/serialKey/{code}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{code}", $this->request->getCode() === null|| strlen($this->request->getCode()) == 0 ? "null" : $this->request->getCode(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
         }
 
         if (count($queryStrings) > 0) {
@@ -1782,14 +1903,14 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param DescribeSerialCodesRequest $request
+     * @param DescribeSerialKeysRequest $request
      * @return PromiseInterface
      */
-    public function describeSerialCodesAsync(
-            DescribeSerialCodesRequest $request
+    public function describeSerialKeysAsync(
+            DescribeSerialKeysRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new DescribeSerialCodesTask(
+        $task = new DescribeSerialKeysTask(
             $this->session,
             $request
         );
@@ -1797,13 +1918,67 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param DescribeSerialCodesRequest $request
-     * @return DescribeSerialCodesResult
+     * @param DescribeSerialKeysRequest $request
+     * @return DescribeSerialKeysResult
      */
-    public function describeSerialCodes (
-            DescribeSerialCodesRequest $request
-    ): DescribeSerialCodesResult {
-        return $this->describeSerialCodesAsync(
+    public function describeSerialKeys (
+            DescribeSerialKeysRequest $request
+    ): DescribeSerialKeysResult {
+        return $this->describeSerialKeysAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DownloadSerialCodesRequest $request
+     * @return PromiseInterface
+     */
+    public function downloadSerialCodesAsync(
+            DownloadSerialCodesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DownloadSerialCodesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DownloadSerialCodesRequest $request
+     * @return DownloadSerialCodesResult
+     */
+    public function downloadSerialCodes (
+            DownloadSerialCodesRequest $request
+    ): DownloadSerialCodesResult {
+        return $this->downloadSerialCodesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSerialKeyRequest $request
+     * @return PromiseInterface
+     */
+    public function getSerialKeyAsync(
+            GetSerialKeyRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSerialKeyTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSerialKeyRequest $request
+     * @return GetSerialKeyResult
+     */
+    public function getSerialKey (
+            GetSerialKeyRequest $request
+    ): GetSerialKeyResult {
+        return $this->getSerialKeyAsync(
             $request
         )->wait();
     }

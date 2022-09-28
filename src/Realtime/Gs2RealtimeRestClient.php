@@ -41,6 +41,8 @@ use Gs2\Realtime\Request\UpdateNamespaceRequest;
 use Gs2\Realtime\Result\UpdateNamespaceResult;
 use Gs2\Realtime\Request\DeleteNamespaceRequest;
 use Gs2\Realtime\Result\DeleteNamespaceResult;
+use Gs2\Realtime\Request\NowRequest;
+use Gs2\Realtime\Result\NowResult;
 use Gs2\Realtime\Request\DescribeRoomsRequest;
 use Gs2\Realtime\Result\DescribeRoomsResult;
 use Gs2\Realtime\Request\WantRoomRequest;
@@ -411,6 +413,61 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class NowTask extends Gs2RestSessionTask {
+
+    /**
+     * @var NowRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * NowTask constructor.
+     * @param Gs2RestSession $session
+     * @param NowRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        NowRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            NowResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "realtime", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/now";
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -843,6 +900,33 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
         return $this->deleteNamespaceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param NowRequest $request
+     * @return PromiseInterface
+     */
+    public function nowAsync(
+            NowRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new NowTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param NowRequest $request
+     * @return NowResult
+     */
+    public function now (
+            NowRequest $request
+    ): NowResult {
+        return $this->nowAsync(
             $request
         )->wait();
     }

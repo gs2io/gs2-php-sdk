@@ -20,16 +20,30 @@ namespace Gs2\Realtime\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 
 class NowRequest extends Gs2BasicRequest {
+    /** @var string */
+    private $accessToken;
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+	public function withAccessToken(?string $accessToken): NowRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?NowRequest {
         if ($data === null) {
             return null;
         }
-        return (new NowRequest());
+        return (new NowRequest())
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "accessToken" => $this->getAccessToken(),
         );
     }
 }

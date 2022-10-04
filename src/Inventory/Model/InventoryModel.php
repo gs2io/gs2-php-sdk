@@ -45,6 +45,10 @@ class InventoryModel implements IModel {
      * @var bool
 	 */
 	private $protectReferencedItem;
+	/**
+     * @var array
+	 */
+	private $itemModels;
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
 	}
@@ -105,6 +109,16 @@ class InventoryModel implements IModel {
 		$this->protectReferencedItem = $protectReferencedItem;
 		return $this;
 	}
+	public function getItemModels(): ?array {
+		return $this->itemModels;
+	}
+	public function setItemModels(?array $itemModels) {
+		$this->itemModels = $itemModels;
+	}
+	public function withItemModels(?array $itemModels): InventoryModel {
+		$this->itemModels = $itemModels;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?InventoryModel {
         if ($data === null) {
@@ -116,7 +130,13 @@ class InventoryModel implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withInitialCapacity(array_key_exists('initialCapacity', $data) && $data['initialCapacity'] !== null ? $data['initialCapacity'] : null)
             ->withMaxCapacity(array_key_exists('maxCapacity', $data) && $data['maxCapacity'] !== null ? $data['maxCapacity'] : null)
-            ->withProtectReferencedItem(array_key_exists('protectReferencedItem', $data) ? $data['protectReferencedItem'] : null);
+            ->withProtectReferencedItem(array_key_exists('protectReferencedItem', $data) ? $data['protectReferencedItem'] : null)
+            ->withItemModels(array_map(
+                function ($item) {
+                    return ItemModel::fromJson($item);
+                },
+                array_key_exists('itemModels', $data) && $data['itemModels'] !== null ? $data['itemModels'] : []
+            ));
     }
 
     public function toJson(): array {
@@ -127,6 +147,12 @@ class InventoryModel implements IModel {
             "initialCapacity" => $this->getInitialCapacity(),
             "maxCapacity" => $this->getMaxCapacity(),
             "protectReferencedItem" => $this->getProtectReferencedItem(),
+            "itemModels" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItemModels() !== null && $this->getItemModels() !== null ? $this->getItemModels() : []
+            ),
         );
     }
 }

@@ -18,6 +18,7 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\InventoryModel;
 
 class GetInventoryModelResult implements IResult {

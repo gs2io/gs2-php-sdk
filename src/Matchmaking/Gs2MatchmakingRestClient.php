@@ -232,6 +232,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getCompleteMatchmakingTriggerScriptId() !== null) {
             $json["completeMatchmakingTriggerScriptId"] = $this->request->getCompleteMatchmakingTriggerScriptId();
         }
+        if ($this->request->getChangeRatingScript() !== null) {
+            $json["changeRatingScript"] = $this->request->getChangeRatingScript()->toJson();
+        }
         if ($this->request->getJoinNotification() !== null) {
             $json["joinNotification"] = $this->request->getJoinNotification()->toJson();
         }
@@ -436,6 +439,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCompleteMatchmakingTriggerScriptId() !== null) {
             $json["completeMatchmakingTriggerScriptId"] = $this->request->getCompleteMatchmakingTriggerScriptId();
+        }
+        if ($this->request->getChangeRatingScript() !== null) {
+            $json["changeRatingScript"] = $this->request->getChangeRatingScript()->toJson();
         }
         if ($this->request->getJoinNotification() !== null) {
             $json["joinNotification"] = $this->request->getJoinNotification()->toJson();

@@ -18,6 +18,7 @@
 namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Matchmaking\Model\ScriptSetting;
 use Gs2\Matchmaking\Model\NotificationSetting;
 use Gs2\Matchmaking\Model\LogSetting;
 
@@ -40,6 +41,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $completeMatchmakingTriggerRealtimeNamespaceId;
     /** @var string */
     private $completeMatchmakingTriggerScriptId;
+    /** @var ScriptSetting */
+    private $changeRatingScript;
     /** @var NotificationSetting */
     private $joinNotification;
     /** @var NotificationSetting */
@@ -138,6 +141,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
 		return $this;
 	}
+	public function getChangeRatingScript(): ?ScriptSetting {
+		return $this->changeRatingScript;
+	}
+	public function setChangeRatingScript(?ScriptSetting $changeRatingScript) {
+		$this->changeRatingScript = $changeRatingScript;
+	}
+	public function withChangeRatingScript(?ScriptSetting $changeRatingScript): UpdateNamespaceRequest {
+		$this->changeRatingScript = $changeRatingScript;
+		return $this;
+	}
 	public function getJoinNotification(): ?NotificationSetting {
 		return $this->joinNotification;
 	}
@@ -193,6 +206,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withCompleteMatchmakingTriggerType(array_key_exists('completeMatchmakingTriggerType', $data) && $data['completeMatchmakingTriggerType'] !== null ? $data['completeMatchmakingTriggerType'] : null)
             ->withCompleteMatchmakingTriggerRealtimeNamespaceId(array_key_exists('completeMatchmakingTriggerRealtimeNamespaceId', $data) && $data['completeMatchmakingTriggerRealtimeNamespaceId'] !== null ? $data['completeMatchmakingTriggerRealtimeNamespaceId'] : null)
             ->withCompleteMatchmakingTriggerScriptId(array_key_exists('completeMatchmakingTriggerScriptId', $data) && $data['completeMatchmakingTriggerScriptId'] !== null ? $data['completeMatchmakingTriggerScriptId'] : null)
+            ->withChangeRatingScript(array_key_exists('changeRatingScript', $data) && $data['changeRatingScript'] !== null ? ScriptSetting::fromJson($data['changeRatingScript']) : null)
             ->withJoinNotification(array_key_exists('joinNotification', $data) && $data['joinNotification'] !== null ? NotificationSetting::fromJson($data['joinNotification']) : null)
             ->withLeaveNotification(array_key_exists('leaveNotification', $data) && $data['leaveNotification'] !== null ? NotificationSetting::fromJson($data['leaveNotification']) : null)
             ->withCompleteNotification(array_key_exists('completeNotification', $data) && $data['completeNotification'] !== null ? NotificationSetting::fromJson($data['completeNotification']) : null)
@@ -210,6 +224,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "completeMatchmakingTriggerType" => $this->getCompleteMatchmakingTriggerType(),
             "completeMatchmakingTriggerRealtimeNamespaceId" => $this->getCompleteMatchmakingTriggerRealtimeNamespaceId(),
             "completeMatchmakingTriggerScriptId" => $this->getCompleteMatchmakingTriggerScriptId(),
+            "changeRatingScript" => $this->getChangeRatingScript() !== null ? $this->getChangeRatingScript()->toJson() : null,
             "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
             "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,
             "completeNotification" => $this->getCompleteNotification() !== null ? $this->getCompleteNotification()->toJson() : null,

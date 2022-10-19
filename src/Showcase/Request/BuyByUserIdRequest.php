@@ -33,6 +33,8 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
     private $quantity;
     /** @var array */
     private $config;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -91,6 +93,19 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withConfig(?array $config): BuyByUserIdRequest {
 		$this->config = $config;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): BuyByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

@@ -32,6 +32,10 @@ class Ranking implements IModel {
 	/**
      * @var string
 	 */
+	private $categoryName;
+	/**
+     * @var string
+	 */
 	private $userId;
 	/**
      * @var int
@@ -63,6 +67,16 @@ class Ranking implements IModel {
 	}
 	public function withIndex(?int $index): Ranking {
 		$this->index = $index;
+		return $this;
+	}
+	public function getCategoryName(): ?string {
+		return $this->categoryName;
+	}
+	public function setCategoryName(?string $categoryName) {
+		$this->categoryName = $categoryName;
+	}
+	public function withCategoryName(?string $categoryName): Ranking {
+		$this->categoryName = $categoryName;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -113,6 +127,7 @@ class Ranking implements IModel {
         return (new Ranking())
             ->withRank(array_key_exists('rank', $data) && $data['rank'] !== null ? $data['rank'] : null)
             ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
@@ -123,6 +138,7 @@ class Ranking implements IModel {
         return array(
             "rank" => $this->getRank(),
             "index" => $this->getIndex(),
+            "categoryName" => $this->getCategoryName(),
             "userId" => $this->getUserId(),
             "score" => $this->getScore(),
             "metadata" => $this->getMetadata(),

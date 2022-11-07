@@ -18,7 +18,9 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Lottery\Model\Box;
+use Gs2\Lottery\Model\AcquireAction;
+use Gs2\Lottery\Model\BoxItem;
+use Gs2\Lottery\Model\BoxItems;
 
 class DescribeBoxesByUserIdResult implements IResult {
     /** @var array */
@@ -59,7 +61,7 @@ class DescribeBoxesByUserIdResult implements IResult {
         return (new DescribeBoxesByUserIdResult())
             ->withItems(array_map(
                 function ($item) {
-                    return Box::fromJson($item);
+                    return BoxItems::fromJson($item);
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))

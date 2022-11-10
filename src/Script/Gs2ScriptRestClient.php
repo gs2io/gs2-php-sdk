@@ -883,6 +883,9 @@ class InvokeScriptTask extends Gs2RestSessionTask {
         if ($this->request->getScriptId() !== null) {
             $json["scriptId"] = $this->request->getScriptId();
         }
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
         if ($this->request->getArgs() !== null) {
             $json["args"] = $this->request->getArgs();
         }

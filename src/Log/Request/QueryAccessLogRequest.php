@@ -38,6 +38,8 @@ class QueryAccessLogRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -126,6 +128,19 @@ class QueryAccessLogRequest extends Gs2BasicRequest {
 	}
 	public function withLimit(?int $limit): QueryAccessLogRequest {
 		$this->limit = $limit;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): QueryAccessLogRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

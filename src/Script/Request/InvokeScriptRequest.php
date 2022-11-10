@@ -23,6 +23,8 @@ class InvokeScriptRequest extends Gs2BasicRequest {
     /** @var string */
     private $scriptId;
     /** @var string */
+    private $userId;
+    /** @var string */
     private $args;
 	public function getScriptId(): ?string {
 		return $this->scriptId;
@@ -32,6 +34,16 @@ class InvokeScriptRequest extends Gs2BasicRequest {
 	}
 	public function withScriptId(?string $scriptId): InvokeScriptRequest {
 		$this->scriptId = $scriptId;
+		return $this;
+	}
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+	public function withUserId(?string $userId): InvokeScriptRequest {
+		$this->userId = $userId;
 		return $this;
 	}
 	public function getArgs(): ?string {
@@ -51,12 +63,14 @@ class InvokeScriptRequest extends Gs2BasicRequest {
         }
         return (new InvokeScriptRequest())
             ->withScriptId(array_key_exists('scriptId', $data) && $data['scriptId'] !== null ? $data['scriptId'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null);
     }
 
     public function toJson(): array {
         return array(
             "scriptId" => $this->getScriptId(),
+            "userId" => $this->getUserId(),
             "args" => $this->getArgs(),
         );
     }

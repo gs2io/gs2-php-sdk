@@ -32,6 +32,8 @@ class ConsumeItemSetRequest extends Gs2BasicRequest {
     private $consumeCount;
     /** @var string */
     private $itemSetName;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -90,6 +92,19 @@ class ConsumeItemSetRequest extends Gs2BasicRequest {
 	}
 	public function withItemSetName(?string $itemSetName): ConsumeItemSetRequest {
 		$this->itemSetName = $itemSetName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): ConsumeItemSetRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

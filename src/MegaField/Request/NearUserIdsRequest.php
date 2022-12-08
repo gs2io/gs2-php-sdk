@@ -35,6 +35,8 @@ class NearUserIdsRequest extends Gs2BasicRequest {
     private $r;
     /** @var int */
     private $limit;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -103,6 +105,19 @@ class NearUserIdsRequest extends Gs2BasicRequest {
 	}
 	public function withLimit(?int $limit): NearUserIdsRequest {
 		$this->limit = $limit;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): NearUserIdsRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

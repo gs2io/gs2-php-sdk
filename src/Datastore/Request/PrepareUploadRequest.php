@@ -34,6 +34,8 @@ class PrepareUploadRequest extends Gs2BasicRequest {
     private $allowUserIds;
     /** @var bool */
     private $updateIfExists;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -102,6 +104,19 @@ class PrepareUploadRequest extends Gs2BasicRequest {
 	}
 	public function withUpdateIfExists(?bool $updateIfExists): PrepareUploadRequest {
 		$this->updateIfExists = $updateIfExists;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): PrepareUploadRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

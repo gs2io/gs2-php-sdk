@@ -28,6 +28,8 @@ class PrepareReUploadRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $contentType;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -66,6 +68,19 @@ class PrepareReUploadRequest extends Gs2BasicRequest {
 	}
 	public function withContentType(?string $contentType): PrepareReUploadRequest {
 		$this->contentType = $contentType;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): PrepareReUploadRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

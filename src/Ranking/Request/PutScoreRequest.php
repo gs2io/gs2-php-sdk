@@ -30,6 +30,8 @@ class PutScoreRequest extends Gs2BasicRequest {
     private $score;
     /** @var string */
     private $metadata;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -78,6 +80,19 @@ class PutScoreRequest extends Gs2BasicRequest {
 	}
 	public function withMetadata(?string $metadata): PutScoreRequest {
 		$this->metadata = $metadata;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): PutScoreRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

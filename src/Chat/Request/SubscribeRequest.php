@@ -29,6 +29,8 @@ class SubscribeRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var array */
     private $notificationTypes;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -67,6 +69,19 @@ class SubscribeRequest extends Gs2BasicRequest {
 	}
 	public function withNotificationTypes(?array $notificationTypes): SubscribeRequest {
 		$this->notificationTypes = $notificationTypes;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SubscribeRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

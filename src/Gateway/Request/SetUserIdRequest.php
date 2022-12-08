@@ -26,6 +26,8 @@ class SetUserIdRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var bool */
     private $allowConcurrentAccess;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -54,6 +56,19 @@ class SetUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withAllowConcurrentAccess(?bool $allowConcurrentAccess): SetUserIdRequest {
 		$this->allowConcurrentAccess = $allowConcurrentAccess;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

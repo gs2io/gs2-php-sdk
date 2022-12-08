@@ -26,6 +26,8 @@ class SetFirebaseTokenRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $token;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -54,6 +56,19 @@ class SetFirebaseTokenRequest extends Gs2BasicRequest {
 	}
 	public function withToken(?string $token): SetFirebaseTokenRequest {
 		$this->token = $token;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetFirebaseTokenRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

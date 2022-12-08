@@ -19,14 +19,10 @@ namespace Gs2\Enhance\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\Progress;
-use Gs2\Enhance\Model\BonusRate;
-use Gs2\Enhance\Model\RateModel;
 
 class GetProgressByUserIdResult implements IResult {
     /** @var Progress */
     private $item;
-    /** @var RateModel */
-    private $rateModel;
 
 	public function getItem(): ?Progress {
 		return $this->item;
@@ -41,32 +37,17 @@ class GetProgressByUserIdResult implements IResult {
 		return $this;
 	}
 
-	public function getRateModel(): ?RateModel {
-		return $this->rateModel;
-	}
-
-	public function setRateModel(?RateModel $rateModel) {
-		$this->rateModel = $rateModel;
-	}
-
-	public function withRateModel(?RateModel $rateModel): GetProgressByUserIdResult {
-		$this->rateModel = $rateModel;
-		return $this;
-	}
-
     public static function fromJson(?array $data): ?GetProgressByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new GetProgressByUserIdResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Progress::fromJson($data['item']) : null)
-            ->withRateModel(array_key_exists('rateModel', $data) && $data['rateModel'] !== null ? RateModel::fromJson($data['rateModel']) : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Progress::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "rateModel" => $this->getRateModel() !== null ? $this->getRateModel()->toJson() : null,
         );
     }
 }

@@ -28,6 +28,8 @@ class SubscribeRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $targetUserId;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -66,6 +68,19 @@ class SubscribeRequest extends Gs2BasicRequest {
 	}
 	public function withTargetUserId(?string $targetUserId): SubscribeRequest {
 		$this->targetUserId = $targetUserId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SubscribeRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

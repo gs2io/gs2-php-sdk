@@ -624,6 +624,9 @@ class CreateRoomTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -833,6 +836,9 @@ class UpdateRoomTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -969,6 +975,9 @@ class DeleteRoomTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1241,6 +1250,9 @@ class PostTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1767,6 +1779,9 @@ class SubscribeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -2022,6 +2037,9 @@ class UpdateNotificationTypeTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -2150,6 +2168,9 @@ class UnsubscribeTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();

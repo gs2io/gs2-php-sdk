@@ -30,6 +30,8 @@ class UpdateProfileRequest extends Gs2BasicRequest {
     private $followerProfile;
     /** @var string */
     private $friendProfile;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -78,6 +80,19 @@ class UpdateProfileRequest extends Gs2BasicRequest {
 	}
 	public function withFriendProfile(?string $friendProfile): UpdateProfileRequest {
 		$this->friendProfile = $friendProfile;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): UpdateProfileRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

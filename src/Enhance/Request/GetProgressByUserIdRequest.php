@@ -24,10 +24,6 @@ class GetProgressByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $userId;
-    /** @var string */
-    private $rateName;
-    /** @var string */
-    private $progressName;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -48,26 +44,6 @@ class GetProgressByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getRateName(): ?string {
-		return $this->rateName;
-	}
-	public function setRateName(?string $rateName) {
-		$this->rateName = $rateName;
-	}
-	public function withRateName(?string $rateName): GetProgressByUserIdRequest {
-		$this->rateName = $rateName;
-		return $this;
-	}
-	public function getProgressName(): ?string {
-		return $this->progressName;
-	}
-	public function setProgressName(?string $progressName) {
-		$this->progressName = $progressName;
-	}
-	public function withProgressName(?string $progressName): GetProgressByUserIdRequest {
-		$this->progressName = $progressName;
-		return $this;
-	}
 
     public static function fromJson(?array $data): ?GetProgressByUserIdRequest {
         if ($data === null) {
@@ -75,17 +51,13 @@ class GetProgressByUserIdRequest extends Gs2BasicRequest {
         }
         return (new GetProgressByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
-            ->withProgressName(array_key_exists('progressName', $data) && $data['progressName'] !== null ? $data['progressName'] : null);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "rateName" => $this->getRateName(),
-            "progressName" => $this->getProgressName(),
         );
     }
 }

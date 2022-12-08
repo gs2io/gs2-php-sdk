@@ -2055,6 +2055,9 @@ class DeleteMoldTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -2757,6 +2760,9 @@ class SetFormWithSignatureTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -2890,6 +2896,9 @@ class DeleteFormTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3535,6 +3544,9 @@ class SetPropertyFormWithSignatureTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -3668,6 +3680,9 @@ class DeletePropertyFormTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();

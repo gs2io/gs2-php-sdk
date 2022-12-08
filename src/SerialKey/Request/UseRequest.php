@@ -26,6 +26,8 @@ class UseRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $code;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -54,6 +56,19 @@ class UseRequest extends Gs2BasicRequest {
 	}
 	public function withCode(?string $code): UseRequest {
 		$this->code = $code;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): UseRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

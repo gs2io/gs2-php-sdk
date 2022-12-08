@@ -30,6 +30,8 @@ class UpdateDataObjectRequest extends Gs2BasicRequest {
     private $scope;
     /** @var array */
     private $allowUserIds;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -78,6 +80,19 @@ class UpdateDataObjectRequest extends Gs2BasicRequest {
 	}
 	public function withAllowUserIds(?array $allowUserIds): UpdateDataObjectRequest {
 		$this->allowUserIds = $allowUserIds;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): UpdateDataObjectRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

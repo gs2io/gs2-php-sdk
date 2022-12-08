@@ -25,9 +25,7 @@ class DeleteProgressRequest extends Gs2BasicRequest {
     /** @var string */
     private $accessToken;
     /** @var string */
-    private $rateName;
-    /** @var string */
-    private $progressName;
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -48,24 +46,17 @@ class DeleteProgressRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getRateName(): ?string {
-		return $this->rateName;
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
 	}
-	public function setRateName(?string $rateName) {
-		$this->rateName = $rateName;
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
 	}
-	public function withRateName(?string $rateName): DeleteProgressRequest {
-		$this->rateName = $rateName;
-		return $this;
-	}
-	public function getProgressName(): ?string {
-		return $this->progressName;
-	}
-	public function setProgressName(?string $progressName) {
-		$this->progressName = $progressName;
-	}
-	public function withProgressName(?string $progressName): DeleteProgressRequest {
-		$this->progressName = $progressName;
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteProgressRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
@@ -75,17 +66,13 @@ class DeleteProgressRequest extends Gs2BasicRequest {
         }
         return (new DeleteProgressRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
-            ->withProgressName(array_key_exists('progressName', $data) && $data['progressName'] !== null ? $data['progressName'] : null);
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "rateName" => $this->getRateName(),
-            "progressName" => $this->getProgressName(),
         );
     }
 }

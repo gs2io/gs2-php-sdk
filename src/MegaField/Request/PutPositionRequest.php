@@ -36,6 +36,8 @@ class PutPositionRequest extends Gs2BasicRequest {
     private $vector;
     /** @var float */
     private $r;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -104,6 +106,19 @@ class PutPositionRequest extends Gs2BasicRequest {
 	}
 	public function withR(?float $r): PutPositionRequest {
 		$this->r = $r;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): PutPositionRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

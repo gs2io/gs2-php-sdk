@@ -34,6 +34,8 @@ class DirectEnhanceRequest extends Gs2BasicRequest {
     private $materials;
     /** @var array */
     private $config;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -92,6 +94,19 @@ class DirectEnhanceRequest extends Gs2BasicRequest {
 	}
 	public function withConfig(?array $config): DirectEnhanceRequest {
 		$this->config = $config;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DirectEnhanceRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

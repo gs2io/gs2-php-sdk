@@ -26,6 +26,8 @@ class DeleteAcceptVersionRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $versionName;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -54,6 +56,19 @@ class DeleteAcceptVersionRequest extends Gs2BasicRequest {
 	}
 	public function withVersionName(?string $versionName): DeleteAcceptVersionRequest {
 		$this->versionName = $versionName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteAcceptVersionRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

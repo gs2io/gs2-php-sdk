@@ -31,6 +31,8 @@ class ExchangeRequest extends Gs2BasicRequest {
     private $count;
     /** @var array */
     private $config;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -79,6 +81,19 @@ class ExchangeRequest extends Gs2BasicRequest {
 	}
 	public function withConfig(?array $config): ExchangeRequest {
 		$this->config = $config;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): ExchangeRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

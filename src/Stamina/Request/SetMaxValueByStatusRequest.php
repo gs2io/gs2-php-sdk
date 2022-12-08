@@ -32,6 +32,8 @@ class SetMaxValueByStatusRequest extends Gs2BasicRequest {
     private $signedStatusBody;
     /** @var string */
     private $signedStatusSignature;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -90,6 +92,19 @@ class SetMaxValueByStatusRequest extends Gs2BasicRequest {
 	}
 	public function withSignedStatusSignature(?string $signedStatusSignature): SetMaxValueByStatusRequest {
 		$this->signedStatusSignature = $signedStatusSignature;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetMaxValueByStatusRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

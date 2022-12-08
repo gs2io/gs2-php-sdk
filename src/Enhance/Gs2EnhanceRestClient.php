@@ -61,8 +61,6 @@ use Gs2\Enhance\Request\DirectEnhanceByUserIdRequest;
 use Gs2\Enhance\Result\DirectEnhanceByUserIdResult;
 use Gs2\Enhance\Request\DirectEnhanceByStampSheetRequest;
 use Gs2\Enhance\Result\DirectEnhanceByStampSheetResult;
-use Gs2\Enhance\Request\DescribeProgressesByUserIdRequest;
-use Gs2\Enhance\Result\DescribeProgressesByUserIdResult;
 use Gs2\Enhance\Request\CreateProgressByUserIdRequest;
 use Gs2\Enhance\Result\CreateProgressByUserIdResult;
 use Gs2\Enhance\Request\GetProgressRequest;
@@ -1028,6 +1026,9 @@ class DirectEnhanceTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -1171,72 +1172,6 @@ class DirectEnhanceByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
-class DescribeProgressesByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeProgressesByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeProgressesByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeProgressesByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeProgressesByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeProgressesByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/progress";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getUserId() !== null) {
-            $queryStrings["userId"] = $this->request->getUserId();
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class CreateProgressByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -1344,11 +1279,9 @@ class GetProgressTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/progress/{rateName}/progress/{progressName}";
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/progress";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
-        $url = str_replace("{progressName}", $this->request->getProgressName() === null|| strlen($this->request->getProgressName()) == 0 ? "null" : $this->request->getProgressName(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -1406,12 +1339,10 @@ class GetProgressByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/progress/{rateName}/progress/{progressName}";
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/progress";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
-        $url = str_replace("{progressName}", $this->request->getProgressName() === null|| strlen($this->request->getProgressName()) == 0 ? "null" : $this->request->getProgressName(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -1510,6 +1441,9 @@ class StartTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1629,11 +1563,9 @@ class EndTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/progress/rate/{rateName}/progress/{progressName}/end";
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/progress/end";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
-        $url = str_replace("{progressName}", $this->request->getProgressName() === null|| strlen($this->request->getProgressName()) == 0 ? "null" : $this->request->getProgressName(), $url);
 
         $json = [];
         if ($this->request->getConfig() !== null) {
@@ -1660,6 +1592,9 @@ class EndTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1697,12 +1632,10 @@ class EndByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/progress/rate/{rateName}/progress/{progressName}/end";
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/progress/end";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
-        $url = str_replace("{progressName}", $this->request->getProgressName() === null|| strlen($this->request->getProgressName()) == 0 ? "null" : $this->request->getProgressName(), $url);
 
         $json = [];
         if ($this->request->getConfig() !== null) {
@@ -1766,11 +1699,9 @@ class DeleteProgressTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/progress/rate/{rateName}/progress/{progressName}";
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/progress";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
-        $url = str_replace("{progressName}", $this->request->getProgressName() === null|| strlen($this->request->getProgressName()) == 0 ? "null" : $this->request->getProgressName(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -1791,6 +1722,9 @@ class DeleteProgressTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1828,12 +1762,10 @@ class DeleteProgressByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/progress/rate/{rateName}/progress/{progressName}";
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/progress";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
-        $url = str_replace("{progressName}", $this->request->getProgressName() === null|| strlen($this->request->getProgressName()) == 0 ? "null" : $this->request->getProgressName(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -2653,33 +2585,6 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
             DirectEnhanceByStampSheetRequest $request
     ): DirectEnhanceByStampSheetResult {
         return $this->directEnhanceByStampSheetAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param DescribeProgressesByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function describeProgressesByUserIdAsync(
-            DescribeProgressesByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeProgressesByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeProgressesByUserIdRequest $request
-     * @return DescribeProgressesByUserIdResult
-     */
-    public function describeProgressesByUserId (
-            DescribeProgressesByUserIdRequest $request
-    ): DescribeProgressesByUserIdResult {
-        return $this->describeProgressesByUserIdAsync(
             $request
         )->wait();
     }

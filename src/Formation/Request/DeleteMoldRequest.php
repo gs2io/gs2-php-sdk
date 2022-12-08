@@ -26,6 +26,8 @@ class DeleteMoldRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $moldName;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -54,6 +56,19 @@ class DeleteMoldRequest extends Gs2BasicRequest {
 	}
 	public function withMoldName(?string $moldName): DeleteMoldRequest {
 		$this->moldName = $moldName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteMoldRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

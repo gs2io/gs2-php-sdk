@@ -28,6 +28,8 @@ class DeletePropertyFormRequest extends Gs2BasicRequest {
     private $formModelName;
     /** @var string */
     private $propertyId;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -66,6 +68,19 @@ class DeletePropertyFormRequest extends Gs2BasicRequest {
 	}
 	public function withPropertyId(?string $propertyId): DeletePropertyFormRequest {
 		$this->propertyId = $propertyId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeletePropertyFormRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

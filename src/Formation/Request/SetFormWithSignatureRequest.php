@@ -33,6 +33,8 @@ class SetFormWithSignatureRequest extends Gs2BasicRequest {
     private $slots;
     /** @var string */
     private $keyId;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -91,6 +93,19 @@ class SetFormWithSignatureRequest extends Gs2BasicRequest {
 	}
 	public function withKeyId(?string $keyId): SetFormWithSignatureRequest {
 		$this->keyId = $keyId;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetFormWithSignatureRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

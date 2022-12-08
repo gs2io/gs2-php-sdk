@@ -28,6 +28,8 @@ class CheckVersionRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var array */
     private $targetVersions;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,19 @@ class CheckVersionRequest extends Gs2BasicRequest {
 	}
 	public function withTargetVersions(?array $targetVersions): CheckVersionRequest {
 		$this->targetVersions = $targetVersions;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): CheckVersionRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

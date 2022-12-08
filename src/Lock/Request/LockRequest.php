@@ -30,6 +30,8 @@ class LockRequest extends Gs2BasicRequest {
     private $transactionId;
     /** @var int */
     private $ttl;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -78,6 +80,19 @@ class LockRequest extends Gs2BasicRequest {
 	}
 	public function withTtl(?int $ttl): LockRequest {
 		$this->ttl = $ttl;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): LockRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

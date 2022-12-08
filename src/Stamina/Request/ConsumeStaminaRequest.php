@@ -28,6 +28,8 @@ class ConsumeStaminaRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var int */
     private $consumeValue;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -66,6 +68,19 @@ class ConsumeStaminaRequest extends Gs2BasicRequest {
 	}
 	public function withConsumeValue(?int $consumeValue): ConsumeStaminaRequest {
 		$this->consumeValue = $consumeValue;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): ConsumeStaminaRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

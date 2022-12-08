@@ -26,6 +26,8 @@ class CancelMatchmakingRequest extends Gs2BasicRequest {
     private $gatheringName;
     /** @var string */
     private $accessToken;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -54,6 +56,19 @@ class CancelMatchmakingRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): CancelMatchmakingRequest {
 		$this->accessToken = $accessToken;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): CancelMatchmakingRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

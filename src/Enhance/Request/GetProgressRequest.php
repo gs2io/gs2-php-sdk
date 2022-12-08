@@ -24,10 +24,6 @@ class GetProgressRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $accessToken;
-    /** @var string */
-    private $rateName;
-    /** @var string */
-    private $progressName;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -48,26 +44,6 @@ class GetProgressRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getRateName(): ?string {
-		return $this->rateName;
-	}
-	public function setRateName(?string $rateName) {
-		$this->rateName = $rateName;
-	}
-	public function withRateName(?string $rateName): GetProgressRequest {
-		$this->rateName = $rateName;
-		return $this;
-	}
-	public function getProgressName(): ?string {
-		return $this->progressName;
-	}
-	public function setProgressName(?string $progressName) {
-		$this->progressName = $progressName;
-	}
-	public function withProgressName(?string $progressName): GetProgressRequest {
-		$this->progressName = $progressName;
-		return $this;
-	}
 
     public static function fromJson(?array $data): ?GetProgressRequest {
         if ($data === null) {
@@ -75,17 +51,13 @@ class GetProgressRequest extends Gs2BasicRequest {
         }
         return (new GetProgressRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
-            ->withProgressName(array_key_exists('progressName', $data) && $data['progressName'] !== null ? $data['progressName'] : null);
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "rateName" => $this->getRateName(),
-            "progressName" => $this->getProgressName(),
         );
     }
 }

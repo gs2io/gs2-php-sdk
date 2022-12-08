@@ -36,6 +36,8 @@ class ActionRequest extends Gs2BasicRequest {
     private $position;
     /** @var array */
     private $scopes;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -94,6 +96,19 @@ class ActionRequest extends Gs2BasicRequest {
 	}
 	public function withScopes(?array $scopes): ActionRequest {
 		$this->scopes = $scopes;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): ActionRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

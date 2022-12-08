@@ -30,6 +30,8 @@ class WithdrawRequest extends Gs2BasicRequest {
     private $count;
     /** @var bool */
     private $paidOnly;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -78,6 +80,19 @@ class WithdrawRequest extends Gs2BasicRequest {
 	}
 	public function withPaidOnly(?bool $paidOnly): WithdrawRequest {
 		$this->paidOnly = $paidOnly;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): WithdrawRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

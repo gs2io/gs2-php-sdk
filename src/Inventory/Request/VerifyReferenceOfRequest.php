@@ -34,6 +34,8 @@ class VerifyReferenceOfRequest extends Gs2BasicRequest {
     private $referenceOf;
     /** @var string */
     private $verifyType;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -102,6 +104,19 @@ class VerifyReferenceOfRequest extends Gs2BasicRequest {
 	}
 	public function withVerifyType(?string $verifyType): VerifyReferenceOfRequest {
 		$this->verifyType = $verifyType;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): VerifyReferenceOfRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

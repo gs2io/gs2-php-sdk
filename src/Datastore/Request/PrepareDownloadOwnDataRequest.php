@@ -26,6 +26,8 @@ class PrepareDownloadOwnDataRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $dataObjectName;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -54,6 +56,19 @@ class PrepareDownloadOwnDataRequest extends Gs2BasicRequest {
 	}
 	public function withDataObjectName(?string $dataObjectName): PrepareDownloadOwnDataRequest {
 		$this->dataObjectName = $dataObjectName;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): PrepareDownloadOwnDataRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

@@ -32,6 +32,8 @@ class CreateRoomRequest extends Gs2BasicRequest {
     private $password;
     /** @var array */
     private $whiteListUserIds;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -90,6 +92,19 @@ class CreateRoomRequest extends Gs2BasicRequest {
 	}
 	public function withWhiteListUserIds(?array $whiteListUserIds): CreateRoomRequest {
 		$this->whiteListUserIds = $whiteListUserIds;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): CreateRoomRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

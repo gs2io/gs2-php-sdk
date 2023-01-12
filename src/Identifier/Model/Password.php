@@ -24,6 +24,10 @@ class Password implements IModel {
 	/**
      * @var string
 	 */
+	private $passwordId;
+	/**
+     * @var string
+	 */
 	private $userId;
 	/**
      * @var string
@@ -33,6 +37,16 @@ class Password implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	public function getPasswordId(): ?string {
+		return $this->passwordId;
+	}
+	public function setPasswordId(?string $passwordId) {
+		$this->passwordId = $passwordId;
+	}
+	public function withPasswordId(?string $passwordId): Password {
+		$this->passwordId = $passwordId;
+		return $this;
+	}
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -69,6 +83,7 @@ class Password implements IModel {
             return null;
         }
         return (new Password())
+            ->withPasswordId(array_key_exists('passwordId', $data) && $data['passwordId'] !== null ? $data['passwordId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
@@ -76,6 +91,7 @@ class Password implements IModel {
 
     public function toJson(): array {
         return array(
+            "passwordId" => $this->getPasswordId(),
             "userId" => $this->getUserId(),
             "userName" => $this->getUserName(),
             "createdAt" => $this->getCreatedAt(),

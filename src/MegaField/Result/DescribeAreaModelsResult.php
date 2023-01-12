@@ -18,6 +18,7 @@
 namespace Gs2\MegaField\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\MegaField\Model\LayerModel;
 use Gs2\MegaField\Model\AreaModel;
 
 class DescribeAreaModelsResult implements IResult {

@@ -33,6 +33,10 @@ class AreaModel implements IModel {
      * @var string
 	 */
 	private $metadata;
+	/**
+     * @var array
+	 */
+	private $layerModels;
 	public function getAreaModelId(): ?string {
 		return $this->areaModelId;
 	}
@@ -63,6 +67,16 @@ class AreaModel implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getLayerModels(): ?array {
+		return $this->layerModels;
+	}
+	public function setLayerModels(?array $layerModels) {
+		$this->layerModels = $layerModels;
+	}
+	public function withLayerModels(?array $layerModels): AreaModel {
+		$this->layerModels = $layerModels;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?AreaModel {
         if ($data === null) {
@@ -71,7 +85,13 @@ class AreaModel implements IModel {
         return (new AreaModel())
             ->withAreaModelId(array_key_exists('areaModelId', $data) && $data['areaModelId'] !== null ? $data['areaModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
-            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withLayerModels(array_map(
+                function ($item) {
+                    return LayerModel::fromJson($item);
+                },
+                array_key_exists('layerModels', $data) && $data['layerModels'] !== null ? $data['layerModels'] : []
+            ));
     }
 
     public function toJson(): array {
@@ -79,6 +99,12 @@ class AreaModel implements IModel {
             "areaModelId" => $this->getAreaModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
+            "layerModels" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getLayerModels() !== null && $this->getLayerModels() !== null ? $this->getLayerModels() : []
+            ),
         );
     }
 }

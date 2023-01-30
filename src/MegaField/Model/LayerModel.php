@@ -28,10 +28,6 @@ class LayerModel implements IModel {
 	/**
      * @var string
 	 */
-	private $areaModelName;
-	/**
-     * @var string
-	 */
 	private $name;
 	/**
      * @var string
@@ -45,16 +41,6 @@ class LayerModel implements IModel {
 	}
 	public function withLayerModelId(?string $layerModelId): LayerModel {
 		$this->layerModelId = $layerModelId;
-		return $this;
-	}
-	public function getAreaModelName(): ?string {
-		return $this->areaModelName;
-	}
-	public function setAreaModelName(?string $areaModelName) {
-		$this->areaModelName = $areaModelName;
-	}
-	public function withAreaModelName(?string $areaModelName): LayerModel {
-		$this->areaModelName = $areaModelName;
 		return $this;
 	}
 	public function getName(): ?string {
@@ -84,7 +70,6 @@ class LayerModel implements IModel {
         }
         return (new LayerModel())
             ->withLayerModelId(array_key_exists('layerModelId', $data) && $data['layerModelId'] !== null ? $data['layerModelId'] : null)
-            ->withAreaModelName(array_key_exists('areaModelName', $data) && $data['areaModelName'] !== null ? $data['areaModelName'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
@@ -92,7 +77,6 @@ class LayerModel implements IModel {
     public function toJson(): array {
         return array(
             "layerModelId" => $this->getLayerModelId(),
-            "areaModelName" => $this->getAreaModelName(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
         );

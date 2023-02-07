@@ -61,18 +61,6 @@ use Gs2\Lottery\Request\UpdatePrizeTableMasterRequest;
 use Gs2\Lottery\Result\UpdatePrizeTableMasterResult;
 use Gs2\Lottery\Request\DeletePrizeTableMasterRequest;
 use Gs2\Lottery\Result\DeletePrizeTableMasterResult;
-use Gs2\Lottery\Request\DescribeBoxesRequest;
-use Gs2\Lottery\Result\DescribeBoxesResult;
-use Gs2\Lottery\Request\DescribeBoxesByUserIdRequest;
-use Gs2\Lottery\Result\DescribeBoxesByUserIdResult;
-use Gs2\Lottery\Request\GetBoxRequest;
-use Gs2\Lottery\Result\GetBoxResult;
-use Gs2\Lottery\Request\GetBoxByUserIdRequest;
-use Gs2\Lottery\Result\GetBoxByUserIdResult;
-use Gs2\Lottery\Request\ResetBoxRequest;
-use Gs2\Lottery\Result\ResetBoxResult;
-use Gs2\Lottery\Request\ResetBoxByUserIdRequest;
-use Gs2\Lottery\Result\ResetBoxByUserIdResult;
 use Gs2\Lottery\Request\DescribeLotteryModelsRequest;
 use Gs2\Lottery\Result\DescribeLotteryModelsResult;
 use Gs2\Lottery\Request\GetLotteryModelRequest;
@@ -103,6 +91,18 @@ use Gs2\Lottery\Request\GetPrizeLimitRequest;
 use Gs2\Lottery\Result\GetPrizeLimitResult;
 use Gs2\Lottery\Request\ResetPrizeLimitRequest;
 use Gs2\Lottery\Result\ResetPrizeLimitResult;
+use Gs2\Lottery\Request\DescribeBoxesRequest;
+use Gs2\Lottery\Result\DescribeBoxesResult;
+use Gs2\Lottery\Request\DescribeBoxesByUserIdRequest;
+use Gs2\Lottery\Result\DescribeBoxesByUserIdResult;
+use Gs2\Lottery\Request\GetBoxRequest;
+use Gs2\Lottery\Result\GetBoxResult;
+use Gs2\Lottery\Request\GetBoxByUserIdRequest;
+use Gs2\Lottery\Result\GetBoxByUserIdResult;
+use Gs2\Lottery\Request\ResetBoxRequest;
+use Gs2\Lottery\Result\ResetBoxResult;
+use Gs2\Lottery\Request\ResetBoxByUserIdRequest;
+use Gs2\Lottery\Result\ResetBoxByUserIdResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -1139,382 +1139,6 @@ class DeletePrizeTableMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class DescribeBoxesTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeBoxesRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeBoxesTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeBoxesRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeBoxesRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeBoxesResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/box";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class DescribeBoxesByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var DescribeBoxesByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * DescribeBoxesByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param DescribeBoxesByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        DescribeBoxesByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            DescribeBoxesByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/box";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getPageToken() !== null) {
-            $queryStrings["pageToken"] = $this->request->getPageToken();
-        }
-        if ($this->request->getLimit() !== null) {
-            $queryStrings["limit"] = $this->request->getLimit();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetBoxTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetBoxRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetBoxTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetBoxRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetBoxRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetBoxResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/box/{prizeTableName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class GetBoxByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var GetBoxByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * GetBoxByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param GetBoxByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        GetBoxByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            GetBoxByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/box/{prizeTableName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("GET")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class ResetBoxTask extends Gs2RestSessionTask {
-
-    /**
-     * @var ResetBoxRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * ResetBoxTask constructor.
-     * @param Gs2RestSession $session
-     * @param ResetBoxRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        ResetBoxRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            ResetBoxResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/box/{prizeTableName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("DELETE")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class ResetBoxByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var ResetBoxByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * ResetBoxByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param ResetBoxByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        ResetBoxByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            ResetBoxByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/box/{prizeTableName}";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $queryStrings = [];
-        if ($this->request->getContextStack() !== null) {
-            $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-
-        if (count($queryStrings) > 0) {
-            $url .= '?'. http_build_query($queryStrings);
-        }
-
-        $this->builder->setMethod("DELETE")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class DescribeLotteryModelsTask extends Gs2RestSessionTask {
 
     /**
@@ -2407,6 +2031,382 @@ class ResetPrizeLimitTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeBoxesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeBoxesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeBoxesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeBoxesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeBoxesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeBoxesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/box";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeBoxesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeBoxesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeBoxesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeBoxesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeBoxesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeBoxesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/box";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetBoxTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetBoxRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetBoxTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetBoxRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetBoxRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetBoxResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/box/{prizeTableName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetBoxByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetBoxByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetBoxByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetBoxByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetBoxByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetBoxByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/box/{prizeTableName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ResetBoxTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetBoxRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetBoxTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetBoxRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetBoxRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetBoxResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/box/{prizeTableName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ResetBoxByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetBoxByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetBoxByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetBoxByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetBoxByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetBoxByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/box/{prizeTableName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{prizeTableName}", $this->request->getPrizeTableName() === null|| strlen($this->request->getPrizeTableName()) == 0 ? "null" : $this->request->getPrizeTableName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Lottery API クライアント
  *
@@ -2857,168 +2857,6 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param DescribeBoxesRequest $request
-     * @return PromiseInterface
-     */
-    public function describeBoxesAsync(
-            DescribeBoxesRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeBoxesTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeBoxesRequest $request
-     * @return DescribeBoxesResult
-     */
-    public function describeBoxes (
-            DescribeBoxesRequest $request
-    ): DescribeBoxesResult {
-        return $this->describeBoxesAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param DescribeBoxesByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function describeBoxesByUserIdAsync(
-            DescribeBoxesByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new DescribeBoxesByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param DescribeBoxesByUserIdRequest $request
-     * @return DescribeBoxesByUserIdResult
-     */
-    public function describeBoxesByUserId (
-            DescribeBoxesByUserIdRequest $request
-    ): DescribeBoxesByUserIdResult {
-        return $this->describeBoxesByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param GetBoxRequest $request
-     * @return PromiseInterface
-     */
-    public function getBoxAsync(
-            GetBoxRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetBoxTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param GetBoxRequest $request
-     * @return GetBoxResult
-     */
-    public function getBox (
-            GetBoxRequest $request
-    ): GetBoxResult {
-        return $this->getBoxAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param GetBoxByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function getBoxByUserIdAsync(
-            GetBoxByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new GetBoxByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param GetBoxByUserIdRequest $request
-     * @return GetBoxByUserIdResult
-     */
-    public function getBoxByUserId (
-            GetBoxByUserIdRequest $request
-    ): GetBoxByUserIdResult {
-        return $this->getBoxByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param ResetBoxRequest $request
-     * @return PromiseInterface
-     */
-    public function resetBoxAsync(
-            ResetBoxRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new ResetBoxTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param ResetBoxRequest $request
-     * @return ResetBoxResult
-     */
-    public function resetBox (
-            ResetBoxRequest $request
-    ): ResetBoxResult {
-        return $this->resetBoxAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param ResetBoxByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function resetBoxByUserIdAsync(
-            ResetBoxByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new ResetBoxByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param ResetBoxByUserIdRequest $request
-     * @return ResetBoxByUserIdResult
-     */
-    public function resetBoxByUserId (
-            ResetBoxByUserIdRequest $request
-    ): ResetBoxByUserIdResult {
-        return $this->resetBoxByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
      * @param DescribeLotteryModelsRequest $request
      * @return PromiseInterface
      */
@@ -3419,6 +3257,168 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
             ResetPrizeLimitRequest $request
     ): ResetPrizeLimitResult {
         return $this->resetPrizeLimitAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeBoxesRequest $request
+     * @return PromiseInterface
+     */
+    public function describeBoxesAsync(
+            DescribeBoxesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeBoxesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeBoxesRequest $request
+     * @return DescribeBoxesResult
+     */
+    public function describeBoxes (
+            DescribeBoxesRequest $request
+    ): DescribeBoxesResult {
+        return $this->describeBoxesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeBoxesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeBoxesByUserIdAsync(
+            DescribeBoxesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeBoxesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeBoxesByUserIdRequest $request
+     * @return DescribeBoxesByUserIdResult
+     */
+    public function describeBoxesByUserId (
+            DescribeBoxesByUserIdRequest $request
+    ): DescribeBoxesByUserIdResult {
+        return $this->describeBoxesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetBoxRequest $request
+     * @return PromiseInterface
+     */
+    public function getBoxAsync(
+            GetBoxRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetBoxTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetBoxRequest $request
+     * @return GetBoxResult
+     */
+    public function getBox (
+            GetBoxRequest $request
+    ): GetBoxResult {
+        return $this->getBoxAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetBoxByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getBoxByUserIdAsync(
+            GetBoxByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetBoxByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetBoxByUserIdRequest $request
+     * @return GetBoxByUserIdResult
+     */
+    public function getBoxByUserId (
+            GetBoxByUserIdRequest $request
+    ): GetBoxByUserIdResult {
+        return $this->getBoxByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ResetBoxRequest $request
+     * @return PromiseInterface
+     */
+    public function resetBoxAsync(
+            ResetBoxRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetBoxTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetBoxRequest $request
+     * @return ResetBoxResult
+     */
+    public function resetBox (
+            ResetBoxRequest $request
+    ): ResetBoxResult {
+        return $this->resetBoxAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ResetBoxByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function resetBoxByUserIdAsync(
+            ResetBoxByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetBoxByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetBoxByUserIdRequest $request
+     * @return ResetBoxByUserIdResult
+     */
+    public function resetBoxByUserId (
+            ResetBoxByUserIdRequest $request
+    ): ResetBoxByUserIdResult {
+        return $this->resetBoxByUserIdAsync(
             $request
         )->wait();
     }

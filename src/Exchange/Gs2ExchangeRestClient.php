@@ -1638,10 +1638,9 @@ class GetAwaitTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}/await/{awaitName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/await/{awaitName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $queryStrings = [];
@@ -1700,11 +1699,10 @@ class GetAwaitByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/await/{awaitName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $queryStrings = [];
@@ -1760,10 +1758,9 @@ class AcquireTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}/await/{awaitName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/await/{awaitName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $json = [];
@@ -1831,11 +1828,10 @@ class AcquireByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/await/{awaitName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $json = [];
@@ -1900,11 +1896,10 @@ class AcquireForceByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}/force";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/await/{awaitName}/force";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $json = [];
@@ -1969,10 +1964,9 @@ class SkipTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}/await/{awaitName}/skip";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/await/{awaitName}/skip";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $json = [];
@@ -2040,11 +2034,10 @@ class SkipByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}/skip";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/await/{awaitName}/skip";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $json = [];
@@ -2109,10 +2102,9 @@ class DeleteAwaitTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/{rateName}/await/{awaitName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/await/{awaitName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $queryStrings = [];
@@ -2174,11 +2166,10 @@ class DeleteAwaitByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/{rateName}/await/{awaitName}";
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/exchange/await/{awaitName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $queryStrings = [];

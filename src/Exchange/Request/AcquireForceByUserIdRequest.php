@@ -26,8 +26,6 @@ class AcquireForceByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $userId;
     /** @var string */
-    private $rateName;
-    /** @var string */
     private $awaitName;
     /** @var array */
     private $config;
@@ -51,16 +49,6 @@ class AcquireForceByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withUserId(?string $userId): AcquireForceByUserIdRequest {
 		$this->userId = $userId;
-		return $this;
-	}
-	public function getRateName(): ?string {
-		return $this->rateName;
-	}
-	public function setRateName(?string $rateName) {
-		$this->rateName = $rateName;
-	}
-	public function withRateName(?string $rateName): AcquireForceByUserIdRequest {
-		$this->rateName = $rateName;
 		return $this;
 	}
 	public function getAwaitName(): ?string {
@@ -104,7 +92,6 @@ class AcquireForceByUserIdRequest extends Gs2BasicRequest {
         return (new AcquireForceByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withAwaitName(array_key_exists('awaitName', $data) && $data['awaitName'] !== null ? $data['awaitName'] : null)
             ->withConfig(array_map(
                 function ($item) {
@@ -118,7 +105,6 @@ class AcquireForceByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "rateName" => $this->getRateName(),
             "awaitName" => $this->getAwaitName(),
             "config" => array_map(
                 function ($item) {

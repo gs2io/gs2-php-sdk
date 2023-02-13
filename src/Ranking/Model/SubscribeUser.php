@@ -24,6 +24,10 @@ class SubscribeUser implements IModel {
 	/**
      * @var string
 	 */
+	private $subscribeUserId;
+	/**
+     * @var string
+	 */
 	private $categoryName;
 	/**
      * @var string
@@ -33,6 +37,16 @@ class SubscribeUser implements IModel {
      * @var string
 	 */
 	private $targetUserId;
+	public function getSubscribeUserId(): ?string {
+		return $this->subscribeUserId;
+	}
+	public function setSubscribeUserId(?string $subscribeUserId) {
+		$this->subscribeUserId = $subscribeUserId;
+	}
+	public function withSubscribeUserId(?string $subscribeUserId): SubscribeUser {
+		$this->subscribeUserId = $subscribeUserId;
+		return $this;
+	}
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
@@ -69,6 +83,7 @@ class SubscribeUser implements IModel {
             return null;
         }
         return (new SubscribeUser())
+            ->withSubscribeUserId(array_key_exists('subscribeUserId', $data) && $data['subscribeUserId'] !== null ? $data['subscribeUserId'] : null)
             ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null);
@@ -76,6 +91,7 @@ class SubscribeUser implements IModel {
 
     public function toJson(): array {
         return array(
+            "subscribeUserId" => $this->getSubscribeUserId(),
             "categoryName" => $this->getCategoryName(),
             "userId" => $this->getUserId(),
             "targetUserId" => $this->getTargetUserId(),

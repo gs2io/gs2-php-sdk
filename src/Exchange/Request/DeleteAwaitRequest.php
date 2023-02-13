@@ -25,8 +25,6 @@ class DeleteAwaitRequest extends Gs2BasicRequest {
     /** @var string */
     private $accessToken;
     /** @var string */
-    private $rateName;
-    /** @var string */
     private $awaitName;
     /** @var string */
     private $duplicationAvoider;
@@ -48,16 +46,6 @@ class DeleteAwaitRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): DeleteAwaitRequest {
 		$this->accessToken = $accessToken;
-		return $this;
-	}
-	public function getRateName(): ?string {
-		return $this->rateName;
-	}
-	public function setRateName(?string $rateName) {
-		$this->rateName = $rateName;
-	}
-	public function withRateName(?string $rateName): DeleteAwaitRequest {
-		$this->rateName = $rateName;
 		return $this;
 	}
 	public function getAwaitName(): ?string {
@@ -91,7 +79,6 @@ class DeleteAwaitRequest extends Gs2BasicRequest {
         return (new DeleteAwaitRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withAwaitName(array_key_exists('awaitName', $data) && $data['awaitName'] !== null ? $data['awaitName'] : null);
     }
 
@@ -99,7 +86,6 @@ class DeleteAwaitRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "rateName" => $this->getRateName(),
             "awaitName" => $this->getAwaitName(),
         );
     }

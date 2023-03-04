@@ -78,6 +78,10 @@ class Namespace_ implements IModel {
 	 */
 	private $completeNotification;
 	/**
+     * @var NotificationSetting
+	 */
+	private $changeRatingNotification;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -229,6 +233,16 @@ class Namespace_ implements IModel {
 		$this->completeNotification = $completeNotification;
 		return $this;
 	}
+	public function getChangeRatingNotification(): ?NotificationSetting {
+		return $this->changeRatingNotification;
+	}
+	public function setChangeRatingNotification(?NotificationSetting $changeRatingNotification) {
+		$this->changeRatingNotification = $changeRatingNotification;
+	}
+	public function withChangeRatingNotification(?NotificationSetting $changeRatingNotification): Namespace_ {
+		$this->changeRatingNotification = $changeRatingNotification;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -279,6 +293,7 @@ class Namespace_ implements IModel {
             ->withJoinNotification(array_key_exists('joinNotification', $data) && $data['joinNotification'] !== null ? NotificationSetting::fromJson($data['joinNotification']) : null)
             ->withLeaveNotification(array_key_exists('leaveNotification', $data) && $data['leaveNotification'] !== null ? NotificationSetting::fromJson($data['leaveNotification']) : null)
             ->withCompleteNotification(array_key_exists('completeNotification', $data) && $data['completeNotification'] !== null ? NotificationSetting::fromJson($data['completeNotification']) : null)
+            ->withChangeRatingNotification(array_key_exists('changeRatingNotification', $data) && $data['changeRatingNotification'] !== null ? NotificationSetting::fromJson($data['changeRatingNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
@@ -300,6 +315,7 @@ class Namespace_ implements IModel {
             "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
             "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,
             "completeNotification" => $this->getCompleteNotification() !== null ? $this->getCompleteNotification()->toJson() : null,
+            "changeRatingNotification" => $this->getChangeRatingNotification() !== null ? $this->getChangeRatingNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

@@ -41,6 +41,14 @@ use Gs2\News\Request\UpdateNamespaceRequest;
 use Gs2\News\Result\UpdateNamespaceResult;
 use Gs2\News\Request\DeleteNamespaceRequest;
 use Gs2\News\Result\DeleteNamespaceResult;
+use Gs2\News\Request\DescribeProgressesRequest;
+use Gs2\News\Result\DescribeProgressesResult;
+use Gs2\News\Request\GetProgressRequest;
+use Gs2\News\Result\GetProgressResult;
+use Gs2\News\Request\DescribeOutputsRequest;
+use Gs2\News\Result\DescribeOutputsResult;
+use Gs2\News\Request\GetOutputRequest;
+use Gs2\News\Result\GetOutputResult;
 use Gs2\News\Request\PrepareUpdateCurrentNewsMasterRequest;
 use Gs2\News\Result\PrepareUpdateCurrentNewsMasterResult;
 use Gs2\News\Request\UpdateCurrentNewsMasterRequest;
@@ -399,6 +407,250 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeProgressesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeProgressesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeProgressesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeProgressesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeProgressesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeProgressesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "news", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/progress";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetProgressTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetProgressRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetProgressTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetProgressRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetProgressRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetProgressResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "news", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/progress/{uploadToken}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{uploadToken}", $this->request->getUploadToken() === null|| strlen($this->request->getUploadToken()) == 0 ? "null" : $this->request->getUploadToken(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeOutputsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeOutputsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeOutputsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeOutputsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeOutputsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeOutputsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "news", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/progress/{uploadToken}/output";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{uploadToken}", $this->request->getUploadToken() === null|| strlen($this->request->getUploadToken()) == 0 ? "null" : $this->request->getUploadToken(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetOutputTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetOutputRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetOutputTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetOutputRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetOutputRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetOutputResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "news", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/progress/{uploadToken}/output/{outputName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{uploadToken}", $this->request->getUploadToken() === null|| strlen($this->request->getUploadToken()) == 0 ? "null" : $this->request->getUploadToken(), $url);
+        $url = str_replace("{outputName}", $this->request->getOutputName() === null|| strlen($this->request->getOutputName()) == 0 ? "null" : $this->request->getOutputName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -993,6 +1245,114 @@ class Gs2NewsRestClient extends AbstractGs2Client {
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
         return $this->deleteNamespaceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeProgressesRequest $request
+     * @return PromiseInterface
+     */
+    public function describeProgressesAsync(
+            DescribeProgressesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeProgressesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeProgressesRequest $request
+     * @return DescribeProgressesResult
+     */
+    public function describeProgresses (
+            DescribeProgressesRequest $request
+    ): DescribeProgressesResult {
+        return $this->describeProgressesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetProgressRequest $request
+     * @return PromiseInterface
+     */
+    public function getProgressAsync(
+            GetProgressRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetProgressTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetProgressRequest $request
+     * @return GetProgressResult
+     */
+    public function getProgress (
+            GetProgressRequest $request
+    ): GetProgressResult {
+        return $this->getProgressAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeOutputsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeOutputsAsync(
+            DescribeOutputsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeOutputsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeOutputsRequest $request
+     * @return DescribeOutputsResult
+     */
+    public function describeOutputs (
+            DescribeOutputsRequest $request
+    ): DescribeOutputsResult {
+        return $this->describeOutputsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetOutputRequest $request
+     * @return PromiseInterface
+     */
+    public function getOutputAsync(
+            GetOutputRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetOutputTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetOutputRequest $request
+     * @return GetOutputResult
+     */
+    public function getOutput (
+            GetOutputRequest $request
+    ): GetOutputResult {
+        return $this->getOutputAsync(
             $request
         )->wait();
     }

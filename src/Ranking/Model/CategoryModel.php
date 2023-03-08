@@ -54,6 +54,10 @@ class CategoryModel implements IModel {
 	 */
 	private $uniqueByUserId;
 	/**
+     * @var bool
+	 */
+	private $sum;
+	/**
      * @var int
 	 */
 	private $calculateFixedTimingHour;
@@ -157,6 +161,16 @@ class CategoryModel implements IModel {
 		$this->uniqueByUserId = $uniqueByUserId;
 		return $this;
 	}
+	public function getSum(): ?bool {
+		return $this->sum;
+	}
+	public function setSum(?bool $sum) {
+		$this->sum = $sum;
+	}
+	public function withSum(?bool $sum): CategoryModel {
+		$this->sum = $sum;
+		return $this;
+	}
 	public function getCalculateFixedTimingHour(): ?int {
 		return $this->calculateFixedTimingHour;
 	}
@@ -231,6 +245,7 @@ class CategoryModel implements IModel {
             ->withOrderDirection(array_key_exists('orderDirection', $data) && $data['orderDirection'] !== null ? $data['orderDirection'] : null)
             ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
             ->withUniqueByUserId(array_key_exists('uniqueByUserId', $data) ? $data['uniqueByUserId'] : null)
+            ->withSum(array_key_exists('sum', $data) ? $data['sum'] : null)
             ->withCalculateFixedTimingHour(array_key_exists('calculateFixedTimingHour', $data) && $data['calculateFixedTimingHour'] !== null ? $data['calculateFixedTimingHour'] : null)
             ->withCalculateFixedTimingMinute(array_key_exists('calculateFixedTimingMinute', $data) && $data['calculateFixedTimingMinute'] !== null ? $data['calculateFixedTimingMinute'] : null)
             ->withCalculateIntervalMinutes(array_key_exists('calculateIntervalMinutes', $data) && $data['calculateIntervalMinutes'] !== null ? $data['calculateIntervalMinutes'] : null)
@@ -249,6 +264,7 @@ class CategoryModel implements IModel {
             "orderDirection" => $this->getOrderDirection(),
             "scope" => $this->getScope(),
             "uniqueByUserId" => $this->getUniqueByUserId(),
+            "sum" => $this->getSum(),
             "calculateFixedTimingHour" => $this->getCalculateFixedTimingHour(),
             "calculateFixedTimingMinute" => $this->getCalculateFixedTimingMinute(),
             "calculateIntervalMinutes" => $this->getCalculateIntervalMinutes(),

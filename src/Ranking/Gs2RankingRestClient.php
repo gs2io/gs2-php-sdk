@@ -697,6 +697,9 @@ class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getUniqueByUserId() !== null) {
             $json["uniqueByUserId"] = $this->request->getUniqueByUserId();
         }
+        if ($this->request->getSum() !== null) {
+            $json["sum"] = $this->request->getSum();
+        }
         if ($this->request->getCalculateFixedTimingHour() !== null) {
             $json["calculateFixedTimingHour"] = $this->request->getCalculateFixedTimingHour();
         }
@@ -849,6 +852,9 @@ class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getUniqueByUserId() !== null) {
             $json["uniqueByUserId"] = $this->request->getUniqueByUserId();
+        }
+        if ($this->request->getSum() !== null) {
+            $json["sum"] = $this->request->getSum();
         }
         if ($this->request->getCalculateFixedTimingHour() !== null) {
             $json["calculateFixedTimingHour"] = $this->request->getCalculateFixedTimingHour();

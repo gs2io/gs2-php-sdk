@@ -82,6 +82,10 @@ class CategoryModelMaster implements IModel {
 	 */
 	private $accessPeriodEventId;
 	/**
+     * @var array
+	 */
+	private $ignoreUserIds;
+	/**
      * @var string
 	 */
 	private $generation;
@@ -243,6 +247,16 @@ class CategoryModelMaster implements IModel {
 		$this->accessPeriodEventId = $accessPeriodEventId;
 		return $this;
 	}
+	public function getIgnoreUserIds(): ?array {
+		return $this->ignoreUserIds;
+	}
+	public function setIgnoreUserIds(?array $ignoreUserIds) {
+		$this->ignoreUserIds = $ignoreUserIds;
+	}
+	public function withIgnoreUserIds(?array $ignoreUserIds): CategoryModelMaster {
+		$this->ignoreUserIds = $ignoreUserIds;
+		return $this;
+	}
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
@@ -294,6 +308,12 @@ class CategoryModelMaster implements IModel {
             ->withCalculateIntervalMinutes(array_key_exists('calculateIntervalMinutes', $data) && $data['calculateIntervalMinutes'] !== null ? $data['calculateIntervalMinutes'] : null)
             ->withEntryPeriodEventId(array_key_exists('entryPeriodEventId', $data) && $data['entryPeriodEventId'] !== null ? $data['entryPeriodEventId'] : null)
             ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null)
+            ->withIgnoreUserIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('ignoreUserIds', $data) && $data['ignoreUserIds'] !== null ? $data['ignoreUserIds'] : []
+            ))
             ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
@@ -316,6 +336,12 @@ class CategoryModelMaster implements IModel {
             "calculateIntervalMinutes" => $this->getCalculateIntervalMinutes(),
             "entryPeriodEventId" => $this->getEntryPeriodEventId(),
             "accessPeriodEventId" => $this->getAccessPeriodEventId(),
+            "ignoreUserIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getIgnoreUserIds() !== null && $this->getIgnoreUserIds() !== null ? $this->getIgnoreUserIds() : []
+            ),
             "generation" => $this->getGeneration(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

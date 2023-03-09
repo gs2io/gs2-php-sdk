@@ -715,6 +715,14 @@ class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getAccessPeriodEventId() !== null) {
             $json["accessPeriodEventId"] = $this->request->getAccessPeriodEventId();
         }
+        if ($this->request->getIgnoreUserIds() !== null) {
+            $array = [];
+            foreach ($this->request->getIgnoreUserIds() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["ignoreUserIds"] = $array;
+        }
         if ($this->request->getGeneration() !== null) {
             $json["generation"] = $this->request->getGeneration();
         }
@@ -870,6 +878,14 @@ class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessPeriodEventId() !== null) {
             $json["accessPeriodEventId"] = $this->request->getAccessPeriodEventId();
+        }
+        if ($this->request->getIgnoreUserIds() !== null) {
+            $array = [];
+            foreach ($this->request->getIgnoreUserIds() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["ignoreUserIds"] = $array;
         }
         if ($this->request->getGeneration() !== null) {
             $json["generation"] = $this->request->getGeneration();

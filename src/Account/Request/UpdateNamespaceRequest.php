@@ -28,8 +28,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $description;
     /** @var bool */
     private $changePasswordIfTakeOver;
-    /** @var bool */
-    private $differentUserIdForLoginAndDataRetention;
     /** @var ScriptSetting */
     private $createAccountScript;
     /** @var ScriptSetting */
@@ -68,16 +66,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withChangePasswordIfTakeOver(?bool $changePasswordIfTakeOver): UpdateNamespaceRequest {
 		$this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
-		return $this;
-	}
-	public function getDifferentUserIdForLoginAndDataRetention(): ?bool {
-		return $this->differentUserIdForLoginAndDataRetention;
-	}
-	public function setDifferentUserIdForLoginAndDataRetention(?bool $differentUserIdForLoginAndDataRetention) {
-		$this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
-	}
-	public function withDifferentUserIdForLoginAndDataRetention(?bool $differentUserIdForLoginAndDataRetention): UpdateNamespaceRequest {
-		$this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
 		return $this;
 	}
 	public function getCreateAccountScript(): ?ScriptSetting {
@@ -139,7 +127,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withChangePasswordIfTakeOver(array_key_exists('changePasswordIfTakeOver', $data) ? $data['changePasswordIfTakeOver'] : null)
-            ->withDifferentUserIdForLoginAndDataRetention(array_key_exists('differentUserIdForLoginAndDataRetention', $data) ? $data['differentUserIdForLoginAndDataRetention'] : null)
             ->withCreateAccountScript(array_key_exists('createAccountScript', $data) && $data['createAccountScript'] !== null ? ScriptSetting::fromJson($data['createAccountScript']) : null)
             ->withAuthenticationScript(array_key_exists('authenticationScript', $data) && $data['authenticationScript'] !== null ? ScriptSetting::fromJson($data['authenticationScript']) : null)
             ->withCreateTakeOverScript(array_key_exists('createTakeOverScript', $data) && $data['createTakeOverScript'] !== null ? ScriptSetting::fromJson($data['createTakeOverScript']) : null)
@@ -152,7 +139,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
             "changePasswordIfTakeOver" => $this->getChangePasswordIfTakeOver(),
-            "differentUserIdForLoginAndDataRetention" => $this->getDifferentUserIdForLoginAndDataRetention(),
             "createAccountScript" => $this->getCreateAccountScript() !== null ? $this->getCreateAccountScript()->toJson() : null,
             "authenticationScript" => $this->getAuthenticationScript() !== null ? $this->getAuthenticationScript()->toJson() : null,
             "createTakeOverScript" => $this->getCreateTakeOverScript() !== null ? $this->getCreateTakeOverScript()->toJson() : null,

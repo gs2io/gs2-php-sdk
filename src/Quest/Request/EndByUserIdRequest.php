@@ -26,8 +26,6 @@ class EndByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $userId;
-    /** @var string */
-    private $transactionId;
     /** @var array */
     private $rewards;
     /** @var bool */
@@ -54,16 +52,6 @@ class EndByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withUserId(?string $userId): EndByUserIdRequest {
 		$this->userId = $userId;
-		return $this;
-	}
-	public function getTransactionId(): ?string {
-		return $this->transactionId;
-	}
-	public function setTransactionId(?string $transactionId) {
-		$this->transactionId = $transactionId;
-	}
-	public function withTransactionId(?string $transactionId): EndByUserIdRequest {
-		$this->transactionId = $transactionId;
 		return $this;
 	}
 	public function getRewards(): ?array {
@@ -117,7 +105,6 @@ class EndByUserIdRequest extends Gs2BasicRequest {
         return (new EndByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withRewards(array_map(
                 function ($item) {
                     return Reward::fromJson($item);
@@ -137,7 +124,6 @@ class EndByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "transactionId" => $this->getTransactionId(),
             "rewards" => array_map(
                 function ($item) {
                     return $item->toJson();

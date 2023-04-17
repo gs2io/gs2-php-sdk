@@ -1879,9 +1879,6 @@ class EndTask extends Gs2RestSessionTask {
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
-        if ($this->request->getTransactionId() !== null) {
-            $json["transactionId"] = $this->request->getTransactionId();
-        }
         if ($this->request->getRewards() !== null) {
             $array = [];
             foreach ($this->request->getRewards() as $item)
@@ -1963,9 +1960,6 @@ class EndByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
-        if ($this->request->getTransactionId() !== null) {
-            $json["transactionId"] = $this->request->getTransactionId();
-        }
         if ($this->request->getRewards() !== null) {
             $array = [];
             foreach ($this->request->getRewards() as $item)

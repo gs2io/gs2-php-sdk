@@ -26,8 +26,6 @@ class EndRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $accessToken;
-    /** @var string */
-    private $transactionId;
     /** @var array */
     private $rewards;
     /** @var bool */
@@ -54,16 +52,6 @@ class EndRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): EndRequest {
 		$this->accessToken = $accessToken;
-		return $this;
-	}
-	public function getTransactionId(): ?string {
-		return $this->transactionId;
-	}
-	public function setTransactionId(?string $transactionId) {
-		$this->transactionId = $transactionId;
-	}
-	public function withTransactionId(?string $transactionId): EndRequest {
-		$this->transactionId = $transactionId;
 		return $this;
 	}
 	public function getRewards(): ?array {
@@ -117,7 +105,6 @@ class EndRequest extends Gs2BasicRequest {
         return (new EndRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withRewards(array_map(
                 function ($item) {
                     return Reward::fromJson($item);
@@ -137,7 +124,6 @@ class EndRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "transactionId" => $this->getTransactionId(),
             "rewards" => array_map(
                 function ($item) {
                     return $item->toJson();

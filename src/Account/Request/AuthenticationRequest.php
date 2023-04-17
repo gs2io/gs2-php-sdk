@@ -28,6 +28,8 @@ class AuthenticationRequest extends Gs2BasicRequest {
     private $keyId;
     /** @var string */
     private $password;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -66,6 +68,19 @@ class AuthenticationRequest extends Gs2BasicRequest {
 	}
 	public function withPassword(?string $password): AuthenticationRequest {
 		$this->password = $password;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): AuthenticationRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

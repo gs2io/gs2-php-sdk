@@ -379,9 +379,6 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getChangePasswordIfTakeOver() !== null) {
             $json["changePasswordIfTakeOver"] = $this->request->getChangePasswordIfTakeOver();
         }
-        if ($this->request->getDifferentUserIdForLoginAndDataRetention() !== null) {
-            $json["differentUserIdForLoginAndDataRetention"] = $this->request->getDifferentUserIdForLoginAndDataRetention();
-        }
         if ($this->request->getCreateAccountScript() !== null) {
             $json["createAccountScript"] = $this->request->getCreateAccountScript()->toJson();
         }
@@ -826,6 +823,9 @@ class DeleteAccountTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -887,6 +887,9 @@ class AuthenticationTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -1716,6 +1719,9 @@ class DeleteDataOwnerByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();

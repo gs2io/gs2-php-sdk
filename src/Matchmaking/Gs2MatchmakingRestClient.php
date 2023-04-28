@@ -1467,6 +1467,9 @@ class CreateRatingModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getInitialValue() !== null) {
+            $json["initialValue"] = $this->request->getInitialValue();
+        }
         if ($this->request->getVolatility() !== null) {
             $json["volatility"] = $this->request->getVolatility();
         }
@@ -1589,6 +1592,9 @@ class UpdateRatingModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getInitialValue() !== null) {
+            $json["initialValue"] = $this->request->getInitialValue();
         }
         if ($this->request->getVolatility() !== null) {
             $json["volatility"] = $this->request->getVolatility();

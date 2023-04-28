@@ -40,6 +40,10 @@ class RatingModelMaster implements IModel {
 	/**
      * @var int
 	 */
+	private $initialValue;
+	/**
+     * @var int
+	 */
 	private $volatility;
 	/**
      * @var int
@@ -89,6 +93,16 @@ class RatingModelMaster implements IModel {
 		$this->description = $description;
 		return $this;
 	}
+	public function getInitialValue(): ?int {
+		return $this->initialValue;
+	}
+	public function setInitialValue(?int $initialValue) {
+		$this->initialValue = $initialValue;
+	}
+	public function withInitialValue(?int $initialValue): RatingModelMaster {
+		$this->initialValue = $initialValue;
+		return $this;
+	}
 	public function getVolatility(): ?int {
 		return $this->volatility;
 	}
@@ -129,6 +143,7 @@ class RatingModelMaster implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withInitialValue(array_key_exists('initialValue', $data) && $data['initialValue'] !== null ? $data['initialValue'] : null)
             ->withVolatility(array_key_exists('volatility', $data) && $data['volatility'] !== null ? $data['volatility'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
@@ -140,6 +155,7 @@ class RatingModelMaster implements IModel {
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "description" => $this->getDescription(),
+            "initialValue" => $this->getInitialValue(),
             "volatility" => $this->getVolatility(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

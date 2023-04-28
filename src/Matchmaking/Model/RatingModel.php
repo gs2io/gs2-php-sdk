@@ -36,6 +36,10 @@ class RatingModel implements IModel {
 	/**
      * @var int
 	 */
+	private $initialValue;
+	/**
+     * @var int
+	 */
 	private $volatility;
 	public function getRatingModelId(): ?string {
 		return $this->ratingModelId;
@@ -67,6 +71,16 @@ class RatingModel implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getInitialValue(): ?int {
+		return $this->initialValue;
+	}
+	public function setInitialValue(?int $initialValue) {
+		$this->initialValue = $initialValue;
+	}
+	public function withInitialValue(?int $initialValue): RatingModel {
+		$this->initialValue = $initialValue;
+		return $this;
+	}
 	public function getVolatility(): ?int {
 		return $this->volatility;
 	}
@@ -86,6 +100,7 @@ class RatingModel implements IModel {
             ->withRatingModelId(array_key_exists('ratingModelId', $data) && $data['ratingModelId'] !== null ? $data['ratingModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withInitialValue(array_key_exists('initialValue', $data) && $data['initialValue'] !== null ? $data['initialValue'] : null)
             ->withVolatility(array_key_exists('volatility', $data) && $data['volatility'] !== null ? $data['volatility'] : null);
     }
 
@@ -94,6 +109,7 @@ class RatingModel implements IModel {
             "ratingModelId" => $this->getRatingModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
+            "initialValue" => $this->getInitialValue(),
             "volatility" => $this->getVolatility(),
         );
     }

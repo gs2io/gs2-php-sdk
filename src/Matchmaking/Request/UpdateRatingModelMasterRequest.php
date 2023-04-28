@@ -29,6 +29,8 @@ class UpdateRatingModelMasterRequest extends Gs2BasicRequest {
     /** @var string */
     private $metadata;
     /** @var int */
+    private $initialValue;
+    /** @var int */
     private $volatility;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class UpdateRatingModelMasterRequest extends Gs2BasicRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getInitialValue(): ?int {
+		return $this->initialValue;
+	}
+	public function setInitialValue(?int $initialValue) {
+		$this->initialValue = $initialValue;
+	}
+	public function withInitialValue(?int $initialValue): UpdateRatingModelMasterRequest {
+		$this->initialValue = $initialValue;
+		return $this;
+	}
 	public function getVolatility(): ?int {
 		return $this->volatility;
 	}
@@ -90,6 +102,7 @@ class UpdateRatingModelMasterRequest extends Gs2BasicRequest {
             ->withRatingName(array_key_exists('ratingName', $data) && $data['ratingName'] !== null ? $data['ratingName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withInitialValue(array_key_exists('initialValue', $data) && $data['initialValue'] !== null ? $data['initialValue'] : null)
             ->withVolatility(array_key_exists('volatility', $data) && $data['volatility'] !== null ? $data['volatility'] : null);
     }
 
@@ -99,6 +112,7 @@ class UpdateRatingModelMasterRequest extends Gs2BasicRequest {
             "ratingName" => $this->getRatingName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
+            "initialValue" => $this->getInitialValue(),
             "volatility" => $this->getVolatility(),
         );
     }

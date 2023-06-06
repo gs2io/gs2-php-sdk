@@ -71,6 +71,12 @@ use Gs2\Lottery\Request\GetPrizeTableRequest;
 use Gs2\Lottery\Result\GetPrizeTableResult;
 use Gs2\Lottery\Request\DrawByUserIdRequest;
 use Gs2\Lottery\Result\DrawByUserIdResult;
+use Gs2\Lottery\Request\PredictionRequest;
+use Gs2\Lottery\Result\PredictionResult;
+use Gs2\Lottery\Request\PredictionByUserIdRequest;
+use Gs2\Lottery\Result\PredictionByUserIdResult;
+use Gs2\Lottery\Request\DrawWithRandomSeedByUserIdRequest;
+use Gs2\Lottery\Result\DrawWithRandomSeedByUserIdResult;
 use Gs2\Lottery\Request\DrawByStampSheetRequest;
 use Gs2\Lottery\Result\DrawByStampSheetResult;
 use Gs2\Lottery\Request\DescribeProbabilitiesRequest;
@@ -1407,6 +1413,212 @@ class DrawByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PredictionTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PredictionRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PredictionTask constructor.
+     * @param Gs2RestSession $session
+     * @param PredictionRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PredictionRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PredictionResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/lottery/{lotteryName}/prediction";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{lotteryName}", $this->request->getLotteryName() === null|| strlen($this->request->getLotteryName()) == 0 ? "null" : $this->request->getLotteryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getRandomSeed() !== null) {
+            $json["randomSeed"] = $this->request->getRandomSeed();
+        }
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PredictionByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PredictionByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PredictionByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param PredictionByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PredictionByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PredictionByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/lottery/{lotteryName}/prediction";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{lotteryName}", $this->request->getLotteryName() === null|| strlen($this->request->getLotteryName()) == 0 ? "null" : $this->request->getLotteryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getRandomSeed() !== null) {
+            $json["randomSeed"] = $this->request->getRandomSeed();
+        }
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DrawWithRandomSeedByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DrawWithRandomSeedByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DrawWithRandomSeedByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DrawWithRandomSeedByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DrawWithRandomSeedByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DrawWithRandomSeedByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/lottery/{lotteryName}/draw/withSeed";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{lotteryName}", $this->request->getLotteryName() === null|| strlen($this->request->getLotteryName()) == 0 ? "null" : $this->request->getLotteryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getRandomSeed() !== null) {
+            $json["randomSeed"] = $this->request->getRandomSeed();
+        }
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
         }
@@ -2987,6 +3199,87 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
             DrawByUserIdRequest $request
     ): DrawByUserIdResult {
         return $this->drawByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PredictionRequest $request
+     * @return PromiseInterface
+     */
+    public function predictionAsync(
+            PredictionRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PredictionTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PredictionRequest $request
+     * @return PredictionResult
+     */
+    public function prediction (
+            PredictionRequest $request
+    ): PredictionResult {
+        return $this->predictionAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PredictionByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function predictionByUserIdAsync(
+            PredictionByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PredictionByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PredictionByUserIdRequest $request
+     * @return PredictionByUserIdResult
+     */
+    public function predictionByUserId (
+            PredictionByUserIdRequest $request
+    ): PredictionByUserIdResult {
+        return $this->predictionByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DrawWithRandomSeedByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function drawWithRandomSeedByUserIdAsync(
+            DrawWithRandomSeedByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DrawWithRandomSeedByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DrawWithRandomSeedByUserIdRequest $request
+     * @return DrawWithRandomSeedByUserIdResult
+     */
+    public function drawWithRandomSeedByUserId (
+            DrawWithRandomSeedByUserIdRequest $request
+    ): DrawWithRandomSeedByUserIdResult {
+        return $this->drawWithRandomSeedByUserIdAsync(
             $request
         )->wait();
     }

@@ -23,6 +23,8 @@ use Gs2\Schedule\Model\Event;
 class GetEventByUserIdResult implements IResult {
     /** @var Event */
     private $item;
+    /** @var int */
+    private $repeatCount;
 
 	public function getItem(): ?Event {
 		return $this->item;
@@ -37,17 +39,32 @@ class GetEventByUserIdResult implements IResult {
 		return $this;
 	}
 
+	public function getRepeatCount(): ?int {
+		return $this->repeatCount;
+	}
+
+	public function setRepeatCount(?int $repeatCount) {
+		$this->repeatCount = $repeatCount;
+	}
+
+	public function withRepeatCount(?int $repeatCount): GetEventByUserIdResult {
+		$this->repeatCount = $repeatCount;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?GetEventByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new GetEventByUserIdResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Event::fromJson($data['item']) : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Event::fromJson($data['item']) : null)
+            ->withRepeatCount(array_key_exists('repeatCount', $data) && $data['repeatCount'] !== null ? $data['repeatCount'] : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "repeatCount" => $this->getRepeatCount(),
         );
     }
 }

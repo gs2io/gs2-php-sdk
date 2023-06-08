@@ -1481,7 +1481,6 @@ class PredictionTask extends Gs2RestSessionTask {
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{lotteryName}", $this->request->getLotteryName() === null|| strlen($this->request->getLotteryName()) == 0 ? "null" : $this->request->getLotteryName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
         if ($this->request->getRandomSeed() !== null) {
@@ -1503,6 +1502,9 @@ class PredictionTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());

@@ -25,7 +25,7 @@ class PredictionRequest extends Gs2BasicRequest {
     /** @var string */
     private $lotteryName;
     /** @var string */
-    private $userId;
+    private $accessToken;
     /** @var int */
     private $randomSeed;
     /** @var int */
@@ -52,14 +52,14 @@ class PredictionRequest extends Gs2BasicRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;
 	}
-	public function getUserId(): ?string {
-		return $this->userId;
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
 	}
-	public function setUserId(?string $userId) {
-		$this->userId = $userId;
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
 	}
-	public function withUserId(?string $userId): PredictionRequest {
-		$this->userId = $userId;
+	public function withAccessToken(?string $accessToken): PredictionRequest {
+		$this->accessToken = $accessToken;
 		return $this;
 	}
 	public function getRandomSeed(): ?int {
@@ -103,7 +103,7 @@ class PredictionRequest extends Gs2BasicRequest {
         return (new PredictionRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withLotteryName(array_key_exists('lotteryName', $data) && $data['lotteryName'] !== null ? $data['lotteryName'] : null)
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withRandomSeed(array_key_exists('randomSeed', $data) && $data['randomSeed'] !== null ? $data['randomSeed'] : null)
             ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
     }
@@ -112,7 +112,7 @@ class PredictionRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "lotteryName" => $this->getLotteryName(),
-            "userId" => $this->getUserId(),
+            "accessToken" => $this->getAccessToken(),
             "randomSeed" => $this->getRandomSeed(),
             "count" => $this->getCount(),
         );

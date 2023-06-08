@@ -26,6 +26,8 @@ class GetEventByUserIdRequest extends Gs2BasicRequest {
     private $eventName;
     /** @var string */
     private $userId;
+    /** @var bool */
+    private $isInSchedule;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,16 @@ class GetEventByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getIsInSchedule(): ?bool {
+		return $this->isInSchedule;
+	}
+	public function setIsInSchedule(?bool $isInSchedule) {
+		$this->isInSchedule = $isInSchedule;
+	}
+	public function withIsInSchedule(?bool $isInSchedule): GetEventByUserIdRequest {
+		$this->isInSchedule = $isInSchedule;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetEventByUserIdRequest {
         if ($data === null) {
@@ -64,7 +76,8 @@ class GetEventByUserIdRequest extends Gs2BasicRequest {
         return (new GetEventByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withEventName(array_key_exists('eventName', $data) && $data['eventName'] !== null ? $data['eventName'] : null)
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withIsInSchedule(array_key_exists('isInSchedule', $data) ? $data['isInSchedule'] : null);
     }
 
     public function toJson(): array {
@@ -72,6 +85,7 @@ class GetEventByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "eventName" => $this->getEventName(),
             "userId" => $this->getUserId(),
+            "isInSchedule" => $this->getIsInSchedule(),
         );
     }
 }

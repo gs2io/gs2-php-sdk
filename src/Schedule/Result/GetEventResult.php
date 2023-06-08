@@ -19,12 +19,17 @@ namespace Gs2\Schedule\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Event;
+use Gs2\Schedule\Model\RepeatSchedule;
 
 class GetEventResult implements IResult {
     /** @var Event */
     private $item;
     /** @var int */
     private $repeatCount;
+    /** @var bool */
+    private $inSchedule;
+    /** @var RepeatSchedule */
+    private $repeatSchedule;
 
 	public function getItem(): ?Event {
 		return $this->item;
@@ -52,19 +57,49 @@ class GetEventResult implements IResult {
 		return $this;
 	}
 
+	public function getInSchedule(): ?bool {
+		return $this->inSchedule;
+	}
+
+	public function setInSchedule(?bool $inSchedule) {
+		$this->inSchedule = $inSchedule;
+	}
+
+	public function withInSchedule(?bool $inSchedule): GetEventResult {
+		$this->inSchedule = $inSchedule;
+		return $this;
+	}
+
+	public function getRepeatSchedule(): ?RepeatSchedule {
+		return $this->repeatSchedule;
+	}
+
+	public function setRepeatSchedule(?RepeatSchedule $repeatSchedule) {
+		$this->repeatSchedule = $repeatSchedule;
+	}
+
+	public function withRepeatSchedule(?RepeatSchedule $repeatSchedule): GetEventResult {
+		$this->repeatSchedule = $repeatSchedule;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?GetEventResult {
         if ($data === null) {
             return null;
         }
         return (new GetEventResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Event::fromJson($data['item']) : null)
-            ->withRepeatCount(array_key_exists('repeatCount', $data) && $data['repeatCount'] !== null ? $data['repeatCount'] : null);
+            ->withRepeatCount(array_key_exists('repeatCount', $data) && $data['repeatCount'] !== null ? $data['repeatCount'] : null)
+            ->withInSchedule(array_key_exists('inSchedule', $data) ? $data['inSchedule'] : null)
+            ->withRepeatSchedule(array_key_exists('repeatSchedule', $data) && $data['repeatSchedule'] !== null ? RepeatSchedule::fromJson($data['repeatSchedule']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
             "repeatCount" => $this->getRepeatCount(),
+            "inSchedule" => $this->getInSchedule(),
+            "repeatSchedule" => $this->getRepeatSchedule() !== null ? $this->getRepeatSchedule()->toJson() : null,
         );
     }
 }

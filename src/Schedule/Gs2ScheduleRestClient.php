@@ -582,9 +582,6 @@ class CreateEventMasterTask extends Gs2RestSessionTask {
         if ($this->request->getRelativeTriggerName() !== null) {
             $json["relativeTriggerName"] = $this->request->getRelativeTriggerName();
         }
-        if ($this->request->getRelativeDuration() !== null) {
-            $json["relativeDuration"] = $this->request->getRelativeDuration();
-        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -737,9 +734,6 @@ class UpdateEventMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getRelativeTriggerName() !== null) {
             $json["relativeTriggerName"] = $this->request->getRelativeTriggerName();
-        }
-        if ($this->request->getRelativeDuration() !== null) {
-            $json["relativeDuration"] = $this->request->getRelativeDuration();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

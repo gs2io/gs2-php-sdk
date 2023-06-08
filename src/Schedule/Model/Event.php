@@ -77,10 +77,6 @@ class Event implements IModel {
      * @var string
 	 */
 	private $relativeTriggerName;
-	/**
-     * @var int
-	 */
-	private $relativeDuration;
 	public function getEventId(): ?string {
 		return $this->eventId;
 	}
@@ -221,16 +217,6 @@ class Event implements IModel {
 		$this->relativeTriggerName = $relativeTriggerName;
 		return $this;
 	}
-	public function getRelativeDuration(): ?int {
-		return $this->relativeDuration;
-	}
-	public function setRelativeDuration(?int $relativeDuration) {
-		$this->relativeDuration = $relativeDuration;
-	}
-	public function withRelativeDuration(?int $relativeDuration): Event {
-		$this->relativeDuration = $relativeDuration;
-		return $this;
-	}
 
     public static function fromJson(?array $data): ?Event {
         if ($data === null) {
@@ -250,8 +236,7 @@ class Event implements IModel {
             ->withRepeatEndDayOfWeek(array_key_exists('repeatEndDayOfWeek', $data) && $data['repeatEndDayOfWeek'] !== null ? $data['repeatEndDayOfWeek'] : null)
             ->withRepeatBeginHour(array_key_exists('repeatBeginHour', $data) && $data['repeatBeginHour'] !== null ? $data['repeatBeginHour'] : null)
             ->withRepeatEndHour(array_key_exists('repeatEndHour', $data) && $data['repeatEndHour'] !== null ? $data['repeatEndHour'] : null)
-            ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null)
-            ->withRelativeDuration(array_key_exists('relativeDuration', $data) && $data['relativeDuration'] !== null ? $data['relativeDuration'] : null);
+            ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null);
     }
 
     public function toJson(): array {
@@ -270,7 +255,6 @@ class Event implements IModel {
             "repeatBeginHour" => $this->getRepeatBeginHour(),
             "repeatEndHour" => $this->getRepeatEndHour(),
             "relativeTriggerName" => $this->getRelativeTriggerName(),
-            "relativeDuration" => $this->getRelativeDuration(),
         );
     }
 }

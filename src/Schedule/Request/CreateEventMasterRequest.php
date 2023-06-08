@@ -50,8 +50,6 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
     private $repeatEndHour;
     /** @var string */
     private $relativeTriggerName;
-    /** @var int */
-    private $relativeDuration;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -202,16 +200,6 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 		$this->relativeTriggerName = $relativeTriggerName;
 		return $this;
 	}
-	public function getRelativeDuration(): ?int {
-		return $this->relativeDuration;
-	}
-	public function setRelativeDuration(?int $relativeDuration) {
-		$this->relativeDuration = $relativeDuration;
-	}
-	public function withRelativeDuration(?int $relativeDuration): CreateEventMasterRequest {
-		$this->relativeDuration = $relativeDuration;
-		return $this;
-	}
 
     public static function fromJson(?array $data): ?CreateEventMasterRequest {
         if ($data === null) {
@@ -232,8 +220,7 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
             ->withRepeatEndDayOfWeek(array_key_exists('repeatEndDayOfWeek', $data) && $data['repeatEndDayOfWeek'] !== null ? $data['repeatEndDayOfWeek'] : null)
             ->withRepeatBeginHour(array_key_exists('repeatBeginHour', $data) && $data['repeatBeginHour'] !== null ? $data['repeatBeginHour'] : null)
             ->withRepeatEndHour(array_key_exists('repeatEndHour', $data) && $data['repeatEndHour'] !== null ? $data['repeatEndHour'] : null)
-            ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null)
-            ->withRelativeDuration(array_key_exists('relativeDuration', $data) && $data['relativeDuration'] !== null ? $data['relativeDuration'] : null);
+            ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null);
     }
 
     public function toJson(): array {
@@ -253,7 +240,6 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
             "repeatBeginHour" => $this->getRepeatBeginHour(),
             "repeatEndHour" => $this->getRepeatEndHour(),
             "relativeTriggerName" => $this->getRelativeTriggerName(),
-            "relativeDuration" => $this->getRelativeDuration(),
         );
     }
 }

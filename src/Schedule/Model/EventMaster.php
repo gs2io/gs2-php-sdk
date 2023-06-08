@@ -84,10 +84,6 @@ class EventMaster implements IModel {
 	/**
      * @var int
 	 */
-	private $relativeDuration;
-	/**
-     * @var int
-	 */
 	private $createdAt;
 	/**
      * @var int
@@ -243,16 +239,6 @@ class EventMaster implements IModel {
 		$this->relativeTriggerName = $relativeTriggerName;
 		return $this;
 	}
-	public function getRelativeDuration(): ?int {
-		return $this->relativeDuration;
-	}
-	public function setRelativeDuration(?int $relativeDuration) {
-		$this->relativeDuration = $relativeDuration;
-	}
-	public function withRelativeDuration(?int $relativeDuration): EventMaster {
-		$this->relativeDuration = $relativeDuration;
-		return $this;
-	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -294,7 +280,6 @@ class EventMaster implements IModel {
             ->withRepeatBeginHour(array_key_exists('repeatBeginHour', $data) && $data['repeatBeginHour'] !== null ? $data['repeatBeginHour'] : null)
             ->withRepeatEndHour(array_key_exists('repeatEndHour', $data) && $data['repeatEndHour'] !== null ? $data['repeatEndHour'] : null)
             ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null)
-            ->withRelativeDuration(array_key_exists('relativeDuration', $data) && $data['relativeDuration'] !== null ? $data['relativeDuration'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
@@ -316,7 +301,6 @@ class EventMaster implements IModel {
             "repeatBeginHour" => $this->getRepeatBeginHour(),
             "repeatEndHour" => $this->getRepeatEndHour(),
             "relativeTriggerName" => $this->getRelativeTriggerName(),
-            "relativeDuration" => $this->getRelativeDuration(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

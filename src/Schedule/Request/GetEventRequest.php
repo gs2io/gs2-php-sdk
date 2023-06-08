@@ -26,6 +26,8 @@ class GetEventRequest extends Gs2BasicRequest {
     private $eventName;
     /** @var string */
     private $accessToken;
+    /** @var bool */
+    private $isInSchedule;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,16 @@ class GetEventRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+	public function getIsInSchedule(): ?bool {
+		return $this->isInSchedule;
+	}
+	public function setIsInSchedule(?bool $isInSchedule) {
+		$this->isInSchedule = $isInSchedule;
+	}
+	public function withIsInSchedule(?bool $isInSchedule): GetEventRequest {
+		$this->isInSchedule = $isInSchedule;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetEventRequest {
         if ($data === null) {
@@ -64,7 +76,8 @@ class GetEventRequest extends Gs2BasicRequest {
         return (new GetEventRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withEventName(array_key_exists('eventName', $data) && $data['eventName'] !== null ? $data['eventName'] : null)
-            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withIsInSchedule(array_key_exists('isInSchedule', $data) ? $data['isInSchedule'] : null);
     }
 
     public function toJson(): array {
@@ -72,6 +85,7 @@ class GetEventRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "eventName" => $this->getEventName(),
             "accessToken" => $this->getAccessToken(),
+            "isInSchedule" => $this->getIsInSchedule(),
         );
     }
 }

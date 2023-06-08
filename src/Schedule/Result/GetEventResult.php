@@ -24,10 +24,12 @@ use Gs2\Schedule\Model\RepeatSchedule;
 class GetEventResult implements IResult {
     /** @var Event */
     private $item;
-    /** @var int */
-    private $repeatCount;
     /** @var bool */
     private $inSchedule;
+    /** @var int */
+    private $scheduleStartAt;
+    /** @var int */
+    private $scheduleEndAt;
     /** @var RepeatSchedule */
     private $repeatSchedule;
 
@@ -44,19 +46,6 @@ class GetEventResult implements IResult {
 		return $this;
 	}
 
-	public function getRepeatCount(): ?int {
-		return $this->repeatCount;
-	}
-
-	public function setRepeatCount(?int $repeatCount) {
-		$this->repeatCount = $repeatCount;
-	}
-
-	public function withRepeatCount(?int $repeatCount): GetEventResult {
-		$this->repeatCount = $repeatCount;
-		return $this;
-	}
-
 	public function getInSchedule(): ?bool {
 		return $this->inSchedule;
 	}
@@ -67,6 +56,32 @@ class GetEventResult implements IResult {
 
 	public function withInSchedule(?bool $inSchedule): GetEventResult {
 		$this->inSchedule = $inSchedule;
+		return $this;
+	}
+
+	public function getScheduleStartAt(): ?int {
+		return $this->scheduleStartAt;
+	}
+
+	public function setScheduleStartAt(?int $scheduleStartAt) {
+		$this->scheduleStartAt = $scheduleStartAt;
+	}
+
+	public function withScheduleStartAt(?int $scheduleStartAt): GetEventResult {
+		$this->scheduleStartAt = $scheduleStartAt;
+		return $this;
+	}
+
+	public function getScheduleEndAt(): ?int {
+		return $this->scheduleEndAt;
+	}
+
+	public function setScheduleEndAt(?int $scheduleEndAt) {
+		$this->scheduleEndAt = $scheduleEndAt;
+	}
+
+	public function withScheduleEndAt(?int $scheduleEndAt): GetEventResult {
+		$this->scheduleEndAt = $scheduleEndAt;
 		return $this;
 	}
 
@@ -89,16 +104,18 @@ class GetEventResult implements IResult {
         }
         return (new GetEventResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Event::fromJson($data['item']) : null)
-            ->withRepeatCount(array_key_exists('repeatCount', $data) && $data['repeatCount'] !== null ? $data['repeatCount'] : null)
             ->withInSchedule(array_key_exists('inSchedule', $data) ? $data['inSchedule'] : null)
+            ->withScheduleStartAt(array_key_exists('scheduleStartAt', $data) && $data['scheduleStartAt'] !== null ? $data['scheduleStartAt'] : null)
+            ->withScheduleEndAt(array_key_exists('scheduleEndAt', $data) && $data['scheduleEndAt'] !== null ? $data['scheduleEndAt'] : null)
             ->withRepeatSchedule(array_key_exists('repeatSchedule', $data) && $data['repeatSchedule'] !== null ? RepeatSchedule::fromJson($data['repeatSchedule']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "repeatCount" => $this->getRepeatCount(),
             "inSchedule" => $this->getInSchedule(),
+            "scheduleStartAt" => $this->getScheduleStartAt(),
+            "scheduleEndAt" => $this->getScheduleEndAt(),
             "repeatSchedule" => $this->getRepeatSchedule() !== null ? $this->getRepeatSchedule()->toJson() : null,
         );
     }

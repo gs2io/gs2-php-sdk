@@ -77,12 +77,12 @@ use Gs2\Idle\Request\IncreaseMaximumIdleMinutesByStampSheetRequest;
 use Gs2\Idle\Result\IncreaseMaximumIdleMinutesByStampSheetResult;
 use Gs2\Idle\Request\ExportMasterRequest;
 use Gs2\Idle\Result\ExportMasterResult;
-use Gs2\Idle\Request\GetCurrentIdleMasterRequest;
-use Gs2\Idle\Result\GetCurrentIdleMasterResult;
-use Gs2\Idle\Request\UpdateCurrentIdleMasterRequest;
-use Gs2\Idle\Result\UpdateCurrentIdleMasterResult;
-use Gs2\Idle\Request\UpdateCurrentIdleMasterFromGitHubRequest;
-use Gs2\Idle\Result\UpdateCurrentIdleMasterFromGitHubResult;
+use Gs2\Idle\Request\GetCurrentCategoryMasterRequest;
+use Gs2\Idle\Result\GetCurrentCategoryMasterResult;
+use Gs2\Idle\Request\UpdateCurrentCategoryMasterRequest;
+use Gs2\Idle\Result\UpdateCurrentCategoryMasterResult;
+use Gs2\Idle\Request\UpdateCurrentCategoryMasterFromGitHubRequest;
+use Gs2\Idle\Result\UpdateCurrentCategoryMasterFromGitHubResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -950,9 +950,6 @@ class DescribeStatusesTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
-        if ($this->request->getCategoryName() !== null) {
-            $queryStrings["categoryName"] = $this->request->getCategoryName();
-        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -1019,9 +1016,6 @@ class DescribeStatusesByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
-        }
-        if ($this->request->getCategoryName() !== null) {
-            $queryStrings["categoryName"] = $this->request->getCategoryName();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -1606,10 +1600,10 @@ class ExportMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class GetCurrentIdleMasterTask extends Gs2RestSessionTask {
+class GetCurrentCategoryMasterTask extends Gs2RestSessionTask {
 
     /**
-     * @var GetCurrentIdleMasterRequest
+     * @var GetCurrentCategoryMasterRequest
      */
     private $request;
 
@@ -1619,17 +1613,17 @@ class GetCurrentIdleMasterTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * GetCurrentIdleMasterTask constructor.
+     * GetCurrentCategoryMasterTask constructor.
      * @param Gs2RestSession $session
-     * @param GetCurrentIdleMasterRequest $request
+     * @param GetCurrentCategoryMasterRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        GetCurrentIdleMasterRequest $request
+        GetCurrentCategoryMasterRequest $request
     ) {
         parent::__construct(
             $session,
-            GetCurrentIdleMasterResult::class
+            GetCurrentCategoryMasterResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -1663,10 +1657,10 @@ class GetCurrentIdleMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class UpdateCurrentIdleMasterTask extends Gs2RestSessionTask {
+class UpdateCurrentCategoryMasterTask extends Gs2RestSessionTask {
 
     /**
-     * @var UpdateCurrentIdleMasterRequest
+     * @var UpdateCurrentCategoryMasterRequest
      */
     private $request;
 
@@ -1676,17 +1670,17 @@ class UpdateCurrentIdleMasterTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * UpdateCurrentIdleMasterTask constructor.
+     * UpdateCurrentCategoryMasterTask constructor.
      * @param Gs2RestSession $session
-     * @param UpdateCurrentIdleMasterRequest $request
+     * @param UpdateCurrentCategoryMasterRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        UpdateCurrentIdleMasterRequest $request
+        UpdateCurrentCategoryMasterRequest $request
     ) {
         parent::__construct(
             $session,
-            UpdateCurrentIdleMasterResult::class
+            UpdateCurrentCategoryMasterResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -1721,10 +1715,10 @@ class UpdateCurrentIdleMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class UpdateCurrentIdleMasterFromGitHubTask extends Gs2RestSessionTask {
+class UpdateCurrentCategoryMasterFromGitHubTask extends Gs2RestSessionTask {
 
     /**
-     * @var UpdateCurrentIdleMasterFromGitHubRequest
+     * @var UpdateCurrentCategoryMasterFromGitHubRequest
      */
     private $request;
 
@@ -1734,17 +1728,17 @@ class UpdateCurrentIdleMasterFromGitHubTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * UpdateCurrentIdleMasterFromGitHubTask constructor.
+     * UpdateCurrentCategoryMasterFromGitHubTask constructor.
      * @param Gs2RestSession $session
-     * @param UpdateCurrentIdleMasterFromGitHubRequest $request
+     * @param UpdateCurrentCategoryMasterFromGitHubRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        UpdateCurrentIdleMasterFromGitHubRequest $request
+        UpdateCurrentCategoryMasterFromGitHubRequest $request
     ) {
         parent::__construct(
             $session,
-            UpdateCurrentIdleMasterFromGitHubResult::class
+            UpdateCurrentCategoryMasterFromGitHubResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2445,14 +2439,14 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param GetCurrentIdleMasterRequest $request
+     * @param GetCurrentCategoryMasterRequest $request
      * @return PromiseInterface
      */
-    public function getCurrentIdleMasterAsync(
-            GetCurrentIdleMasterRequest $request
+    public function getCurrentCategoryMasterAsync(
+            GetCurrentCategoryMasterRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new GetCurrentIdleMasterTask(
+        $task = new GetCurrentCategoryMasterTask(
             $this->session,
             $request
         );
@@ -2460,26 +2454,26 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param GetCurrentIdleMasterRequest $request
-     * @return GetCurrentIdleMasterResult
+     * @param GetCurrentCategoryMasterRequest $request
+     * @return GetCurrentCategoryMasterResult
      */
-    public function getCurrentIdleMaster (
-            GetCurrentIdleMasterRequest $request
-    ): GetCurrentIdleMasterResult {
-        return $this->getCurrentIdleMasterAsync(
+    public function getCurrentCategoryMaster (
+            GetCurrentCategoryMasterRequest $request
+    ): GetCurrentCategoryMasterResult {
+        return $this->getCurrentCategoryMasterAsync(
             $request
         )->wait();
     }
 
     /**
-     * @param UpdateCurrentIdleMasterRequest $request
+     * @param UpdateCurrentCategoryMasterRequest $request
      * @return PromiseInterface
      */
-    public function updateCurrentIdleMasterAsync(
-            UpdateCurrentIdleMasterRequest $request
+    public function updateCurrentCategoryMasterAsync(
+            UpdateCurrentCategoryMasterRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new UpdateCurrentIdleMasterTask(
+        $task = new UpdateCurrentCategoryMasterTask(
             $this->session,
             $request
         );
@@ -2487,26 +2481,26 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param UpdateCurrentIdleMasterRequest $request
-     * @return UpdateCurrentIdleMasterResult
+     * @param UpdateCurrentCategoryMasterRequest $request
+     * @return UpdateCurrentCategoryMasterResult
      */
-    public function updateCurrentIdleMaster (
-            UpdateCurrentIdleMasterRequest $request
-    ): UpdateCurrentIdleMasterResult {
-        return $this->updateCurrentIdleMasterAsync(
+    public function updateCurrentCategoryMaster (
+            UpdateCurrentCategoryMasterRequest $request
+    ): UpdateCurrentCategoryMasterResult {
+        return $this->updateCurrentCategoryMasterAsync(
             $request
         )->wait();
     }
 
     /**
-     * @param UpdateCurrentIdleMasterFromGitHubRequest $request
+     * @param UpdateCurrentCategoryMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
-    public function updateCurrentIdleMasterFromGitHubAsync(
-            UpdateCurrentIdleMasterFromGitHubRequest $request
+    public function updateCurrentCategoryMasterFromGitHubAsync(
+            UpdateCurrentCategoryMasterFromGitHubRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new UpdateCurrentIdleMasterFromGitHubTask(
+        $task = new UpdateCurrentCategoryMasterFromGitHubTask(
             $this->session,
             $request
         );
@@ -2514,13 +2508,13 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param UpdateCurrentIdleMasterFromGitHubRequest $request
-     * @return UpdateCurrentIdleMasterFromGitHubResult
+     * @param UpdateCurrentCategoryMasterFromGitHubRequest $request
+     * @return UpdateCurrentCategoryMasterFromGitHubResult
      */
-    public function updateCurrentIdleMasterFromGitHub (
-            UpdateCurrentIdleMasterFromGitHubRequest $request
-    ): UpdateCurrentIdleMasterFromGitHubResult {
-        return $this->updateCurrentIdleMasterFromGitHubAsync(
+    public function updateCurrentCategoryMasterFromGitHub (
+            UpdateCurrentCategoryMasterFromGitHubRequest $request
+    ): UpdateCurrentCategoryMasterFromGitHubResult {
+        return $this->updateCurrentCategoryMasterFromGitHubAsync(
             $request
         )->wait();
     }

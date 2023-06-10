@@ -23,8 +23,6 @@ class DescribeStatusesRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $categoryName;
-    /** @var string */
     private $accessToken;
     /** @var string */
     private $pageToken;
@@ -38,16 +36,6 @@ class DescribeStatusesRequest extends Gs2BasicRequest {
 	}
 	public function withNamespaceName(?string $namespaceName): DescribeStatusesRequest {
 		$this->namespaceName = $namespaceName;
-		return $this;
-	}
-	public function getCategoryName(): ?string {
-		return $this->categoryName;
-	}
-	public function setCategoryName(?string $categoryName) {
-		$this->categoryName = $categoryName;
-	}
-	public function withCategoryName(?string $categoryName): DescribeStatusesRequest {
-		$this->categoryName = $categoryName;
 		return $this;
 	}
 	public function getAccessToken(): ?string {
@@ -87,7 +75,6 @@ class DescribeStatusesRequest extends Gs2BasicRequest {
         }
         return (new DescribeStatusesRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
@@ -96,7 +83,6 @@ class DescribeStatusesRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "categoryName" => $this->getCategoryName(),
             "accessToken" => $this->getAccessToken(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),

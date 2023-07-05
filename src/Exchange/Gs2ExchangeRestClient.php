@@ -55,12 +55,36 @@ use Gs2\Exchange\Request\UpdateRateModelMasterRequest;
 use Gs2\Exchange\Result\UpdateRateModelMasterResult;
 use Gs2\Exchange\Request\DeleteRateModelMasterRequest;
 use Gs2\Exchange\Result\DeleteRateModelMasterResult;
+use Gs2\Exchange\Request\DescribeIncrementalRateModelsRequest;
+use Gs2\Exchange\Result\DescribeIncrementalRateModelsResult;
+use Gs2\Exchange\Request\GetIncrementalRateModelRequest;
+use Gs2\Exchange\Result\GetIncrementalRateModelResult;
+use Gs2\Exchange\Request\DescribeIncrementalRateModelMastersRequest;
+use Gs2\Exchange\Result\DescribeIncrementalRateModelMastersResult;
+use Gs2\Exchange\Request\CreateIncrementalRateModelMasterRequest;
+use Gs2\Exchange\Result\CreateIncrementalRateModelMasterResult;
+use Gs2\Exchange\Request\GetIncrementalRateModelMasterRequest;
+use Gs2\Exchange\Result\GetIncrementalRateModelMasterResult;
+use Gs2\Exchange\Request\UpdateIncrementalRateModelMasterRequest;
+use Gs2\Exchange\Result\UpdateIncrementalRateModelMasterResult;
+use Gs2\Exchange\Request\DeleteIncrementalRateModelMasterRequest;
+use Gs2\Exchange\Result\DeleteIncrementalRateModelMasterResult;
 use Gs2\Exchange\Request\ExchangeRequest;
 use Gs2\Exchange\Result\ExchangeResult;
 use Gs2\Exchange\Request\ExchangeByUserIdRequest;
 use Gs2\Exchange\Result\ExchangeByUserIdResult;
 use Gs2\Exchange\Request\ExchangeByStampSheetRequest;
 use Gs2\Exchange\Result\ExchangeByStampSheetResult;
+use Gs2\Exchange\Request\IncrementalExchangeRequest;
+use Gs2\Exchange\Result\IncrementalExchangeResult;
+use Gs2\Exchange\Request\IncrementalExchangeByUserIdRequest;
+use Gs2\Exchange\Result\IncrementalExchangeByUserIdResult;
+use Gs2\Exchange\Request\IncrementalExchangeByStampSheetRequest;
+use Gs2\Exchange\Result\IncrementalExchangeByStampSheetResult;
+use Gs2\Exchange\Request\UnlockIncrementalExchangeByUserIdRequest;
+use Gs2\Exchange\Result\UnlockIncrementalExchangeByUserIdResult;
+use Gs2\Exchange\Request\UnlockIncrementalExchangeByStampSheetRequest;
+use Gs2\Exchange\Result\UnlockIncrementalExchangeByStampSheetResult;
 use Gs2\Exchange\Request\ExportMasterRequest;
 use Gs2\Exchange\Result\ExportMasterResult;
 use Gs2\Exchange\Request\GetCurrentRateMasterRequest;
@@ -975,6 +999,478 @@ class DeleteRateModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeIncrementalRateModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeIncrementalRateModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeIncrementalRateModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeIncrementalRateModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeIncrementalRateModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeIncrementalRateModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/incremental/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetIncrementalRateModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetIncrementalRateModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetIncrementalRateModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetIncrementalRateModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetIncrementalRateModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetIncrementalRateModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/incremental/model/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeIncrementalRateModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeIncrementalRateModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeIncrementalRateModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeIncrementalRateModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeIncrementalRateModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeIncrementalRateModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/incremental/master/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateIncrementalRateModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateIncrementalRateModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateIncrementalRateModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateIncrementalRateModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateIncrementalRateModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateIncrementalRateModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/incremental/master/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getConsumeAction() !== null) {
+            $json["consumeAction"] = $this->request->getConsumeAction()->toJson();
+        }
+        if ($this->request->getCalculateType() !== null) {
+            $json["calculateType"] = $this->request->getCalculateType();
+        }
+        if ($this->request->getBaseValue() !== null) {
+            $json["baseValue"] = $this->request->getBaseValue();
+        }
+        if ($this->request->getCoefficientValue() !== null) {
+            $json["coefficientValue"] = $this->request->getCoefficientValue();
+        }
+        if ($this->request->getCalculateScriptId() !== null) {
+            $json["calculateScriptId"] = $this->request->getCalculateScriptId();
+        }
+        if ($this->request->getExchangeCountId() !== null) {
+            $json["exchangeCountId"] = $this->request->getExchangeCountId();
+        }
+        if ($this->request->getAcquireActions() !== null) {
+            $array = [];
+            foreach ($this->request->getAcquireActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["acquireActions"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetIncrementalRateModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetIncrementalRateModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetIncrementalRateModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetIncrementalRateModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetIncrementalRateModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetIncrementalRateModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/incremental/master/model/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateIncrementalRateModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateIncrementalRateModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateIncrementalRateModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateIncrementalRateModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateIncrementalRateModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateIncrementalRateModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/incremental/master/model/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getConsumeAction() !== null) {
+            $json["consumeAction"] = $this->request->getConsumeAction()->toJson();
+        }
+        if ($this->request->getCalculateType() !== null) {
+            $json["calculateType"] = $this->request->getCalculateType();
+        }
+        if ($this->request->getBaseValue() !== null) {
+            $json["baseValue"] = $this->request->getBaseValue();
+        }
+        if ($this->request->getCoefficientValue() !== null) {
+            $json["coefficientValue"] = $this->request->getCoefficientValue();
+        }
+        if ($this->request->getCalculateScriptId() !== null) {
+            $json["calculateScriptId"] = $this->request->getCalculateScriptId();
+        }
+        if ($this->request->getExchangeCountId() !== null) {
+            $json["exchangeCountId"] = $this->request->getExchangeCountId();
+        }
+        if ($this->request->getAcquireActions() !== null) {
+            $array = [];
+            foreach ($this->request->getAcquireActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["acquireActions"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteIncrementalRateModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteIncrementalRateModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteIncrementalRateModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteIncrementalRateModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteIncrementalRateModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteIncrementalRateModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/incremental/master/model/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ExchangeTask extends Gs2RestSessionTask {
 
     /**
@@ -1151,6 +1647,331 @@ class ExchangeByStampSheetTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/exchange";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IncrementalExchangeTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IncrementalExchangeRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IncrementalExchangeTask constructor.
+     * @param Gs2RestSession $session
+     * @param IncrementalExchangeRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IncrementalExchangeRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IncrementalExchangeResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/incremental/exchange/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IncrementalExchangeByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IncrementalExchangeByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IncrementalExchangeByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param IncrementalExchangeByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IncrementalExchangeByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IncrementalExchangeByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/incremental/exchange/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IncrementalExchangeByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IncrementalExchangeByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IncrementalExchangeByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param IncrementalExchangeByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IncrementalExchangeByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IncrementalExchangeByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/incremental/exchange";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnlockIncrementalExchangeByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnlockIncrementalExchangeByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnlockIncrementalExchangeByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnlockIncrementalExchangeByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnlockIncrementalExchangeByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnlockIncrementalExchangeByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/incremental/exchange/{rateName}/unlock";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getLockTransactionId() !== null) {
+            $json["lockTransactionId"] = $this->request->getLockTransactionId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnlockIncrementalExchangeByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnlockIncrementalExchangeByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnlockIncrementalExchangeByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnlockIncrementalExchangeByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnlockIncrementalExchangeByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnlockIncrementalExchangeByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/incremental/exchange/unlock";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {
@@ -2684,6 +3505,195 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DescribeIncrementalRateModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeIncrementalRateModelsAsync(
+            DescribeIncrementalRateModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeIncrementalRateModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeIncrementalRateModelsRequest $request
+     * @return DescribeIncrementalRateModelsResult
+     */
+    public function describeIncrementalRateModels (
+            DescribeIncrementalRateModelsRequest $request
+    ): DescribeIncrementalRateModelsResult {
+        return $this->describeIncrementalRateModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetIncrementalRateModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getIncrementalRateModelAsync(
+            GetIncrementalRateModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetIncrementalRateModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetIncrementalRateModelRequest $request
+     * @return GetIncrementalRateModelResult
+     */
+    public function getIncrementalRateModel (
+            GetIncrementalRateModelRequest $request
+    ): GetIncrementalRateModelResult {
+        return $this->getIncrementalRateModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeIncrementalRateModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeIncrementalRateModelMastersAsync(
+            DescribeIncrementalRateModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeIncrementalRateModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeIncrementalRateModelMastersRequest $request
+     * @return DescribeIncrementalRateModelMastersResult
+     */
+    public function describeIncrementalRateModelMasters (
+            DescribeIncrementalRateModelMastersRequest $request
+    ): DescribeIncrementalRateModelMastersResult {
+        return $this->describeIncrementalRateModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateIncrementalRateModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createIncrementalRateModelMasterAsync(
+            CreateIncrementalRateModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateIncrementalRateModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateIncrementalRateModelMasterRequest $request
+     * @return CreateIncrementalRateModelMasterResult
+     */
+    public function createIncrementalRateModelMaster (
+            CreateIncrementalRateModelMasterRequest $request
+    ): CreateIncrementalRateModelMasterResult {
+        return $this->createIncrementalRateModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetIncrementalRateModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getIncrementalRateModelMasterAsync(
+            GetIncrementalRateModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetIncrementalRateModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetIncrementalRateModelMasterRequest $request
+     * @return GetIncrementalRateModelMasterResult
+     */
+    public function getIncrementalRateModelMaster (
+            GetIncrementalRateModelMasterRequest $request
+    ): GetIncrementalRateModelMasterResult {
+        return $this->getIncrementalRateModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateIncrementalRateModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateIncrementalRateModelMasterAsync(
+            UpdateIncrementalRateModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateIncrementalRateModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateIncrementalRateModelMasterRequest $request
+     * @return UpdateIncrementalRateModelMasterResult
+     */
+    public function updateIncrementalRateModelMaster (
+            UpdateIncrementalRateModelMasterRequest $request
+    ): UpdateIncrementalRateModelMasterResult {
+        return $this->updateIncrementalRateModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteIncrementalRateModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteIncrementalRateModelMasterAsync(
+            DeleteIncrementalRateModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteIncrementalRateModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteIncrementalRateModelMasterRequest $request
+     * @return DeleteIncrementalRateModelMasterResult
+     */
+    public function deleteIncrementalRateModelMaster (
+            DeleteIncrementalRateModelMasterRequest $request
+    ): DeleteIncrementalRateModelMasterResult {
+        return $this->deleteIncrementalRateModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param ExchangeRequest $request
      * @return PromiseInterface
      */
@@ -2760,6 +3770,141 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
             ExchangeByStampSheetRequest $request
     ): ExchangeByStampSheetResult {
         return $this->exchangeByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IncrementalExchangeRequest $request
+     * @return PromiseInterface
+     */
+    public function incrementalExchangeAsync(
+            IncrementalExchangeRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IncrementalExchangeTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IncrementalExchangeRequest $request
+     * @return IncrementalExchangeResult
+     */
+    public function incrementalExchange (
+            IncrementalExchangeRequest $request
+    ): IncrementalExchangeResult {
+        return $this->incrementalExchangeAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IncrementalExchangeByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function incrementalExchangeByUserIdAsync(
+            IncrementalExchangeByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IncrementalExchangeByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IncrementalExchangeByUserIdRequest $request
+     * @return IncrementalExchangeByUserIdResult
+     */
+    public function incrementalExchangeByUserId (
+            IncrementalExchangeByUserIdRequest $request
+    ): IncrementalExchangeByUserIdResult {
+        return $this->incrementalExchangeByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IncrementalExchangeByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function incrementalExchangeByStampSheetAsync(
+            IncrementalExchangeByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IncrementalExchangeByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IncrementalExchangeByStampSheetRequest $request
+     * @return IncrementalExchangeByStampSheetResult
+     */
+    public function incrementalExchangeByStampSheet (
+            IncrementalExchangeByStampSheetRequest $request
+    ): IncrementalExchangeByStampSheetResult {
+        return $this->incrementalExchangeByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnlockIncrementalExchangeByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function unlockIncrementalExchangeByUserIdAsync(
+            UnlockIncrementalExchangeByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnlockIncrementalExchangeByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnlockIncrementalExchangeByUserIdRequest $request
+     * @return UnlockIncrementalExchangeByUserIdResult
+     */
+    public function unlockIncrementalExchangeByUserId (
+            UnlockIncrementalExchangeByUserIdRequest $request
+    ): UnlockIncrementalExchangeByUserIdResult {
+        return $this->unlockIncrementalExchangeByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnlockIncrementalExchangeByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function unlockIncrementalExchangeByStampSheetAsync(
+            UnlockIncrementalExchangeByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnlockIncrementalExchangeByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnlockIncrementalExchangeByStampSheetRequest $request
+     * @return UnlockIncrementalExchangeByStampSheetResult
+     */
+    public function unlockIncrementalExchangeByStampSheet (
+            UnlockIncrementalExchangeByStampSheetRequest $request
+    ): UnlockIncrementalExchangeByStampSheetResult {
+        return $this->unlockIncrementalExchangeByStampSheetAsync(
             $request
         )->wait();
     }

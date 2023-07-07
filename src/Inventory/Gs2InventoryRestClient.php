@@ -69,6 +69,34 @@ use Gs2\Inventory\Request\DescribeItemModelsRequest;
 use Gs2\Inventory\Result\DescribeItemModelsResult;
 use Gs2\Inventory\Request\GetItemModelRequest;
 use Gs2\Inventory\Result\GetItemModelResult;
+use Gs2\Inventory\Request\DescribeSimpleInventoryModelMastersRequest;
+use Gs2\Inventory\Result\DescribeSimpleInventoryModelMastersResult;
+use Gs2\Inventory\Request\CreateSimpleInventoryModelMasterRequest;
+use Gs2\Inventory\Result\CreateSimpleInventoryModelMasterResult;
+use Gs2\Inventory\Request\GetSimpleInventoryModelMasterRequest;
+use Gs2\Inventory\Result\GetSimpleInventoryModelMasterResult;
+use Gs2\Inventory\Request\UpdateSimpleInventoryModelMasterRequest;
+use Gs2\Inventory\Result\UpdateSimpleInventoryModelMasterResult;
+use Gs2\Inventory\Request\DeleteSimpleInventoryModelMasterRequest;
+use Gs2\Inventory\Result\DeleteSimpleInventoryModelMasterResult;
+use Gs2\Inventory\Request\DescribeSimpleInventoryModelsRequest;
+use Gs2\Inventory\Result\DescribeSimpleInventoryModelsResult;
+use Gs2\Inventory\Request\GetSimpleInventoryModelRequest;
+use Gs2\Inventory\Result\GetSimpleInventoryModelResult;
+use Gs2\Inventory\Request\DescribeSimpleItemModelMastersRequest;
+use Gs2\Inventory\Result\DescribeSimpleItemModelMastersResult;
+use Gs2\Inventory\Request\CreateSimpleItemModelMasterRequest;
+use Gs2\Inventory\Result\CreateSimpleItemModelMasterResult;
+use Gs2\Inventory\Request\GetSimpleItemModelMasterRequest;
+use Gs2\Inventory\Result\GetSimpleItemModelMasterResult;
+use Gs2\Inventory\Request\UpdateSimpleItemModelMasterRequest;
+use Gs2\Inventory\Result\UpdateSimpleItemModelMasterResult;
+use Gs2\Inventory\Request\DeleteSimpleItemModelMasterRequest;
+use Gs2\Inventory\Result\DeleteSimpleItemModelMasterResult;
+use Gs2\Inventory\Request\DescribeSimpleItemModelsRequest;
+use Gs2\Inventory\Result\DescribeSimpleItemModelsResult;
+use Gs2\Inventory\Request\GetSimpleItemModelRequest;
+use Gs2\Inventory\Result\GetSimpleItemModelResult;
 use Gs2\Inventory\Request\ExportMasterRequest;
 use Gs2\Inventory\Result\ExportMasterResult;
 use Gs2\Inventory\Request\GetCurrentItemModelMasterRequest;
@@ -145,6 +173,30 @@ use Gs2\Inventory\Request\DeleteReferenceOfItemSetByStampSheetRequest;
 use Gs2\Inventory\Result\DeleteReferenceOfItemSetByStampSheetResult;
 use Gs2\Inventory\Request\VerifyReferenceOfByStampTaskRequest;
 use Gs2\Inventory\Result\VerifyReferenceOfByStampTaskResult;
+use Gs2\Inventory\Request\DescribeSimpleItemsRequest;
+use Gs2\Inventory\Result\DescribeSimpleItemsResult;
+use Gs2\Inventory\Request\DescribeSimpleItemsByUserIdRequest;
+use Gs2\Inventory\Result\DescribeSimpleItemsByUserIdResult;
+use Gs2\Inventory\Request\GetSimpleItemRequest;
+use Gs2\Inventory\Result\GetSimpleItemResult;
+use Gs2\Inventory\Request\GetSimpleItemByUserIdRequest;
+use Gs2\Inventory\Result\GetSimpleItemByUserIdResult;
+use Gs2\Inventory\Request\GetSimpleItemWithSignatureRequest;
+use Gs2\Inventory\Result\GetSimpleItemWithSignatureResult;
+use Gs2\Inventory\Request\GetSimpleItemWithSignatureByUserIdRequest;
+use Gs2\Inventory\Result\GetSimpleItemWithSignatureByUserIdResult;
+use Gs2\Inventory\Request\AcquireSimpleItemsByUserIdRequest;
+use Gs2\Inventory\Result\AcquireSimpleItemsByUserIdResult;
+use Gs2\Inventory\Request\ConsumeSimpleItemsRequest;
+use Gs2\Inventory\Result\ConsumeSimpleItemsResult;
+use Gs2\Inventory\Request\ConsumeSimpleItemsByUserIdRequest;
+use Gs2\Inventory\Result\ConsumeSimpleItemsByUserIdResult;
+use Gs2\Inventory\Request\DeleteSimpleItemsByUserIdRequest;
+use Gs2\Inventory\Result\DeleteSimpleItemsByUserIdResult;
+use Gs2\Inventory\Request\AcquireSimpleItemsByStampSheetRequest;
+use Gs2\Inventory\Result\AcquireSimpleItemsByStampSheetResult;
+use Gs2\Inventory\Request\ConsumeSimpleItemsByStampTaskRequest;
+use Gs2\Inventory\Result\ConsumeSimpleItemsByStampTaskResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -1375,6 +1427,853 @@ class GetItemModelTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/inventory/{inventoryName}/item/{itemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSimpleInventoryModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSimpleInventoryModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSimpleInventoryModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSimpleInventoryModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSimpleInventoryModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSimpleInventoryModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateSimpleInventoryModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateSimpleInventoryModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateSimpleInventoryModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateSimpleInventoryModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateSimpleInventoryModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateSimpleInventoryModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSimpleInventoryModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSimpleInventoryModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSimpleInventoryModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSimpleInventoryModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSimpleInventoryModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSimpleInventoryModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory/{inventoryName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateSimpleInventoryModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateSimpleInventoryModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateSimpleInventoryModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateSimpleInventoryModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateSimpleInventoryModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateSimpleInventoryModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory/{inventoryName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteSimpleInventoryModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteSimpleInventoryModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteSimpleInventoryModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteSimpleInventoryModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteSimpleInventoryModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteSimpleInventoryModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory/{inventoryName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSimpleInventoryModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSimpleInventoryModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSimpleInventoryModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSimpleInventoryModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSimpleInventoryModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSimpleInventoryModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/simple/inventory";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSimpleInventoryModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSimpleInventoryModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSimpleInventoryModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSimpleInventoryModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSimpleInventoryModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSimpleInventoryModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/simple/inventory/{inventoryName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSimpleItemModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSimpleItemModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSimpleItemModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSimpleItemModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSimpleItemModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSimpleItemModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory/{inventoryName}/item";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateSimpleItemModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateSimpleItemModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateSimpleItemModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateSimpleItemModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateSimpleItemModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateSimpleItemModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory/{inventoryName}/item";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSimpleItemModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSimpleItemModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSimpleItemModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSimpleItemModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSimpleItemModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSimpleItemModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory/{inventoryName}/item/{itemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateSimpleItemModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateSimpleItemModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateSimpleItemModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateSimpleItemModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateSimpleItemModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateSimpleItemModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory/{inventoryName}/item/{itemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteSimpleItemModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteSimpleItemModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteSimpleItemModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteSimpleItemModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteSimpleItemModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteSimpleItemModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/simple/inventory/{inventoryName}/item/{itemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSimpleItemModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSimpleItemModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSimpleItemModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSimpleItemModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSimpleItemModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSimpleItemModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/simple/inventory/{inventoryName}/item";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSimpleItemModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSimpleItemModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSimpleItemModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSimpleItemModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSimpleItemModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSimpleItemModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/simple/inventory/{inventoryName}/item/{itemName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
@@ -3796,6 +4695,774 @@ class VerifyReferenceOfByStampTaskTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeSimpleItemsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSimpleItemsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSimpleItemsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSimpleItemsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSimpleItemsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSimpleItemsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/simple/inventory/{inventoryName}/item";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSimpleItemsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSimpleItemsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSimpleItemsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSimpleItemsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSimpleItemsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSimpleItemsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/simple/inventory/{inventoryName}/item";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSimpleItemTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSimpleItemRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSimpleItemTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSimpleItemRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSimpleItemRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSimpleItemResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/simple/inventory/{inventoryName}/item/{itemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSimpleItemByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSimpleItemByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSimpleItemByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSimpleItemByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSimpleItemByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSimpleItemByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/simple/inventory/{inventoryName}/item/{itemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSimpleItemWithSignatureTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSimpleItemWithSignatureRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSimpleItemWithSignatureTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSimpleItemWithSignatureRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSimpleItemWithSignatureRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSimpleItemWithSignatureResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/simple/inventory/{inventoryName}/item/{itemName}/signature";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $queryStrings["keyId"] = $this->request->getKeyId();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSimpleItemWithSignatureByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSimpleItemWithSignatureByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSimpleItemWithSignatureByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSimpleItemWithSignatureByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSimpleItemWithSignatureByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSimpleItemWithSignatureByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/simple/inventory/{inventoryName}/item/{itemName}/signature";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $queryStrings["keyId"] = $this->request->getKeyId();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireSimpleItemsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireSimpleItemsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireSimpleItemsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireSimpleItemsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireSimpleItemsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireSimpleItemsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/simple/inventory/{inventoryName}/acquire";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getAcquireCounts() !== null) {
+            $array = [];
+            foreach ($this->request->getAcquireCounts() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["acquireCounts"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ConsumeSimpleItemsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ConsumeSimpleItemsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ConsumeSimpleItemsTask constructor.
+     * @param Gs2RestSession $session
+     * @param ConsumeSimpleItemsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ConsumeSimpleItemsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ConsumeSimpleItemsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/simple/inventory/{inventoryName}/consume";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+
+        $json = [];
+        if ($this->request->getConsumeCounts() !== null) {
+            $array = [];
+            foreach ($this->request->getConsumeCounts() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["consumeCounts"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ConsumeSimpleItemsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ConsumeSimpleItemsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ConsumeSimpleItemsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ConsumeSimpleItemsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ConsumeSimpleItemsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ConsumeSimpleItemsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/simple/inventory/{inventoryName}/consume";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getConsumeCounts() !== null) {
+            $array = [];
+            foreach ($this->request->getConsumeCounts() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["consumeCounts"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteSimpleItemsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteSimpleItemsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteSimpleItemsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteSimpleItemsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteSimpleItemsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteSimpleItemsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/simple/inventory/{inventoryName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireSimpleItemsByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireSimpleItemsByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireSimpleItemsByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireSimpleItemsByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireSimpleItemsByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireSimpleItemsByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/simple/item/acquire";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ConsumeSimpleItemsByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ConsumeSimpleItemsByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ConsumeSimpleItemsByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param ConsumeSimpleItemsByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ConsumeSimpleItemsByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ConsumeSimpleItemsByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/simple/item/consume";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Inventory API クライアント
  *
@@ -4349,6 +6016,384 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             GetItemModelRequest $request
     ): GetItemModelResult {
         return $this->getItemModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSimpleInventoryModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSimpleInventoryModelMastersAsync(
+            DescribeSimpleInventoryModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSimpleInventoryModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSimpleInventoryModelMastersRequest $request
+     * @return DescribeSimpleInventoryModelMastersResult
+     */
+    public function describeSimpleInventoryModelMasters (
+            DescribeSimpleInventoryModelMastersRequest $request
+    ): DescribeSimpleInventoryModelMastersResult {
+        return $this->describeSimpleInventoryModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateSimpleInventoryModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createSimpleInventoryModelMasterAsync(
+            CreateSimpleInventoryModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateSimpleInventoryModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateSimpleInventoryModelMasterRequest $request
+     * @return CreateSimpleInventoryModelMasterResult
+     */
+    public function createSimpleInventoryModelMaster (
+            CreateSimpleInventoryModelMasterRequest $request
+    ): CreateSimpleInventoryModelMasterResult {
+        return $this->createSimpleInventoryModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSimpleInventoryModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getSimpleInventoryModelMasterAsync(
+            GetSimpleInventoryModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSimpleInventoryModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSimpleInventoryModelMasterRequest $request
+     * @return GetSimpleInventoryModelMasterResult
+     */
+    public function getSimpleInventoryModelMaster (
+            GetSimpleInventoryModelMasterRequest $request
+    ): GetSimpleInventoryModelMasterResult {
+        return $this->getSimpleInventoryModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateSimpleInventoryModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateSimpleInventoryModelMasterAsync(
+            UpdateSimpleInventoryModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateSimpleInventoryModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateSimpleInventoryModelMasterRequest $request
+     * @return UpdateSimpleInventoryModelMasterResult
+     */
+    public function updateSimpleInventoryModelMaster (
+            UpdateSimpleInventoryModelMasterRequest $request
+    ): UpdateSimpleInventoryModelMasterResult {
+        return $this->updateSimpleInventoryModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteSimpleInventoryModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteSimpleInventoryModelMasterAsync(
+            DeleteSimpleInventoryModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteSimpleInventoryModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteSimpleInventoryModelMasterRequest $request
+     * @return DeleteSimpleInventoryModelMasterResult
+     */
+    public function deleteSimpleInventoryModelMaster (
+            DeleteSimpleInventoryModelMasterRequest $request
+    ): DeleteSimpleInventoryModelMasterResult {
+        return $this->deleteSimpleInventoryModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSimpleInventoryModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSimpleInventoryModelsAsync(
+            DescribeSimpleInventoryModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSimpleInventoryModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSimpleInventoryModelsRequest $request
+     * @return DescribeSimpleInventoryModelsResult
+     */
+    public function describeSimpleInventoryModels (
+            DescribeSimpleInventoryModelsRequest $request
+    ): DescribeSimpleInventoryModelsResult {
+        return $this->describeSimpleInventoryModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSimpleInventoryModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getSimpleInventoryModelAsync(
+            GetSimpleInventoryModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSimpleInventoryModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSimpleInventoryModelRequest $request
+     * @return GetSimpleInventoryModelResult
+     */
+    public function getSimpleInventoryModel (
+            GetSimpleInventoryModelRequest $request
+    ): GetSimpleInventoryModelResult {
+        return $this->getSimpleInventoryModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSimpleItemModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSimpleItemModelMastersAsync(
+            DescribeSimpleItemModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSimpleItemModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSimpleItemModelMastersRequest $request
+     * @return DescribeSimpleItemModelMastersResult
+     */
+    public function describeSimpleItemModelMasters (
+            DescribeSimpleItemModelMastersRequest $request
+    ): DescribeSimpleItemModelMastersResult {
+        return $this->describeSimpleItemModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateSimpleItemModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createSimpleItemModelMasterAsync(
+            CreateSimpleItemModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateSimpleItemModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateSimpleItemModelMasterRequest $request
+     * @return CreateSimpleItemModelMasterResult
+     */
+    public function createSimpleItemModelMaster (
+            CreateSimpleItemModelMasterRequest $request
+    ): CreateSimpleItemModelMasterResult {
+        return $this->createSimpleItemModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSimpleItemModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getSimpleItemModelMasterAsync(
+            GetSimpleItemModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSimpleItemModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSimpleItemModelMasterRequest $request
+     * @return GetSimpleItemModelMasterResult
+     */
+    public function getSimpleItemModelMaster (
+            GetSimpleItemModelMasterRequest $request
+    ): GetSimpleItemModelMasterResult {
+        return $this->getSimpleItemModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateSimpleItemModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateSimpleItemModelMasterAsync(
+            UpdateSimpleItemModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateSimpleItemModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateSimpleItemModelMasterRequest $request
+     * @return UpdateSimpleItemModelMasterResult
+     */
+    public function updateSimpleItemModelMaster (
+            UpdateSimpleItemModelMasterRequest $request
+    ): UpdateSimpleItemModelMasterResult {
+        return $this->updateSimpleItemModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteSimpleItemModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteSimpleItemModelMasterAsync(
+            DeleteSimpleItemModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteSimpleItemModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteSimpleItemModelMasterRequest $request
+     * @return DeleteSimpleItemModelMasterResult
+     */
+    public function deleteSimpleItemModelMaster (
+            DeleteSimpleItemModelMasterRequest $request
+    ): DeleteSimpleItemModelMasterResult {
+        return $this->deleteSimpleItemModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSimpleItemModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSimpleItemModelsAsync(
+            DescribeSimpleItemModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSimpleItemModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSimpleItemModelsRequest $request
+     * @return DescribeSimpleItemModelsResult
+     */
+    public function describeSimpleItemModels (
+            DescribeSimpleItemModelsRequest $request
+    ): DescribeSimpleItemModelsResult {
+        return $this->describeSimpleItemModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSimpleItemModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getSimpleItemModelAsync(
+            GetSimpleItemModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSimpleItemModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSimpleItemModelRequest $request
+     * @return GetSimpleItemModelResult
+     */
+    public function getSimpleItemModel (
+            GetSimpleItemModelRequest $request
+    ): GetSimpleItemModelResult {
+        return $this->getSimpleItemModelAsync(
             $request
         )->wait();
     }
@@ -5375,6 +7420,330 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             VerifyReferenceOfByStampTaskRequest $request
     ): VerifyReferenceOfByStampTaskResult {
         return $this->verifyReferenceOfByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSimpleItemsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSimpleItemsAsync(
+            DescribeSimpleItemsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSimpleItemsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSimpleItemsRequest $request
+     * @return DescribeSimpleItemsResult
+     */
+    public function describeSimpleItems (
+            DescribeSimpleItemsRequest $request
+    ): DescribeSimpleItemsResult {
+        return $this->describeSimpleItemsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSimpleItemsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSimpleItemsByUserIdAsync(
+            DescribeSimpleItemsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSimpleItemsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSimpleItemsByUserIdRequest $request
+     * @return DescribeSimpleItemsByUserIdResult
+     */
+    public function describeSimpleItemsByUserId (
+            DescribeSimpleItemsByUserIdRequest $request
+    ): DescribeSimpleItemsByUserIdResult {
+        return $this->describeSimpleItemsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSimpleItemRequest $request
+     * @return PromiseInterface
+     */
+    public function getSimpleItemAsync(
+            GetSimpleItemRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSimpleItemTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSimpleItemRequest $request
+     * @return GetSimpleItemResult
+     */
+    public function getSimpleItem (
+            GetSimpleItemRequest $request
+    ): GetSimpleItemResult {
+        return $this->getSimpleItemAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSimpleItemByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getSimpleItemByUserIdAsync(
+            GetSimpleItemByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSimpleItemByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSimpleItemByUserIdRequest $request
+     * @return GetSimpleItemByUserIdResult
+     */
+    public function getSimpleItemByUserId (
+            GetSimpleItemByUserIdRequest $request
+    ): GetSimpleItemByUserIdResult {
+        return $this->getSimpleItemByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSimpleItemWithSignatureRequest $request
+     * @return PromiseInterface
+     */
+    public function getSimpleItemWithSignatureAsync(
+            GetSimpleItemWithSignatureRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSimpleItemWithSignatureTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSimpleItemWithSignatureRequest $request
+     * @return GetSimpleItemWithSignatureResult
+     */
+    public function getSimpleItemWithSignature (
+            GetSimpleItemWithSignatureRequest $request
+    ): GetSimpleItemWithSignatureResult {
+        return $this->getSimpleItemWithSignatureAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSimpleItemWithSignatureByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getSimpleItemWithSignatureByUserIdAsync(
+            GetSimpleItemWithSignatureByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSimpleItemWithSignatureByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSimpleItemWithSignatureByUserIdRequest $request
+     * @return GetSimpleItemWithSignatureByUserIdResult
+     */
+    public function getSimpleItemWithSignatureByUserId (
+            GetSimpleItemWithSignatureByUserIdRequest $request
+    ): GetSimpleItemWithSignatureByUserIdResult {
+        return $this->getSimpleItemWithSignatureByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AcquireSimpleItemsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function acquireSimpleItemsByUserIdAsync(
+            AcquireSimpleItemsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireSimpleItemsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AcquireSimpleItemsByUserIdRequest $request
+     * @return AcquireSimpleItemsByUserIdResult
+     */
+    public function acquireSimpleItemsByUserId (
+            AcquireSimpleItemsByUserIdRequest $request
+    ): AcquireSimpleItemsByUserIdResult {
+        return $this->acquireSimpleItemsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ConsumeSimpleItemsRequest $request
+     * @return PromiseInterface
+     */
+    public function consumeSimpleItemsAsync(
+            ConsumeSimpleItemsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ConsumeSimpleItemsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ConsumeSimpleItemsRequest $request
+     * @return ConsumeSimpleItemsResult
+     */
+    public function consumeSimpleItems (
+            ConsumeSimpleItemsRequest $request
+    ): ConsumeSimpleItemsResult {
+        return $this->consumeSimpleItemsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ConsumeSimpleItemsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function consumeSimpleItemsByUserIdAsync(
+            ConsumeSimpleItemsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ConsumeSimpleItemsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ConsumeSimpleItemsByUserIdRequest $request
+     * @return ConsumeSimpleItemsByUserIdResult
+     */
+    public function consumeSimpleItemsByUserId (
+            ConsumeSimpleItemsByUserIdRequest $request
+    ): ConsumeSimpleItemsByUserIdResult {
+        return $this->consumeSimpleItemsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteSimpleItemsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteSimpleItemsByUserIdAsync(
+            DeleteSimpleItemsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteSimpleItemsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteSimpleItemsByUserIdRequest $request
+     * @return DeleteSimpleItemsByUserIdResult
+     */
+    public function deleteSimpleItemsByUserId (
+            DeleteSimpleItemsByUserIdRequest $request
+    ): DeleteSimpleItemsByUserIdResult {
+        return $this->deleteSimpleItemsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AcquireSimpleItemsByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function acquireSimpleItemsByStampSheetAsync(
+            AcquireSimpleItemsByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireSimpleItemsByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AcquireSimpleItemsByStampSheetRequest $request
+     * @return AcquireSimpleItemsByStampSheetResult
+     */
+    public function acquireSimpleItemsByStampSheet (
+            AcquireSimpleItemsByStampSheetRequest $request
+    ): AcquireSimpleItemsByStampSheetResult {
+        return $this->acquireSimpleItemsByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ConsumeSimpleItemsByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function consumeSimpleItemsByStampTaskAsync(
+            ConsumeSimpleItemsByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ConsumeSimpleItemsByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ConsumeSimpleItemsByStampTaskRequest $request
+     * @return ConsumeSimpleItemsByStampTaskResult
+     */
+    public function consumeSimpleItemsByStampTask (
+            ConsumeSimpleItemsByStampTaskRequest $request
+    ): ConsumeSimpleItemsByStampTaskResult {
+        return $this->consumeSimpleItemsByStampTaskAsync(
             $request
         )->wait();
     }

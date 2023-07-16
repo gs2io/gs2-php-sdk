@@ -91,6 +91,36 @@ use Gs2\Showcase\Request\BuyRequest;
 use Gs2\Showcase\Result\BuyResult;
 use Gs2\Showcase\Request\BuyByUserIdRequest;
 use Gs2\Showcase\Result\BuyByUserIdResult;
+use Gs2\Showcase\Request\DescribeRandomShowcaseMastersRequest;
+use Gs2\Showcase\Result\DescribeRandomShowcaseMastersResult;
+use Gs2\Showcase\Request\CreateRandomShowcaseMasterRequest;
+use Gs2\Showcase\Result\CreateRandomShowcaseMasterResult;
+use Gs2\Showcase\Request\GetRandomShowcaseMasterRequest;
+use Gs2\Showcase\Result\GetRandomShowcaseMasterResult;
+use Gs2\Showcase\Request\UpdateRandomShowcaseMasterRequest;
+use Gs2\Showcase\Result\UpdateRandomShowcaseMasterResult;
+use Gs2\Showcase\Request\DeleteRandomShowcaseMasterRequest;
+use Gs2\Showcase\Result\DeleteRandomShowcaseMasterResult;
+use Gs2\Showcase\Request\DescribeRandomShowcaseSalesItemsRequest;
+use Gs2\Showcase\Result\DescribeRandomShowcaseSalesItemsResult;
+use Gs2\Showcase\Request\DescribeRandomShowcaseSalesItemsByUserIdRequest;
+use Gs2\Showcase\Result\DescribeRandomShowcaseSalesItemsByUserIdResult;
+use Gs2\Showcase\Request\GetRandomShowcaseSalesItemRequest;
+use Gs2\Showcase\Result\GetRandomShowcaseSalesItemResult;
+use Gs2\Showcase\Request\GetRandomShowcaseSalesItemByUserIdRequest;
+use Gs2\Showcase\Result\GetRandomShowcaseSalesItemByUserIdResult;
+use Gs2\Showcase\Request\IncrementPurchaseCountByUserIdRequest;
+use Gs2\Showcase\Result\IncrementPurchaseCountByUserIdResult;
+use Gs2\Showcase\Request\IncrementPurchaseCountByStampTaskRequest;
+use Gs2\Showcase\Result\IncrementPurchaseCountByStampTaskResult;
+use Gs2\Showcase\Request\ForceReDrawByUserIdRequest;
+use Gs2\Showcase\Result\ForceReDrawByUserIdResult;
+use Gs2\Showcase\Request\ForceReDrawByUserIdByStampSheetRequest;
+use Gs2\Showcase\Result\ForceReDrawByUserIdByStampSheetResult;
+use Gs2\Showcase\Request\RandomShowcaseBuyRequest;
+use Gs2\Showcase\Result\RandomShowcaseBuyResult;
+use Gs2\Showcase\Request\RandomShowcaseBuyByUserIdRequest;
+use Gs2\Showcase\Result\RandomShowcaseBuyByUserIdResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -2070,6 +2100,983 @@ class BuyByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeRandomShowcaseMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRandomShowcaseMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRandomShowcaseMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRandomShowcaseMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRandomShowcaseMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRandomShowcaseMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/random/showcase";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateRandomShowcaseMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateRandomShowcaseMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateRandomShowcaseMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateRandomShowcaseMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateRandomShowcaseMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateRandomShowcaseMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/random/showcase";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getMaximumNumberOfChoice() !== null) {
+            $json["maximumNumberOfChoice"] = $this->request->getMaximumNumberOfChoice();
+        }
+        if ($this->request->getDisplayItems() !== null) {
+            $array = [];
+            foreach ($this->request->getDisplayItems() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["displayItems"] = $array;
+        }
+        if ($this->request->getBaseTimestamp() !== null) {
+            $json["baseTimestamp"] = $this->request->getBaseTimestamp();
+        }
+        if ($this->request->getResetIntervalHours() !== null) {
+            $json["resetIntervalHours"] = $this->request->getResetIntervalHours();
+        }
+        if ($this->request->getSalesPeriodEventId() !== null) {
+            $json["salesPeriodEventId"] = $this->request->getSalesPeriodEventId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRandomShowcaseMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRandomShowcaseMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRandomShowcaseMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRandomShowcaseMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRandomShowcaseMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRandomShowcaseMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/random/showcase/{showcaseName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateRandomShowcaseMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateRandomShowcaseMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateRandomShowcaseMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateRandomShowcaseMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateRandomShowcaseMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateRandomShowcaseMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/random/showcase/{showcaseName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getMaximumNumberOfChoice() !== null) {
+            $json["maximumNumberOfChoice"] = $this->request->getMaximumNumberOfChoice();
+        }
+        if ($this->request->getDisplayItems() !== null) {
+            $array = [];
+            foreach ($this->request->getDisplayItems() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["displayItems"] = $array;
+        }
+        if ($this->request->getBaseTimestamp() !== null) {
+            $json["baseTimestamp"] = $this->request->getBaseTimestamp();
+        }
+        if ($this->request->getResetIntervalHours() !== null) {
+            $json["resetIntervalHours"] = $this->request->getResetIntervalHours();
+        }
+        if ($this->request->getSalesPeriodEventId() !== null) {
+            $json["salesPeriodEventId"] = $this->request->getSalesPeriodEventId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteRandomShowcaseMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteRandomShowcaseMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteRandomShowcaseMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteRandomShowcaseMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteRandomShowcaseMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteRandomShowcaseMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/random/showcase/{showcaseName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeRandomShowcaseSalesItemsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRandomShowcaseSalesItemsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRandomShowcaseSalesItemsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRandomShowcaseSalesItemsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRandomShowcaseSalesItemsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRandomShowcaseSalesItemsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/random/showcase/{showcaseName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeRandomShowcaseSalesItemsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRandomShowcaseSalesItemsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRandomShowcaseSalesItemsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRandomShowcaseSalesItemsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRandomShowcaseSalesItemsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRandomShowcaseSalesItemsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/random/showcase/{showcaseName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRandomShowcaseSalesItemTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRandomShowcaseSalesItemRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRandomShowcaseSalesItemTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRandomShowcaseSalesItemRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRandomShowcaseSalesItemRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRandomShowcaseSalesItemResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/random/showcase/{showcaseName}/displayItem/{displayItemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{displayItemName}", $this->request->getDisplayItemName() === null|| strlen($this->request->getDisplayItemName()) == 0 ? "null" : $this->request->getDisplayItemName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRandomShowcaseSalesItemByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRandomShowcaseSalesItemByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRandomShowcaseSalesItemByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRandomShowcaseSalesItemByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRandomShowcaseSalesItemByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRandomShowcaseSalesItemByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/random/showcase/{showcaseName}/displayItem/{displayItemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{displayItemName}", $this->request->getDisplayItemName() === null|| strlen($this->request->getDisplayItemName()) == 0 ? "null" : $this->request->getDisplayItemName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IncrementPurchaseCountByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IncrementPurchaseCountByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IncrementPurchaseCountByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param IncrementPurchaseCountByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IncrementPurchaseCountByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IncrementPurchaseCountByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/random/showcase/user/{userId}/status/{showcaseName}/{displayItemName}/purchase/count";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{displayItemName}", $this->request->getDisplayItemName() === null|| strlen($this->request->getDisplayItemName()) == 0 ? "null" : $this->request->getDisplayItemName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IncrementPurchaseCountByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IncrementPurchaseCountByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IncrementPurchaseCountByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param IncrementPurchaseCountByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IncrementPurchaseCountByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IncrementPurchaseCountByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/random/showcase/status/purchase/count";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ForceReDrawByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ForceReDrawByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ForceReDrawByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ForceReDrawByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ForceReDrawByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ForceReDrawByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/random/showcase/{showcaseName}/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ForceReDrawByUserIdByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ForceReDrawByUserIdByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ForceReDrawByUserIdByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param ForceReDrawByUserIdByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ForceReDrawByUserIdByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ForceReDrawByUserIdByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/random/showcase/status/redraw";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RandomShowcaseBuyTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RandomShowcaseBuyRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RandomShowcaseBuyTask constructor.
+     * @param Gs2RestSession $session
+     * @param RandomShowcaseBuyRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RandomShowcaseBuyRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RandomShowcaseBuyResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/random/showcase/{showcaseName}/{displayItemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{displayItemName}", $this->request->getDisplayItemName() === null|| strlen($this->request->getDisplayItemName()) == 0 ? "null" : $this->request->getDisplayItemName(), $url);
+
+        $json = [];
+        if ($this->request->getQuantity() !== null) {
+            $json["quantity"] = $this->request->getQuantity();
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RandomShowcaseBuyByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RandomShowcaseBuyByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RandomShowcaseBuyByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param RandomShowcaseBuyByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RandomShowcaseBuyByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RandomShowcaseBuyByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/random/showcase/{showcaseName}/{displayItemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{displayItemName}", $this->request->getDisplayItemName() === null|| strlen($this->request->getDisplayItemName()) == 0 ? "null" : $this->request->getDisplayItemName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getQuantity() !== null) {
+            $json["quantity"] = $this->request->getQuantity();
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Showcase API クライアント
  *
@@ -2920,6 +3927,411 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
             BuyByUserIdRequest $request
     ): BuyByUserIdResult {
         return $this->buyByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeRandomShowcaseMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeRandomShowcaseMastersAsync(
+            DescribeRandomShowcaseMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRandomShowcaseMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeRandomShowcaseMastersRequest $request
+     * @return DescribeRandomShowcaseMastersResult
+     */
+    public function describeRandomShowcaseMasters (
+            DescribeRandomShowcaseMastersRequest $request
+    ): DescribeRandomShowcaseMastersResult {
+        return $this->describeRandomShowcaseMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateRandomShowcaseMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createRandomShowcaseMasterAsync(
+            CreateRandomShowcaseMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateRandomShowcaseMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateRandomShowcaseMasterRequest $request
+     * @return CreateRandomShowcaseMasterResult
+     */
+    public function createRandomShowcaseMaster (
+            CreateRandomShowcaseMasterRequest $request
+    ): CreateRandomShowcaseMasterResult {
+        return $this->createRandomShowcaseMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetRandomShowcaseMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getRandomShowcaseMasterAsync(
+            GetRandomShowcaseMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRandomShowcaseMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetRandomShowcaseMasterRequest $request
+     * @return GetRandomShowcaseMasterResult
+     */
+    public function getRandomShowcaseMaster (
+            GetRandomShowcaseMasterRequest $request
+    ): GetRandomShowcaseMasterResult {
+        return $this->getRandomShowcaseMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateRandomShowcaseMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateRandomShowcaseMasterAsync(
+            UpdateRandomShowcaseMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateRandomShowcaseMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateRandomShowcaseMasterRequest $request
+     * @return UpdateRandomShowcaseMasterResult
+     */
+    public function updateRandomShowcaseMaster (
+            UpdateRandomShowcaseMasterRequest $request
+    ): UpdateRandomShowcaseMasterResult {
+        return $this->updateRandomShowcaseMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteRandomShowcaseMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteRandomShowcaseMasterAsync(
+            DeleteRandomShowcaseMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteRandomShowcaseMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteRandomShowcaseMasterRequest $request
+     * @return DeleteRandomShowcaseMasterResult
+     */
+    public function deleteRandomShowcaseMaster (
+            DeleteRandomShowcaseMasterRequest $request
+    ): DeleteRandomShowcaseMasterResult {
+        return $this->deleteRandomShowcaseMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeRandomShowcaseSalesItemsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeRandomShowcaseSalesItemsAsync(
+            DescribeRandomShowcaseSalesItemsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRandomShowcaseSalesItemsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeRandomShowcaseSalesItemsRequest $request
+     * @return DescribeRandomShowcaseSalesItemsResult
+     */
+    public function describeRandomShowcaseSalesItems (
+            DescribeRandomShowcaseSalesItemsRequest $request
+    ): DescribeRandomShowcaseSalesItemsResult {
+        return $this->describeRandomShowcaseSalesItemsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeRandomShowcaseSalesItemsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeRandomShowcaseSalesItemsByUserIdAsync(
+            DescribeRandomShowcaseSalesItemsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRandomShowcaseSalesItemsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeRandomShowcaseSalesItemsByUserIdRequest $request
+     * @return DescribeRandomShowcaseSalesItemsByUserIdResult
+     */
+    public function describeRandomShowcaseSalesItemsByUserId (
+            DescribeRandomShowcaseSalesItemsByUserIdRequest $request
+    ): DescribeRandomShowcaseSalesItemsByUserIdResult {
+        return $this->describeRandomShowcaseSalesItemsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetRandomShowcaseSalesItemRequest $request
+     * @return PromiseInterface
+     */
+    public function getRandomShowcaseSalesItemAsync(
+            GetRandomShowcaseSalesItemRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRandomShowcaseSalesItemTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetRandomShowcaseSalesItemRequest $request
+     * @return GetRandomShowcaseSalesItemResult
+     */
+    public function getRandomShowcaseSalesItem (
+            GetRandomShowcaseSalesItemRequest $request
+    ): GetRandomShowcaseSalesItemResult {
+        return $this->getRandomShowcaseSalesItemAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetRandomShowcaseSalesItemByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getRandomShowcaseSalesItemByUserIdAsync(
+            GetRandomShowcaseSalesItemByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRandomShowcaseSalesItemByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetRandomShowcaseSalesItemByUserIdRequest $request
+     * @return GetRandomShowcaseSalesItemByUserIdResult
+     */
+    public function getRandomShowcaseSalesItemByUserId (
+            GetRandomShowcaseSalesItemByUserIdRequest $request
+    ): GetRandomShowcaseSalesItemByUserIdResult {
+        return $this->getRandomShowcaseSalesItemByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IncrementPurchaseCountByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function incrementPurchaseCountByUserIdAsync(
+            IncrementPurchaseCountByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IncrementPurchaseCountByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IncrementPurchaseCountByUserIdRequest $request
+     * @return IncrementPurchaseCountByUserIdResult
+     */
+    public function incrementPurchaseCountByUserId (
+            IncrementPurchaseCountByUserIdRequest $request
+    ): IncrementPurchaseCountByUserIdResult {
+        return $this->incrementPurchaseCountByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IncrementPurchaseCountByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function incrementPurchaseCountByStampTaskAsync(
+            IncrementPurchaseCountByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IncrementPurchaseCountByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IncrementPurchaseCountByStampTaskRequest $request
+     * @return IncrementPurchaseCountByStampTaskResult
+     */
+    public function incrementPurchaseCountByStampTask (
+            IncrementPurchaseCountByStampTaskRequest $request
+    ): IncrementPurchaseCountByStampTaskResult {
+        return $this->incrementPurchaseCountByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ForceReDrawByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function forceReDrawByUserIdAsync(
+            ForceReDrawByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ForceReDrawByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ForceReDrawByUserIdRequest $request
+     * @return ForceReDrawByUserIdResult
+     */
+    public function forceReDrawByUserId (
+            ForceReDrawByUserIdRequest $request
+    ): ForceReDrawByUserIdResult {
+        return $this->forceReDrawByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ForceReDrawByUserIdByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function forceReDrawByUserIdByStampSheetAsync(
+            ForceReDrawByUserIdByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ForceReDrawByUserIdByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ForceReDrawByUserIdByStampSheetRequest $request
+     * @return ForceReDrawByUserIdByStampSheetResult
+     */
+    public function forceReDrawByUserIdByStampSheet (
+            ForceReDrawByUserIdByStampSheetRequest $request
+    ): ForceReDrawByUserIdByStampSheetResult {
+        return $this->forceReDrawByUserIdByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RandomShowcaseBuyRequest $request
+     * @return PromiseInterface
+     */
+    public function randomShowcaseBuyAsync(
+            RandomShowcaseBuyRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RandomShowcaseBuyTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RandomShowcaseBuyRequest $request
+     * @return RandomShowcaseBuyResult
+     */
+    public function randomShowcaseBuy (
+            RandomShowcaseBuyRequest $request
+    ): RandomShowcaseBuyResult {
+        return $this->randomShowcaseBuyAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RandomShowcaseBuyByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function randomShowcaseBuyByUserIdAsync(
+            RandomShowcaseBuyByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RandomShowcaseBuyByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RandomShowcaseBuyByUserIdRequest $request
+     * @return RandomShowcaseBuyByUserIdResult
+     */
+    public function randomShowcaseBuyByUserId (
+            RandomShowcaseBuyByUserIdRequest $request
+    ): RandomShowcaseBuyByUserIdResult {
+        return $this->randomShowcaseBuyByUserIdAsync(
             $request
         )->wait();
     }

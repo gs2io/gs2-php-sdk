@@ -22,7 +22,7 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
-class GetRandomShowcaseSalesItemByUserIdResult implements IResult {
+class GetRandomDisplayItemResult implements IResult {
     /** @var RandomDisplayItem */
     private $item;
 
@@ -34,16 +34,16 @@ class GetRandomShowcaseSalesItemByUserIdResult implements IResult {
 		$this->item = $item;
 	}
 
-	public function withItem(?RandomDisplayItem $item): GetRandomShowcaseSalesItemByUserIdResult {
+	public function withItem(?RandomDisplayItem $item): GetRandomDisplayItemResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?GetRandomShowcaseSalesItemByUserIdResult {
+    public static function fromJson(?array $data): ?GetRandomDisplayItemResult {
         if ($data === null) {
             return null;
         }
-        return (new GetRandomShowcaseSalesItemByUserIdResult())
+        return (new GetRandomDisplayItemResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? RandomDisplayItem::fromJson($data['item']) : null);
     }
 

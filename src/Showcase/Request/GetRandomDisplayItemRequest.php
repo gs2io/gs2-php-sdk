@@ -19,7 +19,7 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class GetRandomShowcaseSalesItemRequest extends Gs2BasicRequest {
+class GetRandomDisplayItemRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
@@ -34,7 +34,7 @@ class GetRandomShowcaseSalesItemRequest extends Gs2BasicRequest {
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): GetRandomShowcaseSalesItemRequest {
+	public function withNamespaceName(?string $namespaceName): GetRandomDisplayItemRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -44,7 +44,7 @@ class GetRandomShowcaseSalesItemRequest extends Gs2BasicRequest {
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
-	public function withShowcaseName(?string $showcaseName): GetRandomShowcaseSalesItemRequest {
+	public function withShowcaseName(?string $showcaseName): GetRandomDisplayItemRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
@@ -54,7 +54,7 @@ class GetRandomShowcaseSalesItemRequest extends Gs2BasicRequest {
 	public function setDisplayItemName(?string $displayItemName) {
 		$this->displayItemName = $displayItemName;
 	}
-	public function withDisplayItemName(?string $displayItemName): GetRandomShowcaseSalesItemRequest {
+	public function withDisplayItemName(?string $displayItemName): GetRandomDisplayItemRequest {
 		$this->displayItemName = $displayItemName;
 		return $this;
 	}
@@ -64,16 +64,16 @@ class GetRandomShowcaseSalesItemRequest extends Gs2BasicRequest {
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-	public function withAccessToken(?string $accessToken): GetRandomShowcaseSalesItemRequest {
+	public function withAccessToken(?string $accessToken): GetRandomDisplayItemRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?GetRandomShowcaseSalesItemRequest {
+    public static function fromJson(?array $data): ?GetRandomDisplayItemRequest {
         if ($data === null) {
             return null;
         }
-        return (new GetRandomShowcaseSalesItemRequest())
+        return (new GetRandomDisplayItemRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null)
             ->withDisplayItemName(array_key_exists('displayItemName', $data) && $data['displayItemName'] !== null ? $data['displayItemName'] : null)

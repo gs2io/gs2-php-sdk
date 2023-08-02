@@ -19,6 +19,7 @@ namespace Gs2\Experience\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Threshold;
+use Gs2\Experience\Model\AcquireActionRate;
 use Gs2\Experience\Model\ExperienceModel;
 
 class GetExperienceModelResult implements IResult {

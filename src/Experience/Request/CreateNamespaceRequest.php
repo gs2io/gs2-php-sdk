@@ -18,6 +18,7 @@
 namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Experience\Model\TransactionSetting;
 use Gs2\Experience\Model\ScriptSetting;
 use Gs2\Experience\Model\LogSetting;
 
@@ -26,6 +27,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var string */
     private $experienceCapScriptId;
     /** @var ScriptSetting */
@@ -56,6 +59,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getExperienceCapScriptId(): ?string {
@@ -126,6 +139,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withExperienceCapScriptId(array_key_exists('experienceCapScriptId', $data) && $data['experienceCapScriptId'] !== null ? $data['experienceCapScriptId'] : null)
             ->withChangeExperienceScript(array_key_exists('changeExperienceScript', $data) && $data['changeExperienceScript'] !== null ? ScriptSetting::fromJson($data['changeExperienceScript']) : null)
             ->withChangeRankScript(array_key_exists('changeRankScript', $data) && $data['changeRankScript'] !== null ? ScriptSetting::fromJson($data['changeRankScript']) : null)
@@ -138,6 +152,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "experienceCapScriptId" => $this->getExperienceCapScriptId(),
             "changeExperienceScript" => $this->getChangeExperienceScript() !== null ? $this->getChangeExperienceScript()->toJson() : null,
             "changeRankScript" => $this->getChangeRankScript() !== null ? $this->getChangeRankScript()->toJson() : null,

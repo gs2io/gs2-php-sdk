@@ -18,6 +18,7 @@
 namespace Gs2\Experience\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Experience\Model\AcquireActionRate;
 use Gs2\Experience\Model\ExperienceModelMaster;
 
 class GetExperienceModelMasterResult implements IResult {

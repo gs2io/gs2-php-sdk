@@ -54,6 +54,10 @@ class ExperienceModelMaster implements IModel {
 	 */
 	private $rankThresholdName;
 	/**
+     * @var array
+	 */
+	private $acquireActionRates;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -141,6 +145,16 @@ class ExperienceModelMaster implements IModel {
 		$this->rankThresholdName = $rankThresholdName;
 		return $this;
 	}
+	public function getAcquireActionRates(): ?array {
+		return $this->acquireActionRates;
+	}
+	public function setAcquireActionRates(?array $acquireActionRates) {
+		$this->acquireActionRates = $acquireActionRates;
+	}
+	public function withAcquireActionRates(?array $acquireActionRates): ExperienceModelMaster {
+		$this->acquireActionRates = $acquireActionRates;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -175,6 +189,12 @@ class ExperienceModelMaster implements IModel {
             ->withDefaultRankCap(array_key_exists('defaultRankCap', $data) && $data['defaultRankCap'] !== null ? $data['defaultRankCap'] : null)
             ->withMaxRankCap(array_key_exists('maxRankCap', $data) && $data['maxRankCap'] !== null ? $data['maxRankCap'] : null)
             ->withRankThresholdName(array_key_exists('rankThresholdName', $data) && $data['rankThresholdName'] !== null ? $data['rankThresholdName'] : null)
+            ->withAcquireActionRates(array_map(
+                function ($item) {
+                    return AcquireActionRate::fromJson($item);
+                },
+                array_key_exists('acquireActionRates', $data) && $data['acquireActionRates'] !== null ? $data['acquireActionRates'] : []
+            ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
@@ -189,6 +209,12 @@ class ExperienceModelMaster implements IModel {
             "defaultRankCap" => $this->getDefaultRankCap(),
             "maxRankCap" => $this->getMaxRankCap(),
             "rankThresholdName" => $this->getRankThresholdName(),
+            "acquireActionRates" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAcquireActionRates() !== null && $this->getAcquireActionRates() !== null ? $this->getAcquireActionRates() : []
+            ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

@@ -18,6 +18,7 @@
 namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Experience\Model\AcquireActionRate;
 
 class CreateExperienceModelMasterRequest extends Gs2BasicRequest {
     /** @var string */
@@ -36,6 +37,8 @@ class CreateExperienceModelMasterRequest extends Gs2BasicRequest {
     private $maxRankCap;
     /** @var string */
     private $rankThresholdName;
+    /** @var array */
+    private $acquireActionRates;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -116,6 +119,16 @@ class CreateExperienceModelMasterRequest extends Gs2BasicRequest {
 		$this->rankThresholdName = $rankThresholdName;
 		return $this;
 	}
+	public function getAcquireActionRates(): ?array {
+		return $this->acquireActionRates;
+	}
+	public function setAcquireActionRates(?array $acquireActionRates) {
+		$this->acquireActionRates = $acquireActionRates;
+	}
+	public function withAcquireActionRates(?array $acquireActionRates): CreateExperienceModelMasterRequest {
+		$this->acquireActionRates = $acquireActionRates;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateExperienceModelMasterRequest {
         if ($data === null) {
@@ -129,7 +142,13 @@ class CreateExperienceModelMasterRequest extends Gs2BasicRequest {
             ->withDefaultExperience(array_key_exists('defaultExperience', $data) && $data['defaultExperience'] !== null ? $data['defaultExperience'] : null)
             ->withDefaultRankCap(array_key_exists('defaultRankCap', $data) && $data['defaultRankCap'] !== null ? $data['defaultRankCap'] : null)
             ->withMaxRankCap(array_key_exists('maxRankCap', $data) && $data['maxRankCap'] !== null ? $data['maxRankCap'] : null)
-            ->withRankThresholdName(array_key_exists('rankThresholdName', $data) && $data['rankThresholdName'] !== null ? $data['rankThresholdName'] : null);
+            ->withRankThresholdName(array_key_exists('rankThresholdName', $data) && $data['rankThresholdName'] !== null ? $data['rankThresholdName'] : null)
+            ->withAcquireActionRates(array_map(
+                function ($item) {
+                    return AcquireActionRate::fromJson($item);
+                },
+                array_key_exists('acquireActionRates', $data) && $data['acquireActionRates'] !== null ? $data['acquireActionRates'] : []
+            ));
     }
 
     public function toJson(): array {
@@ -142,6 +161,12 @@ class CreateExperienceModelMasterRequest extends Gs2BasicRequest {
             "defaultRankCap" => $this->getDefaultRankCap(),
             "maxRankCap" => $this->getMaxRankCap(),
             "rankThresholdName" => $this->getRankThresholdName(),
+            "acquireActionRates" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAcquireActionRates() !== null && $this->getAcquireActionRates() !== null ? $this->getAcquireActionRates() : []
+            ),
         );
     }
 }

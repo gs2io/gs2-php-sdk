@@ -101,6 +101,10 @@ use Gs2\Experience\Request\AddRankCapByStampSheetRequest;
 use Gs2\Experience\Result\AddRankCapByStampSheetResult;
 use Gs2\Experience\Request\SetRankCapByStampSheetRequest;
 use Gs2\Experience\Result\SetRankCapByStampSheetResult;
+use Gs2\Experience\Request\MultiplyAcquireActionsByUserIdRequest;
+use Gs2\Experience\Result\MultiplyAcquireActionsByUserIdResult;
+use Gs2\Experience\Request\MultiplyAcquireActionsByStampSheetRequest;
+use Gs2\Experience\Result\MultiplyAcquireActionsByStampSheetResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -202,6 +206,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getExperienceCapScriptId() !== null) {
             $json["experienceCapScriptId"] = $this->request->getExperienceCapScriptId();
@@ -392,6 +399,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getExperienceCapScriptId() !== null) {
             $json["experienceCapScriptId"] = $this->request->getExperienceCapScriptId();
@@ -607,6 +617,14 @@ class CreateExperienceModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getRankThresholdName() !== null) {
             $json["rankThresholdName"] = $this->request->getRankThresholdName();
         }
+        if ($this->request->getAcquireActionRates() !== null) {
+            $array = [];
+            foreach ($this->request->getAcquireActionRates() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["acquireActionRates"] = $array;
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -738,6 +756,14 @@ class UpdateExperienceModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getRankThresholdName() !== null) {
             $json["rankThresholdName"] = $this->request->getRankThresholdName();
+        }
+        if ($this->request->getAcquireActionRates() !== null) {
+            $array = [];
+            foreach ($this->request->getAcquireActionRates() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["acquireActionRates"] = $array;
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2364,6 +2390,135 @@ class SetRankCapByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class MultiplyAcquireActionsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var MultiplyAcquireActionsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * MultiplyAcquireActionsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param MultiplyAcquireActionsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        MultiplyAcquireActionsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            MultiplyAcquireActionsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/model/{experienceName}/property/{propertyId}/acquire/rate/{rateName}/multiply";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{experienceName}", $this->request->getExperienceName() === null|| strlen($this->request->getExperienceName()) == 0 ? "null" : $this->request->getExperienceName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $json = [];
+        if ($this->request->getAcquireActions() !== null) {
+            $array = [];
+            foreach ($this->request->getAcquireActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["acquireActions"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class MultiplyAcquireActionsByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var MultiplyAcquireActionsByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * MultiplyAcquireActionsByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param MultiplyAcquireActionsByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        MultiplyAcquireActionsByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            MultiplyAcquireActionsByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/form/acquire";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Experience API クライアント
  *
@@ -3349,6 +3504,60 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
             SetRankCapByStampSheetRequest $request
     ): SetRankCapByStampSheetResult {
         return $this->setRankCapByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param MultiplyAcquireActionsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function multiplyAcquireActionsByUserIdAsync(
+            MultiplyAcquireActionsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new MultiplyAcquireActionsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param MultiplyAcquireActionsByUserIdRequest $request
+     * @return MultiplyAcquireActionsByUserIdResult
+     */
+    public function multiplyAcquireActionsByUserId (
+            MultiplyAcquireActionsByUserIdRequest $request
+    ): MultiplyAcquireActionsByUserIdResult {
+        return $this->multiplyAcquireActionsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param MultiplyAcquireActionsByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function multiplyAcquireActionsByStampSheetAsync(
+            MultiplyAcquireActionsByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new MultiplyAcquireActionsByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param MultiplyAcquireActionsByStampSheetRequest $request
+     * @return MultiplyAcquireActionsByStampSheetResult
+     */
+    public function multiplyAcquireActionsByStampSheet (
+            MultiplyAcquireActionsByStampSheetRequest $request
+    ): MultiplyAcquireActionsByStampSheetResult {
+        return $this->multiplyAcquireActionsByStampSheetAsync(
             $request
         )->wait();
     }

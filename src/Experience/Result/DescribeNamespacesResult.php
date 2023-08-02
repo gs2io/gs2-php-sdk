@@ -18,6 +18,7 @@
 namespace Gs2\Experience\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Experience\Model\TransactionSetting;
 use Gs2\Experience\Model\ScriptSetting;
 use Gs2\Experience\Model\LogSetting;
 use Gs2\Experience\Model\Namespace_;

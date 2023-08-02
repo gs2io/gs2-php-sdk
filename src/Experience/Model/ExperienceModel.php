@@ -49,6 +49,10 @@ class ExperienceModel implements IModel {
      * @var Threshold
 	 */
 	private $rankThreshold;
+	/**
+     * @var array
+	 */
+	private $acquireActionRates;
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
@@ -119,6 +123,16 @@ class ExperienceModel implements IModel {
 		$this->rankThreshold = $rankThreshold;
 		return $this;
 	}
+	public function getAcquireActionRates(): ?array {
+		return $this->acquireActionRates;
+	}
+	public function setAcquireActionRates(?array $acquireActionRates) {
+		$this->acquireActionRates = $acquireActionRates;
+	}
+	public function withAcquireActionRates(?array $acquireActionRates): ExperienceModel {
+		$this->acquireActionRates = $acquireActionRates;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?ExperienceModel {
         if ($data === null) {
@@ -131,7 +145,13 @@ class ExperienceModel implements IModel {
             ->withDefaultExperience(array_key_exists('defaultExperience', $data) && $data['defaultExperience'] !== null ? $data['defaultExperience'] : null)
             ->withDefaultRankCap(array_key_exists('defaultRankCap', $data) && $data['defaultRankCap'] !== null ? $data['defaultRankCap'] : null)
             ->withMaxRankCap(array_key_exists('maxRankCap', $data) && $data['maxRankCap'] !== null ? $data['maxRankCap'] : null)
-            ->withRankThreshold(array_key_exists('rankThreshold', $data) && $data['rankThreshold'] !== null ? Threshold::fromJson($data['rankThreshold']) : null);
+            ->withRankThreshold(array_key_exists('rankThreshold', $data) && $data['rankThreshold'] !== null ? Threshold::fromJson($data['rankThreshold']) : null)
+            ->withAcquireActionRates(array_map(
+                function ($item) {
+                    return AcquireActionRate::fromJson($item);
+                },
+                array_key_exists('acquireActionRates', $data) && $data['acquireActionRates'] !== null ? $data['acquireActionRates'] : []
+            ));
     }
 
     public function toJson(): array {
@@ -143,6 +163,12 @@ class ExperienceModel implements IModel {
             "defaultRankCap" => $this->getDefaultRankCap(),
             "maxRankCap" => $this->getMaxRankCap(),
             "rankThreshold" => $this->getRankThreshold() !== null ? $this->getRankThreshold()->toJson() : null,
+            "acquireActionRates" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAcquireActionRates() !== null && $this->getAcquireActionRates() !== null ? $this->getAcquireActionRates() : []
+            ),
         );
     }
 }

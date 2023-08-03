@@ -26,6 +26,8 @@ class DescribeRankingsRequest extends Gs2BasicRequest {
     private $categoryName;
     /** @var string */
     private $accessToken;
+    /** @var string */
+    private $additionalScopeName;
     /** @var int */
     private $startIndex;
     /** @var string */
@@ -60,6 +62,16 @@ class DescribeRankingsRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): DescribeRankingsRequest {
 		$this->accessToken = $accessToken;
+		return $this;
+	}
+	public function getAdditionalScopeName(): ?string {
+		return $this->additionalScopeName;
+	}
+	public function setAdditionalScopeName(?string $additionalScopeName) {
+		$this->additionalScopeName = $additionalScopeName;
+	}
+	public function withAdditionalScopeName(?string $additionalScopeName): DescribeRankingsRequest {
+		$this->additionalScopeName = $additionalScopeName;
 		return $this;
 	}
 	public function getStartIndex(): ?int {
@@ -101,6 +113,7 @@ class DescribeRankingsRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withAdditionalScopeName(array_key_exists('additionalScopeName', $data) && $data['additionalScopeName'] !== null ? $data['additionalScopeName'] : null)
             ->withStartIndex(array_key_exists('startIndex', $data) && $data['startIndex'] !== null ? $data['startIndex'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
@@ -111,6 +124,7 @@ class DescribeRankingsRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "categoryName" => $this->getCategoryName(),
             "accessToken" => $this->getAccessToken(),
+            "additionalScopeName" => $this->getAdditionalScopeName(),
             "startIndex" => $this->getStartIndex(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),

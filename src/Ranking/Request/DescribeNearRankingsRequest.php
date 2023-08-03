@@ -24,6 +24,8 @@ class DescribeNearRankingsRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $categoryName;
+    /** @var string */
+    private $additionalScopeName;
     /** @var int */
     private $score;
 	public function getNamespaceName(): ?string {
@@ -46,6 +48,16 @@ class DescribeNearRankingsRequest extends Gs2BasicRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+	public function getAdditionalScopeName(): ?string {
+		return $this->additionalScopeName;
+	}
+	public function setAdditionalScopeName(?string $additionalScopeName) {
+		$this->additionalScopeName = $additionalScopeName;
+	}
+	public function withAdditionalScopeName(?string $additionalScopeName): DescribeNearRankingsRequest {
+		$this->additionalScopeName = $additionalScopeName;
+		return $this;
+	}
 	public function getScore(): ?int {
 		return $this->score;
 	}
@@ -64,6 +76,7 @@ class DescribeNearRankingsRequest extends Gs2BasicRequest {
         return (new DescribeNearRankingsRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withAdditionalScopeName(array_key_exists('additionalScopeName', $data) && $data['additionalScopeName'] !== null ? $data['additionalScopeName'] : null)
             ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null);
     }
 
@@ -71,6 +84,7 @@ class DescribeNearRankingsRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "categoryName" => $this->getCategoryName(),
+            "additionalScopeName" => $this->getAdditionalScopeName(),
             "score" => $this->getScore(),
         );
     }

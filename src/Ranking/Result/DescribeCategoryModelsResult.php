@@ -18,6 +18,7 @@
 namespace Gs2\Ranking\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Ranking\Model\Scope;
 use Gs2\Ranking\Model\CategoryModel;
 
 class DescribeCategoryModelsResult implements IResult {

@@ -70,6 +70,10 @@ class CategoryModel implements IModel {
 	 */
 	private $calculateIntervalMinutes;
 	/**
+     * @var array
+	 */
+	private $additionalScopes;
+	/**
      * @var string
 	 */
 	private $entryPeriodEventId;
@@ -205,6 +209,16 @@ class CategoryModel implements IModel {
 		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
 		return $this;
 	}
+	public function getAdditionalScopes(): ?array {
+		return $this->additionalScopes;
+	}
+	public function setAdditionalScopes(?array $additionalScopes) {
+		$this->additionalScopes = $additionalScopes;
+	}
+	public function withAdditionalScopes(?array $additionalScopes): CategoryModel {
+		$this->additionalScopes = $additionalScopes;
+		return $this;
+	}
 	public function getEntryPeriodEventId(): ?string {
 		return $this->entryPeriodEventId;
 	}
@@ -263,6 +277,12 @@ class CategoryModel implements IModel {
             ->withCalculateFixedTimingHour(array_key_exists('calculateFixedTimingHour', $data) && $data['calculateFixedTimingHour'] !== null ? $data['calculateFixedTimingHour'] : null)
             ->withCalculateFixedTimingMinute(array_key_exists('calculateFixedTimingMinute', $data) && $data['calculateFixedTimingMinute'] !== null ? $data['calculateFixedTimingMinute'] : null)
             ->withCalculateIntervalMinutes(array_key_exists('calculateIntervalMinutes', $data) && $data['calculateIntervalMinutes'] !== null ? $data['calculateIntervalMinutes'] : null)
+            ->withAdditionalScopes(array_map(
+                function ($item) {
+                    return Scope::fromJson($item);
+                },
+                array_key_exists('additionalScopes', $data) && $data['additionalScopes'] !== null ? $data['additionalScopes'] : []
+            ))
             ->withEntryPeriodEventId(array_key_exists('entryPeriodEventId', $data) && $data['entryPeriodEventId'] !== null ? $data['entryPeriodEventId'] : null)
             ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null)
             ->withIgnoreUserIds(array_map(
@@ -288,6 +308,12 @@ class CategoryModel implements IModel {
             "calculateFixedTimingHour" => $this->getCalculateFixedTimingHour(),
             "calculateFixedTimingMinute" => $this->getCalculateFixedTimingMinute(),
             "calculateIntervalMinutes" => $this->getCalculateIntervalMinutes(),
+            "additionalScopes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAdditionalScopes() !== null && $this->getAdditionalScopes() !== null ? $this->getAdditionalScopes() : []
+            ),
             "entryPeriodEventId" => $this->getEntryPeriodEventId(),
             "accessPeriodEventId" => $this->getAccessPeriodEventId(),
             "ignoreUserIds" => array_map(

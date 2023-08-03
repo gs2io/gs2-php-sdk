@@ -30,6 +30,8 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
     private $scorerUserId;
     /** @var string */
     private $uniqueId;
+    /** @var string */
+    private $additionalScopeName;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -80,6 +82,16 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
 		$this->uniqueId = $uniqueId;
 		return $this;
 	}
+	public function getAdditionalScopeName(): ?string {
+		return $this->additionalScopeName;
+	}
+	public function setAdditionalScopeName(?string $additionalScopeName) {
+		$this->additionalScopeName = $additionalScopeName;
+	}
+	public function withAdditionalScopeName(?string $additionalScopeName): GetRankingByUserIdRequest {
+		$this->additionalScopeName = $additionalScopeName;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetRankingByUserIdRequest {
         if ($data === null) {
@@ -90,7 +102,8 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
             ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withScorerUserId(array_key_exists('scorerUserId', $data) && $data['scorerUserId'] !== null ? $data['scorerUserId'] : null)
-            ->withUniqueId(array_key_exists('uniqueId', $data) && $data['uniqueId'] !== null ? $data['uniqueId'] : null);
+            ->withUniqueId(array_key_exists('uniqueId', $data) && $data['uniqueId'] !== null ? $data['uniqueId'] : null)
+            ->withAdditionalScopeName(array_key_exists('additionalScopeName', $data) && $data['additionalScopeName'] !== null ? $data['additionalScopeName'] : null);
     }
 
     public function toJson(): array {
@@ -100,6 +113,7 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "scorerUserId" => $this->getScorerUserId(),
             "uniqueId" => $this->getUniqueId(),
+            "additionalScopeName" => $this->getAdditionalScopeName(),
         );
     }
 }

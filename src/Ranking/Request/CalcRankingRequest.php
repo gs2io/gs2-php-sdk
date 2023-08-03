@@ -24,6 +24,8 @@ class CalcRankingRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $categoryName;
+    /** @var string */
+    private $additionalScopeName;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -44,6 +46,16 @@ class CalcRankingRequest extends Gs2BasicRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+	public function getAdditionalScopeName(): ?string {
+		return $this->additionalScopeName;
+	}
+	public function setAdditionalScopeName(?string $additionalScopeName) {
+		$this->additionalScopeName = $additionalScopeName;
+	}
+	public function withAdditionalScopeName(?string $additionalScopeName): CalcRankingRequest {
+		$this->additionalScopeName = $additionalScopeName;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CalcRankingRequest {
         if ($data === null) {
@@ -51,13 +63,15 @@ class CalcRankingRequest extends Gs2BasicRequest {
         }
         return (new CalcRankingRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null);
+            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withAdditionalScopeName(array_key_exists('additionalScopeName', $data) && $data['additionalScopeName'] !== null ? $data['additionalScopeName'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "categoryName" => $this->getCategoryName(),
+            "additionalScopeName" => $this->getAdditionalScopeName(),
         );
     }
 }

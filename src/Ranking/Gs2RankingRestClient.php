@@ -709,6 +709,14 @@ class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getCalculateIntervalMinutes() !== null) {
             $json["calculateIntervalMinutes"] = $this->request->getCalculateIntervalMinutes();
         }
+        if ($this->request->getAdditionalScopes() !== null) {
+            $array = [];
+            foreach ($this->request->getAdditionalScopes() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["additionalScopes"] = $array;
+        }
         if ($this->request->getEntryPeriodEventId() !== null) {
             $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
         }
@@ -872,6 +880,14 @@ class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCalculateIntervalMinutes() !== null) {
             $json["calculateIntervalMinutes"] = $this->request->getCalculateIntervalMinutes();
+        }
+        if ($this->request->getAdditionalScopes() !== null) {
+            $array = [];
+            foreach ($this->request->getAdditionalScopes() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["additionalScopes"] = $array;
         }
         if ($this->request->getEntryPeriodEventId() !== null) {
             $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
@@ -1389,6 +1405,9 @@ class DescribeRankingsTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getAdditionalScopeName() !== null) {
+            $queryStrings["additionalScopeName"] = $this->request->getAdditionalScopeName();
+        }
         if ($this->request->getStartIndex() !== null) {
             $queryStrings["startIndex"] = $this->request->getStartIndex();
         }
@@ -1460,6 +1479,9 @@ class DescribeRankingssByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getAdditionalScopeName() !== null) {
+            $queryStrings["additionalScopeName"] = $this->request->getAdditionalScopeName();
+        }
         if ($this->request->getStartIndex() !== null) {
             $queryStrings["startIndex"] = $this->request->getStartIndex();
         }
@@ -1527,6 +1549,9 @@ class DescribeNearRankingsTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getAdditionalScopeName() !== null) {
+            $queryStrings["additionalScopeName"] = $this->request->getAdditionalScopeName();
+        }
         if ($this->request->getScore() !== null) {
             $queryStrings["score"] = $this->request->getScore();
         }
@@ -1589,6 +1614,9 @@ class GetRankingTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getAdditionalScopeName() !== null) {
+            $queryStrings["additionalScopeName"] = $this->request->getAdditionalScopeName();
         }
 
         if (count($queryStrings) > 0) {
@@ -1653,6 +1681,9 @@ class GetRankingByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getAdditionalScopeName() !== null) {
+            $queryStrings["additionalScopeName"] = $this->request->getAdditionalScopeName();
         }
 
         if (count($queryStrings) > 0) {
@@ -1843,6 +1874,9 @@ class CalcRankingTask extends Gs2RestSessionTask {
         $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
 
         $json = [];
+        if ($this->request->getAdditionalScopeName() !== null) {
+            $json["additionalScopeName"] = $this->request->getAdditionalScopeName();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

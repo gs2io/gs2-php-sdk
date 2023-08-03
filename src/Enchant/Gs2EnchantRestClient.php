@@ -91,6 +91,10 @@ use Gs2\Enchant\Request\ReDrawBalanceParameterStatusByUserIdRequest;
 use Gs2\Enchant\Result\ReDrawBalanceParameterStatusByUserIdResult;
 use Gs2\Enchant\Request\ReDrawBalanceParameterStatusByStampSheetRequest;
 use Gs2\Enchant\Result\ReDrawBalanceParameterStatusByStampSheetResult;
+use Gs2\Enchant\Request\SetBalanceParameterStatusByUserIdRequest;
+use Gs2\Enchant\Result\SetBalanceParameterStatusByUserIdResult;
+use Gs2\Enchant\Request\SetBalanceParameterStatusByStampSheetRequest;
+use Gs2\Enchant\Result\SetBalanceParameterStatusByStampSheetResult;
 use Gs2\Enchant\Request\DescribeRarityParameterStatusesRequest;
 use Gs2\Enchant\Result\DescribeRarityParameterStatusesResult;
 use Gs2\Enchant\Request\DescribeRarityParameterStatusesByUserIdRequest;
@@ -115,6 +119,10 @@ use Gs2\Enchant\Request\VerifyRarityParameterStatusByUserIdRequest;
 use Gs2\Enchant\Result\VerifyRarityParameterStatusByUserIdResult;
 use Gs2\Enchant\Request\VerifyRarityParameterStatusByStampTaskRequest;
 use Gs2\Enchant\Result\VerifyRarityParameterStatusByStampTaskResult;
+use Gs2\Enchant\Request\SetRarityParameterStatusByUserIdRequest;
+use Gs2\Enchant\Result\SetRarityParameterStatusByUserIdResult;
+use Gs2\Enchant\Request\SetRarityParameterStatusByStampSheetRequest;
+use Gs2\Enchant\Result\SetRarityParameterStatusByStampSheetResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -2062,6 +2070,134 @@ class ReDrawBalanceParameterStatusByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class SetBalanceParameterStatusByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetBalanceParameterStatusByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetBalanceParameterStatusByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetBalanceParameterStatusByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetBalanceParameterStatusByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetBalanceParameterStatusByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/balance/{parameterName}/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{parameterName}", $this->request->getParameterName() === null|| strlen($this->request->getParameterName()) == 0 ? "null" : $this->request->getParameterName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getParameterValues() !== null) {
+            $array = [];
+            foreach ($this->request->getParameterValues() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["parameterValues"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SetBalanceParameterStatusByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetBalanceParameterStatusByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetBalanceParameterStatusByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetBalanceParameterStatusByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetBalanceParameterStatusByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetBalanceParameterStatusByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/balance/set";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeRarityParameterStatusesTask extends Gs2RestSessionTask {
 
     /**
@@ -2808,6 +2944,134 @@ class VerifyRarityParameterStatusByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SetRarityParameterStatusByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetRarityParameterStatusByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetRarityParameterStatusByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetRarityParameterStatusByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetRarityParameterStatusByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetRarityParameterStatusByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/rarity/{parameterName}/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{parameterName}", $this->request->getParameterName() === null|| strlen($this->request->getParameterName()) == 0 ? "null" : $this->request->getParameterName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getParameterValues() !== null) {
+            $array = [];
+            foreach ($this->request->getParameterValues() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["parameterValues"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SetRarityParameterStatusByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetRarityParameterStatusByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetRarityParameterStatusByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetRarityParameterStatusByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetRarityParameterStatusByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetRarityParameterStatusByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/rarity/parameter/set";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -3686,6 +3950,60 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param SetBalanceParameterStatusByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function setBalanceParameterStatusByUserIdAsync(
+            SetBalanceParameterStatusByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetBalanceParameterStatusByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetBalanceParameterStatusByUserIdRequest $request
+     * @return SetBalanceParameterStatusByUserIdResult
+     */
+    public function setBalanceParameterStatusByUserId (
+            SetBalanceParameterStatusByUserIdRequest $request
+    ): SetBalanceParameterStatusByUserIdResult {
+        return $this->setBalanceParameterStatusByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetBalanceParameterStatusByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function setBalanceParameterStatusByStampSheetAsync(
+            SetBalanceParameterStatusByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetBalanceParameterStatusByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetBalanceParameterStatusByStampSheetRequest $request
+     * @return SetBalanceParameterStatusByStampSheetResult
+     */
+    public function setBalanceParameterStatusByStampSheet (
+            SetBalanceParameterStatusByStampSheetRequest $request
+    ): SetBalanceParameterStatusByStampSheetResult {
+        return $this->setBalanceParameterStatusByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DescribeRarityParameterStatusesRequest $request
      * @return PromiseInterface
      */
@@ -4005,6 +4323,60 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
             VerifyRarityParameterStatusByStampTaskRequest $request
     ): VerifyRarityParameterStatusByStampTaskResult {
         return $this->verifyRarityParameterStatusByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetRarityParameterStatusByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function setRarityParameterStatusByUserIdAsync(
+            SetRarityParameterStatusByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetRarityParameterStatusByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetRarityParameterStatusByUserIdRequest $request
+     * @return SetRarityParameterStatusByUserIdResult
+     */
+    public function setRarityParameterStatusByUserId (
+            SetRarityParameterStatusByUserIdRequest $request
+    ): SetRarityParameterStatusByUserIdResult {
+        return $this->setRarityParameterStatusByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetRarityParameterStatusByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function setRarityParameterStatusByStampSheetAsync(
+            SetRarityParameterStatusByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetRarityParameterStatusByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetRarityParameterStatusByStampSheetRequest $request
+     * @return SetRarityParameterStatusByStampSheetResult
+     */
+    public function setRarityParameterStatusByStampSheet (
+            SetRarityParameterStatusByStampSheetRequest $request
+    ): SetRarityParameterStatusByStampSheetResult {
+        return $this->setRarityParameterStatusByStampSheetAsync(
             $request
         )->wait();
     }

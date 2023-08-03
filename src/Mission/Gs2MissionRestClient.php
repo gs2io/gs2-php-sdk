@@ -2879,6 +2879,9 @@ class CreateMissionTaskModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getCounterName() !== null) {
             $json["counterName"] = $this->request->getCounterName();
         }
+        if ($this->request->getTargetResetType() !== null) {
+            $json["targetResetType"] = $this->request->getTargetResetType();
+        }
         if ($this->request->getTargetValue() !== null) {
             $json["targetValue"] = $this->request->getTargetValue();
         }
@@ -3020,6 +3023,9 @@ class UpdateMissionTaskModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCounterName() !== null) {
             $json["counterName"] = $this->request->getCounterName();
+        }
+        if ($this->request->getTargetResetType() !== null) {
+            $json["targetResetType"] = $this->request->getTargetResetType();
         }
         if ($this->request->getTargetValue() !== null) {
             $json["targetValue"] = $this->request->getTargetValue();

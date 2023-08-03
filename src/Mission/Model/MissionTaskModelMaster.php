@@ -42,6 +42,10 @@ class MissionTaskModelMaster implements IModel {
 	 */
 	private $counterName;
 	/**
+     * @var string
+	 */
+	private $targetResetType;
+	/**
      * @var int
 	 */
 	private $targetValue;
@@ -115,6 +119,16 @@ class MissionTaskModelMaster implements IModel {
 		$this->counterName = $counterName;
 		return $this;
 	}
+	public function getTargetResetType(): ?string {
+		return $this->targetResetType;
+	}
+	public function setTargetResetType(?string $targetResetType) {
+		$this->targetResetType = $targetResetType;
+	}
+	public function withTargetResetType(?string $targetResetType): MissionTaskModelMaster {
+		$this->targetResetType = $targetResetType;
+		return $this;
+	}
 	public function getTargetValue(): ?int {
 		return $this->targetValue;
 	}
@@ -186,6 +200,7 @@ class MissionTaskModelMaster implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
+            ->withTargetResetType(array_key_exists('targetResetType', $data) && $data['targetResetType'] !== null ? $data['targetResetType'] : null)
             ->withTargetValue(array_key_exists('targetValue', $data) && $data['targetValue'] !== null ? $data['targetValue'] : null)
             ->withCompleteAcquireActions(array_map(
                 function ($item) {
@@ -206,6 +221,7 @@ class MissionTaskModelMaster implements IModel {
             "metadata" => $this->getMetadata(),
             "description" => $this->getDescription(),
             "counterName" => $this->getCounterName(),
+            "targetResetType" => $this->getTargetResetType(),
             "targetValue" => $this->getTargetValue(),
             "completeAcquireActions" => array_map(
                 function ($item) {

@@ -62,6 +62,10 @@ class IncrementalRateModelMaster implements IModel {
 	 */
 	private $exchangeCountId;
 	/**
+     * @var int
+	 */
+	private $maximumExchangeCount;
+	/**
      * @var array
 	 */
 	private $acquireActions;
@@ -173,6 +177,16 @@ class IncrementalRateModelMaster implements IModel {
 		$this->exchangeCountId = $exchangeCountId;
 		return $this;
 	}
+	public function getMaximumExchangeCount(): ?int {
+		return $this->maximumExchangeCount;
+	}
+	public function setMaximumExchangeCount(?int $maximumExchangeCount) {
+		$this->maximumExchangeCount = $maximumExchangeCount;
+	}
+	public function withMaximumExchangeCount(?int $maximumExchangeCount): IncrementalRateModelMaster {
+		$this->maximumExchangeCount = $maximumExchangeCount;
+		return $this;
+	}
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
@@ -219,6 +233,7 @@ class IncrementalRateModelMaster implements IModel {
             ->withCoefficientValue(array_key_exists('coefficientValue', $data) && $data['coefficientValue'] !== null ? $data['coefficientValue'] : null)
             ->withCalculateScriptId(array_key_exists('calculateScriptId', $data) && $data['calculateScriptId'] !== null ? $data['calculateScriptId'] : null)
             ->withExchangeCountId(array_key_exists('exchangeCountId', $data) && $data['exchangeCountId'] !== null ? $data['exchangeCountId'] : null)
+            ->withMaximumExchangeCount(array_key_exists('maximumExchangeCount', $data) && $data['maximumExchangeCount'] !== null ? $data['maximumExchangeCount'] : null)
             ->withAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
@@ -241,6 +256,7 @@ class IncrementalRateModelMaster implements IModel {
             "coefficientValue" => $this->getCoefficientValue(),
             "calculateScriptId" => $this->getCalculateScriptId(),
             "exchangeCountId" => $this->getExchangeCountId(),
+            "maximumExchangeCount" => $this->getMaximumExchangeCount(),
             "acquireActions" => array_map(
                 function ($item) {
                     return $item->toJson();

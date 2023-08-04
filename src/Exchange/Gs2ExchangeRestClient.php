@@ -1240,6 +1240,9 @@ class CreateIncrementalRateModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getExchangeCountId() !== null) {
             $json["exchangeCountId"] = $this->request->getExchangeCountId();
         }
+        if ($this->request->getMaximumExchangeCount() !== null) {
+            $json["maximumExchangeCount"] = $this->request->getMaximumExchangeCount();
+        }
         if ($this->request->getAcquireActions() !== null) {
             $array = [];
             foreach ($this->request->getAcquireActions() as $item)
@@ -1385,6 +1388,9 @@ class UpdateIncrementalRateModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getExchangeCountId() !== null) {
             $json["exchangeCountId"] = $this->request->getExchangeCountId();
+        }
+        if ($this->request->getMaximumExchangeCount() !== null) {
+            $json["maximumExchangeCount"] = $this->request->getMaximumExchangeCount();
         }
         if ($this->request->getAcquireActions() !== null) {
             $array = [];

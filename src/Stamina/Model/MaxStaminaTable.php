@@ -24,10 +24,6 @@ class MaxStaminaTable implements IModel {
 	/**
      * @var string
 	 */
-	private $maxStaminaTableId;
-	/**
-     * @var string
-	 */
 	private $name;
 	/**
      * @var string
@@ -41,16 +37,6 @@ class MaxStaminaTable implements IModel {
      * @var array
 	 */
 	private $values;
-	public function getMaxStaminaTableId(): ?string {
-		return $this->maxStaminaTableId;
-	}
-	public function setMaxStaminaTableId(?string $maxStaminaTableId) {
-		$this->maxStaminaTableId = $maxStaminaTableId;
-	}
-	public function withMaxStaminaTableId(?string $maxStaminaTableId): MaxStaminaTable {
-		$this->maxStaminaTableId = $maxStaminaTableId;
-		return $this;
-	}
 	public function getName(): ?string {
 		return $this->name;
 	}
@@ -97,7 +83,6 @@ class MaxStaminaTable implements IModel {
             return null;
         }
         return (new MaxStaminaTable())
-            ->withMaxStaminaTableId(array_key_exists('maxStaminaTableId', $data) && $data['maxStaminaTableId'] !== null ? $data['maxStaminaTableId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
@@ -111,7 +96,6 @@ class MaxStaminaTable implements IModel {
 
     public function toJson(): array {
         return array(
-            "maxStaminaTableId" => $this->getMaxStaminaTableId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "experienceModelId" => $this->getExperienceModelId(),

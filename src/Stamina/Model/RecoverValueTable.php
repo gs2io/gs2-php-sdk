@@ -24,10 +24,6 @@ class RecoverValueTable implements IModel {
 	/**
      * @var string
 	 */
-	private $recoverValueTableId;
-	/**
-     * @var string
-	 */
 	private $name;
 	/**
      * @var string
@@ -41,16 +37,6 @@ class RecoverValueTable implements IModel {
      * @var array
 	 */
 	private $values;
-	public function getRecoverValueTableId(): ?string {
-		return $this->recoverValueTableId;
-	}
-	public function setRecoverValueTableId(?string $recoverValueTableId) {
-		$this->recoverValueTableId = $recoverValueTableId;
-	}
-	public function withRecoverValueTableId(?string $recoverValueTableId): RecoverValueTable {
-		$this->recoverValueTableId = $recoverValueTableId;
-		return $this;
-	}
 	public function getName(): ?string {
 		return $this->name;
 	}
@@ -97,7 +83,6 @@ class RecoverValueTable implements IModel {
             return null;
         }
         return (new RecoverValueTable())
-            ->withRecoverValueTableId(array_key_exists('recoverValueTableId', $data) && $data['recoverValueTableId'] !== null ? $data['recoverValueTableId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
@@ -111,7 +96,6 @@ class RecoverValueTable implements IModel {
 
     public function toJson(): array {
         return array(
-            "recoverValueTableId" => $this->getRecoverValueTableId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "experienceModelId" => $this->getExperienceModelId(),

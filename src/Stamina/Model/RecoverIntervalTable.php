@@ -24,10 +24,6 @@ class RecoverIntervalTable implements IModel {
 	/**
      * @var string
 	 */
-	private $recoverIntervalTableId;
-	/**
-     * @var string
-	 */
 	private $name;
 	/**
      * @var string
@@ -41,16 +37,6 @@ class RecoverIntervalTable implements IModel {
      * @var array
 	 */
 	private $values;
-	public function getRecoverIntervalTableId(): ?string {
-		return $this->recoverIntervalTableId;
-	}
-	public function setRecoverIntervalTableId(?string $recoverIntervalTableId) {
-		$this->recoverIntervalTableId = $recoverIntervalTableId;
-	}
-	public function withRecoverIntervalTableId(?string $recoverIntervalTableId): RecoverIntervalTable {
-		$this->recoverIntervalTableId = $recoverIntervalTableId;
-		return $this;
-	}
 	public function getName(): ?string {
 		return $this->name;
 	}
@@ -97,7 +83,6 @@ class RecoverIntervalTable implements IModel {
             return null;
         }
         return (new RecoverIntervalTable())
-            ->withRecoverIntervalTableId(array_key_exists('recoverIntervalTableId', $data) && $data['recoverIntervalTableId'] !== null ? $data['recoverIntervalTableId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
@@ -111,7 +96,6 @@ class RecoverIntervalTable implements IModel {
 
     public function toJson(): array {
         return array(
-            "recoverIntervalTableId" => $this->getRecoverIntervalTableId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "experienceModelId" => $this->getExperienceModelId(),

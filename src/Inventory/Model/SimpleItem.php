@@ -37,6 +37,10 @@ class SimpleItem implements IModel {
      * @var int
 	 */
 	private $count;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getItemId(): ?string {
 		return $this->itemId;
 	}
@@ -77,6 +81,16 @@ class SimpleItem implements IModel {
 		$this->count = $count;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): SimpleItem {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?SimpleItem {
         if ($data === null) {
@@ -86,7 +100,8 @@ class SimpleItem implements IModel {
             ->withItemId(array_key_exists('itemId', $data) && $data['itemId'] !== null ? $data['itemId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
-            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -95,6 +110,7 @@ class SimpleItem implements IModel {
             "userId" => $this->getUserId(),
             "itemName" => $this->getItemName(),
             "count" => $this->getCount(),
+            "revision" => $this->getRevision(),
         );
     }
 }

@@ -20,7 +20,7 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
-class SimpleInventory implements IModel {
+class BigInventory implements IModel {
 	/**
      * @var string
 	 */
@@ -34,10 +34,6 @@ class SimpleInventory implements IModel {
 	 */
 	private $userId;
 	/**
-     * @var array
-	 */
-	private $simpleItems;
-	/**
      * @var int
 	 */
 	private $createdAt;
@@ -45,17 +41,13 @@ class SimpleInventory implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-	/**
-     * @var int
-	 */
-	private $revision;
 	public function getInventoryId(): ?string {
 		return $this->inventoryId;
 	}
 	public function setInventoryId(?string $inventoryId) {
 		$this->inventoryId = $inventoryId;
 	}
-	public function withInventoryId(?string $inventoryId): SimpleInventory {
+	public function withInventoryId(?string $inventoryId): BigInventory {
 		$this->inventoryId = $inventoryId;
 		return $this;
 	}
@@ -65,7 +57,7 @@ class SimpleInventory implements IModel {
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
-	public function withInventoryName(?string $inventoryName): SimpleInventory {
+	public function withInventoryName(?string $inventoryName): BigInventory {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
@@ -75,18 +67,8 @@ class SimpleInventory implements IModel {
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-	public function withUserId(?string $userId): SimpleInventory {
+	public function withUserId(?string $userId): BigInventory {
 		$this->userId = $userId;
-		return $this;
-	}
-	public function getSimpleItems(): ?array {
-		return $this->simpleItems;
-	}
-	public function setSimpleItems(?array $simpleItems) {
-		$this->simpleItems = $simpleItems;
-	}
-	public function withSimpleItems(?array $simpleItems): SimpleInventory {
-		$this->simpleItems = $simpleItems;
 		return $this;
 	}
 	public function getCreatedAt(): ?int {
@@ -95,7 +77,7 @@ class SimpleInventory implements IModel {
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-	public function withCreatedAt(?int $createdAt): SimpleInventory {
+	public function withCreatedAt(?int $createdAt): BigInventory {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
@@ -105,38 +87,21 @@ class SimpleInventory implements IModel {
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-	public function withUpdatedAt(?int $updatedAt): SimpleInventory {
+	public function withUpdatedAt(?int $updatedAt): BigInventory {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
-	public function getRevision(): ?int {
-		return $this->revision;
-	}
-	public function setRevision(?int $revision) {
-		$this->revision = $revision;
-	}
-	public function withRevision(?int $revision): SimpleInventory {
-		$this->revision = $revision;
-		return $this;
-	}
 
-    public static function fromJson(?array $data): ?SimpleInventory {
+    public static function fromJson(?array $data): ?BigInventory {
         if ($data === null) {
             return null;
         }
-        return (new SimpleInventory())
+        return (new BigInventory())
             ->withInventoryId(array_key_exists('inventoryId', $data) && $data['inventoryId'] !== null ? $data['inventoryId'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withSimpleItems(array_map(
-                function ($item) {
-                    return SimpleItem::fromJson($item);
-                },
-                array_key_exists('simpleItems', $data) && $data['simpleItems'] !== null ? $data['simpleItems'] : []
-            ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
-            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
 
     public function toJson(): array {
@@ -144,15 +109,8 @@ class SimpleInventory implements IModel {
             "inventoryId" => $this->getInventoryId(),
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
-            "simpleItems" => array_map(
-                function ($item) {
-                    return $item->toJson();
-                },
-                $this->getSimpleItems() !== null && $this->getSimpleItems() !== null ? $this->getSimpleItems() : []
-            ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
-            "revision" => $this->getRevision(),
         );
     }
 }

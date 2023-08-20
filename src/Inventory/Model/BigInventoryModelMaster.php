@@ -20,7 +20,7 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
-class InventoryModelMaster implements IModel {
+class BigInventoryModelMaster implements IModel {
 	/**
      * @var string
 	 */
@@ -40,18 +40,6 @@ class InventoryModelMaster implements IModel {
 	/**
      * @var int
 	 */
-	private $initialCapacity;
-	/**
-     * @var int
-	 */
-	private $maxCapacity;
-	/**
-     * @var bool
-	 */
-	private $protectReferencedItem;
-	/**
-     * @var int
-	 */
 	private $createdAt;
 	/**
      * @var int
@@ -67,7 +55,7 @@ class InventoryModelMaster implements IModel {
 	public function setInventoryModelId(?string $inventoryModelId) {
 		$this->inventoryModelId = $inventoryModelId;
 	}
-	public function withInventoryModelId(?string $inventoryModelId): InventoryModelMaster {
+	public function withInventoryModelId(?string $inventoryModelId): BigInventoryModelMaster {
 		$this->inventoryModelId = $inventoryModelId;
 		return $this;
 	}
@@ -77,7 +65,7 @@ class InventoryModelMaster implements IModel {
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-	public function withName(?string $name): InventoryModelMaster {
+	public function withName(?string $name): BigInventoryModelMaster {
 		$this->name = $name;
 		return $this;
 	}
@@ -87,7 +75,7 @@ class InventoryModelMaster implements IModel {
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-	public function withMetadata(?string $metadata): InventoryModelMaster {
+	public function withMetadata(?string $metadata): BigInventoryModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
@@ -97,38 +85,8 @@ class InventoryModelMaster implements IModel {
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-	public function withDescription(?string $description): InventoryModelMaster {
+	public function withDescription(?string $description): BigInventoryModelMaster {
 		$this->description = $description;
-		return $this;
-	}
-	public function getInitialCapacity(): ?int {
-		return $this->initialCapacity;
-	}
-	public function setInitialCapacity(?int $initialCapacity) {
-		$this->initialCapacity = $initialCapacity;
-	}
-	public function withInitialCapacity(?int $initialCapacity): InventoryModelMaster {
-		$this->initialCapacity = $initialCapacity;
-		return $this;
-	}
-	public function getMaxCapacity(): ?int {
-		return $this->maxCapacity;
-	}
-	public function setMaxCapacity(?int $maxCapacity) {
-		$this->maxCapacity = $maxCapacity;
-	}
-	public function withMaxCapacity(?int $maxCapacity): InventoryModelMaster {
-		$this->maxCapacity = $maxCapacity;
-		return $this;
-	}
-	public function getProtectReferencedItem(): ?bool {
-		return $this->protectReferencedItem;
-	}
-	public function setProtectReferencedItem(?bool $protectReferencedItem) {
-		$this->protectReferencedItem = $protectReferencedItem;
-	}
-	public function withProtectReferencedItem(?bool $protectReferencedItem): InventoryModelMaster {
-		$this->protectReferencedItem = $protectReferencedItem;
 		return $this;
 	}
 	public function getCreatedAt(): ?int {
@@ -137,7 +95,7 @@ class InventoryModelMaster implements IModel {
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-	public function withCreatedAt(?int $createdAt): InventoryModelMaster {
+	public function withCreatedAt(?int $createdAt): BigInventoryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
@@ -147,7 +105,7 @@ class InventoryModelMaster implements IModel {
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-	public function withUpdatedAt(?int $updatedAt): InventoryModelMaster {
+	public function withUpdatedAt(?int $updatedAt): BigInventoryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
@@ -157,23 +115,20 @@ class InventoryModelMaster implements IModel {
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
-	public function withRevision(?int $revision): InventoryModelMaster {
+	public function withRevision(?int $revision): BigInventoryModelMaster {
 		$this->revision = $revision;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?InventoryModelMaster {
+    public static function fromJson(?array $data): ?BigInventoryModelMaster {
         if ($data === null) {
             return null;
         }
-        return (new InventoryModelMaster())
+        return (new BigInventoryModelMaster())
             ->withInventoryModelId(array_key_exists('inventoryModelId', $data) && $data['inventoryModelId'] !== null ? $data['inventoryModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withInitialCapacity(array_key_exists('initialCapacity', $data) && $data['initialCapacity'] !== null ? $data['initialCapacity'] : null)
-            ->withMaxCapacity(array_key_exists('maxCapacity', $data) && $data['maxCapacity'] !== null ? $data['maxCapacity'] : null)
-            ->withProtectReferencedItem(array_key_exists('protectReferencedItem', $data) ? $data['protectReferencedItem'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -185,9 +140,6 @@ class InventoryModelMaster implements IModel {
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "description" => $this->getDescription(),
-            "initialCapacity" => $this->getInitialCapacity(),
-            "maxCapacity" => $this->getMaxCapacity(),
-            "protectReferencedItem" => $this->getProtectReferencedItem(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

@@ -20,23 +20,23 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
-class SimpleInventory implements IModel {
+class BigItem implements IModel {
 	/**
      * @var string
 	 */
-	private $inventoryId;
-	/**
-     * @var string
-	 */
-	private $inventoryName;
+	private $itemId;
 	/**
      * @var string
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var string
 	 */
-	private $simpleItems;
+	private $itemName;
+	/**
+     * @var string
+	 */
+	private $count;
 	/**
      * @var int
 	 */
@@ -49,24 +49,14 @@ class SimpleInventory implements IModel {
      * @var int
 	 */
 	private $revision;
-	public function getInventoryId(): ?string {
-		return $this->inventoryId;
+	public function getItemId(): ?string {
+		return $this->itemId;
 	}
-	public function setInventoryId(?string $inventoryId) {
-		$this->inventoryId = $inventoryId;
+	public function setItemId(?string $itemId) {
+		$this->itemId = $itemId;
 	}
-	public function withInventoryId(?string $inventoryId): SimpleInventory {
-		$this->inventoryId = $inventoryId;
-		return $this;
-	}
-	public function getInventoryName(): ?string {
-		return $this->inventoryName;
-	}
-	public function setInventoryName(?string $inventoryName) {
-		$this->inventoryName = $inventoryName;
-	}
-	public function withInventoryName(?string $inventoryName): SimpleInventory {
-		$this->inventoryName = $inventoryName;
+	public function withItemId(?string $itemId): BigItem {
+		$this->itemId = $itemId;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -75,18 +65,28 @@ class SimpleInventory implements IModel {
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-	public function withUserId(?string $userId): SimpleInventory {
+	public function withUserId(?string $userId): BigItem {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getSimpleItems(): ?array {
-		return $this->simpleItems;
+	public function getItemName(): ?string {
+		return $this->itemName;
 	}
-	public function setSimpleItems(?array $simpleItems) {
-		$this->simpleItems = $simpleItems;
+	public function setItemName(?string $itemName) {
+		$this->itemName = $itemName;
 	}
-	public function withSimpleItems(?array $simpleItems): SimpleInventory {
-		$this->simpleItems = $simpleItems;
+	public function withItemName(?string $itemName): BigItem {
+		$this->itemName = $itemName;
+		return $this;
+	}
+	public function getCount(): ?string {
+		return $this->count;
+	}
+	public function setCount(?string $count) {
+		$this->count = $count;
+	}
+	public function withCount(?string $count): BigItem {
+		$this->count = $count;
 		return $this;
 	}
 	public function getCreatedAt(): ?int {
@@ -95,7 +95,7 @@ class SimpleInventory implements IModel {
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
-	public function withCreatedAt(?int $createdAt): SimpleInventory {
+	public function withCreatedAt(?int $createdAt): BigItem {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
@@ -105,7 +105,7 @@ class SimpleInventory implements IModel {
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-	public function withUpdatedAt(?int $updatedAt): SimpleInventory {
+	public function withUpdatedAt(?int $updatedAt): BigItem {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
@@ -115,25 +115,20 @@ class SimpleInventory implements IModel {
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
-	public function withRevision(?int $revision): SimpleInventory {
+	public function withRevision(?int $revision): BigItem {
 		$this->revision = $revision;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?SimpleInventory {
+    public static function fromJson(?array $data): ?BigItem {
         if ($data === null) {
             return null;
         }
-        return (new SimpleInventory())
-            ->withInventoryId(array_key_exists('inventoryId', $data) && $data['inventoryId'] !== null ? $data['inventoryId'] : null)
-            ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
+        return (new BigItem())
+            ->withItemId(array_key_exists('itemId', $data) && $data['itemId'] !== null ? $data['itemId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withSimpleItems(array_map(
-                function ($item) {
-                    return SimpleItem::fromJson($item);
-                },
-                array_key_exists('simpleItems', $data) && $data['simpleItems'] !== null ? $data['simpleItems'] : []
-            ))
+            ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -141,15 +136,10 @@ class SimpleInventory implements IModel {
 
     public function toJson(): array {
         return array(
-            "inventoryId" => $this->getInventoryId(),
-            "inventoryName" => $this->getInventoryName(),
+            "itemId" => $this->getItemId(),
             "userId" => $this->getUserId(),
-            "simpleItems" => array_map(
-                function ($item) {
-                    return $item->toJson();
-                },
-                $this->getSimpleItems() !== null && $this->getSimpleItems() !== null ? $this->getSimpleItems() : []
-            ),
+            "itemName" => $this->getItemName(),
+            "count" => $this->getCount(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

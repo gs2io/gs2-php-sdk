@@ -45,6 +45,10 @@ class GitHubApiKey implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getApiKeyId(): ?string {
 		return $this->apiKeyId;
 	}
@@ -105,6 +109,16 @@ class GitHubApiKey implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): GitHubApiKey {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GitHubApiKey {
         if ($data === null) {
@@ -116,7 +130,8 @@ class GitHubApiKey implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withEncryptionKeyName(array_key_exists('encryptionKeyName', $data) && $data['encryptionKeyName'] !== null ? $data['encryptionKeyName'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -127,6 +142,7 @@ class GitHubApiKey implements IModel {
             "encryptionKeyName" => $this->getEncryptionKeyName(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

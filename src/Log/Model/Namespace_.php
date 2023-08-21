@@ -77,6 +77,10 @@ class Namespace_ implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
@@ -217,6 +221,16 @@ class Namespace_ implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Namespace_ {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Namespace_ {
         if ($data === null) {
@@ -236,7 +250,8 @@ class Namespace_ implements IModel {
             ->withFirehoseStreamName(array_key_exists('firehoseStreamName', $data) && $data['firehoseStreamName'] !== null ? $data['firehoseStreamName'] : null)
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -255,6 +270,7 @@ class Namespace_ implements IModel {
             "status" => $this->getStatus(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

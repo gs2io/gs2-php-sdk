@@ -65,6 +65,10 @@ class ExperienceModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
@@ -175,6 +179,16 @@ class ExperienceModelMaster implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): ExperienceModelMaster {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?ExperienceModelMaster {
         if ($data === null) {
@@ -196,7 +210,8 @@ class ExperienceModelMaster implements IModel {
                 array_key_exists('acquireActionRates', $data) && $data['acquireActionRates'] !== null ? $data['acquireActionRates'] : []
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -217,6 +232,7 @@ class ExperienceModelMaster implements IModel {
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

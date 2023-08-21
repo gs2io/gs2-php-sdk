@@ -41,6 +41,10 @@ class Mutex implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getMutexId(): ?string {
 		return $this->mutexId;
 	}
@@ -91,6 +95,16 @@ class Mutex implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Mutex {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Mutex {
         if ($data === null) {
@@ -101,7 +115,8 @@ class Mutex implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -111,6 +126,7 @@ class Mutex implements IModel {
             "propertyId" => $this->getPropertyId(),
             "transactionId" => $this->getTransactionId(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

@@ -33,6 +33,10 @@ class AttachSecurityPolicy implements IModel {
      * @var int
 	 */
 	private $attachedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -63,6 +67,16 @@ class AttachSecurityPolicy implements IModel {
 		$this->attachedAt = $attachedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): AttachSecurityPolicy {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?AttachSecurityPolicy {
         if ($data === null) {
@@ -76,7 +90,8 @@ class AttachSecurityPolicy implements IModel {
                 },
                 array_key_exists('securityPolicyIds', $data) && $data['securityPolicyIds'] !== null ? $data['securityPolicyIds'] : []
             ))
-            ->withAttachedAt(array_key_exists('attachedAt', $data) && $data['attachedAt'] !== null ? $data['attachedAt'] : null);
+            ->withAttachedAt(array_key_exists('attachedAt', $data) && $data['attachedAt'] !== null ? $data['attachedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -89,6 +104,7 @@ class AttachSecurityPolicy implements IModel {
                 $this->getSecurityPolicyIds() !== null && $this->getSecurityPolicyIds() !== null ? $this->getSecurityPolicyIds() : []
             ),
             "attachedAt" => $this->getAttachedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

@@ -41,6 +41,10 @@ class Trigger implements IModel {
      * @var int
 	 */
 	private $expiresAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getTriggerId(): ?string {
 		return $this->triggerId;
 	}
@@ -91,6 +95,16 @@ class Trigger implements IModel {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Trigger {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Trigger {
         if ($data === null) {
@@ -101,7 +115,8 @@ class Trigger implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -111,6 +126,7 @@ class Trigger implements IModel {
             "userId" => $this->getUserId(),
             "createdAt" => $this->getCreatedAt(),
             "expiresAt" => $this->getExpiresAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

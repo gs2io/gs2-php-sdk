@@ -45,6 +45,10 @@ class Event implements IModel {
      * @var int
 	 */
 	private $eventAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getEventId(): ?string {
 		return $this->eventId;
 	}
@@ -105,6 +109,16 @@ class Event implements IModel {
 		$this->eventAt = $eventAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Event {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Event {
         if ($data === null) {
@@ -116,7 +130,8 @@ class Event implements IModel {
             ->withResourceName(array_key_exists('resourceName', $data) && $data['resourceName'] !== null ? $data['resourceName'] : null)
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
             ->withMessage(array_key_exists('message', $data) && $data['message'] !== null ? $data['message'] : null)
-            ->withEventAt(array_key_exists('eventAt', $data) && $data['eventAt'] !== null ? $data['eventAt'] : null);
+            ->withEventAt(array_key_exists('eventAt', $data) && $data['eventAt'] !== null ? $data['eventAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -127,6 +142,7 @@ class Event implements IModel {
             "type" => $this->getType(),
             "message" => $this->getMessage(),
             "eventAt" => $this->getEventAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

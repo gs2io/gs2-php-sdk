@@ -53,6 +53,10 @@ class CounterModelMaster implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
@@ -133,6 +137,16 @@ class CounterModelMaster implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): CounterModelMaster {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CounterModelMaster {
         if ($data === null) {
@@ -151,7 +165,8 @@ class CounterModelMaster implements IModel {
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -169,6 +184,7 @@ class CounterModelMaster implements IModel {
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

@@ -49,6 +49,10 @@ class RarityParameterStatus implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getRarityParameterStatusId(): ?string {
 		return $this->rarityParameterStatusId;
 	}
@@ -119,6 +123,16 @@ class RarityParameterStatus implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): RarityParameterStatus {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?RarityParameterStatus {
         if ($data === null) {
@@ -136,7 +150,8 @@ class RarityParameterStatus implements IModel {
                 array_key_exists('parameterValues', $data) && $data['parameterValues'] !== null ? $data['parameterValues'] : []
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -153,6 +168,7 @@ class RarityParameterStatus implements IModel {
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

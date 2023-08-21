@@ -41,6 +41,10 @@ class DataObjectHistory implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getDataObjectHistoryId(): ?string {
 		return $this->dataObjectHistoryId;
 	}
@@ -91,6 +95,16 @@ class DataObjectHistory implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): DataObjectHistory {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DataObjectHistory {
         if ($data === null) {
@@ -101,7 +115,8 @@ class DataObjectHistory implements IModel {
             ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
             ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null)
             ->withContentLength(array_key_exists('contentLength', $data) && $data['contentLength'] !== null ? $data['contentLength'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -111,6 +126,7 @@ class DataObjectHistory implements IModel {
             "generation" => $this->getGeneration(),
             "contentLength" => $this->getContentLength(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

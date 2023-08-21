@@ -45,6 +45,10 @@ class TakeOver implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getTakeOverId(): ?string {
 		return $this->takeOverId;
 	}
@@ -105,6 +109,16 @@ class TakeOver implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): TakeOver {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?TakeOver {
         if ($data === null) {
@@ -116,7 +130,8 @@ class TakeOver implements IModel {
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
             ->withUserIdentifier(array_key_exists('userIdentifier', $data) && $data['userIdentifier'] !== null ? $data['userIdentifier'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -127,6 +142,7 @@ class TakeOver implements IModel {
             "userIdentifier" => $this->getUserIdentifier(),
             "password" => $this->getPassword(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

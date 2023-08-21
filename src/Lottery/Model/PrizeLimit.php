@@ -41,6 +41,10 @@ class PrizeLimit implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getPrizeLimitId(): ?string {
 		return $this->prizeLimitId;
 	}
@@ -91,6 +95,16 @@ class PrizeLimit implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): PrizeLimit {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?PrizeLimit {
         if ($data === null) {
@@ -101,7 +115,8 @@ class PrizeLimit implements IModel {
             ->withPrizeId(array_key_exists('prizeId', $data) && $data['prizeId'] !== null ? $data['prizeId'] : null)
             ->withDrawnCount(array_key_exists('drawnCount', $data) && $data['drawnCount'] !== null ? $data['drawnCount'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -111,6 +126,7 @@ class PrizeLimit implements IModel {
             "drawnCount" => $this->getDrawnCount(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

@@ -57,6 +57,10 @@ class Message implements IModel {
      * @var int
 	 */
 	private $expiresAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getMessageId(): ?string {
 		return $this->messageId;
 	}
@@ -147,6 +151,16 @@ class Message implements IModel {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Message {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Message {
         if ($data === null) {
@@ -166,7 +180,8 @@ class Message implements IModel {
             ))
             ->withReceivedAt(array_key_exists('receivedAt', $data) && $data['receivedAt'] !== null ? $data['receivedAt'] : null)
             ->withReadAt(array_key_exists('readAt', $data) && $data['readAt'] !== null ? $data['readAt'] : null)
-            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -185,6 +200,7 @@ class Message implements IModel {
             "receivedAt" => $this->getReceivedAt(),
             "readAt" => $this->getReadAt(),
             "expiresAt" => $this->getExpiresAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

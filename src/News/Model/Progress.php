@@ -45,6 +45,10 @@ class Progress implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getProgressId(): ?string {
 		return $this->progressId;
 	}
@@ -105,6 +109,16 @@ class Progress implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Progress {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Progress {
         if ($data === null) {
@@ -116,7 +130,8 @@ class Progress implements IModel {
             ->withGenerated(array_key_exists('generated', $data) && $data['generated'] !== null ? $data['generated'] : null)
             ->withPatternCount(array_key_exists('patternCount', $data) && $data['patternCount'] !== null ? $data['patternCount'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -127,6 +142,7 @@ class Progress implements IModel {
             "patternCount" => $this->getPatternCount(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

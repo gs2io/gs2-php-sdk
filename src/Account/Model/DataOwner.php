@@ -37,6 +37,10 @@ class DataOwner implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getDataOwnerId(): ?string {
 		return $this->dataOwnerId;
 	}
@@ -77,6 +81,16 @@ class DataOwner implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): DataOwner {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DataOwner {
         if ($data === null) {
@@ -86,7 +100,8 @@ class DataOwner implements IModel {
             ->withDataOwnerId(array_key_exists('dataOwnerId', $data) && $data['dataOwnerId'] !== null ? $data['dataOwnerId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -95,6 +110,7 @@ class DataOwner implements IModel {
             "userId" => $this->getUserId(),
             "name" => $this->getName(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

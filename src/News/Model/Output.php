@@ -37,6 +37,10 @@ class Output implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getOutputId(): ?string {
 		return $this->outputId;
 	}
@@ -77,6 +81,16 @@ class Output implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Output {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Output {
         if ($data === null) {
@@ -86,7 +100,8 @@ class Output implements IModel {
             ->withOutputId(array_key_exists('outputId', $data) && $data['outputId'] !== null ? $data['outputId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withText(array_key_exists('text', $data) && $data['text'] !== null ? $data['text'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -95,6 +110,7 @@ class Output implements IModel {
             "name" => $this->getName(),
             "text" => $this->getText(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

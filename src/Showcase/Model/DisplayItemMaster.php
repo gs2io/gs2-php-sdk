@@ -41,6 +41,10 @@ class DisplayItemMaster implements IModel {
      * @var string
 	 */
 	private $salesPeriodEventId;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getDisplayItemId(): ?string {
 		return $this->displayItemId;
 	}
@@ -91,6 +95,16 @@ class DisplayItemMaster implements IModel {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): DisplayItemMaster {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DisplayItemMaster {
         if ($data === null) {
@@ -101,7 +115,8 @@ class DisplayItemMaster implements IModel {
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
             ->withSalesItemName(array_key_exists('salesItemName', $data) && $data['salesItemName'] !== null ? $data['salesItemName'] : null)
             ->withSalesItemGroupName(array_key_exists('salesItemGroupName', $data) && $data['salesItemGroupName'] !== null ? $data['salesItemGroupName'] : null)
-            ->withSalesPeriodEventId(array_key_exists('salesPeriodEventId', $data) && $data['salesPeriodEventId'] !== null ? $data['salesPeriodEventId'] : null);
+            ->withSalesPeriodEventId(array_key_exists('salesPeriodEventId', $data) && $data['salesPeriodEventId'] !== null ? $data['salesPeriodEventId'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -111,6 +126,7 @@ class DisplayItemMaster implements IModel {
             "salesItemName" => $this->getSalesItemName(),
             "salesItemGroupName" => $this->getSalesItemGroupName(),
             "salesPeriodEventId" => $this->getSalesPeriodEventId(),
+            "revision" => $this->getRevision(),
         );
     }
 }

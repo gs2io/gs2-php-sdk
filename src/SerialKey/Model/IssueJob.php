@@ -49,6 +49,10 @@ class IssueJob implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getIssueJobId(): ?string {
 		return $this->issueJobId;
 	}
@@ -119,6 +123,16 @@ class IssueJob implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): IssueJob {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?IssueJob {
         if ($data === null) {
@@ -131,7 +145,8 @@ class IssueJob implements IModel {
             ->withIssuedCount(array_key_exists('issuedCount', $data) && $data['issuedCount'] !== null ? $data['issuedCount'] : null)
             ->withIssueRequestCount(array_key_exists('issueRequestCount', $data) && $data['issueRequestCount'] !== null ? $data['issueRequestCount'] : null)
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +158,7 @@ class IssueJob implements IModel {
             "issueRequestCount" => $this->getIssueRequestCount(),
             "status" => $this->getStatus(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

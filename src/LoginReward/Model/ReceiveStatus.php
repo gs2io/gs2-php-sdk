@@ -49,6 +49,10 @@ class ReceiveStatus implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getReceiveStatusId(): ?string {
 		return $this->receiveStatusId;
 	}
@@ -119,6 +123,16 @@ class ReceiveStatus implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): ReceiveStatus {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?ReceiveStatus {
         if ($data === null) {
@@ -136,7 +150,8 @@ class ReceiveStatus implements IModel {
             ))
             ->withLastReceivedAt(array_key_exists('lastReceivedAt', $data) && $data['lastReceivedAt'] !== null ? $data['lastReceivedAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -153,6 +168,7 @@ class ReceiveStatus implements IModel {
             "lastReceivedAt" => $this->getLastReceivedAt(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

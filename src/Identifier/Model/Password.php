@@ -37,6 +37,10 @@ class Password implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getPasswordId(): ?string {
 		return $this->passwordId;
 	}
@@ -77,6 +81,16 @@ class Password implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Password {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Password {
         if ($data === null) {
@@ -86,7 +100,8 @@ class Password implements IModel {
             ->withPasswordId(array_key_exists('passwordId', $data) && $data['passwordId'] !== null ? $data['passwordId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -95,6 +110,7 @@ class Password implements IModel {
             "userId" => $this->getUserId(),
             "userName" => $this->getUserName(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

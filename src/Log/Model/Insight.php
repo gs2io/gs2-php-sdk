@@ -49,6 +49,10 @@ class Insight implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getInsightId(): ?string {
 		return $this->insightId;
 	}
@@ -119,6 +123,16 @@ class Insight implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Insight {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Insight {
         if ($data === null) {
@@ -131,7 +145,8 @@ class Insight implements IModel {
             ->withHost(array_key_exists('host', $data) && $data['host'] !== null ? $data['host'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +158,7 @@ class Insight implements IModel {
             "password" => $this->getPassword(),
             "status" => $this->getStatus(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

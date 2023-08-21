@@ -45,6 +45,10 @@ class Await implements IModel {
      * @var int
 	 */
 	private $exchangedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getAwaitId(): ?string {
 		return $this->awaitId;
 	}
@@ -105,6 +109,16 @@ class Await implements IModel {
 		$this->exchangedAt = $exchangedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Await {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Await {
         if ($data === null) {
@@ -116,7 +130,8 @@ class Await implements IModel {
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
-            ->withExchangedAt(array_key_exists('exchangedAt', $data) && $data['exchangedAt'] !== null ? $data['exchangedAt'] : null);
+            ->withExchangedAt(array_key_exists('exchangedAt', $data) && $data['exchangedAt'] !== null ? $data['exchangedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -127,6 +142,7 @@ class Await implements IModel {
             "name" => $this->getName(),
             "count" => $this->getCount(),
             "exchangedAt" => $this->getExchangedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

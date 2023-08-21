@@ -49,6 +49,10 @@ class GlobalMessageMaster implements IModel {
      * @var int
 	 */
 	private $expiresAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getGlobalMessageId(): ?string {
 		return $this->globalMessageId;
 	}
@@ -119,6 +123,16 @@ class GlobalMessageMaster implements IModel {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): GlobalMessageMaster {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GlobalMessageMaster {
         if ($data === null) {
@@ -136,7 +150,8 @@ class GlobalMessageMaster implements IModel {
             ))
             ->withExpiresTimeSpan(array_key_exists('expiresTimeSpan', $data) && $data['expiresTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresTimeSpan']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -153,6 +168,7 @@ class GlobalMessageMaster implements IModel {
             "expiresTimeSpan" => $this->getExpiresTimeSpan() !== null ? $this->getExpiresTimeSpan()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "expiresAt" => $this->getExpiresAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

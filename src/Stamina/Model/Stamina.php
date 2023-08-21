@@ -69,6 +69,10 @@ class Stamina implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getStaminaId(): ?string {
 		return $this->staminaId;
 	}
@@ -189,6 +193,16 @@ class Stamina implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Stamina {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Stamina {
         if ($data === null) {
@@ -206,7 +220,8 @@ class Stamina implements IModel {
             ->withNextRecoverAt(array_key_exists('nextRecoverAt', $data) && $data['nextRecoverAt'] !== null ? $data['nextRecoverAt'] : null)
             ->withLastRecoveredAt(array_key_exists('lastRecoveredAt', $data) && $data['lastRecoveredAt'] !== null ? $data['lastRecoveredAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -223,6 +238,7 @@ class Stamina implements IModel {
             "lastRecoveredAt" => $this->getLastRecoveredAt(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

@@ -69,6 +69,10 @@ class Receipt implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getReceiptId(): ?string {
 		return $this->receiptId;
 	}
@@ -189,6 +193,16 @@ class Receipt implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Receipt {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Receipt {
         if ($data === null) {
@@ -206,7 +220,8 @@ class Receipt implements IModel {
             ->withFree(array_key_exists('free', $data) && $data['free'] !== null ? $data['free'] : null)
             ->withTotal(array_key_exists('total', $data) && $data['total'] !== null ? $data['total'] : null)
             ->withContentsId(array_key_exists('contentsId', $data) && $data['contentsId'] !== null ? $data['contentsId'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -223,6 +238,7 @@ class Receipt implements IModel {
             "total" => $this->getTotal(),
             "contentsId" => $this->getContentsId(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

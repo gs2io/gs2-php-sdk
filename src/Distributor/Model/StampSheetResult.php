@@ -57,6 +57,10 @@ class StampSheetResult implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getStampSheetResultId(): ?string {
 		return $this->stampSheetResultId;
 	}
@@ -147,6 +151,16 @@ class StampSheetResult implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): StampSheetResult {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?StampSheetResult {
         if ($data === null) {
@@ -171,7 +185,8 @@ class StampSheetResult implements IModel {
             ))
             ->withSheetResult(array_key_exists('sheetResult', $data) && $data['sheetResult'] !== null ? $data['sheetResult'] : null)
             ->withNextTransactionId(array_key_exists('nextTransactionId', $data) && $data['nextTransactionId'] !== null ? $data['nextTransactionId'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -195,6 +210,7 @@ class StampSheetResult implements IModel {
             "sheetResult" => $this->getSheetResult(),
             "nextTransactionId" => $this->getNextTransactionId(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

@@ -61,6 +61,8 @@ use Gs2\Schedule\Request\GetTriggerByUserIdRequest;
 use Gs2\Schedule\Result\GetTriggerByUserIdResult;
 use Gs2\Schedule\Request\TriggerByUserIdRequest;
 use Gs2\Schedule\Result\TriggerByUserIdResult;
+use Gs2\Schedule\Request\TriggerByStampSheetRequest;
+use Gs2\Schedule\Result\TriggerByStampSheetResult;
 use Gs2\Schedule\Request\DeleteTriggerRequest;
 use Gs2\Schedule\Result\DeleteTriggerResult;
 use Gs2\Schedule\Request\DeleteTriggerByUserIdRequest;
@@ -1122,6 +1124,65 @@ class TriggerByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class TriggerByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var TriggerByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * TriggerByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param TriggerByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        TriggerByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            TriggerByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/trigger";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -2282,6 +2343,33 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
             TriggerByUserIdRequest $request
     ): TriggerByUserIdResult {
         return $this->triggerByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param TriggerByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function triggerByStampSheetAsync(
+            TriggerByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new TriggerByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param TriggerByStampSheetRequest $request
+     * @return TriggerByStampSheetResult
+     */
+    public function triggerByStampSheet (
+            TriggerByStampSheetRequest $request
+    ): TriggerByStampSheetResult {
+        return $this->triggerByStampSheetAsync(
             $request
         )->wait();
     }

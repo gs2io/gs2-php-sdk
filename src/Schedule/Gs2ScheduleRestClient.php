@@ -67,6 +67,8 @@ use Gs2\Schedule\Request\DeleteTriggerRequest;
 use Gs2\Schedule\Result\DeleteTriggerResult;
 use Gs2\Schedule\Request\DeleteTriggerByUserIdRequest;
 use Gs2\Schedule\Result\DeleteTriggerByUserIdResult;
+use Gs2\Schedule\Request\DeleteTriggerByStampTaskRequest;
+use Gs2\Schedule\Result\DeleteTriggerByStampTaskResult;
 use Gs2\Schedule\Request\DescribeEventsRequest;
 use Gs2\Schedule\Result\DescribeEventsResult;
 use Gs2\Schedule\Request\DescribeEventsByUserIdRequest;
@@ -1315,6 +1317,65 @@ class DeleteTriggerByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DeleteTriggerByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteTriggerByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteTriggerByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteTriggerByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteTriggerByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteTriggerByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/trigger/delete";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeEventsTask extends Gs2RestSessionTask {
 
     /**
@@ -2424,6 +2485,33 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
             DeleteTriggerByUserIdRequest $request
     ): DeleteTriggerByUserIdResult {
         return $this->deleteTriggerByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteTriggerByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteTriggerByStampTaskAsync(
+            DeleteTriggerByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteTriggerByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteTriggerByStampTaskRequest $request
+     * @return DeleteTriggerByStampTaskResult
+     */
+    public function deleteTriggerByStampTask (
+            DeleteTriggerByStampTaskRequest $request
+    ): DeleteTriggerByStampTaskResult {
+        return $this->deleteTriggerByStampTaskAsync(
             $request
         )->wait();
     }

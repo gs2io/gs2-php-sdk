@@ -27,6 +27,8 @@ use Gs2\Stamina\Model\StaminaModel;
 class SetRecoverIntervalByStatusResult implements IResult {
     /** @var Stamina */
     private $item;
+    /** @var Stamina */
+    private $old;
     /** @var StaminaModel */
     private $staminaModel;
 
@@ -40,6 +42,19 @@ class SetRecoverIntervalByStatusResult implements IResult {
 
 	public function withItem(?Stamina $item): SetRecoverIntervalByStatusResult {
 		$this->item = $item;
+		return $this;
+	}
+
+	public function getOld(): ?Stamina {
+		return $this->old;
+	}
+
+	public function setOld(?Stamina $old) {
+		$this->old = $old;
+	}
+
+	public function withOld(?Stamina $old): SetRecoverIntervalByStatusResult {
+		$this->old = $old;
 		return $this;
 	}
 
@@ -62,12 +77,14 @@ class SetRecoverIntervalByStatusResult implements IResult {
         }
         return (new SetRecoverIntervalByStatusResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Stamina::fromJson($data['item']) : null)
+            ->withOld(array_key_exists('old', $data) && $data['old'] !== null ? Stamina::fromJson($data['old']) : null)
             ->withStaminaModel(array_key_exists('staminaModel', $data) && $data['staminaModel'] !== null ? StaminaModel::fromJson($data['staminaModel']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "old" => $this->getOld() !== null ? $this->getOld()->toJson() : null,
             "staminaModel" => $this->getStaminaModel() !== null ? $this->getStaminaModel()->toJson() : null,
         );
     }

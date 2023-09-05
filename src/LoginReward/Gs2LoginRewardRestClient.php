@@ -87,8 +87,12 @@ use Gs2\LoginReward\Request\MarkReceivedRequest;
 use Gs2\LoginReward\Result\MarkReceivedResult;
 use Gs2\LoginReward\Request\MarkReceivedByUserIdRequest;
 use Gs2\LoginReward\Result\MarkReceivedByUserIdResult;
+use Gs2\LoginReward\Request\UnmarkReceivedByUserIdRequest;
+use Gs2\LoginReward\Result\UnmarkReceivedByUserIdResult;
 use Gs2\LoginReward\Request\MarkReceivedByStampTaskRequest;
 use Gs2\LoginReward\Result\MarkReceivedByStampTaskResult;
+use Gs2\LoginReward\Request\UnmarkReceivedByStampSheetRequest;
+use Gs2\LoginReward\Result\UnmarkReceivedByStampSheetResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -1948,6 +1952,69 @@ class MarkReceivedByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class UnmarkReceivedByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnmarkReceivedByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnmarkReceivedByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnmarkReceivedByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnmarkReceivedByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnmarkReceivedByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/receiveStatus/{bonusModelName}/unmark";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{bonusModelName}", $this->request->getBonusModelName() === null|| strlen($this->request->getBonusModelName()) == 0 ? "null" : $this->request->getBonusModelName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getStepNumber() !== null) {
+            $json["stepNumber"] = $this->request->getStepNumber();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class MarkReceivedByStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -1984,6 +2051,65 @@ class MarkReceivedByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnmarkReceivedByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnmarkReceivedByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnmarkReceivedByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnmarkReceivedByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnmarkReceivedByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnmarkReceivedByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/receiveStatus/unmark";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -2808,6 +2934,33 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param UnmarkReceivedByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function unmarkReceivedByUserIdAsync(
+            UnmarkReceivedByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnmarkReceivedByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnmarkReceivedByUserIdRequest $request
+     * @return UnmarkReceivedByUserIdResult
+     */
+    public function unmarkReceivedByUserId (
+            UnmarkReceivedByUserIdRequest $request
+    ): UnmarkReceivedByUserIdResult {
+        return $this->unmarkReceivedByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param MarkReceivedByStampTaskRequest $request
      * @return PromiseInterface
      */
@@ -2830,6 +2983,33 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
             MarkReceivedByStampTaskRequest $request
     ): MarkReceivedByStampTaskResult {
         return $this->markReceivedByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnmarkReceivedByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function unmarkReceivedByStampSheetAsync(
+            UnmarkReceivedByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnmarkReceivedByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnmarkReceivedByStampSheetRequest $request
+     * @return UnmarkReceivedByStampSheetResult
+     */
+    public function unmarkReceivedByStampSheet (
+            UnmarkReceivedByStampSheetRequest $request
+    ): UnmarkReceivedByStampSheetResult {
+        return $this->unmarkReceivedByStampSheetAsync(
             $request
         )->wait();
     }

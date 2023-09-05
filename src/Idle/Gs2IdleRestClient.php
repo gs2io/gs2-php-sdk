@@ -73,8 +73,12 @@ use Gs2\Idle\Request\ReceiveByUserIdRequest;
 use Gs2\Idle\Result\ReceiveByUserIdResult;
 use Gs2\Idle\Request\IncreaseMaximumIdleMinutesByUserIdRequest;
 use Gs2\Idle\Result\IncreaseMaximumIdleMinutesByUserIdResult;
+use Gs2\Idle\Request\DecreaseMaximumIdleMinutesByUserIdRequest;
+use Gs2\Idle\Result\DecreaseMaximumIdleMinutesByUserIdResult;
 use Gs2\Idle\Request\IncreaseMaximumIdleMinutesByStampSheetRequest;
 use Gs2\Idle\Result\IncreaseMaximumIdleMinutesByStampSheetResult;
+use Gs2\Idle\Request\DecreaseMaximumIdleMinutesByStampTaskRequest;
+use Gs2\Idle\Result\DecreaseMaximumIdleMinutesByStampTaskResult;
 use Gs2\Idle\Request\ExportMasterRequest;
 use Gs2\Idle\Result\ExportMasterResult;
 use Gs2\Idle\Request\GetCurrentCategoryMasterRequest;
@@ -1484,6 +1488,69 @@ class IncreaseMaximumIdleMinutesByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DecreaseMaximumIdleMinutesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecreaseMaximumIdleMinutesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecreaseMaximumIdleMinutesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecreaseMaximumIdleMinutesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecreaseMaximumIdleMinutesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecreaseMaximumIdleMinutesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "idle", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/model/{categoryName}/maximumIdle/decrease";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+
+        $json = [];
+        if ($this->request->getDecreaseMinutes() !== null) {
+            $json["decreaseMinutes"] = $this->request->getDecreaseMinutes();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class IncreaseMaximumIdleMinutesByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -1520,6 +1587,65 @@ class IncreaseMaximumIdleMinutesByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DecreaseMaximumIdleMinutesByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecreaseMaximumIdleMinutesByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecreaseMaximumIdleMinutesByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecreaseMaximumIdleMinutesByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecreaseMaximumIdleMinutesByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecreaseMaximumIdleMinutesByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "idle", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/status/maximumIdleMinutes/sub";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -2385,6 +2511,33 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DecreaseMaximumIdleMinutesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function decreaseMaximumIdleMinutesByUserIdAsync(
+            DecreaseMaximumIdleMinutesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecreaseMaximumIdleMinutesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecreaseMaximumIdleMinutesByUserIdRequest $request
+     * @return DecreaseMaximumIdleMinutesByUserIdResult
+     */
+    public function decreaseMaximumIdleMinutesByUserId (
+            DecreaseMaximumIdleMinutesByUserIdRequest $request
+    ): DecreaseMaximumIdleMinutesByUserIdResult {
+        return $this->decreaseMaximumIdleMinutesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param IncreaseMaximumIdleMinutesByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -2407,6 +2560,33 @@ class Gs2IdleRestClient extends AbstractGs2Client {
             IncreaseMaximumIdleMinutesByStampSheetRequest $request
     ): IncreaseMaximumIdleMinutesByStampSheetResult {
         return $this->increaseMaximumIdleMinutesByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DecreaseMaximumIdleMinutesByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function decreaseMaximumIdleMinutesByStampTaskAsync(
+            DecreaseMaximumIdleMinutesByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecreaseMaximumIdleMinutesByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecreaseMaximumIdleMinutesByStampTaskRequest $request
+     * @return DecreaseMaximumIdleMinutesByStampTaskResult
+     */
+    public function decreaseMaximumIdleMinutesByStampTask (
+            DecreaseMaximumIdleMinutesByStampTaskRequest $request
+    ): DecreaseMaximumIdleMinutesByStampTaskResult {
+        return $this->decreaseMaximumIdleMinutesByStampTaskAsync(
             $request
         )->wait();
     }

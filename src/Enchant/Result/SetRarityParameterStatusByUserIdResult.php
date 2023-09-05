@@ -24,6 +24,8 @@ use Gs2\Enchant\Model\RarityParameterStatus;
 class SetRarityParameterStatusByUserIdResult implements IResult {
     /** @var RarityParameterStatus */
     private $item;
+    /** @var RarityParameterStatus */
+    private $old;
 
 	public function getItem(): ?RarityParameterStatus {
 		return $this->item;
@@ -38,17 +40,32 @@ class SetRarityParameterStatusByUserIdResult implements IResult {
 		return $this;
 	}
 
+	public function getOld(): ?RarityParameterStatus {
+		return $this->old;
+	}
+
+	public function setOld(?RarityParameterStatus $old) {
+		$this->old = $old;
+	}
+
+	public function withOld(?RarityParameterStatus $old): SetRarityParameterStatusByUserIdResult {
+		$this->old = $old;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?SetRarityParameterStatusByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new SetRarityParameterStatusByUserIdResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? RarityParameterStatus::fromJson($data['item']) : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? RarityParameterStatus::fromJson($data['item']) : null)
+            ->withOld(array_key_exists('old', $data) && $data['old'] !== null ? RarityParameterStatus::fromJson($data['old']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "old" => $this->getOld() !== null ? $this->getOld()->toJson() : null,
         );
     }
 }

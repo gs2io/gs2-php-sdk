@@ -71,8 +71,12 @@ use Gs2\Dictionary\Request\GetEntryWithSignatureByUserIdRequest;
 use Gs2\Dictionary\Result\GetEntryWithSignatureByUserIdResult;
 use Gs2\Dictionary\Request\ResetByUserIdRequest;
 use Gs2\Dictionary\Result\ResetByUserIdResult;
+use Gs2\Dictionary\Request\DeleteEntriesByUserIdRequest;
+use Gs2\Dictionary\Result\DeleteEntriesByUserIdResult;
 use Gs2\Dictionary\Request\AddEntriesByStampSheetRequest;
 use Gs2\Dictionary\Result\AddEntriesByStampSheetResult;
+use Gs2\Dictionary\Request\DeleteEntriesByStampTaskRequest;
+use Gs2\Dictionary\Result\DeleteEntriesByStampTaskResult;
 use Gs2\Dictionary\Request\ExportMasterRequest;
 use Gs2\Dictionary\Result\ExportMasterResult;
 use Gs2\Dictionary\Request\GetCurrentEntryMasterRequest;
@@ -1373,6 +1377,73 @@ class ResetByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DeleteEntriesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteEntriesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteEntriesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteEntriesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteEntriesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteEntriesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/entry/delete";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getEntryModelNames() !== null) {
+            $array = [];
+            foreach ($this->request->getEntryModelNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["entryModelNames"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class AddEntriesByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -1409,6 +1480,65 @@ class AddEntriesByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteEntriesByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteEntriesByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteEntriesByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteEntriesByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteEntriesByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteEntriesByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/entry/delete";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -2247,6 +2377,33 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DeleteEntriesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteEntriesByUserIdAsync(
+            DeleteEntriesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteEntriesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteEntriesByUserIdRequest $request
+     * @return DeleteEntriesByUserIdResult
+     */
+    public function deleteEntriesByUserId (
+            DeleteEntriesByUserIdRequest $request
+    ): DeleteEntriesByUserIdResult {
+        return $this->deleteEntriesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param AddEntriesByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -2269,6 +2426,33 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
             AddEntriesByStampSheetRequest $request
     ): AddEntriesByStampSheetResult {
         return $this->addEntriesByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteEntriesByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteEntriesByStampTaskAsync(
+            DeleteEntriesByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteEntriesByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteEntriesByStampTaskRequest $request
+     * @return DeleteEntriesByStampTaskResult
+     */
+    public function deleteEntriesByStampTask (
+            DeleteEntriesByStampTaskRequest $request
+    ): DeleteEntriesByStampTaskResult {
+        return $this->deleteEntriesByStampTaskAsync(
             $request
         )->wait();
     }

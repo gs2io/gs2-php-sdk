@@ -89,12 +89,16 @@ use Gs2\Formation\Request\SetMoldCapacityByUserIdRequest;
 use Gs2\Formation\Result\SetMoldCapacityByUserIdResult;
 use Gs2\Formation\Request\AddMoldCapacityByUserIdRequest;
 use Gs2\Formation\Result\AddMoldCapacityByUserIdResult;
+use Gs2\Formation\Request\SubMoldCapacityByUserIdRequest;
+use Gs2\Formation\Result\SubMoldCapacityByUserIdResult;
 use Gs2\Formation\Request\DeleteMoldRequest;
 use Gs2\Formation\Result\DeleteMoldResult;
 use Gs2\Formation\Request\DeleteMoldByUserIdRequest;
 use Gs2\Formation\Result\DeleteMoldByUserIdResult;
 use Gs2\Formation\Request\AddCapacityByStampSheetRequest;
 use Gs2\Formation\Result\AddCapacityByStampSheetResult;
+use Gs2\Formation\Request\SubCapacityByStampTaskRequest;
+use Gs2\Formation\Result\SubCapacityByStampTaskResult;
 use Gs2\Formation\Request\SetCapacityByStampSheetRequest;
 use Gs2\Formation\Result\SetCapacityByStampSheetResult;
 use Gs2\Formation\Request\DescribeFormsRequest;
@@ -1999,6 +2003,69 @@ class AddMoldCapacityByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class SubMoldCapacityByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SubMoldCapacityByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SubMoldCapacityByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SubMoldCapacityByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SubMoldCapacityByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SubMoldCapacityByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/mold/{moldName}/sub";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{moldName}", $this->request->getMoldName() === null|| strlen($this->request->getMoldName()) == 0 ? "null" : $this->request->getMoldName(), $url);
+
+        $json = [];
+        if ($this->request->getCapacity() !== null) {
+            $json["capacity"] = $this->request->getCapacity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteMoldTask extends Gs2RestSessionTask {
 
     /**
@@ -2161,6 +2228,65 @@ class AddCapacityByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SubCapacityByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SubCapacityByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SubCapacityByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param SubCapacityByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SubCapacityByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SubCapacityByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/mold/capacity/sub";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -4639,6 +4765,33 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param SubMoldCapacityByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function subMoldCapacityByUserIdAsync(
+            SubMoldCapacityByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SubMoldCapacityByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SubMoldCapacityByUserIdRequest $request
+     * @return SubMoldCapacityByUserIdResult
+     */
+    public function subMoldCapacityByUserId (
+            SubMoldCapacityByUserIdRequest $request
+    ): SubMoldCapacityByUserIdResult {
+        return $this->subMoldCapacityByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteMoldRequest $request
      * @return PromiseInterface
      */
@@ -4715,6 +4868,33 @@ class Gs2FormationRestClient extends AbstractGs2Client {
             AddCapacityByStampSheetRequest $request
     ): AddCapacityByStampSheetResult {
         return $this->addCapacityByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SubCapacityByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function subCapacityByStampTaskAsync(
+            SubCapacityByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SubCapacityByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SubCapacityByStampTaskRequest $request
+     * @return SubCapacityByStampTaskResult
+     */
+    public function subCapacityByStampTask (
+            SubCapacityByStampTaskRequest $request
+    ): SubCapacityByStampTaskResult {
+        return $this->subCapacityByStampTaskAsync(
             $request
         )->wait();
     }

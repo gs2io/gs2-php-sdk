@@ -26,6 +26,8 @@ use Gs2\Formation\Model\MoldModel;
 class SetMoldCapacityByUserIdResult implements IResult {
     /** @var Mold */
     private $item;
+    /** @var Mold */
+    private $old;
     /** @var MoldModel */
     private $moldModel;
 
@@ -39,6 +41,19 @@ class SetMoldCapacityByUserIdResult implements IResult {
 
 	public function withItem(?Mold $item): SetMoldCapacityByUserIdResult {
 		$this->item = $item;
+		return $this;
+	}
+
+	public function getOld(): ?Mold {
+		return $this->old;
+	}
+
+	public function setOld(?Mold $old) {
+		$this->old = $old;
+	}
+
+	public function withOld(?Mold $old): SetMoldCapacityByUserIdResult {
+		$this->old = $old;
 		return $this;
 	}
 
@@ -61,12 +76,14 @@ class SetMoldCapacityByUserIdResult implements IResult {
         }
         return (new SetMoldCapacityByUserIdResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Mold::fromJson($data['item']) : null)
+            ->withOld(array_key_exists('old', $data) && $data['old'] !== null ? Mold::fromJson($data['old']) : null)
             ->withMoldModel(array_key_exists('moldModel', $data) && $data['moldModel'] !== null ? MoldModel::fromJson($data['moldModel']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "old" => $this->getOld() !== null ? $this->getOld()->toJson() : null,
             "moldModel" => $this->getMoldModel() !== null ? $this->getMoldModel()->toJson() : null,
         );
     }

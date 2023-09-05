@@ -71,6 +71,8 @@ use Gs2\Inbox\Request\SendByStampSheetRequest;
 use Gs2\Inbox\Result\SendByStampSheetResult;
 use Gs2\Inbox\Request\OpenByStampTaskRequest;
 use Gs2\Inbox\Result\OpenByStampTaskResult;
+use Gs2\Inbox\Request\DeleteMessageByStampTaskRequest;
+use Gs2\Inbox\Result\DeleteMessageByStampTaskResult;
 use Gs2\Inbox\Request\ExportMasterRequest;
 use Gs2\Inbox\Result\ExportMasterResult;
 use Gs2\Inbox\Request\GetCurrentMessageMasterRequest;
@@ -1428,6 +1430,65 @@ class OpenByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/open";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteMessageByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteMessageByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteMessageByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteMessageByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteMessageByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteMessageByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/delete";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -2893,6 +2954,33 @@ class Gs2InboxRestClient extends AbstractGs2Client {
             OpenByStampTaskRequest $request
     ): OpenByStampTaskResult {
         return $this->openByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteMessageByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteMessageByStampTaskAsync(
+            DeleteMessageByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteMessageByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteMessageByStampTaskRequest $request
+     * @return DeleteMessageByStampTaskResult
+     */
+    public function deleteMessageByStampTask (
+            DeleteMessageByStampTaskRequest $request
+    ): DeleteMessageByStampTaskResult {
+        return $this->deleteMessageByStampTaskAsync(
             $request
         )->wait();
     }

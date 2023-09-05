@@ -57,8 +57,12 @@ use Gs2\SerialKey\Request\UseRequest;
 use Gs2\SerialKey\Result\UseResult;
 use Gs2\SerialKey\Request\UseByUserIdRequest;
 use Gs2\SerialKey\Result\UseByUserIdResult;
+use Gs2\SerialKey\Request\RevertUseByUserIdRequest;
+use Gs2\SerialKey\Result\RevertUseByUserIdResult;
 use Gs2\SerialKey\Request\UseByStampTaskRequest;
 use Gs2\SerialKey\Result\UseByStampTaskResult;
+use Gs2\SerialKey\Request\RevertUseByStampSheetRequest;
+use Gs2\SerialKey\Result\RevertUseByStampSheetResult;
 use Gs2\SerialKey\Request\DescribeCampaignModelsRequest;
 use Gs2\SerialKey\Result\DescribeCampaignModelsResult;
 use Gs2\SerialKey\Request\GetCampaignModelRequest;
@@ -930,6 +934,68 @@ class UseByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class RevertUseByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RevertUseByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RevertUseByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param RevertUseByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RevertUseByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RevertUseByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/serialKey/revert";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getCode() !== null) {
+            $json["code"] = $this->request->getCode();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UseByStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -966,6 +1032,65 @@ class UseByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RevertUseByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RevertUseByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RevertUseByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param RevertUseByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RevertUseByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RevertUseByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/serialKey/use";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -2041,6 +2166,33 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param RevertUseByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function revertUseByUserIdAsync(
+            RevertUseByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RevertUseByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RevertUseByUserIdRequest $request
+     * @return RevertUseByUserIdResult
+     */
+    public function revertUseByUserId (
+            RevertUseByUserIdRequest $request
+    ): RevertUseByUserIdResult {
+        return $this->revertUseByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param UseByStampTaskRequest $request
      * @return PromiseInterface
      */
@@ -2063,6 +2215,33 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
             UseByStampTaskRequest $request
     ): UseByStampTaskResult {
         return $this->useByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RevertUseByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function revertUseByStampSheetAsync(
+            RevertUseByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RevertUseByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RevertUseByStampSheetRequest $request
+     * @return RevertUseByStampSheetResult
+     */
+    public function revertUseByStampSheet (
+            RevertUseByStampSheetRequest $request
+    ): RevertUseByStampSheetResult {
+        return $this->revertUseByStampSheetAsync(
             $request
         )->wait();
     }

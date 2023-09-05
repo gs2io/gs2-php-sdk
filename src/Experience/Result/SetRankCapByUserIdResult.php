@@ -23,6 +23,8 @@ use Gs2\Experience\Model\Status;
 class SetRankCapByUserIdResult implements IResult {
     /** @var Status */
     private $item;
+    /** @var Status */
+    private $old;
 
 	public function getItem(): ?Status {
 		return $this->item;
@@ -37,17 +39,32 @@ class SetRankCapByUserIdResult implements IResult {
 		return $this;
 	}
 
+	public function getOld(): ?Status {
+		return $this->old;
+	}
+
+	public function setOld(?Status $old) {
+		$this->old = $old;
+	}
+
+	public function withOld(?Status $old): SetRankCapByUserIdResult {
+		$this->old = $old;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?SetRankCapByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new SetRankCapByUserIdResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Status::fromJson($data['item']) : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Status::fromJson($data['item']) : null)
+            ->withOld(array_key_exists('old', $data) && $data['old'] !== null ? Status::fromJson($data['old']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "old" => $this->getOld() !== null ? $this->getOld()->toJson() : null,
         );
     }
 }

@@ -23,6 +23,8 @@ use Gs2\Inventory\Model\Inventory;
 class SetCapacityByUserIdResult implements IResult {
     /** @var Inventory */
     private $item;
+    /** @var Inventory */
+    private $old;
 
 	public function getItem(): ?Inventory {
 		return $this->item;
@@ -37,17 +39,32 @@ class SetCapacityByUserIdResult implements IResult {
 		return $this;
 	}
 
+	public function getOld(): ?Inventory {
+		return $this->old;
+	}
+
+	public function setOld(?Inventory $old) {
+		$this->old = $old;
+	}
+
+	public function withOld(?Inventory $old): SetCapacityByUserIdResult {
+		$this->old = $old;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?SetCapacityByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new SetCapacityByUserIdResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Inventory::fromJson($data['item']) : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Inventory::fromJson($data['item']) : null)
+            ->withOld(array_key_exists('old', $data) && $data['old'] !== null ? Inventory::fromJson($data['old']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "old" => $this->getOld() !== null ? $this->getOld()->toJson() : null,
         );
     }
 }

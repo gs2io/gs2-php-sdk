@@ -103,8 +103,12 @@ use Gs2\Showcase\Request\DeleteRandomShowcaseMasterRequest;
 use Gs2\Showcase\Result\DeleteRandomShowcaseMasterResult;
 use Gs2\Showcase\Request\IncrementPurchaseCountByUserIdRequest;
 use Gs2\Showcase\Result\IncrementPurchaseCountByUserIdResult;
+use Gs2\Showcase\Request\DecrementPurchaseCountByUserIdRequest;
+use Gs2\Showcase\Result\DecrementPurchaseCountByUserIdResult;
 use Gs2\Showcase\Request\IncrementPurchaseCountByStampTaskRequest;
 use Gs2\Showcase\Result\IncrementPurchaseCountByStampTaskResult;
+use Gs2\Showcase\Request\DecrementPurchaseCountByStampSheetRequest;
+use Gs2\Showcase\Result\DecrementPurchaseCountByStampSheetResult;
 use Gs2\Showcase\Request\ForceReDrawByUserIdRequest;
 use Gs2\Showcase\Result\ForceReDrawByUserIdResult;
 use Gs2\Showcase\Request\ForceReDrawByUserIdByStampSheetRequest;
@@ -2509,6 +2513,70 @@ class IncrementPurchaseCountByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DecrementPurchaseCountByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecrementPurchaseCountByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecrementPurchaseCountByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecrementPurchaseCountByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecrementPurchaseCountByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecrementPurchaseCountByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/random/showcase/user/{userId}/status/{showcaseName}/{displayItemName}/purchase/count/decrease";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{displayItemName}", $this->request->getDisplayItemName() === null|| strlen($this->request->getDisplayItemName()) == 0 ? "null" : $this->request->getDisplayItemName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class IncrementPurchaseCountByStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -2545,6 +2613,65 @@ class IncrementPurchaseCountByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DecrementPurchaseCountByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecrementPurchaseCountByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecrementPurchaseCountByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecrementPurchaseCountByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecrementPurchaseCountByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecrementPurchaseCountByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/random/showcase/status/purchase/count/decrease";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -4094,6 +4221,33 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DecrementPurchaseCountByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function decrementPurchaseCountByUserIdAsync(
+            DecrementPurchaseCountByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecrementPurchaseCountByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecrementPurchaseCountByUserIdRequest $request
+     * @return DecrementPurchaseCountByUserIdResult
+     */
+    public function decrementPurchaseCountByUserId (
+            DecrementPurchaseCountByUserIdRequest $request
+    ): DecrementPurchaseCountByUserIdResult {
+        return $this->decrementPurchaseCountByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param IncrementPurchaseCountByStampTaskRequest $request
      * @return PromiseInterface
      */
@@ -4116,6 +4270,33 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
             IncrementPurchaseCountByStampTaskRequest $request
     ): IncrementPurchaseCountByStampTaskResult {
         return $this->incrementPurchaseCountByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DecrementPurchaseCountByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function decrementPurchaseCountByStampSheetAsync(
+            DecrementPurchaseCountByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecrementPurchaseCountByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecrementPurchaseCountByStampSheetRequest $request
+     * @return DecrementPurchaseCountByStampSheetResult
+     */
+    public function decrementPurchaseCountByStampSheet (
+            DecrementPurchaseCountByStampSheetRequest $request
+    ): DecrementPurchaseCountByStampSheetResult {
+        return $this->decrementPurchaseCountByStampSheetAsync(
             $request
         )->wait();
     }

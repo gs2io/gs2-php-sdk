@@ -39,6 +39,8 @@ use Gs2\Mission\Request\CompleteByUserIdRequest;
 use Gs2\Mission\Result\CompleteByUserIdResult;
 use Gs2\Mission\Request\ReceiveByUserIdRequest;
 use Gs2\Mission\Result\ReceiveByUserIdResult;
+use Gs2\Mission\Request\RevertReceiveByUserIdRequest;
+use Gs2\Mission\Result\RevertReceiveByUserIdResult;
 use Gs2\Mission\Request\GetCompleteRequest;
 use Gs2\Mission\Result\GetCompleteResult;
 use Gs2\Mission\Request\GetCompleteByUserIdRequest;
@@ -47,6 +49,8 @@ use Gs2\Mission\Request\DeleteCompleteByUserIdRequest;
 use Gs2\Mission\Result\DeleteCompleteByUserIdResult;
 use Gs2\Mission\Request\ReceiveByStampTaskRequest;
 use Gs2\Mission\Result\ReceiveByStampTaskResult;
+use Gs2\Mission\Request\RevertReceiveByStampSheetRequest;
+use Gs2\Mission\Result\RevertReceiveByStampSheetResult;
 use Gs2\Mission\Request\DescribeCounterModelMastersRequest;
 use Gs2\Mission\Result\DescribeCounterModelMastersResult;
 use Gs2\Mission\Request\CreateCounterModelMasterRequest;
@@ -85,6 +89,8 @@ use Gs2\Mission\Request\DescribeCountersByUserIdRequest;
 use Gs2\Mission\Result\DescribeCountersByUserIdResult;
 use Gs2\Mission\Request\IncreaseCounterByUserIdRequest;
 use Gs2\Mission\Result\IncreaseCounterByUserIdResult;
+use Gs2\Mission\Request\DecreaseCounterByUserIdRequest;
+use Gs2\Mission\Result\DecreaseCounterByUserIdResult;
 use Gs2\Mission\Request\GetCounterRequest;
 use Gs2\Mission\Result\GetCounterResult;
 use Gs2\Mission\Request\GetCounterByUserIdRequest;
@@ -93,6 +99,8 @@ use Gs2\Mission\Request\DeleteCounterByUserIdRequest;
 use Gs2\Mission\Result\DeleteCounterByUserIdResult;
 use Gs2\Mission\Request\IncreaseByStampSheetRequest;
 use Gs2\Mission\Result\IncreaseByStampSheetResult;
+use Gs2\Mission\Request\DecreaseByStampTaskRequest;
+use Gs2\Mission\Result\DecreaseByStampTaskResult;
 use Gs2\Mission\Request\ExportMasterRequest;
 use Gs2\Mission\Result\ExportMasterResult;
 use Gs2\Mission\Request\GetCurrentMissionMasterRequest;
@@ -455,6 +463,67 @@ class ReceiveByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class RevertReceiveByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RevertReceiveByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RevertReceiveByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param RevertReceiveByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RevertReceiveByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RevertReceiveByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/complete/group/{missionGroupName}/task/{missionTaskName}/revert";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+        $url = str_replace("{missionTaskName}", $this->request->getMissionTaskName() === null|| strlen($this->request->getMissionTaskName()) == 0 ? "null" : $this->request->getMissionTaskName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class GetCompleteTask extends Gs2RestSessionTask {
 
     /**
@@ -673,6 +742,65 @@ class ReceiveByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RevertReceiveByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RevertReceiveByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RevertReceiveByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param RevertReceiveByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RevertReceiveByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RevertReceiveByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/revert";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -1948,6 +2076,69 @@ class IncreaseCounterByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DecreaseCounterByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecreaseCounterByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecreaseCounterByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecreaseCounterByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecreaseCounterByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecreaseCounterByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}/decrease";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class GetCounterTask extends Gs2RestSessionTask {
 
     /**
@@ -2166,6 +2357,65 @@ class IncreaseByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DecreaseByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecreaseByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecreaseByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecreaseByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecreaseByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecreaseByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/decrease";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -3275,6 +3525,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param RevertReceiveByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function revertReceiveByUserIdAsync(
+            RevertReceiveByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RevertReceiveByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RevertReceiveByUserIdRequest $request
+     * @return RevertReceiveByUserIdResult
+     */
+    public function revertReceiveByUserId (
+            RevertReceiveByUserIdRequest $request
+    ): RevertReceiveByUserIdResult {
+        return $this->revertReceiveByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param GetCompleteRequest $request
      * @return PromiseInterface
      */
@@ -3378,6 +3655,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             ReceiveByStampTaskRequest $request
     ): ReceiveByStampTaskResult {
         return $this->receiveByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RevertReceiveByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function revertReceiveByStampSheetAsync(
+            RevertReceiveByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RevertReceiveByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RevertReceiveByStampSheetRequest $request
+     * @return RevertReceiveByStampSheetResult
+     */
+    public function revertReceiveByStampSheet (
+            RevertReceiveByStampSheetRequest $request
+    ): RevertReceiveByStampSheetResult {
+        return $this->revertReceiveByStampSheetAsync(
             $request
         )->wait();
     }
@@ -3896,6 +4200,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DecreaseCounterByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function decreaseCounterByUserIdAsync(
+            DecreaseCounterByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecreaseCounterByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecreaseCounterByUserIdRequest $request
+     * @return DecreaseCounterByUserIdResult
+     */
+    public function decreaseCounterByUserId (
+            DecreaseCounterByUserIdRequest $request
+    ): DecreaseCounterByUserIdResult {
+        return $this->decreaseCounterByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param GetCounterRequest $request
      * @return PromiseInterface
      */
@@ -3999,6 +4330,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             IncreaseByStampSheetRequest $request
     ): IncreaseByStampSheetResult {
         return $this->increaseByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DecreaseByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function decreaseByStampTaskAsync(
+            DecreaseByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecreaseByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecreaseByStampTaskRequest $request
+     * @return DecreaseByStampTaskResult
+     */
+    public function decreaseByStampTask (
+            DecreaseByStampTaskRequest $request
+    ): DecreaseByStampTaskResult {
+        return $this->decreaseByStampTaskAsync(
             $request
         )->wait();
     }

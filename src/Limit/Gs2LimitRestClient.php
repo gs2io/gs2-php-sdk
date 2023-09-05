@@ -53,10 +53,14 @@ use Gs2\Limit\Request\CountUpRequest;
 use Gs2\Limit\Result\CountUpResult;
 use Gs2\Limit\Request\CountUpByUserIdRequest;
 use Gs2\Limit\Result\CountUpByUserIdResult;
+use Gs2\Limit\Request\CountDownByUserIdRequest;
+use Gs2\Limit\Result\CountDownByUserIdResult;
 use Gs2\Limit\Request\DeleteCounterByUserIdRequest;
 use Gs2\Limit\Result\DeleteCounterByUserIdResult;
 use Gs2\Limit\Request\CountUpByStampTaskRequest;
 use Gs2\Limit\Result\CountUpByStampTaskResult;
+use Gs2\Limit\Request\CountDownByStampSheetRequest;
+use Gs2\Limit\Result\CountDownByStampSheetResult;
 use Gs2\Limit\Request\DeleteByStampSheetRequest;
 use Gs2\Limit\Result\DeleteByStampSheetResult;
 use Gs2\Limit\Request\DescribeLimitModelMastersRequest;
@@ -831,6 +835,70 @@ class CountUpByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class CountDownByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CountDownByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CountDownByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CountDownByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CountDownByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CountDownByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "limit", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{limitName}/{counterName}/decrease";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{limitName}", $this->request->getLimitName() === null|| strlen($this->request->getLimitName()) == 0 ? "null" : $this->request->getLimitName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getCountDownValue() !== null) {
+            $json["countDownValue"] = $this->request->getCountDownValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteCounterByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -930,6 +998,65 @@ class CountUpByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CountDownByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CountDownByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CountDownByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param CountDownByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CountDownByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CountDownByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "limit", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/counter/decrease";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -2028,6 +2155,33 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param CountDownByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function countDownByUserIdAsync(
+            CountDownByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CountDownByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CountDownByUserIdRequest $request
+     * @return CountDownByUserIdResult
+     */
+    public function countDownByUserId (
+            CountDownByUserIdRequest $request
+    ): CountDownByUserIdResult {
+        return $this->countDownByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteCounterByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -2077,6 +2231,33 @@ class Gs2LimitRestClient extends AbstractGs2Client {
             CountUpByStampTaskRequest $request
     ): CountUpByStampTaskResult {
         return $this->countUpByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CountDownByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function countDownByStampSheetAsync(
+            CountDownByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CountDownByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CountDownByStampSheetRequest $request
+     * @return CountDownByStampSheetResult
+     */
+    public function countDownByStampSheet (
+            CountDownByStampSheetRequest $request
+    ): CountDownByStampSheetResult {
+        return $this->countDownByStampSheetAsync(
             $request
         )->wait();
     }

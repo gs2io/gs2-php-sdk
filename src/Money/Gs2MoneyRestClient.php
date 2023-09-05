@@ -65,8 +65,12 @@ use Gs2\Money\Request\GetByUserIdAndTransactionIdRequest;
 use Gs2\Money\Result\GetByUserIdAndTransactionIdResult;
 use Gs2\Money\Request\RecordReceiptRequest;
 use Gs2\Money\Result\RecordReceiptResult;
+use Gs2\Money\Request\RevertRecordReceiptRequest;
+use Gs2\Money\Result\RevertRecordReceiptResult;
 use Gs2\Money\Request\RecordReceiptByStampTaskRequest;
 use Gs2\Money\Result\RecordReceiptByStampTaskResult;
+use Gs2\Money\Request\RevertRecordReceiptByStampSheetRequest;
+use Gs2\Money\Result\RevertRecordReceiptByStampSheetResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -1238,6 +1242,68 @@ class RecordReceiptTask extends Gs2RestSessionTask {
     }
 }
 
+class RevertRecordReceiptTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RevertRecordReceiptRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RevertRecordReceiptTask constructor.
+     * @param Gs2RestSession $session
+     * @param RevertRecordReceiptRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RevertRecordReceiptRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RevertRecordReceiptResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/receipt/revert";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getReceipt() !== null) {
+            $json["receipt"] = $this->request->getReceipt();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class RecordReceiptByStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -1274,6 +1340,65 @@ class RecordReceiptByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RevertRecordReceiptByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RevertRecordReceiptByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RevertRecordReceiptByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param RevertRecordReceiptByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RevertRecordReceiptByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RevertRecordReceiptByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/receipt/record/revert";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -1801,6 +1926,33 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param RevertRecordReceiptRequest $request
+     * @return PromiseInterface
+     */
+    public function revertRecordReceiptAsync(
+            RevertRecordReceiptRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RevertRecordReceiptTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RevertRecordReceiptRequest $request
+     * @return RevertRecordReceiptResult
+     */
+    public function revertRecordReceipt (
+            RevertRecordReceiptRequest $request
+    ): RevertRecordReceiptResult {
+        return $this->revertRecordReceiptAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param RecordReceiptByStampTaskRequest $request
      * @return PromiseInterface
      */
@@ -1823,6 +1975,33 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
             RecordReceiptByStampTaskRequest $request
     ): RecordReceiptByStampTaskResult {
         return $this->recordReceiptByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RevertRecordReceiptByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function revertRecordReceiptByStampSheetAsync(
+            RevertRecordReceiptByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RevertRecordReceiptByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RevertRecordReceiptByStampSheetRequest $request
+     * @return RevertRecordReceiptByStampSheetResult
+     */
+    public function revertRecordReceiptByStampSheet (
+            RevertRecordReceiptByStampSheetRequest $request
+    ): RevertRecordReceiptByStampSheetResult {
+        return $this->revertRecordReceiptByStampSheetAsync(
             $request
         )->wait();
     }

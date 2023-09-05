@@ -55,6 +55,8 @@ use Gs2\JobQueue\Request\DeleteJobByUserIdRequest;
 use Gs2\JobQueue\Result\DeleteJobByUserIdResult;
 use Gs2\JobQueue\Request\PushByStampSheetRequest;
 use Gs2\JobQueue\Result\PushByStampSheetResult;
+use Gs2\JobQueue\Request\DeleteByStampTaskRequest;
+use Gs2\JobQueue\Result\DeleteByStampTaskResult;
 use Gs2\JobQueue\Request\GetJobResultRequest;
 use Gs2\JobQueue\Result\GetJobResultResult;
 use Gs2\JobQueue\Request\GetJobResultByUserIdRequest;
@@ -870,6 +872,65 @@ class PushByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class DeleteByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "job-queue", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/job/delete";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class GetJobResultTask extends Gs2RestSessionTask {
 
     /**
@@ -1539,6 +1600,33 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
             PushByStampSheetRequest $request
     ): PushByStampSheetResult {
         return $this->pushByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteByStampTaskAsync(
+            DeleteByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteByStampTaskRequest $request
+     * @return DeleteByStampTaskResult
+     */
+    public function deleteByStampTask (
+            DeleteByStampTaskRequest $request
+    ): DeleteByStampTaskResult {
+        return $this->deleteByStampTaskAsync(
             $request
         )->wait();
     }

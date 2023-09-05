@@ -87,18 +87,26 @@ use Gs2\Experience\Request\GetStatusWithSignatureByUserIdRequest;
 use Gs2\Experience\Result\GetStatusWithSignatureByUserIdResult;
 use Gs2\Experience\Request\AddExperienceByUserIdRequest;
 use Gs2\Experience\Result\AddExperienceByUserIdResult;
+use Gs2\Experience\Request\SubExperienceByUserIdRequest;
+use Gs2\Experience\Result\SubExperienceByUserIdResult;
 use Gs2\Experience\Request\SetExperienceByUserIdRequest;
 use Gs2\Experience\Result\SetExperienceByUserIdResult;
 use Gs2\Experience\Request\AddRankCapByUserIdRequest;
 use Gs2\Experience\Result\AddRankCapByUserIdResult;
+use Gs2\Experience\Request\SubRankCapByUserIdRequest;
+use Gs2\Experience\Result\SubRankCapByUserIdResult;
 use Gs2\Experience\Request\SetRankCapByUserIdRequest;
 use Gs2\Experience\Result\SetRankCapByUserIdResult;
 use Gs2\Experience\Request\DeleteStatusByUserIdRequest;
 use Gs2\Experience\Result\DeleteStatusByUserIdResult;
 use Gs2\Experience\Request\AddExperienceByStampSheetRequest;
 use Gs2\Experience\Result\AddExperienceByStampSheetResult;
+use Gs2\Experience\Request\SubExperienceByStampTaskRequest;
+use Gs2\Experience\Result\SubExperienceByStampTaskResult;
 use Gs2\Experience\Request\AddRankCapByStampSheetRequest;
 use Gs2\Experience\Result\AddRankCapByStampSheetResult;
+use Gs2\Experience\Request\SubRankCapByStampTaskRequest;
+use Gs2\Experience\Result\SubRankCapByStampTaskResult;
 use Gs2\Experience\Request\SetRankCapByStampSheetRequest;
 use Gs2\Experience\Result\SetRankCapByStampSheetResult;
 use Gs2\Experience\Request\MultiplyAcquireActionsByUserIdRequest;
@@ -1958,6 +1966,70 @@ class AddExperienceByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class SubExperienceByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SubExperienceByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SubExperienceByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SubExperienceByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SubExperienceByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SubExperienceByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/model/{experienceName}/property/{propertyId}/sub";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{experienceName}", $this->request->getExperienceName() === null|| strlen($this->request->getExperienceName()) == 0 ? "null" : $this->request->getExperienceName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getExperienceValue() !== null) {
+            $json["experienceValue"] = $this->request->getExperienceValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class SetExperienceByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -2054,6 +2126,70 @@ class AddRankCapByUserIdTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/model/{experienceName}/property/{propertyId}/cap";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{experienceName}", $this->request->getExperienceName() === null|| strlen($this->request->getExperienceName()) == 0 ? "null" : $this->request->getExperienceName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getRankCapValue() !== null) {
+            $json["rankCapValue"] = $this->request->getRankCapValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SubRankCapByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SubRankCapByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SubRankCapByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SubRankCapByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SubRankCapByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SubRankCapByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/model/{experienceName}/property/{propertyId}/cap/sub";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
@@ -2272,6 +2408,65 @@ class AddExperienceByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class SubExperienceByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SubExperienceByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SubExperienceByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param SubExperienceByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SubExperienceByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SubExperienceByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/experience/sub";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class AddRankCapByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -2308,6 +2503,65 @@ class AddRankCapByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SubRankCapByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SubRankCapByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SubRankCapByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param SubRankCapByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SubRankCapByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SubRankCapByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/rankCap/sub";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -3320,6 +3574,33 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param SubExperienceByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function subExperienceByUserIdAsync(
+            SubExperienceByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SubExperienceByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SubExperienceByUserIdRequest $request
+     * @return SubExperienceByUserIdResult
+     */
+    public function subExperienceByUserId (
+            SubExperienceByUserIdRequest $request
+    ): SubExperienceByUserIdResult {
+        return $this->subExperienceByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param SetExperienceByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -3369,6 +3650,33 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
             AddRankCapByUserIdRequest $request
     ): AddRankCapByUserIdResult {
         return $this->addRankCapByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SubRankCapByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function subRankCapByUserIdAsync(
+            SubRankCapByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SubRankCapByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SubRankCapByUserIdRequest $request
+     * @return SubRankCapByUserIdResult
+     */
+    public function subRankCapByUserId (
+            SubRankCapByUserIdRequest $request
+    ): SubRankCapByUserIdResult {
+        return $this->subRankCapByUserIdAsync(
             $request
         )->wait();
     }
@@ -3455,6 +3763,33 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param SubExperienceByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function subExperienceByStampTaskAsync(
+            SubExperienceByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SubExperienceByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SubExperienceByStampTaskRequest $request
+     * @return SubExperienceByStampTaskResult
+     */
+    public function subExperienceByStampTask (
+            SubExperienceByStampTaskRequest $request
+    ): SubExperienceByStampTaskResult {
+        return $this->subExperienceByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param AddRankCapByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -3477,6 +3812,33 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
             AddRankCapByStampSheetRequest $request
     ): AddRankCapByStampSheetResult {
         return $this->addRankCapByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SubRankCapByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function subRankCapByStampTaskAsync(
+            SubRankCapByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SubRankCapByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SubRankCapByStampTaskRequest $request
+     * @return SubRankCapByStampTaskResult
+     */
+    public function subRankCapByStampTask (
+            SubRankCapByStampTaskRequest $request
+    ): SubRankCapByStampTaskResult {
+        return $this->subRankCapByStampTaskAsync(
             $request
         )->wait();
     }

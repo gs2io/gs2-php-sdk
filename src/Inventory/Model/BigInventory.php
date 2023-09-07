@@ -34,6 +34,10 @@ class BigInventory implements IModel {
 	 */
 	private $userId;
 	/**
+     * @var array
+	 */
+	private $bigItems;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -71,6 +75,16 @@ class BigInventory implements IModel {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getBigItems(): ?array {
+		return $this->bigItems;
+	}
+	public function setBigItems(?array $bigItems) {
+		$this->bigItems = $bigItems;
+	}
+	public function withBigItems(?array $bigItems): BigInventory {
+		$this->bigItems = $bigItems;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -100,6 +114,12 @@ class BigInventory implements IModel {
             ->withInventoryId(array_key_exists('inventoryId', $data) && $data['inventoryId'] !== null ? $data['inventoryId'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withBigItems(array_map(
+                function ($item) {
+                    return BigItem::fromJson($item);
+                },
+                array_key_exists('bigItems', $data) && $data['bigItems'] !== null ? $data['bigItems'] : []
+            ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
@@ -109,6 +129,12 @@ class BigInventory implements IModel {
             "inventoryId" => $this->getInventoryId(),
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
+            "bigItems" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getBigItems() !== null && $this->getBigItems() !== null ? $this->getBigItems() : []
+            ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

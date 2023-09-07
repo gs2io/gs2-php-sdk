@@ -19,13 +19,9 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class DescribePropertyFormsRequest extends Gs2BasicRequest {
+class DescribePropertyFormModelMastersRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
-    /** @var string */
-    private $accessToken;
-    /** @var string */
-    private $propertyFormModelName;
     /** @var string */
     private $pageToken;
     /** @var int */
@@ -36,28 +32,8 @@ class DescribePropertyFormsRequest extends Gs2BasicRequest {
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): DescribePropertyFormsRequest {
+	public function withNamespaceName(?string $namespaceName): DescribePropertyFormModelMastersRequest {
 		$this->namespaceName = $namespaceName;
-		return $this;
-	}
-	public function getAccessToken(): ?string {
-		return $this->accessToken;
-	}
-	public function setAccessToken(?string $accessToken) {
-		$this->accessToken = $accessToken;
-	}
-	public function withAccessToken(?string $accessToken): DescribePropertyFormsRequest {
-		$this->accessToken = $accessToken;
-		return $this;
-	}
-	public function getPropertyFormModelName(): ?string {
-		return $this->propertyFormModelName;
-	}
-	public function setPropertyFormModelName(?string $propertyFormModelName) {
-		$this->propertyFormModelName = $propertyFormModelName;
-	}
-	public function withPropertyFormModelName(?string $propertyFormModelName): DescribePropertyFormsRequest {
-		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
 	public function getPageToken(): ?string {
@@ -66,7 +42,7 @@ class DescribePropertyFormsRequest extends Gs2BasicRequest {
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-	public function withPageToken(?string $pageToken): DescribePropertyFormsRequest {
+	public function withPageToken(?string $pageToken): DescribePropertyFormModelMastersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
@@ -76,19 +52,17 @@ class DescribePropertyFormsRequest extends Gs2BasicRequest {
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-	public function withLimit(?int $limit): DescribePropertyFormsRequest {
+	public function withLimit(?int $limit): DescribePropertyFormModelMastersRequest {
 		$this->limit = $limit;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?DescribePropertyFormsRequest {
+    public static function fromJson(?array $data): ?DescribePropertyFormModelMastersRequest {
         if ($data === null) {
             return null;
         }
-        return (new DescribePropertyFormsRequest())
+        return (new DescribePropertyFormModelMastersRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withPropertyFormModelName(array_key_exists('propertyFormModelName', $data) && $data['propertyFormModelName'] !== null ? $data['propertyFormModelName'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
@@ -96,8 +70,6 @@ class DescribePropertyFormsRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "accessToken" => $this->getAccessToken(),
-            "propertyFormModelName" => $this->getPropertyFormModelName(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
         );

@@ -23,7 +23,7 @@ class DescribeFormsByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $moldName;
+    private $moldModelName;
     /** @var string */
     private $userId;
     /** @var string */
@@ -40,14 +40,14 @@ class DescribeFormsByUserIdRequest extends Gs2BasicRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-	public function getMoldName(): ?string {
-		return $this->moldName;
+	public function getMoldModelName(): ?string {
+		return $this->moldModelName;
 	}
-	public function setMoldName(?string $moldName) {
-		$this->moldName = $moldName;
+	public function setMoldModelName(?string $moldModelName) {
+		$this->moldModelName = $moldModelName;
 	}
-	public function withMoldName(?string $moldName): DescribeFormsByUserIdRequest {
-		$this->moldName = $moldName;
+	public function withMoldModelName(?string $moldModelName): DescribeFormsByUserIdRequest {
+		$this->moldModelName = $moldModelName;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -87,7 +87,7 @@ class DescribeFormsByUserIdRequest extends Gs2BasicRequest {
         }
         return (new DescribeFormsByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
+            ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
@@ -96,7 +96,7 @@ class DescribeFormsByUserIdRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "moldName" => $this->getMoldName(),
+            "moldModelName" => $this->getMoldModelName(),
             "userId" => $this->getUserId(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),

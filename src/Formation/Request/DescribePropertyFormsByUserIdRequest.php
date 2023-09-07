@@ -25,7 +25,7 @@ class DescribePropertyFormsByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $userId;
     /** @var string */
-    private $formModelName;
+    private $propertyFormModelName;
     /** @var string */
     private $pageToken;
     /** @var int */
@@ -50,14 +50,14 @@ class DescribePropertyFormsByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getFormModelName(): ?string {
-		return $this->formModelName;
+	public function getPropertyFormModelName(): ?string {
+		return $this->propertyFormModelName;
 	}
-	public function setFormModelName(?string $formModelName) {
-		$this->formModelName = $formModelName;
+	public function setPropertyFormModelName(?string $propertyFormModelName) {
+		$this->propertyFormModelName = $propertyFormModelName;
 	}
-	public function withFormModelName(?string $formModelName): DescribePropertyFormsByUserIdRequest {
-		$this->formModelName = $formModelName;
+	public function withPropertyFormModelName(?string $propertyFormModelName): DescribePropertyFormsByUserIdRequest {
+		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
 	public function getPageToken(): ?string {
@@ -88,7 +88,7 @@ class DescribePropertyFormsByUserIdRequest extends Gs2BasicRequest {
         return (new DescribePropertyFormsByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withFormModelName(array_key_exists('formModelName', $data) && $data['formModelName'] !== null ? $data['formModelName'] : null)
+            ->withPropertyFormModelName(array_key_exists('propertyFormModelName', $data) && $data['propertyFormModelName'] !== null ? $data['propertyFormModelName'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
@@ -97,7 +97,7 @@ class DescribePropertyFormsByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "formModelName" => $this->getFormModelName(),
+            "propertyFormModelName" => $this->getPropertyFormModelName(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
         );

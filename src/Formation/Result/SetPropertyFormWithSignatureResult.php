@@ -21,13 +21,13 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Slot;
 use Gs2\Formation\Model\PropertyForm;
 use Gs2\Formation\Model\SlotModel;
-use Gs2\Formation\Model\FormModel;
+use Gs2\Formation\Model\PropertyFormModel;
 
 class SetPropertyFormWithSignatureResult implements IResult {
     /** @var PropertyForm */
     private $item;
-    /** @var FormModel */
-    private $formModel;
+    /** @var PropertyFormModel */
+    private $proeprtyFormModel;
 
 	public function getItem(): ?PropertyForm {
 		return $this->item;
@@ -42,16 +42,16 @@ class SetPropertyFormWithSignatureResult implements IResult {
 		return $this;
 	}
 
-	public function getFormModel(): ?FormModel {
-		return $this->formModel;
+	public function getProeprtyFormModel(): ?PropertyFormModel {
+		return $this->proeprtyFormModel;
 	}
 
-	public function setFormModel(?FormModel $formModel) {
-		$this->formModel = $formModel;
+	public function setProeprtyFormModel(?PropertyFormModel $proeprtyFormModel) {
+		$this->proeprtyFormModel = $proeprtyFormModel;
 	}
 
-	public function withFormModel(?FormModel $formModel): SetPropertyFormWithSignatureResult {
-		$this->formModel = $formModel;
+	public function withProeprtyFormModel(?PropertyFormModel $proeprtyFormModel): SetPropertyFormWithSignatureResult {
+		$this->proeprtyFormModel = $proeprtyFormModel;
 		return $this;
 	}
 
@@ -61,13 +61,13 @@ class SetPropertyFormWithSignatureResult implements IResult {
         }
         return (new SetPropertyFormWithSignatureResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? PropertyForm::fromJson($data['item']) : null)
-            ->withFormModel(array_key_exists('formModel', $data) && $data['formModel'] !== null ? FormModel::fromJson($data['formModel']) : null);
+            ->withProeprtyFormModel(array_key_exists('proeprtyFormModel', $data) && $data['proeprtyFormModel'] !== null ? PropertyFormModel::fromJson($data['proeprtyFormModel']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "formModel" => $this->getFormModel() !== null ? $this->getFormModel()->toJson() : null,
+            "proeprtyFormModel" => $this->getProeprtyFormModel() !== null ? $this->getProeprtyFormModel()->toJson() : null,
         );
     }
 }

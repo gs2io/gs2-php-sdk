@@ -18,41 +18,27 @@
 namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Formation\Model\SlotWithSignature;
+use Gs2\Formation\Model\SlotModel;
 
-class SetPropertyFormWithSignatureRequest extends Gs2BasicRequest {
+class UpdatePropertyFormModelMasterRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $accessToken;
-    /** @var string */
     private $propertyFormModelName;
     /** @var string */
-    private $propertyId;
+    private $description;
+    /** @var string */
+    private $metadata;
     /** @var array */
     private $slots;
-    /** @var string */
-    private $keyId;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): SetPropertyFormWithSignatureRequest {
+	public function withNamespaceName(?string $namespaceName): UpdatePropertyFormModelMasterRequest {
 		$this->namespaceName = $namespaceName;
-		return $this;
-	}
-	public function getAccessToken(): ?string {
-		return $this->accessToken;
-	}
-	public function setAccessToken(?string $accessToken) {
-		$this->accessToken = $accessToken;
-	}
-	public function withAccessToken(?string $accessToken): SetPropertyFormWithSignatureRequest {
-		$this->accessToken = $accessToken;
 		return $this;
 	}
 	public function getPropertyFormModelName(): ?string {
@@ -61,18 +47,28 @@ class SetPropertyFormWithSignatureRequest extends Gs2BasicRequest {
 	public function setPropertyFormModelName(?string $propertyFormModelName) {
 		$this->propertyFormModelName = $propertyFormModelName;
 	}
-	public function withPropertyFormModelName(?string $propertyFormModelName): SetPropertyFormWithSignatureRequest {
+	public function withPropertyFormModelName(?string $propertyFormModelName): UpdatePropertyFormModelMasterRequest {
 		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
-	public function getPropertyId(): ?string {
-		return $this->propertyId;
+	public function getDescription(): ?string {
+		return $this->description;
 	}
-	public function setPropertyId(?string $propertyId) {
-		$this->propertyId = $propertyId;
+	public function setDescription(?string $description) {
+		$this->description = $description;
 	}
-	public function withPropertyId(?string $propertyId): SetPropertyFormWithSignatureRequest {
-		$this->propertyId = $propertyId;
+	public function withDescription(?string $description): UpdatePropertyFormModelMasterRequest {
+		$this->description = $description;
+		return $this;
+	}
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+	public function withMetadata(?string $metadata): UpdatePropertyFormModelMasterRequest {
+		$this->metadata = $metadata;
 		return $this;
 	}
 	public function getSlots(): ?array {
@@ -81,65 +77,40 @@ class SetPropertyFormWithSignatureRequest extends Gs2BasicRequest {
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
-	public function withSlots(?array $slots): SetPropertyFormWithSignatureRequest {
+	public function withSlots(?array $slots): UpdatePropertyFormModelMasterRequest {
 		$this->slots = $slots;
 		return $this;
 	}
-	public function getKeyId(): ?string {
-		return $this->keyId;
-	}
-	public function setKeyId(?string $keyId) {
-		$this->keyId = $keyId;
-	}
-	public function withKeyId(?string $keyId): SetPropertyFormWithSignatureRequest {
-		$this->keyId = $keyId;
-		return $this;
-	}
 
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): SetPropertyFormWithSignatureRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
-		return $this;
-	}
-
-    public static function fromJson(?array $data): ?SetPropertyFormWithSignatureRequest {
+    public static function fromJson(?array $data): ?UpdatePropertyFormModelMasterRequest {
         if ($data === null) {
             return null;
         }
-        return (new SetPropertyFormWithSignatureRequest())
+        return (new UpdatePropertyFormModelMasterRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withPropertyFormModelName(array_key_exists('propertyFormModelName', $data) && $data['propertyFormModelName'] !== null ? $data['propertyFormModelName'] : null)
-            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withSlots(array_map(
                 function ($item) {
-                    return SlotWithSignature::fromJson($item);
+                    return SlotModel::fromJson($item);
                 },
                 array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
-            ))
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
+            ));
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "accessToken" => $this->getAccessToken(),
             "propertyFormModelName" => $this->getPropertyFormModelName(),
-            "propertyId" => $this->getPropertyId(),
+            "description" => $this->getDescription(),
+            "metadata" => $this->getMetadata(),
             "slots" => array_map(
                 function ($item) {
                     return $item->toJson();
                 },
                 $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
             ),
-            "keyId" => $this->getKeyId(),
         );
     }
 }

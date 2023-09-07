@@ -18,7 +18,7 @@
 namespace Gs2\Idle\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Quest\Model\Config;
+use Gs2\Idle\Model\Config;
 
 class ReceiveRequest extends Gs2BasicRequest {
     /** @var string */

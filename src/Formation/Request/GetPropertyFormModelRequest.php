@@ -19,33 +19,19 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class GetPropertyFormRequest extends Gs2BasicRequest {
+class GetPropertyFormModelRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $accessToken;
-    /** @var string */
     private $propertyFormModelName;
-    /** @var string */
-    private $propertyId;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): GetPropertyFormRequest {
+	public function withNamespaceName(?string $namespaceName): GetPropertyFormModelRequest {
 		$this->namespaceName = $namespaceName;
-		return $this;
-	}
-	public function getAccessToken(): ?string {
-		return $this->accessToken;
-	}
-	public function setAccessToken(?string $accessToken) {
-		$this->accessToken = $accessToken;
-	}
-	public function withAccessToken(?string $accessToken): GetPropertyFormRequest {
-		$this->accessToken = $accessToken;
 		return $this;
 	}
 	public function getPropertyFormModelName(): ?string {
@@ -54,38 +40,24 @@ class GetPropertyFormRequest extends Gs2BasicRequest {
 	public function setPropertyFormModelName(?string $propertyFormModelName) {
 		$this->propertyFormModelName = $propertyFormModelName;
 	}
-	public function withPropertyFormModelName(?string $propertyFormModelName): GetPropertyFormRequest {
+	public function withPropertyFormModelName(?string $propertyFormModelName): GetPropertyFormModelRequest {
 		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
-	public function getPropertyId(): ?string {
-		return $this->propertyId;
-	}
-	public function setPropertyId(?string $propertyId) {
-		$this->propertyId = $propertyId;
-	}
-	public function withPropertyId(?string $propertyId): GetPropertyFormRequest {
-		$this->propertyId = $propertyId;
-		return $this;
-	}
 
-    public static function fromJson(?array $data): ?GetPropertyFormRequest {
+    public static function fromJson(?array $data): ?GetPropertyFormModelRequest {
         if ($data === null) {
             return null;
         }
-        return (new GetPropertyFormRequest())
+        return (new GetPropertyFormModelRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withPropertyFormModelName(array_key_exists('propertyFormModelName', $data) && $data['propertyFormModelName'] !== null ? $data['propertyFormModelName'] : null)
-            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null);
+            ->withPropertyFormModelName(array_key_exists('propertyFormModelName', $data) && $data['propertyFormModelName'] !== null ? $data['propertyFormModelName'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "accessToken" => $this->getAccessToken(),
             "propertyFormModelName" => $this->getPropertyFormModelName(),
-            "propertyId" => $this->getPropertyId(),
         );
     }
 }

@@ -25,7 +25,7 @@ class GetMoldRequest extends Gs2BasicRequest {
     /** @var string */
     private $accessToken;
     /** @var string */
-    private $moldName;
+    private $moldModelName;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -46,14 +46,14 @@ class GetMoldRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getMoldName(): ?string {
-		return $this->moldName;
+	public function getMoldModelName(): ?string {
+		return $this->moldModelName;
 	}
-	public function setMoldName(?string $moldName) {
-		$this->moldName = $moldName;
+	public function setMoldModelName(?string $moldModelName) {
+		$this->moldModelName = $moldModelName;
 	}
-	public function withMoldName(?string $moldName): GetMoldRequest {
-		$this->moldName = $moldName;
+	public function withMoldModelName(?string $moldModelName): GetMoldRequest {
+		$this->moldModelName = $moldModelName;
 		return $this;
 	}
 
@@ -64,14 +64,14 @@ class GetMoldRequest extends Gs2BasicRequest {
         return (new GetMoldRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null);
+            ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "moldName" => $this->getMoldName(),
+            "moldModelName" => $this->getMoldModelName(),
         );
     }
 }

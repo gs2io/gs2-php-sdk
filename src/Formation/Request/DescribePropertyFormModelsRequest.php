@@ -19,45 +19,31 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class DeleteMoldModelMasterRequest extends Gs2BasicRequest {
+class DescribePropertyFormModelsRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
-    /** @var string */
-    private $moldModelName;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): DeleteMoldModelMasterRequest {
+	public function withNamespaceName(?string $namespaceName): DescribePropertyFormModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-	public function getMoldModelName(): ?string {
-		return $this->moldModelName;
-	}
-	public function setMoldModelName(?string $moldModelName) {
-		$this->moldModelName = $moldModelName;
-	}
-	public function withMoldModelName(?string $moldModelName): DeleteMoldModelMasterRequest {
-		$this->moldModelName = $moldModelName;
-		return $this;
-	}
 
-    public static function fromJson(?array $data): ?DeleteMoldModelMasterRequest {
+    public static function fromJson(?array $data): ?DescribePropertyFormModelsRequest {
         if ($data === null) {
             return null;
         }
-        return (new DeleteMoldModelMasterRequest())
-            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null);
+        return (new DescribePropertyFormModelsRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "moldModelName" => $this->getMoldModelName(),
         );
     }
 }

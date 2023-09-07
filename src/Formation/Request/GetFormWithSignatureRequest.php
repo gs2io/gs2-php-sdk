@@ -25,7 +25,7 @@ class GetFormWithSignatureRequest extends Gs2BasicRequest {
     /** @var string */
     private $accessToken;
     /** @var string */
-    private $moldName;
+    private $moldModelName;
     /** @var int */
     private $index;
     /** @var string */
@@ -50,14 +50,14 @@ class GetFormWithSignatureRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getMoldName(): ?string {
-		return $this->moldName;
+	public function getMoldModelName(): ?string {
+		return $this->moldModelName;
 	}
-	public function setMoldName(?string $moldName) {
-		$this->moldName = $moldName;
+	public function setMoldModelName(?string $moldModelName) {
+		$this->moldModelName = $moldModelName;
 	}
-	public function withMoldName(?string $moldName): GetFormWithSignatureRequest {
-		$this->moldName = $moldName;
+	public function withMoldModelName(?string $moldModelName): GetFormWithSignatureRequest {
+		$this->moldModelName = $moldModelName;
 		return $this;
 	}
 	public function getIndex(): ?int {
@@ -88,7 +88,7 @@ class GetFormWithSignatureRequest extends Gs2BasicRequest {
         return (new GetFormWithSignatureRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
+            ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
             ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
@@ -97,7 +97,7 @@ class GetFormWithSignatureRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "moldName" => $this->getMoldName(),
+            "moldModelName" => $this->getMoldModelName(),
             "index" => $this->getIndex(),
             "keyId" => $this->getKeyId(),
         );

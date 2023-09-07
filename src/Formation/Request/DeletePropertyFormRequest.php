@@ -25,7 +25,7 @@ class DeletePropertyFormRequest extends Gs2BasicRequest {
     /** @var string */
     private $accessToken;
     /** @var string */
-    private $formModelName;
+    private $propertyFormModelName;
     /** @var string */
     private $propertyId;
     /** @var string */
@@ -50,14 +50,14 @@ class DeletePropertyFormRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getFormModelName(): ?string {
-		return $this->formModelName;
+	public function getPropertyFormModelName(): ?string {
+		return $this->propertyFormModelName;
 	}
-	public function setFormModelName(?string $formModelName) {
-		$this->formModelName = $formModelName;
+	public function setPropertyFormModelName(?string $propertyFormModelName) {
+		$this->propertyFormModelName = $propertyFormModelName;
 	}
-	public function withFormModelName(?string $formModelName): DeletePropertyFormRequest {
-		$this->formModelName = $formModelName;
+	public function withPropertyFormModelName(?string $propertyFormModelName): DeletePropertyFormRequest {
+		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
 	public function getPropertyId(): ?string {
@@ -91,7 +91,7 @@ class DeletePropertyFormRequest extends Gs2BasicRequest {
         return (new DeletePropertyFormRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withFormModelName(array_key_exists('formModelName', $data) && $data['formModelName'] !== null ? $data['formModelName'] : null)
+            ->withPropertyFormModelName(array_key_exists('propertyFormModelName', $data) && $data['propertyFormModelName'] !== null ? $data['propertyFormModelName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null);
     }
 
@@ -99,7 +99,7 @@ class DeletePropertyFormRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "formModelName" => $this->getFormModelName(),
+            "propertyFormModelName" => $this->getPropertyFormModelName(),
             "propertyId" => $this->getPropertyId(),
         );
     }

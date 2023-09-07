@@ -23,6 +23,8 @@ class GetFormModelRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
+    private $moldModelName;
+    /** @var string */
     private $formModelName;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -32,6 +34,16 @@ class GetFormModelRequest extends Gs2BasicRequest {
 	}
 	public function withNamespaceName(?string $namespaceName): GetFormModelRequest {
 		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+	public function getMoldModelName(): ?string {
+		return $this->moldModelName;
+	}
+	public function setMoldModelName(?string $moldModelName) {
+		$this->moldModelName = $moldModelName;
+	}
+	public function withMoldModelName(?string $moldModelName): GetFormModelRequest {
+		$this->moldModelName = $moldModelName;
 		return $this;
 	}
 	public function getFormModelName(): ?string {
@@ -51,12 +63,14 @@ class GetFormModelRequest extends Gs2BasicRequest {
         }
         return (new GetFormModelRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
             ->withFormModelName(array_key_exists('formModelName', $data) && $data['formModelName'] !== null ? $data['formModelName'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
+            "moldModelName" => $this->getMoldModelName(),
             "formModelName" => $this->getFormModelName(),
         );
     }

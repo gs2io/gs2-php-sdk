@@ -23,7 +23,7 @@ class UpdateMoldModelMasterRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $moldName;
+    private $moldModelName;
     /** @var string */
     private $description;
     /** @var string */
@@ -44,14 +44,14 @@ class UpdateMoldModelMasterRequest extends Gs2BasicRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-	public function getMoldName(): ?string {
-		return $this->moldName;
+	public function getMoldModelName(): ?string {
+		return $this->moldModelName;
 	}
-	public function setMoldName(?string $moldName) {
-		$this->moldName = $moldName;
+	public function setMoldModelName(?string $moldModelName) {
+		$this->moldModelName = $moldModelName;
 	}
-	public function withMoldName(?string $moldName): UpdateMoldModelMasterRequest {
-		$this->moldName = $moldName;
+	public function withMoldModelName(?string $moldModelName): UpdateMoldModelMasterRequest {
+		$this->moldModelName = $moldModelName;
 		return $this;
 	}
 	public function getDescription(): ?string {
@@ -111,7 +111,7 @@ class UpdateMoldModelMasterRequest extends Gs2BasicRequest {
         }
         return (new UpdateMoldModelMasterRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withMoldName(array_key_exists('moldName', $data) && $data['moldName'] !== null ? $data['moldName'] : null)
+            ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withFormModelName(array_key_exists('formModelName', $data) && $data['formModelName'] !== null ? $data['formModelName'] : null)
@@ -122,7 +122,7 @@ class UpdateMoldModelMasterRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "moldName" => $this->getMoldName(),
+            "moldModelName" => $this->getMoldModelName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
             "formModelName" => $this->getFormModelName(),

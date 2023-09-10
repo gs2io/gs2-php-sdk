@@ -544,6 +544,9 @@ class DescribeMessagesTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getIsRead() !== null) {
+            $queryStrings["isRead"] = $this->request->getIsRead() ? "true" : "false";
+        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -612,6 +615,9 @@ class DescribeMessagesByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getUserId() !== null) {
             $queryStrings["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getIsRead() !== null) {
+            $queryStrings["isRead"] = $this->request->getIsRead() ? "true" : "false";
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();

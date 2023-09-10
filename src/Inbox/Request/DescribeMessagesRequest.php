@@ -24,6 +24,8 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $accessToken;
+    /** @var bool */
+    private $isRead;
     /** @var string */
     private $pageToken;
     /** @var int */
@@ -46,6 +48,16 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): DescribeMessagesRequest {
 		$this->accessToken = $accessToken;
+		return $this;
+	}
+	public function getIsRead(): ?bool {
+		return $this->isRead;
+	}
+	public function setIsRead(?bool $isRead) {
+		$this->isRead = $isRead;
+	}
+	public function withIsRead(?bool $isRead): DescribeMessagesRequest {
+		$this->isRead = $isRead;
 		return $this;
 	}
 	public function getPageToken(): ?string {
@@ -76,6 +88,7 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
         return (new DescribeMessagesRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withIsRead(array_key_exists('isRead', $data) ? $data['isRead'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
@@ -84,6 +97,7 @@ class DescribeMessagesRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
+            "isRead" => $this->getIsRead(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
         );

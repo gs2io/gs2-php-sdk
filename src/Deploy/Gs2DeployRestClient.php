@@ -43,6 +43,8 @@ use Gs2\Deploy\Request\GetStackRequest;
 use Gs2\Deploy\Result\GetStackResult;
 use Gs2\Deploy\Request\UpdateStackRequest;
 use Gs2\Deploy\Result\UpdateStackResult;
+use Gs2\Deploy\Request\ChangeSetRequest;
+use Gs2\Deploy\Result\ChangeSetResult;
 use Gs2\Deploy\Request\UpdateStackFromGitHubRequest;
 use Gs2\Deploy\Result\UpdateStackFromGitHubResult;
 use Gs2\Deploy\Request\DeleteStackRequest;
@@ -470,6 +472,64 @@ class UpdateStackTask extends Gs2RestSessionTask {
         $this->builder->setBody($json);
 
         $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ChangeSetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ChangeSetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ChangeSetTask constructor.
+     * @param Gs2RestSession $session
+     * @param ChangeSetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ChangeSetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ChangeSetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}";
+
+        $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
+
+        $json = [];
+        if ($this->request->getTemplate() !== null) {
+            $json["template"] = $this->request->getTemplate();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -1336,6 +1396,33 @@ class Gs2DeployRestClient extends AbstractGs2Client {
             UpdateStackRequest $request
     ): UpdateStackResult {
         return $this->updateStackAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ChangeSetRequest $request
+     * @return PromiseInterface
+     */
+    public function changeSetAsync(
+            ChangeSetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ChangeSetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ChangeSetRequest $request
+     * @return ChangeSetResult
+     */
+    public function changeSet (
+            ChangeSetRequest $request
+    ): ChangeSetResult {
+        return $this->changeSetAsync(
             $request
         )->wait();
     }

@@ -34,6 +34,18 @@ class VersionModel implements IModel {
 	 */
 	private $metadata;
 	/**
+     * @var string
+	 */
+	private $scope;
+	/**
+     * @var string
+	 */
+	private $type;
+	/**
+     * @var Version
+	 */
+	private $currentVersion;
+	/**
      * @var Version
 	 */
 	private $warningVersion;
@@ -42,13 +54,9 @@ class VersionModel implements IModel {
 	 */
 	private $errorVersion;
 	/**
-     * @var string
+     * @var array
 	 */
-	private $scope;
-	/**
-     * @var Version
-	 */
-	private $currentVersion;
+	private $scheduleVersions;
 	/**
      * @var bool
 	 */
@@ -87,6 +95,36 @@ class VersionModel implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getScope(): ?string {
+		return $this->scope;
+	}
+	public function setScope(?string $scope) {
+		$this->scope = $scope;
+	}
+	public function withScope(?string $scope): VersionModel {
+		$this->scope = $scope;
+		return $this;
+	}
+	public function getType(): ?string {
+		return $this->type;
+	}
+	public function setType(?string $type) {
+		$this->type = $type;
+	}
+	public function withType(?string $type): VersionModel {
+		$this->type = $type;
+		return $this;
+	}
+	public function getCurrentVersion(): ?Version {
+		return $this->currentVersion;
+	}
+	public function setCurrentVersion(?Version $currentVersion) {
+		$this->currentVersion = $currentVersion;
+	}
+	public function withCurrentVersion(?Version $currentVersion): VersionModel {
+		$this->currentVersion = $currentVersion;
+		return $this;
+	}
 	public function getWarningVersion(): ?Version {
 		return $this->warningVersion;
 	}
@@ -107,24 +145,14 @@ class VersionModel implements IModel {
 		$this->errorVersion = $errorVersion;
 		return $this;
 	}
-	public function getScope(): ?string {
-		return $this->scope;
+	public function getScheduleVersions(): ?array {
+		return $this->scheduleVersions;
 	}
-	public function setScope(?string $scope) {
-		$this->scope = $scope;
+	public function setScheduleVersions(?array $scheduleVersions) {
+		$this->scheduleVersions = $scheduleVersions;
 	}
-	public function withScope(?string $scope): VersionModel {
-		$this->scope = $scope;
-		return $this;
-	}
-	public function getCurrentVersion(): ?Version {
-		return $this->currentVersion;
-	}
-	public function setCurrentVersion(?Version $currentVersion) {
-		$this->currentVersion = $currentVersion;
-	}
-	public function withCurrentVersion(?Version $currentVersion): VersionModel {
-		$this->currentVersion = $currentVersion;
+	public function withScheduleVersions(?array $scheduleVersions): VersionModel {
+		$this->scheduleVersions = $scheduleVersions;
 		return $this;
 	}
 	public function getNeedSignature(): ?bool {
@@ -156,10 +184,17 @@ class VersionModel implements IModel {
             ->withVersionModelId(array_key_exists('versionModelId', $data) && $data['versionModelId'] !== null ? $data['versionModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withCurrentVersion(array_key_exists('currentVersion', $data) && $data['currentVersion'] !== null ? Version::fromJson($data['currentVersion']) : null)
             ->withWarningVersion(array_key_exists('warningVersion', $data) && $data['warningVersion'] !== null ? Version::fromJson($data['warningVersion']) : null)
             ->withErrorVersion(array_key_exists('errorVersion', $data) && $data['errorVersion'] !== null ? Version::fromJson($data['errorVersion']) : null)
-            ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
-            ->withCurrentVersion(array_key_exists('currentVersion', $data) && $data['currentVersion'] !== null ? Version::fromJson($data['currentVersion']) : null)
+            ->withScheduleVersions(array_map(
+                function ($item) {
+                    return ScheduleVersion::fromJson($item);
+                },
+                array_key_exists('scheduleVersions', $data) && $data['scheduleVersions'] !== null ? $data['scheduleVersions'] : []
+            ))
             ->withNeedSignature(array_key_exists('needSignature', $data) ? $data['needSignature'] : null)
             ->withSignatureKeyId(array_key_exists('signatureKeyId', $data) && $data['signatureKeyId'] !== null ? $data['signatureKeyId'] : null);
     }
@@ -169,10 +204,17 @@ class VersionModel implements IModel {
             "versionModelId" => $this->getVersionModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
+            "scope" => $this->getScope(),
+            "type" => $this->getType(),
+            "currentVersion" => $this->getCurrentVersion() !== null ? $this->getCurrentVersion()->toJson() : null,
             "warningVersion" => $this->getWarningVersion() !== null ? $this->getWarningVersion()->toJson() : null,
             "errorVersion" => $this->getErrorVersion() !== null ? $this->getErrorVersion()->toJson() : null,
-            "scope" => $this->getScope(),
-            "currentVersion" => $this->getCurrentVersion() !== null ? $this->getCurrentVersion()->toJson() : null,
+            "scheduleVersions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getScheduleVersions() !== null && $this->getScheduleVersions() !== null ? $this->getScheduleVersions() : []
+            ),
             "needSignature" => $this->getNeedSignature(),
             "signatureKeyId" => $this->getSignatureKeyId(),
         );

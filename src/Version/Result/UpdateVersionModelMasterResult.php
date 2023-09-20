@@ -19,6 +19,7 @@ namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Version\Model\Version;
+use Gs2\Version\Model\ScheduleVersion;
 use Gs2\Version\Model\VersionModelMaster;
 
 class UpdateVersionModelMasterResult implements IResult {

@@ -567,17 +567,28 @@ class CreateVersionModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getScope() !== null) {
+            $json["scope"] = $this->request->getScope();
+        }
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getCurrentVersion() !== null) {
+            $json["currentVersion"] = $this->request->getCurrentVersion()->toJson();
+        }
         if ($this->request->getWarningVersion() !== null) {
             $json["warningVersion"] = $this->request->getWarningVersion()->toJson();
         }
         if ($this->request->getErrorVersion() !== null) {
             $json["errorVersion"] = $this->request->getErrorVersion()->toJson();
         }
-        if ($this->request->getScope() !== null) {
-            $json["scope"] = $this->request->getScope();
-        }
-        if ($this->request->getCurrentVersion() !== null) {
-            $json["currentVersion"] = $this->request->getCurrentVersion()->toJson();
+        if ($this->request->getScheduleVersions() !== null) {
+            $array = [];
+            foreach ($this->request->getScheduleVersions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["scheduleVersions"] = $array;
         }
         if ($this->request->getNeedSignature() !== null) {
             $json["needSignature"] = $this->request->getNeedSignature();
@@ -705,17 +716,28 @@ class UpdateVersionModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getScope() !== null) {
+            $json["scope"] = $this->request->getScope();
+        }
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getCurrentVersion() !== null) {
+            $json["currentVersion"] = $this->request->getCurrentVersion()->toJson();
+        }
         if ($this->request->getWarningVersion() !== null) {
             $json["warningVersion"] = $this->request->getWarningVersion()->toJson();
         }
         if ($this->request->getErrorVersion() !== null) {
             $json["errorVersion"] = $this->request->getErrorVersion()->toJson();
         }
-        if ($this->request->getScope() !== null) {
-            $json["scope"] = $this->request->getScope();
-        }
-        if ($this->request->getCurrentVersion() !== null) {
-            $json["currentVersion"] = $this->request->getCurrentVersion()->toJson();
+        if ($this->request->getScheduleVersions() !== null) {
+            $array = [];
+            foreach ($this->request->getScheduleVersions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["scheduleVersions"] = $array;
         }
         if ($this->request->getNeedSignature() !== null) {
             $json["needSignature"] = $this->request->getNeedSignature();

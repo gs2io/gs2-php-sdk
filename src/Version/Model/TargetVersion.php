@@ -26,10 +26,6 @@ class TargetVersion implements IModel {
 	 */
 	private $versionName;
 	/**
-     * @var Version
-	 */
-	private $version;
-	/**
      * @var string
 	 */
 	private $body;
@@ -37,6 +33,10 @@ class TargetVersion implements IModel {
      * @var string
 	 */
 	private $signature;
+	/**
+     * @var Version
+	 */
+	private $version;
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
@@ -45,16 +45,6 @@ class TargetVersion implements IModel {
 	}
 	public function withVersionName(?string $versionName): TargetVersion {
 		$this->versionName = $versionName;
-		return $this;
-	}
-	public function getVersion(): ?Version {
-		return $this->version;
-	}
-	public function setVersion(?Version $version) {
-		$this->version = $version;
-	}
-	public function withVersion(?Version $version): TargetVersion {
-		$this->version = $version;
 		return $this;
 	}
 	public function getBody(): ?string {
@@ -77,6 +67,16 @@ class TargetVersion implements IModel {
 		$this->signature = $signature;
 		return $this;
 	}
+	public function getVersion(): ?Version {
+		return $this->version;
+	}
+	public function setVersion(?Version $version) {
+		$this->version = $version;
+	}
+	public function withVersion(?Version $version): TargetVersion {
+		$this->version = $version;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?TargetVersion {
         if ($data === null) {
@@ -84,17 +84,17 @@ class TargetVersion implements IModel {
         }
         return (new TargetVersion())
             ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
-            ->withVersion(array_key_exists('version', $data) && $data['version'] !== null ? Version::fromJson($data['version']) : null)
             ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
-            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
+            ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null)
+            ->withVersion(array_key_exists('version', $data) && $data['version'] !== null ? Version::fromJson($data['version']) : null);
     }
 
     public function toJson(): array {
         return array(
             "versionName" => $this->getVersionName(),
-            "version" => $this->getVersion() !== null ? $this->getVersion()->toJson() : null,
             "body" => $this->getBody(),
             "signature" => $this->getSignature(),
+            "version" => $this->getVersion() !== null ? $this->getVersion()->toJson() : null,
         );
     }
 }

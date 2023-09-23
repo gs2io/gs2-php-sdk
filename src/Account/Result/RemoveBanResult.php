@@ -21,7 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
-class GetAccountResult implements IResult {
+class RemoveBanResult implements IResult {
     /** @var Account */
     private $item;
 
@@ -33,16 +33,16 @@ class GetAccountResult implements IResult {
 		$this->item = $item;
 	}
 
-	public function withItem(?Account $item): GetAccountResult {
+	public function withItem(?Account $item): RemoveBanResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?GetAccountResult {
+    public static function fromJson(?array $data): ?RemoveBanResult {
         if ($data === null) {
             return null;
         }
-        return (new GetAccountResult())
+        return (new RemoveBanResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Account::fromJson($data['item']) : null);
     }
 

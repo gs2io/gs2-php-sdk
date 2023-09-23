@@ -49,6 +49,10 @@ use Gs2\Account\Request\UpdateTimeOffsetRequest;
 use Gs2\Account\Result\UpdateTimeOffsetResult;
 use Gs2\Account\Request\UpdateBannedRequest;
 use Gs2\Account\Result\UpdateBannedResult;
+use Gs2\Account\Request\AddBanRequest;
+use Gs2\Account\Result\AddBanResult;
+use Gs2\Account\Request\RemoveBanRequest;
+use Gs2\Account\Result\RemoveBanResult;
 use Gs2\Account\Request\GetAccountRequest;
 use Gs2\Account\Result\GetAccountResult;
 use Gs2\Account\Request\DeleteAccountRequest;
@@ -697,6 +701,130 @@ class UpdateBannedTask extends Gs2RestSessionTask {
         $this->builder->setBody($json);
 
         $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AddBanTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddBanRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddBanTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddBanRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddBanRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddBanResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/ban";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getBanStatus() !== null) {
+            $json["banStatus"] = $this->request->getBanStatus()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RemoveBanTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RemoveBanRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RemoveBanTask constructor.
+     * @param Gs2RestSession $session
+     * @param RemoveBanRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RemoveBanRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RemoveBanResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/ban/{banName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{banStatusName}", $this->request->getBanStatusName() === null|| strlen($this->request->getBanStatusName()) == 0 ? "null" : $this->request->getBanStatusName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -2011,6 +2139,60 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             UpdateBannedRequest $request
     ): UpdateBannedResult {
         return $this->updateBannedAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AddBanRequest $request
+     * @return PromiseInterface
+     */
+    public function addBanAsync(
+            AddBanRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddBanTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AddBanRequest $request
+     * @return AddBanResult
+     */
+    public function addBan (
+            AddBanRequest $request
+    ): AddBanResult {
+        return $this->addBanAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RemoveBanRequest $request
+     * @return PromiseInterface
+     */
+    public function removeBanAsync(
+            RemoveBanRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RemoveBanTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RemoveBanRequest $request
+     * @return RemoveBanResult
+     */
+    public function removeBan (
+            RemoveBanRequest $request
+    ): RemoveBanResult {
+        return $this->removeBanAsync(
             $request
         )->wait();
     }

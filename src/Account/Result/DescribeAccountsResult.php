@@ -18,6 +18,7 @@
 namespace Gs2\Account\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
 class DescribeAccountsResult implements IResult {

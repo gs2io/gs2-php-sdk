@@ -38,6 +38,10 @@ class Account implements IModel {
 	 */
 	private $timeOffset;
 	/**
+     * @var array
+	 */
+	private $banStatuses;
+	/**
      * @var bool
 	 */
 	private $banned;
@@ -89,6 +93,16 @@ class Account implements IModel {
 		$this->timeOffset = $timeOffset;
 		return $this;
 	}
+	public function getBanStatuses(): ?array {
+		return $this->banStatuses;
+	}
+	public function setBanStatuses(?array $banStatuses) {
+		$this->banStatuses = $banStatuses;
+	}
+	public function withBanStatuses(?array $banStatuses): Account {
+		$this->banStatuses = $banStatuses;
+		return $this;
+	}
 	public function getBanned(): ?bool {
 		return $this->banned;
 	}
@@ -129,6 +143,12 @@ class Account implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null)
+            ->withBanStatuses(array_map(
+                function ($item) {
+                    return BanStatus::fromJson($item);
+                },
+                array_key_exists('banStatuses', $data) && $data['banStatuses'] !== null ? $data['banStatuses'] : []
+            ))
             ->withBanned(array_key_exists('banned', $data) ? $data['banned'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -140,6 +160,12 @@ class Account implements IModel {
             "userId" => $this->getUserId(),
             "password" => $this->getPassword(),
             "timeOffset" => $this->getTimeOffset(),
+            "banStatuses" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getBanStatuses() !== null && $this->getBanStatuses() !== null ? $this->getBanStatuses() : []
+            ),
             "banned" => $this->getBanned(),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),

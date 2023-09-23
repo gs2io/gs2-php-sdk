@@ -18,11 +18,14 @@
 namespace Gs2\Account\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
 class AuthenticationResult implements IResult {
     /** @var Account */
     private $item;
+    /** @var array */
+    private $banStatuses;
     /** @var string */
     private $body;
     /** @var string */
@@ -38,6 +41,19 @@ class AuthenticationResult implements IResult {
 
 	public function withItem(?Account $item): AuthenticationResult {
 		$this->item = $item;
+		return $this;
+	}
+
+	public function getBanStatuses(): ?array {
+		return $this->banStatuses;
+	}
+
+	public function setBanStatuses(?array $banStatuses) {
+		$this->banStatuses = $banStatuses;
+	}
+
+	public function withBanStatuses(?array $banStatuses): AuthenticationResult {
+		$this->banStatuses = $banStatuses;
 		return $this;
 	}
 
@@ -73,6 +89,12 @@ class AuthenticationResult implements IResult {
         }
         return (new AuthenticationResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Account::fromJson($data['item']) : null)
+            ->withBanStatuses(array_map(
+                function ($item) {
+                    return BanStatus::fromJson($item);
+                },
+                array_key_exists('banStatuses', $data) && $data['banStatuses'] !== null ? $data['banStatuses'] : []
+            ))
             ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
             ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
     }
@@ -80,6 +102,12 @@ class AuthenticationResult implements IResult {
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "banStatuses" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getBanStatuses() !== null && $this->getBanStatuses() !== null ? $this->getBanStatuses() : []
+            ),
             "body" => $this->getBody(),
             "signature" => $this->getSignature(),
         );

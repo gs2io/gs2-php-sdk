@@ -22,6 +22,10 @@ use Gs2\Core\Model\IModel;
 
 class BoxItem implements IModel {
 	/**
+     * @var string
+	 */
+	private $prizeId;
+	/**
      * @var array
 	 */
 	private $acquireActions;
@@ -33,6 +37,16 @@ class BoxItem implements IModel {
      * @var int
 	 */
 	private $initial;
+	public function getPrizeId(): ?string {
+		return $this->prizeId;
+	}
+	public function setPrizeId(?string $prizeId) {
+		$this->prizeId = $prizeId;
+	}
+	public function withPrizeId(?string $prizeId): BoxItem {
+		$this->prizeId = $prizeId;
+		return $this;
+	}
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
@@ -69,6 +83,7 @@ class BoxItem implements IModel {
             return null;
         }
         return (new BoxItem())
+            ->withPrizeId(array_key_exists('prizeId', $data) && $data['prizeId'] !== null ? $data['prizeId'] : null)
             ->withAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
@@ -81,6 +96,7 @@ class BoxItem implements IModel {
 
     public function toJson(): array {
         return array(
+            "prizeId" => $this->getPrizeId(),
             "acquireActions" => array_map(
                 function ($item) {
                     return $item->toJson();

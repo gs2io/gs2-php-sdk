@@ -171,10 +171,16 @@ use Gs2\Inventory\Request\ConsumeItemSetByUserIdRequest;
 use Gs2\Inventory\Result\ConsumeItemSetByUserIdResult;
 use Gs2\Inventory\Request\DeleteItemSetByUserIdRequest;
 use Gs2\Inventory\Result\DeleteItemSetByUserIdResult;
+use Gs2\Inventory\Request\VerifyItemSetRequest;
+use Gs2\Inventory\Result\VerifyItemSetResult;
+use Gs2\Inventory\Request\VerifyItemSetByUserIdRequest;
+use Gs2\Inventory\Result\VerifyItemSetByUserIdResult;
 use Gs2\Inventory\Request\AcquireItemSetByStampSheetRequest;
 use Gs2\Inventory\Result\AcquireItemSetByStampSheetResult;
 use Gs2\Inventory\Request\ConsumeItemSetByStampTaskRequest;
 use Gs2\Inventory\Result\ConsumeItemSetByStampTaskResult;
+use Gs2\Inventory\Request\VerifyItemSetByStampTaskRequest;
+use Gs2\Inventory\Result\VerifyItemSetByStampTaskResult;
 use Gs2\Inventory\Request\DescribeReferenceOfRequest;
 use Gs2\Inventory\Result\DescribeReferenceOfResult;
 use Gs2\Inventory\Request\DescribeReferenceOfByUserIdRequest;
@@ -221,10 +227,16 @@ use Gs2\Inventory\Request\ConsumeSimpleItemsByUserIdRequest;
 use Gs2\Inventory\Result\ConsumeSimpleItemsByUserIdResult;
 use Gs2\Inventory\Request\DeleteSimpleItemsByUserIdRequest;
 use Gs2\Inventory\Result\DeleteSimpleItemsByUserIdResult;
+use Gs2\Inventory\Request\VerifySimpleItemRequest;
+use Gs2\Inventory\Result\VerifySimpleItemResult;
+use Gs2\Inventory\Request\VerifySimpleItemByUserIdRequest;
+use Gs2\Inventory\Result\VerifySimpleItemByUserIdResult;
 use Gs2\Inventory\Request\AcquireSimpleItemsByStampSheetRequest;
 use Gs2\Inventory\Result\AcquireSimpleItemsByStampSheetResult;
 use Gs2\Inventory\Request\ConsumeSimpleItemsByStampTaskRequest;
 use Gs2\Inventory\Result\ConsumeSimpleItemsByStampTaskResult;
+use Gs2\Inventory\Request\VerifySimpleItemByStampTaskRequest;
+use Gs2\Inventory\Result\VerifySimpleItemByStampTaskResult;
 use Gs2\Inventory\Request\DescribeBigItemsRequest;
 use Gs2\Inventory\Result\DescribeBigItemsResult;
 use Gs2\Inventory\Request\DescribeBigItemsByUserIdRequest;
@@ -241,10 +253,16 @@ use Gs2\Inventory\Request\ConsumeBigItemByUserIdRequest;
 use Gs2\Inventory\Result\ConsumeBigItemByUserIdResult;
 use Gs2\Inventory\Request\DeleteBigItemByUserIdRequest;
 use Gs2\Inventory\Result\DeleteBigItemByUserIdResult;
+use Gs2\Inventory\Request\VerifyBigItemRequest;
+use Gs2\Inventory\Result\VerifyBigItemResult;
+use Gs2\Inventory\Request\VerifyBigItemByUserIdRequest;
+use Gs2\Inventory\Result\VerifyBigItemByUserIdResult;
 use Gs2\Inventory\Request\AcquireBigItemByStampSheetRequest;
 use Gs2\Inventory\Result\AcquireBigItemByStampSheetResult;
 use Gs2\Inventory\Request\ConsumeBigItemByStampTaskRequest;
 use Gs2\Inventory\Result\ConsumeBigItemByStampTaskResult;
+use Gs2\Inventory\Request\VerifyBigItemByStampTaskRequest;
+use Gs2\Inventory\Result\VerifyBigItemByStampTaskResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -4651,6 +4669,144 @@ class DeleteItemSetByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyItemSetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyItemSetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyItemSetTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyItemSetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyItemSetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyItemSetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/item/{itemName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getItemSetName() !== null) {
+            $json["itemSetName"] = $this->request->getItemSetName();
+        }
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyItemSetByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyItemSetByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyItemSetByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyItemSetByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyItemSetByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyItemSetByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getItemSetName() !== null) {
+            $json["itemSetName"] = $this->request->getItemSetName();
+        }
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class AcquireItemSetByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -4742,6 +4898,65 @@ class ConsumeItemSetByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/item/consume";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyItemSetByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyItemSetByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyItemSetByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyItemSetByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyItemSetByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyItemSetByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/item/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -6240,6 +6455,138 @@ class DeleteSimpleItemsByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifySimpleItemTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifySimpleItemRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifySimpleItemTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifySimpleItemRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifySimpleItemRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifySimpleItemResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/simple/inventory/{inventoryName}/item/{itemName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifySimpleItemByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifySimpleItemByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifySimpleItemByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifySimpleItemByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifySimpleItemByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifySimpleItemByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/simple/inventory/{inventoryName}/item/{itemName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class AcquireSimpleItemsByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -6331,6 +6678,65 @@ class ConsumeSimpleItemsByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/simple/item/consume";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifySimpleItemByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifySimpleItemByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifySimpleItemByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifySimpleItemByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifySimpleItemByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifySimpleItemByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/simple/item/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -6869,6 +7275,138 @@ class DeleteBigItemByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyBigItemTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyBigItemRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyBigItemTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyBigItemRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyBigItemRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyBigItemResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/big/inventory/{inventoryName}/item/{itemName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyBigItemByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyBigItemByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyBigItemByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyBigItemByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyBigItemByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyBigItemByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/big/inventory/{inventoryName}/item/{itemName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class AcquireBigItemByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -6960,6 +7498,65 @@ class ConsumeBigItemByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/big/item/consume";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyBigItemByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyBigItemByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyBigItemByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyBigItemByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyBigItemByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyBigItemByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/big/item/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -8922,6 +9519,60 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyItemSetRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyItemSetAsync(
+            VerifyItemSetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyItemSetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyItemSetRequest $request
+     * @return VerifyItemSetResult
+     */
+    public function verifyItemSet (
+            VerifyItemSetRequest $request
+    ): VerifyItemSetResult {
+        return $this->verifyItemSetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyItemSetByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyItemSetByUserIdAsync(
+            VerifyItemSetByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyItemSetByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyItemSetByUserIdRequest $request
+     * @return VerifyItemSetByUserIdResult
+     */
+    public function verifyItemSetByUserId (
+            VerifyItemSetByUserIdRequest $request
+    ): VerifyItemSetByUserIdResult {
+        return $this->verifyItemSetByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param AcquireItemSetByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -8971,6 +9622,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             ConsumeItemSetByStampTaskRequest $request
     ): ConsumeItemSetByStampTaskResult {
         return $this->consumeItemSetByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyItemSetByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyItemSetByStampTaskAsync(
+            VerifyItemSetByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyItemSetByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyItemSetByStampTaskRequest $request
+     * @return VerifyItemSetByStampTaskResult
+     */
+    public function verifyItemSetByStampTask (
+            VerifyItemSetByStampTaskRequest $request
+    ): VerifyItemSetByStampTaskResult {
+        return $this->verifyItemSetByStampTaskAsync(
             $request
         )->wait();
     }
@@ -9597,6 +10275,60 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifySimpleItemRequest $request
+     * @return PromiseInterface
+     */
+    public function verifySimpleItemAsync(
+            VerifySimpleItemRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifySimpleItemTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifySimpleItemRequest $request
+     * @return VerifySimpleItemResult
+     */
+    public function verifySimpleItem (
+            VerifySimpleItemRequest $request
+    ): VerifySimpleItemResult {
+        return $this->verifySimpleItemAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifySimpleItemByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifySimpleItemByUserIdAsync(
+            VerifySimpleItemByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifySimpleItemByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifySimpleItemByUserIdRequest $request
+     * @return VerifySimpleItemByUserIdResult
+     */
+    public function verifySimpleItemByUserId (
+            VerifySimpleItemByUserIdRequest $request
+    ): VerifySimpleItemByUserIdResult {
+        return $this->verifySimpleItemByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param AcquireSimpleItemsByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -9646,6 +10378,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             ConsumeSimpleItemsByStampTaskRequest $request
     ): ConsumeSimpleItemsByStampTaskResult {
         return $this->consumeSimpleItemsByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifySimpleItemByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifySimpleItemByStampTaskAsync(
+            VerifySimpleItemByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifySimpleItemByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifySimpleItemByStampTaskRequest $request
+     * @return VerifySimpleItemByStampTaskResult
+     */
+    public function verifySimpleItemByStampTask (
+            VerifySimpleItemByStampTaskRequest $request
+    ): VerifySimpleItemByStampTaskResult {
+        return $this->verifySimpleItemByStampTaskAsync(
             $request
         )->wait();
     }
@@ -9867,6 +10626,60 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyBigItemRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyBigItemAsync(
+            VerifyBigItemRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyBigItemTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyBigItemRequest $request
+     * @return VerifyBigItemResult
+     */
+    public function verifyBigItem (
+            VerifyBigItemRequest $request
+    ): VerifyBigItemResult {
+        return $this->verifyBigItemAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyBigItemByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyBigItemByUserIdAsync(
+            VerifyBigItemByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyBigItemByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyBigItemByUserIdRequest $request
+     * @return VerifyBigItemByUserIdResult
+     */
+    public function verifyBigItemByUserId (
+            VerifyBigItemByUserIdRequest $request
+    ): VerifyBigItemByUserIdResult {
+        return $this->verifyBigItemByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param AcquireBigItemByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -9916,6 +10729,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             ConsumeBigItemByStampTaskRequest $request
     ): ConsumeBigItemByStampTaskResult {
         return $this->consumeBigItemByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyBigItemByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyBigItemByStampTaskAsync(
+            VerifyBigItemByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyBigItemByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyBigItemByStampTaskRequest $request
+     * @return VerifyBigItemByStampTaskResult
+     */
+    public function verifyBigItemByStampTask (
+            VerifyBigItemByStampTaskRequest $request
+    ): VerifyBigItemByStampTaskResult {
+        return $this->verifyBigItemByStampTaskAsync(
             $request
         )->wait();
     }

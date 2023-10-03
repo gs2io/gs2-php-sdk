@@ -71,12 +71,18 @@ use Gs2\Dictionary\Request\GetEntryWithSignatureByUserIdRequest;
 use Gs2\Dictionary\Result\GetEntryWithSignatureByUserIdResult;
 use Gs2\Dictionary\Request\ResetByUserIdRequest;
 use Gs2\Dictionary\Result\ResetByUserIdResult;
+use Gs2\Dictionary\Request\VerifyEntryRequest;
+use Gs2\Dictionary\Result\VerifyEntryResult;
+use Gs2\Dictionary\Request\VerifyEntryByUserIdRequest;
+use Gs2\Dictionary\Result\VerifyEntryByUserIdResult;
 use Gs2\Dictionary\Request\DeleteEntriesByUserIdRequest;
 use Gs2\Dictionary\Result\DeleteEntriesByUserIdResult;
 use Gs2\Dictionary\Request\AddEntriesByStampSheetRequest;
 use Gs2\Dictionary\Result\AddEntriesByStampSheetResult;
 use Gs2\Dictionary\Request\DeleteEntriesByStampTaskRequest;
 use Gs2\Dictionary\Result\DeleteEntriesByStampTaskResult;
+use Gs2\Dictionary\Request\VerifyEntryByStampTaskRequest;
+use Gs2\Dictionary\Result\VerifyEntryByStampTaskResult;
 use Gs2\Dictionary\Request\ExportMasterRequest;
 use Gs2\Dictionary\Result\ExportMasterResult;
 use Gs2\Dictionary\Request\GetCurrentEntryMasterRequest;
@@ -1377,6 +1383,130 @@ class ResetByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyEntryTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEntryRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEntryTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEntryRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEntryRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEntryResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/entry/{entryModelName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{entryModelName}", $this->request->getEntryModelName() === null|| strlen($this->request->getEntryModelName()) == 0 ? "null" : $this->request->getEntryModelName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyEntryByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEntryByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEntryByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEntryByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEntryByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEntryByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/entry/{entryModelName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{entryModelName}", $this->request->getEntryModelName() === null|| strlen($this->request->getEntryModelName()) == 0 ? "null" : $this->request->getEntryModelName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteEntriesByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -1535,6 +1665,65 @@ class DeleteEntriesByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/entry/delete";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyEntryByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEntryByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEntryByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEntryByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEntryByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEntryByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/entry/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -2377,6 +2566,60 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyEntryRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyEntryAsync(
+            VerifyEntryRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEntryTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyEntryRequest $request
+     * @return VerifyEntryResult
+     */
+    public function verifyEntry (
+            VerifyEntryRequest $request
+    ): VerifyEntryResult {
+        return $this->verifyEntryAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyEntryByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyEntryByUserIdAsync(
+            VerifyEntryByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEntryByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyEntryByUserIdRequest $request
+     * @return VerifyEntryByUserIdResult
+     */
+    public function verifyEntryByUserId (
+            VerifyEntryByUserIdRequest $request
+    ): VerifyEntryByUserIdResult {
+        return $this->verifyEntryByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteEntriesByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -2453,6 +2696,33 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
             DeleteEntriesByStampTaskRequest $request
     ): DeleteEntriesByStampTaskResult {
         return $this->deleteEntriesByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyEntryByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyEntryByStampTaskAsync(
+            VerifyEntryByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEntryByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyEntryByStampTaskRequest $request
+     * @return VerifyEntryByStampTaskResult
+     */
+    public function verifyEntryByStampTask (
+            VerifyEntryByStampTaskRequest $request
+    ): VerifyEntryByStampTaskResult {
+        return $this->verifyEntryByStampTaskAsync(
             $request
         )->wait();
     }

@@ -79,6 +79,8 @@ use Gs2\Account\Request\DeleteTakeOverRequest;
 use Gs2\Account\Result\DeleteTakeOverResult;
 use Gs2\Account\Request\DeleteTakeOverByUserIdentifierRequest;
 use Gs2\Account\Result\DeleteTakeOverByUserIdentifierResult;
+use Gs2\Account\Request\DeleteTakeOverByUserIdRequest;
+use Gs2\Account\Result\DeleteTakeOverByUserIdResult;
 use Gs2\Account\Request\DoTakeOverRequest;
 use Gs2\Account\Result\DoTakeOverResult;
 use Gs2\Account\Request\GetDataOwnerByUserIdRequest;
@@ -809,7 +811,7 @@ class RemoveBanTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/ban/{banName}";
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/ban/{banStatusName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
@@ -1649,6 +1651,68 @@ class DeleteTakeOverByUserIdentifierTask extends Gs2RestSessionTask {
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
         $url = str_replace("{userIdentifier}", $this->request->getUserIdentifier() === null|| strlen($this->request->getUserIdentifier()) == 0 ? "null" : $this->request->getUserIdentifier(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteTakeOverByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteTakeOverByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteTakeOverByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteTakeOverByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteTakeOverByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteTakeOverByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/takeover/type/{type}/takeover";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
@@ -2544,6 +2608,33 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             DeleteTakeOverByUserIdentifierRequest $request
     ): DeleteTakeOverByUserIdentifierResult {
         return $this->deleteTakeOverByUserIdentifierAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteTakeOverByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteTakeOverByUserIdAsync(
+            DeleteTakeOverByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteTakeOverByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteTakeOverByUserIdRequest $request
+     * @return DeleteTakeOverByUserIdResult
+     */
+    public function deleteTakeOverByUserId (
+            DeleteTakeOverByUserIdRequest $request
+    ): DeleteTakeOverByUserIdResult {
+        return $this->deleteTakeOverByUserIdAsync(
             $request
         )->wait();
     }

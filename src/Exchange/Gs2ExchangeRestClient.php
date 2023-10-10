@@ -41,6 +41,14 @@ use Gs2\Exchange\Request\UpdateNamespaceRequest;
 use Gs2\Exchange\Result\UpdateNamespaceResult;
 use Gs2\Exchange\Request\DeleteNamespaceRequest;
 use Gs2\Exchange\Result\DeleteNamespaceResult;
+use Gs2\Exchange\Request\DumpUserDataByUserIdRequest;
+use Gs2\Exchange\Result\DumpUserDataByUserIdResult;
+use Gs2\Exchange\Request\CheckDumpUserDataByUserIdRequest;
+use Gs2\Exchange\Result\CheckDumpUserDataByUserIdResult;
+use Gs2\Exchange\Request\CleanUserDataByUserIdRequest;
+use Gs2\Exchange\Result\CleanUserDataByUserIdResult;
+use Gs2\Exchange\Request\CheckCleanUserDataByUserIdRequest;
+use Gs2\Exchange\Result\CheckCleanUserDataByUserIdResult;
 use Gs2\Exchange\Request\DescribeRateModelsRequest;
 use Gs2\Exchange\Result\DescribeRateModelsResult;
 use Gs2\Exchange\Request\GetRateModelRequest;
@@ -507,6 +515,242 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DumpUserDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DumpUserDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DumpUserDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DumpUserDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DumpUserDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DumpUserDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/dump";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CheckDumpUserDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CheckDumpUserDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CheckDumpUserDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CheckDumpUserDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CheckDumpUserDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CheckDumpUserDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/dump";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CleanUserDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CleanUserDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CleanUserDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CleanUserDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CleanUserDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CleanUserDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/clean";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CheckCleanUserDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CheckCleanUserDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CheckCleanUserDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CheckCleanUserDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CheckCleanUserDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CheckCleanUserDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/clean";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3317,6 +3561,114 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
         return $this->deleteNamespaceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DumpUserDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function dumpUserDataByUserIdAsync(
+            DumpUserDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DumpUserDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DumpUserDataByUserIdRequest $request
+     * @return DumpUserDataByUserIdResult
+     */
+    public function dumpUserDataByUserId (
+            DumpUserDataByUserIdRequest $request
+    ): DumpUserDataByUserIdResult {
+        return $this->dumpUserDataByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CheckDumpUserDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function checkDumpUserDataByUserIdAsync(
+            CheckDumpUserDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CheckDumpUserDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CheckDumpUserDataByUserIdRequest $request
+     * @return CheckDumpUserDataByUserIdResult
+     */
+    public function checkDumpUserDataByUserId (
+            CheckDumpUserDataByUserIdRequest $request
+    ): CheckDumpUserDataByUserIdResult {
+        return $this->checkDumpUserDataByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CleanUserDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function cleanUserDataByUserIdAsync(
+            CleanUserDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CleanUserDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CleanUserDataByUserIdRequest $request
+     * @return CleanUserDataByUserIdResult
+     */
+    public function cleanUserDataByUserId (
+            CleanUserDataByUserIdRequest $request
+    ): CleanUserDataByUserIdResult {
+        return $this->cleanUserDataByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CheckCleanUserDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function checkCleanUserDataByUserIdAsync(
+            CheckCleanUserDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CheckCleanUserDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CheckCleanUserDataByUserIdRequest $request
+     * @return CheckCleanUserDataByUserIdResult
+     */
+    public function checkCleanUserDataByUserId (
+            CheckCleanUserDataByUserIdRequest $request
+    ): CheckCleanUserDataByUserIdResult {
+        return $this->checkCleanUserDataByUserIdAsync(
             $request
         )->wait();
     }

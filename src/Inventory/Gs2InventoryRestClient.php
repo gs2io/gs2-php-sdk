@@ -155,6 +155,12 @@ use Gs2\Inventory\Request\SetCapacityByUserIdRequest;
 use Gs2\Inventory\Result\SetCapacityByUserIdResult;
 use Gs2\Inventory\Request\DeleteInventoryByUserIdRequest;
 use Gs2\Inventory\Result\DeleteInventoryByUserIdResult;
+use Gs2\Inventory\Request\VerifyInventoryCurrentMaxCapacityRequest;
+use Gs2\Inventory\Result\VerifyInventoryCurrentMaxCapacityResult;
+use Gs2\Inventory\Request\VerifyInventoryCurrentMaxCapacityByUserIdRequest;
+use Gs2\Inventory\Result\VerifyInventoryCurrentMaxCapacityByUserIdResult;
+use Gs2\Inventory\Request\VerifyInventoryCurrentMaxCapacityByStampTaskRequest;
+use Gs2\Inventory\Result\VerifyInventoryCurrentMaxCapacityByStampTaskResult;
 use Gs2\Inventory\Request\AddCapacityByStampSheetRequest;
 use Gs2\Inventory\Result\AddCapacityByStampSheetResult;
 use Gs2\Inventory\Request\SetCapacityByStampSheetRequest;
@@ -4120,6 +4126,195 @@ class DeleteInventoryByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyInventoryCurrentMaxCapacityTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyInventoryCurrentMaxCapacityRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyInventoryCurrentMaxCapacityTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyInventoryCurrentMaxCapacityRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyInventoryCurrentMaxCapacityRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyInventoryCurrentMaxCapacityResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/inventory/{inventoryName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getCurrentInventoryMaxCapacity() !== null) {
+            $json["currentInventoryMaxCapacity"] = $this->request->getCurrentInventoryMaxCapacity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyInventoryCurrentMaxCapacityByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyInventoryCurrentMaxCapacityByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyInventoryCurrentMaxCapacityByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyInventoryCurrentMaxCapacityByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getCurrentInventoryMaxCapacity() !== null) {
+            $json["currentInventoryMaxCapacity"] = $this->request->getCurrentInventoryMaxCapacity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyInventoryCurrentMaxCapacityByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyInventoryCurrentMaxCapacityByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyInventoryCurrentMaxCapacityByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyInventoryCurrentMaxCapacityByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/inventory/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -9542,6 +9737,87 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             DeleteInventoryByUserIdRequest $request
     ): DeleteInventoryByUserIdResult {
         return $this->deleteInventoryByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyInventoryCurrentMaxCapacityRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyInventoryCurrentMaxCapacityAsync(
+            VerifyInventoryCurrentMaxCapacityRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyInventoryCurrentMaxCapacityTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyInventoryCurrentMaxCapacityRequest $request
+     * @return VerifyInventoryCurrentMaxCapacityResult
+     */
+    public function verifyInventoryCurrentMaxCapacity (
+            VerifyInventoryCurrentMaxCapacityRequest $request
+    ): VerifyInventoryCurrentMaxCapacityResult {
+        return $this->verifyInventoryCurrentMaxCapacityAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyInventoryCurrentMaxCapacityByUserIdAsync(
+            VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyInventoryCurrentMaxCapacityByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
+     * @return VerifyInventoryCurrentMaxCapacityByUserIdResult
+     */
+    public function verifyInventoryCurrentMaxCapacityByUserId (
+            VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
+    ): VerifyInventoryCurrentMaxCapacityByUserIdResult {
+        return $this->verifyInventoryCurrentMaxCapacityByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyInventoryCurrentMaxCapacityByStampTaskAsync(
+            VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyInventoryCurrentMaxCapacityByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
+     * @return VerifyInventoryCurrentMaxCapacityByStampTaskResult
+     */
+    public function verifyInventoryCurrentMaxCapacityByStampTask (
+            VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
+    ): VerifyInventoryCurrentMaxCapacityByStampTaskResult {
+        return $this->verifyInventoryCurrentMaxCapacityByStampTaskAsync(
             $request
         )->wait();
     }

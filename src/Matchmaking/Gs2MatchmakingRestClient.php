@@ -49,6 +49,12 @@ use Gs2\Matchmaking\Request\CleanUserDataByUserIdRequest;
 use Gs2\Matchmaking\Result\CleanUserDataByUserIdResult;
 use Gs2\Matchmaking\Request\CheckCleanUserDataByUserIdRequest;
 use Gs2\Matchmaking\Result\CheckCleanUserDataByUserIdResult;
+use Gs2\Matchmaking\Request\PrepareImportUserDataByUserIdRequest;
+use Gs2\Matchmaking\Result\PrepareImportUserDataByUserIdResult;
+use Gs2\Matchmaking\Request\ImportUserDataByUserIdRequest;
+use Gs2\Matchmaking\Result\ImportUserDataByUserIdResult;
+use Gs2\Matchmaking\Request\CheckImportUserDataByUserIdRequest;
+use Gs2\Matchmaking\Result\CheckImportUserDataByUserIdResult;
 use Gs2\Matchmaking\Request\DescribeGatheringsRequest;
 use Gs2\Matchmaking\Result\DescribeGatheringsResult;
 use Gs2\Matchmaking\Request\CreateGatheringRequest;
@@ -753,6 +759,185 @@ class CheckCleanUserDataByUserIdTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/clean";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PrepareImportUserDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PrepareImportUserDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PrepareImportUserDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param PrepareImportUserDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PrepareImportUserDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PrepareImportUserDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/import/prepare";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ImportUserDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ImportUserDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ImportUserDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ImportUserDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ImportUserDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ImportUserDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/import";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CheckImportUserDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CheckImportUserDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CheckImportUserDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CheckImportUserDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CheckImportUserDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CheckImportUserDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/import";
 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
@@ -3257,6 +3442,87 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
             CheckCleanUserDataByUserIdRequest $request
     ): CheckCleanUserDataByUserIdResult {
         return $this->checkCleanUserDataByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PrepareImportUserDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function prepareImportUserDataByUserIdAsync(
+            PrepareImportUserDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PrepareImportUserDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PrepareImportUserDataByUserIdRequest $request
+     * @return PrepareImportUserDataByUserIdResult
+     */
+    public function prepareImportUserDataByUserId (
+            PrepareImportUserDataByUserIdRequest $request
+    ): PrepareImportUserDataByUserIdResult {
+        return $this->prepareImportUserDataByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ImportUserDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function importUserDataByUserIdAsync(
+            ImportUserDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ImportUserDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ImportUserDataByUserIdRequest $request
+     * @return ImportUserDataByUserIdResult
+     */
+    public function importUserDataByUserId (
+            ImportUserDataByUserIdRequest $request
+    ): ImportUserDataByUserIdResult {
+        return $this->importUserDataByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CheckImportUserDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function checkImportUserDataByUserIdAsync(
+            CheckImportUserDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CheckImportUserDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CheckImportUserDataByUserIdRequest $request
+     * @return CheckImportUserDataByUserIdResult
+     */
+    public function checkImportUserDataByUserId (
+            CheckImportUserDataByUserIdRequest $request
+    ): CheckImportUserDataByUserIdResult {
+        return $this->checkImportUserDataByUserIdAsync(
             $request
         )->wait();
     }

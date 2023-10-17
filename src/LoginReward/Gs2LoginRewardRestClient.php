@@ -506,7 +506,7 @@ class DumpUserDataByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/dump";
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/dump/user/{userId}";
 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
@@ -564,7 +564,7 @@ class CheckDumpUserDataByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/dump";
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/dump/user/{userId}";
 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
@@ -624,7 +624,7 @@ class CleanUserDataByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/clean";
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/clean/user/{userId}";
 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
@@ -682,7 +682,7 @@ class CheckCleanUserDataByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/clean";
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/clean/user/{userId}";
 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
@@ -742,7 +742,7 @@ class PrepareImportUserDataByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/import/prepare";
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/import/user/{userId}/prepare";
 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
@@ -800,7 +800,7 @@ class ImportUserDataByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/import";
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/import/user/{userId}";
 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
@@ -861,7 +861,7 @@ class CheckImportUserDataByUserIdTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/user/{userId}/import/{uploadToken}";
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/import/user/{userId}/{uploadToken}";
 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
         $url = str_replace("{uploadToken}", $this->request->getUploadToken() === null|| strlen($this->request->getUploadToken()) == 0 ? "null" : $this->request->getUploadToken(), $url);

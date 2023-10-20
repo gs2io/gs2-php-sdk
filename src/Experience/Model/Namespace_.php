@@ -40,7 +40,7 @@ class Namespace_ implements IModel {
 	/**
      * @var string
 	 */
-	private $experienceCapScriptId;
+	private $rankCapScriptId;
 	/**
      * @var ScriptSetting
 	 */
@@ -113,14 +113,14 @@ class Namespace_ implements IModel {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
-	public function getExperienceCapScriptId(): ?string {
-		return $this->experienceCapScriptId;
+	public function getRankCapScriptId(): ?string {
+		return $this->rankCapScriptId;
 	}
-	public function setExperienceCapScriptId(?string $experienceCapScriptId) {
-		$this->experienceCapScriptId = $experienceCapScriptId;
+	public function setRankCapScriptId(?string $rankCapScriptId) {
+		$this->rankCapScriptId = $rankCapScriptId;
 	}
-	public function withExperienceCapScriptId(?string $experienceCapScriptId): Namespace_ {
-		$this->experienceCapScriptId = $experienceCapScriptId;
+	public function withRankCapScriptId(?string $rankCapScriptId): Namespace_ {
+		$this->rankCapScriptId = $rankCapScriptId;
 		return $this;
 	}
 	public function getChangeExperienceScript(): ?ScriptSetting {
@@ -213,7 +213,7 @@ class Namespace_ implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
-            ->withExperienceCapScriptId(array_key_exists('experienceCapScriptId', $data) && $data['experienceCapScriptId'] !== null ? $data['experienceCapScriptId'] : null)
+            ->withRankCapScriptId(array_key_exists('rankCapScriptId', $data) && $data['rankCapScriptId'] !== null ? $data['rankCapScriptId'] : null)
             ->withChangeExperienceScript(array_key_exists('changeExperienceScript', $data) && $data['changeExperienceScript'] !== null ? ScriptSetting::fromJson($data['changeExperienceScript']) : null)
             ->withChangeRankScript(array_key_exists('changeRankScript', $data) && $data['changeRankScript'] !== null ? ScriptSetting::fromJson($data['changeRankScript']) : null)
             ->withChangeRankCapScript(array_key_exists('changeRankCapScript', $data) && $data['changeRankCapScript'] !== null ? ScriptSetting::fromJson($data['changeRankCapScript']) : null)
@@ -230,7 +230,7 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
-            "experienceCapScriptId" => $this->getExperienceCapScriptId(),
+            "rankCapScriptId" => $this->getRankCapScriptId(),
             "changeExperienceScript" => $this->getChangeExperienceScript() !== null ? $this->getChangeExperienceScript()->toJson() : null,
             "changeRankScript" => $this->getChangeRankScript() !== null ? $this->getChangeRankScript()->toJson() : null,
             "changeRankCapScript" => $this->getChangeRankCapScript() !== null ? $this->getChangeRankCapScript()->toJson() : null,

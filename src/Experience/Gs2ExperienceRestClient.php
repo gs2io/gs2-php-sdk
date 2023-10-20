@@ -244,8 +244,8 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getTransactionSetting() !== null) {
             $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
-        if ($this->request->getExperienceCapScriptId() !== null) {
-            $json["experienceCapScriptId"] = $this->request->getExperienceCapScriptId();
+        if ($this->request->getRankCapScriptId() !== null) {
+            $json["rankCapScriptId"] = $this->request->getRankCapScriptId();
         }
         if ($this->request->getChangeExperienceScript() !== null) {
             $json["changeExperienceScript"] = $this->request->getChangeExperienceScript()->toJson();
@@ -437,8 +437,8 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getTransactionSetting() !== null) {
             $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
-        if ($this->request->getExperienceCapScriptId() !== null) {
-            $json["experienceCapScriptId"] = $this->request->getExperienceCapScriptId();
+        if ($this->request->getRankCapScriptId() !== null) {
+            $json["rankCapScriptId"] = $this->request->getRankCapScriptId();
         }
         if ($this->request->getChangeExperienceScript() !== null) {
             $json["changeExperienceScript"] = $this->request->getChangeExperienceScript()->toJson();

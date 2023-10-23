@@ -37,7 +37,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $changeRankScript;
     /** @var ScriptSetting */
     private $changeRankCapScript;
-    /** @var ScriptSetting */
+    /** @var string */
     private $overflowExperienceScript;
     /** @var LogSetting */
     private $logSetting;
@@ -111,13 +111,13 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->changeRankCapScript = $changeRankCapScript;
 		return $this;
 	}
-	public function getOverflowExperienceScript(): ?ScriptSetting {
+	public function getOverflowExperienceScript(): ?string {
 		return $this->overflowExperienceScript;
 	}
-	public function setOverflowExperienceScript(?ScriptSetting $overflowExperienceScript) {
+	public function setOverflowExperienceScript(?string $overflowExperienceScript) {
 		$this->overflowExperienceScript = $overflowExperienceScript;
 	}
-	public function withOverflowExperienceScript(?ScriptSetting $overflowExperienceScript): UpdateNamespaceRequest {
+	public function withOverflowExperienceScript(?string $overflowExperienceScript): UpdateNamespaceRequest {
 		$this->overflowExperienceScript = $overflowExperienceScript;
 		return $this;
 	}
@@ -144,7 +144,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withChangeExperienceScript(array_key_exists('changeExperienceScript', $data) && $data['changeExperienceScript'] !== null ? ScriptSetting::fromJson($data['changeExperienceScript']) : null)
             ->withChangeRankScript(array_key_exists('changeRankScript', $data) && $data['changeRankScript'] !== null ? ScriptSetting::fromJson($data['changeRankScript']) : null)
             ->withChangeRankCapScript(array_key_exists('changeRankCapScript', $data) && $data['changeRankCapScript'] !== null ? ScriptSetting::fromJson($data['changeRankCapScript']) : null)
-            ->withOverflowExperienceScript(array_key_exists('overflowExperienceScript', $data) && $data['overflowExperienceScript'] !== null ? ScriptSetting::fromJson($data['overflowExperienceScript']) : null)
+            ->withOverflowExperienceScript(array_key_exists('overflowExperienceScript', $data) && $data['overflowExperienceScript'] !== null ? $data['overflowExperienceScript'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -157,7 +157,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "changeExperienceScript" => $this->getChangeExperienceScript() !== null ? $this->getChangeExperienceScript()->toJson() : null,
             "changeRankScript" => $this->getChangeRankScript() !== null ? $this->getChangeRankScript()->toJson() : null,
             "changeRankCapScript" => $this->getChangeRankCapScript() !== null ? $this->getChangeRankCapScript()->toJson() : null,
-            "overflowExperienceScript" => $this->getOverflowExperienceScript() !== null ? $this->getOverflowExperienceScript()->toJson() : null,
+            "overflowExperienceScript" => $this->getOverflowExperienceScript(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

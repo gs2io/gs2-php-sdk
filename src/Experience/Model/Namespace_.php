@@ -54,7 +54,7 @@ class Namespace_ implements IModel {
 	 */
 	private $changeRankCapScript;
 	/**
-     * @var ScriptSetting
+     * @var string
 	 */
 	private $overflowExperienceScript;
 	/**
@@ -153,13 +153,13 @@ class Namespace_ implements IModel {
 		$this->changeRankCapScript = $changeRankCapScript;
 		return $this;
 	}
-	public function getOverflowExperienceScript(): ?ScriptSetting {
+	public function getOverflowExperienceScript(): ?string {
 		return $this->overflowExperienceScript;
 	}
-	public function setOverflowExperienceScript(?ScriptSetting $overflowExperienceScript) {
+	public function setOverflowExperienceScript(?string $overflowExperienceScript) {
 		$this->overflowExperienceScript = $overflowExperienceScript;
 	}
-	public function withOverflowExperienceScript(?ScriptSetting $overflowExperienceScript): Namespace_ {
+	public function withOverflowExperienceScript(?string $overflowExperienceScript): Namespace_ {
 		$this->overflowExperienceScript = $overflowExperienceScript;
 		return $this;
 	}
@@ -217,7 +217,7 @@ class Namespace_ implements IModel {
             ->withChangeExperienceScript(array_key_exists('changeExperienceScript', $data) && $data['changeExperienceScript'] !== null ? ScriptSetting::fromJson($data['changeExperienceScript']) : null)
             ->withChangeRankScript(array_key_exists('changeRankScript', $data) && $data['changeRankScript'] !== null ? ScriptSetting::fromJson($data['changeRankScript']) : null)
             ->withChangeRankCapScript(array_key_exists('changeRankCapScript', $data) && $data['changeRankCapScript'] !== null ? ScriptSetting::fromJson($data['changeRankCapScript']) : null)
-            ->withOverflowExperienceScript(array_key_exists('overflowExperienceScript', $data) && $data['overflowExperienceScript'] !== null ? ScriptSetting::fromJson($data['overflowExperienceScript']) : null)
+            ->withOverflowExperienceScript(array_key_exists('overflowExperienceScript', $data) && $data['overflowExperienceScript'] !== null ? $data['overflowExperienceScript'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -234,7 +234,7 @@ class Namespace_ implements IModel {
             "changeExperienceScript" => $this->getChangeExperienceScript() !== null ? $this->getChangeExperienceScript()->toJson() : null,
             "changeRankScript" => $this->getChangeRankScript() !== null ? $this->getChangeRankScript()->toJson() : null,
             "changeRankCapScript" => $this->getChangeRankCapScript() !== null ? $this->getChangeRankCapScript()->toJson() : null,
-            "overflowExperienceScript" => $this->getOverflowExperienceScript() !== null ? $this->getOverflowExperienceScript()->toJson() : null,
+            "overflowExperienceScript" => $this->getOverflowExperienceScript(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

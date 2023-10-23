@@ -257,7 +257,7 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
             $json["changeRankCapScript"] = $this->request->getChangeRankCapScript()->toJson();
         }
         if ($this->request->getOverflowExperienceScript() !== null) {
-            $json["overflowExperienceScript"] = $this->request->getOverflowExperienceScript()->toJson();
+            $json["overflowExperienceScript"] = $this->request->getOverflowExperienceScript();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -450,7 +450,7 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
             $json["changeRankCapScript"] = $this->request->getChangeRankCapScript()->toJson();
         }
         if ($this->request->getOverflowExperienceScript() !== null) {
-            $json["overflowExperienceScript"] = $this->request->getOverflowExperienceScript()->toJson();
+            $json["overflowExperienceScript"] = $this->request->getOverflowExperienceScript();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

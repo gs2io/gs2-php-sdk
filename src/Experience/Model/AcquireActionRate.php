@@ -26,9 +26,17 @@ class AcquireActionRate implements IModel {
 	 */
 	private $name;
 	/**
+     * @var string
+	 */
+	private $mode;
+	/**
      * @var array
 	 */
 	private $rates;
+	/**
+     * @var array
+	 */
+	private $bigRates;
 	public function getName(): ?string {
 		return $this->name;
 	}
@@ -37,6 +45,16 @@ class AcquireActionRate implements IModel {
 	}
 	public function withName(?string $name): AcquireActionRate {
 		$this->name = $name;
+		return $this;
+	}
+	public function getMode(): ?string {
+		return $this->mode;
+	}
+	public function setMode(?string $mode) {
+		$this->mode = $mode;
+	}
+	public function withMode(?string $mode): AcquireActionRate {
+		$this->mode = $mode;
 		return $this;
 	}
 	public function getRates(): ?array {
@@ -49,6 +67,16 @@ class AcquireActionRate implements IModel {
 		$this->rates = $rates;
 		return $this;
 	}
+	public function getBigRates(): ?array {
+		return $this->bigRates;
+	}
+	public function setBigRates(?array $bigRates) {
+		$this->bigRates = $bigRates;
+	}
+	public function withBigRates(?array $bigRates): AcquireActionRate {
+		$this->bigRates = $bigRates;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?AcquireActionRate {
         if ($data === null) {
@@ -56,22 +84,36 @@ class AcquireActionRate implements IModel {
         }
         return (new AcquireActionRate())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withMode(array_key_exists('mode', $data) && $data['mode'] !== null ? $data['mode'] : null)
             ->withRates(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('rates', $data) && $data['rates'] !== null ? $data['rates'] : []
+            ))
+            ->withBigRates(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('bigRates', $data) && $data['bigRates'] !== null ? $data['bigRates'] : []
             ));
     }
 
     public function toJson(): array {
         return array(
             "name" => $this->getName(),
+            "mode" => $this->getMode(),
             "rates" => array_map(
                 function ($item) {
                     return $item;
                 },
                 $this->getRates() !== null && $this->getRates() !== null ? $this->getRates() : []
+            ),
+            "bigRates" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getBigRates() !== null && $this->getBigRates() !== null ? $this->getBigRates() : []
             ),
         );
     }

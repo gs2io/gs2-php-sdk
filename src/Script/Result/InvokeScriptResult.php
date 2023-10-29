@@ -24,6 +24,8 @@ class InvokeScriptResult implements IResult {
     private $code;
     /** @var string */
     private $result;
+    /** @var string */
+    private $transaction;
     /** @var int */
     private $executeTime;
     /** @var int */
@@ -54,6 +56,19 @@ class InvokeScriptResult implements IResult {
 
 	public function withResult(?string $result): InvokeScriptResult {
 		$this->result = $result;
+		return $this;
+	}
+
+	public function getTransaction(): ?string {
+		return $this->transaction;
+	}
+
+	public function setTransaction(?string $transaction) {
+		$this->transaction = $transaction;
+	}
+
+	public function withTransaction(?string $transaction): InvokeScriptResult {
+		$this->transaction = $transaction;
 		return $this;
 	}
 
@@ -103,6 +118,7 @@ class InvokeScriptResult implements IResult {
         return (new InvokeScriptResult())
             ->withCode(array_key_exists('code', $data) && $data['code'] !== null ? $data['code'] : null)
             ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null)
+            ->withTransaction(array_key_exists('transaction', $data) && $data['transaction'] !== null ? $data['transaction'] : null)
             ->withExecuteTime(array_key_exists('executeTime', $data) && $data['executeTime'] !== null ? $data['executeTime'] : null)
             ->withCharged(array_key_exists('charged', $data) && $data['charged'] !== null ? $data['charged'] : null)
             ->withOutput(array_map(
@@ -117,6 +133,7 @@ class InvokeScriptResult implements IResult {
         return array(
             "code" => $this->getCode(),
             "result" => $this->getResult(),
+            "transaction" => $this->getTransaction(),
             "executeTime" => $this->getExecuteTime(),
             "charged" => $this->getCharged(),
             "output" => array_map(

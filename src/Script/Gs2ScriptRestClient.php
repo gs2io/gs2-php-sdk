@@ -889,6 +889,9 @@ class InvokeScriptTask extends Gs2RestSessionTask {
         if ($this->request->getArgs() !== null) {
             $json["args"] = $this->request->getArgs();
         }
+        if ($this->request->getRandomStatus() !== null) {
+            $json["randomStatus"] = $this->request->getRandomStatus()->toJson();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -947,6 +950,9 @@ class DebugInvokeTask extends Gs2RestSessionTask {
         }
         if ($this->request->getArgs() !== null) {
             $json["args"] = $this->request->getArgs();
+        }
+        if ($this->request->getRandomStatus() !== null) {
+            $json["randomStatus"] = $this->request->getRandomStatus()->toJson();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

@@ -18,6 +18,8 @@
 namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Script\Model\RandomUsed;
+use Gs2\Script\Model\RandomStatus;
 
 class InvokeScriptRequest extends Gs2BasicRequest {
     /** @var string */
@@ -26,6 +28,8 @@ class InvokeScriptRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $args;
+    /** @var RandomStatus */
+    private $randomStatus;
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
@@ -56,6 +60,16 @@ class InvokeScriptRequest extends Gs2BasicRequest {
 		$this->args = $args;
 		return $this;
 	}
+	public function getRandomStatus(): ?RandomStatus {
+		return $this->randomStatus;
+	}
+	public function setRandomStatus(?RandomStatus $randomStatus) {
+		$this->randomStatus = $randomStatus;
+	}
+	public function withRandomStatus(?RandomStatus $randomStatus): InvokeScriptRequest {
+		$this->randomStatus = $randomStatus;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?InvokeScriptRequest {
         if ($data === null) {
@@ -64,7 +78,8 @@ class InvokeScriptRequest extends Gs2BasicRequest {
         return (new InvokeScriptRequest())
             ->withScriptId(array_key_exists('scriptId', $data) && $data['scriptId'] !== null ? $data['scriptId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null);
+            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
+            ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null);
     }
 
     public function toJson(): array {
@@ -72,6 +87,7 @@ class InvokeScriptRequest extends Gs2BasicRequest {
             "scriptId" => $this->getScriptId(),
             "userId" => $this->getUserId(),
             "args" => $this->getArgs(),
+            "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
         );
     }
 }

@@ -18,12 +18,16 @@
 namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Script\Model\RandomUsed;
+use Gs2\Script\Model\RandomStatus;
 
 class DebugInvokeRequest extends Gs2BasicRequest {
     /** @var string */
     private $script;
     /** @var string */
     private $args;
+    /** @var RandomStatus */
+    private $randomStatus;
 	public function getScript(): ?string {
 		return $this->script;
 	}
@@ -44,6 +48,16 @@ class DebugInvokeRequest extends Gs2BasicRequest {
 		$this->args = $args;
 		return $this;
 	}
+	public function getRandomStatus(): ?RandomStatus {
+		return $this->randomStatus;
+	}
+	public function setRandomStatus(?RandomStatus $randomStatus) {
+		$this->randomStatus = $randomStatus;
+	}
+	public function withRandomStatus(?RandomStatus $randomStatus): DebugInvokeRequest {
+		$this->randomStatus = $randomStatus;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DebugInvokeRequest {
         if ($data === null) {
@@ -51,13 +65,15 @@ class DebugInvokeRequest extends Gs2BasicRequest {
         }
         return (new DebugInvokeRequest())
             ->withScript(array_key_exists('script', $data) && $data['script'] !== null ? $data['script'] : null)
-            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null);
+            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
+            ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null);
     }
 
     public function toJson(): array {
         return array(
             "script" => $this->getScript(),
             "args" => $this->getArgs(),
+            "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
         );
     }
 }

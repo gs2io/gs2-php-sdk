@@ -34,7 +34,7 @@ class Namespace_ implements IModel {
 	 */
 	private $description;
 	/**
-     * @var ScriptSetting
+     * @var string
 	 */
 	private $overflowTriggerScript;
 	/**
@@ -83,13 +83,13 @@ class Namespace_ implements IModel {
 		$this->description = $description;
 		return $this;
 	}
-	public function getOverflowTriggerScript(): ?ScriptSetting {
+	public function getOverflowTriggerScript(): ?string {
 		return $this->overflowTriggerScript;
 	}
-	public function setOverflowTriggerScript(?ScriptSetting $overflowTriggerScript) {
+	public function setOverflowTriggerScript(?string $overflowTriggerScript) {
 		$this->overflowTriggerScript = $overflowTriggerScript;
 	}
-	public function withOverflowTriggerScript(?ScriptSetting $overflowTriggerScript): Namespace_ {
+	public function withOverflowTriggerScript(?string $overflowTriggerScript): Namespace_ {
 		$this->overflowTriggerScript = $overflowTriggerScript;
 		return $this;
 	}
@@ -142,7 +142,7 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withOverflowTriggerScript(array_key_exists('overflowTriggerScript', $data) && $data['overflowTriggerScript'] !== null ? ScriptSetting::fromJson($data['overflowTriggerScript']) : null)
+            ->withOverflowTriggerScript(array_key_exists('overflowTriggerScript', $data) && $data['overflowTriggerScript'] !== null ? $data['overflowTriggerScript'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -154,7 +154,7 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
-            "overflowTriggerScript" => $this->getOverflowTriggerScript() !== null ? $this->getOverflowTriggerScript()->toJson() : null,
+            "overflowTriggerScript" => $this->getOverflowTriggerScript(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

@@ -28,7 +28,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $description;
     /** @var ScriptSetting */
     private $entryScript;
-    /** @var ScriptSetting */
+    /** @var string */
     private $duplicateEntryScript;
     /** @var LogSetting */
     private $logSetting;
@@ -62,13 +62,13 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->entryScript = $entryScript;
 		return $this;
 	}
-	public function getDuplicateEntryScript(): ?ScriptSetting {
+	public function getDuplicateEntryScript(): ?string {
 		return $this->duplicateEntryScript;
 	}
-	public function setDuplicateEntryScript(?ScriptSetting $duplicateEntryScript) {
+	public function setDuplicateEntryScript(?string $duplicateEntryScript) {
 		$this->duplicateEntryScript = $duplicateEntryScript;
 	}
-	public function withDuplicateEntryScript(?ScriptSetting $duplicateEntryScript): UpdateNamespaceRequest {
+	public function withDuplicateEntryScript(?string $duplicateEntryScript): UpdateNamespaceRequest {
 		$this->duplicateEntryScript = $duplicateEntryScript;
 		return $this;
 	}
@@ -91,7 +91,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withEntryScript(array_key_exists('entryScript', $data) && $data['entryScript'] !== null ? ScriptSetting::fromJson($data['entryScript']) : null)
-            ->withDuplicateEntryScript(array_key_exists('duplicateEntryScript', $data) && $data['duplicateEntryScript'] !== null ? ScriptSetting::fromJson($data['duplicateEntryScript']) : null)
+            ->withDuplicateEntryScript(array_key_exists('duplicateEntryScript', $data) && $data['duplicateEntryScript'] !== null ? $data['duplicateEntryScript'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -100,7 +100,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
             "entryScript" => $this->getEntryScript() !== null ? $this->getEntryScript()->toJson() : null,
-            "duplicateEntryScript" => $this->getDuplicateEntryScript() !== null ? $this->getDuplicateEntryScript()->toJson() : null,
+            "duplicateEntryScript" => $this->getDuplicateEntryScript(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

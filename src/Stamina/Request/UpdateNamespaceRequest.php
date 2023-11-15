@@ -18,7 +18,6 @@
 namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Stamina\Model\ScriptSetting;
 use Gs2\Stamina\Model\LogSetting;
 
 class UpdateNamespaceRequest extends Gs2BasicRequest {
@@ -26,7 +25,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
-    /** @var ScriptSetting */
+    /** @var string */
     private $overflowTriggerScript;
     /** @var LogSetting */
     private $logSetting;
@@ -50,13 +49,13 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->description = $description;
 		return $this;
 	}
-	public function getOverflowTriggerScript(): ?ScriptSetting {
+	public function getOverflowTriggerScript(): ?string {
 		return $this->overflowTriggerScript;
 	}
-	public function setOverflowTriggerScript(?ScriptSetting $overflowTriggerScript) {
+	public function setOverflowTriggerScript(?string $overflowTriggerScript) {
 		$this->overflowTriggerScript = $overflowTriggerScript;
 	}
-	public function withOverflowTriggerScript(?ScriptSetting $overflowTriggerScript): UpdateNamespaceRequest {
+	public function withOverflowTriggerScript(?string $overflowTriggerScript): UpdateNamespaceRequest {
 		$this->overflowTriggerScript = $overflowTriggerScript;
 		return $this;
 	}
@@ -78,7 +77,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withOverflowTriggerScript(array_key_exists('overflowTriggerScript', $data) && $data['overflowTriggerScript'] !== null ? ScriptSetting::fromJson($data['overflowTriggerScript']) : null)
+            ->withOverflowTriggerScript(array_key_exists('overflowTriggerScript', $data) && $data['overflowTriggerScript'] !== null ? $data['overflowTriggerScript'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -86,7 +85,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
-            "overflowTriggerScript" => $this->getOverflowTriggerScript() !== null ? $this->getOverflowTriggerScript()->toJson() : null,
+            "overflowTriggerScript" => $this->getOverflowTriggerScript(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

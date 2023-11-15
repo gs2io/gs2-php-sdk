@@ -38,7 +38,7 @@ class Namespace_ implements IModel {
 	 */
 	private $entryScript;
 	/**
-     * @var ScriptSetting
+     * @var string
 	 */
 	private $duplicateEntryScript;
 	/**
@@ -97,13 +97,13 @@ class Namespace_ implements IModel {
 		$this->entryScript = $entryScript;
 		return $this;
 	}
-	public function getDuplicateEntryScript(): ?ScriptSetting {
+	public function getDuplicateEntryScript(): ?string {
 		return $this->duplicateEntryScript;
 	}
-	public function setDuplicateEntryScript(?ScriptSetting $duplicateEntryScript) {
+	public function setDuplicateEntryScript(?string $duplicateEntryScript) {
 		$this->duplicateEntryScript = $duplicateEntryScript;
 	}
-	public function withDuplicateEntryScript(?ScriptSetting $duplicateEntryScript): Namespace_ {
+	public function withDuplicateEntryScript(?string $duplicateEntryScript): Namespace_ {
 		$this->duplicateEntryScript = $duplicateEntryScript;
 		return $this;
 	}
@@ -157,7 +157,7 @@ class Namespace_ implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withEntryScript(array_key_exists('entryScript', $data) && $data['entryScript'] !== null ? ScriptSetting::fromJson($data['entryScript']) : null)
-            ->withDuplicateEntryScript(array_key_exists('duplicateEntryScript', $data) && $data['duplicateEntryScript'] !== null ? ScriptSetting::fromJson($data['duplicateEntryScript']) : null)
+            ->withDuplicateEntryScript(array_key_exists('duplicateEntryScript', $data) && $data['duplicateEntryScript'] !== null ? $data['duplicateEntryScript'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -170,7 +170,7 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "entryScript" => $this->getEntryScript() !== null ? $this->getEntryScript()->toJson() : null,
-            "duplicateEntryScript" => $this->getDuplicateEntryScript() !== null ? $this->getDuplicateEntryScript()->toJson() : null,
+            "duplicateEntryScript" => $this->getDuplicateEntryScript(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

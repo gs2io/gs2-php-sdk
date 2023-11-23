@@ -57,12 +57,21 @@ class TransactionSetting implements IModel {
 		$this->distributorNamespaceId = $distributorNamespaceId;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /**
+     * @deprecated
+     */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @deprecated
+     */
 	public function withKeyId(?string $keyId): TransactionSetting {
 		$this->keyId = $keyId;
 		return $this;

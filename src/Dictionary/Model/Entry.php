@@ -37,10 +37,6 @@ class Entry implements IModel {
      * @var int
 	 */
 	private $acquiredAt;
-	/**
-     * @var int
-	 */
-	private $revision;
 	public function getEntryId(): ?string {
 		return $this->entryId;
 	}
@@ -81,16 +77,6 @@ class Entry implements IModel {
 		$this->acquiredAt = $acquiredAt;
 		return $this;
 	}
-	public function getRevision(): ?int {
-		return $this->revision;
-	}
-	public function setRevision(?int $revision) {
-		$this->revision = $revision;
-	}
-	public function withRevision(?int $revision): Entry {
-		$this->revision = $revision;
-		return $this;
-	}
 
     public static function fromJson(?array $data): ?Entry {
         if ($data === null) {
@@ -100,8 +86,7 @@ class Entry implements IModel {
             ->withEntryId(array_key_exists('entryId', $data) && $data['entryId'] !== null ? $data['entryId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
-            ->withAcquiredAt(array_key_exists('acquiredAt', $data) && $data['acquiredAt'] !== null ? $data['acquiredAt'] : null)
-            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
+            ->withAcquiredAt(array_key_exists('acquiredAt', $data) && $data['acquiredAt'] !== null ? $data['acquiredAt'] : null);
     }
 
     public function toJson(): array {
@@ -110,7 +95,6 @@ class Entry implements IModel {
             "userId" => $this->getUserId(),
             "name" => $this->getName(),
             "acquiredAt" => $this->getAcquiredAt(),
-            "revision" => $this->getRevision(),
         );
     }
 }

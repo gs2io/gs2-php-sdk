@@ -26,6 +26,8 @@ class GetJobResultRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $jobName;
+    /** @var int */
+    private $tryNumber;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,16 @@ class GetJobResultRequest extends Gs2BasicRequest {
 		$this->jobName = $jobName;
 		return $this;
 	}
+	public function getTryNumber(): ?int {
+		return $this->tryNumber;
+	}
+	public function setTryNumber(?int $tryNumber) {
+		$this->tryNumber = $tryNumber;
+	}
+	public function withTryNumber(?int $tryNumber): GetJobResultRequest {
+		$this->tryNumber = $tryNumber;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetJobResultRequest {
         if ($data === null) {
@@ -64,7 +76,8 @@ class GetJobResultRequest extends Gs2BasicRequest {
         return (new GetJobResultRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withJobName(array_key_exists('jobName', $data) && $data['jobName'] !== null ? $data['jobName'] : null);
+            ->withJobName(array_key_exists('jobName', $data) && $data['jobName'] !== null ? $data['jobName'] : null)
+            ->withTryNumber(array_key_exists('tryNumber', $data) && $data['tryNumber'] !== null ? $data['tryNumber'] : null);
     }
 
     public function toJson(): array {
@@ -72,6 +85,7 @@ class GetJobResultRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "jobName" => $this->getJobName(),
+            "tryNumber" => $this->getTryNumber(),
         );
     }
 }

@@ -1401,6 +1401,9 @@ class GetJobResultTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getTryNumber() !== null) {
+            $queryStrings["tryNumber"] = $this->request->getTryNumber();
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);
@@ -1462,6 +1465,9 @@ class GetJobResultByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getTryNumber() !== null) {
+            $queryStrings["tryNumber"] = $this->request->getTryNumber();
         }
 
         if (count($queryStrings) > 0) {

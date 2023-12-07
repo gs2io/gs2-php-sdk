@@ -245,6 +245,8 @@ use Gs2\Inventory\Request\ConsumeSimpleItemsRequest;
 use Gs2\Inventory\Result\ConsumeSimpleItemsResult;
 use Gs2\Inventory\Request\ConsumeSimpleItemsByUserIdRequest;
 use Gs2\Inventory\Result\ConsumeSimpleItemsByUserIdResult;
+use Gs2\Inventory\Request\SetSimpleItemsByUserIdRequest;
+use Gs2\Inventory\Result\SetSimpleItemsByUserIdResult;
 use Gs2\Inventory\Request\DeleteSimpleItemsByUserIdRequest;
 use Gs2\Inventory\Result\DeleteSimpleItemsByUserIdResult;
 use Gs2\Inventory\Request\VerifySimpleItemRequest;
@@ -255,6 +257,8 @@ use Gs2\Inventory\Request\AcquireSimpleItemsByStampSheetRequest;
 use Gs2\Inventory\Result\AcquireSimpleItemsByStampSheetResult;
 use Gs2\Inventory\Request\ConsumeSimpleItemsByStampTaskRequest;
 use Gs2\Inventory\Result\ConsumeSimpleItemsByStampTaskResult;
+use Gs2\Inventory\Request\SetSimpleItemsByStampSheetRequest;
+use Gs2\Inventory\Result\SetSimpleItemsByStampSheetResult;
 use Gs2\Inventory\Request\VerifySimpleItemByStampTaskRequest;
 use Gs2\Inventory\Result\VerifySimpleItemByStampTaskResult;
 use Gs2\Inventory\Request\DescribeBigItemsRequest;
@@ -271,6 +275,8 @@ use Gs2\Inventory\Request\ConsumeBigItemRequest;
 use Gs2\Inventory\Result\ConsumeBigItemResult;
 use Gs2\Inventory\Request\ConsumeBigItemByUserIdRequest;
 use Gs2\Inventory\Result\ConsumeBigItemByUserIdResult;
+use Gs2\Inventory\Request\SetBigItemByUserIdRequest;
+use Gs2\Inventory\Result\SetBigItemByUserIdResult;
 use Gs2\Inventory\Request\DeleteBigItemByUserIdRequest;
 use Gs2\Inventory\Result\DeleteBigItemByUserIdResult;
 use Gs2\Inventory\Request\VerifyBigItemRequest;
@@ -281,6 +287,8 @@ use Gs2\Inventory\Request\AcquireBigItemByStampSheetRequest;
 use Gs2\Inventory\Result\AcquireBigItemByStampSheetResult;
 use Gs2\Inventory\Request\ConsumeBigItemByStampTaskRequest;
 use Gs2\Inventory\Result\ConsumeBigItemByStampTaskResult;
+use Gs2\Inventory\Request\SetBigItemByStampSheetRequest;
+use Gs2\Inventory\Result\SetBigItemByStampSheetResult;
 use Gs2\Inventory\Request\VerifyBigItemByStampTaskRequest;
 use Gs2\Inventory\Result\VerifyBigItemByStampTaskResult;
 
@@ -7018,6 +7026,74 @@ class ConsumeSimpleItemsByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class SetSimpleItemsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetSimpleItemsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetSimpleItemsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetSimpleItemsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetSimpleItemsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetSimpleItemsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/simple/inventory/{inventoryName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getCounts() !== null) {
+            $array = [];
+            foreach ($this->request->getCounts() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["counts"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteSimpleItemsByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -7307,6 +7383,65 @@ class ConsumeSimpleItemsByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SetSimpleItemsByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetSimpleItemsByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetSimpleItemsByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetSimpleItemsByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetSimpleItemsByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetSimpleItemsByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/simple/item/set";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -7837,6 +7972,70 @@ class ConsumeBigItemByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class SetBigItemByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetBigItemByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetBigItemByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetBigItemByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetBigItemByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetBigItemByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/big/inventory/{inventoryName}/item/{itemName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteBigItemByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -8127,6 +8326,65 @@ class ConsumeBigItemByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SetBigItemByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetBigItemByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetBigItemByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetBigItemByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetBigItemByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetBigItemByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/big/item/set";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -11143,6 +11401,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param SetSimpleItemsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function setSimpleItemsByUserIdAsync(
+            SetSimpleItemsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetSimpleItemsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetSimpleItemsByUserIdRequest $request
+     * @return SetSimpleItemsByUserIdResult
+     */
+    public function setSimpleItemsByUserId (
+            SetSimpleItemsByUserIdRequest $request
+    ): SetSimpleItemsByUserIdResult {
+        return $this->setSimpleItemsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteSimpleItemsByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -11273,6 +11558,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             ConsumeSimpleItemsByStampTaskRequest $request
     ): ConsumeSimpleItemsByStampTaskResult {
         return $this->consumeSimpleItemsByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetSimpleItemsByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function setSimpleItemsByStampSheetAsync(
+            SetSimpleItemsByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetSimpleItemsByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetSimpleItemsByStampSheetRequest $request
+     * @return SetSimpleItemsByStampSheetResult
+     */
+    public function setSimpleItemsByStampSheet (
+            SetSimpleItemsByStampSheetRequest $request
+    ): SetSimpleItemsByStampSheetResult {
+        return $this->setSimpleItemsByStampSheetAsync(
             $request
         )->wait();
     }
@@ -11494,6 +11806,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param SetBigItemByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function setBigItemByUserIdAsync(
+            SetBigItemByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetBigItemByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetBigItemByUserIdRequest $request
+     * @return SetBigItemByUserIdResult
+     */
+    public function setBigItemByUserId (
+            SetBigItemByUserIdRequest $request
+    ): SetBigItemByUserIdResult {
+        return $this->setBigItemByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteBigItemByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -11624,6 +11963,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             ConsumeBigItemByStampTaskRequest $request
     ): ConsumeBigItemByStampTaskResult {
         return $this->consumeBigItemByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetBigItemByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function setBigItemByStampSheetAsync(
+            SetBigItemByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetBigItemByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetBigItemByStampSheetRequest $request
+     * @return SetBigItemByStampSheetResult
+     */
+    public function setBigItemByStampSheet (
+            SetBigItemByStampSheetRequest $request
+    ): SetBigItemByStampSheetResult {
+        return $this->setBigItemByStampSheetAsync(
             $request
         )->wait();
     }

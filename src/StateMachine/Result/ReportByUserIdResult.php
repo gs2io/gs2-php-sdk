@@ -18,34 +18,35 @@
 namespace Gs2\StateMachine\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\StateMachine\Model\TransactionSetting;
-use Gs2\StateMachine\Model\ScriptSetting;
-use Gs2\StateMachine\Model\LogSetting;
-use Gs2\StateMachine\Model\Namespace_;
+use Gs2\StateMachine\Model\RandomUsed;
+use Gs2\StateMachine\Model\RandomStatus;
+use Gs2\StateMachine\Model\StackEntry;
+use Gs2\StateMachine\Model\Variable;
+use Gs2\StateMachine\Model\Status;
 
-class UpdateNamespaceResult implements IResult {
-    /** @var Namespace_ */
+class ReportByUserIdResult implements IResult {
+    /** @var Status */
     private $item;
 
-	public function getItem(): ?Namespace_ {
+	public function getItem(): ?Status {
 		return $this->item;
 	}
 
-	public function setItem(?Namespace_ $item) {
+	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
-	public function withItem(?Namespace_ $item): UpdateNamespaceResult {
+	public function withItem(?Status $item): ReportByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?UpdateNamespaceResult {
+    public static function fromJson(?array $data): ?ReportByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new UpdateNamespaceResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Namespace_::fromJson($data['item']) : null);
+        return (new ReportByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Status::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

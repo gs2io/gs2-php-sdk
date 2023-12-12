@@ -79,6 +79,10 @@ use Gs2\StateMachine\Request\EmitRequest;
 use Gs2\StateMachine\Result\EmitResult;
 use Gs2\StateMachine\Request\EmitByUserIdRequest;
 use Gs2\StateMachine\Result\EmitByUserIdResult;
+use Gs2\StateMachine\Request\ReportRequest;
+use Gs2\StateMachine\Result\ReportResult;
+use Gs2\StateMachine\Request\ReportByUserIdRequest;
+use Gs2\StateMachine\Result\ReportByUserIdResult;
 use Gs2\StateMachine\Request\DeleteStatusByUserIdRequest;
 use Gs2\StateMachine\Result\DeleteStatusByUserIdResult;
 use Gs2\StateMachine\Request\ExitStateMachineRequest;
@@ -186,6 +190,12 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getSupportSpeculativeExecution() !== null) {
+            $json["supportSpeculativeExecution"] = $this->request->getSupportSpeculativeExecution();
+        }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getStartScript() !== null) {
             $json["startScript"] = $this->request->getStartScript()->toJson();
@@ -373,6 +383,12 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getSupportSpeculativeExecution() !== null) {
+            $json["supportSpeculativeExecution"] = $this->request->getSupportSpeculativeExecution();
+        }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getStartScript() !== null) {
             $json["startScript"] = $this->request->getStartScript()->toJson();
@@ -1417,6 +1433,9 @@ class StartStateMachineByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getArgs() !== null) {
             $json["args"] = $this->request->getArgs();
         }
+        if ($this->request->getEnableSpeculativeExecution() !== null) {
+            $json["enableSpeculativeExecution"] = $this->request->getEnableSpeculativeExecution();
+        }
         if ($this->request->getTtl() !== null) {
             $json["ttl"] = $this->request->getTtl();
         }
@@ -1612,6 +1631,144 @@ class EmitByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getArgs() !== null) {
             $json["args"] = $this->request->getArgs();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ReportTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ReportRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ReportTask constructor.
+     * @param Gs2RestSession $session
+     * @param ReportRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ReportRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ReportResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "state-machine", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/status/{statusName}/report";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{statusName}", $this->request->getStatusName() === null|| strlen($this->request->getStatusName()) == 0 ? "null" : $this->request->getStatusName(), $url);
+
+        $json = [];
+        if ($this->request->getEvents() !== null) {
+            $array = [];
+            foreach ($this->request->getEvents() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["events"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ReportByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ReportByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ReportByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ReportByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ReportByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ReportByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "state-machine", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/{statusName}/report";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{statusName}", $this->request->getStatusName() === null|| strlen($this->request->getStatusName()) == 0 ? "null" : $this->request->getStatusName(), $url);
+
+        $json = [];
+        if ($this->request->getEvents() !== null) {
+            $array = [];
+            foreach ($this->request->getEvents() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["events"] = $array;
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2511,6 +2668,60 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
             EmitByUserIdRequest $request
     ): EmitByUserIdResult {
         return $this->emitByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ReportRequest $request
+     * @return PromiseInterface
+     */
+    public function reportAsync(
+            ReportRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ReportTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ReportRequest $request
+     * @return ReportResult
+     */
+    public function report (
+            ReportRequest $request
+    ): ReportResult {
+        return $this->reportAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ReportByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function reportByUserIdAsync(
+            ReportByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ReportByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ReportByUserIdRequest $request
+     * @return ReportByUserIdResult
+     */
+    public function reportByUserId (
+            ReportByUserIdRequest $request
+    ): ReportByUserIdResult {
+        return $this->reportByUserIdAsync(
             $request
         )->wait();
     }

@@ -38,6 +38,18 @@ class Status implements IModel {
 	 */
 	private $stateMachineVersion;
 	/**
+     * @var string
+	 */
+	private $enableSpeculativeExecution;
+	/**
+     * @var string
+	 */
+	private $stateMachineDefinition;
+	/**
+     * @var RandomStatus
+	 */
+	private $randomStatus;
+	/**
      * @var array
 	 */
 	private $stacks;
@@ -103,6 +115,36 @@ class Status implements IModel {
 	}
 	public function withStateMachineVersion(?int $stateMachineVersion): Status {
 		$this->stateMachineVersion = $stateMachineVersion;
+		return $this;
+	}
+	public function getEnableSpeculativeExecution(): ?string {
+		return $this->enableSpeculativeExecution;
+	}
+	public function setEnableSpeculativeExecution(?string $enableSpeculativeExecution) {
+		$this->enableSpeculativeExecution = $enableSpeculativeExecution;
+	}
+	public function withEnableSpeculativeExecution(?string $enableSpeculativeExecution): Status {
+		$this->enableSpeculativeExecution = $enableSpeculativeExecution;
+		return $this;
+	}
+	public function getStateMachineDefinition(): ?string {
+		return $this->stateMachineDefinition;
+	}
+	public function setStateMachineDefinition(?string $stateMachineDefinition) {
+		$this->stateMachineDefinition = $stateMachineDefinition;
+	}
+	public function withStateMachineDefinition(?string $stateMachineDefinition): Status {
+		$this->stateMachineDefinition = $stateMachineDefinition;
+		return $this;
+	}
+	public function getRandomStatus(): ?RandomStatus {
+		return $this->randomStatus;
+	}
+	public function setRandomStatus(?RandomStatus $randomStatus) {
+		$this->randomStatus = $randomStatus;
+	}
+	public function withRandomStatus(?RandomStatus $randomStatus): Status {
+		$this->randomStatus = $randomStatus;
 		return $this;
 	}
 	public function getStacks(): ?array {
@@ -185,6 +227,9 @@ class Status implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withStateMachineVersion(array_key_exists('stateMachineVersion', $data) && $data['stateMachineVersion'] !== null ? $data['stateMachineVersion'] : null)
+            ->withEnableSpeculativeExecution(array_key_exists('enableSpeculativeExecution', $data) && $data['enableSpeculativeExecution'] !== null ? $data['enableSpeculativeExecution'] : null)
+            ->withStateMachineDefinition(array_key_exists('stateMachineDefinition', $data) && $data['stateMachineDefinition'] !== null ? $data['stateMachineDefinition'] : null)
+            ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
             ->withStacks(array_map(
                 function ($item) {
                     return StackEntry::fromJson($item);
@@ -210,6 +255,9 @@ class Status implements IModel {
             "userId" => $this->getUserId(),
             "name" => $this->getName(),
             "stateMachineVersion" => $this->getStateMachineVersion(),
+            "enableSpeculativeExecution" => $this->getEnableSpeculativeExecution(),
+            "stateMachineDefinition" => $this->getStateMachineDefinition(),
+            "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
             "stacks" => array_map(
                 function ($item) {
                     return $item->toJson();

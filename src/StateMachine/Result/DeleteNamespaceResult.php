@@ -18,6 +18,7 @@
 namespace Gs2\StateMachine\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\StateMachine\Model\TransactionSetting;
 use Gs2\StateMachine\Model\ScriptSetting;
 use Gs2\StateMachine\Model\LogSetting;
 use Gs2\StateMachine\Model\Namespace_;

@@ -18,18 +18,19 @@
 namespace Gs2\StateMachine\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\StateMachine\Model\ChangeStateEvent;
+use Gs2\StateMachine\Model\EmitEvent;
+use Gs2\StateMachine\Model\Event;
 
-class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
+class ReportByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
     private $userId;
     /** @var string */
-    private $args;
-    /** @var string */
-    private $enableSpeculativeExecution;
-    /** @var int */
-    private $ttl;
+    private $statusName;
+    /** @var array */
+    private $events;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -38,7 +39,7 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): StartStateMachineByUserIdRequest {
+	public function withNamespaceName(?string $namespaceName): ReportByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -48,38 +49,28 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-	public function withUserId(?string $userId): StartStateMachineByUserIdRequest {
+	public function withUserId(?string $userId): ReportByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getArgs(): ?string {
-		return $this->args;
+	public function getStatusName(): ?string {
+		return $this->statusName;
 	}
-	public function setArgs(?string $args) {
-		$this->args = $args;
+	public function setStatusName(?string $statusName) {
+		$this->statusName = $statusName;
 	}
-	public function withArgs(?string $args): StartStateMachineByUserIdRequest {
-		$this->args = $args;
+	public function withStatusName(?string $statusName): ReportByUserIdRequest {
+		$this->statusName = $statusName;
 		return $this;
 	}
-	public function getEnableSpeculativeExecution(): ?string {
-		return $this->enableSpeculativeExecution;
+	public function getEvents(): ?array {
+		return $this->events;
 	}
-	public function setEnableSpeculativeExecution(?string $enableSpeculativeExecution) {
-		$this->enableSpeculativeExecution = $enableSpeculativeExecution;
+	public function setEvents(?array $events) {
+		$this->events = $events;
 	}
-	public function withEnableSpeculativeExecution(?string $enableSpeculativeExecution): StartStateMachineByUserIdRequest {
-		$this->enableSpeculativeExecution = $enableSpeculativeExecution;
-		return $this;
-	}
-	public function getTtl(): ?int {
-		return $this->ttl;
-	}
-	public function setTtl(?int $ttl) {
-		$this->ttl = $ttl;
-	}
-	public function withTtl(?int $ttl): StartStateMachineByUserIdRequest {
-		$this->ttl = $ttl;
+	public function withEvents(?array $events): ReportByUserIdRequest {
+		$this->events = $events;
 		return $this;
 	}
 
@@ -91,30 +82,38 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 	}
 
-	public function withDuplicationAvoider(?string $duplicationAvoider): StartStateMachineByUserIdRequest {
+	public function withDuplicationAvoider(?string $duplicationAvoider): ReportByUserIdRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?StartStateMachineByUserIdRequest {
+    public static function fromJson(?array $data): ?ReportByUserIdRequest {
         if ($data === null) {
             return null;
         }
-        return (new StartStateMachineByUserIdRequest())
+        return (new ReportByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
-            ->withEnableSpeculativeExecution(array_key_exists('enableSpeculativeExecution', $data) && $data['enableSpeculativeExecution'] !== null ? $data['enableSpeculativeExecution'] : null)
-            ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null);
+            ->withStatusName(array_key_exists('statusName', $data) && $data['statusName'] !== null ? $data['statusName'] : null)
+            ->withEvents(array_map(
+                function ($item) {
+                    return Event::fromJson($item);
+                },
+                array_key_exists('events', $data) && $data['events'] !== null ? $data['events'] : []
+            ));
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "args" => $this->getArgs(),
-            "enableSpeculativeExecution" => $this->getEnableSpeculativeExecution(),
-            "ttl" => $this->getTtl(),
+            "statusName" => $this->getStatusName(),
+            "events" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getEvents() !== null && $this->getEvents() !== null ? $this->getEvents() : []
+            ),
         );
     }
 }

@@ -18,6 +18,8 @@
 namespace Gs2\StateMachine\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\StateMachine\Model\RandomUsed;
+use Gs2\StateMachine\Model\RandomStatus;
 use Gs2\StateMachine\Model\StackEntry;
 use Gs2\StateMachine\Model\Variable;
 use Gs2\StateMachine\Model\Status;

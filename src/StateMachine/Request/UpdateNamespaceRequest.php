@@ -18,6 +18,7 @@
 namespace Gs2\StateMachine\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\StateMachine\Model\TransactionSetting;
 use Gs2\StateMachine\Model\ScriptSetting;
 use Gs2\StateMachine\Model\LogSetting;
 
@@ -26,6 +27,10 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
+    /** @var string */
+    private $supportSpeculativeExecution;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var ScriptSetting */
     private $startScript;
     /** @var ScriptSetting */
@@ -54,6 +59,26 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getSupportSpeculativeExecution(): ?string {
+		return $this->supportSpeculativeExecution;
+	}
+	public function setSupportSpeculativeExecution(?string $supportSpeculativeExecution) {
+		$this->supportSpeculativeExecution = $supportSpeculativeExecution;
+	}
+	public function withSupportSpeculativeExecution(?string $supportSpeculativeExecution): UpdateNamespaceRequest {
+		$this->supportSpeculativeExecution = $supportSpeculativeExecution;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getStartScript(): ?ScriptSetting {
@@ -114,6 +139,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withSupportSpeculativeExecution(array_key_exists('supportSpeculativeExecution', $data) && $data['supportSpeculativeExecution'] !== null ? $data['supportSpeculativeExecution'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withStartScript(array_key_exists('startScript', $data) && $data['startScript'] !== null ? ScriptSetting::fromJson($data['startScript']) : null)
             ->withPassScript(array_key_exists('passScript', $data) && $data['passScript'] !== null ? ScriptSetting::fromJson($data['passScript']) : null)
             ->withErrorScript(array_key_exists('errorScript', $data) && $data['errorScript'] !== null ? ScriptSetting::fromJson($data['errorScript']) : null)
@@ -125,6 +152,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "supportSpeculativeExecution" => $this->getSupportSpeculativeExecution(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "startScript" => $this->getStartScript() !== null ? $this->getStartScript()->toJson() : null,
             "passScript" => $this->getPassScript() !== null ? $this->getPassScript()->toJson() : null,
             "errorScript" => $this->getErrorScript() !== null ? $this->getErrorScript()->toJson() : null,

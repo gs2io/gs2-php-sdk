@@ -26,8 +26,6 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $args;
-    /** @var string */
-    private $enableSpeculativeExecution;
     /** @var int */
     private $ttl;
     /** @var string */
@@ -62,16 +60,6 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
 		$this->args = $args;
 		return $this;
 	}
-	public function getEnableSpeculativeExecution(): ?string {
-		return $this->enableSpeculativeExecution;
-	}
-	public function setEnableSpeculativeExecution(?string $enableSpeculativeExecution) {
-		$this->enableSpeculativeExecution = $enableSpeculativeExecution;
-	}
-	public function withEnableSpeculativeExecution(?string $enableSpeculativeExecution): StartStateMachineByUserIdRequest {
-		$this->enableSpeculativeExecution = $enableSpeculativeExecution;
-		return $this;
-	}
 	public function getTtl(): ?int {
 		return $this->ttl;
 	}
@@ -104,7 +92,6 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
-            ->withEnableSpeculativeExecution(array_key_exists('enableSpeculativeExecution', $data) && $data['enableSpeculativeExecution'] !== null ? $data['enableSpeculativeExecution'] : null)
             ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null);
     }
 
@@ -113,7 +100,6 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "args" => $this->getArgs(),
-            "enableSpeculativeExecution" => $this->getEnableSpeculativeExecution(),
             "ttl" => $this->getTtl(),
         );
     }

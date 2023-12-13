@@ -1433,9 +1433,6 @@ class StartStateMachineByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getArgs() !== null) {
             $json["args"] = $this->request->getArgs();
         }
-        if ($this->request->getEnableSpeculativeExecution() !== null) {
-            $json["enableSpeculativeExecution"] = $this->request->getEnableSpeculativeExecution();
-        }
         if ($this->request->getTtl() !== null) {
             $json["ttl"] = $this->request->getTtl();
         }

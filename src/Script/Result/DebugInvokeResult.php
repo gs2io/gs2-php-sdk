@@ -18,6 +18,9 @@
 namespace Gs2\Script\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Script\Model\ConsumeAction;
+use Gs2\Script\Model\AcquireAction;
+use Gs2\Script\Model\Transaction;
 use Gs2\Script\Model\RandomUsed;
 use Gs2\Script\Model\RandomStatus;
 
@@ -26,7 +29,7 @@ class DebugInvokeResult implements IResult {
     private $code;
     /** @var string */
     private $result;
-    /** @var string */
+    /** @var Transaction */
     private $transaction;
     /** @var RandomStatus */
     private $randomStatus;
@@ -63,15 +66,15 @@ class DebugInvokeResult implements IResult {
 		return $this;
 	}
 
-	public function getTransaction(): ?string {
+	public function getTransaction(): ?Transaction {
 		return $this->transaction;
 	}
 
-	public function setTransaction(?string $transaction) {
+	public function setTransaction(?Transaction $transaction) {
 		$this->transaction = $transaction;
 	}
 
-	public function withTransaction(?string $transaction): DebugInvokeResult {
+	public function withTransaction(?Transaction $transaction): DebugInvokeResult {
 		$this->transaction = $transaction;
 		return $this;
 	}
@@ -135,7 +138,7 @@ class DebugInvokeResult implements IResult {
         return (new DebugInvokeResult())
             ->withCode(array_key_exists('code', $data) && $data['code'] !== null ? $data['code'] : null)
             ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null)
-            ->withTransaction(array_key_exists('transaction', $data) && $data['transaction'] !== null ? $data['transaction'] : null)
+            ->withTransaction(array_key_exists('transaction', $data) && $data['transaction'] !== null ? Transaction::fromJson($data['transaction']) : null)
             ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
             ->withExecuteTime(array_key_exists('executeTime', $data) && $data['executeTime'] !== null ? $data['executeTime'] : null)
             ->withCharged(array_key_exists('charged', $data) && $data['charged'] !== null ? $data['charged'] : null)
@@ -151,7 +154,7 @@ class DebugInvokeResult implements IResult {
         return array(
             "code" => $this->getCode(),
             "result" => $this->getResult(),
-            "transaction" => $this->getTransaction(),
+            "transaction" => $this->getTransaction() !== null ? $this->getTransaction()->toJson() : null,
             "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
             "executeTime" => $this->getExecuteTime(),
             "charged" => $this->getCharged(),

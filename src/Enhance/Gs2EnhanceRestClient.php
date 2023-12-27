@@ -69,12 +69,32 @@ use Gs2\Enhance\Request\UpdateRateModelMasterRequest;
 use Gs2\Enhance\Result\UpdateRateModelMasterResult;
 use Gs2\Enhance\Request\DeleteRateModelMasterRequest;
 use Gs2\Enhance\Result\DeleteRateModelMasterResult;
+use Gs2\Enhance\Request\DescribeUnleashRateModelsRequest;
+use Gs2\Enhance\Result\DescribeUnleashRateModelsResult;
+use Gs2\Enhance\Request\GetUnleashRateModelRequest;
+use Gs2\Enhance\Result\GetUnleashRateModelResult;
+use Gs2\Enhance\Request\DescribeUnleashRateModelMastersRequest;
+use Gs2\Enhance\Result\DescribeUnleashRateModelMastersResult;
+use Gs2\Enhance\Request\CreateUnleashRateModelMasterRequest;
+use Gs2\Enhance\Result\CreateUnleashRateModelMasterResult;
+use Gs2\Enhance\Request\GetUnleashRateModelMasterRequest;
+use Gs2\Enhance\Result\GetUnleashRateModelMasterResult;
+use Gs2\Enhance\Request\UpdateUnleashRateModelMasterRequest;
+use Gs2\Enhance\Result\UpdateUnleashRateModelMasterResult;
+use Gs2\Enhance\Request\DeleteUnleashRateModelMasterRequest;
+use Gs2\Enhance\Result\DeleteUnleashRateModelMasterResult;
 use Gs2\Enhance\Request\DirectEnhanceRequest;
 use Gs2\Enhance\Result\DirectEnhanceResult;
 use Gs2\Enhance\Request\DirectEnhanceByUserIdRequest;
 use Gs2\Enhance\Result\DirectEnhanceByUserIdResult;
 use Gs2\Enhance\Request\DirectEnhanceByStampSheetRequest;
 use Gs2\Enhance\Result\DirectEnhanceByStampSheetResult;
+use Gs2\Enhance\Request\UnleashRequest;
+use Gs2\Enhance\Result\UnleashResult;
+use Gs2\Enhance\Request\UnleashByUserIdRequest;
+use Gs2\Enhance\Result\UnleashByUserIdResult;
+use Gs2\Enhance\Request\UnleashByStampSheetRequest;
+use Gs2\Enhance\Result\UnleashByStampSheetResult;
 use Gs2\Enhance\Request\CreateProgressByUserIdRequest;
 use Gs2\Enhance\Result\CreateProgressByUserIdResult;
 use Gs2\Enhance\Request\GetProgressRequest;
@@ -1383,6 +1403,454 @@ class DeleteRateModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeUnleashRateModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeUnleashRateModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeUnleashRateModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeUnleashRateModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeUnleashRateModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeUnleashRateModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/unleash/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetUnleashRateModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetUnleashRateModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetUnleashRateModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetUnleashRateModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetUnleashRateModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetUnleashRateModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/unleash/model/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeUnleashRateModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeUnleashRateModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeUnleashRateModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeUnleashRateModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeUnleashRateModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeUnleashRateModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/unleash/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateUnleashRateModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateUnleashRateModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateUnleashRateModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateUnleashRateModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateUnleashRateModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateUnleashRateModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/unleash/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getTargetInventoryModelId() !== null) {
+            $json["targetInventoryModelId"] = $this->request->getTargetInventoryModelId();
+        }
+        if ($this->request->getGradeModelId() !== null) {
+            $json["gradeModelId"] = $this->request->getGradeModelId();
+        }
+        if ($this->request->getGradeEntries() !== null) {
+            $array = [];
+            foreach ($this->request->getGradeEntries() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["gradeEntries"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetUnleashRateModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetUnleashRateModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetUnleashRateModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetUnleashRateModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetUnleashRateModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetUnleashRateModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/unleash/model/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateUnleashRateModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateUnleashRateModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateUnleashRateModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateUnleashRateModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateUnleashRateModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateUnleashRateModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/unleash/model/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getTargetInventoryModelId() !== null) {
+            $json["targetInventoryModelId"] = $this->request->getTargetInventoryModelId();
+        }
+        if ($this->request->getGradeModelId() !== null) {
+            $json["gradeModelId"] = $this->request->getGradeModelId();
+        }
+        if ($this->request->getGradeEntries() !== null) {
+            $array = [];
+            foreach ($this->request->getGradeEntries() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["gradeEntries"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteUnleashRateModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteUnleashRateModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteUnleashRateModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteUnleashRateModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteUnleashRateModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteUnleashRateModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/unleash/model/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DirectEnhanceTask extends Gs2RestSessionTask {
 
     /**
@@ -1575,6 +2043,225 @@ class DirectEnhanceByStampSheetTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/enhance/direct";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnleashTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnleashRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnleashTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnleashRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnleashRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnleashResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/unleash/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+
+        $json = [];
+        if ($this->request->getTargetItemSetId() !== null) {
+            $json["targetItemSetId"] = $this->request->getTargetItemSetId();
+        }
+        if ($this->request->getMaterials() !== null) {
+            $array = [];
+            foreach ($this->request->getMaterials() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["materials"] = $array;
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnleashByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnleashByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnleashByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnleashByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnleashByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnleashByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/unleash/{rateName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getTargetItemSetId() !== null) {
+            $json["targetItemSetId"] = $this->request->getTargetItemSetId();
+        }
+        if ($this->request->getMaterials() !== null) {
+            $array = [];
+            foreach ($this->request->getMaterials() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["materials"] = $array;
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UnleashByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UnleashByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UnleashByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param UnleashByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UnleashByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UnleashByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enhance", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/unleash";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {
@@ -3128,6 +3815,195 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DescribeUnleashRateModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeUnleashRateModelsAsync(
+            DescribeUnleashRateModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeUnleashRateModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeUnleashRateModelsRequest $request
+     * @return DescribeUnleashRateModelsResult
+     */
+    public function describeUnleashRateModels (
+            DescribeUnleashRateModelsRequest $request
+    ): DescribeUnleashRateModelsResult {
+        return $this->describeUnleashRateModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetUnleashRateModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getUnleashRateModelAsync(
+            GetUnleashRateModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetUnleashRateModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetUnleashRateModelRequest $request
+     * @return GetUnleashRateModelResult
+     */
+    public function getUnleashRateModel (
+            GetUnleashRateModelRequest $request
+    ): GetUnleashRateModelResult {
+        return $this->getUnleashRateModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeUnleashRateModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeUnleashRateModelMastersAsync(
+            DescribeUnleashRateModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeUnleashRateModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeUnleashRateModelMastersRequest $request
+     * @return DescribeUnleashRateModelMastersResult
+     */
+    public function describeUnleashRateModelMasters (
+            DescribeUnleashRateModelMastersRequest $request
+    ): DescribeUnleashRateModelMastersResult {
+        return $this->describeUnleashRateModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateUnleashRateModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createUnleashRateModelMasterAsync(
+            CreateUnleashRateModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateUnleashRateModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateUnleashRateModelMasterRequest $request
+     * @return CreateUnleashRateModelMasterResult
+     */
+    public function createUnleashRateModelMaster (
+            CreateUnleashRateModelMasterRequest $request
+    ): CreateUnleashRateModelMasterResult {
+        return $this->createUnleashRateModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetUnleashRateModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getUnleashRateModelMasterAsync(
+            GetUnleashRateModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetUnleashRateModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetUnleashRateModelMasterRequest $request
+     * @return GetUnleashRateModelMasterResult
+     */
+    public function getUnleashRateModelMaster (
+            GetUnleashRateModelMasterRequest $request
+    ): GetUnleashRateModelMasterResult {
+        return $this->getUnleashRateModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateUnleashRateModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateUnleashRateModelMasterAsync(
+            UpdateUnleashRateModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateUnleashRateModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateUnleashRateModelMasterRequest $request
+     * @return UpdateUnleashRateModelMasterResult
+     */
+    public function updateUnleashRateModelMaster (
+            UpdateUnleashRateModelMasterRequest $request
+    ): UpdateUnleashRateModelMasterResult {
+        return $this->updateUnleashRateModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteUnleashRateModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteUnleashRateModelMasterAsync(
+            DeleteUnleashRateModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteUnleashRateModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteUnleashRateModelMasterRequest $request
+     * @return DeleteUnleashRateModelMasterResult
+     */
+    public function deleteUnleashRateModelMaster (
+            DeleteUnleashRateModelMasterRequest $request
+    ): DeleteUnleashRateModelMasterResult {
+        return $this->deleteUnleashRateModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DirectEnhanceRequest $request
      * @return PromiseInterface
      */
@@ -3204,6 +4080,87 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
             DirectEnhanceByStampSheetRequest $request
     ): DirectEnhanceByStampSheetResult {
         return $this->directEnhanceByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnleashRequest $request
+     * @return PromiseInterface
+     */
+    public function unleashAsync(
+            UnleashRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnleashTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnleashRequest $request
+     * @return UnleashResult
+     */
+    public function unleash (
+            UnleashRequest $request
+    ): UnleashResult {
+        return $this->unleashAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnleashByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function unleashByUserIdAsync(
+            UnleashByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnleashByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnleashByUserIdRequest $request
+     * @return UnleashByUserIdResult
+     */
+    public function unleashByUserId (
+            UnleashByUserIdRequest $request
+    ): UnleashByUserIdResult {
+        return $this->unleashByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UnleashByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function unleashByStampSheetAsync(
+            UnleashByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UnleashByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UnleashByStampSheetRequest $request
+     * @return UnleashByStampSheetResult
+     */
+    public function unleashByStampSheet (
+            UnleashByStampSheetRequest $request
+    ): UnleashByStampSheetResult {
+        return $this->unleashByStampSheetAsync(
             $request
         )->wait();
     }

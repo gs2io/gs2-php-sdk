@@ -19,10 +19,15 @@ namespace Gs2\Grade\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\Status;
+use Gs2\Experience\Model\Status as ExperienceStatus;
 
 class ApplyRankCapResult implements IResult {
     /** @var Status */
     private $item;
+    /** @var string */
+    private $experienceNamespaceName;
+    /** @var ExperienceStatus */
+    private $experienceStatus;
 
 	public function getItem(): ?Status {
 		return $this->item;
@@ -37,17 +42,47 @@ class ApplyRankCapResult implements IResult {
 		return $this;
 	}
 
+	public function getExperienceNamespaceName(): ?string {
+		return $this->experienceNamespaceName;
+	}
+
+	public function setExperienceNamespaceName(?string $experienceNamespaceName) {
+		$this->experienceNamespaceName = $experienceNamespaceName;
+	}
+
+	public function withExperienceNamespaceName(?string $experienceNamespaceName): ApplyRankCapResult {
+		$this->experienceNamespaceName = $experienceNamespaceName;
+		return $this;
+	}
+
+	public function getExperienceStatus(): ?ExperienceStatus {
+		return $this->experienceStatus;
+	}
+
+	public function setExperienceStatus(?ExperienceStatus $experienceStatus) {
+		$this->experienceStatus = $experienceStatus;
+	}
+
+	public function withExperienceStatus(?ExperienceStatus $experienceStatus): ApplyRankCapResult {
+		$this->experienceStatus = $experienceStatus;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?ApplyRankCapResult {
         if ($data === null) {
             return null;
         }
         return (new ApplyRankCapResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Status::fromJson($data['item']) : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Status::fromJson($data['item']) : null)
+            ->withExperienceNamespaceName(array_key_exists('experienceNamespaceName', $data) && $data['experienceNamespaceName'] !== null ? $data['experienceNamespaceName'] : null)
+            ->withExperienceStatus(array_key_exists('experienceStatus', $data) && $data['experienceStatus'] !== null ? ExperienceStatus::fromJson($data['experienceStatus']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "experienceNamespaceName" => $this->getExperienceNamespaceName(),
+            "experienceStatus" => $this->getExperienceStatus() !== null ? $this->getExperienceStatus()->toJson() : null,
         );
     }
 }

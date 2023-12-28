@@ -185,6 +185,8 @@ use Gs2\Inventory\Request\GetItemWithSignatureByUserIdRequest;
 use Gs2\Inventory\Result\GetItemWithSignatureByUserIdResult;
 use Gs2\Inventory\Request\AcquireItemSetByUserIdRequest;
 use Gs2\Inventory\Result\AcquireItemSetByUserIdResult;
+use Gs2\Inventory\Request\AcquireItemSetWithGradeByUserIdRequest;
+use Gs2\Inventory\Result\AcquireItemSetWithGradeByUserIdResult;
 use Gs2\Inventory\Request\ConsumeItemSetRequest;
 use Gs2\Inventory\Result\ConsumeItemSetResult;
 use Gs2\Inventory\Request\ConsumeItemSetByUserIdRequest;
@@ -197,6 +199,8 @@ use Gs2\Inventory\Request\VerifyItemSetByUserIdRequest;
 use Gs2\Inventory\Result\VerifyItemSetByUserIdResult;
 use Gs2\Inventory\Request\AcquireItemSetByStampSheetRequest;
 use Gs2\Inventory\Result\AcquireItemSetByStampSheetResult;
+use Gs2\Inventory\Request\AcquireItemSetWithGradeByStampSheetRequest;
+use Gs2\Inventory\Result\AcquireItemSetWithGradeByStampSheetResult;
 use Gs2\Inventory\Request\ConsumeItemSetByStampTaskRequest;
 use Gs2\Inventory\Result\ConsumeItemSetByStampTaskResult;
 use Gs2\Inventory\Request\VerifyItemSetByStampTaskRequest;
@@ -5100,6 +5104,73 @@ class AcquireItemSetByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class AcquireItemSetWithGradeByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireItemSetWithGradeByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireItemSetWithGradeByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireItemSetWithGradeByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireItemSetWithGradeByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireItemSetWithGradeByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/inventory/{inventoryName}/item/{itemName}/acquire/grade";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{inventoryName}", $this->request->getInventoryName() === null|| strlen($this->request->getInventoryName()) == 0 ? "null" : $this->request->getInventoryName(), $url);
+        $url = str_replace("{itemName}", $this->request->getItemName() === null|| strlen($this->request->getItemName()) == 0 ? "null" : $this->request->getItemName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getGradeModelId() !== null) {
+            $json["gradeModelId"] = $this->request->getGradeModelId();
+        }
+        if ($this->request->getGradeValue() !== null) {
+            $json["gradeValue"] = $this->request->getGradeValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ConsumeItemSetTask extends Gs2RestSessionTask {
 
     /**
@@ -5472,6 +5543,65 @@ class AcquireItemSetByStampSheetTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/item/acquire";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AcquireItemSetWithGradeByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AcquireItemSetWithGradeByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AcquireItemSetWithGradeByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param AcquireItemSetWithGradeByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AcquireItemSetWithGradeByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AcquireItemSetWithGradeByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/item/acquire/grade";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {
@@ -10591,6 +10721,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param AcquireItemSetWithGradeByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function acquireItemSetWithGradeByUserIdAsync(
+            AcquireItemSetWithGradeByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireItemSetWithGradeByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AcquireItemSetWithGradeByUserIdRequest $request
+     * @return AcquireItemSetWithGradeByUserIdResult
+     */
+    public function acquireItemSetWithGradeByUserId (
+            AcquireItemSetWithGradeByUserIdRequest $request
+    ): AcquireItemSetWithGradeByUserIdResult {
+        return $this->acquireItemSetWithGradeByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param ConsumeItemSetRequest $request
      * @return PromiseInterface
      */
@@ -10748,6 +10905,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             AcquireItemSetByStampSheetRequest $request
     ): AcquireItemSetByStampSheetResult {
         return $this->acquireItemSetByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AcquireItemSetWithGradeByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function acquireItemSetWithGradeByStampSheetAsync(
+            AcquireItemSetWithGradeByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AcquireItemSetWithGradeByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AcquireItemSetWithGradeByStampSheetRequest $request
+     * @return AcquireItemSetWithGradeByStampSheetResult
+     */
+    public function acquireItemSetWithGradeByStampSheet (
+            AcquireItemSetWithGradeByStampSheetRequest $request
+    ): AcquireItemSetWithGradeByStampSheetResult {
+        return $this->acquireItemSetWithGradeByStampSheetAsync(
             $request
         )->wait();
     }

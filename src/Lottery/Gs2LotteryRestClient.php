@@ -123,6 +123,8 @@ use Gs2\Lottery\Request\ResetBoxRequest;
 use Gs2\Lottery\Result\ResetBoxResult;
 use Gs2\Lottery\Request\ResetBoxByUserIdRequest;
 use Gs2\Lottery\Result\ResetBoxByUserIdResult;
+use Gs2\Lottery\Request\ResetByStampSheetRequest;
+use Gs2\Lottery\Result\ResetByStampSheetResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -3051,6 +3053,65 @@ class ResetBoxByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class ResetByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/box/reset";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Lottery API クライアント
  *
@@ -4333,6 +4394,33 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
             ResetBoxByUserIdRequest $request
     ): ResetBoxByUserIdResult {
         return $this->resetBoxByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ResetByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function resetByStampSheetAsync(
+            ResetByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetByStampSheetRequest $request
+     * @return ResetByStampSheetResult
+     */
+    public function resetByStampSheet (
+            ResetByStampSheetRequest $request
+    ): ResetByStampSheetResult {
+        return $this->resetByStampSheetAsync(
             $request
         )->wait();
     }

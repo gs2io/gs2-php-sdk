@@ -20,10 +20,14 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\DrawnPrize;
+use Gs2\Lottery\Model\BoxItem;
+use Gs2\Lottery\Model\BoxItems;
 
 class DrawByStampSheetResult implements IResult {
     /** @var array */
     private $items;
+    /** @var BoxItems */
+    private $boxItems;
     /** @var string */
     private $transactionId;
     /** @var string */
@@ -43,6 +47,19 @@ class DrawByStampSheetResult implements IResult {
 
 	public function withItems(?array $items): DrawByStampSheetResult {
 		$this->items = $items;
+		return $this;
+	}
+
+	public function getBoxItems(): ?BoxItems {
+		return $this->boxItems;
+	}
+
+	public function setBoxItems(?BoxItems $boxItems) {
+		$this->boxItems = $boxItems;
+	}
+
+	public function withBoxItems(?BoxItems $boxItems): DrawByStampSheetResult {
+		$this->boxItems = $boxItems;
 		return $this;
 	}
 
@@ -109,6 +126,7 @@ class DrawByStampSheetResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
+            ->withBoxItems(array_key_exists('boxItems', $data) && $data['boxItems'] !== null ? BoxItems::fromJson($data['boxItems']) : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
             ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
@@ -123,6 +141,7 @@ class DrawByStampSheetResult implements IResult {
                 },
                 $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
             ),
+            "boxItems" => $this->getBoxItems() !== null ? $this->getBoxItems()->toJson() : null,
             "transactionId" => $this->getTransactionId(),
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),

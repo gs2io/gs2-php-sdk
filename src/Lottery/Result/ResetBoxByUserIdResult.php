@@ -18,18 +18,38 @@
 namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Lottery\Model\AcquireAction;
+use Gs2\Lottery\Model\BoxItem;
+use Gs2\Lottery\Model\BoxItems;
 
 class ResetBoxByUserIdResult implements IResult {
+    /** @var BoxItems */
+    private $item;
+
+	public function getItem(): ?BoxItems {
+		return $this->item;
+	}
+
+	public function setItem(?BoxItems $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?BoxItems $item): ResetBoxByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?ResetBoxByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new ResetBoxByUserIdResult());
+        return (new ResetBoxByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? BoxItems::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

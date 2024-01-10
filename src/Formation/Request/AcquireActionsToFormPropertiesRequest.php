@@ -20,7 +20,6 @@ namespace Gs2\Formation\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Formation\Model\AcquireAction;
 use Gs2\Formation\Model\Config;
-use Gs2\Formation\Model\AcquireActionConfig;
 
 class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
     /** @var string */
@@ -123,7 +122,7 @@ class AcquireActionsToFormPropertiesRequest extends Gs2BasicRequest {
             ->withAcquireAction(array_key_exists('acquireAction', $data) && $data['acquireAction'] !== null ? AcquireAction::fromJson($data['acquireAction']) : null)
             ->withConfig(array_map(
                 function ($item) {
-                    return AcquireActionConfig::fromJson($item);
+                    return Config::fromJson($item);
                 },
                 array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
             ));

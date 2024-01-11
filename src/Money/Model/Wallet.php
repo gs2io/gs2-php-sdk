@@ -46,6 +46,10 @@ class Wallet implements IModel {
 	 */
 	private $detail;
 	/**
+     * @var bool
+	 */
+	private $shareFree;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -117,6 +121,16 @@ class Wallet implements IModel {
 		$this->detail = $detail;
 		return $this;
 	}
+	public function getShareFree(): ?bool {
+		return $this->shareFree;
+	}
+	public function setShareFree(?bool $shareFree) {
+		$this->shareFree = $shareFree;
+	}
+	public function withShareFree(?bool $shareFree): Wallet {
+		$this->shareFree = $shareFree;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -164,6 +178,7 @@ class Wallet implements IModel {
                 },
                 array_key_exists('detail', $data) && $data['detail'] !== null ? $data['detail'] : []
             ))
+            ->withShareFree(array_key_exists('shareFree', $data) ? $data['shareFree'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -182,6 +197,7 @@ class Wallet implements IModel {
                 },
                 $this->getDetail() !== null && $this->getDetail() !== null ? $this->getDetail() : []
             ),
+            "shareFree" => $this->getShareFree(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

@@ -406,6 +406,12 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getConsumeScript() !== null) {
             $json["consumeScript"] = $this->request->getConsumeScript()->toJson();
         }
+        if ($this->request->getSimpleItemAcquireScript() !== null) {
+            $json["simpleItemAcquireScript"] = $this->request->getSimpleItemAcquireScript()->toJson();
+        }
+        if ($this->request->getSimpleItemConsumeScript() !== null) {
+            $json["simpleItemConsumeScript"] = $this->request->getSimpleItemConsumeScript()->toJson();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -589,6 +595,12 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getConsumeScript() !== null) {
             $json["consumeScript"] = $this->request->getConsumeScript()->toJson();
+        }
+        if ($this->request->getSimpleItemAcquireScript() !== null) {
+            $json["simpleItemAcquireScript"] = $this->request->getSimpleItemAcquireScript()->toJson();
+        }
+        if ($this->request->getSimpleItemConsumeScript() !== null) {
+            $json["simpleItemConsumeScript"] = $this->request->getSimpleItemConsumeScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

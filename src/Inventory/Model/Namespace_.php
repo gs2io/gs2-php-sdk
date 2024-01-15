@@ -46,6 +46,14 @@ class Namespace_ implements IModel {
 	 */
 	private $consumeScript;
 	/**
+     * @var ScriptSetting
+	 */
+	private $simpleItemAcquireScript;
+	/**
+     * @var ScriptSetting
+	 */
+	private $simpleItemConsumeScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -121,6 +129,26 @@ class Namespace_ implements IModel {
 		$this->consumeScript = $consumeScript;
 		return $this;
 	}
+	public function getSimpleItemAcquireScript(): ?ScriptSetting {
+		return $this->simpleItemAcquireScript;
+	}
+	public function setSimpleItemAcquireScript(?ScriptSetting $simpleItemAcquireScript) {
+		$this->simpleItemAcquireScript = $simpleItemAcquireScript;
+	}
+	public function withSimpleItemAcquireScript(?ScriptSetting $simpleItemAcquireScript): Namespace_ {
+		$this->simpleItemAcquireScript = $simpleItemAcquireScript;
+		return $this;
+	}
+	public function getSimpleItemConsumeScript(): ?ScriptSetting {
+		return $this->simpleItemConsumeScript;
+	}
+	public function setSimpleItemConsumeScript(?ScriptSetting $simpleItemConsumeScript) {
+		$this->simpleItemConsumeScript = $simpleItemConsumeScript;
+	}
+	public function withSimpleItemConsumeScript(?ScriptSetting $simpleItemConsumeScript): Namespace_ {
+		$this->simpleItemConsumeScript = $simpleItemConsumeScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -173,6 +201,8 @@ class Namespace_ implements IModel {
             ->withAcquireScript(array_key_exists('acquireScript', $data) && $data['acquireScript'] !== null ? ScriptSetting::fromJson($data['acquireScript']) : null)
             ->withOverflowScript(array_key_exists('overflowScript', $data) && $data['overflowScript'] !== null ? ScriptSetting::fromJson($data['overflowScript']) : null)
             ->withConsumeScript(array_key_exists('consumeScript', $data) && $data['consumeScript'] !== null ? ScriptSetting::fromJson($data['consumeScript']) : null)
+            ->withSimpleItemAcquireScript(array_key_exists('simpleItemAcquireScript', $data) && $data['simpleItemAcquireScript'] !== null ? ScriptSetting::fromJson($data['simpleItemAcquireScript']) : null)
+            ->withSimpleItemConsumeScript(array_key_exists('simpleItemConsumeScript', $data) && $data['simpleItemConsumeScript'] !== null ? ScriptSetting::fromJson($data['simpleItemConsumeScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -187,6 +217,8 @@ class Namespace_ implements IModel {
             "acquireScript" => $this->getAcquireScript() !== null ? $this->getAcquireScript()->toJson() : null,
             "overflowScript" => $this->getOverflowScript() !== null ? $this->getOverflowScript()->toJson() : null,
             "consumeScript" => $this->getConsumeScript() !== null ? $this->getConsumeScript()->toJson() : null,
+            "simpleItemAcquireScript" => $this->getSimpleItemAcquireScript() !== null ? $this->getSimpleItemAcquireScript()->toJson() : null,
+            "simpleItemConsumeScript" => $this->getSimpleItemConsumeScript() !== null ? $this->getSimpleItemConsumeScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

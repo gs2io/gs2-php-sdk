@@ -22,6 +22,10 @@ use Gs2\Core\Model\IModel;
 
 class Transaction implements IModel {
 	/**
+     * @var string
+	 */
+	private $transactionId;
+	/**
      * @var array
 	 */
 	private $consumeActions;
@@ -29,6 +33,16 @@ class Transaction implements IModel {
      * @var array
 	 */
 	private $acquireActions;
+	public function getTransactionId(): ?string {
+		return $this->transactionId;
+	}
+	public function setTransactionId(?string $transactionId) {
+		$this->transactionId = $transactionId;
+	}
+	public function withTransactionId(?string $transactionId): Transaction {
+		$this->transactionId = $transactionId;
+		return $this;
+	}
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
@@ -55,6 +69,7 @@ class Transaction implements IModel {
             return null;
         }
         return (new Transaction())
+            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -71,6 +86,7 @@ class Transaction implements IModel {
 
     public function toJson(): array {
         return array(
+            "transactionId" => $this->getTransactionId(),
             "consumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

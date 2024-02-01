@@ -18,6 +18,7 @@
 namespace Gs2\Exchange\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Exchange\Model\Config;
 use Gs2\Exchange\Model\Await;
 
 class GetAwaitByUserIdResult implements IResult {

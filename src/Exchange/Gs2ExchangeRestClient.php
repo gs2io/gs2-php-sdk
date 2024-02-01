@@ -2706,6 +2706,14 @@ class CreateAwaitByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
         }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

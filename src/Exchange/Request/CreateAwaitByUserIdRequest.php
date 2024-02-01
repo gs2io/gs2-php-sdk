@@ -18,6 +18,7 @@
 namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Exchange\Model\Config;
 
 class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
@@ -28,6 +29,8 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
     private $rateName;
     /** @var int */
     private $count;
+    /** @var array */
+    private $config;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -70,6 +73,16 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
 		$this->count = $count;
 		return $this;
 	}
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+	public function withConfig(?array $config): CreateAwaitByUserIdRequest {
+		$this->config = $config;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +105,13 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
-            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ));
     }
 
     public function toJson(): array {
@@ -101,6 +120,12 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "rateName" => $this->getRateName(),
             "count" => $this->getCount(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
         );
     }
 }

@@ -42,6 +42,10 @@ class Await implements IModel {
 	 */
 	private $count;
 	/**
+     * @var array
+	 */
+	private $config;
+	/**
      * @var int
 	 */
 	private $exchangedAt;
@@ -99,6 +103,16 @@ class Await implements IModel {
 		$this->count = $count;
 		return $this;
 	}
+	public function getConfig(): ?array {
+		return $this->config;
+	}
+	public function setConfig(?array $config) {
+		$this->config = $config;
+	}
+	public function withConfig(?array $config): Await {
+		$this->config = $config;
+		return $this;
+	}
 	public function getExchangedAt(): ?int {
 		return $this->exchangedAt;
 	}
@@ -130,6 +144,12 @@ class Await implements IModel {
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withConfig(array_map(
+                function ($item) {
+                    return Config::fromJson($item);
+                },
+                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+            ))
             ->withExchangedAt(array_key_exists('exchangedAt', $data) && $data['exchangedAt'] !== null ? $data['exchangedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -141,6 +161,12 @@ class Await implements IModel {
             "rateName" => $this->getRateName(),
             "name" => $this->getName(),
             "count" => $this->getCount(),
+            "config" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+            ),
             "exchangedAt" => $this->getExchangedAt(),
             "revision" => $this->getRevision(),
         );

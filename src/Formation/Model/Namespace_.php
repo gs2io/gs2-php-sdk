@@ -46,6 +46,10 @@ class Namespace_ implements IModel {
 	 */
 	private $updateFormScript;
 	/**
+     * @var ScriptSetting
+	 */
+	private $updatePropertyFormScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -121,6 +125,16 @@ class Namespace_ implements IModel {
 		$this->updateFormScript = $updateFormScript;
 		return $this;
 	}
+	public function getUpdatePropertyFormScript(): ?ScriptSetting {
+		return $this->updatePropertyFormScript;
+	}
+	public function setUpdatePropertyFormScript(?ScriptSetting $updatePropertyFormScript) {
+		$this->updatePropertyFormScript = $updatePropertyFormScript;
+	}
+	public function withUpdatePropertyFormScript(?ScriptSetting $updatePropertyFormScript): Namespace_ {
+		$this->updatePropertyFormScript = $updatePropertyFormScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -173,6 +187,7 @@ class Namespace_ implements IModel {
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withUpdateMoldScript(array_key_exists('updateMoldScript', $data) && $data['updateMoldScript'] !== null ? ScriptSetting::fromJson($data['updateMoldScript']) : null)
             ->withUpdateFormScript(array_key_exists('updateFormScript', $data) && $data['updateFormScript'] !== null ? ScriptSetting::fromJson($data['updateFormScript']) : null)
+            ->withUpdatePropertyFormScript(array_key_exists('updatePropertyFormScript', $data) && $data['updatePropertyFormScript'] !== null ? ScriptSetting::fromJson($data['updatePropertyFormScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -187,6 +202,7 @@ class Namespace_ implements IModel {
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "updateMoldScript" => $this->getUpdateMoldScript() !== null ? $this->getUpdateMoldScript()->toJson() : null,
             "updateFormScript" => $this->getUpdateFormScript() !== null ? $this->getUpdateFormScript()->toJson() : null,
+            "updatePropertyFormScript" => $this->getUpdatePropertyFormScript() !== null ? $this->getUpdatePropertyFormScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

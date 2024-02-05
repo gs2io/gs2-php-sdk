@@ -95,6 +95,12 @@ use Gs2\Schedule\Request\GetEventByUserIdRequest;
 use Gs2\Schedule\Result\GetEventByUserIdResult;
 use Gs2\Schedule\Request\GetRawEventRequest;
 use Gs2\Schedule\Result\GetRawEventResult;
+use Gs2\Schedule\Request\VerifyEventRequest;
+use Gs2\Schedule\Result\VerifyEventResult;
+use Gs2\Schedule\Request\VerifyEventByUserIdRequest;
+use Gs2\Schedule\Result\VerifyEventByUserIdResult;
+use Gs2\Schedule\Request\VerifyEventByStampTaskRequest;
+use Gs2\Schedule\Result\VerifyEventByStampTaskResult;
 use Gs2\Schedule\Request\ExportMasterRequest;
 use Gs2\Schedule\Result\ExportMasterResult;
 use Gs2\Schedule\Request\GetCurrentEventMasterRequest;
@@ -2159,6 +2165,189 @@ class GetRawEventTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyEventTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEventRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEventTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEventRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEventRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEventResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/event/{eventName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{eventName}", $this->request->getEventName() === null|| strlen($this->request->getEventName()) == 0 ? "null" : $this->request->getEventName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyEventByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEventByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEventByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEventByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEventByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEventByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/event/{eventName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{eventName}", $this->request->getEventName() === null|| strlen($this->request->getEventName()) == 0 ? "null" : $this->request->getEventName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyEventByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEventByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEventByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEventByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEventByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEventByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/event/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ExportMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -3293,6 +3482,87 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
             GetRawEventRequest $request
     ): GetRawEventResult {
         return $this->getRawEventAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyEventRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyEventAsync(
+            VerifyEventRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEventTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyEventRequest $request
+     * @return VerifyEventResult
+     */
+    public function verifyEvent (
+            VerifyEventRequest $request
+    ): VerifyEventResult {
+        return $this->verifyEventAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyEventByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyEventByUserIdAsync(
+            VerifyEventByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEventByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyEventByUserIdRequest $request
+     * @return VerifyEventByUserIdResult
+     */
+    public function verifyEventByUserId (
+            VerifyEventByUserIdRequest $request
+    ): VerifyEventByUserIdResult {
+        return $this->verifyEventByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyEventByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyEventByStampTaskAsync(
+            VerifyEventByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEventByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyEventByStampTaskRequest $request
+     * @return VerifyEventByStampTaskResult
+     */
+    public function verifyEventByStampTask (
+            VerifyEventByStampTaskRequest $request
+    ): VerifyEventByStampTaskResult {
+        return $this->verifyEventByStampTaskAsync(
             $request
         )->wait();
     }

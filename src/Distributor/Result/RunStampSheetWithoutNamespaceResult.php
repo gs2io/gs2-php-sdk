@@ -20,8 +20,23 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 
 class RunStampSheetWithoutNamespaceResult implements IResult {
+    /** @var int */
+    private $statusCode;
     /** @var string */
     private $result;
+
+	public function getStatusCode(): ?int {
+		return $this->statusCode;
+	}
+
+	public function setStatusCode(?int $statusCode) {
+		$this->statusCode = $statusCode;
+	}
+
+	public function withStatusCode(?int $statusCode): RunStampSheetWithoutNamespaceResult {
+		$this->statusCode = $statusCode;
+		return $this;
+	}
 
 	public function getResult(): ?string {
 		return $this->result;
@@ -41,11 +56,13 @@ class RunStampSheetWithoutNamespaceResult implements IResult {
             return null;
         }
         return (new RunStampSheetWithoutNamespaceResult())
+            ->withStatusCode(array_key_exists('statusCode', $data) && $data['statusCode'] !== null ? $data['statusCode'] : null)
             ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "statusCode" => $this->getStatusCode(),
             "result" => $this->getResult(),
         );
     }

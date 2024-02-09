@@ -44,7 +44,15 @@ class StampSheetResult implements IModel {
 	/**
      * @var array
 	 */
+	private $taskResultCodes;
+	/**
+     * @var array
+	 */
 	private $taskResults;
+	/**
+     * @var int
+	 */
+	private $sheetResultCode;
 	/**
      * @var string
 	 */
@@ -111,6 +119,16 @@ class StampSheetResult implements IModel {
 		$this->sheetRequest = $sheetRequest;
 		return $this;
 	}
+	public function getTaskResultCodes(): ?array {
+		return $this->taskResultCodes;
+	}
+	public function setTaskResultCodes(?array $taskResultCodes) {
+		$this->taskResultCodes = $taskResultCodes;
+	}
+	public function withTaskResultCodes(?array $taskResultCodes): StampSheetResult {
+		$this->taskResultCodes = $taskResultCodes;
+		return $this;
+	}
 	public function getTaskResults(): ?array {
 		return $this->taskResults;
 	}
@@ -119,6 +137,16 @@ class StampSheetResult implements IModel {
 	}
 	public function withTaskResults(?array $taskResults): StampSheetResult {
 		$this->taskResults = $taskResults;
+		return $this;
+	}
+	public function getSheetResultCode(): ?int {
+		return $this->sheetResultCode;
+	}
+	public function setSheetResultCode(?int $sheetResultCode) {
+		$this->sheetResultCode = $sheetResultCode;
+	}
+	public function withSheetResultCode(?int $sheetResultCode): StampSheetResult {
+		$this->sheetResultCode = $sheetResultCode;
 		return $this;
 	}
 	public function getSheetResult(): ?string {
@@ -177,12 +205,19 @@ class StampSheetResult implements IModel {
                 array_key_exists('taskRequests', $data) && $data['taskRequests'] !== null ? $data['taskRequests'] : []
             ))
             ->withSheetRequest(array_key_exists('sheetRequest', $data) && $data['sheetRequest'] !== null ? AcquireAction::fromJson($data['sheetRequest']) : null)
+            ->withTaskResultCodes(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('taskResultCodes', $data) && $data['taskResultCodes'] !== null ? $data['taskResultCodes'] : []
+            ))
             ->withTaskResults(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('taskResults', $data) && $data['taskResults'] !== null ? $data['taskResults'] : []
             ))
+            ->withSheetResultCode(array_key_exists('sheetResultCode', $data) && $data['sheetResultCode'] !== null ? $data['sheetResultCode'] : null)
             ->withSheetResult(array_key_exists('sheetResult', $data) && $data['sheetResult'] !== null ? $data['sheetResult'] : null)
             ->withNextTransactionId(array_key_exists('nextTransactionId', $data) && $data['nextTransactionId'] !== null ? $data['nextTransactionId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -201,12 +236,19 @@ class StampSheetResult implements IModel {
                 $this->getTaskRequests() !== null && $this->getTaskRequests() !== null ? $this->getTaskRequests() : []
             ),
             "sheetRequest" => $this->getSheetRequest() !== null ? $this->getSheetRequest()->toJson() : null,
+            "taskResultCodes" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getTaskResultCodes() !== null && $this->getTaskResultCodes() !== null ? $this->getTaskResultCodes() : []
+            ),
             "taskResults" => array_map(
                 function ($item) {
                     return $item;
                 },
                 $this->getTaskResults() !== null && $this->getTaskResults() !== null ? $this->getTaskResults() : []
             ),
+            "sheetResultCode" => $this->getSheetResultCode(),
             "sheetResult" => $this->getSheetResult(),
             "nextTransactionId" => $this->getNextTransactionId(),
             "createdAt" => $this->getCreatedAt(),

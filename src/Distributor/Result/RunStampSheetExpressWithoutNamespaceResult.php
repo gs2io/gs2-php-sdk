@@ -21,9 +21,26 @@ use Gs2\Core\Model\IResult;
 
 class RunStampSheetExpressWithoutNamespaceResult implements IResult {
     /** @var array */
+    private $taskResultCodes;
+    /** @var array */
     private $taskResults;
+    /** @var int */
+    private $sheetResultCode;
     /** @var string */
     private $sheetResult;
+
+	public function getTaskResultCodes(): ?array {
+		return $this->taskResultCodes;
+	}
+
+	public function setTaskResultCodes(?array $taskResultCodes) {
+		$this->taskResultCodes = $taskResultCodes;
+	}
+
+	public function withTaskResultCodes(?array $taskResultCodes): RunStampSheetExpressWithoutNamespaceResult {
+		$this->taskResultCodes = $taskResultCodes;
+		return $this;
+	}
 
 	public function getTaskResults(): ?array {
 		return $this->taskResults;
@@ -35,6 +52,19 @@ class RunStampSheetExpressWithoutNamespaceResult implements IResult {
 
 	public function withTaskResults(?array $taskResults): RunStampSheetExpressWithoutNamespaceResult {
 		$this->taskResults = $taskResults;
+		return $this;
+	}
+
+	public function getSheetResultCode(): ?int {
+		return $this->sheetResultCode;
+	}
+
+	public function setSheetResultCode(?int $sheetResultCode) {
+		$this->sheetResultCode = $sheetResultCode;
+	}
+
+	public function withSheetResultCode(?int $sheetResultCode): RunStampSheetExpressWithoutNamespaceResult {
+		$this->sheetResultCode = $sheetResultCode;
 		return $this;
 	}
 
@@ -56,23 +86,37 @@ class RunStampSheetExpressWithoutNamespaceResult implements IResult {
             return null;
         }
         return (new RunStampSheetExpressWithoutNamespaceResult())
+            ->withTaskResultCodes(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('taskResultCodes', $data) && $data['taskResultCodes'] !== null ? $data['taskResultCodes'] : []
+            ))
             ->withTaskResults(array_map(
                 function ($item) {
                     return $item;
                 },
                 array_key_exists('taskResults', $data) && $data['taskResults'] !== null ? $data['taskResults'] : []
             ))
+            ->withSheetResultCode(array_key_exists('sheetResultCode', $data) && $data['sheetResultCode'] !== null ? $data['sheetResultCode'] : null)
             ->withSheetResult(array_key_exists('sheetResult', $data) && $data['sheetResult'] !== null ? $data['sheetResult'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "taskResultCodes" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getTaskResultCodes() !== null && $this->getTaskResultCodes() !== null ? $this->getTaskResultCodes() : []
+            ),
             "taskResults" => array_map(
                 function ($item) {
                     return $item;
                 },
                 $this->getTaskResults() !== null && $this->getTaskResults() !== null ? $this->getTaskResults() : []
             ),
+            "sheetResultCode" => $this->getSheetResultCode(),
             "sheetResult" => $this->getSheetResult(),
         );
     }

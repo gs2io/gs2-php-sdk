@@ -22,6 +22,8 @@ use Gs2\Core\Model\IResult;
 class RunStampTaskResult implements IResult {
     /** @var string */
     private $contextStack;
+    /** @var int */
+    private $statusCode;
     /** @var string */
     private $result;
 
@@ -35,6 +37,19 @@ class RunStampTaskResult implements IResult {
 
 	public function withContextStack(?string $contextStack): RunStampTaskResult {
 		$this->contextStack = $contextStack;
+		return $this;
+	}
+
+	public function getStatusCode(): ?int {
+		return $this->statusCode;
+	}
+
+	public function setStatusCode(?int $statusCode) {
+		$this->statusCode = $statusCode;
+	}
+
+	public function withStatusCode(?int $statusCode): RunStampTaskResult {
+		$this->statusCode = $statusCode;
 		return $this;
 	}
 
@@ -57,12 +72,14 @@ class RunStampTaskResult implements IResult {
         }
         return (new RunStampTaskResult())
             ->withContextStack(array_key_exists('contextStack', $data) && $data['contextStack'] !== null ? $data['contextStack'] : null)
+            ->withStatusCode(array_key_exists('statusCode', $data) && $data['statusCode'] !== null ? $data['statusCode'] : null)
             ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null);
     }
 
     public function toJson(): array {
         return array(
             "contextStack" => $this->getContextStack(),
+            "statusCode" => $this->getStatusCode(),
             "result" => $this->getResult(),
         );
     }

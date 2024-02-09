@@ -19,10 +19,13 @@ namespace Gs2\Idle\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Idle\Model\AcquireAction;
+use Gs2\Idle\Model\Status;
 
 class ReceiveResult implements IResult {
     /** @var array */
     private $items;
+    /** @var Status */
+    private $status;
     /** @var string */
     private $transactionId;
     /** @var string */
@@ -42,6 +45,19 @@ class ReceiveResult implements IResult {
 
 	public function withItems(?array $items): ReceiveResult {
 		$this->items = $items;
+		return $this;
+	}
+
+	public function getStatus(): ?Status {
+		return $this->status;
+	}
+
+	public function setStatus(?Status $status) {
+		$this->status = $status;
+	}
+
+	public function withStatus(?Status $status): ReceiveResult {
+		$this->status = $status;
 		return $this;
 	}
 
@@ -108,6 +124,7 @@ class ReceiveResult implements IResult {
                 },
                 array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
             ))
+            ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? Status::fromJson($data['status']) : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
             ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
@@ -122,6 +139,7 @@ class ReceiveResult implements IResult {
                 },
                 $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
             ),
+            "status" => $this->getStatus() !== null ? $this->getStatus()->toJson() : null,
             "transactionId" => $this->getTransactionId(),
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),

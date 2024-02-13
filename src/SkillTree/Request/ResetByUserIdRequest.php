@@ -25,6 +25,8 @@ class ResetByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $userId;
+    /** @var string */
+    private $propertyId;
     /** @var array */
     private $config;
     /** @var string */
@@ -47,6 +49,16 @@ class ResetByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withUserId(?string $userId): ResetByUserIdRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+	public function getPropertyId(): ?string {
+		return $this->propertyId;
+	}
+	public function setPropertyId(?string $propertyId) {
+		$this->propertyId = $propertyId;
+	}
+	public function withPropertyId(?string $propertyId): ResetByUserIdRequest {
+		$this->propertyId = $propertyId;
 		return $this;
 	}
 	public function getConfig(): ?array {
@@ -80,6 +92,7 @@ class ResetByUserIdRequest extends Gs2BasicRequest {
         return (new ResetByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);
@@ -92,6 +105,7 @@ class ResetByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
+            "propertyId" => $this->getPropertyId(),
             "config" => array_map(
                 function ($item) {
                     return $item->toJson();

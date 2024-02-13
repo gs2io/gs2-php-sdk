@@ -25,6 +25,8 @@ class ResetRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $accessToken;
+    /** @var string */
+    private $propertyId;
     /** @var array */
     private $config;
     /** @var string */
@@ -47,6 +49,16 @@ class ResetRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): ResetRequest {
 		$this->accessToken = $accessToken;
+		return $this;
+	}
+	public function getPropertyId(): ?string {
+		return $this->propertyId;
+	}
+	public function setPropertyId(?string $propertyId) {
+		$this->propertyId = $propertyId;
+	}
+	public function withPropertyId(?string $propertyId): ResetRequest {
+		$this->propertyId = $propertyId;
 		return $this;
 	}
 	public function getConfig(): ?array {
@@ -80,6 +92,7 @@ class ResetRequest extends Gs2BasicRequest {
         return (new ResetRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);
@@ -92,6 +105,7 @@ class ResetRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
+            "propertyId" => $this->getPropertyId(),
             "config" => array_map(
                 function ($item) {
                     return $item->toJson();

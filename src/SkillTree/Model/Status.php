@@ -30,6 +30,10 @@ class Status implements IModel {
 	 */
 	private $userId;
 	/**
+     * @var string
+	 */
+	private $propertyId;
+	/**
      * @var array
 	 */
 	private $releasedNodeNames;
@@ -63,6 +67,16 @@ class Status implements IModel {
 	}
 	public function withUserId(?string $userId): Status {
 		$this->userId = $userId;
+		return $this;
+	}
+	public function getPropertyId(): ?string {
+		return $this->propertyId;
+	}
+	public function setPropertyId(?string $propertyId) {
+		$this->propertyId = $propertyId;
+	}
+	public function withPropertyId(?string $propertyId): Status {
+		$this->propertyId = $propertyId;
 		return $this;
 	}
 	public function getReleasedNodeNames(): ?array {
@@ -113,6 +127,7 @@ class Status implements IModel {
         return (new Status())
             ->withStatusId(array_key_exists('statusId', $data) && $data['statusId'] !== null ? $data['statusId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withReleasedNodeNames(array_map(
                 function ($item) {
                     return $item;
@@ -128,6 +143,7 @@ class Status implements IModel {
         return array(
             "statusId" => $this->getStatusId(),
             "userId" => $this->getUserId(),
+            "propertyId" => $this->getPropertyId(),
             "releasedNodeNames" => array_map(
                 function ($item) {
                     return $item;

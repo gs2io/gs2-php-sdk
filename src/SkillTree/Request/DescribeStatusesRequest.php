@@ -19,20 +19,22 @@ namespace Gs2\SkillTree\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class GetStatusRequest extends Gs2BasicRequest {
+class DescribeStatusesRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
     private $accessToken;
     /** @var string */
-    private $propertyId;
+    private $pageToken;
+    /** @var int */
+    private $limit;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): GetStatusRequest {
+	public function withNamespaceName(?string $namespaceName): DescribeStatusesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -42,36 +44,48 @@ class GetStatusRequest extends Gs2BasicRequest {
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-	public function withAccessToken(?string $accessToken): GetStatusRequest {
+	public function withAccessToken(?string $accessToken): DescribeStatusesRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getPropertyId(): ?string {
-		return $this->propertyId;
+	public function getPageToken(): ?string {
+		return $this->pageToken;
 	}
-	public function setPropertyId(?string $propertyId) {
-		$this->propertyId = $propertyId;
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
 	}
-	public function withPropertyId(?string $propertyId): GetStatusRequest {
-		$this->propertyId = $propertyId;
+	public function withPageToken(?string $pageToken): DescribeStatusesRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+	public function withLimit(?int $limit): DescribeStatusesRequest {
+		$this->limit = $limit;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?GetStatusRequest {
+    public static function fromJson(?array $data): ?DescribeStatusesRequest {
         if ($data === null) {
             return null;
         }
-        return (new GetStatusRequest())
+        return (new DescribeStatusesRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null);
+            ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
+            ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "propertyId" => $this->getPropertyId(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
         );
     }
 }

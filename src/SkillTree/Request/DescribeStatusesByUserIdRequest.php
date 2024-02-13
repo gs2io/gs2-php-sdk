@@ -19,20 +19,22 @@ namespace Gs2\SkillTree\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class GetStatusByUserIdRequest extends Gs2BasicRequest {
+class DescribeStatusesByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
     private $userId;
     /** @var string */
-    private $propertyId;
+    private $pageToken;
+    /** @var int */
+    private $limit;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): GetStatusByUserIdRequest {
+	public function withNamespaceName(?string $namespaceName): DescribeStatusesByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -42,36 +44,48 @@ class GetStatusByUserIdRequest extends Gs2BasicRequest {
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-	public function withUserId(?string $userId): GetStatusByUserIdRequest {
+	public function withUserId(?string $userId): DescribeStatusesByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getPropertyId(): ?string {
-		return $this->propertyId;
+	public function getPageToken(): ?string {
+		return $this->pageToken;
 	}
-	public function setPropertyId(?string $propertyId) {
-		$this->propertyId = $propertyId;
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
 	}
-	public function withPropertyId(?string $propertyId): GetStatusByUserIdRequest {
-		$this->propertyId = $propertyId;
+	public function withPageToken(?string $pageToken): DescribeStatusesByUserIdRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
+	public function getLimit(): ?int {
+		return $this->limit;
+	}
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
+	}
+	public function withLimit(?int $limit): DescribeStatusesByUserIdRequest {
+		$this->limit = $limit;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?GetStatusByUserIdRequest {
+    public static function fromJson(?array $data): ?DescribeStatusesByUserIdRequest {
         if ($data === null) {
             return null;
         }
-        return (new GetStatusByUserIdRequest())
+        return (new DescribeStatusesByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null);
+            ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
+            ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "propertyId" => $this->getPropertyId(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
         );
     }
 }

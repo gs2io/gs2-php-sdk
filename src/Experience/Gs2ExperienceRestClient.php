@@ -123,6 +123,8 @@ use Gs2\Experience\Request\VerifyRankCapByUserIdRequest;
 use Gs2\Experience\Result\VerifyRankCapByUserIdResult;
 use Gs2\Experience\Request\AddExperienceByStampSheetRequest;
 use Gs2\Experience\Result\AddExperienceByStampSheetResult;
+use Gs2\Experience\Request\SetExperienceByStampSheetRequest;
+use Gs2\Experience\Result\SetExperienceByStampSheetResult;
 use Gs2\Experience\Request\SubExperienceByStampTaskRequest;
 use Gs2\Experience\Result\SubExperienceByStampTaskResult;
 use Gs2\Experience\Request\AddRankCapByStampSheetRequest;
@@ -3125,6 +3127,65 @@ class AddExperienceByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class SetExperienceByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetExperienceByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetExperienceByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetExperienceByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetExperienceByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetExperienceByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/experience/set";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class SubExperienceByStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -4890,6 +4951,33 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
             AddExperienceByStampSheetRequest $request
     ): AddExperienceByStampSheetResult {
         return $this->addExperienceByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetExperienceByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function setExperienceByStampSheetAsync(
+            SetExperienceByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetExperienceByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetExperienceByStampSheetRequest $request
+     * @return SetExperienceByStampSheetResult
+     */
+    public function setExperienceByStampSheet (
+            SetExperienceByStampSheetRequest $request
+    ): SetExperienceByStampSheetResult {
+        return $this->setExperienceByStampSheetAsync(
             $request
         )->wait();
     }

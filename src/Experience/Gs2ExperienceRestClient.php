@@ -2386,6 +2386,9 @@ class AddExperienceByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getExperienceValue() !== null) {
             $json["experienceValue"] = $this->request->getExperienceValue();
         }
+        if ($this->request->getTruncateExperienceWhenRankUp() !== null) {
+            $json["truncateExperienceWhenRankUp"] = $this->request->getTruncateExperienceWhenRankUp();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

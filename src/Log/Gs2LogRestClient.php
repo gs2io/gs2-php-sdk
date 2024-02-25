@@ -57,6 +57,8 @@ use Gs2\Log\Request\QueryExecuteStampTaskLogRequest;
 use Gs2\Log\Result\QueryExecuteStampTaskLogResult;
 use Gs2\Log\Request\CountExecuteStampTaskLogRequest;
 use Gs2\Log\Result\CountExecuteStampTaskLogResult;
+use Gs2\Log\Request\QueryAccessLogWithTelemetryRequest;
+use Gs2\Log\Result\QueryAccessLogWithTelemetryResult;
 use Gs2\Log\Request\PutLogRequest;
 use Gs2\Log\Result\PutLogResult;
 use Gs2\Log\Request\DescribeInsightsRequest;
@@ -1143,6 +1145,84 @@ class CountExecuteStampTaskLogTask extends Gs2RestSessionTask {
     }
 }
 
+class QueryAccessLogWithTelemetryTask extends Gs2RestSessionTask {
+
+    /**
+     * @var QueryAccessLogWithTelemetryRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * QueryAccessLogWithTelemetryTask constructor.
+     * @param Gs2RestSession $session
+     * @param QueryAccessLogWithTelemetryRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        QueryAccessLogWithTelemetryRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            QueryAccessLogWithTelemetryResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/log/access/telemetry";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getUserId() !== null) {
+            $queryStrings["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $queryStrings["longTerm"] = $this->request->getLongTerm() ? "true" : "false";
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class PutLogTask extends Gs2RestSessionTask {
 
     /**
@@ -1830,6 +1910,33 @@ class Gs2LogRestClient extends AbstractGs2Client {
             CountExecuteStampTaskLogRequest $request
     ): CountExecuteStampTaskLogResult {
         return $this->countExecuteStampTaskLogAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param QueryAccessLogWithTelemetryRequest $request
+     * @return PromiseInterface
+     */
+    public function queryAccessLogWithTelemetryAsync(
+            QueryAccessLogWithTelemetryRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new QueryAccessLogWithTelemetryTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param QueryAccessLogWithTelemetryRequest $request
+     * @return QueryAccessLogWithTelemetryResult
+     */
+    public function queryAccessLogWithTelemetry (
+            QueryAccessLogWithTelemetryRequest $request
+    ): QueryAccessLogWithTelemetryResult {
+        return $this->queryAccessLogWithTelemetryAsync(
             $request
         )->wait();
     }

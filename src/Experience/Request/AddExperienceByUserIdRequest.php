@@ -30,6 +30,8 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
     private $propertyId;
     /** @var int */
     private $experienceValue;
+    /** @var bool */
+    private $truncateExperienceWhenRankUp;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -82,6 +84,16 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
 		$this->experienceValue = $experienceValue;
 		return $this;
 	}
+	public function getTruncateExperienceWhenRankUp(): ?bool {
+		return $this->truncateExperienceWhenRankUp;
+	}
+	public function setTruncateExperienceWhenRankUp(?bool $truncateExperienceWhenRankUp) {
+		$this->truncateExperienceWhenRankUp = $truncateExperienceWhenRankUp;
+	}
+	public function withTruncateExperienceWhenRankUp(?bool $truncateExperienceWhenRankUp): AddExperienceByUserIdRequest {
+		$this->truncateExperienceWhenRankUp = $truncateExperienceWhenRankUp;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null);
+            ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null)
+            ->withTruncateExperienceWhenRankUp(array_key_exists('truncateExperienceWhenRankUp', $data) ? $data['truncateExperienceWhenRankUp'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
             "experienceName" => $this->getExperienceName(),
             "propertyId" => $this->getPropertyId(),
             "experienceValue" => $this->getExperienceValue(),
+            "truncateExperienceWhenRankUp" => $this->getTruncateExperienceWhenRankUp(),
         );
     }
 }

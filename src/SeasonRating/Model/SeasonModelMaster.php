@@ -46,6 +46,10 @@ class SeasonModelMaster implements IModel {
 	 */
 	private $experienceModelId;
 	/**
+     * @var string
+	 */
+	private $challengePeriodEventId;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -117,6 +121,16 @@ class SeasonModelMaster implements IModel {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+	public function getChallengePeriodEventId(): ?string {
+		return $this->challengePeriodEventId;
+	}
+	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+	}
+	public function withChallengePeriodEventId(?string $challengePeriodEventId): SeasonModelMaster {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -164,6 +178,7 @@ class SeasonModelMaster implements IModel {
                 array_key_exists('tiers', $data) && $data['tiers'] !== null ? $data['tiers'] : []
             ))
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
+            ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -182,6 +197,7 @@ class SeasonModelMaster implements IModel {
                 $this->getTiers() !== null && $this->getTiers() !== null ? $this->getTiers() : []
             ),
             "experienceModelId" => $this->getExperienceModelId(),
+            "challengePeriodEventId" => $this->getChallengePeriodEventId(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

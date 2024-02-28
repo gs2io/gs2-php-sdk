@@ -41,6 +41,10 @@ class SeasonModel implements IModel {
      * @var string
 	 */
 	private $experienceModelId;
+	/**
+     * @var string
+	 */
+	private $challengePeriodEventId;
 	public function getSeasonModelId(): ?string {
 		return $this->seasonModelId;
 	}
@@ -91,6 +95,16 @@ class SeasonModel implements IModel {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+	public function getChallengePeriodEventId(): ?string {
+		return $this->challengePeriodEventId;
+	}
+	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+	}
+	public function withChallengePeriodEventId(?string $challengePeriodEventId): SeasonModel {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?SeasonModel {
         if ($data === null) {
@@ -106,7 +120,8 @@ class SeasonModel implements IModel {
                 },
                 array_key_exists('tiers', $data) && $data['tiers'] !== null ? $data['tiers'] : []
             ))
-            ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null);
+            ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
+            ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null);
     }
 
     public function toJson(): array {
@@ -121,6 +136,7 @@ class SeasonModel implements IModel {
                 $this->getTiers() !== null && $this->getTiers() !== null ? $this->getTiers() : []
             ),
             "experienceModelId" => $this->getExperienceModelId(),
+            "challengePeriodEventId" => $this->getChallengePeriodEventId(),
         );
     }
 }

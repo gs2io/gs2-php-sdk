@@ -18,6 +18,7 @@
 namespace Gs2\SeasonRating\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\SeasonRating\Model\TransactionSetting;
 use Gs2\SeasonRating\Model\LogSetting;
 use Gs2\SeasonRating\Model\Namespace_;
 

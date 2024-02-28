@@ -22,31 +22,13 @@ use Gs2\Core\Model\IModel;
 
 class TransactionSetting implements IModel {
 	/**
-     * @var bool
-	 */
-	private $enableAutoRun;
-	/**
      * @var string
 	 */
 	private $distributorNamespaceId;
 	/**
      * @var string
 	 */
-	private $keyId;
-	/**
-     * @var string
-	 */
 	private $queueNamespaceId;
-	public function getEnableAutoRun(): ?bool {
-		return $this->enableAutoRun;
-	}
-	public function setEnableAutoRun(?bool $enableAutoRun) {
-		$this->enableAutoRun = $enableAutoRun;
-	}
-	public function withEnableAutoRun(?bool $enableAutoRun): TransactionSetting {
-		$this->enableAutoRun = $enableAutoRun;
-		return $this;
-	}
 	public function getDistributorNamespaceId(): ?string {
 		return $this->distributorNamespaceId;
 	}
@@ -55,16 +37,6 @@ class TransactionSetting implements IModel {
 	}
 	public function withDistributorNamespaceId(?string $distributorNamespaceId): TransactionSetting {
 		$this->distributorNamespaceId = $distributorNamespaceId;
-		return $this;
-	}
-	public function getKeyId(): ?string {
-		return $this->keyId;
-	}
-	public function setKeyId(?string $keyId) {
-		$this->keyId = $keyId;
-	}
-	public function withKeyId(?string $keyId): TransactionSetting {
-		$this->keyId = $keyId;
 		return $this;
 	}
 	public function getQueueNamespaceId(): ?string {
@@ -83,17 +55,13 @@ class TransactionSetting implements IModel {
             return null;
         }
         return (new TransactionSetting())
-            ->withEnableAutoRun(array_key_exists('enableAutoRun', $data) ? $data['enableAutoRun'] : null)
             ->withDistributorNamespaceId(array_key_exists('distributorNamespaceId', $data) && $data['distributorNamespaceId'] !== null ? $data['distributorNamespaceId'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "enableAutoRun" => $this->getEnableAutoRun(),
             "distributorNamespaceId" => $this->getDistributorNamespaceId(),
-            "keyId" => $this->getKeyId(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),
         );
     }

@@ -33,6 +33,8 @@ class CreateSeasonModelMasterRequest extends Gs2BasicRequest {
     private $tiers;
     /** @var string */
     private $experienceModelId;
+    /** @var string */
+    private $challengePeriodEventId;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -93,6 +95,16 @@ class CreateSeasonModelMasterRequest extends Gs2BasicRequest {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+	public function getChallengePeriodEventId(): ?string {
+		return $this->challengePeriodEventId;
+	}
+	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+	}
+	public function withChallengePeriodEventId(?string $challengePeriodEventId): CreateSeasonModelMasterRequest {
+		$this->challengePeriodEventId = $challengePeriodEventId;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateSeasonModelMasterRequest {
         if ($data === null) {
@@ -109,7 +121,8 @@ class CreateSeasonModelMasterRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('tiers', $data) && $data['tiers'] !== null ? $data['tiers'] : []
             ))
-            ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null);
+            ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
+            ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null);
     }
 
     public function toJson(): array {
@@ -125,6 +138,7 @@ class CreateSeasonModelMasterRequest extends Gs2BasicRequest {
                 $this->getTiers() !== null && $this->getTiers() !== null ? $this->getTiers() : []
             ),
             "experienceModelId" => $this->getExperienceModelId(),
+            "challengePeriodEventId" => $this->getChallengePeriodEventId(),
         );
     }
 }

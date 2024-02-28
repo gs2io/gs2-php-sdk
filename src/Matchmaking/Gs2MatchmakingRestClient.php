@@ -246,6 +246,15 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getCompleteMatchmakingTriggerScriptId() !== null) {
             $json["completeMatchmakingTriggerScriptId"] = $this->request->getCompleteMatchmakingTriggerScriptId();
         }
+        if ($this->request->getEnableCollaborateSeasonRating() !== null) {
+            $json["enableCollaborateSeasonRating"] = $this->request->getEnableCollaborateSeasonRating();
+        }
+        if ($this->request->getCollaborateSeasonRatingNamespaceId() !== null) {
+            $json["collaborateSeasonRatingNamespaceId"] = $this->request->getCollaborateSeasonRatingNamespaceId();
+        }
+        if ($this->request->getCollaborateSeasonRatingTtl() !== null) {
+            $json["collaborateSeasonRatingTtl"] = $this->request->getCollaborateSeasonRatingTtl();
+        }
         if ($this->request->getChangeRatingScript() !== null) {
             $json["changeRatingScript"] = $this->request->getChangeRatingScript()->toJson();
         }
@@ -456,6 +465,15 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCompleteMatchmakingTriggerScriptId() !== null) {
             $json["completeMatchmakingTriggerScriptId"] = $this->request->getCompleteMatchmakingTriggerScriptId();
+        }
+        if ($this->request->getEnableCollaborateSeasonRating() !== null) {
+            $json["enableCollaborateSeasonRating"] = $this->request->getEnableCollaborateSeasonRating();
+        }
+        if ($this->request->getCollaborateSeasonRatingNamespaceId() !== null) {
+            $json["collaborateSeasonRatingNamespaceId"] = $this->request->getCollaborateSeasonRatingNamespaceId();
+        }
+        if ($this->request->getCollaborateSeasonRatingTtl() !== null) {
+            $json["collaborateSeasonRatingTtl"] = $this->request->getCollaborateSeasonRatingTtl();
         }
         if ($this->request->getChangeRatingScript() !== null) {
             $json["changeRatingScript"] = $this->request->getChangeRatingScript()->toJson();

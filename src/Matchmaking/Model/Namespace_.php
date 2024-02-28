@@ -62,6 +62,18 @@ class Namespace_ implements IModel {
 	 */
 	private $completeMatchmakingTriggerScriptId;
 	/**
+     * @var string
+	 */
+	private $enableCollaborateSeasonRating;
+	/**
+     * @var string
+	 */
+	private $collaborateSeasonRatingNamespaceId;
+	/**
+     * @var int
+	 */
+	private $collaborateSeasonRatingTtl;
+	/**
      * @var ScriptSetting
 	 */
 	private $changeRatingScript;
@@ -197,6 +209,36 @@ class Namespace_ implements IModel {
 		$this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
 		return $this;
 	}
+	public function getEnableCollaborateSeasonRating(): ?string {
+		return $this->enableCollaborateSeasonRating;
+	}
+	public function setEnableCollaborateSeasonRating(?string $enableCollaborateSeasonRating) {
+		$this->enableCollaborateSeasonRating = $enableCollaborateSeasonRating;
+	}
+	public function withEnableCollaborateSeasonRating(?string $enableCollaborateSeasonRating): Namespace_ {
+		$this->enableCollaborateSeasonRating = $enableCollaborateSeasonRating;
+		return $this;
+	}
+	public function getCollaborateSeasonRatingNamespaceId(): ?string {
+		return $this->collaborateSeasonRatingNamespaceId;
+	}
+	public function setCollaborateSeasonRatingNamespaceId(?string $collaborateSeasonRatingNamespaceId) {
+		$this->collaborateSeasonRatingNamespaceId = $collaborateSeasonRatingNamespaceId;
+	}
+	public function withCollaborateSeasonRatingNamespaceId(?string $collaborateSeasonRatingNamespaceId): Namespace_ {
+		$this->collaborateSeasonRatingNamespaceId = $collaborateSeasonRatingNamespaceId;
+		return $this;
+	}
+	public function getCollaborateSeasonRatingTtl(): ?int {
+		return $this->collaborateSeasonRatingTtl;
+	}
+	public function setCollaborateSeasonRatingTtl(?int $collaborateSeasonRatingTtl) {
+		$this->collaborateSeasonRatingTtl = $collaborateSeasonRatingTtl;
+	}
+	public function withCollaborateSeasonRatingTtl(?int $collaborateSeasonRatingTtl): Namespace_ {
+		$this->collaborateSeasonRatingTtl = $collaborateSeasonRatingTtl;
+		return $this;
+	}
 	public function getChangeRatingScript(): ?ScriptSetting {
 		return $this->changeRatingScript;
 	}
@@ -303,6 +345,9 @@ class Namespace_ implements IModel {
             ->withCompleteMatchmakingTriggerType(array_key_exists('completeMatchmakingTriggerType', $data) && $data['completeMatchmakingTriggerType'] !== null ? $data['completeMatchmakingTriggerType'] : null)
             ->withCompleteMatchmakingTriggerRealtimeNamespaceId(array_key_exists('completeMatchmakingTriggerRealtimeNamespaceId', $data) && $data['completeMatchmakingTriggerRealtimeNamespaceId'] !== null ? $data['completeMatchmakingTriggerRealtimeNamespaceId'] : null)
             ->withCompleteMatchmakingTriggerScriptId(array_key_exists('completeMatchmakingTriggerScriptId', $data) && $data['completeMatchmakingTriggerScriptId'] !== null ? $data['completeMatchmakingTriggerScriptId'] : null)
+            ->withEnableCollaborateSeasonRating(array_key_exists('enableCollaborateSeasonRating', $data) && $data['enableCollaborateSeasonRating'] !== null ? $data['enableCollaborateSeasonRating'] : null)
+            ->withCollaborateSeasonRatingNamespaceId(array_key_exists('collaborateSeasonRatingNamespaceId', $data) && $data['collaborateSeasonRatingNamespaceId'] !== null ? $data['collaborateSeasonRatingNamespaceId'] : null)
+            ->withCollaborateSeasonRatingTtl(array_key_exists('collaborateSeasonRatingTtl', $data) && $data['collaborateSeasonRatingTtl'] !== null ? $data['collaborateSeasonRatingTtl'] : null)
             ->withChangeRatingScript(array_key_exists('changeRatingScript', $data) && $data['changeRatingScript'] !== null ? ScriptSetting::fromJson($data['changeRatingScript']) : null)
             ->withJoinNotification(array_key_exists('joinNotification', $data) && $data['joinNotification'] !== null ? NotificationSetting::fromJson($data['joinNotification']) : null)
             ->withLeaveNotification(array_key_exists('leaveNotification', $data) && $data['leaveNotification'] !== null ? NotificationSetting::fromJson($data['leaveNotification']) : null)
@@ -326,6 +371,9 @@ class Namespace_ implements IModel {
             "completeMatchmakingTriggerType" => $this->getCompleteMatchmakingTriggerType(),
             "completeMatchmakingTriggerRealtimeNamespaceId" => $this->getCompleteMatchmakingTriggerRealtimeNamespaceId(),
             "completeMatchmakingTriggerScriptId" => $this->getCompleteMatchmakingTriggerScriptId(),
+            "enableCollaborateSeasonRating" => $this->getEnableCollaborateSeasonRating(),
+            "collaborateSeasonRatingNamespaceId" => $this->getCollaborateSeasonRatingNamespaceId(),
+            "collaborateSeasonRatingTtl" => $this->getCollaborateSeasonRatingTtl(),
             "changeRatingScript" => $this->getChangeRatingScript() !== null ? $this->getChangeRatingScript()->toJson() : null,
             "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
             "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,

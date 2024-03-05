@@ -151,6 +151,8 @@ use Gs2\Formation\Request\DeleteFormByUserIdRequest;
 use Gs2\Formation\Result\DeleteFormByUserIdResult;
 use Gs2\Formation\Request\AcquireActionToFormPropertiesByStampSheetRequest;
 use Gs2\Formation\Result\AcquireActionToFormPropertiesByStampSheetResult;
+use Gs2\Formation\Request\SetFormByStampSheetRequest;
+use Gs2\Formation\Result\SetFormByStampSheetResult;
 use Gs2\Formation\Request\DescribePropertyFormsRequest;
 use Gs2\Formation\Result\DescribePropertyFormsResult;
 use Gs2\Formation\Request\DescribePropertyFormsByUserIdRequest;
@@ -3980,6 +3982,65 @@ class AcquireActionToFormPropertiesByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class SetFormByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetFormByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetFormByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetFormByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetFormByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetFormByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/form/set";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribePropertyFormsTask extends Gs2RestSessionTask {
 
     /**
@@ -6424,6 +6485,33 @@ class Gs2FormationRestClient extends AbstractGs2Client {
             AcquireActionToFormPropertiesByStampSheetRequest $request
     ): AcquireActionToFormPropertiesByStampSheetResult {
         return $this->acquireActionToFormPropertiesByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetFormByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function setFormByStampSheetAsync(
+            SetFormByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetFormByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetFormByStampSheetRequest $request
+     * @return SetFormByStampSheetResult
+     */
+    public function setFormByStampSheet (
+            SetFormByStampSheetRequest $request
+    ): SetFormByStampSheetResult {
+        return $this->setFormByStampSheetAsync(
             $request
         )->wait();
     }

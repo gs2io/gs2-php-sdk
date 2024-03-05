@@ -34,6 +34,8 @@ class VerifyRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
     private $parameterValueName;
     /** @var int */
     private $parameterCount;
+    /** @var bool */
+    private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -106,6 +108,16 @@ class VerifyRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
 		$this->parameterCount = $parameterCount;
 		return $this;
 	}
+	public function getMultiplyValueSpecifyingQuantity(): ?bool {
+		return $this->multiplyValueSpecifyingQuantity;
+	}
+	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+	}
+	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyRarityParameterStatusByUserIdRequest {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -131,7 +143,8 @@ class VerifyRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withParameterValueName(array_key_exists('parameterValueName', $data) && $data['parameterValueName'] !== null ? $data['parameterValueName'] : null)
-            ->withParameterCount(array_key_exists('parameterCount', $data) && $data['parameterCount'] !== null ? $data['parameterCount'] : null);
+            ->withParameterCount(array_key_exists('parameterCount', $data) && $data['parameterCount'] !== null ? $data['parameterCount'] : null)
+            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +156,7 @@ class VerifyRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
             "verifyType" => $this->getVerifyType(),
             "parameterValueName" => $this->getParameterValueName(),
             "parameterCount" => $this->getParameterCount(),
+            "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
         );
     }
 }

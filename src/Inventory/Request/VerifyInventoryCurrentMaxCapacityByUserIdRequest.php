@@ -30,6 +30,8 @@ class VerifyInventoryCurrentMaxCapacityByUserIdRequest extends Gs2BasicRequest {
     private $verifyType;
     /** @var int */
     private $currentInventoryMaxCapacity;
+    /** @var bool */
+    private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -82,6 +84,16 @@ class VerifyInventoryCurrentMaxCapacityByUserIdRequest extends Gs2BasicRequest {
 		$this->currentInventoryMaxCapacity = $currentInventoryMaxCapacity;
 		return $this;
 	}
+	public function getMultiplyValueSpecifyingQuantity(): ?bool {
+		return $this->multiplyValueSpecifyingQuantity;
+	}
+	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+	}
+	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyInventoryCurrentMaxCapacityByUserIdRequest {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class VerifyInventoryCurrentMaxCapacityByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
-            ->withCurrentInventoryMaxCapacity(array_key_exists('currentInventoryMaxCapacity', $data) && $data['currentInventoryMaxCapacity'] !== null ? $data['currentInventoryMaxCapacity'] : null);
+            ->withCurrentInventoryMaxCapacity(array_key_exists('currentInventoryMaxCapacity', $data) && $data['currentInventoryMaxCapacity'] !== null ? $data['currentInventoryMaxCapacity'] : null)
+            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class VerifyInventoryCurrentMaxCapacityByUserIdRequest extends Gs2BasicRequest {
             "inventoryName" => $this->getInventoryName(),
             "verifyType" => $this->getVerifyType(),
             "currentInventoryMaxCapacity" => $this->getCurrentInventoryMaxCapacity(),
+            "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
         );
     }
 }

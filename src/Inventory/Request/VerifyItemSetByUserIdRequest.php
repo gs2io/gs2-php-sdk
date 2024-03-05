@@ -34,6 +34,8 @@ class VerifyItemSetByUserIdRequest extends Gs2BasicRequest {
     private $itemSetName;
     /** @var int */
     private $count;
+    /** @var bool */
+    private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -106,6 +108,16 @@ class VerifyItemSetByUserIdRequest extends Gs2BasicRequest {
 		$this->count = $count;
 		return $this;
 	}
+	public function getMultiplyValueSpecifyingQuantity(): ?bool {
+		return $this->multiplyValueSpecifyingQuantity;
+	}
+	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+	}
+	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyItemSetByUserIdRequest {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -131,7 +143,8 @@ class VerifyItemSetByUserIdRequest extends Gs2BasicRequest {
             ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withItemSetName(array_key_exists('itemSetName', $data) && $data['itemSetName'] !== null ? $data['itemSetName'] : null)
-            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +156,7 @@ class VerifyItemSetByUserIdRequest extends Gs2BasicRequest {
             "verifyType" => $this->getVerifyType(),
             "itemSetName" => $this->getItemSetName(),
             "count" => $this->getCount(),
+            "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
         );
     }
 }

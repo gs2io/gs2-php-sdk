@@ -3245,6 +3245,9 @@ class VerifyRarityParameterStatusTask extends Gs2RestSessionTask {
         if ($this->request->getParameterCount() !== null) {
             $json["parameterCount"] = $this->request->getParameterCount();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -3315,6 +3318,9 @@ class VerifyRarityParameterStatusByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getParameterCount() !== null) {
             $json["parameterCount"] = $this->request->getParameterCount();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

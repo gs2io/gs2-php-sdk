@@ -1440,6 +1440,9 @@ class VerifyCounterTask extends Gs2RestSessionTask {
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -1507,6 +1510,9 @@ class VerifyCounterByUserIdTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

@@ -2058,6 +2058,9 @@ class VerifyGradeTask extends Gs2RestSessionTask {
         if ($this->request->getGradeValue() !== null) {
             $json["gradeValue"] = $this->request->getGradeValue();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2127,6 +2130,9 @@ class VerifyGradeByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getGradeValue() !== null) {
             $json["gradeValue"] = $this->request->getGradeValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

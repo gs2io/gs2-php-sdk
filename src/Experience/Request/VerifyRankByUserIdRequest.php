@@ -32,6 +32,8 @@ class VerifyRankByUserIdRequest extends Gs2BasicRequest {
     private $propertyId;
     /** @var int */
     private $rankValue;
+    /** @var bool */
+    private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -94,6 +96,16 @@ class VerifyRankByUserIdRequest extends Gs2BasicRequest {
 		$this->rankValue = $rankValue;
 		return $this;
 	}
+	public function getMultiplyValueSpecifyingQuantity(): ?bool {
+		return $this->multiplyValueSpecifyingQuantity;
+	}
+	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+	}
+	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyRankByUserIdRequest {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -118,7 +130,8 @@ class VerifyRankByUserIdRequest extends Gs2BasicRequest {
             ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withRankValue(array_key_exists('rankValue', $data) && $data['rankValue'] !== null ? $data['rankValue'] : null);
+            ->withRankValue(array_key_exists('rankValue', $data) && $data['rankValue'] !== null ? $data['rankValue'] : null)
+            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null);
     }
 
     public function toJson(): array {
@@ -129,6 +142,7 @@ class VerifyRankByUserIdRequest extends Gs2BasicRequest {
             "verifyType" => $this->getVerifyType(),
             "propertyId" => $this->getPropertyId(),
             "rankValue" => $this->getRankValue(),
+            "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
         );
     }
 }

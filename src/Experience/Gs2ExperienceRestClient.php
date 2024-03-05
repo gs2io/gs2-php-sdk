@@ -2840,6 +2840,9 @@ class VerifyRankTask extends Gs2RestSessionTask {
         if ($this->request->getRankValue() !== null) {
             $json["rankValue"] = $this->request->getRankValue();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2910,6 +2913,9 @@ class VerifyRankByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRankValue() !== null) {
             $json["rankValue"] = $this->request->getRankValue();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2975,6 +2981,9 @@ class VerifyRankCapTask extends Gs2RestSessionTask {
         }
         if ($this->request->getRankCapValue() !== null) {
             $json["rankCapValue"] = $this->request->getRankCapValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3045,6 +3054,9 @@ class VerifyRankCapByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getRankCapValue() !== null) {
             $json["rankCapValue"] = $this->request->getRankCapValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

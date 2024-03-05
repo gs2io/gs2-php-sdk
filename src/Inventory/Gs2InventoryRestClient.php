@@ -4383,6 +4383,9 @@ class VerifyInventoryCurrentMaxCapacityTask extends Gs2RestSessionTask {
         if ($this->request->getCurrentInventoryMaxCapacity() !== null) {
             $json["currentInventoryMaxCapacity"] = $this->request->getCurrentInventoryMaxCapacity();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -4449,6 +4452,9 @@ class VerifyInventoryCurrentMaxCapacityByUserIdTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getCurrentInventoryMaxCapacity() !== null) {
             $json["currentInventoryMaxCapacity"] = $this->request->getCurrentInventoryMaxCapacity();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -5430,6 +5436,9 @@ class VerifyItemSetTask extends Gs2RestSessionTask {
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -5500,6 +5509,9 @@ class VerifyItemSetByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -7340,6 +7352,9 @@ class VerifySimpleItemTask extends Gs2RestSessionTask {
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -7407,6 +7422,9 @@ class VerifySimpleItemByUserIdTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -8283,6 +8301,9 @@ class VerifyBigItemTask extends Gs2RestSessionTask {
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -8350,6 +8371,9 @@ class VerifyBigItemByUserIdTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getCount() !== null) {
             $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

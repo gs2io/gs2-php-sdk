@@ -20,10 +20,13 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
+use Gs2\Mission\Model\Complete;
 
 class IncreaseCounterByUserIdResult implements IResult {
     /** @var Counter */
     private $item;
+    /** @var array */
+    private $changedCompletes;
 
 	public function getItem(): ?Counter {
 		return $this->item;
@@ -38,17 +41,42 @@ class IncreaseCounterByUserIdResult implements IResult {
 		return $this;
 	}
 
+	public function getChangedCompletes(): ?array {
+		return $this->changedCompletes;
+	}
+
+	public function setChangedCompletes(?array $changedCompletes) {
+		$this->changedCompletes = $changedCompletes;
+	}
+
+	public function withChangedCompletes(?array $changedCompletes): IncreaseCounterByUserIdResult {
+		$this->changedCompletes = $changedCompletes;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?IncreaseCounterByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new IncreaseCounterByUserIdResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Counter::fromJson($data['item']) : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Counter::fromJson($data['item']) : null)
+            ->withChangedCompletes(array_map(
+                function ($item) {
+                    return Complete::fromJson($item);
+                },
+                array_key_exists('changedCompletes', $data) && $data['changedCompletes'] !== null ? $data['changedCompletes'] : []
+            ));
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "changedCompletes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getChangedCompletes() !== null && $this->getChangedCompletes() !== null ? $this->getChangedCompletes() : []
+            ),
         );
     }
 }

@@ -27,6 +27,8 @@ class UpdateBannedRequest extends Gs2BasicRequest {
     /** @var bool */
     private $banned;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -58,6 +60,16 @@ class UpdateBannedRequest extends Gs2BasicRequest {
 		$this->banned = $banned;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateBannedRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -79,7 +91,8 @@ class UpdateBannedRequest extends Gs2BasicRequest {
         return (new UpdateBannedRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withBanned(array_key_exists('banned', $data) ? $data['banned'] : null);
+            ->withBanned(array_key_exists('banned', $data) ? $data['banned'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class UpdateBannedRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "banned" => $this->getBanned(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

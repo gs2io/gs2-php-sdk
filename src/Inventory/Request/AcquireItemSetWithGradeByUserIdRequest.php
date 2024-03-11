@@ -33,6 +33,8 @@ class AcquireItemSetWithGradeByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $gradeValue;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,16 @@ class AcquireItemSetWithGradeByUserIdRequest extends Gs2BasicRequest {
 		$this->gradeValue = $gradeValue;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): AcquireItemSetWithGradeByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -118,7 +130,8 @@ class AcquireItemSetWithGradeByUserIdRequest extends Gs2BasicRequest {
             ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withGradeModelId(array_key_exists('gradeModelId', $data) && $data['gradeModelId'] !== null ? $data['gradeModelId'] : null)
-            ->withGradeValue(array_key_exists('gradeValue', $data) && $data['gradeValue'] !== null ? $data['gradeValue'] : null);
+            ->withGradeValue(array_key_exists('gradeValue', $data) && $data['gradeValue'] !== null ? $data['gradeValue'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -129,6 +142,7 @@ class AcquireItemSetWithGradeByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "gradeModelId" => $this->getGradeModelId(),
             "gradeValue" => $this->getGradeValue(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -33,6 +33,8 @@ class UpdateRoomFromBackendRequest extends Gs2BasicRequest {
     /** @var string */
     private $userId;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,16 @@ class UpdateRoomFromBackendRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateRoomFromBackendRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -123,7 +135,8 @@ class UpdateRoomFromBackendRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('whiteListUserIds', $data) && $data['whiteListUserIds'] !== null ? $data['whiteListUserIds'] : []
             ))
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -139,6 +152,7 @@ class UpdateRoomFromBackendRequest extends Gs2BasicRequest {
                 $this->getWhiteListUserIds() !== null && $this->getWhiteListUserIds() !== null ? $this->getWhiteListUserIds() : []
             ),
             "userId" => $this->getUserId(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

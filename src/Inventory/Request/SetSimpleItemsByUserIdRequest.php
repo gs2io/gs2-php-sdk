@@ -30,6 +30,8 @@ class SetSimpleItemsByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $counts;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -71,6 +73,16 @@ class SetSimpleItemsByUserIdRequest extends Gs2BasicRequest {
 		$this->counts = $counts;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): SetSimpleItemsByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -98,7 +110,8 @@ class SetSimpleItemsByUserIdRequest extends Gs2BasicRequest {
                     return HeldCount::fromJson($item);
                 },
                 array_key_exists('counts', $data) && $data['counts'] !== null ? $data['counts'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -112,6 +125,7 @@ class SetSimpleItemsByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getCounts() !== null && $this->getCounts() !== null ? $this->getCounts() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

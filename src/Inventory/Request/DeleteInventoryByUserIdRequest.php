@@ -27,6 +27,8 @@ class DeleteInventoryByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $userId;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -58,6 +60,16 @@ class DeleteInventoryByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DeleteInventoryByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -79,7 +91,8 @@ class DeleteInventoryByUserIdRequest extends Gs2BasicRequest {
         return (new DeleteInventoryByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class DeleteInventoryByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

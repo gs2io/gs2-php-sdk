@@ -31,6 +31,8 @@ class CountDownByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $countDownValue;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class CountDownByUserIdRequest extends Gs2BasicRequest {
 		$this->countDownValue = $countDownValue;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): CountDownByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class CountDownByUserIdRequest extends Gs2BasicRequest {
             ->withLimitName(array_key_exists('limitName', $data) && $data['limitName'] !== null ? $data['limitName'] : null)
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withCountDownValue(array_key_exists('countDownValue', $data) && $data['countDownValue'] !== null ? $data['countDownValue'] : null);
+            ->withCountDownValue(array_key_exists('countDownValue', $data) && $data['countDownValue'] !== null ? $data['countDownValue'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class CountDownByUserIdRequest extends Gs2BasicRequest {
             "counterName" => $this->getCounterName(),
             "userId" => $this->getUserId(),
             "countDownValue" => $this->getCountDownValue(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

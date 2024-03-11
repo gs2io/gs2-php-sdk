@@ -24,28 +24,22 @@ class DeleteProjectRequest extends Gs2BasicRequest {
     private $accountToken;
     /** @var string */
     private $projectName;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): DeleteProjectRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
-
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
-
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
-
 	public function withProjectName(?string $projectName): DeleteProjectRequest {
 		$this->projectName = $projectName;
 		return $this;

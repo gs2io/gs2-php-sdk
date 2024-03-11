@@ -33,6 +33,8 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
     /** @var bool */
     private $truncateExperienceWhenRankUp;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,16 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
 		$this->truncateExperienceWhenRankUp = $truncateExperienceWhenRankUp;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): AddExperienceByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -118,7 +130,8 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
             ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null)
-            ->withTruncateExperienceWhenRankUp(array_key_exists('truncateExperienceWhenRankUp', $data) ? $data['truncateExperienceWhenRankUp'] : null);
+            ->withTruncateExperienceWhenRankUp(array_key_exists('truncateExperienceWhenRankUp', $data) ? $data['truncateExperienceWhenRankUp'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -129,6 +142,7 @@ class AddExperienceByUserIdRequest extends Gs2BasicRequest {
             "propertyId" => $this->getPropertyId(),
             "experienceValue" => $this->getExperienceValue(),
             "truncateExperienceWhenRankUp" => $this->getTruncateExperienceWhenRankUp(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

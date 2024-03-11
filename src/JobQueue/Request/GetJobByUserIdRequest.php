@@ -26,6 +26,8 @@ class GetJobByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $jobName;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,16 @@ class GetJobByUserIdRequest extends Gs2BasicRequest {
 		$this->jobName = $jobName;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetJobByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetJobByUserIdRequest {
         if ($data === null) {
@@ -64,7 +76,8 @@ class GetJobByUserIdRequest extends Gs2BasicRequest {
         return (new GetJobByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withJobName(array_key_exists('jobName', $data) && $data['jobName'] !== null ? $data['jobName'] : null);
+            ->withJobName(array_key_exists('jobName', $data) && $data['jobName'] !== null ? $data['jobName'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -72,6 +85,7 @@ class GetJobByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "jobName" => $this->getJobName(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

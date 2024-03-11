@@ -36,106 +36,82 @@ class UpdateProjectRequest extends Gs2BasicRequest {
     private $eventBridgeAwsAccountId;
     /** @var string */
     private $eventBridgeAwsRegion;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): UpdateProjectRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
-
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
-
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
-
 	public function withProjectName(?string $projectName): UpdateProjectRequest {
 		$this->projectName = $projectName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateProjectRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getPlan(): ?string {
 		return $this->plan;
 	}
-
 	public function setPlan(?string $plan) {
 		$this->plan = $plan;
 	}
-
 	public function withPlan(?string $plan): UpdateProjectRequest {
 		$this->plan = $plan;
 		return $this;
 	}
-
 	public function getBillingMethodName(): ?string {
 		return $this->billingMethodName;
 	}
-
 	public function setBillingMethodName(?string $billingMethodName) {
 		$this->billingMethodName = $billingMethodName;
 	}
-
 	public function withBillingMethodName(?string $billingMethodName): UpdateProjectRequest {
 		$this->billingMethodName = $billingMethodName;
 		return $this;
 	}
-
 	public function getEnableEventBridge(): ?string {
 		return $this->enableEventBridge;
 	}
-
 	public function setEnableEventBridge(?string $enableEventBridge) {
 		$this->enableEventBridge = $enableEventBridge;
 	}
-
 	public function withEnableEventBridge(?string $enableEventBridge): UpdateProjectRequest {
 		$this->enableEventBridge = $enableEventBridge;
 		return $this;
 	}
-
 	public function getEventBridgeAwsAccountId(): ?string {
 		return $this->eventBridgeAwsAccountId;
 	}
-
 	public function setEventBridgeAwsAccountId(?string $eventBridgeAwsAccountId) {
 		$this->eventBridgeAwsAccountId = $eventBridgeAwsAccountId;
 	}
-
 	public function withEventBridgeAwsAccountId(?string $eventBridgeAwsAccountId): UpdateProjectRequest {
 		$this->eventBridgeAwsAccountId = $eventBridgeAwsAccountId;
 		return $this;
 	}
-
 	public function getEventBridgeAwsRegion(): ?string {
 		return $this->eventBridgeAwsRegion;
 	}
-
 	public function setEventBridgeAwsRegion(?string $eventBridgeAwsRegion) {
 		$this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
 	}
-
 	public function withEventBridgeAwsRegion(?string $eventBridgeAwsRegion): UpdateProjectRequest {
 		$this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
 		return $this;

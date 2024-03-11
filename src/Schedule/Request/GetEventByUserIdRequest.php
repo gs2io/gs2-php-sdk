@@ -28,6 +28,8 @@ class GetEventByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var bool */
     private $isInSchedule;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -68,6 +70,16 @@ class GetEventByUserIdRequest extends Gs2BasicRequest {
 		$this->isInSchedule = $isInSchedule;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetEventByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetEventByUserIdRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class GetEventByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withEventName(array_key_exists('eventName', $data) && $data['eventName'] !== null ? $data['eventName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withIsInSchedule(array_key_exists('isInSchedule', $data) ? $data['isInSchedule'] : null);
+            ->withIsInSchedule(array_key_exists('isInSchedule', $data) ? $data['isInSchedule'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class GetEventByUserIdRequest extends Gs2BasicRequest {
             "eventName" => $this->getEventName(),
             "userId" => $this->getUserId(),
             "isInSchedule" => $this->getIsInSchedule(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -28,6 +28,8 @@ class GetFormByUserIdRequest extends Gs2BasicRequest {
     private $moldModelName;
     /** @var int */
     private $index;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -68,6 +70,16 @@ class GetFormByUserIdRequest extends Gs2BasicRequest {
 		$this->index = $index;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetFormByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetFormByUserIdRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class GetFormByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
-            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null);
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class GetFormByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "moldModelName" => $this->getMoldModelName(),
             "index" => $this->getIndex(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

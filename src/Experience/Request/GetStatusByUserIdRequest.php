@@ -28,6 +28,8 @@ class GetStatusByUserIdRequest extends Gs2BasicRequest {
     private $experienceName;
     /** @var string */
     private $propertyId;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -68,6 +70,16 @@ class GetStatusByUserIdRequest extends Gs2BasicRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetStatusByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetStatusByUserIdRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class GetStatusByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
-            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null);
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class GetStatusByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "experienceName" => $this->getExperienceName(),
             "propertyId" => $this->getPropertyId(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -28,54 +28,42 @@ class GetProjectTokenByIdentifierRequest extends Gs2BasicRequest {
     private $userName;
     /** @var string */
     private $password;
-
 	public function getAccountName(): ?string {
 		return $this->accountName;
 	}
-
 	public function setAccountName(?string $accountName) {
 		$this->accountName = $accountName;
 	}
-
 	public function withAccountName(?string $accountName): GetProjectTokenByIdentifierRequest {
 		$this->accountName = $accountName;
 		return $this;
 	}
-
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
-
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
-
 	public function withProjectName(?string $projectName): GetProjectTokenByIdentifierRequest {
 		$this->projectName = $projectName;
 		return $this;
 	}
-
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
-
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-
 	public function withUserName(?string $userName): GetProjectTokenByIdentifierRequest {
 		$this->userName = $userName;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): GetProjectTokenByIdentifierRequest {
 		$this->password = $password;
 		return $this;

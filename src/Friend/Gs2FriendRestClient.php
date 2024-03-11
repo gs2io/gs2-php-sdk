@@ -614,6 +614,9 @@ class DumpUserDataByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -674,6 +677,9 @@ class CheckDumpUserDataByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -731,6 +737,9 @@ class CleanUserDataByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -792,6 +801,9 @@ class CheckCleanUserDataByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -849,6 +861,9 @@ class PrepareImportUserDataByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -911,6 +926,9 @@ class ImportUserDataByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -971,6 +989,9 @@ class CheckImportUserDataByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -1089,6 +1110,9 @@ class GetProfileByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -1228,6 +1252,9 @@ class UpdateProfileByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -1288,6 +1315,9 @@ class DeleteProfileByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -1425,6 +1455,9 @@ class DescribeFriendsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -1555,6 +1588,9 @@ class DescribeBlackListByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -1676,6 +1712,9 @@ class RegisterBlackListByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -1802,6 +1841,9 @@ class UnregisterBlackListByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -1939,6 +1981,9 @@ class DescribeFollowsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -2065,6 +2110,9 @@ class GetFollowByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -2186,6 +2234,9 @@ class FollowByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -2313,6 +2364,9 @@ class UnfollowByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -2439,6 +2493,9 @@ class GetFriendByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -2564,6 +2621,9 @@ class DeleteFriendByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -2695,6 +2755,9 @@ class DescribeSendRequestsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -2814,6 +2877,9 @@ class GetSendRequestByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -2936,6 +3002,9 @@ class SendRequestByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -3062,6 +3131,9 @@ class DeleteRequestByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -3193,6 +3265,9 @@ class DescribeReceiveRequestsByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -3312,6 +3387,9 @@ class GetReceiveRequestByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -3434,6 +3512,9 @@ class AcceptRequestByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -3561,6 +3642,9 @@ class RejectRequestByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
 
         return parent::executeImpl();
     }
@@ -3618,6 +3702,9 @@ class GetPublicProfileTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();

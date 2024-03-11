@@ -26,41 +26,32 @@ class DescribeReceiptsRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): DescribeReceiptsRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeReceiptsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeReceiptsRequest {
 		$this->limit = $limit;
 		return $this;

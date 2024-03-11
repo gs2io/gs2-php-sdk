@@ -37,6 +37,8 @@ class VerifyRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
     /** @var bool */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -118,6 +120,16 @@ class VerifyRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyRarityParameterStatusByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -144,7 +156,8 @@ class VerifyRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withParameterValueName(array_key_exists('parameterValueName', $data) && $data['parameterValueName'] !== null ? $data['parameterValueName'] : null)
             ->withParameterCount(array_key_exists('parameterCount', $data) && $data['parameterCount'] !== null ? $data['parameterCount'] : null)
-            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null);
+            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -157,6 +170,7 @@ class VerifyRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
             "parameterValueName" => $this->getParameterValueName(),
             "parameterCount" => $this->getParameterCount(),
             "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

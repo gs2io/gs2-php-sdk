@@ -29,6 +29,8 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $ttl;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
 		$this->ttl = $ttl;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): StartStateMachineByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
-            ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null);
+            ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "args" => $this->getArgs(),
             "ttl" => $this->getTtl(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

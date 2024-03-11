@@ -23,6 +23,8 @@ class CheckDumpUserDataByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $userId;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getUserId(): ?string {
 		return $this->userId;
@@ -32,6 +34,16 @@ class CheckDumpUserDataByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withUserId(?string $userId): CheckDumpUserDataByUserIdRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): CheckDumpUserDataByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;
 	}
 
@@ -53,12 +65,14 @@ class CheckDumpUserDataByUserIdRequest extends Gs2BasicRequest {
             return null;
         }
         return (new CheckDumpUserDataByUserIdRequest())
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null);
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

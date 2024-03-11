@@ -30,67 +30,52 @@ class UpdateAccountRequest extends Gs2BasicRequest {
     private $password;
     /** @var string */
     private $accountToken;
-
 	public function getEmail(): ?string {
 		return $this->email;
 	}
-
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
-
 	public function withEmail(?string $email): UpdateAccountRequest {
 		$this->email = $email;
 		return $this;
 	}
-
 	public function getFullName(): ?string {
 		return $this->fullName;
 	}
-
 	public function setFullName(?string $fullName) {
 		$this->fullName = $fullName;
 	}
-
 	public function withFullName(?string $fullName): UpdateAccountRequest {
 		$this->fullName = $fullName;
 		return $this;
 	}
-
 	public function getCompanyName(): ?string {
 		return $this->companyName;
 	}
-
 	public function setCompanyName(?string $companyName) {
 		$this->companyName = $companyName;
 	}
-
 	public function withCompanyName(?string $companyName): UpdateAccountRequest {
 		$this->companyName = $companyName;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): UpdateAccountRequest {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): UpdateAccountRequest {
 		$this->accountToken = $accountToken;
 		return $this;

@@ -28,6 +28,8 @@ class GetCounterByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $counterName;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -68,6 +70,16 @@ class GetCounterByUserIdRequest extends Gs2BasicRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetCounterByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetCounterByUserIdRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class GetCounterByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withLimitName(array_key_exists('limitName', $data) && $data['limitName'] !== null ? $data['limitName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null);
+            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class GetCounterByUserIdRequest extends Gs2BasicRequest {
             "limitName" => $this->getLimitName(),
             "userId" => $this->getUserId(),
             "counterName" => $this->getCounterName(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -26,6 +26,8 @@ class GetTriggerByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $triggerName;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,16 @@ class GetTriggerByUserIdRequest extends Gs2BasicRequest {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetTriggerByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetTriggerByUserIdRequest {
         if ($data === null) {
@@ -64,7 +76,8 @@ class GetTriggerByUserIdRequest extends Gs2BasicRequest {
         return (new GetTriggerByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTriggerName(array_key_exists('triggerName', $data) && $data['triggerName'] !== null ? $data['triggerName'] : null);
+            ->withTriggerName(array_key_exists('triggerName', $data) && $data['triggerName'] !== null ? $data['triggerName'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -72,6 +85,7 @@ class GetTriggerByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "triggerName" => $this->getTriggerName(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

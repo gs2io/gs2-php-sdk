@@ -29,6 +29,8 @@ class SetCapacityByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $newCapacityValue;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class SetCapacityByUserIdRequest extends Gs2BasicRequest {
 		$this->newCapacityValue = $newCapacityValue;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): SetCapacityByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class SetCapacityByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withNewCapacityValue(array_key_exists('newCapacityValue', $data) && $data['newCapacityValue'] !== null ? $data['newCapacityValue'] : null);
+            ->withNewCapacityValue(array_key_exists('newCapacityValue', $data) && $data['newCapacityValue'] !== null ? $data['newCapacityValue'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class SetCapacityByUserIdRequest extends Gs2BasicRequest {
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
             "newCapacityValue" => $this->getNewCapacityValue(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -28,6 +28,8 @@ class PushByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $jobs;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -59,6 +61,16 @@ class PushByUserIdRequest extends Gs2BasicRequest {
 		$this->jobs = $jobs;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): PushByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -85,7 +97,8 @@ class PushByUserIdRequest extends Gs2BasicRequest {
                     return JobEntry::fromJson($item);
                 },
                 array_key_exists('jobs', $data) && $data['jobs'] !== null ? $data['jobs'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -98,6 +111,7 @@ class PushByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getJobs() !== null && $this->getJobs() !== null ? $this->getJobs() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

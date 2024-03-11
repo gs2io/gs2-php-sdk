@@ -29,6 +29,8 @@ class UnmarkReceivedByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $stepNumber;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class UnmarkReceivedByUserIdRequest extends Gs2BasicRequest {
 		$this->stepNumber = $stepNumber;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): UnmarkReceivedByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class UnmarkReceivedByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withBonusModelName(array_key_exists('bonusModelName', $data) && $data['bonusModelName'] !== null ? $data['bonusModelName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withStepNumber(array_key_exists('stepNumber', $data) && $data['stepNumber'] !== null ? $data['stepNumber'] : null);
+            ->withStepNumber(array_key_exists('stepNumber', $data) && $data['stepNumber'] !== null ? $data['stepNumber'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class UnmarkReceivedByUserIdRequest extends Gs2BasicRequest {
             "bonusModelName" => $this->getBonusModelName(),
             "userId" => $this->getUserId(),
             "stepNumber" => $this->getStepNumber(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

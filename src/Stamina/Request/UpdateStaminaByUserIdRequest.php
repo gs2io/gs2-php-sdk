@@ -35,6 +35,8 @@ class UpdateStaminaByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $recoverValue;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -106,6 +108,16 @@ class UpdateStaminaByUserIdRequest extends Gs2BasicRequest {
 		$this->recoverValue = $recoverValue;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateStaminaByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -131,7 +143,8 @@ class UpdateStaminaByUserIdRequest extends Gs2BasicRequest {
             ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
             ->withMaxValue(array_key_exists('maxValue', $data) && $data['maxValue'] !== null ? $data['maxValue'] : null)
             ->withRecoverIntervalMinutes(array_key_exists('recoverIntervalMinutes', $data) && $data['recoverIntervalMinutes'] !== null ? $data['recoverIntervalMinutes'] : null)
-            ->withRecoverValue(array_key_exists('recoverValue', $data) && $data['recoverValue'] !== null ? $data['recoverValue'] : null);
+            ->withRecoverValue(array_key_exists('recoverValue', $data) && $data['recoverValue'] !== null ? $data['recoverValue'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +156,7 @@ class UpdateStaminaByUserIdRequest extends Gs2BasicRequest {
             "maxValue" => $this->getMaxValue(),
             "recoverIntervalMinutes" => $this->getRecoverIntervalMinutes(),
             "recoverValue" => $this->getRecoverValue(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

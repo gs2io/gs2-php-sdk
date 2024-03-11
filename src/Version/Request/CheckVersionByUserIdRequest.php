@@ -29,6 +29,8 @@ class CheckVersionByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $targetVersions;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -60,6 +62,16 @@ class CheckVersionByUserIdRequest extends Gs2BasicRequest {
 		$this->targetVersions = $targetVersions;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): CheckVersionByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -86,7 +98,8 @@ class CheckVersionByUserIdRequest extends Gs2BasicRequest {
                     return TargetVersion::fromJson($item);
                 },
                 array_key_exists('targetVersions', $data) && $data['targetVersions'] !== null ? $data['targetVersions'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -99,6 +112,7 @@ class CheckVersionByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getTargetVersions() !== null && $this->getTargetVersions() !== null ? $this->getTargetVersions() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

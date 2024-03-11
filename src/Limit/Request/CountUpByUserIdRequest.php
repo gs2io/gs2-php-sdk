@@ -33,6 +33,8 @@ class CountUpByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $maxValue;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,16 @@ class CountUpByUserIdRequest extends Gs2BasicRequest {
 		$this->maxValue = $maxValue;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): CountUpByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -118,7 +130,8 @@ class CountUpByUserIdRequest extends Gs2BasicRequest {
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withCountUpValue(array_key_exists('countUpValue', $data) && $data['countUpValue'] !== null ? $data['countUpValue'] : null)
-            ->withMaxValue(array_key_exists('maxValue', $data) && $data['maxValue'] !== null ? $data['maxValue'] : null);
+            ->withMaxValue(array_key_exists('maxValue', $data) && $data['maxValue'] !== null ? $data['maxValue'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -129,6 +142,7 @@ class CountUpByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "countUpValue" => $this->getCountUpValue(),
             "maxValue" => $this->getMaxValue(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

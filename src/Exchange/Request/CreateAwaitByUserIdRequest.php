@@ -32,6 +32,8 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $config;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -83,6 +85,16 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
 		$this->config = $config;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): CreateAwaitByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -111,7 +123,8 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
                     return Config::fromJson($item);
                 },
                 array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -126,6 +139,7 @@ class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

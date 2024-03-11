@@ -35,6 +35,8 @@ class VerifyReferenceOfByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $verifyType;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -106,6 +108,16 @@ class VerifyReferenceOfByUserIdRequest extends Gs2BasicRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyReferenceOfByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -131,7 +143,8 @@ class VerifyReferenceOfByUserIdRequest extends Gs2BasicRequest {
             ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
             ->withItemSetName(array_key_exists('itemSetName', $data) && $data['itemSetName'] !== null ? $data['itemSetName'] : null)
             ->withReferenceOf(array_key_exists('referenceOf', $data) && $data['referenceOf'] !== null ? $data['referenceOf'] : null)
-            ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null);
+            ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +156,7 @@ class VerifyReferenceOfByUserIdRequest extends Gs2BasicRequest {
             "itemSetName" => $this->getItemSetName(),
             "referenceOf" => $this->getReferenceOf(),
             "verifyType" => $this->getVerifyType(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

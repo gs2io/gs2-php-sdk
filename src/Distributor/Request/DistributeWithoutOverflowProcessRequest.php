@@ -25,6 +25,8 @@ class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
     private $userId;
     /** @var DistributeResource */
     private $distributeResource;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -45,6 +47,16 @@ class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
 		$this->distributeResource = $distributeResource;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DistributeWithoutOverflowProcessRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DistributeWithoutOverflowProcessRequest {
         if ($data === null) {
@@ -52,13 +64,15 @@ class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
         }
         return (new DistributeWithoutOverflowProcessRequest())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withDistributeResource(array_key_exists('distributeResource', $data) && $data['distributeResource'] !== null ? DistributeResource::fromJson($data['distributeResource']) : null);
+            ->withDistributeResource(array_key_exists('distributeResource', $data) && $data['distributeResource'] !== null ? DistributeResource::fromJson($data['distributeResource']) : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
             "distributeResource" => $this->getDistributeResource() !== null ? $this->getDistributeResource()->toJson() : null,
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -29,6 +29,8 @@ class ConsumeStaminaByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $consumeValue;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class ConsumeStaminaByUserIdRequest extends Gs2BasicRequest {
 		$this->consumeValue = $consumeValue;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): ConsumeStaminaByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class ConsumeStaminaByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withStaminaName(array_key_exists('staminaName', $data) && $data['staminaName'] !== null ? $data['staminaName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withConsumeValue(array_key_exists('consumeValue', $data) && $data['consumeValue'] !== null ? $data['consumeValue'] : null);
+            ->withConsumeValue(array_key_exists('consumeValue', $data) && $data['consumeValue'] !== null ? $data['consumeValue'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class ConsumeStaminaByUserIdRequest extends Gs2BasicRequest {
             "staminaName" => $this->getStaminaName(),
             "userId" => $this->getUserId(),
             "consumeValue" => $this->getConsumeValue(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -31,6 +31,8 @@ class AddRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $count;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class AddRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
 		$this->count = $count;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): AddRarityParameterStatusByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class AddRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withParameterName(array_key_exists('parameterName', $data) && $data['parameterName'] !== null ? $data['parameterName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class AddRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
             "parameterName" => $this->getParameterName(),
             "propertyId" => $this->getPropertyId(),
             "count" => $this->getCount(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

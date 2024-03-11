@@ -37,6 +37,8 @@ class ActionByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $scopes;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -98,6 +100,16 @@ class ActionByUserIdRequest extends Gs2BasicRequest {
 		$this->scopes = $scopes;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): ActionByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -127,7 +139,8 @@ class ActionByUserIdRequest extends Gs2BasicRequest {
                     return Scope::fromJson($item);
                 },
                 array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +156,7 @@ class ActionByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

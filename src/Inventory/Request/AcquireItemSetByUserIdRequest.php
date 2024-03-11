@@ -37,6 +37,8 @@ class AcquireItemSetByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $itemSetName;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -118,6 +120,16 @@ class AcquireItemSetByUserIdRequest extends Gs2BasicRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): AcquireItemSetByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -144,7 +156,8 @@ class AcquireItemSetByUserIdRequest extends Gs2BasicRequest {
             ->withAcquireCount(array_key_exists('acquireCount', $data) && $data['acquireCount'] !== null ? $data['acquireCount'] : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
             ->withCreateNewItemSet(array_key_exists('createNewItemSet', $data) ? $data['createNewItemSet'] : null)
-            ->withItemSetName(array_key_exists('itemSetName', $data) && $data['itemSetName'] !== null ? $data['itemSetName'] : null);
+            ->withItemSetName(array_key_exists('itemSetName', $data) && $data['itemSetName'] !== null ? $data['itemSetName'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -157,6 +170,7 @@ class AcquireItemSetByUserIdRequest extends Gs2BasicRequest {
             "expiresAt" => $this->getExpiresAt(),
             "createNewItemSet" => $this->getCreateNewItemSet(),
             "itemSetName" => $this->getItemSetName(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

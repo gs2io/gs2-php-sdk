@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class DeleteAccountRequest extends Gs2BasicRequest {
     /** @var string */
     private $accountToken;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): DeleteAccountRequest {
 		$this->accountToken = $accountToken;
 		return $this;

@@ -27,6 +27,8 @@ class DeleteTakeOverByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $type;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -58,6 +60,16 @@ class DeleteTakeOverByUserIdRequest extends Gs2BasicRequest {
 		$this->type = $type;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DeleteTakeOverByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -79,7 +91,8 @@ class DeleteTakeOverByUserIdRequest extends Gs2BasicRequest {
         return (new DeleteTakeOverByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null);
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class DeleteTakeOverByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "type" => $this->getType(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -27,6 +27,8 @@ class PrepareDownloadByUserIdAndDataObjectNameRequest extends Gs2BasicRequest {
     /** @var string */
     private $dataObjectName;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -58,6 +60,16 @@ class PrepareDownloadByUserIdAndDataObjectNameRequest extends Gs2BasicRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): PrepareDownloadByUserIdAndDataObjectNameRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -79,7 +91,8 @@ class PrepareDownloadByUserIdAndDataObjectNameRequest extends Gs2BasicRequest {
         return (new PrepareDownloadByUserIdAndDataObjectNameRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null);
+            ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class PrepareDownloadByUserIdAndDataObjectNameRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "dataObjectName" => $this->getDataObjectName(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

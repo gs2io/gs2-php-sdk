@@ -29,6 +29,8 @@ class SetMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $maximumIdleMinutes;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class SetMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
 		$this->maximumIdleMinutes = $maximumIdleMinutes;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): SetMaximumIdleMinutesByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class SetMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
-            ->withMaximumIdleMinutes(array_key_exists('maximumIdleMinutes', $data) && $data['maximumIdleMinutes'] !== null ? $data['maximumIdleMinutes'] : null);
+            ->withMaximumIdleMinutes(array_key_exists('maximumIdleMinutes', $data) && $data['maximumIdleMinutes'] !== null ? $data['maximumIdleMinutes'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class SetMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "categoryName" => $this->getCategoryName(),
             "maximumIdleMinutes" => $this->getMaximumIdleMinutes(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

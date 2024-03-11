@@ -29,6 +29,8 @@ class DecreaseCounterByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $value;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class DecreaseCounterByUserIdRequest extends Gs2BasicRequest {
 		$this->value = $value;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DecreaseCounterByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class DecreaseCounterByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null);
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class DecreaseCounterByUserIdRequest extends Gs2BasicRequest {
             "counterName" => $this->getCounterName(),
             "userId" => $this->getUserId(),
             "value" => $this->getValue(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

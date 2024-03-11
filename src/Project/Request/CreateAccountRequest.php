@@ -30,67 +30,52 @@ class CreateAccountRequest extends Gs2BasicRequest {
     private $password;
     /** @var string */
     private $lang;
-
 	public function getEmail(): ?string {
 		return $this->email;
 	}
-
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
-
 	public function withEmail(?string $email): CreateAccountRequest {
 		$this->email = $email;
 		return $this;
 	}
-
 	public function getFullName(): ?string {
 		return $this->fullName;
 	}
-
 	public function setFullName(?string $fullName) {
 		$this->fullName = $fullName;
 	}
-
 	public function withFullName(?string $fullName): CreateAccountRequest {
 		$this->fullName = $fullName;
 		return $this;
 	}
-
 	public function getCompanyName(): ?string {
 		return $this->companyName;
 	}
-
 	public function setCompanyName(?string $companyName) {
 		$this->companyName = $companyName;
 	}
-
 	public function withCompanyName(?string $companyName): CreateAccountRequest {
 		$this->companyName = $companyName;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): CreateAccountRequest {
 		$this->password = $password;
 		return $this;
 	}
-
 	public function getLang(): ?string {
 		return $this->lang;
 	}
-
 	public function setLang(?string $lang) {
 		$this->lang = $lang;
 	}
-
 	public function withLang(?string $lang): CreateAccountRequest {
 		$this->lang = $lang;
 		return $this;

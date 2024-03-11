@@ -32,6 +32,8 @@ class SetRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $parameterValues;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -83,6 +85,16 @@ class SetRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
 		$this->parameterValues = $parameterValues;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): SetRarityParameterStatusByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -111,7 +123,8 @@ class SetRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
                     return RarityParameterValue::fromJson($item);
                 },
                 array_key_exists('parameterValues', $data) && $data['parameterValues'] !== null ? $data['parameterValues'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -126,6 +139,7 @@ class SetRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getParameterValues() !== null && $this->getParameterValues() !== null ? $this->getParameterValues() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

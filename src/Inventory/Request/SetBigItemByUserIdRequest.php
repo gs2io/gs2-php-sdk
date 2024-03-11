@@ -31,6 +31,8 @@ class SetBigItemByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $count;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class SetBigItemByUserIdRequest extends Gs2BasicRequest {
 		$this->count = $count;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): SetBigItemByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class SetBigItemByUserIdRequest extends Gs2BasicRequest {
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
-            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class SetBigItemByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "itemName" => $this->getItemName(),
             "count" => $this->getCount(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

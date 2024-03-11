@@ -30,6 +30,8 @@ class InvokeScriptRequest extends Gs2BasicRequest {
     private $args;
     /** @var RandomStatus */
     private $randomStatus;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
@@ -70,6 +72,16 @@ class InvokeScriptRequest extends Gs2BasicRequest {
 		$this->randomStatus = $randomStatus;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): InvokeScriptRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?InvokeScriptRequest {
         if ($data === null) {
@@ -79,7 +91,8 @@ class InvokeScriptRequest extends Gs2BasicRequest {
             ->withScriptId(array_key_exists('scriptId', $data) && $data['scriptId'] !== null ? $data['scriptId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
-            ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null);
+            ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -88,6 +101,7 @@ class InvokeScriptRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "args" => $this->getArgs(),
             "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

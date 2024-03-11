@@ -37,6 +37,8 @@ class PutPositionByUserIdRequest extends Gs2BasicRequest {
     /** @var float */
     private $r;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -108,6 +110,16 @@ class PutPositionByUserIdRequest extends Gs2BasicRequest {
 		$this->r = $r;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): PutPositionByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -133,7 +145,8 @@ class PutPositionByUserIdRequest extends Gs2BasicRequest {
             ->withLayerModelName(array_key_exists('layerModelName', $data) && $data['layerModelName'] !== null ? $data['layerModelName'] : null)
             ->withPosition(array_key_exists('position', $data) && $data['position'] !== null ? Position::fromJson($data['position']) : null)
             ->withVector(array_key_exists('vector', $data) && $data['vector'] !== null ? Vector::fromJson($data['vector']) : null)
-            ->withR(array_key_exists('r', $data) && $data['r'] !== null ? $data['r'] : null);
+            ->withR(array_key_exists('r', $data) && $data['r'] !== null ? $data['r'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -145,6 +158,7 @@ class PutPositionByUserIdRequest extends Gs2BasicRequest {
             "position" => $this->getPosition() !== null ? $this->getPosition()->toJson() : null,
             "vector" => $this->getVector() !== null ? $this->getVector()->toJson() : null,
             "r" => $this->getR(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

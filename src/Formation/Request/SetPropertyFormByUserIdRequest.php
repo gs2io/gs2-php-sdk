@@ -32,6 +32,8 @@ class SetPropertyFormByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $slots;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -83,6 +85,16 @@ class SetPropertyFormByUserIdRequest extends Gs2BasicRequest {
 		$this->slots = $slots;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): SetPropertyFormByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -111,7 +123,8 @@ class SetPropertyFormByUserIdRequest extends Gs2BasicRequest {
                     return Slot::fromJson($item);
                 },
                 array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -126,6 +139,7 @@ class SetPropertyFormByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -27,6 +27,8 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $receivedGlobalMessageNames;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -58,6 +60,16 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateReceivedByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -84,7 +96,8 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
                     return $item;
                 },
                 array_key_exists('receivedGlobalMessageNames', $data) && $data['receivedGlobalMessageNames'] !== null ? $data['receivedGlobalMessageNames'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -97,6 +110,7 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getReceivedGlobalMessageNames() !== null && $this->getReceivedGlobalMessageNames() !== null ? $this->getReceivedGlobalMessageNames() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

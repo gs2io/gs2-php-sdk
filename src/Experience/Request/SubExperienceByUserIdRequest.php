@@ -31,6 +31,8 @@ class SubExperienceByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $experienceValue;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class SubExperienceByUserIdRequest extends Gs2BasicRequest {
 		$this->experienceValue = $experienceValue;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): SubExperienceByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class SubExperienceByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null);
+            ->withExperienceValue(array_key_exists('experienceValue', $data) && $data['experienceValue'] !== null ? $data['experienceValue'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class SubExperienceByUserIdRequest extends Gs2BasicRequest {
             "experienceName" => $this->getExperienceName(),
             "propertyId" => $this->getPropertyId(),
             "experienceValue" => $this->getExperienceValue(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

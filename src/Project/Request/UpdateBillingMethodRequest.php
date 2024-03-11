@@ -26,41 +26,32 @@ class UpdateBillingMethodRequest extends Gs2BasicRequest {
     private $billingMethodName;
     /** @var string */
     private $description;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): UpdateBillingMethodRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
-
 	public function getBillingMethodName(): ?string {
 		return $this->billingMethodName;
 	}
-
 	public function setBillingMethodName(?string $billingMethodName) {
 		$this->billingMethodName = $billingMethodName;
 	}
-
 	public function withBillingMethodName(?string $billingMethodName): UpdateBillingMethodRequest {
 		$this->billingMethodName = $billingMethodName;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): UpdateBillingMethodRequest {
 		$this->description = $description;
 		return $this;

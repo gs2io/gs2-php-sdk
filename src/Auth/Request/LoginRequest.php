@@ -24,6 +24,8 @@ class LoginRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $timeOffset;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -44,6 +46,16 @@ class LoginRequest extends Gs2BasicRequest {
 		$this->timeOffset = $timeOffset;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): LoginRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?LoginRequest {
         if ($data === null) {
@@ -51,13 +63,15 @@ class LoginRequest extends Gs2BasicRequest {
         }
         return (new LoginRequest())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null);
+            ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
             "timeOffset" => $this->getTimeOffset(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

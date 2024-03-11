@@ -29,6 +29,8 @@ class PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest extends Gs2Ba
     /** @var string */
     private $generation;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest extends Gs2Ba
 		$this->generation = $generation;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest extends Gs2Ba
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
-            ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null);
+            ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest extends Gs2Ba
             "userId" => $this->getUserId(),
             "dataObjectName" => $this->getDataObjectName(),
             "generation" => $this->getGeneration(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

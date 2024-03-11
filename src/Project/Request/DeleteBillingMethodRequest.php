@@ -24,28 +24,22 @@ class DeleteBillingMethodRequest extends Gs2BasicRequest {
     private $accountToken;
     /** @var string */
     private $billingMethodName;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): DeleteBillingMethodRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
-
 	public function getBillingMethodName(): ?string {
 		return $this->billingMethodName;
 	}
-
 	public function setBillingMethodName(?string $billingMethodName) {
 		$this->billingMethodName = $billingMethodName;
 	}
-
 	public function withBillingMethodName(?string $billingMethodName): DeleteBillingMethodRequest {
 		$this->billingMethodName = $billingMethodName;
 		return $this;

@@ -30,67 +30,52 @@ class CreateBillingMethodRequest extends Gs2BasicRequest {
     private $cardCustomerId;
     /** @var string */
     private $partnerId;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): CreateBillingMethodRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
-
 	public function getDescription(): ?string {
 		return $this->description;
 	}
-
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
-
 	public function withDescription(?string $description): CreateBillingMethodRequest {
 		$this->description = $description;
 		return $this;
 	}
-
 	public function getMethodType(): ?string {
 		return $this->methodType;
 	}
-
 	public function setMethodType(?string $methodType) {
 		$this->methodType = $methodType;
 	}
-
 	public function withMethodType(?string $methodType): CreateBillingMethodRequest {
 		$this->methodType = $methodType;
 		return $this;
 	}
-
 	public function getCardCustomerId(): ?string {
 		return $this->cardCustomerId;
 	}
-
 	public function setCardCustomerId(?string $cardCustomerId) {
 		$this->cardCustomerId = $cardCustomerId;
 	}
-
 	public function withCardCustomerId(?string $cardCustomerId): CreateBillingMethodRequest {
 		$this->cardCustomerId = $cardCustomerId;
 		return $this;
 	}
-
 	public function getPartnerId(): ?string {
 		return $this->partnerId;
 	}
-
 	public function setPartnerId(?string $partnerId) {
 		$this->partnerId = $partnerId;
 	}
-
 	public function withPartnerId(?string $partnerId): CreateBillingMethodRequest {
 		$this->partnerId = $partnerId;
 		return $this;

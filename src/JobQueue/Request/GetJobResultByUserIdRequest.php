@@ -28,6 +28,8 @@ class GetJobResultByUserIdRequest extends Gs2BasicRequest {
     private $jobName;
     /** @var int */
     private $tryNumber;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -68,6 +70,16 @@ class GetJobResultByUserIdRequest extends Gs2BasicRequest {
 		$this->tryNumber = $tryNumber;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetJobResultByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetJobResultByUserIdRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class GetJobResultByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withJobName(array_key_exists('jobName', $data) && $data['jobName'] !== null ? $data['jobName'] : null)
-            ->withTryNumber(array_key_exists('tryNumber', $data) && $data['tryNumber'] !== null ? $data['tryNumber'] : null);
+            ->withTryNumber(array_key_exists('tryNumber', $data) && $data['tryNumber'] !== null ? $data['tryNumber'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class GetJobResultByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "jobName" => $this->getJobName(),
             "tryNumber" => $this->getTryNumber(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

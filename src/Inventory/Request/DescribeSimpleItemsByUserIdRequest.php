@@ -30,6 +30,8 @@ class DescribeSimpleItemsByUserIdRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -80,6 +82,16 @@ class DescribeSimpleItemsByUserIdRequest extends Gs2BasicRequest {
 		$this->limit = $limit;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DescribeSimpleItemsByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DescribeSimpleItemsByUserIdRequest {
         if ($data === null) {
@@ -90,7 +102,8 @@ class DescribeSimpleItemsByUserIdRequest extends Gs2BasicRequest {
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
-            ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
+            ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -100,6 +113,7 @@ class DescribeSimpleItemsByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

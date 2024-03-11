@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class VerifyRequest extends Gs2BasicRequest {
     /** @var string */
     private $verifyToken;
-
 	public function getVerifyToken(): ?string {
 		return $this->verifyToken;
 	}
-
 	public function setVerifyToken(?string $verifyToken) {
 		$this->verifyToken = $verifyToken;
 	}
-
 	public function withVerifyToken(?string $verifyToken): VerifyRequest {
 		$this->verifyToken = $verifyToken;
 		return $this;

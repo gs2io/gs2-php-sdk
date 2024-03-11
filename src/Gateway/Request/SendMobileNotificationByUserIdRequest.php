@@ -31,6 +31,8 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $sound;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
 		$this->sound = $sound;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): SendMobileNotificationByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withSubject(array_key_exists('subject', $data) && $data['subject'] !== null ? $data['subject'] : null)
             ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null)
-            ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null);
+            ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
             "subject" => $this->getSubject(),
             "payload" => $this->getPayload(),
             "sound" => $this->getSound(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

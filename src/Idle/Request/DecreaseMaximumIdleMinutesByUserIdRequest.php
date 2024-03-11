@@ -29,6 +29,8 @@ class DecreaseMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $decreaseMinutes;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class DecreaseMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
 		$this->decreaseMinutes = $decreaseMinutes;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DecreaseMaximumIdleMinutesByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class DecreaseMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
-            ->withDecreaseMinutes(array_key_exists('decreaseMinutes', $data) && $data['decreaseMinutes'] !== null ? $data['decreaseMinutes'] : null);
+            ->withDecreaseMinutes(array_key_exists('decreaseMinutes', $data) && $data['decreaseMinutes'] !== null ? $data['decreaseMinutes'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class DecreaseMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "categoryName" => $this->getCategoryName(),
             "decreaseMinutes" => $this->getDecreaseMinutes(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

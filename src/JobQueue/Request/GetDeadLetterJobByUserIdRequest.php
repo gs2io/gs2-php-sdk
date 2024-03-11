@@ -26,6 +26,8 @@ class GetDeadLetterJobByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $deadLetterJobName;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,16 @@ class GetDeadLetterJobByUserIdRequest extends Gs2BasicRequest {
 		$this->deadLetterJobName = $deadLetterJobName;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetDeadLetterJobByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetDeadLetterJobByUserIdRequest {
         if ($data === null) {
@@ -64,7 +76,8 @@ class GetDeadLetterJobByUserIdRequest extends Gs2BasicRequest {
         return (new GetDeadLetterJobByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withDeadLetterJobName(array_key_exists('deadLetterJobName', $data) && $data['deadLetterJobName'] !== null ? $data['deadLetterJobName'] : null);
+            ->withDeadLetterJobName(array_key_exists('deadLetterJobName', $data) && $data['deadLetterJobName'] !== null ? $data['deadLetterJobName'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -72,6 +85,7 @@ class GetDeadLetterJobByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "deadLetterJobName" => $this->getDeadLetterJobName(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

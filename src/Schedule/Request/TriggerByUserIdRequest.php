@@ -31,6 +31,8 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $ttl;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
 		$this->ttl = $ttl;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): TriggerByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
             ->withTriggerName(array_key_exists('triggerName', $data) && $data['triggerName'] !== null ? $data['triggerName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTriggerStrategy(array_key_exists('triggerStrategy', $data) && $data['triggerStrategy'] !== null ? $data['triggerStrategy'] : null)
-            ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null);
+            ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "triggerStrategy" => $this->getTriggerStrategy(),
             "ttl" => $this->getTtl(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

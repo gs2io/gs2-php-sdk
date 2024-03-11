@@ -24,28 +24,22 @@ class GetBillingMethodRequest extends Gs2BasicRequest {
     private $accountToken;
     /** @var string */
     private $billingMethodName;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): GetBillingMethodRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
-
 	public function getBillingMethodName(): ?string {
 		return $this->billingMethodName;
 	}
-
 	public function setBillingMethodName(?string $billingMethodName) {
 		$this->billingMethodName = $billingMethodName;
 	}
-
 	public function withBillingMethodName(?string $billingMethodName): GetBillingMethodRequest {
 		$this->billingMethodName = $billingMethodName;
 		return $this;

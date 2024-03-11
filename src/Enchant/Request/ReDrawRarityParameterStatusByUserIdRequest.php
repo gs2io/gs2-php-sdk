@@ -31,6 +31,8 @@ class ReDrawRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $fixedParameterNames;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class ReDrawRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
 		$this->fixedParameterNames = $fixedParameterNames;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): ReDrawRarityParameterStatusByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -110,7 +122,8 @@ class ReDrawRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
                     return $item;
                 },
                 array_key_exists('fixedParameterNames', $data) && $data['fixedParameterNames'] !== null ? $data['fixedParameterNames'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -125,6 +138,7 @@ class ReDrawRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getFixedParameterNames() !== null && $this->getFixedParameterNames() !== null ? $this->getFixedParameterNames() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

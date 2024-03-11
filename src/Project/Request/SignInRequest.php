@@ -24,28 +24,22 @@ class SignInRequest extends Gs2BasicRequest {
     private $email;
     /** @var string */
     private $password;
-
 	public function getEmail(): ?string {
 		return $this->email;
 	}
-
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
-
 	public function withEmail(?string $email): SignInRequest {
 		$this->email = $email;
 		return $this;
 	}
-
 	public function getPassword(): ?string {
 		return $this->password;
 	}
-
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
-
 	public function withPassword(?string $password): SignInRequest {
 		$this->password = $password;
 		return $this;

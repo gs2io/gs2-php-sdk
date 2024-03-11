@@ -29,6 +29,8 @@ class DeleteFormByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $index;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class DeleteFormByUserIdRequest extends Gs2BasicRequest {
 		$this->index = $index;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DeleteFormByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class DeleteFormByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
-            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null);
+            ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class DeleteFormByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "moldModelName" => $this->getMoldModelName(),
             "index" => $this->getIndex(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -31,6 +31,8 @@ class DoMatchmakingByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $matchmakingContextToken;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -72,6 +74,16 @@ class DoMatchmakingByUserIdRequest extends Gs2BasicRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DoMatchmakingByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -94,7 +106,8 @@ class DoMatchmakingByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPlayer(array_key_exists('player', $data) && $data['player'] !== null ? Player::fromJson($data['player']) : null)
-            ->withMatchmakingContextToken(array_key_exists('matchmakingContextToken', $data) && $data['matchmakingContextToken'] !== null ? $data['matchmakingContextToken'] : null);
+            ->withMatchmakingContextToken(array_key_exists('matchmakingContextToken', $data) && $data['matchmakingContextToken'] !== null ? $data['matchmakingContextToken'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -103,6 +116,7 @@ class DoMatchmakingByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "player" => $this->getPlayer() !== null ? $this->getPlayer()->toJson() : null,
             "matchmakingContextToken" => $this->getMatchmakingContextToken(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

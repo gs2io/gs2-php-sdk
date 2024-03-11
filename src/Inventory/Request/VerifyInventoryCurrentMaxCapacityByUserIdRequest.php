@@ -33,6 +33,8 @@ class VerifyInventoryCurrentMaxCapacityByUserIdRequest extends Gs2BasicRequest {
     /** @var bool */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,16 @@ class VerifyInventoryCurrentMaxCapacityByUserIdRequest extends Gs2BasicRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyInventoryCurrentMaxCapacityByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -118,7 +130,8 @@ class VerifyInventoryCurrentMaxCapacityByUserIdRequest extends Gs2BasicRequest {
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withCurrentInventoryMaxCapacity(array_key_exists('currentInventoryMaxCapacity', $data) && $data['currentInventoryMaxCapacity'] !== null ? $data['currentInventoryMaxCapacity'] : null)
-            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null);
+            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -129,6 +142,7 @@ class VerifyInventoryCurrentMaxCapacityByUserIdRequest extends Gs2BasicRequest {
             "verifyType" => $this->getVerifyType(),
             "currentInventoryMaxCapacity" => $this->getCurrentInventoryMaxCapacity(),
             "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

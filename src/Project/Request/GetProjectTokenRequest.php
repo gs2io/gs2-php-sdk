@@ -24,28 +24,22 @@ class GetProjectTokenRequest extends Gs2BasicRequest {
     private $projectName;
     /** @var string */
     private $accountToken;
-
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
-
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
-
 	public function withProjectName(?string $projectName): GetProjectTokenRequest {
 		$this->projectName = $projectName;
 		return $this;
 	}
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): GetProjectTokenRequest {
 		$this->accountToken = $accountToken;
 		return $this;

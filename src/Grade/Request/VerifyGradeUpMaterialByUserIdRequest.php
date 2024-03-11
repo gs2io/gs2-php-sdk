@@ -33,6 +33,8 @@ class VerifyGradeUpMaterialByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $materialPropertyId;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -94,6 +96,16 @@ class VerifyGradeUpMaterialByUserIdRequest extends Gs2BasicRequest {
 		$this->materialPropertyId = $materialPropertyId;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyGradeUpMaterialByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -118,7 +130,8 @@ class VerifyGradeUpMaterialByUserIdRequest extends Gs2BasicRequest {
             ->withGradeName(array_key_exists('gradeName', $data) && $data['gradeName'] !== null ? $data['gradeName'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withMaterialPropertyId(array_key_exists('materialPropertyId', $data) && $data['materialPropertyId'] !== null ? $data['materialPropertyId'] : null);
+            ->withMaterialPropertyId(array_key_exists('materialPropertyId', $data) && $data['materialPropertyId'] !== null ? $data['materialPropertyId'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -129,6 +142,7 @@ class VerifyGradeUpMaterialByUserIdRequest extends Gs2BasicRequest {
             "verifyType" => $this->getVerifyType(),
             "propertyId" => $this->getPropertyId(),
             "materialPropertyId" => $this->getMaterialPropertyId(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

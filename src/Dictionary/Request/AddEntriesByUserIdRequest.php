@@ -27,6 +27,8 @@ class AddEntriesByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $entryModelNames;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -58,6 +60,16 @@ class AddEntriesByUserIdRequest extends Gs2BasicRequest {
 		$this->entryModelNames = $entryModelNames;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): AddEntriesByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -84,7 +96,8 @@ class AddEntriesByUserIdRequest extends Gs2BasicRequest {
                     return $item;
                 },
                 array_key_exists('entryModelNames', $data) && $data['entryModelNames'] !== null ? $data['entryModelNames'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -97,6 +110,7 @@ class AddEntriesByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getEntryModelNames() !== null && $this->getEntryModelNames() !== null ? $this->getEntryModelNames() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

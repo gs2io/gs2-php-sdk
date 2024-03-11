@@ -29,6 +29,8 @@ class DistributeRequest extends Gs2BasicRequest {
     private $userId;
     /** @var DistributeResource */
     private $distributeResource;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -69,6 +71,16 @@ class DistributeRequest extends Gs2BasicRequest {
 		$this->distributeResource = $distributeResource;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DistributeRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DistributeRequest {
         if ($data === null) {
@@ -78,7 +90,8 @@ class DistributeRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDistributorName(array_key_exists('distributorName', $data) && $data['distributorName'] !== null ? $data['distributorName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withDistributeResource(array_key_exists('distributeResource', $data) && $data['distributeResource'] !== null ? DistributeResource::fromJson($data['distributeResource']) : null);
+            ->withDistributeResource(array_key_exists('distributeResource', $data) && $data['distributeResource'] !== null ? DistributeResource::fromJson($data['distributeResource']) : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class DistributeRequest extends Gs2BasicRequest {
             "distributorName" => $this->getDistributorName(),
             "userId" => $this->getUserId(),
             "distributeResource" => $this->getDistributeResource() !== null ? $this->getDistributeResource()->toJson() : null,
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

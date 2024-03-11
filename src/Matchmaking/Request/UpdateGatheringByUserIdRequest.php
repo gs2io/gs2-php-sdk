@@ -30,6 +30,8 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $attributeRanges;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -71,6 +73,16 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
 		$this->attributeRanges = $attributeRanges;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateGatheringByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -98,7 +110,8 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
                     return AttributeRange::fromJson($item);
                 },
                 array_key_exists('attributeRanges', $data) && $data['attributeRanges'] !== null ? $data['attributeRanges'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -112,6 +125,7 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getAttributeRanges() !== null && $this->getAttributeRanges() !== null ? $this->getAttributeRanges() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

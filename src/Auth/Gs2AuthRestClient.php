@@ -33,6 +33,8 @@ use Gs2\Auth\Request\LoginRequest;
 use Gs2\Auth\Result\LoginResult;
 use Gs2\Auth\Request\LoginBySignatureRequest;
 use Gs2\Auth\Result\LoginBySignatureResult;
+use Gs2\Auth\Request\IssueTimeOffsetTokenByUserIdRequest;
+use Gs2\Auth\Result\IssueTimeOffsetTokenByUserIdResult;
 
 class LoginTask extends Gs2RestSessionTask {
 
@@ -87,6 +89,9 @@ class LoginTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -149,6 +154,68 @@ class LoginBySignatureTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IssueTimeOffsetTokenByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IssueTimeOffsetTokenByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IssueTimeOffsetTokenByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param IssueTimeOffsetTokenByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IssueTimeOffsetTokenByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IssueTimeOffsetTokenByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "auth", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/timeoffset/token";
+
+        $json = [];
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getTimeOffset() !== null) {
+            $json["timeOffset"] = $this->request->getTimeOffset();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -222,6 +289,33 @@ class Gs2AuthRestClient extends AbstractGs2Client {
             LoginBySignatureRequest $request
     ): LoginBySignatureResult {
         return $this->loginBySignatureAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IssueTimeOffsetTokenByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function issueTimeOffsetTokenByUserIdAsync(
+            IssueTimeOffsetTokenByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IssueTimeOffsetTokenByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IssueTimeOffsetTokenByUserIdRequest $request
+     * @return IssueTimeOffsetTokenByUserIdResult
+     */
+    public function issueTimeOffsetTokenByUserId (
+            IssueTimeOffsetTokenByUserIdRequest $request
+    ): IssueTimeOffsetTokenByUserIdResult {
+        return $this->issueTimeOffsetTokenByUserIdAsync(
             $request
         )->wait();
     }

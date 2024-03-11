@@ -32,6 +32,8 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
     private $uniqueId;
     /** @var string */
     private $additionalScopeName;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -92,6 +94,16 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
 		$this->additionalScopeName = $additionalScopeName;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetRankingByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetRankingByUserIdRequest {
         if ($data === null) {
@@ -103,7 +115,8 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withScorerUserId(array_key_exists('scorerUserId', $data) && $data['scorerUserId'] !== null ? $data['scorerUserId'] : null)
             ->withUniqueId(array_key_exists('uniqueId', $data) && $data['uniqueId'] !== null ? $data['uniqueId'] : null)
-            ->withAdditionalScopeName(array_key_exists('additionalScopeName', $data) && $data['additionalScopeName'] !== null ? $data['additionalScopeName'] : null);
+            ->withAdditionalScopeName(array_key_exists('additionalScopeName', $data) && $data['additionalScopeName'] !== null ? $data['additionalScopeName'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -114,6 +127,7 @@ class GetRankingByUserIdRequest extends Gs2BasicRequest {
             "scorerUserId" => $this->getScorerUserId(),
             "uniqueId" => $this->getUniqueId(),
             "additionalScopeName" => $this->getAdditionalScopeName(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

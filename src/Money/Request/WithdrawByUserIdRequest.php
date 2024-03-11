@@ -31,6 +31,8 @@ class WithdrawByUserIdRequest extends Gs2BasicRequest {
     /** @var bool */
     private $paidOnly;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class WithdrawByUserIdRequest extends Gs2BasicRequest {
 		$this->paidOnly = $paidOnly;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): WithdrawByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class WithdrawByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
             ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
-            ->withPaidOnly(array_key_exists('paidOnly', $data) ? $data['paidOnly'] : null);
+            ->withPaidOnly(array_key_exists('paidOnly', $data) ? $data['paidOnly'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class WithdrawByUserIdRequest extends Gs2BasicRequest {
             "slot" => $this->getSlot(),
             "count" => $this->getCount(),
             "paidOnly" => $this->getPaidOnly(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

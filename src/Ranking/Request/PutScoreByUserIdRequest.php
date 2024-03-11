@@ -31,6 +31,8 @@ class PutScoreByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $metadata;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class PutScoreByUserIdRequest extends Gs2BasicRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): PutScoreByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class PutScoreByUserIdRequest extends Gs2BasicRequest {
             ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
-            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class PutScoreByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "score" => $this->getScore(),
             "metadata" => $this->getMetadata(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

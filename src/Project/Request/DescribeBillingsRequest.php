@@ -32,80 +32,62 @@ class DescribeBillingsRequest extends Gs2BasicRequest {
     private $region;
     /** @var string */
     private $service;
-
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
-
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
-
 	public function withAccountToken(?string $accountToken): DescribeBillingsRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
-
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
-
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
-
 	public function withProjectName(?string $projectName): DescribeBillingsRequest {
 		$this->projectName = $projectName;
 		return $this;
 	}
-
 	public function getYear(): ?int {
 		return $this->year;
 	}
-
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
-
 	public function withYear(?int $year): DescribeBillingsRequest {
 		$this->year = $year;
 		return $this;
 	}
-
 	public function getMonth(): ?int {
 		return $this->month;
 	}
-
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
-
 	public function withMonth(?int $month): DescribeBillingsRequest {
 		$this->month = $month;
 		return $this;
 	}
-
 	public function getRegion(): ?string {
 		return $this->region;
 	}
-
 	public function setRegion(?string $region) {
 		$this->region = $region;
 	}
-
 	public function withRegion(?string $region): DescribeBillingsRequest {
 		$this->region = $region;
 		return $this;
 	}
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): DescribeBillingsRequest {
 		$this->service = $service;
 		return $this;

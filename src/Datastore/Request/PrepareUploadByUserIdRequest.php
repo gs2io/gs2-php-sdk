@@ -35,6 +35,8 @@ class PrepareUploadByUserIdRequest extends Gs2BasicRequest {
     /** @var bool */
     private $updateIfExists;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -106,6 +108,16 @@ class PrepareUploadByUserIdRequest extends Gs2BasicRequest {
 		$this->updateIfExists = $updateIfExists;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): PrepareUploadByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -136,7 +148,8 @@ class PrepareUploadByUserIdRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
-            ->withUpdateIfExists(array_key_exists('updateIfExists', $data) ? $data['updateIfExists'] : null);
+            ->withUpdateIfExists(array_key_exists('updateIfExists', $data) ? $data['updateIfExists'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -153,6 +166,7 @@ class PrepareUploadByUserIdRequest extends Gs2BasicRequest {
                 $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
             ),
             "updateIfExists" => $this->getUpdateIfExists(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

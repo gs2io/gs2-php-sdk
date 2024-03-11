@@ -35,6 +35,8 @@ class VerifyRankCapByUserIdRequest extends Gs2BasicRequest {
     /** @var bool */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -106,6 +108,16 @@ class VerifyRankCapByUserIdRequest extends Gs2BasicRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyRankCapByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -131,7 +143,8 @@ class VerifyRankCapByUserIdRequest extends Gs2BasicRequest {
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withRankCapValue(array_key_exists('rankCapValue', $data) && $data['rankCapValue'] !== null ? $data['rankCapValue'] : null)
-            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null);
+            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +156,7 @@ class VerifyRankCapByUserIdRequest extends Gs2BasicRequest {
             "propertyId" => $this->getPropertyId(),
             "rankCapValue" => $this->getRankCapValue(),
             "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

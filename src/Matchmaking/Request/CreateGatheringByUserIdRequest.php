@@ -42,6 +42,8 @@ class CreateGatheringByUserIdRequest extends Gs2BasicRequest {
     /** @var TimeSpan */
     private $expiresAtTimeSpan;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -123,6 +125,16 @@ class CreateGatheringByUserIdRequest extends Gs2BasicRequest {
 		$this->expiresAtTimeSpan = $expiresAtTimeSpan;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): CreateGatheringByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -164,7 +176,8 @@ class CreateGatheringByUserIdRequest extends Gs2BasicRequest {
                 array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
             ))
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
-            ->withExpiresAtTimeSpan(array_key_exists('expiresAtTimeSpan', $data) && $data['expiresAtTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresAtTimeSpan']) : null);
+            ->withExpiresAtTimeSpan(array_key_exists('expiresAtTimeSpan', $data) && $data['expiresAtTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresAtTimeSpan']) : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -192,6 +205,7 @@ class CreateGatheringByUserIdRequest extends Gs2BasicRequest {
             ),
             "expiresAt" => $this->getExpiresAt(),
             "expiresAtTimeSpan" => $this->getExpiresAtTimeSpan() !== null ? $this->getExpiresAtTimeSpan()->toJson() : null,
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -31,6 +31,8 @@ class AcquireBigItemByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $acquireCount;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class AcquireBigItemByUserIdRequest extends Gs2BasicRequest {
 		$this->acquireCount = $acquireCount;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): AcquireBigItemByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class AcquireBigItemByUserIdRequest extends Gs2BasicRequest {
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
-            ->withAcquireCount(array_key_exists('acquireCount', $data) && $data['acquireCount'] !== null ? $data['acquireCount'] : null);
+            ->withAcquireCount(array_key_exists('acquireCount', $data) && $data['acquireCount'] !== null ? $data['acquireCount'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class AcquireBigItemByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "itemName" => $this->getItemName(),
             "acquireCount" => $this->getAcquireCount(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

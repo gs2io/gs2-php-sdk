@@ -31,6 +31,8 @@ class DepositByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $count;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class DepositByUserIdRequest extends Gs2BasicRequest {
 		$this->count = $count;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DepositByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class DepositByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
             ->withPrice(array_key_exists('price', $data) && $data['price'] !== null ? $data['price'] : null)
-            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null);
+            ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class DepositByUserIdRequest extends Gs2BasicRequest {
             "slot" => $this->getSlot(),
             "price" => $this->getPrice(),
             "count" => $this->getCount(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

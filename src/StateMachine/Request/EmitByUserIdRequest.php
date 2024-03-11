@@ -31,6 +31,8 @@ class EmitByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $args;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -82,6 +84,16 @@ class EmitByUserIdRequest extends Gs2BasicRequest {
 		$this->args = $args;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): EmitByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -105,7 +117,8 @@ class EmitByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withStatusName(array_key_exists('statusName', $data) && $data['statusName'] !== null ? $data['statusName'] : null)
             ->withEventName(array_key_exists('eventName', $data) && $data['eventName'] !== null ? $data['eventName'] : null)
-            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null);
+            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +128,7 @@ class EmitByUserIdRequest extends Gs2BasicRequest {
             "statusName" => $this->getStatusName(),
             "eventName" => $this->getEventName(),
             "args" => $this->getArgs(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

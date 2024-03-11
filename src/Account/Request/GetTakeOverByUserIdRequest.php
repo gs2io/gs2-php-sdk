@@ -26,6 +26,8 @@ class GetTakeOverByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var int */
     private $type;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,16 @@ class GetTakeOverByUserIdRequest extends Gs2BasicRequest {
 		$this->type = $type;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetTakeOverByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetTakeOverByUserIdRequest {
         if ($data === null) {
@@ -64,7 +76,8 @@ class GetTakeOverByUserIdRequest extends Gs2BasicRequest {
         return (new GetTakeOverByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null);
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -72,6 +85,7 @@ class GetTakeOverByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "type" => $this->getType(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

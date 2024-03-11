@@ -34,6 +34,8 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
     /** @var bool */
     private $force;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -95,6 +97,16 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
 		$this->force = $force;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): CreateProgressByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -124,7 +136,8 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
             ))
-            ->withForce(array_key_exists('force', $data) ? $data['force'] : null);
+            ->withForce(array_key_exists('force', $data) ? $data['force'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -140,6 +153,7 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
                 $this->getMaterials() !== null && $this->getMaterials() !== null ? $this->getMaterials() : []
             ),
             "force" => $this->getForce(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -25,6 +25,8 @@ class CheckImportUserDataByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $uploadToken;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getUserId(): ?string {
 		return $this->userId;
@@ -44,6 +46,16 @@ class CheckImportUserDataByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withUploadToken(?string $uploadToken): CheckImportUserDataByUserIdRequest {
 		$this->uploadToken = $uploadToken;
+		return $this;
+	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): CheckImportUserDataByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;
 	}
 
@@ -66,13 +78,15 @@ class CheckImportUserDataByUserIdRequest extends Gs2BasicRequest {
         }
         return (new CheckImportUserDataByUserIdRequest())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null);
+            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
             "uploadToken" => $this->getUploadToken(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

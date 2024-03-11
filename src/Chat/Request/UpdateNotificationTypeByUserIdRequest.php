@@ -30,6 +30,8 @@ class UpdateNotificationTypeByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $notificationTypes;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -71,6 +73,16 @@ class UpdateNotificationTypeByUserIdRequest extends Gs2BasicRequest {
 		$this->notificationTypes = $notificationTypes;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateNotificationTypeByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -98,7 +110,8 @@ class UpdateNotificationTypeByUserIdRequest extends Gs2BasicRequest {
                     return NotificationType::fromJson($item);
                 },
                 array_key_exists('notificationTypes', $data) && $data['notificationTypes'] !== null ? $data['notificationTypes'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -112,6 +125,7 @@ class UpdateNotificationTypeByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getNotificationTypes() !== null && $this->getNotificationTypes() !== null ? $this->getNotificationTypes() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

@@ -29,6 +29,8 @@ class UnlockIncrementalExchangeByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $lockTransactionId;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class UnlockIncrementalExchangeByUserIdRequest extends Gs2BasicRequest {
 		$this->lockTransactionId = $lockTransactionId;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): UnlockIncrementalExchangeByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -92,7 +104,8 @@ class UnlockIncrementalExchangeByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withLockTransactionId(array_key_exists('lockTransactionId', $data) && $data['lockTransactionId'] !== null ? $data['lockTransactionId'] : null);
+            ->withLockTransactionId(array_key_exists('lockTransactionId', $data) && $data['lockTransactionId'] !== null ? $data['lockTransactionId'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -101,6 +114,7 @@ class UnlockIncrementalExchangeByUserIdRequest extends Gs2BasicRequest {
             "rateName" => $this->getRateName(),
             "userId" => $this->getUserId(),
             "lockTransactionId" => $this->getLockTransactionId(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

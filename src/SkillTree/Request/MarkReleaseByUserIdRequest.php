@@ -29,6 +29,8 @@ class MarkReleaseByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $nodeModelNames;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -70,6 +72,16 @@ class MarkReleaseByUserIdRequest extends Gs2BasicRequest {
 		$this->nodeModelNames = $nodeModelNames;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): MarkReleaseByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -97,7 +109,8 @@ class MarkReleaseByUserIdRequest extends Gs2BasicRequest {
                     return $item;
                 },
                 array_key_exists('nodeModelNames', $data) && $data['nodeModelNames'] !== null ? $data['nodeModelNames'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -111,6 +124,7 @@ class MarkReleaseByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getNodeModelNames() !== null && $this->getNodeModelNames() !== null ? $this->getNodeModelNames() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

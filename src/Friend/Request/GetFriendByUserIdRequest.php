@@ -28,6 +28,8 @@ class GetFriendByUserIdRequest extends Gs2BasicRequest {
     private $targetUserId;
     /** @var bool */
     private $withProfile;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -68,6 +70,16 @@ class GetFriendByUserIdRequest extends Gs2BasicRequest {
 		$this->withProfile = $withProfile;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetFriendByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetFriendByUserIdRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class GetFriendByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null)
-            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null);
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class GetFriendByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "targetUserId" => $this->getTargetUserId(),
             "withProfile" => $this->getWithProfile(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

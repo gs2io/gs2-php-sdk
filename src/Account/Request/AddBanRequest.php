@@ -28,6 +28,8 @@ class AddBanRequest extends Gs2BasicRequest {
     /** @var BanStatus */
     private $banStatus;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -59,6 +61,16 @@ class AddBanRequest extends Gs2BasicRequest {
 		$this->banStatus = $banStatus;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): AddBanRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -80,7 +92,8 @@ class AddBanRequest extends Gs2BasicRequest {
         return (new AddBanRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withBanStatus(array_key_exists('banStatus', $data) && $data['banStatus'] !== null ? BanStatus::fromJson($data['banStatus']) : null);
+            ->withBanStatus(array_key_exists('banStatus', $data) && $data['banStatus'] !== null ? BanStatus::fromJson($data['banStatus']) : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -88,6 +101,7 @@ class AddBanRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "banStatus" => $this->getBanStatus() !== null ? $this->getBanStatus()->toJson() : null,
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

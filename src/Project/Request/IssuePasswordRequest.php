@@ -22,15 +22,12 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class IssuePasswordRequest extends Gs2BasicRequest {
     /** @var string */
     private $issuePasswordToken;
-
 	public function getIssuePasswordToken(): ?string {
 		return $this->issuePasswordToken;
 	}
-
 	public function setIssuePasswordToken(?string $issuePasswordToken) {
 		$this->issuePasswordToken = $issuePasswordToken;
 	}
-
 	public function withIssuePasswordToken(?string $issuePasswordToken): IssuePasswordRequest {
 		$this->issuePasswordToken = $issuePasswordToken;
 		return $this;

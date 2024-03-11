@@ -30,6 +30,8 @@ class GetFormWithSignatureByUserIdRequest extends Gs2BasicRequest {
     private $index;
     /** @var string */
     private $keyId;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -80,6 +82,16 @@ class GetFormWithSignatureByUserIdRequest extends Gs2BasicRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetFormWithSignatureByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetFormWithSignatureByUserIdRequest {
         if ($data === null) {
@@ -90,7 +102,8 @@ class GetFormWithSignatureByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
             ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -100,6 +113,7 @@ class GetFormWithSignatureByUserIdRequest extends Gs2BasicRequest {
             "moldModelName" => $this->getMoldModelName(),
             "index" => $this->getIndex(),
             "keyId" => $this->getKeyId(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

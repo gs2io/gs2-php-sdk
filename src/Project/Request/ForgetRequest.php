@@ -24,28 +24,22 @@ class ForgetRequest extends Gs2BasicRequest {
     private $email;
     /** @var string */
     private $lang;
-
 	public function getEmail(): ?string {
 		return $this->email;
 	}
-
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
-
 	public function withEmail(?string $email): ForgetRequest {
 		$this->email = $email;
 		return $this;
 	}
-
 	public function getLang(): ?string {
 		return $this->lang;
 	}
-
 	public function setLang(?string $lang) {
 		$this->lang = $lang;
 	}
-
 	public function withLang(?string $lang): ForgetRequest {
 		$this->lang = $lang;
 		return $this;

@@ -32,6 +32,8 @@ class ReportByUserIdRequest extends Gs2BasicRequest {
     /** @var array */
     private $events;
     /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -73,6 +75,16 @@ class ReportByUserIdRequest extends Gs2BasicRequest {
 		$this->events = $events;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): ReportByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -100,7 +112,8 @@ class ReportByUserIdRequest extends Gs2BasicRequest {
                     return Event::fromJson($item);
                 },
                 array_key_exists('events', $data) && $data['events'] !== null ? $data['events'] : []
-            ));
+            ))
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -114,6 +127,7 @@ class ReportByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getEvents() !== null && $this->getEvents() !== null ? $this->getEvents() : []
             ),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

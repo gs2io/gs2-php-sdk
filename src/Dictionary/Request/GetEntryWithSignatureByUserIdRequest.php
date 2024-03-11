@@ -28,6 +28,8 @@ class GetEntryWithSignatureByUserIdRequest extends Gs2BasicRequest {
     private $entryModelName;
     /** @var string */
     private $keyId;
+    /** @var string */
+    private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -68,6 +70,16 @@ class GetEntryWithSignatureByUserIdRequest extends Gs2BasicRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): GetEntryWithSignatureByUserIdRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetEntryWithSignatureByUserIdRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class GetEntryWithSignatureByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withEntryModelName(array_key_exists('entryModelName', $data) && $data['entryModelName'] !== null ? $data['entryModelName'] : null)
-            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
+            ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class GetEntryWithSignatureByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "entryModelName" => $this->getEntryModelName(),
             "keyId" => $this->getKeyId(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

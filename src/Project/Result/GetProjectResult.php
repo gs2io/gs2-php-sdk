@@ -18,6 +18,7 @@
 namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Project\Model\Gs2Region;
 use Gs2\Project\Model\Project;
 
 class GetProjectResult implements IResult {

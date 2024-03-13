@@ -50,6 +50,10 @@ class Namespace_ implements IModel {
 	 */
 	private $exchangeScript;
 	/**
+     * @var ScriptSetting
+	 */
+	private $incrementalExchangeScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -143,6 +147,16 @@ class Namespace_ implements IModel {
 		$this->exchangeScript = $exchangeScript;
 		return $this;
 	}
+	public function getIncrementalExchangeScript(): ?ScriptSetting {
+		return $this->incrementalExchangeScript;
+	}
+	public function setIncrementalExchangeScript(?ScriptSetting $incrementalExchangeScript) {
+		$this->incrementalExchangeScript = $incrementalExchangeScript;
+	}
+	public function withIncrementalExchangeScript(?ScriptSetting $incrementalExchangeScript): Namespace_ {
+		$this->incrementalExchangeScript = $incrementalExchangeScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -234,6 +248,7 @@ class Namespace_ implements IModel {
             ->withEnableAwaitExchange(array_key_exists('enableAwaitExchange', $data) ? $data['enableAwaitExchange'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withExchangeScript(array_key_exists('exchangeScript', $data) && $data['exchangeScript'] !== null ? ScriptSetting::fromJson($data['exchangeScript']) : null)
+            ->withIncrementalExchangeScript(array_key_exists('incrementalExchangeScript', $data) && $data['incrementalExchangeScript'] !== null ? ScriptSetting::fromJson($data['incrementalExchangeScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -251,6 +266,7 @@ class Namespace_ implements IModel {
             "enableAwaitExchange" => $this->getEnableAwaitExchange(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "exchangeScript" => $this->getExchangeScript() !== null ? $this->getExchangeScript()->toJson() : null,
+            "incrementalExchangeScript" => $this->getIncrementalExchangeScript() !== null ? $this->getIncrementalExchangeScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

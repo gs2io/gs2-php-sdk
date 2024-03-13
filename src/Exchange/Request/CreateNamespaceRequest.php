@@ -35,6 +35,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $transactionSetting;
     /** @var ScriptSetting */
     private $exchangeScript;
+    /** @var ScriptSetting */
+    private $incrementalExchangeScript;
     /** @var LogSetting */
     private $logSetting;
     /** @var string */
@@ -101,6 +103,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->exchangeScript = $exchangeScript;
 		return $this;
 	}
+	public function getIncrementalExchangeScript(): ?ScriptSetting {
+		return $this->incrementalExchangeScript;
+	}
+	public function setIncrementalExchangeScript(?ScriptSetting $incrementalExchangeScript) {
+		$this->incrementalExchangeScript = $incrementalExchangeScript;
+	}
+	public function withIncrementalExchangeScript(?ScriptSetting $incrementalExchangeScript): CreateNamespaceRequest {
+		$this->incrementalExchangeScript = $incrementalExchangeScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -161,6 +173,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withEnableDirectExchange(array_key_exists('enableDirectExchange', $data) ? $data['enableDirectExchange'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withExchangeScript(array_key_exists('exchangeScript', $data) && $data['exchangeScript'] !== null ? ScriptSetting::fromJson($data['exchangeScript']) : null)
+            ->withIncrementalExchangeScript(array_key_exists('incrementalExchangeScript', $data) && $data['incrementalExchangeScript'] !== null ? ScriptSetting::fromJson($data['incrementalExchangeScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
@@ -174,6 +187,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "enableDirectExchange" => $this->getEnableDirectExchange(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "exchangeScript" => $this->getExchangeScript() !== null ? $this->getExchangeScript()->toJson() : null,
+            "incrementalExchangeScript" => $this->getIncrementalExchangeScript() !== null ? $this->getIncrementalExchangeScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),

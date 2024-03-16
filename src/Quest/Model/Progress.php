@@ -46,6 +46,10 @@ class Progress implements IModel {
 	 */
 	private $rewards;
 	/**
+     * @var array
+	 */
+	private $failedRewards;
+	/**
      * @var string
 	 */
 	private $metadata;
@@ -121,6 +125,16 @@ class Progress implements IModel {
 		$this->rewards = $rewards;
 		return $this;
 	}
+	public function getFailedRewards(): ?array {
+		return $this->failedRewards;
+	}
+	public function setFailedRewards(?array $failedRewards) {
+		$this->failedRewards = $failedRewards;
+	}
+	public function withFailedRewards(?array $failedRewards): Progress {
+		$this->failedRewards = $failedRewards;
+		return $this;
+	}
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
@@ -178,6 +192,12 @@ class Progress implements IModel {
                 },
                 array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
             ))
+            ->withFailedRewards(array_map(
+                function ($item) {
+                    return Reward::fromJson($item);
+                },
+                array_key_exists('failedRewards', $data) && $data['failedRewards'] !== null ? $data['failedRewards'] : []
+            ))
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -196,6 +216,12 @@ class Progress implements IModel {
                     return $item->toJson();
                 },
                 $this->getRewards() !== null && $this->getRewards() !== null ? $this->getRewards() : []
+            ),
+            "failedRewards" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getFailedRewards() !== null && $this->getFailedRewards() !== null ? $this->getFailedRewards() : []
             ),
             "metadata" => $this->getMetadata(),
             "createdAt" => $this->getCreatedAt(),

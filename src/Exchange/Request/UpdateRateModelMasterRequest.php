@@ -18,8 +18,8 @@
 namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
+use Gs2\Exchange\Model\ConsumeAction;
 
 class UpdateRateModelMasterRequest extends Gs2BasicRequest {
     /** @var string */
@@ -34,10 +34,6 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
     private $timingType;
     /** @var int */
     private $lockTime;
-    /** @var bool */
-    private $enableSkip;
-    /** @var array */
-    private $skipConsumeActions;
     /** @var array */
     private $acquireActions;
     /** @var array */
@@ -102,26 +98,6 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
 		$this->lockTime = $lockTime;
 		return $this;
 	}
-	public function getEnableSkip(): ?bool {
-		return $this->enableSkip;
-	}
-	public function setEnableSkip(?bool $enableSkip) {
-		$this->enableSkip = $enableSkip;
-	}
-	public function withEnableSkip(?bool $enableSkip): UpdateRateModelMasterRequest {
-		$this->enableSkip = $enableSkip;
-		return $this;
-	}
-	public function getSkipConsumeActions(): ?array {
-		return $this->skipConsumeActions;
-	}
-	public function setSkipConsumeActions(?array $skipConsumeActions) {
-		$this->skipConsumeActions = $skipConsumeActions;
-	}
-	public function withSkipConsumeActions(?array $skipConsumeActions): UpdateRateModelMasterRequest {
-		$this->skipConsumeActions = $skipConsumeActions;
-		return $this;
-	}
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
@@ -154,13 +130,6 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withTimingType(array_key_exists('timingType', $data) && $data['timingType'] !== null ? $data['timingType'] : null)
             ->withLockTime(array_key_exists('lockTime', $data) && $data['lockTime'] !== null ? $data['lockTime'] : null)
-            ->withEnableSkip(array_key_exists('enableSkip', $data) ? $data['enableSkip'] : null)
-            ->withSkipConsumeActions(array_map(
-                function ($item) {
-                    return ConsumeAction::fromJson($item);
-                },
-                array_key_exists('skipConsumeActions', $data) && $data['skipConsumeActions'] !== null ? $data['skipConsumeActions'] : []
-            ))
             ->withAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
@@ -183,13 +152,6 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
             "metadata" => $this->getMetadata(),
             "timingType" => $this->getTimingType(),
             "lockTime" => $this->getLockTime(),
-            "enableSkip" => $this->getEnableSkip(),
-            "skipConsumeActions" => array_map(
-                function ($item) {
-                    return $item->toJson();
-                },
-                $this->getSkipConsumeActions() !== null && $this->getSkipConsumeActions() !== null ? $this->getSkipConsumeActions() : []
-            ),
             "acquireActions" => array_map(
                 function ($item) {
                     return $item->toJson();

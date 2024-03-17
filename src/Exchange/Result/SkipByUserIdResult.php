@@ -24,14 +24,6 @@ use Gs2\Exchange\Model\Await;
 class SkipByUserIdResult implements IResult {
     /** @var Await */
     private $item;
-    /** @var string */
-    private $transactionId;
-    /** @var string */
-    private $stampSheet;
-    /** @var string */
-    private $stampSheetEncryptionKeyId;
-    /** @var bool */
-    private $autoRunStampSheet;
 
 	public function getItem(): ?Await {
 		return $this->item;
@@ -46,77 +38,17 @@ class SkipByUserIdResult implements IResult {
 		return $this;
 	}
 
-	public function getTransactionId(): ?string {
-		return $this->transactionId;
-	}
-
-	public function setTransactionId(?string $transactionId) {
-		$this->transactionId = $transactionId;
-	}
-
-	public function withTransactionId(?string $transactionId): SkipByUserIdResult {
-		$this->transactionId = $transactionId;
-		return $this;
-	}
-
-	public function getStampSheet(): ?string {
-		return $this->stampSheet;
-	}
-
-	public function setStampSheet(?string $stampSheet) {
-		$this->stampSheet = $stampSheet;
-	}
-
-	public function withStampSheet(?string $stampSheet): SkipByUserIdResult {
-		$this->stampSheet = $stampSheet;
-		return $this;
-	}
-
-	public function getStampSheetEncryptionKeyId(): ?string {
-		return $this->stampSheetEncryptionKeyId;
-	}
-
-	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
-		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
-	}
-
-	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): SkipByUserIdResult {
-		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
-		return $this;
-	}
-
-	public function getAutoRunStampSheet(): ?bool {
-		return $this->autoRunStampSheet;
-	}
-
-	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
-		$this->autoRunStampSheet = $autoRunStampSheet;
-	}
-
-	public function withAutoRunStampSheet(?bool $autoRunStampSheet): SkipByUserIdResult {
-		$this->autoRunStampSheet = $autoRunStampSheet;
-		return $this;
-	}
-
     public static function fromJson(?array $data): ?SkipByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new SkipByUserIdResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null)
-            ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
-            ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
-            ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
-            ->withAutoRunStampSheet(array_key_exists('autoRunStampSheet', $data) ? $data['autoRunStampSheet'] : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "transactionId" => $this->getTransactionId(),
-            "stampSheet" => $this->getStampSheet(),
-            "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
-            "autoRunStampSheet" => $this->getAutoRunStampSheet(),
         );
     }
 }

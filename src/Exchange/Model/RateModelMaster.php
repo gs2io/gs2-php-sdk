@@ -50,14 +50,6 @@ class RateModelMaster implements IModel {
 	 */
 	private $lockTime;
 	/**
-     * @var bool
-	 */
-	private $enableSkip;
-	/**
-     * @var array
-	 */
-	private $skipConsumeActions;
-	/**
      * @var array
 	 */
 	private $acquireActions;
@@ -143,26 +135,6 @@ class RateModelMaster implements IModel {
 		$this->lockTime = $lockTime;
 		return $this;
 	}
-	public function getEnableSkip(): ?bool {
-		return $this->enableSkip;
-	}
-	public function setEnableSkip(?bool $enableSkip) {
-		$this->enableSkip = $enableSkip;
-	}
-	public function withEnableSkip(?bool $enableSkip): RateModelMaster {
-		$this->enableSkip = $enableSkip;
-		return $this;
-	}
-	public function getSkipConsumeActions(): ?array {
-		return $this->skipConsumeActions;
-	}
-	public function setSkipConsumeActions(?array $skipConsumeActions) {
-		$this->skipConsumeActions = $skipConsumeActions;
-	}
-	public function withSkipConsumeActions(?array $skipConsumeActions): RateModelMaster {
-		$this->skipConsumeActions = $skipConsumeActions;
-		return $this;
-	}
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
@@ -221,13 +193,6 @@ class RateModelMaster implements IModel {
             ))
             ->withTimingType(array_key_exists('timingType', $data) && $data['timingType'] !== null ? $data['timingType'] : null)
             ->withLockTime(array_key_exists('lockTime', $data) && $data['lockTime'] !== null ? $data['lockTime'] : null)
-            ->withEnableSkip(array_key_exists('enableSkip', $data) ? $data['enableSkip'] : null)
-            ->withSkipConsumeActions(array_map(
-                function ($item) {
-                    return ConsumeAction::fromJson($item);
-                },
-                array_key_exists('skipConsumeActions', $data) && $data['skipConsumeActions'] !== null ? $data['skipConsumeActions'] : []
-            ))
             ->withAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
@@ -253,13 +218,6 @@ class RateModelMaster implements IModel {
             ),
             "timingType" => $this->getTimingType(),
             "lockTime" => $this->getLockTime(),
-            "enableSkip" => $this->getEnableSkip(),
-            "skipConsumeActions" => array_map(
-                function ($item) {
-                    return $item->toJson();
-                },
-                $this->getSkipConsumeActions() !== null && $this->getSkipConsumeActions() !== null ? $this->getSkipConsumeActions() : []
-            ),
             "acquireActions" => array_map(
                 function ($item) {
                     return $item->toJson();

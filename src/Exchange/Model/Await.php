@@ -42,9 +42,17 @@ class Await implements IModel {
 	 */
 	private $count;
 	/**
+     * @var int
+	 */
+	private $skipSeconds;
+	/**
      * @var array
 	 */
 	private $config;
+	/**
+     * @var int
+	 */
+	private $acquirableAt;
 	/**
      * @var int
 	 */
@@ -103,6 +111,16 @@ class Await implements IModel {
 		$this->count = $count;
 		return $this;
 	}
+	public function getSkipSeconds(): ?int {
+		return $this->skipSeconds;
+	}
+	public function setSkipSeconds(?int $skipSeconds) {
+		$this->skipSeconds = $skipSeconds;
+	}
+	public function withSkipSeconds(?int $skipSeconds): Await {
+		$this->skipSeconds = $skipSeconds;
+		return $this;
+	}
 	public function getConfig(): ?array {
 		return $this->config;
 	}
@@ -111,6 +129,16 @@ class Await implements IModel {
 	}
 	public function withConfig(?array $config): Await {
 		$this->config = $config;
+		return $this;
+	}
+	public function getAcquirableAt(): ?int {
+		return $this->acquirableAt;
+	}
+	public function setAcquirableAt(?int $acquirableAt) {
+		$this->acquirableAt = $acquirableAt;
+	}
+	public function withAcquirableAt(?int $acquirableAt): Await {
+		$this->acquirableAt = $acquirableAt;
 		return $this;
 	}
 	public function getExchangedAt(): ?int {
@@ -144,12 +172,14 @@ class Await implements IModel {
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
+            ->withSkipSeconds(array_key_exists('skipSeconds', $data) && $data['skipSeconds'] !== null ? $data['skipSeconds'] : null)
             ->withConfig(array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
                 array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
             ))
+            ->withAcquirableAt(array_key_exists('acquirableAt', $data) && $data['acquirableAt'] !== null ? $data['acquirableAt'] : null)
             ->withExchangedAt(array_key_exists('exchangedAt', $data) && $data['exchangedAt'] !== null ? $data['exchangedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -161,12 +191,14 @@ class Await implements IModel {
             "rateName" => $this->getRateName(),
             "name" => $this->getName(),
             "count" => $this->getCount(),
+            "skipSeconds" => $this->getSkipSeconds(),
             "config" => array_map(
                 function ($item) {
                     return $item->toJson();
                 },
                 $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
             ),
+            "acquirableAt" => $this->getAcquirableAt(),
             "exchangedAt" => $this->getExchangedAt(),
             "revision" => $this->getRevision(),
         );

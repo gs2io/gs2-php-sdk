@@ -24,8 +24,6 @@ use Gs2\Exchange\Model\Await;
 class CreateAwaitByStampSheetResult implements IResult {
     /** @var Await */
     private $item;
-    /** @var int */
-    private $unlockAt;
 
 	public function getItem(): ?Await {
 		return $this->item;
@@ -40,32 +38,17 @@ class CreateAwaitByStampSheetResult implements IResult {
 		return $this;
 	}
 
-	public function getUnlockAt(): ?int {
-		return $this->unlockAt;
-	}
-
-	public function setUnlockAt(?int $unlockAt) {
-		$this->unlockAt = $unlockAt;
-	}
-
-	public function withUnlockAt(?int $unlockAt): CreateAwaitByStampSheetResult {
-		$this->unlockAt = $unlockAt;
-		return $this;
-	}
-
     public static function fromJson(?array $data): ?CreateAwaitByStampSheetResult {
         if ($data === null) {
             return null;
         }
         return (new CreateAwaitByStampSheetResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null)
-            ->withUnlockAt(array_key_exists('unlockAt', $data) && $data['unlockAt'] !== null ? $data['unlockAt'] : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "unlockAt" => $this->getUnlockAt(),
         );
     }
 }

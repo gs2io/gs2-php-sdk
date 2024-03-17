@@ -123,8 +123,6 @@ use Gs2\Exchange\Request\AcquireByUserIdRequest;
 use Gs2\Exchange\Result\AcquireByUserIdResult;
 use Gs2\Exchange\Request\AcquireForceByUserIdRequest;
 use Gs2\Exchange\Result\AcquireForceByUserIdResult;
-use Gs2\Exchange\Request\SkipRequest;
-use Gs2\Exchange\Result\SkipResult;
 use Gs2\Exchange\Request\SkipByUserIdRequest;
 use Gs2\Exchange\Result\SkipByUserIdResult;
 use Gs2\Exchange\Request\DeleteAwaitRequest;
@@ -133,6 +131,8 @@ use Gs2\Exchange\Request\DeleteAwaitByUserIdRequest;
 use Gs2\Exchange\Result\DeleteAwaitByUserIdResult;
 use Gs2\Exchange\Request\CreateAwaitByStampSheetRequest;
 use Gs2\Exchange\Result\CreateAwaitByStampSheetResult;
+use Gs2\Exchange\Request\SkipByStampSheetRequest;
+use Gs2\Exchange\Result\SkipByStampSheetResult;
 use Gs2\Exchange\Request\DeleteAwaitByStampTaskRequest;
 use Gs2\Exchange\Result\DeleteAwaitByStampTaskResult;
 
@@ -1199,17 +1199,6 @@ class CreateRateModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getLockTime() !== null) {
             $json["lockTime"] = $this->request->getLockTime();
         }
-        if ($this->request->getEnableSkip() !== null) {
-            $json["enableSkip"] = $this->request->getEnableSkip();
-        }
-        if ($this->request->getSkipConsumeActions() !== null) {
-            $array = [];
-            foreach ($this->request->getSkipConsumeActions() as $item)
-            {
-                array_push($array, $item->toJson());
-            }
-            $json["skipConsumeActions"] = $array;
-        }
         if ($this->request->getAcquireActions() !== null) {
             $array = [];
             foreach ($this->request->getAcquireActions() as $item)
@@ -1351,17 +1340,6 @@ class UpdateRateModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getLockTime() !== null) {
             $json["lockTime"] = $this->request->getLockTime();
-        }
-        if ($this->request->getEnableSkip() !== null) {
-            $json["enableSkip"] = $this->request->getEnableSkip();
-        }
-        if ($this->request->getSkipConsumeActions() !== null) {
-            $array = [];
-            foreach ($this->request->getSkipConsumeActions() as $item)
-            {
-                array_push($array, $item->toJson());
-            }
-            $json["skipConsumeActions"] = $array;
         }
         if ($this->request->getAcquireActions() !== null) {
             $array = [];
@@ -3249,76 +3227,6 @@ class AcquireForceByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
-class SkipTask extends Gs2RestSessionTask {
-
-    /**
-     * @var SkipRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * SkipTask constructor.
-     * @param Gs2RestSession $session
-     * @param SkipRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        SkipRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            SkipResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/exchange/await/{awaitName}/skip";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
-
-        $json = [];
-        if ($this->request->getConfig() !== null) {
-            $array = [];
-            foreach ($this->request->getConfig() as $item)
-            {
-                array_push($array, $item->toJson());
-            }
-            $json["config"] = $array;
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getAccessToken() !== null) {
-            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class SkipByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -3357,13 +3265,14 @@ class SkipByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{awaitName}", $this->request->getAwaitName() === null|| strlen($this->request->getAwaitName()) == 0 ? "null" : $this->request->getAwaitName(), $url);
 
         $json = [];
-        if ($this->request->getConfig() !== null) {
-            $array = [];
-            foreach ($this->request->getConfig() as $item)
-            {
-                array_push($array, $item->toJson());
-            }
-            $json["config"] = $array;
+        if ($this->request->getSkipType() !== null) {
+            $json["skipType"] = $this->request->getSkipType();
+        }
+        if ($this->request->getMinutes() !== null) {
+            $json["minutes"] = $this->request->getMinutes();
+        }
+        if ($this->request->getRate() !== null) {
+            $json["rate"] = $this->request->getRate();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3551,6 +3460,65 @@ class CreateAwaitByStampSheetTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/await/create";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SkipByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SkipByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SkipByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param SkipByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SkipByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SkipByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/await/skip";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {
@@ -4924,33 +4892,6 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param SkipRequest $request
-     * @return PromiseInterface
-     */
-    public function skipAsync(
-            SkipRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new SkipTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param SkipRequest $request
-     * @return SkipResult
-     */
-    public function skip (
-            SkipRequest $request
-    ): SkipResult {
-        return $this->skipAsync(
-            $request
-        )->wait();
-    }
-
-    /**
      * @param SkipByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -5054,6 +4995,33 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
             CreateAwaitByStampSheetRequest $request
     ): CreateAwaitByStampSheetResult {
         return $this->createAwaitByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SkipByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function skipByStampSheetAsync(
+            SkipByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SkipByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SkipByStampSheetRequest $request
+     * @return SkipByStampSheetResult
+     */
+    public function skipByStampSheet (
+            SkipByStampSheetRequest $request
+    ): SkipByStampSheetResult {
+        return $this->skipByStampSheetAsync(
             $request
         )->wait();
     }

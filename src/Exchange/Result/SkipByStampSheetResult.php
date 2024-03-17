@@ -21,7 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Config;
 use Gs2\Exchange\Model\Await;
 
-class CreateAwaitByUserIdResult implements IResult {
+class SkipByStampSheetResult implements IResult {
     /** @var Await */
     private $item;
 
@@ -33,16 +33,16 @@ class CreateAwaitByUserIdResult implements IResult {
 		$this->item = $item;
 	}
 
-	public function withItem(?Await $item): CreateAwaitByUserIdResult {
+	public function withItem(?Await $item): SkipByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?CreateAwaitByUserIdResult {
+    public static function fromJson(?array $data): ?SkipByStampSheetResult {
         if ($data === null) {
             return null;
         }
-        return (new CreateAwaitByUserIdResult())
+        return (new SkipByStampSheetResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Await::fromJson($data['item']) : null);
     }
 

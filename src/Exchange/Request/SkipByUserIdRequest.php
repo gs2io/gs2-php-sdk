@@ -18,7 +18,6 @@
 namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Exchange\Model\Config;
 
 class SkipByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
@@ -27,8 +26,12 @@ class SkipByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $awaitName;
-    /** @var array */
-    private $config;
+    /** @var string */
+    private $skipType;
+    /** @var int */
+    private $minutes;
+    /** @var float */
+    private $rate;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
@@ -63,14 +66,34 @@ class SkipByUserIdRequest extends Gs2BasicRequest {
 		$this->awaitName = $awaitName;
 		return $this;
 	}
-	public function getConfig(): ?array {
-		return $this->config;
+	public function getSkipType(): ?string {
+		return $this->skipType;
 	}
-	public function setConfig(?array $config) {
-		$this->config = $config;
+	public function setSkipType(?string $skipType) {
+		$this->skipType = $skipType;
 	}
-	public function withConfig(?array $config): SkipByUserIdRequest {
-		$this->config = $config;
+	public function withSkipType(?string $skipType): SkipByUserIdRequest {
+		$this->skipType = $skipType;
+		return $this;
+	}
+	public function getMinutes(): ?int {
+		return $this->minutes;
+	}
+	public function setMinutes(?int $minutes) {
+		$this->minutes = $minutes;
+	}
+	public function withMinutes(?int $minutes): SkipByUserIdRequest {
+		$this->minutes = $minutes;
+		return $this;
+	}
+	public function getRate(): ?float {
+		return $this->rate;
+	}
+	public function setRate(?float $rate) {
+		$this->rate = $rate;
+	}
+	public function withRate(?float $rate): SkipByUserIdRequest {
+		$this->rate = $rate;
 		return $this;
 	}
 	public function getTimeOffsetToken(): ?string {
@@ -105,12 +128,9 @@ class SkipByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withAwaitName(array_key_exists('awaitName', $data) && $data['awaitName'] !== null ? $data['awaitName'] : null)
-            ->withConfig(array_map(
-                function ($item) {
-                    return Config::fromJson($item);
-                },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
-            ))
+            ->withSkipType(array_key_exists('skipType', $data) && $data['skipType'] !== null ? $data['skipType'] : null)
+            ->withMinutes(array_key_exists('minutes', $data) && $data['minutes'] !== null ? $data['minutes'] : null)
+            ->withRate(array_key_exists('rate', $data) && $data['rate'] !== null ? $data['rate'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -119,12 +139,9 @@ class SkipByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "awaitName" => $this->getAwaitName(),
-            "config" => array_map(
-                function ($item) {
-                    return $item->toJson();
-                },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
-            ),
+            "skipType" => $this->getSkipType(),
+            "minutes" => $this->getMinutes(),
+            "rate" => $this->getRate(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

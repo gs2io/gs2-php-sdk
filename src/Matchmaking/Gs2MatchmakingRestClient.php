@@ -77,6 +77,10 @@ use Gs2\Matchmaking\Request\CancelMatchmakingRequest;
 use Gs2\Matchmaking\Result\CancelMatchmakingResult;
 use Gs2\Matchmaking\Request\CancelMatchmakingByUserIdRequest;
 use Gs2\Matchmaking\Result\CancelMatchmakingByUserIdResult;
+use Gs2\Matchmaking\Request\EarlyCompleteRequest;
+use Gs2\Matchmaking\Result\EarlyCompleteResult;
+use Gs2\Matchmaking\Request\EarlyCompleteByUserIdRequest;
+use Gs2\Matchmaking\Result\EarlyCompleteByUserIdResult;
 use Gs2\Matchmaking\Request\DeleteGatheringRequest;
 use Gs2\Matchmaking\Result\DeleteGatheringResult;
 use Gs2\Matchmaking\Request\DescribeRatingModelMastersRequest;
@@ -1749,6 +1753,135 @@ class CancelMatchmakingByUserIdTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/gathering/{gatheringName}/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class EarlyCompleteTask extends Gs2RestSessionTask {
+
+    /**
+     * @var EarlyCompleteRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * EarlyCompleteTask constructor.
+     * @param Gs2RestSession $session
+     * @param EarlyCompleteRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        EarlyCompleteRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            EarlyCompleteResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/gathering/{gatheringName}/user/me/early";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class EarlyCompleteByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var EarlyCompleteByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * EarlyCompleteByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param EarlyCompleteByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        EarlyCompleteByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            EarlyCompleteByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/gathering/{gatheringName}/user/{userId}/early";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
@@ -3884,6 +4017,60 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
             CancelMatchmakingByUserIdRequest $request
     ): CancelMatchmakingByUserIdResult {
         return $this->cancelMatchmakingByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param EarlyCompleteRequest $request
+     * @return PromiseInterface
+     */
+    public function earlyCompleteAsync(
+            EarlyCompleteRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new EarlyCompleteTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param EarlyCompleteRequest $request
+     * @return EarlyCompleteResult
+     */
+    public function earlyComplete (
+            EarlyCompleteRequest $request
+    ): EarlyCompleteResult {
+        return $this->earlyCompleteAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param EarlyCompleteByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function earlyCompleteByUserIdAsync(
+            EarlyCompleteByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new EarlyCompleteByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param EarlyCompleteByUserIdRequest $request
+     * @return EarlyCompleteByUserIdResult
+     */
+    public function earlyCompleteByUserId (
+            EarlyCompleteByUserIdRequest $request
+    ): EarlyCompleteByUserIdResult {
+        return $this->earlyCompleteByUserIdAsync(
             $request
         )->wait();
     }

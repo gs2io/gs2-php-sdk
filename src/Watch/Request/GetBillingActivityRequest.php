@@ -28,54 +28,42 @@ class GetBillingActivityRequest extends Gs2BasicRequest {
     private $service;
     /** @var string */
     private $activityType;
-
 	public function getYear(): ?int {
 		return $this->year;
 	}
-
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
-
 	public function withYear(?int $year): GetBillingActivityRequest {
 		$this->year = $year;
 		return $this;
 	}
-
 	public function getMonth(): ?int {
 		return $this->month;
 	}
-
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
-
 	public function withMonth(?int $month): GetBillingActivityRequest {
 		$this->month = $month;
 		return $this;
 	}
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): GetBillingActivityRequest {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getActivityType(): ?string {
 		return $this->activityType;
 	}
-
 	public function setActivityType(?string $activityType) {
 		$this->activityType = $activityType;
 	}
-
 	public function withActivityType(?string $activityType): GetBillingActivityRequest {
 		$this->activityType = $activityType;
 		return $this;

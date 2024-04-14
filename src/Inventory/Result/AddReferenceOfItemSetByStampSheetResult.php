@@ -23,7 +23,7 @@ use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
 class AddReferenceOfItemSetByStampSheetResult implements IResult {
-    /** @var array */
+    /** @var string */
     private $item;
     /** @var ItemSet */
     private $itemSet;
@@ -32,15 +32,15 @@ class AddReferenceOfItemSetByStampSheetResult implements IResult {
     /** @var Inventory */
     private $inventory;
 
-	public function getItem(): ?array {
+	public function getItem(): ?string {
 		return $this->item;
 	}
 
-	public function setItem(?array $item) {
+	public function setItem(?string $item) {
 		$this->item = $item;
 	}
 
-	public function withItem(?array $item): AddReferenceOfItemSetByStampSheetResult {
+	public function withItem(?string $item): AddReferenceOfItemSetByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
@@ -89,12 +89,7 @@ class AddReferenceOfItemSetByStampSheetResult implements IResult {
             return null;
         }
         return (new AddReferenceOfItemSetByStampSheetResult())
-            ->withItem(array_map(
-                function ($item) {
-                    return $item;
-                },
-                array_key_exists('item', $data) && $data['item'] !== null ? $data['item'] : []
-            ))
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? $data['item'] : null)
             ->withItemSet(array_key_exists('itemSet', $data) && $data['itemSet'] !== null ? ItemSet::fromJson($data['itemSet']) : null)
             ->withItemModel(array_key_exists('itemModel', $data) && $data['itemModel'] !== null ? ItemModel::fromJson($data['itemModel']) : null)
             ->withInventory(array_key_exists('inventory', $data) && $data['inventory'] !== null ? Inventory::fromJson($data['inventory']) : null);
@@ -102,12 +97,7 @@ class AddReferenceOfItemSetByStampSheetResult implements IResult {
 
     public function toJson(): array {
         return array(
-            "item" => array_map(
-                function ($item) {
-                    return $item;
-                },
-                $this->getItem() !== null && $this->getItem() !== null ? $this->getItem() : []
-            ),
+            "item" => $this->getItem(),
             "itemSet" => $this->getItemSet() !== null ? $this->getItemSet()->toJson() : null,
             "itemModel" => $this->getItemModel() !== null ? $this->getItemModel()->toJson() : null,
             "inventory" => $this->getInventory() !== null ? $this->getInventory()->toJson() : null,

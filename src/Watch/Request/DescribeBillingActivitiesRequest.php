@@ -30,67 +30,52 @@ class DescribeBillingActivitiesRequest extends Gs2BasicRequest {
     private $pageToken;
     /** @var int */
     private $limit;
-
 	public function getYear(): ?int {
 		return $this->year;
 	}
-
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
-
 	public function withYear(?int $year): DescribeBillingActivitiesRequest {
 		$this->year = $year;
 		return $this;
 	}
-
 	public function getMonth(): ?int {
 		return $this->month;
 	}
-
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
-
 	public function withMonth(?int $month): DescribeBillingActivitiesRequest {
 		$this->month = $month;
 		return $this;
 	}
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): DescribeBillingActivitiesRequest {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
-
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
-
 	public function withPageToken(?string $pageToken): DescribeBillingActivitiesRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
-
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
-
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
-
 	public function withLimit(?int $limit): DescribeBillingActivitiesRequest {
 		$this->limit = $limit;
 		return $this;

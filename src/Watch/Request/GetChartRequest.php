@@ -18,156 +18,127 @@
 namespace Gs2\Watch\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Watch\Model\Filter;
 
 class GetChartRequest extends Gs2BasicRequest {
     /** @var string */
-    private $metrics;
+    private $measure;
     /** @var string */
     private $grn;
+    /** @var string */
+    private $round;
     /** @var array */
-    private $queries;
+    private $filters;
+    /** @var array */
+    private $groupBys;
     /** @var string */
-    private $by;
+    private $countBy;
+    /** @var int */
+    private $begin;
+    /** @var int */
+    private $end;
     /** @var string */
-    private $timeframe;
-    /** @var string */
-    private $size;
-    /** @var string */
-    private $format;
-    /** @var string */
-    private $aggregator;
-    /** @var string */
-    private $style;
-    /** @var string */
-    private $title;
-
-	public function getMetrics(): ?string {
-		return $this->metrics;
+    private $pageToken;
+    /** @var int */
+    private $limit;
+	public function getMeasure(): ?string {
+		return $this->measure;
 	}
-
-	public function setMetrics(?string $metrics) {
-		$this->metrics = $metrics;
+	public function setMeasure(?string $measure) {
+		$this->measure = $measure;
 	}
-
-	public function withMetrics(?string $metrics): GetChartRequest {
-		$this->metrics = $metrics;
+	public function withMeasure(?string $measure): GetChartRequest {
+		$this->measure = $measure;
 		return $this;
 	}
-
 	public function getGrn(): ?string {
 		return $this->grn;
 	}
-
 	public function setGrn(?string $grn) {
 		$this->grn = $grn;
 	}
-
 	public function withGrn(?string $grn): GetChartRequest {
 		$this->grn = $grn;
 		return $this;
 	}
-
-	public function getQueries(): ?array {
-		return $this->queries;
+	public function getRound(): ?string {
+		return $this->round;
 	}
-
-	public function setQueries(?array $queries) {
-		$this->queries = $queries;
+	public function setRound(?string $round) {
+		$this->round = $round;
 	}
-
-	public function withQueries(?array $queries): GetChartRequest {
-		$this->queries = $queries;
+	public function withRound(?string $round): GetChartRequest {
+		$this->round = $round;
 		return $this;
 	}
-
-	public function getBy(): ?string {
-		return $this->by;
+	public function getFilters(): ?array {
+		return $this->filters;
 	}
-
-	public function setBy(?string $by) {
-		$this->by = $by;
+	public function setFilters(?array $filters) {
+		$this->filters = $filters;
 	}
-
-	public function withBy(?string $by): GetChartRequest {
-		$this->by = $by;
+	public function withFilters(?array $filters): GetChartRequest {
+		$this->filters = $filters;
 		return $this;
 	}
-
-	public function getTimeframe(): ?string {
-		return $this->timeframe;
+	public function getGroupBys(): ?array {
+		return $this->groupBys;
 	}
-
-	public function setTimeframe(?string $timeframe) {
-		$this->timeframe = $timeframe;
+	public function setGroupBys(?array $groupBys) {
+		$this->groupBys = $groupBys;
 	}
-
-	public function withTimeframe(?string $timeframe): GetChartRequest {
-		$this->timeframe = $timeframe;
+	public function withGroupBys(?array $groupBys): GetChartRequest {
+		$this->groupBys = $groupBys;
 		return $this;
 	}
-
-	public function getSize(): ?string {
-		return $this->size;
+	public function getCountBy(): ?string {
+		return $this->countBy;
 	}
-
-	public function setSize(?string $size) {
-		$this->size = $size;
+	public function setCountBy(?string $countBy) {
+		$this->countBy = $countBy;
 	}
-
-	public function withSize(?string $size): GetChartRequest {
-		$this->size = $size;
+	public function withCountBy(?string $countBy): GetChartRequest {
+		$this->countBy = $countBy;
 		return $this;
 	}
-
-	public function getFormat(): ?string {
-		return $this->format;
+	public function getBegin(): ?int {
+		return $this->begin;
 	}
-
-	public function setFormat(?string $format) {
-		$this->format = $format;
+	public function setBegin(?int $begin) {
+		$this->begin = $begin;
 	}
-
-	public function withFormat(?string $format): GetChartRequest {
-		$this->format = $format;
+	public function withBegin(?int $begin): GetChartRequest {
+		$this->begin = $begin;
 		return $this;
 	}
-
-	public function getAggregator(): ?string {
-		return $this->aggregator;
+	public function getEnd(): ?int {
+		return $this->end;
 	}
-
-	public function setAggregator(?string $aggregator) {
-		$this->aggregator = $aggregator;
+	public function setEnd(?int $end) {
+		$this->end = $end;
 	}
-
-	public function withAggregator(?string $aggregator): GetChartRequest {
-		$this->aggregator = $aggregator;
+	public function withEnd(?int $end): GetChartRequest {
+		$this->end = $end;
 		return $this;
 	}
-
-	public function getStyle(): ?string {
-		return $this->style;
+	public function getPageToken(): ?string {
+		return $this->pageToken;
 	}
-
-	public function setStyle(?string $style) {
-		$this->style = $style;
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
 	}
-
-	public function withStyle(?string $style): GetChartRequest {
-		$this->style = $style;
+	public function withPageToken(?string $pageToken): GetChartRequest {
+		$this->pageToken = $pageToken;
 		return $this;
 	}
-
-	public function getTitle(): ?string {
-		return $this->title;
+	public function getLimit(): ?int {
+		return $this->limit;
 	}
-
-	public function setTitle(?string $title) {
-		$this->title = $title;
+	public function setLimit(?int $limit) {
+		$this->limit = $limit;
 	}
-
-	public function withTitle(?string $title): GetChartRequest {
-		$this->title = $title;
+	public function withLimit(?int $limit): GetChartRequest {
+		$this->limit = $limit;
 		return $this;
 	}
 
@@ -176,40 +147,50 @@ class GetChartRequest extends Gs2BasicRequest {
             return null;
         }
         return (new GetChartRequest())
-            ->withMetrics(array_key_exists('metrics', $data) && $data['metrics'] !== null ? $data['metrics'] : null)
+            ->withMeasure(array_key_exists('measure', $data) && $data['measure'] !== null ? $data['measure'] : null)
             ->withGrn(array_key_exists('grn', $data) && $data['grn'] !== null ? $data['grn'] : null)
-            ->withQueries(array_map(
+            ->withRound(array_key_exists('round', $data) && $data['round'] !== null ? $data['round'] : null)
+            ->withFilters(array_map(
+                function ($item) {
+                    return Filter::fromJson($item);
+                },
+                array_key_exists('filters', $data) && $data['filters'] !== null ? $data['filters'] : []
+            ))
+            ->withGroupBys(array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('queries', $data) && $data['queries'] !== null ? $data['queries'] : []
+                array_key_exists('groupBys', $data) && $data['groupBys'] !== null ? $data['groupBys'] : []
             ))
-            ->withBy(array_key_exists('by', $data) && $data['by'] !== null ? $data['by'] : null)
-            ->withTimeframe(array_key_exists('timeframe', $data) && $data['timeframe'] !== null ? $data['timeframe'] : null)
-            ->withSize(array_key_exists('size', $data) && $data['size'] !== null ? $data['size'] : null)
-            ->withFormat(array_key_exists('format', $data) && $data['format'] !== null ? $data['format'] : null)
-            ->withAggregator(array_key_exists('aggregator', $data) && $data['aggregator'] !== null ? $data['aggregator'] : null)
-            ->withStyle(array_key_exists('style', $data) && $data['style'] !== null ? $data['style'] : null)
-            ->withTitle(array_key_exists('title', $data) && $data['title'] !== null ? $data['title'] : null);
+            ->withCountBy(array_key_exists('countBy', $data) && $data['countBy'] !== null ? $data['countBy'] : null)
+            ->withBegin(array_key_exists('begin', $data) && $data['begin'] !== null ? $data['begin'] : null)
+            ->withEnd(array_key_exists('end', $data) && $data['end'] !== null ? $data['end'] : null)
+            ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
+            ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "metrics" => $this->getMetrics(),
+            "measure" => $this->getMeasure(),
             "grn" => $this->getGrn(),
-            "queries" => array_map(
+            "round" => $this->getRound(),
+            "filters" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getFilters() !== null && $this->getFilters() !== null ? $this->getFilters() : []
+            ),
+            "groupBys" => array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getQueries() !== null && $this->getQueries() !== null ? $this->getQueries() : []
+                $this->getGroupBys() !== null && $this->getGroupBys() !== null ? $this->getGroupBys() : []
             ),
-            "by" => $this->getBy(),
-            "timeframe" => $this->getTimeframe(),
-            "size" => $this->getSize(),
-            "format" => $this->getFormat(),
-            "aggregator" => $this->getAggregator(),
-            "style" => $this->getStyle(),
-            "title" => $this->getTitle(),
+            "countBy" => $this->getCountBy(),
+            "begin" => $this->getBegin(),
+            "end" => $this->getEnd(),
+            "pageToken" => $this->getPageToken(),
+            "limit" => $this->getLimit(),
         );
     }
 }

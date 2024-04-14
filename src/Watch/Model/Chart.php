@@ -22,54 +22,45 @@ use Gs2\Core\Model\IModel;
 
 class Chart implements IModel {
 	/**
-     * @var string
+     * @var int
 	 */
-	private $chartId;
+	private $timestamp;
 	/**
-     * @var string
+     * @var int
 	 */
-	private $embedId;
+	private $value;
 	/**
-     * @var string
+     * @var array
 	 */
-	private $html;
-
-	public function getChartId(): ?string {
-		return $this->chartId;
+	private $groupBys;
+	public function getTimestamp(): ?int {
+		return $this->timestamp;
 	}
-
-	public function setChartId(?string $chartId) {
-		$this->chartId = $chartId;
+	public function setTimestamp(?int $timestamp) {
+		$this->timestamp = $timestamp;
 	}
-
-	public function withChartId(?string $chartId): Chart {
-		$this->chartId = $chartId;
+	public function withTimestamp(?int $timestamp): Chart {
+		$this->timestamp = $timestamp;
 		return $this;
 	}
-
-	public function getEmbedId(): ?string {
-		return $this->embedId;
+	public function getValue(): ?int {
+		return $this->value;
 	}
-
-	public function setEmbedId(?string $embedId) {
-		$this->embedId = $embedId;
+	public function setValue(?int $value) {
+		$this->value = $value;
 	}
-
-	public function withEmbedId(?string $embedId): Chart {
-		$this->embedId = $embedId;
+	public function withValue(?int $value): Chart {
+		$this->value = $value;
 		return $this;
 	}
-
-	public function getHtml(): ?string {
-		return $this->html;
+	public function getGroupBys(): ?array {
+		return $this->groupBys;
 	}
-
-	public function setHtml(?string $html) {
-		$this->html = $html;
+	public function setGroupBys(?array $groupBys) {
+		$this->groupBys = $groupBys;
 	}
-
-	public function withHtml(?string $html): Chart {
-		$this->html = $html;
+	public function withGroupBys(?array $groupBys): Chart {
+		$this->groupBys = $groupBys;
 		return $this;
 	}
 
@@ -78,16 +69,26 @@ class Chart implements IModel {
             return null;
         }
         return (new Chart())
-            ->withChartId(array_key_exists('chartId', $data) && $data['chartId'] !== null ? $data['chartId'] : null)
-            ->withEmbedId(array_key_exists('embedId', $data) && $data['embedId'] !== null ? $data['embedId'] : null)
-            ->withHtml(array_key_exists('html', $data) && $data['html'] !== null ? $data['html'] : null);
+            ->withTimestamp(array_key_exists('timestamp', $data) && $data['timestamp'] !== null ? $data['timestamp'] : null)
+            ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
+            ->withGroupBys(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('groupBys', $data) && $data['groupBys'] !== null ? $data['groupBys'] : []
+            ));
     }
 
     public function toJson(): array {
         return array(
-            "chartId" => $this->getChartId(),
-            "embedId" => $this->getEmbedId(),
-            "html" => $this->getHtml(),
+            "timestamp" => $this->getTimestamp(),
+            "value" => $this->getValue(),
+            "groupBys" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getGroupBys() !== null && $this->getGroupBys() !== null ? $this->getGroupBys() : []
+            ),
         );
     }
 }

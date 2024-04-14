@@ -41,69 +41,68 @@ class Cumulative implements IModel {
      * @var int
 	 */
 	private $updatedAt;
-
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getCumulativeId(): ?string {
 		return $this->cumulativeId;
 	}
-
 	public function setCumulativeId(?string $cumulativeId) {
 		$this->cumulativeId = $cumulativeId;
 	}
-
 	public function withCumulativeId(?string $cumulativeId): Cumulative {
 		$this->cumulativeId = $cumulativeId;
 		return $this;
 	}
-
 	public function getResourceGrn(): ?string {
 		return $this->resourceGrn;
 	}
-
 	public function setResourceGrn(?string $resourceGrn) {
 		$this->resourceGrn = $resourceGrn;
 	}
-
 	public function withResourceGrn(?string $resourceGrn): Cumulative {
 		$this->resourceGrn = $resourceGrn;
 		return $this;
 	}
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): Cumulative {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getValue(): ?int {
 		return $this->value;
 	}
-
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?int $value): Cumulative {
 		$this->value = $value;
 		return $this;
 	}
-
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
-
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
-
 	public function withUpdatedAt(?int $updatedAt): Cumulative {
 		$this->updatedAt = $updatedAt;
+		return $this;
+	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Cumulative {
+		$this->revision = $revision;
 		return $this;
 	}
 
@@ -116,7 +115,8 @@ class Cumulative implements IModel {
             ->withResourceGrn(array_key_exists('resourceGrn', $data) && $data['resourceGrn'] !== null ? $data['resourceGrn'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -126,6 +126,7 @@ class Cumulative implements IModel {
             "name" => $this->getName(),
             "value" => $this->getValue(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

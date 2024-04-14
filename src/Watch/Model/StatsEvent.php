@@ -53,106 +53,82 @@ class StatsEvent implements IModel {
      * @var int
 	 */
 	private $callAt;
-
 	public function getGrn(): ?string {
 		return $this->grn;
 	}
-
 	public function setGrn(?string $grn) {
 		$this->grn = $grn;
 	}
-
 	public function withGrn(?string $grn): StatsEvent {
 		$this->grn = $grn;
 		return $this;
 	}
-
 	public function getService(): ?string {
 		return $this->service;
 	}
-
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
-
 	public function withService(?string $service): StatsEvent {
 		$this->service = $service;
 		return $this;
 	}
-
 	public function getMethod(): ?string {
 		return $this->method;
 	}
-
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
-
 	public function withMethod(?string $method): StatsEvent {
 		$this->method = $method;
 		return $this;
 	}
-
 	public function getMetric(): ?string {
 		return $this->metric;
 	}
-
 	public function setMetric(?string $metric) {
 		$this->metric = $metric;
 	}
-
 	public function withMetric(?string $metric): StatsEvent {
 		$this->metric = $metric;
 		return $this;
 	}
-
 	public function getCumulative(): ?bool {
 		return $this->cumulative;
 	}
-
 	public function setCumulative(?bool $cumulative) {
 		$this->cumulative = $cumulative;
 	}
-
 	public function withCumulative(?bool $cumulative): StatsEvent {
 		$this->cumulative = $cumulative;
 		return $this;
 	}
-
 	public function getValue(): ?float {
 		return $this->value;
 	}
-
 	public function setValue(?float $value) {
 		$this->value = $value;
 	}
-
 	public function withValue(?float $value): StatsEvent {
 		$this->value = $value;
 		return $this;
 	}
-
 	public function getTags(): ?array {
 		return $this->tags;
 	}
-
 	public function setTags(?array $tags) {
 		$this->tags = $tags;
 	}
-
 	public function withTags(?array $tags): StatsEvent {
 		$this->tags = $tags;
 		return $this;
 	}
-
 	public function getCallAt(): ?int {
 		return $this->callAt;
 	}
-
 	public function setCallAt(?int $callAt) {
 		$this->callAt = $callAt;
 	}
-
 	public function withCallAt(?int $callAt): StatsEvent {
 		$this->callAt = $callAt;
 		return $this;
@@ -167,7 +143,7 @@ class StatsEvent implements IModel {
             ->withService(array_key_exists('service', $data) && $data['service'] !== null ? $data['service'] : null)
             ->withMethod(array_key_exists('method', $data) && $data['method'] !== null ? $data['method'] : null)
             ->withMetric(array_key_exists('metric', $data) && $data['metric'] !== null ? $data['metric'] : null)
-            ->withCumulative($data['cumulative'])
+            ->withCumulative(array_key_exists('cumulative', $data) ? $data['cumulative'] : null)
             ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
             ->withTags(array_map(
                 function ($item) {

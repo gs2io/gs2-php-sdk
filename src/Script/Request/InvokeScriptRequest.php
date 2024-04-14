@@ -32,6 +32,8 @@ class InvokeScriptRequest extends Gs2BasicRequest {
     private $randomStatus;
     /** @var string */
     private $timeOffsetToken;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
@@ -80,6 +82,19 @@ class InvokeScriptRequest extends Gs2BasicRequest {
 	}
 	public function withTimeOffsetToken(?string $timeOffsetToken): InvokeScriptRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): InvokeScriptRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

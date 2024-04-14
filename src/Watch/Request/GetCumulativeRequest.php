@@ -24,28 +24,22 @@ class GetCumulativeRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $resourceGrn;
-
 	public function getName(): ?string {
 		return $this->name;
 	}
-
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
-
 	public function withName(?string $name): GetCumulativeRequest {
 		$this->name = $name;
 		return $this;
 	}
-
 	public function getResourceGrn(): ?string {
 		return $this->resourceGrn;
 	}
-
 	public function setResourceGrn(?string $resourceGrn) {
 		$this->resourceGrn = $resourceGrn;
 	}
-
 	public function withResourceGrn(?string $resourceGrn): GetCumulativeRequest {
 		$this->resourceGrn = $resourceGrn;
 		return $this;

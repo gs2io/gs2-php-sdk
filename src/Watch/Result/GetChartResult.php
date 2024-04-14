@@ -21,19 +21,34 @@ use Gs2\Core\Model\IResult;
 use Gs2\Watch\Model\Chart;
 
 class GetChartResult implements IResult {
-    /** @var Chart */
-    private $item;
+    /** @var array */
+    private $items;
+    /** @var string */
+    private $nextPageToken;
 
-	public function getItem(): ?Chart {
-		return $this->item;
+	public function getItems(): ?array {
+		return $this->items;
 	}
 
-	public function setItem(?Chart $item) {
-		$this->item = $item;
+	public function setItems(?array $items) {
+		$this->items = $items;
 	}
 
-	public function withItem(?Chart $item): GetChartResult {
-		$this->item = $item;
+	public function withItems(?array $items): GetChartResult {
+		$this->items = $items;
+		return $this;
+	}
+
+	public function getNextPageToken(): ?string {
+		return $this->nextPageToken;
+	}
+
+	public function setNextPageToken(?string $nextPageToken) {
+		$this->nextPageToken = $nextPageToken;
+	}
+
+	public function withNextPageToken(?string $nextPageToken): GetChartResult {
+		$this->nextPageToken = $nextPageToken;
 		return $this;
 	}
 
@@ -42,12 +57,24 @@ class GetChartResult implements IResult {
             return null;
         }
         return (new GetChartResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Chart::fromJson($data['item']) : null);
+            ->withItems(array_map(
+                function ($item) {
+                    return Chart::fromJson($item);
+                },
+                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+            ))
+            ->withNextPageToken(array_key_exists('nextPageToken', $data) && $data['nextPageToken'] !== null ? $data['nextPageToken'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "items" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+            ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
     }
 }

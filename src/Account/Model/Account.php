@@ -48,6 +48,10 @@ class Account implements IModel {
 	/**
      * @var int
 	 */
+	private $lastAuthenticatedAt;
+	/**
+     * @var int
+	 */
 	private $createdAt;
 	/**
      * @var int
@@ -113,6 +117,16 @@ class Account implements IModel {
 		$this->banned = $banned;
 		return $this;
 	}
+	public function getLastAuthenticatedAt(): ?int {
+		return $this->lastAuthenticatedAt;
+	}
+	public function setLastAuthenticatedAt(?int $lastAuthenticatedAt) {
+		$this->lastAuthenticatedAt = $lastAuthenticatedAt;
+	}
+	public function withLastAuthenticatedAt(?int $lastAuthenticatedAt): Account {
+		$this->lastAuthenticatedAt = $lastAuthenticatedAt;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -150,6 +164,7 @@ class Account implements IModel {
                 array_key_exists('banStatuses', $data) && $data['banStatuses'] !== null ? $data['banStatuses'] : []
             ))
             ->withBanned(array_key_exists('banned', $data) ? $data['banned'] : null)
+            ->withLastAuthenticatedAt(array_key_exists('lastAuthenticatedAt', $data) && $data['lastAuthenticatedAt'] !== null ? $data['lastAuthenticatedAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -167,6 +182,7 @@ class Account implements IModel {
                 $this->getBanStatuses() !== null && $this->getBanStatuses() !== null ? $this->getBanStatuses() : []
             ),
             "banned" => $this->getBanned(),
+            "lastAuthenticatedAt" => $this->getLastAuthenticatedAt(),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );

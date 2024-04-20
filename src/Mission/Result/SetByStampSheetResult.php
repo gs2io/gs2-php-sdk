@@ -22,13 +22,13 @@ use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 use Gs2\Mission\Model\Complete;
 
-class DecreaseByStampTaskResult implements IResult {
+class SetByStampSheetResult implements IResult {
     /** @var Counter */
     private $item;
+    /** @var Counter */
+    private $old;
     /** @var array */
     private $changedCompletes;
-    /** @var string */
-    private $newContextStack;
 
 	public function getItem(): ?Counter {
 		return $this->item;
@@ -38,8 +38,21 @@ class DecreaseByStampTaskResult implements IResult {
 		$this->item = $item;
 	}
 
-	public function withItem(?Counter $item): DecreaseByStampTaskResult {
+	public function withItem(?Counter $item): SetByStampSheetResult {
 		$this->item = $item;
+		return $this;
+	}
+
+	public function getOld(): ?Counter {
+		return $this->old;
+	}
+
+	public function setOld(?Counter $old) {
+		$this->old = $old;
+	}
+
+	public function withOld(?Counter $old): SetByStampSheetResult {
+		$this->old = $old;
 		return $this;
 	}
 
@@ -51,49 +64,36 @@ class DecreaseByStampTaskResult implements IResult {
 		$this->changedCompletes = $changedCompletes;
 	}
 
-	public function withChangedCompletes(?array $changedCompletes): DecreaseByStampTaskResult {
+	public function withChangedCompletes(?array $changedCompletes): SetByStampSheetResult {
 		$this->changedCompletes = $changedCompletes;
 		return $this;
 	}
 
-	public function getNewContextStack(): ?string {
-		return $this->newContextStack;
-	}
-
-	public function setNewContextStack(?string $newContextStack) {
-		$this->newContextStack = $newContextStack;
-	}
-
-	public function withNewContextStack(?string $newContextStack): DecreaseByStampTaskResult {
-		$this->newContextStack = $newContextStack;
-		return $this;
-	}
-
-    public static function fromJson(?array $data): ?DecreaseByStampTaskResult {
+    public static function fromJson(?array $data): ?SetByStampSheetResult {
         if ($data === null) {
             return null;
         }
-        return (new DecreaseByStampTaskResult())
+        return (new SetByStampSheetResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Counter::fromJson($data['item']) : null)
+            ->withOld(array_key_exists('old', $data) && $data['old'] !== null ? Counter::fromJson($data['old']) : null)
             ->withChangedCompletes(array_map(
                 function ($item) {
                     return Complete::fromJson($item);
                 },
                 array_key_exists('changedCompletes', $data) && $data['changedCompletes'] !== null ? $data['changedCompletes'] : []
-            ))
-            ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
+            ));
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "old" => $this->getOld() !== null ? $this->getOld()->toJson() : null,
             "changedCompletes" => array_map(
                 function ($item) {
                     return $item->toJson();
                 },
                 $this->getChangedCompletes() !== null && $this->getChangedCompletes() !== null ? $this->getChangedCompletes() : []
             ),
-            "newContextStack" => $this->getNewContextStack(),
         );
     }
 }

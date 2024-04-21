@@ -1562,6 +1562,9 @@ class AcceptTask extends Gs2RestSessionTask {
         if ($this->request->getVersionName() !== null) {
             $json["versionName"] = $this->request->getVersionName();
         }
+        if ($this->request->getVersion() !== null) {
+            $json["version"] = $this->request->getVersion()->toJson();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -1626,6 +1629,9 @@ class AcceptByUserIdTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getVersionName() !== null) {
             $json["versionName"] = $this->request->getVersionName();
+        }
+        if ($this->request->getVersion() !== null) {
+            $json["version"] = $this->request->getVersion()->toJson();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

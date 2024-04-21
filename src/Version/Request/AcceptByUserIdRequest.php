@@ -18,6 +18,7 @@
 namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Version\Model\Version;
 
 class AcceptByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
@@ -26,6 +27,8 @@ class AcceptByUserIdRequest extends Gs2BasicRequest {
     private $versionName;
     /** @var string */
     private $userId;
+    /** @var Version */
+    private $version;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
@@ -60,6 +63,16 @@ class AcceptByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getVersion(): ?Version {
+		return $this->version;
+	}
+	public function setVersion(?Version $version) {
+		$this->version = $version;
+	}
+	public function withVersion(?Version $version): AcceptByUserIdRequest {
+		$this->version = $version;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -92,6 +105,7 @@ class AcceptByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withVersion(array_key_exists('version', $data) && $data['version'] !== null ? Version::fromJson($data['version']) : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -100,6 +114,7 @@ class AcceptByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "versionName" => $this->getVersionName(),
             "userId" => $this->getUserId(),
+            "version" => $this->getVersion() !== null ? $this->getVersion()->toJson() : null,
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

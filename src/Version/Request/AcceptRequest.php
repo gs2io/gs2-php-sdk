@@ -18,6 +18,7 @@
 namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Version\Model\Version;
 
 class AcceptRequest extends Gs2BasicRequest {
     /** @var string */
@@ -26,6 +27,8 @@ class AcceptRequest extends Gs2BasicRequest {
     private $versionName;
     /** @var string */
     private $accessToken;
+    /** @var Version */
+    private $version;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -58,6 +61,16 @@ class AcceptRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+	public function getVersion(): ?Version {
+		return $this->version;
+	}
+	public function setVersion(?Version $version) {
+		$this->version = $version;
+	}
+	public function withVersion(?Version $version): AcceptRequest {
+		$this->version = $version;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -79,7 +92,8 @@ class AcceptRequest extends Gs2BasicRequest {
         return (new AcceptRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
-            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withVersion(array_key_exists('version', $data) && $data['version'] !== null ? Version::fromJson($data['version']) : null);
     }
 
     public function toJson(): array {
@@ -87,6 +101,7 @@ class AcceptRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "versionName" => $this->getVersionName(),
             "accessToken" => $this->getAccessToken(),
+            "version" => $this->getVersion() !== null ? $this->getVersion()->toJson() : null,
         );
     }
 }

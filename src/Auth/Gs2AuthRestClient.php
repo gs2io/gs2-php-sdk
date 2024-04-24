@@ -33,6 +33,8 @@ use Gs2\Auth\Request\LoginRequest;
 use Gs2\Auth\Result\LoginResult;
 use Gs2\Auth\Request\LoginBySignatureRequest;
 use Gs2\Auth\Result\LoginBySignatureResult;
+use Gs2\Auth\Request\FederationRequest;
+use Gs2\Auth\Result\FederationResult;
 use Gs2\Auth\Request\IssueTimeOffsetTokenByUserIdRequest;
 use Gs2\Auth\Result\IssueTimeOffsetTokenByUserIdResult;
 
@@ -154,6 +156,74 @@ class LoginBySignatureTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class FederationTask extends Gs2RestSessionTask {
+
+    /**
+     * @var FederationRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * FederationTask constructor.
+     * @param Gs2RestSession $session
+     * @param FederationRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        FederationRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            FederationResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "auth", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/federation";
+
+        $json = [];
+        if ($this->request->getOriginalUserId() !== null) {
+            $json["originalUserId"] = $this->request->getOriginalUserId();
+        }
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getPolicyDocument() !== null) {
+            $json["policyDocument"] = $this->request->getPolicyDocument();
+        }
+        if ($this->request->getTimeOffset() !== null) {
+            $json["timeOffset"] = $this->request->getTimeOffset();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -289,6 +359,33 @@ class Gs2AuthRestClient extends AbstractGs2Client {
             LoginBySignatureRequest $request
     ): LoginBySignatureResult {
         return $this->loginBySignatureAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param FederationRequest $request
+     * @return PromiseInterface
+     */
+    public function federationAsync(
+            FederationRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new FederationTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param FederationRequest $request
+     * @return FederationResult
+     */
+    public function federation (
+            FederationRequest $request
+    ): FederationResult {
+        return $this->federationAsync(
             $request
         )->wait();
     }

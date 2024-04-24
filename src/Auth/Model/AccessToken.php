@@ -30,6 +30,10 @@ class AccessToken implements IModel {
 	 */
 	private $userId;
 	/**
+     * @var string
+	 */
+	private $federationFromUserId;
+	/**
      * @var int
 	 */
 	private $expire;
@@ -55,6 +59,16 @@ class AccessToken implements IModel {
 	}
 	public function withUserId(?string $userId): AccessToken {
 		$this->userId = $userId;
+		return $this;
+	}
+	public function getFederationFromUserId(): ?string {
+		return $this->federationFromUserId;
+	}
+	public function setFederationFromUserId(?string $federationFromUserId) {
+		$this->federationFromUserId = $federationFromUserId;
+	}
+	public function withFederationFromUserId(?string $federationFromUserId): AccessToken {
+		$this->federationFromUserId = $federationFromUserId;
 		return $this;
 	}
 	public function getExpire(): ?int {
@@ -85,6 +99,7 @@ class AccessToken implements IModel {
         return (new AccessToken())
             ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withFederationFromUserId(array_key_exists('federationFromUserId', $data) && $data['federationFromUserId'] !== null ? $data['federationFromUserId'] : null)
             ->withExpire(array_key_exists('expire', $data) && $data['expire'] !== null ? $data['expire'] : null)
             ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null);
     }
@@ -93,6 +108,7 @@ class AccessToken implements IModel {
         return array(
             "token" => $this->getToken(),
             "userId" => $this->getUserId(),
+            "federationFromUserId" => $this->getFederationFromUserId(),
             "expire" => $this->getExpire(),
             "timeOffset" => $this->getTimeOffset(),
         );

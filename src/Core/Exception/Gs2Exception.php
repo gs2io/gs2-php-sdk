@@ -45,6 +45,7 @@ abstract class Gs2Exception extends RuntimeException {
                 } else {
                     $e->setComponent($error["component"]);
                     $e->setMessage($error["message"]);
+                    $e->setCode($error["code"]);
                     array_push($this->errors, $e);
                 }
             }

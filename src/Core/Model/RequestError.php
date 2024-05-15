@@ -26,11 +26,17 @@ class RequestError {
     /**
      * @var string
      */
-	private $message;
+    private $message;
 
-	function __construct(string $component=null, string $message=null) {
+    /**
+     * @var string
+     */
+    private $code;
+
+	function __construct(string $component=null, string $message=null, string $code=null) {
 		$this->component = $component;
-		$this->message = $message;
+        $this->message = $message;
+        $this->code = $code;
 	}
 	
 	function getComponent(): string {
@@ -39,10 +45,16 @@ class RequestError {
 	function setComponent(string $component): void {
 		$this->component = $component;
 	}
-	function getMessage(): string {
-		return $this->message;
-	}
-	function setMessage(string $message): void  {
-		$this->message = $message;
-	}
+    function getMessage(): string {
+        return $this->message;
+    }
+    function setMessage(string $message): void  {
+        $this->message = $message;
+    }
+    function getCode(): string {
+        return $this->code;
+    }
+    function setCode(string $code): void  {
+        $this->code = $code;
+    }
 }

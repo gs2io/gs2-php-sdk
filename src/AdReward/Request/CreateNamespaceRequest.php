@@ -20,6 +20,7 @@ namespace Gs2\AdReward\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\AdReward\Model\AdMob;
 use Gs2\AdReward\Model\UnityAd;
+use Gs2\AdReward\Model\AppLovinMax;
 use Gs2\AdReward\Model\NotificationSetting;
 use Gs2\AdReward\Model\LogSetting;
 
@@ -30,6 +31,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $admob;
     /** @var UnityAd */
     private $unityAd;
+    /** @var array */
+    private $appLovinMaxes;
     /** @var string */
     private $description;
     /** @var NotificationSetting */
@@ -64,6 +67,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withUnityAd(?UnityAd $unityAd): CreateNamespaceRequest {
 		$this->unityAd = $unityAd;
+		return $this;
+	}
+	public function getAppLovinMaxes(): ?array {
+		return $this->appLovinMaxes;
+	}
+	public function setAppLovinMaxes(?array $appLovinMaxes) {
+		$this->appLovinMaxes = $appLovinMaxes;
+	}
+	public function withAppLovinMaxes(?array $appLovinMaxes): CreateNamespaceRequest {
+		$this->appLovinMaxes = $appLovinMaxes;
 		return $this;
 	}
 	public function getDescription(): ?string {
@@ -105,6 +118,12 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withAdmob(array_key_exists('admob', $data) && $data['admob'] !== null ? AdMob::fromJson($data['admob']) : null)
             ->withUnityAd(array_key_exists('unityAd', $data) && $data['unityAd'] !== null ? UnityAd::fromJson($data['unityAd']) : null)
+            ->withAppLovinMaxes(array_map(
+                function ($item) {
+                    return AppLovinMax::fromJson($item);
+                },
+                array_key_exists('appLovinMaxes', $data) && $data['appLovinMaxes'] !== null ? $data['appLovinMaxes'] : []
+            ))
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withChangePointNotification(array_key_exists('changePointNotification', $data) && $data['changePointNotification'] !== null ? NotificationSetting::fromJson($data['changePointNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
@@ -115,6 +134,12 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "admob" => $this->getAdmob() !== null ? $this->getAdmob()->toJson() : null,
             "unityAd" => $this->getUnityAd() !== null ? $this->getUnityAd()->toJson() : null,
+            "appLovinMaxes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAppLovinMaxes() !== null && $this->getAppLovinMaxes() !== null ? $this->getAppLovinMaxes() : []
+            ),
             "description" => $this->getDescription(),
             "changePointNotification" => $this->getChangePointNotification() !== null ? $this->getChangePointNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,

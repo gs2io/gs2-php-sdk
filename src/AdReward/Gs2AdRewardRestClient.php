@@ -176,6 +176,14 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getUnityAd() !== null) {
             $json["unityAd"] = $this->request->getUnityAd()->toJson();
         }
+        if ($this->request->getAppLovinMaxes() !== null) {
+            $array = [];
+            foreach ($this->request->getAppLovinMaxes() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["appLovinMaxes"] = $array;
+        }
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
@@ -362,6 +370,14 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getUnityAd() !== null) {
             $json["unityAd"] = $this->request->getUnityAd()->toJson();
+        }
+        if ($this->request->getAppLovinMaxes() !== null) {
+            $array = [];
+            foreach ($this->request->getAppLovinMaxes() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["appLovinMaxes"] = $array;
         }
         if ($this->request->getChangePointNotification() !== null) {
             $json["changePointNotification"] = $this->request->getChangePointNotification()->toJson();

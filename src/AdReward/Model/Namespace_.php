@@ -42,6 +42,10 @@ class Namespace_ implements IModel {
 	 */
 	private $unityAd;
 	/**
+     * @var array
+	 */
+	private $appLovinMaxes;
+	/**
      * @var NotificationSetting
 	 */
 	private $changePointNotification;
@@ -111,6 +115,16 @@ class Namespace_ implements IModel {
 		$this->unityAd = $unityAd;
 		return $this;
 	}
+	public function getAppLovinMaxes(): ?array {
+		return $this->appLovinMaxes;
+	}
+	public function setAppLovinMaxes(?array $appLovinMaxes) {
+		$this->appLovinMaxes = $appLovinMaxes;
+	}
+	public function withAppLovinMaxes(?array $appLovinMaxes): Namespace_ {
+		$this->appLovinMaxes = $appLovinMaxes;
+		return $this;
+	}
 	public function getChangePointNotification(): ?NotificationSetting {
 		return $this->changePointNotification;
 	}
@@ -172,6 +186,12 @@ class Namespace_ implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAdmob(array_key_exists('admob', $data) && $data['admob'] !== null ? AdMob::fromJson($data['admob']) : null)
             ->withUnityAd(array_key_exists('unityAd', $data) && $data['unityAd'] !== null ? UnityAd::fromJson($data['unityAd']) : null)
+            ->withAppLovinMaxes(array_map(
+                function ($item) {
+                    return AppLovinMax::fromJson($item);
+                },
+                array_key_exists('appLovinMaxes', $data) && $data['appLovinMaxes'] !== null ? $data['appLovinMaxes'] : []
+            ))
             ->withChangePointNotification(array_key_exists('changePointNotification', $data) && $data['changePointNotification'] !== null ? NotificationSetting::fromJson($data['changePointNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -186,6 +206,12 @@ class Namespace_ implements IModel {
             "description" => $this->getDescription(),
             "admob" => $this->getAdmob() !== null ? $this->getAdmob()->toJson() : null,
             "unityAd" => $this->getUnityAd() !== null ? $this->getUnityAd()->toJson() : null,
+            "appLovinMaxes" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAppLovinMaxes() !== null && $this->getAppLovinMaxes() !== null ? $this->getAppLovinMaxes() : []
+            ),
             "changePointNotification" => $this->getChangePointNotification() !== null ? $this->getChangePointNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),

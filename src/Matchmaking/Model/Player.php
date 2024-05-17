@@ -37,6 +37,10 @@ class Player implements IModel {
      * @var array
 	 */
 	private $denyUserIds;
+	/**
+     * @var int
+	 */
+	private $createdAt;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -77,6 +81,16 @@ class Player implements IModel {
 		$this->denyUserIds = $denyUserIds;
 		return $this;
 	}
+	public function getCreatedAt(): ?int {
+		return $this->createdAt;
+	}
+	public function setCreatedAt(?int $createdAt) {
+		$this->createdAt = $createdAt;
+	}
+	public function withCreatedAt(?int $createdAt): Player {
+		$this->createdAt = $createdAt;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Player {
         if ($data === null) {
@@ -96,7 +110,8 @@ class Player implements IModel {
                     return $item;
                 },
                 array_key_exists('denyUserIds', $data) && $data['denyUserIds'] !== null ? $data['denyUserIds'] : []
-            ));
+            ))
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {
@@ -115,6 +130,7 @@ class Player implements IModel {
                 },
                 $this->getDenyUserIds() !== null && $this->getDenyUserIds() !== null ? $this->getDenyUserIds() : []
             ),
+            "createdAt" => $this->getCreatedAt(),
         );
     }
 }

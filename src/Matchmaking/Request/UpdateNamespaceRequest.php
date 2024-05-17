@@ -30,6 +30,10 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     /** @var bool */
     private $enableRating;
     /** @var string */
+    private $enableDisconnectDetection;
+    /** @var int */
+    private $disconnectDetectionTimeoutSeconds;
+    /** @var string */
     private $createGatheringTriggerType;
     /** @var string */
     private $createGatheringTriggerRealtimeNamespaceId;
@@ -87,6 +91,26 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withEnableRating(?bool $enableRating): UpdateNamespaceRequest {
 		$this->enableRating = $enableRating;
+		return $this;
+	}
+	public function getEnableDisconnectDetection(): ?string {
+		return $this->enableDisconnectDetection;
+	}
+	public function setEnableDisconnectDetection(?string $enableDisconnectDetection) {
+		$this->enableDisconnectDetection = $enableDisconnectDetection;
+	}
+	public function withEnableDisconnectDetection(?string $enableDisconnectDetection): UpdateNamespaceRequest {
+		$this->enableDisconnectDetection = $enableDisconnectDetection;
+		return $this;
+	}
+	public function getDisconnectDetectionTimeoutSeconds(): ?int {
+		return $this->disconnectDetectionTimeoutSeconds;
+	}
+	public function setDisconnectDetectionTimeoutSeconds(?int $disconnectDetectionTimeoutSeconds) {
+		$this->disconnectDetectionTimeoutSeconds = $disconnectDetectionTimeoutSeconds;
+	}
+	public function withDisconnectDetectionTimeoutSeconds(?int $disconnectDetectionTimeoutSeconds): UpdateNamespaceRequest {
+		$this->disconnectDetectionTimeoutSeconds = $disconnectDetectionTimeoutSeconds;
 		return $this;
 	}
 	public function getCreateGatheringTriggerType(): ?string {
@@ -248,6 +272,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withEnableRating(array_key_exists('enableRating', $data) ? $data['enableRating'] : null)
+            ->withEnableDisconnectDetection(array_key_exists('enableDisconnectDetection', $data) && $data['enableDisconnectDetection'] !== null ? $data['enableDisconnectDetection'] : null)
+            ->withDisconnectDetectionTimeoutSeconds(array_key_exists('disconnectDetectionTimeoutSeconds', $data) && $data['disconnectDetectionTimeoutSeconds'] !== null ? $data['disconnectDetectionTimeoutSeconds'] : null)
             ->withCreateGatheringTriggerType(array_key_exists('createGatheringTriggerType', $data) && $data['createGatheringTriggerType'] !== null ? $data['createGatheringTriggerType'] : null)
             ->withCreateGatheringTriggerRealtimeNamespaceId(array_key_exists('createGatheringTriggerRealtimeNamespaceId', $data) && $data['createGatheringTriggerRealtimeNamespaceId'] !== null ? $data['createGatheringTriggerRealtimeNamespaceId'] : null)
             ->withCreateGatheringTriggerScriptId(array_key_exists('createGatheringTriggerScriptId', $data) && $data['createGatheringTriggerScriptId'] !== null ? $data['createGatheringTriggerScriptId'] : null)
@@ -270,6 +296,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
             "enableRating" => $this->getEnableRating(),
+            "enableDisconnectDetection" => $this->getEnableDisconnectDetection(),
+            "disconnectDetectionTimeoutSeconds" => $this->getDisconnectDetectionTimeoutSeconds(),
             "createGatheringTriggerType" => $this->getCreateGatheringTriggerType(),
             "createGatheringTriggerRealtimeNamespaceId" => $this->getCreateGatheringTriggerRealtimeNamespaceId(),
             "createGatheringTriggerScriptId" => $this->getCreateGatheringTriggerScriptId(),

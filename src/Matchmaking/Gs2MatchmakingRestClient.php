@@ -71,6 +71,10 @@ use Gs2\Matchmaking\Request\DoMatchmakingRequest;
 use Gs2\Matchmaking\Result\DoMatchmakingResult;
 use Gs2\Matchmaking\Request\DoMatchmakingByUserIdRequest;
 use Gs2\Matchmaking\Result\DoMatchmakingByUserIdResult;
+use Gs2\Matchmaking\Request\PingRequest;
+use Gs2\Matchmaking\Result\PingResult;
+use Gs2\Matchmaking\Request\PingByUserIdRequest;
+use Gs2\Matchmaking\Result\PingByUserIdResult;
 use Gs2\Matchmaking\Request\GetGatheringRequest;
 use Gs2\Matchmaking\Result\GetGatheringResult;
 use Gs2\Matchmaking\Request\CancelMatchmakingRequest;
@@ -231,6 +235,12 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getEnableRating() !== null) {
             $json["enableRating"] = $this->request->getEnableRating();
+        }
+        if ($this->request->getEnableDisconnectDetection() !== null) {
+            $json["enableDisconnectDetection"] = $this->request->getEnableDisconnectDetection();
+        }
+        if ($this->request->getDisconnectDetectionTimeoutSeconds() !== null) {
+            $json["disconnectDetectionTimeoutSeconds"] = $this->request->getDisconnectDetectionTimeoutSeconds();
         }
         if ($this->request->getCreateGatheringTriggerType() !== null) {
             $json["createGatheringTriggerType"] = $this->request->getCreateGatheringTriggerType();
@@ -451,6 +461,12 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getEnableRating() !== null) {
             $json["enableRating"] = $this->request->getEnableRating();
+        }
+        if ($this->request->getEnableDisconnectDetection() !== null) {
+            $json["enableDisconnectDetection"] = $this->request->getEnableDisconnectDetection();
+        }
+        if ($this->request->getDisconnectDetectionTimeoutSeconds() !== null) {
+            $json["disconnectDetectionTimeoutSeconds"] = $this->request->getDisconnectDetectionTimeoutSeconds();
         }
         if ($this->request->getCreateGatheringTriggerType() !== null) {
             $json["createGatheringTriggerType"] = $this->request->getCreateGatheringTriggerType();
@@ -1574,6 +1590,131 @@ class DoMatchmakingByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getMatchmakingContextToken() !== null) {
             $json["matchmakingContextToken"] = $this->request->getMatchmakingContextToken();
         }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PingTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PingRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PingTask constructor.
+     * @param Gs2RestSession $session
+     * @param PingRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PingRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PingResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/gathering/{gatheringName}/ping";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PingByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PingByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PingByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param PingByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PingByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PingByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/gathering/{gatheringName}/user/{userId}/ping";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{gatheringName}", $this->request->getGatheringName() === null|| strlen($this->request->getGatheringName()) == 0 ? "null" : $this->request->getGatheringName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -3936,6 +4077,60 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
             DoMatchmakingByUserIdRequest $request
     ): DoMatchmakingByUserIdResult {
         return $this->doMatchmakingByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PingRequest $request
+     * @return PromiseInterface
+     */
+    public function pingAsync(
+            PingRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PingTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PingRequest $request
+     * @return PingResult
+     */
+    public function ping (
+            PingRequest $request
+    ): PingResult {
+        return $this->pingAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PingByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function pingByUserIdAsync(
+            PingByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PingByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PingByUserIdRequest $request
+     * @return PingByUserIdResult
+     */
+    public function pingByUserId (
+            PingByUserIdRequest $request
+    ): PingByUserIdResult {
+        return $this->pingByUserIdAsync(
             $request
         )->wait();
     }

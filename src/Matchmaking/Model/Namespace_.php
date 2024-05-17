@@ -40,6 +40,14 @@ class Namespace_ implements IModel {
 	/**
      * @var string
 	 */
+	private $enableDisconnectDetection;
+	/**
+     * @var int
+	 */
+	private $disconnectDetectionTimeoutSeconds;
+	/**
+     * @var string
+	 */
 	private $createGatheringTriggerType;
 	/**
      * @var string
@@ -147,6 +155,26 @@ class Namespace_ implements IModel {
 	}
 	public function withEnableRating(?bool $enableRating): Namespace_ {
 		$this->enableRating = $enableRating;
+		return $this;
+	}
+	public function getEnableDisconnectDetection(): ?string {
+		return $this->enableDisconnectDetection;
+	}
+	public function setEnableDisconnectDetection(?string $enableDisconnectDetection) {
+		$this->enableDisconnectDetection = $enableDisconnectDetection;
+	}
+	public function withEnableDisconnectDetection(?string $enableDisconnectDetection): Namespace_ {
+		$this->enableDisconnectDetection = $enableDisconnectDetection;
+		return $this;
+	}
+	public function getDisconnectDetectionTimeoutSeconds(): ?int {
+		return $this->disconnectDetectionTimeoutSeconds;
+	}
+	public function setDisconnectDetectionTimeoutSeconds(?int $disconnectDetectionTimeoutSeconds) {
+		$this->disconnectDetectionTimeoutSeconds = $disconnectDetectionTimeoutSeconds;
+	}
+	public function withDisconnectDetectionTimeoutSeconds(?int $disconnectDetectionTimeoutSeconds): Namespace_ {
+		$this->disconnectDetectionTimeoutSeconds = $disconnectDetectionTimeoutSeconds;
 		return $this;
 	}
 	public function getCreateGatheringTriggerType(): ?string {
@@ -339,6 +367,8 @@ class Namespace_ implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withEnableRating(array_key_exists('enableRating', $data) ? $data['enableRating'] : null)
+            ->withEnableDisconnectDetection(array_key_exists('enableDisconnectDetection', $data) && $data['enableDisconnectDetection'] !== null ? $data['enableDisconnectDetection'] : null)
+            ->withDisconnectDetectionTimeoutSeconds(array_key_exists('disconnectDetectionTimeoutSeconds', $data) && $data['disconnectDetectionTimeoutSeconds'] !== null ? $data['disconnectDetectionTimeoutSeconds'] : null)
             ->withCreateGatheringTriggerType(array_key_exists('createGatheringTriggerType', $data) && $data['createGatheringTriggerType'] !== null ? $data['createGatheringTriggerType'] : null)
             ->withCreateGatheringTriggerRealtimeNamespaceId(array_key_exists('createGatheringTriggerRealtimeNamespaceId', $data) && $data['createGatheringTriggerRealtimeNamespaceId'] !== null ? $data['createGatheringTriggerRealtimeNamespaceId'] : null)
             ->withCreateGatheringTriggerScriptId(array_key_exists('createGatheringTriggerScriptId', $data) && $data['createGatheringTriggerScriptId'] !== null ? $data['createGatheringTriggerScriptId'] : null)
@@ -365,6 +395,8 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "enableRating" => $this->getEnableRating(),
+            "enableDisconnectDetection" => $this->getEnableDisconnectDetection(),
+            "disconnectDetectionTimeoutSeconds" => $this->getDisconnectDetectionTimeoutSeconds(),
             "createGatheringTriggerType" => $this->getCreateGatheringTriggerType(),
             "createGatheringTriggerRealtimeNamespaceId" => $this->getCreateGatheringTriggerRealtimeNamespaceId(),
             "createGatheringTriggerScriptId" => $this->getCreateGatheringTriggerScriptId(),

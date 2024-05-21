@@ -38,10 +38,6 @@ class Event implements IModel {
 	 */
 	private $scheduleType;
 	/**
-     * @var string
-	 */
-	private $repeatType;
-	/**
      * @var int
 	 */
 	private $absoluteBegin;
@@ -49,6 +45,18 @@ class Event implements IModel {
      * @var int
 	 */
 	private $absoluteEnd;
+	/**
+     * @var string
+	 */
+	private $relativeTriggerName;
+	/**
+     * @var RepeatSetting
+	 */
+	private $repeatSetting;
+	/**
+     * @var string
+	 */
+	private $repeatType;
 	/**
      * @var int
 	 */
@@ -73,10 +81,6 @@ class Event implements IModel {
      * @var int
 	 */
 	private $repeatEndHour;
-	/**
-     * @var string
-	 */
-	private $relativeTriggerName;
 	public function getEventId(): ?string {
 		return $this->eventId;
 	}
@@ -117,16 +121,6 @@ class Event implements IModel {
 		$this->scheduleType = $scheduleType;
 		return $this;
 	}
-	public function getRepeatType(): ?string {
-		return $this->repeatType;
-	}
-	public function setRepeatType(?string $repeatType) {
-		$this->repeatType = $repeatType;
-	}
-	public function withRepeatType(?string $repeatType): Event {
-		$this->repeatType = $repeatType;
-		return $this;
-	}
 	public function getAbsoluteBegin(): ?int {
 		return $this->absoluteBegin;
 	}
@@ -147,66 +141,6 @@ class Event implements IModel {
 		$this->absoluteEnd = $absoluteEnd;
 		return $this;
 	}
-	public function getRepeatBeginDayOfMonth(): ?int {
-		return $this->repeatBeginDayOfMonth;
-	}
-	public function setRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth) {
-		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
-	}
-	public function withRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth): Event {
-		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
-		return $this;
-	}
-	public function getRepeatEndDayOfMonth(): ?int {
-		return $this->repeatEndDayOfMonth;
-	}
-	public function setRepeatEndDayOfMonth(?int $repeatEndDayOfMonth) {
-		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
-	}
-	public function withRepeatEndDayOfMonth(?int $repeatEndDayOfMonth): Event {
-		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
-		return $this;
-	}
-	public function getRepeatBeginDayOfWeek(): ?string {
-		return $this->repeatBeginDayOfWeek;
-	}
-	public function setRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek) {
-		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
-	}
-	public function withRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek): Event {
-		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
-		return $this;
-	}
-	public function getRepeatEndDayOfWeek(): ?string {
-		return $this->repeatEndDayOfWeek;
-	}
-	public function setRepeatEndDayOfWeek(?string $repeatEndDayOfWeek) {
-		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
-	}
-	public function withRepeatEndDayOfWeek(?string $repeatEndDayOfWeek): Event {
-		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
-		return $this;
-	}
-	public function getRepeatBeginHour(): ?int {
-		return $this->repeatBeginHour;
-	}
-	public function setRepeatBeginHour(?int $repeatBeginHour) {
-		$this->repeatBeginHour = $repeatBeginHour;
-	}
-	public function withRepeatBeginHour(?int $repeatBeginHour): Event {
-		$this->repeatBeginHour = $repeatBeginHour;
-		return $this;
-	}
-	public function getRepeatEndHour(): ?int {
-		return $this->repeatEndHour;
-	}
-	public function setRepeatEndHour(?int $repeatEndHour) {
-		$this->repeatEndHour = $repeatEndHour;
-	}
-	public function withRepeatEndHour(?int $repeatEndHour): Event {
-		$this->repeatEndHour = $repeatEndHour;
-		return $this;
-	}
 	public function getRelativeTriggerName(): ?string {
 		return $this->relativeTriggerName;
 	}
@@ -215,6 +149,149 @@ class Event implements IModel {
 	}
 	public function withRelativeTriggerName(?string $relativeTriggerName): Event {
 		$this->relativeTriggerName = $relativeTriggerName;
+		return $this;
+	}
+	public function getRepeatSetting(): ?RepeatSetting {
+		return $this->repeatSetting;
+	}
+	public function setRepeatSetting(?RepeatSetting $repeatSetting) {
+		$this->repeatSetting = $repeatSetting;
+	}
+	public function withRepeatSetting(?RepeatSetting $repeatSetting): Event {
+		$this->repeatSetting = $repeatSetting;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getRepeatType(): ?string {
+		return $this->repeatType;
+	}
+    /**
+     * @deprecated
+     */
+	public function setRepeatType(?string $repeatType) {
+		$this->repeatType = $repeatType;
+	}
+    /**
+     * @deprecated
+     */
+	public function withRepeatType(?string $repeatType): Event {
+		$this->repeatType = $repeatType;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getRepeatBeginDayOfMonth(): ?int {
+		return $this->repeatBeginDayOfMonth;
+	}
+    /**
+     * @deprecated
+     */
+	public function setRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth) {
+		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
+	}
+    /**
+     * @deprecated
+     */
+	public function withRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth): Event {
+		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getRepeatEndDayOfMonth(): ?int {
+		return $this->repeatEndDayOfMonth;
+	}
+    /**
+     * @deprecated
+     */
+	public function setRepeatEndDayOfMonth(?int $repeatEndDayOfMonth) {
+		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
+	}
+    /**
+     * @deprecated
+     */
+	public function withRepeatEndDayOfMonth(?int $repeatEndDayOfMonth): Event {
+		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getRepeatBeginDayOfWeek(): ?string {
+		return $this->repeatBeginDayOfWeek;
+	}
+    /**
+     * @deprecated
+     */
+	public function setRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek) {
+		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
+	}
+    /**
+     * @deprecated
+     */
+	public function withRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek): Event {
+		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getRepeatEndDayOfWeek(): ?string {
+		return $this->repeatEndDayOfWeek;
+	}
+    /**
+     * @deprecated
+     */
+	public function setRepeatEndDayOfWeek(?string $repeatEndDayOfWeek) {
+		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
+	}
+    /**
+     * @deprecated
+     */
+	public function withRepeatEndDayOfWeek(?string $repeatEndDayOfWeek): Event {
+		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getRepeatBeginHour(): ?int {
+		return $this->repeatBeginHour;
+	}
+    /**
+     * @deprecated
+     */
+	public function setRepeatBeginHour(?int $repeatBeginHour) {
+		$this->repeatBeginHour = $repeatBeginHour;
+	}
+    /**
+     * @deprecated
+     */
+	public function withRepeatBeginHour(?int $repeatBeginHour): Event {
+		$this->repeatBeginHour = $repeatBeginHour;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getRepeatEndHour(): ?int {
+		return $this->repeatEndHour;
+	}
+    /**
+     * @deprecated
+     */
+	public function setRepeatEndHour(?int $repeatEndHour) {
+		$this->repeatEndHour = $repeatEndHour;
+	}
+    /**
+     * @deprecated
+     */
+	public function withRepeatEndHour(?int $repeatEndHour): Event {
+		$this->repeatEndHour = $repeatEndHour;
 		return $this;
 	}
 
@@ -227,16 +304,17 @@ class Event implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withScheduleType(array_key_exists('scheduleType', $data) && $data['scheduleType'] !== null ? $data['scheduleType'] : null)
-            ->withRepeatType(array_key_exists('repeatType', $data) && $data['repeatType'] !== null ? $data['repeatType'] : null)
             ->withAbsoluteBegin(array_key_exists('absoluteBegin', $data) && $data['absoluteBegin'] !== null ? $data['absoluteBegin'] : null)
             ->withAbsoluteEnd(array_key_exists('absoluteEnd', $data) && $data['absoluteEnd'] !== null ? $data['absoluteEnd'] : null)
+            ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null)
+            ->withRepeatSetting(array_key_exists('repeatSetting', $data) && $data['repeatSetting'] !== null ? RepeatSetting::fromJson($data['repeatSetting']) : null)
+            ->withRepeatType(array_key_exists('repeatType', $data) && $data['repeatType'] !== null ? $data['repeatType'] : null)
             ->withRepeatBeginDayOfMonth(array_key_exists('repeatBeginDayOfMonth', $data) && $data['repeatBeginDayOfMonth'] !== null ? $data['repeatBeginDayOfMonth'] : null)
             ->withRepeatEndDayOfMonth(array_key_exists('repeatEndDayOfMonth', $data) && $data['repeatEndDayOfMonth'] !== null ? $data['repeatEndDayOfMonth'] : null)
             ->withRepeatBeginDayOfWeek(array_key_exists('repeatBeginDayOfWeek', $data) && $data['repeatBeginDayOfWeek'] !== null ? $data['repeatBeginDayOfWeek'] : null)
             ->withRepeatEndDayOfWeek(array_key_exists('repeatEndDayOfWeek', $data) && $data['repeatEndDayOfWeek'] !== null ? $data['repeatEndDayOfWeek'] : null)
             ->withRepeatBeginHour(array_key_exists('repeatBeginHour', $data) && $data['repeatBeginHour'] !== null ? $data['repeatBeginHour'] : null)
-            ->withRepeatEndHour(array_key_exists('repeatEndHour', $data) && $data['repeatEndHour'] !== null ? $data['repeatEndHour'] : null)
-            ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null);
+            ->withRepeatEndHour(array_key_exists('repeatEndHour', $data) && $data['repeatEndHour'] !== null ? $data['repeatEndHour'] : null);
     }
 
     public function toJson(): array {
@@ -245,16 +323,17 @@ class Event implements IModel {
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "scheduleType" => $this->getScheduleType(),
-            "repeatType" => $this->getRepeatType(),
             "absoluteBegin" => $this->getAbsoluteBegin(),
             "absoluteEnd" => $this->getAbsoluteEnd(),
+            "relativeTriggerName" => $this->getRelativeTriggerName(),
+            "repeatSetting" => $this->getRepeatSetting() !== null ? $this->getRepeatSetting()->toJson() : null,
+            "repeatType" => $this->getRepeatType(),
             "repeatBeginDayOfMonth" => $this->getRepeatBeginDayOfMonth(),
             "repeatEndDayOfMonth" => $this->getRepeatEndDayOfMonth(),
             "repeatBeginDayOfWeek" => $this->getRepeatBeginDayOfWeek(),
             "repeatEndDayOfWeek" => $this->getRepeatEndDayOfWeek(),
             "repeatBeginHour" => $this->getRepeatBeginHour(),
             "repeatEndHour" => $this->getRepeatEndHour(),
-            "relativeTriggerName" => $this->getRelativeTriggerName(),
         );
     }
 }

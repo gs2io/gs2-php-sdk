@@ -18,6 +18,7 @@
 namespace Gs2\Schedule\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Schedule\Model\RepeatSetting;
 use Gs2\Schedule\Model\EventMaster;
 
 class DeleteEventMasterResult implements IResult {

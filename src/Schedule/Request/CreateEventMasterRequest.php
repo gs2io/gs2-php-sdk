@@ -18,6 +18,7 @@
 namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Schedule\Model\RepeatSetting;
 
 class CreateEventMasterRequest extends Gs2BasicRequest {
     /** @var string */
@@ -50,6 +51,8 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
     private $repeatEndHour;
     /** @var string */
     private $relativeTriggerName;
+    /** @var RepeatSetting */
+    private $repeatSetting;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -120,72 +123,135 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 		$this->absoluteEnd = $absoluteEnd;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getRepeatType(): ?string {
 		return $this->repeatType;
 	}
+    /**
+     * @deprecated
+     */
 	public function setRepeatType(?string $repeatType) {
 		$this->repeatType = $repeatType;
 	}
+    /**
+     * @deprecated
+     */
 	public function withRepeatType(?string $repeatType): CreateEventMasterRequest {
 		$this->repeatType = $repeatType;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getRepeatBeginDayOfMonth(): ?int {
 		return $this->repeatBeginDayOfMonth;
 	}
+    /**
+     * @deprecated
+     */
 	public function setRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth) {
 		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
 	}
+    /**
+     * @deprecated
+     */
 	public function withRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth): CreateEventMasterRequest {
 		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getRepeatEndDayOfMonth(): ?int {
 		return $this->repeatEndDayOfMonth;
 	}
+    /**
+     * @deprecated
+     */
 	public function setRepeatEndDayOfMonth(?int $repeatEndDayOfMonth) {
 		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
 	}
+    /**
+     * @deprecated
+     */
 	public function withRepeatEndDayOfMonth(?int $repeatEndDayOfMonth): CreateEventMasterRequest {
 		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getRepeatBeginDayOfWeek(): ?string {
 		return $this->repeatBeginDayOfWeek;
 	}
+    /**
+     * @deprecated
+     */
 	public function setRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek) {
 		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
 	}
+    /**
+     * @deprecated
+     */
 	public function withRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek): CreateEventMasterRequest {
 		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getRepeatEndDayOfWeek(): ?string {
 		return $this->repeatEndDayOfWeek;
 	}
+    /**
+     * @deprecated
+     */
 	public function setRepeatEndDayOfWeek(?string $repeatEndDayOfWeek) {
 		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
 	}
+    /**
+     * @deprecated
+     */
 	public function withRepeatEndDayOfWeek(?string $repeatEndDayOfWeek): CreateEventMasterRequest {
 		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getRepeatBeginHour(): ?int {
 		return $this->repeatBeginHour;
 	}
+    /**
+     * @deprecated
+     */
 	public function setRepeatBeginHour(?int $repeatBeginHour) {
 		$this->repeatBeginHour = $repeatBeginHour;
 	}
+    /**
+     * @deprecated
+     */
 	public function withRepeatBeginHour(?int $repeatBeginHour): CreateEventMasterRequest {
 		$this->repeatBeginHour = $repeatBeginHour;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getRepeatEndHour(): ?int {
 		return $this->repeatEndHour;
 	}
+    /**
+     * @deprecated
+     */
 	public function setRepeatEndHour(?int $repeatEndHour) {
 		$this->repeatEndHour = $repeatEndHour;
 	}
+    /**
+     * @deprecated
+     */
 	public function withRepeatEndHour(?int $repeatEndHour): CreateEventMasterRequest {
 		$this->repeatEndHour = $repeatEndHour;
 		return $this;
@@ -198,6 +264,16 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 	}
 	public function withRelativeTriggerName(?string $relativeTriggerName): CreateEventMasterRequest {
 		$this->relativeTriggerName = $relativeTriggerName;
+		return $this;
+	}
+	public function getRepeatSetting(): ?RepeatSetting {
+		return $this->repeatSetting;
+	}
+	public function setRepeatSetting(?RepeatSetting $repeatSetting) {
+		$this->repeatSetting = $repeatSetting;
+	}
+	public function withRepeatSetting(?RepeatSetting $repeatSetting): CreateEventMasterRequest {
+		$this->repeatSetting = $repeatSetting;
 		return $this;
 	}
 
@@ -220,7 +296,8 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
             ->withRepeatEndDayOfWeek(array_key_exists('repeatEndDayOfWeek', $data) && $data['repeatEndDayOfWeek'] !== null ? $data['repeatEndDayOfWeek'] : null)
             ->withRepeatBeginHour(array_key_exists('repeatBeginHour', $data) && $data['repeatBeginHour'] !== null ? $data['repeatBeginHour'] : null)
             ->withRepeatEndHour(array_key_exists('repeatEndHour', $data) && $data['repeatEndHour'] !== null ? $data['repeatEndHour'] : null)
-            ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null);
+            ->withRelativeTriggerName(array_key_exists('relativeTriggerName', $data) && $data['relativeTriggerName'] !== null ? $data['relativeTriggerName'] : null)
+            ->withRepeatSetting(array_key_exists('repeatSetting', $data) && $data['repeatSetting'] !== null ? RepeatSetting::fromJson($data['repeatSetting']) : null);
     }
 
     public function toJson(): array {
@@ -240,6 +317,7 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
             "repeatBeginHour" => $this->getRepeatBeginHour(),
             "repeatEndHour" => $this->getRepeatEndHour(),
             "relativeTriggerName" => $this->getRelativeTriggerName(),
+            "repeatSetting" => $this->getRepeatSetting() !== null ? $this->getRepeatSetting()->toJson() : null,
         );
     }
 }

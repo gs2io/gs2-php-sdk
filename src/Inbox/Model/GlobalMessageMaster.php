@@ -44,11 +44,15 @@ class GlobalMessageMaster implements IModel {
 	/**
      * @var int
 	 */
-	private $createdAt;
+	private $expiresAt;
+	/**
+     * @var string
+	 */
+	private $messageReceptionPeriodEventId;
 	/**
      * @var int
 	 */
-	private $expiresAt;
+	private $createdAt;
 	/**
      * @var int
 	 */
@@ -103,16 +107,6 @@ class GlobalMessageMaster implements IModel {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 		return $this;
 	}
-	public function getCreatedAt(): ?int {
-		return $this->createdAt;
-	}
-	public function setCreatedAt(?int $createdAt) {
-		$this->createdAt = $createdAt;
-	}
-	public function withCreatedAt(?int $createdAt): GlobalMessageMaster {
-		$this->createdAt = $createdAt;
-		return $this;
-	}
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
@@ -121,6 +115,26 @@ class GlobalMessageMaster implements IModel {
 	}
 	public function withExpiresAt(?int $expiresAt): GlobalMessageMaster {
 		$this->expiresAt = $expiresAt;
+		return $this;
+	}
+	public function getMessageReceptionPeriodEventId(): ?string {
+		return $this->messageReceptionPeriodEventId;
+	}
+	public function setMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId) {
+		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
+	}
+	public function withMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId): GlobalMessageMaster {
+		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
+		return $this;
+	}
+	public function getCreatedAt(): ?int {
+		return $this->createdAt;
+	}
+	public function setCreatedAt(?int $createdAt) {
+		$this->createdAt = $createdAt;
+	}
+	public function withCreatedAt(?int $createdAt): GlobalMessageMaster {
+		$this->createdAt = $createdAt;
 		return $this;
 	}
 	public function getRevision(): ?int {
@@ -149,8 +163,9 @@ class GlobalMessageMaster implements IModel {
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
             ->withExpiresTimeSpan(array_key_exists('expiresTimeSpan', $data) && $data['expiresTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresTimeSpan']) : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withMessageReceptionPeriodEventId(array_key_exists('messageReceptionPeriodEventId', $data) && $data['messageReceptionPeriodEventId'] !== null ? $data['messageReceptionPeriodEventId'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
@@ -166,8 +181,9 @@ class GlobalMessageMaster implements IModel {
                 $this->getReadAcquireActions() !== null && $this->getReadAcquireActions() !== null ? $this->getReadAcquireActions() : []
             ),
             "expiresTimeSpan" => $this->getExpiresTimeSpan() !== null ? $this->getExpiresTimeSpan()->toJson() : null,
-            "createdAt" => $this->getCreatedAt(),
             "expiresAt" => $this->getExpiresAt(),
+            "messageReceptionPeriodEventId" => $this->getMessageReceptionPeriodEventId(),
+            "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );
     }

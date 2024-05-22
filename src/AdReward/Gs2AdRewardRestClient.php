@@ -187,6 +187,12 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getAcquirePointScript() !== null) {
+            $json["acquirePointScript"] = $this->request->getAcquirePointScript()->toJson();
+        }
+        if ($this->request->getConsumePointScript() !== null) {
+            $json["consumePointScript"] = $this->request->getConsumePointScript()->toJson();
+        }
         if ($this->request->getChangePointNotification() !== null) {
             $json["changePointNotification"] = $this->request->getChangePointNotification()->toJson();
         }
@@ -378,6 +384,12 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["appLovinMaxes"] = $array;
+        }
+        if ($this->request->getAcquirePointScript() !== null) {
+            $json["acquirePointScript"] = $this->request->getAcquirePointScript()->toJson();
+        }
+        if ($this->request->getConsumePointScript() !== null) {
+            $json["consumePointScript"] = $this->request->getConsumePointScript()->toJson();
         }
         if ($this->request->getChangePointNotification() !== null) {
             $json["changePointNotification"] = $this->request->getChangePointNotification()->toJson();

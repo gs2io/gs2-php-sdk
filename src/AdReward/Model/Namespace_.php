@@ -46,6 +46,14 @@ class Namespace_ implements IModel {
 	 */
 	private $appLovinMaxes;
 	/**
+     * @var ScriptSetting
+	 */
+	private $acquirePointScript;
+	/**
+     * @var ScriptSetting
+	 */
+	private $consumePointScript;
+	/**
      * @var NotificationSetting
 	 */
 	private $changePointNotification;
@@ -125,6 +133,26 @@ class Namespace_ implements IModel {
 		$this->appLovinMaxes = $appLovinMaxes;
 		return $this;
 	}
+	public function getAcquirePointScript(): ?ScriptSetting {
+		return $this->acquirePointScript;
+	}
+	public function setAcquirePointScript(?ScriptSetting $acquirePointScript) {
+		$this->acquirePointScript = $acquirePointScript;
+	}
+	public function withAcquirePointScript(?ScriptSetting $acquirePointScript): Namespace_ {
+		$this->acquirePointScript = $acquirePointScript;
+		return $this;
+	}
+	public function getConsumePointScript(): ?ScriptSetting {
+		return $this->consumePointScript;
+	}
+	public function setConsumePointScript(?ScriptSetting $consumePointScript) {
+		$this->consumePointScript = $consumePointScript;
+	}
+	public function withConsumePointScript(?ScriptSetting $consumePointScript): Namespace_ {
+		$this->consumePointScript = $consumePointScript;
+		return $this;
+	}
 	public function getChangePointNotification(): ?NotificationSetting {
 		return $this->changePointNotification;
 	}
@@ -192,6 +220,8 @@ class Namespace_ implements IModel {
                 },
                 array_key_exists('appLovinMaxes', $data) && $data['appLovinMaxes'] !== null ? $data['appLovinMaxes'] : []
             ))
+            ->withAcquirePointScript(array_key_exists('acquirePointScript', $data) && $data['acquirePointScript'] !== null ? ScriptSetting::fromJson($data['acquirePointScript']) : null)
+            ->withConsumePointScript(array_key_exists('consumePointScript', $data) && $data['consumePointScript'] !== null ? ScriptSetting::fromJson($data['consumePointScript']) : null)
             ->withChangePointNotification(array_key_exists('changePointNotification', $data) && $data['changePointNotification'] !== null ? NotificationSetting::fromJson($data['changePointNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -212,6 +242,8 @@ class Namespace_ implements IModel {
                 },
                 $this->getAppLovinMaxes() !== null && $this->getAppLovinMaxes() !== null ? $this->getAppLovinMaxes() : []
             ),
+            "acquirePointScript" => $this->getAcquirePointScript() !== null ? $this->getAcquirePointScript()->toJson() : null,
+            "consumePointScript" => $this->getConsumePointScript() !== null ? $this->getConsumePointScript()->toJson() : null,
             "changePointNotification" => $this->getChangePointNotification() !== null ? $this->getChangePointNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),

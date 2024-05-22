@@ -34,6 +34,8 @@ class UpdateGlobalMessageMasterRequest extends Gs2BasicRequest {
     private $expiresTimeSpan;
     /** @var int */
     private $expiresAt;
+    /** @var string */
+    private $messageReceptionPeriodEventId;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -94,6 +96,16 @@ class UpdateGlobalMessageMasterRequest extends Gs2BasicRequest {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+	public function getMessageReceptionPeriodEventId(): ?string {
+		return $this->messageReceptionPeriodEventId;
+	}
+	public function setMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId) {
+		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
+	}
+	public function withMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId): UpdateGlobalMessageMasterRequest {
+		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?UpdateGlobalMessageMasterRequest {
         if ($data === null) {
@@ -110,7 +122,8 @@ class UpdateGlobalMessageMasterRequest extends Gs2BasicRequest {
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
             ->withExpiresTimeSpan(array_key_exists('expiresTimeSpan', $data) && $data['expiresTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresTimeSpan']) : null)
-            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withMessageReceptionPeriodEventId(array_key_exists('messageReceptionPeriodEventId', $data) && $data['messageReceptionPeriodEventId'] !== null ? $data['messageReceptionPeriodEventId'] : null);
     }
 
     public function toJson(): array {
@@ -126,6 +139,7 @@ class UpdateGlobalMessageMasterRequest extends Gs2BasicRequest {
             ),
             "expiresTimeSpan" => $this->getExpiresTimeSpan() !== null ? $this->getExpiresTimeSpan()->toJson() : null,
             "expiresAt" => $this->getExpiresAt(),
+            "messageReceptionPeriodEventId" => $this->getMessageReceptionPeriodEventId(),
         );
     }
 }

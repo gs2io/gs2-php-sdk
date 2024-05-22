@@ -45,6 +45,10 @@ class GlobalMessage implements IModel {
      * @var int
 	 */
 	private $expiresAt;
+	/**
+     * @var string
+	 */
+	private $messageReceptionPeriodEventId;
 	public function getGlobalMessageId(): ?string {
 		return $this->globalMessageId;
 	}
@@ -105,6 +109,16 @@ class GlobalMessage implements IModel {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+	public function getMessageReceptionPeriodEventId(): ?string {
+		return $this->messageReceptionPeriodEventId;
+	}
+	public function setMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId) {
+		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
+	}
+	public function withMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId): GlobalMessage {
+		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GlobalMessage {
         if ($data === null) {
@@ -121,7 +135,8 @@ class GlobalMessage implements IModel {
                 array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
             ))
             ->withExpiresTimeSpan(array_key_exists('expiresTimeSpan', $data) && $data['expiresTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresTimeSpan']) : null)
-            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null);
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withMessageReceptionPeriodEventId(array_key_exists('messageReceptionPeriodEventId', $data) && $data['messageReceptionPeriodEventId'] !== null ? $data['messageReceptionPeriodEventId'] : null);
     }
 
     public function toJson(): array {
@@ -137,6 +152,7 @@ class GlobalMessage implements IModel {
             ),
             "expiresTimeSpan" => $this->getExpiresTimeSpan() !== null ? $this->getExpiresTimeSpan()->toJson() : null,
             "expiresAt" => $this->getExpiresAt(),
+            "messageReceptionPeriodEventId" => $this->getMessageReceptionPeriodEventId(),
         );
     }
 }

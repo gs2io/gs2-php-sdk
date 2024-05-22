@@ -2343,6 +2343,9 @@ class CreateGlobalMessageMasterTask extends Gs2RestSessionTask {
         if ($this->request->getExpiresAt() !== null) {
             $json["expiresAt"] = $this->request->getExpiresAt();
         }
+        if ($this->request->getMessageReceptionPeriodEventId() !== null) {
+            $json["messageReceptionPeriodEventId"] = $this->request->getMessageReceptionPeriodEventId();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2473,6 +2476,9 @@ class UpdateGlobalMessageMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getExpiresAt() !== null) {
             $json["expiresAt"] = $this->request->getExpiresAt();
+        }
+        if ($this->request->getMessageReceptionPeriodEventId() !== null) {
+            $json["messageReceptionPeriodEventId"] = $this->request->getMessageReceptionPeriodEventId();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

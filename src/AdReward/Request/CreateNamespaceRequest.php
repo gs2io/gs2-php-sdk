@@ -21,6 +21,7 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\AdReward\Model\AdMob;
 use Gs2\AdReward\Model\UnityAd;
 use Gs2\AdReward\Model\AppLovinMax;
+use Gs2\AdReward\Model\ScriptSetting;
 use Gs2\AdReward\Model\NotificationSetting;
 use Gs2\AdReward\Model\LogSetting;
 
@@ -35,6 +36,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $appLovinMaxes;
     /** @var string */
     private $description;
+    /** @var ScriptSetting */
+    private $acquirePointScript;
+    /** @var ScriptSetting */
+    private $consumePointScript;
     /** @var NotificationSetting */
     private $changePointNotification;
     /** @var LogSetting */
@@ -89,6 +94,26 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->description = $description;
 		return $this;
 	}
+	public function getAcquirePointScript(): ?ScriptSetting {
+		return $this->acquirePointScript;
+	}
+	public function setAcquirePointScript(?ScriptSetting $acquirePointScript) {
+		$this->acquirePointScript = $acquirePointScript;
+	}
+	public function withAcquirePointScript(?ScriptSetting $acquirePointScript): CreateNamespaceRequest {
+		$this->acquirePointScript = $acquirePointScript;
+		return $this;
+	}
+	public function getConsumePointScript(): ?ScriptSetting {
+		return $this->consumePointScript;
+	}
+	public function setConsumePointScript(?ScriptSetting $consumePointScript) {
+		$this->consumePointScript = $consumePointScript;
+	}
+	public function withConsumePointScript(?ScriptSetting $consumePointScript): CreateNamespaceRequest {
+		$this->consumePointScript = $consumePointScript;
+		return $this;
+	}
 	public function getChangePointNotification(): ?NotificationSetting {
 		return $this->changePointNotification;
 	}
@@ -125,6 +150,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
                 array_key_exists('appLovinMaxes', $data) && $data['appLovinMaxes'] !== null ? $data['appLovinMaxes'] : []
             ))
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withAcquirePointScript(array_key_exists('acquirePointScript', $data) && $data['acquirePointScript'] !== null ? ScriptSetting::fromJson($data['acquirePointScript']) : null)
+            ->withConsumePointScript(array_key_exists('consumePointScript', $data) && $data['consumePointScript'] !== null ? ScriptSetting::fromJson($data['consumePointScript']) : null)
             ->withChangePointNotification(array_key_exists('changePointNotification', $data) && $data['changePointNotification'] !== null ? NotificationSetting::fromJson($data['changePointNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
@@ -141,6 +168,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
                 $this->getAppLovinMaxes() !== null && $this->getAppLovinMaxes() !== null ? $this->getAppLovinMaxes() : []
             ),
             "description" => $this->getDescription(),
+            "acquirePointScript" => $this->getAcquirePointScript() !== null ? $this->getAcquirePointScript()->toJson() : null,
+            "consumePointScript" => $this->getConsumePointScript() !== null ? $this->getConsumePointScript()->toJson() : null,
             "changePointNotification" => $this->getChangePointNotification() !== null ? $this->getChangePointNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );

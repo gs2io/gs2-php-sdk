@@ -21,6 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\AdReward\Model\AdMob;
 use Gs2\AdReward\Model\UnityAd;
 use Gs2\AdReward\Model\AppLovinMax;
+use Gs2\AdReward\Model\ScriptSetting;
 use Gs2\AdReward\Model\NotificationSetting;
 use Gs2\AdReward\Model\LogSetting;
 use Gs2\AdReward\Model\Namespace_;

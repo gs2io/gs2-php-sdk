@@ -18,6 +18,8 @@
 namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Mission\Model\TargetCounterModel;
+use Gs2\Mission\Model\ConsumeAction;
 use Gs2\Mission\Model\AcquireAction;
 
 class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
@@ -32,17 +34,23 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
     /** @var string */
     private $description;
     /** @var string */
-    private $counterName;
-    /** @var string */
-    private $targetResetType;
-    /** @var int */
-    private $targetValue;
+    private $verifyCompleteType;
+    /** @var TargetCounterModel */
+    private $targetCounter;
+    /** @var array */
+    private $verifyCompleteConsumeActions;
     /** @var array */
     private $completeAcquireActions;
     /** @var string */
     private $challengePeriodEventId;
     /** @var string */
     private $premiseMissionTaskName;
+    /** @var string */
+    private $counterName;
+    /** @var string */
+    private $targetResetType;
+    /** @var int */
+    private $targetValue;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -93,34 +101,34 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
 		$this->description = $description;
 		return $this;
 	}
-	public function getCounterName(): ?string {
-		return $this->counterName;
+	public function getVerifyCompleteType(): ?string {
+		return $this->verifyCompleteType;
 	}
-	public function setCounterName(?string $counterName) {
-		$this->counterName = $counterName;
+	public function setVerifyCompleteType(?string $verifyCompleteType) {
+		$this->verifyCompleteType = $verifyCompleteType;
 	}
-	public function withCounterName(?string $counterName): CreateMissionTaskModelMasterRequest {
-		$this->counterName = $counterName;
+	public function withVerifyCompleteType(?string $verifyCompleteType): CreateMissionTaskModelMasterRequest {
+		$this->verifyCompleteType = $verifyCompleteType;
 		return $this;
 	}
-	public function getTargetResetType(): ?string {
-		return $this->targetResetType;
+	public function getTargetCounter(): ?TargetCounterModel {
+		return $this->targetCounter;
 	}
-	public function setTargetResetType(?string $targetResetType) {
-		$this->targetResetType = $targetResetType;
+	public function setTargetCounter(?TargetCounterModel $targetCounter) {
+		$this->targetCounter = $targetCounter;
 	}
-	public function withTargetResetType(?string $targetResetType): CreateMissionTaskModelMasterRequest {
-		$this->targetResetType = $targetResetType;
+	public function withTargetCounter(?TargetCounterModel $targetCounter): CreateMissionTaskModelMasterRequest {
+		$this->targetCounter = $targetCounter;
 		return $this;
 	}
-	public function getTargetValue(): ?int {
-		return $this->targetValue;
+	public function getVerifyCompleteConsumeActions(): ?array {
+		return $this->verifyCompleteConsumeActions;
 	}
-	public function setTargetValue(?int $targetValue) {
-		$this->targetValue = $targetValue;
+	public function setVerifyCompleteConsumeActions(?array $verifyCompleteConsumeActions) {
+		$this->verifyCompleteConsumeActions = $verifyCompleteConsumeActions;
 	}
-	public function withTargetValue(?int $targetValue): CreateMissionTaskModelMasterRequest {
-		$this->targetValue = $targetValue;
+	public function withVerifyCompleteConsumeActions(?array $verifyCompleteConsumeActions): CreateMissionTaskModelMasterRequest {
+		$this->verifyCompleteConsumeActions = $verifyCompleteConsumeActions;
 		return $this;
 	}
 	public function getCompleteAcquireActions(): ?array {
@@ -153,6 +161,63 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
 		$this->premiseMissionTaskName = $premiseMissionTaskName;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
+	public function getCounterName(): ?string {
+		return $this->counterName;
+	}
+    /**
+     * @deprecated
+     */
+	public function setCounterName(?string $counterName) {
+		$this->counterName = $counterName;
+	}
+    /**
+     * @deprecated
+     */
+	public function withCounterName(?string $counterName): CreateMissionTaskModelMasterRequest {
+		$this->counterName = $counterName;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getTargetResetType(): ?string {
+		return $this->targetResetType;
+	}
+    /**
+     * @deprecated
+     */
+	public function setTargetResetType(?string $targetResetType) {
+		$this->targetResetType = $targetResetType;
+	}
+    /**
+     * @deprecated
+     */
+	public function withTargetResetType(?string $targetResetType): CreateMissionTaskModelMasterRequest {
+		$this->targetResetType = $targetResetType;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getTargetValue(): ?int {
+		return $this->targetValue;
+	}
+    /**
+     * @deprecated
+     */
+	public function setTargetValue(?int $targetValue) {
+		$this->targetValue = $targetValue;
+	}
+    /**
+     * @deprecated
+     */
+	public function withTargetValue(?int $targetValue): CreateMissionTaskModelMasterRequest {
+		$this->targetValue = $targetValue;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateMissionTaskModelMasterRequest {
         if ($data === null) {
@@ -164,9 +229,14 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
-            ->withTargetResetType(array_key_exists('targetResetType', $data) && $data['targetResetType'] !== null ? $data['targetResetType'] : null)
-            ->withTargetValue(array_key_exists('targetValue', $data) && $data['targetValue'] !== null ? $data['targetValue'] : null)
+            ->withVerifyCompleteType(array_key_exists('verifyCompleteType', $data) && $data['verifyCompleteType'] !== null ? $data['verifyCompleteType'] : null)
+            ->withTargetCounter(array_key_exists('targetCounter', $data) && $data['targetCounter'] !== null ? TargetCounterModel::fromJson($data['targetCounter']) : null)
+            ->withVerifyCompleteConsumeActions(array_map(
+                function ($item) {
+                    return ConsumeAction::fromJson($item);
+                },
+                array_key_exists('verifyCompleteConsumeActions', $data) && $data['verifyCompleteConsumeActions'] !== null ? $data['verifyCompleteConsumeActions'] : []
+            ))
             ->withCompleteAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
@@ -174,7 +244,10 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
                 array_key_exists('completeAcquireActions', $data) && $data['completeAcquireActions'] !== null ? $data['completeAcquireActions'] : []
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
-            ->withPremiseMissionTaskName(array_key_exists('premiseMissionTaskName', $data) && $data['premiseMissionTaskName'] !== null ? $data['premiseMissionTaskName'] : null);
+            ->withPremiseMissionTaskName(array_key_exists('premiseMissionTaskName', $data) && $data['premiseMissionTaskName'] !== null ? $data['premiseMissionTaskName'] : null)
+            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
+            ->withTargetResetType(array_key_exists('targetResetType', $data) && $data['targetResetType'] !== null ? $data['targetResetType'] : null)
+            ->withTargetValue(array_key_exists('targetValue', $data) && $data['targetValue'] !== null ? $data['targetValue'] : null);
     }
 
     public function toJson(): array {
@@ -184,9 +257,14 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "description" => $this->getDescription(),
-            "counterName" => $this->getCounterName(),
-            "targetResetType" => $this->getTargetResetType(),
-            "targetValue" => $this->getTargetValue(),
+            "verifyCompleteType" => $this->getVerifyCompleteType(),
+            "targetCounter" => $this->getTargetCounter() !== null ? $this->getTargetCounter()->toJson() : null,
+            "verifyCompleteConsumeActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyCompleteConsumeActions() !== null && $this->getVerifyCompleteConsumeActions() !== null ? $this->getVerifyCompleteConsumeActions() : []
+            ),
             "completeAcquireActions" => array_map(
                 function ($item) {
                     return $item->toJson();
@@ -195,6 +273,9 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
             ),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
             "premiseMissionTaskName" => $this->getPremiseMissionTaskName(),
+            "counterName" => $this->getCounterName(),
+            "targetResetType" => $this->getTargetResetType(),
+            "targetValue" => $this->getTargetValue(),
         );
     }
 }

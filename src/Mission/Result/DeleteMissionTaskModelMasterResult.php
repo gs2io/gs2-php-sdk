@@ -18,6 +18,8 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\TargetCounterModel;
+use Gs2\Mission\Model\ConsumeAction;
 use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModelMaster;
 

@@ -36,15 +36,15 @@ class MissionTaskModel implements IModel {
 	/**
      * @var string
 	 */
-	private $counterName;
+	private $verifyCompleteType;
 	/**
-     * @var string
+     * @var TargetCounterModel
 	 */
-	private $targetResetType;
+	private $targetCounter;
 	/**
-     * @var int
+     * @var array
 	 */
-	private $targetValue;
+	private $verifyCompleteConsumeActions;
 	/**
      * @var array
 	 */
@@ -57,6 +57,18 @@ class MissionTaskModel implements IModel {
      * @var string
 	 */
 	private $premiseMissionTaskName;
+	/**
+     * @var string
+	 */
+	private $counterName;
+	/**
+     * @var string
+	 */
+	private $targetResetType;
+	/**
+     * @var int
+	 */
+	private $targetValue;
 	public function getMissionTaskId(): ?string {
 		return $this->missionTaskId;
 	}
@@ -87,34 +99,34 @@ class MissionTaskModel implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	public function getCounterName(): ?string {
-		return $this->counterName;
+	public function getVerifyCompleteType(): ?string {
+		return $this->verifyCompleteType;
 	}
-	public function setCounterName(?string $counterName) {
-		$this->counterName = $counterName;
+	public function setVerifyCompleteType(?string $verifyCompleteType) {
+		$this->verifyCompleteType = $verifyCompleteType;
 	}
-	public function withCounterName(?string $counterName): MissionTaskModel {
-		$this->counterName = $counterName;
+	public function withVerifyCompleteType(?string $verifyCompleteType): MissionTaskModel {
+		$this->verifyCompleteType = $verifyCompleteType;
 		return $this;
 	}
-	public function getTargetResetType(): ?string {
-		return $this->targetResetType;
+	public function getTargetCounter(): ?TargetCounterModel {
+		return $this->targetCounter;
 	}
-	public function setTargetResetType(?string $targetResetType) {
-		$this->targetResetType = $targetResetType;
+	public function setTargetCounter(?TargetCounterModel $targetCounter) {
+		$this->targetCounter = $targetCounter;
 	}
-	public function withTargetResetType(?string $targetResetType): MissionTaskModel {
-		$this->targetResetType = $targetResetType;
+	public function withTargetCounter(?TargetCounterModel $targetCounter): MissionTaskModel {
+		$this->targetCounter = $targetCounter;
 		return $this;
 	}
-	public function getTargetValue(): ?int {
-		return $this->targetValue;
+	public function getVerifyCompleteConsumeActions(): ?array {
+		return $this->verifyCompleteConsumeActions;
 	}
-	public function setTargetValue(?int $targetValue) {
-		$this->targetValue = $targetValue;
+	public function setVerifyCompleteConsumeActions(?array $verifyCompleteConsumeActions) {
+		$this->verifyCompleteConsumeActions = $verifyCompleteConsumeActions;
 	}
-	public function withTargetValue(?int $targetValue): MissionTaskModel {
-		$this->targetValue = $targetValue;
+	public function withVerifyCompleteConsumeActions(?array $verifyCompleteConsumeActions): MissionTaskModel {
+		$this->verifyCompleteConsumeActions = $verifyCompleteConsumeActions;
 		return $this;
 	}
 	public function getCompleteAcquireActions(): ?array {
@@ -147,6 +159,63 @@ class MissionTaskModel implements IModel {
 		$this->premiseMissionTaskName = $premiseMissionTaskName;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
+	public function getCounterName(): ?string {
+		return $this->counterName;
+	}
+    /**
+     * @deprecated
+     */
+	public function setCounterName(?string $counterName) {
+		$this->counterName = $counterName;
+	}
+    /**
+     * @deprecated
+     */
+	public function withCounterName(?string $counterName): MissionTaskModel {
+		$this->counterName = $counterName;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getTargetResetType(): ?string {
+		return $this->targetResetType;
+	}
+    /**
+     * @deprecated
+     */
+	public function setTargetResetType(?string $targetResetType) {
+		$this->targetResetType = $targetResetType;
+	}
+    /**
+     * @deprecated
+     */
+	public function withTargetResetType(?string $targetResetType): MissionTaskModel {
+		$this->targetResetType = $targetResetType;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getTargetValue(): ?int {
+		return $this->targetValue;
+	}
+    /**
+     * @deprecated
+     */
+	public function setTargetValue(?int $targetValue) {
+		$this->targetValue = $targetValue;
+	}
+    /**
+     * @deprecated
+     */
+	public function withTargetValue(?int $targetValue): MissionTaskModel {
+		$this->targetValue = $targetValue;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?MissionTaskModel {
         if ($data === null) {
@@ -156,9 +225,14 @@ class MissionTaskModel implements IModel {
             ->withMissionTaskId(array_key_exists('missionTaskId', $data) && $data['missionTaskId'] !== null ? $data['missionTaskId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
-            ->withTargetResetType(array_key_exists('targetResetType', $data) && $data['targetResetType'] !== null ? $data['targetResetType'] : null)
-            ->withTargetValue(array_key_exists('targetValue', $data) && $data['targetValue'] !== null ? $data['targetValue'] : null)
+            ->withVerifyCompleteType(array_key_exists('verifyCompleteType', $data) && $data['verifyCompleteType'] !== null ? $data['verifyCompleteType'] : null)
+            ->withTargetCounter(array_key_exists('targetCounter', $data) && $data['targetCounter'] !== null ? TargetCounterModel::fromJson($data['targetCounter']) : null)
+            ->withVerifyCompleteConsumeActions(array_map(
+                function ($item) {
+                    return ConsumeAction::fromJson($item);
+                },
+                array_key_exists('verifyCompleteConsumeActions', $data) && $data['verifyCompleteConsumeActions'] !== null ? $data['verifyCompleteConsumeActions'] : []
+            ))
             ->withCompleteAcquireActions(array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
@@ -166,7 +240,10 @@ class MissionTaskModel implements IModel {
                 array_key_exists('completeAcquireActions', $data) && $data['completeAcquireActions'] !== null ? $data['completeAcquireActions'] : []
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
-            ->withPremiseMissionTaskName(array_key_exists('premiseMissionTaskName', $data) && $data['premiseMissionTaskName'] !== null ? $data['premiseMissionTaskName'] : null);
+            ->withPremiseMissionTaskName(array_key_exists('premiseMissionTaskName', $data) && $data['premiseMissionTaskName'] !== null ? $data['premiseMissionTaskName'] : null)
+            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
+            ->withTargetResetType(array_key_exists('targetResetType', $data) && $data['targetResetType'] !== null ? $data['targetResetType'] : null)
+            ->withTargetValue(array_key_exists('targetValue', $data) && $data['targetValue'] !== null ? $data['targetValue'] : null);
     }
 
     public function toJson(): array {
@@ -174,9 +251,14 @@ class MissionTaskModel implements IModel {
             "missionTaskId" => $this->getMissionTaskId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "counterName" => $this->getCounterName(),
-            "targetResetType" => $this->getTargetResetType(),
-            "targetValue" => $this->getTargetValue(),
+            "verifyCompleteType" => $this->getVerifyCompleteType(),
+            "targetCounter" => $this->getTargetCounter() !== null ? $this->getTargetCounter()->toJson() : null,
+            "verifyCompleteConsumeActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyCompleteConsumeActions() !== null && $this->getVerifyCompleteConsumeActions() !== null ? $this->getVerifyCompleteConsumeActions() : []
+            ),
             "completeAcquireActions" => array_map(
                 function ($item) {
                     return $item->toJson();
@@ -185,6 +267,9 @@ class MissionTaskModel implements IModel {
             ),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
             "premiseMissionTaskName" => $this->getPremiseMissionTaskName(),
+            "counterName" => $this->getCounterName(),
+            "targetResetType" => $this->getTargetResetType(),
+            "targetValue" => $this->getTargetValue(),
         );
     }
 }

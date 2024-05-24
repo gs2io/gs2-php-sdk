@@ -111,6 +111,10 @@ use Gs2\Mission\Request\GetCounterRequest;
 use Gs2\Mission\Result\GetCounterResult;
 use Gs2\Mission\Request\GetCounterByUserIdRequest;
 use Gs2\Mission\Result\GetCounterByUserIdResult;
+use Gs2\Mission\Request\VerifyCounterValueRequest;
+use Gs2\Mission\Result\VerifyCounterValueResult;
+use Gs2\Mission\Request\VerifyCounterValueByUserIdRequest;
+use Gs2\Mission\Result\VerifyCounterValueByUserIdResult;
 use Gs2\Mission\Request\DeleteCounterByUserIdRequest;
 use Gs2\Mission\Result\DeleteCounterByUserIdResult;
 use Gs2\Mission\Request\IncreaseByStampSheetRequest;
@@ -119,6 +123,8 @@ use Gs2\Mission\Request\SetByStampSheetRequest;
 use Gs2\Mission\Result\SetByStampSheetResult;
 use Gs2\Mission\Request\DecreaseByStampTaskRequest;
 use Gs2\Mission\Result\DecreaseByStampTaskResult;
+use Gs2\Mission\Request\VerifyCounterValueByStampTaskRequest;
+use Gs2\Mission\Result\VerifyCounterValueByStampTaskResult;
 use Gs2\Mission\Request\ExportMasterRequest;
 use Gs2\Mission\Result\ExportMasterResult;
 use Gs2\Mission\Request\GetCurrentMissionMasterRequest;
@@ -2815,6 +2821,151 @@ class GetCounterByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyCounterValueTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCounterValueRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCounterValueTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCounterValueRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCounterValueRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCounterValueResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/counter/{counterName}/verify/counter/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getResetType() !== null) {
+            $json["resetType"] = $this->request->getResetType();
+        }
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCounterValueByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCounterValueByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCounterValueByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCounterValueByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCounterValueByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCounterValueByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}/verify/counter/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getResetType() !== null) {
+            $json["resetType"] = $this->request->getResetType();
+        }
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteCounterByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -3030,6 +3181,65 @@ class DecreaseByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/decrease";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCounterValueByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCounterValueByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCounterValueByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCounterValueByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCounterValueByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCounterValueByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/counter/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -3744,14 +3954,19 @@ class CreateMissionTaskModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
-        if ($this->request->getCounterName() !== null) {
-            $json["counterName"] = $this->request->getCounterName();
+        if ($this->request->getVerifyCompleteType() !== null) {
+            $json["verifyCompleteType"] = $this->request->getVerifyCompleteType();
         }
-        if ($this->request->getTargetResetType() !== null) {
-            $json["targetResetType"] = $this->request->getTargetResetType();
+        if ($this->request->getTargetCounter() !== null) {
+            $json["targetCounter"] = $this->request->getTargetCounter()->toJson();
         }
-        if ($this->request->getTargetValue() !== null) {
-            $json["targetValue"] = $this->request->getTargetValue();
+        if ($this->request->getVerifyCompleteConsumeActions() !== null) {
+            $array = [];
+            foreach ($this->request->getVerifyCompleteConsumeActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["verifyCompleteConsumeActions"] = $array;
         }
         if ($this->request->getCompleteAcquireActions() !== null) {
             $array = [];
@@ -3766,6 +3981,15 @@ class CreateMissionTaskModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getPremiseMissionTaskName() !== null) {
             $json["premiseMissionTaskName"] = $this->request->getPremiseMissionTaskName();
+        }
+        if ($this->request->getCounterName() !== null) {
+            $json["counterName"] = $this->request->getCounterName();
+        }
+        if ($this->request->getTargetResetType() !== null) {
+            $json["targetResetType"] = $this->request->getTargetResetType();
+        }
+        if ($this->request->getTargetValue() !== null) {
+            $json["targetValue"] = $this->request->getTargetValue();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3889,14 +4113,19 @@ class UpdateMissionTaskModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
-        if ($this->request->getCounterName() !== null) {
-            $json["counterName"] = $this->request->getCounterName();
+        if ($this->request->getVerifyCompleteType() !== null) {
+            $json["verifyCompleteType"] = $this->request->getVerifyCompleteType();
         }
-        if ($this->request->getTargetResetType() !== null) {
-            $json["targetResetType"] = $this->request->getTargetResetType();
+        if ($this->request->getTargetCounter() !== null) {
+            $json["targetCounter"] = $this->request->getTargetCounter()->toJson();
         }
-        if ($this->request->getTargetValue() !== null) {
-            $json["targetValue"] = $this->request->getTargetValue();
+        if ($this->request->getVerifyCompleteConsumeActions() !== null) {
+            $array = [];
+            foreach ($this->request->getVerifyCompleteConsumeActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["verifyCompleteConsumeActions"] = $array;
         }
         if ($this->request->getCompleteAcquireActions() !== null) {
             $array = [];
@@ -3911,6 +4140,15 @@ class UpdateMissionTaskModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getPremiseMissionTaskName() !== null) {
             $json["premiseMissionTaskName"] = $this->request->getPremiseMissionTaskName();
+        }
+        if ($this->request->getCounterName() !== null) {
+            $json["counterName"] = $this->request->getCounterName();
+        }
+        if ($this->request->getTargetResetType() !== null) {
+            $json["targetResetType"] = $this->request->getTargetResetType();
+        }
+        if ($this->request->getTargetValue() !== null) {
+            $json["targetValue"] = $this->request->getTargetValue();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -5115,6 +5353,60 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyCounterValueRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCounterValueAsync(
+            VerifyCounterValueRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCounterValueTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCounterValueRequest $request
+     * @return VerifyCounterValueResult
+     */
+    public function verifyCounterValue (
+            VerifyCounterValueRequest $request
+    ): VerifyCounterValueResult {
+        return $this->verifyCounterValueAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyCounterValueByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCounterValueByUserIdAsync(
+            VerifyCounterValueByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCounterValueByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCounterValueByUserIdRequest $request
+     * @return VerifyCounterValueByUserIdResult
+     */
+    public function verifyCounterValueByUserId (
+            VerifyCounterValueByUserIdRequest $request
+    ): VerifyCounterValueByUserIdResult {
+        return $this->verifyCounterValueByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteCounterByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -5218,6 +5510,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             DecreaseByStampTaskRequest $request
     ): DecreaseByStampTaskResult {
         return $this->decreaseByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyCounterValueByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCounterValueByStampTaskAsync(
+            VerifyCounterValueByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCounterValueByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCounterValueByStampTaskRequest $request
+     * @return VerifyCounterValueByStampTaskResult
+     */
+    public function verifyCounterValueByStampTask (
+            VerifyCounterValueByStampTaskRequest $request
+    ): VerifyCounterValueByStampTaskResult {
+        return $this->verifyCounterValueByStampTaskAsync(
             $request
         )->wait();
     }

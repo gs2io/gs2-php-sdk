@@ -1145,6 +1145,15 @@ class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getScope() !== null) {
             $json["scope"] = $this->request->getScope();
         }
+        if ($this->request->getGlobalRankingSetting() !== null) {
+            $json["globalRankingSetting"] = $this->request->getGlobalRankingSetting()->toJson();
+        }
+        if ($this->request->getEntryPeriodEventId() !== null) {
+            $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
+        }
+        if ($this->request->getAccessPeriodEventId() !== null) {
+            $json["accessPeriodEventId"] = $this->request->getAccessPeriodEventId();
+        }
         if ($this->request->getUniqueByUserId() !== null) {
             $json["uniqueByUserId"] = $this->request->getUniqueByUserId();
         }
@@ -1167,12 +1176,6 @@ class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["additionalScopes"] = $array;
-        }
-        if ($this->request->getEntryPeriodEventId() !== null) {
-            $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
-        }
-        if ($this->request->getAccessPeriodEventId() !== null) {
-            $json["accessPeriodEventId"] = $this->request->getAccessPeriodEventId();
         }
         if ($this->request->getIgnoreUserIds() !== null) {
             $array = [];
@@ -1317,6 +1320,15 @@ class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getScope() !== null) {
             $json["scope"] = $this->request->getScope();
         }
+        if ($this->request->getGlobalRankingSetting() !== null) {
+            $json["globalRankingSetting"] = $this->request->getGlobalRankingSetting()->toJson();
+        }
+        if ($this->request->getEntryPeriodEventId() !== null) {
+            $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
+        }
+        if ($this->request->getAccessPeriodEventId() !== null) {
+            $json["accessPeriodEventId"] = $this->request->getAccessPeriodEventId();
+        }
         if ($this->request->getUniqueByUserId() !== null) {
             $json["uniqueByUserId"] = $this->request->getUniqueByUserId();
         }
@@ -1339,12 +1351,6 @@ class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["additionalScopes"] = $array;
-        }
-        if ($this->request->getEntryPeriodEventId() !== null) {
-            $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
-        }
-        if ($this->request->getAccessPeriodEventId() !== null) {
-            $json["accessPeriodEventId"] = $this->request->getAccessPeriodEventId();
         }
         if ($this->request->getIgnoreUserIds() !== null) {
             $array = [];

@@ -18,7 +18,9 @@
 namespace Gs2\Ranking\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Ranking\Model\FixedTiming;
 use Gs2\Ranking\Model\Scope;
+use Gs2\Ranking\Model\GlobalRankingSetting;
 use Gs2\Ranking\Model\CategoryModelMaster;
 
 class UpdateCategoryModelMasterResult implements IResult {

@@ -42,6 +42,10 @@ class CategoryModel implements IModel {
 	 */
 	private $maximumValue;
 	/**
+     * @var bool
+	 */
+	private $sum;
+	/**
      * @var string
 	 */
 	private $orderDirection;
@@ -50,13 +54,21 @@ class CategoryModel implements IModel {
 	 */
 	private $scope;
 	/**
-     * @var bool
+     * @var GlobalRankingSetting
 	 */
-	private $uniqueByUserId;
+	private $globalRankingSetting;
+	/**
+     * @var string
+	 */
+	private $entryPeriodEventId;
+	/**
+     * @var string
+	 */
+	private $accessPeriodEventId;
 	/**
      * @var bool
 	 */
-	private $sum;
+	private $uniqueByUserId;
 	/**
      * @var int
 	 */
@@ -73,14 +85,6 @@ class CategoryModel implements IModel {
      * @var array
 	 */
 	private $additionalScopes;
-	/**
-     * @var string
-	 */
-	private $entryPeriodEventId;
-	/**
-     * @var string
-	 */
-	private $accessPeriodEventId;
 	/**
      * @var array
 	 */
@@ -139,6 +143,16 @@ class CategoryModel implements IModel {
 		$this->maximumValue = $maximumValue;
 		return $this;
 	}
+	public function getSum(): ?bool {
+		return $this->sum;
+	}
+	public function setSum(?bool $sum) {
+		$this->sum = $sum;
+	}
+	public function withSum(?bool $sum): CategoryModel {
+		$this->sum = $sum;
+		return $this;
+	}
 	public function getOrderDirection(): ?string {
 		return $this->orderDirection;
 	}
@@ -159,64 +173,14 @@ class CategoryModel implements IModel {
 		$this->scope = $scope;
 		return $this;
 	}
-	public function getUniqueByUserId(): ?bool {
-		return $this->uniqueByUserId;
+	public function getGlobalRankingSetting(): ?GlobalRankingSetting {
+		return $this->globalRankingSetting;
 	}
-	public function setUniqueByUserId(?bool $uniqueByUserId) {
-		$this->uniqueByUserId = $uniqueByUserId;
+	public function setGlobalRankingSetting(?GlobalRankingSetting $globalRankingSetting) {
+		$this->globalRankingSetting = $globalRankingSetting;
 	}
-	public function withUniqueByUserId(?bool $uniqueByUserId): CategoryModel {
-		$this->uniqueByUserId = $uniqueByUserId;
-		return $this;
-	}
-	public function getSum(): ?bool {
-		return $this->sum;
-	}
-	public function setSum(?bool $sum) {
-		$this->sum = $sum;
-	}
-	public function withSum(?bool $sum): CategoryModel {
-		$this->sum = $sum;
-		return $this;
-	}
-	public function getCalculateFixedTimingHour(): ?int {
-		return $this->calculateFixedTimingHour;
-	}
-	public function setCalculateFixedTimingHour(?int $calculateFixedTimingHour) {
-		$this->calculateFixedTimingHour = $calculateFixedTimingHour;
-	}
-	public function withCalculateFixedTimingHour(?int $calculateFixedTimingHour): CategoryModel {
-		$this->calculateFixedTimingHour = $calculateFixedTimingHour;
-		return $this;
-	}
-	public function getCalculateFixedTimingMinute(): ?int {
-		return $this->calculateFixedTimingMinute;
-	}
-	public function setCalculateFixedTimingMinute(?int $calculateFixedTimingMinute) {
-		$this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
-	}
-	public function withCalculateFixedTimingMinute(?int $calculateFixedTimingMinute): CategoryModel {
-		$this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
-		return $this;
-	}
-	public function getCalculateIntervalMinutes(): ?int {
-		return $this->calculateIntervalMinutes;
-	}
-	public function setCalculateIntervalMinutes(?int $calculateIntervalMinutes) {
-		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
-	}
-	public function withCalculateIntervalMinutes(?int $calculateIntervalMinutes): CategoryModel {
-		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
-		return $this;
-	}
-	public function getAdditionalScopes(): ?array {
-		return $this->additionalScopes;
-	}
-	public function setAdditionalScopes(?array $additionalScopes) {
-		$this->additionalScopes = $additionalScopes;
-	}
-	public function withAdditionalScopes(?array $additionalScopes): CategoryModel {
-		$this->additionalScopes = $additionalScopes;
+	public function withGlobalRankingSetting(?GlobalRankingSetting $globalRankingSetting): CategoryModel {
+		$this->globalRankingSetting = $globalRankingSetting;
 		return $this;
 	}
 	public function getEntryPeriodEventId(): ?string {
@@ -239,22 +203,135 @@ class CategoryModel implements IModel {
 		$this->accessPeriodEventId = $accessPeriodEventId;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
+	public function getUniqueByUserId(): ?bool {
+		return $this->uniqueByUserId;
+	}
+    /**
+     * @deprecated
+     */
+	public function setUniqueByUserId(?bool $uniqueByUserId) {
+		$this->uniqueByUserId = $uniqueByUserId;
+	}
+    /**
+     * @deprecated
+     */
+	public function withUniqueByUserId(?bool $uniqueByUserId): CategoryModel {
+		$this->uniqueByUserId = $uniqueByUserId;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getCalculateFixedTimingHour(): ?int {
+		return $this->calculateFixedTimingHour;
+	}
+    /**
+     * @deprecated
+     */
+	public function setCalculateFixedTimingHour(?int $calculateFixedTimingHour) {
+		$this->calculateFixedTimingHour = $calculateFixedTimingHour;
+	}
+    /**
+     * @deprecated
+     */
+	public function withCalculateFixedTimingHour(?int $calculateFixedTimingHour): CategoryModel {
+		$this->calculateFixedTimingHour = $calculateFixedTimingHour;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getCalculateFixedTimingMinute(): ?int {
+		return $this->calculateFixedTimingMinute;
+	}
+    /**
+     * @deprecated
+     */
+	public function setCalculateFixedTimingMinute(?int $calculateFixedTimingMinute) {
+		$this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
+	}
+    /**
+     * @deprecated
+     */
+	public function withCalculateFixedTimingMinute(?int $calculateFixedTimingMinute): CategoryModel {
+		$this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getCalculateIntervalMinutes(): ?int {
+		return $this->calculateIntervalMinutes;
+	}
+    /**
+     * @deprecated
+     */
+	public function setCalculateIntervalMinutes(?int $calculateIntervalMinutes) {
+		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
+	}
+    /**
+     * @deprecated
+     */
+	public function withCalculateIntervalMinutes(?int $calculateIntervalMinutes): CategoryModel {
+		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getAdditionalScopes(): ?array {
+		return $this->additionalScopes;
+	}
+    /**
+     * @deprecated
+     */
+	public function setAdditionalScopes(?array $additionalScopes) {
+		$this->additionalScopes = $additionalScopes;
+	}
+    /**
+     * @deprecated
+     */
+	public function withAdditionalScopes(?array $additionalScopes): CategoryModel {
+		$this->additionalScopes = $additionalScopes;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
 	public function getIgnoreUserIds(): ?array {
 		return $this->ignoreUserIds;
 	}
+    /**
+     * @deprecated
+     */
 	public function setIgnoreUserIds(?array $ignoreUserIds) {
 		$this->ignoreUserIds = $ignoreUserIds;
 	}
+    /**
+     * @deprecated
+     */
 	public function withIgnoreUserIds(?array $ignoreUserIds): CategoryModel {
 		$this->ignoreUserIds = $ignoreUserIds;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
+    /**
+     * @deprecated
+     */
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
+    /**
+     * @deprecated
+     */
 	public function withGeneration(?string $generation): CategoryModel {
 		$this->generation = $generation;
 		return $this;
@@ -270,10 +347,13 @@ class CategoryModel implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withMinimumValue(array_key_exists('minimumValue', $data) && $data['minimumValue'] !== null ? $data['minimumValue'] : null)
             ->withMaximumValue(array_key_exists('maximumValue', $data) && $data['maximumValue'] !== null ? $data['maximumValue'] : null)
+            ->withSum(array_key_exists('sum', $data) ? $data['sum'] : null)
             ->withOrderDirection(array_key_exists('orderDirection', $data) && $data['orderDirection'] !== null ? $data['orderDirection'] : null)
             ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
+            ->withGlobalRankingSetting(array_key_exists('globalRankingSetting', $data) && $data['globalRankingSetting'] !== null ? GlobalRankingSetting::fromJson($data['globalRankingSetting']) : null)
+            ->withEntryPeriodEventId(array_key_exists('entryPeriodEventId', $data) && $data['entryPeriodEventId'] !== null ? $data['entryPeriodEventId'] : null)
+            ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null)
             ->withUniqueByUserId(array_key_exists('uniqueByUserId', $data) ? $data['uniqueByUserId'] : null)
-            ->withSum(array_key_exists('sum', $data) ? $data['sum'] : null)
             ->withCalculateFixedTimingHour(array_key_exists('calculateFixedTimingHour', $data) && $data['calculateFixedTimingHour'] !== null ? $data['calculateFixedTimingHour'] : null)
             ->withCalculateFixedTimingMinute(array_key_exists('calculateFixedTimingMinute', $data) && $data['calculateFixedTimingMinute'] !== null ? $data['calculateFixedTimingMinute'] : null)
             ->withCalculateIntervalMinutes(array_key_exists('calculateIntervalMinutes', $data) && $data['calculateIntervalMinutes'] !== null ? $data['calculateIntervalMinutes'] : null)
@@ -283,8 +363,6 @@ class CategoryModel implements IModel {
                 },
                 array_key_exists('additionalScopes', $data) && $data['additionalScopes'] !== null ? $data['additionalScopes'] : []
             ))
-            ->withEntryPeriodEventId(array_key_exists('entryPeriodEventId', $data) && $data['entryPeriodEventId'] !== null ? $data['entryPeriodEventId'] : null)
-            ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null)
             ->withIgnoreUserIds(array_map(
                 function ($item) {
                     return $item;
@@ -301,10 +379,13 @@ class CategoryModel implements IModel {
             "metadata" => $this->getMetadata(),
             "minimumValue" => $this->getMinimumValue(),
             "maximumValue" => $this->getMaximumValue(),
+            "sum" => $this->getSum(),
             "orderDirection" => $this->getOrderDirection(),
             "scope" => $this->getScope(),
+            "globalRankingSetting" => $this->getGlobalRankingSetting() !== null ? $this->getGlobalRankingSetting()->toJson() : null,
+            "entryPeriodEventId" => $this->getEntryPeriodEventId(),
+            "accessPeriodEventId" => $this->getAccessPeriodEventId(),
             "uniqueByUserId" => $this->getUniqueByUserId(),
-            "sum" => $this->getSum(),
             "calculateFixedTimingHour" => $this->getCalculateFixedTimingHour(),
             "calculateFixedTimingMinute" => $this->getCalculateFixedTimingMinute(),
             "calculateIntervalMinutes" => $this->getCalculateIntervalMinutes(),
@@ -314,8 +395,6 @@ class CategoryModel implements IModel {
                 },
                 $this->getAdditionalScopes() !== null && $this->getAdditionalScopes() !== null ? $this->getAdditionalScopes() : []
             ),
-            "entryPeriodEventId" => $this->getEntryPeriodEventId(),
-            "accessPeriodEventId" => $this->getAccessPeriodEventId(),
             "ignoreUserIds" => array_map(
                 function ($item) {
                     return $item;

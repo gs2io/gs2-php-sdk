@@ -34,6 +34,10 @@ class Namespace_ implements IModel {
 	 */
 	private $description;
 	/**
+     * @var ScriptSetting
+	 */
+	private $applyBuffScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -77,6 +81,16 @@ class Namespace_ implements IModel {
 	}
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
+		return $this;
+	}
+	public function getApplyBuffScript(): ?ScriptSetting {
+		return $this->applyBuffScript;
+	}
+	public function setApplyBuffScript(?ScriptSetting $applyBuffScript) {
+		$this->applyBuffScript = $applyBuffScript;
+	}
+	public function withApplyBuffScript(?ScriptSetting $applyBuffScript): Namespace_ {
+		$this->applyBuffScript = $applyBuffScript;
 		return $this;
 	}
 	public function getLogSetting(): ?LogSetting {
@@ -128,6 +142,7 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withApplyBuffScript(array_key_exists('applyBuffScript', $data) && $data['applyBuffScript'] !== null ? ScriptSetting::fromJson($data['applyBuffScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -139,6 +154,7 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "applyBuffScript" => $this->getApplyBuffScript() !== null ? $this->getApplyBuffScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

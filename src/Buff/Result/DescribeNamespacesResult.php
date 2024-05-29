@@ -18,6 +18,7 @@
 namespace Gs2\Buff\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Buff\Model\ScriptSetting;
 use Gs2\Buff\Model\LogSetting;
 use Gs2\Buff\Model\Namespace_;
 

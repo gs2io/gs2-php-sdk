@@ -86,12 +86,21 @@ class UpdateGlobalMessageMasterRequest extends Gs2BasicRequest {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
+    /**
+     * @deprecated
+     */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
+    /**
+     * @deprecated
+     */
 	public function withExpiresAt(?int $expiresAt): UpdateGlobalMessageMasterRequest {
 		$this->expiresAt = $expiresAt;
 		return $this;

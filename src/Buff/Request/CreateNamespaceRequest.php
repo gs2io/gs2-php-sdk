@@ -18,6 +18,7 @@
 namespace Gs2\Buff\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Buff\Model\ScriptSetting;
 use Gs2\Buff\Model\LogSetting;
 
 class CreateNamespaceRequest extends Gs2BasicRequest {
@@ -25,6 +26,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
+    /** @var ScriptSetting */
+    private $applyBuffScript;
     /** @var LogSetting */
     private $logSetting;
 	public function getName(): ?string {
@@ -47,6 +50,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->description = $description;
 		return $this;
 	}
+	public function getApplyBuffScript(): ?ScriptSetting {
+		return $this->applyBuffScript;
+	}
+	public function setApplyBuffScript(?ScriptSetting $applyBuffScript) {
+		$this->applyBuffScript = $applyBuffScript;
+	}
+	public function withApplyBuffScript(?ScriptSetting $applyBuffScript): CreateNamespaceRequest {
+		$this->applyBuffScript = $applyBuffScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -65,6 +78,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withApplyBuffScript(array_key_exists('applyBuffScript', $data) && $data['applyBuffScript'] !== null ? ScriptSetting::fromJson($data['applyBuffScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -72,6 +86,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "applyBuffScript" => $this->getApplyBuffScript() !== null ? $this->getApplyBuffScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

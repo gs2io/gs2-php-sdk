@@ -101,6 +101,14 @@ use Gs2\Guild\Request\IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest
 use Gs2\Guild\Result\IncreaseMaximumCurrentMaximumMemberCountByGuildNameResult;
 use Gs2\Guild\Request\DecreaseMaximumCurrentMaximumMemberCountByGuildNameRequest;
 use Gs2\Guild\Result\DecreaseMaximumCurrentMaximumMemberCountByGuildNameResult;
+use Gs2\Guild\Request\VerifyCurrentMaximumMemberCountRequest;
+use Gs2\Guild\Result\VerifyCurrentMaximumMemberCountResult;
+use Gs2\Guild\Request\VerifyCurrentMaximumMemberCountByGuildNameRequest;
+use Gs2\Guild\Result\VerifyCurrentMaximumMemberCountByGuildNameResult;
+use Gs2\Guild\Request\VerifyIncludeMemberRequest;
+use Gs2\Guild\Result\VerifyIncludeMemberResult;
+use Gs2\Guild\Request\VerifyIncludeMemberByUserIdRequest;
+use Gs2\Guild\Result\VerifyIncludeMemberByUserIdResult;
 use Gs2\Guild\Request\SetMaximumCurrentMaximumMemberCountByGuildNameRequest;
 use Gs2\Guild\Result\SetMaximumCurrentMaximumMemberCountByGuildNameResult;
 use Gs2\Guild\Request\AssumeRequest;
@@ -113,6 +121,10 @@ use Gs2\Guild\Request\DecreaseMaximumCurrentMaximumMemberCountByStampTaskRequest
 use Gs2\Guild\Result\DecreaseMaximumCurrentMaximumMemberCountByStampTaskResult;
 use Gs2\Guild\Request\SetMaximumCurrentMaximumMemberCountByStampSheetRequest;
 use Gs2\Guild\Result\SetMaximumCurrentMaximumMemberCountByStampSheetResult;
+use Gs2\Guild\Request\VerifyCurrentMaximumMemberCountByStampTaskRequest;
+use Gs2\Guild\Result\VerifyCurrentMaximumMemberCountByStampTaskResult;
+use Gs2\Guild\Request\VerifyIncludeMemberByStampTaskRequest;
+use Gs2\Guild\Result\VerifyIncludeMemberByStampTaskResult;
 use Gs2\Guild\Request\DescribeJoinedGuildsRequest;
 use Gs2\Guild\Result\DescribeJoinedGuildsResult;
 use Gs2\Guild\Request\DescribeJoinedGuildsByUserIdRequest;
@@ -2707,6 +2719,279 @@ class DecreaseMaximumCurrentMaximumMemberCountByGuildNameTask extends Gs2RestSes
     }
 }
 
+class VerifyCurrentMaximumMemberCountTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCurrentMaximumMemberCountRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCurrentMaximumMemberCountTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCurrentMaximumMemberCountRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCurrentMaximumMemberCountRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCurrentMaximumMemberCountResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/currentMaximumMemberCount/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+
+        $json = [];
+        if ($this->request->getVerifyType() !== null) {
+            $json["verifyType"] = $this->request->getVerifyType();
+        }
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCurrentMaximumMemberCountByGuildNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCurrentMaximumMemberCountByGuildNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCurrentMaximumMemberCountByGuildNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCurrentMaximumMemberCountByGuildNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCurrentMaximumMemberCountByGuildNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCurrentMaximumMemberCountByGuildNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/currentMaximumMemberCount/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+
+        $json = [];
+        if ($this->request->getVerifyType() !== null) {
+            $json["verifyType"] = $this->request->getVerifyType();
+        }
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyIncludeMemberTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyIncludeMemberRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyIncludeMemberTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyIncludeMemberRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyIncludeMemberRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyIncludeMemberResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/member/me/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+
+        $json = [];
+        if ($this->request->getVerifyType() !== null) {
+            $json["verifyType"] = $this->request->getVerifyType();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyIncludeMemberByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyIncludeMemberByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyIncludeMemberByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyIncludeMemberByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyIncludeMemberByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyIncludeMemberByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/member/{userId}/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getVerifyType() !== null) {
+            $json["verifyType"] = $this->request->getVerifyType();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class SetMaximumCurrentMaximumMemberCountByGuildNameTask extends Gs2RestSessionTask {
 
     /**
@@ -3051,6 +3336,124 @@ class SetMaximumCurrentMaximumMemberCountByStampSheetTask extends Gs2RestSession
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCurrentMaximumMemberCountByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCurrentMaximumMemberCountByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCurrentMaximumMemberCountByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCurrentMaximumMemberCountByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCurrentMaximumMemberCountByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCurrentMaximumMemberCountByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/guild/currentMaximumMemberCount/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyIncludeMemberByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyIncludeMemberByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyIncludeMemberByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyIncludeMemberByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyIncludeMemberByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyIncludeMemberByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/guild/member/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -5713,6 +6116,114 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyCurrentMaximumMemberCountRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCurrentMaximumMemberCountAsync(
+            VerifyCurrentMaximumMemberCountRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCurrentMaximumMemberCountTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCurrentMaximumMemberCountRequest $request
+     * @return VerifyCurrentMaximumMemberCountResult
+     */
+    public function verifyCurrentMaximumMemberCount (
+            VerifyCurrentMaximumMemberCountRequest $request
+    ): VerifyCurrentMaximumMemberCountResult {
+        return $this->verifyCurrentMaximumMemberCountAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyCurrentMaximumMemberCountByGuildNameRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCurrentMaximumMemberCountByGuildNameAsync(
+            VerifyCurrentMaximumMemberCountByGuildNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCurrentMaximumMemberCountByGuildNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCurrentMaximumMemberCountByGuildNameRequest $request
+     * @return VerifyCurrentMaximumMemberCountByGuildNameResult
+     */
+    public function verifyCurrentMaximumMemberCountByGuildName (
+            VerifyCurrentMaximumMemberCountByGuildNameRequest $request
+    ): VerifyCurrentMaximumMemberCountByGuildNameResult {
+        return $this->verifyCurrentMaximumMemberCountByGuildNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyIncludeMemberRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyIncludeMemberAsync(
+            VerifyIncludeMemberRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyIncludeMemberTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyIncludeMemberRequest $request
+     * @return VerifyIncludeMemberResult
+     */
+    public function verifyIncludeMember (
+            VerifyIncludeMemberRequest $request
+    ): VerifyIncludeMemberResult {
+        return $this->verifyIncludeMemberAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyIncludeMemberByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyIncludeMemberByUserIdAsync(
+            VerifyIncludeMemberByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyIncludeMemberByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyIncludeMemberByUserIdRequest $request
+     * @return VerifyIncludeMemberByUserIdResult
+     */
+    public function verifyIncludeMemberByUserId (
+            VerifyIncludeMemberByUserIdRequest $request
+    ): VerifyIncludeMemberByUserIdResult {
+        return $this->verifyIncludeMemberByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param SetMaximumCurrentMaximumMemberCountByGuildNameRequest $request
      * @return PromiseInterface
      */
@@ -5870,6 +6381,60 @@ class Gs2GuildRestClient extends AbstractGs2Client {
             SetMaximumCurrentMaximumMemberCountByStampSheetRequest $request
     ): SetMaximumCurrentMaximumMemberCountByStampSheetResult {
         return $this->setMaximumCurrentMaximumMemberCountByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyCurrentMaximumMemberCountByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCurrentMaximumMemberCountByStampTaskAsync(
+            VerifyCurrentMaximumMemberCountByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCurrentMaximumMemberCountByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCurrentMaximumMemberCountByStampTaskRequest $request
+     * @return VerifyCurrentMaximumMemberCountByStampTaskResult
+     */
+    public function verifyCurrentMaximumMemberCountByStampTask (
+            VerifyCurrentMaximumMemberCountByStampTaskRequest $request
+    ): VerifyCurrentMaximumMemberCountByStampTaskResult {
+        return $this->verifyCurrentMaximumMemberCountByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyIncludeMemberByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyIncludeMemberByStampTaskAsync(
+            VerifyIncludeMemberByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyIncludeMemberByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyIncludeMemberByStampTaskRequest $request
+     * @return VerifyIncludeMemberByStampTaskResult
+     */
+    public function verifyIncludeMemberByStampTask (
+            VerifyIncludeMemberByStampTaskRequest $request
+    ): VerifyIncludeMemberByStampTaskResult {
+        return $this->verifyIncludeMemberByStampTaskAsync(
             $request
         )->wait();
     }

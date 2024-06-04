@@ -53,6 +53,10 @@ class Score implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getScoreId(): ?string {
 		return $this->scoreId;
 	}
@@ -133,6 +137,16 @@ class Score implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): Score {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?Score {
         if ($data === null) {
@@ -146,7 +160,8 @@ class Score implements IModel {
             ->withScorerUserId(array_key_exists('scorerUserId', $data) && $data['scorerUserId'] !== null ? $data['scorerUserId'] : null)
             ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -159,6 +174,7 @@ class Score implements IModel {
             "score" => $this->getScore(),
             "metadata" => $this->getMetadata(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

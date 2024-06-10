@@ -59,8 +59,6 @@ use Gs2\Log\Request\CountExecuteStampTaskLogRequest;
 use Gs2\Log\Result\CountExecuteStampTaskLogResult;
 use Gs2\Log\Request\QueryAccessLogWithTelemetryRequest;
 use Gs2\Log\Result\QueryAccessLogWithTelemetryResult;
-use Gs2\Log\Request\PutLogRequest;
-use Gs2\Log\Result\PutLogResult;
 use Gs2\Log\Request\DescribeInsightsRequest;
 use Gs2\Log\Result\DescribeInsightsResult;
 use Gs2\Log\Request\CreateInsightRequest;
@@ -1250,68 +1248,6 @@ class QueryAccessLogWithTelemetryTask extends Gs2RestSessionTask {
     }
 }
 
-class PutLogTask extends Gs2RestSessionTask {
-
-    /**
-     * @var PutLogRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * PutLogTask constructor.
-     * @param Gs2RestSession $session
-     * @param PutLogRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        PutLogRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            PutLogResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/log/put";
-
-        $json = [];
-        if ($this->request->getLoggingNamespaceId() !== null) {
-            $json["loggingNamespaceId"] = $this->request->getLoggingNamespaceId();
-        }
-        if ($this->request->getLogCategory() !== null) {
-            $json["logCategory"] = $this->request->getLogCategory();
-        }
-        if ($this->request->getPayload() !== null) {
-            $json["payload"] = $this->request->getPayload();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class DescribeInsightsTask extends Gs2RestSessionTask {
 
     /**
@@ -1964,33 +1900,6 @@ class Gs2LogRestClient extends AbstractGs2Client {
             QueryAccessLogWithTelemetryRequest $request
     ): QueryAccessLogWithTelemetryResult {
         return $this->queryAccessLogWithTelemetryAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param PutLogRequest $request
-     * @return PromiseInterface
-     */
-    public function putLogAsync(
-            PutLogRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new PutLogTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param PutLogRequest $request
-     * @return PutLogResult
-     */
-    public function putLog (
-            PutLogRequest $request
-    ): PutLogResult {
-        return $this->putLogAsync(
             $request
         )->wait();
     }

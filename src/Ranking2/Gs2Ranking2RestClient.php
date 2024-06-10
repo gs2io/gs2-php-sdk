@@ -2153,6 +2153,9 @@ class CreateGlobalRankingReceivedRewardTask extends Gs2RestSessionTask {
         $url = str_replace("{rankingName}", $this->request->getRankingName() === null|| strlen($this->request->getRankingName()) == 0 ? "null" : $this->request->getRankingName(), $url);
 
         $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2216,6 +2219,9 @@ class CreateGlobalRankingReceivedRewardByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -4073,6 +4079,9 @@ class CreateClusterRankingReceivedRewardTask extends Gs2RestSessionTask {
         $url = str_replace("{clusterName}", $this->request->getClusterName() === null|| strlen($this->request->getClusterName()) == 0 ? "null" : $this->request->getClusterName(), $url);
 
         $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -4137,6 +4146,9 @@ class CreateClusterRankingReceivedRewardByUserIdTask extends Gs2RestSessionTask 
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

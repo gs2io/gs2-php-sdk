@@ -97,6 +97,8 @@ use Gs2\Idle\Request\DecreaseMaximumIdleMinutesByStampTaskRequest;
 use Gs2\Idle\Result\DecreaseMaximumIdleMinutesByStampTaskResult;
 use Gs2\Idle\Request\SetMaximumIdleMinutesByStampSheetRequest;
 use Gs2\Idle\Result\SetMaximumIdleMinutesByStampSheetResult;
+use Gs2\Idle\Request\ReceiveByStampSheetRequest;
+use Gs2\Idle\Result\ReceiveByStampSheetResult;
 use Gs2\Idle\Request\ExportMasterRequest;
 use Gs2\Idle\Result\ExportMasterResult;
 use Gs2\Idle\Request\GetCurrentCategoryMasterRequest;
@@ -2267,6 +2269,65 @@ class SetMaximumIdleMinutesByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class ReceiveByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ReceiveByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ReceiveByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param ReceiveByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ReceiveByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ReceiveByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "idle", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/status/receive";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ExportMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -3428,6 +3489,33 @@ class Gs2IdleRestClient extends AbstractGs2Client {
             SetMaximumIdleMinutesByStampSheetRequest $request
     ): SetMaximumIdleMinutesByStampSheetResult {
         return $this->setMaximumIdleMinutesByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ReceiveByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function receiveByStampSheetAsync(
+            ReceiveByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ReceiveByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ReceiveByStampSheetRequest $request
+     * @return ReceiveByStampSheetResult
+     */
+    public function receiveByStampSheet (
+            ReceiveByStampSheetRequest $request
+    ): ReceiveByStampSheetResult {
+        return $this->receiveByStampSheetAsync(
             $request
         )->wait();
     }

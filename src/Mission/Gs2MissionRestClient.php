@@ -47,10 +47,14 @@ use Gs2\Mission\Request\GetCompleteByUserIdRequest;
 use Gs2\Mission\Result\GetCompleteByUserIdResult;
 use Gs2\Mission\Request\DeleteCompleteByUserIdRequest;
 use Gs2\Mission\Result\DeleteCompleteByUserIdResult;
+use Gs2\Mission\Request\VerifyCompleteByUserIdRequest;
+use Gs2\Mission\Result\VerifyCompleteByUserIdResult;
 use Gs2\Mission\Request\ReceiveByStampTaskRequest;
 use Gs2\Mission\Result\ReceiveByStampTaskResult;
 use Gs2\Mission\Request\RevertReceiveByStampSheetRequest;
 use Gs2\Mission\Result\RevertReceiveByStampSheetResult;
+use Gs2\Mission\Request\VerifyCompleteByStampTaskRequest;
+use Gs2\Mission\Result\VerifyCompleteByStampTaskResult;
 use Gs2\Mission\Request\DescribeCounterModelMastersRequest;
 use Gs2\Mission\Result\DescribeCounterModelMastersResult;
 use Gs2\Mission\Request\CreateCounterModelMasterRequest;
@@ -748,6 +752,72 @@ class DeleteCompleteByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyCompleteByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCompleteByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCompleteByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCompleteByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCompleteByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCompleteByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/complete/group/{missionGroupName}/task/{missionTaskName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+        $url = str_replace("{missionTaskName}", $this->request->getMissionTaskName() === null|| strlen($this->request->getMissionTaskName()) == 0 ? "null" : $this->request->getMissionTaskName(), $url);
+        $url = str_replace("{multiplyValueSpecifyingQuantity}", $this->request->getMultiplyValueSpecifyingQuantity() === null ? "null" : $this->request->getMultiplyValueSpecifyingQuantity(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ReceiveByStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -843,6 +913,65 @@ class RevertReceiveByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCompleteByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCompleteByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCompleteByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCompleteByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCompleteByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCompleteByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/complete/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -4489,6 +4618,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyCompleteByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCompleteByUserIdAsync(
+            VerifyCompleteByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCompleteByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCompleteByUserIdRequest $request
+     * @return VerifyCompleteByUserIdResult
+     */
+    public function verifyCompleteByUserId (
+            VerifyCompleteByUserIdRequest $request
+    ): VerifyCompleteByUserIdResult {
+        return $this->verifyCompleteByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param ReceiveByStampTaskRequest $request
      * @return PromiseInterface
      */
@@ -4538,6 +4694,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             RevertReceiveByStampSheetRequest $request
     ): RevertReceiveByStampSheetResult {
         return $this->revertReceiveByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyCompleteByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCompleteByStampTaskAsync(
+            VerifyCompleteByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCompleteByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCompleteByStampTaskRequest $request
+     * @return VerifyCompleteByStampTaskResult
+     */
+    public function verifyCompleteByStampTask (
+            VerifyCompleteByStampTaskRequest $request
+    ): VerifyCompleteByStampTaskResult {
+        return $this->verifyCompleteByStampTaskAsync(
             $request
         )->wait();
     }

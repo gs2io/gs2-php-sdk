@@ -18,31 +18,31 @@
 namespace Gs2\Matchmaking\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Matchmaking\Model\CurrentModelMaster;
+use Gs2\Matchmaking\Model\SeasonModel;
 
-class ExportMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+class GetSeasonModelResult implements IResult {
+    /** @var SeasonModel */
     private $item;
 
-	public function getItem(): ?CurrentModelMaster {
+	public function getItem(): ?SeasonModel {
 		return $this->item;
 	}
 
-	public function setItem(?CurrentModelMaster $item) {
+	public function setItem(?SeasonModel $item) {
 		$this->item = $item;
 	}
 
-	public function withItem(?CurrentModelMaster $item): ExportMasterResult {
+	public function withItem(?SeasonModel $item): GetSeasonModelResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?ExportMasterResult {
+    public static function fromJson(?array $data): ?GetSeasonModelResult {
         if ($data === null) {
             return null;
         }
-        return (new ExportMasterResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentModelMaster::fromJson($data['item']) : null);
+        return (new GetSeasonModelResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SeasonModel::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

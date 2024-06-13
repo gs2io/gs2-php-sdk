@@ -20,7 +20,7 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\CurrentModelMaster;
 
-class ExportMasterResult implements IResult {
+class UpdateCurrentModelMasterResult implements IResult {
     /** @var CurrentModelMaster */
     private $item;
 
@@ -32,16 +32,16 @@ class ExportMasterResult implements IResult {
 		$this->item = $item;
 	}
 
-	public function withItem(?CurrentModelMaster $item): ExportMasterResult {
+	public function withItem(?CurrentModelMaster $item): UpdateCurrentModelMasterResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?ExportMasterResult {
+    public static function fromJson(?array $data): ?UpdateCurrentModelMasterResult {
         if ($data === null) {
             return null;
         }
-        return (new ExportMasterResult())
+        return (new UpdateCurrentModelMasterResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentModelMaster::fromJson($data['item']) : null);
     }
 

@@ -18,31 +18,31 @@
 namespace Gs2\Matchmaking\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Matchmaking\Model\CurrentModelMaster;
+use Gs2\Matchmaking\Model\JoinedSeasonGathering;
 
-class ExportMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+class GetJoinedSeasonGatheringResult implements IResult {
+    /** @var JoinedSeasonGathering */
     private $item;
 
-	public function getItem(): ?CurrentModelMaster {
+	public function getItem(): ?JoinedSeasonGathering {
 		return $this->item;
 	}
 
-	public function setItem(?CurrentModelMaster $item) {
+	public function setItem(?JoinedSeasonGathering $item) {
 		$this->item = $item;
 	}
 
-	public function withItem(?CurrentModelMaster $item): ExportMasterResult {
+	public function withItem(?JoinedSeasonGathering $item): GetJoinedSeasonGatheringResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?ExportMasterResult {
+    public static function fromJson(?array $data): ?GetJoinedSeasonGatheringResult {
         if ($data === null) {
             return null;
         }
-        return (new ExportMasterResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? CurrentModelMaster::fromJson($data['item']) : null);
+        return (new GetJoinedSeasonGatheringResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? JoinedSeasonGathering::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

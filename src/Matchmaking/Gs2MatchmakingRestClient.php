@@ -103,12 +103,46 @@ use Gs2\Matchmaking\Request\GetRatingModelRequest;
 use Gs2\Matchmaking\Result\GetRatingModelResult;
 use Gs2\Matchmaking\Request\ExportMasterRequest;
 use Gs2\Matchmaking\Result\ExportMasterResult;
-use Gs2\Matchmaking\Request\GetCurrentRatingModelMasterRequest;
-use Gs2\Matchmaking\Result\GetCurrentRatingModelMasterResult;
-use Gs2\Matchmaking\Request\UpdateCurrentRatingModelMasterRequest;
-use Gs2\Matchmaking\Result\UpdateCurrentRatingModelMasterResult;
-use Gs2\Matchmaking\Request\UpdateCurrentRatingModelMasterFromGitHubRequest;
-use Gs2\Matchmaking\Result\UpdateCurrentRatingModelMasterFromGitHubResult;
+use Gs2\Matchmaking\Request\GetCurrentModelMasterRequest;
+use Gs2\Matchmaking\Result\GetCurrentModelMasterResult;
+use Gs2\Matchmaking\Request\UpdateCurrentModelMasterRequest;
+use Gs2\Matchmaking\Result\UpdateCurrentModelMasterResult;
+use Gs2\Matchmaking\Request\UpdateCurrentModelMasterFromGitHubRequest;
+use Gs2\Matchmaking\Result\UpdateCurrentModelMasterFromGitHubResult;
+use Gs2\Matchmaking\Request\DescribeSeasonModelsRequest;
+use Gs2\Matchmaking\Result\DescribeSeasonModelsResult;
+use Gs2\Matchmaking\Request\GetSeasonModelRequest;
+use Gs2\Matchmaking\Result\GetSeasonModelResult;
+use Gs2\Matchmaking\Request\DescribeSeasonModelMastersRequest;
+use Gs2\Matchmaking\Result\DescribeSeasonModelMastersResult;
+use Gs2\Matchmaking\Request\CreateSeasonModelMasterRequest;
+use Gs2\Matchmaking\Result\CreateSeasonModelMasterResult;
+use Gs2\Matchmaking\Request\GetSeasonModelMasterRequest;
+use Gs2\Matchmaking\Result\GetSeasonModelMasterResult;
+use Gs2\Matchmaking\Request\UpdateSeasonModelMasterRequest;
+use Gs2\Matchmaking\Result\UpdateSeasonModelMasterResult;
+use Gs2\Matchmaking\Request\DeleteSeasonModelMasterRequest;
+use Gs2\Matchmaking\Result\DeleteSeasonModelMasterResult;
+use Gs2\Matchmaking\Request\DescribeSeasonGatheringsRequest;
+use Gs2\Matchmaking\Result\DescribeSeasonGatheringsResult;
+use Gs2\Matchmaking\Request\DescribeMatchmakingSeasonGatheringsRequest;
+use Gs2\Matchmaking\Result\DescribeMatchmakingSeasonGatheringsResult;
+use Gs2\Matchmaking\Request\DoSeasonMatchmakingRequest;
+use Gs2\Matchmaking\Result\DoSeasonMatchmakingResult;
+use Gs2\Matchmaking\Request\DoSeasonMatchmakingByUserIdRequest;
+use Gs2\Matchmaking\Result\DoSeasonMatchmakingByUserIdResult;
+use Gs2\Matchmaking\Request\GetSeasonGatheringRequest;
+use Gs2\Matchmaking\Result\GetSeasonGatheringResult;
+use Gs2\Matchmaking\Request\DeleteSeasonGatheringRequest;
+use Gs2\Matchmaking\Result\DeleteSeasonGatheringResult;
+use Gs2\Matchmaking\Request\DescribeJoinedSeasonGatheringsRequest;
+use Gs2\Matchmaking\Result\DescribeJoinedSeasonGatheringsResult;
+use Gs2\Matchmaking\Request\DescribeJoinedSeasonGatheringsByUserIdRequest;
+use Gs2\Matchmaking\Result\DescribeJoinedSeasonGatheringsByUserIdResult;
+use Gs2\Matchmaking\Request\GetJoinedSeasonGatheringRequest;
+use Gs2\Matchmaking\Result\GetJoinedSeasonGatheringResult;
+use Gs2\Matchmaking\Request\GetJoinedSeasonGatheringByUserIdRequest;
+use Gs2\Matchmaking\Result\GetJoinedSeasonGatheringByUserIdResult;
 use Gs2\Matchmaking\Request\DescribeRatingsRequest;
 use Gs2\Matchmaking\Result\DescribeRatingsResult;
 use Gs2\Matchmaking\Request\DescribeRatingsByUserIdRequest;
@@ -2603,10 +2637,10 @@ class ExportMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class GetCurrentRatingModelMasterTask extends Gs2RestSessionTask {
+class GetCurrentModelMasterTask extends Gs2RestSessionTask {
 
     /**
-     * @var GetCurrentRatingModelMasterRequest
+     * @var GetCurrentModelMasterRequest
      */
     private $request;
 
@@ -2616,17 +2650,17 @@ class GetCurrentRatingModelMasterTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * GetCurrentRatingModelMasterTask constructor.
+     * GetCurrentModelMasterTask constructor.
      * @param Gs2RestSession $session
-     * @param GetCurrentRatingModelMasterRequest $request
+     * @param GetCurrentModelMasterRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        GetCurrentRatingModelMasterRequest $request
+        GetCurrentModelMasterRequest $request
     ) {
         parent::__construct(
             $session,
-            GetCurrentRatingModelMasterResult::class
+            GetCurrentModelMasterResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2660,10 +2694,10 @@ class GetCurrentRatingModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class UpdateCurrentRatingModelMasterTask extends Gs2RestSessionTask {
+class UpdateCurrentModelMasterTask extends Gs2RestSessionTask {
 
     /**
-     * @var UpdateCurrentRatingModelMasterRequest
+     * @var UpdateCurrentModelMasterRequest
      */
     private $request;
 
@@ -2673,17 +2707,17 @@ class UpdateCurrentRatingModelMasterTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * UpdateCurrentRatingModelMasterTask constructor.
+     * UpdateCurrentModelMasterTask constructor.
      * @param Gs2RestSession $session
-     * @param UpdateCurrentRatingModelMasterRequest $request
+     * @param UpdateCurrentModelMasterRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        UpdateCurrentRatingModelMasterRequest $request
+        UpdateCurrentModelMasterRequest $request
     ) {
         parent::__construct(
             $session,
-            UpdateCurrentRatingModelMasterResult::class
+            UpdateCurrentModelMasterResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2718,10 +2752,10 @@ class UpdateCurrentRatingModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
-class UpdateCurrentRatingModelMasterFromGitHubTask extends Gs2RestSessionTask {
+class UpdateCurrentModelMasterFromGitHubTask extends Gs2RestSessionTask {
 
     /**
-     * @var UpdateCurrentRatingModelMasterFromGitHubRequest
+     * @var UpdateCurrentModelMasterFromGitHubRequest
      */
     private $request;
 
@@ -2731,17 +2765,17 @@ class UpdateCurrentRatingModelMasterFromGitHubTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * UpdateCurrentRatingModelMasterFromGitHubTask constructor.
+     * UpdateCurrentModelMasterFromGitHubTask constructor.
      * @param Gs2RestSession $session
-     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        UpdateCurrentRatingModelMasterFromGitHubRequest $request
+        UpdateCurrentModelMasterFromGitHubRequest $request
     ) {
         parent::__construct(
             $session,
-            UpdateCurrentRatingModelMasterFromGitHubResult::class
+            UpdateCurrentModelMasterFromGitHubResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2770,6 +2804,1091 @@ class UpdateCurrentRatingModelMasterFromGitHubTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSeasonModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSeasonModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSeasonModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSeasonModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSeasonModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSeasonModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/season";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSeasonModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSeasonModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSeasonModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSeasonModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSeasonModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSeasonModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/season/{seasonName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSeasonModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSeasonModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSeasonModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSeasonModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSeasonModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSeasonModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/season";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateSeasonModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateSeasonModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateSeasonModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateSeasonModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateSeasonModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateSeasonModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/season";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getMaximumParticipants() !== null) {
+            $json["maximumParticipants"] = $this->request->getMaximumParticipants();
+        }
+        if ($this->request->getExperienceModelId() !== null) {
+            $json["experienceModelId"] = $this->request->getExperienceModelId();
+        }
+        if ($this->request->getChallengePeriodEventId() !== null) {
+            $json["challengePeriodEventId"] = $this->request->getChallengePeriodEventId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSeasonModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSeasonModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSeasonModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSeasonModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSeasonModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSeasonModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/season/{seasonName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateSeasonModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateSeasonModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateSeasonModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateSeasonModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateSeasonModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateSeasonModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/season/{seasonName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getMaximumParticipants() !== null) {
+            $json["maximumParticipants"] = $this->request->getMaximumParticipants();
+        }
+        if ($this->request->getExperienceModelId() !== null) {
+            $json["experienceModelId"] = $this->request->getExperienceModelId();
+        }
+        if ($this->request->getChallengePeriodEventId() !== null) {
+            $json["challengePeriodEventId"] = $this->request->getChallengePeriodEventId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteSeasonModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteSeasonModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteSeasonModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteSeasonModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteSeasonModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteSeasonModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/season/{seasonName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSeasonGatheringsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSeasonGatheringsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSeasonGatheringsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSeasonGatheringsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSeasonGatheringsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSeasonGatheringsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/season/{seasonName}/{season}/gathering";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
+        $url = str_replace("{tier}", $this->request->getTier() === null ? "null" : $this->request->getTier(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeMatchmakingSeasonGatheringsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeMatchmakingSeasonGatheringsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeMatchmakingSeasonGatheringsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeMatchmakingSeasonGatheringsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeMatchmakingSeasonGatheringsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeMatchmakingSeasonGatheringsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/season/{seasonName}/{season}/gathering/matchmaking";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getTier() !== null) {
+            $queryStrings["tier"] = $this->request->getTier();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DoSeasonMatchmakingTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DoSeasonMatchmakingRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DoSeasonMatchmakingTask constructor.
+     * @param Gs2RestSession $session
+     * @param DoSeasonMatchmakingRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DoSeasonMatchmakingRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DoSeasonMatchmakingResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/season/{seasonName}/gathering/do";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+
+        $json = [];
+        if ($this->request->getMatchmakingContextToken() !== null) {
+            $json["matchmakingContextToken"] = $this->request->getMatchmakingContextToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DoSeasonMatchmakingByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DoSeasonMatchmakingByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DoSeasonMatchmakingByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DoSeasonMatchmakingByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DoSeasonMatchmakingByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DoSeasonMatchmakingByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/season/{seasonName}/gathering/do";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getMatchmakingContextToken() !== null) {
+            $json["matchmakingContextToken"] = $this->request->getMatchmakingContextToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSeasonGatheringTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSeasonGatheringRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSeasonGatheringTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSeasonGatheringRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSeasonGatheringRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSeasonGatheringResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/season/{seasonName}/{season}/{tier}/gathering/{seasonGatheringName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
+        $url = str_replace("{tier}", $this->request->getTier() === null ? "null" : $this->request->getTier(), $url);
+        $url = str_replace("{seasonGatheringName}", $this->request->getSeasonGatheringName() === null|| strlen($this->request->getSeasonGatheringName()) == 0 ? "null" : $this->request->getSeasonGatheringName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteSeasonGatheringTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteSeasonGatheringRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteSeasonGatheringTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteSeasonGatheringRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteSeasonGatheringRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteSeasonGatheringResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/season/{seasonName}/{season}/{tier}/gathering/{seasonGatheringName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
+        $url = str_replace("{tier}", $this->request->getTier() === null ? "null" : $this->request->getTier(), $url);
+        $url = str_replace("{seasonGatheringName}", $this->request->getSeasonGatheringName() === null|| strlen($this->request->getSeasonGatheringName()) == 0 ? "null" : $this->request->getSeasonGatheringName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeJoinedSeasonGatheringsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeJoinedSeasonGatheringsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeJoinedSeasonGatheringsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeJoinedSeasonGatheringsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeJoinedSeasonGatheringsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeJoinedSeasonGatheringsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/season/{seasonName}/gathering/join";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeJoinedSeasonGatheringsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeJoinedSeasonGatheringsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeJoinedSeasonGatheringsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeJoinedSeasonGatheringsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeJoinedSeasonGatheringsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeJoinedSeasonGatheringsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/season/{seasonName}/gathering/join";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetJoinedSeasonGatheringTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetJoinedSeasonGatheringRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetJoinedSeasonGatheringTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetJoinedSeasonGatheringRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetJoinedSeasonGatheringRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetJoinedSeasonGatheringResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/season/{seasonName}/gathering/join/{season}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetJoinedSeasonGatheringByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetJoinedSeasonGatheringByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetJoinedSeasonGatheringByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetJoinedSeasonGatheringByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetJoinedSeasonGatheringByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetJoinedSeasonGatheringByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/season/{seasonName}/gathering/join/{season}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -4514,14 +5633,14 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param GetCurrentRatingModelMasterRequest $request
+     * @param GetCurrentModelMasterRequest $request
      * @return PromiseInterface
      */
-    public function getCurrentRatingModelMasterAsync(
-            GetCurrentRatingModelMasterRequest $request
+    public function getCurrentModelMasterAsync(
+            GetCurrentModelMasterRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new GetCurrentRatingModelMasterTask(
+        $task = new GetCurrentModelMasterTask(
             $this->session,
             $request
         );
@@ -4529,26 +5648,26 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param GetCurrentRatingModelMasterRequest $request
-     * @return GetCurrentRatingModelMasterResult
+     * @param GetCurrentModelMasterRequest $request
+     * @return GetCurrentModelMasterResult
      */
-    public function getCurrentRatingModelMaster (
-            GetCurrentRatingModelMasterRequest $request
-    ): GetCurrentRatingModelMasterResult {
-        return $this->getCurrentRatingModelMasterAsync(
+    public function getCurrentModelMaster (
+            GetCurrentModelMasterRequest $request
+    ): GetCurrentModelMasterResult {
+        return $this->getCurrentModelMasterAsync(
             $request
         )->wait();
     }
 
     /**
-     * @param UpdateCurrentRatingModelMasterRequest $request
+     * @param UpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
      */
-    public function updateCurrentRatingModelMasterAsync(
-            UpdateCurrentRatingModelMasterRequest $request
+    public function updateCurrentModelMasterAsync(
+            UpdateCurrentModelMasterRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new UpdateCurrentRatingModelMasterTask(
+        $task = new UpdateCurrentModelMasterTask(
             $this->session,
             $request
         );
@@ -4556,26 +5675,26 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param UpdateCurrentRatingModelMasterRequest $request
-     * @return UpdateCurrentRatingModelMasterResult
+     * @param UpdateCurrentModelMasterRequest $request
+     * @return UpdateCurrentModelMasterResult
      */
-    public function updateCurrentRatingModelMaster (
-            UpdateCurrentRatingModelMasterRequest $request
-    ): UpdateCurrentRatingModelMasterResult {
-        return $this->updateCurrentRatingModelMasterAsync(
+    public function updateCurrentModelMaster (
+            UpdateCurrentModelMasterRequest $request
+    ): UpdateCurrentModelMasterResult {
+        return $this->updateCurrentModelMasterAsync(
             $request
         )->wait();
     }
 
     /**
-     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return PromiseInterface
      */
-    public function updateCurrentRatingModelMasterFromGitHubAsync(
-            UpdateCurrentRatingModelMasterFromGitHubRequest $request
+    public function updateCurrentModelMasterFromGitHubAsync(
+            UpdateCurrentModelMasterFromGitHubRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new UpdateCurrentRatingModelMasterFromGitHubTask(
+        $task = new UpdateCurrentModelMasterFromGitHubTask(
             $this->session,
             $request
         );
@@ -4583,13 +5702,472 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param UpdateCurrentRatingModelMasterFromGitHubRequest $request
-     * @return UpdateCurrentRatingModelMasterFromGitHubResult
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
+     * @return UpdateCurrentModelMasterFromGitHubResult
      */
-    public function updateCurrentRatingModelMasterFromGitHub (
-            UpdateCurrentRatingModelMasterFromGitHubRequest $request
-    ): UpdateCurrentRatingModelMasterFromGitHubResult {
-        return $this->updateCurrentRatingModelMasterFromGitHubAsync(
+    public function updateCurrentModelMasterFromGitHub (
+            UpdateCurrentModelMasterFromGitHubRequest $request
+    ): UpdateCurrentModelMasterFromGitHubResult {
+        return $this->updateCurrentModelMasterFromGitHubAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSeasonModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSeasonModelsAsync(
+            DescribeSeasonModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSeasonModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSeasonModelsRequest $request
+     * @return DescribeSeasonModelsResult
+     */
+    public function describeSeasonModels (
+            DescribeSeasonModelsRequest $request
+    ): DescribeSeasonModelsResult {
+        return $this->describeSeasonModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSeasonModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getSeasonModelAsync(
+            GetSeasonModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSeasonModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSeasonModelRequest $request
+     * @return GetSeasonModelResult
+     */
+    public function getSeasonModel (
+            GetSeasonModelRequest $request
+    ): GetSeasonModelResult {
+        return $this->getSeasonModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSeasonModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSeasonModelMastersAsync(
+            DescribeSeasonModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSeasonModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSeasonModelMastersRequest $request
+     * @return DescribeSeasonModelMastersResult
+     */
+    public function describeSeasonModelMasters (
+            DescribeSeasonModelMastersRequest $request
+    ): DescribeSeasonModelMastersResult {
+        return $this->describeSeasonModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateSeasonModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createSeasonModelMasterAsync(
+            CreateSeasonModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateSeasonModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateSeasonModelMasterRequest $request
+     * @return CreateSeasonModelMasterResult
+     */
+    public function createSeasonModelMaster (
+            CreateSeasonModelMasterRequest $request
+    ): CreateSeasonModelMasterResult {
+        return $this->createSeasonModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSeasonModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getSeasonModelMasterAsync(
+            GetSeasonModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSeasonModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSeasonModelMasterRequest $request
+     * @return GetSeasonModelMasterResult
+     */
+    public function getSeasonModelMaster (
+            GetSeasonModelMasterRequest $request
+    ): GetSeasonModelMasterResult {
+        return $this->getSeasonModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateSeasonModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateSeasonModelMasterAsync(
+            UpdateSeasonModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateSeasonModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateSeasonModelMasterRequest $request
+     * @return UpdateSeasonModelMasterResult
+     */
+    public function updateSeasonModelMaster (
+            UpdateSeasonModelMasterRequest $request
+    ): UpdateSeasonModelMasterResult {
+        return $this->updateSeasonModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteSeasonModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteSeasonModelMasterAsync(
+            DeleteSeasonModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteSeasonModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteSeasonModelMasterRequest $request
+     * @return DeleteSeasonModelMasterResult
+     */
+    public function deleteSeasonModelMaster (
+            DeleteSeasonModelMasterRequest $request
+    ): DeleteSeasonModelMasterResult {
+        return $this->deleteSeasonModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSeasonGatheringsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSeasonGatheringsAsync(
+            DescribeSeasonGatheringsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSeasonGatheringsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSeasonGatheringsRequest $request
+     * @return DescribeSeasonGatheringsResult
+     */
+    public function describeSeasonGatherings (
+            DescribeSeasonGatheringsRequest $request
+    ): DescribeSeasonGatheringsResult {
+        return $this->describeSeasonGatheringsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeMatchmakingSeasonGatheringsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeMatchmakingSeasonGatheringsAsync(
+            DescribeMatchmakingSeasonGatheringsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeMatchmakingSeasonGatheringsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeMatchmakingSeasonGatheringsRequest $request
+     * @return DescribeMatchmakingSeasonGatheringsResult
+     */
+    public function describeMatchmakingSeasonGatherings (
+            DescribeMatchmakingSeasonGatheringsRequest $request
+    ): DescribeMatchmakingSeasonGatheringsResult {
+        return $this->describeMatchmakingSeasonGatheringsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DoSeasonMatchmakingRequest $request
+     * @return PromiseInterface
+     */
+    public function doSeasonMatchmakingAsync(
+            DoSeasonMatchmakingRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DoSeasonMatchmakingTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DoSeasonMatchmakingRequest $request
+     * @return DoSeasonMatchmakingResult
+     */
+    public function doSeasonMatchmaking (
+            DoSeasonMatchmakingRequest $request
+    ): DoSeasonMatchmakingResult {
+        return $this->doSeasonMatchmakingAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DoSeasonMatchmakingByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function doSeasonMatchmakingByUserIdAsync(
+            DoSeasonMatchmakingByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DoSeasonMatchmakingByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DoSeasonMatchmakingByUserIdRequest $request
+     * @return DoSeasonMatchmakingByUserIdResult
+     */
+    public function doSeasonMatchmakingByUserId (
+            DoSeasonMatchmakingByUserIdRequest $request
+    ): DoSeasonMatchmakingByUserIdResult {
+        return $this->doSeasonMatchmakingByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSeasonGatheringRequest $request
+     * @return PromiseInterface
+     */
+    public function getSeasonGatheringAsync(
+            GetSeasonGatheringRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSeasonGatheringTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSeasonGatheringRequest $request
+     * @return GetSeasonGatheringResult
+     */
+    public function getSeasonGathering (
+            GetSeasonGatheringRequest $request
+    ): GetSeasonGatheringResult {
+        return $this->getSeasonGatheringAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteSeasonGatheringRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteSeasonGatheringAsync(
+            DeleteSeasonGatheringRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteSeasonGatheringTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteSeasonGatheringRequest $request
+     * @return DeleteSeasonGatheringResult
+     */
+    public function deleteSeasonGathering (
+            DeleteSeasonGatheringRequest $request
+    ): DeleteSeasonGatheringResult {
+        return $this->deleteSeasonGatheringAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeJoinedSeasonGatheringsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeJoinedSeasonGatheringsAsync(
+            DescribeJoinedSeasonGatheringsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeJoinedSeasonGatheringsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeJoinedSeasonGatheringsRequest $request
+     * @return DescribeJoinedSeasonGatheringsResult
+     */
+    public function describeJoinedSeasonGatherings (
+            DescribeJoinedSeasonGatheringsRequest $request
+    ): DescribeJoinedSeasonGatheringsResult {
+        return $this->describeJoinedSeasonGatheringsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeJoinedSeasonGatheringsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeJoinedSeasonGatheringsByUserIdAsync(
+            DescribeJoinedSeasonGatheringsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeJoinedSeasonGatheringsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeJoinedSeasonGatheringsByUserIdRequest $request
+     * @return DescribeJoinedSeasonGatheringsByUserIdResult
+     */
+    public function describeJoinedSeasonGatheringsByUserId (
+            DescribeJoinedSeasonGatheringsByUserIdRequest $request
+    ): DescribeJoinedSeasonGatheringsByUserIdResult {
+        return $this->describeJoinedSeasonGatheringsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetJoinedSeasonGatheringRequest $request
+     * @return PromiseInterface
+     */
+    public function getJoinedSeasonGatheringAsync(
+            GetJoinedSeasonGatheringRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetJoinedSeasonGatheringTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetJoinedSeasonGatheringRequest $request
+     * @return GetJoinedSeasonGatheringResult
+     */
+    public function getJoinedSeasonGathering (
+            GetJoinedSeasonGatheringRequest $request
+    ): GetJoinedSeasonGatheringResult {
+        return $this->getJoinedSeasonGatheringAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetJoinedSeasonGatheringByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getJoinedSeasonGatheringByUserIdAsync(
+            GetJoinedSeasonGatheringByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetJoinedSeasonGatheringByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetJoinedSeasonGatheringByUserIdRequest $request
+     * @return GetJoinedSeasonGatheringByUserIdResult
+     */
+    public function getJoinedSeasonGatheringByUserId (
+            GetJoinedSeasonGatheringByUserIdRequest $request
+    ): GetJoinedSeasonGatheringByUserIdResult {
+        return $this->getJoinedSeasonGatheringByUserIdAsync(
             $request
         )->wait();
     }

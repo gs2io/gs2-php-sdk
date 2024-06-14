@@ -133,8 +133,14 @@ use Gs2\Matchmaking\Request\DoSeasonMatchmakingByUserIdRequest;
 use Gs2\Matchmaking\Result\DoSeasonMatchmakingByUserIdResult;
 use Gs2\Matchmaking\Request\GetSeasonGatheringRequest;
 use Gs2\Matchmaking\Result\GetSeasonGatheringResult;
+use Gs2\Matchmaking\Request\VerifyIncludeParticipantRequest;
+use Gs2\Matchmaking\Result\VerifyIncludeParticipantResult;
+use Gs2\Matchmaking\Request\VerifyIncludeParticipantByUserIdRequest;
+use Gs2\Matchmaking\Result\VerifyIncludeParticipantByUserIdResult;
 use Gs2\Matchmaking\Request\DeleteSeasonGatheringRequest;
 use Gs2\Matchmaking\Result\DeleteSeasonGatheringResult;
+use Gs2\Matchmaking\Request\VerifyIncludeParticipantByStampTaskRequest;
+use Gs2\Matchmaking\Result\VerifyIncludeParticipantByStampTaskResult;
 use Gs2\Matchmaking\Request\DescribeJoinedSeasonGatheringsRequest;
 use Gs2\Matchmaking\Result\DescribeJoinedSeasonGatheringsResult;
 use Gs2\Matchmaking\Request\DescribeJoinedSeasonGatheringsByUserIdRequest;
@@ -3574,6 +3580,143 @@ class GetSeasonGatheringTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyIncludeParticipantTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyIncludeParticipantRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyIncludeParticipantTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyIncludeParticipantRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyIncludeParticipantRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyIncludeParticipantResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/season/{seasonName}/{season}/{tier}/gathering/{seasonGatheringName}/participant/me/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
+        $url = str_replace("{tier}", $this->request->getTier() === null ? "null" : $this->request->getTier(), $url);
+        $url = str_replace("{seasonGatheringName}", $this->request->getSeasonGatheringName() === null|| strlen($this->request->getSeasonGatheringName()) == 0 ? "null" : $this->request->getSeasonGatheringName(), $url);
+
+        $json = [];
+        if ($this->request->getVerifyType() !== null) {
+            $json["verifyType"] = $this->request->getVerifyType();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyIncludeParticipantByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyIncludeParticipantByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyIncludeParticipantByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyIncludeParticipantByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyIncludeParticipantByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyIncludeParticipantByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/season/{seasonName}/{season}/{tier}/gathering/{seasonGatheringName}/participant/{userId}/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
+        $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
+        $url = str_replace("{tier}", $this->request->getTier() === null ? "null" : $this->request->getTier(), $url);
+        $url = str_replace("{seasonGatheringName}", $this->request->getSeasonGatheringName() === null|| strlen($this->request->getSeasonGatheringName()) == 0 ? "null" : $this->request->getSeasonGatheringName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getVerifyType() !== null) {
+            $json["verifyType"] = $this->request->getVerifyType();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteSeasonGatheringTask extends Gs2RestSessionTask {
 
     /**
@@ -3623,6 +3766,65 @@ class DeleteSeasonGatheringTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyIncludeParticipantByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyIncludeParticipantByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyIncludeParticipantByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyIncludeParticipantByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyIncludeParticipantByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyIncludeParticipantByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/season/gathering/participant/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -6038,6 +6240,60 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyIncludeParticipantRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyIncludeParticipantAsync(
+            VerifyIncludeParticipantRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyIncludeParticipantTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyIncludeParticipantRequest $request
+     * @return VerifyIncludeParticipantResult
+     */
+    public function verifyIncludeParticipant (
+            VerifyIncludeParticipantRequest $request
+    ): VerifyIncludeParticipantResult {
+        return $this->verifyIncludeParticipantAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyIncludeParticipantByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyIncludeParticipantByUserIdAsync(
+            VerifyIncludeParticipantByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyIncludeParticipantByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyIncludeParticipantByUserIdRequest $request
+     * @return VerifyIncludeParticipantByUserIdResult
+     */
+    public function verifyIncludeParticipantByUserId (
+            VerifyIncludeParticipantByUserIdRequest $request
+    ): VerifyIncludeParticipantByUserIdResult {
+        return $this->verifyIncludeParticipantByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteSeasonGatheringRequest $request
      * @return PromiseInterface
      */
@@ -6060,6 +6316,33 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
             DeleteSeasonGatheringRequest $request
     ): DeleteSeasonGatheringResult {
         return $this->deleteSeasonGatheringAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyIncludeParticipantByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyIncludeParticipantByStampTaskAsync(
+            VerifyIncludeParticipantByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyIncludeParticipantByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyIncludeParticipantByStampTaskRequest $request
+     * @return VerifyIncludeParticipantByStampTaskResult
+     */
+    public function verifyIncludeParticipantByStampTask (
+            VerifyIncludeParticipantByStampTaskRequest $request
+    ): VerifyIncludeParticipantByStampTaskResult {
+        return $this->verifyIncludeParticipantByStampTaskAsync(
             $request
         )->wait();
     }

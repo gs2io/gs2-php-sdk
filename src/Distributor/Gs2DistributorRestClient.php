@@ -79,6 +79,10 @@ use Gs2\Distributor\Request\RunStampSheetWithoutNamespaceRequest;
 use Gs2\Distributor\Result\RunStampSheetWithoutNamespaceResult;
 use Gs2\Distributor\Request\RunStampSheetExpressWithoutNamespaceRequest;
 use Gs2\Distributor\Result\RunStampSheetExpressWithoutNamespaceResult;
+use Gs2\Distributor\Request\SetTransactionDefaultConfigRequest;
+use Gs2\Distributor\Result\SetTransactionDefaultConfigResult;
+use Gs2\Distributor\Request\SetTransactionDefaultConfigByUserIdRequest;
+use Gs2\Distributor\Result\SetTransactionDefaultConfigByUserIdResult;
 use Gs2\Distributor\Request\GetStampSheetResultRequest;
 use Gs2\Distributor\Result\GetStampSheetResultResult;
 use Gs2\Distributor\Request\GetStampSheetResultByUserIdRequest;
@@ -1610,6 +1614,136 @@ class RunStampSheetExpressWithoutNamespaceTask extends Gs2RestSessionTask {
     }
 }
 
+class SetTransactionDefaultConfigTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetTransactionDefaultConfigRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetTransactionDefaultConfigTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetTransactionDefaultConfigRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetTransactionDefaultConfigRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetTransactionDefaultConfigResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/transaction/user/me/config";
+
+        $json = [];
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SetTransactionDefaultConfigByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetTransactionDefaultConfigByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetTransactionDefaultConfigByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetTransactionDefaultConfigByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetTransactionDefaultConfigByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetTransactionDefaultConfigByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/transaction/user/{userId}/config";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class GetStampSheetResultTask extends Gs2RestSessionTask {
 
     /**
@@ -2421,6 +2555,60 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             RunStampSheetExpressWithoutNamespaceRequest $request
     ): RunStampSheetExpressWithoutNamespaceResult {
         return $this->runStampSheetExpressWithoutNamespaceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetTransactionDefaultConfigRequest $request
+     * @return PromiseInterface
+     */
+    public function setTransactionDefaultConfigAsync(
+            SetTransactionDefaultConfigRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetTransactionDefaultConfigTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetTransactionDefaultConfigRequest $request
+     * @return SetTransactionDefaultConfigResult
+     */
+    public function setTransactionDefaultConfig (
+            SetTransactionDefaultConfigRequest $request
+    ): SetTransactionDefaultConfigResult {
+        return $this->setTransactionDefaultConfigAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetTransactionDefaultConfigByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function setTransactionDefaultConfigByUserIdAsync(
+            SetTransactionDefaultConfigByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetTransactionDefaultConfigByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetTransactionDefaultConfigByUserIdRequest $request
+     * @return SetTransactionDefaultConfigByUserIdResult
+     */
+    public function setTransactionDefaultConfigByUserId (
+            SetTransactionDefaultConfigByUserIdRequest $request
+    ): SetTransactionDefaultConfigByUserIdResult {
+        return $this->setTransactionDefaultConfigByUserIdAsync(
             $request
         )->wait();
     }

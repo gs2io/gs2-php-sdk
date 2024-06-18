@@ -1103,6 +1103,9 @@ class CreateBuffEntryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getExpression() !== null) {
+            $json["expression"] = $this->request->getExpression();
+        }
         if ($this->request->getTargetType() !== null) {
             $json["targetType"] = $this->request->getTargetType();
         }
@@ -1111,9 +1114,6 @@ class CreateBuffEntryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTargetAction() !== null) {
             $json["targetAction"] = $this->request->getTargetAction()->toJson();
-        }
-        if ($this->request->getExpression() !== null) {
-            $json["expression"] = $this->request->getExpression();
         }
         if ($this->request->getPriority() !== null) {
             $json["priority"] = $this->request->getPriority();
@@ -1241,6 +1241,9 @@ class UpdateBuffEntryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getExpression() !== null) {
+            $json["expression"] = $this->request->getExpression();
+        }
         if ($this->request->getTargetType() !== null) {
             $json["targetType"] = $this->request->getTargetType();
         }
@@ -1249,9 +1252,6 @@ class UpdateBuffEntryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTargetAction() !== null) {
             $json["targetAction"] = $this->request->getTargetAction()->toJson();
-        }
-        if ($this->request->getExpression() !== null) {
-            $json["expression"] = $this->request->getExpression();
         }
         if ($this->request->getPriority() !== null) {
             $json["priority"] = $this->request->getPriority();

@@ -40,6 +40,10 @@ class BuffEntryModelMaster implements IModel {
 	/**
      * @var string
 	 */
+	private $expression;
+	/**
+     * @var string
+	 */
 	private $targetType;
 	/**
      * @var BuffTargetModel
@@ -49,10 +53,6 @@ class BuffEntryModelMaster implements IModel {
      * @var BuffTargetAction
 	 */
 	private $targetAction;
-	/**
-     * @var string
-	 */
-	private $expression;
 	/**
      * @var int
 	 */
@@ -113,6 +113,16 @@ class BuffEntryModelMaster implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getExpression(): ?string {
+		return $this->expression;
+	}
+	public function setExpression(?string $expression) {
+		$this->expression = $expression;
+	}
+	public function withExpression(?string $expression): BuffEntryModelMaster {
+		$this->expression = $expression;
+		return $this;
+	}
 	public function getTargetType(): ?string {
 		return $this->targetType;
 	}
@@ -141,16 +151,6 @@ class BuffEntryModelMaster implements IModel {
 	}
 	public function withTargetAction(?BuffTargetAction $targetAction): BuffEntryModelMaster {
 		$this->targetAction = $targetAction;
-		return $this;
-	}
-	public function getExpression(): ?string {
-		return $this->expression;
-	}
-	public function setExpression(?string $expression) {
-		$this->expression = $expression;
-	}
-	public function withExpression(?string $expression): BuffEntryModelMaster {
-		$this->expression = $expression;
 		return $this;
 	}
 	public function getPriority(): ?int {
@@ -213,10 +213,10 @@ class BuffEntryModelMaster implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withExpression(array_key_exists('expression', $data) && $data['expression'] !== null ? $data['expression'] : null)
             ->withTargetType(array_key_exists('targetType', $data) && $data['targetType'] !== null ? $data['targetType'] : null)
             ->withTargetModel(array_key_exists('targetModel', $data) && $data['targetModel'] !== null ? BuffTargetModel::fromJson($data['targetModel']) : null)
             ->withTargetAction(array_key_exists('targetAction', $data) && $data['targetAction'] !== null ? BuffTargetAction::fromJson($data['targetAction']) : null)
-            ->withExpression(array_key_exists('expression', $data) && $data['expression'] !== null ? $data['expression'] : null)
             ->withPriority(array_key_exists('priority', $data) && $data['priority'] !== null ? $data['priority'] : null)
             ->withApplyPeriodScheduleEventId(array_key_exists('applyPeriodScheduleEventId', $data) && $data['applyPeriodScheduleEventId'] !== null ? $data['applyPeriodScheduleEventId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -230,10 +230,10 @@ class BuffEntryModelMaster implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
+            "expression" => $this->getExpression(),
             "targetType" => $this->getTargetType(),
             "targetModel" => $this->getTargetModel() !== null ? $this->getTargetModel()->toJson() : null,
             "targetAction" => $this->getTargetAction() !== null ? $this->getTargetAction()->toJson() : null,
-            "expression" => $this->getExpression(),
             "priority" => $this->getPriority(),
             "applyPeriodScheduleEventId" => $this->getApplyPeriodScheduleEventId(),
             "createdAt" => $this->getCreatedAt(),

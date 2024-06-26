@@ -31,6 +31,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $transactionSetting;
     /** @var ScriptSetting */
     private $receiveScript;
+    /** @var string */
+    private $overrideAcquireActionsScriptId;
     /** @var LogSetting */
     private $logSetting;
 	public function getNamespaceName(): ?string {
@@ -73,6 +75,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->receiveScript = $receiveScript;
 		return $this;
 	}
+	public function getOverrideAcquireActionsScriptId(): ?string {
+		return $this->overrideAcquireActionsScriptId;
+	}
+	public function setOverrideAcquireActionsScriptId(?string $overrideAcquireActionsScriptId) {
+		$this->overrideAcquireActionsScriptId = $overrideAcquireActionsScriptId;
+	}
+	public function withOverrideAcquireActionsScriptId(?string $overrideAcquireActionsScriptId): UpdateNamespaceRequest {
+		$this->overrideAcquireActionsScriptId = $overrideAcquireActionsScriptId;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -93,6 +105,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withReceiveScript(array_key_exists('receiveScript', $data) && $data['receiveScript'] !== null ? ScriptSetting::fromJson($data['receiveScript']) : null)
+            ->withOverrideAcquireActionsScriptId(array_key_exists('overrideAcquireActionsScriptId', $data) && $data['overrideAcquireActionsScriptId'] !== null ? $data['overrideAcquireActionsScriptId'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -102,6 +115,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "receiveScript" => $this->getReceiveScript() !== null ? $this->getReceiveScript()->toJson() : null,
+            "overrideAcquireActionsScriptId" => $this->getOverrideAcquireActionsScriptId(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

@@ -215,6 +215,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getReceiveScript() !== null) {
             $json["receiveScript"] = $this->request->getReceiveScript()->toJson();
         }
+        if ($this->request->getOverrideAcquireActionsScriptId() !== null) {
+            $json["overrideAcquireActionsScriptId"] = $this->request->getOverrideAcquireActionsScriptId();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -395,6 +398,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getReceiveScript() !== null) {
             $json["receiveScript"] = $this->request->getReceiveScript()->toJson();
+        }
+        if ($this->request->getOverrideAcquireActionsScriptId() !== null) {
+            $json["overrideAcquireActionsScriptId"] = $this->request->getOverrideAcquireActionsScriptId();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

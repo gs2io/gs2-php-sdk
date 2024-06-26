@@ -105,6 +105,16 @@ use Gs2\Money2\Request\UpdateCurrentModelMasterRequest;
 use Gs2\Money2\Result\UpdateCurrentModelMasterResult;
 use Gs2\Money2\Request\UpdateCurrentModelMasterFromGitHubRequest;
 use Gs2\Money2\Result\UpdateCurrentModelMasterFromGitHubResult;
+use Gs2\Money2\Request\DescribeDailyTransactionHistoriesByCurrencyRequest;
+use Gs2\Money2\Result\DescribeDailyTransactionHistoriesByCurrencyResult;
+use Gs2\Money2\Request\DescribeDailyTransactionHistoriesRequest;
+use Gs2\Money2\Result\DescribeDailyTransactionHistoriesResult;
+use Gs2\Money2\Request\GetDailyTransactionHistoryRequest;
+use Gs2\Money2\Result\GetDailyTransactionHistoryResult;
+use Gs2\Money2\Request\DescribeUnusedBalancesRequest;
+use Gs2\Money2\Result\DescribeUnusedBalancesResult;
+use Gs2\Money2\Request\GetUnusedBalanceRequest;
+use Gs2\Money2\Result\GetUnusedBalanceResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -2484,6 +2494,326 @@ class UpdateCurrentModelMasterFromGitHubTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeDailyTransactionHistoriesByCurrencyTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeDailyTransactionHistoriesByCurrencyRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeDailyTransactionHistoriesByCurrencyTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeDailyTransactionHistoriesByCurrencyRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeDailyTransactionHistoriesByCurrencyRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeDailyTransactionHistoriesByCurrencyResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/transaction/daily/currency/{currency}/date/{year}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{currency}", $this->request->getCurrency() === null|| strlen($this->request->getCurrency()) == 0 ? "null" : $this->request->getCurrency(), $url);
+        $url = str_replace("{year}", $this->request->getYear() === null ? "null" : $this->request->getYear(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getMonth() !== null) {
+            $queryStrings["month"] = $this->request->getMonth();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeDailyTransactionHistoriesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeDailyTransactionHistoriesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeDailyTransactionHistoriesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeDailyTransactionHistoriesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeDailyTransactionHistoriesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeDailyTransactionHistoriesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/transaction/daily/{year}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{year}", $this->request->getYear() === null ? "null" : $this->request->getYear(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getMonth() !== null) {
+            $queryStrings["month"] = $this->request->getMonth();
+        }
+        if ($this->request->getDay() !== null) {
+            $queryStrings["day"] = $this->request->getDay();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetDailyTransactionHistoryTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetDailyTransactionHistoryRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetDailyTransactionHistoryTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetDailyTransactionHistoryRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetDailyTransactionHistoryRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetDailyTransactionHistoryResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/transaction/daily/{year}/{month}/{day}/currency/{currency}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{year}", $this->request->getYear() === null ? "null" : $this->request->getYear(), $url);
+        $url = str_replace("{month}", $this->request->getMonth() === null ? "null" : $this->request->getMonth(), $url);
+        $url = str_replace("{day}", $this->request->getDay() === null ? "null" : $this->request->getDay(), $url);
+        $url = str_replace("{currency}", $this->request->getCurrency() === null|| strlen($this->request->getCurrency()) == 0 ? "null" : $this->request->getCurrency(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeUnusedBalancesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeUnusedBalancesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeUnusedBalancesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeUnusedBalancesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeUnusedBalancesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeUnusedBalancesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/balance/unused";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetUnusedBalanceTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetUnusedBalanceRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetUnusedBalanceTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetUnusedBalanceRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetUnusedBalanceRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetUnusedBalanceResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/balance/unused/{currency}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{currency}", $this->request->getCurrency() === null|| strlen($this->request->getCurrency()) == 0 ? "null" : $this->request->getCurrency(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Money2 API クライアント
  *
@@ -3523,6 +3853,141 @@ class Gs2Money2RestClient extends AbstractGs2Client {
             UpdateCurrentModelMasterFromGitHubRequest $request
     ): UpdateCurrentModelMasterFromGitHubResult {
         return $this->updateCurrentModelMasterFromGitHubAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeDailyTransactionHistoriesByCurrencyRequest $request
+     * @return PromiseInterface
+     */
+    public function describeDailyTransactionHistoriesByCurrencyAsync(
+            DescribeDailyTransactionHistoriesByCurrencyRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeDailyTransactionHistoriesByCurrencyTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeDailyTransactionHistoriesByCurrencyRequest $request
+     * @return DescribeDailyTransactionHistoriesByCurrencyResult
+     */
+    public function describeDailyTransactionHistoriesByCurrency (
+            DescribeDailyTransactionHistoriesByCurrencyRequest $request
+    ): DescribeDailyTransactionHistoriesByCurrencyResult {
+        return $this->describeDailyTransactionHistoriesByCurrencyAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeDailyTransactionHistoriesRequest $request
+     * @return PromiseInterface
+     */
+    public function describeDailyTransactionHistoriesAsync(
+            DescribeDailyTransactionHistoriesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeDailyTransactionHistoriesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeDailyTransactionHistoriesRequest $request
+     * @return DescribeDailyTransactionHistoriesResult
+     */
+    public function describeDailyTransactionHistories (
+            DescribeDailyTransactionHistoriesRequest $request
+    ): DescribeDailyTransactionHistoriesResult {
+        return $this->describeDailyTransactionHistoriesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetDailyTransactionHistoryRequest $request
+     * @return PromiseInterface
+     */
+    public function getDailyTransactionHistoryAsync(
+            GetDailyTransactionHistoryRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetDailyTransactionHistoryTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetDailyTransactionHistoryRequest $request
+     * @return GetDailyTransactionHistoryResult
+     */
+    public function getDailyTransactionHistory (
+            GetDailyTransactionHistoryRequest $request
+    ): GetDailyTransactionHistoryResult {
+        return $this->getDailyTransactionHistoryAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeUnusedBalancesRequest $request
+     * @return PromiseInterface
+     */
+    public function describeUnusedBalancesAsync(
+            DescribeUnusedBalancesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeUnusedBalancesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeUnusedBalancesRequest $request
+     * @return DescribeUnusedBalancesResult
+     */
+    public function describeUnusedBalances (
+            DescribeUnusedBalancesRequest $request
+    ): DescribeUnusedBalancesResult {
+        return $this->describeUnusedBalancesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetUnusedBalanceRequest $request
+     * @return PromiseInterface
+     */
+    public function getUnusedBalanceAsync(
+            GetUnusedBalanceRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetUnusedBalanceTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetUnusedBalanceRequest $request
+     * @return GetUnusedBalanceResult
+     */
+    public function getUnusedBalance (
+            GetUnusedBalanceRequest $request
+    ): GetUnusedBalanceResult {
+        return $this->getUnusedBalanceAsync(
             $request
         )->wait();
     }

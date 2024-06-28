@@ -1543,7 +1543,7 @@ class RevertUseByStampSheetTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/serialKey/use";
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/serialKey/revert";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {

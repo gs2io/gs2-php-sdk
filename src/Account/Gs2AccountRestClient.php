@@ -97,6 +97,28 @@ use Gs2\Account\Request\DeleteTakeOverByUserIdRequest;
 use Gs2\Account\Result\DeleteTakeOverByUserIdResult;
 use Gs2\Account\Request\DoTakeOverRequest;
 use Gs2\Account\Result\DoTakeOverResult;
+use Gs2\Account\Request\DescribePlatformIdsRequest;
+use Gs2\Account\Result\DescribePlatformIdsResult;
+use Gs2\Account\Request\DescribePlatformIdsByUserIdRequest;
+use Gs2\Account\Result\DescribePlatformIdsByUserIdResult;
+use Gs2\Account\Request\CreatePlatformIdRequest;
+use Gs2\Account\Result\CreatePlatformIdResult;
+use Gs2\Account\Request\CreatePlatformIdByUserIdRequest;
+use Gs2\Account\Result\CreatePlatformIdByUserIdResult;
+use Gs2\Account\Request\GetPlatformIdRequest;
+use Gs2\Account\Result\GetPlatformIdResult;
+use Gs2\Account\Request\GetPlatformIdByUserIdRequest;
+use Gs2\Account\Result\GetPlatformIdByUserIdResult;
+use Gs2\Account\Request\FindPlatformIdRequest;
+use Gs2\Account\Result\FindPlatformIdResult;
+use Gs2\Account\Request\FindPlatformIdByUserIdRequest;
+use Gs2\Account\Result\FindPlatformIdByUserIdResult;
+use Gs2\Account\Request\DeletePlatformIdRequest;
+use Gs2\Account\Result\DeletePlatformIdResult;
+use Gs2\Account\Request\DeletePlatformIdByUserIdentifierRequest;
+use Gs2\Account\Result\DeletePlatformIdByUserIdentifierResult;
+use Gs2\Account\Request\DeletePlatformIdByUserIdRequest;
+use Gs2\Account\Result\DeletePlatformIdByUserIdResult;
 use Gs2\Account\Request\GetDataOwnerByUserIdRequest;
 use Gs2\Account\Result\GetDataOwnerByUserIdResult;
 use Gs2\Account\Request\DeleteDataOwnerByUserIdRequest;
@@ -2288,6 +2310,722 @@ class DoTakeOverTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribePlatformIdsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribePlatformIdsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribePlatformIdsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribePlatformIdsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribePlatformIdsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribePlatformIdsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/me/platformId";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribePlatformIdsByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribePlatformIdsByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribePlatformIdsByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribePlatformIdsByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribePlatformIdsByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribePlatformIdsByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/platformId";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreatePlatformIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreatePlatformIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreatePlatformIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreatePlatformIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreatePlatformIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreatePlatformIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/me/platformId";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getUserIdentifier() !== null) {
+            $json["userIdentifier"] = $this->request->getUserIdentifier();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreatePlatformIdByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreatePlatformIdByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreatePlatformIdByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreatePlatformIdByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreatePlatformIdByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreatePlatformIdByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/platformId";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getUserIdentifier() !== null) {
+            $json["userIdentifier"] = $this->request->getUserIdentifier();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetPlatformIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetPlatformIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetPlatformIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetPlatformIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetPlatformIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetPlatformIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/me/platformId/type/{type}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetPlatformIdByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetPlatformIdByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetPlatformIdByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetPlatformIdByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetPlatformIdByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetPlatformIdByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/platformId/type/{type}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class FindPlatformIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var FindPlatformIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * FindPlatformIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param FindPlatformIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        FindPlatformIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            FindPlatformIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/me/platformId/type/{type}/userIdentifier/{userIdentifier}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+        $url = str_replace("{userIdentifier}", $this->request->getUserIdentifier() === null|| strlen($this->request->getUserIdentifier()) == 0 ? "null" : $this->request->getUserIdentifier(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class FindPlatformIdByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var FindPlatformIdByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * FindPlatformIdByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param FindPlatformIdByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        FindPlatformIdByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            FindPlatformIdByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/platformId/type/{type}/userIdentifier/{userIdentifier}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+        $url = str_replace("{userIdentifier}", $this->request->getUserIdentifier() === null|| strlen($this->request->getUserIdentifier()) == 0 ? "null" : $this->request->getUserIdentifier(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeletePlatformIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeletePlatformIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeletePlatformIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeletePlatformIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeletePlatformIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeletePlatformIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/me/platformId/type/{type}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getUserIdentifier() !== null) {
+            $queryStrings["userIdentifier"] = $this->request->getUserIdentifier();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeletePlatformIdByUserIdentifierTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeletePlatformIdByUserIdentifierRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeletePlatformIdByUserIdentifierTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeletePlatformIdByUserIdentifierRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeletePlatformIdByUserIdentifierRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeletePlatformIdByUserIdentifierResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/platformId/type/{type}/userIdentifier/{userIdentifier}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+        $url = str_replace("{userIdentifier}", $this->request->getUserIdentifier() === null|| strlen($this->request->getUserIdentifier()) == 0 ? "null" : $this->request->getUserIdentifier(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeletePlatformIdByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeletePlatformIdByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeletePlatformIdByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeletePlatformIdByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeletePlatformIdByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeletePlatformIdByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/platformId/type/{type}/platformId";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class GetDataOwnerByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -3344,6 +4082,303 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             DoTakeOverRequest $request
     ): DoTakeOverResult {
         return $this->doTakeOverAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribePlatformIdsRequest $request
+     * @return PromiseInterface
+     */
+    public function describePlatformIdsAsync(
+            DescribePlatformIdsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribePlatformIdsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribePlatformIdsRequest $request
+     * @return DescribePlatformIdsResult
+     */
+    public function describePlatformIds (
+            DescribePlatformIdsRequest $request
+    ): DescribePlatformIdsResult {
+        return $this->describePlatformIdsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribePlatformIdsByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describePlatformIdsByUserIdAsync(
+            DescribePlatformIdsByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribePlatformIdsByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribePlatformIdsByUserIdRequest $request
+     * @return DescribePlatformIdsByUserIdResult
+     */
+    public function describePlatformIdsByUserId (
+            DescribePlatformIdsByUserIdRequest $request
+    ): DescribePlatformIdsByUserIdResult {
+        return $this->describePlatformIdsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreatePlatformIdRequest $request
+     * @return PromiseInterface
+     */
+    public function createPlatformIdAsync(
+            CreatePlatformIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreatePlatformIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreatePlatformIdRequest $request
+     * @return CreatePlatformIdResult
+     */
+    public function createPlatformId (
+            CreatePlatformIdRequest $request
+    ): CreatePlatformIdResult {
+        return $this->createPlatformIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreatePlatformIdByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function createPlatformIdByUserIdAsync(
+            CreatePlatformIdByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreatePlatformIdByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreatePlatformIdByUserIdRequest $request
+     * @return CreatePlatformIdByUserIdResult
+     */
+    public function createPlatformIdByUserId (
+            CreatePlatformIdByUserIdRequest $request
+    ): CreatePlatformIdByUserIdResult {
+        return $this->createPlatformIdByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetPlatformIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getPlatformIdAsync(
+            GetPlatformIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetPlatformIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetPlatformIdRequest $request
+     * @return GetPlatformIdResult
+     */
+    public function getPlatformId (
+            GetPlatformIdRequest $request
+    ): GetPlatformIdResult {
+        return $this->getPlatformIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetPlatformIdByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getPlatformIdByUserIdAsync(
+            GetPlatformIdByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetPlatformIdByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetPlatformIdByUserIdRequest $request
+     * @return GetPlatformIdByUserIdResult
+     */
+    public function getPlatformIdByUserId (
+            GetPlatformIdByUserIdRequest $request
+    ): GetPlatformIdByUserIdResult {
+        return $this->getPlatformIdByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param FindPlatformIdRequest $request
+     * @return PromiseInterface
+     */
+    public function findPlatformIdAsync(
+            FindPlatformIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new FindPlatformIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param FindPlatformIdRequest $request
+     * @return FindPlatformIdResult
+     */
+    public function findPlatformId (
+            FindPlatformIdRequest $request
+    ): FindPlatformIdResult {
+        return $this->findPlatformIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param FindPlatformIdByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function findPlatformIdByUserIdAsync(
+            FindPlatformIdByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new FindPlatformIdByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param FindPlatformIdByUserIdRequest $request
+     * @return FindPlatformIdByUserIdResult
+     */
+    public function findPlatformIdByUserId (
+            FindPlatformIdByUserIdRequest $request
+    ): FindPlatformIdByUserIdResult {
+        return $this->findPlatformIdByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeletePlatformIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deletePlatformIdAsync(
+            DeletePlatformIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeletePlatformIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeletePlatformIdRequest $request
+     * @return DeletePlatformIdResult
+     */
+    public function deletePlatformId (
+            DeletePlatformIdRequest $request
+    ): DeletePlatformIdResult {
+        return $this->deletePlatformIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeletePlatformIdByUserIdentifierRequest $request
+     * @return PromiseInterface
+     */
+    public function deletePlatformIdByUserIdentifierAsync(
+            DeletePlatformIdByUserIdentifierRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeletePlatformIdByUserIdentifierTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeletePlatformIdByUserIdentifierRequest $request
+     * @return DeletePlatformIdByUserIdentifierResult
+     */
+    public function deletePlatformIdByUserIdentifier (
+            DeletePlatformIdByUserIdentifierRequest $request
+    ): DeletePlatformIdByUserIdentifierResult {
+        return $this->deletePlatformIdByUserIdentifierAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeletePlatformIdByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deletePlatformIdByUserIdAsync(
+            DeletePlatformIdByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeletePlatformIdByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeletePlatformIdByUserIdRequest $request
+     * @return DeletePlatformIdByUserIdResult
+     */
+    public function deletePlatformIdByUserId (
+            DeletePlatformIdByUserIdRequest $request
+    ): DeletePlatformIdByUserIdResult {
+        return $this->deletePlatformIdByUserIdAsync(
             $request
         )->wait();
     }

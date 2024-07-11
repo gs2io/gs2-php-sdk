@@ -49,6 +49,18 @@ class RepeatSetting implements IModel {
      * @var int
 	 */
 	private $endHour;
+	/**
+     * @var int
+	 */
+	private $anchorTimestamp;
+	/**
+     * @var int
+	 */
+	private $activeDays;
+	/**
+     * @var int
+	 */
+	private $inactiveDays;
 	public function getRepeatType(): ?string {
 		return $this->repeatType;
 	}
@@ -119,6 +131,36 @@ class RepeatSetting implements IModel {
 		$this->endHour = $endHour;
 		return $this;
 	}
+	public function getAnchorTimestamp(): ?int {
+		return $this->anchorTimestamp;
+	}
+	public function setAnchorTimestamp(?int $anchorTimestamp) {
+		$this->anchorTimestamp = $anchorTimestamp;
+	}
+	public function withAnchorTimestamp(?int $anchorTimestamp): RepeatSetting {
+		$this->anchorTimestamp = $anchorTimestamp;
+		return $this;
+	}
+	public function getActiveDays(): ?int {
+		return $this->activeDays;
+	}
+	public function setActiveDays(?int $activeDays) {
+		$this->activeDays = $activeDays;
+	}
+	public function withActiveDays(?int $activeDays): RepeatSetting {
+		$this->activeDays = $activeDays;
+		return $this;
+	}
+	public function getInactiveDays(): ?int {
+		return $this->inactiveDays;
+	}
+	public function setInactiveDays(?int $inactiveDays) {
+		$this->inactiveDays = $inactiveDays;
+	}
+	public function withInactiveDays(?int $inactiveDays): RepeatSetting {
+		$this->inactiveDays = $inactiveDays;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?RepeatSetting {
         if ($data === null) {
@@ -131,7 +173,10 @@ class RepeatSetting implements IModel {
             ->withBeginDayOfWeek(array_key_exists('beginDayOfWeek', $data) && $data['beginDayOfWeek'] !== null ? $data['beginDayOfWeek'] : null)
             ->withEndDayOfWeek(array_key_exists('endDayOfWeek', $data) && $data['endDayOfWeek'] !== null ? $data['endDayOfWeek'] : null)
             ->withBeginHour(array_key_exists('beginHour', $data) && $data['beginHour'] !== null ? $data['beginHour'] : null)
-            ->withEndHour(array_key_exists('endHour', $data) && $data['endHour'] !== null ? $data['endHour'] : null);
+            ->withEndHour(array_key_exists('endHour', $data) && $data['endHour'] !== null ? $data['endHour'] : null)
+            ->withAnchorTimestamp(array_key_exists('anchorTimestamp', $data) && $data['anchorTimestamp'] !== null ? $data['anchorTimestamp'] : null)
+            ->withActiveDays(array_key_exists('activeDays', $data) && $data['activeDays'] !== null ? $data['activeDays'] : null)
+            ->withInactiveDays(array_key_exists('inactiveDays', $data) && $data['inactiveDays'] !== null ? $data['inactiveDays'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +188,9 @@ class RepeatSetting implements IModel {
             "endDayOfWeek" => $this->getEndDayOfWeek(),
             "beginHour" => $this->getBeginHour(),
             "endHour" => $this->getEndHour(),
+            "anchorTimestamp" => $this->getAnchorTimestamp(),
+            "activeDays" => $this->getActiveDays(),
+            "inactiveDays" => $this->getInactiveDays(),
         );
     }
 }

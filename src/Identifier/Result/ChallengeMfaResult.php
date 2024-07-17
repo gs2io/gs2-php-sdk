@@ -21,7 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\TwoFactorAuthenticationSetting;
 use Gs2\Identifier\Model\Password;
 
-class CreatePasswordResult implements IResult {
+class ChallengeMfaResult implements IResult {
     /** @var Password */
     private $item;
 
@@ -33,16 +33,16 @@ class CreatePasswordResult implements IResult {
 		$this->item = $item;
 	}
 
-	public function withItem(?Password $item): CreatePasswordResult {
+	public function withItem(?Password $item): ChallengeMfaResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?CreatePasswordResult {
+    public static function fromJson(?array $data): ?ChallengeMfaResult {
         if ($data === null) {
             return null;
         }
-        return (new CreatePasswordResult())
+        return (new ChallengeMfaResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Password::fromJson($data['item']) : null);
     }
 

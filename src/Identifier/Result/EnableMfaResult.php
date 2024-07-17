@@ -21,9 +21,11 @@ use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\TwoFactorAuthenticationSetting;
 use Gs2\Identifier\Model\Password;
 
-class CreatePasswordResult implements IResult {
+class EnableMfaResult implements IResult {
     /** @var Password */
     private $item;
+    /** @var string */
+    private $challengeToken;
 
 	public function getItem(): ?Password {
 		return $this->item;
@@ -33,22 +35,37 @@ class CreatePasswordResult implements IResult {
 		$this->item = $item;
 	}
 
-	public function withItem(?Password $item): CreatePasswordResult {
+	public function withItem(?Password $item): EnableMfaResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?CreatePasswordResult {
+	public function getChallengeToken(): ?string {
+		return $this->challengeToken;
+	}
+
+	public function setChallengeToken(?string $challengeToken) {
+		$this->challengeToken = $challengeToken;
+	}
+
+	public function withChallengeToken(?string $challengeToken): EnableMfaResult {
+		$this->challengeToken = $challengeToken;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?EnableMfaResult {
         if ($data === null) {
             return null;
         }
-        return (new CreatePasswordResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Password::fromJson($data['item']) : null);
+        return (new EnableMfaResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Password::fromJson($data['item']) : null)
+            ->withChallengeToken(array_key_exists('challengeToken', $data) && $data['challengeToken'] !== null ? $data['challengeToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "challengeToken" => $this->getChallengeToken(),
         );
     }
 }

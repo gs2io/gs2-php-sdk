@@ -15,40 +15,38 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Identifier\Result;
+namespace Gs2\Identifier\Model;
 
-use Gs2\Core\Model\IResult;
-use Gs2\Identifier\Model\TwoFactorAuthenticationSetting;
-use Gs2\Identifier\Model\Password;
+use Gs2\Core\Model\IModel;
 
-class GetPasswordResult implements IResult {
-    /** @var Password */
-    private $item;
 
-	public function getItem(): ?Password {
-		return $this->item;
+class TwoFactorAuthenticationSetting implements IModel {
+	/**
+     * @var string
+	 */
+	private $status;
+	public function getStatus(): ?string {
+		return $this->status;
 	}
-
-	public function setItem(?Password $item) {
-		$this->item = $item;
+	public function setStatus(?string $status) {
+		$this->status = $status;
 	}
-
-	public function withItem(?Password $item): GetPasswordResult {
-		$this->item = $item;
+	public function withStatus(?string $status): TwoFactorAuthenticationSetting {
+		$this->status = $status;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?GetPasswordResult {
+    public static function fromJson(?array $data): ?TwoFactorAuthenticationSetting {
         if ($data === null) {
             return null;
         }
-        return (new GetPasswordResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Password::fromJson($data['item']) : null);
+        return (new TwoFactorAuthenticationSetting())
+            ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "status" => $this->getStatus(),
         );
     }
 }

@@ -18,6 +18,7 @@
 namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Identifier\Model\TwoFactorAuthenticationSetting;
 use Gs2\Identifier\Model\Password;
 
 class DeletePasswordResult implements IResult {

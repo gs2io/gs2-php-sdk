@@ -34,6 +34,14 @@ class Password implements IModel {
 	 */
 	private $userName;
 	/**
+     * @var string
+	 */
+	private $enableTwoFactorAuthentication;
+	/**
+     * @var TwoFactorAuthenticationSetting
+	 */
+	private $twoFactorAuthenticationSetting;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -71,6 +79,26 @@ class Password implements IModel {
 		$this->userName = $userName;
 		return $this;
 	}
+	public function getEnableTwoFactorAuthentication(): ?string {
+		return $this->enableTwoFactorAuthentication;
+	}
+	public function setEnableTwoFactorAuthentication(?string $enableTwoFactorAuthentication) {
+		$this->enableTwoFactorAuthentication = $enableTwoFactorAuthentication;
+	}
+	public function withEnableTwoFactorAuthentication(?string $enableTwoFactorAuthentication): Password {
+		$this->enableTwoFactorAuthentication = $enableTwoFactorAuthentication;
+		return $this;
+	}
+	public function getTwoFactorAuthenticationSetting(): ?TwoFactorAuthenticationSetting {
+		return $this->twoFactorAuthenticationSetting;
+	}
+	public function setTwoFactorAuthenticationSetting(?TwoFactorAuthenticationSetting $twoFactorAuthenticationSetting) {
+		$this->twoFactorAuthenticationSetting = $twoFactorAuthenticationSetting;
+	}
+	public function withTwoFactorAuthenticationSetting(?TwoFactorAuthenticationSetting $twoFactorAuthenticationSetting): Password {
+		$this->twoFactorAuthenticationSetting = $twoFactorAuthenticationSetting;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -100,6 +128,8 @@ class Password implements IModel {
             ->withPasswordId(array_key_exists('passwordId', $data) && $data['passwordId'] !== null ? $data['passwordId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
+            ->withEnableTwoFactorAuthentication(array_key_exists('enableTwoFactorAuthentication', $data) && $data['enableTwoFactorAuthentication'] !== null ? $data['enableTwoFactorAuthentication'] : null)
+            ->withTwoFactorAuthenticationSetting(array_key_exists('twoFactorAuthenticationSetting', $data) && $data['twoFactorAuthenticationSetting'] !== null ? TwoFactorAuthenticationSetting::fromJson($data['twoFactorAuthenticationSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -109,6 +139,8 @@ class Password implements IModel {
             "passwordId" => $this->getPasswordId(),
             "userId" => $this->getUserId(),
             "userName" => $this->getUserName(),
+            "enableTwoFactorAuthentication" => $this->getEnableTwoFactorAuthentication(),
+            "twoFactorAuthenticationSetting" => $this->getTwoFactorAuthenticationSetting() !== null ? $this->getTwoFactorAuthenticationSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );

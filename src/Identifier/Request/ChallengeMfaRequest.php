@@ -19,59 +19,45 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class LoginByUserRequest extends Gs2BasicRequest {
+class ChallengeMfaRequest extends Gs2BasicRequest {
     /** @var string */
     private $userName;
     /** @var string */
-    private $password;
-    /** @var string */
-    private $otp;
+    private $passcode;
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
-	public function withUserName(?string $userName): LoginByUserRequest {
+	public function withUserName(?string $userName): ChallengeMfaRequest {
 		$this->userName = $userName;
 		return $this;
 	}
-	public function getPassword(): ?string {
-		return $this->password;
+	public function getPasscode(): ?string {
+		return $this->passcode;
 	}
-	public function setPassword(?string $password) {
-		$this->password = $password;
+	public function setPasscode(?string $passcode) {
+		$this->passcode = $passcode;
 	}
-	public function withPassword(?string $password): LoginByUserRequest {
-		$this->password = $password;
-		return $this;
-	}
-	public function getOtp(): ?string {
-		return $this->otp;
-	}
-	public function setOtp(?string $otp) {
-		$this->otp = $otp;
-	}
-	public function withOtp(?string $otp): LoginByUserRequest {
-		$this->otp = $otp;
+	public function withPasscode(?string $passcode): ChallengeMfaRequest {
+		$this->passcode = $passcode;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?LoginByUserRequest {
+    public static function fromJson(?array $data): ?ChallengeMfaRequest {
         if ($data === null) {
             return null;
         }
-        return (new LoginByUserRequest())
+        return (new ChallengeMfaRequest())
             ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
-            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
-            ->withOtp(array_key_exists('otp', $data) && $data['otp'] !== null ? $data['otp'] : null);
+            ->withPasscode(array_key_exists('passcode', $data) && $data['passcode'] !== null ? $data['passcode'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userName" => $this->getUserName(),
-            "password" => $this->getPassword(),
-            "otp" => $this->getOtp(),
+            "passcode" => $this->getPasscode(),
         );
     }
 }

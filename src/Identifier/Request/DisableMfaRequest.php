@@ -15,40 +15,35 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Identifier\Result;
+namespace Gs2\Identifier\Request;
 
-use Gs2\Core\Model\IResult;
-use Gs2\Identifier\Model\TwoFactorAuthenticationSetting;
-use Gs2\Identifier\Model\Password;
+use Gs2\Core\Control\Gs2BasicRequest;
 
-class GetPasswordResult implements IResult {
-    /** @var Password */
-    private $item;
-
-	public function getItem(): ?Password {
-		return $this->item;
+class DisableMfaRequest extends Gs2BasicRequest {
+    /** @var string */
+    private $userName;
+	public function getUserName(): ?string {
+		return $this->userName;
 	}
-
-	public function setItem(?Password $item) {
-		$this->item = $item;
+	public function setUserName(?string $userName) {
+		$this->userName = $userName;
 	}
-
-	public function withItem(?Password $item): GetPasswordResult {
-		$this->item = $item;
+	public function withUserName(?string $userName): DisableMfaRequest {
+		$this->userName = $userName;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?GetPasswordResult {
+    public static function fromJson(?array $data): ?DisableMfaRequest {
         if ($data === null) {
             return null;
         }
-        return (new GetPasswordResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Password::fromJson($data['item']) : null);
+        return (new DisableMfaRequest())
+            ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "userName" => $this->getUserName(),
         );
     }
 }

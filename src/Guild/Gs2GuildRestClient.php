@@ -177,6 +177,22 @@ use Gs2\Guild\Request\DeleteRequestRequest;
 use Gs2\Guild\Result\DeleteRequestResult;
 use Gs2\Guild\Request\DeleteRequestByUserIdRequest;
 use Gs2\Guild\Result\DeleteRequestByUserIdResult;
+use Gs2\Guild\Request\DescribeIgnoreUsersRequest;
+use Gs2\Guild\Result\DescribeIgnoreUsersResult;
+use Gs2\Guild\Request\DescribeIgnoreUsersByGuildNameRequest;
+use Gs2\Guild\Result\DescribeIgnoreUsersByGuildNameResult;
+use Gs2\Guild\Request\GetIgnoreUserRequest;
+use Gs2\Guild\Result\GetIgnoreUserResult;
+use Gs2\Guild\Request\GetIgnoreUserByGuildNameRequest;
+use Gs2\Guild\Result\GetIgnoreUserByGuildNameResult;
+use Gs2\Guild\Request\AddIgnoreUserRequest;
+use Gs2\Guild\Result\AddIgnoreUserResult;
+use Gs2\Guild\Request\AddIgnoreUserByGuildNameRequest;
+use Gs2\Guild\Result\AddIgnoreUserByGuildNameResult;
+use Gs2\Guild\Request\DeleteIgnoreUserRequest;
+use Gs2\Guild\Result\DeleteIgnoreUserResult;
+use Gs2\Guild\Request\DeleteIgnoreUserByGuildNameRequest;
+use Gs2\Guild\Result\DeleteIgnoreUserByGuildNameResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -5126,6 +5142,521 @@ class DeleteRequestByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeIgnoreUsersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeIgnoreUsersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeIgnoreUsersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeIgnoreUsersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeIgnoreUsersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeIgnoreUsersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/ignore/user";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeIgnoreUsersByGuildNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeIgnoreUsersByGuildNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeIgnoreUsersByGuildNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeIgnoreUsersByGuildNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeIgnoreUsersByGuildNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeIgnoreUsersByGuildNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/ignore/user";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetIgnoreUserTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetIgnoreUserRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetIgnoreUserTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetIgnoreUserRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetIgnoreUserRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetIgnoreUserResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/ignore/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetIgnoreUserByGuildNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetIgnoreUserByGuildNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetIgnoreUserByGuildNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetIgnoreUserByGuildNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetIgnoreUserByGuildNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetIgnoreUserByGuildNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/ignore/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AddIgnoreUserTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddIgnoreUserRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddIgnoreUserTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddIgnoreUserRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddIgnoreUserRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddIgnoreUserResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/ignore/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AddIgnoreUserByGuildNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddIgnoreUserByGuildNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddIgnoreUserByGuildNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddIgnoreUserByGuildNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddIgnoreUserByGuildNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddIgnoreUserByGuildNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/ignore/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteIgnoreUserTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteIgnoreUserRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteIgnoreUserTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteIgnoreUserRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteIgnoreUserRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteIgnoreUserResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/ignore/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteIgnoreUserByGuildNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteIgnoreUserByGuildNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteIgnoreUserByGuildNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteIgnoreUserByGuildNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteIgnoreUserByGuildNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteIgnoreUserByGuildNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/ignore/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Guild API クライアント
  *
@@ -7137,6 +7668,222 @@ class Gs2GuildRestClient extends AbstractGs2Client {
             DeleteRequestByUserIdRequest $request
     ): DeleteRequestByUserIdResult {
         return $this->deleteRequestByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeIgnoreUsersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeIgnoreUsersAsync(
+            DescribeIgnoreUsersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeIgnoreUsersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeIgnoreUsersRequest $request
+     * @return DescribeIgnoreUsersResult
+     */
+    public function describeIgnoreUsers (
+            DescribeIgnoreUsersRequest $request
+    ): DescribeIgnoreUsersResult {
+        return $this->describeIgnoreUsersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeIgnoreUsersByGuildNameRequest $request
+     * @return PromiseInterface
+     */
+    public function describeIgnoreUsersByGuildNameAsync(
+            DescribeIgnoreUsersByGuildNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeIgnoreUsersByGuildNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeIgnoreUsersByGuildNameRequest $request
+     * @return DescribeIgnoreUsersByGuildNameResult
+     */
+    public function describeIgnoreUsersByGuildName (
+            DescribeIgnoreUsersByGuildNameRequest $request
+    ): DescribeIgnoreUsersByGuildNameResult {
+        return $this->describeIgnoreUsersByGuildNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetIgnoreUserRequest $request
+     * @return PromiseInterface
+     */
+    public function getIgnoreUserAsync(
+            GetIgnoreUserRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetIgnoreUserTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetIgnoreUserRequest $request
+     * @return GetIgnoreUserResult
+     */
+    public function getIgnoreUser (
+            GetIgnoreUserRequest $request
+    ): GetIgnoreUserResult {
+        return $this->getIgnoreUserAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetIgnoreUserByGuildNameRequest $request
+     * @return PromiseInterface
+     */
+    public function getIgnoreUserByGuildNameAsync(
+            GetIgnoreUserByGuildNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetIgnoreUserByGuildNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetIgnoreUserByGuildNameRequest $request
+     * @return GetIgnoreUserByGuildNameResult
+     */
+    public function getIgnoreUserByGuildName (
+            GetIgnoreUserByGuildNameRequest $request
+    ): GetIgnoreUserByGuildNameResult {
+        return $this->getIgnoreUserByGuildNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AddIgnoreUserRequest $request
+     * @return PromiseInterface
+     */
+    public function addIgnoreUserAsync(
+            AddIgnoreUserRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddIgnoreUserTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AddIgnoreUserRequest $request
+     * @return AddIgnoreUserResult
+     */
+    public function addIgnoreUser (
+            AddIgnoreUserRequest $request
+    ): AddIgnoreUserResult {
+        return $this->addIgnoreUserAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AddIgnoreUserByGuildNameRequest $request
+     * @return PromiseInterface
+     */
+    public function addIgnoreUserByGuildNameAsync(
+            AddIgnoreUserByGuildNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddIgnoreUserByGuildNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AddIgnoreUserByGuildNameRequest $request
+     * @return AddIgnoreUserByGuildNameResult
+     */
+    public function addIgnoreUserByGuildName (
+            AddIgnoreUserByGuildNameRequest $request
+    ): AddIgnoreUserByGuildNameResult {
+        return $this->addIgnoreUserByGuildNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteIgnoreUserRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteIgnoreUserAsync(
+            DeleteIgnoreUserRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteIgnoreUserTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteIgnoreUserRequest $request
+     * @return DeleteIgnoreUserResult
+     */
+    public function deleteIgnoreUser (
+            DeleteIgnoreUserRequest $request
+    ): DeleteIgnoreUserResult {
+        return $this->deleteIgnoreUserAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteIgnoreUserByGuildNameRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteIgnoreUserByGuildNameAsync(
+            DeleteIgnoreUserByGuildNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteIgnoreUserByGuildNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteIgnoreUserByGuildNameRequest $request
+     * @return DeleteIgnoreUserByGuildNameResult
+     */
+    public function deleteIgnoreUserByGuildName (
+            DeleteIgnoreUserByGuildNameRequest $request
+    ): DeleteIgnoreUserByGuildNameResult {
+        return $this->deleteIgnoreUserByGuildNameAsync(
             $request
         )->wait();
     }

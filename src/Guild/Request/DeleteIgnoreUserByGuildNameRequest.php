@@ -15,41 +15,51 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Ranking\Request;
+namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class PutScoreByUserIdRequest extends Gs2BasicRequest {
+class DeleteIgnoreUserByGuildNameRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $categoryName;
+    private $guildModelName;
+    /** @var string */
+    private $guildName;
     /** @var string */
     private $userId;
-    /** @var int */
-    private $score;
-    /** @var string */
-    private $metadata;
     /** @var string */
     private $timeOffsetToken;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): PutScoreByUserIdRequest {
+	public function withNamespaceName(?string $namespaceName): DeleteIgnoreUserByGuildNameRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-	public function getCategoryName(): ?string {
-		return $this->categoryName;
+	public function getGuildModelName(): ?string {
+		return $this->guildModelName;
 	}
-	public function setCategoryName(?string $categoryName) {
-		$this->categoryName = $categoryName;
+	public function setGuildModelName(?string $guildModelName) {
+		$this->guildModelName = $guildModelName;
 	}
-	public function withCategoryName(?string $categoryName): PutScoreByUserIdRequest {
-		$this->categoryName = $categoryName;
+	public function withGuildModelName(?string $guildModelName): DeleteIgnoreUserByGuildNameRequest {
+		$this->guildModelName = $guildModelName;
+		return $this;
+	}
+	public function getGuildName(): ?string {
+		return $this->guildName;
+	}
+	public function setGuildName(?string $guildName) {
+		$this->guildName = $guildName;
+	}
+	public function withGuildName(?string $guildName): DeleteIgnoreUserByGuildNameRequest {
+		$this->guildName = $guildName;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -58,28 +68,8 @@ class PutScoreByUserIdRequest extends Gs2BasicRequest {
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-	public function withUserId(?string $userId): PutScoreByUserIdRequest {
+	public function withUserId(?string $userId): DeleteIgnoreUserByGuildNameRequest {
 		$this->userId = $userId;
-		return $this;
-	}
-	public function getScore(): ?int {
-		return $this->score;
-	}
-	public function setScore(?int $score) {
-		$this->score = $score;
-	}
-	public function withScore(?int $score): PutScoreByUserIdRequest {
-		$this->score = $score;
-		return $this;
-	}
-	public function getMetadata(): ?string {
-		return $this->metadata;
-	}
-	public function setMetadata(?string $metadata) {
-		$this->metadata = $metadata;
-	}
-	public function withMetadata(?string $metadata): PutScoreByUserIdRequest {
-		$this->metadata = $metadata;
 		return $this;
 	}
 	public function getTimeOffsetToken(): ?string {
@@ -88,31 +78,42 @@ class PutScoreByUserIdRequest extends Gs2BasicRequest {
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
-	public function withTimeOffsetToken(?string $timeOffsetToken): PutScoreByUserIdRequest {
+	public function withTimeOffsetToken(?string $timeOffsetToken): DeleteIgnoreUserByGuildNameRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?PutScoreByUserIdRequest {
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteIgnoreUserByGuildNameRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?DeleteIgnoreUserByGuildNameRequest {
         if ($data === null) {
             return null;
         }
-        return (new PutScoreByUserIdRequest())
+        return (new DeleteIgnoreUserByGuildNameRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
+            ->withGuildModelName(array_key_exists('guildModelName', $data) && $data['guildModelName'] !== null ? $data['guildModelName'] : null)
+            ->withGuildName(array_key_exists('guildName', $data) && $data['guildName'] !== null ? $data['guildName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
-            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "categoryName" => $this->getCategoryName(),
+            "guildModelName" => $this->getGuildModelName(),
+            "guildName" => $this->getGuildName(),
             "userId" => $this->getUserId(),
-            "score" => $this->getScore(),
-            "metadata" => $this->getMetadata(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

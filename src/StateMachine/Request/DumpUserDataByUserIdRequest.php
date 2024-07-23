@@ -24,8 +24,6 @@ class DumpUserDataByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $timeOffsetToken;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -44,19 +42,6 @@ class DumpUserDataByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withTimeOffsetToken(?string $timeOffsetToken): DumpUserDataByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): DumpUserDataByUserIdRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

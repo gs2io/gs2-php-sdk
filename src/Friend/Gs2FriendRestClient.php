@@ -611,9 +611,6 @@ class DumpUserDataByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
@@ -674,9 +671,6 @@ class CheckDumpUserDataByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
@@ -734,9 +728,6 @@ class CleanUserDataByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
@@ -798,9 +789,6 @@ class CheckCleanUserDataByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
@@ -858,9 +846,6 @@ class PrepareImportUserDataByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
@@ -923,9 +908,6 @@ class ImportUserDataByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
@@ -986,9 +968,6 @@ class CheckImportUserDataByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());

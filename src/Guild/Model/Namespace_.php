@@ -54,6 +54,22 @@ class Namespace_ implements IModel {
 	 */
 	private $removeRequestNotification;
 	/**
+     * @var ScriptSetting
+	 */
+	private $createGuildScript;
+	/**
+     * @var ScriptSetting
+	 */
+	private $joinGuildScript;
+	/**
+     * @var ScriptSetting
+	 */
+	private $leaveGuildScript;
+	/**
+     * @var ScriptSetting
+	 */
+	private $changeRoleScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -149,6 +165,46 @@ class Namespace_ implements IModel {
 		$this->removeRequestNotification = $removeRequestNotification;
 		return $this;
 	}
+	public function getCreateGuildScript(): ?ScriptSetting {
+		return $this->createGuildScript;
+	}
+	public function setCreateGuildScript(?ScriptSetting $createGuildScript) {
+		$this->createGuildScript = $createGuildScript;
+	}
+	public function withCreateGuildScript(?ScriptSetting $createGuildScript): Namespace_ {
+		$this->createGuildScript = $createGuildScript;
+		return $this;
+	}
+	public function getJoinGuildScript(): ?ScriptSetting {
+		return $this->joinGuildScript;
+	}
+	public function setJoinGuildScript(?ScriptSetting $joinGuildScript) {
+		$this->joinGuildScript = $joinGuildScript;
+	}
+	public function withJoinGuildScript(?ScriptSetting $joinGuildScript): Namespace_ {
+		$this->joinGuildScript = $joinGuildScript;
+		return $this;
+	}
+	public function getLeaveGuildScript(): ?ScriptSetting {
+		return $this->leaveGuildScript;
+	}
+	public function setLeaveGuildScript(?ScriptSetting $leaveGuildScript) {
+		$this->leaveGuildScript = $leaveGuildScript;
+	}
+	public function withLeaveGuildScript(?ScriptSetting $leaveGuildScript): Namespace_ {
+		$this->leaveGuildScript = $leaveGuildScript;
+		return $this;
+	}
+	public function getChangeRoleScript(): ?ScriptSetting {
+		return $this->changeRoleScript;
+	}
+	public function setChangeRoleScript(?ScriptSetting $changeRoleScript) {
+		$this->changeRoleScript = $changeRoleScript;
+	}
+	public function withChangeRoleScript(?ScriptSetting $changeRoleScript): Namespace_ {
+		$this->changeRoleScript = $changeRoleScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -203,6 +259,10 @@ class Namespace_ implements IModel {
             ->withChangeMemberNotification(array_key_exists('changeMemberNotification', $data) && $data['changeMemberNotification'] !== null ? NotificationSetting::fromJson($data['changeMemberNotification']) : null)
             ->withReceiveRequestNotification(array_key_exists('receiveRequestNotification', $data) && $data['receiveRequestNotification'] !== null ? NotificationSetting::fromJson($data['receiveRequestNotification']) : null)
             ->withRemoveRequestNotification(array_key_exists('removeRequestNotification', $data) && $data['removeRequestNotification'] !== null ? NotificationSetting::fromJson($data['removeRequestNotification']) : null)
+            ->withCreateGuildScript(array_key_exists('createGuildScript', $data) && $data['createGuildScript'] !== null ? ScriptSetting::fromJson($data['createGuildScript']) : null)
+            ->withJoinGuildScript(array_key_exists('joinGuildScript', $data) && $data['joinGuildScript'] !== null ? ScriptSetting::fromJson($data['joinGuildScript']) : null)
+            ->withLeaveGuildScript(array_key_exists('leaveGuildScript', $data) && $data['leaveGuildScript'] !== null ? ScriptSetting::fromJson($data['leaveGuildScript']) : null)
+            ->withChangeRoleScript(array_key_exists('changeRoleScript', $data) && $data['changeRoleScript'] !== null ? ScriptSetting::fromJson($data['changeRoleScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -219,6 +279,10 @@ class Namespace_ implements IModel {
             "changeMemberNotification" => $this->getChangeMemberNotification() !== null ? $this->getChangeMemberNotification()->toJson() : null,
             "receiveRequestNotification" => $this->getReceiveRequestNotification() !== null ? $this->getReceiveRequestNotification()->toJson() : null,
             "removeRequestNotification" => $this->getRemoveRequestNotification() !== null ? $this->getRemoveRequestNotification()->toJson() : null,
+            "createGuildScript" => $this->getCreateGuildScript() !== null ? $this->getCreateGuildScript()->toJson() : null,
+            "joinGuildScript" => $this->getJoinGuildScript() !== null ? $this->getJoinGuildScript()->toJson() : null,
+            "leaveGuildScript" => $this->getLeaveGuildScript() !== null ? $this->getLeaveGuildScript()->toJson() : null,
+            "changeRoleScript" => $this->getChangeRoleScript() !== null ? $this->getChangeRoleScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

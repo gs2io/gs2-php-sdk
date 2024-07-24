@@ -137,6 +137,14 @@ use Gs2\Guild\Request\WithdrawalRequest;
 use Gs2\Guild\Result\WithdrawalResult;
 use Gs2\Guild\Request\WithdrawalByUserIdRequest;
 use Gs2\Guild\Result\WithdrawalByUserIdResult;
+use Gs2\Guild\Request\GetLastGuildMasterActivityRequest;
+use Gs2\Guild\Result\GetLastGuildMasterActivityResult;
+use Gs2\Guild\Request\GetLastGuildMasterActivityByGuildNameRequest;
+use Gs2\Guild\Result\GetLastGuildMasterActivityByGuildNameResult;
+use Gs2\Guild\Request\PromoteSeniorMemberRequest;
+use Gs2\Guild\Result\PromoteSeniorMemberResult;
+use Gs2\Guild\Request\PromoteSeniorMemberByGuildNameRequest;
+use Gs2\Guild\Result\PromoteSeniorMemberByGuildNameResult;
 use Gs2\Guild\Request\ExportMasterRequest;
 use Gs2\Guild\Result\ExportMasterResult;
 use Gs2\Guild\Request\GetCurrentGuildMasterRequest;
@@ -309,6 +317,18 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getRemoveRequestNotification() !== null) {
             $json["removeRequestNotification"] = $this->request->getRemoveRequestNotification()->toJson();
+        }
+        if ($this->request->getCreateGuildScript() !== null) {
+            $json["createGuildScript"] = $this->request->getCreateGuildScript()->toJson();
+        }
+        if ($this->request->getJoinGuildScript() !== null) {
+            $json["joinGuildScript"] = $this->request->getJoinGuildScript()->toJson();
+        }
+        if ($this->request->getLeaveGuildScript() !== null) {
+            $json["leaveGuildScript"] = $this->request->getLeaveGuildScript()->toJson();
+        }
+        if ($this->request->getChangeRoleScript() !== null) {
+            $json["changeRoleScript"] = $this->request->getChangeRoleScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -499,6 +519,18 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getRemoveRequestNotification() !== null) {
             $json["removeRequestNotification"] = $this->request->getRemoveRequestNotification()->toJson();
+        }
+        if ($this->request->getCreateGuildScript() !== null) {
+            $json["createGuildScript"] = $this->request->getCreateGuildScript()->toJson();
+        }
+        if ($this->request->getJoinGuildScript() !== null) {
+            $json["joinGuildScript"] = $this->request->getJoinGuildScript()->toJson();
+        }
+        if ($this->request->getLeaveGuildScript() !== null) {
+            $json["leaveGuildScript"] = $this->request->getLeaveGuildScript()->toJson();
+        }
+        if ($this->request->getChangeRoleScript() !== null) {
+            $json["changeRoleScript"] = $this->request->getChangeRoleScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -1109,6 +1141,9 @@ class CreateGuildModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMaximumMemberCount() !== null) {
             $json["maximumMemberCount"] = $this->request->getMaximumMemberCount();
         }
+        if ($this->request->getInactivityPeriodDays() !== null) {
+            $json["inactivityPeriodDays"] = $this->request->getInactivityPeriodDays();
+        }
         if ($this->request->getRoles() !== null) {
             $array = [];
             foreach ($this->request->getRoles() as $item)
@@ -1251,6 +1286,9 @@ class UpdateGuildModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMaximumMemberCount() !== null) {
             $json["maximumMemberCount"] = $this->request->getMaximumMemberCount();
+        }
+        if ($this->request->getInactivityPeriodDays() !== null) {
+            $json["inactivityPeriodDays"] = $this->request->getInactivityPeriodDays();
         }
         if ($this->request->getRoles() !== null) {
             $array = [];
@@ -3861,6 +3899,248 @@ class WithdrawalByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetLastGuildMasterActivityTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetLastGuildMasterActivityRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetLastGuildMasterActivityTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetLastGuildMasterActivityRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetLastGuildMasterActivityRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetLastGuildMasterActivityResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/activity/guildMaster/last";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetLastGuildMasterActivityByGuildNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetLastGuildMasterActivityByGuildNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetLastGuildMasterActivityByGuildNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetLastGuildMasterActivityByGuildNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetLastGuildMasterActivityByGuildNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetLastGuildMasterActivityByGuildNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/activity/guildMaster/last";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PromoteSeniorMemberTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PromoteSeniorMemberRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PromoteSeniorMemberTask constructor.
+     * @param Gs2RestSession $session
+     * @param PromoteSeniorMemberRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PromoteSeniorMemberRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PromoteSeniorMemberResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/promote";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PromoteSeniorMemberByGuildNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PromoteSeniorMemberByGuildNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PromoteSeniorMemberByGuildNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param PromoteSeniorMemberByGuildNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PromoteSeniorMemberByGuildNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PromoteSeniorMemberByGuildNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/promote";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -7107,6 +7387,114 @@ class Gs2GuildRestClient extends AbstractGs2Client {
             WithdrawalByUserIdRequest $request
     ): WithdrawalByUserIdResult {
         return $this->withdrawalByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetLastGuildMasterActivityRequest $request
+     * @return PromiseInterface
+     */
+    public function getLastGuildMasterActivityAsync(
+            GetLastGuildMasterActivityRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetLastGuildMasterActivityTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetLastGuildMasterActivityRequest $request
+     * @return GetLastGuildMasterActivityResult
+     */
+    public function getLastGuildMasterActivity (
+            GetLastGuildMasterActivityRequest $request
+    ): GetLastGuildMasterActivityResult {
+        return $this->getLastGuildMasterActivityAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetLastGuildMasterActivityByGuildNameRequest $request
+     * @return PromiseInterface
+     */
+    public function getLastGuildMasterActivityByGuildNameAsync(
+            GetLastGuildMasterActivityByGuildNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetLastGuildMasterActivityByGuildNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetLastGuildMasterActivityByGuildNameRequest $request
+     * @return GetLastGuildMasterActivityByGuildNameResult
+     */
+    public function getLastGuildMasterActivityByGuildName (
+            GetLastGuildMasterActivityByGuildNameRequest $request
+    ): GetLastGuildMasterActivityByGuildNameResult {
+        return $this->getLastGuildMasterActivityByGuildNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PromoteSeniorMemberRequest $request
+     * @return PromiseInterface
+     */
+    public function promoteSeniorMemberAsync(
+            PromoteSeniorMemberRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PromoteSeniorMemberTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PromoteSeniorMemberRequest $request
+     * @return PromoteSeniorMemberResult
+     */
+    public function promoteSeniorMember (
+            PromoteSeniorMemberRequest $request
+    ): PromoteSeniorMemberResult {
+        return $this->promoteSeniorMemberAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PromoteSeniorMemberByGuildNameRequest $request
+     * @return PromiseInterface
+     */
+    public function promoteSeniorMemberByGuildNameAsync(
+            PromoteSeniorMemberByGuildNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PromoteSeniorMemberByGuildNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PromoteSeniorMemberByGuildNameRequest $request
+     * @return PromoteSeniorMemberByGuildNameResult
+     */
+    public function promoteSeniorMemberByGuildName (
+            PromoteSeniorMemberByGuildNameRequest $request
+    ): PromoteSeniorMemberByGuildNameResult {
+        return $this->promoteSeniorMemberByGuildNameAsync(
             $request
         )->wait();
     }

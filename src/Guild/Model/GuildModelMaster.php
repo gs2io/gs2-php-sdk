@@ -46,6 +46,10 @@ class GuildModelMaster implements IModel {
 	 */
 	private $maximumMemberCount;
 	/**
+     * @var int
+	 */
+	private $inactivityPeriodDays;
+	/**
      * @var array
 	 */
 	private $roles;
@@ -133,6 +137,16 @@ class GuildModelMaster implements IModel {
 		$this->maximumMemberCount = $maximumMemberCount;
 		return $this;
 	}
+	public function getInactivityPeriodDays(): ?int {
+		return $this->inactivityPeriodDays;
+	}
+	public function setInactivityPeriodDays(?int $inactivityPeriodDays) {
+		$this->inactivityPeriodDays = $inactivityPeriodDays;
+	}
+	public function withInactivityPeriodDays(?int $inactivityPeriodDays): GuildModelMaster {
+		$this->inactivityPeriodDays = $inactivityPeriodDays;
+		return $this;
+	}
 	public function getRoles(): ?array {
 		return $this->roles;
 	}
@@ -215,6 +229,7 @@ class GuildModelMaster implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDefaultMaximumMemberCount(array_key_exists('defaultMaximumMemberCount', $data) && $data['defaultMaximumMemberCount'] !== null ? $data['defaultMaximumMemberCount'] : null)
             ->withMaximumMemberCount(array_key_exists('maximumMemberCount', $data) && $data['maximumMemberCount'] !== null ? $data['maximumMemberCount'] : null)
+            ->withInactivityPeriodDays(array_key_exists('inactivityPeriodDays', $data) && $data['inactivityPeriodDays'] !== null ? $data['inactivityPeriodDays'] : null)
             ->withRoles(array_map(
                 function ($item) {
                     return RoleModel::fromJson($item);
@@ -237,6 +252,7 @@ class GuildModelMaster implements IModel {
             "metadata" => $this->getMetadata(),
             "defaultMaximumMemberCount" => $this->getDefaultMaximumMemberCount(),
             "maximumMemberCount" => $this->getMaximumMemberCount(),
+            "inactivityPeriodDays" => $this->getInactivityPeriodDays(),
             "roles" => array_map(
                 function ($item) {
                     return $item->toJson();

@@ -19,6 +19,7 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Guild\Model\NotificationSetting;
+use Gs2\Guild\Model\ScriptSetting;
 use Gs2\Guild\Model\LogSetting;
 
 class CreateNamespaceRequest extends Gs2BasicRequest {
@@ -36,6 +37,14 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $receiveRequestNotification;
     /** @var NotificationSetting */
     private $removeRequestNotification;
+    /** @var ScriptSetting */
+    private $createGuildScript;
+    /** @var ScriptSetting */
+    private $joinGuildScript;
+    /** @var ScriptSetting */
+    private $leaveGuildScript;
+    /** @var ScriptSetting */
+    private $changeRoleScript;
     /** @var LogSetting */
     private $logSetting;
 	public function getName(): ?string {
@@ -108,6 +117,46 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->removeRequestNotification = $removeRequestNotification;
 		return $this;
 	}
+	public function getCreateGuildScript(): ?ScriptSetting {
+		return $this->createGuildScript;
+	}
+	public function setCreateGuildScript(?ScriptSetting $createGuildScript) {
+		$this->createGuildScript = $createGuildScript;
+	}
+	public function withCreateGuildScript(?ScriptSetting $createGuildScript): CreateNamespaceRequest {
+		$this->createGuildScript = $createGuildScript;
+		return $this;
+	}
+	public function getJoinGuildScript(): ?ScriptSetting {
+		return $this->joinGuildScript;
+	}
+	public function setJoinGuildScript(?ScriptSetting $joinGuildScript) {
+		$this->joinGuildScript = $joinGuildScript;
+	}
+	public function withJoinGuildScript(?ScriptSetting $joinGuildScript): CreateNamespaceRequest {
+		$this->joinGuildScript = $joinGuildScript;
+		return $this;
+	}
+	public function getLeaveGuildScript(): ?ScriptSetting {
+		return $this->leaveGuildScript;
+	}
+	public function setLeaveGuildScript(?ScriptSetting $leaveGuildScript) {
+		$this->leaveGuildScript = $leaveGuildScript;
+	}
+	public function withLeaveGuildScript(?ScriptSetting $leaveGuildScript): CreateNamespaceRequest {
+		$this->leaveGuildScript = $leaveGuildScript;
+		return $this;
+	}
+	public function getChangeRoleScript(): ?ScriptSetting {
+		return $this->changeRoleScript;
+	}
+	public function setChangeRoleScript(?ScriptSetting $changeRoleScript) {
+		$this->changeRoleScript = $changeRoleScript;
+	}
+	public function withChangeRoleScript(?ScriptSetting $changeRoleScript): CreateNamespaceRequest {
+		$this->changeRoleScript = $changeRoleScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -131,6 +180,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withChangeMemberNotification(array_key_exists('changeMemberNotification', $data) && $data['changeMemberNotification'] !== null ? NotificationSetting::fromJson($data['changeMemberNotification']) : null)
             ->withReceiveRequestNotification(array_key_exists('receiveRequestNotification', $data) && $data['receiveRequestNotification'] !== null ? NotificationSetting::fromJson($data['receiveRequestNotification']) : null)
             ->withRemoveRequestNotification(array_key_exists('removeRequestNotification', $data) && $data['removeRequestNotification'] !== null ? NotificationSetting::fromJson($data['removeRequestNotification']) : null)
+            ->withCreateGuildScript(array_key_exists('createGuildScript', $data) && $data['createGuildScript'] !== null ? ScriptSetting::fromJson($data['createGuildScript']) : null)
+            ->withJoinGuildScript(array_key_exists('joinGuildScript', $data) && $data['joinGuildScript'] !== null ? ScriptSetting::fromJson($data['joinGuildScript']) : null)
+            ->withLeaveGuildScript(array_key_exists('leaveGuildScript', $data) && $data['leaveGuildScript'] !== null ? ScriptSetting::fromJson($data['leaveGuildScript']) : null)
+            ->withChangeRoleScript(array_key_exists('changeRoleScript', $data) && $data['changeRoleScript'] !== null ? ScriptSetting::fromJson($data['changeRoleScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -143,6 +196,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "changeMemberNotification" => $this->getChangeMemberNotification() !== null ? $this->getChangeMemberNotification()->toJson() : null,
             "receiveRequestNotification" => $this->getReceiveRequestNotification() !== null ? $this->getReceiveRequestNotification()->toJson() : null,
             "removeRequestNotification" => $this->getRemoveRequestNotification() !== null ? $this->getRemoveRequestNotification()->toJson() : null,
+            "createGuildScript" => $this->getCreateGuildScript() !== null ? $this->getCreateGuildScript()->toJson() : null,
+            "joinGuildScript" => $this->getJoinGuildScript() !== null ? $this->getJoinGuildScript()->toJson() : null,
+            "leaveGuildScript" => $this->getLeaveGuildScript() !== null ? $this->getLeaveGuildScript()->toJson() : null,
+            "changeRoleScript" => $this->getChangeRoleScript() !== null ? $this->getChangeRoleScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

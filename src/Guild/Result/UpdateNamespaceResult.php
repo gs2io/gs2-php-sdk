@@ -19,6 +19,7 @@ namespace Gs2\Guild\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\NotificationSetting;
+use Gs2\Guild\Model\ScriptSetting;
 use Gs2\Guild\Model\LogSetting;
 use Gs2\Guild\Model\Namespace_;
 

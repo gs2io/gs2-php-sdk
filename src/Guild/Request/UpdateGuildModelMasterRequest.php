@@ -33,6 +33,8 @@ class UpdateGuildModelMasterRequest extends Gs2BasicRequest {
     private $defaultMaximumMemberCount;
     /** @var int */
     private $maximumMemberCount;
+    /** @var int */
+    private $inactivityPeriodDays;
     /** @var array */
     private $roles;
     /** @var string */
@@ -101,6 +103,16 @@ class UpdateGuildModelMasterRequest extends Gs2BasicRequest {
 		$this->maximumMemberCount = $maximumMemberCount;
 		return $this;
 	}
+	public function getInactivityPeriodDays(): ?int {
+		return $this->inactivityPeriodDays;
+	}
+	public function setInactivityPeriodDays(?int $inactivityPeriodDays) {
+		$this->inactivityPeriodDays = $inactivityPeriodDays;
+	}
+	public function withInactivityPeriodDays(?int $inactivityPeriodDays): UpdateGuildModelMasterRequest {
+		$this->inactivityPeriodDays = $inactivityPeriodDays;
+		return $this;
+	}
 	public function getRoles(): ?array {
 		return $this->roles;
 	}
@@ -153,6 +165,7 @@ class UpdateGuildModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDefaultMaximumMemberCount(array_key_exists('defaultMaximumMemberCount', $data) && $data['defaultMaximumMemberCount'] !== null ? $data['defaultMaximumMemberCount'] : null)
             ->withMaximumMemberCount(array_key_exists('maximumMemberCount', $data) && $data['maximumMemberCount'] !== null ? $data['maximumMemberCount'] : null)
+            ->withInactivityPeriodDays(array_key_exists('inactivityPeriodDays', $data) && $data['inactivityPeriodDays'] !== null ? $data['inactivityPeriodDays'] : null)
             ->withRoles(array_map(
                 function ($item) {
                     return RoleModel::fromJson($item);
@@ -172,6 +185,7 @@ class UpdateGuildModelMasterRequest extends Gs2BasicRequest {
             "metadata" => $this->getMetadata(),
             "defaultMaximumMemberCount" => $this->getDefaultMaximumMemberCount(),
             "maximumMemberCount" => $this->getMaximumMemberCount(),
+            "inactivityPeriodDays" => $this->getInactivityPeriodDays(),
             "roles" => array_map(
                 function ($item) {
                     return $item->toJson();

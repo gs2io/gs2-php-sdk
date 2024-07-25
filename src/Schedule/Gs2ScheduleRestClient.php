@@ -2048,6 +2048,9 @@ class GetEventTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getIsInSchedule() !== null) {
+            $queryStrings["isInSchedule"] = $this->request->getIsInSchedule() ? "true" : "false";
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);
@@ -2109,6 +2112,9 @@ class GetEventByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getIsInSchedule() !== null) {
+            $queryStrings["isInSchedule"] = $this->request->getIsInSchedule() ? "true" : "false";
         }
 
         if (count($queryStrings) > 0) {

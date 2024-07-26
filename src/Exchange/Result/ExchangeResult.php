@@ -18,6 +18,7 @@
 namespace Gs2\Exchange\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Exchange\Model\VerifyAction;
 use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModel;

@@ -64,6 +64,10 @@ class BonusModelMaster implements IModel {
 	/**
      * @var array
 	 */
+	private $missedReceiveReliefVerifyActions;
+	/**
+     * @var array
+	 */
 	private $missedReceiveReliefConsumeActions;
 	/**
      * @var int
@@ -177,6 +181,16 @@ class BonusModelMaster implements IModel {
 		$this->missedReceiveRelief = $missedReceiveRelief;
 		return $this;
 	}
+	public function getMissedReceiveReliefVerifyActions(): ?array {
+		return $this->missedReceiveReliefVerifyActions;
+	}
+	public function setMissedReceiveReliefVerifyActions(?array $missedReceiveReliefVerifyActions) {
+		$this->missedReceiveReliefVerifyActions = $missedReceiveReliefVerifyActions;
+	}
+	public function withMissedReceiveReliefVerifyActions(?array $missedReceiveReliefVerifyActions): BonusModelMaster {
+		$this->missedReceiveReliefVerifyActions = $missedReceiveReliefVerifyActions;
+		return $this;
+	}
 	public function getMissedReceiveReliefConsumeActions(): ?array {
 		return $this->missedReceiveReliefConsumeActions;
 	}
@@ -238,6 +252,12 @@ class BonusModelMaster implements IModel {
                 array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
             ))
             ->withMissedReceiveRelief(array_key_exists('missedReceiveRelief', $data) && $data['missedReceiveRelief'] !== null ? $data['missedReceiveRelief'] : null)
+            ->withMissedReceiveReliefVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('missedReceiveReliefVerifyActions', $data) && $data['missedReceiveReliefVerifyActions'] !== null ? $data['missedReceiveReliefVerifyActions'] : []
+            ))
             ->withMissedReceiveReliefConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -266,6 +286,12 @@ class BonusModelMaster implements IModel {
                 $this->getRewards() !== null && $this->getRewards() !== null ? $this->getRewards() : []
             ),
             "missedReceiveRelief" => $this->getMissedReceiveRelief(),
+            "missedReceiveReliefVerifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getMissedReceiveReliefVerifyActions() !== null && $this->getMissedReceiveReliefVerifyActions() !== null ? $this->getMissedReceiveReliefVerifyActions() : []
+            ),
             "missedReceiveReliefConsumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

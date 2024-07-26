@@ -36,6 +36,10 @@ class RateModel implements IModel {
 	/**
      * @var array
 	 */
+	private $verifyActions;
+	/**
+     * @var array
+	 */
 	private $consumeActions;
 	/**
      * @var string
@@ -77,6 +81,16 @@ class RateModel implements IModel {
 	}
 	public function withMetadata(?string $metadata): RateModel {
 		$this->metadata = $metadata;
+		return $this;
+	}
+	public function getVerifyActions(): ?array {
+		return $this->verifyActions;
+	}
+	public function setVerifyActions(?array $verifyActions) {
+		$this->verifyActions = $verifyActions;
+	}
+	public function withVerifyActions(?array $verifyActions): RateModel {
+		$this->verifyActions = $verifyActions;
 		return $this;
 	}
 	public function getConsumeActions(): ?array {
@@ -128,6 +142,12 @@ class RateModel implements IModel {
             ->withRateModelId(array_key_exists('rateModelId', $data) && $data['rateModelId'] !== null ? $data['rateModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+            ))
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -149,6 +169,12 @@ class RateModel implements IModel {
             "rateModelId" => $this->getRateModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
+            "verifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
+            ),
             "consumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

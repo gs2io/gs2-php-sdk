@@ -21,6 +21,10 @@ use Gs2\Core\Model\IResult;
 
 class RunStampSheetExpressResult implements IResult {
     /** @var array */
+    private $verifyTaskResultCodes;
+    /** @var array */
+    private $verifyTaskResults;
+    /** @var array */
     private $taskResultCodes;
     /** @var array */
     private $taskResults;
@@ -28,6 +32,32 @@ class RunStampSheetExpressResult implements IResult {
     private $sheetResultCode;
     /** @var string */
     private $sheetResult;
+
+	public function getVerifyTaskResultCodes(): ?array {
+		return $this->verifyTaskResultCodes;
+	}
+
+	public function setVerifyTaskResultCodes(?array $verifyTaskResultCodes) {
+		$this->verifyTaskResultCodes = $verifyTaskResultCodes;
+	}
+
+	public function withVerifyTaskResultCodes(?array $verifyTaskResultCodes): RunStampSheetExpressResult {
+		$this->verifyTaskResultCodes = $verifyTaskResultCodes;
+		return $this;
+	}
+
+	public function getVerifyTaskResults(): ?array {
+		return $this->verifyTaskResults;
+	}
+
+	public function setVerifyTaskResults(?array $verifyTaskResults) {
+		$this->verifyTaskResults = $verifyTaskResults;
+	}
+
+	public function withVerifyTaskResults(?array $verifyTaskResults): RunStampSheetExpressResult {
+		$this->verifyTaskResults = $verifyTaskResults;
+		return $this;
+	}
 
 	public function getTaskResultCodes(): ?array {
 		return $this->taskResultCodes;
@@ -86,6 +116,18 @@ class RunStampSheetExpressResult implements IResult {
             return null;
         }
         return (new RunStampSheetExpressResult())
+            ->withVerifyTaskResultCodes(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('verifyTaskResultCodes', $data) && $data['verifyTaskResultCodes'] !== null ? $data['verifyTaskResultCodes'] : []
+            ))
+            ->withVerifyTaskResults(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('verifyTaskResults', $data) && $data['verifyTaskResults'] !== null ? $data['verifyTaskResults'] : []
+            ))
             ->withTaskResultCodes(array_map(
                 function ($item) {
                     return $item;
@@ -104,6 +146,18 @@ class RunStampSheetExpressResult implements IResult {
 
     public function toJson(): array {
         return array(
+            "verifyTaskResultCodes" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getVerifyTaskResultCodes() !== null && $this->getVerifyTaskResultCodes() !== null ? $this->getVerifyTaskResultCodes() : []
+            ),
+            "verifyTaskResults" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getVerifyTaskResults() !== null && $this->getVerifyTaskResults() !== null ? $this->getVerifyTaskResults() : []
+            ),
             "taskResultCodes" => array_map(
                 function ($item) {
                     return $item;

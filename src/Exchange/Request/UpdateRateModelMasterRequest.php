@@ -19,6 +19,7 @@ namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\AcquireAction;
+use Gs2\Exchange\Model\VerifyAction;
 use Gs2\Exchange\Model\ConsumeAction;
 
 class UpdateRateModelMasterRequest extends Gs2BasicRequest {
@@ -36,6 +37,8 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
     private $lockTime;
     /** @var array */
     private $acquireActions;
+    /** @var array */
+    private $verifyActions;
     /** @var array */
     private $consumeActions;
 	public function getNamespaceName(): ?string {
@@ -108,6 +111,16 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+	public function getVerifyActions(): ?array {
+		return $this->verifyActions;
+	}
+	public function setVerifyActions(?array $verifyActions) {
+		$this->verifyActions = $verifyActions;
+	}
+	public function withVerifyActions(?array $verifyActions): UpdateRateModelMasterRequest {
+		$this->verifyActions = $verifyActions;
+		return $this;
+	}
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
@@ -136,6 +149,12 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
             ))
+            ->withVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+            ))
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -157,6 +176,12 @@ class UpdateRateModelMasterRequest extends Gs2BasicRequest {
                     return $item->toJson();
                 },
                 $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+            ),
+            "verifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
             ),
             "consumeActions" => array_map(
                 function ($item) {

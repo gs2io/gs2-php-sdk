@@ -18,6 +18,7 @@
 namespace Gs2\Script\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Script\Model\VerifyAction;
 use Gs2\Script\Model\ConsumeAction;
 use Gs2\Script\Model\AcquireAction;
 use Gs2\Script\Model\Transaction;

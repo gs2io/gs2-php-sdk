@@ -1118,6 +1118,14 @@ class CreateNodeModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getReleaseVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getReleaseVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["releaseVerifyActions"] = $array;
+        }
         if ($this->request->getReleaseConsumeActions() !== null) {
             $array = [];
             foreach ($this->request->getReleaseConsumeActions() as $item)
@@ -1256,6 +1264,14 @@ class UpdateNodeModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getReleaseVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getReleaseVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["releaseVerifyActions"] = $array;
         }
         if ($this->request->getReleaseConsumeActions() !== null) {
             $array = [];

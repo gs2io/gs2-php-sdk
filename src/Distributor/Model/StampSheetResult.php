@@ -36,11 +36,23 @@ class StampSheetResult implements IModel {
 	/**
      * @var array
 	 */
+	private $verifyTaskRequests;
+	/**
+     * @var array
+	 */
 	private $taskRequests;
 	/**
      * @var AcquireAction
 	 */
 	private $sheetRequest;
+	/**
+     * @var array
+	 */
+	private $verifyTaskResultCodes;
+	/**
+     * @var array
+	 */
+	private $verifyTaskResults;
 	/**
      * @var array
 	 */
@@ -99,6 +111,16 @@ class StampSheetResult implements IModel {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+	public function getVerifyTaskRequests(): ?array {
+		return $this->verifyTaskRequests;
+	}
+	public function setVerifyTaskRequests(?array $verifyTaskRequests) {
+		$this->verifyTaskRequests = $verifyTaskRequests;
+	}
+	public function withVerifyTaskRequests(?array $verifyTaskRequests): StampSheetResult {
+		$this->verifyTaskRequests = $verifyTaskRequests;
+		return $this;
+	}
 	public function getTaskRequests(): ?array {
 		return $this->taskRequests;
 	}
@@ -117,6 +139,26 @@ class StampSheetResult implements IModel {
 	}
 	public function withSheetRequest(?AcquireAction $sheetRequest): StampSheetResult {
 		$this->sheetRequest = $sheetRequest;
+		return $this;
+	}
+	public function getVerifyTaskResultCodes(): ?array {
+		return $this->verifyTaskResultCodes;
+	}
+	public function setVerifyTaskResultCodes(?array $verifyTaskResultCodes) {
+		$this->verifyTaskResultCodes = $verifyTaskResultCodes;
+	}
+	public function withVerifyTaskResultCodes(?array $verifyTaskResultCodes): StampSheetResult {
+		$this->verifyTaskResultCodes = $verifyTaskResultCodes;
+		return $this;
+	}
+	public function getVerifyTaskResults(): ?array {
+		return $this->verifyTaskResults;
+	}
+	public function setVerifyTaskResults(?array $verifyTaskResults) {
+		$this->verifyTaskResults = $verifyTaskResults;
+	}
+	public function withVerifyTaskResults(?array $verifyTaskResults): StampSheetResult {
+		$this->verifyTaskResults = $verifyTaskResults;
 		return $this;
 	}
 	public function getTaskResultCodes(): ?array {
@@ -198,6 +240,12 @@ class StampSheetResult implements IModel {
             ->withStampSheetResultId(array_key_exists('stampSheetResultId', $data) && $data['stampSheetResultId'] !== null ? $data['stampSheetResultId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
+            ->withVerifyTaskRequests(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('verifyTaskRequests', $data) && $data['verifyTaskRequests'] !== null ? $data['verifyTaskRequests'] : []
+            ))
             ->withTaskRequests(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -205,6 +253,18 @@ class StampSheetResult implements IModel {
                 array_key_exists('taskRequests', $data) && $data['taskRequests'] !== null ? $data['taskRequests'] : []
             ))
             ->withSheetRequest(array_key_exists('sheetRequest', $data) && $data['sheetRequest'] !== null ? AcquireAction::fromJson($data['sheetRequest']) : null)
+            ->withVerifyTaskResultCodes(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('verifyTaskResultCodes', $data) && $data['verifyTaskResultCodes'] !== null ? $data['verifyTaskResultCodes'] : []
+            ))
+            ->withVerifyTaskResults(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('verifyTaskResults', $data) && $data['verifyTaskResults'] !== null ? $data['verifyTaskResults'] : []
+            ))
             ->withTaskResultCodes(array_map(
                 function ($item) {
                     return $item;
@@ -229,6 +289,12 @@ class StampSheetResult implements IModel {
             "stampSheetResultId" => $this->getStampSheetResultId(),
             "userId" => $this->getUserId(),
             "transactionId" => $this->getTransactionId(),
+            "verifyTaskRequests" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyTaskRequests() !== null && $this->getVerifyTaskRequests() !== null ? $this->getVerifyTaskRequests() : []
+            ),
             "taskRequests" => array_map(
                 function ($item) {
                     return $item->toJson();
@@ -236,6 +302,18 @@ class StampSheetResult implements IModel {
                 $this->getTaskRequests() !== null && $this->getTaskRequests() !== null ? $this->getTaskRequests() : []
             ),
             "sheetRequest" => $this->getSheetRequest() !== null ? $this->getSheetRequest()->toJson() : null,
+            "verifyTaskResultCodes" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getVerifyTaskResultCodes() !== null && $this->getVerifyTaskResultCodes() !== null ? $this->getVerifyTaskResultCodes() : []
+            ),
+            "verifyTaskResults" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getVerifyTaskResults() !== null && $this->getVerifyTaskResults() !== null ? $this->getVerifyTaskResults() : []
+            ),
             "taskResultCodes" => array_map(
                 function ($item) {
                     return $item;

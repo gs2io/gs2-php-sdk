@@ -229,7 +229,7 @@ class MissionTaskModel implements IModel {
             ->withTargetCounter(array_key_exists('targetCounter', $data) && $data['targetCounter'] !== null ? TargetCounterModel::fromJson($data['targetCounter']) : null)
             ->withVerifyCompleteConsumeActions(array_map(
                 function ($item) {
-                    return ConsumeAction::fromJson($item);
+                    return VerifyAction::fromJson($item);
                 },
                 array_key_exists('verifyCompleteConsumeActions', $data) && $data['verifyCompleteConsumeActions'] !== null ? $data['verifyCompleteConsumeActions'] : []
             ))

@@ -20,6 +20,7 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\AcquireAction;
 use Gs2\Quest\Model\Contents;
+use Gs2\Quest\Model\VerifyAction;
 use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModelMaster;
 

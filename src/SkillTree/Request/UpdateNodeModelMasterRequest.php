@@ -18,6 +18,7 @@
 namespace Gs2\SkillTree\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\SkillTree\Model\VerifyAction;
 use Gs2\SkillTree\Model\ConsumeAction;
 
 class UpdateNodeModelMasterRequest extends Gs2BasicRequest {
@@ -29,6 +30,8 @@ class UpdateNodeModelMasterRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $metadata;
+    /** @var array */
+    private $releaseVerifyActions;
     /** @var array */
     private $releaseConsumeActions;
     /** @var float */
@@ -75,6 +78,16 @@ class UpdateNodeModelMasterRequest extends Gs2BasicRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getReleaseVerifyActions(): ?array {
+		return $this->releaseVerifyActions;
+	}
+	public function setReleaseVerifyActions(?array $releaseVerifyActions) {
+		$this->releaseVerifyActions = $releaseVerifyActions;
+	}
+	public function withReleaseVerifyActions(?array $releaseVerifyActions): UpdateNodeModelMasterRequest {
+		$this->releaseVerifyActions = $releaseVerifyActions;
+		return $this;
+	}
 	public function getReleaseConsumeActions(): ?array {
 		return $this->releaseConsumeActions;
 	}
@@ -115,6 +128,12 @@ class UpdateNodeModelMasterRequest extends Gs2BasicRequest {
             ->withNodeModelName(array_key_exists('nodeModelName', $data) && $data['nodeModelName'] !== null ? $data['nodeModelName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withReleaseVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('releaseVerifyActions', $data) && $data['releaseVerifyActions'] !== null ? $data['releaseVerifyActions'] : []
+            ))
             ->withReleaseConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -136,6 +155,12 @@ class UpdateNodeModelMasterRequest extends Gs2BasicRequest {
             "nodeModelName" => $this->getNodeModelName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
+            "releaseVerifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getReleaseVerifyActions() !== null && $this->getReleaseVerifyActions() !== null ? $this->getReleaseVerifyActions() : []
+            ),
             "releaseConsumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

@@ -19,7 +19,7 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Mission\Model\TargetCounterModel;
-use Gs2\Mission\Model\ConsumeAction;
+use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\AcquireAction;
 
 class UpdateMissionTaskModelMasterRequest extends Gs2BasicRequest {
@@ -233,7 +233,7 @@ class UpdateMissionTaskModelMasterRequest extends Gs2BasicRequest {
             ->withTargetCounter(array_key_exists('targetCounter', $data) && $data['targetCounter'] !== null ? TargetCounterModel::fromJson($data['targetCounter']) : null)
             ->withVerifyCompleteConsumeActions(array_map(
                 function ($item) {
-                    return ConsumeAction::fromJson($item);
+                    return VerifyAction::fromJson($item);
                 },
                 array_key_exists('verifyCompleteConsumeActions', $data) && $data['verifyCompleteConsumeActions'] !== null ? $data['verifyCompleteConsumeActions'] : []
             ))

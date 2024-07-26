@@ -1022,6 +1022,14 @@ class CreateBonusModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMissedReceiveRelief() !== null) {
             $json["missedReceiveRelief"] = $this->request->getMissedReceiveRelief();
         }
+        if ($this->request->getMissedReceiveReliefVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getMissedReceiveReliefVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["missedReceiveReliefVerifyActions"] = $array;
+        }
         if ($this->request->getMissedReceiveReliefConsumeActions() !== null) {
             $array = [];
             foreach ($this->request->getMissedReceiveReliefConsumeActions() as $item)
@@ -1172,6 +1180,14 @@ class UpdateBonusModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMissedReceiveRelief() !== null) {
             $json["missedReceiveRelief"] = $this->request->getMissedReceiveRelief();
+        }
+        if ($this->request->getMissedReceiveReliefVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getMissedReceiveReliefVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["missedReceiveReliefVerifyActions"] = $array;
         }
         if ($this->request->getMissedReceiveReliefConsumeActions() !== null) {
             $array = [];

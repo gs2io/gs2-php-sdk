@@ -21,6 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\LoginReward\Model\ReceiveStatus;
 use Gs2\LoginReward\Model\AcquireAction;
 use Gs2\LoginReward\Model\Reward;
+use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModel;
 

@@ -18,6 +18,7 @@
 namespace Gs2\SkillTree\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\SkillTree\Model\VerifyAction;
 use Gs2\SkillTree\Model\ConsumeAction;
 use Gs2\SkillTree\Model\NodeModelMaster;
 

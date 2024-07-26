@@ -20,6 +20,7 @@ namespace Gs2\LoginReward\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\LoginReward\Model\AcquireAction;
 use Gs2\LoginReward\Model\Reward;
+use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 
 class CreateBonusModelMasterRequest extends Gs2BasicRequest {
@@ -43,6 +44,8 @@ class CreateBonusModelMasterRequest extends Gs2BasicRequest {
     private $rewards;
     /** @var string */
     private $missedReceiveRelief;
+    /** @var array */
+    private $missedReceiveReliefVerifyActions;
     /** @var array */
     private $missedReceiveReliefConsumeActions;
 	public function getNamespaceName(): ?string {
@@ -145,6 +148,16 @@ class CreateBonusModelMasterRequest extends Gs2BasicRequest {
 		$this->missedReceiveRelief = $missedReceiveRelief;
 		return $this;
 	}
+	public function getMissedReceiveReliefVerifyActions(): ?array {
+		return $this->missedReceiveReliefVerifyActions;
+	}
+	public function setMissedReceiveReliefVerifyActions(?array $missedReceiveReliefVerifyActions) {
+		$this->missedReceiveReliefVerifyActions = $missedReceiveReliefVerifyActions;
+	}
+	public function withMissedReceiveReliefVerifyActions(?array $missedReceiveReliefVerifyActions): CreateBonusModelMasterRequest {
+		$this->missedReceiveReliefVerifyActions = $missedReceiveReliefVerifyActions;
+		return $this;
+	}
 	public function getMissedReceiveReliefConsumeActions(): ?array {
 		return $this->missedReceiveReliefConsumeActions;
 	}
@@ -176,6 +189,12 @@ class CreateBonusModelMasterRequest extends Gs2BasicRequest {
                 array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
             ))
             ->withMissedReceiveRelief(array_key_exists('missedReceiveRelief', $data) && $data['missedReceiveRelief'] !== null ? $data['missedReceiveRelief'] : null)
+            ->withMissedReceiveReliefVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('missedReceiveReliefVerifyActions', $data) && $data['missedReceiveReliefVerifyActions'] !== null ? $data['missedReceiveReliefVerifyActions'] : []
+            ))
             ->withMissedReceiveReliefConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -201,6 +220,12 @@ class CreateBonusModelMasterRequest extends Gs2BasicRequest {
                 $this->getRewards() !== null && $this->getRewards() !== null ? $this->getRewards() : []
             ),
             "missedReceiveRelief" => $this->getMissedReceiveRelief(),
+            "missedReceiveReliefVerifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getMissedReceiveReliefVerifyActions() !== null && $this->getMissedReceiveReliefVerifyActions() !== null ? $this->getMissedReceiveReliefVerifyActions() : []
+            ),
             "missedReceiveReliefConsumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

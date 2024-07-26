@@ -18,6 +18,7 @@
 namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Showcase\Model\VerifyAction;
 use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItemModel;

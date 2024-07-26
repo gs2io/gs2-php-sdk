@@ -18,6 +18,7 @@
 namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Showcase\Model\VerifyAction;
 use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 
@@ -30,6 +31,8 @@ class UpdateSalesItemMasterRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $metadata;
+    /** @var array */
+    private $verifyActions;
     /** @var array */
     private $consumeActions;
     /** @var array */
@@ -74,6 +77,16 @@ class UpdateSalesItemMasterRequest extends Gs2BasicRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getVerifyActions(): ?array {
+		return $this->verifyActions;
+	}
+	public function setVerifyActions(?array $verifyActions) {
+		$this->verifyActions = $verifyActions;
+	}
+	public function withVerifyActions(?array $verifyActions): UpdateSalesItemMasterRequest {
+		$this->verifyActions = $verifyActions;
+		return $this;
+	}
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
@@ -104,6 +117,12 @@ class UpdateSalesItemMasterRequest extends Gs2BasicRequest {
             ->withSalesItemName(array_key_exists('salesItemName', $data) && $data['salesItemName'] !== null ? $data['salesItemName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+            ))
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -124,6 +143,12 @@ class UpdateSalesItemMasterRequest extends Gs2BasicRequest {
             "salesItemName" => $this->getSalesItemName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
+            "verifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
+            ),
             "consumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

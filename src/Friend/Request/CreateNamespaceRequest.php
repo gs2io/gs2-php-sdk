@@ -48,7 +48,13 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     /** @var NotificationSetting */
     private $receiveRequestNotification;
     /** @var NotificationSetting */
+    private $cancelRequestNotification;
+    /** @var NotificationSetting */
     private $acceptRequestNotification;
+    /** @var NotificationSetting */
+    private $rejectRequestNotification;
+    /** @var NotificationSetting */
+    private $deleteFriendNotification;
     /** @var LogSetting */
     private $logSetting;
 	public function getName(): ?string {
@@ -171,6 +177,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 		return $this;
 	}
+	public function getCancelRequestNotification(): ?NotificationSetting {
+		return $this->cancelRequestNotification;
+	}
+	public function setCancelRequestNotification(?NotificationSetting $cancelRequestNotification) {
+		$this->cancelRequestNotification = $cancelRequestNotification;
+	}
+	public function withCancelRequestNotification(?NotificationSetting $cancelRequestNotification): CreateNamespaceRequest {
+		$this->cancelRequestNotification = $cancelRequestNotification;
+		return $this;
+	}
 	public function getAcceptRequestNotification(): ?NotificationSetting {
 		return $this->acceptRequestNotification;
 	}
@@ -179,6 +195,26 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withAcceptRequestNotification(?NotificationSetting $acceptRequestNotification): CreateNamespaceRequest {
 		$this->acceptRequestNotification = $acceptRequestNotification;
+		return $this;
+	}
+	public function getRejectRequestNotification(): ?NotificationSetting {
+		return $this->rejectRequestNotification;
+	}
+	public function setRejectRequestNotification(?NotificationSetting $rejectRequestNotification) {
+		$this->rejectRequestNotification = $rejectRequestNotification;
+	}
+	public function withRejectRequestNotification(?NotificationSetting $rejectRequestNotification): CreateNamespaceRequest {
+		$this->rejectRequestNotification = $rejectRequestNotification;
+		return $this;
+	}
+	public function getDeleteFriendNotification(): ?NotificationSetting {
+		return $this->deleteFriendNotification;
+	}
+	public function setDeleteFriendNotification(?NotificationSetting $deleteFriendNotification) {
+		$this->deleteFriendNotification = $deleteFriendNotification;
+	}
+	public function withDeleteFriendNotification(?NotificationSetting $deleteFriendNotification): CreateNamespaceRequest {
+		$this->deleteFriendNotification = $deleteFriendNotification;
 		return $this;
 	}
 	public function getLogSetting(): ?LogSetting {
@@ -209,7 +245,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withUpdateProfileScript(array_key_exists('updateProfileScript', $data) && $data['updateProfileScript'] !== null ? ScriptSetting::fromJson($data['updateProfileScript']) : null)
             ->withFollowNotification(array_key_exists('followNotification', $data) && $data['followNotification'] !== null ? NotificationSetting::fromJson($data['followNotification']) : null)
             ->withReceiveRequestNotification(array_key_exists('receiveRequestNotification', $data) && $data['receiveRequestNotification'] !== null ? NotificationSetting::fromJson($data['receiveRequestNotification']) : null)
+            ->withCancelRequestNotification(array_key_exists('cancelRequestNotification', $data) && $data['cancelRequestNotification'] !== null ? NotificationSetting::fromJson($data['cancelRequestNotification']) : null)
             ->withAcceptRequestNotification(array_key_exists('acceptRequestNotification', $data) && $data['acceptRequestNotification'] !== null ? NotificationSetting::fromJson($data['acceptRequestNotification']) : null)
+            ->withRejectRequestNotification(array_key_exists('rejectRequestNotification', $data) && $data['rejectRequestNotification'] !== null ? NotificationSetting::fromJson($data['rejectRequestNotification']) : null)
+            ->withDeleteFriendNotification(array_key_exists('deleteFriendNotification', $data) && $data['deleteFriendNotification'] !== null ? NotificationSetting::fromJson($data['deleteFriendNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -227,7 +266,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "updateProfileScript" => $this->getUpdateProfileScript() !== null ? $this->getUpdateProfileScript()->toJson() : null,
             "followNotification" => $this->getFollowNotification() !== null ? $this->getFollowNotification()->toJson() : null,
             "receiveRequestNotification" => $this->getReceiveRequestNotification() !== null ? $this->getReceiveRequestNotification()->toJson() : null,
+            "cancelRequestNotification" => $this->getCancelRequestNotification() !== null ? $this->getCancelRequestNotification()->toJson() : null,
             "acceptRequestNotification" => $this->getAcceptRequestNotification() !== null ? $this->getAcceptRequestNotification()->toJson() : null,
+            "rejectRequestNotification" => $this->getRejectRequestNotification() !== null ? $this->getRejectRequestNotification()->toJson() : null,
+            "deleteFriendNotification" => $this->getDeleteFriendNotification() !== null ? $this->getDeleteFriendNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

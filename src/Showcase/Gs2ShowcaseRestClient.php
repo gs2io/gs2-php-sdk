@@ -1043,6 +1043,14 @@ class CreateSalesItemMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["verifyActions"] = $array;
+        }
         if ($this->request->getConsumeActions() !== null) {
             $array = [];
             foreach ($this->request->getConsumeActions() as $item)
@@ -1178,6 +1186,14 @@ class UpdateSalesItemMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["verifyActions"] = $array;
         }
         if ($this->request->getConsumeActions() !== null) {
             $array = [];

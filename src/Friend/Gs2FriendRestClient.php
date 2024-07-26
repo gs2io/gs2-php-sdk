@@ -271,8 +271,17 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getReceiveRequestNotification() !== null) {
             $json["receiveRequestNotification"] = $this->request->getReceiveRequestNotification()->toJson();
         }
+        if ($this->request->getCancelRequestNotification() !== null) {
+            $json["cancelRequestNotification"] = $this->request->getCancelRequestNotification()->toJson();
+        }
         if ($this->request->getAcceptRequestNotification() !== null) {
             $json["acceptRequestNotification"] = $this->request->getAcceptRequestNotification()->toJson();
+        }
+        if ($this->request->getRejectRequestNotification() !== null) {
+            $json["rejectRequestNotification"] = $this->request->getRejectRequestNotification()->toJson();
+        }
+        if ($this->request->getDeleteFriendNotification() !== null) {
+            $json["deleteFriendNotification"] = $this->request->getDeleteFriendNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -479,8 +488,17 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getReceiveRequestNotification() !== null) {
             $json["receiveRequestNotification"] = $this->request->getReceiveRequestNotification()->toJson();
         }
+        if ($this->request->getCancelRequestNotification() !== null) {
+            $json["cancelRequestNotification"] = $this->request->getCancelRequestNotification()->toJson();
+        }
         if ($this->request->getAcceptRequestNotification() !== null) {
             $json["acceptRequestNotification"] = $this->request->getAcceptRequestNotification()->toJson();
+        }
+        if ($this->request->getRejectRequestNotification() !== null) {
+            $json["rejectRequestNotification"] = $this->request->getRejectRequestNotification()->toJson();
+        }
+        if ($this->request->getDeleteFriendNotification() !== null) {
+            $json["deleteFriendNotification"] = $this->request->getDeleteFriendNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

@@ -1373,6 +1373,14 @@ class CreateQuestModelMasterTask extends Gs2RestSessionTask {
             }
             $json["firstCompleteAcquireActions"] = $array;
         }
+        if ($this->request->getVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["verifyActions"] = $array;
+        }
         if ($this->request->getConsumeActions() !== null) {
             $array = [];
             foreach ($this->request->getConsumeActions() as $item)
@@ -1537,6 +1545,14 @@ class UpdateQuestModelMasterTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["firstCompleteAcquireActions"] = $array;
+        }
+        if ($this->request->getVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["verifyActions"] = $array;
         }
         if ($this->request->getConsumeActions() !== null) {
             $array = [];

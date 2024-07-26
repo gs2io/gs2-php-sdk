@@ -18,6 +18,7 @@
 namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Distributor\Model\VerifyAction;
 use Gs2\Distributor\Model\ConsumeAction;
 use Gs2\Distributor\Model\AcquireAction;
 use Gs2\Distributor\Model\StampSheetResult;

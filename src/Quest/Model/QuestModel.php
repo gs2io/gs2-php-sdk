@@ -48,6 +48,10 @@ class QuestModel implements IModel {
 	/**
      * @var array
 	 */
+	private $verifyActions;
+	/**
+     * @var array
+	 */
 	private $consumeActions;
 	/**
      * @var array
@@ -117,6 +121,16 @@ class QuestModel implements IModel {
 		$this->firstCompleteAcquireActions = $firstCompleteAcquireActions;
 		return $this;
 	}
+	public function getVerifyActions(): ?array {
+		return $this->verifyActions;
+	}
+	public function setVerifyActions(?array $verifyActions) {
+		$this->verifyActions = $verifyActions;
+	}
+	public function withVerifyActions(?array $verifyActions): QuestModel {
+		$this->verifyActions = $verifyActions;
+		return $this;
+	}
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
@@ -169,6 +183,12 @@ class QuestModel implements IModel {
                 },
                 array_key_exists('firstCompleteAcquireActions', $data) && $data['firstCompleteAcquireActions'] !== null ? $data['firstCompleteAcquireActions'] : []
             ))
+            ->withVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+            ))
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -206,6 +226,12 @@ class QuestModel implements IModel {
                     return $item->toJson();
                 },
                 $this->getFirstCompleteAcquireActions() !== null && $this->getFirstCompleteAcquireActions() !== null ? $this->getFirstCompleteAcquireActions() : []
+            ),
+            "verifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
             ),
             "consumeActions" => array_map(
                 function ($item) {

@@ -18,6 +18,7 @@
 namespace Gs2\Showcase\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Showcase\Model\VerifyAction;
 use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;

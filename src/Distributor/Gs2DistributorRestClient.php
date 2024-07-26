@@ -67,12 +67,16 @@ use Gs2\Distributor\Request\DistributeRequest;
 use Gs2\Distributor\Result\DistributeResult;
 use Gs2\Distributor\Request\DistributeWithoutOverflowProcessRequest;
 use Gs2\Distributor\Result\DistributeWithoutOverflowProcessResult;
+use Gs2\Distributor\Request\RunVerifyTaskRequest;
+use Gs2\Distributor\Result\RunVerifyTaskResult;
 use Gs2\Distributor\Request\RunStampTaskRequest;
 use Gs2\Distributor\Result\RunStampTaskResult;
 use Gs2\Distributor\Request\RunStampSheetRequest;
 use Gs2\Distributor\Result\RunStampSheetResult;
 use Gs2\Distributor\Request\RunStampSheetExpressRequest;
 use Gs2\Distributor\Result\RunStampSheetExpressResult;
+use Gs2\Distributor\Request\RunVerifyTaskWithoutNamespaceRequest;
+use Gs2\Distributor\Result\RunVerifyTaskWithoutNamespaceResult;
 use Gs2\Distributor\Request\RunStampTaskWithoutNamespaceRequest;
 use Gs2\Distributor\Result\RunStampTaskWithoutNamespaceResult;
 use Gs2\Distributor\Request\RunStampSheetWithoutNamespaceRequest;
@@ -1254,6 +1258,67 @@ class DistributeWithoutOverflowProcessTask extends Gs2RestSessionTask {
     }
 }
 
+class RunVerifyTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RunVerifyTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RunVerifyTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param RunVerifyTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RunVerifyTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RunVerifyTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/distribute/stamp/verifyTask/run";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getVerifyTask() !== null) {
+            $json["verifyTask"] = $this->request->getVerifyTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class RunStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -1414,6 +1479,65 @@ class RunStampSheetExpressTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RunVerifyTaskWithoutNamespaceTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RunVerifyTaskWithoutNamespaceRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RunVerifyTaskWithoutNamespaceTask constructor.
+     * @param Gs2RestSession $session
+     * @param RunVerifyTaskWithoutNamespaceRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RunVerifyTaskWithoutNamespaceRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RunVerifyTaskWithoutNamespaceResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/verifyTask/run";
+
+        $json = [];
+        if ($this->request->getVerifyTask() !== null) {
+            $json["verifyTask"] = $this->request->getVerifyTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -2398,6 +2522,33 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param RunVerifyTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function runVerifyTaskAsync(
+            RunVerifyTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RunVerifyTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RunVerifyTaskRequest $request
+     * @return RunVerifyTaskResult
+     */
+    public function runVerifyTask (
+            RunVerifyTaskRequest $request
+    ): RunVerifyTaskResult {
+        return $this->runVerifyTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param RunStampTaskRequest $request
      * @return PromiseInterface
      */
@@ -2474,6 +2625,33 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             RunStampSheetExpressRequest $request
     ): RunStampSheetExpressResult {
         return $this->runStampSheetExpressAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RunVerifyTaskWithoutNamespaceRequest $request
+     * @return PromiseInterface
+     */
+    public function runVerifyTaskWithoutNamespaceAsync(
+            RunVerifyTaskWithoutNamespaceRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RunVerifyTaskWithoutNamespaceTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RunVerifyTaskWithoutNamespaceRequest $request
+     * @return RunVerifyTaskWithoutNamespaceResult
+     */
+    public function runVerifyTaskWithoutNamespace (
+            RunVerifyTaskWithoutNamespaceRequest $request
+    ): RunVerifyTaskWithoutNamespaceResult {
+        return $this->runVerifyTaskWithoutNamespaceAsync(
             $request
         )->wait();
     }

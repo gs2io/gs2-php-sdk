@@ -36,6 +36,10 @@ class RandomDisplayItem implements IModel {
 	/**
      * @var array
 	 */
+	private $verifyActions;
+	/**
+     * @var array
+	 */
 	private $consumeActions;
 	/**
      * @var array
@@ -77,6 +81,16 @@ class RandomDisplayItem implements IModel {
 	}
 	public function withMetadata(?string $metadata): RandomDisplayItem {
 		$this->metadata = $metadata;
+		return $this;
+	}
+	public function getVerifyActions(): ?array {
+		return $this->verifyActions;
+	}
+	public function setVerifyActions(?array $verifyActions) {
+		$this->verifyActions = $verifyActions;
+	}
+	public function withVerifyActions(?array $verifyActions): RandomDisplayItem {
+		$this->verifyActions = $verifyActions;
 		return $this;
 	}
 	public function getConsumeActions(): ?array {
@@ -128,6 +142,12 @@ class RandomDisplayItem implements IModel {
             ->withShowcaseName(array_key_exists('showcaseName', $data) && $data['showcaseName'] !== null ? $data['showcaseName'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+            ))
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -149,6 +169,12 @@ class RandomDisplayItem implements IModel {
             "showcaseName" => $this->getShowcaseName(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
+            "verifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
+            ),
             "consumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

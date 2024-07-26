@@ -36,6 +36,10 @@ class NodeModel implements IModel {
 	/**
      * @var array
 	 */
+	private $releaseVerifyActions;
+	/**
+     * @var array
+	 */
 	private $releaseConsumeActions;
 	/**
      * @var array
@@ -77,6 +81,16 @@ class NodeModel implements IModel {
 	}
 	public function withMetadata(?string $metadata): NodeModel {
 		$this->metadata = $metadata;
+		return $this;
+	}
+	public function getReleaseVerifyActions(): ?array {
+		return $this->releaseVerifyActions;
+	}
+	public function setReleaseVerifyActions(?array $releaseVerifyActions) {
+		$this->releaseVerifyActions = $releaseVerifyActions;
+	}
+	public function withReleaseVerifyActions(?array $releaseVerifyActions): NodeModel {
+		$this->releaseVerifyActions = $releaseVerifyActions;
 		return $this;
 	}
 	public function getReleaseConsumeActions(): ?array {
@@ -128,6 +142,12 @@ class NodeModel implements IModel {
             ->withNodeModelId(array_key_exists('nodeModelId', $data) && $data['nodeModelId'] !== null ? $data['nodeModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withReleaseVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('releaseVerifyActions', $data) && $data['releaseVerifyActions'] !== null ? $data['releaseVerifyActions'] : []
+            ))
             ->withReleaseConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -154,6 +174,12 @@ class NodeModel implements IModel {
             "nodeModelId" => $this->getNodeModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
+            "releaseVerifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getReleaseVerifyActions() !== null && $this->getReleaseVerifyActions() !== null ? $this->getReleaseVerifyActions() : []
+            ),
             "releaseConsumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

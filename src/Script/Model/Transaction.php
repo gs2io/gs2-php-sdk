@@ -28,6 +28,10 @@ class Transaction implements IModel {
 	/**
      * @var array
 	 */
+	private $verifyActions;
+	/**
+     * @var array
+	 */
 	private $consumeActions;
 	/**
      * @var array
@@ -41,6 +45,16 @@ class Transaction implements IModel {
 	}
 	public function withTransactionId(?string $transactionId): Transaction {
 		$this->transactionId = $transactionId;
+		return $this;
+	}
+	public function getVerifyActions(): ?array {
+		return $this->verifyActions;
+	}
+	public function setVerifyActions(?array $verifyActions) {
+		$this->verifyActions = $verifyActions;
+	}
+	public function withVerifyActions(?array $verifyActions): Transaction {
+		$this->verifyActions = $verifyActions;
 		return $this;
 	}
 	public function getConsumeActions(): ?array {
@@ -70,6 +84,12 @@ class Transaction implements IModel {
         }
         return (new Transaction())
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
+            ->withVerifyActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+            ))
             ->withConsumeActions(array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
@@ -87,6 +107,12 @@ class Transaction implements IModel {
     public function toJson(): array {
         return array(
             "transactionId" => $this->getTransactionId(),
+            "verifyActions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
+            ),
             "consumeActions" => array_map(
                 function ($item) {
                     return $item->toJson();

@@ -22,6 +22,7 @@ use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 use Gs2\Quest\Model\AcquireAction;
 use Gs2\Quest\Model\Contents;
+use Gs2\Quest\Model\VerifyAction;
 use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModel;
 use Gs2\Quest\Model\QuestGroupModel;

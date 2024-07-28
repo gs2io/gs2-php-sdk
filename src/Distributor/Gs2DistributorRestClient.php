@@ -87,6 +87,18 @@ use Gs2\Distributor\Request\SetTransactionDefaultConfigRequest;
 use Gs2\Distributor\Result\SetTransactionDefaultConfigResult;
 use Gs2\Distributor\Request\SetTransactionDefaultConfigByUserIdRequest;
 use Gs2\Distributor\Result\SetTransactionDefaultConfigByUserIdResult;
+use Gs2\Distributor\Request\IfExpressionByUserIdRequest;
+use Gs2\Distributor\Result\IfExpressionByUserIdResult;
+use Gs2\Distributor\Request\AndExpressionByUserIdRequest;
+use Gs2\Distributor\Result\AndExpressionByUserIdResult;
+use Gs2\Distributor\Request\OrExpressionByUserIdRequest;
+use Gs2\Distributor\Result\OrExpressionByUserIdResult;
+use Gs2\Distributor\Request\IfExpressionByUserByStampTaskRequest;
+use Gs2\Distributor\Result\IfExpressionByUserByStampTaskResult;
+use Gs2\Distributor\Request\AndExpressionByUserByStampTaskRequest;
+use Gs2\Distributor\Result\AndExpressionByUserByStampTaskResult;
+use Gs2\Distributor\Request\OrExpressionByUserByStampTaskRequest;
+use Gs2\Distributor\Result\OrExpressionByUserByStampTaskResult;
 use Gs2\Distributor\Request\GetStampSheetResultRequest;
 use Gs2\Distributor\Result\GetStampSheetResultResult;
 use Gs2\Distributor\Request\GetStampSheetResultByUserIdRequest;
@@ -1188,6 +1200,9 @@ class DistributeTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
@@ -1249,6 +1264,9 @@ class DistributeWithoutOverflowProcessTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
@@ -1797,6 +1815,9 @@ class SetTransactionDefaultConfigTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
 
         return parent::executeImpl();
     }
@@ -1860,8 +1881,415 @@ class SetTransactionDefaultConfigByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IfExpressionByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IfExpressionByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IfExpressionByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param IfExpressionByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IfExpressionByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IfExpressionByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/expression/if";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getCondition() !== null) {
+            $json["condition"] = $this->request->getCondition()->toJson();
+        }
+        if ($this->request->getTrueActions() !== null) {
+            $array = [];
+            foreach ($this->request->getTrueActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["trueActions"] = $array;
+        }
+        if ($this->request->getFalseActions() !== null) {
+            $array = [];
+            foreach ($this->request->getFalseActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["falseActions"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AndExpressionByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AndExpressionByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AndExpressionByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AndExpressionByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AndExpressionByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AndExpressionByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/expression/and";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getActions() !== null) {
+            $array = [];
+            foreach ($this->request->getActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["actions"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class OrExpressionByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var OrExpressionByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * OrExpressionByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param OrExpressionByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        OrExpressionByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            OrExpressionByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/expression/or";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getActions() !== null) {
+            $array = [];
+            foreach ($this->request->getActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["actions"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IfExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IfExpressionByUserByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IfExpressionByUserByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param IfExpressionByUserByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IfExpressionByUserByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IfExpressionByUserByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/expression/if";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AndExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AndExpressionByUserByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AndExpressionByUserByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param AndExpressionByUserByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AndExpressionByUserByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AndExpressionByUserByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/expression/and";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class OrExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var OrExpressionByUserByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * OrExpressionByUserByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param OrExpressionByUserByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        OrExpressionByUserByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            OrExpressionByUserByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/expression/or";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -2787,6 +3215,168 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             SetTransactionDefaultConfigByUserIdRequest $request
     ): SetTransactionDefaultConfigByUserIdResult {
         return $this->setTransactionDefaultConfigByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IfExpressionByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function ifExpressionByUserIdAsync(
+            IfExpressionByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IfExpressionByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IfExpressionByUserIdRequest $request
+     * @return IfExpressionByUserIdResult
+     */
+    public function ifExpressionByUserId (
+            IfExpressionByUserIdRequest $request
+    ): IfExpressionByUserIdResult {
+        return $this->ifExpressionByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AndExpressionByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function andExpressionByUserIdAsync(
+            AndExpressionByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AndExpressionByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AndExpressionByUserIdRequest $request
+     * @return AndExpressionByUserIdResult
+     */
+    public function andExpressionByUserId (
+            AndExpressionByUserIdRequest $request
+    ): AndExpressionByUserIdResult {
+        return $this->andExpressionByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param OrExpressionByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function orExpressionByUserIdAsync(
+            OrExpressionByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new OrExpressionByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param OrExpressionByUserIdRequest $request
+     * @return OrExpressionByUserIdResult
+     */
+    public function orExpressionByUserId (
+            OrExpressionByUserIdRequest $request
+    ): OrExpressionByUserIdResult {
+        return $this->orExpressionByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IfExpressionByUserByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function ifExpressionByUserByStampTaskAsync(
+            IfExpressionByUserByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IfExpressionByUserByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IfExpressionByUserByStampTaskRequest $request
+     * @return IfExpressionByUserByStampTaskResult
+     */
+    public function ifExpressionByUserByStampTask (
+            IfExpressionByUserByStampTaskRequest $request
+    ): IfExpressionByUserByStampTaskResult {
+        return $this->ifExpressionByUserByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AndExpressionByUserByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function andExpressionByUserByStampTaskAsync(
+            AndExpressionByUserByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AndExpressionByUserByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AndExpressionByUserByStampTaskRequest $request
+     * @return AndExpressionByUserByStampTaskResult
+     */
+    public function andExpressionByUserByStampTask (
+            AndExpressionByUserByStampTaskRequest $request
+    ): AndExpressionByUserByStampTaskResult {
+        return $this->andExpressionByUserByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param OrExpressionByUserByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function orExpressionByUserByStampTaskAsync(
+            OrExpressionByUserByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new OrExpressionByUserByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param OrExpressionByUserByStampTaskRequest $request
+     * @return OrExpressionByUserByStampTaskResult
+     */
+    public function orExpressionByUserByStampTask (
+            OrExpressionByUserByStampTaskRequest $request
+    ): OrExpressionByUserByStampTaskResult {
+        return $this->orExpressionByUserByStampTaskAsync(
             $request
         )->wait();
     }

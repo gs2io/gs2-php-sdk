@@ -47,6 +47,8 @@ use Gs2\Mission\Request\GetCompleteByUserIdRequest;
 use Gs2\Mission\Result\GetCompleteByUserIdResult;
 use Gs2\Mission\Request\DeleteCompleteByUserIdRequest;
 use Gs2\Mission\Result\DeleteCompleteByUserIdResult;
+use Gs2\Mission\Request\VerifyCompleteRequest;
+use Gs2\Mission\Result\VerifyCompleteResult;
 use Gs2\Mission\Request\VerifyCompleteByUserIdRequest;
 use Gs2\Mission\Result\VerifyCompleteByUserIdResult;
 use Gs2\Mission\Request\ReceiveByStampTaskRequest;
@@ -109,6 +111,8 @@ use Gs2\Mission\Request\IncreaseCounterByUserIdRequest;
 use Gs2\Mission\Result\IncreaseCounterByUserIdResult;
 use Gs2\Mission\Request\SetCounterByUserIdRequest;
 use Gs2\Mission\Result\SetCounterByUserIdResult;
+use Gs2\Mission\Request\DecreaseCounterRequest;
+use Gs2\Mission\Result\DecreaseCounterResult;
 use Gs2\Mission\Request\DecreaseCounterByUserIdRequest;
 use Gs2\Mission\Result\DecreaseCounterByUserIdResult;
 use Gs2\Mission\Request\GetCounterRequest;
@@ -746,6 +750,71 @@ class DeleteCompleteByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCompleteTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCompleteRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCompleteTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCompleteRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCompleteRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCompleteResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/complete/group/{missionGroupName}/task/{missionTaskName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+        $url = str_replace("{missionTaskName}", $this->request->getMissionTaskName() === null|| strlen($this->request->getMissionTaskName()) == 0 ? "null" : $this->request->getMissionTaskName(), $url);
+        $url = str_replace("{multiplyValueSpecifyingQuantity}", $this->request->getMultiplyValueSpecifyingQuantity() === null ? "null" : $this->request->getMultiplyValueSpecifyingQuantity(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -2740,6 +2809,71 @@ class SetCounterByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DecreaseCounterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecreaseCounterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecreaseCounterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecreaseCounterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecreaseCounterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecreaseCounterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/counter/{counterName}/decrease";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DecreaseCounterByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -4597,6 +4731,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyCompleteRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCompleteAsync(
+            VerifyCompleteRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCompleteTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCompleteRequest $request
+     * @return VerifyCompleteResult
+     */
+    public function verifyComplete (
+            VerifyCompleteRequest $request
+    ): VerifyCompleteResult {
+        return $this->verifyCompleteAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param VerifyCompleteByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -5429,6 +5590,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             SetCounterByUserIdRequest $request
     ): SetCounterByUserIdResult {
         return $this->setCounterByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DecreaseCounterRequest $request
+     * @return PromiseInterface
+     */
+    public function decreaseCounterAsync(
+            DecreaseCounterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecreaseCounterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecreaseCounterRequest $request
+     * @return DecreaseCounterResult
+     */
+    public function decreaseCounter (
+            DecreaseCounterRequest $request
+    ): DecreaseCounterResult {
+        return $this->decreaseCounterAsync(
             $request
         )->wait();
     }

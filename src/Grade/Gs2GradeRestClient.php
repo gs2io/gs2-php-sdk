@@ -79,6 +79,8 @@ use Gs2\Grade\Request\GetStatusByUserIdRequest;
 use Gs2\Grade\Result\GetStatusByUserIdResult;
 use Gs2\Grade\Request\AddGradeByUserIdRequest;
 use Gs2\Grade\Result\AddGradeByUserIdResult;
+use Gs2\Grade\Request\SubGradeRequest;
+use Gs2\Grade\Result\SubGradeResult;
 use Gs2\Grade\Request\SubGradeByUserIdRequest;
 use Gs2\Grade\Result\SubGradeByUserIdResult;
 use Gs2\Grade\Request\SetGradeByUserIdRequest;
@@ -1702,6 +1704,72 @@ class AddGradeByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SubGradeTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SubGradeRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SubGradeTask constructor.
+     * @param Gs2RestSession $session
+     * @param SubGradeRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SubGradeRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SubGradeResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "grade", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/status/model/{gradeName}/property/{propertyId}/sub";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{gradeName}", $this->request->getGradeName() === null|| strlen($this->request->getGradeName()) == 0 ? "null" : $this->request->getGradeName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getGradeValue() !== null) {
+            $json["gradeValue"] = $this->request->getGradeValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -3664,6 +3732,33 @@ class Gs2GradeRestClient extends AbstractGs2Client {
             AddGradeByUserIdRequest $request
     ): AddGradeByUserIdResult {
         return $this->addGradeByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SubGradeRequest $request
+     * @return PromiseInterface
+     */
+    public function subGradeAsync(
+            SubGradeRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SubGradeTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SubGradeRequest $request
+     * @return SubGradeResult
+     */
+    public function subGrade (
+            SubGradeRequest $request
+    ): SubGradeResult {
+        return $this->subGradeAsync(
             $request
         )->wait();
     }

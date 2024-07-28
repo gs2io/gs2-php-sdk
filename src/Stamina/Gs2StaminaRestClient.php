@@ -125,6 +125,8 @@ use Gs2\Stamina\Request\RecoverStaminaByUserIdRequest;
 use Gs2\Stamina\Result\RecoverStaminaByUserIdResult;
 use Gs2\Stamina\Request\RaiseMaxValueByUserIdRequest;
 use Gs2\Stamina\Result\RaiseMaxValueByUserIdResult;
+use Gs2\Stamina\Request\DecreaseMaxValueRequest;
+use Gs2\Stamina\Result\DecreaseMaxValueResult;
 use Gs2\Stamina\Request\DecreaseMaxValueByUserIdRequest;
 use Gs2\Stamina\Result\DecreaseMaxValueByUserIdResult;
 use Gs2\Stamina\Request\SetMaxValueByUserIdRequest;
@@ -3206,6 +3208,71 @@ class RaiseMaxValueByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DecreaseMaxValueTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecreaseMaxValueRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecreaseMaxValueTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecreaseMaxValueRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecreaseMaxValueRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecreaseMaxValueResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/decrease";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+
+        $json = [];
+        if ($this->request->getDecreaseValue() !== null) {
+            $json["decreaseValue"] = $this->request->getDecreaseValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DecreaseMaxValueByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -5470,6 +5537,33 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
             RaiseMaxValueByUserIdRequest $request
     ): RaiseMaxValueByUserIdResult {
         return $this->raiseMaxValueByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DecreaseMaxValueRequest $request
+     * @return PromiseInterface
+     */
+    public function decreaseMaxValueAsync(
+            DecreaseMaxValueRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecreaseMaxValueTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecreaseMaxValueRequest $request
+     * @return DecreaseMaxValueResult
+     */
+    public function decreaseMaxValue (
+            DecreaseMaxValueRequest $request
+    ): DecreaseMaxValueResult {
+        return $this->decreaseMaxValueAsync(
             $request
         )->wait();
     }

@@ -15,36 +15,47 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Distributor\Request;
+namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Distributor\Model\Config;
 
-class SetTransactionDefaultConfigRequest extends Gs2BasicRequest {
+class DeleteEntriesRequest extends Gs2BasicRequest {
+    /** @var string */
+    private $namespaceName;
     /** @var string */
     private $accessToken;
     /** @var array */
-    private $config;
+    private $entryModelNames;
     /** @var string */
     private $duplicationAvoider;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+	public function withNamespaceName(?string $namespaceName): DeleteEntriesRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-	public function withAccessToken(?string $accessToken): SetTransactionDefaultConfigRequest {
+	public function withAccessToken(?string $accessToken): DeleteEntriesRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getConfig(): ?array {
-		return $this->config;
+	public function getEntryModelNames(): ?array {
+		return $this->entryModelNames;
 	}
-	public function setConfig(?array $config) {
-		$this->config = $config;
+	public function setEntryModelNames(?array $entryModelNames) {
+		$this->entryModelNames = $entryModelNames;
 	}
-	public function withConfig(?array $config): SetTransactionDefaultConfigRequest {
-		$this->config = $config;
+	public function withEntryModelNames(?array $entryModelNames): DeleteEntriesRequest {
+		$this->entryModelNames = $entryModelNames;
 		return $this;
 	}
 
@@ -56,33 +67,35 @@ class SetTransactionDefaultConfigRequest extends Gs2BasicRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 	}
 
-	public function withDuplicationAvoider(?string $duplicationAvoider): SetTransactionDefaultConfigRequest {
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteEntriesRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?SetTransactionDefaultConfigRequest {
+    public static function fromJson(?array $data): ?DeleteEntriesRequest {
         if ($data === null) {
             return null;
         }
-        return (new SetTransactionDefaultConfigRequest())
+        return (new DeleteEntriesRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withConfig(array_map(
+            ->withEntryModelNames(array_map(
                 function ($item) {
-                    return Config::fromJson($item);
+                    return $item;
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                array_key_exists('entryModelNames', $data) && $data['entryModelNames'] !== null ? $data['entryModelNames'] : []
             ));
     }
 
     public function toJson(): array {
         return array(
+            "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "config" => array_map(
+            "entryModelNames" => array_map(
                 function ($item) {
-                    return $item->toJson();
+                    return $item;
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getEntryModelNames() !== null && $this->getEntryModelNames() !== null ? $this->getEntryModelNames() : []
             ),
         );
     }

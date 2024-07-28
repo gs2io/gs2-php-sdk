@@ -27,14 +27,14 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
-    /** @var bool */
-    private $enableDirectEnhance;
     /** @var TransactionSetting */
     private $transactionSetting;
     /** @var ScriptSetting */
     private $enhanceScript;
     /** @var LogSetting */
     private $logSetting;
+    /** @var bool */
+    private $enableDirectEnhance;
     /** @var string */
     private $queueNamespaceId;
     /** @var string */
@@ -57,16 +57,6 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
-		return $this;
-	}
-	public function getEnableDirectEnhance(): ?bool {
-		return $this->enableDirectEnhance;
-	}
-	public function setEnableDirectEnhance(?bool $enableDirectEnhance) {
-		$this->enableDirectEnhance = $enableDirectEnhance;
-	}
-	public function withEnableDirectEnhance(?bool $enableDirectEnhance): CreateNamespaceRequest {
-		$this->enableDirectEnhance = $enableDirectEnhance;
 		return $this;
 	}
 	public function getTransactionSetting(): ?TransactionSetting {
@@ -97,6 +87,25 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
+		return $this;
+	}
+    /**
+     * @deprecated
+     */
+	public function getEnableDirectEnhance(): ?bool {
+		return $this->enableDirectEnhance;
+	}
+    /**
+     * @deprecated
+     */
+	public function setEnableDirectEnhance(?bool $enableDirectEnhance) {
+		$this->enableDirectEnhance = $enableDirectEnhance;
+	}
+    /**
+     * @deprecated
+     */
+	public function withEnableDirectEnhance(?bool $enableDirectEnhance): CreateNamespaceRequest {
+		$this->enableDirectEnhance = $enableDirectEnhance;
 		return $this;
 	}
     /**
@@ -145,10 +154,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withEnableDirectEnhance(array_key_exists('enableDirectEnhance', $data) ? $data['enableDirectEnhance'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withEnhanceScript(array_key_exists('enhanceScript', $data) && $data['enhanceScript'] !== null ? ScriptSetting::fromJson($data['enhanceScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
+            ->withEnableDirectEnhance(array_key_exists('enableDirectEnhance', $data) ? $data['enableDirectEnhance'] : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
@@ -157,10 +166,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "name" => $this->getName(),
             "description" => $this->getDescription(),
-            "enableDirectEnhance" => $this->getEnableDirectEnhance(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "enhanceScript" => $this->getEnhanceScript() !== null ? $this->getEnhanceScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
+            "enableDirectEnhance" => $this->getEnableDirectEnhance(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),
         );

@@ -65,6 +65,8 @@ use Gs2\JobQueue\Request\RunRequest;
 use Gs2\JobQueue\Result\RunResult;
 use Gs2\JobQueue\Request\RunByUserIdRequest;
 use Gs2\JobQueue\Result\RunByUserIdResult;
+use Gs2\JobQueue\Request\DeleteJobRequest;
+use Gs2\JobQueue\Result\DeleteJobResult;
 use Gs2\JobQueue\Request\DeleteJobByUserIdRequest;
 use Gs2\JobQueue\Result\DeleteJobByUserIdResult;
 use Gs2\JobQueue\Request\PushByStampSheetRequest;
@@ -1193,6 +1195,70 @@ class RunByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DeleteJobTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteJobRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteJobTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteJobRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteJobRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteJobResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "job-queue", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/job/{jobName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{jobName}", $this->request->getJobName() === null|| strlen($this->request->getJobName()) == 0 ? "null" : $this->request->getJobName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteJobByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -2198,6 +2264,33 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
             RunByUserIdRequest $request
     ): RunByUserIdResult {
         return $this->runByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteJobRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteJobAsync(
+            DeleteJobRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteJobTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteJobRequest $request
+     * @return DeleteJobResult
+     */
+    public function deleteJob (
+            DeleteJobRequest $request
+    ): DeleteJobResult {
+        return $this->deleteJobAsync(
             $request
         )->wait();
     }

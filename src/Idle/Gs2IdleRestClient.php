@@ -87,6 +87,8 @@ use Gs2\Idle\Request\ReceiveByUserIdRequest;
 use Gs2\Idle\Result\ReceiveByUserIdResult;
 use Gs2\Idle\Request\IncreaseMaximumIdleMinutesByUserIdRequest;
 use Gs2\Idle\Result\IncreaseMaximumIdleMinutesByUserIdResult;
+use Gs2\Idle\Request\DecreaseMaximumIdleMinutesRequest;
+use Gs2\Idle\Result\DecreaseMaximumIdleMinutesResult;
 use Gs2\Idle\Request\DecreaseMaximumIdleMinutesByUserIdRequest;
 use Gs2\Idle\Result\DecreaseMaximumIdleMinutesByUserIdResult;
 use Gs2\Idle\Request\SetMaximumIdleMinutesByUserIdRequest;
@@ -1945,6 +1947,71 @@ class IncreaseMaximumIdleMinutesByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DecreaseMaximumIdleMinutesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecreaseMaximumIdleMinutesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecreaseMaximumIdleMinutesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecreaseMaximumIdleMinutesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecreaseMaximumIdleMinutesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecreaseMaximumIdleMinutesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "idle", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/status/model/{categoryName}/maximumIdle/decrease";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{categoryName}", $this->request->getCategoryName() === null|| strlen($this->request->getCategoryName()) == 0 ? "null" : $this->request->getCategoryName(), $url);
+
+        $json = [];
+        if ($this->request->getDecreaseMinutes() !== null) {
+            $json["decreaseMinutes"] = $this->request->getDecreaseMinutes();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DecreaseMaximumIdleMinutesByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -3339,6 +3406,33 @@ class Gs2IdleRestClient extends AbstractGs2Client {
             IncreaseMaximumIdleMinutesByUserIdRequest $request
     ): IncreaseMaximumIdleMinutesByUserIdResult {
         return $this->increaseMaximumIdleMinutesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DecreaseMaximumIdleMinutesRequest $request
+     * @return PromiseInterface
+     */
+    public function decreaseMaximumIdleMinutesAsync(
+            DecreaseMaximumIdleMinutesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecreaseMaximumIdleMinutesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecreaseMaximumIdleMinutesRequest $request
+     * @return DecreaseMaximumIdleMinutesResult
+     */
+    public function decreaseMaximumIdleMinutes (
+            DecreaseMaximumIdleMinutesRequest $request
+    ): DecreaseMaximumIdleMinutesResult {
+        return $this->decreaseMaximumIdleMinutesAsync(
             $request
         )->wait();
     }

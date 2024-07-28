@@ -115,6 +115,8 @@ use Gs2\Showcase\Request\UpdateRandomShowcaseMasterRequest;
 use Gs2\Showcase\Result\UpdateRandomShowcaseMasterResult;
 use Gs2\Showcase\Request\DeleteRandomShowcaseMasterRequest;
 use Gs2\Showcase\Result\DeleteRandomShowcaseMasterResult;
+use Gs2\Showcase\Request\IncrementPurchaseCountRequest;
+use Gs2\Showcase\Result\IncrementPurchaseCountResult;
 use Gs2\Showcase\Request\IncrementPurchaseCountByUserIdRequest;
 use Gs2\Showcase\Result\IncrementPurchaseCountByUserIdResult;
 use Gs2\Showcase\Request\DecrementPurchaseCountByUserIdRequest;
@@ -2904,6 +2906,72 @@ class DeleteRandomShowcaseMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class IncrementPurchaseCountTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IncrementPurchaseCountRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IncrementPurchaseCountTask constructor.
+     * @param Gs2RestSession $session
+     * @param IncrementPurchaseCountRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IncrementPurchaseCountRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IncrementPurchaseCountResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/random/showcase/user/me/status/{showcaseName}/{displayItemName}/purchase/count";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{showcaseName}", $this->request->getShowcaseName() === null|| strlen($this->request->getShowcaseName()) == 0 ? "null" : $this->request->getShowcaseName(), $url);
+        $url = str_replace("{displayItemName}", $this->request->getDisplayItemName() === null|| strlen($this->request->getDisplayItemName()) == 0 ? "null" : $this->request->getDisplayItemName(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class IncrementPurchaseCountByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -4851,6 +4919,33 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
             DeleteRandomShowcaseMasterRequest $request
     ): DeleteRandomShowcaseMasterResult {
         return $this->deleteRandomShowcaseMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IncrementPurchaseCountRequest $request
+     * @return PromiseInterface
+     */
+    public function incrementPurchaseCountAsync(
+            IncrementPurchaseCountRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IncrementPurchaseCountTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IncrementPurchaseCountRequest $request
+     * @return IncrementPurchaseCountResult
+     */
+    public function incrementPurchaseCount (
+            IncrementPurchaseCountRequest $request
+    ): IncrementPurchaseCountResult {
+        return $this->incrementPurchaseCountAsync(
             $request
         )->wait();
     }

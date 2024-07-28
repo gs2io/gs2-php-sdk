@@ -27,6 +27,8 @@ class SetTransactionDefaultConfigByUserIdRequest extends Gs2BasicRequest {
     private $config;
     /** @var string */
     private $timeOffsetToken;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -55,6 +57,19 @@ class SetTransactionDefaultConfigByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withTimeOffsetToken(?string $timeOffsetToken): SetTransactionDefaultConfigByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): SetTransactionDefaultConfigByUserIdRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

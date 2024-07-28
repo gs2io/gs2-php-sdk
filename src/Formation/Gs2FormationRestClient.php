@@ -115,6 +115,8 @@ use Gs2\Formation\Request\SetMoldCapacityByUserIdRequest;
 use Gs2\Formation\Result\SetMoldCapacityByUserIdResult;
 use Gs2\Formation\Request\AddMoldCapacityByUserIdRequest;
 use Gs2\Formation\Result\AddMoldCapacityByUserIdResult;
+use Gs2\Formation\Request\SubMoldCapacityRequest;
+use Gs2\Formation\Result\SubMoldCapacityResult;
 use Gs2\Formation\Request\SubMoldCapacityByUserIdRequest;
 use Gs2\Formation\Result\SubMoldCapacityByUserIdResult;
 use Gs2\Formation\Request\DeleteMoldRequest;
@@ -2838,6 +2840,71 @@ class AddMoldCapacityByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SubMoldCapacityTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SubMoldCapacityRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SubMoldCapacityTask constructor.
+     * @param Gs2RestSession $session
+     * @param SubMoldCapacityRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SubMoldCapacityRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SubMoldCapacityResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/mold/{moldModelName}/sub";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{moldModelName}", $this->request->getMoldModelName() === null|| strlen($this->request->getMoldModelName()) == 0 ? "null" : $this->request->getMoldModelName(), $url);
+
+        $json = [];
+        if ($this->request->getCapacity() !== null) {
+            $json["capacity"] = $this->request->getCapacity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();
@@ -6053,6 +6120,33 @@ class Gs2FormationRestClient extends AbstractGs2Client {
             AddMoldCapacityByUserIdRequest $request
     ): AddMoldCapacityByUserIdResult {
         return $this->addMoldCapacityByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SubMoldCapacityRequest $request
+     * @return PromiseInterface
+     */
+    public function subMoldCapacityAsync(
+            SubMoldCapacityRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SubMoldCapacityTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SubMoldCapacityRequest $request
+     * @return SubMoldCapacityResult
+     */
+    public function subMoldCapacity (
+            SubMoldCapacityRequest $request
+    ): SubMoldCapacityResult {
+        return $this->subMoldCapacityAsync(
             $request
         )->wait();
     }

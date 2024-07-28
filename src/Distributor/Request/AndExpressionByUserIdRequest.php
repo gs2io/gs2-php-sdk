@@ -18,35 +18,47 @@
 namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Distributor\Model\DistributeResource;
+use Gs2\Distributor\Model\VerifyAction;
 
-class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
+class AndExpressionByUserIdRequest extends Gs2BasicRequest {
+    /** @var string */
+    private $namespaceName;
     /** @var string */
     private $userId;
-    /** @var DistributeResource */
-    private $distributeResource;
+    /** @var array */
+    private $actions;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+	public function withNamespaceName(?string $namespaceName): AndExpressionByUserIdRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-	public function withUserId(?string $userId): DistributeWithoutOverflowProcessRequest {
+	public function withUserId(?string $userId): AndExpressionByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getDistributeResource(): ?DistributeResource {
-		return $this->distributeResource;
+	public function getActions(): ?array {
+		return $this->actions;
 	}
-	public function setDistributeResource(?DistributeResource $distributeResource) {
-		$this->distributeResource = $distributeResource;
+	public function setActions(?array $actions) {
+		$this->actions = $actions;
 	}
-	public function withDistributeResource(?DistributeResource $distributeResource): DistributeWithoutOverflowProcessRequest {
-		$this->distributeResource = $distributeResource;
+	public function withActions(?array $actions): AndExpressionByUserIdRequest {
+		$this->actions = $actions;
 		return $this;
 	}
 	public function getTimeOffsetToken(): ?string {
@@ -55,7 +67,7 @@ class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
-	public function withTimeOffsetToken(?string $timeOffsetToken): DistributeWithoutOverflowProcessRequest {
+	public function withTimeOffsetToken(?string $timeOffsetToken): AndExpressionByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;
 	}
@@ -68,25 +80,37 @@ class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 	}
 
-	public function withDuplicationAvoider(?string $duplicationAvoider): DistributeWithoutOverflowProcessRequest {
+	public function withDuplicationAvoider(?string $duplicationAvoider): AndExpressionByUserIdRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?DistributeWithoutOverflowProcessRequest {
+    public static function fromJson(?array $data): ?AndExpressionByUserIdRequest {
         if ($data === null) {
             return null;
         }
-        return (new DistributeWithoutOverflowProcessRequest())
+        return (new AndExpressionByUserIdRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withDistributeResource(array_key_exists('distributeResource', $data) && $data['distributeResource'] !== null ? DistributeResource::fromJson($data['distributeResource']) : null)
+            ->withActions(array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                array_key_exists('actions', $data) && $data['actions'] !== null ? $data['actions'] : []
+            ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "distributeResource" => $this->getDistributeResource() !== null ? $this->getDistributeResource()->toJson() : null,
+            "actions" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getActions() !== null && $this->getActions() !== null ? $this->getActions() : []
+            ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

@@ -99,6 +99,8 @@ use Gs2\Guild\Request\DeleteGuildByGuildNameRequest;
 use Gs2\Guild\Result\DeleteGuildByGuildNameResult;
 use Gs2\Guild\Request\IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest;
 use Gs2\Guild\Result\IncreaseMaximumCurrentMaximumMemberCountByGuildNameResult;
+use Gs2\Guild\Request\DecreaseMaximumCurrentMaximumMemberCountRequest;
+use Gs2\Guild\Result\DecreaseMaximumCurrentMaximumMemberCountResult;
 use Gs2\Guild\Request\DecreaseMaximumCurrentMaximumMemberCountByGuildNameRequest;
 use Gs2\Guild\Result\DecreaseMaximumCurrentMaximumMemberCountByGuildNameResult;
 use Gs2\Guild\Request\VerifyCurrentMaximumMemberCountRequest;
@@ -2680,6 +2682,71 @@ class IncreaseMaximumCurrentMaximumMemberCountByGuildNameTask extends Gs2RestSes
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DecreaseMaximumCurrentMaximumMemberCountTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DecreaseMaximumCurrentMaximumMemberCountRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DecreaseMaximumCurrentMaximumMemberCountTask constructor.
+     * @param Gs2RestSession $session
+     * @param DecreaseMaximumCurrentMaximumMemberCountRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DecreaseMaximumCurrentMaximumMemberCountRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DecreaseMaximumCurrentMaximumMemberCountResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/currentMaximumMemberCount/decrease";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
@@ -6874,6 +6941,33 @@ class Gs2GuildRestClient extends AbstractGs2Client {
             IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
     ): IncreaseMaximumCurrentMaximumMemberCountByGuildNameResult {
         return $this->increaseMaximumCurrentMaximumMemberCountByGuildNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DecreaseMaximumCurrentMaximumMemberCountRequest $request
+     * @return PromiseInterface
+     */
+    public function decreaseMaximumCurrentMaximumMemberCountAsync(
+            DecreaseMaximumCurrentMaximumMemberCountRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DecreaseMaximumCurrentMaximumMemberCountTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DecreaseMaximumCurrentMaximumMemberCountRequest $request
+     * @return DecreaseMaximumCurrentMaximumMemberCountResult
+     */
+    public function decreaseMaximumCurrentMaximumMemberCount (
+            DecreaseMaximumCurrentMaximumMemberCountRequest $request
+    ): DecreaseMaximumCurrentMaximumMemberCountResult {
+        return $this->decreaseMaximumCurrentMaximumMemberCountAsync(
             $request
         )->wait();
     }

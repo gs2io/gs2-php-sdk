@@ -15,36 +15,47 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Distributor\Request;
+namespace Gs2\JobQueue\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Distributor\Model\Config;
 
-class SetTransactionDefaultConfigRequest extends Gs2BasicRequest {
+class DeleteJobRequest extends Gs2BasicRequest {
+    /** @var string */
+    private $namespaceName;
     /** @var string */
     private $accessToken;
-    /** @var array */
-    private $config;
+    /** @var string */
+    private $jobName;
     /** @var string */
     private $duplicationAvoider;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+	public function withNamespaceName(?string $namespaceName): DeleteJobRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-	public function withAccessToken(?string $accessToken): SetTransactionDefaultConfigRequest {
+	public function withAccessToken(?string $accessToken): DeleteJobRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getConfig(): ?array {
-		return $this->config;
+	public function getJobName(): ?string {
+		return $this->jobName;
 	}
-	public function setConfig(?array $config) {
-		$this->config = $config;
+	public function setJobName(?string $jobName) {
+		$this->jobName = $jobName;
 	}
-	public function withConfig(?array $config): SetTransactionDefaultConfigRequest {
-		$this->config = $config;
+	public function withJobName(?string $jobName): DeleteJobRequest {
+		$this->jobName = $jobName;
 		return $this;
 	}
 
@@ -56,34 +67,26 @@ class SetTransactionDefaultConfigRequest extends Gs2BasicRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 	}
 
-	public function withDuplicationAvoider(?string $duplicationAvoider): SetTransactionDefaultConfigRequest {
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteJobRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?SetTransactionDefaultConfigRequest {
+    public static function fromJson(?array $data): ?DeleteJobRequest {
         if ($data === null) {
             return null;
         }
-        return (new SetTransactionDefaultConfigRequest())
+        return (new DeleteJobRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withConfig(array_map(
-                function ($item) {
-                    return Config::fromJson($item);
-                },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
-            ));
+            ->withJobName(array_key_exists('jobName', $data) && $data['jobName'] !== null ? $data['jobName'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "config" => array_map(
-                function ($item) {
-                    return $item->toJson();
-                },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
-            ),
+            "jobName" => $this->getJobName(),
         );
     }
 }

@@ -95,10 +95,6 @@ use Gs2\Exchange\Request\IncrementalExchangeByUserIdRequest;
 use Gs2\Exchange\Result\IncrementalExchangeByUserIdResult;
 use Gs2\Exchange\Request\IncrementalExchangeByStampSheetRequest;
 use Gs2\Exchange\Result\IncrementalExchangeByStampSheetResult;
-use Gs2\Exchange\Request\UnlockIncrementalExchangeByUserIdRequest;
-use Gs2\Exchange\Result\UnlockIncrementalExchangeByUserIdResult;
-use Gs2\Exchange\Request\UnlockIncrementalExchangeByStampSheetRequest;
-use Gs2\Exchange\Result\UnlockIncrementalExchangeByStampSheetResult;
 use Gs2\Exchange\Request\ExportMasterRequest;
 use Gs2\Exchange\Result\ExportMasterResult;
 use Gs2\Exchange\Request\GetCurrentRateMasterRequest;
@@ -2319,131 +2315,6 @@ class IncrementalExchangeByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
-class UnlockIncrementalExchangeByUserIdTask extends Gs2RestSessionTask {
-
-    /**
-     * @var UnlockIncrementalExchangeByUserIdRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * UnlockIncrementalExchangeByUserIdTask constructor.
-     * @param Gs2RestSession $session
-     * @param UnlockIncrementalExchangeByUserIdRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        UnlockIncrementalExchangeByUserIdRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            UnlockIncrementalExchangeByUserIdResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/incremental/exchange/{rateName}/unlock";
-
-        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
-        $url = str_replace("{rateName}", $this->request->getRateName() === null|| strlen($this->request->getRateName()) == 0 ? "null" : $this->request->getRateName(), $url);
-        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
-
-        $json = [];
-        if ($this->request->getLockTransactionId() !== null) {
-            $json["lockTransactionId"] = $this->request->getLockTransactionId();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
-        if ($this->request->getTimeOffsetToken() !== null) {
-            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
-class UnlockIncrementalExchangeByStampSheetTask extends Gs2RestSessionTask {
-
-    /**
-     * @var UnlockIncrementalExchangeByStampSheetRequest
-     */
-    private $request;
-
-    /**
-     * @var Gs2RestSession
-     */
-    private $session;
-
-    /**
-     * UnlockIncrementalExchangeByStampSheetTask constructor.
-     * @param Gs2RestSession $session
-     * @param UnlockIncrementalExchangeByStampSheetRequest $request
-     */
-    public function __construct(
-        Gs2RestSession $session,
-        UnlockIncrementalExchangeByStampSheetRequest $request
-    ) {
-        parent::__construct(
-            $session,
-            UnlockIncrementalExchangeByStampSheetResult::class
-        );
-        $this->session = $session;
-        $this->request = $request;
-    }
-
-    public function executeImpl(): PromiseInterface {
-
-        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/incremental/exchange/unlock";
-
-        $json = [];
-        if ($this->request->getStampSheet() !== null) {
-            $json["stampSheet"] = $this->request->getStampSheet();
-        }
-        if ($this->request->getKeyId() !== null) {
-            $json["keyId"] = $this->request->getKeyId();
-        }
-        if ($this->request->getContextStack() !== null) {
-            $json["contextStack"] = $this->request->getContextStack();
-        }
-
-        $this->builder->setBody($json);
-
-        $this->builder->setMethod("POST")
-            ->setUrl($url)
-            ->setHeader("Content-Type", "application/json")
-            ->setHttpResponseHandler($this);
-
-        if ($this->request->getRequestId() !== null) {
-            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-
-        return parent::executeImpl();
-    }
-}
-
 class ExportMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -4504,60 +4375,6 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
             IncrementalExchangeByStampSheetRequest $request
     ): IncrementalExchangeByStampSheetResult {
         return $this->incrementalExchangeByStampSheetAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param UnlockIncrementalExchangeByUserIdRequest $request
-     * @return PromiseInterface
-     */
-    public function unlockIncrementalExchangeByUserIdAsync(
-            UnlockIncrementalExchangeByUserIdRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UnlockIncrementalExchangeByUserIdTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param UnlockIncrementalExchangeByUserIdRequest $request
-     * @return UnlockIncrementalExchangeByUserIdResult
-     */
-    public function unlockIncrementalExchangeByUserId (
-            UnlockIncrementalExchangeByUserIdRequest $request
-    ): UnlockIncrementalExchangeByUserIdResult {
-        return $this->unlockIncrementalExchangeByUserIdAsync(
-            $request
-        )->wait();
-    }
-
-    /**
-     * @param UnlockIncrementalExchangeByStampSheetRequest $request
-     * @return PromiseInterface
-     */
-    public function unlockIncrementalExchangeByStampSheetAsync(
-            UnlockIncrementalExchangeByStampSheetRequest $request
-    ): PromiseInterface {
-        /** @noinspection PhpParamsInspection */
-        $task = new UnlockIncrementalExchangeByStampSheetTask(
-            $this->session,
-            $request
-        );
-        return $this->session->execute($task);
-    }
-
-    /**
-     * @param UnlockIncrementalExchangeByStampSheetRequest $request
-     * @return UnlockIncrementalExchangeByStampSheetResult
-     */
-    public function unlockIncrementalExchangeByStampSheet (
-            UnlockIncrementalExchangeByStampSheetRequest $request
-    ): UnlockIncrementalExchangeByStampSheetResult {
-        return $this->unlockIncrementalExchangeByStampSheetAsync(
             $request
         )->wait();
     }

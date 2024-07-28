@@ -227,9 +227,6 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
-        if ($this->request->getEnableDirectEnhance() !== null) {
-            $json["enableDirectEnhance"] = $this->request->getEnableDirectEnhance();
-        }
         if ($this->request->getTransactionSetting() !== null) {
             $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
@@ -238,6 +235,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
+        }
+        if ($this->request->getEnableDirectEnhance() !== null) {
+            $json["enableDirectEnhance"] = $this->request->getEnableDirectEnhance();
         }
         if ($this->request->getQueueNamespaceId() !== null) {
             $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();
@@ -417,9 +417,6 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
-        if ($this->request->getEnableDirectEnhance() !== null) {
-            $json["enableDirectEnhance"] = $this->request->getEnableDirectEnhance();
-        }
         if ($this->request->getTransactionSetting() !== null) {
             $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
@@ -428,6 +425,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
+        }
+        if ($this->request->getEnableDirectEnhance() !== null) {
+            $json["enableDirectEnhance"] = $this->request->getEnableDirectEnhance();
         }
         if ($this->request->getQueueNamespaceId() !== null) {
             $json["queueNamespaceId"] = $this->request->getQueueNamespaceId();

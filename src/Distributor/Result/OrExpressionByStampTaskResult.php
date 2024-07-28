@@ -19,7 +19,7 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
-class AndExpressionByUserByStampTaskResult implements IResult {
+class OrExpressionByStampTaskResult implements IResult {
     /** @var string */
     private $newContextStack;
 
@@ -31,16 +31,16 @@ class AndExpressionByUserByStampTaskResult implements IResult {
 		$this->newContextStack = $newContextStack;
 	}
 
-	public function withNewContextStack(?string $newContextStack): AndExpressionByUserByStampTaskResult {
+	public function withNewContextStack(?string $newContextStack): OrExpressionByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?AndExpressionByUserByStampTaskResult {
+    public static function fromJson(?array $data): ?OrExpressionByStampTaskResult {
         if ($data === null) {
             return null;
         }
-        return (new AndExpressionByUserByStampTaskResult())
+        return (new OrExpressionByStampTaskResult())
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 

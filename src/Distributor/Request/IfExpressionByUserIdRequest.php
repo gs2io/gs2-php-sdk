@@ -32,6 +32,8 @@ class IfExpressionByUserIdRequest extends Gs2BasicRequest {
     private $trueActions;
     /** @var array */
     private $falseActions;
+    /** @var bool */
+    private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
@@ -86,6 +88,16 @@ class IfExpressionByUserIdRequest extends Gs2BasicRequest {
 		$this->falseActions = $falseActions;
 		return $this;
 	}
+	public function getMultiplyValueSpecifyingQuantity(): ?bool {
+		return $this->multiplyValueSpecifyingQuantity;
+	}
+	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+	}
+	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): IfExpressionByUserIdRequest {
+		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -130,6 +142,7 @@ class IfExpressionByUserIdRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('falseActions', $data) && $data['falseActions'] !== null ? $data['falseActions'] : []
             ))
+            ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -150,6 +163,7 @@ class IfExpressionByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getFalseActions() !== null && $this->getFalseActions() !== null ? $this->getFalseActions() : []
             ),
+            "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

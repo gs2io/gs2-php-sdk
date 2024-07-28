@@ -19,7 +19,7 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class AndExpressionByUserByStampTaskRequest extends Gs2BasicRequest {
+class OrExpressionByStampTaskRequest extends Gs2BasicRequest {
     /** @var string */
     private $stampTask;
     /** @var string */
@@ -30,7 +30,7 @@ class AndExpressionByUserByStampTaskRequest extends Gs2BasicRequest {
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
-	public function withStampTask(?string $stampTask): AndExpressionByUserByStampTaskRequest {
+	public function withStampTask(?string $stampTask): OrExpressionByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
@@ -40,16 +40,16 @@ class AndExpressionByUserByStampTaskRequest extends Gs2BasicRequest {
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
-	public function withKeyId(?string $keyId): AndExpressionByUserByStampTaskRequest {
+	public function withKeyId(?string $keyId): OrExpressionByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?AndExpressionByUserByStampTaskRequest {
+    public static function fromJson(?array $data): ?OrExpressionByStampTaskRequest {
         if ($data === null) {
             return null;
         }
-        return (new AndExpressionByUserByStampTaskRequest())
+        return (new OrExpressionByStampTaskRequest())
             ->withStampTask(array_key_exists('stampTask', $data) && $data['stampTask'] !== null ? $data['stampTask'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }

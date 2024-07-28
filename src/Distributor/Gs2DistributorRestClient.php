@@ -93,12 +93,12 @@ use Gs2\Distributor\Request\AndExpressionByUserIdRequest;
 use Gs2\Distributor\Result\AndExpressionByUserIdResult;
 use Gs2\Distributor\Request\OrExpressionByUserIdRequest;
 use Gs2\Distributor\Result\OrExpressionByUserIdResult;
-use Gs2\Distributor\Request\IfExpressionByUserByStampTaskRequest;
-use Gs2\Distributor\Result\IfExpressionByUserByStampTaskResult;
-use Gs2\Distributor\Request\AndExpressionByUserByStampTaskRequest;
-use Gs2\Distributor\Result\AndExpressionByUserByStampTaskResult;
-use Gs2\Distributor\Request\OrExpressionByUserByStampTaskRequest;
-use Gs2\Distributor\Result\OrExpressionByUserByStampTaskResult;
+use Gs2\Distributor\Request\IfExpressionByStampTaskRequest;
+use Gs2\Distributor\Result\IfExpressionByStampTaskResult;
+use Gs2\Distributor\Request\AndExpressionByStampTaskRequest;
+use Gs2\Distributor\Result\AndExpressionByStampTaskResult;
+use Gs2\Distributor\Request\OrExpressionByStampTaskRequest;
+use Gs2\Distributor\Result\OrExpressionByStampTaskResult;
 use Gs2\Distributor\Request\GetStampSheetResultRequest;
 use Gs2\Distributor\Result\GetStampSheetResultResult;
 use Gs2\Distributor\Request\GetStampSheetResultByUserIdRequest;
@@ -1950,6 +1950,9 @@ class IfExpressionByUserIdTask extends Gs2RestSessionTask {
             }
             $json["falseActions"] = $array;
         }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2119,10 +2122,10 @@ class OrExpressionByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
-class IfExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
+class IfExpressionByStampTaskTask extends Gs2RestSessionTask {
 
     /**
-     * @var IfExpressionByUserByStampTaskRequest
+     * @var IfExpressionByStampTaskRequest
      */
     private $request;
 
@@ -2132,17 +2135,17 @@ class IfExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * IfExpressionByUserByStampTaskTask constructor.
+     * IfExpressionByStampTaskTask constructor.
      * @param Gs2RestSession $session
-     * @param IfExpressionByUserByStampTaskRequest $request
+     * @param IfExpressionByStampTaskRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        IfExpressionByUserByStampTaskRequest $request
+        IfExpressionByStampTaskRequest $request
     ) {
         parent::__construct(
             $session,
-            IfExpressionByUserByStampTaskResult::class
+            IfExpressionByStampTaskResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2178,10 +2181,10 @@ class IfExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
     }
 }
 
-class AndExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
+class AndExpressionByStampTaskTask extends Gs2RestSessionTask {
 
     /**
-     * @var AndExpressionByUserByStampTaskRequest
+     * @var AndExpressionByStampTaskRequest
      */
     private $request;
 
@@ -2191,17 +2194,17 @@ class AndExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * AndExpressionByUserByStampTaskTask constructor.
+     * AndExpressionByStampTaskTask constructor.
      * @param Gs2RestSession $session
-     * @param AndExpressionByUserByStampTaskRequest $request
+     * @param AndExpressionByStampTaskRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        AndExpressionByUserByStampTaskRequest $request
+        AndExpressionByStampTaskRequest $request
     ) {
         parent::__construct(
             $session,
-            AndExpressionByUserByStampTaskResult::class
+            AndExpressionByStampTaskResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -2237,10 +2240,10 @@ class AndExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
     }
 }
 
-class OrExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
+class OrExpressionByStampTaskTask extends Gs2RestSessionTask {
 
     /**
-     * @var OrExpressionByUserByStampTaskRequest
+     * @var OrExpressionByStampTaskRequest
      */
     private $request;
 
@@ -2250,17 +2253,17 @@ class OrExpressionByUserByStampTaskTask extends Gs2RestSessionTask {
     private $session;
 
     /**
-     * OrExpressionByUserByStampTaskTask constructor.
+     * OrExpressionByStampTaskTask constructor.
      * @param Gs2RestSession $session
-     * @param OrExpressionByUserByStampTaskRequest $request
+     * @param OrExpressionByStampTaskRequest $request
      */
     public function __construct(
         Gs2RestSession $session,
-        OrExpressionByUserByStampTaskRequest $request
+        OrExpressionByStampTaskRequest $request
     ) {
         parent::__construct(
             $session,
-            OrExpressionByUserByStampTaskResult::class
+            OrExpressionByStampTaskResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -3301,14 +3304,14 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param IfExpressionByUserByStampTaskRequest $request
+     * @param IfExpressionByStampTaskRequest $request
      * @return PromiseInterface
      */
-    public function ifExpressionByUserByStampTaskAsync(
-            IfExpressionByUserByStampTaskRequest $request
+    public function ifExpressionByStampTaskAsync(
+            IfExpressionByStampTaskRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new IfExpressionByUserByStampTaskTask(
+        $task = new IfExpressionByStampTaskTask(
             $this->session,
             $request
         );
@@ -3316,26 +3319,26 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param IfExpressionByUserByStampTaskRequest $request
-     * @return IfExpressionByUserByStampTaskResult
+     * @param IfExpressionByStampTaskRequest $request
+     * @return IfExpressionByStampTaskResult
      */
-    public function ifExpressionByUserByStampTask (
-            IfExpressionByUserByStampTaskRequest $request
-    ): IfExpressionByUserByStampTaskResult {
-        return $this->ifExpressionByUserByStampTaskAsync(
+    public function ifExpressionByStampTask (
+            IfExpressionByStampTaskRequest $request
+    ): IfExpressionByStampTaskResult {
+        return $this->ifExpressionByStampTaskAsync(
             $request
         )->wait();
     }
 
     /**
-     * @param AndExpressionByUserByStampTaskRequest $request
+     * @param AndExpressionByStampTaskRequest $request
      * @return PromiseInterface
      */
-    public function andExpressionByUserByStampTaskAsync(
-            AndExpressionByUserByStampTaskRequest $request
+    public function andExpressionByStampTaskAsync(
+            AndExpressionByStampTaskRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new AndExpressionByUserByStampTaskTask(
+        $task = new AndExpressionByStampTaskTask(
             $this->session,
             $request
         );
@@ -3343,26 +3346,26 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param AndExpressionByUserByStampTaskRequest $request
-     * @return AndExpressionByUserByStampTaskResult
+     * @param AndExpressionByStampTaskRequest $request
+     * @return AndExpressionByStampTaskResult
      */
-    public function andExpressionByUserByStampTask (
-            AndExpressionByUserByStampTaskRequest $request
-    ): AndExpressionByUserByStampTaskResult {
-        return $this->andExpressionByUserByStampTaskAsync(
+    public function andExpressionByStampTask (
+            AndExpressionByStampTaskRequest $request
+    ): AndExpressionByStampTaskResult {
+        return $this->andExpressionByStampTaskAsync(
             $request
         )->wait();
     }
 
     /**
-     * @param OrExpressionByUserByStampTaskRequest $request
+     * @param OrExpressionByStampTaskRequest $request
      * @return PromiseInterface
      */
-    public function orExpressionByUserByStampTaskAsync(
-            OrExpressionByUserByStampTaskRequest $request
+    public function orExpressionByStampTaskAsync(
+            OrExpressionByStampTaskRequest $request
     ): PromiseInterface {
         /** @noinspection PhpParamsInspection */
-        $task = new OrExpressionByUserByStampTaskTask(
+        $task = new OrExpressionByStampTaskTask(
             $this->session,
             $request
         );
@@ -3370,13 +3373,13 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
-     * @param OrExpressionByUserByStampTaskRequest $request
-     * @return OrExpressionByUserByStampTaskResult
+     * @param OrExpressionByStampTaskRequest $request
+     * @return OrExpressionByStampTaskResult
      */
-    public function orExpressionByUserByStampTask (
-            OrExpressionByUserByStampTaskRequest $request
-    ): OrExpressionByUserByStampTaskResult {
-        return $this->orExpressionByUserByStampTaskAsync(
+    public function orExpressionByStampTask (
+            OrExpressionByStampTaskRequest $request
+    ): OrExpressionByStampTaskResult {
+        return $this->orExpressionByStampTaskAsync(
             $request
         )->wait();
     }

@@ -81,6 +81,10 @@ use Gs2\Account\Request\CreateTakeOverRequest;
 use Gs2\Account\Result\CreateTakeOverResult;
 use Gs2\Account\Request\CreateTakeOverByUserIdRequest;
 use Gs2\Account\Result\CreateTakeOverByUserIdResult;
+use Gs2\Account\Request\CreateTakeOverOpenIdConnectRequest;
+use Gs2\Account\Result\CreateTakeOverOpenIdConnectResult;
+use Gs2\Account\Request\CreateTakeOverOpenIdConnectAndByUserIdRequest;
+use Gs2\Account\Result\CreateTakeOverOpenIdConnectAndByUserIdResult;
 use Gs2\Account\Request\GetTakeOverRequest;
 use Gs2\Account\Result\GetTakeOverResult;
 use Gs2\Account\Request\GetTakeOverByUserIdRequest;
@@ -97,6 +101,10 @@ use Gs2\Account\Request\DeleteTakeOverByUserIdRequest;
 use Gs2\Account\Result\DeleteTakeOverByUserIdResult;
 use Gs2\Account\Request\DoTakeOverRequest;
 use Gs2\Account\Result\DoTakeOverResult;
+use Gs2\Account\Request\DoTakeOverOpenIdConnectRequest;
+use Gs2\Account\Result\DoTakeOverOpenIdConnectResult;
+use Gs2\Account\Request\GetAuthorizationUrlRequest;
+use Gs2\Account\Result\GetAuthorizationUrlResult;
 use Gs2\Account\Request\DescribePlatformIdsRequest;
 use Gs2\Account\Result\DescribePlatformIdsResult;
 use Gs2\Account\Request\DescribePlatformIdsByUserIdRequest;
@@ -123,6 +131,28 @@ use Gs2\Account\Request\GetDataOwnerByUserIdRequest;
 use Gs2\Account\Result\GetDataOwnerByUserIdResult;
 use Gs2\Account\Request\DeleteDataOwnerByUserIdRequest;
 use Gs2\Account\Result\DeleteDataOwnerByUserIdResult;
+use Gs2\Account\Request\DescribeTakeOverTypeModelsRequest;
+use Gs2\Account\Result\DescribeTakeOverTypeModelsResult;
+use Gs2\Account\Request\GetTakeOverTypeModelRequest;
+use Gs2\Account\Result\GetTakeOverTypeModelResult;
+use Gs2\Account\Request\DescribeTakeOverTypeModelMastersRequest;
+use Gs2\Account\Result\DescribeTakeOverTypeModelMastersResult;
+use Gs2\Account\Request\CreateTakeOverTypeModelMasterRequest;
+use Gs2\Account\Result\CreateTakeOverTypeModelMasterResult;
+use Gs2\Account\Request\GetTakeOverTypeModelMasterRequest;
+use Gs2\Account\Result\GetTakeOverTypeModelMasterResult;
+use Gs2\Account\Request\UpdateTakeOverTypeModelMasterRequest;
+use Gs2\Account\Result\UpdateTakeOverTypeModelMasterResult;
+use Gs2\Account\Request\DeleteTakeOverTypeModelMasterRequest;
+use Gs2\Account\Result\DeleteTakeOverTypeModelMasterResult;
+use Gs2\Account\Request\ExportMasterRequest;
+use Gs2\Account\Result\ExportMasterResult;
+use Gs2\Account\Request\GetCurrentModelMasterRequest;
+use Gs2\Account\Result\GetCurrentModelMasterResult;
+use Gs2\Account\Request\UpdateCurrentModelMasterRequest;
+use Gs2\Account\Result\UpdateCurrentModelMasterResult;
+use Gs2\Account\Request\UpdateCurrentModelMasterFromGitHubRequest;
+use Gs2\Account\Result\UpdateCurrentModelMasterFromGitHubResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -1773,6 +1803,141 @@ class CreateTakeOverByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class CreateTakeOverOpenIdConnectTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateTakeOverOpenIdConnectRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateTakeOverOpenIdConnectTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateTakeOverOpenIdConnectRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateTakeOverOpenIdConnectRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateTakeOverOpenIdConnectResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/me/takeover/openIdConnect";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getIdToken() !== null) {
+            $json["idToken"] = $this->request->getIdToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateTakeOverOpenIdConnectAndByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateTakeOverOpenIdConnectAndByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateTakeOverOpenIdConnectAndByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateTakeOverOpenIdConnectAndByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateTakeOverOpenIdConnectAndByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateTakeOverOpenIdConnectAndByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/takeover/openIdConnect";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getIdToken() !== null) {
+            $json["idToken"] = $this->request->getIdToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class GetTakeOverTask extends Gs2RestSessionTask {
 
     /**
@@ -2283,6 +2448,126 @@ class DoTakeOverTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DoTakeOverOpenIdConnectTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DoTakeOverOpenIdConnectRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DoTakeOverOpenIdConnectTask constructor.
+     * @param Gs2RestSession $session
+     * @param DoTakeOverOpenIdConnectRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DoTakeOverOpenIdConnectRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DoTakeOverOpenIdConnectResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/takeover/type/{type}/openIdConnect";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $json = [];
+        if ($this->request->getIdToken() !== null) {
+            $json["idToken"] = $this->request->getIdToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetAuthorizationUrlTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetAuthorizationUrlRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetAuthorizationUrlTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetAuthorizationUrlRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetAuthorizationUrlRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetAuthorizationUrlResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/type/{type}/authorization/url";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
 
         return parent::executeImpl();
@@ -3130,6 +3415,662 @@ class DeleteDataOwnerByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeTakeOverTypeModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeTakeOverTypeModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeTakeOverTypeModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeTakeOverTypeModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeTakeOverTypeModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeTakeOverTypeModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetTakeOverTypeModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetTakeOverTypeModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetTakeOverTypeModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetTakeOverTypeModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetTakeOverTypeModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetTakeOverTypeModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/{type}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeTakeOverTypeModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeTakeOverTypeModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeTakeOverTypeModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeTakeOverTypeModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeTakeOverTypeModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeTakeOverTypeModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateTakeOverTypeModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateTakeOverTypeModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateTakeOverTypeModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateTakeOverTypeModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateTakeOverTypeModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateTakeOverTypeModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getOpenIdConnectSetting() !== null) {
+            $json["openIdConnectSetting"] = $this->request->getOpenIdConnectSetting()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetTakeOverTypeModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetTakeOverTypeModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetTakeOverTypeModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetTakeOverTypeModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetTakeOverTypeModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetTakeOverTypeModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{type}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateTakeOverTypeModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateTakeOverTypeModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateTakeOverTypeModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateTakeOverTypeModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateTakeOverTypeModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateTakeOverTypeModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{type}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getOpenIdConnectSetting() !== null) {
+            $json["openIdConnectSetting"] = $this->request->getOpenIdConnectSetting()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteTakeOverTypeModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteTakeOverTypeModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteTakeOverTypeModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteTakeOverTypeModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteTakeOverTypeModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteTakeOverTypeModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{type}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ExportMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ExportMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ExportMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param ExportMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ExportMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ExportMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/export";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetCurrentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetCurrentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetCurrentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetCurrentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetCurrentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetCurrentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateCurrentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateCurrentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateCurrentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateCurrentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateCurrentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateCurrentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getSettings() !== null) {
+            $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateCurrentModelMasterFromGitHubTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateCurrentModelMasterFromGitHubRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateCurrentModelMasterFromGitHubTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateCurrentModelMasterFromGitHubRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateCurrentModelMasterFromGitHubResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/from_git_hub";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getCheckoutSetting() !== null) {
+            $json["checkoutSetting"] = $this->request->getCheckoutSetting()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Account API クライアント
  *
@@ -3850,6 +4791,60 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param CreateTakeOverOpenIdConnectRequest $request
+     * @return PromiseInterface
+     */
+    public function createTakeOverOpenIdConnectAsync(
+            CreateTakeOverOpenIdConnectRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateTakeOverOpenIdConnectTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateTakeOverOpenIdConnectRequest $request
+     * @return CreateTakeOverOpenIdConnectResult
+     */
+    public function createTakeOverOpenIdConnect (
+            CreateTakeOverOpenIdConnectRequest $request
+    ): CreateTakeOverOpenIdConnectResult {
+        return $this->createTakeOverOpenIdConnectAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateTakeOverOpenIdConnectAndByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function createTakeOverOpenIdConnectAndByUserIdAsync(
+            CreateTakeOverOpenIdConnectAndByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateTakeOverOpenIdConnectAndByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateTakeOverOpenIdConnectAndByUserIdRequest $request
+     * @return CreateTakeOverOpenIdConnectAndByUserIdResult
+     */
+    public function createTakeOverOpenIdConnectAndByUserId (
+            CreateTakeOverOpenIdConnectAndByUserIdRequest $request
+    ): CreateTakeOverOpenIdConnectAndByUserIdResult {
+        return $this->createTakeOverOpenIdConnectAndByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param GetTakeOverRequest $request
      * @return PromiseInterface
      */
@@ -4061,6 +5056,60 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             DoTakeOverRequest $request
     ): DoTakeOverResult {
         return $this->doTakeOverAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DoTakeOverOpenIdConnectRequest $request
+     * @return PromiseInterface
+     */
+    public function doTakeOverOpenIdConnectAsync(
+            DoTakeOverOpenIdConnectRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DoTakeOverOpenIdConnectTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DoTakeOverOpenIdConnectRequest $request
+     * @return DoTakeOverOpenIdConnectResult
+     */
+    public function doTakeOverOpenIdConnect (
+            DoTakeOverOpenIdConnectRequest $request
+    ): DoTakeOverOpenIdConnectResult {
+        return $this->doTakeOverOpenIdConnectAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetAuthorizationUrlRequest $request
+     * @return PromiseInterface
+     */
+    public function getAuthorizationUrlAsync(
+            GetAuthorizationUrlRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetAuthorizationUrlTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetAuthorizationUrlRequest $request
+     * @return GetAuthorizationUrlResult
+     */
+    public function getAuthorizationUrl (
+            GetAuthorizationUrlRequest $request
+    ): GetAuthorizationUrlResult {
+        return $this->getAuthorizationUrlAsync(
             $request
         )->wait();
     }
@@ -4412,6 +5461,303 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             DeleteDataOwnerByUserIdRequest $request
     ): DeleteDataOwnerByUserIdResult {
         return $this->deleteDataOwnerByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeTakeOverTypeModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeTakeOverTypeModelsAsync(
+            DescribeTakeOverTypeModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeTakeOverTypeModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeTakeOverTypeModelsRequest $request
+     * @return DescribeTakeOverTypeModelsResult
+     */
+    public function describeTakeOverTypeModels (
+            DescribeTakeOverTypeModelsRequest $request
+    ): DescribeTakeOverTypeModelsResult {
+        return $this->describeTakeOverTypeModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetTakeOverTypeModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getTakeOverTypeModelAsync(
+            GetTakeOverTypeModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetTakeOverTypeModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetTakeOverTypeModelRequest $request
+     * @return GetTakeOverTypeModelResult
+     */
+    public function getTakeOverTypeModel (
+            GetTakeOverTypeModelRequest $request
+    ): GetTakeOverTypeModelResult {
+        return $this->getTakeOverTypeModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeTakeOverTypeModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeTakeOverTypeModelMastersAsync(
+            DescribeTakeOverTypeModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeTakeOverTypeModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeTakeOverTypeModelMastersRequest $request
+     * @return DescribeTakeOverTypeModelMastersResult
+     */
+    public function describeTakeOverTypeModelMasters (
+            DescribeTakeOverTypeModelMastersRequest $request
+    ): DescribeTakeOverTypeModelMastersResult {
+        return $this->describeTakeOverTypeModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateTakeOverTypeModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createTakeOverTypeModelMasterAsync(
+            CreateTakeOverTypeModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateTakeOverTypeModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateTakeOverTypeModelMasterRequest $request
+     * @return CreateTakeOverTypeModelMasterResult
+     */
+    public function createTakeOverTypeModelMaster (
+            CreateTakeOverTypeModelMasterRequest $request
+    ): CreateTakeOverTypeModelMasterResult {
+        return $this->createTakeOverTypeModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetTakeOverTypeModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getTakeOverTypeModelMasterAsync(
+            GetTakeOverTypeModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetTakeOverTypeModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetTakeOverTypeModelMasterRequest $request
+     * @return GetTakeOverTypeModelMasterResult
+     */
+    public function getTakeOverTypeModelMaster (
+            GetTakeOverTypeModelMasterRequest $request
+    ): GetTakeOverTypeModelMasterResult {
+        return $this->getTakeOverTypeModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateTakeOverTypeModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateTakeOverTypeModelMasterAsync(
+            UpdateTakeOverTypeModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateTakeOverTypeModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateTakeOverTypeModelMasterRequest $request
+     * @return UpdateTakeOverTypeModelMasterResult
+     */
+    public function updateTakeOverTypeModelMaster (
+            UpdateTakeOverTypeModelMasterRequest $request
+    ): UpdateTakeOverTypeModelMasterResult {
+        return $this->updateTakeOverTypeModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteTakeOverTypeModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteTakeOverTypeModelMasterAsync(
+            DeleteTakeOverTypeModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteTakeOverTypeModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteTakeOverTypeModelMasterRequest $request
+     * @return DeleteTakeOverTypeModelMasterResult
+     */
+    public function deleteTakeOverTypeModelMaster (
+            DeleteTakeOverTypeModelMasterRequest $request
+    ): DeleteTakeOverTypeModelMasterResult {
+        return $this->deleteTakeOverTypeModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ExportMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function exportMasterAsync(
+            ExportMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ExportMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ExportMasterRequest $request
+     * @return ExportMasterResult
+     */
+    public function exportMaster (
+            ExportMasterRequest $request
+    ): ExportMasterResult {
+        return $this->exportMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetCurrentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getCurrentModelMasterAsync(
+            GetCurrentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetCurrentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetCurrentModelMasterRequest $request
+     * @return GetCurrentModelMasterResult
+     */
+    public function getCurrentModelMaster (
+            GetCurrentModelMasterRequest $request
+    ): GetCurrentModelMasterResult {
+        return $this->getCurrentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateCurrentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateCurrentModelMasterAsync(
+            UpdateCurrentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCurrentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateCurrentModelMasterRequest $request
+     * @return UpdateCurrentModelMasterResult
+     */
+    public function updateCurrentModelMaster (
+            UpdateCurrentModelMasterRequest $request
+    ): UpdateCurrentModelMasterResult {
+        return $this->updateCurrentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
+     * @return PromiseInterface
+     */
+    public function updateCurrentModelMasterFromGitHubAsync(
+            UpdateCurrentModelMasterFromGitHubRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCurrentModelMasterFromGitHubTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
+     * @return UpdateCurrentModelMasterFromGitHubResult
+     */
+    public function updateCurrentModelMasterFromGitHub (
+            UpdateCurrentModelMasterFromGitHubRequest $request
+    ): UpdateCurrentModelMasterFromGitHubResult {
+        return $this->updateCurrentModelMasterFromGitHubAsync(
             $request
         )->wait();
     }

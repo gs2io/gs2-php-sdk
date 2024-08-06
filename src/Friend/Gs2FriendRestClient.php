@@ -65,6 +65,8 @@ use Gs2\Friend\Request\UpdateProfileByUserIdRequest;
 use Gs2\Friend\Result\UpdateProfileByUserIdResult;
 use Gs2\Friend\Request\DeleteProfileByUserIdRequest;
 use Gs2\Friend\Result\DeleteProfileByUserIdResult;
+use Gs2\Friend\Request\UpdateProfileByStampSheetRequest;
+use Gs2\Friend\Result\UpdateProfileByStampSheetResult;
 use Gs2\Friend\Request\DescribeFriendsRequest;
 use Gs2\Friend\Result\DescribeFriendsResult;
 use Gs2\Friend\Request\DescribeFriendsByUserIdRequest;
@@ -1315,6 +1317,65 @@ class DeleteProfileByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateProfileByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateProfileByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateProfileByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateProfileByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateProfileByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateProfileByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/profile/update";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -4207,6 +4268,33 @@ class Gs2FriendRestClient extends AbstractGs2Client {
             DeleteProfileByUserIdRequest $request
     ): DeleteProfileByUserIdResult {
         return $this->deleteProfileByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateProfileByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function updateProfileByStampSheetAsync(
+            UpdateProfileByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateProfileByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateProfileByStampSheetRequest $request
+     * @return UpdateProfileByStampSheetResult
+     */
+    public function updateProfileByStampSheet (
+            UpdateProfileByStampSheetRequest $request
+    ): UpdateProfileByStampSheetResult {
+        return $this->updateProfileByStampSheetAsync(
             $request
         )->wait();
     }

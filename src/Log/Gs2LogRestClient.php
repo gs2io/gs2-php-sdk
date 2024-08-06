@@ -57,6 +57,12 @@ use Gs2\Log\Request\QueryExecuteStampTaskLogRequest;
 use Gs2\Log\Result\QueryExecuteStampTaskLogResult;
 use Gs2\Log\Request\CountExecuteStampTaskLogRequest;
 use Gs2\Log\Result\CountExecuteStampTaskLogResult;
+use Gs2\Log\Request\QueryInGameLogRequest;
+use Gs2\Log\Result\QueryInGameLogResult;
+use Gs2\Log\Request\SendInGameLogRequest;
+use Gs2\Log\Result\SendInGameLogResult;
+use Gs2\Log\Request\SendInGameLogByUserIdRequest;
+use Gs2\Log\Result\SendInGameLogByUserIdResult;
 use Gs2\Log\Request\QueryAccessLogWithTelemetryRequest;
 use Gs2\Log\Result\QueryAccessLogWithTelemetryResult;
 use Gs2\Log\Request\DescribeInsightsRequest;
@@ -1167,6 +1173,238 @@ class CountExecuteStampTaskLogTask extends Gs2RestSessionTask {
     }
 }
 
+class QueryInGameLogTask extends Gs2RestSessionTask {
+
+    /**
+     * @var QueryInGameLogRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * QueryInGameLogTask constructor.
+     * @param Gs2RestSession $session
+     * @param QueryInGameLogRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        QueryInGameLogRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            QueryInGameLogResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/ingame/log";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getUserId() !== null) {
+            $json["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getTags() !== null) {
+            $array = [];
+            foreach ($this->request->getTags() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["tags"] = $array;
+        }
+        if ($this->request->getBegin() !== null) {
+            $json["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $json["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getLongTerm() !== null) {
+            $json["longTerm"] = $this->request->getLongTerm();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $json["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $json["limit"] = $this->request->getLimit();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SendInGameLogTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SendInGameLogRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SendInGameLogTask constructor.
+     * @param Gs2RestSession $session
+     * @param SendInGameLogRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SendInGameLogRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SendInGameLogResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/ingame/log/user/me/send";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getTags() !== null) {
+            $array = [];
+            foreach ($this->request->getTags() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["tags"] = $array;
+        }
+        if ($this->request->getPayload() !== null) {
+            $json["payload"] = $this->request->getPayload();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class SendInGameLogByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SendInGameLogByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SendInGameLogByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param SendInGameLogByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SendInGameLogByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SendInGameLogByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/ingame/log/user/{userId}/send";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getTags() !== null) {
+            $array = [];
+            foreach ($this->request->getTags() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["tags"] = $array;
+        }
+        if ($this->request->getPayload() !== null) {
+            $json["payload"] = $this->request->getPayload();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class QueryAccessLogWithTelemetryTask extends Gs2RestSessionTask {
 
     /**
@@ -1873,6 +2111,87 @@ class Gs2LogRestClient extends AbstractGs2Client {
             CountExecuteStampTaskLogRequest $request
     ): CountExecuteStampTaskLogResult {
         return $this->countExecuteStampTaskLogAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param QueryInGameLogRequest $request
+     * @return PromiseInterface
+     */
+    public function queryInGameLogAsync(
+            QueryInGameLogRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new QueryInGameLogTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param QueryInGameLogRequest $request
+     * @return QueryInGameLogResult
+     */
+    public function queryInGameLog (
+            QueryInGameLogRequest $request
+    ): QueryInGameLogResult {
+        return $this->queryInGameLogAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SendInGameLogRequest $request
+     * @return PromiseInterface
+     */
+    public function sendInGameLogAsync(
+            SendInGameLogRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SendInGameLogTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SendInGameLogRequest $request
+     * @return SendInGameLogResult
+     */
+    public function sendInGameLog (
+            SendInGameLogRequest $request
+    ): SendInGameLogResult {
+        return $this->sendInGameLogAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SendInGameLogByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function sendInGameLogByUserIdAsync(
+            SendInGameLogByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SendInGameLogByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SendInGameLogByUserIdRequest $request
+     * @return SendInGameLogByUserIdResult
+     */
+    public function sendInGameLogByUserId (
+            SendInGameLogByUserIdRequest $request
+    ): SendInGameLogByUserIdResult {
+        return $this->sendInGameLogByUserIdAsync(
             $request
         )->wait();
     }

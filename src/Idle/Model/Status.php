@@ -44,6 +44,10 @@ class Status implements IModel {
 	/**
      * @var int
 	 */
+	private $nextRewardsAt;
+	/**
+     * @var int
+	 */
 	private $maximumIdleMinutes;
 	/**
      * @var int
@@ -107,6 +111,16 @@ class Status implements IModel {
 		$this->idleMinutes = $idleMinutes;
 		return $this;
 	}
+	public function getNextRewardsAt(): ?int {
+		return $this->nextRewardsAt;
+	}
+	public function setNextRewardsAt(?int $nextRewardsAt) {
+		$this->nextRewardsAt = $nextRewardsAt;
+	}
+	public function withNextRewardsAt(?int $nextRewardsAt): Status {
+		$this->nextRewardsAt = $nextRewardsAt;
+		return $this;
+	}
 	public function getMaximumIdleMinutes(): ?int {
 		return $this->maximumIdleMinutes;
 	}
@@ -158,6 +172,7 @@ class Status implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withRandomSeed(array_key_exists('randomSeed', $data) && $data['randomSeed'] !== null ? $data['randomSeed'] : null)
             ->withIdleMinutes(array_key_exists('idleMinutes', $data) && $data['idleMinutes'] !== null ? $data['idleMinutes'] : null)
+            ->withNextRewardsAt(array_key_exists('nextRewardsAt', $data) && $data['nextRewardsAt'] !== null ? $data['nextRewardsAt'] : null)
             ->withMaximumIdleMinutes(array_key_exists('maximumIdleMinutes', $data) && $data['maximumIdleMinutes'] !== null ? $data['maximumIdleMinutes'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -171,6 +186,7 @@ class Status implements IModel {
             "userId" => $this->getUserId(),
             "randomSeed" => $this->getRandomSeed(),
             "idleMinutes" => $this->getIdleMinutes(),
+            "nextRewardsAt" => $this->getNextRewardsAt(),
             "maximumIdleMinutes" => $this->getMaximumIdleMinutes(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

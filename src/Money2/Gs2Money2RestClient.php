@@ -226,8 +226,11 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getPlatformSetting() !== null) {
             $json["platformSetting"] = $this->request->getPlatformSetting()->toJson();
         }
-        if ($this->request->getChangeBalanceScript() !== null) {
-            $json["changeBalanceScript"] = $this->request->getChangeBalanceScript()->toJson();
+        if ($this->request->getDepositBalanceScript() !== null) {
+            $json["depositBalanceScript"] = $this->request->getDepositBalanceScript()->toJson();
+        }
+        if ($this->request->getWithdrawBalanceScript() !== null) {
+            $json["withdrawBalanceScript"] = $this->request->getWithdrawBalanceScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -410,8 +413,11 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getPlatformSetting() !== null) {
             $json["platformSetting"] = $this->request->getPlatformSetting()->toJson();
         }
-        if ($this->request->getChangeBalanceScript() !== null) {
-            $json["changeBalanceScript"] = $this->request->getChangeBalanceScript()->toJson();
+        if ($this->request->getDepositBalanceScript() !== null) {
+            $json["depositBalanceScript"] = $this->request->getDepositBalanceScript()->toJson();
+        }
+        if ($this->request->getWithdrawBalanceScript() !== null) {
+            $json["withdrawBalanceScript"] = $this->request->getWithdrawBalanceScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

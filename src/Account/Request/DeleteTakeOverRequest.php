@@ -27,8 +27,6 @@ class DeleteTakeOverRequest extends Gs2BasicRequest {
     /** @var int */
     private $type;
     /** @var string */
-    private $userIdentifier;
-    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -60,16 +58,6 @@ class DeleteTakeOverRequest extends Gs2BasicRequest {
 		$this->type = $type;
 		return $this;
 	}
-	public function getUserIdentifier(): ?string {
-		return $this->userIdentifier;
-	}
-	public function setUserIdentifier(?string $userIdentifier) {
-		$this->userIdentifier = $userIdentifier;
-	}
-	public function withUserIdentifier(?string $userIdentifier): DeleteTakeOverRequest {
-		$this->userIdentifier = $userIdentifier;
-		return $this;
-	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -91,8 +79,7 @@ class DeleteTakeOverRequest extends Gs2BasicRequest {
         return (new DeleteTakeOverRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
-            ->withUserIdentifier(array_key_exists('userIdentifier', $data) && $data['userIdentifier'] !== null ? $data['userIdentifier'] : null);
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null);
     }
 
     public function toJson(): array {
@@ -100,7 +87,6 @@ class DeleteTakeOverRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "type" => $this->getType(),
-            "userIdentifier" => $this->getUserIdentifier(),
         );
     }
 }

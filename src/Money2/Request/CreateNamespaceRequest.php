@@ -37,7 +37,9 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     /** @var PlatformSetting */
     private $platformSetting;
     /** @var ScriptSetting */
-    private $changeBalanceScript;
+    private $depositBalanceScript;
+    /** @var ScriptSetting */
+    private $withdrawBalanceScript;
     /** @var LogSetting */
     private $logSetting;
 	public function getName(): ?string {
@@ -90,14 +92,24 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->platformSetting = $platformSetting;
 		return $this;
 	}
-	public function getChangeBalanceScript(): ?ScriptSetting {
-		return $this->changeBalanceScript;
+	public function getDepositBalanceScript(): ?ScriptSetting {
+		return $this->depositBalanceScript;
 	}
-	public function setChangeBalanceScript(?ScriptSetting $changeBalanceScript) {
-		$this->changeBalanceScript = $changeBalanceScript;
+	public function setDepositBalanceScript(?ScriptSetting $depositBalanceScript) {
+		$this->depositBalanceScript = $depositBalanceScript;
 	}
-	public function withChangeBalanceScript(?ScriptSetting $changeBalanceScript): CreateNamespaceRequest {
-		$this->changeBalanceScript = $changeBalanceScript;
+	public function withDepositBalanceScript(?ScriptSetting $depositBalanceScript): CreateNamespaceRequest {
+		$this->depositBalanceScript = $depositBalanceScript;
+		return $this;
+	}
+	public function getWithdrawBalanceScript(): ?ScriptSetting {
+		return $this->withdrawBalanceScript;
+	}
+	public function setWithdrawBalanceScript(?ScriptSetting $withdrawBalanceScript) {
+		$this->withdrawBalanceScript = $withdrawBalanceScript;
+	}
+	public function withWithdrawBalanceScript(?ScriptSetting $withdrawBalanceScript): CreateNamespaceRequest {
+		$this->withdrawBalanceScript = $withdrawBalanceScript;
 		return $this;
 	}
 	public function getLogSetting(): ?LogSetting {
@@ -121,7 +133,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withSharedFreeCurrency(array_key_exists('sharedFreeCurrency', $data) ? $data['sharedFreeCurrency'] : null)
             ->withPlatformSetting(array_key_exists('platformSetting', $data) && $data['platformSetting'] !== null ? PlatformSetting::fromJson($data['platformSetting']) : null)
-            ->withChangeBalanceScript(array_key_exists('changeBalanceScript', $data) && $data['changeBalanceScript'] !== null ? ScriptSetting::fromJson($data['changeBalanceScript']) : null)
+            ->withDepositBalanceScript(array_key_exists('depositBalanceScript', $data) && $data['depositBalanceScript'] !== null ? ScriptSetting::fromJson($data['depositBalanceScript']) : null)
+            ->withWithdrawBalanceScript(array_key_exists('withdrawBalanceScript', $data) && $data['withdrawBalanceScript'] !== null ? ScriptSetting::fromJson($data['withdrawBalanceScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -132,7 +145,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "description" => $this->getDescription(),
             "sharedFreeCurrency" => $this->getSharedFreeCurrency(),
             "platformSetting" => $this->getPlatformSetting() !== null ? $this->getPlatformSetting()->toJson() : null,
-            "changeBalanceScript" => $this->getChangeBalanceScript() !== null ? $this->getChangeBalanceScript()->toJson() : null,
+            "depositBalanceScript" => $this->getDepositBalanceScript() !== null ? $this->getDepositBalanceScript()->toJson() : null,
+            "withdrawBalanceScript" => $this->getWithdrawBalanceScript() !== null ? $this->getWithdrawBalanceScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

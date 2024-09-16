@@ -24,7 +24,15 @@ class ScopedValue implements IModel {
 	/**
      * @var string
 	 */
+	private $scopeType;
+	/**
+     * @var string
+	 */
 	private $resetType;
+	/**
+     * @var string
+	 */
+	private $conditionName;
 	/**
      * @var int
 	 */
@@ -37,6 +45,16 @@ class ScopedValue implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	public function getScopeType(): ?string {
+		return $this->scopeType;
+	}
+	public function setScopeType(?string $scopeType) {
+		$this->scopeType = $scopeType;
+	}
+	public function withScopeType(?string $scopeType): ScopedValue {
+		$this->scopeType = $scopeType;
+		return $this;
+	}
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
@@ -45,6 +63,16 @@ class ScopedValue implements IModel {
 	}
 	public function withResetType(?string $resetType): ScopedValue {
 		$this->resetType = $resetType;
+		return $this;
+	}
+	public function getConditionName(): ?string {
+		return $this->conditionName;
+	}
+	public function setConditionName(?string $conditionName) {
+		$this->conditionName = $conditionName;
+	}
+	public function withConditionName(?string $conditionName): ScopedValue {
+		$this->conditionName = $conditionName;
 		return $this;
 	}
 	public function getValue(): ?int {
@@ -83,7 +111,9 @@ class ScopedValue implements IModel {
             return null;
         }
         return (new ScopedValue())
+            ->withScopeType(array_key_exists('scopeType', $data) && $data['scopeType'] !== null ? $data['scopeType'] : null)
             ->withResetType(array_key_exists('resetType', $data) && $data['resetType'] !== null ? $data['resetType'] : null)
+            ->withConditionName(array_key_exists('conditionName', $data) && $data['conditionName'] !== null ? $data['conditionName'] : null)
             ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
             ->withNextResetAt(array_key_exists('nextResetAt', $data) && $data['nextResetAt'] !== null ? $data['nextResetAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
@@ -91,7 +121,9 @@ class ScopedValue implements IModel {
 
     public function toJson(): array {
         return array(
+            "scopeType" => $this->getScopeType(),
             "resetType" => $this->getResetType(),
+            "conditionName" => $this->getConditionName(),
             "value" => $this->getValue(),
             "nextResetAt" => $this->getNextResetAt(),
             "updatedAt" => $this->getUpdatedAt(),

@@ -18,6 +18,7 @@
 namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\CounterScopeModel;
 
 class UpdateCounterModelMasterRequest extends Gs2BasicRequest {

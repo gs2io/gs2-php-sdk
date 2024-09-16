@@ -28,7 +28,15 @@ class TargetCounterModel implements IModel {
 	/**
      * @var string
 	 */
+	private $scopeType;
+	/**
+     * @var string
+	 */
 	private $resetType;
+	/**
+     * @var string
+	 */
+	private $conditionName;
 	/**
      * @var int
 	 */
@@ -43,6 +51,16 @@ class TargetCounterModel implements IModel {
 		$this->counterName = $counterName;
 		return $this;
 	}
+	public function getScopeType(): ?string {
+		return $this->scopeType;
+	}
+	public function setScopeType(?string $scopeType) {
+		$this->scopeType = $scopeType;
+	}
+	public function withScopeType(?string $scopeType): TargetCounterModel {
+		$this->scopeType = $scopeType;
+		return $this;
+	}
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
@@ -51,6 +69,16 @@ class TargetCounterModel implements IModel {
 	}
 	public function withResetType(?string $resetType): TargetCounterModel {
 		$this->resetType = $resetType;
+		return $this;
+	}
+	public function getConditionName(): ?string {
+		return $this->conditionName;
+	}
+	public function setConditionName(?string $conditionName) {
+		$this->conditionName = $conditionName;
+	}
+	public function withConditionName(?string $conditionName): TargetCounterModel {
+		$this->conditionName = $conditionName;
 		return $this;
 	}
 	public function getValue(): ?int {
@@ -70,14 +98,18 @@ class TargetCounterModel implements IModel {
         }
         return (new TargetCounterModel())
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
+            ->withScopeType(array_key_exists('scopeType', $data) && $data['scopeType'] !== null ? $data['scopeType'] : null)
             ->withResetType(array_key_exists('resetType', $data) && $data['resetType'] !== null ? $data['resetType'] : null)
+            ->withConditionName(array_key_exists('conditionName', $data) && $data['conditionName'] !== null ? $data['conditionName'] : null)
             ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null);
     }
 
     public function toJson(): array {
         return array(
             "counterName" => $this->getCounterName(),
+            "scopeType" => $this->getScopeType(),
             "resetType" => $this->getResetType(),
+            "conditionName" => $this->getConditionName(),
             "value" => $this->getValue(),
         );
     }

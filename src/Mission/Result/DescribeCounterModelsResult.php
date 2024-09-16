@@ -18,6 +18,7 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\CounterScopeModel;
 use Gs2\Mission\Model\CounterModel;
 

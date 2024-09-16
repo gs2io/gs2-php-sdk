@@ -3101,8 +3101,14 @@ class VerifyCounterValueTask extends Gs2RestSessionTask {
         $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
 
         $json = [];
+        if ($this->request->getScopeType() !== null) {
+            $json["scopeType"] = $this->request->getScopeType();
+        }
         if ($this->request->getResetType() !== null) {
             $json["resetType"] = $this->request->getResetType();
+        }
+        if ($this->request->getConditionName() !== null) {
+            $json["conditionName"] = $this->request->getConditionName();
         }
         if ($this->request->getValue() !== null) {
             $json["value"] = $this->request->getValue();
@@ -3174,8 +3180,14 @@ class VerifyCounterValueByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
 
         $json = [];
+        if ($this->request->getScopeType() !== null) {
+            $json["scopeType"] = $this->request->getScopeType();
+        }
         if ($this->request->getResetType() !== null) {
             $json["resetType"] = $this->request->getResetType();
+        }
+        if ($this->request->getConditionName() !== null) {
+            $json["conditionName"] = $this->request->getConditionName();
         }
         if ($this->request->getValue() !== null) {
             $json["value"] = $this->request->getValue();

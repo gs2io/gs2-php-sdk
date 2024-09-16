@@ -29,7 +29,11 @@ class VerifyCounterValueRequest extends Gs2BasicRequest {
     /** @var string */
     private $verifyType;
     /** @var string */
+    private $scopeType;
+    /** @var string */
     private $resetType;
+    /** @var string */
+    private $conditionName;
     /** @var int */
     private $value;
     /** @var bool */
@@ -76,6 +80,16 @@ class VerifyCounterValueRequest extends Gs2BasicRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+	public function getScopeType(): ?string {
+		return $this->scopeType;
+	}
+	public function setScopeType(?string $scopeType) {
+		$this->scopeType = $scopeType;
+	}
+	public function withScopeType(?string $scopeType): VerifyCounterValueRequest {
+		$this->scopeType = $scopeType;
+		return $this;
+	}
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
@@ -84,6 +98,16 @@ class VerifyCounterValueRequest extends Gs2BasicRequest {
 	}
 	public function withResetType(?string $resetType): VerifyCounterValueRequest {
 		$this->resetType = $resetType;
+		return $this;
+	}
+	public function getConditionName(): ?string {
+		return $this->conditionName;
+	}
+	public function setConditionName(?string $conditionName) {
+		$this->conditionName = $conditionName;
+	}
+	public function withConditionName(?string $conditionName): VerifyCounterValueRequest {
+		$this->conditionName = $conditionName;
 		return $this;
 	}
 	public function getValue(): ?int {
@@ -129,7 +153,9 @@ class VerifyCounterValueRequest extends Gs2BasicRequest {
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
+            ->withScopeType(array_key_exists('scopeType', $data) && $data['scopeType'] !== null ? $data['scopeType'] : null)
             ->withResetType(array_key_exists('resetType', $data) && $data['resetType'] !== null ? $data['resetType'] : null)
+            ->withConditionName(array_key_exists('conditionName', $data) && $data['conditionName'] !== null ? $data['conditionName'] : null)
             ->withValue(array_key_exists('value', $data) && $data['value'] !== null ? $data['value'] : null)
             ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null);
     }
@@ -140,7 +166,9 @@ class VerifyCounterValueRequest extends Gs2BasicRequest {
             "accessToken" => $this->getAccessToken(),
             "counterName" => $this->getCounterName(),
             "verifyType" => $this->getVerifyType(),
+            "scopeType" => $this->getScopeType(),
             "resetType" => $this->getResetType(),
+            "conditionName" => $this->getConditionName(),
             "value" => $this->getValue(),
             "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
         );

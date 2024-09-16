@@ -24,6 +24,10 @@ class CounterScopeModel implements IModel {
 	/**
      * @var string
 	 */
+	private $scopeType;
+	/**
+     * @var string
+	 */
 	private $resetType;
 	/**
      * @var int
@@ -37,6 +41,24 @@ class CounterScopeModel implements IModel {
      * @var int
 	 */
 	private $resetHour;
+	/**
+     * @var string
+	 */
+	private $conditionName;
+	/**
+     * @var VerifyAction
+	 */
+	private $condition;
+	public function getScopeType(): ?string {
+		return $this->scopeType;
+	}
+	public function setScopeType(?string $scopeType) {
+		$this->scopeType = $scopeType;
+	}
+	public function withScopeType(?string $scopeType): CounterScopeModel {
+		$this->scopeType = $scopeType;
+		return $this;
+	}
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
@@ -77,24 +99,50 @@ class CounterScopeModel implements IModel {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+	public function getConditionName(): ?string {
+		return $this->conditionName;
+	}
+	public function setConditionName(?string $conditionName) {
+		$this->conditionName = $conditionName;
+	}
+	public function withConditionName(?string $conditionName): CounterScopeModel {
+		$this->conditionName = $conditionName;
+		return $this;
+	}
+	public function getCondition(): ?VerifyAction {
+		return $this->condition;
+	}
+	public function setCondition(?VerifyAction $condition) {
+		$this->condition = $condition;
+	}
+	public function withCondition(?VerifyAction $condition): CounterScopeModel {
+		$this->condition = $condition;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CounterScopeModel {
         if ($data === null) {
             return null;
         }
         return (new CounterScopeModel())
+            ->withScopeType(array_key_exists('scopeType', $data) && $data['scopeType'] !== null ? $data['scopeType'] : null)
             ->withResetType(array_key_exists('resetType', $data) && $data['resetType'] !== null ? $data['resetType'] : null)
             ->withResetDayOfMonth(array_key_exists('resetDayOfMonth', $data) && $data['resetDayOfMonth'] !== null ? $data['resetDayOfMonth'] : null)
             ->withResetDayOfWeek(array_key_exists('resetDayOfWeek', $data) && $data['resetDayOfWeek'] !== null ? $data['resetDayOfWeek'] : null)
-            ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null);
+            ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null)
+            ->withConditionName(array_key_exists('conditionName', $data) && $data['conditionName'] !== null ? $data['conditionName'] : null)
+            ->withCondition(array_key_exists('condition', $data) && $data['condition'] !== null ? VerifyAction::fromJson($data['condition']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "scopeType" => $this->getScopeType(),
             "resetType" => $this->getResetType(),
             "resetDayOfMonth" => $this->getResetDayOfMonth(),
             "resetDayOfWeek" => $this->getResetDayOfWeek(),
             "resetHour" => $this->getResetHour(),
+            "conditionName" => $this->getConditionName(),
+            "condition" => $this->getCondition() !== null ? $this->getCondition()->toJson() : null,
         );
     }
 }

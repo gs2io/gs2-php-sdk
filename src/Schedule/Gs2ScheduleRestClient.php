@@ -81,8 +81,14 @@ use Gs2\Schedule\Request\DeleteTriggerRequest;
 use Gs2\Schedule\Result\DeleteTriggerResult;
 use Gs2\Schedule\Request\DeleteTriggerByUserIdRequest;
 use Gs2\Schedule\Result\DeleteTriggerByUserIdResult;
+use Gs2\Schedule\Request\VerifyTriggerRequest;
+use Gs2\Schedule\Result\VerifyTriggerResult;
+use Gs2\Schedule\Request\VerifyTriggerByUserIdRequest;
+use Gs2\Schedule\Result\VerifyTriggerByUserIdResult;
 use Gs2\Schedule\Request\DeleteTriggerByStampTaskRequest;
 use Gs2\Schedule\Result\DeleteTriggerByStampTaskResult;
+use Gs2\Schedule\Request\VerifyTriggerByStampTaskRequest;
+use Gs2\Schedule\Result\VerifyTriggerByStampTaskResult;
 use Gs2\Schedule\Request\DescribeEventsRequest;
 use Gs2\Schedule\Result\DescribeEventsResult;
 use Gs2\Schedule\Request\DescribeEventsByUserIdRequest;
@@ -1771,6 +1777,139 @@ class DeleteTriggerByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyTriggerTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyTriggerRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyTriggerTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyTriggerRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyTriggerRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyTriggerResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/trigger/{triggerName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{triggerName}", $this->request->getTriggerName() === null|| strlen($this->request->getTriggerName()) == 0 ? "null" : $this->request->getTriggerName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getElapsedMinutes() !== null) {
+            $json["elapsedMinutes"] = $this->request->getElapsedMinutes();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyTriggerByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyTriggerByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyTriggerByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyTriggerByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyTriggerByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyTriggerByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/trigger/{triggerName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{triggerName}", $this->request->getTriggerName() === null|| strlen($this->request->getTriggerName()) == 0 ? "null" : $this->request->getTriggerName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getElapsedMinutes() !== null) {
+            $json["elapsedMinutes"] = $this->request->getElapsedMinutes();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteTriggerByStampTaskTask extends Gs2RestSessionTask {
 
     /**
@@ -1803,6 +1942,65 @@ class DeleteTriggerByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/trigger/delete";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyTriggerByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyTriggerByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyTriggerByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyTriggerByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyTriggerByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyTriggerByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/trigger/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -3331,6 +3529,60 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyTriggerRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyTriggerAsync(
+            VerifyTriggerRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyTriggerTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyTriggerRequest $request
+     * @return VerifyTriggerResult
+     */
+    public function verifyTrigger (
+            VerifyTriggerRequest $request
+    ): VerifyTriggerResult {
+        return $this->verifyTriggerAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyTriggerByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyTriggerByUserIdAsync(
+            VerifyTriggerByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyTriggerByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyTriggerByUserIdRequest $request
+     * @return VerifyTriggerByUserIdResult
+     */
+    public function verifyTriggerByUserId (
+            VerifyTriggerByUserIdRequest $request
+    ): VerifyTriggerByUserIdResult {
+        return $this->verifyTriggerByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteTriggerByStampTaskRequest $request
      * @return PromiseInterface
      */
@@ -3353,6 +3605,33 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
             DeleteTriggerByStampTaskRequest $request
     ): DeleteTriggerByStampTaskResult {
         return $this->deleteTriggerByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyTriggerByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyTriggerByStampTaskAsync(
+            VerifyTriggerByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyTriggerByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyTriggerByStampTaskRequest $request
+     * @return VerifyTriggerByStampTaskResult
+     */
+    public function verifyTriggerByStampTask (
+            VerifyTriggerByStampTaskRequest $request
+    ): VerifyTriggerByStampTaskResult {
+        return $this->verifyTriggerByStampTaskAsync(
             $request
         )->wait();
     }

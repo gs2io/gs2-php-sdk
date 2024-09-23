@@ -37,8 +37,14 @@ use Gs2\Mission\Request\CompleteRequest;
 use Gs2\Mission\Result\CompleteResult;
 use Gs2\Mission\Request\CompleteByUserIdRequest;
 use Gs2\Mission\Result\CompleteByUserIdResult;
+use Gs2\Mission\Request\BatchCompleteRequest;
+use Gs2\Mission\Result\BatchCompleteResult;
+use Gs2\Mission\Request\BatchCompleteByUserIdRequest;
+use Gs2\Mission\Result\BatchCompleteByUserIdResult;
 use Gs2\Mission\Request\ReceiveByUserIdRequest;
 use Gs2\Mission\Result\ReceiveByUserIdResult;
+use Gs2\Mission\Request\BatchReceiveByUserIdRequest;
+use Gs2\Mission\Result\BatchReceiveByUserIdResult;
 use Gs2\Mission\Request\RevertReceiveByUserIdRequest;
 use Gs2\Mission\Result\RevertReceiveByUserIdResult;
 use Gs2\Mission\Request\GetCompleteRequest;
@@ -53,6 +59,8 @@ use Gs2\Mission\Request\VerifyCompleteByUserIdRequest;
 use Gs2\Mission\Result\VerifyCompleteByUserIdResult;
 use Gs2\Mission\Request\ReceiveByStampTaskRequest;
 use Gs2\Mission\Result\ReceiveByStampTaskResult;
+use Gs2\Mission\Request\BatchReceiveByStampTaskRequest;
+use Gs2\Mission\Result\BatchReceiveByStampTaskResult;
 use Gs2\Mission\Request\RevertReceiveByStampSheetRequest;
 use Gs2\Mission\Result\RevertReceiveByStampSheetResult;
 use Gs2\Mission\Request\VerifyCompleteByStampTaskRequest;
@@ -440,6 +448,163 @@ class CompleteByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class BatchCompleteTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchCompleteRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchCompleteTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchCompleteRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchCompleteRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchCompleteResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/complete/group/{missionGroupName}/task/any/batch";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+
+        $json = [];
+        if ($this->request->getMissionTaskNames() !== null) {
+            $array = [];
+            foreach ($this->request->getMissionTaskNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["missionTaskNames"] = $array;
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class BatchCompleteByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchCompleteByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchCompleteByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchCompleteByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchCompleteByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchCompleteByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/complete/group/{missionGroupName}/task/any/batch";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getMissionTaskNames() !== null) {
+            $array = [];
+            foreach ($this->request->getMissionTaskNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["missionTaskNames"] = $array;
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ReceiveByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -479,6 +644,77 @@ class ReceiveByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class BatchReceiveByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchReceiveByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchReceiveByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchReceiveByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchReceiveByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchReceiveByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/complete/group/{missionGroupName}/task/any/receive/batch";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getMissionTaskNames() !== null) {
+            $array = [];
+            foreach ($this->request->getMissionTaskNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["missionTaskNames"] = $array;
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -911,6 +1147,65 @@ class ReceiveByStampTaskTask extends Gs2RestSessionTask {
         parent::__construct(
             $session,
             ReceiveByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/receive";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class BatchReceiveByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchReceiveByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchReceiveByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchReceiveByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchReceiveByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchReceiveByStampTaskResult::class
         );
         $this->session = $session;
         $this->request = $request;
@@ -4608,6 +4903,60 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param BatchCompleteRequest $request
+     * @return PromiseInterface
+     */
+    public function batchCompleteAsync(
+            BatchCompleteRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchCompleteTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchCompleteRequest $request
+     * @return BatchCompleteResult
+     */
+    public function batchComplete (
+            BatchCompleteRequest $request
+    ): BatchCompleteResult {
+        return $this->batchCompleteAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param BatchCompleteByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function batchCompleteByUserIdAsync(
+            BatchCompleteByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchCompleteByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchCompleteByUserIdRequest $request
+     * @return BatchCompleteByUserIdResult
+     */
+    public function batchCompleteByUserId (
+            BatchCompleteByUserIdRequest $request
+    ): BatchCompleteByUserIdResult {
+        return $this->batchCompleteByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param ReceiveByUserIdRequest $request
      * @return PromiseInterface
      */
@@ -4630,6 +4979,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             ReceiveByUserIdRequest $request
     ): ReceiveByUserIdResult {
         return $this->receiveByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param BatchReceiveByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function batchReceiveByUserIdAsync(
+            BatchReceiveByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchReceiveByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchReceiveByUserIdRequest $request
+     * @return BatchReceiveByUserIdResult
+     */
+    public function batchReceiveByUserId (
+            BatchReceiveByUserIdRequest $request
+    ): BatchReceiveByUserIdResult {
+        return $this->batchReceiveByUserIdAsync(
             $request
         )->wait();
     }
@@ -4819,6 +5195,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             ReceiveByStampTaskRequest $request
     ): ReceiveByStampTaskResult {
         return $this->receiveByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param BatchReceiveByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function batchReceiveByStampTaskAsync(
+            BatchReceiveByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchReceiveByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchReceiveByStampTaskRequest $request
+     * @return BatchReceiveByStampTaskResult
+     */
+    public function batchReceiveByStampTask (
+            BatchReceiveByStampTaskRequest $request
+    ): BatchReceiveByStampTaskResult {
+        return $this->batchReceiveByStampTaskAsync(
             $request
         )->wait();
     }

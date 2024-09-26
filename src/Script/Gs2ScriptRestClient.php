@@ -529,6 +529,9 @@ class CreateScriptTask extends Gs2RestSessionTask {
         if ($this->request->getScript() !== null) {
             $json["script"] = $this->request->getScript();
         }
+        if ($this->request->getDisableStringNumberToNumber() !== null) {
+            $json["disableStringNumberToNumber"] = $this->request->getDisableStringNumberToNumber();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -592,6 +595,9 @@ class CreateScriptFromGitHubTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCheckoutSetting() !== null) {
             $json["checkoutSetting"] = $this->request->getCheckoutSetting()->toJson();
+        }
+        if ($this->request->getDisableStringNumberToNumber() !== null) {
+            $json["disableStringNumberToNumber"] = $this->request->getDisableStringNumberToNumber();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -713,6 +719,9 @@ class UpdateScriptTask extends Gs2RestSessionTask {
         if ($this->request->getScript() !== null) {
             $json["script"] = $this->request->getScript();
         }
+        if ($this->request->getDisableStringNumberToNumber() !== null) {
+            $json["disableStringNumberToNumber"] = $this->request->getDisableStringNumberToNumber();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -774,6 +783,9 @@ class UpdateScriptFromGitHubTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCheckoutSetting() !== null) {
             $json["checkoutSetting"] = $this->request->getCheckoutSetting()->toJson();
+        }
+        if ($this->request->getDisableStringNumberToNumber() !== null) {
+            $json["disableStringNumberToNumber"] = $this->request->getDisableStringNumberToNumber();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -962,6 +974,9 @@ class DebugInvokeTask extends Gs2RestSessionTask {
         }
         if ($this->request->getRandomStatus() !== null) {
             $json["randomStatus"] = $this->request->getRandomStatus()->toJson();
+        }
+        if ($this->request->getDisableStringNumberToNumber() !== null) {
+            $json["disableStringNumberToNumber"] = $this->request->getDisableStringNumberToNumber();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

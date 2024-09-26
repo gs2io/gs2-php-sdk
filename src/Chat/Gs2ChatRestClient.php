@@ -75,6 +75,10 @@ use Gs2\Chat\Request\DescribeMessagesRequest;
 use Gs2\Chat\Result\DescribeMessagesResult;
 use Gs2\Chat\Request\DescribeMessagesByUserIdRequest;
 use Gs2\Chat\Result\DescribeMessagesByUserIdResult;
+use Gs2\Chat\Request\DescribeLatestMessagesRequest;
+use Gs2\Chat\Result\DescribeLatestMessagesResult;
+use Gs2\Chat\Request\DescribeLatestMessagesByUserIdRequest;
+use Gs2\Chat\Result\DescribeLatestMessagesByUserIdResult;
 use Gs2\Chat\Request\PostRequest;
 use Gs2\Chat\Result\PostResult;
 use Gs2\Chat\Request\PostByUserIdRequest;
@@ -211,6 +215,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAllowCreateRoom() !== null) {
             $json["allowCreateRoom"] = $this->request->getAllowCreateRoom();
+        }
+        if ($this->request->getMessageLifeTimeDays() !== null) {
+            $json["messageLifeTimeDays"] = $this->request->getMessageLifeTimeDays();
         }
         if ($this->request->getPostMessageScript() !== null) {
             $json["postMessageScript"] = $this->request->getPostMessageScript()->toJson();
@@ -407,6 +414,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAllowCreateRoom() !== null) {
             $json["allowCreateRoom"] = $this->request->getAllowCreateRoom();
+        }
+        if ($this->request->getMessageLifeTimeDays() !== null) {
+            $json["messageLifeTimeDays"] = $this->request->getMessageLifeTimeDays();
         }
         if ($this->request->getPostMessageScript() !== null) {
             $json["postMessageScript"] = $this->request->getPostMessageScript()->toJson();
@@ -1605,6 +1615,143 @@ class DescribeMessagesByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getStartAt() !== null) {
             $queryStrings["startAt"] = $this->request->getStartAt();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeLatestMessagesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeLatestMessagesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeLatestMessagesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeLatestMessagesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeLatestMessagesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeLatestMessagesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/room/{roomName}/message/latest";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{roomName}", $this->request->getRoomName() === null|| strlen($this->request->getRoomName()) == 0 ? "null" : $this->request->getRoomName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPassword() !== null) {
+            $queryStrings["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeLatestMessagesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeLatestMessagesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeLatestMessagesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeLatestMessagesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeLatestMessagesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeLatestMessagesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/room/{roomName}/message/latest/get";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{roomName}", $this->request->getRoomName() === null|| strlen($this->request->getRoomName()) == 0 ? "null" : $this->request->getRoomName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPassword() !== null) {
+            $queryStrings["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getUserId() !== null) {
+            $queryStrings["userId"] = $this->request->getUserId();
         }
         if ($this->request->getLimit() !== null) {
             $queryStrings["limit"] = $this->request->getLimit();
@@ -3339,6 +3486,60 @@ class Gs2ChatRestClient extends AbstractGs2Client {
             DescribeMessagesByUserIdRequest $request
     ): DescribeMessagesByUserIdResult {
         return $this->describeMessagesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeLatestMessagesRequest $request
+     * @return PromiseInterface
+     */
+    public function describeLatestMessagesAsync(
+            DescribeLatestMessagesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeLatestMessagesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeLatestMessagesRequest $request
+     * @return DescribeLatestMessagesResult
+     */
+    public function describeLatestMessages (
+            DescribeLatestMessagesRequest $request
+    ): DescribeLatestMessagesResult {
+        return $this->describeLatestMessagesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeLatestMessagesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeLatestMessagesByUserIdAsync(
+            DescribeLatestMessagesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeLatestMessagesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeLatestMessagesByUserIdRequest $request
+     * @return DescribeLatestMessagesByUserIdResult
+     */
+    public function describeLatestMessagesByUserId (
+            DescribeLatestMessagesByUserIdRequest $request
+    ): DescribeLatestMessagesByUserIdResult {
+        return $this->describeLatestMessagesByUserIdAsync(
             $request
         )->wait();
     }

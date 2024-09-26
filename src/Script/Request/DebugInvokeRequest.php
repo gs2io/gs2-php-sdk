@@ -28,6 +28,8 @@ class DebugInvokeRequest extends Gs2BasicRequest {
     private $args;
     /** @var RandomStatus */
     private $randomStatus;
+    /** @var bool */
+    private $disableStringNumberToNumber;
 	public function getScript(): ?string {
 		return $this->script;
 	}
@@ -58,6 +60,16 @@ class DebugInvokeRequest extends Gs2BasicRequest {
 		$this->randomStatus = $randomStatus;
 		return $this;
 	}
+	public function getDisableStringNumberToNumber(): ?bool {
+		return $this->disableStringNumberToNumber;
+	}
+	public function setDisableStringNumberToNumber(?bool $disableStringNumberToNumber) {
+		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
+	}
+	public function withDisableStringNumberToNumber(?bool $disableStringNumberToNumber): DebugInvokeRequest {
+		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DebugInvokeRequest {
         if ($data === null) {
@@ -66,7 +78,8 @@ class DebugInvokeRequest extends Gs2BasicRequest {
         return (new DebugInvokeRequest())
             ->withScript(array_key_exists('script', $data) && $data['script'] !== null ? $data['script'] : null)
             ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
-            ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null);
+            ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
+            ->withDisableStringNumberToNumber(array_key_exists('disableStringNumberToNumber', $data) ? $data['disableStringNumberToNumber'] : null);
     }
 
     public function toJson(): array {
@@ -74,6 +87,7 @@ class DebugInvokeRequest extends Gs2BasicRequest {
             "script" => $this->getScript(),
             "args" => $this->getArgs(),
             "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
+            "disableStringNumberToNumber" => $this->getDisableStringNumberToNumber(),
         );
     }
 }

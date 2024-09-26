@@ -38,6 +38,10 @@ class Script implements IModel {
 	 */
 	private $script;
 	/**
+     * @var bool
+	 */
+	private $disableStringNumberToNumber;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -89,6 +93,16 @@ class Script implements IModel {
 		$this->script = $script;
 		return $this;
 	}
+	public function getDisableStringNumberToNumber(): ?bool {
+		return $this->disableStringNumberToNumber;
+	}
+	public function setDisableStringNumberToNumber(?bool $disableStringNumberToNumber) {
+		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
+	}
+	public function withDisableStringNumberToNumber(?bool $disableStringNumberToNumber): Script {
+		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -129,6 +143,7 @@ class Script implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withScript(array_key_exists('script', $data) && $data['script'] !== null ? $data['script'] : null)
+            ->withDisableStringNumberToNumber(array_key_exists('disableStringNumberToNumber', $data) ? $data['disableStringNumberToNumber'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -140,6 +155,7 @@ class Script implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "script" => $this->getScript(),
+            "disableStringNumberToNumber" => $this->getDisableStringNumberToNumber(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

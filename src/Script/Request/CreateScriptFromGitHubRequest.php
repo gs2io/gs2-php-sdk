@@ -29,6 +29,8 @@ class CreateScriptFromGitHubRequest extends Gs2BasicRequest {
     private $description;
     /** @var GitHubCheckoutSetting */
     private $checkoutSetting;
+    /** @var bool */
+    private $disableStringNumberToNumber;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -69,6 +71,16 @@ class CreateScriptFromGitHubRequest extends Gs2BasicRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;
 	}
+	public function getDisableStringNumberToNumber(): ?bool {
+		return $this->disableStringNumberToNumber;
+	}
+	public function setDisableStringNumberToNumber(?bool $disableStringNumberToNumber) {
+		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
+	}
+	public function withDisableStringNumberToNumber(?bool $disableStringNumberToNumber): CreateScriptFromGitHubRequest {
+		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateScriptFromGitHubRequest {
         if ($data === null) {
@@ -78,7 +90,8 @@ class CreateScriptFromGitHubRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withCheckoutSetting(array_key_exists('checkoutSetting', $data) && $data['checkoutSetting'] !== null ? GitHubCheckoutSetting::fromJson($data['checkoutSetting']) : null);
+            ->withCheckoutSetting(array_key_exists('checkoutSetting', $data) && $data['checkoutSetting'] !== null ? GitHubCheckoutSetting::fromJson($data['checkoutSetting']) : null)
+            ->withDisableStringNumberToNumber(array_key_exists('disableStringNumberToNumber', $data) ? $data['disableStringNumberToNumber'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class CreateScriptFromGitHubRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "checkoutSetting" => $this->getCheckoutSetting() !== null ? $this->getCheckoutSetting()->toJson() : null,
+            "disableStringNumberToNumber" => $this->getDisableStringNumberToNumber(),
         );
     }
 }

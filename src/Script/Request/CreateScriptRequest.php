@@ -28,6 +28,8 @@ class CreateScriptRequest extends Gs2BasicRequest {
     private $description;
     /** @var string */
     private $script;
+    /** @var bool */
+    private $disableStringNumberToNumber;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -68,6 +70,16 @@ class CreateScriptRequest extends Gs2BasicRequest {
 		$this->script = $script;
 		return $this;
 	}
+	public function getDisableStringNumberToNumber(): ?bool {
+		return $this->disableStringNumberToNumber;
+	}
+	public function setDisableStringNumberToNumber(?bool $disableStringNumberToNumber) {
+		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
+	}
+	public function withDisableStringNumberToNumber(?bool $disableStringNumberToNumber): CreateScriptRequest {
+		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateScriptRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class CreateScriptRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withScript(array_key_exists('script', $data) && $data['script'] !== null ? $data['script'] : null);
+            ->withScript(array_key_exists('script', $data) && $data['script'] !== null ? $data['script'] : null)
+            ->withDisableStringNumberToNumber(array_key_exists('disableStringNumberToNumber', $data) ? $data['disableStringNumberToNumber'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class CreateScriptRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "script" => $this->getScript(),
+            "disableStringNumberToNumber" => $this->getDisableStringNumberToNumber(),
         );
     }
 }

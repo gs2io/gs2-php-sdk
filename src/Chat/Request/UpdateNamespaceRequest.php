@@ -29,6 +29,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $description;
     /** @var bool */
     private $allowCreateRoom;
+    /** @var int */
+    private $messageLifeTimeDays;
     /** @var ScriptSetting */
     private $postMessageScript;
     /** @var ScriptSetting */
@@ -71,6 +73,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withAllowCreateRoom(?bool $allowCreateRoom): UpdateNamespaceRequest {
 		$this->allowCreateRoom = $allowCreateRoom;
+		return $this;
+	}
+	public function getMessageLifeTimeDays(): ?int {
+		return $this->messageLifeTimeDays;
+	}
+	public function setMessageLifeTimeDays(?int $messageLifeTimeDays) {
+		$this->messageLifeTimeDays = $messageLifeTimeDays;
+	}
+	public function withMessageLifeTimeDays(?int $messageLifeTimeDays): UpdateNamespaceRequest {
+		$this->messageLifeTimeDays = $messageLifeTimeDays;
 		return $this;
 	}
 	public function getPostMessageScript(): ?ScriptSetting {
@@ -152,6 +164,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAllowCreateRoom(array_key_exists('allowCreateRoom', $data) ? $data['allowCreateRoom'] : null)
+            ->withMessageLifeTimeDays(array_key_exists('messageLifeTimeDays', $data) && $data['messageLifeTimeDays'] !== null ? $data['messageLifeTimeDays'] : null)
             ->withPostMessageScript(array_key_exists('postMessageScript', $data) && $data['postMessageScript'] !== null ? ScriptSetting::fromJson($data['postMessageScript']) : null)
             ->withCreateRoomScript(array_key_exists('createRoomScript', $data) && $data['createRoomScript'] !== null ? ScriptSetting::fromJson($data['createRoomScript']) : null)
             ->withDeleteRoomScript(array_key_exists('deleteRoomScript', $data) && $data['deleteRoomScript'] !== null ? ScriptSetting::fromJson($data['deleteRoomScript']) : null)
@@ -166,6 +179,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
             "allowCreateRoom" => $this->getAllowCreateRoom(),
+            "messageLifeTimeDays" => $this->getMessageLifeTimeDays(),
             "postMessageScript" => $this->getPostMessageScript() !== null ? $this->getPostMessageScript()->toJson() : null,
             "createRoomScript" => $this->getCreateRoomScript() !== null ? $this->getCreateRoomScript()->toJson() : null,
             "deleteRoomScript" => $this->getDeleteRoomScript() !== null ? $this->getDeleteRoomScript()->toJson() : null,

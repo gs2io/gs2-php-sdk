@@ -65,8 +65,14 @@ use Gs2\SerialKey\Request\DescribeSerialKeysRequest;
 use Gs2\SerialKey\Result\DescribeSerialKeysResult;
 use Gs2\SerialKey\Request\DownloadSerialCodesRequest;
 use Gs2\SerialKey\Result\DownloadSerialCodesResult;
+use Gs2\SerialKey\Request\IssueOnceRequest;
+use Gs2\SerialKey\Result\IssueOnceResult;
 use Gs2\SerialKey\Request\GetSerialKeyRequest;
 use Gs2\SerialKey\Result\GetSerialKeyResult;
+use Gs2\SerialKey\Request\VerifyCodeRequest;
+use Gs2\SerialKey\Result\VerifyCodeResult;
+use Gs2\SerialKey\Request\VerifyCodeByUserIdRequest;
+use Gs2\SerialKey\Result\VerifyCodeByUserIdResult;
 use Gs2\SerialKey\Request\UseRequest;
 use Gs2\SerialKey\Result\UseResult;
 use Gs2\SerialKey\Request\UseByUserIdRequest;
@@ -77,6 +83,8 @@ use Gs2\SerialKey\Request\UseByStampTaskRequest;
 use Gs2\SerialKey\Result\UseByStampTaskResult;
 use Gs2\SerialKey\Request\RevertUseByStampSheetRequest;
 use Gs2\SerialKey\Result\RevertUseByStampSheetResult;
+use Gs2\SerialKey\Request\VerifyByStampTaskRequest;
+use Gs2\SerialKey\Result\VerifyByStampTaskResult;
 use Gs2\SerialKey\Request\DescribeCampaignModelsRequest;
 use Gs2\SerialKey\Result\DescribeCampaignModelsResult;
 use Gs2\SerialKey\Request\GetCampaignModelRequest;
@@ -1180,6 +1188,65 @@ class DownloadSerialCodesTask extends Gs2RestSessionTask {
     }
 }
 
+class IssueOnceTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IssueOnceRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IssueOnceTask constructor.
+     * @param Gs2RestSession $session
+     * @param IssueOnceRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IssueOnceRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IssueOnceResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/campaign/{campaignModelName}/serialKey";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{campaignModelName}", $this->request->getCampaignModelName() === null|| strlen($this->request->getCampaignModelName()) == 0 ? "null" : $this->request->getCampaignModelName(), $url);
+
+        $json = [];
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class GetSerialKeyTask extends Gs2RestSessionTask {
 
     /**
@@ -1232,6 +1299,141 @@ class GetSerialKeyTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCodeTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCodeRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCodeTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCodeRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCodeRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCodeResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/serialKey/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getCode() !== null) {
+            $json["code"] = $this->request->getCode();
+        }
+        if ($this->request->getVerifyType() !== null) {
+            $json["verifyType"] = $this->request->getVerifyType();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCodeByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCodeByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCodeByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCodeByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCodeByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCodeByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/serialKey/verify";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getCode() !== null) {
+            $json["code"] = $this->request->getCode();
+        }
+        if ($this->request->getVerifyType() !== null) {
+            $json["verifyType"] = $this->request->getVerifyType();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -1527,6 +1729,65 @@ class RevertUseByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/serialKey/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -2710,6 +2971,33 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param IssueOnceRequest $request
+     * @return PromiseInterface
+     */
+    public function issueOnceAsync(
+            IssueOnceRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IssueOnceTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IssueOnceRequest $request
+     * @return IssueOnceResult
+     */
+    public function issueOnce (
+            IssueOnceRequest $request
+    ): IssueOnceResult {
+        return $this->issueOnceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param GetSerialKeyRequest $request
      * @return PromiseInterface
      */
@@ -2732,6 +3020,60 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
             GetSerialKeyRequest $request
     ): GetSerialKeyResult {
         return $this->getSerialKeyAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyCodeRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCodeAsync(
+            VerifyCodeRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCodeTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCodeRequest $request
+     * @return VerifyCodeResult
+     */
+    public function verifyCode (
+            VerifyCodeRequest $request
+    ): VerifyCodeResult {
+        return $this->verifyCodeAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyCodeByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyCodeByUserIdAsync(
+            VerifyCodeByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCodeByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyCodeByUserIdRequest $request
+     * @return VerifyCodeByUserIdResult
+     */
+    public function verifyCodeByUserId (
+            VerifyCodeByUserIdRequest $request
+    ): VerifyCodeByUserIdResult {
+        return $this->verifyCodeByUserIdAsync(
             $request
         )->wait();
     }
@@ -2867,6 +3209,33 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
             RevertUseByStampSheetRequest $request
     ): RevertUseByStampSheetResult {
         return $this->revertUseByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyByStampTaskAsync(
+            VerifyByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyByStampTaskRequest $request
+     * @return VerifyByStampTaskResult
+     */
+    public function verifyByStampTask (
+            VerifyByStampTaskRequest $request
+    ): VerifyByStampTaskResult {
+        return $this->verifyByStampTaskAsync(
             $request
         )->wait();
     }

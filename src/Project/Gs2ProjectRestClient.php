@@ -41,6 +41,12 @@ use Gs2\Project\Request\IssuePasswordRequest;
 use Gs2\Project\Result\IssuePasswordResult;
 use Gs2\Project\Request\UpdateAccountRequest;
 use Gs2\Project\Result\UpdateAccountResult;
+use Gs2\Project\Request\EnableMfaRequest;
+use Gs2\Project\Result\EnableMfaResult;
+use Gs2\Project\Request\ChallengeMfaRequest;
+use Gs2\Project\Result\ChallengeMfaResult;
+use Gs2\Project\Request\DisableMfaRequest;
+use Gs2\Project\Result\DisableMfaResult;
 use Gs2\Project\Request\DeleteAccountRequest;
 use Gs2\Project\Result\DeleteAccountResult;
 use Gs2\Project\Request\DescribeProjectsRequest;
@@ -274,6 +280,9 @@ class SignInTask extends Gs2RestSessionTask {
         if ($this->request->getPassword() !== null) {
             $json["password"] = $this->request->getPassword();
         }
+        if ($this->request->getOtp() !== null) {
+            $json["otp"] = $this->request->getOtp();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -476,6 +485,179 @@ class UpdateAccountTask extends Gs2RestSessionTask {
     }
 }
 
+class EnableMfaTask extends Gs2RestSessionTask {
+
+    /**
+     * @var EnableMfaRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * EnableMfaTask constructor.
+     * @param Gs2RestSession $session
+     * @param EnableMfaRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        EnableMfaRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            EnableMfaResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/mfa";
+
+        $json = [];
+        if ($this->request->getAccountToken() !== null) {
+            $json["accountToken"] = $this->request->getAccountToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ChallengeMfaTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ChallengeMfaRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ChallengeMfaTask constructor.
+     * @param Gs2RestSession $session
+     * @param ChallengeMfaRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ChallengeMfaRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ChallengeMfaResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/mfa/challenge";
+
+        $json = [];
+        if ($this->request->getAccountToken() !== null) {
+            $json["accountToken"] = $this->request->getAccountToken();
+        }
+        if ($this->request->getPasscode() !== null) {
+            $json["passcode"] = $this->request->getPasscode();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DisableMfaTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DisableMfaRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DisableMfaTask constructor.
+     * @param Gs2RestSession $session
+     * @param DisableMfaRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DisableMfaRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DisableMfaResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/mfa";
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getAccountToken() !== null) {
+            $queryStrings["accountToken"] = $this->request->getAccountToken();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteAccountTask extends Gs2RestSessionTask {
 
     /**
@@ -512,6 +694,9 @@ class DeleteAccountTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getAccountToken() !== null) {
+            $queryStrings["accountToken"] = $this->request->getAccountToken();
         }
 
         if (count($queryStrings) > 0) {
@@ -836,6 +1021,9 @@ class GetProjectTokenByIdentifierTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getPassword() !== null) {
             $json["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getOtp() !== null) {
+            $json["otp"] = $this->request->getOtp();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2762,6 +2950,87 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
             UpdateAccountRequest $request
     ): UpdateAccountResult {
         return $this->updateAccountAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param EnableMfaRequest $request
+     * @return PromiseInterface
+     */
+    public function enableMfaAsync(
+            EnableMfaRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new EnableMfaTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param EnableMfaRequest $request
+     * @return EnableMfaResult
+     */
+    public function enableMfa (
+            EnableMfaRequest $request
+    ): EnableMfaResult {
+        return $this->enableMfaAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ChallengeMfaRequest $request
+     * @return PromiseInterface
+     */
+    public function challengeMfaAsync(
+            ChallengeMfaRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ChallengeMfaTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ChallengeMfaRequest $request
+     * @return ChallengeMfaResult
+     */
+    public function challengeMfa (
+            ChallengeMfaRequest $request
+    ): ChallengeMfaResult {
+        return $this->challengeMfaAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DisableMfaRequest $request
+     * @return PromiseInterface
+     */
+    public function disableMfaAsync(
+            DisableMfaRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DisableMfaTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DisableMfaRequest $request
+     * @return DisableMfaResult
+     */
+    public function disableMfa (
+            DisableMfaRequest $request
+    ): DisableMfaResult {
+        return $this->disableMfaAsync(
             $request
         )->wait();
     }

@@ -24,6 +24,8 @@ class SignInRequest extends Gs2BasicRequest {
     private $email;
     /** @var string */
     private $password;
+    /** @var string */
+    private $otp;
 	public function getEmail(): ?string {
 		return $this->email;
 	}
@@ -44,6 +46,16 @@ class SignInRequest extends Gs2BasicRequest {
 		$this->password = $password;
 		return $this;
 	}
+	public function getOtp(): ?string {
+		return $this->otp;
+	}
+	public function setOtp(?string $otp) {
+		$this->otp = $otp;
+	}
+	public function withOtp(?string $otp): SignInRequest {
+		$this->otp = $otp;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?SignInRequest {
         if ($data === null) {
@@ -51,13 +63,15 @@ class SignInRequest extends Gs2BasicRequest {
         }
         return (new SignInRequest())
             ->withEmail(array_key_exists('email', $data) && $data['email'] !== null ? $data['email'] : null)
-            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null);
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
+            ->withOtp(array_key_exists('otp', $data) && $data['otp'] !== null ? $data['otp'] : null);
     }
 
     public function toJson(): array {
         return array(
             "email" => $this->getEmail(),
             "password" => $this->getPassword(),
+            "otp" => $this->getOtp(),
         );
     }
 }

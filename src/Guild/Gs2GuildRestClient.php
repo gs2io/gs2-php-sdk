@@ -1592,6 +1592,9 @@ class SearchGuildsTask extends Gs2RestSessionTask {
         if ($this->request->getIncludeFullMembersGuild() !== null) {
             $json["includeFullMembersGuild"] = $this->request->getIncludeFullMembersGuild();
         }
+        if ($this->request->getOrderBy() !== null) {
+            $json["orderBy"] = $this->request->getOrderBy();
+        }
         if ($this->request->getPageToken() !== null) {
             $json["pageToken"] = $this->request->getPageToken();
         }
@@ -1714,6 +1717,9 @@ class SearchGuildsByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getIncludeFullMembersGuild() !== null) {
             $json["includeFullMembersGuild"] = $this->request->getIncludeFullMembersGuild();
+        }
+        if ($this->request->getOrderBy() !== null) {
+            $json["orderBy"] = $this->request->getOrderBy();
         }
         if ($this->request->getPageToken() !== null) {
             $json["pageToken"] = $this->request->getPageToken();

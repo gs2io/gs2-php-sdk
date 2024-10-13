@@ -28,6 +28,8 @@ class GetProjectTokenByIdentifierRequest extends Gs2BasicRequest {
     private $userName;
     /** @var string */
     private $password;
+    /** @var string */
+    private $otp;
 	public function getAccountName(): ?string {
 		return $this->accountName;
 	}
@@ -68,6 +70,16 @@ class GetProjectTokenByIdentifierRequest extends Gs2BasicRequest {
 		$this->password = $password;
 		return $this;
 	}
+	public function getOtp(): ?string {
+		return $this->otp;
+	}
+	public function setOtp(?string $otp) {
+		$this->otp = $otp;
+	}
+	public function withOtp(?string $otp): GetProjectTokenByIdentifierRequest {
+		$this->otp = $otp;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetProjectTokenByIdentifierRequest {
         if ($data === null) {
@@ -77,7 +89,8 @@ class GetProjectTokenByIdentifierRequest extends Gs2BasicRequest {
             ->withAccountName(array_key_exists('accountName', $data) && $data['accountName'] !== null ? $data['accountName'] : null)
             ->withProjectName(array_key_exists('projectName', $data) && $data['projectName'] !== null ? $data['projectName'] : null)
             ->withUserName(array_key_exists('userName', $data) && $data['userName'] !== null ? $data['userName'] : null)
-            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null);
+            ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
+            ->withOtp(array_key_exists('otp', $data) && $data['otp'] !== null ? $data['otp'] : null);
     }
 
     public function toJson(): array {
@@ -86,6 +99,7 @@ class GetProjectTokenByIdentifierRequest extends Gs2BasicRequest {
             "projectName" => $this->getProjectName(),
             "userName" => $this->getUserName(),
             "password" => $this->getPassword(),
+            "otp" => $this->getOtp(),
         );
     }
 }

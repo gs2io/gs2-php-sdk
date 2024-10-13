@@ -15,35 +15,34 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Project\Result;
+namespace Gs2\SerialKey\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Project\Model\TwoFactorAuthenticationSetting;
-use Gs2\Project\Model\Account;
+use Gs2\SerialKey\Model\SerialKey;
 
-class VerifyResult implements IResult {
-    /** @var Account */
+class IssueOnceResult implements IResult {
+    /** @var SerialKey */
     private $item;
 
-	public function getItem(): ?Account {
+	public function getItem(): ?SerialKey {
 		return $this->item;
 	}
 
-	public function setItem(?Account $item) {
+	public function setItem(?SerialKey $item) {
 		$this->item = $item;
 	}
 
-	public function withItem(?Account $item): VerifyResult {
+	public function withItem(?SerialKey $item): IssueOnceResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?VerifyResult {
+    public static function fromJson(?array $data): ?IssueOnceResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Account::fromJson($data['item']) : null);
+        return (new IssueOnceResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SerialKey::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

@@ -42,8 +42,6 @@ class QueryExecuteStampSheetLogRequest extends Gs2BasicRequest {
     private $limit;
     /** @var string */
     private $timeOffsetToken;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -152,19 +150,6 @@ class QueryExecuteStampSheetLogRequest extends Gs2BasicRequest {
 	}
 	public function withTimeOffsetToken(?string $timeOffsetToken): QueryExecuteStampSheetLogRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): QueryExecuteStampSheetLogRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

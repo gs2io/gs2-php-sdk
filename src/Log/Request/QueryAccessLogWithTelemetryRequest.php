@@ -36,8 +36,6 @@ class QueryAccessLogWithTelemetryRequest extends Gs2BasicRequest {
     private $limit;
     /** @var string */
     private $timeOffsetToken;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -116,19 +114,6 @@ class QueryAccessLogWithTelemetryRequest extends Gs2BasicRequest {
 	}
 	public function withTimeOffsetToken(?string $timeOffsetToken): QueryAccessLogWithTelemetryRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): QueryAccessLogWithTelemetryRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

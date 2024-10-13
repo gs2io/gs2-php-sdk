@@ -59,6 +59,8 @@ use Gs2\Script\Request\InvokeScriptRequest;
 use Gs2\Script\Result\InvokeScriptResult;
 use Gs2\Script\Request\DebugInvokeRequest;
 use Gs2\Script\Result\DebugInvokeResult;
+use Gs2\Script\Request\InvokeByStampSheetRequest;
+use Gs2\Script\Result\InvokeByStampSheetResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -924,6 +926,9 @@ class InvokeScriptTask extends Gs2RestSessionTask {
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
@@ -977,6 +982,65 @@ class DebugInvokeTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDisableStringNumberToNumber() !== null) {
             $json["disableStringNumberToNumber"] = $this->request->getDisableStringNumberToNumber();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class InvokeByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var InvokeByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * InvokeByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param InvokeByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        InvokeByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            InvokeByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "script", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/script/invoke";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1415,6 +1479,33 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
             DebugInvokeRequest $request
     ): DebugInvokeResult {
         return $this->debugInvokeAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param InvokeByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function invokeByStampSheetAsync(
+            InvokeByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new InvokeByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param InvokeByStampSheetRequest $request
+     * @return InvokeByStampSheetResult
+     */
+    public function invokeByStampSheet (
+            InvokeByStampSheetRequest $request
+    ): InvokeByStampSheetResult {
+        return $this->invokeByStampSheetAsync(
             $request
         )->wait();
     }

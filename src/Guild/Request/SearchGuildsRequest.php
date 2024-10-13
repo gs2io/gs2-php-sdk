@@ -43,6 +43,8 @@ class SearchGuildsRequest extends Gs2BasicRequest {
     /** @var bool */
     private $includeFullMembersGuild;
     /** @var string */
+    private $orderBy;
+    /** @var string */
     private $pageToken;
     /** @var int */
     private $limit;
@@ -158,6 +160,16 @@ class SearchGuildsRequest extends Gs2BasicRequest {
 		$this->includeFullMembersGuild = $includeFullMembersGuild;
 		return $this;
 	}
+	public function getOrderBy(): ?string {
+		return $this->orderBy;
+	}
+	public function setOrderBy(?string $orderBy) {
+		$this->orderBy = $orderBy;
+	}
+	public function withOrderBy(?string $orderBy): SearchGuildsRequest {
+		$this->orderBy = $orderBy;
+		return $this;
+	}
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
@@ -238,6 +250,7 @@ class SearchGuildsRequest extends Gs2BasicRequest {
                 array_key_exists('joinPolicies', $data) && $data['joinPolicies'] !== null ? $data['joinPolicies'] : []
             ))
             ->withIncludeFullMembersGuild(array_key_exists('includeFullMembersGuild', $data) ? $data['includeFullMembersGuild'] : null)
+            ->withOrderBy(array_key_exists('orderBy', $data) && $data['orderBy'] !== null ? $data['orderBy'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
@@ -285,6 +298,7 @@ class SearchGuildsRequest extends Gs2BasicRequest {
                 $this->getJoinPolicies() !== null && $this->getJoinPolicies() !== null ? $this->getJoinPolicies() : []
             ),
             "includeFullMembersGuild" => $this->getIncludeFullMembersGuild(),
+            "orderBy" => $this->getOrderBy(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
         );

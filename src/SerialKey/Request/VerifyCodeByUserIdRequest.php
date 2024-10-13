@@ -15,33 +15,31 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Script\Request;
+namespace Gs2\SerialKey\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Script\Model\RandomUsed;
-use Gs2\Script\Model\RandomStatus;
 
-class InvokeScriptRequest extends Gs2BasicRequest {
+class VerifyCodeByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
-    private $scriptId;
+    private $namespaceName;
     /** @var string */
     private $userId;
     /** @var string */
-    private $args;
-    /** @var RandomStatus */
-    private $randomStatus;
+    private $code;
+    /** @var string */
+    private $verifyType;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
-	public function getScriptId(): ?string {
-		return $this->scriptId;
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
 	}
-	public function setScriptId(?string $scriptId) {
-		$this->scriptId = $scriptId;
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
 	}
-	public function withScriptId(?string $scriptId): InvokeScriptRequest {
-		$this->scriptId = $scriptId;
+	public function withNamespaceName(?string $namespaceName): VerifyCodeByUserIdRequest {
+		$this->namespaceName = $namespaceName;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -50,28 +48,28 @@ class InvokeScriptRequest extends Gs2BasicRequest {
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
-	public function withUserId(?string $userId): InvokeScriptRequest {
+	public function withUserId(?string $userId): VerifyCodeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getArgs(): ?string {
-		return $this->args;
+	public function getCode(): ?string {
+		return $this->code;
 	}
-	public function setArgs(?string $args) {
-		$this->args = $args;
+	public function setCode(?string $code) {
+		$this->code = $code;
 	}
-	public function withArgs(?string $args): InvokeScriptRequest {
-		$this->args = $args;
+	public function withCode(?string $code): VerifyCodeByUserIdRequest {
+		$this->code = $code;
 		return $this;
 	}
-	public function getRandomStatus(): ?RandomStatus {
-		return $this->randomStatus;
+	public function getVerifyType(): ?string {
+		return $this->verifyType;
 	}
-	public function setRandomStatus(?RandomStatus $randomStatus) {
-		$this->randomStatus = $randomStatus;
+	public function setVerifyType(?string $verifyType) {
+		$this->verifyType = $verifyType;
 	}
-	public function withRandomStatus(?RandomStatus $randomStatus): InvokeScriptRequest {
-		$this->randomStatus = $randomStatus;
+	public function withVerifyType(?string $verifyType): VerifyCodeByUserIdRequest {
+		$this->verifyType = $verifyType;
 		return $this;
 	}
 	public function getTimeOffsetToken(): ?string {
@@ -80,7 +78,7 @@ class InvokeScriptRequest extends Gs2BasicRequest {
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
-	public function withTimeOffsetToken(?string $timeOffsetToken): InvokeScriptRequest {
+	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyCodeByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;
 	}
@@ -93,29 +91,29 @@ class InvokeScriptRequest extends Gs2BasicRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 	}
 
-	public function withDuplicationAvoider(?string $duplicationAvoider): InvokeScriptRequest {
+	public function withDuplicationAvoider(?string $duplicationAvoider): VerifyCodeByUserIdRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?InvokeScriptRequest {
+    public static function fromJson(?array $data): ?VerifyCodeByUserIdRequest {
         if ($data === null) {
             return null;
         }
-        return (new InvokeScriptRequest())
-            ->withScriptId(array_key_exists('scriptId', $data) && $data['scriptId'] !== null ? $data['scriptId'] : null)
+        return (new VerifyCodeByUserIdRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
-            ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
+            ->withCode(array_key_exists('code', $data) && $data['code'] !== null ? $data['code'] : null)
+            ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "scriptId" => $this->getScriptId(),
+            "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "args" => $this->getArgs(),
-            "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
+            "code" => $this->getCode(),
+            "verifyType" => $this->getVerifyType(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

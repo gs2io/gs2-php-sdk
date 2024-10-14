@@ -83,6 +83,12 @@ use Gs2\Ranking2\Request\GetGlobalRankingScoreByUserIdRequest;
 use Gs2\Ranking2\Result\GetGlobalRankingScoreByUserIdResult;
 use Gs2\Ranking2\Request\DeleteGlobalRankingScoreByUserIdRequest;
 use Gs2\Ranking2\Result\DeleteGlobalRankingScoreByUserIdResult;
+use Gs2\Ranking2\Request\VerifyGlobalRankingScoreRequest;
+use Gs2\Ranking2\Result\VerifyGlobalRankingScoreResult;
+use Gs2\Ranking2\Request\VerifyGlobalRankingScoreByUserIdRequest;
+use Gs2\Ranking2\Result\VerifyGlobalRankingScoreByUserIdResult;
+use Gs2\Ranking2\Request\VerifyGlobalRankingScoreByStampTaskRequest;
+use Gs2\Ranking2\Result\VerifyGlobalRankingScoreByStampTaskResult;
 use Gs2\Ranking2\Request\DescribeGlobalRankingReceivedRewardsRequest;
 use Gs2\Ranking2\Result\DescribeGlobalRankingReceivedRewardsResult;
 use Gs2\Ranking2\Request\DescribeGlobalRankingReceivedRewardsByUserIdRequest;
@@ -139,6 +145,12 @@ use Gs2\Ranking2\Request\GetClusterRankingScoreByUserIdRequest;
 use Gs2\Ranking2\Result\GetClusterRankingScoreByUserIdResult;
 use Gs2\Ranking2\Request\DeleteClusterRankingScoreByUserIdRequest;
 use Gs2\Ranking2\Result\DeleteClusterRankingScoreByUserIdResult;
+use Gs2\Ranking2\Request\VerifyClusterRankingScoreRequest;
+use Gs2\Ranking2\Result\VerifyClusterRankingScoreResult;
+use Gs2\Ranking2\Request\VerifyClusterRankingScoreByUserIdRequest;
+use Gs2\Ranking2\Result\VerifyClusterRankingScoreByUserIdResult;
+use Gs2\Ranking2\Request\VerifyClusterRankingScoreByStampTaskRequest;
+use Gs2\Ranking2\Result\VerifyClusterRankingScoreByStampTaskResult;
 use Gs2\Ranking2\Request\DescribeClusterRankingReceivedRewardsRequest;
 use Gs2\Ranking2\Result\DescribeClusterRankingReceivedRewardsResult;
 use Gs2\Ranking2\Request\DescribeClusterRankingReceivedRewardsByUserIdRequest;
@@ -203,6 +215,12 @@ use Gs2\Ranking2\Request\GetSubscribeRankingScoreByUserIdRequest;
 use Gs2\Ranking2\Result\GetSubscribeRankingScoreByUserIdResult;
 use Gs2\Ranking2\Request\DeleteSubscribeRankingScoreByUserIdRequest;
 use Gs2\Ranking2\Result\DeleteSubscribeRankingScoreByUserIdResult;
+use Gs2\Ranking2\Request\VerifySubscribeRankingScoreRequest;
+use Gs2\Ranking2\Result\VerifySubscribeRankingScoreResult;
+use Gs2\Ranking2\Request\VerifySubscribeRankingScoreByUserIdRequest;
+use Gs2\Ranking2\Result\VerifySubscribeRankingScoreByUserIdResult;
+use Gs2\Ranking2\Request\VerifySubscribeRankingScoreByStampTaskRequest;
+use Gs2\Ranking2\Result\VerifySubscribeRankingScoreByStampTaskResult;
 use Gs2\Ranking2\Request\DescribeSubscribeRankingsRequest;
 use Gs2\Ranking2\Result\DescribeSubscribeRankingsResult;
 use Gs2\Ranking2\Request\DescribeSubscribeRankingsByUserIdRequest;
@@ -1944,6 +1962,210 @@ class DeleteGlobalRankingScoreByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyGlobalRankingScoreTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyGlobalRankingScoreRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyGlobalRankingScoreTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyGlobalRankingScoreRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyGlobalRankingScoreRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyGlobalRankingScoreResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/score/global/{rankingName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rankingName}", $this->request->getRankingName() === null|| strlen($this->request->getRankingName()) == 0 ? "null" : $this->request->getRankingName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
+        if ($this->request->getScore() !== null) {
+            $json["score"] = $this->request->getScore();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyGlobalRankingScoreByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyGlobalRankingScoreByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyGlobalRankingScoreByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyGlobalRankingScoreByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyGlobalRankingScoreByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyGlobalRankingScoreByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/score/global/{rankingName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rankingName}", $this->request->getRankingName() === null|| strlen($this->request->getRankingName()) == 0 ? "null" : $this->request->getRankingName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
+        if ($this->request->getScore() !== null) {
+            $json["score"] = $this->request->getScore();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyGlobalRankingScoreByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyGlobalRankingScoreByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyGlobalRankingScoreByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyGlobalRankingScoreByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyGlobalRankingScoreByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyGlobalRankingScoreByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/global/score/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -3863,6 +4085,212 @@ class DeleteClusterRankingScoreByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyClusterRankingScoreTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyClusterRankingScoreRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyClusterRankingScoreTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyClusterRankingScoreRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyClusterRankingScoreRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyClusterRankingScoreResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/score/cluster/{rankingName}/{clusterName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rankingName}", $this->request->getRankingName() === null|| strlen($this->request->getRankingName()) == 0 ? "null" : $this->request->getRankingName(), $url);
+        $url = str_replace("{clusterName}", $this->request->getClusterName() === null|| strlen($this->request->getClusterName()) == 0 ? "null" : $this->request->getClusterName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
+        if ($this->request->getScore() !== null) {
+            $json["score"] = $this->request->getScore();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyClusterRankingScoreByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyClusterRankingScoreByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyClusterRankingScoreByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyClusterRankingScoreByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyClusterRankingScoreByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyClusterRankingScoreByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/score/cluster/{rankingName}/{clusterName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rankingName}", $this->request->getRankingName() === null|| strlen($this->request->getRankingName()) == 0 ? "null" : $this->request->getRankingName(), $url);
+        $url = str_replace("{clusterName}", $this->request->getClusterName() === null|| strlen($this->request->getClusterName()) == 0 ? "null" : $this->request->getClusterName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
+        if ($this->request->getScore() !== null) {
+            $json["score"] = $this->request->getScore();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyClusterRankingScoreByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyClusterRankingScoreByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyClusterRankingScoreByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyClusterRankingScoreByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyClusterRankingScoreByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyClusterRankingScoreByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/cluster/score/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -6032,6 +6460,210 @@ class DeleteSubscribeRankingScoreByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifySubscribeRankingScoreTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifySubscribeRankingScoreRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifySubscribeRankingScoreTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifySubscribeRankingScoreRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifySubscribeRankingScoreRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifySubscribeRankingScoreResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/score/subscribe/{rankingName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{rankingName}", $this->request->getRankingName() === null|| strlen($this->request->getRankingName()) == 0 ? "null" : $this->request->getRankingName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
+        if ($this->request->getScore() !== null) {
+            $json["score"] = $this->request->getScore();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifySubscribeRankingScoreByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifySubscribeRankingScoreByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifySubscribeRankingScoreByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifySubscribeRankingScoreByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifySubscribeRankingScoreByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifySubscribeRankingScoreByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/score/subscribe/{rankingName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{rankingName}", $this->request->getRankingName() === null|| strlen($this->request->getRankingName()) == 0 ? "null" : $this->request->getRankingName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getSeason() !== null) {
+            $json["season"] = $this->request->getSeason();
+        }
+        if ($this->request->getScore() !== null) {
+            $json["score"] = $this->request->getScore();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifySubscribeRankingScoreByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifySubscribeRankingScoreByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifySubscribeRankingScoreByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifySubscribeRankingScoreByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifySubscribeRankingScoreByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifySubscribeRankingScoreByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/subscribe/score/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeSubscribeRankingsTask extends Gs2RestSessionTask {
 
     /**
@@ -7541,6 +8173,87 @@ class Gs2Ranking2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyGlobalRankingScoreRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyGlobalRankingScoreAsync(
+            VerifyGlobalRankingScoreRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyGlobalRankingScoreTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyGlobalRankingScoreRequest $request
+     * @return VerifyGlobalRankingScoreResult
+     */
+    public function verifyGlobalRankingScore (
+            VerifyGlobalRankingScoreRequest $request
+    ): VerifyGlobalRankingScoreResult {
+        return $this->verifyGlobalRankingScoreAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyGlobalRankingScoreByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyGlobalRankingScoreByUserIdAsync(
+            VerifyGlobalRankingScoreByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyGlobalRankingScoreByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyGlobalRankingScoreByUserIdRequest $request
+     * @return VerifyGlobalRankingScoreByUserIdResult
+     */
+    public function verifyGlobalRankingScoreByUserId (
+            VerifyGlobalRankingScoreByUserIdRequest $request
+    ): VerifyGlobalRankingScoreByUserIdResult {
+        return $this->verifyGlobalRankingScoreByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyGlobalRankingScoreByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyGlobalRankingScoreByStampTaskAsync(
+            VerifyGlobalRankingScoreByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyGlobalRankingScoreByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyGlobalRankingScoreByStampTaskRequest $request
+     * @return VerifyGlobalRankingScoreByStampTaskResult
+     */
+    public function verifyGlobalRankingScoreByStampTask (
+            VerifyGlobalRankingScoreByStampTaskRequest $request
+    ): VerifyGlobalRankingScoreByStampTaskResult {
+        return $this->verifyGlobalRankingScoreByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DescribeGlobalRankingReceivedRewardsRequest $request
      * @return PromiseInterface
      */
@@ -8292,6 +9005,87 @@ class Gs2Ranking2RestClient extends AbstractGs2Client {
             DeleteClusterRankingScoreByUserIdRequest $request
     ): DeleteClusterRankingScoreByUserIdResult {
         return $this->deleteClusterRankingScoreByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyClusterRankingScoreRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyClusterRankingScoreAsync(
+            VerifyClusterRankingScoreRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyClusterRankingScoreTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyClusterRankingScoreRequest $request
+     * @return VerifyClusterRankingScoreResult
+     */
+    public function verifyClusterRankingScore (
+            VerifyClusterRankingScoreRequest $request
+    ): VerifyClusterRankingScoreResult {
+        return $this->verifyClusterRankingScoreAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyClusterRankingScoreByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyClusterRankingScoreByUserIdAsync(
+            VerifyClusterRankingScoreByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyClusterRankingScoreByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyClusterRankingScoreByUserIdRequest $request
+     * @return VerifyClusterRankingScoreByUserIdResult
+     */
+    public function verifyClusterRankingScoreByUserId (
+            VerifyClusterRankingScoreByUserIdRequest $request
+    ): VerifyClusterRankingScoreByUserIdResult {
+        return $this->verifyClusterRankingScoreByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyClusterRankingScoreByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyClusterRankingScoreByStampTaskAsync(
+            VerifyClusterRankingScoreByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyClusterRankingScoreByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyClusterRankingScoreByStampTaskRequest $request
+     * @return VerifyClusterRankingScoreByStampTaskResult
+     */
+    public function verifyClusterRankingScoreByStampTask (
+            VerifyClusterRankingScoreByStampTaskRequest $request
+    ): VerifyClusterRankingScoreByStampTaskResult {
+        return $this->verifyClusterRankingScoreByStampTaskAsync(
             $request
         )->wait();
     }
@@ -9156,6 +9950,87 @@ class Gs2Ranking2RestClient extends AbstractGs2Client {
             DeleteSubscribeRankingScoreByUserIdRequest $request
     ): DeleteSubscribeRankingScoreByUserIdResult {
         return $this->deleteSubscribeRankingScoreByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifySubscribeRankingScoreRequest $request
+     * @return PromiseInterface
+     */
+    public function verifySubscribeRankingScoreAsync(
+            VerifySubscribeRankingScoreRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifySubscribeRankingScoreTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifySubscribeRankingScoreRequest $request
+     * @return VerifySubscribeRankingScoreResult
+     */
+    public function verifySubscribeRankingScore (
+            VerifySubscribeRankingScoreRequest $request
+    ): VerifySubscribeRankingScoreResult {
+        return $this->verifySubscribeRankingScoreAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifySubscribeRankingScoreByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifySubscribeRankingScoreByUserIdAsync(
+            VerifySubscribeRankingScoreByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifySubscribeRankingScoreByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifySubscribeRankingScoreByUserIdRequest $request
+     * @return VerifySubscribeRankingScoreByUserIdResult
+     */
+    public function verifySubscribeRankingScoreByUserId (
+            VerifySubscribeRankingScoreByUserIdRequest $request
+    ): VerifySubscribeRankingScoreByUserIdResult {
+        return $this->verifySubscribeRankingScoreByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifySubscribeRankingScoreByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifySubscribeRankingScoreByStampTaskAsync(
+            VerifySubscribeRankingScoreByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifySubscribeRankingScoreByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifySubscribeRankingScoreByStampTaskRequest $request
+     * @return VerifySubscribeRankingScoreByStampTaskResult
+     */
+    public function verifySubscribeRankingScoreByStampTask (
+            VerifySubscribeRankingScoreByStampTaskRequest $request
+    ): VerifySubscribeRankingScoreByStampTaskResult {
+        return $this->verifySubscribeRankingScoreByStampTaskAsync(
             $request
         )->wait();
     }

@@ -87,6 +87,10 @@ use Gs2\Distributor\Request\SetTransactionDefaultConfigRequest;
 use Gs2\Distributor\Result\SetTransactionDefaultConfigResult;
 use Gs2\Distributor\Request\SetTransactionDefaultConfigByUserIdRequest;
 use Gs2\Distributor\Result\SetTransactionDefaultConfigByUserIdResult;
+use Gs2\Distributor\Request\FreezeMasterDataRequest;
+use Gs2\Distributor\Result\FreezeMasterDataResult;
+use Gs2\Distributor\Request\FreezeMasterDataByUserIdRequest;
+use Gs2\Distributor\Result\FreezeMasterDataByUserIdResult;
 use Gs2\Distributor\Request\IfExpressionByUserIdRequest;
 use Gs2\Distributor\Result\IfExpressionByUserIdResult;
 use Gs2\Distributor\Request\AndExpressionByUserIdRequest;
@@ -1892,6 +1896,129 @@ class SetTransactionDefaultConfigByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class FreezeMasterDataTask extends Gs2RestSessionTask {
+
+    /**
+     * @var FreezeMasterDataRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * FreezeMasterDataTask constructor.
+     * @param Gs2RestSession $session
+     * @param FreezeMasterDataRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        FreezeMasterDataRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            FreezeMasterDataResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/masterdata/freeze";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class FreezeMasterDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var FreezeMasterDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * FreezeMasterDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param FreezeMasterDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        FreezeMasterDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            FreezeMasterDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/masterdata/freeze";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class IfExpressionByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -3218,6 +3345,60 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             SetTransactionDefaultConfigByUserIdRequest $request
     ): SetTransactionDefaultConfigByUserIdResult {
         return $this->setTransactionDefaultConfigByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param FreezeMasterDataRequest $request
+     * @return PromiseInterface
+     */
+    public function freezeMasterDataAsync(
+            FreezeMasterDataRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new FreezeMasterDataTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param FreezeMasterDataRequest $request
+     * @return FreezeMasterDataResult
+     */
+    public function freezeMasterData (
+            FreezeMasterDataRequest $request
+    ): FreezeMasterDataResult {
+        return $this->freezeMasterDataAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param FreezeMasterDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function freezeMasterDataByUserIdAsync(
+            FreezeMasterDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new FreezeMasterDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param FreezeMasterDataByUserIdRequest $request
+     * @return FreezeMasterDataByUserIdResult
+     */
+    public function freezeMasterDataByUserId (
+            FreezeMasterDataByUserIdRequest $request
+    ): FreezeMasterDataByUserIdResult {
+        return $this->freezeMasterDataByUserIdAsync(
             $request
         )->wait();
     }

@@ -36,6 +36,10 @@ class Namespace_ implements IModel {
 	/**
      * @var NotificationSetting
 	 */
+	private $changeNotification;
+	/**
+     * @var NotificationSetting
+	 */
 	private $joinNotification;
 	/**
      * @var NotificationSetting
@@ -57,6 +61,10 @@ class Namespace_ implements IModel {
      * @var ScriptSetting
 	 */
 	private $createGuildScript;
+	/**
+     * @var ScriptSetting
+	 */
+	private $updateGuildScript;
 	/**
      * @var ScriptSetting
 	 */
@@ -113,6 +121,16 @@ class Namespace_ implements IModel {
 	}
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
+		return $this;
+	}
+	public function getChangeNotification(): ?NotificationSetting {
+		return $this->changeNotification;
+	}
+	public function setChangeNotification(?NotificationSetting $changeNotification) {
+		$this->changeNotification = $changeNotification;
+	}
+	public function withChangeNotification(?NotificationSetting $changeNotification): Namespace_ {
+		$this->changeNotification = $changeNotification;
 		return $this;
 	}
 	public function getJoinNotification(): ?NotificationSetting {
@@ -173,6 +191,16 @@ class Namespace_ implements IModel {
 	}
 	public function withCreateGuildScript(?ScriptSetting $createGuildScript): Namespace_ {
 		$this->createGuildScript = $createGuildScript;
+		return $this;
+	}
+	public function getUpdateGuildScript(): ?ScriptSetting {
+		return $this->updateGuildScript;
+	}
+	public function setUpdateGuildScript(?ScriptSetting $updateGuildScript) {
+		$this->updateGuildScript = $updateGuildScript;
+	}
+	public function withUpdateGuildScript(?ScriptSetting $updateGuildScript): Namespace_ {
+		$this->updateGuildScript = $updateGuildScript;
 		return $this;
 	}
 	public function getJoinGuildScript(): ?ScriptSetting {
@@ -254,12 +282,14 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withChangeNotification(array_key_exists('changeNotification', $data) && $data['changeNotification'] !== null ? NotificationSetting::fromJson($data['changeNotification']) : null)
             ->withJoinNotification(array_key_exists('joinNotification', $data) && $data['joinNotification'] !== null ? NotificationSetting::fromJson($data['joinNotification']) : null)
             ->withLeaveNotification(array_key_exists('leaveNotification', $data) && $data['leaveNotification'] !== null ? NotificationSetting::fromJson($data['leaveNotification']) : null)
             ->withChangeMemberNotification(array_key_exists('changeMemberNotification', $data) && $data['changeMemberNotification'] !== null ? NotificationSetting::fromJson($data['changeMemberNotification']) : null)
             ->withReceiveRequestNotification(array_key_exists('receiveRequestNotification', $data) && $data['receiveRequestNotification'] !== null ? NotificationSetting::fromJson($data['receiveRequestNotification']) : null)
             ->withRemoveRequestNotification(array_key_exists('removeRequestNotification', $data) && $data['removeRequestNotification'] !== null ? NotificationSetting::fromJson($data['removeRequestNotification']) : null)
             ->withCreateGuildScript(array_key_exists('createGuildScript', $data) && $data['createGuildScript'] !== null ? ScriptSetting::fromJson($data['createGuildScript']) : null)
+            ->withUpdateGuildScript(array_key_exists('updateGuildScript', $data) && $data['updateGuildScript'] !== null ? ScriptSetting::fromJson($data['updateGuildScript']) : null)
             ->withJoinGuildScript(array_key_exists('joinGuildScript', $data) && $data['joinGuildScript'] !== null ? ScriptSetting::fromJson($data['joinGuildScript']) : null)
             ->withLeaveGuildScript(array_key_exists('leaveGuildScript', $data) && $data['leaveGuildScript'] !== null ? ScriptSetting::fromJson($data['leaveGuildScript']) : null)
             ->withChangeRoleScript(array_key_exists('changeRoleScript', $data) && $data['changeRoleScript'] !== null ? ScriptSetting::fromJson($data['changeRoleScript']) : null)
@@ -274,12 +304,14 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "changeNotification" => $this->getChangeNotification() !== null ? $this->getChangeNotification()->toJson() : null,
             "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
             "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,
             "changeMemberNotification" => $this->getChangeMemberNotification() !== null ? $this->getChangeMemberNotification()->toJson() : null,
             "receiveRequestNotification" => $this->getReceiveRequestNotification() !== null ? $this->getReceiveRequestNotification()->toJson() : null,
             "removeRequestNotification" => $this->getRemoveRequestNotification() !== null ? $this->getRemoveRequestNotification()->toJson() : null,
             "createGuildScript" => $this->getCreateGuildScript() !== null ? $this->getCreateGuildScript()->toJson() : null,
+            "updateGuildScript" => $this->getUpdateGuildScript() !== null ? $this->getUpdateGuildScript()->toJson() : null,
             "joinGuildScript" => $this->getJoinGuildScript() !== null ? $this->getJoinGuildScript()->toJson() : null,
             "leaveGuildScript" => $this->getLeaveGuildScript() !== null ? $this->getLeaveGuildScript()->toJson() : null,
             "changeRoleScript" => $this->getChangeRoleScript() !== null ? $this->getChangeRoleScript()->toJson() : null,

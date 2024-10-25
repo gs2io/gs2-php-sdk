@@ -28,6 +28,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     /** @var string */
     private $description;
     /** @var NotificationSetting */
+    private $changeNotification;
+    /** @var NotificationSetting */
     private $joinNotification;
     /** @var NotificationSetting */
     private $leaveNotification;
@@ -39,6 +41,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $removeRequestNotification;
     /** @var ScriptSetting */
     private $createGuildScript;
+    /** @var ScriptSetting */
+    private $updateGuildScript;
     /** @var ScriptSetting */
     private $joinGuildScript;
     /** @var ScriptSetting */
@@ -65,6 +69,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getChangeNotification(): ?NotificationSetting {
+		return $this->changeNotification;
+	}
+	public function setChangeNotification(?NotificationSetting $changeNotification) {
+		$this->changeNotification = $changeNotification;
+	}
+	public function withChangeNotification(?NotificationSetting $changeNotification): UpdateNamespaceRequest {
+		$this->changeNotification = $changeNotification;
 		return $this;
 	}
 	public function getJoinNotification(): ?NotificationSetting {
@@ -127,6 +141,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->createGuildScript = $createGuildScript;
 		return $this;
 	}
+	public function getUpdateGuildScript(): ?ScriptSetting {
+		return $this->updateGuildScript;
+	}
+	public function setUpdateGuildScript(?ScriptSetting $updateGuildScript) {
+		$this->updateGuildScript = $updateGuildScript;
+	}
+	public function withUpdateGuildScript(?ScriptSetting $updateGuildScript): UpdateNamespaceRequest {
+		$this->updateGuildScript = $updateGuildScript;
+		return $this;
+	}
 	public function getJoinGuildScript(): ?ScriptSetting {
 		return $this->joinGuildScript;
 	}
@@ -175,12 +199,14 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withChangeNotification(array_key_exists('changeNotification', $data) && $data['changeNotification'] !== null ? NotificationSetting::fromJson($data['changeNotification']) : null)
             ->withJoinNotification(array_key_exists('joinNotification', $data) && $data['joinNotification'] !== null ? NotificationSetting::fromJson($data['joinNotification']) : null)
             ->withLeaveNotification(array_key_exists('leaveNotification', $data) && $data['leaveNotification'] !== null ? NotificationSetting::fromJson($data['leaveNotification']) : null)
             ->withChangeMemberNotification(array_key_exists('changeMemberNotification', $data) && $data['changeMemberNotification'] !== null ? NotificationSetting::fromJson($data['changeMemberNotification']) : null)
             ->withReceiveRequestNotification(array_key_exists('receiveRequestNotification', $data) && $data['receiveRequestNotification'] !== null ? NotificationSetting::fromJson($data['receiveRequestNotification']) : null)
             ->withRemoveRequestNotification(array_key_exists('removeRequestNotification', $data) && $data['removeRequestNotification'] !== null ? NotificationSetting::fromJson($data['removeRequestNotification']) : null)
             ->withCreateGuildScript(array_key_exists('createGuildScript', $data) && $data['createGuildScript'] !== null ? ScriptSetting::fromJson($data['createGuildScript']) : null)
+            ->withUpdateGuildScript(array_key_exists('updateGuildScript', $data) && $data['updateGuildScript'] !== null ? ScriptSetting::fromJson($data['updateGuildScript']) : null)
             ->withJoinGuildScript(array_key_exists('joinGuildScript', $data) && $data['joinGuildScript'] !== null ? ScriptSetting::fromJson($data['joinGuildScript']) : null)
             ->withLeaveGuildScript(array_key_exists('leaveGuildScript', $data) && $data['leaveGuildScript'] !== null ? ScriptSetting::fromJson($data['leaveGuildScript']) : null)
             ->withChangeRoleScript(array_key_exists('changeRoleScript', $data) && $data['changeRoleScript'] !== null ? ScriptSetting::fromJson($data['changeRoleScript']) : null)
@@ -191,12 +217,14 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "changeNotification" => $this->getChangeNotification() !== null ? $this->getChangeNotification()->toJson() : null,
             "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
             "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,
             "changeMemberNotification" => $this->getChangeMemberNotification() !== null ? $this->getChangeMemberNotification()->toJson() : null,
             "receiveRequestNotification" => $this->getReceiveRequestNotification() !== null ? $this->getReceiveRequestNotification()->toJson() : null,
             "removeRequestNotification" => $this->getRemoveRequestNotification() !== null ? $this->getRemoveRequestNotification()->toJson() : null,
             "createGuildScript" => $this->getCreateGuildScript() !== null ? $this->getCreateGuildScript()->toJson() : null,
+            "updateGuildScript" => $this->getUpdateGuildScript() !== null ? $this->getUpdateGuildScript()->toJson() : null,
             "joinGuildScript" => $this->getJoinGuildScript() !== null ? $this->getJoinGuildScript()->toJson() : null,
             "leaveGuildScript" => $this->getLeaveGuildScript() !== null ? $this->getLeaveGuildScript()->toJson() : null,
             "changeRoleScript" => $this->getChangeRoleScript() !== null ? $this->getChangeRoleScript()->toJson() : null,

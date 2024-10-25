@@ -305,6 +305,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getChangeNotification() !== null) {
+            $json["changeNotification"] = $this->request->getChangeNotification()->toJson();
+        }
         if ($this->request->getJoinNotification() !== null) {
             $json["joinNotification"] = $this->request->getJoinNotification()->toJson();
         }
@@ -322,6 +325,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCreateGuildScript() !== null) {
             $json["createGuildScript"] = $this->request->getCreateGuildScript()->toJson();
+        }
+        if ($this->request->getUpdateGuildScript() !== null) {
+            $json["updateGuildScript"] = $this->request->getUpdateGuildScript()->toJson();
         }
         if ($this->request->getJoinGuildScript() !== null) {
             $json["joinGuildScript"] = $this->request->getJoinGuildScript()->toJson();
@@ -507,6 +513,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getChangeNotification() !== null) {
+            $json["changeNotification"] = $this->request->getChangeNotification()->toJson();
+        }
         if ($this->request->getJoinNotification() !== null) {
             $json["joinNotification"] = $this->request->getJoinNotification()->toJson();
         }
@@ -524,6 +533,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getCreateGuildScript() !== null) {
             $json["createGuildScript"] = $this->request->getCreateGuildScript()->toJson();
+        }
+        if ($this->request->getUpdateGuildScript() !== null) {
+            $json["updateGuildScript"] = $this->request->getUpdateGuildScript()->toJson();
         }
         if ($this->request->getJoinGuildScript() !== null) {
             $json["joinGuildScript"] = $this->request->getJoinGuildScript()->toJson();

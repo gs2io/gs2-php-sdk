@@ -45,6 +45,10 @@ class OpenIdConnectSetting implements IModel {
      * @var string
 	 */
 	private $applePrivateKeyPem;
+	/**
+     * @var string
+	 */
+	private $doneEndpointUrl;
 	public function getConfigurationPath(): ?string {
 		return $this->configurationPath;
 	}
@@ -105,6 +109,16 @@ class OpenIdConnectSetting implements IModel {
 		$this->applePrivateKeyPem = $applePrivateKeyPem;
 		return $this;
 	}
+	public function getDoneEndpointUrl(): ?string {
+		return $this->doneEndpointUrl;
+	}
+	public function setDoneEndpointUrl(?string $doneEndpointUrl) {
+		$this->doneEndpointUrl = $doneEndpointUrl;
+	}
+	public function withDoneEndpointUrl(?string $doneEndpointUrl): OpenIdConnectSetting {
+		$this->doneEndpointUrl = $doneEndpointUrl;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?OpenIdConnectSetting {
         if ($data === null) {
@@ -116,7 +130,8 @@ class OpenIdConnectSetting implements IModel {
             ->withClientSecret(array_key_exists('clientSecret', $data) && $data['clientSecret'] !== null ? $data['clientSecret'] : null)
             ->withAppleTeamId(array_key_exists('appleTeamId', $data) && $data['appleTeamId'] !== null ? $data['appleTeamId'] : null)
             ->withAppleKeyId(array_key_exists('appleKeyId', $data) && $data['appleKeyId'] !== null ? $data['appleKeyId'] : null)
-            ->withApplePrivateKeyPem(array_key_exists('applePrivateKeyPem', $data) && $data['applePrivateKeyPem'] !== null ? $data['applePrivateKeyPem'] : null);
+            ->withApplePrivateKeyPem(array_key_exists('applePrivateKeyPem', $data) && $data['applePrivateKeyPem'] !== null ? $data['applePrivateKeyPem'] : null)
+            ->withDoneEndpointUrl(array_key_exists('doneEndpointUrl', $data) && $data['doneEndpointUrl'] !== null ? $data['doneEndpointUrl'] : null);
     }
 
     public function toJson(): array {
@@ -127,6 +142,7 @@ class OpenIdConnectSetting implements IModel {
             "appleTeamId" => $this->getAppleTeamId(),
             "appleKeyId" => $this->getAppleKeyId(),
             "applePrivateKeyPem" => $this->getApplePrivateKeyPem(),
+            "doneEndpointUrl" => $this->getDoneEndpointUrl(),
         );
     }
 }

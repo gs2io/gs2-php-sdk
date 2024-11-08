@@ -33,6 +33,8 @@ class MultiplyAcquireActionsByUserIdRequest extends Gs2BasicRequest {
     private $rateName;
     /** @var array */
     private $acquireActions;
+    /** @var float */
+    private $baseRate;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
@@ -97,6 +99,16 @@ class MultiplyAcquireActionsByUserIdRequest extends Gs2BasicRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+	public function getBaseRate(): ?float {
+		return $this->baseRate;
+	}
+	public function setBaseRate(?float $baseRate) {
+		$this->baseRate = $baseRate;
+	}
+	public function withBaseRate(?float $baseRate): MultiplyAcquireActionsByUserIdRequest {
+		$this->baseRate = $baseRate;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -137,6 +149,7 @@ class MultiplyAcquireActionsByUserIdRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
             ))
+            ->withBaseRate(array_key_exists('baseRate', $data) && $data['baseRate'] !== null ? $data['baseRate'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -153,6 +166,7 @@ class MultiplyAcquireActionsByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
             ),
+            "baseRate" => $this->getBaseRate(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

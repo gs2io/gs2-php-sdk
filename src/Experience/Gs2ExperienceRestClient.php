@@ -3654,6 +3654,9 @@ class MultiplyAcquireActionsByUserIdTask extends Gs2RestSessionTask {
             }
             $json["acquireActions"] = $array;
         }
+        if ($this->request->getBaseRate() !== null) {
+            $json["baseRate"] = $this->request->getBaseRate();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

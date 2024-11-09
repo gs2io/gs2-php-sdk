@@ -27,6 +27,8 @@ class VerifyCodeRequest extends Gs2BasicRequest {
     /** @var string */
     private $code;
     /** @var string */
+    private $campaignModelName;
+    /** @var string */
     private $verifyType;
     /** @var string */
     private $duplicationAvoider;
@@ -58,6 +60,16 @@ class VerifyCodeRequest extends Gs2BasicRequest {
 	}
 	public function withCode(?string $code): VerifyCodeRequest {
 		$this->code = $code;
+		return $this;
+	}
+	public function getCampaignModelName(): ?string {
+		return $this->campaignModelName;
+	}
+	public function setCampaignModelName(?string $campaignModelName) {
+		$this->campaignModelName = $campaignModelName;
+	}
+	public function withCampaignModelName(?string $campaignModelName): VerifyCodeRequest {
+		$this->campaignModelName = $campaignModelName;
 		return $this;
 	}
 	public function getVerifyType(): ?string {
@@ -92,6 +104,7 @@ class VerifyCodeRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withCode(array_key_exists('code', $data) && $data['code'] !== null ? $data['code'] : null)
+            ->withCampaignModelName(array_key_exists('campaignModelName', $data) && $data['campaignModelName'] !== null ? $data['campaignModelName'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null);
     }
 
@@ -100,6 +113,7 @@ class VerifyCodeRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "code" => $this->getCode(),
+            "campaignModelName" => $this->getCampaignModelName(),
             "verifyType" => $this->getVerifyType(),
         );
     }

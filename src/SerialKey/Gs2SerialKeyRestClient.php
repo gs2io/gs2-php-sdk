@@ -85,6 +85,8 @@ use Gs2\SerialKey\Request\RevertUseByStampSheetRequest;
 use Gs2\SerialKey\Result\RevertUseByStampSheetResult;
 use Gs2\SerialKey\Request\VerifyByStampTaskRequest;
 use Gs2\SerialKey\Result\VerifyByStampTaskResult;
+use Gs2\SerialKey\Request\IssueOnceByStampSheetRequest;
+use Gs2\SerialKey\Result\IssueOnceByStampSheetResult;
 use Gs2\SerialKey\Request\DescribeCampaignModelsRequest;
 use Gs2\SerialKey\Result\DescribeCampaignModelsResult;
 use Gs2\SerialKey\Request\GetCampaignModelRequest;
@@ -1344,6 +1346,9 @@ class VerifyCodeTask extends Gs2RestSessionTask {
         if ($this->request->getCode() !== null) {
             $json["code"] = $this->request->getCode();
         }
+        if ($this->request->getCampaignModelName() !== null) {
+            $json["campaignModelName"] = $this->request->getCampaignModelName();
+        }
         if ($this->request->getVerifyType() !== null) {
             $json["verifyType"] = $this->request->getVerifyType();
         }
@@ -1411,6 +1416,9 @@ class VerifyCodeByUserIdTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getCode() !== null) {
             $json["code"] = $this->request->getCode();
+        }
+        if ($this->request->getCampaignModelName() !== null) {
+            $json["campaignModelName"] = $this->request->getCampaignModelName();
         }
         if ($this->request->getVerifyType() !== null) {
             $json["verifyType"] = $this->request->getVerifyType();
@@ -1788,6 +1796,65 @@ class VerifyByStampTaskTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampTask() !== null) {
             $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IssueOnceByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IssueOnceByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IssueOnceByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param IssueOnceByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IssueOnceByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IssueOnceByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/serialKey/issueOnce";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -3236,6 +3303,33 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
             VerifyByStampTaskRequest $request
     ): VerifyByStampTaskResult {
         return $this->verifyByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param IssueOnceByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function issueOnceByStampSheetAsync(
+            IssueOnceByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IssueOnceByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param IssueOnceByStampSheetRequest $request
+     * @return IssueOnceByStampSheetResult
+     */
+    public function issueOnceByStampSheet (
+            IssueOnceByStampSheetRequest $request
+    ): IssueOnceByStampSheetResult {
+        return $this->issueOnceByStampSheetAsync(
             $request
         )->wait();
     }

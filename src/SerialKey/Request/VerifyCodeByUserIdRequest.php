@@ -27,6 +27,8 @@ class VerifyCodeByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $code;
     /** @var string */
+    private $campaignModelName;
+    /** @var string */
     private $verifyType;
     /** @var string */
     private $timeOffsetToken;
@@ -60,6 +62,16 @@ class VerifyCodeByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withCode(?string $code): VerifyCodeByUserIdRequest {
 		$this->code = $code;
+		return $this;
+	}
+	public function getCampaignModelName(): ?string {
+		return $this->campaignModelName;
+	}
+	public function setCampaignModelName(?string $campaignModelName) {
+		$this->campaignModelName = $campaignModelName;
+	}
+	public function withCampaignModelName(?string $campaignModelName): VerifyCodeByUserIdRequest {
+		$this->campaignModelName = $campaignModelName;
 		return $this;
 	}
 	public function getVerifyType(): ?string {
@@ -104,6 +116,7 @@ class VerifyCodeByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withCode(array_key_exists('code', $data) && $data['code'] !== null ? $data['code'] : null)
+            ->withCampaignModelName(array_key_exists('campaignModelName', $data) && $data['campaignModelName'] !== null ? $data['campaignModelName'] : null)
             ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -113,6 +126,7 @@ class VerifyCodeByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "code" => $this->getCode(),
+            "campaignModelName" => $this->getCampaignModelName(),
             "verifyType" => $this->getVerifyType(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

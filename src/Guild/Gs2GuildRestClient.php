@@ -93,6 +93,10 @@ use Gs2\Guild\Request\UpdateMemberRoleRequest;
 use Gs2\Guild\Result\UpdateMemberRoleResult;
 use Gs2\Guild\Request\UpdateMemberRoleByGuildNameRequest;
 use Gs2\Guild\Result\UpdateMemberRoleByGuildNameResult;
+use Gs2\Guild\Request\BatchUpdateMemberRoleRequest;
+use Gs2\Guild\Result\BatchUpdateMemberRoleResult;
+use Gs2\Guild\Request\BatchUpdateMemberRoleByGuildNameRequest;
+use Gs2\Guild\Result\BatchUpdateMemberRoleByGuildNameResult;
 use Gs2\Guild\Request\DeleteGuildRequest;
 use Gs2\Guild\Result\DeleteGuildResult;
 use Gs2\Guild\Request\DeleteGuildByGuildNameRequest;
@@ -1175,6 +1179,12 @@ class CreateGuildModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getRejoinCoolTimeMinutes() !== null) {
             $json["rejoinCoolTimeMinutes"] = $this->request->getRejoinCoolTimeMinutes();
         }
+        if ($this->request->getMaxConcurrentJoinGuilds() !== null) {
+            $json["maxConcurrentJoinGuilds"] = $this->request->getMaxConcurrentJoinGuilds();
+        }
+        if ($this->request->getMaxConcurrentGuildMasterCount() !== null) {
+            $json["maxConcurrentGuildMasterCount"] = $this->request->getMaxConcurrentGuildMasterCount();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -1320,6 +1330,12 @@ class UpdateGuildModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getRejoinCoolTimeMinutes() !== null) {
             $json["rejoinCoolTimeMinutes"] = $this->request->getRejoinCoolTimeMinutes();
+        }
+        if ($this->request->getMaxConcurrentJoinGuilds() !== null) {
+            $json["maxConcurrentJoinGuilds"] = $this->request->getMaxConcurrentJoinGuilds();
+        }
+        if ($this->request->getMaxConcurrentGuildMasterCount() !== null) {
+            $json["maxConcurrentGuildMasterCount"] = $this->request->getMaxConcurrentGuildMasterCount();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2497,6 +2513,144 @@ class UpdateMemberRoleByGuildNameTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getRoleName() !== null) {
             $json["roleName"] = $this->request->getRoleName();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class BatchUpdateMemberRoleTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchUpdateMemberRoleRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchUpdateMemberRoleTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchUpdateMemberRoleRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchUpdateMemberRoleRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchUpdateMemberRoleResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/me/batch/member/role";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+
+        $json = [];
+        if ($this->request->getMembers() !== null) {
+            $array = [];
+            foreach ($this->request->getMembers() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["members"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class BatchUpdateMemberRoleByGuildNameTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchUpdateMemberRoleByGuildNameRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchUpdateMemberRoleByGuildNameTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchUpdateMemberRoleByGuildNameRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchUpdateMemberRoleByGuildNameRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchUpdateMemberRoleByGuildNameResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/{guildName}/batch/member/role";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+
+        $json = [];
+        if ($this->request->getMembers() !== null) {
+            $array = [];
+            foreach ($this->request->getMembers() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["members"] = $array;
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -6878,6 +7032,60 @@ class Gs2GuildRestClient extends AbstractGs2Client {
             UpdateMemberRoleByGuildNameRequest $request
     ): UpdateMemberRoleByGuildNameResult {
         return $this->updateMemberRoleByGuildNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param BatchUpdateMemberRoleRequest $request
+     * @return PromiseInterface
+     */
+    public function batchUpdateMemberRoleAsync(
+            BatchUpdateMemberRoleRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchUpdateMemberRoleTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchUpdateMemberRoleRequest $request
+     * @return BatchUpdateMemberRoleResult
+     */
+    public function batchUpdateMemberRole (
+            BatchUpdateMemberRoleRequest $request
+    ): BatchUpdateMemberRoleResult {
+        return $this->batchUpdateMemberRoleAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param BatchUpdateMemberRoleByGuildNameRequest $request
+     * @return PromiseInterface
+     */
+    public function batchUpdateMemberRoleByGuildNameAsync(
+            BatchUpdateMemberRoleByGuildNameRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchUpdateMemberRoleByGuildNameTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchUpdateMemberRoleByGuildNameRequest $request
+     * @return BatchUpdateMemberRoleByGuildNameResult
+     */
+    public function batchUpdateMemberRoleByGuildName (
+            BatchUpdateMemberRoleByGuildNameRequest $request
+    ): BatchUpdateMemberRoleByGuildNameResult {
+        return $this->batchUpdateMemberRoleByGuildNameAsync(
             $request
         )->wait();
     }

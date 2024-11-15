@@ -22,6 +22,8 @@ use Gs2\Core\Model\IResult;
 class SendNotificationResult implements IResult {
     /** @var string */
     private $protocol;
+    /** @var array */
+    private $sendConnectionIds;
 
 	public function getProtocol(): ?string {
 		return $this->protocol;
@@ -36,17 +38,42 @@ class SendNotificationResult implements IResult {
 		return $this;
 	}
 
+	public function getSendConnectionIds(): ?array {
+		return $this->sendConnectionIds;
+	}
+
+	public function setSendConnectionIds(?array $sendConnectionIds) {
+		$this->sendConnectionIds = $sendConnectionIds;
+	}
+
+	public function withSendConnectionIds(?array $sendConnectionIds): SendNotificationResult {
+		$this->sendConnectionIds = $sendConnectionIds;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?SendNotificationResult {
         if ($data === null) {
             return null;
         }
         return (new SendNotificationResult())
-            ->withProtocol(array_key_exists('protocol', $data) && $data['protocol'] !== null ? $data['protocol'] : null);
+            ->withProtocol(array_key_exists('protocol', $data) && $data['protocol'] !== null ? $data['protocol'] : null)
+            ->withSendConnectionIds(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('sendConnectionIds', $data) && $data['sendConnectionIds'] !== null ? $data['sendConnectionIds'] : []
+            ));
     }
 
     public function toJson(): array {
         return array(
             "protocol" => $this->getProtocol(),
+            "sendConnectionIds" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getSendConnectionIds() !== null && $this->getSendConnectionIds() !== null ? $this->getSendConnectionIds() : []
+            ),
         );
     }
 }

@@ -19,10 +19,13 @@ namespace Gs2\SerialKey\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\SerialKey;
+use Gs2\SerialKey\Model\CampaignModel;
 
 class VerifyCodeByUserIdResult implements IResult {
     /** @var SerialKey */
     private $item;
+    /** @var CampaignModel */
+    private $campaignModel;
 
 	public function getItem(): ?SerialKey {
 		return $this->item;
@@ -37,17 +40,32 @@ class VerifyCodeByUserIdResult implements IResult {
 		return $this;
 	}
 
+	public function getCampaignModel(): ?CampaignModel {
+		return $this->campaignModel;
+	}
+
+	public function setCampaignModel(?CampaignModel $campaignModel) {
+		$this->campaignModel = $campaignModel;
+	}
+
+	public function withCampaignModel(?CampaignModel $campaignModel): VerifyCodeByUserIdResult {
+		$this->campaignModel = $campaignModel;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?VerifyCodeByUserIdResult {
         if ($data === null) {
             return null;
         }
         return (new VerifyCodeByUserIdResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SerialKey::fromJson($data['item']) : null);
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SerialKey::fromJson($data['item']) : null)
+            ->withCampaignModel(array_key_exists('campaignModel', $data) && $data['campaignModel'] !== null ? CampaignModel::fromJson($data['campaignModel']) : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "campaignModel" => $this->getCampaignModel() !== null ? $this->getCampaignModel()->toJson() : null,
         );
     }
 }

@@ -19,10 +19,13 @@ namespace Gs2\SerialKey\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\SerialKey;
+use Gs2\SerialKey\Model\CampaignModel;
 
 class VerifyByStampTaskResult implements IResult {
     /** @var SerialKey */
     private $item;
+    /** @var CampaignModel */
+    private $campaignModel;
     /** @var string */
     private $newContextStack;
 
@@ -36,6 +39,19 @@ class VerifyByStampTaskResult implements IResult {
 
 	public function withItem(?SerialKey $item): VerifyByStampTaskResult {
 		$this->item = $item;
+		return $this;
+	}
+
+	public function getCampaignModel(): ?CampaignModel {
+		return $this->campaignModel;
+	}
+
+	public function setCampaignModel(?CampaignModel $campaignModel) {
+		$this->campaignModel = $campaignModel;
+	}
+
+	public function withCampaignModel(?CampaignModel $campaignModel): VerifyByStampTaskResult {
+		$this->campaignModel = $campaignModel;
 		return $this;
 	}
 
@@ -58,12 +74,14 @@ class VerifyByStampTaskResult implements IResult {
         }
         return (new VerifyByStampTaskResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SerialKey::fromJson($data['item']) : null)
+            ->withCampaignModel(array_key_exists('campaignModel', $data) && $data['campaignModel'] !== null ? CampaignModel::fromJson($data['campaignModel']) : null)
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "campaignModel" => $this->getCampaignModel() !== null ? $this->getCampaignModel()->toJson() : null,
             "newContextStack" => $this->getNewContextStack(),
         );
     }

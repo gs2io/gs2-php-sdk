@@ -43,6 +43,10 @@ class CreateGuildModelMasterRequest extends Gs2BasicRequest {
     private $guildMemberDefaultRole;
     /** @var int */
     private $rejoinCoolTimeMinutes;
+    /** @var int */
+    private $maxConcurrentJoinGuilds;
+    /** @var int */
+    private $maxConcurrentGuildMasterCount;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -153,6 +157,26 @@ class CreateGuildModelMasterRequest extends Gs2BasicRequest {
 		$this->rejoinCoolTimeMinutes = $rejoinCoolTimeMinutes;
 		return $this;
 	}
+	public function getMaxConcurrentJoinGuilds(): ?int {
+		return $this->maxConcurrentJoinGuilds;
+	}
+	public function setMaxConcurrentJoinGuilds(?int $maxConcurrentJoinGuilds) {
+		$this->maxConcurrentJoinGuilds = $maxConcurrentJoinGuilds;
+	}
+	public function withMaxConcurrentJoinGuilds(?int $maxConcurrentJoinGuilds): CreateGuildModelMasterRequest {
+		$this->maxConcurrentJoinGuilds = $maxConcurrentJoinGuilds;
+		return $this;
+	}
+	public function getMaxConcurrentGuildMasterCount(): ?int {
+		return $this->maxConcurrentGuildMasterCount;
+	}
+	public function setMaxConcurrentGuildMasterCount(?int $maxConcurrentGuildMasterCount) {
+		$this->maxConcurrentGuildMasterCount = $maxConcurrentGuildMasterCount;
+	}
+	public function withMaxConcurrentGuildMasterCount(?int $maxConcurrentGuildMasterCount): CreateGuildModelMasterRequest {
+		$this->maxConcurrentGuildMasterCount = $maxConcurrentGuildMasterCount;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateGuildModelMasterRequest {
         if ($data === null) {
@@ -174,7 +198,9 @@ class CreateGuildModelMasterRequest extends Gs2BasicRequest {
             ))
             ->withGuildMasterRole(array_key_exists('guildMasterRole', $data) && $data['guildMasterRole'] !== null ? $data['guildMasterRole'] : null)
             ->withGuildMemberDefaultRole(array_key_exists('guildMemberDefaultRole', $data) && $data['guildMemberDefaultRole'] !== null ? $data['guildMemberDefaultRole'] : null)
-            ->withRejoinCoolTimeMinutes(array_key_exists('rejoinCoolTimeMinutes', $data) && $data['rejoinCoolTimeMinutes'] !== null ? $data['rejoinCoolTimeMinutes'] : null);
+            ->withRejoinCoolTimeMinutes(array_key_exists('rejoinCoolTimeMinutes', $data) && $data['rejoinCoolTimeMinutes'] !== null ? $data['rejoinCoolTimeMinutes'] : null)
+            ->withMaxConcurrentJoinGuilds(array_key_exists('maxConcurrentJoinGuilds', $data) && $data['maxConcurrentJoinGuilds'] !== null ? $data['maxConcurrentJoinGuilds'] : null)
+            ->withMaxConcurrentGuildMasterCount(array_key_exists('maxConcurrentGuildMasterCount', $data) && $data['maxConcurrentGuildMasterCount'] !== null ? $data['maxConcurrentGuildMasterCount'] : null);
     }
 
     public function toJson(): array {
@@ -195,6 +221,8 @@ class CreateGuildModelMasterRequest extends Gs2BasicRequest {
             "guildMasterRole" => $this->getGuildMasterRole(),
             "guildMemberDefaultRole" => $this->getGuildMemberDefaultRole(),
             "rejoinCoolTimeMinutes" => $this->getRejoinCoolTimeMinutes(),
+            "maxConcurrentJoinGuilds" => $this->getMaxConcurrentJoinGuilds(),
+            "maxConcurrentGuildMasterCount" => $this->getMaxConcurrentGuildMasterCount(),
         );
     }
 }

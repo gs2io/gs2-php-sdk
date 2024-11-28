@@ -22,6 +22,18 @@ use Gs2\Core\Model\IModel;
 
 class TransactionSetting implements IModel {
 	/**
+     * @var bool
+	 */
+	private $enableAtomicCommit;
+	/**
+     * @var bool
+	 */
+	private $transactionUseDistributor;
+	/**
+     * @var bool
+	 */
+	private $acquireActionUseJobQueue;
+	/**
      * @var string
 	 */
 	private $distributorNamespaceId;
@@ -29,6 +41,36 @@ class TransactionSetting implements IModel {
      * @var string
 	 */
 	private $queueNamespaceId;
+	public function getEnableAtomicCommit(): ?bool {
+		return $this->enableAtomicCommit;
+	}
+	public function setEnableAtomicCommit(?bool $enableAtomicCommit) {
+		$this->enableAtomicCommit = $enableAtomicCommit;
+	}
+	public function withEnableAtomicCommit(?bool $enableAtomicCommit): TransactionSetting {
+		$this->enableAtomicCommit = $enableAtomicCommit;
+		return $this;
+	}
+	public function getTransactionUseDistributor(): ?bool {
+		return $this->transactionUseDistributor;
+	}
+	public function setTransactionUseDistributor(?bool $transactionUseDistributor) {
+		$this->transactionUseDistributor = $transactionUseDistributor;
+	}
+	public function withTransactionUseDistributor(?bool $transactionUseDistributor): TransactionSetting {
+		$this->transactionUseDistributor = $transactionUseDistributor;
+		return $this;
+	}
+	public function getAcquireActionUseJobQueue(): ?bool {
+		return $this->acquireActionUseJobQueue;
+	}
+	public function setAcquireActionUseJobQueue(?bool $acquireActionUseJobQueue) {
+		$this->acquireActionUseJobQueue = $acquireActionUseJobQueue;
+	}
+	public function withAcquireActionUseJobQueue(?bool $acquireActionUseJobQueue): TransactionSetting {
+		$this->acquireActionUseJobQueue = $acquireActionUseJobQueue;
+		return $this;
+	}
 	public function getDistributorNamespaceId(): ?string {
 		return $this->distributorNamespaceId;
 	}
@@ -55,12 +97,18 @@ class TransactionSetting implements IModel {
             return null;
         }
         return (new TransactionSetting())
+            ->withEnableAtomicCommit(array_key_exists('enableAtomicCommit', $data) ? $data['enableAtomicCommit'] : null)
+            ->withTransactionUseDistributor(array_key_exists('transactionUseDistributor', $data) ? $data['transactionUseDistributor'] : null)
+            ->withAcquireActionUseJobQueue(array_key_exists('acquireActionUseJobQueue', $data) ? $data['acquireActionUseJobQueue'] : null)
             ->withDistributorNamespaceId(array_key_exists('distributorNamespaceId', $data) && $data['distributorNamespaceId'] !== null ? $data['distributorNamespaceId'] : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "enableAtomicCommit" => $this->getEnableAtomicCommit(),
+            "transactionUseDistributor" => $this->getTransactionUseDistributor(),
+            "acquireActionUseJobQueue" => $this->getAcquireActionUseJobQueue(),
             "distributorNamespaceId" => $this->getDistributorNamespaceId(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),
         );

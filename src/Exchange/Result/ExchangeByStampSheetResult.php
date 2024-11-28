@@ -22,6 +22,10 @@ use Gs2\Exchange\Model\VerifyAction;
 use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModel;
+use Gs2\Core\Model\VerifyActionResult as CoreVerifyActionResult;
+use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
+use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
+use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
 class ExchangeByStampSheetResult implements IResult {
     /** @var RateModel */
@@ -34,6 +38,12 @@ class ExchangeByStampSheetResult implements IResult {
     private $stampSheetEncryptionKeyId;
     /** @var bool */
     private $autoRunStampSheet;
+    /** @var bool */
+    private $atomicCommit;
+    /** @var string */
+    private $transaction;
+    /** @var CoreTransactionResult */
+    private $transactionResult;
 
 	public function getItem(): ?RateModel {
 		return $this->item;
@@ -100,6 +110,45 @@ class ExchangeByStampSheetResult implements IResult {
 		return $this;
 	}
 
+	public function getAtomicCommit(): ?bool {
+		return $this->atomicCommit;
+	}
+
+	public function setAtomicCommit(?bool $atomicCommit) {
+		$this->atomicCommit = $atomicCommit;
+	}
+
+	public function withAtomicCommit(?bool $atomicCommit): ExchangeByStampSheetResult {
+		$this->atomicCommit = $atomicCommit;
+		return $this;
+	}
+
+	public function getTransaction(): ?string {
+		return $this->transaction;
+	}
+
+	public function setTransaction(?string $transaction) {
+		$this->transaction = $transaction;
+	}
+
+	public function withTransaction(?string $transaction): ExchangeByStampSheetResult {
+		$this->transaction = $transaction;
+		return $this;
+	}
+
+	public function getTransactionResult(): ?CoreTransactionResult {
+		return $this->transactionResult;
+	}
+
+	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
+		$this->transactionResult = $transactionResult;
+	}
+
+	public function withTransactionResult(?CoreTransactionResult $transactionResult): ExchangeByStampSheetResult {
+		$this->transactionResult = $transactionResult;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?ExchangeByStampSheetResult {
         if ($data === null) {
             return null;
@@ -109,7 +158,10 @@ class ExchangeByStampSheetResult implements IResult {
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
             ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
-            ->withAutoRunStampSheet(array_key_exists('autoRunStampSheet', $data) ? $data['autoRunStampSheet'] : null);
+            ->withAutoRunStampSheet(array_key_exists('autoRunStampSheet', $data) ? $data['autoRunStampSheet'] : null)
+            ->withAtomicCommit(array_key_exists('atomicCommit', $data) ? $data['atomicCommit'] : null)
+            ->withTransaction(array_key_exists('transaction', $data) && $data['transaction'] !== null ? $data['transaction'] : null)
+            ->withTransactionResult(array_key_exists('transactionResult', $data) && $data['transactionResult'] !== null ? CoreTransactionResult::fromJson($data['transactionResult']) : null);
     }
 
     public function toJson(): array {
@@ -119,6 +171,9 @@ class ExchangeByStampSheetResult implements IResult {
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
             "autoRunStampSheet" => $this->getAutoRunStampSheet(),
+            "atomicCommit" => $this->getAtomicCommit(),
+            "transaction" => $this->getTransaction(),
+            "transactionResult" => $this->getTransactionResult() !== null ? $this->getTransactionResult()->toJson() : null,
         );
     }
 }

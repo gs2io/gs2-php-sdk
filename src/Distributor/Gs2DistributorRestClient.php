@@ -107,6 +107,12 @@ use Gs2\Distributor\Request\GetStampSheetResultRequest;
 use Gs2\Distributor\Result\GetStampSheetResultResult;
 use Gs2\Distributor\Request\GetStampSheetResultByUserIdRequest;
 use Gs2\Distributor\Result\GetStampSheetResultByUserIdResult;
+use Gs2\Distributor\Request\RunTransactionRequest;
+use Gs2\Distributor\Result\RunTransactionResult;
+use Gs2\Distributor\Request\GetTransactionResultRequest;
+use Gs2\Distributor\Result\GetTransactionResultResult;
+use Gs2\Distributor\Request\GetTransactionResultByUserIdRequest;
+use Gs2\Distributor\Result\GetTransactionResultByUserIdResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -214,6 +220,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAutoRunStampSheetNotification() !== null) {
             $json["autoRunStampSheetNotification"] = $this->request->getAutoRunStampSheetNotification()->toJson();
+        }
+        if ($this->request->getAutoRunTransactionNotification() !== null) {
+            $json["autoRunTransactionNotification"] = $this->request->getAutoRunTransactionNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -395,6 +404,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAutoRunStampSheetNotification() !== null) {
             $json["autoRunStampSheetNotification"] = $this->request->getAutoRunStampSheetNotification()->toJson();
+        }
+        if ($this->request->getAutoRunTransactionNotification() !== null) {
+            $json["autoRunTransactionNotification"] = $this->request->getAutoRunTransactionNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -2549,6 +2561,195 @@ class GetStampSheetResultByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class RunTransactionTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RunTransactionRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RunTransactionTask constructor.
+     * @param Gs2RestSession $session
+     * @param RunTransactionRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RunTransactionRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RunTransactionResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/{ownerId}/{namespaceName}/user/{userId}/transaction/run";
+
+        $url = str_replace("{ownerId}", $this->request->getOwnerId() === null|| strlen($this->request->getOwnerId()) == 0 ? "null" : $this->request->getOwnerId(), $url);
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getTransaction() !== null) {
+            $json["transaction"] = $this->request->getTransaction();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetTransactionResultTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetTransactionResultRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetTransactionResultTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetTransactionResultRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetTransactionResultRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetTransactionResultResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/transaction/{transactionId}/result";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetTransactionResultByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetTransactionResultByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetTransactionResultByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetTransactionResultByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetTransactionResultByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetTransactionResultByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/transaction/{transactionId}/result";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Distributor API クライアント
  *
@@ -3615,6 +3816,87 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             GetStampSheetResultByUserIdRequest $request
     ): GetStampSheetResultByUserIdResult {
         return $this->getStampSheetResultByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RunTransactionRequest $request
+     * @return PromiseInterface
+     */
+    public function runTransactionAsync(
+            RunTransactionRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RunTransactionTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RunTransactionRequest $request
+     * @return RunTransactionResult
+     */
+    public function runTransaction (
+            RunTransactionRequest $request
+    ): RunTransactionResult {
+        return $this->runTransactionAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetTransactionResultRequest $request
+     * @return PromiseInterface
+     */
+    public function getTransactionResultAsync(
+            GetTransactionResultRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetTransactionResultTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetTransactionResultRequest $request
+     * @return GetTransactionResultResult
+     */
+    public function getTransactionResult (
+            GetTransactionResultRequest $request
+    ): GetTransactionResultResult {
+        return $this->getTransactionResultAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetTransactionResultByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getTransactionResultByUserIdAsync(
+            GetTransactionResultByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetTransactionResultByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetTransactionResultByUserIdRequest $request
+     * @return GetTransactionResultByUserIdResult
+     */
+    public function getTransactionResultByUserId (
+            GetTransactionResultByUserIdRequest $request
+    ): GetTransactionResultByUserIdResult {
+        return $this->getTransactionResultByUserIdAsync(
             $request
         )->wait();
     }

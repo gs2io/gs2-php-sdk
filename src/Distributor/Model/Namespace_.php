@@ -42,6 +42,10 @@ class Namespace_ implements IModel {
 	 */
 	private $autoRunStampSheetNotification;
 	/**
+     * @var NotificationSetting
+	 */
+	private $autoRunTransactionNotification;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -107,6 +111,16 @@ class Namespace_ implements IModel {
 		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
 		return $this;
 	}
+	public function getAutoRunTransactionNotification(): ?NotificationSetting {
+		return $this->autoRunTransactionNotification;
+	}
+	public function setAutoRunTransactionNotification(?NotificationSetting $autoRunTransactionNotification) {
+		$this->autoRunTransactionNotification = $autoRunTransactionNotification;
+	}
+	public function withAutoRunTransactionNotification(?NotificationSetting $autoRunTransactionNotification): Namespace_ {
+		$this->autoRunTransactionNotification = $autoRunTransactionNotification;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -158,6 +172,7 @@ class Namespace_ implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAssumeUserId(array_key_exists('assumeUserId', $data) && $data['assumeUserId'] !== null ? $data['assumeUserId'] : null)
             ->withAutoRunStampSheetNotification(array_key_exists('autoRunStampSheetNotification', $data) && $data['autoRunStampSheetNotification'] !== null ? NotificationSetting::fromJson($data['autoRunStampSheetNotification']) : null)
+            ->withAutoRunTransactionNotification(array_key_exists('autoRunTransactionNotification', $data) && $data['autoRunTransactionNotification'] !== null ? NotificationSetting::fromJson($data['autoRunTransactionNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -171,6 +186,7 @@ class Namespace_ implements IModel {
             "description" => $this->getDescription(),
             "assumeUserId" => $this->getAssumeUserId(),
             "autoRunStampSheetNotification" => $this->getAutoRunStampSheetNotification() !== null ? $this->getAutoRunStampSheetNotification()->toJson() : null,
+            "autoRunTransactionNotification" => $this->getAutoRunTransactionNotification() !== null ? $this->getAutoRunTransactionNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

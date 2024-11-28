@@ -30,6 +30,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $assumeUserId;
     /** @var NotificationSetting */
     private $autoRunStampSheetNotification;
+    /** @var NotificationSetting */
+    private $autoRunTransactionNotification;
     /** @var LogSetting */
     private $logSetting;
 	public function getNamespaceName(): ?string {
@@ -72,6 +74,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
 		return $this;
 	}
+	public function getAutoRunTransactionNotification(): ?NotificationSetting {
+		return $this->autoRunTransactionNotification;
+	}
+	public function setAutoRunTransactionNotification(?NotificationSetting $autoRunTransactionNotification) {
+		$this->autoRunTransactionNotification = $autoRunTransactionNotification;
+	}
+	public function withAutoRunTransactionNotification(?NotificationSetting $autoRunTransactionNotification): UpdateNamespaceRequest {
+		$this->autoRunTransactionNotification = $autoRunTransactionNotification;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -92,6 +104,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAssumeUserId(array_key_exists('assumeUserId', $data) && $data['assumeUserId'] !== null ? $data['assumeUserId'] : null)
             ->withAutoRunStampSheetNotification(array_key_exists('autoRunStampSheetNotification', $data) && $data['autoRunStampSheetNotification'] !== null ? NotificationSetting::fromJson($data['autoRunStampSheetNotification']) : null)
+            ->withAutoRunTransactionNotification(array_key_exists('autoRunTransactionNotification', $data) && $data['autoRunTransactionNotification'] !== null ? NotificationSetting::fromJson($data['autoRunTransactionNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -101,6 +114,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "description" => $this->getDescription(),
             "assumeUserId" => $this->getAssumeUserId(),
             "autoRunStampSheetNotification" => $this->getAutoRunStampSheetNotification() !== null ? $this->getAutoRunStampSheetNotification()->toJson() : null,
+            "autoRunTransactionNotification" => $this->getAutoRunTransactionNotification() !== null ? $this->getAutoRunTransactionNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

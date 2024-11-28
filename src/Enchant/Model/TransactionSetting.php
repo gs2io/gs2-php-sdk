@@ -26,6 +26,18 @@ class TransactionSetting implements IModel {
 	 */
 	private $enableAutoRun;
 	/**
+     * @var bool
+	 */
+	private $enableAtomicCommit;
+	/**
+     * @var bool
+	 */
+	private $transactionUseDistributor;
+	/**
+     * @var bool
+	 */
+	private $acquireActionUseJobQueue;
+	/**
      * @var string
 	 */
 	private $distributorNamespaceId;
@@ -45,6 +57,36 @@ class TransactionSetting implements IModel {
 	}
 	public function withEnableAutoRun(?bool $enableAutoRun): TransactionSetting {
 		$this->enableAutoRun = $enableAutoRun;
+		return $this;
+	}
+	public function getEnableAtomicCommit(): ?bool {
+		return $this->enableAtomicCommit;
+	}
+	public function setEnableAtomicCommit(?bool $enableAtomicCommit) {
+		$this->enableAtomicCommit = $enableAtomicCommit;
+	}
+	public function withEnableAtomicCommit(?bool $enableAtomicCommit): TransactionSetting {
+		$this->enableAtomicCommit = $enableAtomicCommit;
+		return $this;
+	}
+	public function getTransactionUseDistributor(): ?bool {
+		return $this->transactionUseDistributor;
+	}
+	public function setTransactionUseDistributor(?bool $transactionUseDistributor) {
+		$this->transactionUseDistributor = $transactionUseDistributor;
+	}
+	public function withTransactionUseDistributor(?bool $transactionUseDistributor): TransactionSetting {
+		$this->transactionUseDistributor = $transactionUseDistributor;
+		return $this;
+	}
+	public function getAcquireActionUseJobQueue(): ?bool {
+		return $this->acquireActionUseJobQueue;
+	}
+	public function setAcquireActionUseJobQueue(?bool $acquireActionUseJobQueue) {
+		$this->acquireActionUseJobQueue = $acquireActionUseJobQueue;
+	}
+	public function withAcquireActionUseJobQueue(?bool $acquireActionUseJobQueue): TransactionSetting {
+		$this->acquireActionUseJobQueue = $acquireActionUseJobQueue;
 		return $this;
 	}
 	public function getDistributorNamespaceId(): ?string {
@@ -93,6 +135,9 @@ class TransactionSetting implements IModel {
         }
         return (new TransactionSetting())
             ->withEnableAutoRun(array_key_exists('enableAutoRun', $data) ? $data['enableAutoRun'] : null)
+            ->withEnableAtomicCommit(array_key_exists('enableAtomicCommit', $data) ? $data['enableAtomicCommit'] : null)
+            ->withTransactionUseDistributor(array_key_exists('transactionUseDistributor', $data) ? $data['transactionUseDistributor'] : null)
+            ->withAcquireActionUseJobQueue(array_key_exists('acquireActionUseJobQueue', $data) ? $data['acquireActionUseJobQueue'] : null)
             ->withDistributorNamespaceId(array_key_exists('distributorNamespaceId', $data) && $data['distributorNamespaceId'] !== null ? $data['distributorNamespaceId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null);
@@ -101,6 +146,9 @@ class TransactionSetting implements IModel {
     public function toJson(): array {
         return array(
             "enableAutoRun" => $this->getEnableAutoRun(),
+            "enableAtomicCommit" => $this->getEnableAtomicCommit(),
+            "transactionUseDistributor" => $this->getTransactionUseDistributor(),
+            "acquireActionUseJobQueue" => $this->getAcquireActionUseJobQueue(),
             "distributorNamespaceId" => $this->getDistributorNamespaceId(),
             "keyId" => $this->getKeyId(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),

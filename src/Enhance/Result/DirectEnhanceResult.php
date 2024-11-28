@@ -20,6 +20,10 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\BonusRate;
 use Gs2\Enhance\Model\RateModel;
+use Gs2\Core\Model\VerifyActionResult as CoreVerifyActionResult;
+use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
+use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
+use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
 class DirectEnhanceResult implements IResult {
     /** @var RateModel */
@@ -32,6 +36,12 @@ class DirectEnhanceResult implements IResult {
     private $stampSheetEncryptionKeyId;
     /** @var bool */
     private $autoRunStampSheet;
+    /** @var bool */
+    private $atomicCommit;
+    /** @var string */
+    private $transaction;
+    /** @var CoreTransactionResult */
+    private $transactionResult;
     /** @var int */
     private $acquireExperience;
     /** @var float */
@@ -102,6 +112,45 @@ class DirectEnhanceResult implements IResult {
 		return $this;
 	}
 
+	public function getAtomicCommit(): ?bool {
+		return $this->atomicCommit;
+	}
+
+	public function setAtomicCommit(?bool $atomicCommit) {
+		$this->atomicCommit = $atomicCommit;
+	}
+
+	public function withAtomicCommit(?bool $atomicCommit): DirectEnhanceResult {
+		$this->atomicCommit = $atomicCommit;
+		return $this;
+	}
+
+	public function getTransaction(): ?string {
+		return $this->transaction;
+	}
+
+	public function setTransaction(?string $transaction) {
+		$this->transaction = $transaction;
+	}
+
+	public function withTransaction(?string $transaction): DirectEnhanceResult {
+		$this->transaction = $transaction;
+		return $this;
+	}
+
+	public function getTransactionResult(): ?CoreTransactionResult {
+		return $this->transactionResult;
+	}
+
+	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
+		$this->transactionResult = $transactionResult;
+	}
+
+	public function withTransactionResult(?CoreTransactionResult $transactionResult): DirectEnhanceResult {
+		$this->transactionResult = $transactionResult;
+		return $this;
+	}
+
 	public function getAcquireExperience(): ?int {
 		return $this->acquireExperience;
 	}
@@ -138,6 +187,9 @@ class DirectEnhanceResult implements IResult {
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
             ->withStampSheetEncryptionKeyId(array_key_exists('stampSheetEncryptionKeyId', $data) && $data['stampSheetEncryptionKeyId'] !== null ? $data['stampSheetEncryptionKeyId'] : null)
             ->withAutoRunStampSheet(array_key_exists('autoRunStampSheet', $data) ? $data['autoRunStampSheet'] : null)
+            ->withAtomicCommit(array_key_exists('atomicCommit', $data) ? $data['atomicCommit'] : null)
+            ->withTransaction(array_key_exists('transaction', $data) && $data['transaction'] !== null ? $data['transaction'] : null)
+            ->withTransactionResult(array_key_exists('transactionResult', $data) && $data['transactionResult'] !== null ? CoreTransactionResult::fromJson($data['transactionResult']) : null)
             ->withAcquireExperience(array_key_exists('acquireExperience', $data) && $data['acquireExperience'] !== null ? $data['acquireExperience'] : null)
             ->withBonusRate(array_key_exists('bonusRate', $data) && $data['bonusRate'] !== null ? $data['bonusRate'] : null);
     }
@@ -149,6 +201,9 @@ class DirectEnhanceResult implements IResult {
             "stampSheet" => $this->getStampSheet(),
             "stampSheetEncryptionKeyId" => $this->getStampSheetEncryptionKeyId(),
             "autoRunStampSheet" => $this->getAutoRunStampSheet(),
+            "atomicCommit" => $this->getAtomicCommit(),
+            "transaction" => $this->getTransaction(),
+            "transactionResult" => $this->getTransactionResult() !== null ? $this->getTransactionResult()->toJson() : null,
             "acquireExperience" => $this->getAcquireExperience(),
             "bonusRate" => $this->getBonusRate(),
         );

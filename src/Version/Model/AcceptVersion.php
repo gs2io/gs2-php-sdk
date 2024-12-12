@@ -38,6 +38,10 @@ class AcceptVersion implements IModel {
 	 */
 	private $version;
 	/**
+     * @var string
+	 */
+	private $status;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -89,6 +93,16 @@ class AcceptVersion implements IModel {
 		$this->version = $version;
 		return $this;
 	}
+	public function getStatus(): ?string {
+		return $this->status;
+	}
+	public function setStatus(?string $status) {
+		$this->status = $status;
+	}
+	public function withStatus(?string $status): AcceptVersion {
+		$this->status = $status;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -129,6 +143,7 @@ class AcceptVersion implements IModel {
             ->withVersionName(array_key_exists('versionName', $data) && $data['versionName'] !== null ? $data['versionName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withVersion(array_key_exists('version', $data) && $data['version'] !== null ? Version::fromJson($data['version']) : null)
+            ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -140,6 +155,7 @@ class AcceptVersion implements IModel {
             "versionName" => $this->getVersionName(),
             "userId" => $this->getUserId(),
             "version" => $this->getVersion() !== null ? $this->getVersion()->toJson() : null,
+            "status" => $this->getStatus(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

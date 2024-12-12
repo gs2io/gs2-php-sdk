@@ -99,6 +99,26 @@ use Gs2\Dictionary\Request\DeleteEntriesByStampTaskRequest;
 use Gs2\Dictionary\Result\DeleteEntriesByStampTaskResult;
 use Gs2\Dictionary\Request\VerifyEntryByStampTaskRequest;
 use Gs2\Dictionary\Result\VerifyEntryByStampTaskResult;
+use Gs2\Dictionary\Request\DescribeLikesRequest;
+use Gs2\Dictionary\Result\DescribeLikesResult;
+use Gs2\Dictionary\Request\DescribeLikesByUserIdRequest;
+use Gs2\Dictionary\Result\DescribeLikesByUserIdResult;
+use Gs2\Dictionary\Request\AddLikesRequest;
+use Gs2\Dictionary\Result\AddLikesResult;
+use Gs2\Dictionary\Request\AddLikesByUserIdRequest;
+use Gs2\Dictionary\Result\AddLikesByUserIdResult;
+use Gs2\Dictionary\Request\GetLikeRequest;
+use Gs2\Dictionary\Result\GetLikeResult;
+use Gs2\Dictionary\Request\GetLikeByUserIdRequest;
+use Gs2\Dictionary\Result\GetLikeByUserIdResult;
+use Gs2\Dictionary\Request\ResetLikesRequest;
+use Gs2\Dictionary\Result\ResetLikesResult;
+use Gs2\Dictionary\Request\ResetLikesByUserIdRequest;
+use Gs2\Dictionary\Result\ResetLikesByUserIdResult;
+use Gs2\Dictionary\Request\DeleteLikesRequest;
+use Gs2\Dictionary\Result\DeleteLikesResult;
+use Gs2\Dictionary\Request\DeleteLikesByUserIdRequest;
+use Gs2\Dictionary\Result\DeleteLikesByUserIdResult;
 use Gs2\Dictionary\Request\ExportMasterRequest;
 use Gs2\Dictionary\Result\ExportMasterResult;
 use Gs2\Dictionary\Request\GetCurrentEntryMasterRequest;
@@ -2273,6 +2293,667 @@ class VerifyEntryByStampTaskTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeLikesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeLikesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeLikesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeLikesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeLikesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeLikesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/like";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeLikesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeLikesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeLikesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeLikesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeLikesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeLikesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/like";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AddLikesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddLikesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddLikesTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddLikesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddLikesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddLikesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/like";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getEntryModelNames() !== null) {
+            $array = [];
+            foreach ($this->request->getEntryModelNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["entryModelNames"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AddLikesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddLikesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddLikesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddLikesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddLikesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddLikesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/like";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getEntryModelNames() !== null) {
+            $array = [];
+            foreach ($this->request->getEntryModelNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["entryModelNames"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetLikeTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetLikeRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetLikeTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetLikeRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetLikeRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetLikeResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/like/{entryModelName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{entryModelName}", $this->request->getEntryModelName() === null|| strlen($this->request->getEntryModelName()) == 0 ? "null" : $this->request->getEntryModelName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetLikeByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetLikeByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetLikeByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetLikeByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetLikeByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetLikeByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/like/{entryModelName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{entryModelName}", $this->request->getEntryModelName() === null|| strlen($this->request->getEntryModelName()) == 0 ? "null" : $this->request->getEntryModelName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ResetLikesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetLikesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetLikesTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetLikesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetLikesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetLikesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/like";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ResetLikesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetLikesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetLikesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetLikesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetLikesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetLikesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/like";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteLikesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteLikesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteLikesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteLikesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteLikesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteLikesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/like/delete";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getEntryModelNames() !== null) {
+            $array = [];
+            foreach ($this->request->getEntryModelNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["entryModelNames"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteLikesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteLikesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteLikesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteLikesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteLikesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteLikesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/like/delete";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getEntryModelNames() !== null) {
+            $array = [];
+            foreach ($this->request->getEntryModelNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["entryModelNames"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ExportMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -3461,6 +4142,276 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
             VerifyEntryByStampTaskRequest $request
     ): VerifyEntryByStampTaskResult {
         return $this->verifyEntryByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeLikesRequest $request
+     * @return PromiseInterface
+     */
+    public function describeLikesAsync(
+            DescribeLikesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeLikesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeLikesRequest $request
+     * @return DescribeLikesResult
+     */
+    public function describeLikes (
+            DescribeLikesRequest $request
+    ): DescribeLikesResult {
+        return $this->describeLikesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeLikesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeLikesByUserIdAsync(
+            DescribeLikesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeLikesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeLikesByUserIdRequest $request
+     * @return DescribeLikesByUserIdResult
+     */
+    public function describeLikesByUserId (
+            DescribeLikesByUserIdRequest $request
+    ): DescribeLikesByUserIdResult {
+        return $this->describeLikesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AddLikesRequest $request
+     * @return PromiseInterface
+     */
+    public function addLikesAsync(
+            AddLikesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddLikesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AddLikesRequest $request
+     * @return AddLikesResult
+     */
+    public function addLikes (
+            AddLikesRequest $request
+    ): AddLikesResult {
+        return $this->addLikesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AddLikesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function addLikesByUserIdAsync(
+            AddLikesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddLikesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AddLikesByUserIdRequest $request
+     * @return AddLikesByUserIdResult
+     */
+    public function addLikesByUserId (
+            AddLikesByUserIdRequest $request
+    ): AddLikesByUserIdResult {
+        return $this->addLikesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetLikeRequest $request
+     * @return PromiseInterface
+     */
+    public function getLikeAsync(
+            GetLikeRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetLikeTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetLikeRequest $request
+     * @return GetLikeResult
+     */
+    public function getLike (
+            GetLikeRequest $request
+    ): GetLikeResult {
+        return $this->getLikeAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetLikeByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getLikeByUserIdAsync(
+            GetLikeByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetLikeByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetLikeByUserIdRequest $request
+     * @return GetLikeByUserIdResult
+     */
+    public function getLikeByUserId (
+            GetLikeByUserIdRequest $request
+    ): GetLikeByUserIdResult {
+        return $this->getLikeByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ResetLikesRequest $request
+     * @return PromiseInterface
+     */
+    public function resetLikesAsync(
+            ResetLikesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetLikesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetLikesRequest $request
+     * @return ResetLikesResult
+     */
+    public function resetLikes (
+            ResetLikesRequest $request
+    ): ResetLikesResult {
+        return $this->resetLikesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ResetLikesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function resetLikesByUserIdAsync(
+            ResetLikesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetLikesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetLikesByUserIdRequest $request
+     * @return ResetLikesByUserIdResult
+     */
+    public function resetLikesByUserId (
+            ResetLikesByUserIdRequest $request
+    ): ResetLikesByUserIdResult {
+        return $this->resetLikesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteLikesRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteLikesAsync(
+            DeleteLikesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteLikesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteLikesRequest $request
+     * @return DeleteLikesResult
+     */
+    public function deleteLikes (
+            DeleteLikesRequest $request
+    ): DeleteLikesResult {
+        return $this->deleteLikesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteLikesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteLikesByUserIdAsync(
+            DeleteLikesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteLikesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteLikesByUserIdRequest $request
+     * @return DeleteLikesByUserIdResult
+     */
+    public function deleteLikesByUserId (
+            DeleteLikesByUserIdRequest $request
+    ): DeleteLikesByUserIdResult {
+        return $this->deleteLikesByUserIdAsync(
             $request
         )->wait();
     }

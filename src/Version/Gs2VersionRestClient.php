@@ -77,6 +77,10 @@ use Gs2\Version\Request\AcceptRequest;
 use Gs2\Version\Result\AcceptResult;
 use Gs2\Version\Request\AcceptByUserIdRequest;
 use Gs2\Version\Result\AcceptByUserIdResult;
+use Gs2\Version\Request\RejectRequest;
+use Gs2\Version\Result\RejectResult;
+use Gs2\Version\Request\RejectByUserIdRequest;
+use Gs2\Version\Result\RejectByUserIdResult;
 use Gs2\Version\Request\GetAcceptVersionRequest;
 use Gs2\Version\Result\GetAcceptVersionResult;
 use Gs2\Version\Request\GetAcceptVersionByUserIdRequest;
@@ -1026,6 +1030,9 @@ class CreateVersionModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getSignatureKeyId() !== null) {
             $json["signatureKeyId"] = $this->request->getSignatureKeyId();
         }
+        if ($this->request->getApproveRequirement() !== null) {
+            $json["approveRequirement"] = $this->request->getApproveRequirement();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -1174,6 +1181,9 @@ class UpdateVersionModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getSignatureKeyId() !== null) {
             $json["signatureKeyId"] = $this->request->getSignatureKeyId();
+        }
+        if ($this->request->getApproveRequirement() !== null) {
+            $json["approveRequirement"] = $this->request->getApproveRequirement();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1601,6 +1611,141 @@ class AcceptByUserIdTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/acceptVersion";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getVersionName() !== null) {
+            $json["versionName"] = $this->request->getVersionName();
+        }
+        if ($this->request->getVersion() !== null) {
+            $json["version"] = $this->request->getVersion()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RejectTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RejectRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RejectTask constructor.
+     * @param Gs2RestSession $session
+     * @param RejectRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RejectRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RejectResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/acceptVersion/reject";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getVersionName() !== null) {
+            $json["versionName"] = $this->request->getVersionName();
+        }
+        if ($this->request->getVersion() !== null) {
+            $json["version"] = $this->request->getVersion()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RejectByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RejectByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RejectByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param RejectByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RejectByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RejectByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/acceptVersion/reject";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
@@ -2978,6 +3123,60 @@ class Gs2VersionRestClient extends AbstractGs2Client {
             AcceptByUserIdRequest $request
     ): AcceptByUserIdResult {
         return $this->acceptByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RejectRequest $request
+     * @return PromiseInterface
+     */
+    public function rejectAsync(
+            RejectRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RejectTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RejectRequest $request
+     * @return RejectResult
+     */
+    public function reject (
+            RejectRequest $request
+    ): RejectResult {
+        return $this->rejectAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param RejectByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function rejectByUserIdAsync(
+            RejectByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RejectByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param RejectByUserIdRequest $request
+     * @return RejectByUserIdResult
+     */
+    public function rejectByUserId (
+            RejectByUserIdRequest $request
+    ): RejectByUserIdResult {
+        return $this->rejectByUserIdAsync(
             $request
         )->wait();
     }

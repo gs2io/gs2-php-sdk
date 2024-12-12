@@ -70,6 +70,10 @@ class VersionModelMaster implements IModel {
 	 */
 	private $signatureKeyId;
 	/**
+     * @var string
+	 */
+	private $approveRequirement;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -201,6 +205,16 @@ class VersionModelMaster implements IModel {
 		$this->signatureKeyId = $signatureKeyId;
 		return $this;
 	}
+	public function getApproveRequirement(): ?string {
+		return $this->approveRequirement;
+	}
+	public function setApproveRequirement(?string $approveRequirement) {
+		$this->approveRequirement = $approveRequirement;
+	}
+	public function withApproveRequirement(?string $approveRequirement): VersionModelMaster {
+		$this->approveRequirement = $approveRequirement;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -254,6 +268,7 @@ class VersionModelMaster implements IModel {
             ))
             ->withNeedSignature(array_key_exists('needSignature', $data) ? $data['needSignature'] : null)
             ->withSignatureKeyId(array_key_exists('signatureKeyId', $data) && $data['signatureKeyId'] !== null ? $data['signatureKeyId'] : null)
+            ->withApproveRequirement(array_key_exists('approveRequirement', $data) && $data['approveRequirement'] !== null ? $data['approveRequirement'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -278,6 +293,7 @@ class VersionModelMaster implements IModel {
             ),
             "needSignature" => $this->getNeedSignature(),
             "signatureKeyId" => $this->getSignatureKeyId(),
+            "approveRequirement" => $this->getApproveRequirement(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

@@ -46,6 +46,8 @@ class UpdateVersionModelMasterRequest extends Gs2BasicRequest {
     private $needSignature;
     /** @var string */
     private $signatureKeyId;
+    /** @var string */
+    private $approveRequirement;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -166,6 +168,16 @@ class UpdateVersionModelMasterRequest extends Gs2BasicRequest {
 		$this->signatureKeyId = $signatureKeyId;
 		return $this;
 	}
+	public function getApproveRequirement(): ?string {
+		return $this->approveRequirement;
+	}
+	public function setApproveRequirement(?string $approveRequirement) {
+		$this->approveRequirement = $approveRequirement;
+	}
+	public function withApproveRequirement(?string $approveRequirement): UpdateVersionModelMasterRequest {
+		$this->approveRequirement = $approveRequirement;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?UpdateVersionModelMasterRequest {
         if ($data === null) {
@@ -188,7 +200,8 @@ class UpdateVersionModelMasterRequest extends Gs2BasicRequest {
                 array_key_exists('scheduleVersions', $data) && $data['scheduleVersions'] !== null ? $data['scheduleVersions'] : []
             ))
             ->withNeedSignature(array_key_exists('needSignature', $data) ? $data['needSignature'] : null)
-            ->withSignatureKeyId(array_key_exists('signatureKeyId', $data) && $data['signatureKeyId'] !== null ? $data['signatureKeyId'] : null);
+            ->withSignatureKeyId(array_key_exists('signatureKeyId', $data) && $data['signatureKeyId'] !== null ? $data['signatureKeyId'] : null)
+            ->withApproveRequirement(array_key_exists('approveRequirement', $data) && $data['approveRequirement'] !== null ? $data['approveRequirement'] : null);
     }
 
     public function toJson(): array {
@@ -210,6 +223,7 @@ class UpdateVersionModelMasterRequest extends Gs2BasicRequest {
             ),
             "needSignature" => $this->getNeedSignature(),
             "signatureKeyId" => $this->getSignatureKeyId(),
+            "approveRequirement" => $this->getApproveRequirement(),
         );
     }
 }

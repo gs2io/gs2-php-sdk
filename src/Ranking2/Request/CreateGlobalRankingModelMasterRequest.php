@@ -41,6 +41,8 @@ class CreateGlobalRankingModelMasterRequest extends Gs2BasicRequest {
     /** @var array */
     private $rankingRewards;
     /** @var string */
+    private $rewardCalculationIndex;
+    /** @var string */
     private $entryPeriodEventId;
     /** @var string */
     private $accessPeriodEventId;
@@ -134,6 +136,16 @@ class CreateGlobalRankingModelMasterRequest extends Gs2BasicRequest {
 		$this->rankingRewards = $rankingRewards;
 		return $this;
 	}
+	public function getRewardCalculationIndex(): ?string {
+		return $this->rewardCalculationIndex;
+	}
+	public function setRewardCalculationIndex(?string $rewardCalculationIndex) {
+		$this->rewardCalculationIndex = $rewardCalculationIndex;
+	}
+	public function withRewardCalculationIndex(?string $rewardCalculationIndex): CreateGlobalRankingModelMasterRequest {
+		$this->rewardCalculationIndex = $rewardCalculationIndex;
+		return $this;
+	}
 	public function getEntryPeriodEventId(): ?string {
 		return $this->entryPeriodEventId;
 	}
@@ -174,6 +186,7 @@ class CreateGlobalRankingModelMasterRequest extends Gs2BasicRequest {
                 },
                 array_key_exists('rankingRewards', $data) && $data['rankingRewards'] !== null ? $data['rankingRewards'] : []
             ))
+            ->withRewardCalculationIndex(array_key_exists('rewardCalculationIndex', $data) && $data['rewardCalculationIndex'] !== null ? $data['rewardCalculationIndex'] : null)
             ->withEntryPeriodEventId(array_key_exists('entryPeriodEventId', $data) && $data['entryPeriodEventId'] !== null ? $data['entryPeriodEventId'] : null)
             ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null);
     }
@@ -194,6 +207,7 @@ class CreateGlobalRankingModelMasterRequest extends Gs2BasicRequest {
                 },
                 $this->getRankingRewards() !== null && $this->getRankingRewards() !== null ? $this->getRankingRewards() : []
             ),
+            "rewardCalculationIndex" => $this->getRewardCalculationIndex(),
             "entryPeriodEventId" => $this->getEntryPeriodEventId(),
             "accessPeriodEventId" => $this->getAccessPeriodEventId(),
         );

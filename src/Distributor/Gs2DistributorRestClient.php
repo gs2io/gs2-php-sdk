@@ -95,6 +95,8 @@ use Gs2\Distributor\Request\SignFreezeMasterDataTimestampRequest;
 use Gs2\Distributor\Result\SignFreezeMasterDataTimestampResult;
 use Gs2\Distributor\Request\FreezeMasterDataBySignedTimestampRequest;
 use Gs2\Distributor\Result\FreezeMasterDataBySignedTimestampResult;
+use Gs2\Distributor\Request\BatchExecuteApiRequest;
+use Gs2\Distributor\Result\BatchExecuteApiResult;
 use Gs2\Distributor\Request\IfExpressionByUserIdRequest;
 use Gs2\Distributor\Result\IfExpressionByUserIdResult;
 use Gs2\Distributor\Request\AndExpressionByUserIdRequest;
@@ -2166,6 +2168,67 @@ class FreezeMasterDataBySignedTimestampTask extends Gs2RestSessionTask {
     }
 }
 
+class BatchExecuteApiTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchExecuteApiRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchExecuteApiTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchExecuteApiRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchExecuteApiRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchExecuteApiResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/batch/execute";
+
+        $json = [];
+        if ($this->request->getRequestPayloads() !== null) {
+            $array = [];
+            foreach ($this->request->getRequestPayloads() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["requestPayloads"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class IfExpressionByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -3789,6 +3852,33 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             FreezeMasterDataBySignedTimestampRequest $request
     ): FreezeMasterDataBySignedTimestampResult {
         return $this->freezeMasterDataBySignedTimestampAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param BatchExecuteApiRequest $request
+     * @return PromiseInterface
+     */
+    public function batchExecuteApiAsync(
+            BatchExecuteApiRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchExecuteApiTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchExecuteApiRequest $request
+     * @return BatchExecuteApiResult
+     */
+    public function batchExecuteApi (
+            BatchExecuteApiRequest $request
+    ): BatchExecuteApiResult {
+        return $this->batchExecuteApiAsync(
             $request
         )->wait();
     }

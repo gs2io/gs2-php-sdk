@@ -56,6 +56,10 @@ class GlobalRankingData implements IModel {
 	/**
      * @var int
 	 */
+	private $invertCreatedAt;
+	/**
+     * @var int
+	 */
 	private $createdAt;
 	/**
      * @var int
@@ -145,6 +149,16 @@ class GlobalRankingData implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getInvertCreatedAt(): ?int {
+		return $this->invertCreatedAt;
+	}
+	public function setInvertCreatedAt(?int $invertCreatedAt) {
+		$this->invertCreatedAt = $invertCreatedAt;
+	}
+	public function withInvertCreatedAt(?int $invertCreatedAt): GlobalRankingData {
+		$this->invertCreatedAt = $invertCreatedAt;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -189,6 +203,7 @@ class GlobalRankingData implements IModel {
             ->withRank(array_key_exists('rank', $data) && $data['rank'] !== null ? $data['rank'] : null)
             ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withInvertCreatedAt(array_key_exists('invertCreatedAt', $data) && $data['invertCreatedAt'] !== null ? $data['invertCreatedAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -204,6 +219,7 @@ class GlobalRankingData implements IModel {
             "rank" => $this->getRank(),
             "score" => $this->getScore(),
             "metadata" => $this->getMetadata(),
+            "invertCreatedAt" => $this->getInvertCreatedAt(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

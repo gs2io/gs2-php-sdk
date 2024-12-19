@@ -65,6 +65,10 @@ class ClusterRankingModel implements IModel {
      * @var string
 	 */
 	private $accessPeriodEventId;
+	/**
+     * @var string
+	 */
+	private $rewardCalculationIndex;
 	public function getClusterRankingModelId(): ?string {
 		return $this->clusterRankingModelId;
 	}
@@ -175,6 +179,16 @@ class ClusterRankingModel implements IModel {
 		$this->accessPeriodEventId = $accessPeriodEventId;
 		return $this;
 	}
+	public function getRewardCalculationIndex(): ?string {
+		return $this->rewardCalculationIndex;
+	}
+	public function setRewardCalculationIndex(?string $rewardCalculationIndex) {
+		$this->rewardCalculationIndex = $rewardCalculationIndex;
+	}
+	public function withRewardCalculationIndex(?string $rewardCalculationIndex): ClusterRankingModel {
+		$this->rewardCalculationIndex = $rewardCalculationIndex;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?ClusterRankingModel {
         if ($data === null) {
@@ -196,7 +210,8 @@ class ClusterRankingModel implements IModel {
                 },
                 array_key_exists('rankingRewards', $data) && $data['rankingRewards'] !== null ? $data['rankingRewards'] : []
             ))
-            ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null);
+            ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null)
+            ->withRewardCalculationIndex(array_key_exists('rewardCalculationIndex', $data) && $data['rewardCalculationIndex'] !== null ? $data['rewardCalculationIndex'] : null);
     }
 
     public function toJson(): array {
@@ -217,6 +232,7 @@ class ClusterRankingModel implements IModel {
                 $this->getRankingRewards() !== null && $this->getRankingRewards() !== null ? $this->getRankingRewards() : []
             ),
             "accessPeriodEventId" => $this->getAccessPeriodEventId(),
+            "rewardCalculationIndex" => $this->getRewardCalculationIndex(),
         );
     }
 }

@@ -1266,6 +1266,9 @@ class CreateGlobalRankingModelMasterTask extends Gs2RestSessionTask {
             }
             $json["rankingRewards"] = $array;
         }
+        if ($this->request->getRewardCalculationIndex() !== null) {
+            $json["rewardCalculationIndex"] = $this->request->getRewardCalculationIndex();
+        }
         if ($this->request->getEntryPeriodEventId() !== null) {
             $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
         }
@@ -1411,6 +1414,9 @@ class UpdateGlobalRankingModelMasterTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["rankingRewards"] = $array;
+        }
+        if ($this->request->getRewardCalculationIndex() !== null) {
+            $json["rewardCalculationIndex"] = $this->request->getRewardCalculationIndex();
         }
         if ($this->request->getEntryPeriodEventId() !== null) {
             $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
@@ -3366,6 +3372,9 @@ class CreateClusterRankingModelMasterTask extends Gs2RestSessionTask {
             }
             $json["rankingRewards"] = $array;
         }
+        if ($this->request->getRewardCalculationIndex() !== null) {
+            $json["rewardCalculationIndex"] = $this->request->getRewardCalculationIndex();
+        }
         if ($this->request->getEntryPeriodEventId() !== null) {
             $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();
         }
@@ -3517,6 +3526,9 @@ class UpdateClusterRankingModelMasterTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["rankingRewards"] = $array;
+        }
+        if ($this->request->getRewardCalculationIndex() !== null) {
+            $json["rewardCalculationIndex"] = $this->request->getRewardCalculationIndex();
         }
         if ($this->request->getEntryPeriodEventId() !== null) {
             $json["entryPeriodEventId"] = $this->request->getEntryPeriodEventId();

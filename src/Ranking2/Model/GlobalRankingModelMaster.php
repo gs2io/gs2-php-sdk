@@ -66,6 +66,10 @@ class GlobalRankingModelMaster implements IModel {
 	 */
 	private $accessPeriodEventId;
 	/**
+     * @var string
+	 */
+	private $rewardCalculationIndex;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -187,6 +191,16 @@ class GlobalRankingModelMaster implements IModel {
 		$this->accessPeriodEventId = $accessPeriodEventId;
 		return $this;
 	}
+	public function getRewardCalculationIndex(): ?string {
+		return $this->rewardCalculationIndex;
+	}
+	public function setRewardCalculationIndex(?string $rewardCalculationIndex) {
+		$this->rewardCalculationIndex = $rewardCalculationIndex;
+	}
+	public function withRewardCalculationIndex(?string $rewardCalculationIndex): GlobalRankingModelMaster {
+		$this->rewardCalculationIndex = $rewardCalculationIndex;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -239,6 +253,7 @@ class GlobalRankingModelMaster implements IModel {
                 array_key_exists('rankingRewards', $data) && $data['rankingRewards'] !== null ? $data['rankingRewards'] : []
             ))
             ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null)
+            ->withRewardCalculationIndex(array_key_exists('rewardCalculationIndex', $data) && $data['rewardCalculationIndex'] !== null ? $data['rewardCalculationIndex'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -262,6 +277,7 @@ class GlobalRankingModelMaster implements IModel {
                 $this->getRankingRewards() !== null && $this->getRankingRewards() !== null ? $this->getRankingRewards() : []
             ),
             "accessPeriodEventId" => $this->getAccessPeriodEventId(),
+            "rewardCalculationIndex" => $this->getRewardCalculationIndex(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

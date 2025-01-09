@@ -141,6 +141,8 @@ use Gs2\Formation\Request\GetFormWithSignatureRequest;
 use Gs2\Formation\Result\GetFormWithSignatureResult;
 use Gs2\Formation\Request\GetFormWithSignatureByUserIdRequest;
 use Gs2\Formation\Result\GetFormWithSignatureByUserIdResult;
+use Gs2\Formation\Request\SetFormRequest;
+use Gs2\Formation\Result\SetFormResult;
 use Gs2\Formation\Request\SetFormByUserIdRequest;
 use Gs2\Formation\Result\SetFormByUserIdResult;
 use Gs2\Formation\Request\SetFormWithSignatureRequest;
@@ -3674,6 +3676,77 @@ class GetFormWithSignatureByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class SetFormTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetFormRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetFormTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetFormRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetFormRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetFormResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/mold/{moldModelName}/form/{index}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{moldModelName}", $this->request->getMoldModelName() === null|| strlen($this->request->getMoldModelName()) == 0 ? "null" : $this->request->getMoldModelName(), $url);
+        $url = str_replace("{index}", $this->request->getIndex() === null ? "null" : $this->request->getIndex(), $url);
+
+        $json = [];
+        if ($this->request->getSlots() !== null) {
+            $array = [];
+            foreach ($this->request->getSlots() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["slots"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class SetFormByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -6471,6 +6544,33 @@ class Gs2FormationRestClient extends AbstractGs2Client {
             GetFormWithSignatureByUserIdRequest $request
     ): GetFormWithSignatureByUserIdResult {
         return $this->getFormWithSignatureByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetFormRequest $request
+     * @return PromiseInterface
+     */
+    public function setFormAsync(
+            SetFormRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetFormTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetFormRequest $request
+     * @return SetFormResult
+     */
+    public function setForm (
+            SetFormRequest $request
+    ): SetFormResult {
+        return $this->setFormAsync(
             $request
         )->wait();
     }

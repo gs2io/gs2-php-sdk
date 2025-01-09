@@ -121,6 +121,10 @@ use Gs2\Stamina\Request\ConsumeStaminaRequest;
 use Gs2\Stamina\Result\ConsumeStaminaResult;
 use Gs2\Stamina\Request\ConsumeStaminaByUserIdRequest;
 use Gs2\Stamina\Result\ConsumeStaminaByUserIdResult;
+use Gs2\Stamina\Request\ApplyStaminaRequest;
+use Gs2\Stamina\Result\ApplyStaminaResult;
+use Gs2\Stamina\Request\ApplyStaminaByUserIdRequest;
+use Gs2\Stamina\Result\ApplyStaminaByUserIdResult;
 use Gs2\Stamina\Request\RecoverStaminaByUserIdRequest;
 use Gs2\Stamina\Result\RecoverStaminaByUserIdResult;
 use Gs2\Stamina\Request\RaiseMaxValueByUserIdRequest;
@@ -3076,6 +3080,131 @@ class ConsumeStaminaByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class ApplyStaminaTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ApplyStaminaRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ApplyStaminaTask constructor.
+     * @param Gs2RestSession $session
+     * @param ApplyStaminaRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ApplyStaminaRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ApplyStaminaResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/apply";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ApplyStaminaByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ApplyStaminaByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ApplyStaminaByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ApplyStaminaByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ApplyStaminaByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ApplyStaminaByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/stamina/{staminaName}/apply";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class RecoverStaminaByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -5483,6 +5612,60 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
             ConsumeStaminaByUserIdRequest $request
     ): ConsumeStaminaByUserIdResult {
         return $this->consumeStaminaByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ApplyStaminaRequest $request
+     * @return PromiseInterface
+     */
+    public function applyStaminaAsync(
+            ApplyStaminaRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ApplyStaminaTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ApplyStaminaRequest $request
+     * @return ApplyStaminaResult
+     */
+    public function applyStamina (
+            ApplyStaminaRequest $request
+    ): ApplyStaminaResult {
+        return $this->applyStaminaAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ApplyStaminaByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function applyStaminaByUserIdAsync(
+            ApplyStaminaByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ApplyStaminaByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ApplyStaminaByUserIdRequest $request
+     * @return ApplyStaminaByUserIdResult
+     */
+    public function applyStaminaByUserId (
+            ApplyStaminaByUserIdRequest $request
+    ): ApplyStaminaByUserIdResult {
+        return $this->applyStaminaByUserIdAsync(
             $request
         )->wait();
     }

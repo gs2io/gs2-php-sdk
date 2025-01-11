@@ -169,6 +169,8 @@ use Gs2\Formation\Request\GetPropertyFormWithSignatureRequest;
 use Gs2\Formation\Result\GetPropertyFormWithSignatureResult;
 use Gs2\Formation\Request\GetPropertyFormWithSignatureByUserIdRequest;
 use Gs2\Formation\Result\GetPropertyFormWithSignatureByUserIdResult;
+use Gs2\Formation\Request\SetPropertyFormRequest;
+use Gs2\Formation\Result\SetPropertyFormResult;
 use Gs2\Formation\Request\SetPropertyFormByUserIdRequest;
 use Gs2\Formation\Result\SetPropertyFormByUserIdResult;
 use Gs2\Formation\Request\SetPropertyFormWithSignatureRequest;
@@ -4608,6 +4610,77 @@ class GetPropertyFormWithSignatureByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class SetPropertyFormTask extends Gs2RestSessionTask {
+
+    /**
+     * @var SetPropertyFormRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * SetPropertyFormTask constructor.
+     * @param Gs2RestSession $session
+     * @param SetPropertyFormRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        SetPropertyFormRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            SetPropertyFormResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/property/{propertyFormModelName}/form/{propertyId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{propertyFormModelName}", $this->request->getPropertyFormModelName() === null|| strlen($this->request->getPropertyFormModelName()) == 0 ? "null" : $this->request->getPropertyFormModelName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+
+        $json = [];
+        if ($this->request->getSlots() !== null) {
+            $array = [];
+            foreach ($this->request->getSlots() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["slots"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class SetPropertyFormByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -6922,6 +6995,33 @@ class Gs2FormationRestClient extends AbstractGs2Client {
             GetPropertyFormWithSignatureByUserIdRequest $request
     ): GetPropertyFormWithSignatureByUserIdResult {
         return $this->getPropertyFormWithSignatureByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param SetPropertyFormRequest $request
+     * @return PromiseInterface
+     */
+    public function setPropertyFormAsync(
+            SetPropertyFormRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new SetPropertyFormTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param SetPropertyFormRequest $request
+     * @return SetPropertyFormResult
+     */
+    public function setPropertyForm (
+            SetPropertyFormRequest $request
+    ): SetPropertyFormResult {
+        return $this->setPropertyFormAsync(
             $request
         )->wait();
     }

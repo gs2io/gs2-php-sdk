@@ -30,6 +30,10 @@ class Member implements IModel {
 	 */
 	private $roleName;
 	/**
+     * @var string
+	 */
+	private $metadata;
+	/**
      * @var int
 	 */
 	private $joinedAt;
@@ -53,6 +57,16 @@ class Member implements IModel {
 		$this->roleName = $roleName;
 		return $this;
 	}
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+	public function withMetadata(?string $metadata): Member {
+		$this->metadata = $metadata;
+		return $this;
+	}
 	public function getJoinedAt(): ?int {
 		return $this->joinedAt;
 	}
@@ -71,6 +85,7 @@ class Member implements IModel {
         return (new Member())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withRoleName(array_key_exists('roleName', $data) && $data['roleName'] !== null ? $data['roleName'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withJoinedAt(array_key_exists('joinedAt', $data) && $data['joinedAt'] !== null ? $data['joinedAt'] : null);
     }
 
@@ -78,6 +93,7 @@ class Member implements IModel {
         return array(
             "userId" => $this->getUserId(),
             "roleName" => $this->getRoleName(),
+            "metadata" => $this->getMetadata(),
             "joinedAt" => $this->getJoinedAt(),
         );
     }

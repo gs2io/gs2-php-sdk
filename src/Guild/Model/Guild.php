@@ -60,6 +60,10 @@ class Guild implements IModel {
 	/**
      * @var string
 	 */
+	private $metadata;
+	/**
+     * @var string
+	 */
 	private $joinPolicy;
 	/**
      * @var array
@@ -179,6 +183,16 @@ class Guild implements IModel {
 		$this->attribute5 = $attribute5;
 		return $this;
 	}
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+	public function withMetadata(?string $metadata): Guild {
+		$this->metadata = $metadata;
+		return $this;
+	}
 	public function getJoinPolicy(): ?string {
 		return $this->joinPolicy;
 	}
@@ -274,6 +288,7 @@ class Guild implements IModel {
             ->withAttribute3(array_key_exists('attribute3', $data) && $data['attribute3'] !== null ? $data['attribute3'] : null)
             ->withAttribute4(array_key_exists('attribute4', $data) && $data['attribute4'] !== null ? $data['attribute4'] : null)
             ->withAttribute5(array_key_exists('attribute5', $data) && $data['attribute5'] !== null ? $data['attribute5'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withJoinPolicy(array_key_exists('joinPolicy', $data) && $data['joinPolicy'] !== null ? $data['joinPolicy'] : null)
             ->withCustomRoles(array_map(
                 function ($item) {
@@ -305,6 +320,7 @@ class Guild implements IModel {
             "attribute3" => $this->getAttribute3(),
             "attribute4" => $this->getAttribute4(),
             "attribute5" => $this->getAttribute5(),
+            "metadata" => $this->getMetadata(),
             "joinPolicy" => $this->getJoinPolicy(),
             "customRoles" => array_map(
                 function ($item) {

@@ -19,15 +19,15 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class SendRequestByUserIdRequest extends Gs2BasicRequest {
+class UpdateMemberMetadataByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $userId;
-    /** @var string */
     private $guildModelName;
     /** @var string */
-    private $targetGuildName;
+    private $guildName;
+    /** @var string */
+    private $userId;
     /** @var string */
     private $metadata;
     /** @var string */
@@ -40,18 +40,8 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): SendRequestByUserIdRequest {
+	public function withNamespaceName(?string $namespaceName): UpdateMemberMetadataByUserIdRequest {
 		$this->namespaceName = $namespaceName;
-		return $this;
-	}
-	public function getUserId(): ?string {
-		return $this->userId;
-	}
-	public function setUserId(?string $userId) {
-		$this->userId = $userId;
-	}
-	public function withUserId(?string $userId): SendRequestByUserIdRequest {
-		$this->userId = $userId;
 		return $this;
 	}
 	public function getGuildModelName(): ?string {
@@ -60,18 +50,28 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
-	public function withGuildModelName(?string $guildModelName): SendRequestByUserIdRequest {
+	public function withGuildModelName(?string $guildModelName): UpdateMemberMetadataByUserIdRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
-	public function getTargetGuildName(): ?string {
-		return $this->targetGuildName;
+	public function getGuildName(): ?string {
+		return $this->guildName;
 	}
-	public function setTargetGuildName(?string $targetGuildName) {
-		$this->targetGuildName = $targetGuildName;
+	public function setGuildName(?string $guildName) {
+		$this->guildName = $guildName;
 	}
-	public function withTargetGuildName(?string $targetGuildName): SendRequestByUserIdRequest {
-		$this->targetGuildName = $targetGuildName;
+	public function withGuildName(?string $guildName): UpdateMemberMetadataByUserIdRequest {
+		$this->guildName = $guildName;
+		return $this;
+	}
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+	public function withUserId(?string $userId): UpdateMemberMetadataByUserIdRequest {
+		$this->userId = $userId;
 		return $this;
 	}
 	public function getMetadata(): ?string {
@@ -80,7 +80,7 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-	public function withMetadata(?string $metadata): SendRequestByUserIdRequest {
+	public function withMetadata(?string $metadata): UpdateMemberMetadataByUserIdRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
@@ -90,7 +90,7 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
-	public function withTimeOffsetToken(?string $timeOffsetToken): SendRequestByUserIdRequest {
+	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateMemberMetadataByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;
 	}
@@ -103,20 +103,20 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 	}
 
-	public function withDuplicationAvoider(?string $duplicationAvoider): SendRequestByUserIdRequest {
+	public function withDuplicationAvoider(?string $duplicationAvoider): UpdateMemberMetadataByUserIdRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?SendRequestByUserIdRequest {
+    public static function fromJson(?array $data): ?UpdateMemberMetadataByUserIdRequest {
         if ($data === null) {
             return null;
         }
-        return (new SendRequestByUserIdRequest())
+        return (new UpdateMemberMetadataByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withGuildModelName(array_key_exists('guildModelName', $data) && $data['guildModelName'] !== null ? $data['guildModelName'] : null)
-            ->withTargetGuildName(array_key_exists('targetGuildName', $data) && $data['targetGuildName'] !== null ? $data['targetGuildName'] : null)
+            ->withGuildName(array_key_exists('guildName', $data) && $data['guildName'] !== null ? $data['guildName'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -124,9 +124,9 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "userId" => $this->getUserId(),
             "guildModelName" => $this->getGuildModelName(),
-            "targetGuildName" => $this->getTargetGuildName(),
+            "guildName" => $this->getGuildName(),
+            "userId" => $this->getUserId(),
             "metadata" => $this->getMetadata(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

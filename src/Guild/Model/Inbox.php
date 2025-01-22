@@ -34,6 +34,10 @@ class Inbox implements IModel {
 	 */
 	private $fromUserIds;
 	/**
+     * @var array
+	 */
+	private $receiveMemberRequests;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -65,14 +69,33 @@ class Inbox implements IModel {
 		$this->guildName = $guildName;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getFromUserIds(): ?array {
 		return $this->fromUserIds;
 	}
+    /**
+     * @deprecated
+     */
 	public function setFromUserIds(?array $fromUserIds) {
 		$this->fromUserIds = $fromUserIds;
 	}
+    /**
+     * @deprecated
+     */
 	public function withFromUserIds(?array $fromUserIds): Inbox {
 		$this->fromUserIds = $fromUserIds;
+		return $this;
+	}
+	public function getReceiveMemberRequests(): ?array {
+		return $this->receiveMemberRequests;
+	}
+	public function setReceiveMemberRequests(?array $receiveMemberRequests) {
+		$this->receiveMemberRequests = $receiveMemberRequests;
+	}
+	public function withReceiveMemberRequests(?array $receiveMemberRequests): Inbox {
+		$this->receiveMemberRequests = $receiveMemberRequests;
 		return $this;
 	}
 	public function getCreatedAt(): ?int {
@@ -119,6 +142,12 @@ class Inbox implements IModel {
                 },
                 array_key_exists('fromUserIds', $data) && $data['fromUserIds'] !== null ? $data['fromUserIds'] : []
             ))
+            ->withReceiveMemberRequests(array_map(
+                function ($item) {
+                    return ReceiveMemberRequest::fromJson($item);
+                },
+                array_key_exists('receiveMemberRequests', $data) && $data['receiveMemberRequests'] !== null ? $data['receiveMemberRequests'] : []
+            ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -133,6 +162,12 @@ class Inbox implements IModel {
                     return $item;
                 },
                 $this->getFromUserIds() !== null && $this->getFromUserIds() !== null ? $this->getFromUserIds() : []
+            ),
+            "receiveMemberRequests" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getReceiveMemberRequests() !== null && $this->getReceiveMemberRequests() !== null ? $this->getReceiveMemberRequests() : []
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

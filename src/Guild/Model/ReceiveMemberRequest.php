@@ -29,6 +29,10 @@ class ReceiveMemberRequest implements IModel {
      * @var string
 	 */
 	private $targetGuildName;
+	/**
+     * @var string
+	 */
+	private $metadata;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -49,6 +53,16 @@ class ReceiveMemberRequest implements IModel {
 		$this->targetGuildName = $targetGuildName;
 		return $this;
 	}
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+	public function withMetadata(?string $metadata): ReceiveMemberRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?ReceiveMemberRequest {
         if ($data === null) {
@@ -56,13 +70,15 @@ class ReceiveMemberRequest implements IModel {
         }
         return (new ReceiveMemberRequest())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTargetGuildName(array_key_exists('targetGuildName', $data) && $data['targetGuildName'] !== null ? $data['targetGuildName'] : null);
+            ->withTargetGuildName(array_key_exists('targetGuildName', $data) && $data['targetGuildName'] !== null ? $data['targetGuildName'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
             "targetGuildName" => $this->getTargetGuildName(),
+            "metadata" => $this->getMetadata(),
         );
     }
 }

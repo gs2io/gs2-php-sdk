@@ -19,19 +19,17 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class SendRequestByUserIdRequest extends Gs2BasicRequest {
+class UpdateMemberMetadataRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $userId;
-    /** @var string */
     private $guildModelName;
     /** @var string */
-    private $targetGuildName;
+    private $guildName;
+    /** @var string */
+    private $accessToken;
     /** @var string */
     private $metadata;
-    /** @var string */
-    private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -40,18 +38,8 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): SendRequestByUserIdRequest {
+	public function withNamespaceName(?string $namespaceName): UpdateMemberMetadataRequest {
 		$this->namespaceName = $namespaceName;
-		return $this;
-	}
-	public function getUserId(): ?string {
-		return $this->userId;
-	}
-	public function setUserId(?string $userId) {
-		$this->userId = $userId;
-	}
-	public function withUserId(?string $userId): SendRequestByUserIdRequest {
-		$this->userId = $userId;
 		return $this;
 	}
 	public function getGuildModelName(): ?string {
@@ -60,18 +48,28 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
-	public function withGuildModelName(?string $guildModelName): SendRequestByUserIdRequest {
+	public function withGuildModelName(?string $guildModelName): UpdateMemberMetadataRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
-	public function getTargetGuildName(): ?string {
-		return $this->targetGuildName;
+	public function getGuildName(): ?string {
+		return $this->guildName;
 	}
-	public function setTargetGuildName(?string $targetGuildName) {
-		$this->targetGuildName = $targetGuildName;
+	public function setGuildName(?string $guildName) {
+		$this->guildName = $guildName;
 	}
-	public function withTargetGuildName(?string $targetGuildName): SendRequestByUserIdRequest {
-		$this->targetGuildName = $targetGuildName;
+	public function withGuildName(?string $guildName): UpdateMemberMetadataRequest {
+		$this->guildName = $guildName;
+		return $this;
+	}
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+	public function withAccessToken(?string $accessToken): UpdateMemberMetadataRequest {
+		$this->accessToken = $accessToken;
 		return $this;
 	}
 	public function getMetadata(): ?string {
@@ -80,18 +78,8 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
-	public function withMetadata(?string $metadata): SendRequestByUserIdRequest {
+	public function withMetadata(?string $metadata): UpdateMemberMetadataRequest {
 		$this->metadata = $metadata;
-		return $this;
-	}
-	public function getTimeOffsetToken(): ?string {
-		return $this->timeOffsetToken;
-	}
-	public function setTimeOffsetToken(?string $timeOffsetToken) {
-		$this->timeOffsetToken = $timeOffsetToken;
-	}
-	public function withTimeOffsetToken(?string $timeOffsetToken): SendRequestByUserIdRequest {
-		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;
 	}
 
@@ -103,32 +91,30 @@ class SendRequestByUserIdRequest extends Gs2BasicRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 	}
 
-	public function withDuplicationAvoider(?string $duplicationAvoider): SendRequestByUserIdRequest {
+	public function withDuplicationAvoider(?string $duplicationAvoider): UpdateMemberMetadataRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?SendRequestByUserIdRequest {
+    public static function fromJson(?array $data): ?UpdateMemberMetadataRequest {
         if ($data === null) {
             return null;
         }
-        return (new SendRequestByUserIdRequest())
+        return (new UpdateMemberMetadataRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withGuildModelName(array_key_exists('guildModelName', $data) && $data['guildModelName'] !== null ? $data['guildModelName'] : null)
-            ->withTargetGuildName(array_key_exists('targetGuildName', $data) && $data['targetGuildName'] !== null ? $data['targetGuildName'] : null)
-            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
+            ->withGuildName(array_key_exists('guildName', $data) && $data['guildName'] !== null ? $data['guildName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "userId" => $this->getUserId(),
             "guildModelName" => $this->getGuildModelName(),
-            "targetGuildName" => $this->getTargetGuildName(),
+            "guildName" => $this->getGuildName(),
+            "accessToken" => $this->getAccessToken(),
             "metadata" => $this->getMetadata(),
-            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

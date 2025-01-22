@@ -40,6 +40,10 @@ class CreateGuildByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $attribute5;
     /** @var string */
+    private $metadata;
+    /** @var string */
+    private $memberMetadata;
+    /** @var string */
     private $joinPolicy;
     /** @var array */
     private $customRoles;
@@ -139,6 +143,26 @@ class CreateGuildByUserIdRequest extends Gs2BasicRequest {
 		$this->attribute5 = $attribute5;
 		return $this;
 	}
+	public function getMetadata(): ?string {
+		return $this->metadata;
+	}
+	public function setMetadata(?string $metadata) {
+		$this->metadata = $metadata;
+	}
+	public function withMetadata(?string $metadata): CreateGuildByUserIdRequest {
+		$this->metadata = $metadata;
+		return $this;
+	}
+	public function getMemberMetadata(): ?string {
+		return $this->memberMetadata;
+	}
+	public function setMemberMetadata(?string $memberMetadata) {
+		$this->memberMetadata = $memberMetadata;
+	}
+	public function withMemberMetadata(?string $memberMetadata): CreateGuildByUserIdRequest {
+		$this->memberMetadata = $memberMetadata;
+		return $this;
+	}
 	public function getJoinPolicy(): ?string {
 		return $this->joinPolicy;
 	}
@@ -207,6 +231,8 @@ class CreateGuildByUserIdRequest extends Gs2BasicRequest {
             ->withAttribute3(array_key_exists('attribute3', $data) && $data['attribute3'] !== null ? $data['attribute3'] : null)
             ->withAttribute4(array_key_exists('attribute4', $data) && $data['attribute4'] !== null ? $data['attribute4'] : null)
             ->withAttribute5(array_key_exists('attribute5', $data) && $data['attribute5'] !== null ? $data['attribute5'] : null)
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withMemberMetadata(array_key_exists('memberMetadata', $data) && $data['memberMetadata'] !== null ? $data['memberMetadata'] : null)
             ->withJoinPolicy(array_key_exists('joinPolicy', $data) && $data['joinPolicy'] !== null ? $data['joinPolicy'] : null)
             ->withCustomRoles(array_map(
                 function ($item) {
@@ -229,6 +255,8 @@ class CreateGuildByUserIdRequest extends Gs2BasicRequest {
             "attribute3" => $this->getAttribute3(),
             "attribute4" => $this->getAttribute4(),
             "attribute5" => $this->getAttribute5(),
+            "metadata" => $this->getMetadata(),
+            "memberMetadata" => $this->getMemberMetadata(),
             "joinPolicy" => $this->getJoinPolicy(),
             "customRoles" => array_map(
                 function ($item) {

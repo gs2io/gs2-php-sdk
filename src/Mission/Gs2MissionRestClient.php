@@ -131,6 +131,8 @@ use Gs2\Mission\Request\VerifyCounterValueRequest;
 use Gs2\Mission\Result\VerifyCounterValueResult;
 use Gs2\Mission\Request\VerifyCounterValueByUserIdRequest;
 use Gs2\Mission\Result\VerifyCounterValueByUserIdResult;
+use Gs2\Mission\Request\DeleteCounterRequest;
+use Gs2\Mission\Result\DeleteCounterResult;
 use Gs2\Mission\Request\DeleteCounterByUserIdRequest;
 use Gs2\Mission\Result\DeleteCounterByUserIdResult;
 use Gs2\Mission\Request\IncreaseByStampSheetRequest;
@@ -3515,6 +3517,70 @@ class VerifyCounterValueByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DeleteCounterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteCounterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteCounterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteCounterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteCounterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteCounterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/counter/{counterName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteCounterByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -6167,6 +6233,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             VerifyCounterValueByUserIdRequest $request
     ): VerifyCounterValueByUserIdResult {
         return $this->verifyCounterValueByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteCounterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteCounterAsync(
+            DeleteCounterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteCounterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteCounterRequest $request
+     * @return DeleteCounterResult
+     */
+    public function deleteCounter (
+            DeleteCounterRequest $request
+    ): DeleteCounterResult {
+        return $this->deleteCounterAsync(
             $request
         )->wait();
     }

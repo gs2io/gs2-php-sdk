@@ -97,6 +97,10 @@ use Gs2\Guild\Request\BatchUpdateMemberRoleRequest;
 use Gs2\Guild\Result\BatchUpdateMemberRoleResult;
 use Gs2\Guild\Request\BatchUpdateMemberRoleByGuildNameRequest;
 use Gs2\Guild\Result\BatchUpdateMemberRoleByGuildNameResult;
+use Gs2\Guild\Request\UpdateMemberMetadataRequest;
+use Gs2\Guild\Result\UpdateMemberMetadataResult;
+use Gs2\Guild\Request\UpdateMemberMetadataByUserIdRequest;
+use Gs2\Guild\Result\UpdateMemberMetadataByUserIdResult;
 use Gs2\Guild\Request\DeleteGuildRequest;
 use Gs2\Guild\Result\DeleteGuildResult;
 use Gs2\Guild\Request\DeleteGuildByGuildNameRequest;
@@ -1835,6 +1839,12 @@ class CreateGuildTask extends Gs2RestSessionTask {
         if ($this->request->getAttribute5() !== null) {
             $json["attribute5"] = $this->request->getAttribute5();
         }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getMemberMetadata() !== null) {
+            $json["memberMetadata"] = $this->request->getMemberMetadata();
+        }
         if ($this->request->getJoinPolicy() !== null) {
             $json["joinPolicy"] = $this->request->getJoinPolicy();
         }
@@ -1929,6 +1939,12 @@ class CreateGuildByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAttribute5() !== null) {
             $json["attribute5"] = $this->request->getAttribute5();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getMemberMetadata() !== null) {
+            $json["memberMetadata"] = $this->request->getMemberMetadata();
         }
         if ($this->request->getJoinPolicy() !== null) {
             $json["joinPolicy"] = $this->request->getJoinPolicy();
@@ -2149,6 +2165,9 @@ class UpdateGuildTask extends Gs2RestSessionTask {
         if ($this->request->getAttribute5() !== null) {
             $json["attribute5"] = $this->request->getAttribute5();
         }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
         if ($this->request->getJoinPolicy() !== null) {
             $json["joinPolicy"] = $this->request->getJoinPolicy();
         }
@@ -2243,6 +2262,9 @@ class UpdateGuildByGuildNameTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAttribute5() !== null) {
             $json["attribute5"] = $this->request->getAttribute5();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
         }
         if ($this->request->getJoinPolicy() !== null) {
             $json["joinPolicy"] = $this->request->getJoinPolicy();
@@ -2668,6 +2690,139 @@ class BatchUpdateMemberRoleByGuildNameTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDuplicationAvoider() !== null) {
             $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateMemberMetadataTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateMemberMetadataRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateMemberMetadataTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateMemberMetadataRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateMemberMetadataRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateMemberMetadataResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/guild/{guildName}/member/me/metadata";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+
+        $json = [];
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateMemberMetadataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateMemberMetadataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateMemberMetadataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateMemberMetadataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateMemberMetadataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateMemberMetadataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/guild/{guildModelName}/guild/{guildName}/member/{userId}/metadata";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{guildModelName}", $this->request->getGuildModelName() === null|| strlen($this->request->getGuildModelName()) == 0 ? "null" : $this->request->getGuildModelName(), $url);
+        $url = str_replace("{guildName}", $this->request->getGuildName() === null|| strlen($this->request->getGuildName()) == 0 ? "null" : $this->request->getGuildName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
         }
 
         return parent::executeImpl();
@@ -5420,6 +5575,9 @@ class SendRequestTask extends Gs2RestSessionTask {
         $url = str_replace("{targetGuildName}", $this->request->getTargetGuildName() === null|| strlen($this->request->getTargetGuildName()) == 0 ? "null" : $this->request->getTargetGuildName(), $url);
 
         $json = [];
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -5484,6 +5642,9 @@ class SendRequestByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{targetGuildName}", $this->request->getTargetGuildName() === null|| strlen($this->request->getTargetGuildName()) == 0 ? "null" : $this->request->getTargetGuildName(), $url);
 
         $json = [];
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -7086,6 +7247,60 @@ class Gs2GuildRestClient extends AbstractGs2Client {
             BatchUpdateMemberRoleByGuildNameRequest $request
     ): BatchUpdateMemberRoleByGuildNameResult {
         return $this->batchUpdateMemberRoleByGuildNameAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateMemberMetadataRequest $request
+     * @return PromiseInterface
+     */
+    public function updateMemberMetadataAsync(
+            UpdateMemberMetadataRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateMemberMetadataTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateMemberMetadataRequest $request
+     * @return UpdateMemberMetadataResult
+     */
+    public function updateMemberMetadata (
+            UpdateMemberMetadataRequest $request
+    ): UpdateMemberMetadataResult {
+        return $this->updateMemberMetadataAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateMemberMetadataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function updateMemberMetadataByUserIdAsync(
+            UpdateMemberMetadataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateMemberMetadataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateMemberMetadataByUserIdRequest $request
+     * @return UpdateMemberMetadataByUserIdResult
+     */
+    public function updateMemberMetadataByUserId (
+            UpdateMemberMetadataByUserIdRequest $request
+    ): UpdateMemberMetadataByUserIdResult {
+        return $this->updateMemberMetadataByUserIdAsync(
             $request
         )->wait();
     }

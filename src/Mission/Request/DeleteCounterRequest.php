@@ -15,21 +15,17 @@
  * permissions and limitations under the License.
  */
 
-namespace Gs2\Guild\Request;
+namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-class SendRequestRequest extends Gs2BasicRequest {
+class DeleteCounterRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
     private $accessToken;
     /** @var string */
-    private $guildModelName;
-    /** @var string */
-    private $targetGuildName;
-    /** @var string */
-    private $metadata;
+    private $counterName;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -38,7 +34,7 @@ class SendRequestRequest extends Gs2BasicRequest {
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
-	public function withNamespaceName(?string $namespaceName): SendRequestRequest {
+	public function withNamespaceName(?string $namespaceName): DeleteCounterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
@@ -48,38 +44,18 @@ class SendRequestRequest extends Gs2BasicRequest {
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
-	public function withAccessToken(?string $accessToken): SendRequestRequest {
+	public function withAccessToken(?string $accessToken): DeleteCounterRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getGuildModelName(): ?string {
-		return $this->guildModelName;
+	public function getCounterName(): ?string {
+		return $this->counterName;
 	}
-	public function setGuildModelName(?string $guildModelName) {
-		$this->guildModelName = $guildModelName;
+	public function setCounterName(?string $counterName) {
+		$this->counterName = $counterName;
 	}
-	public function withGuildModelName(?string $guildModelName): SendRequestRequest {
-		$this->guildModelName = $guildModelName;
-		return $this;
-	}
-	public function getTargetGuildName(): ?string {
-		return $this->targetGuildName;
-	}
-	public function setTargetGuildName(?string $targetGuildName) {
-		$this->targetGuildName = $targetGuildName;
-	}
-	public function withTargetGuildName(?string $targetGuildName): SendRequestRequest {
-		$this->targetGuildName = $targetGuildName;
-		return $this;
-	}
-	public function getMetadata(): ?string {
-		return $this->metadata;
-	}
-	public function setMetadata(?string $metadata) {
-		$this->metadata = $metadata;
-	}
-	public function withMetadata(?string $metadata): SendRequestRequest {
-		$this->metadata = $metadata;
+	public function withCounterName(?string $counterName): DeleteCounterRequest {
+		$this->counterName = $counterName;
 		return $this;
 	}
 
@@ -91,30 +67,26 @@ class SendRequestRequest extends Gs2BasicRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 	}
 
-	public function withDuplicationAvoider(?string $duplicationAvoider): SendRequestRequest {
+	public function withDuplicationAvoider(?string $duplicationAvoider): DeleteCounterRequest {
 		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?SendRequestRequest {
+    public static function fromJson(?array $data): ?DeleteCounterRequest {
         if ($data === null) {
             return null;
         }
-        return (new SendRequestRequest())
+        return (new DeleteCounterRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withGuildModelName(array_key_exists('guildModelName', $data) && $data['guildModelName'] !== null ? $data['guildModelName'] : null)
-            ->withTargetGuildName(array_key_exists('targetGuildName', $data) && $data['targetGuildName'] !== null ? $data['targetGuildName'] : null)
-            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
+            ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "guildModelName" => $this->getGuildModelName(),
-            "targetGuildName" => $this->getTargetGuildName(),
-            "metadata" => $this->getMetadata(),
+            "counterName" => $this->getCounterName(),
         );
     }
 }

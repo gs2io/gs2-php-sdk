@@ -18,6 +18,7 @@
 namespace Gs2\Account\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Account\Model\ScopeValue;
 use Gs2\Account\Model\OpenIdConnectSetting;
 use Gs2\Account\Model\TakeOverTypeModelMaster;
 

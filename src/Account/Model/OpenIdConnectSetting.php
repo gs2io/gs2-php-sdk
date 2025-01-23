@@ -49,6 +49,14 @@ class OpenIdConnectSetting implements IModel {
      * @var string
 	 */
 	private $doneEndpointUrl;
+	/**
+     * @var array
+	 */
+	private $additionalScopeValues;
+	/**
+     * @var array
+	 */
+	private $additionalReturnValues;
 	public function getConfigurationPath(): ?string {
 		return $this->configurationPath;
 	}
@@ -119,6 +127,26 @@ class OpenIdConnectSetting implements IModel {
 		$this->doneEndpointUrl = $doneEndpointUrl;
 		return $this;
 	}
+	public function getAdditionalScopeValues(): ?array {
+		return $this->additionalScopeValues;
+	}
+	public function setAdditionalScopeValues(?array $additionalScopeValues) {
+		$this->additionalScopeValues = $additionalScopeValues;
+	}
+	public function withAdditionalScopeValues(?array $additionalScopeValues): OpenIdConnectSetting {
+		$this->additionalScopeValues = $additionalScopeValues;
+		return $this;
+	}
+	public function getAdditionalReturnValues(): ?array {
+		return $this->additionalReturnValues;
+	}
+	public function setAdditionalReturnValues(?array $additionalReturnValues) {
+		$this->additionalReturnValues = $additionalReturnValues;
+	}
+	public function withAdditionalReturnValues(?array $additionalReturnValues): OpenIdConnectSetting {
+		$this->additionalReturnValues = $additionalReturnValues;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?OpenIdConnectSetting {
         if ($data === null) {
@@ -131,7 +159,19 @@ class OpenIdConnectSetting implements IModel {
             ->withAppleTeamId(array_key_exists('appleTeamId', $data) && $data['appleTeamId'] !== null ? $data['appleTeamId'] : null)
             ->withAppleKeyId(array_key_exists('appleKeyId', $data) && $data['appleKeyId'] !== null ? $data['appleKeyId'] : null)
             ->withApplePrivateKeyPem(array_key_exists('applePrivateKeyPem', $data) && $data['applePrivateKeyPem'] !== null ? $data['applePrivateKeyPem'] : null)
-            ->withDoneEndpointUrl(array_key_exists('doneEndpointUrl', $data) && $data['doneEndpointUrl'] !== null ? $data['doneEndpointUrl'] : null);
+            ->withDoneEndpointUrl(array_key_exists('doneEndpointUrl', $data) && $data['doneEndpointUrl'] !== null ? $data['doneEndpointUrl'] : null)
+            ->withAdditionalScopeValues(array_map(
+                function ($item) {
+                    return ScopeValue::fromJson($item);
+                },
+                array_key_exists('additionalScopeValues', $data) && $data['additionalScopeValues'] !== null ? $data['additionalScopeValues'] : []
+            ))
+            ->withAdditionalReturnValues(array_map(
+                function ($item) {
+                    return $item;
+                },
+                array_key_exists('additionalReturnValues', $data) && $data['additionalReturnValues'] !== null ? $data['additionalReturnValues'] : []
+            ));
     }
 
     public function toJson(): array {
@@ -143,6 +183,18 @@ class OpenIdConnectSetting implements IModel {
             "appleKeyId" => $this->getAppleKeyId(),
             "applePrivateKeyPem" => $this->getApplePrivateKeyPem(),
             "doneEndpointUrl" => $this->getDoneEndpointUrl(),
+            "additionalScopeValues" => array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getAdditionalScopeValues() !== null && $this->getAdditionalScopeValues() !== null ? $this->getAdditionalScopeValues() : []
+            ),
+            "additionalReturnValues" => array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getAdditionalReturnValues() !== null && $this->getAdditionalReturnValues() !== null ? $this->getAdditionalReturnValues() : []
+            ),
         );
     }
 }

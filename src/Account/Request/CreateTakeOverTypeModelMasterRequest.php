@@ -18,6 +18,7 @@
 namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Account\Model\ScopeValue;
 use Gs2\Account\Model\OpenIdConnectSetting;
 
 class CreateTakeOverTypeModelMasterRequest extends Gs2BasicRequest {

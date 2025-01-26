@@ -54,6 +54,14 @@ class MissionGroupModelMaster implements IModel {
 	 */
 	private $resetHour;
 	/**
+     * @var int
+	 */
+	private $anchorTimestamp;
+	/**
+     * @var int
+	 */
+	private $days;
+	/**
      * @var string
 	 */
 	private $completeNotificationNamespaceId;
@@ -149,6 +157,26 @@ class MissionGroupModelMaster implements IModel {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+	public function getAnchorTimestamp(): ?int {
+		return $this->anchorTimestamp;
+	}
+	public function setAnchorTimestamp(?int $anchorTimestamp) {
+		$this->anchorTimestamp = $anchorTimestamp;
+	}
+	public function withAnchorTimestamp(?int $anchorTimestamp): MissionGroupModelMaster {
+		$this->anchorTimestamp = $anchorTimestamp;
+		return $this;
+	}
+	public function getDays(): ?int {
+		return $this->days;
+	}
+	public function setDays(?int $days) {
+		$this->days = $days;
+	}
+	public function withDays(?int $days): MissionGroupModelMaster {
+		$this->days = $days;
+		return $this;
+	}
 	public function getCompleteNotificationNamespaceId(): ?string {
 		return $this->completeNotificationNamespaceId;
 	}
@@ -203,6 +231,8 @@ class MissionGroupModelMaster implements IModel {
             ->withResetDayOfMonth(array_key_exists('resetDayOfMonth', $data) && $data['resetDayOfMonth'] !== null ? $data['resetDayOfMonth'] : null)
             ->withResetDayOfWeek(array_key_exists('resetDayOfWeek', $data) && $data['resetDayOfWeek'] !== null ? $data['resetDayOfWeek'] : null)
             ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null)
+            ->withAnchorTimestamp(array_key_exists('anchorTimestamp', $data) && $data['anchorTimestamp'] !== null ? $data['anchorTimestamp'] : null)
+            ->withDays(array_key_exists('days', $data) && $data['days'] !== null ? $data['days'] : null)
             ->withCompleteNotificationNamespaceId(array_key_exists('completeNotificationNamespaceId', $data) && $data['completeNotificationNamespaceId'] !== null ? $data['completeNotificationNamespaceId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -219,6 +249,8 @@ class MissionGroupModelMaster implements IModel {
             "resetDayOfMonth" => $this->getResetDayOfMonth(),
             "resetDayOfWeek" => $this->getResetDayOfWeek(),
             "resetHour" => $this->getResetHour(),
+            "anchorTimestamp" => $this->getAnchorTimestamp(),
+            "days" => $this->getDays(),
             "completeNotificationNamespaceId" => $this->getCompleteNotificationNamespaceId(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

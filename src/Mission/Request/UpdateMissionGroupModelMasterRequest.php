@@ -36,6 +36,10 @@ class UpdateMissionGroupModelMasterRequest extends Gs2BasicRequest {
     private $resetDayOfWeek;
     /** @var int */
     private $resetHour;
+    /** @var int */
+    private $anchorTimestamp;
+    /** @var int */
+    private $days;
     /** @var string */
     private $completeNotificationNamespaceId;
 	public function getNamespaceName(): ?string {
@@ -118,6 +122,26 @@ class UpdateMissionGroupModelMasterRequest extends Gs2BasicRequest {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+	public function getAnchorTimestamp(): ?int {
+		return $this->anchorTimestamp;
+	}
+	public function setAnchorTimestamp(?int $anchorTimestamp) {
+		$this->anchorTimestamp = $anchorTimestamp;
+	}
+	public function withAnchorTimestamp(?int $anchorTimestamp): UpdateMissionGroupModelMasterRequest {
+		$this->anchorTimestamp = $anchorTimestamp;
+		return $this;
+	}
+	public function getDays(): ?int {
+		return $this->days;
+	}
+	public function setDays(?int $days) {
+		$this->days = $days;
+	}
+	public function withDays(?int $days): UpdateMissionGroupModelMasterRequest {
+		$this->days = $days;
+		return $this;
+	}
 	public function getCompleteNotificationNamespaceId(): ?string {
 		return $this->completeNotificationNamespaceId;
 	}
@@ -142,6 +166,8 @@ class UpdateMissionGroupModelMasterRequest extends Gs2BasicRequest {
             ->withResetDayOfMonth(array_key_exists('resetDayOfMonth', $data) && $data['resetDayOfMonth'] !== null ? $data['resetDayOfMonth'] : null)
             ->withResetDayOfWeek(array_key_exists('resetDayOfWeek', $data) && $data['resetDayOfWeek'] !== null ? $data['resetDayOfWeek'] : null)
             ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null)
+            ->withAnchorTimestamp(array_key_exists('anchorTimestamp', $data) && $data['anchorTimestamp'] !== null ? $data['anchorTimestamp'] : null)
+            ->withDays(array_key_exists('days', $data) && $data['days'] !== null ? $data['days'] : null)
             ->withCompleteNotificationNamespaceId(array_key_exists('completeNotificationNamespaceId', $data) && $data['completeNotificationNamespaceId'] !== null ? $data['completeNotificationNamespaceId'] : null);
     }
 
@@ -155,6 +181,8 @@ class UpdateMissionGroupModelMasterRequest extends Gs2BasicRequest {
             "resetDayOfMonth" => $this->getResetDayOfMonth(),
             "resetDayOfWeek" => $this->getResetDayOfWeek(),
             "resetHour" => $this->getResetHour(),
+            "anchorTimestamp" => $this->getAnchorTimestamp(),
+            "days" => $this->getDays(),
             "completeNotificationNamespaceId" => $this->getCompleteNotificationNamespaceId(),
         );
     }

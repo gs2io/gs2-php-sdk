@@ -51,6 +51,10 @@ use Gs2\Mission\Request\GetCompleteRequest;
 use Gs2\Mission\Result\GetCompleteResult;
 use Gs2\Mission\Request\GetCompleteByUserIdRequest;
 use Gs2\Mission\Result\GetCompleteByUserIdResult;
+use Gs2\Mission\Request\EvaluateCompleteRequest;
+use Gs2\Mission\Result\EvaluateCompleteResult;
+use Gs2\Mission\Request\EvaluateCompleteByUserIdRequest;
+use Gs2\Mission\Result\EvaluateCompleteByUserIdResult;
 use Gs2\Mission\Request\DeleteCompleteByUserIdRequest;
 use Gs2\Mission\Result\DeleteCompleteByUserIdResult;
 use Gs2\Mission\Request\VerifyCompleteRequest;
@@ -920,6 +924,131 @@ class GetCompleteByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class EvaluateCompleteTask extends Gs2RestSessionTask {
+
+    /**
+     * @var EvaluateCompleteRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * EvaluateCompleteTask constructor.
+     * @param Gs2RestSession $session
+     * @param EvaluateCompleteRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        EvaluateCompleteRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            EvaluateCompleteResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/complete/group/{missionGroupName}/eval";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class EvaluateCompleteByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var EvaluateCompleteByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * EvaluateCompleteByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param EvaluateCompleteByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        EvaluateCompleteByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            EvaluateCompleteByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/complete/group/{missionGroupName}/eval";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{missionGroupName}", $this->request->getMissionGroupName() === null|| strlen($this->request->getMissionGroupName()) == 0 ? "null" : $this->request->getMissionGroupName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
@@ -1808,6 +1937,12 @@ class CreateMissionGroupModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getResetHour() !== null) {
             $json["resetHour"] = $this->request->getResetHour();
         }
+        if ($this->request->getAnchorTimestamp() !== null) {
+            $json["anchorTimestamp"] = $this->request->getAnchorTimestamp();
+        }
+        if ($this->request->getDays() !== null) {
+            $json["days"] = $this->request->getDays();
+        }
         if ($this->request->getCompleteNotificationNamespaceId() !== null) {
             $json["completeNotificationNamespaceId"] = $this->request->getCompleteNotificationNamespaceId();
         }
@@ -1942,6 +2077,12 @@ class UpdateMissionGroupModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getResetHour() !== null) {
             $json["resetHour"] = $this->request->getResetHour();
+        }
+        if ($this->request->getAnchorTimestamp() !== null) {
+            $json["anchorTimestamp"] = $this->request->getAnchorTimestamp();
+        }
+        if ($this->request->getDays() !== null) {
+            $json["days"] = $this->request->getDays();
         }
         if ($this->request->getCompleteNotificationNamespaceId() !== null) {
             $json["completeNotificationNamespaceId"] = $this->request->getCompleteNotificationNamespaceId();
@@ -5153,6 +5294,60 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             GetCompleteByUserIdRequest $request
     ): GetCompleteByUserIdResult {
         return $this->getCompleteByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param EvaluateCompleteRequest $request
+     * @return PromiseInterface
+     */
+    public function evaluateCompleteAsync(
+            EvaluateCompleteRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new EvaluateCompleteTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param EvaluateCompleteRequest $request
+     * @return EvaluateCompleteResult
+     */
+    public function evaluateComplete (
+            EvaluateCompleteRequest $request
+    ): EvaluateCompleteResult {
+        return $this->evaluateCompleteAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param EvaluateCompleteByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function evaluateCompleteByUserIdAsync(
+            EvaluateCompleteByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new EvaluateCompleteByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param EvaluateCompleteByUserIdRequest $request
+     * @return EvaluateCompleteByUserIdResult
+     */
+    public function evaluateCompleteByUserId (
+            EvaluateCompleteByUserIdRequest $request
+    ): EvaluateCompleteByUserIdResult {
+        return $this->evaluateCompleteByUserIdAsync(
             $request
         )->wait();
     }

@@ -57,6 +57,14 @@ class MissionGroupModel implements IModel {
      * @var string
 	 */
 	private $completeNotificationNamespaceId;
+	/**
+     * @var int
+	 */
+	private $anchorTimestamp;
+	/**
+     * @var int
+	 */
+	private $days;
 	public function getMissionGroupId(): ?string {
 		return $this->missionGroupId;
 	}
@@ -147,6 +155,26 @@ class MissionGroupModel implements IModel {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 		return $this;
 	}
+	public function getAnchorTimestamp(): ?int {
+		return $this->anchorTimestamp;
+	}
+	public function setAnchorTimestamp(?int $anchorTimestamp) {
+		$this->anchorTimestamp = $anchorTimestamp;
+	}
+	public function withAnchorTimestamp(?int $anchorTimestamp): MissionGroupModel {
+		$this->anchorTimestamp = $anchorTimestamp;
+		return $this;
+	}
+	public function getDays(): ?int {
+		return $this->days;
+	}
+	public function setDays(?int $days) {
+		$this->days = $days;
+	}
+	public function withDays(?int $days): MissionGroupModel {
+		$this->days = $days;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?MissionGroupModel {
         if ($data === null) {
@@ -166,7 +194,9 @@ class MissionGroupModel implements IModel {
             ->withResetDayOfMonth(array_key_exists('resetDayOfMonth', $data) && $data['resetDayOfMonth'] !== null ? $data['resetDayOfMonth'] : null)
             ->withResetDayOfWeek(array_key_exists('resetDayOfWeek', $data) && $data['resetDayOfWeek'] !== null ? $data['resetDayOfWeek'] : null)
             ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null)
-            ->withCompleteNotificationNamespaceId(array_key_exists('completeNotificationNamespaceId', $data) && $data['completeNotificationNamespaceId'] !== null ? $data['completeNotificationNamespaceId'] : null);
+            ->withCompleteNotificationNamespaceId(array_key_exists('completeNotificationNamespaceId', $data) && $data['completeNotificationNamespaceId'] !== null ? $data['completeNotificationNamespaceId'] : null)
+            ->withAnchorTimestamp(array_key_exists('anchorTimestamp', $data) && $data['anchorTimestamp'] !== null ? $data['anchorTimestamp'] : null)
+            ->withDays(array_key_exists('days', $data) && $data['days'] !== null ? $data['days'] : null);
     }
 
     public function toJson(): array {
@@ -185,6 +215,8 @@ class MissionGroupModel implements IModel {
             "resetDayOfWeek" => $this->getResetDayOfWeek(),
             "resetHour" => $this->getResetHour(),
             "completeNotificationNamespaceId" => $this->getCompleteNotificationNamespaceId(),
+            "anchorTimestamp" => $this->getAnchorTimestamp(),
+            "days" => $this->getDays(),
         );
     }
 }

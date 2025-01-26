@@ -49,6 +49,14 @@ class CounterScopeModel implements IModel {
      * @var VerifyAction
 	 */
 	private $condition;
+	/**
+     * @var int
+	 */
+	private $anchorTimestamp;
+	/**
+     * @var int
+	 */
+	private $days;
 	public function getScopeType(): ?string {
 		return $this->scopeType;
 	}
@@ -119,6 +127,26 @@ class CounterScopeModel implements IModel {
 		$this->condition = $condition;
 		return $this;
 	}
+	public function getAnchorTimestamp(): ?int {
+		return $this->anchorTimestamp;
+	}
+	public function setAnchorTimestamp(?int $anchorTimestamp) {
+		$this->anchorTimestamp = $anchorTimestamp;
+	}
+	public function withAnchorTimestamp(?int $anchorTimestamp): CounterScopeModel {
+		$this->anchorTimestamp = $anchorTimestamp;
+		return $this;
+	}
+	public function getDays(): ?int {
+		return $this->days;
+	}
+	public function setDays(?int $days) {
+		$this->days = $days;
+	}
+	public function withDays(?int $days): CounterScopeModel {
+		$this->days = $days;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CounterScopeModel {
         if ($data === null) {
@@ -131,7 +159,9 @@ class CounterScopeModel implements IModel {
             ->withResetDayOfWeek(array_key_exists('resetDayOfWeek', $data) && $data['resetDayOfWeek'] !== null ? $data['resetDayOfWeek'] : null)
             ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null)
             ->withConditionName(array_key_exists('conditionName', $data) && $data['conditionName'] !== null ? $data['conditionName'] : null)
-            ->withCondition(array_key_exists('condition', $data) && $data['condition'] !== null ? VerifyAction::fromJson($data['condition']) : null);
+            ->withCondition(array_key_exists('condition', $data) && $data['condition'] !== null ? VerifyAction::fromJson($data['condition']) : null)
+            ->withAnchorTimestamp(array_key_exists('anchorTimestamp', $data) && $data['anchorTimestamp'] !== null ? $data['anchorTimestamp'] : null)
+            ->withDays(array_key_exists('days', $data) && $data['days'] !== null ? $data['days'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +173,8 @@ class CounterScopeModel implements IModel {
             "resetHour" => $this->getResetHour(),
             "conditionName" => $this->getConditionName(),
             "condition" => $this->getCondition() !== null ? $this->getCondition()->toJson() : null,
+            "anchorTimestamp" => $this->getAnchorTimestamp(),
+            "days" => $this->getDays(),
         );
     }
 }

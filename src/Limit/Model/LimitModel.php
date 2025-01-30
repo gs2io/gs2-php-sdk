@@ -49,6 +49,14 @@ class LimitModel implements IModel {
      * @var int
 	 */
 	private $resetHour;
+	/**
+     * @var int
+	 */
+	private $anchorTimestamp;
+	/**
+     * @var int
+	 */
+	private $days;
 	public function getLimitModelId(): ?string {
 		return $this->limitModelId;
 	}
@@ -119,6 +127,26 @@ class LimitModel implements IModel {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+	public function getAnchorTimestamp(): ?int {
+		return $this->anchorTimestamp;
+	}
+	public function setAnchorTimestamp(?int $anchorTimestamp) {
+		$this->anchorTimestamp = $anchorTimestamp;
+	}
+	public function withAnchorTimestamp(?int $anchorTimestamp): LimitModel {
+		$this->anchorTimestamp = $anchorTimestamp;
+		return $this;
+	}
+	public function getDays(): ?int {
+		return $this->days;
+	}
+	public function setDays(?int $days) {
+		$this->days = $days;
+	}
+	public function withDays(?int $days): LimitModel {
+		$this->days = $days;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?LimitModel {
         if ($data === null) {
@@ -131,7 +159,9 @@ class LimitModel implements IModel {
             ->withResetType(array_key_exists('resetType', $data) && $data['resetType'] !== null ? $data['resetType'] : null)
             ->withResetDayOfMonth(array_key_exists('resetDayOfMonth', $data) && $data['resetDayOfMonth'] !== null ? $data['resetDayOfMonth'] : null)
             ->withResetDayOfWeek(array_key_exists('resetDayOfWeek', $data) && $data['resetDayOfWeek'] !== null ? $data['resetDayOfWeek'] : null)
-            ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null);
+            ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null)
+            ->withAnchorTimestamp(array_key_exists('anchorTimestamp', $data) && $data['anchorTimestamp'] !== null ? $data['anchorTimestamp'] : null)
+            ->withDays(array_key_exists('days', $data) && $data['days'] !== null ? $data['days'] : null);
     }
 
     public function toJson(): array {
@@ -143,6 +173,8 @@ class LimitModel implements IModel {
             "resetDayOfMonth" => $this->getResetDayOfMonth(),
             "resetDayOfWeek" => $this->getResetDayOfWeek(),
             "resetHour" => $this->getResetHour(),
+            "anchorTimestamp" => $this->getAnchorTimestamp(),
+            "days" => $this->getDays(),
         );
     }
 }

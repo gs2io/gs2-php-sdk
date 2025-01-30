@@ -135,6 +135,10 @@ use Gs2\Mission\Request\VerifyCounterValueRequest;
 use Gs2\Mission\Result\VerifyCounterValueResult;
 use Gs2\Mission\Request\VerifyCounterValueByUserIdRequest;
 use Gs2\Mission\Result\VerifyCounterValueByUserIdResult;
+use Gs2\Mission\Request\ResetCounterRequest;
+use Gs2\Mission\Result\ResetCounterResult;
+use Gs2\Mission\Request\ResetCounterByUserIdRequest;
+use Gs2\Mission\Result\ResetCounterByUserIdResult;
 use Gs2\Mission\Request\DeleteCounterRequest;
 use Gs2\Mission\Result\DeleteCounterResult;
 use Gs2\Mission\Request\DeleteCounterByUserIdRequest;
@@ -145,6 +149,8 @@ use Gs2\Mission\Request\SetByStampSheetRequest;
 use Gs2\Mission\Result\SetByStampSheetResult;
 use Gs2\Mission\Request\DecreaseByStampTaskRequest;
 use Gs2\Mission\Result\DecreaseByStampTaskResult;
+use Gs2\Mission\Request\ResetByStampTaskRequest;
+use Gs2\Mission\Result\ResetByStampTaskResult;
 use Gs2\Mission\Request\VerifyCounterValueByStampTaskRequest;
 use Gs2\Mission\Result\VerifyCounterValueByStampTaskResult;
 use Gs2\Mission\Request\ExportMasterRequest;
@@ -3658,6 +3664,147 @@ class VerifyCounterValueByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class ResetCounterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetCounterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetCounterTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetCounterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetCounterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetCounterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/counter/{counterName}/reset";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+
+        $json = [];
+        if ($this->request->getScopes() !== null) {
+            $array = [];
+            foreach ($this->request->getScopes() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["scopes"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ResetCounterByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetCounterByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetCounterByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetCounterByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetCounterByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetCounterByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/counter/{counterName}/reset";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{counterName}", $this->request->getCounterName() === null|| strlen($this->request->getCounterName()) == 0 ? "null" : $this->request->getCounterName(), $url);
+
+        $json = [];
+        if ($this->request->getScopes() !== null) {
+            $array = [];
+            foreach ($this->request->getScopes() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["scopes"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteCounterTask extends Gs2RestSessionTask {
 
     /**
@@ -3937,6 +4084,65 @@ class DecreaseByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/decrease";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ResetByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ResetByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ResetByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param ResetByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ResetByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ResetByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "mission", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/reset";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -6433,6 +6639,60 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param ResetCounterRequest $request
+     * @return PromiseInterface
+     */
+    public function resetCounterAsync(
+            ResetCounterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetCounterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetCounterRequest $request
+     * @return ResetCounterResult
+     */
+    public function resetCounter (
+            ResetCounterRequest $request
+    ): ResetCounterResult {
+        return $this->resetCounterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ResetCounterByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function resetCounterByUserIdAsync(
+            ResetCounterByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetCounterByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetCounterByUserIdRequest $request
+     * @return ResetCounterByUserIdResult
+     */
+    public function resetCounterByUserId (
+            ResetCounterByUserIdRequest $request
+    ): ResetCounterByUserIdResult {
+        return $this->resetCounterByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DeleteCounterRequest $request
      * @return PromiseInterface
      */
@@ -6563,6 +6823,33 @@ class Gs2MissionRestClient extends AbstractGs2Client {
             DecreaseByStampTaskRequest $request
     ): DecreaseByStampTaskResult {
         return $this->decreaseByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ResetByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function resetByStampTaskAsync(
+            ResetByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ResetByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ResetByStampTaskRequest $request
+     * @return ResetByStampTaskResult
+     */
+    public function resetByStampTask (
+            ResetByStampTaskRequest $request
+    ): ResetByStampTaskResult {
+        return $this->resetByStampTaskAsync(
             $request
         )->wait();
     }

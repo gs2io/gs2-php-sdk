@@ -1910,6 +1910,12 @@ class CreateLimitModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getResetHour() !== null) {
             $json["resetHour"] = $this->request->getResetHour();
         }
+        if ($this->request->getAnchorTimestamp() !== null) {
+            $json["anchorTimestamp"] = $this->request->getAnchorTimestamp();
+        }
+        if ($this->request->getDays() !== null) {
+            $json["days"] = $this->request->getDays();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2041,6 +2047,12 @@ class UpdateLimitModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getResetHour() !== null) {
             $json["resetHour"] = $this->request->getResetHour();
+        }
+        if ($this->request->getAnchorTimestamp() !== null) {
+            $json["anchorTimestamp"] = $this->request->getAnchorTimestamp();
+        }
+        if ($this->request->getDays() !== null) {
+            $json["days"] = $this->request->getDays();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

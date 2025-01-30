@@ -56,6 +56,14 @@ class LimitModelMaster implements IModel {
 	/**
      * @var int
 	 */
+	private $anchorTimestamp;
+	/**
+     * @var int
+	 */
+	private $days;
+	/**
+     * @var int
+	 */
 	private $createdAt;
 	/**
      * @var int
@@ -145,6 +153,26 @@ class LimitModelMaster implements IModel {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+	public function getAnchorTimestamp(): ?int {
+		return $this->anchorTimestamp;
+	}
+	public function setAnchorTimestamp(?int $anchorTimestamp) {
+		$this->anchorTimestamp = $anchorTimestamp;
+	}
+	public function withAnchorTimestamp(?int $anchorTimestamp): LimitModelMaster {
+		$this->anchorTimestamp = $anchorTimestamp;
+		return $this;
+	}
+	public function getDays(): ?int {
+		return $this->days;
+	}
+	public function setDays(?int $days) {
+		$this->days = $days;
+	}
+	public function withDays(?int $days): LimitModelMaster {
+		$this->days = $days;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -189,6 +217,8 @@ class LimitModelMaster implements IModel {
             ->withResetDayOfMonth(array_key_exists('resetDayOfMonth', $data) && $data['resetDayOfMonth'] !== null ? $data['resetDayOfMonth'] : null)
             ->withResetDayOfWeek(array_key_exists('resetDayOfWeek', $data) && $data['resetDayOfWeek'] !== null ? $data['resetDayOfWeek'] : null)
             ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null)
+            ->withAnchorTimestamp(array_key_exists('anchorTimestamp', $data) && $data['anchorTimestamp'] !== null ? $data['anchorTimestamp'] : null)
+            ->withDays(array_key_exists('days', $data) && $data['days'] !== null ? $data['days'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -204,6 +234,8 @@ class LimitModelMaster implements IModel {
             "resetDayOfMonth" => $this->getResetDayOfMonth(),
             "resetDayOfWeek" => $this->getResetDayOfWeek(),
             "resetHour" => $this->getResetHour(),
+            "anchorTimestamp" => $this->getAnchorTimestamp(),
+            "days" => $this->getDays(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

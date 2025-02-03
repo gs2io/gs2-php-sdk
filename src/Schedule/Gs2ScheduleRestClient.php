@@ -1564,6 +1564,9 @@ class TriggerByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getTtl() !== null) {
             $json["ttl"] = $this->request->getTtl();
         }
+        if ($this->request->getEventId() !== null) {
+            $json["eventId"] = $this->request->getEventId();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

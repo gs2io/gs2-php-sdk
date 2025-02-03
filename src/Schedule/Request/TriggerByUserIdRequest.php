@@ -31,6 +31,8 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
     /** @var int */
     private $ttl;
     /** @var string */
+    private $eventId;
+    /** @var string */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
@@ -84,6 +86,16 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
 		$this->ttl = $ttl;
 		return $this;
 	}
+	public function getEventId(): ?string {
+		return $this->eventId;
+	}
+	public function setEventId(?string $eventId) {
+		$this->eventId = $eventId;
+	}
+	public function withEventId(?string $eventId): TriggerByUserIdRequest {
+		$this->eventId = $eventId;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -118,6 +130,7 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTriggerStrategy(array_key_exists('triggerStrategy', $data) && $data['triggerStrategy'] !== null ? $data['triggerStrategy'] : null)
             ->withTtl(array_key_exists('ttl', $data) && $data['ttl'] !== null ? $data['ttl'] : null)
+            ->withEventId(array_key_exists('eventId', $data) && $data['eventId'] !== null ? $data['eventId'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -128,6 +141,7 @@ class TriggerByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "triggerStrategy" => $this->getTriggerStrategy(),
             "ttl" => $this->getTtl(),
+            "eventId" => $this->getEventId(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

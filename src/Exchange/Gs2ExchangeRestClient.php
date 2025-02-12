@@ -250,6 +250,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getIncrementalExchangeScript() !== null) {
             $json["incrementalExchangeScript"] = $this->request->getIncrementalExchangeScript()->toJson();
         }
+        if ($this->request->getAcquireAwaitScript() !== null) {
+            $json["acquireAwaitScript"] = $this->request->getAcquireAwaitScript()->toJson();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -445,6 +448,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getIncrementalExchangeScript() !== null) {
             $json["incrementalExchangeScript"] = $this->request->getIncrementalExchangeScript()->toJson();
+        }
+        if ($this->request->getAcquireAwaitScript() !== null) {
+            $json["acquireAwaitScript"] = $this->request->getAcquireAwaitScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

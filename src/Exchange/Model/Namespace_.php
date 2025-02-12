@@ -54,6 +54,10 @@ class Namespace_ implements IModel {
 	 */
 	private $incrementalExchangeScript;
 	/**
+     * @var ScriptSetting
+	 */
+	private $acquireAwaitScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -157,6 +161,16 @@ class Namespace_ implements IModel {
 		$this->incrementalExchangeScript = $incrementalExchangeScript;
 		return $this;
 	}
+	public function getAcquireAwaitScript(): ?ScriptSetting {
+		return $this->acquireAwaitScript;
+	}
+	public function setAcquireAwaitScript(?ScriptSetting $acquireAwaitScript) {
+		$this->acquireAwaitScript = $acquireAwaitScript;
+	}
+	public function withAcquireAwaitScript(?ScriptSetting $acquireAwaitScript): Namespace_ {
+		$this->acquireAwaitScript = $acquireAwaitScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -249,6 +263,7 @@ class Namespace_ implements IModel {
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withExchangeScript(array_key_exists('exchangeScript', $data) && $data['exchangeScript'] !== null ? ScriptSetting::fromJson($data['exchangeScript']) : null)
             ->withIncrementalExchangeScript(array_key_exists('incrementalExchangeScript', $data) && $data['incrementalExchangeScript'] !== null ? ScriptSetting::fromJson($data['incrementalExchangeScript']) : null)
+            ->withAcquireAwaitScript(array_key_exists('acquireAwaitScript', $data) && $data['acquireAwaitScript'] !== null ? ScriptSetting::fromJson($data['acquireAwaitScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -267,6 +282,7 @@ class Namespace_ implements IModel {
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "exchangeScript" => $this->getExchangeScript() !== null ? $this->getExchangeScript()->toJson() : null,
             "incrementalExchangeScript" => $this->getIncrementalExchangeScript() !== null ? $this->getIncrementalExchangeScript()->toJson() : null,
+            "acquireAwaitScript" => $this->getAcquireAwaitScript() !== null ? $this->getAcquireAwaitScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

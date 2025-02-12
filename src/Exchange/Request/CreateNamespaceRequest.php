@@ -37,6 +37,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $exchangeScript;
     /** @var ScriptSetting */
     private $incrementalExchangeScript;
+    /** @var ScriptSetting */
+    private $acquireAwaitScript;
     /** @var LogSetting */
     private $logSetting;
     /** @var string */
@@ -113,6 +115,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->incrementalExchangeScript = $incrementalExchangeScript;
 		return $this;
 	}
+	public function getAcquireAwaitScript(): ?ScriptSetting {
+		return $this->acquireAwaitScript;
+	}
+	public function setAcquireAwaitScript(?ScriptSetting $acquireAwaitScript) {
+		$this->acquireAwaitScript = $acquireAwaitScript;
+	}
+	public function withAcquireAwaitScript(?ScriptSetting $acquireAwaitScript): CreateNamespaceRequest {
+		$this->acquireAwaitScript = $acquireAwaitScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -174,6 +186,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withExchangeScript(array_key_exists('exchangeScript', $data) && $data['exchangeScript'] !== null ? ScriptSetting::fromJson($data['exchangeScript']) : null)
             ->withIncrementalExchangeScript(array_key_exists('incrementalExchangeScript', $data) && $data['incrementalExchangeScript'] !== null ? ScriptSetting::fromJson($data['incrementalExchangeScript']) : null)
+            ->withAcquireAwaitScript(array_key_exists('acquireAwaitScript', $data) && $data['acquireAwaitScript'] !== null ? ScriptSetting::fromJson($data['acquireAwaitScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
@@ -188,6 +201,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "exchangeScript" => $this->getExchangeScript() !== null ? $this->getExchangeScript()->toJson() : null,
             "incrementalExchangeScript" => $this->getIncrementalExchangeScript() !== null ? $this->getIncrementalExchangeScript()->toJson() : null,
+            "acquireAwaitScript" => $this->getAcquireAwaitScript() !== null ? $this->getAcquireAwaitScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),

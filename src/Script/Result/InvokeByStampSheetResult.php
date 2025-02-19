@@ -24,6 +24,10 @@ use Gs2\Script\Model\AcquireAction;
 use Gs2\Script\Model\Transaction;
 use Gs2\Script\Model\RandomUsed;
 use Gs2\Script\Model\RandomStatus;
+use Gs2\Core\Model\VerifyActionResult as CoreVerifyActionResult;
+use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
+use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
+use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
 class InvokeByStampSheetResult implements IResult {
     /** @var int */
@@ -34,6 +38,10 @@ class InvokeByStampSheetResult implements IResult {
     private $transaction;
     /** @var RandomStatus */
     private $randomStatus;
+    /** @var bool */
+    private $atomicCommit;
+    /** @var CoreTransactionResult */
+    private $transactionResult;
     /** @var int */
     private $executeTime;
     /** @var int */
@@ -93,6 +101,32 @@ class InvokeByStampSheetResult implements IResult {
 		return $this;
 	}
 
+	public function getAtomicCommit(): ?bool {
+		return $this->atomicCommit;
+	}
+
+	public function setAtomicCommit(?bool $atomicCommit) {
+		$this->atomicCommit = $atomicCommit;
+	}
+
+	public function withAtomicCommit(?bool $atomicCommit): InvokeByStampSheetResult {
+		$this->atomicCommit = $atomicCommit;
+		return $this;
+	}
+
+	public function getTransactionResult(): ?CoreTransactionResult {
+		return $this->transactionResult;
+	}
+
+	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
+		$this->transactionResult = $transactionResult;
+	}
+
+	public function withTransactionResult(?CoreTransactionResult $transactionResult): InvokeByStampSheetResult {
+		$this->transactionResult = $transactionResult;
+		return $this;
+	}
+
 	public function getExecuteTime(): ?int {
 		return $this->executeTime;
 	}
@@ -141,6 +175,8 @@ class InvokeByStampSheetResult implements IResult {
             ->withResult(array_key_exists('result', $data) && $data['result'] !== null ? $data['result'] : null)
             ->withTransaction(array_key_exists('transaction', $data) && $data['transaction'] !== null ? Transaction::fromJson($data['transaction']) : null)
             ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
+            ->withAtomicCommit(array_key_exists('atomicCommit', $data) ? $data['atomicCommit'] : null)
+            ->withTransactionResult(array_key_exists('transactionResult', $data) && $data['transactionResult'] !== null ? CoreTransactionResult::fromJson($data['transactionResult']) : null)
             ->withExecuteTime(array_key_exists('executeTime', $data) && $data['executeTime'] !== null ? $data['executeTime'] : null)
             ->withCharged(array_key_exists('charged', $data) && $data['charged'] !== null ? $data['charged'] : null)
             ->withOutput(array_map(
@@ -157,6 +193,8 @@ class InvokeByStampSheetResult implements IResult {
             "result" => $this->getResult(),
             "transaction" => $this->getTransaction() !== null ? $this->getTransaction()->toJson() : null,
             "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
+            "atomicCommit" => $this->getAtomicCommit(),
+            "transactionResult" => $this->getTransactionResult() !== null ? $this->getTransactionResult()->toJson() : null,
             "executeTime" => $this->getExecuteTime(),
             "charged" => $this->getCharged(),
             "output" => array_map(

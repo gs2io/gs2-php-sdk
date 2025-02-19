@@ -77,6 +77,10 @@ use Gs2\Inbox\Request\ReadMessageRequest;
 use Gs2\Inbox\Result\ReadMessageResult;
 use Gs2\Inbox\Request\ReadMessageByUserIdRequest;
 use Gs2\Inbox\Result\ReadMessageByUserIdResult;
+use Gs2\Inbox\Request\BatchReadMessagesRequest;
+use Gs2\Inbox\Result\BatchReadMessagesResult;
+use Gs2\Inbox\Request\BatchReadMessagesByUserIdRequest;
+use Gs2\Inbox\Result\BatchReadMessagesByUserIdResult;
 use Gs2\Inbox\Request\DeleteMessageRequest;
 use Gs2\Inbox\Result\DeleteMessageResult;
 use Gs2\Inbox\Request\DeleteMessageByUserIdRequest;
@@ -1634,6 +1638,161 @@ class ReadMessageByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{messageName}", $this->request->getMessageName() === null|| strlen($this->request->getMessageName()) == 0 ? "null" : $this->request->getMessageName(), $url);
 
         $json = [];
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class BatchReadMessagesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchReadMessagesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchReadMessagesTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchReadMessagesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchReadMessagesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchReadMessagesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/messages/read/batch";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getMessageNames() !== null) {
+            $array = [];
+            foreach ($this->request->getMessageNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["messageNames"] = $array;
+        }
+        if ($this->request->getConfig() !== null) {
+            $array = [];
+            foreach ($this->request->getConfig() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["config"] = $array;
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class BatchReadMessagesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var BatchReadMessagesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * BatchReadMessagesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param BatchReadMessagesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        BatchReadMessagesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            BatchReadMessagesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/messages/read/batch";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getMessageNames() !== null) {
+            $array = [];
+            foreach ($this->request->getMessageNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["messageNames"] = $array;
+        }
         if ($this->request->getConfig() !== null) {
             $array = [];
             foreach ($this->request->getConfig() as $item)
@@ -3507,6 +3666,60 @@ class Gs2InboxRestClient extends AbstractGs2Client {
             ReadMessageByUserIdRequest $request
     ): ReadMessageByUserIdResult {
         return $this->readMessageByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param BatchReadMessagesRequest $request
+     * @return PromiseInterface
+     */
+    public function batchReadMessagesAsync(
+            BatchReadMessagesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchReadMessagesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchReadMessagesRequest $request
+     * @return BatchReadMessagesResult
+     */
+    public function batchReadMessages (
+            BatchReadMessagesRequest $request
+    ): BatchReadMessagesResult {
+        return $this->batchReadMessagesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param BatchReadMessagesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function batchReadMessagesByUserIdAsync(
+            BatchReadMessagesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new BatchReadMessagesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param BatchReadMessagesByUserIdRequest $request
+     * @return BatchReadMessagesByUserIdResult
+     */
+    public function batchReadMessagesByUserId (
+            BatchReadMessagesByUserIdRequest $request
+    ): BatchReadMessagesByUserIdResult {
+        return $this->batchReadMessagesByUserIdAsync(
             $request
         )->wait();
     }

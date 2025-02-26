@@ -273,6 +273,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDoTakeOverScript() !== null) {
             $json["doTakeOverScript"] = $this->request->getDoTakeOverScript()->toJson();
         }
+        if ($this->request->getBanScript() !== null) {
+            $json["banScript"] = $this->request->getBanScript()->toJson();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -462,6 +465,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDoTakeOverScript() !== null) {
             $json["doTakeOverScript"] = $this->request->getDoTakeOverScript()->toJson();
+        }
+        if ($this->request->getBanScript() !== null) {
+            $json["banScript"] = $this->request->getBanScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

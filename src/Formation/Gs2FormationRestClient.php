@@ -3709,7 +3709,7 @@ class SetFormTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/mold/{moldModelName}/form/{index}";
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/mold/{moldModelName}/form/{index}/raw";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{moldModelName}", $this->request->getMoldModelName() === null|| strlen($this->request->getMoldModelName()) == 0 ? "null" : $this->request->getMoldModelName(), $url);
@@ -4641,7 +4641,7 @@ class SetPropertyFormTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/property/{propertyFormModelName}/form/{propertyId}";
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/property/{propertyFormModelName}/form/{propertyId}/raw";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{propertyFormModelName}", $this->request->getPropertyFormModelName() === null|| strlen($this->request->getPropertyFormModelName()) == 0 ? "null" : $this->request->getPropertyFormModelName(), $url);

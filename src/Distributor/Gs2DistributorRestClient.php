@@ -95,6 +95,8 @@ use Gs2\Distributor\Request\SignFreezeMasterDataTimestampRequest;
 use Gs2\Distributor\Result\SignFreezeMasterDataTimestampResult;
 use Gs2\Distributor\Request\FreezeMasterDataBySignedTimestampRequest;
 use Gs2\Distributor\Result\FreezeMasterDataBySignedTimestampResult;
+use Gs2\Distributor\Request\FreezeMasterDataByTimestampRequest;
+use Gs2\Distributor\Result\FreezeMasterDataByTimestampResult;
 use Gs2\Distributor\Request\BatchExecuteApiRequest;
 use Gs2\Distributor\Result\BatchExecuteApiResult;
 use Gs2\Distributor\Request\IfExpressionByUserIdRequest;
@@ -2168,6 +2170,70 @@ class FreezeMasterDataBySignedTimestampTask extends Gs2RestSessionTask {
     }
 }
 
+class FreezeMasterDataByTimestampTask extends Gs2RestSessionTask {
+
+    /**
+     * @var FreezeMasterDataByTimestampRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * FreezeMasterDataByTimestampTask constructor.
+     * @param Gs2RestSession $session
+     * @param FreezeMasterDataByTimestampRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        FreezeMasterDataByTimestampRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            FreezeMasterDataByTimestampResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/masterdata/freeze/timestamp/raw";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getTimestamp() !== null) {
+            $json["timestamp"] = $this->request->getTimestamp();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class BatchExecuteApiTask extends Gs2RestSessionTask {
 
     /**
@@ -3852,6 +3918,33 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             FreezeMasterDataBySignedTimestampRequest $request
     ): FreezeMasterDataBySignedTimestampResult {
         return $this->freezeMasterDataBySignedTimestampAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param FreezeMasterDataByTimestampRequest $request
+     * @return PromiseInterface
+     */
+    public function freezeMasterDataByTimestampAsync(
+            FreezeMasterDataByTimestampRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new FreezeMasterDataByTimestampTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param FreezeMasterDataByTimestampRequest $request
+     * @return FreezeMasterDataByTimestampResult
+     */
+    public function freezeMasterDataByTimestamp (
+            FreezeMasterDataByTimestampRequest $request
+    ): FreezeMasterDataByTimestampResult {
+        return $this->freezeMasterDataByTimestampAsync(
             $request
         )->wait();
     }

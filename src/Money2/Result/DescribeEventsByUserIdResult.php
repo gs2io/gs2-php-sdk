@@ -25,6 +25,7 @@ use Gs2\Money2\Model\DepositTransaction;
 use Gs2\Money2\Model\WalletSummary;
 use Gs2\Money2\Model\DepositEvent;
 use Gs2\Money2\Model\WithdrawEvent;
+use Gs2\Money2\Model\RefundEvent;
 use Gs2\Money2\Model\Event;
 
 class DescribeEventsByUserIdResult implements IResult {

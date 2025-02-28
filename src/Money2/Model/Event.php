@@ -50,6 +50,10 @@ class Event implements IModel {
 	 */
 	private $withdrawEvent;
 	/**
+     * @var RefundEvent
+	 */
+	private $refundEvent;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -127,6 +131,16 @@ class Event implements IModel {
 		$this->withdrawEvent = $withdrawEvent;
 		return $this;
 	}
+	public function getRefundEvent(): ?RefundEvent {
+		return $this->refundEvent;
+	}
+	public function setRefundEvent(?RefundEvent $refundEvent) {
+		$this->refundEvent = $refundEvent;
+	}
+	public function withRefundEvent(?RefundEvent $refundEvent): Event {
+		$this->refundEvent = $refundEvent;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -160,6 +174,7 @@ class Event implements IModel {
             ->withVerifyReceiptEvent(array_key_exists('verifyReceiptEvent', $data) && $data['verifyReceiptEvent'] !== null ? VerifyReceiptEvent::fromJson($data['verifyReceiptEvent']) : null)
             ->withDepositEvent(array_key_exists('depositEvent', $data) && $data['depositEvent'] !== null ? DepositEvent::fromJson($data['depositEvent']) : null)
             ->withWithdrawEvent(array_key_exists('withdrawEvent', $data) && $data['withdrawEvent'] !== null ? WithdrawEvent::fromJson($data['withdrawEvent']) : null)
+            ->withRefundEvent(array_key_exists('refundEvent', $data) && $data['refundEvent'] !== null ? RefundEvent::fromJson($data['refundEvent']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -173,6 +188,7 @@ class Event implements IModel {
             "verifyReceiptEvent" => $this->getVerifyReceiptEvent() !== null ? $this->getVerifyReceiptEvent()->toJson() : null,
             "depositEvent" => $this->getDepositEvent() !== null ? $this->getDepositEvent()->toJson() : null,
             "withdrawEvent" => $this->getWithdrawEvent() !== null ? $this->getWithdrawEvent()->toJson() : null,
+            "refundEvent" => $this->getRefundEvent() !== null ? $this->getRefundEvent()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );

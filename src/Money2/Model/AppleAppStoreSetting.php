@@ -28,7 +28,7 @@ class AppleAppStoreSetting implements IModel {
 	/**
      * @var string
 	 */
-	private $teamId;
+	private $issuerId;
 	/**
      * @var string
 	 */
@@ -47,14 +47,14 @@ class AppleAppStoreSetting implements IModel {
 		$this->bundleId = $bundleId;
 		return $this;
 	}
-	public function getTeamId(): ?string {
-		return $this->teamId;
+	public function getIssuerId(): ?string {
+		return $this->issuerId;
 	}
-	public function setTeamId(?string $teamId) {
-		$this->teamId = $teamId;
+	public function setIssuerId(?string $issuerId) {
+		$this->issuerId = $issuerId;
 	}
-	public function withTeamId(?string $teamId): AppleAppStoreSetting {
-		$this->teamId = $teamId;
+	public function withIssuerId(?string $issuerId): AppleAppStoreSetting {
+		$this->issuerId = $issuerId;
 		return $this;
 	}
 	public function getKeyId(): ?string {
@@ -84,7 +84,7 @@ class AppleAppStoreSetting implements IModel {
         }
         return (new AppleAppStoreSetting())
             ->withBundleId(array_key_exists('bundleId', $data) && $data['bundleId'] !== null ? $data['bundleId'] : null)
-            ->withTeamId(array_key_exists('teamId', $data) && $data['teamId'] !== null ? $data['teamId'] : null)
+            ->withIssuerId(array_key_exists('issuerId', $data) && $data['issuerId'] !== null ? $data['issuerId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withPrivateKeyPem(array_key_exists('privateKeyPem', $data) && $data['privateKeyPem'] !== null ? $data['privateKeyPem'] : null);
     }
@@ -92,7 +92,7 @@ class AppleAppStoreSetting implements IModel {
     public function toJson(): array {
         return array(
             "bundleId" => $this->getBundleId(),
-            "teamId" => $this->getTeamId(),
+            "issuerId" => $this->getIssuerId(),
             "keyId" => $this->getKeyId(),
             "privateKeyPem" => $this->getPrivateKeyPem(),
         );

@@ -28,6 +28,10 @@ class SubscribeTransaction implements IModel {
 	/**
      * @var string
 	 */
+	private $contentName;
+	/**
+     * @var string
+	 */
 	private $transactionId;
 	/**
      * @var string
@@ -37,10 +41,6 @@ class SubscribeTransaction implements IModel {
      * @var string
 	 */
 	private $userId;
-	/**
-     * @var string
-	 */
-	private $status;
 	/**
      * @var string
 	 */
@@ -71,6 +71,16 @@ class SubscribeTransaction implements IModel {
 		$this->subscribeTransactionId = $subscribeTransactionId;
 		return $this;
 	}
+	public function getContentName(): ?string {
+		return $this->contentName;
+	}
+	public function setContentName(?string $contentName) {
+		$this->contentName = $contentName;
+	}
+	public function withContentName(?string $contentName): SubscribeTransaction {
+		$this->contentName = $contentName;
+		return $this;
+	}
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
@@ -99,16 +109,6 @@ class SubscribeTransaction implements IModel {
 	}
 	public function withUserId(?string $userId): SubscribeTransaction {
 		$this->userId = $userId;
-		return $this;
-	}
-	public function getStatus(): ?string {
-		return $this->status;
-	}
-	public function setStatus(?string $status) {
-		$this->status = $status;
-	}
-	public function withStatus(?string $status): SubscribeTransaction {
-		$this->status = $status;
 		return $this;
 	}
 	public function getStatusDetail(): ?string {
@@ -168,10 +168,10 @@ class SubscribeTransaction implements IModel {
         }
         return (new SubscribeTransaction())
             ->withSubscribeTransactionId(array_key_exists('subscribeTransactionId', $data) && $data['subscribeTransactionId'] !== null ? $data['subscribeTransactionId'] : null)
+            ->withContentName(array_key_exists('contentName', $data) && $data['contentName'] !== null ? $data['contentName'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withStore(array_key_exists('store', $data) && $data['store'] !== null ? $data['store'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
             ->withStatusDetail(array_key_exists('statusDetail', $data) && $data['statusDetail'] !== null ? $data['statusDetail'] : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -182,10 +182,10 @@ class SubscribeTransaction implements IModel {
     public function toJson(): array {
         return array(
             "subscribeTransactionId" => $this->getSubscribeTransactionId(),
+            "contentName" => $this->getContentName(),
             "transactionId" => $this->getTransactionId(),
             "store" => $this->getStore(),
             "userId" => $this->getUserId(),
-            "status" => $this->getStatus(),
             "statusDetail" => $this->getStatusDetail(),
             "expiresAt" => $this->getExpiresAt(),
             "createdAt" => $this->getCreatedAt(),

@@ -83,6 +83,14 @@ use Gs2\Money2\Request\VerifyReceiptByUserIdRequest;
 use Gs2\Money2\Result\VerifyReceiptByUserIdResult;
 use Gs2\Money2\Request\VerifyReceiptByStampTaskRequest;
 use Gs2\Money2\Result\VerifyReceiptByStampTaskResult;
+use Gs2\Money2\Request\DescribeSubscriptionStatusesRequest;
+use Gs2\Money2\Result\DescribeSubscriptionStatusesResult;
+use Gs2\Money2\Request\DescribeSubscriptionStatusesByUserIdRequest;
+use Gs2\Money2\Result\DescribeSubscriptionStatusesByUserIdResult;
+use Gs2\Money2\Request\GetSubscriptionStatusRequest;
+use Gs2\Money2\Result\GetSubscriptionStatusResult;
+use Gs2\Money2\Request\GetSubscriptionStatusByUserIdRequest;
+use Gs2\Money2\Result\GetSubscriptionStatusByUserIdResult;
 use Gs2\Money2\Request\DescribeStoreContentModelsRequest;
 use Gs2\Money2\Result\DescribeStoreContentModelsResult;
 use Gs2\Money2\Request\GetStoreContentModelRequest;
@@ -97,6 +105,20 @@ use Gs2\Money2\Request\UpdateStoreContentModelMasterRequest;
 use Gs2\Money2\Result\UpdateStoreContentModelMasterResult;
 use Gs2\Money2\Request\DeleteStoreContentModelMasterRequest;
 use Gs2\Money2\Result\DeleteStoreContentModelMasterResult;
+use Gs2\Money2\Request\DescribeStoreSubscriptionContentModelsRequest;
+use Gs2\Money2\Result\DescribeStoreSubscriptionContentModelsResult;
+use Gs2\Money2\Request\GetStoreSubscriptionContentModelRequest;
+use Gs2\Money2\Result\GetStoreSubscriptionContentModelResult;
+use Gs2\Money2\Request\DescribeStoreSubscriptionContentModelMastersRequest;
+use Gs2\Money2\Result\DescribeStoreSubscriptionContentModelMastersResult;
+use Gs2\Money2\Request\CreateStoreSubscriptionContentModelMasterRequest;
+use Gs2\Money2\Result\CreateStoreSubscriptionContentModelMasterResult;
+use Gs2\Money2\Request\GetStoreSubscriptionContentModelMasterRequest;
+use Gs2\Money2\Result\GetStoreSubscriptionContentModelMasterResult;
+use Gs2\Money2\Request\UpdateStoreSubscriptionContentModelMasterRequest;
+use Gs2\Money2\Result\UpdateStoreSubscriptionContentModelMasterResult;
+use Gs2\Money2\Request\DeleteStoreSubscriptionContentModelMasterRequest;
+use Gs2\Money2\Result\DeleteStoreSubscriptionContentModelMasterResult;
 use Gs2\Money2\Request\ExportMasterRequest;
 use Gs2\Money2\Result\ExportMasterResult;
 use Gs2\Money2\Request\GetCurrentModelMasterRequest;
@@ -1817,6 +1839,250 @@ class VerifyReceiptByStampTaskTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeSubscriptionStatusesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSubscriptionStatusesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSubscriptionStatusesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSubscriptionStatusesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSubscriptionStatusesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSubscriptionStatusesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/subscription";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeSubscriptionStatusesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeSubscriptionStatusesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeSubscriptionStatusesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeSubscriptionStatusesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeSubscriptionStatusesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeSubscriptionStatusesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/subscription";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSubscriptionStatusTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSubscriptionStatusRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSubscriptionStatusTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSubscriptionStatusRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSubscriptionStatusRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSubscriptionStatusResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/subscription/{contentName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{contentName}", $this->request->getContentName() === null|| strlen($this->request->getContentName()) == 0 ? "null" : $this->request->getContentName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetSubscriptionStatusByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetSubscriptionStatusByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetSubscriptionStatusByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetSubscriptionStatusByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetSubscriptionStatusByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetSubscriptionStatusByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/subscription/{contentName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{contentName}", $this->request->getContentName() === null|| strlen($this->request->getContentName()) == 0 ? "null" : $this->request->getContentName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeStoreContentModelsTask extends Gs2RestSessionTask {
 
     /**
@@ -2223,6 +2489,450 @@ class DeleteStoreContentModelMasterTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{contentName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{contentName}", $this->request->getContentName() === null|| strlen($this->request->getContentName()) == 0 ? "null" : $this->request->getContentName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeStoreSubscriptionContentModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeStoreSubscriptionContentModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeStoreSubscriptionContentModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeStoreSubscriptionContentModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeStoreSubscriptionContentModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeStoreSubscriptionContentModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/subscription/content";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetStoreSubscriptionContentModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetStoreSubscriptionContentModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetStoreSubscriptionContentModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetStoreSubscriptionContentModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetStoreSubscriptionContentModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetStoreSubscriptionContentModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/subscription/content/{contentName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{contentName}", $this->request->getContentName() === null|| strlen($this->request->getContentName()) == 0 ? "null" : $this->request->getContentName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeStoreSubscriptionContentModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeStoreSubscriptionContentModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeStoreSubscriptionContentModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeStoreSubscriptionContentModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeStoreSubscriptionContentModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeStoreSubscriptionContentModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/subscription";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateStoreSubscriptionContentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateStoreSubscriptionContentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateStoreSubscriptionContentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateStoreSubscriptionContentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateStoreSubscriptionContentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateStoreSubscriptionContentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/subscription";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getName() !== null) {
+            $json["name"] = $this->request->getName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getScheduleNamespaceId() !== null) {
+            $json["scheduleNamespaceId"] = $this->request->getScheduleNamespaceId();
+        }
+        if ($this->request->getTriggerName() !== null) {
+            $json["triggerName"] = $this->request->getTriggerName();
+        }
+        if ($this->request->getAppleAppStore() !== null) {
+            $json["appleAppStore"] = $this->request->getAppleAppStore()->toJson();
+        }
+        if ($this->request->getGooglePlay() !== null) {
+            $json["googlePlay"] = $this->request->getGooglePlay()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetStoreSubscriptionContentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetStoreSubscriptionContentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetStoreSubscriptionContentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetStoreSubscriptionContentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetStoreSubscriptionContentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetStoreSubscriptionContentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/subscription/{contentName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{contentName}", $this->request->getContentName() === null|| strlen($this->request->getContentName()) == 0 ? "null" : $this->request->getContentName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateStoreSubscriptionContentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateStoreSubscriptionContentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateStoreSubscriptionContentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateStoreSubscriptionContentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateStoreSubscriptionContentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateStoreSubscriptionContentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/subscription/{contentName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{contentName}", $this->request->getContentName() === null|| strlen($this->request->getContentName()) == 0 ? "null" : $this->request->getContentName(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getMetadata() !== null) {
+            $json["metadata"] = $this->request->getMetadata();
+        }
+        if ($this->request->getScheduleNamespaceId() !== null) {
+            $json["scheduleNamespaceId"] = $this->request->getScheduleNamespaceId();
+        }
+        if ($this->request->getTriggerName() !== null) {
+            $json["triggerName"] = $this->request->getTriggerName();
+        }
+        if ($this->request->getAppleAppStore() !== null) {
+            $json["appleAppStore"] = $this->request->getAppleAppStore()->toJson();
+        }
+        if ($this->request->getGooglePlay() !== null) {
+            $json["googlePlay"] = $this->request->getGooglePlay()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteStoreSubscriptionContentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteStoreSubscriptionContentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteStoreSubscriptionContentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteStoreSubscriptionContentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteStoreSubscriptionContentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteStoreSubscriptionContentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/subscription/{contentName}";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{contentName}", $this->request->getContentName() === null|| strlen($this->request->getContentName()) == 0 ? "null" : $this->request->getContentName(), $url);
@@ -3546,6 +4256,114 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param DescribeSubscriptionStatusesRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSubscriptionStatusesAsync(
+            DescribeSubscriptionStatusesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSubscriptionStatusesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSubscriptionStatusesRequest $request
+     * @return DescribeSubscriptionStatusesResult
+     */
+    public function describeSubscriptionStatuses (
+            DescribeSubscriptionStatusesRequest $request
+    ): DescribeSubscriptionStatusesResult {
+        return $this->describeSubscriptionStatusesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeSubscriptionStatusesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeSubscriptionStatusesByUserIdAsync(
+            DescribeSubscriptionStatusesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeSubscriptionStatusesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeSubscriptionStatusesByUserIdRequest $request
+     * @return DescribeSubscriptionStatusesByUserIdResult
+     */
+    public function describeSubscriptionStatusesByUserId (
+            DescribeSubscriptionStatusesByUserIdRequest $request
+    ): DescribeSubscriptionStatusesByUserIdResult {
+        return $this->describeSubscriptionStatusesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSubscriptionStatusRequest $request
+     * @return PromiseInterface
+     */
+    public function getSubscriptionStatusAsync(
+            GetSubscriptionStatusRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSubscriptionStatusTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSubscriptionStatusRequest $request
+     * @return GetSubscriptionStatusResult
+     */
+    public function getSubscriptionStatus (
+            GetSubscriptionStatusRequest $request
+    ): GetSubscriptionStatusResult {
+        return $this->getSubscriptionStatusAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetSubscriptionStatusByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function getSubscriptionStatusByUserIdAsync(
+            GetSubscriptionStatusByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetSubscriptionStatusByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetSubscriptionStatusByUserIdRequest $request
+     * @return GetSubscriptionStatusByUserIdResult
+     */
+    public function getSubscriptionStatusByUserId (
+            GetSubscriptionStatusByUserIdRequest $request
+    ): GetSubscriptionStatusByUserIdResult {
+        return $this->getSubscriptionStatusByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DescribeStoreContentModelsRequest $request
      * @return PromiseInterface
      */
@@ -3730,6 +4548,195 @@ class Gs2Money2RestClient extends AbstractGs2Client {
             DeleteStoreContentModelMasterRequest $request
     ): DeleteStoreContentModelMasterResult {
         return $this->deleteStoreContentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeStoreSubscriptionContentModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeStoreSubscriptionContentModelsAsync(
+            DescribeStoreSubscriptionContentModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeStoreSubscriptionContentModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeStoreSubscriptionContentModelsRequest $request
+     * @return DescribeStoreSubscriptionContentModelsResult
+     */
+    public function describeStoreSubscriptionContentModels (
+            DescribeStoreSubscriptionContentModelsRequest $request
+    ): DescribeStoreSubscriptionContentModelsResult {
+        return $this->describeStoreSubscriptionContentModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetStoreSubscriptionContentModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getStoreSubscriptionContentModelAsync(
+            GetStoreSubscriptionContentModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetStoreSubscriptionContentModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetStoreSubscriptionContentModelRequest $request
+     * @return GetStoreSubscriptionContentModelResult
+     */
+    public function getStoreSubscriptionContentModel (
+            GetStoreSubscriptionContentModelRequest $request
+    ): GetStoreSubscriptionContentModelResult {
+        return $this->getStoreSubscriptionContentModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeStoreSubscriptionContentModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeStoreSubscriptionContentModelMastersAsync(
+            DescribeStoreSubscriptionContentModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeStoreSubscriptionContentModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeStoreSubscriptionContentModelMastersRequest $request
+     * @return DescribeStoreSubscriptionContentModelMastersResult
+     */
+    public function describeStoreSubscriptionContentModelMasters (
+            DescribeStoreSubscriptionContentModelMastersRequest $request
+    ): DescribeStoreSubscriptionContentModelMastersResult {
+        return $this->describeStoreSubscriptionContentModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateStoreSubscriptionContentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createStoreSubscriptionContentModelMasterAsync(
+            CreateStoreSubscriptionContentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateStoreSubscriptionContentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateStoreSubscriptionContentModelMasterRequest $request
+     * @return CreateStoreSubscriptionContentModelMasterResult
+     */
+    public function createStoreSubscriptionContentModelMaster (
+            CreateStoreSubscriptionContentModelMasterRequest $request
+    ): CreateStoreSubscriptionContentModelMasterResult {
+        return $this->createStoreSubscriptionContentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetStoreSubscriptionContentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getStoreSubscriptionContentModelMasterAsync(
+            GetStoreSubscriptionContentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetStoreSubscriptionContentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetStoreSubscriptionContentModelMasterRequest $request
+     * @return GetStoreSubscriptionContentModelMasterResult
+     */
+    public function getStoreSubscriptionContentModelMaster (
+            GetStoreSubscriptionContentModelMasterRequest $request
+    ): GetStoreSubscriptionContentModelMasterResult {
+        return $this->getStoreSubscriptionContentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateStoreSubscriptionContentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateStoreSubscriptionContentModelMasterAsync(
+            UpdateStoreSubscriptionContentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateStoreSubscriptionContentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateStoreSubscriptionContentModelMasterRequest $request
+     * @return UpdateStoreSubscriptionContentModelMasterResult
+     */
+    public function updateStoreSubscriptionContentModelMaster (
+            UpdateStoreSubscriptionContentModelMasterRequest $request
+    ): UpdateStoreSubscriptionContentModelMasterResult {
+        return $this->updateStoreSubscriptionContentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteStoreSubscriptionContentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteStoreSubscriptionContentModelMasterAsync(
+            DeleteStoreSubscriptionContentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteStoreSubscriptionContentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteStoreSubscriptionContentModelMasterRequest $request
+     * @return DeleteStoreSubscriptionContentModelMasterResult
+     */
+    public function deleteStoreSubscriptionContentModelMaster (
+            DeleteStoreSubscriptionContentModelMasterRequest $request
+    ): DeleteStoreSubscriptionContentModelMasterResult {
+        return $this->deleteStoreSubscriptionContentModelMasterAsync(
             $request
         )->wait();
     }

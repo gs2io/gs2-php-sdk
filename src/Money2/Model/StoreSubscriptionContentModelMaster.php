@@ -46,6 +46,10 @@ class StoreSubscriptionContentModelMaster implements IModel {
 	 */
 	private $triggerName;
 	/**
+     * @var int
+	 */
+	private $reallocateSpanDays;
+	/**
      * @var AppleAppStoreSubscriptionContent
 	 */
 	private $appleAppStore;
@@ -125,6 +129,16 @@ class StoreSubscriptionContentModelMaster implements IModel {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
+	public function getReallocateSpanDays(): ?int {
+		return $this->reallocateSpanDays;
+	}
+	public function setReallocateSpanDays(?int $reallocateSpanDays) {
+		$this->reallocateSpanDays = $reallocateSpanDays;
+	}
+	public function withReallocateSpanDays(?int $reallocateSpanDays): StoreSubscriptionContentModelMaster {
+		$this->reallocateSpanDays = $reallocateSpanDays;
+		return $this;
+	}
 	public function getAppleAppStore(): ?AppleAppStoreSubscriptionContent {
 		return $this->appleAppStore;
 	}
@@ -187,6 +201,7 @@ class StoreSubscriptionContentModelMaster implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withScheduleNamespaceId(array_key_exists('scheduleNamespaceId', $data) && $data['scheduleNamespaceId'] !== null ? $data['scheduleNamespaceId'] : null)
             ->withTriggerName(array_key_exists('triggerName', $data) && $data['triggerName'] !== null ? $data['triggerName'] : null)
+            ->withReallocateSpanDays(array_key_exists('reallocateSpanDays', $data) && $data['reallocateSpanDays'] !== null ? $data['reallocateSpanDays'] : null)
             ->withAppleAppStore(array_key_exists('appleAppStore', $data) && $data['appleAppStore'] !== null ? AppleAppStoreSubscriptionContent::fromJson($data['appleAppStore']) : null)
             ->withGooglePlay(array_key_exists('googlePlay', $data) && $data['googlePlay'] !== null ? GooglePlaySubscriptionContent::fromJson($data['googlePlay']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -202,6 +217,7 @@ class StoreSubscriptionContentModelMaster implements IModel {
             "metadata" => $this->getMetadata(),
             "scheduleNamespaceId" => $this->getScheduleNamespaceId(),
             "triggerName" => $this->getTriggerName(),
+            "reallocateSpanDays" => $this->getReallocateSpanDays(),
             "appleAppStore" => $this->getAppleAppStore() !== null ? $this->getAppleAppStore()->toJson() : null,
             "googlePlay" => $this->getGooglePlay() !== null ? $this->getGooglePlay()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),

@@ -18,38 +18,32 @@
 namespace Gs2\Money2\Result;
 
 use Gs2\Core\Model\IResult;
-use Gs2\Money2\Model\AppleAppStoreSetting;
-use Gs2\Money2\Model\GooglePlaySetting;
-use Gs2\Money2\Model\FakeSetting;
-use Gs2\Money2\Model\PlatformSetting;
-use Gs2\Money2\Model\ScriptSetting;
-use Gs2\Money2\Model\NotificationSetting;
-use Gs2\Money2\Model\LogSetting;
-use Gs2\Money2\Model\Namespace_;
+use Gs2\Money2\Model\SubscribeTransaction;
+use Gs2\Money2\Model\SubscriptionStatus;
 
-class UpdateNamespaceResult implements IResult {
-    /** @var Namespace_ */
+class TakeoverSubscriptionStatusResult implements IResult {
+    /** @var SubscriptionStatus */
     private $item;
 
-	public function getItem(): ?Namespace_ {
+	public function getItem(): ?SubscriptionStatus {
 		return $this->item;
 	}
 
-	public function setItem(?Namespace_ $item) {
+	public function setItem(?SubscriptionStatus $item) {
 		$this->item = $item;
 	}
 
-	public function withItem(?Namespace_ $item): UpdateNamespaceResult {
+	public function withItem(?SubscriptionStatus $item): TakeoverSubscriptionStatusResult {
 		$this->item = $item;
 		return $this;
 	}
 
-    public static function fromJson(?array $data): ?UpdateNamespaceResult {
+    public static function fromJson(?array $data): ?TakeoverSubscriptionStatusResult {
         if ($data === null) {
             return null;
         }
-        return (new UpdateNamespaceResult())
-            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Namespace_::fromJson($data['item']) : null);
+        return (new TakeoverSubscriptionStatusResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SubscriptionStatus::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {

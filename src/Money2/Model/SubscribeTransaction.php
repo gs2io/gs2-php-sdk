@@ -52,6 +52,10 @@ class SubscribeTransaction implements IModel {
 	/**
      * @var int
 	 */
+	private $lastAllocatedAt;
+	/**
+     * @var int
+	 */
 	private $createdAt;
 	/**
      * @var int
@@ -131,6 +135,16 @@ class SubscribeTransaction implements IModel {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+	public function getLastAllocatedAt(): ?int {
+		return $this->lastAllocatedAt;
+	}
+	public function setLastAllocatedAt(?int $lastAllocatedAt) {
+		$this->lastAllocatedAt = $lastAllocatedAt;
+	}
+	public function withLastAllocatedAt(?int $lastAllocatedAt): SubscribeTransaction {
+		$this->lastAllocatedAt = $lastAllocatedAt;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -174,6 +188,7 @@ class SubscribeTransaction implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withStatusDetail(array_key_exists('statusDetail', $data) && $data['statusDetail'] !== null ? $data['statusDetail'] : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withLastAllocatedAt(array_key_exists('lastAllocatedAt', $data) && $data['lastAllocatedAt'] !== null ? $data['lastAllocatedAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -188,6 +203,7 @@ class SubscribeTransaction implements IModel {
             "userId" => $this->getUserId(),
             "statusDetail" => $this->getStatusDetail(),
             "expiresAt" => $this->getExpiresAt(),
+            "lastAllocatedAt" => $this->getLastAllocatedAt(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

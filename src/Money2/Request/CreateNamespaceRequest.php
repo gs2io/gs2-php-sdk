@@ -23,6 +23,7 @@ use Gs2\Money2\Model\GooglePlaySetting;
 use Gs2\Money2\Model\FakeSetting;
 use Gs2\Money2\Model\PlatformSetting;
 use Gs2\Money2\Model\ScriptSetting;
+use Gs2\Money2\Model\NotificationSetting;
 use Gs2\Money2\Model\LogSetting;
 
 class CreateNamespaceRequest extends Gs2BasicRequest {
@@ -40,6 +41,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $depositBalanceScript;
     /** @var ScriptSetting */
     private $withdrawBalanceScript;
+    /** @var string */
+    private $subscribeScript;
+    /** @var string */
+    private $renewScript;
+    /** @var string */
+    private $unsubscribeScript;
+    /** @var ScriptSetting */
+    private $takeOverScript;
+    /** @var NotificationSetting */
+    private $changeSubscriptionStatusNotification;
     /** @var LogSetting */
     private $logSetting;
 	public function getName(): ?string {
@@ -112,6 +123,56 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->withdrawBalanceScript = $withdrawBalanceScript;
 		return $this;
 	}
+	public function getSubscribeScript(): ?string {
+		return $this->subscribeScript;
+	}
+	public function setSubscribeScript(?string $subscribeScript) {
+		$this->subscribeScript = $subscribeScript;
+	}
+	public function withSubscribeScript(?string $subscribeScript): CreateNamespaceRequest {
+		$this->subscribeScript = $subscribeScript;
+		return $this;
+	}
+	public function getRenewScript(): ?string {
+		return $this->renewScript;
+	}
+	public function setRenewScript(?string $renewScript) {
+		$this->renewScript = $renewScript;
+	}
+	public function withRenewScript(?string $renewScript): CreateNamespaceRequest {
+		$this->renewScript = $renewScript;
+		return $this;
+	}
+	public function getUnsubscribeScript(): ?string {
+		return $this->unsubscribeScript;
+	}
+	public function setUnsubscribeScript(?string $unsubscribeScript) {
+		$this->unsubscribeScript = $unsubscribeScript;
+	}
+	public function withUnsubscribeScript(?string $unsubscribeScript): CreateNamespaceRequest {
+		$this->unsubscribeScript = $unsubscribeScript;
+		return $this;
+	}
+	public function getTakeOverScript(): ?ScriptSetting {
+		return $this->takeOverScript;
+	}
+	public function setTakeOverScript(?ScriptSetting $takeOverScript) {
+		$this->takeOverScript = $takeOverScript;
+	}
+	public function withTakeOverScript(?ScriptSetting $takeOverScript): CreateNamespaceRequest {
+		$this->takeOverScript = $takeOverScript;
+		return $this;
+	}
+	public function getChangeSubscriptionStatusNotification(): ?NotificationSetting {
+		return $this->changeSubscriptionStatusNotification;
+	}
+	public function setChangeSubscriptionStatusNotification(?NotificationSetting $changeSubscriptionStatusNotification) {
+		$this->changeSubscriptionStatusNotification = $changeSubscriptionStatusNotification;
+	}
+	public function withChangeSubscriptionStatusNotification(?NotificationSetting $changeSubscriptionStatusNotification): CreateNamespaceRequest {
+		$this->changeSubscriptionStatusNotification = $changeSubscriptionStatusNotification;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -135,6 +196,11 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withPlatformSetting(array_key_exists('platformSetting', $data) && $data['platformSetting'] !== null ? PlatformSetting::fromJson($data['platformSetting']) : null)
             ->withDepositBalanceScript(array_key_exists('depositBalanceScript', $data) && $data['depositBalanceScript'] !== null ? ScriptSetting::fromJson($data['depositBalanceScript']) : null)
             ->withWithdrawBalanceScript(array_key_exists('withdrawBalanceScript', $data) && $data['withdrawBalanceScript'] !== null ? ScriptSetting::fromJson($data['withdrawBalanceScript']) : null)
+            ->withSubscribeScript(array_key_exists('subscribeScript', $data) && $data['subscribeScript'] !== null ? $data['subscribeScript'] : null)
+            ->withRenewScript(array_key_exists('renewScript', $data) && $data['renewScript'] !== null ? $data['renewScript'] : null)
+            ->withUnsubscribeScript(array_key_exists('unsubscribeScript', $data) && $data['unsubscribeScript'] !== null ? $data['unsubscribeScript'] : null)
+            ->withTakeOverScript(array_key_exists('takeOverScript', $data) && $data['takeOverScript'] !== null ? ScriptSetting::fromJson($data['takeOverScript']) : null)
+            ->withChangeSubscriptionStatusNotification(array_key_exists('changeSubscriptionStatusNotification', $data) && $data['changeSubscriptionStatusNotification'] !== null ? NotificationSetting::fromJson($data['changeSubscriptionStatusNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -147,6 +213,11 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "platformSetting" => $this->getPlatformSetting() !== null ? $this->getPlatformSetting()->toJson() : null,
             "depositBalanceScript" => $this->getDepositBalanceScript() !== null ? $this->getDepositBalanceScript()->toJson() : null,
             "withdrawBalanceScript" => $this->getWithdrawBalanceScript() !== null ? $this->getWithdrawBalanceScript()->toJson() : null,
+            "subscribeScript" => $this->getSubscribeScript(),
+            "renewScript" => $this->getRenewScript(),
+            "unsubscribeScript" => $this->getUnsubscribeScript(),
+            "takeOverScript" => $this->getTakeOverScript() !== null ? $this->getTakeOverScript()->toJson() : null,
+            "changeSubscriptionStatusNotification" => $this->getChangeSubscriptionStatusNotification() !== null ? $this->getChangeSubscriptionStatusNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

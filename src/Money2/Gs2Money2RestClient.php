@@ -91,6 +91,14 @@ use Gs2\Money2\Request\GetSubscriptionStatusRequest;
 use Gs2\Money2\Result\GetSubscriptionStatusResult;
 use Gs2\Money2\Request\GetSubscriptionStatusByUserIdRequest;
 use Gs2\Money2\Result\GetSubscriptionStatusByUserIdResult;
+use Gs2\Money2\Request\AllocateSubscriptionStatusRequest;
+use Gs2\Money2\Result\AllocateSubscriptionStatusResult;
+use Gs2\Money2\Request\AllocateSubscriptionStatusByUserIdRequest;
+use Gs2\Money2\Result\AllocateSubscriptionStatusByUserIdResult;
+use Gs2\Money2\Request\TakeoverSubscriptionStatusRequest;
+use Gs2\Money2\Result\TakeoverSubscriptionStatusResult;
+use Gs2\Money2\Request\TakeoverSubscriptionStatusByUserIdRequest;
+use Gs2\Money2\Result\TakeoverSubscriptionStatusByUserIdResult;
 use Gs2\Money2\Request\DescribeStoreContentModelsRequest;
 use Gs2\Money2\Result\DescribeStoreContentModelsResult;
 use Gs2\Money2\Request\GetStoreContentModelRequest;
@@ -253,6 +261,21 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getWithdrawBalanceScript() !== null) {
             $json["withdrawBalanceScript"] = $this->request->getWithdrawBalanceScript()->toJson();
+        }
+        if ($this->request->getSubscribeScript() !== null) {
+            $json["subscribeScript"] = $this->request->getSubscribeScript();
+        }
+        if ($this->request->getRenewScript() !== null) {
+            $json["renewScript"] = $this->request->getRenewScript();
+        }
+        if ($this->request->getUnsubscribeScript() !== null) {
+            $json["unsubscribeScript"] = $this->request->getUnsubscribeScript();
+        }
+        if ($this->request->getTakeOverScript() !== null) {
+            $json["takeOverScript"] = $this->request->getTakeOverScript()->toJson();
+        }
+        if ($this->request->getChangeSubscriptionStatusNotification() !== null) {
+            $json["changeSubscriptionStatusNotification"] = $this->request->getChangeSubscriptionStatusNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -440,6 +463,21 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getWithdrawBalanceScript() !== null) {
             $json["withdrawBalanceScript"] = $this->request->getWithdrawBalanceScript()->toJson();
+        }
+        if ($this->request->getSubscribeScript() !== null) {
+            $json["subscribeScript"] = $this->request->getSubscribeScript();
+        }
+        if ($this->request->getRenewScript() !== null) {
+            $json["renewScript"] = $this->request->getRenewScript();
+        }
+        if ($this->request->getUnsubscribeScript() !== null) {
+            $json["unsubscribeScript"] = $this->request->getUnsubscribeScript();
+        }
+        if ($this->request->getTakeOverScript() !== null) {
+            $json["takeOverScript"] = $this->request->getTakeOverScript()->toJson();
+        }
+        if ($this->request->getChangeSubscriptionStatusNotification() !== null) {
+            $json["changeSubscriptionStatusNotification"] = $this->request->getChangeSubscriptionStatusNotification()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -2083,6 +2121,264 @@ class GetSubscriptionStatusByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class AllocateSubscriptionStatusTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AllocateSubscriptionStatusRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AllocateSubscriptionStatusTask constructor.
+     * @param Gs2RestSession $session
+     * @param AllocateSubscriptionStatusRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AllocateSubscriptionStatusRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AllocateSubscriptionStatusResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/allocate/subscription";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getReceipt() !== null) {
+            $json["receipt"] = $this->request->getReceipt()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AllocateSubscriptionStatusByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AllocateSubscriptionStatusByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AllocateSubscriptionStatusByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AllocateSubscriptionStatusByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AllocateSubscriptionStatusByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AllocateSubscriptionStatusByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/allocate/subscription";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getReceipt() !== null) {
+            $json["receipt"] = $this->request->getReceipt()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class TakeoverSubscriptionStatusTask extends Gs2RestSessionTask {
+
+    /**
+     * @var TakeoverSubscriptionStatusRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * TakeoverSubscriptionStatusTask constructor.
+     * @param Gs2RestSession $session
+     * @param TakeoverSubscriptionStatusRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        TakeoverSubscriptionStatusRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            TakeoverSubscriptionStatusResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/takeover/subscription";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getReceipt() !== null) {
+            $json["receipt"] = $this->request->getReceipt()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class TakeoverSubscriptionStatusByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var TakeoverSubscriptionStatusByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * TakeoverSubscriptionStatusByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param TakeoverSubscriptionStatusByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        TakeoverSubscriptionStatusByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            TakeoverSubscriptionStatusByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/takeover/subscription";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getReceipt() !== null) {
+            $json["receipt"] = $this->request->getReceipt()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeStoreContentModelsTask extends Gs2RestSessionTask {
 
     /**
@@ -2744,6 +3040,9 @@ class CreateStoreSubscriptionContentModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getTriggerName() !== null) {
             $json["triggerName"] = $this->request->getTriggerName();
         }
+        if ($this->request->getReallocateSpanDays() !== null) {
+            $json["reallocateSpanDays"] = $this->request->getReallocateSpanDays();
+        }
         if ($this->request->getAppleAppStore() !== null) {
             $json["appleAppStore"] = $this->request->getAppleAppStore()->toJson();
         }
@@ -2875,6 +3174,9 @@ class UpdateStoreSubscriptionContentModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTriggerName() !== null) {
             $json["triggerName"] = $this->request->getTriggerName();
+        }
+        if ($this->request->getReallocateSpanDays() !== null) {
+            $json["reallocateSpanDays"] = $this->request->getReallocateSpanDays();
         }
         if ($this->request->getAppleAppStore() !== null) {
             $json["appleAppStore"] = $this->request->getAppleAppStore()->toJson();
@@ -4359,6 +4661,114 @@ class Gs2Money2RestClient extends AbstractGs2Client {
             GetSubscriptionStatusByUserIdRequest $request
     ): GetSubscriptionStatusByUserIdResult {
         return $this->getSubscriptionStatusByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AllocateSubscriptionStatusRequest $request
+     * @return PromiseInterface
+     */
+    public function allocateSubscriptionStatusAsync(
+            AllocateSubscriptionStatusRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AllocateSubscriptionStatusTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AllocateSubscriptionStatusRequest $request
+     * @return AllocateSubscriptionStatusResult
+     */
+    public function allocateSubscriptionStatus (
+            AllocateSubscriptionStatusRequest $request
+    ): AllocateSubscriptionStatusResult {
+        return $this->allocateSubscriptionStatusAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AllocateSubscriptionStatusByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function allocateSubscriptionStatusByUserIdAsync(
+            AllocateSubscriptionStatusByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AllocateSubscriptionStatusByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AllocateSubscriptionStatusByUserIdRequest $request
+     * @return AllocateSubscriptionStatusByUserIdResult
+     */
+    public function allocateSubscriptionStatusByUserId (
+            AllocateSubscriptionStatusByUserIdRequest $request
+    ): AllocateSubscriptionStatusByUserIdResult {
+        return $this->allocateSubscriptionStatusByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param TakeoverSubscriptionStatusRequest $request
+     * @return PromiseInterface
+     */
+    public function takeoverSubscriptionStatusAsync(
+            TakeoverSubscriptionStatusRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new TakeoverSubscriptionStatusTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param TakeoverSubscriptionStatusRequest $request
+     * @return TakeoverSubscriptionStatusResult
+     */
+    public function takeoverSubscriptionStatus (
+            TakeoverSubscriptionStatusRequest $request
+    ): TakeoverSubscriptionStatusResult {
+        return $this->takeoverSubscriptionStatusAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param TakeoverSubscriptionStatusByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function takeoverSubscriptionStatusByUserIdAsync(
+            TakeoverSubscriptionStatusByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new TakeoverSubscriptionStatusByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param TakeoverSubscriptionStatusByUserIdRequest $request
+     * @return TakeoverSubscriptionStatusByUserIdResult
+     */
+    public function takeoverSubscriptionStatusByUserId (
+            TakeoverSubscriptionStatusByUserIdRequest $request
+    ): TakeoverSubscriptionStatusByUserIdResult {
+        return $this->takeoverSubscriptionStatusByUserIdAsync(
             $request
         )->wait();
     }

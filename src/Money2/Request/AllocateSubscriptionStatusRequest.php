@@ -18,14 +18,13 @@
 namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Money2\Model\Receipt;
 
 class AllocateSubscriptionStatusRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
     private $accessToken;
-    /** @var Receipt */
+    /** @var string */
     private $receipt;
     /** @var string */
     private $duplicationAvoider;
@@ -49,13 +48,13 @@ class AllocateSubscriptionStatusRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-	public function getReceipt(): ?Receipt {
+	public function getReceipt(): ?string {
 		return $this->receipt;
 	}
-	public function setReceipt(?Receipt $receipt) {
+	public function setReceipt(?string $receipt) {
 		$this->receipt = $receipt;
 	}
-	public function withReceipt(?Receipt $receipt): AllocateSubscriptionStatusRequest {
+	public function withReceipt(?string $receipt): AllocateSubscriptionStatusRequest {
 		$this->receipt = $receipt;
 		return $this;
 	}
@@ -80,14 +79,14 @@ class AllocateSubscriptionStatusRequest extends Gs2BasicRequest {
         return (new AllocateSubscriptionStatusRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withReceipt(array_key_exists('receipt', $data) && $data['receipt'] !== null ? Receipt::fromJson($data['receipt']) : null);
+            ->withReceipt(array_key_exists('receipt', $data) && $data['receipt'] !== null ? $data['receipt'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "receipt" => $this->getReceipt() !== null ? $this->getReceipt()->toJson() : null,
+            "receipt" => $this->getReceipt(),
         );
     }
 }

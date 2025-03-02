@@ -2158,7 +2158,7 @@ class AllocateSubscriptionStatusTask extends Gs2RestSessionTask {
 
         $json = [];
         if ($this->request->getReceipt() !== null) {
-            $json["receipt"] = $this->request->getReceipt()->toJson();
+            $json["receipt"] = $this->request->getReceipt();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2223,7 +2223,7 @@ class AllocateSubscriptionStatusByUserIdTask extends Gs2RestSessionTask {
 
         $json = [];
         if ($this->request->getReceipt() !== null) {
-            $json["receipt"] = $this->request->getReceipt()->toJson();
+            $json["receipt"] = $this->request->getReceipt();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2287,7 +2287,7 @@ class TakeoverSubscriptionStatusTask extends Gs2RestSessionTask {
 
         $json = [];
         if ($this->request->getReceipt() !== null) {
-            $json["receipt"] = $this->request->getReceipt()->toJson();
+            $json["receipt"] = $this->request->getReceipt();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2352,7 +2352,7 @@ class TakeoverSubscriptionStatusByUserIdTask extends Gs2RestSessionTask {
 
         $json = [];
         if ($this->request->getReceipt() !== null) {
-            $json["receipt"] = $this->request->getReceipt()->toJson();
+            $json["receipt"] = $this->request->getReceipt();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

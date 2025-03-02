@@ -18,14 +18,13 @@
 namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
-use Gs2\Money2\Model\Receipt;
 
 class AllocateSubscriptionStatusByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
     private $userId;
-    /** @var Receipt */
+    /** @var string */
     private $receipt;
     /** @var string */
     private $timeOffsetToken;
@@ -51,13 +50,13 @@ class AllocateSubscriptionStatusByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getReceipt(): ?Receipt {
+	public function getReceipt(): ?string {
 		return $this->receipt;
 	}
-	public function setReceipt(?Receipt $receipt) {
+	public function setReceipt(?string $receipt) {
 		$this->receipt = $receipt;
 	}
-	public function withReceipt(?Receipt $receipt): AllocateSubscriptionStatusByUserIdRequest {
+	public function withReceipt(?string $receipt): AllocateSubscriptionStatusByUserIdRequest {
 		$this->receipt = $receipt;
 		return $this;
 	}
@@ -92,7 +91,7 @@ class AllocateSubscriptionStatusByUserIdRequest extends Gs2BasicRequest {
         return (new AllocateSubscriptionStatusByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withReceipt(array_key_exists('receipt', $data) && $data['receipt'] !== null ? Receipt::fromJson($data['receipt']) : null)
+            ->withReceipt(array_key_exists('receipt', $data) && $data['receipt'] !== null ? $data['receipt'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -100,7 +99,7 @@ class AllocateSubscriptionStatusByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "receipt" => $this->getReceipt() !== null ? $this->getReceipt()->toJson() : null,
+            "receipt" => $this->getReceipt(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

@@ -30,6 +30,8 @@ class InvokeScriptRequest extends Gs2BasicRequest {
     private $args;
     /** @var RandomStatus */
     private $randomStatus;
+    /** @var bool */
+    private $forceUseDistributor;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
@@ -74,6 +76,16 @@ class InvokeScriptRequest extends Gs2BasicRequest {
 		$this->randomStatus = $randomStatus;
 		return $this;
 	}
+	public function getForceUseDistributor(): ?bool {
+		return $this->forceUseDistributor;
+	}
+	public function setForceUseDistributor(?bool $forceUseDistributor) {
+		$this->forceUseDistributor = $forceUseDistributor;
+	}
+	public function withForceUseDistributor(?bool $forceUseDistributor): InvokeScriptRequest {
+		$this->forceUseDistributor = $forceUseDistributor;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -107,6 +119,7 @@ class InvokeScriptRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
             ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
+            ->withForceUseDistributor(array_key_exists('forceUseDistributor', $data) ? $data['forceUseDistributor'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -116,6 +129,7 @@ class InvokeScriptRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "args" => $this->getArgs(),
             "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
+            "forceUseDistributor" => $this->getForceUseDistributor(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

@@ -3040,6 +3040,12 @@ class CreateStoreSubscriptionContentModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getTriggerName() !== null) {
             $json["triggerName"] = $this->request->getTriggerName();
         }
+        if ($this->request->getTriggerExtendMode() !== null) {
+            $json["triggerExtendMode"] = $this->request->getTriggerExtendMode();
+        }
+        if ($this->request->getRollupHour() !== null) {
+            $json["rollupHour"] = $this->request->getRollupHour();
+        }
         if ($this->request->getReallocateSpanDays() !== null) {
             $json["reallocateSpanDays"] = $this->request->getReallocateSpanDays();
         }
@@ -3174,6 +3180,12 @@ class UpdateStoreSubscriptionContentModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTriggerName() !== null) {
             $json["triggerName"] = $this->request->getTriggerName();
+        }
+        if ($this->request->getTriggerExtendMode() !== null) {
+            $json["triggerExtendMode"] = $this->request->getTriggerExtendMode();
+        }
+        if ($this->request->getRollupHour() !== null) {
+            $json["rollupHour"] = $this->request->getRollupHour();
         }
         if ($this->request->getReallocateSpanDays() !== null) {
             $json["reallocateSpanDays"] = $this->request->getReallocateSpanDays();

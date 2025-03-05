@@ -29,10 +29,6 @@ class GooglePlaySetting implements IModel {
      * @var string
 	 */
 	private $publicKey;
-	/**
-     * @var string
-	 */
-	private $credentialsJSON;
 	public function getPackageName(): ?string {
 		return $this->packageName;
 	}
@@ -53,16 +49,6 @@ class GooglePlaySetting implements IModel {
 		$this->publicKey = $publicKey;
 		return $this;
 	}
-	public function getCredentialsJSON(): ?string {
-		return $this->credentialsJSON;
-	}
-	public function setCredentialsJSON(?string $credentialsJSON) {
-		$this->credentialsJSON = $credentialsJSON;
-	}
-	public function withCredentialsJSON(?string $credentialsJSON): GooglePlaySetting {
-		$this->credentialsJSON = $credentialsJSON;
-		return $this;
-	}
 
     public static function fromJson(?array $data): ?GooglePlaySetting {
         if ($data === null) {
@@ -70,15 +56,13 @@ class GooglePlaySetting implements IModel {
         }
         return (new GooglePlaySetting())
             ->withPackageName(array_key_exists('packageName', $data) && $data['packageName'] !== null ? $data['packageName'] : null)
-            ->withPublicKey(array_key_exists('publicKey', $data) && $data['publicKey'] !== null ? $data['publicKey'] : null)
-            ->withCredentialsJSON(array_key_exists('credentialsJSON', $data) && $data['credentialsJSON'] !== null ? $data['credentialsJSON'] : null);
+            ->withPublicKey(array_key_exists('publicKey', $data) && $data['publicKey'] !== null ? $data['publicKey'] : null);
     }
 
     public function toJson(): array {
         return array(
             "packageName" => $this->getPackageName(),
             "publicKey" => $this->getPublicKey(),
-            "credentialsJSON" => $this->getCredentialsJSON(),
         );
     }
 }

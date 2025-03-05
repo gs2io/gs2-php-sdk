@@ -34,6 +34,10 @@ class CreateStoreSubscriptionContentModelMasterRequest extends Gs2BasicRequest {
     private $scheduleNamespaceId;
     /** @var string */
     private $triggerName;
+    /** @var string */
+    private $triggerExtendMode;
+    /** @var int */
+    private $rollupHour;
     /** @var int */
     private $reallocateSpanDays;
     /** @var AppleAppStoreSubscriptionContent */
@@ -100,6 +104,26 @@ class CreateStoreSubscriptionContentModelMasterRequest extends Gs2BasicRequest {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
+	public function getTriggerExtendMode(): ?string {
+		return $this->triggerExtendMode;
+	}
+	public function setTriggerExtendMode(?string $triggerExtendMode) {
+		$this->triggerExtendMode = $triggerExtendMode;
+	}
+	public function withTriggerExtendMode(?string $triggerExtendMode): CreateStoreSubscriptionContentModelMasterRequest {
+		$this->triggerExtendMode = $triggerExtendMode;
+		return $this;
+	}
+	public function getRollupHour(): ?int {
+		return $this->rollupHour;
+	}
+	public function setRollupHour(?int $rollupHour) {
+		$this->rollupHour = $rollupHour;
+	}
+	public function withRollupHour(?int $rollupHour): CreateStoreSubscriptionContentModelMasterRequest {
+		$this->rollupHour = $rollupHour;
+		return $this;
+	}
 	public function getReallocateSpanDays(): ?int {
 		return $this->reallocateSpanDays;
 	}
@@ -142,6 +166,8 @@ class CreateStoreSubscriptionContentModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withScheduleNamespaceId(array_key_exists('scheduleNamespaceId', $data) && $data['scheduleNamespaceId'] !== null ? $data['scheduleNamespaceId'] : null)
             ->withTriggerName(array_key_exists('triggerName', $data) && $data['triggerName'] !== null ? $data['triggerName'] : null)
+            ->withTriggerExtendMode(array_key_exists('triggerExtendMode', $data) && $data['triggerExtendMode'] !== null ? $data['triggerExtendMode'] : null)
+            ->withRollupHour(array_key_exists('rollupHour', $data) && $data['rollupHour'] !== null ? $data['rollupHour'] : null)
             ->withReallocateSpanDays(array_key_exists('reallocateSpanDays', $data) && $data['reallocateSpanDays'] !== null ? $data['reallocateSpanDays'] : null)
             ->withAppleAppStore(array_key_exists('appleAppStore', $data) && $data['appleAppStore'] !== null ? AppleAppStoreSubscriptionContent::fromJson($data['appleAppStore']) : null)
             ->withGooglePlay(array_key_exists('googlePlay', $data) && $data['googlePlay'] !== null ? GooglePlaySubscriptionContent::fromJson($data['googlePlay']) : null);
@@ -155,6 +181,8 @@ class CreateStoreSubscriptionContentModelMasterRequest extends Gs2BasicRequest {
             "metadata" => $this->getMetadata(),
             "scheduleNamespaceId" => $this->getScheduleNamespaceId(),
             "triggerName" => $this->getTriggerName(),
+            "triggerExtendMode" => $this->getTriggerExtendMode(),
+            "rollupHour" => $this->getRollupHour(),
             "reallocateSpanDays" => $this->getReallocateSpanDays(),
             "appleAppStore" => $this->getAppleAppStore() !== null ? $this->getAppleAppStore()->toJson() : null,
             "googlePlay" => $this->getGooglePlay() !== null ? $this->getGooglePlay()->toJson() : null,

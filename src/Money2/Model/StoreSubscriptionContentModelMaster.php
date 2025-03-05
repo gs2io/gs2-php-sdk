@@ -50,6 +50,14 @@ class StoreSubscriptionContentModelMaster implements IModel {
 	 */
 	private $reallocateSpanDays;
 	/**
+     * @var string
+	 */
+	private $triggerExtendMode;
+	/**
+     * @var int
+	 */
+	private $rollupHour;
+	/**
      * @var AppleAppStoreSubscriptionContent
 	 */
 	private $appleAppStore;
@@ -139,6 +147,26 @@ class StoreSubscriptionContentModelMaster implements IModel {
 		$this->reallocateSpanDays = $reallocateSpanDays;
 		return $this;
 	}
+	public function getTriggerExtendMode(): ?string {
+		return $this->triggerExtendMode;
+	}
+	public function setTriggerExtendMode(?string $triggerExtendMode) {
+		$this->triggerExtendMode = $triggerExtendMode;
+	}
+	public function withTriggerExtendMode(?string $triggerExtendMode): StoreSubscriptionContentModelMaster {
+		$this->triggerExtendMode = $triggerExtendMode;
+		return $this;
+	}
+	public function getRollupHour(): ?int {
+		return $this->rollupHour;
+	}
+	public function setRollupHour(?int $rollupHour) {
+		$this->rollupHour = $rollupHour;
+	}
+	public function withRollupHour(?int $rollupHour): StoreSubscriptionContentModelMaster {
+		$this->rollupHour = $rollupHour;
+		return $this;
+	}
 	public function getAppleAppStore(): ?AppleAppStoreSubscriptionContent {
 		return $this->appleAppStore;
 	}
@@ -202,6 +230,8 @@ class StoreSubscriptionContentModelMaster implements IModel {
             ->withScheduleNamespaceId(array_key_exists('scheduleNamespaceId', $data) && $data['scheduleNamespaceId'] !== null ? $data['scheduleNamespaceId'] : null)
             ->withTriggerName(array_key_exists('triggerName', $data) && $data['triggerName'] !== null ? $data['triggerName'] : null)
             ->withReallocateSpanDays(array_key_exists('reallocateSpanDays', $data) && $data['reallocateSpanDays'] !== null ? $data['reallocateSpanDays'] : null)
+            ->withTriggerExtendMode(array_key_exists('triggerExtendMode', $data) && $data['triggerExtendMode'] !== null ? $data['triggerExtendMode'] : null)
+            ->withRollupHour(array_key_exists('rollupHour', $data) && $data['rollupHour'] !== null ? $data['rollupHour'] : null)
             ->withAppleAppStore(array_key_exists('appleAppStore', $data) && $data['appleAppStore'] !== null ? AppleAppStoreSubscriptionContent::fromJson($data['appleAppStore']) : null)
             ->withGooglePlay(array_key_exists('googlePlay', $data) && $data['googlePlay'] !== null ? GooglePlaySubscriptionContent::fromJson($data['googlePlay']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -218,6 +248,8 @@ class StoreSubscriptionContentModelMaster implements IModel {
             "scheduleNamespaceId" => $this->getScheduleNamespaceId(),
             "triggerName" => $this->getTriggerName(),
             "reallocateSpanDays" => $this->getReallocateSpanDays(),
+            "triggerExtendMode" => $this->getTriggerExtendMode(),
+            "rollupHour" => $this->getRollupHour(),
             "appleAppStore" => $this->getAppleAppStore() !== null ? $this->getAppleAppStore()->toJson() : null,
             "googlePlay" => $this->getGooglePlay() !== null ? $this->getGooglePlay()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),

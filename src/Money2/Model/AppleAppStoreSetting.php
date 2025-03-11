@@ -28,6 +28,10 @@ class AppleAppStoreSetting implements IModel {
 	/**
      * @var string
 	 */
+	private $sharedSecretKey;
+	/**
+     * @var string
+	 */
 	private $issuerId;
 	/**
      * @var string
@@ -45,6 +49,16 @@ class AppleAppStoreSetting implements IModel {
 	}
 	public function withBundleId(?string $bundleId): AppleAppStoreSetting {
 		$this->bundleId = $bundleId;
+		return $this;
+	}
+	public function getSharedSecretKey(): ?string {
+		return $this->sharedSecretKey;
+	}
+	public function setSharedSecretKey(?string $sharedSecretKey) {
+		$this->sharedSecretKey = $sharedSecretKey;
+	}
+	public function withSharedSecretKey(?string $sharedSecretKey): AppleAppStoreSetting {
+		$this->sharedSecretKey = $sharedSecretKey;
 		return $this;
 	}
 	public function getIssuerId(): ?string {
@@ -84,6 +98,7 @@ class AppleAppStoreSetting implements IModel {
         }
         return (new AppleAppStoreSetting())
             ->withBundleId(array_key_exists('bundleId', $data) && $data['bundleId'] !== null ? $data['bundleId'] : null)
+            ->withSharedSecretKey(array_key_exists('sharedSecretKey', $data) && $data['sharedSecretKey'] !== null ? $data['sharedSecretKey'] : null)
             ->withIssuerId(array_key_exists('issuerId', $data) && $data['issuerId'] !== null ? $data['issuerId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null)
             ->withPrivateKeyPem(array_key_exists('privateKeyPem', $data) && $data['privateKeyPem'] !== null ? $data['privateKeyPem'] : null);
@@ -92,6 +107,7 @@ class AppleAppStoreSetting implements IModel {
     public function toJson(): array {
         return array(
             "bundleId" => $this->getBundleId(),
+            "sharedSecretKey" => $this->getSharedSecretKey(),
             "issuerId" => $this->getIssuerId(),
             "keyId" => $this->getKeyId(),
             "privateKeyPem" => $this->getPrivateKeyPem(),

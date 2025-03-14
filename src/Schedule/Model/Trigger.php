@@ -36,11 +36,15 @@ class Trigger implements IModel {
 	/**
      * @var int
 	 */
-	private $createdAt;
+	private $triggeredAt;
 	/**
      * @var int
 	 */
 	private $expiresAt;
+	/**
+     * @var int
+	 */
+	private $createdAt;
 	/**
      * @var int
 	 */
@@ -75,14 +79,14 @@ class Trigger implements IModel {
 		$this->userId = $userId;
 		return $this;
 	}
-	public function getCreatedAt(): ?int {
-		return $this->createdAt;
+	public function getTriggeredAt(): ?int {
+		return $this->triggeredAt;
 	}
-	public function setCreatedAt(?int $createdAt) {
-		$this->createdAt = $createdAt;
+	public function setTriggeredAt(?int $triggeredAt) {
+		$this->triggeredAt = $triggeredAt;
 	}
-	public function withCreatedAt(?int $createdAt): Trigger {
-		$this->createdAt = $createdAt;
+	public function withTriggeredAt(?int $triggeredAt): Trigger {
+		$this->triggeredAt = $triggeredAt;
 		return $this;
 	}
 	public function getExpiresAt(): ?int {
@@ -93,6 +97,16 @@ class Trigger implements IModel {
 	}
 	public function withExpiresAt(?int $expiresAt): Trigger {
 		$this->expiresAt = $expiresAt;
+		return $this;
+	}
+	public function getCreatedAt(): ?int {
+		return $this->createdAt;
+	}
+	public function setCreatedAt(?int $createdAt) {
+		$this->createdAt = $createdAt;
+	}
+	public function withCreatedAt(?int $createdAt): Trigger {
+		$this->createdAt = $createdAt;
 		return $this;
 	}
 	public function getRevision(): ?int {
@@ -114,8 +128,9 @@ class Trigger implements IModel {
             ->withTriggerId(array_key_exists('triggerId', $data) && $data['triggerId'] !== null ? $data['triggerId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withTriggeredAt(array_key_exists('triggeredAt', $data) && $data['triggeredAt'] !== null ? $data['triggeredAt'] : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
@@ -124,8 +139,9 @@ class Trigger implements IModel {
             "triggerId" => $this->getTriggerId(),
             "name" => $this->getName(),
             "userId" => $this->getUserId(),
-            "createdAt" => $this->getCreatedAt(),
+            "triggeredAt" => $this->getTriggeredAt(),
             "expiresAt" => $this->getExpiresAt(),
+            "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );
     }

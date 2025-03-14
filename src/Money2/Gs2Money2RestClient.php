@@ -99,6 +99,12 @@ use Gs2\Money2\Request\TakeoverSubscriptionStatusRequest;
 use Gs2\Money2\Result\TakeoverSubscriptionStatusResult;
 use Gs2\Money2\Request\TakeoverSubscriptionStatusByUserIdRequest;
 use Gs2\Money2\Result\TakeoverSubscriptionStatusByUserIdResult;
+use Gs2\Money2\Request\DescribeRefundHistoriesByUserIdRequest;
+use Gs2\Money2\Result\DescribeRefundHistoriesByUserIdResult;
+use Gs2\Money2\Request\DescribeRefundHistoriesByDateRequest;
+use Gs2\Money2\Result\DescribeRefundHistoriesByDateResult;
+use Gs2\Money2\Request\GetRefundHistoryRequest;
+use Gs2\Money2\Result\GetRefundHistoryResult;
 use Gs2\Money2\Request\DescribeStoreContentModelsRequest;
 use Gs2\Money2\Result\DescribeStoreContentModelsResult;
 use Gs2\Money2\Request\GetStoreContentModelRequest;
@@ -2373,6 +2379,199 @@ class TakeoverSubscriptionStatusByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeRefundHistoriesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRefundHistoriesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRefundHistoriesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRefundHistoriesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRefundHistoriesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRefundHistoriesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/refund/user/{userId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeRefundHistoriesByDateTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeRefundHistoriesByDateRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeRefundHistoriesByDateTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeRefundHistoriesByDateRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeRefundHistoriesByDateRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeRefundHistoriesByDateResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/refund/date/{year}/{month}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{year}", $this->request->getYear() === null ? "null" : $this->request->getYear(), $url);
+        $url = str_replace("{month}", $this->request->getMonth() === null ? "null" : $this->request->getMonth(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getDay() !== null) {
+            $queryStrings["day"] = $this->request->getDay();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetRefundHistoryTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetRefundHistoryRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetRefundHistoryTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetRefundHistoryRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetRefundHistoryRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetRefundHistoryResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "money2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/refund/{transactionId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -4781,6 +4980,87 @@ class Gs2Money2RestClient extends AbstractGs2Client {
             TakeoverSubscriptionStatusByUserIdRequest $request
     ): TakeoverSubscriptionStatusByUserIdResult {
         return $this->takeoverSubscriptionStatusByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeRefundHistoriesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeRefundHistoriesByUserIdAsync(
+            DescribeRefundHistoriesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRefundHistoriesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeRefundHistoriesByUserIdRequest $request
+     * @return DescribeRefundHistoriesByUserIdResult
+     */
+    public function describeRefundHistoriesByUserId (
+            DescribeRefundHistoriesByUserIdRequest $request
+    ): DescribeRefundHistoriesByUserIdResult {
+        return $this->describeRefundHistoriesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeRefundHistoriesByDateRequest $request
+     * @return PromiseInterface
+     */
+    public function describeRefundHistoriesByDateAsync(
+            DescribeRefundHistoriesByDateRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeRefundHistoriesByDateTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeRefundHistoriesByDateRequest $request
+     * @return DescribeRefundHistoriesByDateResult
+     */
+    public function describeRefundHistoriesByDate (
+            DescribeRefundHistoriesByDateRequest $request
+    ): DescribeRefundHistoriesByDateResult {
+        return $this->describeRefundHistoriesByDateAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetRefundHistoryRequest $request
+     * @return PromiseInterface
+     */
+    public function getRefundHistoryAsync(
+            GetRefundHistoryRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetRefundHistoryTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetRefundHistoryRequest $request
+     * @return GetRefundHistoryResult
+     */
+    public function getRefundHistory (
+            GetRefundHistoryRequest $request
+    ): GetRefundHistoryResult {
+        return $this->getRefundHistoryAsync(
             $request
         )->wait();
     }

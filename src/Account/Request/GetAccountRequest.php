@@ -24,6 +24,8 @@ class GetAccountRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $userId;
+    /** @var bool */
+    private $includeLastAuthenticatedAt;
     /** @var string */
     private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
@@ -46,6 +48,16 @@ class GetAccountRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getIncludeLastAuthenticatedAt(): ?bool {
+		return $this->includeLastAuthenticatedAt;
+	}
+	public function setIncludeLastAuthenticatedAt(?bool $includeLastAuthenticatedAt) {
+		$this->includeLastAuthenticatedAt = $includeLastAuthenticatedAt;
+	}
+	public function withIncludeLastAuthenticatedAt(?bool $includeLastAuthenticatedAt): GetAccountRequest {
+		$this->includeLastAuthenticatedAt = $includeLastAuthenticatedAt;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -64,6 +76,7 @@ class GetAccountRequest extends Gs2BasicRequest {
         return (new GetAccountRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withIncludeLastAuthenticatedAt(array_key_exists('includeLastAuthenticatedAt', $data) ? $data['includeLastAuthenticatedAt'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -71,6 +84,7 @@ class GetAccountRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
+            "includeLastAuthenticatedAt" => $this->getIncludeLastAuthenticatedAt(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

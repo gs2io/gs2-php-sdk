@@ -60,6 +60,10 @@ class Await implements IModel {
 	/**
      * @var int
 	 */
+	private $createdAt;
+	/**
+     * @var int
+	 */
 	private $revision;
 	public function getAwaitId(): ?string {
 		return $this->awaitId;
@@ -151,6 +155,16 @@ class Await implements IModel {
 		$this->exchangedAt = $exchangedAt;
 		return $this;
 	}
+	public function getCreatedAt(): ?int {
+		return $this->createdAt;
+	}
+	public function setCreatedAt(?int $createdAt) {
+		$this->createdAt = $createdAt;
+	}
+	public function withCreatedAt(?int $createdAt): Await {
+		$this->createdAt = $createdAt;
+		return $this;
+	}
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
@@ -181,6 +195,7 @@ class Await implements IModel {
             ))
             ->withAcquirableAt(array_key_exists('acquirableAt', $data) && $data['acquirableAt'] !== null ? $data['acquirableAt'] : null)
             ->withExchangedAt(array_key_exists('exchangedAt', $data) && $data['exchangedAt'] !== null ? $data['exchangedAt'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
@@ -200,6 +215,7 @@ class Await implements IModel {
             ),
             "acquirableAt" => $this->getAcquirableAt(),
             "exchangedAt" => $this->getExchangedAt(),
+            "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );
     }

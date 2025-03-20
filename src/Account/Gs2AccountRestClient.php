@@ -1382,6 +1382,9 @@ class GetAccountTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getIncludeLastAuthenticatedAt() !== null) {
+            $queryStrings["includeLastAuthenticatedAt"] = $this->request->getIncludeLastAuthenticatedAt() ? "true" : "false";
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);

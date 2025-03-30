@@ -147,6 +147,26 @@ use Gs2\Stamina\Request\SetRecoverValueByStatusRequest;
 use Gs2\Stamina\Result\SetRecoverValueByStatusResult;
 use Gs2\Stamina\Request\DeleteStaminaByUserIdRequest;
 use Gs2\Stamina\Result\DeleteStaminaByUserIdResult;
+use Gs2\Stamina\Request\VerifyStaminaValueRequest;
+use Gs2\Stamina\Result\VerifyStaminaValueResult;
+use Gs2\Stamina\Request\VerifyStaminaValueByUserIdRequest;
+use Gs2\Stamina\Result\VerifyStaminaValueByUserIdResult;
+use Gs2\Stamina\Request\VerifyStaminaMaxValueRequest;
+use Gs2\Stamina\Result\VerifyStaminaMaxValueResult;
+use Gs2\Stamina\Request\VerifyStaminaMaxValueByUserIdRequest;
+use Gs2\Stamina\Result\VerifyStaminaMaxValueByUserIdResult;
+use Gs2\Stamina\Request\VerifyStaminaRecoverIntervalMinutesRequest;
+use Gs2\Stamina\Result\VerifyStaminaRecoverIntervalMinutesResult;
+use Gs2\Stamina\Request\VerifyStaminaRecoverIntervalMinutesByUserIdRequest;
+use Gs2\Stamina\Result\VerifyStaminaRecoverIntervalMinutesByUserIdResult;
+use Gs2\Stamina\Request\VerifyStaminaRecoverValueRequest;
+use Gs2\Stamina\Result\VerifyStaminaRecoverValueResult;
+use Gs2\Stamina\Request\VerifyStaminaRecoverValueByUserIdRequest;
+use Gs2\Stamina\Result\VerifyStaminaRecoverValueByUserIdResult;
+use Gs2\Stamina\Request\VerifyStaminaOverflowValueRequest;
+use Gs2\Stamina\Result\VerifyStaminaOverflowValueResult;
+use Gs2\Stamina\Request\VerifyStaminaOverflowValueByUserIdRequest;
+use Gs2\Stamina\Result\VerifyStaminaOverflowValueByUserIdResult;
 use Gs2\Stamina\Request\RecoverStaminaByStampSheetRequest;
 use Gs2\Stamina\Result\RecoverStaminaByStampSheetResult;
 use Gs2\Stamina\Request\RaiseMaxValueByStampSheetRequest;
@@ -161,6 +181,16 @@ use Gs2\Stamina\Request\SetRecoverValueByStampSheetRequest;
 use Gs2\Stamina\Result\SetRecoverValueByStampSheetResult;
 use Gs2\Stamina\Request\ConsumeStaminaByStampTaskRequest;
 use Gs2\Stamina\Result\ConsumeStaminaByStampTaskResult;
+use Gs2\Stamina\Request\VerifyStaminaValueByStampTaskRequest;
+use Gs2\Stamina\Result\VerifyStaminaValueByStampTaskResult;
+use Gs2\Stamina\Request\VerifyStaminaMaxValueByStampTaskRequest;
+use Gs2\Stamina\Result\VerifyStaminaMaxValueByStampTaskResult;
+use Gs2\Stamina\Request\VerifyStaminaRecoverIntervalMinutesByStampTaskRequest;
+use Gs2\Stamina\Result\VerifyStaminaRecoverIntervalMinutesByStampTaskResult;
+use Gs2\Stamina\Request\VerifyStaminaRecoverValueByStampTaskRequest;
+use Gs2\Stamina\Result\VerifyStaminaRecoverValueByStampTaskResult;
+use Gs2\Stamina\Request\VerifyStaminaOverflowValueByStampTaskRequest;
+use Gs2\Stamina\Result\VerifyStaminaOverflowValueByStampTaskResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -3944,6 +3974,701 @@ class DeleteStaminaByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyStaminaValueTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaValueRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaValueTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaValueRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaValueRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaValueResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/value/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaValueByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaValueByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaValueByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaValueByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaValueByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaValueByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/stamina/{staminaName}/value/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaMaxValueTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaMaxValueRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaMaxValueTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaMaxValueRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaMaxValueRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaMaxValueResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/max/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaMaxValueByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaMaxValueByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaMaxValueByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaMaxValueByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaMaxValueByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaMaxValueByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/stamina/{staminaName}/max/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaRecoverIntervalMinutesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaRecoverIntervalMinutesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaRecoverIntervalMinutesTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaRecoverIntervalMinutesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaRecoverIntervalMinutesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaRecoverIntervalMinutesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/recover/interval/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaRecoverIntervalMinutesByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaRecoverIntervalMinutesByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaRecoverIntervalMinutesByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaRecoverIntervalMinutesByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/stamina/{staminaName}/recover/interval/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaRecoverValueTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaRecoverValueRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaRecoverValueTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaRecoverValueRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaRecoverValueRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaRecoverValueResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/recover/value/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaRecoverValueByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaRecoverValueByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaRecoverValueByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaRecoverValueByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaRecoverValueByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaRecoverValueByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/stamina/{staminaName}/recover/value/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaOverflowValueTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaOverflowValueRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaOverflowValueTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaOverflowValueRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaOverflowValueRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaOverflowValueResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/stamina/{staminaName}/overflow/value/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaOverflowValueByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaOverflowValueByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaOverflowValueByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaOverflowValueByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaOverflowValueByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaOverflowValueByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/stamina/{staminaName}/overflow/value/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{staminaName}", $this->request->getStaminaName() === null|| strlen($this->request->getStaminaName()) == 0 ? "null" : $this->request->getStaminaName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getValue() !== null) {
+            $json["value"] = $this->request->getValue();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class RecoverStaminaByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -4330,6 +5055,301 @@ class ConsumeStaminaByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamina/consume";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaValueByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaValueByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaValueByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaValueByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaValueByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaValueByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamina/value/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaMaxValueByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaMaxValueByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaMaxValueByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaMaxValueByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaMaxValueByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaMaxValueByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamina/max/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaRecoverIntervalMinutesByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaRecoverIntervalMinutesByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaRecoverIntervalMinutesByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaRecoverIntervalMinutesByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamina/recover/interval/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaRecoverValueByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaRecoverValueByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaRecoverValueByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaRecoverValueByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaRecoverValueByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaRecoverValueByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamina/recover/value/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStaminaOverflowValueByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStaminaOverflowValueByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStaminaOverflowValueByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStaminaOverflowValueByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStaminaOverflowValueByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStaminaOverflowValueByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "stamina", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamina/overflow/value/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -5968,6 +6988,276 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param VerifyStaminaValueRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaValueAsync(
+            VerifyStaminaValueRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaValueTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaValueRequest $request
+     * @return VerifyStaminaValueResult
+     */
+    public function verifyStaminaValue (
+            VerifyStaminaValueRequest $request
+    ): VerifyStaminaValueResult {
+        return $this->verifyStaminaValueAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaValueByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaValueByUserIdAsync(
+            VerifyStaminaValueByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaValueByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaValueByUserIdRequest $request
+     * @return VerifyStaminaValueByUserIdResult
+     */
+    public function verifyStaminaValueByUserId (
+            VerifyStaminaValueByUserIdRequest $request
+    ): VerifyStaminaValueByUserIdResult {
+        return $this->verifyStaminaValueByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaMaxValueRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaMaxValueAsync(
+            VerifyStaminaMaxValueRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaMaxValueTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaMaxValueRequest $request
+     * @return VerifyStaminaMaxValueResult
+     */
+    public function verifyStaminaMaxValue (
+            VerifyStaminaMaxValueRequest $request
+    ): VerifyStaminaMaxValueResult {
+        return $this->verifyStaminaMaxValueAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaMaxValueByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaMaxValueByUserIdAsync(
+            VerifyStaminaMaxValueByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaMaxValueByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaMaxValueByUserIdRequest $request
+     * @return VerifyStaminaMaxValueByUserIdResult
+     */
+    public function verifyStaminaMaxValueByUserId (
+            VerifyStaminaMaxValueByUserIdRequest $request
+    ): VerifyStaminaMaxValueByUserIdResult {
+        return $this->verifyStaminaMaxValueByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaRecoverIntervalMinutesRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaRecoverIntervalMinutesAsync(
+            VerifyStaminaRecoverIntervalMinutesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaRecoverIntervalMinutesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaRecoverIntervalMinutesRequest $request
+     * @return VerifyStaminaRecoverIntervalMinutesResult
+     */
+    public function verifyStaminaRecoverIntervalMinutes (
+            VerifyStaminaRecoverIntervalMinutesRequest $request
+    ): VerifyStaminaRecoverIntervalMinutesResult {
+        return $this->verifyStaminaRecoverIntervalMinutesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaRecoverIntervalMinutesByUserIdAsync(
+            VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaRecoverIntervalMinutesByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
+     * @return VerifyStaminaRecoverIntervalMinutesByUserIdResult
+     */
+    public function verifyStaminaRecoverIntervalMinutesByUserId (
+            VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
+    ): VerifyStaminaRecoverIntervalMinutesByUserIdResult {
+        return $this->verifyStaminaRecoverIntervalMinutesByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaRecoverValueRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaRecoverValueAsync(
+            VerifyStaminaRecoverValueRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaRecoverValueTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaRecoverValueRequest $request
+     * @return VerifyStaminaRecoverValueResult
+     */
+    public function verifyStaminaRecoverValue (
+            VerifyStaminaRecoverValueRequest $request
+    ): VerifyStaminaRecoverValueResult {
+        return $this->verifyStaminaRecoverValueAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaRecoverValueByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaRecoverValueByUserIdAsync(
+            VerifyStaminaRecoverValueByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaRecoverValueByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaRecoverValueByUserIdRequest $request
+     * @return VerifyStaminaRecoverValueByUserIdResult
+     */
+    public function verifyStaminaRecoverValueByUserId (
+            VerifyStaminaRecoverValueByUserIdRequest $request
+    ): VerifyStaminaRecoverValueByUserIdResult {
+        return $this->verifyStaminaRecoverValueByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaOverflowValueRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaOverflowValueAsync(
+            VerifyStaminaOverflowValueRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaOverflowValueTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaOverflowValueRequest $request
+     * @return VerifyStaminaOverflowValueResult
+     */
+    public function verifyStaminaOverflowValue (
+            VerifyStaminaOverflowValueRequest $request
+    ): VerifyStaminaOverflowValueResult {
+        return $this->verifyStaminaOverflowValueAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaOverflowValueByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaOverflowValueByUserIdAsync(
+            VerifyStaminaOverflowValueByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaOverflowValueByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaOverflowValueByUserIdRequest $request
+     * @return VerifyStaminaOverflowValueByUserIdResult
+     */
+    public function verifyStaminaOverflowValueByUserId (
+            VerifyStaminaOverflowValueByUserIdRequest $request
+    ): VerifyStaminaOverflowValueByUserIdResult {
+        return $this->verifyStaminaOverflowValueByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param RecoverStaminaByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -6152,6 +7442,141 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
             ConsumeStaminaByStampTaskRequest $request
     ): ConsumeStaminaByStampTaskResult {
         return $this->consumeStaminaByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaValueByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaValueByStampTaskAsync(
+            VerifyStaminaValueByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaValueByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaValueByStampTaskRequest $request
+     * @return VerifyStaminaValueByStampTaskResult
+     */
+    public function verifyStaminaValueByStampTask (
+            VerifyStaminaValueByStampTaskRequest $request
+    ): VerifyStaminaValueByStampTaskResult {
+        return $this->verifyStaminaValueByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaMaxValueByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaMaxValueByStampTaskAsync(
+            VerifyStaminaMaxValueByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaMaxValueByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaMaxValueByStampTaskRequest $request
+     * @return VerifyStaminaMaxValueByStampTaskResult
+     */
+    public function verifyStaminaMaxValueByStampTask (
+            VerifyStaminaMaxValueByStampTaskRequest $request
+    ): VerifyStaminaMaxValueByStampTaskResult {
+        return $this->verifyStaminaMaxValueByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaRecoverIntervalMinutesByStampTaskAsync(
+            VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaRecoverIntervalMinutesByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
+     * @return VerifyStaminaRecoverIntervalMinutesByStampTaskResult
+     */
+    public function verifyStaminaRecoverIntervalMinutesByStampTask (
+            VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
+    ): VerifyStaminaRecoverIntervalMinutesByStampTaskResult {
+        return $this->verifyStaminaRecoverIntervalMinutesByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaRecoverValueByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaRecoverValueByStampTaskAsync(
+            VerifyStaminaRecoverValueByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaRecoverValueByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaRecoverValueByStampTaskRequest $request
+     * @return VerifyStaminaRecoverValueByStampTaskResult
+     */
+    public function verifyStaminaRecoverValueByStampTask (
+            VerifyStaminaRecoverValueByStampTaskRequest $request
+    ): VerifyStaminaRecoverValueByStampTaskResult {
+        return $this->verifyStaminaRecoverValueByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param VerifyStaminaOverflowValueByStampTaskRequest $request
+     * @return PromiseInterface
+     */
+    public function verifyStaminaOverflowValueByStampTaskAsync(
+            VerifyStaminaOverflowValueByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStaminaOverflowValueByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param VerifyStaminaOverflowValueByStampTaskRequest $request
+     * @return VerifyStaminaOverflowValueByStampTaskResult
+     */
+    public function verifyStaminaOverflowValueByStampTask (
+            VerifyStaminaOverflowValueByStampTaskRequest $request
+    ): VerifyStaminaOverflowValueByStampTaskResult {
+        return $this->verifyStaminaOverflowValueByStampTaskAsync(
             $request
         )->wait();
     }

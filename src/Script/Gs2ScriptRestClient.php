@@ -912,9 +912,6 @@ class InvokeScriptTask extends Gs2RestSessionTask {
         if ($this->request->getRandomStatus() !== null) {
             $json["randomStatus"] = $this->request->getRandomStatus()->toJson();
         }
-        if ($this->request->getForceUseDistributor() !== null) {
-            $json["forceUseDistributor"] = $this->request->getForceUseDistributor();
-        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

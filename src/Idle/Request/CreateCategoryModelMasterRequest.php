@@ -34,6 +34,8 @@ class CreateCategoryModelMasterRequest extends Gs2BasicRequest {
     private $rewardIntervalMinutes;
     /** @var int */
     private $defaultMaximumIdleMinutes;
+    /** @var string */
+    private $rewardResetMode;
     /** @var array */
     private $acquireActions;
     /** @var string */
@@ -100,6 +102,16 @@ class CreateCategoryModelMasterRequest extends Gs2BasicRequest {
 		$this->defaultMaximumIdleMinutes = $defaultMaximumIdleMinutes;
 		return $this;
 	}
+	public function getRewardResetMode(): ?string {
+		return $this->rewardResetMode;
+	}
+	public function setRewardResetMode(?string $rewardResetMode) {
+		$this->rewardResetMode = $rewardResetMode;
+	}
+	public function withRewardResetMode(?string $rewardResetMode): CreateCategoryModelMasterRequest {
+		$this->rewardResetMode = $rewardResetMode;
+		return $this;
+	}
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
@@ -142,6 +154,7 @@ class CreateCategoryModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withRewardIntervalMinutes(array_key_exists('rewardIntervalMinutes', $data) && $data['rewardIntervalMinutes'] !== null ? $data['rewardIntervalMinutes'] : null)
             ->withDefaultMaximumIdleMinutes(array_key_exists('defaultMaximumIdleMinutes', $data) && $data['defaultMaximumIdleMinutes'] !== null ? $data['defaultMaximumIdleMinutes'] : null)
+            ->withRewardResetMode(array_key_exists('rewardResetMode', $data) && $data['rewardResetMode'] !== null ? $data['rewardResetMode'] : null)
             ->withAcquireActions(array_map(
                 function ($item) {
                     return AcquireActionList::fromJson($item);
@@ -160,6 +173,7 @@ class CreateCategoryModelMasterRequest extends Gs2BasicRequest {
             "metadata" => $this->getMetadata(),
             "rewardIntervalMinutes" => $this->getRewardIntervalMinutes(),
             "defaultMaximumIdleMinutes" => $this->getDefaultMaximumIdleMinutes(),
+            "rewardResetMode" => $this->getRewardResetMode(),
             "acquireActions" => array_map(
                 function ($item) {
                     return $item->toJson();

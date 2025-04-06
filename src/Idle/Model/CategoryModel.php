@@ -42,6 +42,10 @@ class CategoryModel implements IModel {
 	 */
 	private $defaultMaximumIdleMinutes;
 	/**
+     * @var string
+	 */
+	private $rewardResetMode;
+	/**
      * @var array
 	 */
 	private $acquireActions;
@@ -103,6 +107,16 @@ class CategoryModel implements IModel {
 		$this->defaultMaximumIdleMinutes = $defaultMaximumIdleMinutes;
 		return $this;
 	}
+	public function getRewardResetMode(): ?string {
+		return $this->rewardResetMode;
+	}
+	public function setRewardResetMode(?string $rewardResetMode) {
+		$this->rewardResetMode = $rewardResetMode;
+	}
+	public function withRewardResetMode(?string $rewardResetMode): CategoryModel {
+		$this->rewardResetMode = $rewardResetMode;
+		return $this;
+	}
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
@@ -144,6 +158,7 @@ class CategoryModel implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withRewardIntervalMinutes(array_key_exists('rewardIntervalMinutes', $data) && $data['rewardIntervalMinutes'] !== null ? $data['rewardIntervalMinutes'] : null)
             ->withDefaultMaximumIdleMinutes(array_key_exists('defaultMaximumIdleMinutes', $data) && $data['defaultMaximumIdleMinutes'] !== null ? $data['defaultMaximumIdleMinutes'] : null)
+            ->withRewardResetMode(array_key_exists('rewardResetMode', $data) && $data['rewardResetMode'] !== null ? $data['rewardResetMode'] : null)
             ->withAcquireActions(array_map(
                 function ($item) {
                     return AcquireActionList::fromJson($item);
@@ -161,6 +176,7 @@ class CategoryModel implements IModel {
             "metadata" => $this->getMetadata(),
             "rewardIntervalMinutes" => $this->getRewardIntervalMinutes(),
             "defaultMaximumIdleMinutes" => $this->getDefaultMaximumIdleMinutes(),
+            "rewardResetMode" => $this->getRewardResetMode(),
             "acquireActions" => array_map(
                 function ($item) {
                     return $item->toJson();

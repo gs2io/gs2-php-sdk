@@ -1013,6 +1013,9 @@ class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getDefaultMaximumIdleMinutes() !== null) {
             $json["defaultMaximumIdleMinutes"] = $this->request->getDefaultMaximumIdleMinutes();
         }
+        if ($this->request->getRewardResetMode() !== null) {
+            $json["rewardResetMode"] = $this->request->getRewardResetMode();
+        }
         if ($this->request->getAcquireActions() !== null) {
             $array = [];
             foreach ($this->request->getAcquireActions() as $item)
@@ -1152,6 +1155,9 @@ class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getDefaultMaximumIdleMinutes() !== null) {
             $json["defaultMaximumIdleMinutes"] = $this->request->getDefaultMaximumIdleMinutes();
+        }
+        if ($this->request->getRewardResetMode() !== null) {
+            $json["rewardResetMode"] = $this->request->getRewardResetMode();
         }
         if ($this->request->getAcquireActions() !== null) {
             $array = [];

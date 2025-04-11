@@ -52,6 +52,14 @@ class DailyTransactionHistory implements IModel {
 	/**
      * @var int
 	 */
+	private $issueCount;
+	/**
+     * @var int
+	 */
+	private $consumeCount;
+	/**
+     * @var int
+	 */
 	private $updatedAt;
 	/**
      * @var int
@@ -127,6 +135,26 @@ class DailyTransactionHistory implements IModel {
 		$this->withdrawAmount = $withdrawAmount;
 		return $this;
 	}
+	public function getIssueCount(): ?int {
+		return $this->issueCount;
+	}
+	public function setIssueCount(?int $issueCount) {
+		$this->issueCount = $issueCount;
+	}
+	public function withIssueCount(?int $issueCount): DailyTransactionHistory {
+		$this->issueCount = $issueCount;
+		return $this;
+	}
+	public function getConsumeCount(): ?int {
+		return $this->consumeCount;
+	}
+	public function setConsumeCount(?int $consumeCount) {
+		$this->consumeCount = $consumeCount;
+	}
+	public function withConsumeCount(?int $consumeCount): DailyTransactionHistory {
+		$this->consumeCount = $consumeCount;
+		return $this;
+	}
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
@@ -160,6 +188,8 @@ class DailyTransactionHistory implements IModel {
             ->withCurrency(array_key_exists('currency', $data) && $data['currency'] !== null ? $data['currency'] : null)
             ->withDepositAmount(array_key_exists('depositAmount', $data) && $data['depositAmount'] !== null ? $data['depositAmount'] : null)
             ->withWithdrawAmount(array_key_exists('withdrawAmount', $data) && $data['withdrawAmount'] !== null ? $data['withdrawAmount'] : null)
+            ->withIssueCount(array_key_exists('issueCount', $data) && $data['issueCount'] !== null ? $data['issueCount'] : null)
+            ->withConsumeCount(array_key_exists('consumeCount', $data) && $data['consumeCount'] !== null ? $data['consumeCount'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -173,6 +203,8 @@ class DailyTransactionHistory implements IModel {
             "currency" => $this->getCurrency(),
             "depositAmount" => $this->getDepositAmount(),
             "withdrawAmount" => $this->getWithdrawAmount(),
+            "issueCount" => $this->getIssueCount(),
+            "consumeCount" => $this->getConsumeCount(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),
         );

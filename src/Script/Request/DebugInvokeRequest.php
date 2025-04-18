@@ -26,10 +26,16 @@ class DebugInvokeRequest extends Gs2BasicRequest {
     private $script;
     /** @var string */
     private $args;
+    /** @var string */
+    private $userId;
     /** @var RandomStatus */
     private $randomStatus;
     /** @var bool */
     private $disableStringNumberToNumber;
+    /** @var string */
+    private $timeOffsetToken;
+    /** @var string */
+    private $duplicationAvoider;
 	public function getScript(): ?string {
 		return $this->script;
 	}
@@ -48,6 +54,16 @@ class DebugInvokeRequest extends Gs2BasicRequest {
 	}
 	public function withArgs(?string $args): DebugInvokeRequest {
 		$this->args = $args;
+		return $this;
+	}
+	public function getUserId(): ?string {
+		return $this->userId;
+	}
+	public function setUserId(?string $userId) {
+		$this->userId = $userId;
+	}
+	public function withUserId(?string $userId): DebugInvokeRequest {
+		$this->userId = $userId;
 		return $this;
 	}
 	public function getRandomStatus(): ?RandomStatus {
@@ -70,6 +86,29 @@ class DebugInvokeRequest extends Gs2BasicRequest {
 		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
 		return $this;
 	}
+	public function getTimeOffsetToken(): ?string {
+		return $this->timeOffsetToken;
+	}
+	public function setTimeOffsetToken(?string $timeOffsetToken) {
+		$this->timeOffsetToken = $timeOffsetToken;
+	}
+	public function withTimeOffsetToken(?string $timeOffsetToken): DebugInvokeRequest {
+		$this->timeOffsetToken = $timeOffsetToken;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): DebugInvokeRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?DebugInvokeRequest {
         if ($data === null) {
@@ -78,16 +117,20 @@ class DebugInvokeRequest extends Gs2BasicRequest {
         return (new DebugInvokeRequest())
             ->withScript(array_key_exists('script', $data) && $data['script'] !== null ? $data['script'] : null)
             ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
+            ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
-            ->withDisableStringNumberToNumber(array_key_exists('disableStringNumberToNumber', $data) ? $data['disableStringNumberToNumber'] : null);
+            ->withDisableStringNumberToNumber(array_key_exists('disableStringNumberToNumber', $data) ? $data['disableStringNumberToNumber'] : null)
+            ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "script" => $this->getScript(),
             "args" => $this->getArgs(),
+            "userId" => $this->getUserId(),
             "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
             "disableStringNumberToNumber" => $this->getDisableStringNumberToNumber(),
+            "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }
 }

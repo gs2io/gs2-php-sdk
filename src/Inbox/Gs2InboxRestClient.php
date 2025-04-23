@@ -73,6 +73,8 @@ use Gs2\Inbox\Request\OpenMessageRequest;
 use Gs2\Inbox\Result\OpenMessageResult;
 use Gs2\Inbox\Request\OpenMessageByUserIdRequest;
 use Gs2\Inbox\Result\OpenMessageByUserIdResult;
+use Gs2\Inbox\Request\CloseMessageByUserIdRequest;
+use Gs2\Inbox\Result\CloseMessageByUserIdResult;
 use Gs2\Inbox\Request\ReadMessageRequest;
 use Gs2\Inbox\Result\ReadMessageResult;
 use Gs2\Inbox\Request\ReadMessageByUserIdRequest;
@@ -1499,6 +1501,69 @@ class OpenMessageByUserIdTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/{messageName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{messageName}", $this->request->getMessageName() === null|| strlen($this->request->getMessageName()) == 0 ? "null" : $this->request->getMessageName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CloseMessageByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CloseMessageByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CloseMessageByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CloseMessageByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CloseMessageByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CloseMessageByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inbox", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/{messageName}/close";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
@@ -3612,6 +3677,33 @@ class Gs2InboxRestClient extends AbstractGs2Client {
             OpenMessageByUserIdRequest $request
     ): OpenMessageByUserIdResult {
         return $this->openMessageByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CloseMessageByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function closeMessageByUserIdAsync(
+            CloseMessageByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CloseMessageByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CloseMessageByUserIdRequest $request
+     * @return CloseMessageByUserIdResult
+     */
+    public function closeMessageByUserId (
+            CloseMessageByUserIdRequest $request
+    ): CloseMessageByUserIdResult {
+        return $this->closeMessageByUserIdAsync(
             $request
         )->wait();
     }

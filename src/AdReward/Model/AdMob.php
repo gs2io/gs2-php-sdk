@@ -41,21 +41,21 @@ class AdMob implements IModel {
             return null;
         }
         return (new AdMob())
-            ->withAllowAdUnitIds(array_map(
+            ->withAllowAdUnitIds(!array_key_exists('allowAdUnitIds', $data) || $data['allowAdUnitIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('allowAdUnitIds', $data) && $data['allowAdUnitIds'] !== null ? $data['allowAdUnitIds'] : []
+                $data['allowAdUnitIds']
             ));
     }
 
     public function toJson(): array {
         return array(
-            "allowAdUnitIds" => array_map(
+            "allowAdUnitIds" => $this->getAllowAdUnitIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAllowAdUnitIds() !== null && $this->getAllowAdUnitIds() !== null ? $this->getAllowAdUnitIds() : []
+                $this->getAllowAdUnitIds()
             ),
         );
     }

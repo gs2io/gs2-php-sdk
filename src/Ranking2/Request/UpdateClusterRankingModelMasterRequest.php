@@ -206,11 +206,11 @@ class UpdateClusterRankingModelMasterRequest extends Gs2BasicRequest {
             ->withSum(array_key_exists('sum', $data) ? $data['sum'] : null)
             ->withScoreTtlDays(array_key_exists('scoreTtlDays', $data) && $data['scoreTtlDays'] !== null ? $data['scoreTtlDays'] : null)
             ->withOrderDirection(array_key_exists('orderDirection', $data) && $data['orderDirection'] !== null ? $data['orderDirection'] : null)
-            ->withRankingRewards(array_map(
+            ->withRankingRewards(!array_key_exists('rankingRewards', $data) || $data['rankingRewards'] === null ? null : array_map(
                 function ($item) {
                     return RankingReward::fromJson($item);
                 },
-                array_key_exists('rankingRewards', $data) && $data['rankingRewards'] !== null ? $data['rankingRewards'] : []
+                $data['rankingRewards']
             ))
             ->withRewardCalculationIndex(array_key_exists('rewardCalculationIndex', $data) && $data['rewardCalculationIndex'] !== null ? $data['rewardCalculationIndex'] : null)
             ->withEntryPeriodEventId(array_key_exists('entryPeriodEventId', $data) && $data['entryPeriodEventId'] !== null ? $data['entryPeriodEventId'] : null)
@@ -229,11 +229,11 @@ class UpdateClusterRankingModelMasterRequest extends Gs2BasicRequest {
             "sum" => $this->getSum(),
             "scoreTtlDays" => $this->getScoreTtlDays(),
             "orderDirection" => $this->getOrderDirection(),
-            "rankingRewards" => array_map(
+            "rankingRewards" => $this->getRankingRewards() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getRankingRewards() !== null && $this->getRankingRewards() !== null ? $this->getRankingRewards() : []
+                $this->getRankingRewards()
             ),
             "rewardCalculationIndex" => $this->getRewardCalculationIndex(),
             "entryPeriodEventId" => $this->getEntryPeriodEventId(),

@@ -55,33 +55,33 @@ class View implements IModel {
             return null;
         }
         return (new View())
-            ->withContents(array_map(
+            ->withContents(!array_key_exists('contents', $data) || $data['contents'] === null ? null : array_map(
                 function ($item) {
                     return Content::fromJson($item);
                 },
-                array_key_exists('contents', $data) && $data['contents'] !== null ? $data['contents'] : []
+                $data['contents']
             ))
-            ->withRemoveContents(array_map(
+            ->withRemoveContents(!array_key_exists('removeContents', $data) || $data['removeContents'] === null ? null : array_map(
                 function ($item) {
                     return Content::fromJson($item);
                 },
-                array_key_exists('removeContents', $data) && $data['removeContents'] !== null ? $data['removeContents'] : []
+                $data['removeContents']
             ));
     }
 
     public function toJson(): array {
         return array(
-            "contents" => array_map(
+            "contents" => $this->getContents() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getContents() !== null && $this->getContents() !== null ? $this->getContents() : []
+                $this->getContents()
             ),
-            "removeContents" => array_map(
+            "removeContents" => $this->getRemoveContents() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getRemoveContents() !== null && $this->getRemoveContents() !== null ? $this->getRemoveContents() : []
+                $this->getRemoveContents()
             ),
         );
     }

@@ -130,17 +130,17 @@ class IfExpressionByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withCondition(array_key_exists('condition', $data) && $data['condition'] !== null ? VerifyAction::fromJson($data['condition']) : null)
-            ->withTrueActions(array_map(
+            ->withTrueActions(!array_key_exists('trueActions', $data) || $data['trueActions'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
-                array_key_exists('trueActions', $data) && $data['trueActions'] !== null ? $data['trueActions'] : []
+                $data['trueActions']
             ))
-            ->withFalseActions(array_map(
+            ->withFalseActions(!array_key_exists('falseActions', $data) || $data['falseActions'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
-                array_key_exists('falseActions', $data) && $data['falseActions'] !== null ? $data['falseActions'] : []
+                $data['falseActions']
             ))
             ->withMultiplyValueSpecifyingQuantity(array_key_exists('multiplyValueSpecifyingQuantity', $data) ? $data['multiplyValueSpecifyingQuantity'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
@@ -151,17 +151,17 @@ class IfExpressionByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "condition" => $this->getCondition() !== null ? $this->getCondition()->toJson() : null,
-            "trueActions" => array_map(
+            "trueActions" => $this->getTrueActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTrueActions() !== null && $this->getTrueActions() !== null ? $this->getTrueActions() : []
+                $this->getTrueActions()
             ),
-            "falseActions" => array_map(
+            "falseActions" => $this->getFalseActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getFalseActions() !== null && $this->getFalseActions() !== null ? $this->getFalseActions() : []
+                $this->getFalseActions()
             ),
             "multiplyValueSpecifyingQuantity" => $this->getMultiplyValueSpecifyingQuantity(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),

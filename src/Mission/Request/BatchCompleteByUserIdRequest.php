@@ -117,17 +117,17 @@ class BatchCompleteByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withMissionTaskNames(array_map(
+            ->withMissionTaskNames(!array_key_exists('missionTaskNames', $data) || $data['missionTaskNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('missionTaskNames', $data) && $data['missionTaskNames'] !== null ? $data['missionTaskNames'] : []
+                $data['missionTaskNames']
             ))
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -137,17 +137,17 @@ class BatchCompleteByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "missionGroupName" => $this->getMissionGroupName(),
             "userId" => $this->getUserId(),
-            "missionTaskNames" => array_map(
+            "missionTaskNames" => $this->getMissionTaskNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getMissionTaskNames() !== null && $this->getMissionTaskNames() !== null ? $this->getMissionTaskNames() : []
+                $this->getMissionTaskNames()
             ),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

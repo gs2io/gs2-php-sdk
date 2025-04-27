@@ -157,11 +157,11 @@ class CounterModelMaster implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withScopes(array_map(
+            ->withScopes(!array_key_exists('scopes', $data) || $data['scopes'] === null ? null : array_map(
                 function ($item) {
                     return CounterScopeModel::fromJson($item);
                 },
-                array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
+                $data['scopes']
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -175,11 +175,11 @@ class CounterModelMaster implements IModel {
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "description" => $this->getDescription(),
-            "scopes" => array_map(
+            "scopes" => $this->getScopes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
+                $this->getScopes()
             ),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
             "createdAt" => $this->getCreatedAt(),

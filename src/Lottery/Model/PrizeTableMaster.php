@@ -143,11 +143,11 @@ class PrizeTableMaster implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withPrizes(array_map(
+            ->withPrizes(!array_key_exists('prizes', $data) || $data['prizes'] === null ? null : array_map(
                 function ($item) {
                     return Prize::fromJson($item);
                 },
-                array_key_exists('prizes', $data) && $data['prizes'] !== null ? $data['prizes'] : []
+                $data['prizes']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -160,11 +160,11 @@ class PrizeTableMaster implements IModel {
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "description" => $this->getDescription(),
-            "prizes" => array_map(
+            "prizes" => $this->getPrizes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getPrizes() !== null && $this->getPrizes() !== null ? $this->getPrizes() : []
+                $this->getPrizes()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

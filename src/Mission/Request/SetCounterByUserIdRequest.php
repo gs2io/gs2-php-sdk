@@ -105,11 +105,11 @@ class SetCounterByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withValues(array_map(
+            ->withValues(!array_key_exists('values', $data) || $data['values'] === null ? null : array_map(
                 function ($item) {
                     return ScopedValue::fromJson($item);
                 },
-                array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
+                $data['values']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -119,11 +119,11 @@ class SetCounterByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "counterName" => $this->getCounterName(),
             "userId" => $this->getUserId(),
-            "values" => array_map(
+            "values" => $this->getValues() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getValues() !== null && $this->getValues() !== null ? $this->getValues() : []
+                $this->getValues()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

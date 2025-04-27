@@ -114,11 +114,11 @@ class BigInventory implements IModel {
             ->withInventoryId(array_key_exists('inventoryId', $data) && $data['inventoryId'] !== null ? $data['inventoryId'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withBigItems(array_map(
+            ->withBigItems(!array_key_exists('bigItems', $data) || $data['bigItems'] === null ? null : array_map(
                 function ($item) {
                     return BigItem::fromJson($item);
                 },
-                array_key_exists('bigItems', $data) && $data['bigItems'] !== null ? $data['bigItems'] : []
+                $data['bigItems']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
@@ -129,11 +129,11 @@ class BigInventory implements IModel {
             "inventoryId" => $this->getInventoryId(),
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
-            "bigItems" => array_map(
+            "bigItems" => $this->getBigItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getBigItems() !== null && $this->getBigItems() !== null ? $this->getBigItems() : []
+                $this->getBigItems()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

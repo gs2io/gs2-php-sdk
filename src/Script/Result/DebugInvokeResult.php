@@ -179,11 +179,11 @@ class DebugInvokeResult implements IResult {
             ->withTransactionResult(array_key_exists('transactionResult', $data) && $data['transactionResult'] !== null ? CoreTransactionResult::fromJson($data['transactionResult']) : null)
             ->withExecuteTime(array_key_exists('executeTime', $data) && $data['executeTime'] !== null ? $data['executeTime'] : null)
             ->withCharged(array_key_exists('charged', $data) && $data['charged'] !== null ? $data['charged'] : null)
-            ->withOutput(array_map(
+            ->withOutput(!array_key_exists('output', $data) || $data['output'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('output', $data) && $data['output'] !== null ? $data['output'] : []
+                $data['output']
             ));
     }
 
@@ -197,11 +197,11 @@ class DebugInvokeResult implements IResult {
             "transactionResult" => $this->getTransactionResult() !== null ? $this->getTransactionResult()->toJson() : null,
             "executeTime" => $this->getExecuteTime(),
             "charged" => $this->getCharged(),
-            "output" => array_map(
+            "output" => $this->getOutput() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getOutput() !== null && $this->getOutput() !== null ? $this->getOutput() : []
+                $this->getOutput()
             ),
         );
     }

@@ -106,11 +106,11 @@ class MissedReceiveRequest extends Gs2BasicRequest {
             ->withBonusModelName(array_key_exists('bonusModelName', $data) && $data['bonusModelName'] !== null ? $data['bonusModelName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withStepNumber(array_key_exists('stepNumber', $data) && $data['stepNumber'] !== null ? $data['stepNumber'] : null)
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ));
     }
 
@@ -120,11 +120,11 @@ class MissedReceiveRequest extends Gs2BasicRequest {
             "bonusModelName" => $this->getBonusModelName(),
             "accessToken" => $this->getAccessToken(),
             "stepNumber" => $this->getStepNumber(),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
         );
     }

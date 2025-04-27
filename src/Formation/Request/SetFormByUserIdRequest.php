@@ -118,11 +118,11 @@ class SetFormByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
             ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
-            ->withSlots(array_map(
+            ->withSlots(!array_key_exists('slots', $data) || $data['slots'] === null ? null : array_map(
                 function ($item) {
                     return Slot::fromJson($item);
                 },
-                array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
+                $data['slots']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -133,11 +133,11 @@ class SetFormByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "moldModelName" => $this->getMoldModelName(),
             "index" => $this->getIndex(),
-            "slots" => array_map(
+            "slots" => $this->getSlots() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
+                $this->getSlots()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

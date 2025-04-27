@@ -106,11 +106,11 @@ class SetFormRequest extends Gs2BasicRequest {
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withMoldModelName(array_key_exists('moldModelName', $data) && $data['moldModelName'] !== null ? $data['moldModelName'] : null)
             ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
-            ->withSlots(array_map(
+            ->withSlots(!array_key_exists('slots', $data) || $data['slots'] === null ? null : array_map(
                 function ($item) {
                     return Slot::fromJson($item);
                 },
-                array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
+                $data['slots']
             ));
     }
 
@@ -120,11 +120,11 @@ class SetFormRequest extends Gs2BasicRequest {
             "accessToken" => $this->getAccessToken(),
             "moldModelName" => $this->getMoldModelName(),
             "index" => $this->getIndex(),
-            "slots" => array_map(
+            "slots" => $this->getSlots() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
+                $this->getSlots()
             ),
         );
     }

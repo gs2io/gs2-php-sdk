@@ -56,22 +56,22 @@ class RandomStatus implements IModel {
         }
         return (new RandomStatus())
             ->withSeed(array_key_exists('seed', $data) && $data['seed'] !== null ? $data['seed'] : null)
-            ->withUsed(array_map(
+            ->withUsed(!array_key_exists('used', $data) || $data['used'] === null ? null : array_map(
                 function ($item) {
                     return RandomUsed::fromJson($item);
                 },
-                array_key_exists('used', $data) && $data['used'] !== null ? $data['used'] : []
+                $data['used']
             ));
     }
 
     public function toJson(): array {
         return array(
             "seed" => $this->getSeed(),
-            "used" => array_map(
+            "used" => $this->getUsed() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getUsed() !== null && $this->getUsed() !== null ? $this->getUsed() : []
+                $this->getUsed()
             ),
         );
     }

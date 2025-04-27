@@ -41,21 +41,21 @@ class UnityAd implements IModel {
             return null;
         }
         return (new UnityAd())
-            ->withKeys(array_map(
+            ->withKeys(!array_key_exists('keys', $data) || $data['keys'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('keys', $data) && $data['keys'] !== null ? $data['keys'] : []
+                $data['keys']
             ));
     }
 
     public function toJson(): array {
         return array(
-            "keys" => array_map(
+            "keys" => $this->getKeys() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getKeys() !== null && $this->getKeys() !== null ? $this->getKeys() : []
+                $this->getKeys()
             ),
         );
     }

@@ -93,11 +93,11 @@ class BatchUpdateMemberRoleRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withGuildModelName(array_key_exists('guildModelName', $data) && $data['guildModelName'] !== null ? $data['guildModelName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withMembers(array_map(
+            ->withMembers(!array_key_exists('members', $data) || $data['members'] === null ? null : array_map(
                 function ($item) {
                     return Member::fromJson($item);
                 },
-                array_key_exists('members', $data) && $data['members'] !== null ? $data['members'] : []
+                $data['members']
             ));
     }
 
@@ -106,11 +106,11 @@ class BatchUpdateMemberRoleRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "guildModelName" => $this->getGuildModelName(),
             "accessToken" => $this->getAccessToken(),
-            "members" => array_map(
+            "members" => $this->getMembers() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getMembers() !== null && $this->getMembers() !== null ? $this->getMembers() : []
+                $this->getMembers()
             ),
         );
     }

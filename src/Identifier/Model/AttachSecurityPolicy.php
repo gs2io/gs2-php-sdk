@@ -84,11 +84,11 @@ class AttachSecurityPolicy implements IModel {
         }
         return (new AttachSecurityPolicy())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withSecurityPolicyIds(array_map(
+            ->withSecurityPolicyIds(!array_key_exists('securityPolicyIds', $data) || $data['securityPolicyIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('securityPolicyIds', $data) && $data['securityPolicyIds'] !== null ? $data['securityPolicyIds'] : []
+                $data['securityPolicyIds']
             ))
             ->withAttachedAt(array_key_exists('attachedAt', $data) && $data['attachedAt'] !== null ? $data['attachedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -97,11 +97,11 @@ class AttachSecurityPolicy implements IModel {
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
-            "securityPolicyIds" => array_map(
+            "securityPolicyIds" => $this->getSecurityPolicyIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getSecurityPolicyIds() !== null && $this->getSecurityPolicyIds() !== null ? $this->getSecurityPolicyIds() : []
+                $this->getSecurityPolicyIds()
             ),
             "attachedAt" => $this->getAttachedAt(),
             "revision" => $this->getRevision(),

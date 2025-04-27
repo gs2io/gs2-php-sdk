@@ -92,11 +92,11 @@ class MarkRestrainRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withNodeModelNames(array_map(
+            ->withNodeModelNames(!array_key_exists('nodeModelNames', $data) || $data['nodeModelNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('nodeModelNames', $data) && $data['nodeModelNames'] !== null ? $data['nodeModelNames'] : []
+                $data['nodeModelNames']
             ));
     }
 
@@ -105,11 +105,11 @@ class MarkRestrainRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "propertyId" => $this->getPropertyId(),
-            "nodeModelNames" => array_map(
+            "nodeModelNames" => $this->getNodeModelNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getNodeModelNames() !== null && $this->getNodeModelNames() !== null ? $this->getNodeModelNames() : []
+                $this->getNodeModelNames()
             ),
         );
     }

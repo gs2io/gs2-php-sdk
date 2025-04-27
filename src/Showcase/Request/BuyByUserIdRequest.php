@@ -131,11 +131,11 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
             ->withDisplayItemId(array_key_exists('displayItemId', $data) && $data['displayItemId'] !== null ? $data['displayItemId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withQuantity(array_key_exists('quantity', $data) && $data['quantity'] !== null ? $data['quantity'] : null)
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -147,11 +147,11 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
             "displayItemId" => $this->getDisplayItemId(),
             "userId" => $this->getUserId(),
             "quantity" => $this->getQuantity(),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

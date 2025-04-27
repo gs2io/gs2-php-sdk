@@ -111,6 +111,8 @@ use Gs2\Schedule\Request\ExportMasterRequest;
 use Gs2\Schedule\Result\ExportMasterResult;
 use Gs2\Schedule\Request\GetCurrentEventMasterRequest;
 use Gs2\Schedule\Result\GetCurrentEventMasterResult;
+use Gs2\Schedule\Request\PreUpdateCurrentEventMasterRequest;
+use Gs2\Schedule\Result\PreUpdateCurrentEventMasterResult;
 use Gs2\Schedule\Request\UpdateCurrentEventMasterRequest;
 use Gs2\Schedule\Result\UpdateCurrentEventMasterResult;
 use Gs2\Schedule\Request\UpdateCurrentEventMasterFromGitHubRequest;
@@ -2696,6 +2698,61 @@ class GetCurrentEventMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentEventMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentEventMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentEventMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentEventMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentEventMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentEventMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentEventMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -2726,14 +2783,48 @@ class UpdateCurrentEventMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentEventMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentEventMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentEventMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3932,6 +4023,33 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
             GetCurrentEventMasterRequest $request
     ): GetCurrentEventMasterResult {
         return $this->getCurrentEventMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentEventMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentEventMasterAsync(
+            PreUpdateCurrentEventMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentEventMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentEventMasterRequest $request
+     * @return PreUpdateCurrentEventMasterResult
+     */
+    public function preUpdateCurrentEventMaster (
+            PreUpdateCurrentEventMasterRequest $request
+    ): PreUpdateCurrentEventMasterResult {
+        return $this->preUpdateCurrentEventMasterAsync(
             $request
         )->wait();
     }

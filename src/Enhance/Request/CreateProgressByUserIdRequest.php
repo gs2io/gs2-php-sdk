@@ -130,11 +130,11 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withTargetItemSetId(array_key_exists('targetItemSetId', $data) && $data['targetItemSetId'] !== null ? $data['targetItemSetId'] : null)
-            ->withMaterials(array_map(
+            ->withMaterials(!array_key_exists('materials', $data) || $data['materials'] === null ? null : array_map(
                 function ($item) {
                     return Material::fromJson($item);
                 },
-                array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
+                $data['materials']
             ))
             ->withForce(array_key_exists('force', $data) ? $data['force'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
@@ -146,11 +146,11 @@ class CreateProgressByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "rateName" => $this->getRateName(),
             "targetItemSetId" => $this->getTargetItemSetId(),
-            "materials" => array_map(
+            "materials" => $this->getMaterials() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getMaterials() !== null && $this->getMaterials() !== null ? $this->getMaterials() : []
+                $this->getMaterials()
             ),
             "force" => $this->getForce(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),

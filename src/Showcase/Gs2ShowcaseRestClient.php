@@ -89,6 +89,8 @@ use Gs2\Showcase\Request\ExportMasterRequest;
 use Gs2\Showcase\Result\ExportMasterResult;
 use Gs2\Showcase\Request\GetCurrentShowcaseMasterRequest;
 use Gs2\Showcase\Result\GetCurrentShowcaseMasterResult;
+use Gs2\Showcase\Request\PreUpdateCurrentShowcaseMasterRequest;
+use Gs2\Showcase\Result\PreUpdateCurrentShowcaseMasterResult;
 use Gs2\Showcase\Request\UpdateCurrentShowcaseMasterRequest;
 use Gs2\Showcase\Result\UpdateCurrentShowcaseMasterResult;
 use Gs2\Showcase\Request\UpdateCurrentShowcaseMasterFromGitHubRequest;
@@ -2052,6 +2054,61 @@ class GetCurrentShowcaseMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentShowcaseMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentShowcaseMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentShowcaseMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentShowcaseMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentShowcaseMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentShowcaseMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentShowcaseMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -2082,14 +2139,48 @@ class UpdateCurrentShowcaseMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentShowcaseMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentShowcaseMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentShowcaseMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "showcase", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -4568,6 +4659,33 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
             GetCurrentShowcaseMasterRequest $request
     ): GetCurrentShowcaseMasterResult {
         return $this->getCurrentShowcaseMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentShowcaseMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentShowcaseMasterAsync(
+            PreUpdateCurrentShowcaseMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentShowcaseMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentShowcaseMasterRequest $request
+     * @return PreUpdateCurrentShowcaseMasterResult
+     */
+    public function preUpdateCurrentShowcaseMaster (
+            PreUpdateCurrentShowcaseMasterRequest $request
+    ): PreUpdateCurrentShowcaseMasterResult {
+        return $this->preUpdateCurrentShowcaseMasterAsync(
             $request
         )->wait();
     }

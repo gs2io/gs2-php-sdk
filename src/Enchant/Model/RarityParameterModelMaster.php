@@ -172,17 +172,17 @@ class RarityParameterModelMaster implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withMaximumParameterCount(array_key_exists('maximumParameterCount', $data) && $data['maximumParameterCount'] !== null ? $data['maximumParameterCount'] : null)
-            ->withParameterCounts(array_map(
+            ->withParameterCounts(!array_key_exists('parameterCounts', $data) || $data['parameterCounts'] === null ? null : array_map(
                 function ($item) {
                     return RarityParameterCountModel::fromJson($item);
                 },
-                array_key_exists('parameterCounts', $data) && $data['parameterCounts'] !== null ? $data['parameterCounts'] : []
+                $data['parameterCounts']
             ))
-            ->withParameters(array_map(
+            ->withParameters(!array_key_exists('parameters', $data) || $data['parameters'] === null ? null : array_map(
                 function ($item) {
                     return RarityParameterValueModel::fromJson($item);
                 },
-                array_key_exists('parameters', $data) && $data['parameters'] !== null ? $data['parameters'] : []
+                $data['parameters']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -196,17 +196,17 @@ class RarityParameterModelMaster implements IModel {
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
             "maximumParameterCount" => $this->getMaximumParameterCount(),
-            "parameterCounts" => array_map(
+            "parameterCounts" => $this->getParameterCounts() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getParameterCounts() !== null && $this->getParameterCounts() !== null ? $this->getParameterCounts() : []
+                $this->getParameterCounts()
             ),
-            "parameters" => array_map(
+            "parameters" => $this->getParameters() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getParameters() !== null && $this->getParameters() !== null ? $this->getParameters() : []
+                $this->getParameters()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

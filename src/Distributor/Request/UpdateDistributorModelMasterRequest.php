@@ -103,11 +103,11 @@ class UpdateDistributorModelMasterRequest extends Gs2BasicRequest {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withInboxNamespaceId(array_key_exists('inboxNamespaceId', $data) && $data['inboxNamespaceId'] !== null ? $data['inboxNamespaceId'] : null)
-            ->withWhiteListTargetIds(array_map(
+            ->withWhiteListTargetIds(!array_key_exists('whiteListTargetIds', $data) || $data['whiteListTargetIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('whiteListTargetIds', $data) && $data['whiteListTargetIds'] !== null ? $data['whiteListTargetIds'] : []
+                $data['whiteListTargetIds']
             ));
     }
 
@@ -118,11 +118,11 @@ class UpdateDistributorModelMasterRequest extends Gs2BasicRequest {
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
             "inboxNamespaceId" => $this->getInboxNamespaceId(),
-            "whiteListTargetIds" => array_map(
+            "whiteListTargetIds" => $this->getWhiteListTargetIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getWhiteListTargetIds() !== null && $this->getWhiteListTargetIds() !== null ? $this->getWhiteListTargetIds() : []
+                $this->getWhiteListTargetIds()
             ),
         );
     }

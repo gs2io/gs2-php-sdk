@@ -117,11 +117,11 @@ class UpdateRoomRequest extends Gs2BasicRequest {
             ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
-            ->withWhiteListUserIds(array_map(
+            ->withWhiteListUserIds(!array_key_exists('whiteListUserIds', $data) || $data['whiteListUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('whiteListUserIds', $data) && $data['whiteListUserIds'] !== null ? $data['whiteListUserIds'] : []
+                $data['whiteListUserIds']
             ))
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null);
     }
@@ -132,11 +132,11 @@ class UpdateRoomRequest extends Gs2BasicRequest {
             "roomName" => $this->getRoomName(),
             "metadata" => $this->getMetadata(),
             "password" => $this->getPassword(),
-            "whiteListUserIds" => array_map(
+            "whiteListUserIds" => $this->getWhiteListUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getWhiteListUserIds() !== null && $this->getWhiteListUserIds() !== null ? $this->getWhiteListUserIds() : []
+                $this->getWhiteListUserIds()
             ),
             "accessToken" => $this->getAccessToken(),
         );

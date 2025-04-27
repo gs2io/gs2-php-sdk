@@ -118,11 +118,11 @@ class SetPropertyFormWithSignatureRequest extends Gs2BasicRequest {
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withPropertyFormModelName(array_key_exists('propertyFormModelName', $data) && $data['propertyFormModelName'] !== null ? $data['propertyFormModelName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withSlots(array_map(
+            ->withSlots(!array_key_exists('slots', $data) || $data['slots'] === null ? null : array_map(
                 function ($item) {
                     return SlotWithSignature::fromJson($item);
                 },
-                array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
+                $data['slots']
             ))
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
@@ -133,11 +133,11 @@ class SetPropertyFormWithSignatureRequest extends Gs2BasicRequest {
             "accessToken" => $this->getAccessToken(),
             "propertyFormModelName" => $this->getPropertyFormModelName(),
             "propertyId" => $this->getPropertyId(),
-            "slots" => array_map(
+            "slots" => $this->getSlots() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
+                $this->getSlots()
             ),
             "keyId" => $this->getKeyId(),
         );

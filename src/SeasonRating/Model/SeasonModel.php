@@ -114,11 +114,11 @@ class SeasonModel implements IModel {
             ->withSeasonModelId(array_key_exists('seasonModelId', $data) && $data['seasonModelId'] !== null ? $data['seasonModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withTiers(array_map(
+            ->withTiers(!array_key_exists('tiers', $data) || $data['tiers'] === null ? null : array_map(
                 function ($item) {
                     return TierModel::fromJson($item);
                 },
-                array_key_exists('tiers', $data) && $data['tiers'] !== null ? $data['tiers'] : []
+                $data['tiers']
             ))
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null);
@@ -129,11 +129,11 @@ class SeasonModel implements IModel {
             "seasonModelId" => $this->getSeasonModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "tiers" => array_map(
+            "tiers" => $this->getTiers() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTiers() !== null && $this->getTiers() !== null ? $this->getTiers() : []
+                $this->getTiers()
             ),
             "experienceModelId" => $this->getExperienceModelId(),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),

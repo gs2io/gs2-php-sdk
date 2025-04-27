@@ -158,11 +158,11 @@ class DistributorModelMaster implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withInboxNamespaceId(array_key_exists('inboxNamespaceId', $data) && $data['inboxNamespaceId'] !== null ? $data['inboxNamespaceId'] : null)
-            ->withWhiteListTargetIds(array_map(
+            ->withWhiteListTargetIds(!array_key_exists('whiteListTargetIds', $data) || $data['whiteListTargetIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('whiteListTargetIds', $data) && $data['whiteListTargetIds'] !== null ? $data['whiteListTargetIds'] : []
+                $data['whiteListTargetIds']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -176,11 +176,11 @@ class DistributorModelMaster implements IModel {
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
             "inboxNamespaceId" => $this->getInboxNamespaceId(),
-            "whiteListTargetIds" => array_map(
+            "whiteListTargetIds" => $this->getWhiteListTargetIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getWhiteListTargetIds() !== null && $this->getWhiteListTargetIds() !== null ? $this->getWhiteListTargetIds() : []
+                $this->getWhiteListTargetIds()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

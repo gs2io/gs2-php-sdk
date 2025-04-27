@@ -131,17 +131,17 @@ class DirectEnhanceByUserIdRequest extends Gs2BasicRequest {
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetItemSetId(array_key_exists('targetItemSetId', $data) && $data['targetItemSetId'] !== null ? $data['targetItemSetId'] : null)
-            ->withMaterials(array_map(
+            ->withMaterials(!array_key_exists('materials', $data) || $data['materials'] === null ? null : array_map(
                 function ($item) {
                     return Material::fromJson($item);
                 },
-                array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
+                $data['materials']
             ))
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -152,17 +152,17 @@ class DirectEnhanceByUserIdRequest extends Gs2BasicRequest {
             "rateName" => $this->getRateName(),
             "userId" => $this->getUserId(),
             "targetItemSetId" => $this->getTargetItemSetId(),
-            "materials" => array_map(
+            "materials" => $this->getMaterials() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getMaterials() !== null && $this->getMaterials() !== null ? $this->getMaterials() : []
+                $this->getMaterials()
             ),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

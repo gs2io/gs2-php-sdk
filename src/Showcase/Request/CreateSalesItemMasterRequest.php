@@ -117,23 +117,23 @@ class CreateSalesItemMasterRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withVerifyActions(array_map(
+            ->withVerifyActions(!array_key_exists('verifyActions', $data) || $data['verifyActions'] === null ? null : array_map(
                 function ($item) {
                     return VerifyAction::fromJson($item);
                 },
-                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+                $data['verifyActions']
             ))
-            ->withConsumeActions(array_map(
+            ->withConsumeActions(!array_key_exists('consumeActions', $data) || $data['consumeActions'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
-                array_key_exists('consumeActions', $data) && $data['consumeActions'] !== null ? $data['consumeActions'] : []
+                $data['consumeActions']
             ))
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ));
     }
 
@@ -143,23 +143,23 @@ class CreateSalesItemMasterRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "verifyActions" => array_map(
+            "verifyActions" => $this->getVerifyActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
+                $this->getVerifyActions()
             ),
-            "consumeActions" => array_map(
+            "consumeActions" => $this->getConsumeActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConsumeActions() !== null && $this->getConsumeActions() !== null ? $this->getConsumeActions() : []
+                $this->getConsumeActions()
             ),
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
         );
     }

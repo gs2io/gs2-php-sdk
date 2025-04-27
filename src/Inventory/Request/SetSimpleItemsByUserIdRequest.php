@@ -105,11 +105,11 @@ class SetSimpleItemsByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withCounts(array_map(
+            ->withCounts(!array_key_exists('counts', $data) || $data['counts'] === null ? null : array_map(
                 function ($item) {
                     return HeldCount::fromJson($item);
                 },
-                array_key_exists('counts', $data) && $data['counts'] !== null ? $data['counts'] : []
+                $data['counts']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -119,11 +119,11 @@ class SetSimpleItemsByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
-            "counts" => array_map(
+            "counts" => $this->getCounts() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getCounts() !== null && $this->getCounts() !== null ? $this->getCounts() : []
+                $this->getCounts()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

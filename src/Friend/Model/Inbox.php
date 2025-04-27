@@ -113,11 +113,11 @@ class Inbox implements IModel {
         return (new Inbox())
             ->withInboxId(array_key_exists('inboxId', $data) && $data['inboxId'] !== null ? $data['inboxId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withFromUserIds(array_map(
+            ->withFromUserIds(!array_key_exists('fromUserIds', $data) || $data['fromUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('fromUserIds', $data) && $data['fromUserIds'] !== null ? $data['fromUserIds'] : []
+                $data['fromUserIds']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -128,11 +128,11 @@ class Inbox implements IModel {
         return array(
             "inboxId" => $this->getInboxId(),
             "userId" => $this->getUserId(),
-            "fromUserIds" => array_map(
+            "fromUserIds" => $this->getFromUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getFromUserIds() !== null && $this->getFromUserIds() !== null ? $this->getFromUserIds() : []
+                $this->getFromUserIds()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

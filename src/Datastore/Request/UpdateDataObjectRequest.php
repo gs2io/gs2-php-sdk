@@ -105,11 +105,11 @@ class UpdateDataObjectRequest extends Gs2BasicRequest {
             ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
-            ->withAllowUserIds(array_map(
+            ->withAllowUserIds(!array_key_exists('allowUserIds', $data) || $data['allowUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+                $data['allowUserIds']
             ));
     }
 
@@ -119,11 +119,11 @@ class UpdateDataObjectRequest extends Gs2BasicRequest {
             "dataObjectName" => $this->getDataObjectName(),
             "accessToken" => $this->getAccessToken(),
             "scope" => $this->getScope(),
-            "allowUserIds" => array_map(
+            "allowUserIds" => $this->getAllowUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+                $this->getAllowUserIds()
             ),
         );
     }

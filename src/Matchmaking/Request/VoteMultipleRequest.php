@@ -77,17 +77,17 @@ class VoteMultipleRequest extends Gs2BasicRequest {
         }
         return (new VoteMultipleRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withSignedBallots(array_map(
+            ->withSignedBallots(!array_key_exists('signedBallots', $data) || $data['signedBallots'] === null ? null : array_map(
                 function ($item) {
                     return SignedBallot::fromJson($item);
                 },
-                array_key_exists('signedBallots', $data) && $data['signedBallots'] !== null ? $data['signedBallots'] : []
+                $data['signedBallots']
             ))
-            ->withGameResults(array_map(
+            ->withGameResults(!array_key_exists('gameResults', $data) || $data['gameResults'] === null ? null : array_map(
                 function ($item) {
                     return GameResult::fromJson($item);
                 },
-                array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
+                $data['gameResults']
             ))
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
@@ -95,17 +95,17 @@ class VoteMultipleRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "signedBallots" => array_map(
+            "signedBallots" => $this->getSignedBallots() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSignedBallots() !== null && $this->getSignedBallots() !== null ? $this->getSignedBallots() : []
+                $this->getSignedBallots()
             ),
-            "gameResults" => array_map(
+            "gameResults" => $this->getGameResults() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getGameResults() !== null && $this->getGameResults() !== null ? $this->getGameResults() : []
+                $this->getGameResults()
             ),
             "keyId" => $this->getKeyId(),
         );

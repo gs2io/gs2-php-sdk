@@ -42,21 +42,21 @@ class BatchExecuteApiResult implements IResult {
             return null;
         }
         return (new BatchExecuteApiResult())
-            ->withResults(array_map(
+            ->withResults(!array_key_exists('results', $data) || $data['results'] === null ? null : array_map(
                 function ($item) {
                     return BatchResultPayload::fromJson($item);
                 },
-                array_key_exists('results', $data) && $data['results'] !== null ? $data['results'] : []
+                $data['results']
             ));
     }
 
     public function toJson(): array {
         return array(
-            "results" => array_map(
+            "results" => $this->getResults() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getResults() !== null && $this->getResults() !== null ? $this->getResults() : []
+                $this->getResults()
             ),
         );
     }

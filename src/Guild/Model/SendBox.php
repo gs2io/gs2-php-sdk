@@ -128,11 +128,11 @@ class SendBox implements IModel {
             ->withSendBoxId(array_key_exists('sendBoxId', $data) && $data['sendBoxId'] !== null ? $data['sendBoxId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withGuildModelName(array_key_exists('guildModelName', $data) && $data['guildModelName'] !== null ? $data['guildModelName'] : null)
-            ->withTargetGuildNames(array_map(
+            ->withTargetGuildNames(!array_key_exists('targetGuildNames', $data) || $data['targetGuildNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('targetGuildNames', $data) && $data['targetGuildNames'] !== null ? $data['targetGuildNames'] : []
+                $data['targetGuildNames']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -144,11 +144,11 @@ class SendBox implements IModel {
             "sendBoxId" => $this->getSendBoxId(),
             "userId" => $this->getUserId(),
             "guildModelName" => $this->getGuildModelName(),
-            "targetGuildNames" => array_map(
+            "targetGuildNames" => $this->getTargetGuildNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getTargetGuildNames() !== null && $this->getTargetGuildNames() !== null ? $this->getTargetGuildNames() : []
+                $this->getTargetGuildNames()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

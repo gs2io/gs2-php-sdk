@@ -56,22 +56,22 @@ class Threshold implements IModel {
         }
         return (new Threshold())
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withValues(array_map(
+            ->withValues(!array_key_exists('values', $data) || $data['values'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
+                $data['values']
             ));
     }
 
     public function toJson(): array {
         return array(
             "metadata" => $this->getMetadata(),
-            "values" => array_map(
+            "values" => $this->getValues() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getValues() !== null && $this->getValues() !== null ? $this->getValues() : []
+                $this->getValues()
             ),
         );
     }

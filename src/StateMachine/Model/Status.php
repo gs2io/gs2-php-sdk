@@ -230,17 +230,17 @@ class Status implements IModel {
             ->withEnableSpeculativeExecution(array_key_exists('enableSpeculativeExecution', $data) && $data['enableSpeculativeExecution'] !== null ? $data['enableSpeculativeExecution'] : null)
             ->withStateMachineDefinition(array_key_exists('stateMachineDefinition', $data) && $data['stateMachineDefinition'] !== null ? $data['stateMachineDefinition'] : null)
             ->withRandomStatus(array_key_exists('randomStatus', $data) && $data['randomStatus'] !== null ? RandomStatus::fromJson($data['randomStatus']) : null)
-            ->withStacks(array_map(
+            ->withStacks(!array_key_exists('stacks', $data) || $data['stacks'] === null ? null : array_map(
                 function ($item) {
                     return StackEntry::fromJson($item);
                 },
-                array_key_exists('stacks', $data) && $data['stacks'] !== null ? $data['stacks'] : []
+                $data['stacks']
             ))
-            ->withVariables(array_map(
+            ->withVariables(!array_key_exists('variables', $data) || $data['variables'] === null ? null : array_map(
                 function ($item) {
                     return Variable::fromJson($item);
                 },
-                array_key_exists('variables', $data) && $data['variables'] !== null ? $data['variables'] : []
+                $data['variables']
             ))
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
             ->withLastError(array_key_exists('lastError', $data) && $data['lastError'] !== null ? $data['lastError'] : null)
@@ -258,17 +258,17 @@ class Status implements IModel {
             "enableSpeculativeExecution" => $this->getEnableSpeculativeExecution(),
             "stateMachineDefinition" => $this->getStateMachineDefinition(),
             "randomStatus" => $this->getRandomStatus() !== null ? $this->getRandomStatus()->toJson() : null,
-            "stacks" => array_map(
+            "stacks" => $this->getStacks() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getStacks() !== null && $this->getStacks() !== null ? $this->getStacks() : []
+                $this->getStacks()
             ),
-            "variables" => array_map(
+            "variables" => $this->getVariables() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getVariables() !== null && $this->getVariables() !== null ? $this->getVariables() : []
+                $this->getVariables()
             ),
             "status" => $this->getStatus(),
             "lastError" => $this->getLastError(),

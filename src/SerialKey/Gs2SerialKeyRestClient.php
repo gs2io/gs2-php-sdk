@@ -105,6 +105,8 @@ use Gs2\SerialKey\Request\ExportMasterRequest;
 use Gs2\SerialKey\Result\ExportMasterResult;
 use Gs2\SerialKey\Request\GetCurrentCampaignMasterRequest;
 use Gs2\SerialKey\Result\GetCurrentCampaignMasterResult;
+use Gs2\SerialKey\Request\PreUpdateCurrentCampaignMasterRequest;
+use Gs2\SerialKey\Result\PreUpdateCurrentCampaignMasterResult;
 use Gs2\SerialKey\Request\UpdateCurrentCampaignMasterRequest;
 use Gs2\SerialKey\Result\UpdateCurrentCampaignMasterResult;
 use Gs2\SerialKey\Request\UpdateCurrentCampaignMasterFromGitHubRequest;
@@ -2418,6 +2420,61 @@ class GetCurrentCampaignMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentCampaignMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentCampaignMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentCampaignMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentCampaignMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentCampaignMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentCampaignMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentCampaignMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -2448,14 +2505,48 @@ class UpdateCurrentCampaignMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentCampaignMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentCampaignMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentCampaignMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "serial-key", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3573,6 +3664,33 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
             GetCurrentCampaignMasterRequest $request
     ): GetCurrentCampaignMasterResult {
         return $this->getCurrentCampaignMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentCampaignMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentCampaignMasterAsync(
+            PreUpdateCurrentCampaignMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentCampaignMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentCampaignMasterRequest $request
+     * @return PreUpdateCurrentCampaignMasterResult
+     */
+    public function preUpdateCurrentCampaignMaster (
+            PreUpdateCurrentCampaignMasterRequest $request
+    ): PreUpdateCurrentCampaignMasterResult {
+        return $this->preUpdateCurrentCampaignMasterAsync(
             $request
         )->wait();
     }

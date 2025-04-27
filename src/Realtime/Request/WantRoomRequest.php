@@ -64,11 +64,11 @@ class WantRoomRequest extends Gs2BasicRequest {
         return (new WantRoomRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
-            ->withNotificationUserIds(array_map(
+            ->withNotificationUserIds(!array_key_exists('notificationUserIds', $data) || $data['notificationUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('notificationUserIds', $data) && $data['notificationUserIds'] !== null ? $data['notificationUserIds'] : []
+                $data['notificationUserIds']
             ));
     }
 
@@ -76,11 +76,11 @@ class WantRoomRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "name" => $this->getName(),
-            "notificationUserIds" => array_map(
+            "notificationUserIds" => $this->getNotificationUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getNotificationUserIds() !== null && $this->getNotificationUserIds() !== null ? $this->getNotificationUserIds() : []
+                $this->getNotificationUserIds()
             ),
         );
     }

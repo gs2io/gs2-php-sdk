@@ -92,11 +92,11 @@ class UpdatePrizeTableMasterRequest extends Gs2BasicRequest {
             ->withPrizeTableName(array_key_exists('prizeTableName', $data) && $data['prizeTableName'] !== null ? $data['prizeTableName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withPrizes(array_map(
+            ->withPrizes(!array_key_exists('prizes', $data) || $data['prizes'] === null ? null : array_map(
                 function ($item) {
                     return Prize::fromJson($item);
                 },
-                array_key_exists('prizes', $data) && $data['prizes'] !== null ? $data['prizes'] : []
+                $data['prizes']
             ));
     }
 
@@ -106,11 +106,11 @@ class UpdatePrizeTableMasterRequest extends Gs2BasicRequest {
             "prizeTableName" => $this->getPrizeTableName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "prizes" => array_map(
+            "prizes" => $this->getPrizes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getPrizes() !== null && $this->getPrizes() !== null ? $this->getPrizes() : []
+                $this->getPrizes()
             ),
         );
     }

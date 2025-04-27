@@ -101,11 +101,11 @@ class SubscriptionStatus implements IModel {
             ->withContentName(array_key_exists('contentName', $data) && $data['contentName'] !== null ? $data['contentName'] : null)
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
-            ->withDetail(array_map(
+            ->withDetail(!array_key_exists('detail', $data) || $data['detail'] === null ? null : array_map(
                 function ($item) {
                     return SubscribeTransaction::fromJson($item);
                 },
-                array_key_exists('detail', $data) && $data['detail'] !== null ? $data['detail'] : []
+                $data['detail']
             ));
     }
 
@@ -115,11 +115,11 @@ class SubscriptionStatus implements IModel {
             "contentName" => $this->getContentName(),
             "status" => $this->getStatus(),
             "expiresAt" => $this->getExpiresAt(),
-            "detail" => array_map(
+            "detail" => $this->getDetail() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getDetail() !== null && $this->getDetail() !== null ? $this->getDetail() : []
+                $this->getDetail()
             ),
         );
     }

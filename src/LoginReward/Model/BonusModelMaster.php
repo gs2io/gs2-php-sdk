@@ -245,24 +245,24 @@ class BonusModelMaster implements IModel {
             ->withPeriodEventId(array_key_exists('periodEventId', $data) && $data['periodEventId'] !== null ? $data['periodEventId'] : null)
             ->withResetHour(array_key_exists('resetHour', $data) && $data['resetHour'] !== null ? $data['resetHour'] : null)
             ->withRepeat(array_key_exists('repeat', $data) && $data['repeat'] !== null ? $data['repeat'] : null)
-            ->withRewards(array_map(
+            ->withRewards(!array_key_exists('rewards', $data) || $data['rewards'] === null ? null : array_map(
                 function ($item) {
                     return Reward::fromJson($item);
                 },
-                array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
+                $data['rewards']
             ))
             ->withMissedReceiveRelief(array_key_exists('missedReceiveRelief', $data) && $data['missedReceiveRelief'] !== null ? $data['missedReceiveRelief'] : null)
-            ->withMissedReceiveReliefVerifyActions(array_map(
+            ->withMissedReceiveReliefVerifyActions(!array_key_exists('missedReceiveReliefVerifyActions', $data) || $data['missedReceiveReliefVerifyActions'] === null ? null : array_map(
                 function ($item) {
                     return VerifyAction::fromJson($item);
                 },
-                array_key_exists('missedReceiveReliefVerifyActions', $data) && $data['missedReceiveReliefVerifyActions'] !== null ? $data['missedReceiveReliefVerifyActions'] : []
+                $data['missedReceiveReliefVerifyActions']
             ))
-            ->withMissedReceiveReliefConsumeActions(array_map(
+            ->withMissedReceiveReliefConsumeActions(!array_key_exists('missedReceiveReliefConsumeActions', $data) || $data['missedReceiveReliefConsumeActions'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
-                array_key_exists('missedReceiveReliefConsumeActions', $data) && $data['missedReceiveReliefConsumeActions'] !== null ? $data['missedReceiveReliefConsumeActions'] : []
+                $data['missedReceiveReliefConsumeActions']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -279,24 +279,24 @@ class BonusModelMaster implements IModel {
             "periodEventId" => $this->getPeriodEventId(),
             "resetHour" => $this->getResetHour(),
             "repeat" => $this->getRepeat(),
-            "rewards" => array_map(
+            "rewards" => $this->getRewards() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getRewards() !== null && $this->getRewards() !== null ? $this->getRewards() : []
+                $this->getRewards()
             ),
             "missedReceiveRelief" => $this->getMissedReceiveRelief(),
-            "missedReceiveReliefVerifyActions" => array_map(
+            "missedReceiveReliefVerifyActions" => $this->getMissedReceiveReliefVerifyActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getMissedReceiveReliefVerifyActions() !== null && $this->getMissedReceiveReliefVerifyActions() !== null ? $this->getMissedReceiveReliefVerifyActions() : []
+                $this->getMissedReceiveReliefVerifyActions()
             ),
-            "missedReceiveReliefConsumeActions" => array_map(
+            "missedReceiveReliefConsumeActions" => $this->getMissedReceiveReliefConsumeActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getMissedReceiveReliefConsumeActions() !== null && $this->getMissedReceiveReliefConsumeActions() !== null ? $this->getMissedReceiveReliefConsumeActions() : []
+                $this->getMissedReceiveReliefConsumeActions()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

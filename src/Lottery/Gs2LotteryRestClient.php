@@ -101,6 +101,8 @@ use Gs2\Lottery\Request\ExportMasterRequest;
 use Gs2\Lottery\Result\ExportMasterResult;
 use Gs2\Lottery\Request\GetCurrentLotteryMasterRequest;
 use Gs2\Lottery\Result\GetCurrentLotteryMasterResult;
+use Gs2\Lottery\Request\PreUpdateCurrentLotteryMasterRequest;
+use Gs2\Lottery\Result\PreUpdateCurrentLotteryMasterResult;
 use Gs2\Lottery\Request\UpdateCurrentLotteryMasterRequest;
 use Gs2\Lottery\Result\UpdateCurrentLotteryMasterResult;
 use Gs2\Lottery\Request\UpdateCurrentLotteryMasterFromGitHubRequest;
@@ -2391,6 +2393,61 @@ class GetCurrentLotteryMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentLotteryMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentLotteryMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentLotteryMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentLotteryMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentLotteryMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentLotteryMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentLotteryMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -2421,14 +2478,48 @@ class UpdateCurrentLotteryMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentLotteryMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentLotteryMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentLotteryMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "lottery", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -4118,6 +4209,33 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
             GetCurrentLotteryMasterRequest $request
     ): GetCurrentLotteryMasterResult {
         return $this->getCurrentLotteryMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentLotteryMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentLotteryMasterAsync(
+            PreUpdateCurrentLotteryMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentLotteryMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentLotteryMasterRequest $request
+     * @return PreUpdateCurrentLotteryMasterResult
+     */
+    public function preUpdateCurrentLotteryMaster (
+            PreUpdateCurrentLotteryMasterRequest $request
+    ): PreUpdateCurrentLotteryMasterResult {
+        return $this->preUpdateCurrentLotteryMasterAsync(
             $request
         )->wait();
     }

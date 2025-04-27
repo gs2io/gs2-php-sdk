@@ -105,6 +105,8 @@ use Gs2\Matchmaking\Request\ExportMasterRequest;
 use Gs2\Matchmaking\Result\ExportMasterResult;
 use Gs2\Matchmaking\Request\GetCurrentModelMasterRequest;
 use Gs2\Matchmaking\Result\GetCurrentModelMasterResult;
+use Gs2\Matchmaking\Request\PreUpdateCurrentModelMasterRequest;
+use Gs2\Matchmaking\Result\PreUpdateCurrentModelMasterResult;
 use Gs2\Matchmaking\Request\UpdateCurrentModelMasterRequest;
 use Gs2\Matchmaking\Result\UpdateCurrentModelMasterResult;
 use Gs2\Matchmaking\Request\UpdateCurrentModelMasterFromGitHubRequest;
@@ -2679,6 +2681,61 @@ class GetCurrentModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentModelMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -2709,14 +2766,48 @@ class UpdateCurrentModelMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentModelMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentModelMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentModelMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -5836,6 +5927,33 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
             GetCurrentModelMasterRequest $request
     ): GetCurrentModelMasterResult {
         return $this->getCurrentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentModelMasterAsync(
+            PreUpdateCurrentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentModelMasterRequest $request
+     * @return PreUpdateCurrentModelMasterResult
+     */
+    public function preUpdateCurrentModelMaster (
+            PreUpdateCurrentModelMasterRequest $request
+    ): PreUpdateCurrentModelMasterResult {
+        return $this->preUpdateCurrentModelMasterAsync(
             $request
         )->wait();
     }

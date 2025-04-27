@@ -43,21 +43,21 @@ class ReceiveGlobalMessageByUserIdResult implements IResult {
             return null;
         }
         return (new ReceiveGlobalMessageByUserIdResult())
-            ->withItem(array_map(
+            ->withItem(!array_key_exists('item', $data) || $data['item'] === null ? null : array_map(
                 function ($item) {
                     return Message::fromJson($item);
                 },
-                array_key_exists('item', $data) && $data['item'] !== null ? $data['item'] : []
+                $data['item']
             ));
     }
 
     public function toJson(): array {
         return array(
-            "item" => array_map(
+            "item" => $this->getItem() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getItem() !== null && $this->getItem() !== null ? $this->getItem() : []
+                $this->getItem()
             ),
         );
     }

@@ -90,11 +90,11 @@ class VoteRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withBallotBody(array_key_exists('ballotBody', $data) && $data['ballotBody'] !== null ? $data['ballotBody'] : null)
             ->withBallotSignature(array_key_exists('ballotSignature', $data) && $data['ballotSignature'] !== null ? $data['ballotSignature'] : null)
-            ->withGameResults(array_map(
+            ->withGameResults(!array_key_exists('gameResults', $data) || $data['gameResults'] === null ? null : array_map(
                 function ($item) {
                     return GameResult::fromJson($item);
                 },
-                array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
+                $data['gameResults']
             ))
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
     }
@@ -104,11 +104,11 @@ class VoteRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "ballotBody" => $this->getBallotBody(),
             "ballotSignature" => $this->getBallotSignature(),
-            "gameResults" => array_map(
+            "gameResults" => $this->getGameResults() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getGameResults() !== null && $this->getGameResults() !== null ? $this->getGameResults() : []
+                $this->getGameResults()
             ),
             "keyId" => $this->getKeyId(),
         );

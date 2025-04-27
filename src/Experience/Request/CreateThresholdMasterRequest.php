@@ -90,11 +90,11 @@ class CreateThresholdMasterRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withValues(array_map(
+            ->withValues(!array_key_exists('values', $data) || $data['values'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
+                $data['values']
             ));
     }
 
@@ -104,11 +104,11 @@ class CreateThresholdMasterRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "values" => array_map(
+            "values" => $this->getValues() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getValues() !== null && $this->getValues() !== null ? $this->getValues() : []
+                $this->getValues()
             ),
         );
     }

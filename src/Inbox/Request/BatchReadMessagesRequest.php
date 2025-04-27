@@ -92,17 +92,17 @@ class BatchReadMessagesRequest extends Gs2BasicRequest {
         return (new BatchReadMessagesRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withMessageNames(array_map(
+            ->withMessageNames(!array_key_exists('messageNames', $data) || $data['messageNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('messageNames', $data) && $data['messageNames'] !== null ? $data['messageNames'] : []
+                $data['messageNames']
             ))
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ));
     }
 
@@ -110,17 +110,17 @@ class BatchReadMessagesRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "messageNames" => array_map(
+            "messageNames" => $this->getMessageNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getMessageNames() !== null && $this->getMessageNames() !== null ? $this->getMessageNames() : []
+                $this->getMessageNames()
             ),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
         );
     }

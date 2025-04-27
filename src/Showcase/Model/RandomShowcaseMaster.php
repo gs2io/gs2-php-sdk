@@ -200,11 +200,11 @@ class RandomShowcaseMaster implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withMaximumNumberOfChoice(array_key_exists('maximumNumberOfChoice', $data) && $data['maximumNumberOfChoice'] !== null ? $data['maximumNumberOfChoice'] : null)
-            ->withDisplayItems(array_map(
+            ->withDisplayItems(!array_key_exists('displayItems', $data) || $data['displayItems'] === null ? null : array_map(
                 function ($item) {
                     return RandomDisplayItemModel::fromJson($item);
                 },
-                array_key_exists('displayItems', $data) && $data['displayItems'] !== null ? $data['displayItems'] : []
+                $data['displayItems']
             ))
             ->withBaseTimestamp(array_key_exists('baseTimestamp', $data) && $data['baseTimestamp'] !== null ? $data['baseTimestamp'] : null)
             ->withResetIntervalHours(array_key_exists('resetIntervalHours', $data) && $data['resetIntervalHours'] !== null ? $data['resetIntervalHours'] : null)
@@ -221,11 +221,11 @@ class RandomShowcaseMaster implements IModel {
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
             "maximumNumberOfChoice" => $this->getMaximumNumberOfChoice(),
-            "displayItems" => array_map(
+            "displayItems" => $this->getDisplayItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getDisplayItems() !== null && $this->getDisplayItems() !== null ? $this->getDisplayItems() : []
+                $this->getDisplayItems()
             ),
             "baseTimestamp" => $this->getBaseTimestamp(),
             "resetIntervalHours" => $this->getResetIntervalHours(),

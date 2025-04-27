@@ -92,11 +92,11 @@ class SendInGameLogRequest extends Gs2BasicRequest {
         return (new SendInGameLogRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withTags(array_map(
+            ->withTags(!array_key_exists('tags', $data) || $data['tags'] === null ? null : array_map(
                 function ($item) {
                     return InGameLogTag::fromJson($item);
                 },
-                array_key_exists('tags', $data) && $data['tags'] !== null ? $data['tags'] : []
+                $data['tags']
             ))
             ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null);
     }
@@ -105,11 +105,11 @@ class SendInGameLogRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "tags" => array_map(
+            "tags" => $this->getTags() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTags() !== null && $this->getTags() !== null ? $this->getTags() : []
+                $this->getTags()
             ),
             "payload" => $this->getPayload(),
         );

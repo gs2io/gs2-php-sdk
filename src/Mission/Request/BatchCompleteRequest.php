@@ -105,17 +105,17 @@ class BatchCompleteRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withMissionTaskNames(array_map(
+            ->withMissionTaskNames(!array_key_exists('missionTaskNames', $data) || $data['missionTaskNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('missionTaskNames', $data) && $data['missionTaskNames'] !== null ? $data['missionTaskNames'] : []
+                $data['missionTaskNames']
             ))
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ));
     }
 
@@ -124,17 +124,17 @@ class BatchCompleteRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "missionGroupName" => $this->getMissionGroupName(),
             "accessToken" => $this->getAccessToken(),
-            "missionTaskNames" => array_map(
+            "missionTaskNames" => $this->getMissionTaskNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getMissionTaskNames() !== null && $this->getMissionTaskNames() !== null ? $this->getMissionTaskNames() : []
+                $this->getMissionTaskNames()
             ),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
         );
     }

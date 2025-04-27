@@ -115,11 +115,11 @@ class UpdateSeasonModelMasterRequest extends Gs2BasicRequest {
             ->withSeasonName(array_key_exists('seasonName', $data) && $data['seasonName'] !== null ? $data['seasonName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withTiers(array_map(
+            ->withTiers(!array_key_exists('tiers', $data) || $data['tiers'] === null ? null : array_map(
                 function ($item) {
                     return TierModel::fromJson($item);
                 },
-                array_key_exists('tiers', $data) && $data['tiers'] !== null ? $data['tiers'] : []
+                $data['tiers']
             ))
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null);
@@ -131,11 +131,11 @@ class UpdateSeasonModelMasterRequest extends Gs2BasicRequest {
             "seasonName" => $this->getSeasonName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "tiers" => array_map(
+            "tiers" => $this->getTiers() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTiers() !== null && $this->getTiers() !== null ? $this->getTiers() : []
+                $this->getTiers()
             ),
             "experienceModelId" => $this->getExperienceModelId(),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),

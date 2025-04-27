@@ -128,24 +128,24 @@ class GradeModel implements IModel {
             ->withGradeModelId(array_key_exists('gradeModelId', $data) && $data['gradeModelId'] !== null ? $data['gradeModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withDefaultGrades(array_map(
+            ->withDefaultGrades(!array_key_exists('defaultGrades', $data) || $data['defaultGrades'] === null ? null : array_map(
                 function ($item) {
                     return DefaultGradeModel::fromJson($item);
                 },
-                array_key_exists('defaultGrades', $data) && $data['defaultGrades'] !== null ? $data['defaultGrades'] : []
+                $data['defaultGrades']
             ))
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
-            ->withGradeEntries(array_map(
+            ->withGradeEntries(!array_key_exists('gradeEntries', $data) || $data['gradeEntries'] === null ? null : array_map(
                 function ($item) {
                     return GradeEntryModel::fromJson($item);
                 },
-                array_key_exists('gradeEntries', $data) && $data['gradeEntries'] !== null ? $data['gradeEntries'] : []
+                $data['gradeEntries']
             ))
-            ->withAcquireActionRates(array_map(
+            ->withAcquireActionRates(!array_key_exists('acquireActionRates', $data) || $data['acquireActionRates'] === null ? null : array_map(
                 function ($item) {
                     return AcquireActionRate::fromJson($item);
                 },
-                array_key_exists('acquireActionRates', $data) && $data['acquireActionRates'] !== null ? $data['acquireActionRates'] : []
+                $data['acquireActionRates']
             ));
     }
 
@@ -154,24 +154,24 @@ class GradeModel implements IModel {
             "gradeModelId" => $this->getGradeModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "defaultGrades" => array_map(
+            "defaultGrades" => $this->getDefaultGrades() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getDefaultGrades() !== null && $this->getDefaultGrades() !== null ? $this->getDefaultGrades() : []
+                $this->getDefaultGrades()
             ),
             "experienceModelId" => $this->getExperienceModelId(),
-            "gradeEntries" => array_map(
+            "gradeEntries" => $this->getGradeEntries() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getGradeEntries() !== null && $this->getGradeEntries() !== null ? $this->getGradeEntries() : []
+                $this->getGradeEntries()
             ),
-            "acquireActionRates" => array_map(
+            "acquireActionRates" => $this->getAcquireActionRates() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActionRates() !== null && $this->getAcquireActionRates() !== null ? $this->getAcquireActionRates() : []
+                $this->getAcquireActionRates()
             ),
         );
     }

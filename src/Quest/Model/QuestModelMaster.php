@@ -242,42 +242,42 @@ class QuestModelMaster implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withContents(array_map(
+            ->withContents(!array_key_exists('contents', $data) || $data['contents'] === null ? null : array_map(
                 function ($item) {
                     return Contents::fromJson($item);
                 },
-                array_key_exists('contents', $data) && $data['contents'] !== null ? $data['contents'] : []
+                $data['contents']
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
-            ->withFirstCompleteAcquireActions(array_map(
+            ->withFirstCompleteAcquireActions(!array_key_exists('firstCompleteAcquireActions', $data) || $data['firstCompleteAcquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('firstCompleteAcquireActions', $data) && $data['firstCompleteAcquireActions'] !== null ? $data['firstCompleteAcquireActions'] : []
+                $data['firstCompleteAcquireActions']
             ))
-            ->withVerifyActions(array_map(
+            ->withVerifyActions(!array_key_exists('verifyActions', $data) || $data['verifyActions'] === null ? null : array_map(
                 function ($item) {
                     return VerifyAction::fromJson($item);
                 },
-                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+                $data['verifyActions']
             ))
-            ->withConsumeActions(array_map(
+            ->withConsumeActions(!array_key_exists('consumeActions', $data) || $data['consumeActions'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
-                array_key_exists('consumeActions', $data) && $data['consumeActions'] !== null ? $data['consumeActions'] : []
+                $data['consumeActions']
             ))
-            ->withFailedAcquireActions(array_map(
+            ->withFailedAcquireActions(!array_key_exists('failedAcquireActions', $data) || $data['failedAcquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('failedAcquireActions', $data) && $data['failedAcquireActions'] !== null ? $data['failedAcquireActions'] : []
+                $data['failedAcquireActions']
             ))
-            ->withPremiseQuestNames(array_map(
+            ->withPremiseQuestNames(!array_key_exists('premiseQuestNames', $data) || $data['premiseQuestNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('premiseQuestNames', $data) && $data['premiseQuestNames'] !== null ? $data['premiseQuestNames'] : []
+                $data['premiseQuestNames']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -291,42 +291,42 @@ class QuestModelMaster implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "contents" => array_map(
+            "contents" => $this->getContents() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getContents() !== null && $this->getContents() !== null ? $this->getContents() : []
+                $this->getContents()
             ),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
-            "firstCompleteAcquireActions" => array_map(
+            "firstCompleteAcquireActions" => $this->getFirstCompleteAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getFirstCompleteAcquireActions() !== null && $this->getFirstCompleteAcquireActions() !== null ? $this->getFirstCompleteAcquireActions() : []
+                $this->getFirstCompleteAcquireActions()
             ),
-            "verifyActions" => array_map(
+            "verifyActions" => $this->getVerifyActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
+                $this->getVerifyActions()
             ),
-            "consumeActions" => array_map(
+            "consumeActions" => $this->getConsumeActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConsumeActions() !== null && $this->getConsumeActions() !== null ? $this->getConsumeActions() : []
+                $this->getConsumeActions()
             ),
-            "failedAcquireActions" => array_map(
+            "failedAcquireActions" => $this->getFailedAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getFailedAcquireActions() !== null && $this->getFailedAcquireActions() !== null ? $this->getFailedAcquireActions() : []
+                $this->getFailedAcquireActions()
             ),
-            "premiseQuestNames" => array_map(
+            "premiseQuestNames" => $this->getPremiseQuestNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getPremiseQuestNames() !== null && $this->getPremiseQuestNames() !== null ? $this->getPremiseQuestNames() : []
+                $this->getPremiseQuestNames()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

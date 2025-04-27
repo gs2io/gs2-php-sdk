@@ -56,22 +56,22 @@ class DrawnPrize implements IModel {
         }
         return (new DrawnPrize())
             ->withPrizeId(array_key_exists('prizeId', $data) && $data['prizeId'] !== null ? $data['prizeId'] : null)
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ));
     }
 
     public function toJson(): array {
         return array(
             "prizeId" => $this->getPrizeId(),
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
         );
     }

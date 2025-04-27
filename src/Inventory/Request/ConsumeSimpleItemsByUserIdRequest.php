@@ -105,11 +105,11 @@ class ConsumeSimpleItemsByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withConsumeCounts(array_map(
+            ->withConsumeCounts(!array_key_exists('consumeCounts', $data) || $data['consumeCounts'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeCount::fromJson($item);
                 },
-                array_key_exists('consumeCounts', $data) && $data['consumeCounts'] !== null ? $data['consumeCounts'] : []
+                $data['consumeCounts']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -119,11 +119,11 @@ class ConsumeSimpleItemsByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
-            "consumeCounts" => array_map(
+            "consumeCounts" => $this->getConsumeCounts() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConsumeCounts() !== null && $this->getConsumeCounts() !== null ? $this->getConsumeCounts() : []
+                $this->getConsumeCounts()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

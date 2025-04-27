@@ -105,11 +105,11 @@ class FetchPositionRequest extends Gs2BasicRequest {
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withAreaModelName(array_key_exists('areaModelName', $data) && $data['areaModelName'] !== null ? $data['areaModelName'] : null)
             ->withLayerModelName(array_key_exists('layerModelName', $data) && $data['layerModelName'] !== null ? $data['layerModelName'] : null)
-            ->withUserIds(array_map(
+            ->withUserIds(!array_key_exists('userIds', $data) || $data['userIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('userIds', $data) && $data['userIds'] !== null ? $data['userIds'] : []
+                $data['userIds']
             ));
     }
 
@@ -119,11 +119,11 @@ class FetchPositionRequest extends Gs2BasicRequest {
             "accessToken" => $this->getAccessToken(),
             "areaModelName" => $this->getAreaModelName(),
             "layerModelName" => $this->getLayerModelName(),
-            "userIds" => array_map(
+            "userIds" => $this->getUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getUserIds() !== null && $this->getUserIds() !== null ? $this->getUserIds() : []
+                $this->getUserIds()
             ),
         );
     }

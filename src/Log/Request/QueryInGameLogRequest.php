@@ -152,11 +152,11 @@ class QueryInGameLogRequest extends Gs2BasicRequest {
         return (new QueryInGameLogRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTags(array_map(
+            ->withTags(!array_key_exists('tags', $data) || $data['tags'] === null ? null : array_map(
                 function ($item) {
                     return InGameLogTag::fromJson($item);
                 },
-                array_key_exists('tags', $data) && $data['tags'] !== null ? $data['tags'] : []
+                $data['tags']
             ))
             ->withBegin(array_key_exists('begin', $data) && $data['begin'] !== null ? $data['begin'] : null)
             ->withEnd(array_key_exists('end', $data) && $data['end'] !== null ? $data['end'] : null)
@@ -170,11 +170,11 @@ class QueryInGameLogRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "tags" => array_map(
+            "tags" => $this->getTags() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTags() !== null && $this->getTags() !== null ? $this->getTags() : []
+                $this->getTags()
             ),
             "begin" => $this->getBegin(),
             "end" => $this->getEnd(),

@@ -91,11 +91,11 @@ class UpdateFormModelMasterRequest extends Gs2BasicRequest {
             ->withFormModelName(array_key_exists('formModelName', $data) && $data['formModelName'] !== null ? $data['formModelName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withSlots(array_map(
+            ->withSlots(!array_key_exists('slots', $data) || $data['slots'] === null ? null : array_map(
                 function ($item) {
                     return SlotModel::fromJson($item);
                 },
-                array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
+                $data['slots']
             ));
     }
 
@@ -105,11 +105,11 @@ class UpdateFormModelMasterRequest extends Gs2BasicRequest {
             "formModelName" => $this->getFormModelName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "slots" => array_map(
+            "slots" => $this->getSlots() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
+                $this->getSlots()
             ),
         );
     }

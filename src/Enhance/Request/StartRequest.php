@@ -130,19 +130,19 @@ class StartRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withTargetItemSetId(array_key_exists('targetItemSetId', $data) && $data['targetItemSetId'] !== null ? $data['targetItemSetId'] : null)
-            ->withMaterials(array_map(
+            ->withMaterials(!array_key_exists('materials', $data) || $data['materials'] === null ? null : array_map(
                 function ($item) {
                     return Material::fromJson($item);
                 },
-                array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
+                $data['materials']
             ))
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withForce(array_key_exists('force', $data) ? $data['force'] : null)
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ));
     }
 
@@ -151,19 +151,19 @@ class StartRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "rateName" => $this->getRateName(),
             "targetItemSetId" => $this->getTargetItemSetId(),
-            "materials" => array_map(
+            "materials" => $this->getMaterials() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getMaterials() !== null && $this->getMaterials() !== null ? $this->getMaterials() : []
+                $this->getMaterials()
             ),
             "accessToken" => $this->getAccessToken(),
             "force" => $this->getForce(),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
         );
     }

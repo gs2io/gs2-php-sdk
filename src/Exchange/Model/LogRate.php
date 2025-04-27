@@ -56,22 +56,22 @@ class LogRate implements IModel {
         }
         return (new LogRate())
             ->withBase(array_key_exists('base', $data) && $data['base'] !== null ? $data['base'] : null)
-            ->withLogs(array_map(
+            ->withLogs(!array_key_exists('logs', $data) || $data['logs'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('logs', $data) && $data['logs'] !== null ? $data['logs'] : []
+                $data['logs']
             ));
     }
 
     public function toJson(): array {
         return array(
             "base" => $this->getBase(),
-            "logs" => array_map(
+            "logs" => $this->getLogs() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getLogs() !== null && $this->getLogs() !== null ? $this->getLogs() : []
+                $this->getLogs()
             ),
         );
     }

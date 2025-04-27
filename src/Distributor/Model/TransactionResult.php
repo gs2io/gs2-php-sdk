@@ -142,23 +142,23 @@ class TransactionResult implements IModel {
             ->withTransactionResultId(array_key_exists('transactionResultId', $data) && $data['transactionResultId'] !== null ? $data['transactionResultId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
-            ->withVerifyResults(array_map(
+            ->withVerifyResults(!array_key_exists('verifyResults', $data) || $data['verifyResults'] === null ? null : array_map(
                 function ($item) {
                     return VerifyActionResult::fromJson($item);
                 },
-                array_key_exists('verifyResults', $data) && $data['verifyResults'] !== null ? $data['verifyResults'] : []
+                $data['verifyResults']
             ))
-            ->withConsumeResults(array_map(
+            ->withConsumeResults(!array_key_exists('consumeResults', $data) || $data['consumeResults'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeActionResult::fromJson($item);
                 },
-                array_key_exists('consumeResults', $data) && $data['consumeResults'] !== null ? $data['consumeResults'] : []
+                $data['consumeResults']
             ))
-            ->withAcquireResults(array_map(
+            ->withAcquireResults(!array_key_exists('acquireResults', $data) || $data['acquireResults'] === null ? null : array_map(
                 function ($item) {
                     return AcquireActionResult::fromJson($item);
                 },
-                array_key_exists('acquireResults', $data) && $data['acquireResults'] !== null ? $data['acquireResults'] : []
+                $data['acquireResults']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -169,23 +169,23 @@ class TransactionResult implements IModel {
             "transactionResultId" => $this->getTransactionResultId(),
             "userId" => $this->getUserId(),
             "transactionId" => $this->getTransactionId(),
-            "verifyResults" => array_map(
+            "verifyResults" => $this->getVerifyResults() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getVerifyResults() !== null && $this->getVerifyResults() !== null ? $this->getVerifyResults() : []
+                $this->getVerifyResults()
             ),
-            "consumeResults" => array_map(
+            "consumeResults" => $this->getConsumeResults() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConsumeResults() !== null && $this->getConsumeResults() !== null ? $this->getConsumeResults() : []
+                $this->getConsumeResults()
             ),
-            "acquireResults" => array_map(
+            "acquireResults" => $this->getAcquireResults() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireResults() !== null && $this->getAcquireResults() !== null ? $this->getAcquireResults() : []
+                $this->getAcquireResults()
             ),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),

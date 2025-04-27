@@ -104,11 +104,11 @@ class MarkRestrainByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withNodeModelNames(array_map(
+            ->withNodeModelNames(!array_key_exists('nodeModelNames', $data) || $data['nodeModelNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('nodeModelNames', $data) && $data['nodeModelNames'] !== null ? $data['nodeModelNames'] : []
+                $data['nodeModelNames']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -118,11 +118,11 @@ class MarkRestrainByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "propertyId" => $this->getPropertyId(),
-            "nodeModelNames" => array_map(
+            "nodeModelNames" => $this->getNodeModelNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getNodeModelNames() !== null && $this->getNodeModelNames() !== null ? $this->getNodeModelNames() : []
+                $this->getNodeModelNames()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

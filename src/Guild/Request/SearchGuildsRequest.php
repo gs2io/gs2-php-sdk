@@ -213,41 +213,41 @@ class SearchGuildsRequest extends Gs2BasicRequest {
             ->withGuildModelName(array_key_exists('guildModelName', $data) && $data['guildModelName'] !== null ? $data['guildModelName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withDisplayName(array_key_exists('displayName', $data) && $data['displayName'] !== null ? $data['displayName'] : null)
-            ->withAttributes1(array_map(
+            ->withAttributes1(!array_key_exists('attributes1', $data) || $data['attributes1'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('attributes1', $data) && $data['attributes1'] !== null ? $data['attributes1'] : []
+                $data['attributes1']
             ))
-            ->withAttributes2(array_map(
+            ->withAttributes2(!array_key_exists('attributes2', $data) || $data['attributes2'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('attributes2', $data) && $data['attributes2'] !== null ? $data['attributes2'] : []
+                $data['attributes2']
             ))
-            ->withAttributes3(array_map(
+            ->withAttributes3(!array_key_exists('attributes3', $data) || $data['attributes3'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('attributes3', $data) && $data['attributes3'] !== null ? $data['attributes3'] : []
+                $data['attributes3']
             ))
-            ->withAttributes4(array_map(
+            ->withAttributes4(!array_key_exists('attributes4', $data) || $data['attributes4'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('attributes4', $data) && $data['attributes4'] !== null ? $data['attributes4'] : []
+                $data['attributes4']
             ))
-            ->withAttributes5(array_map(
+            ->withAttributes5(!array_key_exists('attributes5', $data) || $data['attributes5'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('attributes5', $data) && $data['attributes5'] !== null ? $data['attributes5'] : []
+                $data['attributes5']
             ))
-            ->withJoinPolicies(array_map(
+            ->withJoinPolicies(!array_key_exists('joinPolicies', $data) || $data['joinPolicies'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('joinPolicies', $data) && $data['joinPolicies'] !== null ? $data['joinPolicies'] : []
+                $data['joinPolicies']
             ))
             ->withIncludeFullMembersGuild(array_key_exists('includeFullMembersGuild', $data) ? $data['includeFullMembersGuild'] : null)
             ->withOrderBy(array_key_exists('orderBy', $data) && $data['orderBy'] !== null ? $data['orderBy'] : null)
@@ -261,41 +261,41 @@ class SearchGuildsRequest extends Gs2BasicRequest {
             "guildModelName" => $this->getGuildModelName(),
             "accessToken" => $this->getAccessToken(),
             "displayName" => $this->getDisplayName(),
-            "attributes1" => array_map(
+            "attributes1" => $this->getAttributes1() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAttributes1() !== null && $this->getAttributes1() !== null ? $this->getAttributes1() : []
+                $this->getAttributes1()
             ),
-            "attributes2" => array_map(
+            "attributes2" => $this->getAttributes2() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAttributes2() !== null && $this->getAttributes2() !== null ? $this->getAttributes2() : []
+                $this->getAttributes2()
             ),
-            "attributes3" => array_map(
+            "attributes3" => $this->getAttributes3() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAttributes3() !== null && $this->getAttributes3() !== null ? $this->getAttributes3() : []
+                $this->getAttributes3()
             ),
-            "attributes4" => array_map(
+            "attributes4" => $this->getAttributes4() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAttributes4() !== null && $this->getAttributes4() !== null ? $this->getAttributes4() : []
+                $this->getAttributes4()
             ),
-            "attributes5" => array_map(
+            "attributes5" => $this->getAttributes5() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAttributes5() !== null && $this->getAttributes5() !== null ? $this->getAttributes5() : []
+                $this->getAttributes5()
             ),
-            "joinPolicies" => array_map(
+            "joinPolicies" => $this->getJoinPolicies() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getJoinPolicies() !== null && $this->getJoinPolicies() !== null ? $this->getJoinPolicies() : []
+                $this->getJoinPolicies()
             ),
             "includeFullMembersGuild" => $this->getIncludeFullMembersGuild(),
             "orderBy" => $this->getOrderBy(),

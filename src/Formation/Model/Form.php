@@ -128,11 +128,11 @@ class Form implements IModel {
             ->withFormId(array_key_exists('formId', $data) && $data['formId'] !== null ? $data['formId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withIndex(array_key_exists('index', $data) && $data['index'] !== null ? $data['index'] : null)
-            ->withSlots(array_map(
+            ->withSlots(!array_key_exists('slots', $data) || $data['slots'] === null ? null : array_map(
                 function ($item) {
                     return Slot::fromJson($item);
                 },
-                array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
+                $data['slots']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -144,11 +144,11 @@ class Form implements IModel {
             "formId" => $this->getFormId(),
             "name" => $this->getName(),
             "index" => $this->getIndex(),
-            "slots" => array_map(
+            "slots" => $this->getSlots() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
+                $this->getSlots()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

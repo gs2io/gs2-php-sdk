@@ -57,22 +57,22 @@ class PushByUserIdResult implements IResult {
             return null;
         }
         return (new PushByUserIdResult())
-            ->withItems(array_map(
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
                 function ($item) {
                     return Job::fromJson($item);
                 },
-                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+                $data['items']
             ))
             ->withAutoRun(array_key_exists('autoRun', $data) ? $data['autoRun'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "items" => array_map(
+            "items" => $this->getItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+                $this->getItems()
             ),
             "autoRun" => $this->getAutoRun(),
         );

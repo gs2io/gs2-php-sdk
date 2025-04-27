@@ -357,17 +357,17 @@ class CategoryModel implements IModel {
             ->withCalculateFixedTimingHour(array_key_exists('calculateFixedTimingHour', $data) && $data['calculateFixedTimingHour'] !== null ? $data['calculateFixedTimingHour'] : null)
             ->withCalculateFixedTimingMinute(array_key_exists('calculateFixedTimingMinute', $data) && $data['calculateFixedTimingMinute'] !== null ? $data['calculateFixedTimingMinute'] : null)
             ->withCalculateIntervalMinutes(array_key_exists('calculateIntervalMinutes', $data) && $data['calculateIntervalMinutes'] !== null ? $data['calculateIntervalMinutes'] : null)
-            ->withAdditionalScopes(array_map(
+            ->withAdditionalScopes(!array_key_exists('additionalScopes', $data) || $data['additionalScopes'] === null ? null : array_map(
                 function ($item) {
                     return Scope::fromJson($item);
                 },
-                array_key_exists('additionalScopes', $data) && $data['additionalScopes'] !== null ? $data['additionalScopes'] : []
+                $data['additionalScopes']
             ))
-            ->withIgnoreUserIds(array_map(
+            ->withIgnoreUserIds(!array_key_exists('ignoreUserIds', $data) || $data['ignoreUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('ignoreUserIds', $data) && $data['ignoreUserIds'] !== null ? $data['ignoreUserIds'] : []
+                $data['ignoreUserIds']
             ))
             ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null);
     }
@@ -389,17 +389,17 @@ class CategoryModel implements IModel {
             "calculateFixedTimingHour" => $this->getCalculateFixedTimingHour(),
             "calculateFixedTimingMinute" => $this->getCalculateFixedTimingMinute(),
             "calculateIntervalMinutes" => $this->getCalculateIntervalMinutes(),
-            "additionalScopes" => array_map(
+            "additionalScopes" => $this->getAdditionalScopes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAdditionalScopes() !== null && $this->getAdditionalScopes() !== null ? $this->getAdditionalScopes() : []
+                $this->getAdditionalScopes()
             ),
-            "ignoreUserIds" => array_map(
+            "ignoreUserIds" => $this->getIgnoreUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getIgnoreUserIds() !== null && $this->getIgnoreUserIds() !== null ? $this->getIgnoreUserIds() : []
+                $this->getIgnoreUserIds()
             ),
             "generation" => $this->getGeneration(),
         );

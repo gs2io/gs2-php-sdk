@@ -143,11 +143,11 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withAdmob(array_key_exists('admob', $data) && $data['admob'] !== null ? AdMob::fromJson($data['admob']) : null)
             ->withUnityAd(array_key_exists('unityAd', $data) && $data['unityAd'] !== null ? UnityAd::fromJson($data['unityAd']) : null)
-            ->withAppLovinMaxes(array_map(
+            ->withAppLovinMaxes(!array_key_exists('appLovinMaxes', $data) || $data['appLovinMaxes'] === null ? null : array_map(
                 function ($item) {
                     return AppLovinMax::fromJson($item);
                 },
-                array_key_exists('appLovinMaxes', $data) && $data['appLovinMaxes'] !== null ? $data['appLovinMaxes'] : []
+                $data['appLovinMaxes']
             ))
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAcquirePointScript(array_key_exists('acquirePointScript', $data) && $data['acquirePointScript'] !== null ? ScriptSetting::fromJson($data['acquirePointScript']) : null)
@@ -161,11 +161,11 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "admob" => $this->getAdmob() !== null ? $this->getAdmob()->toJson() : null,
             "unityAd" => $this->getUnityAd() !== null ? $this->getUnityAd()->toJson() : null,
-            "appLovinMaxes" => array_map(
+            "appLovinMaxes" => $this->getAppLovinMaxes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAppLovinMaxes() !== null && $this->getAppLovinMaxes() !== null ? $this->getAppLovinMaxes() : []
+                $this->getAppLovinMaxes()
             ),
             "description" => $this->getDescription(),
             "acquirePointScript" => $this->getAcquirePointScript() !== null ? $this->getAcquirePointScript()->toJson() : null,

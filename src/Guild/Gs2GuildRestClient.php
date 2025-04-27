@@ -159,6 +159,8 @@ use Gs2\Guild\Request\ExportMasterRequest;
 use Gs2\Guild\Result\ExportMasterResult;
 use Gs2\Guild\Request\GetCurrentGuildMasterRequest;
 use Gs2\Guild\Result\GetCurrentGuildMasterResult;
+use Gs2\Guild\Request\PreUpdateCurrentGuildMasterRequest;
+use Gs2\Guild\Result\PreUpdateCurrentGuildMasterResult;
 use Gs2\Guild\Request\UpdateCurrentGuildMasterRequest;
 use Gs2\Guild\Result\UpdateCurrentGuildMasterResult;
 use Gs2\Guild\Request\UpdateCurrentGuildMasterFromGitHubRequest;
@@ -4655,6 +4657,61 @@ class GetCurrentGuildMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentGuildMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentGuildMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentGuildMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentGuildMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentGuildMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentGuildMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentGuildMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -4685,14 +4742,48 @@ class UpdateCurrentGuildMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentGuildMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentGuildMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentGuildMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "guild", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -8084,6 +8175,33 @@ class Gs2GuildRestClient extends AbstractGs2Client {
             GetCurrentGuildMasterRequest $request
     ): GetCurrentGuildMasterResult {
         return $this->getCurrentGuildMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentGuildMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentGuildMasterAsync(
+            PreUpdateCurrentGuildMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentGuildMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentGuildMasterRequest $request
+     * @return PreUpdateCurrentGuildMasterResult
+     */
+    public function preUpdateCurrentGuildMaster (
+            PreUpdateCurrentGuildMasterRequest $request
+    ): PreUpdateCurrentGuildMasterResult {
+        return $this->preUpdateCurrentGuildMasterAsync(
             $request
         )->wait();
     }

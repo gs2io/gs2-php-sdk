@@ -75,11 +75,11 @@ class DecreaseByStampTaskResult implements IResult {
         }
         return (new DecreaseByStampTaskResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Counter::fromJson($data['item']) : null)
-            ->withChangedCompletes(array_map(
+            ->withChangedCompletes(!array_key_exists('changedCompletes', $data) || $data['changedCompletes'] === null ? null : array_map(
                 function ($item) {
                     return Complete::fromJson($item);
                 },
-                array_key_exists('changedCompletes', $data) && $data['changedCompletes'] !== null ? $data['changedCompletes'] : []
+                $data['changedCompletes']
             ))
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
@@ -87,11 +87,11 @@ class DecreaseByStampTaskResult implements IResult {
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "changedCompletes" => array_map(
+            "changedCompletes" => $this->getChangedCompletes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getChangedCompletes() !== null && $this->getChangedCompletes() !== null ? $this->getChangedCompletes() : []
+                $this->getChangedCompletes()
             ),
             "newContextStack" => $this->getNewContextStack(),
         );

@@ -240,42 +240,42 @@ class StampSheetResult implements IModel {
             ->withStampSheetResultId(array_key_exists('stampSheetResultId', $data) && $data['stampSheetResultId'] !== null ? $data['stampSheetResultId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
-            ->withVerifyTaskRequests(array_map(
+            ->withVerifyTaskRequests(!array_key_exists('verifyTaskRequests', $data) || $data['verifyTaskRequests'] === null ? null : array_map(
                 function ($item) {
                     return VerifyAction::fromJson($item);
                 },
-                array_key_exists('verifyTaskRequests', $data) && $data['verifyTaskRequests'] !== null ? $data['verifyTaskRequests'] : []
+                $data['verifyTaskRequests']
             ))
-            ->withTaskRequests(array_map(
+            ->withTaskRequests(!array_key_exists('taskRequests', $data) || $data['taskRequests'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
-                array_key_exists('taskRequests', $data) && $data['taskRequests'] !== null ? $data['taskRequests'] : []
+                $data['taskRequests']
             ))
             ->withSheetRequest(array_key_exists('sheetRequest', $data) && $data['sheetRequest'] !== null ? AcquireAction::fromJson($data['sheetRequest']) : null)
-            ->withVerifyTaskResultCodes(array_map(
+            ->withVerifyTaskResultCodes(!array_key_exists('verifyTaskResultCodes', $data) || $data['verifyTaskResultCodes'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('verifyTaskResultCodes', $data) && $data['verifyTaskResultCodes'] !== null ? $data['verifyTaskResultCodes'] : []
+                $data['verifyTaskResultCodes']
             ))
-            ->withVerifyTaskResults(array_map(
+            ->withVerifyTaskResults(!array_key_exists('verifyTaskResults', $data) || $data['verifyTaskResults'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('verifyTaskResults', $data) && $data['verifyTaskResults'] !== null ? $data['verifyTaskResults'] : []
+                $data['verifyTaskResults']
             ))
-            ->withTaskResultCodes(array_map(
+            ->withTaskResultCodes(!array_key_exists('taskResultCodes', $data) || $data['taskResultCodes'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('taskResultCodes', $data) && $data['taskResultCodes'] !== null ? $data['taskResultCodes'] : []
+                $data['taskResultCodes']
             ))
-            ->withTaskResults(array_map(
+            ->withTaskResults(!array_key_exists('taskResults', $data) || $data['taskResults'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('taskResults', $data) && $data['taskResults'] !== null ? $data['taskResults'] : []
+                $data['taskResults']
             ))
             ->withSheetResultCode(array_key_exists('sheetResultCode', $data) && $data['sheetResultCode'] !== null ? $data['sheetResultCode'] : null)
             ->withSheetResult(array_key_exists('sheetResult', $data) && $data['sheetResult'] !== null ? $data['sheetResult'] : null)
@@ -289,42 +289,42 @@ class StampSheetResult implements IModel {
             "stampSheetResultId" => $this->getStampSheetResultId(),
             "userId" => $this->getUserId(),
             "transactionId" => $this->getTransactionId(),
-            "verifyTaskRequests" => array_map(
+            "verifyTaskRequests" => $this->getVerifyTaskRequests() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getVerifyTaskRequests() !== null && $this->getVerifyTaskRequests() !== null ? $this->getVerifyTaskRequests() : []
+                $this->getVerifyTaskRequests()
             ),
-            "taskRequests" => array_map(
+            "taskRequests" => $this->getTaskRequests() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTaskRequests() !== null && $this->getTaskRequests() !== null ? $this->getTaskRequests() : []
+                $this->getTaskRequests()
             ),
             "sheetRequest" => $this->getSheetRequest() !== null ? $this->getSheetRequest()->toJson() : null,
-            "verifyTaskResultCodes" => array_map(
+            "verifyTaskResultCodes" => $this->getVerifyTaskResultCodes() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getVerifyTaskResultCodes() !== null && $this->getVerifyTaskResultCodes() !== null ? $this->getVerifyTaskResultCodes() : []
+                $this->getVerifyTaskResultCodes()
             ),
-            "verifyTaskResults" => array_map(
+            "verifyTaskResults" => $this->getVerifyTaskResults() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getVerifyTaskResults() !== null && $this->getVerifyTaskResults() !== null ? $this->getVerifyTaskResults() : []
+                $this->getVerifyTaskResults()
             ),
-            "taskResultCodes" => array_map(
+            "taskResultCodes" => $this->getTaskResultCodes() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getTaskResultCodes() !== null && $this->getTaskResultCodes() !== null ? $this->getTaskResultCodes() : []
+                $this->getTaskResultCodes()
             ),
-            "taskResults" => array_map(
+            "taskResults" => $this->getTaskResults() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getTaskResults() !== null && $this->getTaskResults() !== null ? $this->getTaskResults() : []
+                $this->getTaskResults()
             ),
             "sheetResultCode" => $this->getSheetResultCode(),
             "sheetResult" => $this->getSheetResult(),

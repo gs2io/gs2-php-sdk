@@ -93,11 +93,11 @@ class ResetCounterRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
-            ->withScopes(array_map(
+            ->withScopes(!array_key_exists('scopes', $data) || $data['scopes'] === null ? null : array_map(
                 function ($item) {
                     return ScopedValue::fromJson($item);
                 },
-                array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
+                $data['scopes']
             ));
     }
 
@@ -106,11 +106,11 @@ class ResetCounterRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "counterName" => $this->getCounterName(),
-            "scopes" => array_map(
+            "scopes" => $this->getScopes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
+                $this->getScopes()
             ),
         );
     }

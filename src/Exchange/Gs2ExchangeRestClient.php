@@ -99,6 +99,8 @@ use Gs2\Exchange\Request\ExportMasterRequest;
 use Gs2\Exchange\Result\ExportMasterResult;
 use Gs2\Exchange\Request\GetCurrentRateMasterRequest;
 use Gs2\Exchange\Result\GetCurrentRateMasterResult;
+use Gs2\Exchange\Request\PreUpdateCurrentRateMasterRequest;
+use Gs2\Exchange\Result\PreUpdateCurrentRateMasterResult;
 use Gs2\Exchange\Request\UpdateCurrentRateMasterRequest;
 use Gs2\Exchange\Result\UpdateCurrentRateMasterResult;
 use Gs2\Exchange\Request\UpdateCurrentRateMasterFromGitHubRequest;
@@ -2437,6 +2439,61 @@ class GetCurrentRateMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentRateMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentRateMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentRateMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentRateMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentRateMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentRateMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentRateMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -2467,14 +2524,48 @@ class UpdateCurrentRateMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentRateMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentRateMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentRateMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "exchange", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -4496,6 +4587,33 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
             GetCurrentRateMasterRequest $request
     ): GetCurrentRateMasterResult {
         return $this->getCurrentRateMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentRateMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentRateMasterAsync(
+            PreUpdateCurrentRateMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentRateMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentRateMasterRequest $request
+     * @return PreUpdateCurrentRateMasterResult
+     */
+    public function preUpdateCurrentRateMaster (
+            PreUpdateCurrentRateMasterRequest $request
+    ): PreUpdateCurrentRateMasterResult {
+        return $this->preUpdateCurrentRateMasterAsync(
             $request
         )->wait();
     }

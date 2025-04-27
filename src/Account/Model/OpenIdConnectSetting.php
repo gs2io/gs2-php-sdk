@@ -160,17 +160,17 @@ class OpenIdConnectSetting implements IModel {
             ->withAppleKeyId(array_key_exists('appleKeyId', $data) && $data['appleKeyId'] !== null ? $data['appleKeyId'] : null)
             ->withApplePrivateKeyPem(array_key_exists('applePrivateKeyPem', $data) && $data['applePrivateKeyPem'] !== null ? $data['applePrivateKeyPem'] : null)
             ->withDoneEndpointUrl(array_key_exists('doneEndpointUrl', $data) && $data['doneEndpointUrl'] !== null ? $data['doneEndpointUrl'] : null)
-            ->withAdditionalScopeValues(array_map(
+            ->withAdditionalScopeValues(!array_key_exists('additionalScopeValues', $data) || $data['additionalScopeValues'] === null ? null : array_map(
                 function ($item) {
                     return ScopeValue::fromJson($item);
                 },
-                array_key_exists('additionalScopeValues', $data) && $data['additionalScopeValues'] !== null ? $data['additionalScopeValues'] : []
+                $data['additionalScopeValues']
             ))
-            ->withAdditionalReturnValues(array_map(
+            ->withAdditionalReturnValues(!array_key_exists('additionalReturnValues', $data) || $data['additionalReturnValues'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('additionalReturnValues', $data) && $data['additionalReturnValues'] !== null ? $data['additionalReturnValues'] : []
+                $data['additionalReturnValues']
             ));
     }
 
@@ -183,17 +183,17 @@ class OpenIdConnectSetting implements IModel {
             "appleKeyId" => $this->getAppleKeyId(),
             "applePrivateKeyPem" => $this->getApplePrivateKeyPem(),
             "doneEndpointUrl" => $this->getDoneEndpointUrl(),
-            "additionalScopeValues" => array_map(
+            "additionalScopeValues" => $this->getAdditionalScopeValues() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAdditionalScopeValues() !== null && $this->getAdditionalScopeValues() !== null ? $this->getAdditionalScopeValues() : []
+                $this->getAdditionalScopeValues()
             ),
-            "additionalReturnValues" => array_map(
+            "additionalReturnValues" => $this->getAdditionalReturnValues() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAdditionalReturnValues() !== null && $this->getAdditionalReturnValues() !== null ? $this->getAdditionalReturnValues() : []
+                $this->getAdditionalReturnValues()
             ),
         );
     }

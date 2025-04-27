@@ -172,11 +172,11 @@ class Message implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withIsRead(array_key_exists('isRead', $data) ? $data['isRead'] : null)
-            ->withReadAcquireActions(array_map(
+            ->withReadAcquireActions(!array_key_exists('readAcquireActions', $data) || $data['readAcquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('readAcquireActions', $data) && $data['readAcquireActions'] !== null ? $data['readAcquireActions'] : []
+                $data['readAcquireActions']
             ))
             ->withReceivedAt(array_key_exists('receivedAt', $data) && $data['receivedAt'] !== null ? $data['receivedAt'] : null)
             ->withReadAt(array_key_exists('readAt', $data) && $data['readAt'] !== null ? $data['readAt'] : null)
@@ -191,11 +191,11 @@ class Message implements IModel {
             "userId" => $this->getUserId(),
             "metadata" => $this->getMetadata(),
             "isRead" => $this->getIsRead(),
-            "readAcquireActions" => array_map(
+            "readAcquireActions" => $this->getReadAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getReadAcquireActions() !== null && $this->getReadAcquireActions() !== null ? $this->getReadAcquireActions() : []
+                $this->getReadAcquireActions()
             ),
             "receivedAt" => $this->getReceivedAt(),
             "readAt" => $this->getReadAt(),

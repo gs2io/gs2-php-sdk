@@ -86,11 +86,11 @@ class SimpleInventoryModel implements IModel {
             ->withInventoryModelId(array_key_exists('inventoryModelId', $data) && $data['inventoryModelId'] !== null ? $data['inventoryModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withSimpleItemModels(array_map(
+            ->withSimpleItemModels(!array_key_exists('simpleItemModels', $data) || $data['simpleItemModels'] === null ? null : array_map(
                 function ($item) {
                     return SimpleItemModel::fromJson($item);
                 },
-                array_key_exists('simpleItemModels', $data) && $data['simpleItemModels'] !== null ? $data['simpleItemModels'] : []
+                $data['simpleItemModels']
             ));
     }
 
@@ -99,11 +99,11 @@ class SimpleInventoryModel implements IModel {
             "inventoryModelId" => $this->getInventoryModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "simpleItemModels" => array_map(
+            "simpleItemModels" => $this->getSimpleItemModels() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSimpleItemModels() !== null && $this->getSimpleItemModels() !== null ? $this->getSimpleItemModels() : []
+                $this->getSimpleItemModels()
             ),
         );
     }

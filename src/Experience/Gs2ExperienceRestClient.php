@@ -83,6 +83,8 @@ use Gs2\Experience\Request\ExportMasterRequest;
 use Gs2\Experience\Result\ExportMasterResult;
 use Gs2\Experience\Request\GetCurrentExperienceMasterRequest;
 use Gs2\Experience\Result\GetCurrentExperienceMasterResult;
+use Gs2\Experience\Request\PreUpdateCurrentExperienceMasterRequest;
+use Gs2\Experience\Result\PreUpdateCurrentExperienceMasterResult;
 use Gs2\Experience\Request\UpdateCurrentExperienceMasterRequest;
 use Gs2\Experience\Result\UpdateCurrentExperienceMasterResult;
 use Gs2\Experience\Request\UpdateCurrentExperienceMasterFromGitHubRequest;
@@ -1848,6 +1850,61 @@ class GetCurrentExperienceMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentExperienceMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentExperienceMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentExperienceMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentExperienceMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentExperienceMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentExperienceMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentExperienceMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -1878,14 +1935,48 @@ class UpdateCurrentExperienceMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentExperienceMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentExperienceMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentExperienceMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "experience", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -4601,6 +4692,33 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
             GetCurrentExperienceMasterRequest $request
     ): GetCurrentExperienceMasterResult {
         return $this->getCurrentExperienceMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentExperienceMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentExperienceMasterAsync(
+            PreUpdateCurrentExperienceMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentExperienceMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentExperienceMasterRequest $request
+     * @return PreUpdateCurrentExperienceMasterResult
+     */
+    public function preUpdateCurrentExperienceMaster (
+            PreUpdateCurrentExperienceMasterRequest $request
+    ): PreUpdateCurrentExperienceMasterResult {
+        return $this->preUpdateCurrentExperienceMasterAsync(
             $request
         )->wait();
     }

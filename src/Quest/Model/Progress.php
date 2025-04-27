@@ -186,17 +186,17 @@ class Progress implements IModel {
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withQuestModelId(array_key_exists('questModelId', $data) && $data['questModelId'] !== null ? $data['questModelId'] : null)
             ->withRandomSeed(array_key_exists('randomSeed', $data) && $data['randomSeed'] !== null ? $data['randomSeed'] : null)
-            ->withRewards(array_map(
+            ->withRewards(!array_key_exists('rewards', $data) || $data['rewards'] === null ? null : array_map(
                 function ($item) {
                     return Reward::fromJson($item);
                 },
-                array_key_exists('rewards', $data) && $data['rewards'] !== null ? $data['rewards'] : []
+                $data['rewards']
             ))
-            ->withFailedRewards(array_map(
+            ->withFailedRewards(!array_key_exists('failedRewards', $data) || $data['failedRewards'] === null ? null : array_map(
                 function ($item) {
                     return Reward::fromJson($item);
                 },
-                array_key_exists('failedRewards', $data) && $data['failedRewards'] !== null ? $data['failedRewards'] : []
+                $data['failedRewards']
             ))
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -211,17 +211,17 @@ class Progress implements IModel {
             "transactionId" => $this->getTransactionId(),
             "questModelId" => $this->getQuestModelId(),
             "randomSeed" => $this->getRandomSeed(),
-            "rewards" => array_map(
+            "rewards" => $this->getRewards() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getRewards() !== null && $this->getRewards() !== null ? $this->getRewards() : []
+                $this->getRewards()
             ),
-            "failedRewards" => array_map(
+            "failedRewards" => $this->getFailedRewards() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getFailedRewards() !== null && $this->getFailedRewards() !== null ? $this->getFailedRewards() : []
+                $this->getFailedRewards()
             ),
             "metadata" => $this->getMetadata(),
             "createdAt" => $this->getCreatedAt(),

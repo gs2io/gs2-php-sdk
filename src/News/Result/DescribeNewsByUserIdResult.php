@@ -72,11 +72,11 @@ class DescribeNewsByUserIdResult implements IResult {
             return null;
         }
         return (new DescribeNewsByUserIdResult())
-            ->withItems(array_map(
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
                 function ($item) {
                     return News::fromJson($item);
                 },
-                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+                $data['items']
             ))
             ->withContentHash(array_key_exists('contentHash', $data) && $data['contentHash'] !== null ? $data['contentHash'] : null)
             ->withTemplateHash(array_key_exists('templateHash', $data) && $data['templateHash'] !== null ? $data['templateHash'] : null);
@@ -84,11 +84,11 @@ class DescribeNewsByUserIdResult implements IResult {
 
     public function toJson(): array {
         return array(
-            "items" => array_map(
+            "items" => $this->getItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+                $this->getItems()
             ),
             "contentHash" => $this->getContentHash(),
             "templateHash" => $this->getTemplateHash(),

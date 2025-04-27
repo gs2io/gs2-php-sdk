@@ -132,11 +132,11 @@ class AcquireActionsToPropertyFormPropertiesRequest extends Gs2BasicRequest {
             ->withPropertyFormModelName(array_key_exists('propertyFormModelName', $data) && $data['propertyFormModelName'] !== null ? $data['propertyFormModelName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withAcquireAction(array_key_exists('acquireAction', $data) && $data['acquireAction'] !== null ? AcquireAction::fromJson($data['acquireAction']) : null)
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -148,11 +148,11 @@ class AcquireActionsToPropertyFormPropertiesRequest extends Gs2BasicRequest {
             "propertyFormModelName" => $this->getPropertyFormModelName(),
             "propertyId" => $this->getPropertyId(),
             "acquireAction" => $this->getAcquireAction() !== null ? $this->getAcquireAction()->toJson() : null,
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

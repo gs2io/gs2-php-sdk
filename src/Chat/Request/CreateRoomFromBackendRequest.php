@@ -130,11 +130,11 @@ class CreateRoomFromBackendRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
-            ->withWhiteListUserIds(array_map(
+            ->withWhiteListUserIds(!array_key_exists('whiteListUserIds', $data) || $data['whiteListUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('whiteListUserIds', $data) && $data['whiteListUserIds'] !== null ? $data['whiteListUserIds'] : []
+                $data['whiteListUserIds']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -146,11 +146,11 @@ class CreateRoomFromBackendRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "metadata" => $this->getMetadata(),
             "password" => $this->getPassword(),
-            "whiteListUserIds" => array_map(
+            "whiteListUserIds" => $this->getWhiteListUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getWhiteListUserIds() !== null && $this->getWhiteListUserIds() !== null ? $this->getWhiteListUserIds() : []
+                $this->getWhiteListUserIds()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

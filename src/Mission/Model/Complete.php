@@ -156,17 +156,17 @@ class Complete implements IModel {
             ->withCompleteId(array_key_exists('completeId', $data) && $data['completeId'] !== null ? $data['completeId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
-            ->withCompletedMissionTaskNames(array_map(
+            ->withCompletedMissionTaskNames(!array_key_exists('completedMissionTaskNames', $data) || $data['completedMissionTaskNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('completedMissionTaskNames', $data) && $data['completedMissionTaskNames'] !== null ? $data['completedMissionTaskNames'] : []
+                $data['completedMissionTaskNames']
             ))
-            ->withReceivedMissionTaskNames(array_map(
+            ->withReceivedMissionTaskNames(!array_key_exists('receivedMissionTaskNames', $data) || $data['receivedMissionTaskNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('receivedMissionTaskNames', $data) && $data['receivedMissionTaskNames'] !== null ? $data['receivedMissionTaskNames'] : []
+                $data['receivedMissionTaskNames']
             ))
             ->withNextResetAt(array_key_exists('nextResetAt', $data) && $data['nextResetAt'] !== null ? $data['nextResetAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -179,17 +179,17 @@ class Complete implements IModel {
             "completeId" => $this->getCompleteId(),
             "userId" => $this->getUserId(),
             "missionGroupName" => $this->getMissionGroupName(),
-            "completedMissionTaskNames" => array_map(
+            "completedMissionTaskNames" => $this->getCompletedMissionTaskNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getCompletedMissionTaskNames() !== null && $this->getCompletedMissionTaskNames() !== null ? $this->getCompletedMissionTaskNames() : []
+                $this->getCompletedMissionTaskNames()
             ),
-            "receivedMissionTaskNames" => array_map(
+            "receivedMissionTaskNames" => $this->getReceivedMissionTaskNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getReceivedMissionTaskNames() !== null && $this->getReceivedMissionTaskNames() !== null ? $this->getReceivedMissionTaskNames() : []
+                $this->getReceivedMissionTaskNames()
             ),
             "nextResetAt" => $this->getNextResetAt(),
             "createdAt" => $this->getCreatedAt(),

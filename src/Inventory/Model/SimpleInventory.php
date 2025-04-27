@@ -128,11 +128,11 @@ class SimpleInventory implements IModel {
             ->withInventoryId(array_key_exists('inventoryId', $data) && $data['inventoryId'] !== null ? $data['inventoryId'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withSimpleItems(array_map(
+            ->withSimpleItems(!array_key_exists('simpleItems', $data) || $data['simpleItems'] === null ? null : array_map(
                 function ($item) {
                     return SimpleItem::fromJson($item);
                 },
-                array_key_exists('simpleItems', $data) && $data['simpleItems'] !== null ? $data['simpleItems'] : []
+                $data['simpleItems']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -144,11 +144,11 @@ class SimpleInventory implements IModel {
             "inventoryId" => $this->getInventoryId(),
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
-            "simpleItems" => array_map(
+            "simpleItems" => $this->getSimpleItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSimpleItems() !== null && $this->getSimpleItems() !== null ? $this->getSimpleItems() : []
+                $this->getSimpleItems()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

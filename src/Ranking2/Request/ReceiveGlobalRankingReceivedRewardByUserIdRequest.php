@@ -118,11 +118,11 @@ class ReceiveGlobalRankingReceivedRewardByUserIdRequest extends Gs2BasicRequest 
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withRankingName(array_key_exists('rankingName', $data) && $data['rankingName'] !== null ? $data['rankingName'] : null)
             ->withSeason(array_key_exists('season', $data) && $data['season'] !== null ? $data['season'] : null)
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -133,11 +133,11 @@ class ReceiveGlobalRankingReceivedRewardByUserIdRequest extends Gs2BasicRequest 
             "userId" => $this->getUserId(),
             "rankingName" => $this->getRankingName(),
             "season" => $this->getSeason(),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

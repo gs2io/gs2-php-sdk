@@ -105,11 +105,11 @@ class AcquireSimpleItemsByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withAcquireCounts(array_map(
+            ->withAcquireCounts(!array_key_exists('acquireCounts', $data) || $data['acquireCounts'] === null ? null : array_map(
                 function ($item) {
                     return AcquireCount::fromJson($item);
                 },
-                array_key_exists('acquireCounts', $data) && $data['acquireCounts'] !== null ? $data['acquireCounts'] : []
+                $data['acquireCounts']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -119,11 +119,11 @@ class AcquireSimpleItemsByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "inventoryName" => $this->getInventoryName(),
             "userId" => $this->getUserId(),
-            "acquireCounts" => array_map(
+            "acquireCounts" => $this->getAcquireCounts() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireCounts() !== null && $this->getAcquireCounts() !== null ? $this->getAcquireCounts() : []
+                $this->getAcquireCounts()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

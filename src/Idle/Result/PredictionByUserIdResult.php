@@ -58,22 +58,22 @@ class PredictionByUserIdResult implements IResult {
             return null;
         }
         return (new PredictionByUserIdResult())
-            ->withItems(array_map(
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+                $data['items']
             ))
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? Status::fromJson($data['status']) : null);
     }
 
     public function toJson(): array {
         return array(
-            "items" => array_map(
+            "items" => $this->getItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+                $this->getItems()
             ),
             "status" => $this->getStatus() !== null ? $this->getStatus()->toJson() : null,
         );

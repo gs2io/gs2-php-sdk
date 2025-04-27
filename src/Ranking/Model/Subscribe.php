@@ -128,17 +128,17 @@ class Subscribe implements IModel {
             ->withSubscribeId(array_key_exists('subscribeId', $data) && $data['subscribeId'] !== null ? $data['subscribeId'] : null)
             ->withCategoryName(array_key_exists('categoryName', $data) && $data['categoryName'] !== null ? $data['categoryName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTargetUserIds(array_map(
+            ->withTargetUserIds(!array_key_exists('targetUserIds', $data) || $data['targetUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('targetUserIds', $data) && $data['targetUserIds'] !== null ? $data['targetUserIds'] : []
+                $data['targetUserIds']
             ))
-            ->withSubscribedUserIds(array_map(
+            ->withSubscribedUserIds(!array_key_exists('subscribedUserIds', $data) || $data['subscribedUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('subscribedUserIds', $data) && $data['subscribedUserIds'] !== null ? $data['subscribedUserIds'] : []
+                $data['subscribedUserIds']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -149,17 +149,17 @@ class Subscribe implements IModel {
             "subscribeId" => $this->getSubscribeId(),
             "categoryName" => $this->getCategoryName(),
             "userId" => $this->getUserId(),
-            "targetUserIds" => array_map(
+            "targetUserIds" => $this->getTargetUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getTargetUserIds() !== null && $this->getTargetUserIds() !== null ? $this->getTargetUserIds() : []
+                $this->getTargetUserIds()
             ),
-            "subscribedUserIds" => array_map(
+            "subscribedUserIds" => $this->getSubscribedUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getSubscribedUserIds() !== null && $this->getSubscribedUserIds() !== null ? $this->getSubscribedUserIds() : []
+                $this->getSubscribedUserIds()
             ),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),

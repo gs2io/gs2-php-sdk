@@ -113,11 +113,11 @@ class Follow implements IModel {
         return (new Follow())
             ->withFollowId(array_key_exists('followId', $data) && $data['followId'] !== null ? $data['followId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTargetUserIds(array_map(
+            ->withTargetUserIds(!array_key_exists('targetUserIds', $data) || $data['targetUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('targetUserIds', $data) && $data['targetUserIds'] !== null ? $data['targetUserIds'] : []
+                $data['targetUserIds']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -128,11 +128,11 @@ class Follow implements IModel {
         return array(
             "followId" => $this->getFollowId(),
             "userId" => $this->getUserId(),
-            "targetUserIds" => array_map(
+            "targetUserIds" => $this->getTargetUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getTargetUserIds() !== null && $this->getTargetUserIds() !== null ? $this->getTargetUserIds() : []
+                $this->getTargetUserIds()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

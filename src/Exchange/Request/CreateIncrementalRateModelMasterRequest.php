@@ -183,11 +183,11 @@ class CreateIncrementalRateModelMasterRequest extends Gs2BasicRequest {
             ->withCalculateScriptId(array_key_exists('calculateScriptId', $data) && $data['calculateScriptId'] !== null ? $data['calculateScriptId'] : null)
             ->withExchangeCountId(array_key_exists('exchangeCountId', $data) && $data['exchangeCountId'] !== null ? $data['exchangeCountId'] : null)
             ->withMaximumExchangeCount(array_key_exists('maximumExchangeCount', $data) && $data['maximumExchangeCount'] !== null ? $data['maximumExchangeCount'] : null)
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ));
     }
 
@@ -204,11 +204,11 @@ class CreateIncrementalRateModelMasterRequest extends Gs2BasicRequest {
             "calculateScriptId" => $this->getCalculateScriptId(),
             "exchangeCountId" => $this->getExchangeCountId(),
             "maximumExchangeCount" => $this->getMaximumExchangeCount(),
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
         );
     }

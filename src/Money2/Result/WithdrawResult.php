@@ -60,22 +60,22 @@ class WithdrawResult implements IResult {
         }
         return (new WithdrawResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Wallet::fromJson($data['item']) : null)
-            ->withWithdrawTransactions(array_map(
+            ->withWithdrawTransactions(!array_key_exists('withdrawTransactions', $data) || $data['withdrawTransactions'] === null ? null : array_map(
                 function ($item) {
                     return DepositTransaction::fromJson($item);
                 },
-                array_key_exists('withdrawTransactions', $data) && $data['withdrawTransactions'] !== null ? $data['withdrawTransactions'] : []
+                $data['withdrawTransactions']
             ));
     }
 
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "withdrawTransactions" => array_map(
+            "withdrawTransactions" => $this->getWithdrawTransactions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getWithdrawTransactions() !== null && $this->getWithdrawTransactions() !== null ? $this->getWithdrawTransactions() : []
+                $this->getWithdrawTransactions()
             ),
         );
     }

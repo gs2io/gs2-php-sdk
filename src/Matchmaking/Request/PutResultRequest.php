@@ -65,11 +65,11 @@ class PutResultRequest extends Gs2BasicRequest {
         return (new PutResultRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withRatingName(array_key_exists('ratingName', $data) && $data['ratingName'] !== null ? $data['ratingName'] : null)
-            ->withGameResults(array_map(
+            ->withGameResults(!array_key_exists('gameResults', $data) || $data['gameResults'] === null ? null : array_map(
                 function ($item) {
                     return GameResult::fromJson($item);
                 },
-                array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
+                $data['gameResults']
             ));
     }
 
@@ -77,11 +77,11 @@ class PutResultRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "ratingName" => $this->getRatingName(),
-            "gameResults" => array_map(
+            "gameResults" => $this->getGameResults() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getGameResults() !== null && $this->getGameResults() !== null ? $this->getGameResults() : []
+                $this->getGameResults()
             ),
         );
     }

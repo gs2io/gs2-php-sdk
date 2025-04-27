@@ -86,11 +86,11 @@ class AreaModel implements IModel {
             ->withAreaModelId(array_key_exists('areaModelId', $data) && $data['areaModelId'] !== null ? $data['areaModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withLayerModels(array_map(
+            ->withLayerModels(!array_key_exists('layerModels', $data) || $data['layerModels'] === null ? null : array_map(
                 function ($item) {
                     return LayerModel::fromJson($item);
                 },
-                array_key_exists('layerModels', $data) && $data['layerModels'] !== null ? $data['layerModels'] : []
+                $data['layerModels']
             ));
     }
 
@@ -99,11 +99,11 @@ class AreaModel implements IModel {
             "areaModelId" => $this->getAreaModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "layerModels" => array_map(
+            "layerModels" => $this->getLayerModels() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getLayerModels() !== null && $this->getLayerModels() !== null ? $this->getLayerModels() : []
+                $this->getLayerModels()
             ),
         );
     }

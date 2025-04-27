@@ -99,6 +99,8 @@ use Gs2\Version\Request\ExportMasterRequest;
 use Gs2\Version\Result\ExportMasterResult;
 use Gs2\Version\Request\GetCurrentVersionMasterRequest;
 use Gs2\Version\Result\GetCurrentVersionMasterResult;
+use Gs2\Version\Request\PreUpdateCurrentVersionMasterRequest;
+use Gs2\Version\Result\PreUpdateCurrentVersionMasterResult;
 use Gs2\Version\Request\UpdateCurrentVersionMasterRequest;
 use Gs2\Version\Result\UpdateCurrentVersionMasterResult;
 use Gs2\Version\Request\UpdateCurrentVersionMasterFromGitHubRequest;
@@ -2346,6 +2348,61 @@ class GetCurrentVersionMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentVersionMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentVersionMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentVersionMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentVersionMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentVersionMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentVersionMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentVersionMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -2376,14 +2433,48 @@ class UpdateCurrentVersionMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentVersionMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentVersionMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentVersionMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "version", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3420,6 +3511,33 @@ class Gs2VersionRestClient extends AbstractGs2Client {
             GetCurrentVersionMasterRequest $request
     ): GetCurrentVersionMasterResult {
         return $this->getCurrentVersionMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentVersionMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentVersionMasterAsync(
+            PreUpdateCurrentVersionMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentVersionMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentVersionMasterRequest $request
+     * @return PreUpdateCurrentVersionMasterResult
+     */
+    public function preUpdateCurrentVersionMaster (
+            PreUpdateCurrentVersionMasterRequest $request
+    ): PreUpdateCurrentVersionMasterResult {
+        return $this->preUpdateCurrentVersionMasterAsync(
             $request
         )->wait();
     }

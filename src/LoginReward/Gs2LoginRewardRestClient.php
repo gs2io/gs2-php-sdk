@@ -69,6 +69,8 @@ use Gs2\LoginReward\Request\ExportMasterRequest;
 use Gs2\LoginReward\Result\ExportMasterResult;
 use Gs2\LoginReward\Request\GetCurrentBonusMasterRequest;
 use Gs2\LoginReward\Result\GetCurrentBonusMasterResult;
+use Gs2\LoginReward\Request\PreUpdateCurrentBonusMasterRequest;
+use Gs2\LoginReward\Result\PreUpdateCurrentBonusMasterResult;
 use Gs2\LoginReward\Request\UpdateCurrentBonusMasterRequest;
 use Gs2\LoginReward\Result\UpdateCurrentBonusMasterResult;
 use Gs2\LoginReward\Request\UpdateCurrentBonusMasterFromGitHubRequest;
@@ -1388,6 +1390,61 @@ class GetCurrentBonusMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentBonusMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentBonusMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentBonusMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentBonusMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentBonusMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentBonusMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentBonusMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -1418,14 +1475,48 @@ class UpdateCurrentBonusMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentBonusMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentBonusMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentBonusMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "login-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3153,6 +3244,33 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
             GetCurrentBonusMasterRequest $request
     ): GetCurrentBonusMasterResult {
         return $this->getCurrentBonusMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentBonusMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentBonusMasterAsync(
+            PreUpdateCurrentBonusMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentBonusMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentBonusMasterRequest $request
+     * @return PreUpdateCurrentBonusMasterResult
+     */
+    public function preUpdateCurrentBonusMaster (
+            PreUpdateCurrentBonusMasterRequest $request
+    ): PreUpdateCurrentBonusMasterResult {
+        return $this->preUpdateCurrentBonusMasterAsync(
             $request
         )->wait();
     }

@@ -103,11 +103,11 @@ class UpdateRecoverValueTableMasterRequest extends Gs2BasicRequest {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
-            ->withValues(array_map(
+            ->withValues(!array_key_exists('values', $data) || $data['values'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
+                $data['values']
             ));
     }
 
@@ -118,11 +118,11 @@ class UpdateRecoverValueTableMasterRequest extends Gs2BasicRequest {
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
             "experienceModelId" => $this->getExperienceModelId(),
-            "values" => array_map(
+            "values" => $this->getValues() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getValues() !== null && $this->getValues() !== null ? $this->getValues() : []
+                $this->getValues()
             ),
         );
     }

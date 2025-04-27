@@ -59,6 +59,8 @@ use Gs2\Distributor\Request\ExportMasterRequest;
 use Gs2\Distributor\Result\ExportMasterResult;
 use Gs2\Distributor\Request\GetCurrentDistributorMasterRequest;
 use Gs2\Distributor\Result\GetCurrentDistributorMasterResult;
+use Gs2\Distributor\Request\PreUpdateCurrentDistributorMasterRequest;
+use Gs2\Distributor\Result\PreUpdateCurrentDistributorMasterResult;
 use Gs2\Distributor\Request\UpdateCurrentDistributorMasterRequest;
 use Gs2\Distributor\Result\UpdateCurrentDistributorMasterResult;
 use Gs2\Distributor\Request\UpdateCurrentDistributorMasterFromGitHubRequest;
@@ -1051,6 +1053,61 @@ class GetCurrentDistributorMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentDistributorMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentDistributorMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentDistributorMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentDistributorMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentDistributorMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentDistributorMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentDistributorMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -1081,14 +1138,48 @@ class UpdateCurrentDistributorMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentDistributorMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentDistributorMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentDistributorMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3432,6 +3523,33 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             GetCurrentDistributorMasterRequest $request
     ): GetCurrentDistributorMasterResult {
         return $this->getCurrentDistributorMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentDistributorMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentDistributorMasterAsync(
+            PreUpdateCurrentDistributorMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentDistributorMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentDistributorMasterRequest $request
+     * @return PreUpdateCurrentDistributorMasterResult
+     */
+    public function preUpdateCurrentDistributorMaster (
+            PreUpdateCurrentDistributorMasterRequest $request
+    ): PreUpdateCurrentDistributorMasterResult {
+        return $this->preUpdateCurrentDistributorMasterAsync(
             $request
         )->wait();
     }

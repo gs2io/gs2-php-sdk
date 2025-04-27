@@ -86,11 +86,11 @@ class PropertyFormModel implements IModel {
             ->withPropertyFormModelId(array_key_exists('propertyFormModelId', $data) && $data['propertyFormModelId'] !== null ? $data['propertyFormModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withSlots(array_map(
+            ->withSlots(!array_key_exists('slots', $data) || $data['slots'] === null ? null : array_map(
                 function ($item) {
                     return SlotModel::fromJson($item);
                 },
-                array_key_exists('slots', $data) && $data['slots'] !== null ? $data['slots'] : []
+                $data['slots']
             ));
     }
 
@@ -99,11 +99,11 @@ class PropertyFormModel implements IModel {
             "propertyFormModelId" => $this->getPropertyFormModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "slots" => array_map(
+            "slots" => $this->getSlots() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSlots() !== null && $this->getSlots() !== null ? $this->getSlots() : []
+                $this->getSlots()
             ),
         );
     }

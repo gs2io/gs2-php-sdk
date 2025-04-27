@@ -128,11 +128,11 @@ class Status implements IModel {
             ->withStatusId(array_key_exists('statusId', $data) && $data['statusId'] !== null ? $data['statusId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withReleasedNodeNames(array_map(
+            ->withReleasedNodeNames(!array_key_exists('releasedNodeNames', $data) || $data['releasedNodeNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('releasedNodeNames', $data) && $data['releasedNodeNames'] !== null ? $data['releasedNodeNames'] : []
+                $data['releasedNodeNames']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -144,11 +144,11 @@ class Status implements IModel {
             "statusId" => $this->getStatusId(),
             "userId" => $this->getUserId(),
             "propertyId" => $this->getPropertyId(),
-            "releasedNodeNames" => array_map(
+            "releasedNodeNames" => $this->getReleasedNodeNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getReleasedNodeNames() !== null && $this->getReleasedNodeNames() !== null ? $this->getReleasedNodeNames() : []
+                $this->getReleasedNodeNames()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

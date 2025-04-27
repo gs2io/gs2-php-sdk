@@ -72,11 +72,11 @@ class WantGrantByUserIdResult implements IResult {
             return null;
         }
         return (new WantGrantByUserIdResult())
-            ->withItems(array_map(
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
                 function ($item) {
                     return SetCookieRequestEntry::fromJson($item);
                 },
-                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+                $data['items']
             ))
             ->withBrowserUrl(array_key_exists('browserUrl', $data) && $data['browserUrl'] !== null ? $data['browserUrl'] : null)
             ->withZipUrl(array_key_exists('zipUrl', $data) && $data['zipUrl'] !== null ? $data['zipUrl'] : null);
@@ -84,11 +84,11 @@ class WantGrantByUserIdResult implements IResult {
 
     public function toJson(): array {
         return array(
-            "items" => array_map(
+            "items" => $this->getItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+                $this->getItems()
             ),
             "browserUrl" => $this->getBrowserUrl(),
             "zipUrl" => $this->getZipUrl(),

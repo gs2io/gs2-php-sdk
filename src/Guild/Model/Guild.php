@@ -290,19 +290,19 @@ class Guild implements IModel {
             ->withAttribute5(array_key_exists('attribute5', $data) && $data['attribute5'] !== null ? $data['attribute5'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withJoinPolicy(array_key_exists('joinPolicy', $data) && $data['joinPolicy'] !== null ? $data['joinPolicy'] : null)
-            ->withCustomRoles(array_map(
+            ->withCustomRoles(!array_key_exists('customRoles', $data) || $data['customRoles'] === null ? null : array_map(
                 function ($item) {
                     return RoleModel::fromJson($item);
                 },
-                array_key_exists('customRoles', $data) && $data['customRoles'] !== null ? $data['customRoles'] : []
+                $data['customRoles']
             ))
             ->withGuildMemberDefaultRole(array_key_exists('guildMemberDefaultRole', $data) && $data['guildMemberDefaultRole'] !== null ? $data['guildMemberDefaultRole'] : null)
             ->withCurrentMaximumMemberCount(array_key_exists('currentMaximumMemberCount', $data) && $data['currentMaximumMemberCount'] !== null ? $data['currentMaximumMemberCount'] : null)
-            ->withMembers(array_map(
+            ->withMembers(!array_key_exists('members', $data) || $data['members'] === null ? null : array_map(
                 function ($item) {
                     return Member::fromJson($item);
                 },
-                array_key_exists('members', $data) && $data['members'] !== null ? $data['members'] : []
+                $data['members']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -322,19 +322,19 @@ class Guild implements IModel {
             "attribute5" => $this->getAttribute5(),
             "metadata" => $this->getMetadata(),
             "joinPolicy" => $this->getJoinPolicy(),
-            "customRoles" => array_map(
+            "customRoles" => $this->getCustomRoles() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getCustomRoles() !== null && $this->getCustomRoles() !== null ? $this->getCustomRoles() : []
+                $this->getCustomRoles()
             ),
             "guildMemberDefaultRole" => $this->getGuildMemberDefaultRole(),
             "currentMaximumMemberCount" => $this->getCurrentMaximumMemberCount(),
-            "members" => array_map(
+            "members" => $this->getMembers() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getMembers() !== null && $this->getMembers() !== null ? $this->getMembers() : []
+                $this->getMembers()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

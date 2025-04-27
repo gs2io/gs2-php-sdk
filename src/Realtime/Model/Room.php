@@ -158,11 +158,11 @@ class Room implements IModel {
             ->withIpAddress(array_key_exists('ipAddress', $data) && $data['ipAddress'] !== null ? $data['ipAddress'] : null)
             ->withPort(array_key_exists('port', $data) && $data['port'] !== null ? $data['port'] : null)
             ->withEncryptionKey(array_key_exists('encryptionKey', $data) && $data['encryptionKey'] !== null ? $data['encryptionKey'] : null)
-            ->withNotificationUserIds(array_map(
+            ->withNotificationUserIds(!array_key_exists('notificationUserIds', $data) || $data['notificationUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('notificationUserIds', $data) && $data['notificationUserIds'] !== null ? $data['notificationUserIds'] : []
+                $data['notificationUserIds']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -176,11 +176,11 @@ class Room implements IModel {
             "ipAddress" => $this->getIpAddress(),
             "port" => $this->getPort(),
             "encryptionKey" => $this->getEncryptionKey(),
-            "notificationUserIds" => array_map(
+            "notificationUserIds" => $this->getNotificationUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getNotificationUserIds() !== null && $this->getNotificationUserIds() !== null ? $this->getNotificationUserIds() : []
+                $this->getNotificationUserIds()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

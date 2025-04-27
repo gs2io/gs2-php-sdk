@@ -118,11 +118,11 @@ class SetBalanceParameterStatusByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withParameterName(array_key_exists('parameterName', $data) && $data['parameterName'] !== null ? $data['parameterName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withParameterValues(array_map(
+            ->withParameterValues(!array_key_exists('parameterValues', $data) || $data['parameterValues'] === null ? null : array_map(
                 function ($item) {
                     return BalanceParameterValue::fromJson($item);
                 },
-                array_key_exists('parameterValues', $data) && $data['parameterValues'] !== null ? $data['parameterValues'] : []
+                $data['parameterValues']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -133,11 +133,11 @@ class SetBalanceParameterStatusByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "parameterName" => $this->getParameterName(),
             "propertyId" => $this->getPropertyId(),
-            "parameterValues" => array_map(
+            "parameterValues" => $this->getParameterValues() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getParameterValues() !== null && $this->getParameterValues() !== null ? $this->getParameterValues() : []
+                $this->getParameterValues()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

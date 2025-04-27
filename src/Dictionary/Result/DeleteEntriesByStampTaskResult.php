@@ -57,22 +57,22 @@ class DeleteEntriesByStampTaskResult implements IResult {
             return null;
         }
         return (new DeleteEntriesByStampTaskResult())
-            ->withItems(array_map(
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
                 function ($item) {
                     return Entry::fromJson($item);
                 },
-                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+                $data['items']
             ))
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "items" => array_map(
+            "items" => $this->getItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+                $this->getItems()
             ),
             "newContextStack" => $this->getNewContextStack(),
         );

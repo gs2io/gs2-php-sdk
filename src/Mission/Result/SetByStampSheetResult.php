@@ -76,11 +76,11 @@ class SetByStampSheetResult implements IResult {
         return (new SetByStampSheetResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Counter::fromJson($data['item']) : null)
             ->withOld(array_key_exists('old', $data) && $data['old'] !== null ? Counter::fromJson($data['old']) : null)
-            ->withChangedCompletes(array_map(
+            ->withChangedCompletes(!array_key_exists('changedCompletes', $data) || $data['changedCompletes'] === null ? null : array_map(
                 function ($item) {
                     return Complete::fromJson($item);
                 },
-                array_key_exists('changedCompletes', $data) && $data['changedCompletes'] !== null ? $data['changedCompletes'] : []
+                $data['changedCompletes']
             ));
     }
 
@@ -88,11 +88,11 @@ class SetByStampSheetResult implements IResult {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
             "old" => $this->getOld() !== null ? $this->getOld()->toJson() : null,
-            "changedCompletes" => array_map(
+            "changedCompletes" => $this->getChangedCompletes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getChangedCompletes() !== null && $this->getChangedCompletes() !== null ? $this->getChangedCompletes() : []
+                $this->getChangedCompletes()
             ),
         );
     }

@@ -105,11 +105,11 @@ class ResetCounterByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
-            ->withScopes(array_map(
+            ->withScopes(!array_key_exists('scopes', $data) || $data['scopes'] === null ? null : array_map(
                 function ($item) {
                     return ScopedValue::fromJson($item);
                 },
-                array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
+                $data['scopes']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -119,11 +119,11 @@ class ResetCounterByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "counterName" => $this->getCounterName(),
-            "scopes" => array_map(
+            "scopes" => $this->getScopes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
+                $this->getScopes()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

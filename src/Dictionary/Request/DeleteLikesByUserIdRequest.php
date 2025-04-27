@@ -91,11 +91,11 @@ class DeleteLikesByUserIdRequest extends Gs2BasicRequest {
         return (new DeleteLikesByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withEntryModelNames(array_map(
+            ->withEntryModelNames(!array_key_exists('entryModelNames', $data) || $data['entryModelNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('entryModelNames', $data) && $data['entryModelNames'] !== null ? $data['entryModelNames'] : []
+                $data['entryModelNames']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -104,11 +104,11 @@ class DeleteLikesByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "entryModelNames" => array_map(
+            "entryModelNames" => $this->getEntryModelNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getEntryModelNames() !== null && $this->getEntryModelNames() !== null ? $this->getEntryModelNames() : []
+                $this->getEntryModelNames()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

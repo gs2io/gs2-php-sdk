@@ -143,6 +143,8 @@ use Gs2\Inventory\Request\ExportMasterRequest;
 use Gs2\Inventory\Result\ExportMasterResult;
 use Gs2\Inventory\Request\GetCurrentItemModelMasterRequest;
 use Gs2\Inventory\Result\GetCurrentItemModelMasterResult;
+use Gs2\Inventory\Request\PreUpdateCurrentItemModelMasterRequest;
+use Gs2\Inventory\Result\PreUpdateCurrentItemModelMasterResult;
 use Gs2\Inventory\Request\UpdateCurrentItemModelMasterRequest;
 use Gs2\Inventory\Result\UpdateCurrentItemModelMasterResult;
 use Gs2\Inventory\Request\UpdateCurrentItemModelMasterFromGitHubRequest;
@@ -3800,6 +3802,61 @@ class GetCurrentItemModelMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentItemModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentItemModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentItemModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentItemModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentItemModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentItemModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentItemModelMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -3830,14 +3887,48 @@ class UpdateCurrentItemModelMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentItemModelMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentItemModelMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentItemModelMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "inventory", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -10299,6 +10390,33 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
             GetCurrentItemModelMasterRequest $request
     ): GetCurrentItemModelMasterResult {
         return $this->getCurrentItemModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentItemModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentItemModelMasterAsync(
+            PreUpdateCurrentItemModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentItemModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentItemModelMasterRequest $request
+     * @return PreUpdateCurrentItemModelMasterResult
+     */
+    public function preUpdateCurrentItemModelMaster (
+            PreUpdateCurrentItemModelMasterRequest $request
+    ): PreUpdateCurrentItemModelMasterResult {
+        return $this->preUpdateCurrentItemModelMasterAsync(
             $request
         )->wait();
     }

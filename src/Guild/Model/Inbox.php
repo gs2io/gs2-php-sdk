@@ -136,17 +136,17 @@ class Inbox implements IModel {
         return (new Inbox())
             ->withInboxId(array_key_exists('inboxId', $data) && $data['inboxId'] !== null ? $data['inboxId'] : null)
             ->withGuildName(array_key_exists('guildName', $data) && $data['guildName'] !== null ? $data['guildName'] : null)
-            ->withFromUserIds(array_map(
+            ->withFromUserIds(!array_key_exists('fromUserIds', $data) || $data['fromUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('fromUserIds', $data) && $data['fromUserIds'] !== null ? $data['fromUserIds'] : []
+                $data['fromUserIds']
             ))
-            ->withReceiveMemberRequests(array_map(
+            ->withReceiveMemberRequests(!array_key_exists('receiveMemberRequests', $data) || $data['receiveMemberRequests'] === null ? null : array_map(
                 function ($item) {
                     return ReceiveMemberRequest::fromJson($item);
                 },
-                array_key_exists('receiveMemberRequests', $data) && $data['receiveMemberRequests'] !== null ? $data['receiveMemberRequests'] : []
+                $data['receiveMemberRequests']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -157,17 +157,17 @@ class Inbox implements IModel {
         return array(
             "inboxId" => $this->getInboxId(),
             "guildName" => $this->getGuildName(),
-            "fromUserIds" => array_map(
+            "fromUserIds" => $this->getFromUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getFromUserIds() !== null && $this->getFromUserIds() !== null ? $this->getFromUserIds() : []
+                $this->getFromUserIds()
             ),
-            "receiveMemberRequests" => array_map(
+            "receiveMemberRequests" => $this->getReceiveMemberRequests() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getReceiveMemberRequests() !== null && $this->getReceiveMemberRequests() !== null ? $this->getReceiveMemberRequests() : []
+                $this->getReceiveMemberRequests()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

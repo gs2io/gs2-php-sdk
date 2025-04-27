@@ -103,11 +103,11 @@ class CreateShowcaseMasterRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withDisplayItems(array_map(
+            ->withDisplayItems(!array_key_exists('displayItems', $data) || $data['displayItems'] === null ? null : array_map(
                 function ($item) {
                     return DisplayItemMaster::fromJson($item);
                 },
-                array_key_exists('displayItems', $data) && $data['displayItems'] !== null ? $data['displayItems'] : []
+                $data['displayItems']
             ))
             ->withSalesPeriodEventId(array_key_exists('salesPeriodEventId', $data) && $data['salesPeriodEventId'] !== null ? $data['salesPeriodEventId'] : null);
     }
@@ -118,11 +118,11 @@ class CreateShowcaseMasterRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "displayItems" => array_map(
+            "displayItems" => $this->getDisplayItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getDisplayItems() !== null && $this->getDisplayItems() !== null ? $this->getDisplayItems() : []
+                $this->getDisplayItems()
             ),
             "salesPeriodEventId" => $this->getSalesPeriodEventId(),
         );

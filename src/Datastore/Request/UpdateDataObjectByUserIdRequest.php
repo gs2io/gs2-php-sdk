@@ -117,11 +117,11 @@ class UpdateDataObjectByUserIdRequest extends Gs2BasicRequest {
             ->withDataObjectName(array_key_exists('dataObjectName', $data) && $data['dataObjectName'] !== null ? $data['dataObjectName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
-            ->withAllowUserIds(array_map(
+            ->withAllowUserIds(!array_key_exists('allowUserIds', $data) || $data['allowUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+                $data['allowUserIds']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -132,11 +132,11 @@ class UpdateDataObjectByUserIdRequest extends Gs2BasicRequest {
             "dataObjectName" => $this->getDataObjectName(),
             "userId" => $this->getUserId(),
             "scope" => $this->getScope(),
-            "allowUserIds" => array_map(
+            "allowUserIds" => $this->getAllowUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+                $this->getAllowUserIds()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

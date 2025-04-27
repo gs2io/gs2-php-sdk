@@ -85,11 +85,11 @@ class BuffTargetModel implements IModel {
         return (new BuffTargetModel())
             ->withTargetModelName(array_key_exists('targetModelName', $data) && $data['targetModelName'] !== null ? $data['targetModelName'] : null)
             ->withTargetFieldName(array_key_exists('targetFieldName', $data) && $data['targetFieldName'] !== null ? $data['targetFieldName'] : null)
-            ->withConditionGrns(array_map(
+            ->withConditionGrns(!array_key_exists('conditionGrns', $data) || $data['conditionGrns'] === null ? null : array_map(
                 function ($item) {
                     return BuffTargetGrn::fromJson($item);
                 },
-                array_key_exists('conditionGrns', $data) && $data['conditionGrns'] !== null ? $data['conditionGrns'] : []
+                $data['conditionGrns']
             ))
             ->withRate(array_key_exists('rate', $data) && $data['rate'] !== null ? $data['rate'] : null);
     }
@@ -98,11 +98,11 @@ class BuffTargetModel implements IModel {
         return array(
             "targetModelName" => $this->getTargetModelName(),
             "targetFieldName" => $this->getTargetFieldName(),
-            "conditionGrns" => array_map(
+            "conditionGrns" => $this->getConditionGrns() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConditionGrns() !== null && $this->getConditionGrns() !== null ? $this->getConditionGrns() : []
+                $this->getConditionGrns()
             ),
             "rate" => $this->getRate(),
         );

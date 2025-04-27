@@ -104,11 +104,11 @@ class SendInGameLogByUserIdRequest extends Gs2BasicRequest {
         return (new SendInGameLogByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTags(array_map(
+            ->withTags(!array_key_exists('tags', $data) || $data['tags'] === null ? null : array_map(
                 function ($item) {
                     return InGameLogTag::fromJson($item);
                 },
-                array_key_exists('tags', $data) && $data['tags'] !== null ? $data['tags'] : []
+                $data['tags']
             ))
             ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
@@ -118,11 +118,11 @@ class SendInGameLogByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "tags" => array_map(
+            "tags" => $this->getTags() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTags() !== null && $this->getTags() !== null ? $this->getTags() : []
+                $this->getTags()
             ),
             "payload" => $this->getPayload(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),

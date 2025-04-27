@@ -216,18 +216,18 @@ class RateModelMaster implements IModel {
             ->withTargetInventoryModelId(array_key_exists('targetInventoryModelId', $data) && $data['targetInventoryModelId'] !== null ? $data['targetInventoryModelId'] : null)
             ->withAcquireExperienceSuffix(array_key_exists('acquireExperienceSuffix', $data) && $data['acquireExperienceSuffix'] !== null ? $data['acquireExperienceSuffix'] : null)
             ->withMaterialInventoryModelId(array_key_exists('materialInventoryModelId', $data) && $data['materialInventoryModelId'] !== null ? $data['materialInventoryModelId'] : null)
-            ->withAcquireExperienceHierarchy(array_map(
+            ->withAcquireExperienceHierarchy(!array_key_exists('acquireExperienceHierarchy', $data) || $data['acquireExperienceHierarchy'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('acquireExperienceHierarchy', $data) && $data['acquireExperienceHierarchy'] !== null ? $data['acquireExperienceHierarchy'] : []
+                $data['acquireExperienceHierarchy']
             ))
             ->withExperienceModelId(array_key_exists('experienceModelId', $data) && $data['experienceModelId'] !== null ? $data['experienceModelId'] : null)
-            ->withBonusRates(array_map(
+            ->withBonusRates(!array_key_exists('bonusRates', $data) || $data['bonusRates'] === null ? null : array_map(
                 function ($item) {
                     return BonusRate::fromJson($item);
                 },
-                array_key_exists('bonusRates', $data) && $data['bonusRates'] !== null ? $data['bonusRates'] : []
+                $data['bonusRates']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -243,18 +243,18 @@ class RateModelMaster implements IModel {
             "targetInventoryModelId" => $this->getTargetInventoryModelId(),
             "acquireExperienceSuffix" => $this->getAcquireExperienceSuffix(),
             "materialInventoryModelId" => $this->getMaterialInventoryModelId(),
-            "acquireExperienceHierarchy" => array_map(
+            "acquireExperienceHierarchy" => $this->getAcquireExperienceHierarchy() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAcquireExperienceHierarchy() !== null && $this->getAcquireExperienceHierarchy() !== null ? $this->getAcquireExperienceHierarchy() : []
+                $this->getAcquireExperienceHierarchy()
             ),
             "experienceModelId" => $this->getExperienceModelId(),
-            "bonusRates" => array_map(
+            "bonusRates" => $this->getBonusRates() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getBonusRates() !== null && $this->getBonusRates() !== null ? $this->getBonusRates() : []
+                $this->getBonusRates()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

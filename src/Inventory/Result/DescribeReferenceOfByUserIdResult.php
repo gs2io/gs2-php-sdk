@@ -89,11 +89,11 @@ class DescribeReferenceOfByUserIdResult implements IResult {
             return null;
         }
         return (new DescribeReferenceOfByUserIdResult())
-            ->withItems(array_map(
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+                $data['items']
             ))
             ->withItemSet(array_key_exists('itemSet', $data) && $data['itemSet'] !== null ? ItemSet::fromJson($data['itemSet']) : null)
             ->withItemModel(array_key_exists('itemModel', $data) && $data['itemModel'] !== null ? ItemModel::fromJson($data['itemModel']) : null)
@@ -102,11 +102,11 @@ class DescribeReferenceOfByUserIdResult implements IResult {
 
     public function toJson(): array {
         return array(
-            "items" => array_map(
+            "items" => $this->getItems() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+                $this->getItems()
             ),
             "itemSet" => $this->getItemSet() !== null ? $this->getItemSet()->toJson() : null,
             "itemModel" => $this->getItemModel() !== null ? $this->getItemModel()->toJson() : null,

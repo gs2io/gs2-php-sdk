@@ -172,11 +172,11 @@ class Wallet implements IModel {
             ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
             ->withPaid(array_key_exists('paid', $data) && $data['paid'] !== null ? $data['paid'] : null)
             ->withFree(array_key_exists('free', $data) && $data['free'] !== null ? $data['free'] : null)
-            ->withDetail(array_map(
+            ->withDetail(!array_key_exists('detail', $data) || $data['detail'] === null ? null : array_map(
                 function ($item) {
                     return WalletDetail::fromJson($item);
                 },
-                array_key_exists('detail', $data) && $data['detail'] !== null ? $data['detail'] : []
+                $data['detail']
             ))
             ->withShareFree(array_key_exists('shareFree', $data) ? $data['shareFree'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -191,11 +191,11 @@ class Wallet implements IModel {
             "slot" => $this->getSlot(),
             "paid" => $this->getPaid(),
             "free" => $this->getFree(),
-            "detail" => array_map(
+            "detail" => $this->getDetail() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getDetail() !== null && $this->getDetail() !== null ? $this->getDetail() : []
+                $this->getDetail()
             ),
             "shareFree" => $this->getShareFree(),
             "createdAt" => $this->getCreatedAt(),

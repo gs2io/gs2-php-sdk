@@ -128,11 +128,11 @@ class Counter implements IModel {
             ->withCounterId(array_key_exists('counterId', $data) && $data['counterId'] !== null ? $data['counterId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
-            ->withValues(array_map(
+            ->withValues(!array_key_exists('values', $data) || $data['values'] === null ? null : array_map(
                 function ($item) {
                     return ScopedValue::fromJson($item);
                 },
-                array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
+                $data['values']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -144,11 +144,11 @@ class Counter implements IModel {
             "counterId" => $this->getCounterId(),
             "userId" => $this->getUserId(),
             "name" => $this->getName(),
-            "values" => array_map(
+            "values" => $this->getValues() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getValues() !== null && $this->getValues() !== null ? $this->getValues() : []
+                $this->getValues()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

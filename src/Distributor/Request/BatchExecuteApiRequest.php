@@ -39,21 +39,21 @@ class BatchExecuteApiRequest extends Gs2BasicRequest {
             return null;
         }
         return (new BatchExecuteApiRequest())
-            ->withRequestPayloads(array_map(
+            ->withRequestPayloads(!array_key_exists('requestPayloads', $data) || $data['requestPayloads'] === null ? null : array_map(
                 function ($item) {
                     return BatchRequestPayload::fromJson($item);
                 },
-                array_key_exists('requestPayloads', $data) && $data['requestPayloads'] !== null ? $data['requestPayloads'] : []
+                $data['requestPayloads']
             ));
     }
 
     public function toJson(): array {
         return array(
-            "requestPayloads" => array_map(
+            "requestPayloads" => $this->getRequestPayloads() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getRequestPayloads() !== null && $this->getRequestPayloads() !== null ? $this->getRequestPayloads() : []
+                $this->getRequestPayloads()
             ),
         );
     }

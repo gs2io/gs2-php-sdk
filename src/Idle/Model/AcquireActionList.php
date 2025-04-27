@@ -41,21 +41,21 @@ class AcquireActionList implements IModel {
             return null;
         }
         return (new AcquireActionList())
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ));
     }
 
     public function toJson(): array {
         return array(
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
         );
     }

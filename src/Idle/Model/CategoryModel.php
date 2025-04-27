@@ -159,11 +159,11 @@ class CategoryModel implements IModel {
             ->withRewardIntervalMinutes(array_key_exists('rewardIntervalMinutes', $data) && $data['rewardIntervalMinutes'] !== null ? $data['rewardIntervalMinutes'] : null)
             ->withDefaultMaximumIdleMinutes(array_key_exists('defaultMaximumIdleMinutes', $data) && $data['defaultMaximumIdleMinutes'] !== null ? $data['defaultMaximumIdleMinutes'] : null)
             ->withRewardResetMode(array_key_exists('rewardResetMode', $data) && $data['rewardResetMode'] !== null ? $data['rewardResetMode'] : null)
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireActionList::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ))
             ->withIdlePeriodScheduleId(array_key_exists('idlePeriodScheduleId', $data) && $data['idlePeriodScheduleId'] !== null ? $data['idlePeriodScheduleId'] : null)
             ->withReceivePeriodScheduleId(array_key_exists('receivePeriodScheduleId', $data) && $data['receivePeriodScheduleId'] !== null ? $data['receivePeriodScheduleId'] : null);
@@ -177,11 +177,11 @@ class CategoryModel implements IModel {
             "rewardIntervalMinutes" => $this->getRewardIntervalMinutes(),
             "defaultMaximumIdleMinutes" => $this->getDefaultMaximumIdleMinutes(),
             "rewardResetMode" => $this->getRewardResetMode(),
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
             "idlePeriodScheduleId" => $this->getIdlePeriodScheduleId(),
             "receivePeriodScheduleId" => $this->getReceivePeriodScheduleId(),

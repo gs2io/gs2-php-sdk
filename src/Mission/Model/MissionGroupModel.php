@@ -184,11 +184,11 @@ class MissionGroupModel implements IModel {
             ->withMissionGroupId(array_key_exists('missionGroupId', $data) && $data['missionGroupId'] !== null ? $data['missionGroupId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withTasks(array_map(
+            ->withTasks(!array_key_exists('tasks', $data) || $data['tasks'] === null ? null : array_map(
                 function ($item) {
                     return MissionTaskModel::fromJson($item);
                 },
-                array_key_exists('tasks', $data) && $data['tasks'] !== null ? $data['tasks'] : []
+                $data['tasks']
             ))
             ->withResetType(array_key_exists('resetType', $data) && $data['resetType'] !== null ? $data['resetType'] : null)
             ->withResetDayOfMonth(array_key_exists('resetDayOfMonth', $data) && $data['resetDayOfMonth'] !== null ? $data['resetDayOfMonth'] : null)
@@ -204,11 +204,11 @@ class MissionGroupModel implements IModel {
             "missionGroupId" => $this->getMissionGroupId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "tasks" => array_map(
+            "tasks" => $this->getTasks() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTasks() !== null && $this->getTasks() !== null ? $this->getTasks() : []
+                $this->getTasks()
             ),
             "resetType" => $this->getResetType(),
             "resetDayOfMonth" => $this->getResetDayOfMonth(),

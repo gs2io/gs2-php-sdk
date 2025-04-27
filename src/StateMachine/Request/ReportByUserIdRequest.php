@@ -107,11 +107,11 @@ class ReportByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withStatusName(array_key_exists('statusName', $data) && $data['statusName'] !== null ? $data['statusName'] : null)
-            ->withEvents(array_map(
+            ->withEvents(!array_key_exists('events', $data) || $data['events'] === null ? null : array_map(
                 function ($item) {
                     return Event::fromJson($item);
                 },
-                array_key_exists('events', $data) && $data['events'] !== null ? $data['events'] : []
+                $data['events']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -121,11 +121,11 @@ class ReportByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "statusName" => $this->getStatusName(),
-            "events" => array_map(
+            "events" => $this->getEvents() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getEvents() !== null && $this->getEvents() !== null ? $this->getEvents() : []
+                $this->getEvents()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

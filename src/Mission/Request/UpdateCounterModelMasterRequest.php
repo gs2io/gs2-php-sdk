@@ -104,11 +104,11 @@ class UpdateCounterModelMasterRequest extends Gs2BasicRequest {
             ->withCounterName(array_key_exists('counterName', $data) && $data['counterName'] !== null ? $data['counterName'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withScopes(array_map(
+            ->withScopes(!array_key_exists('scopes', $data) || $data['scopes'] === null ? null : array_map(
                 function ($item) {
                     return CounterScopeModel::fromJson($item);
                 },
-                array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
+                $data['scopes']
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null);
     }
@@ -119,11 +119,11 @@ class UpdateCounterModelMasterRequest extends Gs2BasicRequest {
             "counterName" => $this->getCounterName(),
             "metadata" => $this->getMetadata(),
             "description" => $this->getDescription(),
-            "scopes" => array_map(
+            "scopes" => $this->getScopes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
+                $this->getScopes()
             ),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
         );

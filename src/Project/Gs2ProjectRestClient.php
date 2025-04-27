@@ -1889,8 +1889,9 @@ class WaitDumpUserDataTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project/dump/progress/{transactionId}/wait";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/{ownerId}/project/dump/progress/{transactionId}/wait";
 
+        $url = str_replace("{ownerId}", $this->request->getOwnerId() === null|| strlen($this->request->getOwnerId()) == 0 ? "null" : $this->request->getOwnerId(), $url);
         $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
 
         $json = [];
@@ -1956,8 +1957,9 @@ class ArchiveDumpUserDataTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project/dump/progress/{transactionId}/archive";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/{ownerId}/project/dump/progress/{transactionId}/archive";
 
+        $url = str_replace("{ownerId}", $this->request->getOwnerId() === null|| strlen($this->request->getOwnerId()) == 0 ? "null" : $this->request->getOwnerId(), $url);
         $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
 
         $json = [];

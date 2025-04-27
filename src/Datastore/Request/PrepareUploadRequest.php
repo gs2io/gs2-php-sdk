@@ -130,11 +130,11 @@ class PrepareUploadRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withContentType(array_key_exists('contentType', $data) && $data['contentType'] !== null ? $data['contentType'] : null)
             ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
-            ->withAllowUserIds(array_map(
+            ->withAllowUserIds(!array_key_exists('allowUserIds', $data) || $data['allowUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+                $data['allowUserIds']
             ))
             ->withUpdateIfExists(array_key_exists('updateIfExists', $data) ? $data['updateIfExists'] : null);
     }
@@ -146,11 +146,11 @@ class PrepareUploadRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "contentType" => $this->getContentType(),
             "scope" => $this->getScope(),
-            "allowUserIds" => array_map(
+            "allowUserIds" => $this->getAllowUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+                $this->getAllowUserIds()
             ),
             "updateIfExists" => $this->getUpdateIfExists(),
         );

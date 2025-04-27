@@ -118,11 +118,11 @@ class CreateRoomRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
-            ->withWhiteListUserIds(array_map(
+            ->withWhiteListUserIds(!array_key_exists('whiteListUserIds', $data) || $data['whiteListUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('whiteListUserIds', $data) && $data['whiteListUserIds'] !== null ? $data['whiteListUserIds'] : []
+                $data['whiteListUserIds']
             ));
     }
 
@@ -133,11 +133,11 @@ class CreateRoomRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
             "password" => $this->getPassword(),
-            "whiteListUserIds" => array_map(
+            "whiteListUserIds" => $this->getWhiteListUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getWhiteListUserIds() !== null && $this->getWhiteListUserIds() !== null ? $this->getWhiteListUserIds() : []
+                $this->getWhiteListUserIds()
             ),
         );
     }

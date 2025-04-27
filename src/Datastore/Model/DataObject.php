@@ -185,11 +185,11 @@ class DataObject implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withScope(array_key_exists('scope', $data) && $data['scope'] !== null ? $data['scope'] : null)
-            ->withAllowUserIds(array_map(
+            ->withAllowUserIds(!array_key_exists('allowUserIds', $data) || $data['allowUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+                $data['allowUserIds']
             ))
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
             ->withGeneration(array_key_exists('generation', $data) && $data['generation'] !== null ? $data['generation'] : null)
@@ -205,11 +205,11 @@ class DataObject implements IModel {
             "name" => $this->getName(),
             "userId" => $this->getUserId(),
             "scope" => $this->getScope(),
-            "allowUserIds" => array_map(
+            "allowUserIds" => $this->getAllowUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+                $this->getAllowUserIds()
             ),
             "status" => $this->getStatus(),
             "generation" => $this->getGeneration(),

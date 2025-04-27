@@ -31,18 +31,26 @@ use GuzzleHttp\Psr7\Response;
 
 use Gs2\Deploy\Request\DescribeStacksRequest;
 use Gs2\Deploy\Result\DescribeStacksResult;
+use Gs2\Deploy\Request\PreCreateStackRequest;
+use Gs2\Deploy\Result\PreCreateStackResult;
 use Gs2\Deploy\Request\CreateStackRequest;
 use Gs2\Deploy\Result\CreateStackResult;
 use Gs2\Deploy\Request\CreateStackFromGitHubRequest;
 use Gs2\Deploy\Result\CreateStackFromGitHubResult;
+use Gs2\Deploy\Request\PreValidateRequest;
+use Gs2\Deploy\Result\PreValidateResult;
 use Gs2\Deploy\Request\ValidateRequest;
 use Gs2\Deploy\Result\ValidateResult;
 use Gs2\Deploy\Request\GetStackStatusRequest;
 use Gs2\Deploy\Result\GetStackStatusResult;
 use Gs2\Deploy\Request\GetStackRequest;
 use Gs2\Deploy\Result\GetStackResult;
+use Gs2\Deploy\Request\PreUpdateStackRequest;
+use Gs2\Deploy\Result\PreUpdateStackResult;
 use Gs2\Deploy\Request\UpdateStackRequest;
 use Gs2\Deploy\Result\UpdateStackResult;
+use Gs2\Deploy\Request\PreChangeSetRequest;
+use Gs2\Deploy\Result\PreChangeSetResult;
 use Gs2\Deploy\Request\ChangeSetRequest;
 use Gs2\Deploy\Result\ChangeSetResult;
 use Gs2\Deploy\Request\UpdateStackFromGitHubRequest;
@@ -129,6 +137,59 @@ class DescribeStacksTask extends Gs2RestSessionTask {
     }
 }
 
+class PreCreateStackTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreCreateStackRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreCreateStackTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreCreateStackRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreCreateStackRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreCreateStackResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/pre";
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class CreateStackTask extends Gs2RestSessionTask {
 
     /**
@@ -159,6 +220,31 @@ class CreateStackTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getTemplate() !== null) {
+            $req = new PreCreateStackRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            $task = new PreCreateStackTask(
+                $this->session,
+                $req
+            );
+            /** @var PreCreateStackResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getTemplate(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withTemplate(null);
+        }
 
         $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack";
 
@@ -169,8 +255,14 @@ class CreateStackTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getTemplate() !== null) {
             $json["template"] = $this->request->getTemplate();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -253,6 +345,59 @@ class CreateStackFromGitHubTask extends Gs2RestSessionTask {
     }
 }
 
+class PreValidateTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreValidateRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreValidateTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreValidateRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreValidateRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreValidateResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/validate/pre";
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ValidateTask extends Gs2RestSessionTask {
 
     /**
@@ -283,12 +428,43 @@ class ValidateTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getTemplate() !== null) {
+            $req = new PreValidateRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            $task = new PreValidateTask(
+                $this->session,
+                $req
+            );
+            /** @var PreValidateResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getTemplate(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withTemplate(null);
+        }
 
         $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/validate";
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getTemplate() !== null) {
             $json["template"] = $this->request->getTemplate();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -423,6 +599,61 @@ class GetStackTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateStackTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateStackRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateStackTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateStackRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateStackRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateStackResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/pre";
+
+        $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateStackTask extends Gs2RestSessionTask {
 
     /**
@@ -453,6 +684,34 @@ class UpdateStackTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getTemplate() !== null) {
+            $req = new PreUpdateStackRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getStackName() !== null) {
+                $req->setStackName($this->request->getStackName());
+            }
+            $task = new PreUpdateStackTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateStackResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getTemplate(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withTemplate(null);
+        }
 
         $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}";
 
@@ -462,8 +721,14 @@ class UpdateStackTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getTemplate() !== null) {
             $json["template"] = $this->request->getTemplate();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -472,6 +737,61 @@ class UpdateStackTask extends Gs2RestSessionTask {
         $this->builder->setBody($json);
 
         $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PreChangeSetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreChangeSetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreChangeSetTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreChangeSetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreChangeSetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreChangeSetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}/pre";
+
+        $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -514,14 +834,48 @@ class ChangeSetTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getTemplate() !== null) {
+            $req = new PreChangeSetRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getStackName() !== null) {
+                $req->setStackName($this->request->getStackName());
+            }
+            $task = new PreChangeSetTask(
+                $this->session,
+                $req
+            );
+            /** @var PreChangeSetResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getTemplate(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withTemplate(null);
+        }
 
         $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stack/{stackName}";
 
         $url = str_replace("{stackName}", $this->request->getStackName() === null|| strlen($this->request->getStackName()) == 0 ? "null" : $this->request->getStackName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getTemplate() !== null) {
             $json["template"] = $this->request->getTemplate();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -1239,6 +1593,33 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param PreCreateStackRequest $request
+     * @return PromiseInterface
+     */
+    public function preCreateStackAsync(
+            PreCreateStackRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreCreateStackTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreCreateStackRequest $request
+     * @return PreCreateStackResult
+     */
+    public function preCreateStack (
+            PreCreateStackRequest $request
+    ): PreCreateStackResult {
+        return $this->preCreateStackAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param CreateStackRequest $request
      * @return PromiseInterface
      */
@@ -1288,6 +1669,33 @@ class Gs2DeployRestClient extends AbstractGs2Client {
             CreateStackFromGitHubRequest $request
     ): CreateStackFromGitHubResult {
         return $this->createStackFromGitHubAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreValidateRequest $request
+     * @return PromiseInterface
+     */
+    public function preValidateAsync(
+            PreValidateRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreValidateTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreValidateRequest $request
+     * @return PreValidateResult
+     */
+    public function preValidate (
+            PreValidateRequest $request
+    ): PreValidateResult {
+        return $this->preValidateAsync(
             $request
         )->wait();
     }
@@ -1374,6 +1782,33 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param PreUpdateStackRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateStackAsync(
+            PreUpdateStackRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateStackTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateStackRequest $request
+     * @return PreUpdateStackResult
+     */
+    public function preUpdateStack (
+            PreUpdateStackRequest $request
+    ): PreUpdateStackResult {
+        return $this->preUpdateStackAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param UpdateStackRequest $request
      * @return PromiseInterface
      */
@@ -1396,6 +1831,33 @@ class Gs2DeployRestClient extends AbstractGs2Client {
             UpdateStackRequest $request
     ): UpdateStackResult {
         return $this->updateStackAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreChangeSetRequest $request
+     * @return PromiseInterface
+     */
+    public function preChangeSetAsync(
+            PreChangeSetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreChangeSetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreChangeSetRequest $request
+     * @return PreChangeSetResult
+     */
+    public function preChangeSet (
+            PreChangeSetRequest $request
+    ): PreChangeSetResult {
+        return $this->preChangeSetAsync(
             $request
         )->wait();
     }

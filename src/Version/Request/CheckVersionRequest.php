@@ -81,11 +81,11 @@ class CheckVersionRequest extends Gs2BasicRequest {
         return (new CheckVersionRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withTargetVersions(array_map(
+            ->withTargetVersions(!array_key_exists('targetVersions', $data) || $data['targetVersions'] === null ? null : array_map(
                 function ($item) {
                     return TargetVersion::fromJson($item);
                 },
-                array_key_exists('targetVersions', $data) && $data['targetVersions'] !== null ? $data['targetVersions'] : []
+                $data['targetVersions']
             ));
     }
 
@@ -93,11 +93,11 @@ class CheckVersionRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "targetVersions" => array_map(
+            "targetVersions" => $this->getTargetVersions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTargetVersions() !== null && $this->getTargetVersions() !== null ? $this->getTargetVersions() : []
+                $this->getTargetVersions()
             ),
         );
     }

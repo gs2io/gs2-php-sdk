@@ -187,11 +187,11 @@ class Await implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
             ->withSkipSeconds(array_key_exists('skipSeconds', $data) && $data['skipSeconds'] !== null ? $data['skipSeconds'] : null)
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ))
             ->withAcquirableAt(array_key_exists('acquirableAt', $data) && $data['acquirableAt'] !== null ? $data['acquirableAt'] : null)
             ->withExchangedAt(array_key_exists('exchangedAt', $data) && $data['exchangedAt'] !== null ? $data['exchangedAt'] : null)
@@ -207,11 +207,11 @@ class Await implements IModel {
             "name" => $this->getName(),
             "count" => $this->getCount(),
             "skipSeconds" => $this->getSkipSeconds(),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
             "acquirableAt" => $this->getAcquirableAt(),
             "exchangedAt" => $this->getExchangedAt(),

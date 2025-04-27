@@ -116,11 +116,11 @@ class BalanceParameterModel implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withTotalValue(array_key_exists('totalValue', $data) && $data['totalValue'] !== null ? $data['totalValue'] : null)
             ->withInitialValueStrategy(array_key_exists('initialValueStrategy', $data) && $data['initialValueStrategy'] !== null ? $data['initialValueStrategy'] : null)
-            ->withParameters(array_map(
+            ->withParameters(!array_key_exists('parameters', $data) || $data['parameters'] === null ? null : array_map(
                 function ($item) {
                     return BalanceParameterValueModel::fromJson($item);
                 },
-                array_key_exists('parameters', $data) && $data['parameters'] !== null ? $data['parameters'] : []
+                $data['parameters']
             ));
     }
 
@@ -131,11 +131,11 @@ class BalanceParameterModel implements IModel {
             "metadata" => $this->getMetadata(),
             "totalValue" => $this->getTotalValue(),
             "initialValueStrategy" => $this->getInitialValueStrategy(),
-            "parameters" => array_map(
+            "parameters" => $this->getParameters() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getParameters() !== null && $this->getParameters() !== null ? $this->getParameters() : []
+                $this->getParameters()
             ),
         );
     }

@@ -93,11 +93,11 @@ class ConsumeSimpleItemsRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withInventoryName(array_key_exists('inventoryName', $data) && $data['inventoryName'] !== null ? $data['inventoryName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withConsumeCounts(array_map(
+            ->withConsumeCounts(!array_key_exists('consumeCounts', $data) || $data['consumeCounts'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeCount::fromJson($item);
                 },
-                array_key_exists('consumeCounts', $data) && $data['consumeCounts'] !== null ? $data['consumeCounts'] : []
+                $data['consumeCounts']
             ));
     }
 
@@ -106,11 +106,11 @@ class ConsumeSimpleItemsRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "inventoryName" => $this->getInventoryName(),
             "accessToken" => $this->getAccessToken(),
-            "consumeCounts" => array_map(
+            "consumeCounts" => $this->getConsumeCounts() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConsumeCounts() !== null && $this->getConsumeCounts() !== null ? $this->getConsumeCounts() : []
+                $this->getConsumeCounts()
             ),
         );
     }

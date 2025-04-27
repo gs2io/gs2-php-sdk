@@ -117,11 +117,11 @@ class ReDrawBalanceParameterStatusByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withParameterName(array_key_exists('parameterName', $data) && $data['parameterName'] !== null ? $data['parameterName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
-            ->withFixedParameterNames(array_map(
+            ->withFixedParameterNames(!array_key_exists('fixedParameterNames', $data) || $data['fixedParameterNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('fixedParameterNames', $data) && $data['fixedParameterNames'] !== null ? $data['fixedParameterNames'] : []
+                $data['fixedParameterNames']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -132,11 +132,11 @@ class ReDrawBalanceParameterStatusByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "parameterName" => $this->getParameterName(),
             "propertyId" => $this->getPropertyId(),
-            "fixedParameterNames" => array_map(
+            "fixedParameterNames" => $this->getFixedParameterNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getFixedParameterNames() !== null && $this->getFixedParameterNames() !== null ? $this->getFixedParameterNames() : []
+                $this->getFixedParameterNames()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

@@ -92,11 +92,11 @@ class PushByUserIdRequest extends Gs2BasicRequest {
         return (new PushByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withJobs(array_map(
+            ->withJobs(!array_key_exists('jobs', $data) || $data['jobs'] === null ? null : array_map(
                 function ($item) {
                     return JobEntry::fromJson($item);
                 },
-                array_key_exists('jobs', $data) && $data['jobs'] !== null ? $data['jobs'] : []
+                $data['jobs']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -105,11 +105,11 @@ class PushByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "jobs" => array_map(
+            "jobs" => $this->getJobs() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getJobs() !== null && $this->getJobs() !== null ? $this->getJobs() : []
+                $this->getJobs()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

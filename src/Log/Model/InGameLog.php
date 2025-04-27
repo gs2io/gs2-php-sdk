@@ -100,11 +100,11 @@ class InGameLog implements IModel {
             ->withTimestamp(array_key_exists('timestamp', $data) && $data['timestamp'] !== null ? $data['timestamp'] : null)
             ->withRequestId(array_key_exists('requestId', $data) && $data['requestId'] !== null ? $data['requestId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTags(array_map(
+            ->withTags(!array_key_exists('tags', $data) || $data['tags'] === null ? null : array_map(
                 function ($item) {
                     return InGameLogTag::fromJson($item);
                 },
-                array_key_exists('tags', $data) && $data['tags'] !== null ? $data['tags'] : []
+                $data['tags']
             ))
             ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null);
     }
@@ -114,11 +114,11 @@ class InGameLog implements IModel {
             "timestamp" => $this->getTimestamp(),
             "requestId" => $this->getRequestId(),
             "userId" => $this->getUserId(),
-            "tags" => array_map(
+            "tags" => $this->getTags() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getTags() !== null && $this->getTags() !== null ? $this->getTags() : []
+                $this->getTags()
             ),
             "payload" => $this->getPayload(),
         );

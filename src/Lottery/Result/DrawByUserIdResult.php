@@ -169,11 +169,11 @@ class DrawByUserIdResult implements IResult {
             return null;
         }
         return (new DrawByUserIdResult())
-            ->withItems(array_map(
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
                 function ($item) {
                     return DrawnPrize::fromJson($item);
                 },
-                array_key_exists('items', $data) && $data['items'] !== null ? $data['items'] : []
+                $data['items']
             ))
             ->withBoxItems(array_key_exists('boxItems', $data) && $data['boxItems'] !== null ? BoxItems::fromJson($data['boxItems']) : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
@@ -187,11 +187,11 @@ class DrawByUserIdResult implements IResult {
 
     public function toJson(): array {
         return array(
-            "items" => array_map(
+            "items" => $this->getItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getItems() !== null && $this->getItems() !== null ? $this->getItems() : []
+                $this->getItems()
             ),
             "boxItems" => $this->getBoxItems() !== null ? $this->getBoxItems()->toJson() : null,
             "transactionId" => $this->getTransactionId(),

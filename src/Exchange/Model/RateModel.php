@@ -142,25 +142,25 @@ class RateModel implements IModel {
             ->withRateModelId(array_key_exists('rateModelId', $data) && $data['rateModelId'] !== null ? $data['rateModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withVerifyActions(array_map(
+            ->withVerifyActions(!array_key_exists('verifyActions', $data) || $data['verifyActions'] === null ? null : array_map(
                 function ($item) {
                     return VerifyAction::fromJson($item);
                 },
-                array_key_exists('verifyActions', $data) && $data['verifyActions'] !== null ? $data['verifyActions'] : []
+                $data['verifyActions']
             ))
-            ->withConsumeActions(array_map(
+            ->withConsumeActions(!array_key_exists('consumeActions', $data) || $data['consumeActions'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
-                array_key_exists('consumeActions', $data) && $data['consumeActions'] !== null ? $data['consumeActions'] : []
+                $data['consumeActions']
             ))
             ->withTimingType(array_key_exists('timingType', $data) && $data['timingType'] !== null ? $data['timingType'] : null)
             ->withLockTime(array_key_exists('lockTime', $data) && $data['lockTime'] !== null ? $data['lockTime'] : null)
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ));
     }
 
@@ -169,25 +169,25 @@ class RateModel implements IModel {
             "rateModelId" => $this->getRateModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "verifyActions" => array_map(
+            "verifyActions" => $this->getVerifyActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getVerifyActions() !== null && $this->getVerifyActions() !== null ? $this->getVerifyActions() : []
+                $this->getVerifyActions()
             ),
-            "consumeActions" => array_map(
+            "consumeActions" => $this->getConsumeActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConsumeActions() !== null && $this->getConsumeActions() !== null ? $this->getConsumeActions() : []
+                $this->getConsumeActions()
             ),
             "timingType" => $this->getTimingType(),
             "lockTime" => $this->getLockTime(),
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
         );
     }

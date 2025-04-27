@@ -101,6 +101,8 @@ use Gs2\Ranking\Request\ExportMasterRequest;
 use Gs2\Ranking\Result\ExportMasterResult;
 use Gs2\Ranking\Request\GetCurrentRankingMasterRequest;
 use Gs2\Ranking\Result\GetCurrentRankingMasterResult;
+use Gs2\Ranking\Request\PreUpdateCurrentRankingMasterRequest;
+use Gs2\Ranking\Result\PreUpdateCurrentRankingMasterResult;
 use Gs2\Ranking\Request\UpdateCurrentRankingMasterRequest;
 use Gs2\Ranking\Result\UpdateCurrentRankingMasterResult;
 use Gs2\Ranking\Request\UpdateCurrentRankingMasterFromGitHubRequest;
@@ -2464,6 +2466,61 @@ class GetCurrentRankingMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentRankingMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentRankingMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentRankingMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentRankingMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentRankingMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentRankingMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentRankingMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -2494,14 +2551,48 @@ class UpdateCurrentRankingMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentRankingMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentRankingMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentRankingMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "ranking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3944,6 +4035,33 @@ class Gs2RankingRestClient extends AbstractGs2Client {
             GetCurrentRankingMasterRequest $request
     ): GetCurrentRankingMasterResult {
         return $this->getCurrentRankingMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentRankingMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentRankingMasterAsync(
+            PreUpdateCurrentRankingMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentRankingMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentRankingMasterRequest $request
+     * @return PreUpdateCurrentRankingMasterResult
+     */
+    public function preUpdateCurrentRankingMaster (
+            PreUpdateCurrentRankingMasterRequest $request
+    ): PreUpdateCurrentRankingMasterResult {
+        return $this->preUpdateCurrentRankingMasterAsync(
             $request
         )->wait();
     }

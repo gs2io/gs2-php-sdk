@@ -98,18 +98,18 @@ class Player implements IModel {
         }
         return (new Player())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withAttributes(array_map(
+            ->withAttributes(!array_key_exists('attributes', $data) || $data['attributes'] === null ? null : array_map(
                 function ($item) {
                     return Attribute::fromJson($item);
                 },
-                array_key_exists('attributes', $data) && $data['attributes'] !== null ? $data['attributes'] : []
+                $data['attributes']
             ))
             ->withRoleName(array_key_exists('roleName', $data) && $data['roleName'] !== null ? $data['roleName'] : null)
-            ->withDenyUserIds(array_map(
+            ->withDenyUserIds(!array_key_exists('denyUserIds', $data) || $data['denyUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('denyUserIds', $data) && $data['denyUserIds'] !== null ? $data['denyUserIds'] : []
+                $data['denyUserIds']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
@@ -117,18 +117,18 @@ class Player implements IModel {
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
-            "attributes" => array_map(
+            "attributes" => $this->getAttributes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAttributes() !== null && $this->getAttributes() !== null ? $this->getAttributes() : []
+                $this->getAttributes()
             ),
             "roleName" => $this->getRoleName(),
-            "denyUserIds" => array_map(
+            "denyUserIds" => $this->getDenyUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getDenyUserIds() !== null && $this->getDenyUserIds() !== null ? $this->getDenyUserIds() : []
+                $this->getDenyUserIds()
             ),
             "createdAt" => $this->getCreatedAt(),
         );

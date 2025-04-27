@@ -201,11 +201,11 @@ class GuildModel implements IModel {
             ->withDefaultMaximumMemberCount(array_key_exists('defaultMaximumMemberCount', $data) && $data['defaultMaximumMemberCount'] !== null ? $data['defaultMaximumMemberCount'] : null)
             ->withMaximumMemberCount(array_key_exists('maximumMemberCount', $data) && $data['maximumMemberCount'] !== null ? $data['maximumMemberCount'] : null)
             ->withInactivityPeriodDays(array_key_exists('inactivityPeriodDays', $data) && $data['inactivityPeriodDays'] !== null ? $data['inactivityPeriodDays'] : null)
-            ->withRoles(array_map(
+            ->withRoles(!array_key_exists('roles', $data) || $data['roles'] === null ? null : array_map(
                 function ($item) {
                     return RoleModel::fromJson($item);
                 },
-                array_key_exists('roles', $data) && $data['roles'] !== null ? $data['roles'] : []
+                $data['roles']
             ))
             ->withGuildMasterRole(array_key_exists('guildMasterRole', $data) && $data['guildMasterRole'] !== null ? $data['guildMasterRole'] : null)
             ->withGuildMemberDefaultRole(array_key_exists('guildMemberDefaultRole', $data) && $data['guildMemberDefaultRole'] !== null ? $data['guildMemberDefaultRole'] : null)
@@ -222,11 +222,11 @@ class GuildModel implements IModel {
             "defaultMaximumMemberCount" => $this->getDefaultMaximumMemberCount(),
             "maximumMemberCount" => $this->getMaximumMemberCount(),
             "inactivityPeriodDays" => $this->getInactivityPeriodDays(),
-            "roles" => array_map(
+            "roles" => $this->getRoles() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getRoles() !== null && $this->getRoles() !== null ? $this->getRoles() : []
+                $this->getRoles()
             ),
             "guildMasterRole" => $this->getGuildMasterRole(),
             "guildMemberDefaultRole" => $this->getGuildMemberDefaultRole(),

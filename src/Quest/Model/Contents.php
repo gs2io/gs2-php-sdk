@@ -70,11 +70,11 @@ class Contents implements IModel {
         }
         return (new Contents())
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withCompleteAcquireActions(array_map(
+            ->withCompleteAcquireActions(!array_key_exists('completeAcquireActions', $data) || $data['completeAcquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('completeAcquireActions', $data) && $data['completeAcquireActions'] !== null ? $data['completeAcquireActions'] : []
+                $data['completeAcquireActions']
             ))
             ->withWeight(array_key_exists('weight', $data) && $data['weight'] !== null ? $data['weight'] : null);
     }
@@ -82,11 +82,11 @@ class Contents implements IModel {
     public function toJson(): array {
         return array(
             "metadata" => $this->getMetadata(),
-            "completeAcquireActions" => array_map(
+            "completeAcquireActions" => $this->getCompleteAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getCompleteAcquireActions() !== null && $this->getCompleteAcquireActions() !== null ? $this->getCompleteAcquireActions() : []
+                $this->getCompleteAcquireActions()
             ),
             "weight" => $this->getWeight(),
         );

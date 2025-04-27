@@ -173,11 +173,11 @@ class UnleashRateModelMaster implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withTargetInventoryModelId(array_key_exists('targetInventoryModelId', $data) && $data['targetInventoryModelId'] !== null ? $data['targetInventoryModelId'] : null)
             ->withGradeModelId(array_key_exists('gradeModelId', $data) && $data['gradeModelId'] !== null ? $data['gradeModelId'] : null)
-            ->withGradeEntries(array_map(
+            ->withGradeEntries(!array_key_exists('gradeEntries', $data) || $data['gradeEntries'] === null ? null : array_map(
                 function ($item) {
                     return UnleashRateEntryModel::fromJson($item);
                 },
-                array_key_exists('gradeEntries', $data) && $data['gradeEntries'] !== null ? $data['gradeEntries'] : []
+                $data['gradeEntries']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -192,11 +192,11 @@ class UnleashRateModelMaster implements IModel {
             "metadata" => $this->getMetadata(),
             "targetInventoryModelId" => $this->getTargetInventoryModelId(),
             "gradeModelId" => $this->getGradeModelId(),
-            "gradeEntries" => array_map(
+            "gradeEntries" => $this->getGradeEntries() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getGradeEntries() !== null && $this->getGradeEntries() !== null ? $this->getGradeEntries() : []
+                $this->getGradeEntries()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

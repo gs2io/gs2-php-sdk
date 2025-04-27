@@ -193,11 +193,11 @@ class CreateVersionModelMasterRequest extends Gs2BasicRequest {
             ->withCurrentVersion(array_key_exists('currentVersion', $data) && $data['currentVersion'] !== null ? Version::fromJson($data['currentVersion']) : null)
             ->withWarningVersion(array_key_exists('warningVersion', $data) && $data['warningVersion'] !== null ? Version::fromJson($data['warningVersion']) : null)
             ->withErrorVersion(array_key_exists('errorVersion', $data) && $data['errorVersion'] !== null ? Version::fromJson($data['errorVersion']) : null)
-            ->withScheduleVersions(array_map(
+            ->withScheduleVersions(!array_key_exists('scheduleVersions', $data) || $data['scheduleVersions'] === null ? null : array_map(
                 function ($item) {
                     return ScheduleVersion::fromJson($item);
                 },
-                array_key_exists('scheduleVersions', $data) && $data['scheduleVersions'] !== null ? $data['scheduleVersions'] : []
+                $data['scheduleVersions']
             ))
             ->withNeedSignature(array_key_exists('needSignature', $data) ? $data['needSignature'] : null)
             ->withSignatureKeyId(array_key_exists('signatureKeyId', $data) && $data['signatureKeyId'] !== null ? $data['signatureKeyId'] : null)
@@ -215,11 +215,11 @@ class CreateVersionModelMasterRequest extends Gs2BasicRequest {
             "currentVersion" => $this->getCurrentVersion() !== null ? $this->getCurrentVersion()->toJson() : null,
             "warningVersion" => $this->getWarningVersion() !== null ? $this->getWarningVersion()->toJson() : null,
             "errorVersion" => $this->getErrorVersion() !== null ? $this->getErrorVersion()->toJson() : null,
-            "scheduleVersions" => array_map(
+            "scheduleVersions" => $this->getScheduleVersions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getScheduleVersions() !== null && $this->getScheduleVersions() !== null ? $this->getScheduleVersions() : []
+                $this->getScheduleVersions()
             ),
             "needSignature" => $this->getNeedSignature(),
             "signatureKeyId" => $this->getSignatureKeyId(),

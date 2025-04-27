@@ -143,11 +143,11 @@ class MultiplyAcquireActionsByUserIdRequest extends Gs2BasicRequest {
             ->withExperienceName(array_key_exists('experienceName', $data) && $data['experienceName'] !== null ? $data['experienceName'] : null)
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ))
             ->withBaseRate(array_key_exists('baseRate', $data) && $data['baseRate'] !== null ? $data['baseRate'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
@@ -160,11 +160,11 @@ class MultiplyAcquireActionsByUserIdRequest extends Gs2BasicRequest {
             "experienceName" => $this->getExperienceName(),
             "propertyId" => $this->getPropertyId(),
             "rateName" => $this->getRateName(),
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
             "baseRate" => $this->getBaseRate(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),

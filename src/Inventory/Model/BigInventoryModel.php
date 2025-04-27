@@ -86,11 +86,11 @@ class BigInventoryModel implements IModel {
             ->withInventoryModelId(array_key_exists('inventoryModelId', $data) && $data['inventoryModelId'] !== null ? $data['inventoryModelId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withBigItemModels(array_map(
+            ->withBigItemModels(!array_key_exists('bigItemModels', $data) || $data['bigItemModels'] === null ? null : array_map(
                 function ($item) {
                     return BigItemModel::fromJson($item);
                 },
-                array_key_exists('bigItemModels', $data) && $data['bigItemModels'] !== null ? $data['bigItemModels'] : []
+                $data['bigItemModels']
             ));
     }
 
@@ -99,11 +99,11 @@ class BigInventoryModel implements IModel {
             "inventoryModelId" => $this->getInventoryModelId(),
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "bigItemModels" => array_map(
+            "bigItemModels" => $this->getBigItemModels() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getBigItemModels() !== null && $this->getBigItemModels() !== null ? $this->getBigItemModels() : []
+                $this->getBigItemModels()
             ),
         );
     }

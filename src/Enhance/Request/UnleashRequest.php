@@ -118,17 +118,17 @@ class UnleashRequest extends Gs2BasicRequest {
             ->withRateName(array_key_exists('rateName', $data) && $data['rateName'] !== null ? $data['rateName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withTargetItemSetId(array_key_exists('targetItemSetId', $data) && $data['targetItemSetId'] !== null ? $data['targetItemSetId'] : null)
-            ->withMaterials(array_map(
+            ->withMaterials(!array_key_exists('materials', $data) || $data['materials'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('materials', $data) && $data['materials'] !== null ? $data['materials'] : []
+                $data['materials']
             ))
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ));
     }
 
@@ -138,17 +138,17 @@ class UnleashRequest extends Gs2BasicRequest {
             "rateName" => $this->getRateName(),
             "accessToken" => $this->getAccessToken(),
             "targetItemSetId" => $this->getTargetItemSetId(),
-            "materials" => array_map(
+            "materials" => $this->getMaterials() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getMaterials() !== null && $this->getMaterials() !== null ? $this->getMaterials() : []
+                $this->getMaterials()
             ),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
         );
     }

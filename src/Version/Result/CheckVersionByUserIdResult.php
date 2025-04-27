@@ -76,34 +76,34 @@ class CheckVersionByUserIdResult implements IResult {
         }
         return (new CheckVersionByUserIdResult())
             ->withProjectToken(array_key_exists('projectToken', $data) && $data['projectToken'] !== null ? $data['projectToken'] : null)
-            ->withWarnings(array_map(
+            ->withWarnings(!array_key_exists('warnings', $data) || $data['warnings'] === null ? null : array_map(
                 function ($item) {
                     return Status::fromJson($item);
                 },
-                array_key_exists('warnings', $data) && $data['warnings'] !== null ? $data['warnings'] : []
+                $data['warnings']
             ))
-            ->withErrors(array_map(
+            ->withErrors(!array_key_exists('errors', $data) || $data['errors'] === null ? null : array_map(
                 function ($item) {
                     return Status::fromJson($item);
                 },
-                array_key_exists('errors', $data) && $data['errors'] !== null ? $data['errors'] : []
+                $data['errors']
             ));
     }
 
     public function toJson(): array {
         return array(
             "projectToken" => $this->getProjectToken(),
-            "warnings" => array_map(
+            "warnings" => $this->getWarnings() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getWarnings() !== null && $this->getWarnings() !== null ? $this->getWarnings() : []
+                $this->getWarnings()
             ),
-            "errors" => array_map(
+            "errors" => $this->getErrors() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getErrors() !== null && $this->getErrors() !== null ? $this->getErrors() : []
+                $this->getErrors()
             ),
         );
     }

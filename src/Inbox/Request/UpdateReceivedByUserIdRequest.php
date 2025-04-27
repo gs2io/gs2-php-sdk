@@ -91,11 +91,11 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
         return (new UpdateReceivedByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withReceivedGlobalMessageNames(array_map(
+            ->withReceivedGlobalMessageNames(!array_key_exists('receivedGlobalMessageNames', $data) || $data['receivedGlobalMessageNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('receivedGlobalMessageNames', $data) && $data['receivedGlobalMessageNames'] !== null ? $data['receivedGlobalMessageNames'] : []
+                $data['receivedGlobalMessageNames']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -104,11 +104,11 @@ class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "receivedGlobalMessageNames" => array_map(
+            "receivedGlobalMessageNames" => $this->getReceivedGlobalMessageNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getReceivedGlobalMessageNames() !== null && $this->getReceivedGlobalMessageNames() !== null ? $this->getReceivedGlobalMessageNames() : []
+                $this->getReceivedGlobalMessageNames()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

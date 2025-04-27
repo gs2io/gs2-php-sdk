@@ -79,11 +79,11 @@ class AddLikesRequest extends Gs2BasicRequest {
         return (new AddLikesRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withEntryModelNames(array_map(
+            ->withEntryModelNames(!array_key_exists('entryModelNames', $data) || $data['entryModelNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('entryModelNames', $data) && $data['entryModelNames'] !== null ? $data['entryModelNames'] : []
+                $data['entryModelNames']
             ));
     }
 
@@ -91,11 +91,11 @@ class AddLikesRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
-            "entryModelNames" => array_map(
+            "entryModelNames" => $this->getEntryModelNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getEntryModelNames() !== null && $this->getEntryModelNames() !== null ? $this->getEntryModelNames() : []
+                $this->getEntryModelNames()
             ),
         );
     }

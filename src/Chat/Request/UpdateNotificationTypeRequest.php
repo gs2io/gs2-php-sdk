@@ -93,11 +93,11 @@ class UpdateNotificationTypeRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withNotificationTypes(array_map(
+            ->withNotificationTypes(!array_key_exists('notificationTypes', $data) || $data['notificationTypes'] === null ? null : array_map(
                 function ($item) {
                     return NotificationType::fromJson($item);
                 },
-                array_key_exists('notificationTypes', $data) && $data['notificationTypes'] !== null ? $data['notificationTypes'] : []
+                $data['notificationTypes']
             ));
     }
 
@@ -106,11 +106,11 @@ class UpdateNotificationTypeRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "roomName" => $this->getRoomName(),
             "accessToken" => $this->getAccessToken(),
-            "notificationTypes" => array_map(
+            "notificationTypes" => $this->getNotificationTypes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getNotificationTypes() !== null && $this->getNotificationTypes() !== null ? $this->getNotificationTypes() : []
+                $this->getNotificationTypes()
             ),
         );
     }

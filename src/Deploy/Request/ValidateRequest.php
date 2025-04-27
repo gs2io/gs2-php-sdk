@@ -21,7 +21,21 @@ use Gs2\Core\Control\Gs2BasicRequest;
 
 class ValidateRequest extends Gs2BasicRequest {
     /** @var string */
+    private $mode;
+    /** @var string */
     private $template;
+    /** @var string */
+    private $uploadToken;
+	public function getMode(): ?string {
+		return $this->mode;
+	}
+	public function setMode(?string $mode) {
+		$this->mode = $mode;
+	}
+	public function withMode(?string $mode): ValidateRequest {
+		$this->mode = $mode;
+		return $this;
+	}
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
@@ -32,18 +46,32 @@ class ValidateRequest extends Gs2BasicRequest {
 		$this->template = $template;
 		return $this;
 	}
+	public function getUploadToken(): ?string {
+		return $this->uploadToken;
+	}
+	public function setUploadToken(?string $uploadToken) {
+		$this->uploadToken = $uploadToken;
+	}
+	public function withUploadToken(?string $uploadToken): ValidateRequest {
+		$this->uploadToken = $uploadToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?ValidateRequest {
         if ($data === null) {
             return null;
         }
         return (new ValidateRequest())
-            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null);
+            ->withMode(array_key_exists('mode', $data) && $data['mode'] !== null ? $data['mode'] : null)
+            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null)
+            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "mode" => $this->getMode(),
             "template" => $this->getTemplate(),
+            "uploadToken" => $this->getUploadToken(),
         );
     }
 }

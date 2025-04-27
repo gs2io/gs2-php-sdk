@@ -145,23 +145,23 @@ class CreateGatheringRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withPlayer(array_key_exists('player', $data) && $data['player'] !== null ? Player::fromJson($data['player']) : null)
-            ->withAttributeRanges(array_map(
+            ->withAttributeRanges(!array_key_exists('attributeRanges', $data) || $data['attributeRanges'] === null ? null : array_map(
                 function ($item) {
                     return AttributeRange::fromJson($item);
                 },
-                array_key_exists('attributeRanges', $data) && $data['attributeRanges'] !== null ? $data['attributeRanges'] : []
+                $data['attributeRanges']
             ))
-            ->withCapacityOfRoles(array_map(
+            ->withCapacityOfRoles(!array_key_exists('capacityOfRoles', $data) || $data['capacityOfRoles'] === null ? null : array_map(
                 function ($item) {
                     return CapacityOfRole::fromJson($item);
                 },
-                array_key_exists('capacityOfRoles', $data) && $data['capacityOfRoles'] !== null ? $data['capacityOfRoles'] : []
+                $data['capacityOfRoles']
             ))
-            ->withAllowUserIds(array_map(
+            ->withAllowUserIds(!array_key_exists('allowUserIds', $data) || $data['allowUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+                $data['allowUserIds']
             ))
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
             ->withExpiresAtTimeSpan(array_key_exists('expiresAtTimeSpan', $data) && $data['expiresAtTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresAtTimeSpan']) : null);
@@ -172,23 +172,23 @@ class CreateGatheringRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "player" => $this->getPlayer() !== null ? $this->getPlayer()->toJson() : null,
-            "attributeRanges" => array_map(
+            "attributeRanges" => $this->getAttributeRanges() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAttributeRanges() !== null && $this->getAttributeRanges() !== null ? $this->getAttributeRanges() : []
+                $this->getAttributeRanges()
             ),
-            "capacityOfRoles" => array_map(
+            "capacityOfRoles" => $this->getCapacityOfRoles() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getCapacityOfRoles() !== null && $this->getCapacityOfRoles() !== null ? $this->getCapacityOfRoles() : []
+                $this->getCapacityOfRoles()
             ),
-            "allowUserIds" => array_map(
+            "allowUserIds" => $this->getAllowUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+                $this->getAllowUserIds()
             ),
             "expiresAt" => $this->getExpiresAt(),
             "expiresAtTimeSpan" => $this->getExpiresAtTimeSpan() !== null ? $this->getExpiresAtTimeSpan()->toJson() : null,

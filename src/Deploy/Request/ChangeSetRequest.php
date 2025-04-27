@@ -23,7 +23,11 @@ class ChangeSetRequest extends Gs2BasicRequest {
     /** @var string */
     private $stackName;
     /** @var string */
+    private $mode;
+    /** @var string */
     private $template;
+    /** @var string */
+    private $uploadToken;
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
@@ -32,6 +36,16 @@ class ChangeSetRequest extends Gs2BasicRequest {
 	}
 	public function withStackName(?string $stackName): ChangeSetRequest {
 		$this->stackName = $stackName;
+		return $this;
+	}
+	public function getMode(): ?string {
+		return $this->mode;
+	}
+	public function setMode(?string $mode) {
+		$this->mode = $mode;
+	}
+	public function withMode(?string $mode): ChangeSetRequest {
+		$this->mode = $mode;
 		return $this;
 	}
 	public function getTemplate(): ?string {
@@ -44,6 +58,16 @@ class ChangeSetRequest extends Gs2BasicRequest {
 		$this->template = $template;
 		return $this;
 	}
+	public function getUploadToken(): ?string {
+		return $this->uploadToken;
+	}
+	public function setUploadToken(?string $uploadToken) {
+		$this->uploadToken = $uploadToken;
+	}
+	public function withUploadToken(?string $uploadToken): ChangeSetRequest {
+		$this->uploadToken = $uploadToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?ChangeSetRequest {
         if ($data === null) {
@@ -51,13 +75,17 @@ class ChangeSetRequest extends Gs2BasicRequest {
         }
         return (new ChangeSetRequest())
             ->withStackName(array_key_exists('stackName', $data) && $data['stackName'] !== null ? $data['stackName'] : null)
-            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null);
+            ->withMode(array_key_exists('mode', $data) && $data['mode'] !== null ? $data['mode'] : null)
+            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null)
+            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "stackName" => $this->getStackName(),
+            "mode" => $this->getMode(),
             "template" => $this->getTemplate(),
+            "uploadToken" => $this->getUploadToken(),
         );
     }
 }

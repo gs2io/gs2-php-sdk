@@ -127,11 +127,11 @@ class Prize implements IModel {
         return (new Prize())
             ->withPrizeId(array_key_exists('prizeId', $data) && $data['prizeId'] !== null ? $data['prizeId'] : null)
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ))
             ->withDrawnLimit(array_key_exists('drawnLimit', $data) && $data['drawnLimit'] !== null ? $data['drawnLimit'] : null)
             ->withLimitFailOverPrizeId(array_key_exists('limitFailOverPrizeId', $data) && $data['limitFailOverPrizeId'] !== null ? $data['limitFailOverPrizeId'] : null)
@@ -143,11 +143,11 @@ class Prize implements IModel {
         return array(
             "prizeId" => $this->getPrizeId(),
             "type" => $this->getType(),
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
             "drawnLimit" => $this->getDrawnLimit(),
             "limitFailOverPrizeId" => $this->getLimitFailOverPrizeId(),

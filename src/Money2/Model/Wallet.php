@@ -157,11 +157,11 @@ class Wallet implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
             ->withSummary(array_key_exists('summary', $data) && $data['summary'] !== null ? WalletSummary::fromJson($data['summary']) : null)
-            ->withDepositTransactions(array_map(
+            ->withDepositTransactions(!array_key_exists('depositTransactions', $data) || $data['depositTransactions'] === null ? null : array_map(
                 function ($item) {
                     return DepositTransaction::fromJson($item);
                 },
-                array_key_exists('depositTransactions', $data) && $data['depositTransactions'] !== null ? $data['depositTransactions'] : []
+                $data['depositTransactions']
             ))
             ->withSharedFreeCurrency(array_key_exists('sharedFreeCurrency', $data) ? $data['sharedFreeCurrency'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -175,11 +175,11 @@ class Wallet implements IModel {
             "userId" => $this->getUserId(),
             "slot" => $this->getSlot(),
             "summary" => $this->getSummary() !== null ? $this->getSummary()->toJson() : null,
-            "depositTransactions" => array_map(
+            "depositTransactions" => $this->getDepositTransactions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getDepositTransactions() !== null && $this->getDepositTransactions() !== null ? $this->getDepositTransactions() : []
+                $this->getDepositTransactions()
             ),
             "sharedFreeCurrency" => $this->getSharedFreeCurrency(),
             "createdAt" => $this->getCreatedAt(),

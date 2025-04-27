@@ -187,11 +187,11 @@ class ItemSet implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withItemName(array_key_exists('itemName', $data) && $data['itemName'] !== null ? $data['itemName'] : null)
             ->withCount(array_key_exists('count', $data) && $data['count'] !== null ? $data['count'] : null)
-            ->withReferenceOf(array_map(
+            ->withReferenceOf(!array_key_exists('referenceOf', $data) || $data['referenceOf'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('referenceOf', $data) && $data['referenceOf'] !== null ? $data['referenceOf'] : []
+                $data['referenceOf']
             ))
             ->withSortValue(array_key_exists('sortValue', $data) && $data['sortValue'] !== null ? $data['sortValue'] : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
@@ -207,11 +207,11 @@ class ItemSet implements IModel {
             "userId" => $this->getUserId(),
             "itemName" => $this->getItemName(),
             "count" => $this->getCount(),
-            "referenceOf" => array_map(
+            "referenceOf" => $this->getReferenceOf() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getReferenceOf() !== null && $this->getReferenceOf() !== null ? $this->getReferenceOf() : []
+                $this->getReferenceOf()
             ),
             "sortValue" => $this->getSortValue(),
             "expiresAt" => $this->getExpiresAt(),

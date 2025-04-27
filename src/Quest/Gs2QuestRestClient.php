@@ -79,6 +79,8 @@ use Gs2\Quest\Request\ExportMasterRequest;
 use Gs2\Quest\Result\ExportMasterResult;
 use Gs2\Quest\Request\GetCurrentQuestMasterRequest;
 use Gs2\Quest\Result\GetCurrentQuestMasterResult;
+use Gs2\Quest\Request\PreUpdateCurrentQuestMasterRequest;
+use Gs2\Quest\Result\PreUpdateCurrentQuestMasterResult;
 use Gs2\Quest\Request\UpdateCurrentQuestMasterRequest;
 use Gs2\Quest\Result\UpdateCurrentQuestMasterResult;
 use Gs2\Quest\Request\UpdateCurrentQuestMasterFromGitHubRequest;
@@ -1770,6 +1772,61 @@ class GetCurrentQuestMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentQuestMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentQuestMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentQuestMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentQuestMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentQuestMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentQuestMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "quest", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentQuestMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -1800,14 +1857,48 @@ class UpdateCurrentQuestMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentQuestMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentQuestMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentQuestMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "quest", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3948,6 +4039,33 @@ class Gs2QuestRestClient extends AbstractGs2Client {
             GetCurrentQuestMasterRequest $request
     ): GetCurrentQuestMasterResult {
         return $this->getCurrentQuestMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentQuestMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentQuestMasterAsync(
+            PreUpdateCurrentQuestMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentQuestMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentQuestMasterRequest $request
+     * @return PreUpdateCurrentQuestMasterResult
+     */
+    public function preUpdateCurrentQuestMaster (
+            PreUpdateCurrentQuestMasterRequest $request
+    ): PreUpdateCurrentQuestMasterResult {
+        return $this->preUpdateCurrentQuestMasterAsync(
             $request
         )->wait();
     }

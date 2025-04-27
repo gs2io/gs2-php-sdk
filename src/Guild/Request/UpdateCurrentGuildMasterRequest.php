@@ -23,7 +23,11 @@ class UpdateCurrentGuildMasterRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
+    private $mode;
+    /** @var string */
     private $settings;
+    /** @var string */
+    private $uploadToken;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -32,6 +36,16 @@ class UpdateCurrentGuildMasterRequest extends Gs2BasicRequest {
 	}
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentGuildMasterRequest {
 		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+	public function getMode(): ?string {
+		return $this->mode;
+	}
+	public function setMode(?string $mode) {
+		$this->mode = $mode;
+	}
+	public function withMode(?string $mode): UpdateCurrentGuildMasterRequest {
+		$this->mode = $mode;
 		return $this;
 	}
 	public function getSettings(): ?string {
@@ -44,6 +58,16 @@ class UpdateCurrentGuildMasterRequest extends Gs2BasicRequest {
 		$this->settings = $settings;
 		return $this;
 	}
+	public function getUploadToken(): ?string {
+		return $this->uploadToken;
+	}
+	public function setUploadToken(?string $uploadToken) {
+		$this->uploadToken = $uploadToken;
+	}
+	public function withUploadToken(?string $uploadToken): UpdateCurrentGuildMasterRequest {
+		$this->uploadToken = $uploadToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?UpdateCurrentGuildMasterRequest {
         if ($data === null) {
@@ -51,13 +75,17 @@ class UpdateCurrentGuildMasterRequest extends Gs2BasicRequest {
         }
         return (new UpdateCurrentGuildMasterRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withSettings(array_key_exists('settings', $data) && $data['settings'] !== null ? $data['settings'] : null);
+            ->withMode(array_key_exists('mode', $data) && $data['mode'] !== null ? $data['mode'] : null)
+            ->withSettings(array_key_exists('settings', $data) && $data['settings'] !== null ? $data['settings'] : null)
+            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
+            "mode" => $this->getMode(),
             "settings" => $this->getSettings(),
+            "uploadToken" => $this->getUploadToken(),
         );
     }
 }

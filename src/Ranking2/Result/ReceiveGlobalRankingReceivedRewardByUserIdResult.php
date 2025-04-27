@@ -169,11 +169,11 @@ class ReceiveGlobalRankingReceivedRewardByUserIdResult implements IResult {
         }
         return (new ReceiveGlobalRankingReceivedRewardByUserIdResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? GlobalRankingModel::fromJson($data['item']) : null)
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ))
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withStampSheet(array_key_exists('stampSheet', $data) && $data['stampSheet'] !== null ? $data['stampSheet'] : null)
@@ -187,11 +187,11 @@ class ReceiveGlobalRankingReceivedRewardByUserIdResult implements IResult {
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
             "transactionId" => $this->getTransactionId(),
             "stampSheet" => $this->getStampSheet(),

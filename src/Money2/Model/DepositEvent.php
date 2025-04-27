@@ -70,11 +70,11 @@ class DepositEvent implements IModel {
         }
         return (new DepositEvent())
             ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
-            ->withDepositTransactions(array_map(
+            ->withDepositTransactions(!array_key_exists('depositTransactions', $data) || $data['depositTransactions'] === null ? null : array_map(
                 function ($item) {
                     return DepositTransaction::fromJson($item);
                 },
-                array_key_exists('depositTransactions', $data) && $data['depositTransactions'] !== null ? $data['depositTransactions'] : []
+                $data['depositTransactions']
             ))
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? WalletSummary::fromJson($data['status']) : null);
     }
@@ -82,11 +82,11 @@ class DepositEvent implements IModel {
     public function toJson(): array {
         return array(
             "slot" => $this->getSlot(),
-            "depositTransactions" => array_map(
+            "depositTransactions" => $this->getDepositTransactions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getDepositTransactions() !== null && $this->getDepositTransactions() !== null ? $this->getDepositTransactions() : []
+                $this->getDepositTransactions()
             ),
             "status" => $this->getStatus() !== null ? $this->getStatus()->toJson() : null,
         );

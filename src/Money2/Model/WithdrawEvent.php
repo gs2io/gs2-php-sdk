@@ -70,11 +70,11 @@ class WithdrawEvent implements IModel {
         }
         return (new WithdrawEvent())
             ->withSlot(array_key_exists('slot', $data) && $data['slot'] !== null ? $data['slot'] : null)
-            ->withWithdrawDetails(array_map(
+            ->withWithdrawDetails(!array_key_exists('withdrawDetails', $data) || $data['withdrawDetails'] === null ? null : array_map(
                 function ($item) {
                     return DepositTransaction::fromJson($item);
                 },
-                array_key_exists('withdrawDetails', $data) && $data['withdrawDetails'] !== null ? $data['withdrawDetails'] : []
+                $data['withdrawDetails']
             ))
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? WalletSummary::fromJson($data['status']) : null);
     }
@@ -82,11 +82,11 @@ class WithdrawEvent implements IModel {
     public function toJson(): array {
         return array(
             "slot" => $this->getSlot(),
-            "withdrawDetails" => array_map(
+            "withdrawDetails" => $this->getWithdrawDetails() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getWithdrawDetails() !== null && $this->getWithdrawDetails() !== null ? $this->getWithdrawDetails() : []
+                $this->getWithdrawDetails()
             ),
             "status" => $this->getStatus() !== null ? $this->getStatus()->toJson() : null,
         );

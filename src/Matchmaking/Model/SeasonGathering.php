@@ -144,11 +144,11 @@ class SeasonGathering implements IModel {
             ->withSeason(array_key_exists('season', $data) && $data['season'] !== null ? $data['season'] : null)
             ->withTier(array_key_exists('tier', $data) && $data['tier'] !== null ? $data['tier'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
-            ->withParticipants(array_map(
+            ->withParticipants(!array_key_exists('participants', $data) || $data['participants'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('participants', $data) && $data['participants'] !== null ? $data['participants'] : []
+                $data['participants']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -161,11 +161,11 @@ class SeasonGathering implements IModel {
             "season" => $this->getSeason(),
             "tier" => $this->getTier(),
             "name" => $this->getName(),
-            "participants" => array_map(
+            "participants" => $this->getParticipants() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getParticipants() !== null && $this->getParticipants() !== null ? $this->getParticipants() : []
+                $this->getParticipants()
             ),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),

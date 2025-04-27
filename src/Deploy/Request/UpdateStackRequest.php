@@ -25,7 +25,11 @@ class UpdateStackRequest extends Gs2BasicRequest {
     /** @var string */
     private $description;
     /** @var string */
+    private $mode;
+    /** @var string */
     private $template;
+    /** @var string */
+    private $uploadToken;
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
@@ -46,6 +50,16 @@ class UpdateStackRequest extends Gs2BasicRequest {
 		$this->description = $description;
 		return $this;
 	}
+	public function getMode(): ?string {
+		return $this->mode;
+	}
+	public function setMode(?string $mode) {
+		$this->mode = $mode;
+	}
+	public function withMode(?string $mode): UpdateStackRequest {
+		$this->mode = $mode;
+		return $this;
+	}
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
@@ -56,6 +70,16 @@ class UpdateStackRequest extends Gs2BasicRequest {
 		$this->template = $template;
 		return $this;
 	}
+	public function getUploadToken(): ?string {
+		return $this->uploadToken;
+	}
+	public function setUploadToken(?string $uploadToken) {
+		$this->uploadToken = $uploadToken;
+	}
+	public function withUploadToken(?string $uploadToken): UpdateStackRequest {
+		$this->uploadToken = $uploadToken;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?UpdateStackRequest {
         if ($data === null) {
@@ -64,14 +88,18 @@ class UpdateStackRequest extends Gs2BasicRequest {
         return (new UpdateStackRequest())
             ->withStackName(array_key_exists('stackName', $data) && $data['stackName'] !== null ? $data['stackName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null);
+            ->withMode(array_key_exists('mode', $data) && $data['mode'] !== null ? $data['mode'] : null)
+            ->withTemplate(array_key_exists('template', $data) && $data['template'] !== null ? $data['template'] : null)
+            ->withUploadToken(array_key_exists('uploadToken', $data) && $data['uploadToken'] !== null ? $data['uploadToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "stackName" => $this->getStackName(),
             "description" => $this->getDescription(),
+            "mode" => $this->getMode(),
             "template" => $this->getTemplate(),
+            "uploadToken" => $this->getUploadToken(),
         );
     }
 }

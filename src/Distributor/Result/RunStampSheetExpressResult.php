@@ -116,29 +116,29 @@ class RunStampSheetExpressResult implements IResult {
             return null;
         }
         return (new RunStampSheetExpressResult())
-            ->withVerifyTaskResultCodes(array_map(
+            ->withVerifyTaskResultCodes(!array_key_exists('verifyTaskResultCodes', $data) || $data['verifyTaskResultCodes'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('verifyTaskResultCodes', $data) && $data['verifyTaskResultCodes'] !== null ? $data['verifyTaskResultCodes'] : []
+                $data['verifyTaskResultCodes']
             ))
-            ->withVerifyTaskResults(array_map(
+            ->withVerifyTaskResults(!array_key_exists('verifyTaskResults', $data) || $data['verifyTaskResults'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('verifyTaskResults', $data) && $data['verifyTaskResults'] !== null ? $data['verifyTaskResults'] : []
+                $data['verifyTaskResults']
             ))
-            ->withTaskResultCodes(array_map(
+            ->withTaskResultCodes(!array_key_exists('taskResultCodes', $data) || $data['taskResultCodes'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('taskResultCodes', $data) && $data['taskResultCodes'] !== null ? $data['taskResultCodes'] : []
+                $data['taskResultCodes']
             ))
-            ->withTaskResults(array_map(
+            ->withTaskResults(!array_key_exists('taskResults', $data) || $data['taskResults'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('taskResults', $data) && $data['taskResults'] !== null ? $data['taskResults'] : []
+                $data['taskResults']
             ))
             ->withSheetResultCode(array_key_exists('sheetResultCode', $data) && $data['sheetResultCode'] !== null ? $data['sheetResultCode'] : null)
             ->withSheetResult(array_key_exists('sheetResult', $data) && $data['sheetResult'] !== null ? $data['sheetResult'] : null);
@@ -146,29 +146,29 @@ class RunStampSheetExpressResult implements IResult {
 
     public function toJson(): array {
         return array(
-            "verifyTaskResultCodes" => array_map(
+            "verifyTaskResultCodes" => $this->getVerifyTaskResultCodes() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getVerifyTaskResultCodes() !== null && $this->getVerifyTaskResultCodes() !== null ? $this->getVerifyTaskResultCodes() : []
+                $this->getVerifyTaskResultCodes()
             ),
-            "verifyTaskResults" => array_map(
+            "verifyTaskResults" => $this->getVerifyTaskResults() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getVerifyTaskResults() !== null && $this->getVerifyTaskResults() !== null ? $this->getVerifyTaskResults() : []
+                $this->getVerifyTaskResults()
             ),
-            "taskResultCodes" => array_map(
+            "taskResultCodes" => $this->getTaskResultCodes() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getTaskResultCodes() !== null && $this->getTaskResultCodes() !== null ? $this->getTaskResultCodes() : []
+                $this->getTaskResultCodes()
             ),
-            "taskResults" => array_map(
+            "taskResults" => $this->getTaskResults() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getTaskResults() !== null && $this->getTaskResults() !== null ? $this->getTaskResults() : []
+                $this->getTaskResults()
             ),
             "sheetResultCode" => $this->getSheetResultCode(),
             "sheetResult" => $this->getSheetResult(),

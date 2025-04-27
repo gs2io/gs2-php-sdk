@@ -169,23 +169,23 @@ class Gathering implements IModel {
         return (new Gathering())
             ->withGatheringId(array_key_exists('gatheringId', $data) && $data['gatheringId'] !== null ? $data['gatheringId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
-            ->withAttributeRanges(array_map(
+            ->withAttributeRanges(!array_key_exists('attributeRanges', $data) || $data['attributeRanges'] === null ? null : array_map(
                 function ($item) {
                     return AttributeRange::fromJson($item);
                 },
-                array_key_exists('attributeRanges', $data) && $data['attributeRanges'] !== null ? $data['attributeRanges'] : []
+                $data['attributeRanges']
             ))
-            ->withCapacityOfRoles(array_map(
+            ->withCapacityOfRoles(!array_key_exists('capacityOfRoles', $data) || $data['capacityOfRoles'] === null ? null : array_map(
                 function ($item) {
                     return CapacityOfRole::fromJson($item);
                 },
-                array_key_exists('capacityOfRoles', $data) && $data['capacityOfRoles'] !== null ? $data['capacityOfRoles'] : []
+                $data['capacityOfRoles']
             ))
-            ->withAllowUserIds(array_map(
+            ->withAllowUserIds(!array_key_exists('allowUserIds', $data) || $data['allowUserIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('allowUserIds', $data) && $data['allowUserIds'] !== null ? $data['allowUserIds'] : []
+                $data['allowUserIds']
             ))
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
@@ -198,23 +198,23 @@ class Gathering implements IModel {
         return array(
             "gatheringId" => $this->getGatheringId(),
             "name" => $this->getName(),
-            "attributeRanges" => array_map(
+            "attributeRanges" => $this->getAttributeRanges() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAttributeRanges() !== null && $this->getAttributeRanges() !== null ? $this->getAttributeRanges() : []
+                $this->getAttributeRanges()
             ),
-            "capacityOfRoles" => array_map(
+            "capacityOfRoles" => $this->getCapacityOfRoles() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getCapacityOfRoles() !== null && $this->getCapacityOfRoles() !== null ? $this->getCapacityOfRoles() : []
+                $this->getCapacityOfRoles()
             ),
-            "allowUserIds" => array_map(
+            "allowUserIds" => $this->getAllowUserIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAllowUserIds() !== null && $this->getAllowUserIds() !== null ? $this->getAllowUserIds() : []
+                $this->getAllowUserIds()
             ),
             "metadata" => $this->getMetadata(),
             "expiresAt" => $this->getExpiresAt(),

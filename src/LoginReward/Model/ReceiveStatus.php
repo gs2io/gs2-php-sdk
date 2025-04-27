@@ -142,11 +142,11 @@ class ReceiveStatus implements IModel {
             ->withReceiveStatusId(array_key_exists('receiveStatusId', $data) && $data['receiveStatusId'] !== null ? $data['receiveStatusId'] : null)
             ->withBonusModelName(array_key_exists('bonusModelName', $data) && $data['bonusModelName'] !== null ? $data['bonusModelName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withReceivedSteps(array_map(
+            ->withReceivedSteps(!array_key_exists('receivedSteps', $data) || $data['receivedSteps'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('receivedSteps', $data) && $data['receivedSteps'] !== null ? $data['receivedSteps'] : []
+                $data['receivedSteps']
             ))
             ->withLastReceivedAt(array_key_exists('lastReceivedAt', $data) && $data['lastReceivedAt'] !== null ? $data['lastReceivedAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -159,11 +159,11 @@ class ReceiveStatus implements IModel {
             "receiveStatusId" => $this->getReceiveStatusId(),
             "bonusModelName" => $this->getBonusModelName(),
             "userId" => $this->getUserId(),
-            "receivedSteps" => array_map(
+            "receivedSteps" => $this->getReceivedSteps() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getReceivedSteps() !== null && $this->getReceivedSteps() !== null ? $this->getReceivedSteps() : []
+                $this->getReceivedSteps()
             ),
             "lastReceivedAt" => $this->getLastReceivedAt(),
             "createdAt" => $this->getCreatedAt(),

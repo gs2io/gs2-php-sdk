@@ -222,11 +222,11 @@ class CreateGuildRequest extends Gs2BasicRequest {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withMemberMetadata(array_key_exists('memberMetadata', $data) && $data['memberMetadata'] !== null ? $data['memberMetadata'] : null)
             ->withJoinPolicy(array_key_exists('joinPolicy', $data) && $data['joinPolicy'] !== null ? $data['joinPolicy'] : null)
-            ->withCustomRoles(array_map(
+            ->withCustomRoles(!array_key_exists('customRoles', $data) || $data['customRoles'] === null ? null : array_map(
                 function ($item) {
                     return RoleModel::fromJson($item);
                 },
-                array_key_exists('customRoles', $data) && $data['customRoles'] !== null ? $data['customRoles'] : []
+                $data['customRoles']
             ))
             ->withGuildMemberDefaultRole(array_key_exists('guildMemberDefaultRole', $data) && $data['guildMemberDefaultRole'] !== null ? $data['guildMemberDefaultRole'] : null);
     }
@@ -245,11 +245,11 @@ class CreateGuildRequest extends Gs2BasicRequest {
             "metadata" => $this->getMetadata(),
             "memberMetadata" => $this->getMemberMetadata(),
             "joinPolicy" => $this->getJoinPolicy(),
-            "customRoles" => array_map(
+            "customRoles" => $this->getCustomRoles() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getCustomRoles() !== null && $this->getCustomRoles() !== null ? $this->getCustomRoles() : []
+                $this->getCustomRoles()
             ),
             "guildMemberDefaultRole" => $this->getGuildMemberDefaultRole(),
         );

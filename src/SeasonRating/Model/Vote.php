@@ -128,11 +128,11 @@ class Vote implements IModel {
             ->withVoteId(array_key_exists('voteId', $data) && $data['voteId'] !== null ? $data['voteId'] : null)
             ->withSeasonName(array_key_exists('seasonName', $data) && $data['seasonName'] !== null ? $data['seasonName'] : null)
             ->withSessionName(array_key_exists('sessionName', $data) && $data['sessionName'] !== null ? $data['sessionName'] : null)
-            ->withWrittenBallots(array_map(
+            ->withWrittenBallots(!array_key_exists('writtenBallots', $data) || $data['writtenBallots'] === null ? null : array_map(
                 function ($item) {
                     return WrittenBallot::fromJson($item);
                 },
-                array_key_exists('writtenBallots', $data) && $data['writtenBallots'] !== null ? $data['writtenBallots'] : []
+                $data['writtenBallots']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -144,11 +144,11 @@ class Vote implements IModel {
             "voteId" => $this->getVoteId(),
             "seasonName" => $this->getSeasonName(),
             "sessionName" => $this->getSessionName(),
-            "writtenBallots" => array_map(
+            "writtenBallots" => $this->getWrittenBallots() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getWrittenBallots() !== null && $this->getWrittenBallots() !== null ? $this->getWrittenBallots() : []
+                $this->getWrittenBallots()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

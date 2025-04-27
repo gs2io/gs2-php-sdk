@@ -173,11 +173,11 @@ class BalanceParameterModelMaster implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withTotalValue(array_key_exists('totalValue', $data) && $data['totalValue'] !== null ? $data['totalValue'] : null)
             ->withInitialValueStrategy(array_key_exists('initialValueStrategy', $data) && $data['initialValueStrategy'] !== null ? $data['initialValueStrategy'] : null)
-            ->withParameters(array_map(
+            ->withParameters(!array_key_exists('parameters', $data) || $data['parameters'] === null ? null : array_map(
                 function ($item) {
                     return BalanceParameterValueModel::fromJson($item);
                 },
-                array_key_exists('parameters', $data) && $data['parameters'] !== null ? $data['parameters'] : []
+                $data['parameters']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -192,11 +192,11 @@ class BalanceParameterModelMaster implements IModel {
             "metadata" => $this->getMetadata(),
             "totalValue" => $this->getTotalValue(),
             "initialValueStrategy" => $this->getInitialValueStrategy(),
-            "parameters" => array_map(
+            "parameters" => $this->getParameters() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getParameters() !== null && $this->getParameters() !== null ? $this->getParameters() : []
+                $this->getParameters()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

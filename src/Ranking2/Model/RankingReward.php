@@ -71,11 +71,11 @@ class RankingReward implements IModel {
         return (new RankingReward())
             ->withThresholdRank(array_key_exists('thresholdRank', $data) && $data['thresholdRank'] !== null ? $data['thresholdRank'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withAcquireActions(array_map(
+            ->withAcquireActions(!array_key_exists('acquireActions', $data) || $data['acquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('acquireActions', $data) && $data['acquireActions'] !== null ? $data['acquireActions'] : []
+                $data['acquireActions']
             ));
     }
 
@@ -83,11 +83,11 @@ class RankingReward implements IModel {
         return array(
             "thresholdRank" => $this->getThresholdRank(),
             "metadata" => $this->getMetadata(),
-            "acquireActions" => array_map(
+            "acquireActions" => $this->getAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAcquireActions() !== null && $this->getAcquireActions() !== null ? $this->getAcquireActions() : []
+                $this->getAcquireActions()
             ),
         );
     }

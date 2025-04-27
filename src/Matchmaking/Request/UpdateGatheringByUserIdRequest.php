@@ -105,11 +105,11 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withGatheringName(array_key_exists('gatheringName', $data) && $data['gatheringName'] !== null ? $data['gatheringName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withAttributeRanges(array_map(
+            ->withAttributeRanges(!array_key_exists('attributeRanges', $data) || $data['attributeRanges'] === null ? null : array_map(
                 function ($item) {
                     return AttributeRange::fromJson($item);
                 },
-                array_key_exists('attributeRanges', $data) && $data['attributeRanges'] !== null ? $data['attributeRanges'] : []
+                $data['attributeRanges']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -119,11 +119,11 @@ class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "gatheringName" => $this->getGatheringName(),
             "userId" => $this->getUserId(),
-            "attributeRanges" => array_map(
+            "attributeRanges" => $this->getAttributeRanges() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAttributeRanges() !== null && $this->getAttributeRanges() !== null ? $this->getAttributeRanges() : []
+                $this->getAttributeRanges()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

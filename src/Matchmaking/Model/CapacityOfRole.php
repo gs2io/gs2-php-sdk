@@ -84,36 +84,36 @@ class CapacityOfRole implements IModel {
         }
         return (new CapacityOfRole())
             ->withRoleName(array_key_exists('roleName', $data) && $data['roleName'] !== null ? $data['roleName'] : null)
-            ->withRoleAliases(array_map(
+            ->withRoleAliases(!array_key_exists('roleAliases', $data) || $data['roleAliases'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('roleAliases', $data) && $data['roleAliases'] !== null ? $data['roleAliases'] : []
+                $data['roleAliases']
             ))
             ->withCapacity(array_key_exists('capacity', $data) && $data['capacity'] !== null ? $data['capacity'] : null)
-            ->withParticipants(array_map(
+            ->withParticipants(!array_key_exists('participants', $data) || $data['participants'] === null ? null : array_map(
                 function ($item) {
                     return Player::fromJson($item);
                 },
-                array_key_exists('participants', $data) && $data['participants'] !== null ? $data['participants'] : []
+                $data['participants']
             ));
     }
 
     public function toJson(): array {
         return array(
             "roleName" => $this->getRoleName(),
-            "roleAliases" => array_map(
+            "roleAliases" => $this->getRoleAliases() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getRoleAliases() !== null && $this->getRoleAliases() !== null ? $this->getRoleAliases() : []
+                $this->getRoleAliases()
             ),
             "capacity" => $this->getCapacity(),
-            "participants" => array_map(
+            "participants" => $this->getParticipants() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getParticipants() !== null && $this->getParticipants() !== null ? $this->getParticipants() : []
+                $this->getParticipants()
             ),
         );
     }

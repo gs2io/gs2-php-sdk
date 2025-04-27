@@ -157,11 +157,11 @@ class Account implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withTimeOffset(array_key_exists('timeOffset', $data) && $data['timeOffset'] !== null ? $data['timeOffset'] : null)
-            ->withBanStatuses(array_map(
+            ->withBanStatuses(!array_key_exists('banStatuses', $data) || $data['banStatuses'] === null ? null : array_map(
                 function ($item) {
                     return BanStatus::fromJson($item);
                 },
-                array_key_exists('banStatuses', $data) && $data['banStatuses'] !== null ? $data['banStatuses'] : []
+                $data['banStatuses']
             ))
             ->withBanned(array_key_exists('banned', $data) ? $data['banned'] : null)
             ->withLastAuthenticatedAt(array_key_exists('lastAuthenticatedAt', $data) && $data['lastAuthenticatedAt'] !== null ? $data['lastAuthenticatedAt'] : null)
@@ -175,11 +175,11 @@ class Account implements IModel {
             "userId" => $this->getUserId(),
             "password" => $this->getPassword(),
             "timeOffset" => $this->getTimeOffset(),
-            "banStatuses" => array_map(
+            "banStatuses" => $this->getBanStatuses() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getBanStatuses() !== null && $this->getBanStatuses() !== null ? $this->getBanStatuses() : []
+                $this->getBanStatuses()
             ),
             "banned" => $this->getBanned(),
             "lastAuthenticatedAt" => $this->getLastAuthenticatedAt(),

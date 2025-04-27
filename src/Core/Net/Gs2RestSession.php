@@ -45,10 +45,10 @@ class Gs2LoginTask
         $url = str_replace('{service}', "identifier", str_replace('{region}', $this->gs2RestSession->getRegion(), Gs2RestSession::$endpointHost)). "/projectToken/login";
         $params = [
             'timeout' => 60,
-            'json' => [
+            'body' => json_encode([
                 'client_id' => $this->gs2RestSession->getGs2Credential()->getClientId(),
                 'client_secret' => $this->gs2RestSession->getGs2Credential()->getClientSecret(),
-            ],
+            ], JSON_UNESCAPED_SLASHES),
             'headers' => [
                 "Content-Type" => "application/json",
             ],
@@ -67,6 +67,7 @@ class Gs2LoginTask
                 $this->gs2RestSession->openCallback($result->access_token, null);
             },
             function (Gs2Exception $e) {
+                var_dump($e->getMessage());
                 $this->gs2RestSession->openCallback(null, $e);
                 throw $e;
             }

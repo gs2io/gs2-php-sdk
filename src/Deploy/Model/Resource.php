@@ -188,17 +188,17 @@ class Resource implements IModel {
             ->withResponse(array_key_exists('response', $data) && $data['response'] !== null ? $data['response'] : null)
             ->withRollbackContext(array_key_exists('rollbackContext', $data) && $data['rollbackContext'] !== null ? $data['rollbackContext'] : null)
             ->withRollbackRequest(array_key_exists('rollbackRequest', $data) && $data['rollbackRequest'] !== null ? $data['rollbackRequest'] : null)
-            ->withRollbackAfter(array_map(
+            ->withRollbackAfter(!array_key_exists('rollbackAfter', $data) || $data['rollbackAfter'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('rollbackAfter', $data) && $data['rollbackAfter'] !== null ? $data['rollbackAfter'] : []
+                $data['rollbackAfter']
             ))
-            ->withOutputFields(array_map(
+            ->withOutputFields(!array_key_exists('outputFields', $data) || $data['outputFields'] === null ? null : array_map(
                 function ($item) {
                     return OutputField::fromJson($item);
                 },
-                array_key_exists('outputFields', $data) && $data['outputFields'] !== null ? $data['outputFields'] : []
+                $data['outputFields']
             ))
             ->withWorkId(array_key_exists('workId', $data) && $data['workId'] !== null ? $data['workId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
@@ -213,17 +213,17 @@ class Resource implements IModel {
             "response" => $this->getResponse(),
             "rollbackContext" => $this->getRollbackContext(),
             "rollbackRequest" => $this->getRollbackRequest(),
-            "rollbackAfter" => array_map(
+            "rollbackAfter" => $this->getRollbackAfter() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getRollbackAfter() !== null && $this->getRollbackAfter() !== null ? $this->getRollbackAfter() : []
+                $this->getRollbackAfter()
             ),
-            "outputFields" => array_map(
+            "outputFields" => $this->getOutputFields() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getOutputFields() !== null && $this->getOutputFields() !== null ? $this->getOutputFields() : []
+                $this->getOutputFields()
             ),
             "workId" => $this->getWorkId(),
             "createdAt" => $this->getCreatedAt(),

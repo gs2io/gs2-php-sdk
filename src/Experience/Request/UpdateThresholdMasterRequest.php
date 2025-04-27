@@ -90,11 +90,11 @@ class UpdateThresholdMasterRequest extends Gs2BasicRequest {
             ->withThresholdName(array_key_exists('thresholdName', $data) && $data['thresholdName'] !== null ? $data['thresholdName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withValues(array_map(
+            ->withValues(!array_key_exists('values', $data) || $data['values'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('values', $data) && $data['values'] !== null ? $data['values'] : []
+                $data['values']
             ));
     }
 
@@ -104,11 +104,11 @@ class UpdateThresholdMasterRequest extends Gs2BasicRequest {
             "thresholdName" => $this->getThresholdName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "values" => array_map(
+            "values" => $this->getValues() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getValues() !== null && $this->getValues() !== null ? $this->getValues() : []
+                $this->getValues()
             ),
         );
     }

@@ -128,24 +128,24 @@ class UpdateNodeModelMasterRequest extends Gs2BasicRequest {
             ->withNodeModelName(array_key_exists('nodeModelName', $data) && $data['nodeModelName'] !== null ? $data['nodeModelName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withReleaseVerifyActions(array_map(
+            ->withReleaseVerifyActions(!array_key_exists('releaseVerifyActions', $data) || $data['releaseVerifyActions'] === null ? null : array_map(
                 function ($item) {
                     return VerifyAction::fromJson($item);
                 },
-                array_key_exists('releaseVerifyActions', $data) && $data['releaseVerifyActions'] !== null ? $data['releaseVerifyActions'] : []
+                $data['releaseVerifyActions']
             ))
-            ->withReleaseConsumeActions(array_map(
+            ->withReleaseConsumeActions(!array_key_exists('releaseConsumeActions', $data) || $data['releaseConsumeActions'] === null ? null : array_map(
                 function ($item) {
                     return ConsumeAction::fromJson($item);
                 },
-                array_key_exists('releaseConsumeActions', $data) && $data['releaseConsumeActions'] !== null ? $data['releaseConsumeActions'] : []
+                $data['releaseConsumeActions']
             ))
             ->withRestrainReturnRate(array_key_exists('restrainReturnRate', $data) && $data['restrainReturnRate'] !== null ? $data['restrainReturnRate'] : null)
-            ->withPremiseNodeNames(array_map(
+            ->withPremiseNodeNames(!array_key_exists('premiseNodeNames', $data) || $data['premiseNodeNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('premiseNodeNames', $data) && $data['premiseNodeNames'] !== null ? $data['premiseNodeNames'] : []
+                $data['premiseNodeNames']
             ));
     }
 
@@ -155,24 +155,24 @@ class UpdateNodeModelMasterRequest extends Gs2BasicRequest {
             "nodeModelName" => $this->getNodeModelName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "releaseVerifyActions" => array_map(
+            "releaseVerifyActions" => $this->getReleaseVerifyActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getReleaseVerifyActions() !== null && $this->getReleaseVerifyActions() !== null ? $this->getReleaseVerifyActions() : []
+                $this->getReleaseVerifyActions()
             ),
-            "releaseConsumeActions" => array_map(
+            "releaseConsumeActions" => $this->getReleaseConsumeActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getReleaseConsumeActions() !== null && $this->getReleaseConsumeActions() !== null ? $this->getReleaseConsumeActions() : []
+                $this->getReleaseConsumeActions()
             ),
             "restrainReturnRate" => $this->getRestrainReturnRate(),
-            "premiseNodeNames" => array_map(
+            "premiseNodeNames" => $this->getPremiseNodeNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getPremiseNodeNames() !== null && $this->getPremiseNodeNames() !== null ? $this->getPremiseNodeNames() : []
+                $this->getPremiseNodeNames()
             ),
         );
     }

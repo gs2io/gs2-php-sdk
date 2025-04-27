@@ -158,11 +158,11 @@ class ShowcaseMaster implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withSalesPeriodEventId(array_key_exists('salesPeriodEventId', $data) && $data['salesPeriodEventId'] !== null ? $data['salesPeriodEventId'] : null)
-            ->withDisplayItems(array_map(
+            ->withDisplayItems(!array_key_exists('displayItems', $data) || $data['displayItems'] === null ? null : array_map(
                 function ($item) {
                     return DisplayItemMaster::fromJson($item);
                 },
-                array_key_exists('displayItems', $data) && $data['displayItems'] !== null ? $data['displayItems'] : []
+                $data['displayItems']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -176,11 +176,11 @@ class ShowcaseMaster implements IModel {
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
             "salesPeriodEventId" => $this->getSalesPeriodEventId(),
-            "displayItems" => array_map(
+            "displayItems" => $this->getDisplayItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getDisplayItems() !== null && $this->getDisplayItems() !== null ? $this->getDisplayItems() : []
+                $this->getDisplayItems()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

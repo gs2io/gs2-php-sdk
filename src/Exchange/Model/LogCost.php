@@ -70,34 +70,34 @@ class LogCost implements IModel {
         }
         return (new LogCost())
             ->withBase(array_key_exists('base', $data) && $data['base'] !== null ? $data['base'] : null)
-            ->withAdds(array_map(
+            ->withAdds(!array_key_exists('adds', $data) || $data['adds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('adds', $data) && $data['adds'] !== null ? $data['adds'] : []
+                $data['adds']
             ))
-            ->withSubs(array_map(
+            ->withSubs(!array_key_exists('subs', $data) || $data['subs'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('subs', $data) && $data['subs'] !== null ? $data['subs'] : []
+                $data['subs']
             ));
     }
 
     public function toJson(): array {
         return array(
             "base" => $this->getBase(),
-            "adds" => array_map(
+            "adds" => $this->getAdds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getAdds() !== null && $this->getAdds() !== null ? $this->getAdds() : []
+                $this->getAdds()
             ),
-            "subs" => array_map(
+            "subs" => $this->getSubs() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getSubs() !== null && $this->getSubs() !== null ? $this->getSubs() : []
+                $this->getSubs()
             ),
         );
     }

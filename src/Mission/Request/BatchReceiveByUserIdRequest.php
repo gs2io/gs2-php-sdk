@@ -104,11 +104,11 @@ class BatchReceiveByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withMissionTaskNames(array_map(
+            ->withMissionTaskNames(!array_key_exists('missionTaskNames', $data) || $data['missionTaskNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('missionTaskNames', $data) && $data['missionTaskNames'] !== null ? $data['missionTaskNames'] : []
+                $data['missionTaskNames']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -118,11 +118,11 @@ class BatchReceiveByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "missionGroupName" => $this->getMissionGroupName(),
             "userId" => $this->getUserId(),
-            "missionTaskNames" => array_map(
+            "missionTaskNames" => $this->getMissionTaskNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getMissionTaskNames() !== null && $this->getMissionTaskNames() !== null ? $this->getMissionTaskNames() : []
+                $this->getMissionTaskNames()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

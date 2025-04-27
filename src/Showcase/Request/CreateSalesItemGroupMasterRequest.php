@@ -90,11 +90,11 @@ class CreateSalesItemGroupMasterRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withSalesItemNames(array_map(
+            ->withSalesItemNames(!array_key_exists('salesItemNames', $data) || $data['salesItemNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('salesItemNames', $data) && $data['salesItemNames'] !== null ? $data['salesItemNames'] : []
+                $data['salesItemNames']
             ));
     }
 
@@ -104,11 +104,11 @@ class CreateSalesItemGroupMasterRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
-            "salesItemNames" => array_map(
+            "salesItemNames" => $this->getSalesItemNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getSalesItemNames() !== null && $this->getSalesItemNames() !== null ? $this->getSalesItemNames() : []
+                $this->getSalesItemNames()
             ),
         );
     }

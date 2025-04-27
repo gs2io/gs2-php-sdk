@@ -57,22 +57,22 @@ class SendNotificationResult implements IResult {
         }
         return (new SendNotificationResult())
             ->withProtocol(array_key_exists('protocol', $data) && $data['protocol'] !== null ? $data['protocol'] : null)
-            ->withSendConnectionIds(array_map(
+            ->withSendConnectionIds(!array_key_exists('sendConnectionIds', $data) || $data['sendConnectionIds'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('sendConnectionIds', $data) && $data['sendConnectionIds'] !== null ? $data['sendConnectionIds'] : []
+                $data['sendConnectionIds']
             ));
     }
 
     public function toJson(): array {
         return array(
             "protocol" => $this->getProtocol(),
-            "sendConnectionIds" => array_map(
+            "sendConnectionIds" => $this->getSendConnectionIds() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getSendConnectionIds() !== null && $this->getSendConnectionIds() !== null ? $this->getSendConnectionIds() : []
+                $this->getSendConnectionIds()
             ),
         );
     }

@@ -85,17 +85,17 @@ class AcquireActionRate implements IModel {
         return (new AcquireActionRate())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMode(array_key_exists('mode', $data) && $data['mode'] !== null ? $data['mode'] : null)
-            ->withRates(array_map(
+            ->withRates(!array_key_exists('rates', $data) || $data['rates'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('rates', $data) && $data['rates'] !== null ? $data['rates'] : []
+                $data['rates']
             ))
-            ->withBigRates(array_map(
+            ->withBigRates(!array_key_exists('bigRates', $data) || $data['bigRates'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('bigRates', $data) && $data['bigRates'] !== null ? $data['bigRates'] : []
+                $data['bigRates']
             ));
     }
 
@@ -103,17 +103,17 @@ class AcquireActionRate implements IModel {
         return array(
             "name" => $this->getName(),
             "mode" => $this->getMode(),
-            "rates" => array_map(
+            "rates" => $this->getRates() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getRates() !== null && $this->getRates() !== null ? $this->getRates() : []
+                $this->getRates()
             ),
-            "bigRates" => array_map(
+            "bigRates" => $this->getBigRates() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getBigRates() !== null && $this->getBigRates() !== null ? $this->getBigRates() : []
+                $this->getBigRates()
             ),
         );
     }

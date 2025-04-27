@@ -71,11 +71,11 @@ class SalesItemGroup implements IModel {
         return (new SalesItemGroup())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withSalesItems(array_map(
+            ->withSalesItems(!array_key_exists('salesItems', $data) || $data['salesItems'] === null ? null : array_map(
                 function ($item) {
                     return SalesItem::fromJson($item);
                 },
-                array_key_exists('salesItems', $data) && $data['salesItems'] !== null ? $data['salesItems'] : []
+                $data['salesItems']
             ));
     }
 
@@ -83,11 +83,11 @@ class SalesItemGroup implements IModel {
         return array(
             "name" => $this->getName(),
             "metadata" => $this->getMetadata(),
-            "salesItems" => array_map(
+            "salesItems" => $this->getSalesItems() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getSalesItems() !== null && $this->getSalesItems() !== null ? $this->getSalesItems() : []
+                $this->getSalesItems()
             ),
         );
     }

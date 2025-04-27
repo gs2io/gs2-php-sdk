@@ -92,11 +92,11 @@ class OrExpressionByUserIdRequest extends Gs2BasicRequest {
         return (new OrExpressionByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withActions(array_map(
+            ->withActions(!array_key_exists('actions', $data) || $data['actions'] === null ? null : array_map(
                 function ($item) {
                     return VerifyAction::fromJson($item);
                 },
-                array_key_exists('actions', $data) && $data['actions'] !== null ? $data['actions'] : []
+                $data['actions']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -105,11 +105,11 @@ class OrExpressionByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "actions" => array_map(
+            "actions" => $this->getActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getActions() !== null && $this->getActions() !== null ? $this->getActions() : []
+                $this->getActions()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

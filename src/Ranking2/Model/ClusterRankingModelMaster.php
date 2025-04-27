@@ -276,11 +276,11 @@ class ClusterRankingModelMaster implements IModel {
             ->withScoreTtlDays(array_key_exists('scoreTtlDays', $data) && $data['scoreTtlDays'] !== null ? $data['scoreTtlDays'] : null)
             ->withOrderDirection(array_key_exists('orderDirection', $data) && $data['orderDirection'] !== null ? $data['orderDirection'] : null)
             ->withEntryPeriodEventId(array_key_exists('entryPeriodEventId', $data) && $data['entryPeriodEventId'] !== null ? $data['entryPeriodEventId'] : null)
-            ->withRankingRewards(array_map(
+            ->withRankingRewards(!array_key_exists('rankingRewards', $data) || $data['rankingRewards'] === null ? null : array_map(
                 function ($item) {
                     return RankingReward::fromJson($item);
                 },
-                array_key_exists('rankingRewards', $data) && $data['rankingRewards'] !== null ? $data['rankingRewards'] : []
+                $data['rankingRewards']
             ))
             ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null)
             ->withRewardCalculationIndex(array_key_exists('rewardCalculationIndex', $data) && $data['rewardCalculationIndex'] !== null ? $data['rewardCalculationIndex'] : null)
@@ -302,11 +302,11 @@ class ClusterRankingModelMaster implements IModel {
             "scoreTtlDays" => $this->getScoreTtlDays(),
             "orderDirection" => $this->getOrderDirection(),
             "entryPeriodEventId" => $this->getEntryPeriodEventId(),
-            "rankingRewards" => array_map(
+            "rankingRewards" => $this->getRankingRewards() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getRankingRewards() !== null && $this->getRankingRewards() !== null ? $this->getRankingRewards() : []
+                $this->getRankingRewards()
             ),
             "accessPeriodEventId" => $this->getAccessPeriodEventId(),
             "rewardCalculationIndex" => $this->getRewardCalculationIndex(),

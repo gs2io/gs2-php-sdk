@@ -128,11 +128,11 @@ class CompletedQuestList implements IModel {
             ->withCompletedQuestListId(array_key_exists('completedQuestListId', $data) && $data['completedQuestListId'] !== null ? $data['completedQuestListId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withQuestGroupName(array_key_exists('questGroupName', $data) && $data['questGroupName'] !== null ? $data['questGroupName'] : null)
-            ->withCompleteQuestNames(array_map(
+            ->withCompleteQuestNames(!array_key_exists('completeQuestNames', $data) || $data['completeQuestNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('completeQuestNames', $data) && $data['completeQuestNames'] !== null ? $data['completeQuestNames'] : []
+                $data['completeQuestNames']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -144,11 +144,11 @@ class CompletedQuestList implements IModel {
             "completedQuestListId" => $this->getCompletedQuestListId(),
             "userId" => $this->getUserId(),
             "questGroupName" => $this->getQuestGroupName(),
-            "completeQuestNames" => array_map(
+            "completeQuestNames" => $this->getCompleteQuestNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getCompleteQuestNames() !== null && $this->getCompleteQuestNames() !== null ? $this->getCompleteQuestNames() : []
+                $this->getCompleteQuestNames()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

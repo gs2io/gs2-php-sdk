@@ -142,11 +142,11 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
-            ->withLastCalculatedAts(array_map(
+            ->withLastCalculatedAts(!array_key_exists('lastCalculatedAts', $data) || $data['lastCalculatedAts'] === null ? null : array_map(
                 function ($item) {
                     return CalculatedAt::fromJson($item);
                 },
-                array_key_exists('lastCalculatedAts', $data) && $data['lastCalculatedAts'] !== null ? $data['lastCalculatedAts'] : []
+                $data['lastCalculatedAts']
             ))
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -159,11 +159,11 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
-            "lastCalculatedAts" => array_map(
+            "lastCalculatedAts" => $this->getLastCalculatedAts() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getLastCalculatedAts() !== null && $this->getLastCalculatedAts() !== null ? $this->getLastCalculatedAts() : []
+                $this->getLastCalculatedAts()
             ),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),

@@ -93,11 +93,11 @@ class UpdateGatheringRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withGatheringName(array_key_exists('gatheringName', $data) && $data['gatheringName'] !== null ? $data['gatheringName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withAttributeRanges(array_map(
+            ->withAttributeRanges(!array_key_exists('attributeRanges', $data) || $data['attributeRanges'] === null ? null : array_map(
                 function ($item) {
                     return AttributeRange::fromJson($item);
                 },
-                array_key_exists('attributeRanges', $data) && $data['attributeRanges'] !== null ? $data['attributeRanges'] : []
+                $data['attributeRanges']
             ));
     }
 
@@ -106,11 +106,11 @@ class UpdateGatheringRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "gatheringName" => $this->getGatheringName(),
             "accessToken" => $this->getAccessToken(),
-            "attributeRanges" => array_map(
+            "attributeRanges" => $this->getAttributeRanges() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getAttributeRanges() !== null && $this->getAttributeRanges() !== null ? $this->getAttributeRanges() : []
+                $this->getAttributeRanges()
             ),
         );
     }

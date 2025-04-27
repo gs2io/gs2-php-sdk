@@ -104,17 +104,17 @@ class BatchReadMessagesByUserIdRequest extends Gs2BasicRequest {
         return (new BatchReadMessagesByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withMessageNames(array_map(
+            ->withMessageNames(!array_key_exists('messageNames', $data) || $data['messageNames'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('messageNames', $data) && $data['messageNames'] !== null ? $data['messageNames'] : []
+                $data['messageNames']
             ))
-            ->withConfig(array_map(
+            ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
                 },
-                array_key_exists('config', $data) && $data['config'] !== null ? $data['config'] : []
+                $data['config']
             ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -123,17 +123,17 @@ class BatchReadMessagesByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
-            "messageNames" => array_map(
+            "messageNames" => $this->getMessageNames() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getMessageNames() !== null && $this->getMessageNames() !== null ? $this->getMessageNames() : []
+                $this->getMessageNames()
             ),
-            "config" => array_map(
+            "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getConfig() !== null && $this->getConfig() !== null ? $this->getConfig() : []
+                $this->getConfig()
             ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

@@ -223,19 +223,19 @@ class BlockingPolicyModel implements IModel {
             return null;
         }
         return (new BlockingPolicyModel())
-            ->withPassServices(array_map(
+            ->withPassServices(!array_key_exists('passServices', $data) || $data['passServices'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('passServices', $data) && $data['passServices'] !== null ? $data['passServices'] : []
+                $data['passServices']
             ))
             ->withDefaultRestriction(array_key_exists('defaultRestriction', $data) && $data['defaultRestriction'] !== null ? $data['defaultRestriction'] : null)
             ->withLocationDetection(array_key_exists('locationDetection', $data) && $data['locationDetection'] !== null ? $data['locationDetection'] : null)
-            ->withLocations(array_map(
+            ->withLocations(!array_key_exists('locations', $data) || $data['locations'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('locations', $data) && $data['locations'] !== null ? $data['locations'] : []
+                $data['locations']
             ))
             ->withLocationRestriction(array_key_exists('locationRestriction', $data) && $data['locationRestriction'] !== null ? $data['locationRestriction'] : null)
             ->withAnonymousIpDetection(array_key_exists('anonymousIpDetection', $data) && $data['anonymousIpDetection'] !== null ? $data['anonymousIpDetection'] : null)
@@ -245,30 +245,30 @@ class BlockingPolicyModel implements IModel {
             ->withReputationIpDetection(array_key_exists('reputationIpDetection', $data) && $data['reputationIpDetection'] !== null ? $data['reputationIpDetection'] : null)
             ->withReputationIpRestriction(array_key_exists('reputationIpRestriction', $data) && $data['reputationIpRestriction'] !== null ? $data['reputationIpRestriction'] : null)
             ->withIpAddressesDetection(array_key_exists('ipAddressesDetection', $data) && $data['ipAddressesDetection'] !== null ? $data['ipAddressesDetection'] : null)
-            ->withIpAddresses(array_map(
+            ->withIpAddresses(!array_key_exists('ipAddresses', $data) || $data['ipAddresses'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('ipAddresses', $data) && $data['ipAddresses'] !== null ? $data['ipAddresses'] : []
+                $data['ipAddresses']
             ))
             ->withIpAddressRestriction(array_key_exists('ipAddressRestriction', $data) && $data['ipAddressRestriction'] !== null ? $data['ipAddressRestriction'] : null);
     }
 
     public function toJson(): array {
         return array(
-            "passServices" => array_map(
+            "passServices" => $this->getPassServices() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getPassServices() !== null && $this->getPassServices() !== null ? $this->getPassServices() : []
+                $this->getPassServices()
             ),
             "defaultRestriction" => $this->getDefaultRestriction(),
             "locationDetection" => $this->getLocationDetection(),
-            "locations" => array_map(
+            "locations" => $this->getLocations() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getLocations() !== null && $this->getLocations() !== null ? $this->getLocations() : []
+                $this->getLocations()
             ),
             "locationRestriction" => $this->getLocationRestriction(),
             "anonymousIpDetection" => $this->getAnonymousIpDetection(),
@@ -278,11 +278,11 @@ class BlockingPolicyModel implements IModel {
             "reputationIpDetection" => $this->getReputationIpDetection(),
             "reputationIpRestriction" => $this->getReputationIpRestriction(),
             "ipAddressesDetection" => $this->getIpAddressesDetection(),
-            "ipAddresses" => array_map(
+            "ipAddresses" => $this->getIpAddresses() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getIpAddresses() !== null && $this->getIpAddresses() !== null ? $this->getIpAddresses() : []
+                $this->getIpAddresses()
             ),
             "ipAddressRestriction" => $this->getIpAddressRestriction(),
         );

@@ -227,17 +227,17 @@ class MissionTaskModel implements IModel {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withVerifyCompleteType(array_key_exists('verifyCompleteType', $data) && $data['verifyCompleteType'] !== null ? $data['verifyCompleteType'] : null)
             ->withTargetCounter(array_key_exists('targetCounter', $data) && $data['targetCounter'] !== null ? TargetCounterModel::fromJson($data['targetCounter']) : null)
-            ->withVerifyCompleteConsumeActions(array_map(
+            ->withVerifyCompleteConsumeActions(!array_key_exists('verifyCompleteConsumeActions', $data) || $data['verifyCompleteConsumeActions'] === null ? null : array_map(
                 function ($item) {
                     return VerifyAction::fromJson($item);
                 },
-                array_key_exists('verifyCompleteConsumeActions', $data) && $data['verifyCompleteConsumeActions'] !== null ? $data['verifyCompleteConsumeActions'] : []
+                $data['verifyCompleteConsumeActions']
             ))
-            ->withCompleteAcquireActions(array_map(
+            ->withCompleteAcquireActions(!array_key_exists('completeAcquireActions', $data) || $data['completeAcquireActions'] === null ? null : array_map(
                 function ($item) {
                     return AcquireAction::fromJson($item);
                 },
-                array_key_exists('completeAcquireActions', $data) && $data['completeAcquireActions'] !== null ? $data['completeAcquireActions'] : []
+                $data['completeAcquireActions']
             ))
             ->withChallengePeriodEventId(array_key_exists('challengePeriodEventId', $data) && $data['challengePeriodEventId'] !== null ? $data['challengePeriodEventId'] : null)
             ->withPremiseMissionTaskName(array_key_exists('premiseMissionTaskName', $data) && $data['premiseMissionTaskName'] !== null ? $data['premiseMissionTaskName'] : null)
@@ -253,17 +253,17 @@ class MissionTaskModel implements IModel {
             "metadata" => $this->getMetadata(),
             "verifyCompleteType" => $this->getVerifyCompleteType(),
             "targetCounter" => $this->getTargetCounter() !== null ? $this->getTargetCounter()->toJson() : null,
-            "verifyCompleteConsumeActions" => array_map(
+            "verifyCompleteConsumeActions" => $this->getVerifyCompleteConsumeActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getVerifyCompleteConsumeActions() !== null && $this->getVerifyCompleteConsumeActions() !== null ? $this->getVerifyCompleteConsumeActions() : []
+                $this->getVerifyCompleteConsumeActions()
             ),
-            "completeAcquireActions" => array_map(
+            "completeAcquireActions" => $this->getCompleteAcquireActions() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getCompleteAcquireActions() !== null && $this->getCompleteAcquireActions() !== null ? $this->getCompleteAcquireActions() : []
+                $this->getCompleteAcquireActions()
             ),
             "challengePeriodEventId" => $this->getChallengePeriodEventId(),
             "premiseMissionTaskName" => $this->getPremiseMissionTaskName(),

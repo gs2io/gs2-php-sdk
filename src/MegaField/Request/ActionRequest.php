@@ -122,11 +122,11 @@ class ActionRequest extends Gs2BasicRequest {
             ->withAreaModelName(array_key_exists('areaModelName', $data) && $data['areaModelName'] !== null ? $data['areaModelName'] : null)
             ->withLayerModelName(array_key_exists('layerModelName', $data) && $data['layerModelName'] !== null ? $data['layerModelName'] : null)
             ->withPosition(array_key_exists('position', $data) && $data['position'] !== null ? MyPosition::fromJson($data['position']) : null)
-            ->withScopes(array_map(
+            ->withScopes(!array_key_exists('scopes', $data) || $data['scopes'] === null ? null : array_map(
                 function ($item) {
                     return Scope::fromJson($item);
                 },
-                array_key_exists('scopes', $data) && $data['scopes'] !== null ? $data['scopes'] : []
+                $data['scopes']
             ));
     }
 
@@ -137,11 +137,11 @@ class ActionRequest extends Gs2BasicRequest {
             "areaModelName" => $this->getAreaModelName(),
             "layerModelName" => $this->getLayerModelName(),
             "position" => $this->getPosition() !== null ? $this->getPosition()->toJson() : null,
-            "scopes" => array_map(
+            "scopes" => $this->getScopes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getScopes() !== null && $this->getScopes() !== null ? $this->getScopes() : []
+                $this->getScopes()
             ),
         );
     }

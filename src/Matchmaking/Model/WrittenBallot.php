@@ -56,22 +56,22 @@ class WrittenBallot implements IModel {
         }
         return (new WrittenBallot())
             ->withBallot(array_key_exists('ballot', $data) && $data['ballot'] !== null ? Ballot::fromJson($data['ballot']) : null)
-            ->withGameResults(array_map(
+            ->withGameResults(!array_key_exists('gameResults', $data) || $data['gameResults'] === null ? null : array_map(
                 function ($item) {
                     return GameResult::fromJson($item);
                 },
-                array_key_exists('gameResults', $data) && $data['gameResults'] !== null ? $data['gameResults'] : []
+                $data['gameResults']
             ));
     }
 
     public function toJson(): array {
         return array(
             "ballot" => $this->getBallot() !== null ? $this->getBallot()->toJson() : null,
-            "gameResults" => array_map(
+            "gameResults" => $this->getGameResults() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getGameResults() !== null && $this->getGameResults() !== null ? $this->getGameResults() : []
+                $this->getGameResults()
             ),
         );
     }

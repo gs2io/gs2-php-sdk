@@ -114,11 +114,11 @@ class Subscribe implements IModel {
             ->withSubscribeId(array_key_exists('subscribeId', $data) && $data['subscribeId'] !== null ? $data['subscribeId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
-            ->withNotificationTypes(array_map(
+            ->withNotificationTypes(!array_key_exists('notificationTypes', $data) || $data['notificationTypes'] === null ? null : array_map(
                 function ($item) {
                     return NotificationType::fromJson($item);
                 },
-                array_key_exists('notificationTypes', $data) && $data['notificationTypes'] !== null ? $data['notificationTypes'] : []
+                $data['notificationTypes']
             ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -129,11 +129,11 @@ class Subscribe implements IModel {
             "subscribeId" => $this->getSubscribeId(),
             "userId" => $this->getUserId(),
             "roomName" => $this->getRoomName(),
-            "notificationTypes" => array_map(
+            "notificationTypes" => $this->getNotificationTypes() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getNotificationTypes() !== null && $this->getNotificationTypes() !== null ? $this->getNotificationTypes() : []
+                $this->getNotificationTypes()
             ),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),

@@ -52,7 +52,7 @@ class HttpTask {
         if (count($body) == 0) {
             $this->request = $this->request->withBody(Utils::streamFor("{}"));
         } else {
-            $this->request = $this->request->withBody(Utils::streamFor(json_encode($body)));
+            $this->request = $this->request->withBody(Utils::streamFor(json_encode($body, JSON_UNESCAPED_SLASHES)));
         }
     }
 }

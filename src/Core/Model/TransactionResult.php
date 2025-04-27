@@ -84,19 +84,19 @@ class TransactionResult implements IModel {
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withVerifyResults(array_map(
                 function ($item) {
-                    return CoreVerifyActionResult::fromJson($item);
+                    return VerifyActionResult::fromJson($item);
                 },
                 array_key_exists('verifyResults', $data) && $data['verifyResults'] !== null ? $data['verifyResults'] : []
             ))
             ->withConsumeResults(array_map(
                 function ($item) {
-                    return CoreConsumeActionResult::fromJson($item);
+                    return ConsumeActionResult::fromJson($item);
                 },
                 array_key_exists('consumeResults', $data) && $data['consumeResults'] !== null ? $data['consumeResults'] : []
             ))
             ->withAcquireResults(array_map(
                 function ($item) {
-                    return CoreAcquireActionResult::fromJson($item);
+                    return AcquireActionResult::fromJson($item);
                 },
                 array_key_exists('acquireResults', $data) && $data['acquireResults'] !== null ? $data['acquireResults'] : []
             ));

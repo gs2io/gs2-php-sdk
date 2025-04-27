@@ -146,11 +146,11 @@ class IssueStampSheetLog implements IModel {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withAction(array_key_exists('action', $data) && $data['action'] !== null ? $data['action'] : null)
             ->withArgs(array_key_exists('args', $data) && $data['args'] !== null ? $data['args'] : null)
-            ->withTasks(array_map(
+            ->withTasks(!array_key_exists('tasks', $data) || $data['tasks'] === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                array_key_exists('tasks', $data) && $data['tasks'] !== null ? $data['tasks'] : []
+                $data['tasks']
             ));
     }
 
@@ -163,11 +163,11 @@ class IssueStampSheetLog implements IModel {
             "userId" => $this->getUserId(),
             "action" => $this->getAction(),
             "args" => $this->getArgs(),
-            "tasks" => array_map(
+            "tasks" => $this->getTasks() === null ? null : array_map(
                 function ($item) {
                     return $item;
                 },
-                $this->getTasks() !== null && $this->getTasks() !== null ? $this->getTasks() : []
+                $this->getTasks()
             ),
         );
     }

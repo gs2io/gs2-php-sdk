@@ -131,11 +131,11 @@ class InventoryModel implements IModel {
             ->withInitialCapacity(array_key_exists('initialCapacity', $data) && $data['initialCapacity'] !== null ? $data['initialCapacity'] : null)
             ->withMaxCapacity(array_key_exists('maxCapacity', $data) && $data['maxCapacity'] !== null ? $data['maxCapacity'] : null)
             ->withProtectReferencedItem(array_key_exists('protectReferencedItem', $data) ? $data['protectReferencedItem'] : null)
-            ->withItemModels(array_map(
+            ->withItemModels(!array_key_exists('itemModels', $data) || $data['itemModels'] === null ? null : array_map(
                 function ($item) {
                     return ItemModel::fromJson($item);
                 },
-                array_key_exists('itemModels', $data) && $data['itemModels'] !== null ? $data['itemModels'] : []
+                $data['itemModels']
             ));
     }
 
@@ -147,11 +147,11 @@ class InventoryModel implements IModel {
             "initialCapacity" => $this->getInitialCapacity(),
             "maxCapacity" => $this->getMaxCapacity(),
             "protectReferencedItem" => $this->getProtectReferencedItem(),
-            "itemModels" => array_map(
+            "itemModels" => $this->getItemModels() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getItemModels() !== null && $this->getItemModels() !== null ? $this->getItemModels() : []
+                $this->getItemModels()
             ),
         );
     }

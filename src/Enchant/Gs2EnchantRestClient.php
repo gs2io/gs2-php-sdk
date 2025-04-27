@@ -87,6 +87,8 @@ use Gs2\Enchant\Request\ExportMasterRequest;
 use Gs2\Enchant\Result\ExportMasterResult;
 use Gs2\Enchant\Request\GetCurrentParameterMasterRequest;
 use Gs2\Enchant\Result\GetCurrentParameterMasterResult;
+use Gs2\Enchant\Request\PreUpdateCurrentParameterMasterRequest;
+use Gs2\Enchant\Result\PreUpdateCurrentParameterMasterResult;
 use Gs2\Enchant\Request\UpdateCurrentParameterMasterRequest;
 use Gs2\Enchant\Result\UpdateCurrentParameterMasterResult;
 use Gs2\Enchant\Request\UpdateCurrentParameterMasterFromGitHubRequest;
@@ -1935,6 +1937,61 @@ class GetCurrentParameterMasterTask extends Gs2RestSessionTask {
     }
 }
 
+class PreUpdateCurrentParameterMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentParameterMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentParameterMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentParameterMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentParameterMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentParameterMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class UpdateCurrentParameterMasterTask extends Gs2RestSessionTask {
 
     /**
@@ -1965,14 +2022,48 @@ class UpdateCurrentParameterMasterTask extends Gs2RestSessionTask {
     }
 
     public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentParameterMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentParameterMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentParameterMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
 
         $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
 
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
 
         $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
         if ($this->request->getSettings() !== null) {
             $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -4363,6 +4454,33 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
             GetCurrentParameterMasterRequest $request
     ): GetCurrentParameterMasterResult {
         return $this->getCurrentParameterMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentParameterMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentParameterMasterAsync(
+            PreUpdateCurrentParameterMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentParameterMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentParameterMasterRequest $request
+     * @return PreUpdateCurrentParameterMasterResult
+     */
+    public function preUpdateCurrentParameterMaster (
+            PreUpdateCurrentParameterMasterRequest $request
+    ): PreUpdateCurrentParameterMasterResult {
+        return $this->preUpdateCurrentParameterMasterAsync(
             $request
         )->wait();
     }

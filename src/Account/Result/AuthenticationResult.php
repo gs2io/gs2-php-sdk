@@ -89,11 +89,11 @@ class AuthenticationResult implements IResult {
         }
         return (new AuthenticationResult())
             ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Account::fromJson($data['item']) : null)
-            ->withBanStatuses(array_map(
+            ->withBanStatuses(!array_key_exists('banStatuses', $data) || $data['banStatuses'] === null ? null : array_map(
                 function ($item) {
                     return BanStatus::fromJson($item);
                 },
-                array_key_exists('banStatuses', $data) && $data['banStatuses'] !== null ? $data['banStatuses'] : []
+                $data['banStatuses']
             ))
             ->withBody(array_key_exists('body', $data) && $data['body'] !== null ? $data['body'] : null)
             ->withSignature(array_key_exists('signature', $data) && $data['signature'] !== null ? $data['signature'] : null);
@@ -102,11 +102,11 @@ class AuthenticationResult implements IResult {
     public function toJson(): array {
         return array(
             "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
-            "banStatuses" => array_map(
+            "banStatuses" => $this->getBanStatuses() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();
                 },
-                $this->getBanStatuses() !== null && $this->getBanStatuses() !== null ? $this->getBanStatuses() : []
+                $this->getBanStatuses()
             ),
             "body" => $this->getBody(),
             "signature" => $this->getSignature(),

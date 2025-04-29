@@ -1540,6 +1540,9 @@ class DescribeMessagesTask extends Gs2RestSessionTask {
         if ($this->request->getPassword() !== null) {
             $queryStrings["password"] = $this->request->getPassword();
         }
+        if ($this->request->getCategory() !== null) {
+            $queryStrings["category"] = $this->request->getCategory();
+        }
         if ($this->request->getStartAt() !== null) {
             $queryStrings["startAt"] = $this->request->getStartAt();
         }
@@ -1609,6 +1612,9 @@ class DescribeMessagesByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getPassword() !== null) {
             $queryStrings["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getCategory() !== null) {
+            $queryStrings["category"] = $this->request->getCategory();
         }
         if ($this->request->getUserId() !== null) {
             $queryStrings["userId"] = $this->request->getUserId();
@@ -1683,6 +1689,9 @@ class DescribeLatestMessagesTask extends Gs2RestSessionTask {
         if ($this->request->getPassword() !== null) {
             $queryStrings["password"] = $this->request->getPassword();
         }
+        if ($this->request->getCategory() !== null) {
+            $queryStrings["category"] = $this->request->getCategory();
+        }
         if ($this->request->getLimit() !== null) {
             $queryStrings["limit"] = $this->request->getLimit();
         }
@@ -1749,6 +1758,9 @@ class DescribeLatestMessagesByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getPassword() !== null) {
             $queryStrings["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getCategory() !== null) {
+            $queryStrings["category"] = $this->request->getCategory();
         }
         if ($this->request->getUserId() !== null) {
             $queryStrings["userId"] = $this->request->getUserId();

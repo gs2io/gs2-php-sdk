@@ -40,6 +40,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $awsSecretAccessKey;
     /** @var string */
     private $firehoseStreamName;
+    /** @var string */
+    private $firehoseCompressData;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -140,6 +142,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->firehoseStreamName = $firehoseStreamName;
 		return $this;
 	}
+	public function getFirehoseCompressData(): ?string {
+		return $this->firehoseCompressData;
+	}
+	public function setFirehoseCompressData(?string $firehoseCompressData) {
+		$this->firehoseCompressData = $firehoseCompressData;
+	}
+	public function withFirehoseCompressData(?string $firehoseCompressData): UpdateNamespaceRequest {
+		$this->firehoseCompressData = $firehoseCompressData;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?UpdateNamespaceRequest {
         if ($data === null) {
@@ -155,7 +167,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withAwsRegion(array_key_exists('awsRegion', $data) && $data['awsRegion'] !== null ? $data['awsRegion'] : null)
             ->withAwsAccessKeyId(array_key_exists('awsAccessKeyId', $data) && $data['awsAccessKeyId'] !== null ? $data['awsAccessKeyId'] : null)
             ->withAwsSecretAccessKey(array_key_exists('awsSecretAccessKey', $data) && $data['awsSecretAccessKey'] !== null ? $data['awsSecretAccessKey'] : null)
-            ->withFirehoseStreamName(array_key_exists('firehoseStreamName', $data) && $data['firehoseStreamName'] !== null ? $data['firehoseStreamName'] : null);
+            ->withFirehoseStreamName(array_key_exists('firehoseStreamName', $data) && $data['firehoseStreamName'] !== null ? $data['firehoseStreamName'] : null)
+            ->withFirehoseCompressData(array_key_exists('firehoseCompressData', $data) && $data['firehoseCompressData'] !== null ? $data['firehoseCompressData'] : null);
     }
 
     public function toJson(): array {
@@ -170,6 +183,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "awsAccessKeyId" => $this->getAwsAccessKeyId(),
             "awsSecretAccessKey" => $this->getAwsSecretAccessKey(),
             "firehoseStreamName" => $this->getFirehoseStreamName(),
+            "firehoseCompressData" => $this->getFirehoseCompressData(),
         );
     }
 }

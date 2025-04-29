@@ -26,6 +26,8 @@ class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
     private $roomName;
     /** @var string */
     private $password;
+    /** @var int */
+    private $category;
     /** @var string */
     private $userId;
     /** @var int */
@@ -60,6 +62,16 @@ class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withPassword(?string $password): DescribeLatestMessagesByUserIdRequest {
 		$this->password = $password;
+		return $this;
+	}
+	public function getCategory(): ?int {
+		return $this->category;
+	}
+	public function setCategory(?int $category) {
+		$this->category = $category;
+	}
+	public function withCategory(?int $category): DescribeLatestMessagesByUserIdRequest {
+		$this->category = $category;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -101,6 +113,7 @@ class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
+            ->withCategory(array_key_exists('category', $data) && $data['category'] !== null ? $data['category'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
@@ -111,6 +124,7 @@ class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "roomName" => $this->getRoomName(),
             "password" => $this->getPassword(),
+            "category" => $this->getCategory(),
             "userId" => $this->getUserId(),
             "limit" => $this->getLimit(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),

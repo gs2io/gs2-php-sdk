@@ -26,6 +26,8 @@ class DescribeMessagesByUserIdRequest extends Gs2BasicRequest {
     private $roomName;
     /** @var string */
     private $password;
+    /** @var int */
+    private $category;
     /** @var string */
     private $userId;
     /** @var int */
@@ -62,6 +64,16 @@ class DescribeMessagesByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withPassword(?string $password): DescribeMessagesByUserIdRequest {
 		$this->password = $password;
+		return $this;
+	}
+	public function getCategory(): ?int {
+		return $this->category;
+	}
+	public function setCategory(?int $category) {
+		$this->category = $category;
+	}
+	public function withCategory(?int $category): DescribeMessagesByUserIdRequest {
+		$this->category = $category;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -113,6 +125,7 @@ class DescribeMessagesByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withRoomName(array_key_exists('roomName', $data) && $data['roomName'] !== null ? $data['roomName'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
+            ->withCategory(array_key_exists('category', $data) && $data['category'] !== null ? $data['category'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withStartAt(array_key_exists('startAt', $data) && $data['startAt'] !== null ? $data['startAt'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null)
@@ -124,6 +137,7 @@ class DescribeMessagesByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "roomName" => $this->getRoomName(),
             "password" => $this->getPassword(),
+            "category" => $this->getCategory(),
             "userId" => $this->getUserId(),
             "startAt" => $this->getStartAt(),
             "limit" => $this->getLimit(),

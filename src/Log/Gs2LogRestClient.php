@@ -199,6 +199,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getFirehoseStreamName() !== null) {
             $json["firehoseStreamName"] = $this->request->getFirehoseStreamName();
         }
+        if ($this->request->getFirehoseCompressData() !== null) {
+            $json["firehoseCompressData"] = $this->request->getFirehoseCompressData();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -394,6 +397,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getFirehoseStreamName() !== null) {
             $json["firehoseStreamName"] = $this->request->getFirehoseStreamName();
+        }
+        if ($this->request->getFirehoseCompressData() !== null) {
+            $json["firehoseCompressData"] = $this->request->getFirehoseCompressData();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

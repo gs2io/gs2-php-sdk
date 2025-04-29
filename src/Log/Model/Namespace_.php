@@ -68,6 +68,10 @@ class Namespace_ implements IModel {
 	/**
      * @var string
 	 */
+	private $firehoseCompressData;
+	/**
+     * @var string
+	 */
 	private $status;
 	/**
      * @var int
@@ -191,6 +195,16 @@ class Namespace_ implements IModel {
 		$this->firehoseStreamName = $firehoseStreamName;
 		return $this;
 	}
+	public function getFirehoseCompressData(): ?string {
+		return $this->firehoseCompressData;
+	}
+	public function setFirehoseCompressData(?string $firehoseCompressData) {
+		$this->firehoseCompressData = $firehoseCompressData;
+	}
+	public function withFirehoseCompressData(?string $firehoseCompressData): Namespace_ {
+		$this->firehoseCompressData = $firehoseCompressData;
+		return $this;
+	}
 	public function getStatus(): ?string {
 		return $this->status;
 	}
@@ -248,6 +262,7 @@ class Namespace_ implements IModel {
             ->withAwsAccessKeyId(array_key_exists('awsAccessKeyId', $data) && $data['awsAccessKeyId'] !== null ? $data['awsAccessKeyId'] : null)
             ->withAwsSecretAccessKey(array_key_exists('awsSecretAccessKey', $data) && $data['awsSecretAccessKey'] !== null ? $data['awsSecretAccessKey'] : null)
             ->withFirehoseStreamName(array_key_exists('firehoseStreamName', $data) && $data['firehoseStreamName'] !== null ? $data['firehoseStreamName'] : null)
+            ->withFirehoseCompressData(array_key_exists('firehoseCompressData', $data) && $data['firehoseCompressData'] !== null ? $data['firehoseCompressData'] : null)
             ->withStatus(array_key_exists('status', $data) && $data['status'] !== null ? $data['status'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -267,6 +282,7 @@ class Namespace_ implements IModel {
             "awsAccessKeyId" => $this->getAwsAccessKeyId(),
             "awsSecretAccessKey" => $this->getAwsSecretAccessKey(),
             "firehoseStreamName" => $this->getFirehoseStreamName(),
+            "firehoseCompressData" => $this->getFirehoseCompressData(),
             "status" => $this->getStatus(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

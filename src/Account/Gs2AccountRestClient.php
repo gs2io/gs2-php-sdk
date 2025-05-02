@@ -129,6 +129,8 @@ use Gs2\Account\Request\DeletePlatformIdByUserIdRequest;
 use Gs2\Account\Result\DeletePlatformIdByUserIdResult;
 use Gs2\Account\Request\GetDataOwnerByUserIdRequest;
 use Gs2\Account\Result\GetDataOwnerByUserIdResult;
+use Gs2\Account\Request\UpdateDataOwnerByUserIdRequest;
+use Gs2\Account\Result\UpdateDataOwnerByUserIdResult;
 use Gs2\Account\Request\DeleteDataOwnerByUserIdRequest;
 use Gs2\Account\Result\DeleteDataOwnerByUserIdResult;
 use Gs2\Account\Request\DescribeTakeOverTypeModelsRequest;
@@ -3359,6 +3361,71 @@ class GetDataOwnerByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class UpdateDataOwnerByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateDataOwnerByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateDataOwnerByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateDataOwnerByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateDataOwnerByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateDataOwnerByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/dataOwner";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getDataOwnerName() !== null) {
+            $json["dataOwnerName"] = $this->request->getDataOwnerName();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteDataOwnerByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -5531,6 +5598,33 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             GetDataOwnerByUserIdRequest $request
     ): GetDataOwnerByUserIdResult {
         return $this->getDataOwnerByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateDataOwnerByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function updateDataOwnerByUserIdAsync(
+            UpdateDataOwnerByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateDataOwnerByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateDataOwnerByUserIdRequest $request
+     * @return UpdateDataOwnerByUserIdResult
+     */
+    public function updateDataOwnerByUserId (
+            UpdateDataOwnerByUserIdRequest $request
+    ): UpdateDataOwnerByUserIdResult {
+        return $this->updateDataOwnerByUserIdAsync(
             $request
         )->wait();
     }

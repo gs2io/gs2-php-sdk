@@ -60,7 +60,7 @@ class ClusterRankingData implements IModel {
 	/**
      * @var int
 	 */
-	private $invertCreatedAt;
+	private $invertUpdatedAt;
 	/**
      * @var int
 	 */
@@ -163,14 +163,14 @@ class ClusterRankingData implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
-	public function getInvertCreatedAt(): ?int {
-		return $this->invertCreatedAt;
+	public function getInvertUpdatedAt(): ?int {
+		return $this->invertUpdatedAt;
 	}
-	public function setInvertCreatedAt(?int $invertCreatedAt) {
-		$this->invertCreatedAt = $invertCreatedAt;
+	public function setInvertUpdatedAt(?int $invertUpdatedAt) {
+		$this->invertUpdatedAt = $invertUpdatedAt;
 	}
-	public function withInvertCreatedAt(?int $invertCreatedAt): ClusterRankingData {
-		$this->invertCreatedAt = $invertCreatedAt;
+	public function withInvertUpdatedAt(?int $invertUpdatedAt): ClusterRankingData {
+		$this->invertUpdatedAt = $invertUpdatedAt;
 		return $this;
 	}
 	public function getCreatedAt(): ?int {
@@ -218,7 +218,7 @@ class ClusterRankingData implements IModel {
             ->withRank(array_key_exists('rank', $data) && $data['rank'] !== null ? $data['rank'] : null)
             ->withScore(array_key_exists('score', $data) && $data['score'] !== null ? $data['score'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withInvertCreatedAt(array_key_exists('invertCreatedAt', $data) && $data['invertCreatedAt'] !== null ? $data['invertCreatedAt'] : null)
+            ->withInvertUpdatedAt(array_key_exists('invertUpdatedAt', $data) && $data['invertUpdatedAt'] !== null ? $data['invertUpdatedAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -235,7 +235,7 @@ class ClusterRankingData implements IModel {
             "rank" => $this->getRank(),
             "score" => $this->getScore(),
             "metadata" => $this->getMetadata(),
-            "invertCreatedAt" => $this->getInvertCreatedAt(),
+            "invertUpdatedAt" => $this->getInvertUpdatedAt(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

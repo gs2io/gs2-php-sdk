@@ -62,6 +62,10 @@ class Namespace_ implements IModel {
 	 */
 	private $banScript;
 	/**
+     * @var ScriptSetting
+	 */
+	private $unBanScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -177,6 +181,16 @@ class Namespace_ implements IModel {
 		$this->banScript = $banScript;
 		return $this;
 	}
+	public function getUnBanScript(): ?ScriptSetting {
+		return $this->unBanScript;
+	}
+	public function setUnBanScript(?ScriptSetting $unBanScript) {
+		$this->unBanScript = $unBanScript;
+	}
+	public function withUnBanScript(?ScriptSetting $unBanScript): Namespace_ {
+		$this->unBanScript = $unBanScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -233,6 +247,7 @@ class Namespace_ implements IModel {
             ->withCreateTakeOverScript(array_key_exists('createTakeOverScript', $data) && $data['createTakeOverScript'] !== null ? ScriptSetting::fromJson($data['createTakeOverScript']) : null)
             ->withDoTakeOverScript(array_key_exists('doTakeOverScript', $data) && $data['doTakeOverScript'] !== null ? ScriptSetting::fromJson($data['doTakeOverScript']) : null)
             ->withBanScript(array_key_exists('banScript', $data) && $data['banScript'] !== null ? ScriptSetting::fromJson($data['banScript']) : null)
+            ->withUnBanScript(array_key_exists('unBanScript', $data) && $data['unBanScript'] !== null ? ScriptSetting::fromJson($data['unBanScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -251,6 +266,7 @@ class Namespace_ implements IModel {
             "createTakeOverScript" => $this->getCreateTakeOverScript() !== null ? $this->getCreateTakeOverScript()->toJson() : null,
             "doTakeOverScript" => $this->getDoTakeOverScript() !== null ? $this->getDoTakeOverScript()->toJson() : null,
             "banScript" => $this->getBanScript() !== null ? $this->getBanScript()->toJson() : null,
+            "unBanScript" => $this->getUnBanScript() !== null ? $this->getUnBanScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

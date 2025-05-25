@@ -41,6 +41,8 @@ use Gs2\Ranking2\Request\UpdateNamespaceRequest;
 use Gs2\Ranking2\Result\UpdateNamespaceResult;
 use Gs2\Ranking2\Request\DeleteNamespaceRequest;
 use Gs2\Ranking2\Result\DeleteNamespaceResult;
+use Gs2\Ranking2\Request\GetServiceVersionRequest;
+use Gs2\Ranking2\Result\GetServiceVersionResult;
 use Gs2\Ranking2\Request\DumpUserDataByUserIdRequest;
 use Gs2\Ranking2\Result\DumpUserDataByUserIdResult;
 use Gs2\Ranking2\Request\CheckDumpUserDataByUserIdRequest;
@@ -597,6 +599,61 @@ class DeleteNamespaceTask extends Gs2RestSessionTask {
         }
 
         $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetServiceVersionTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetServiceVersionRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetServiceVersionTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetServiceVersionRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetServiceVersionRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetServiceVersionResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ranking2", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/version";
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -7704,6 +7761,33 @@ class Gs2Ranking2RestClient extends AbstractGs2Client {
             DeleteNamespaceRequest $request
     ): DeleteNamespaceResult {
         return $this->deleteNamespaceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetServiceVersionRequest $request
+     * @return PromiseInterface
+     */
+    public function getServiceVersionAsync(
+            GetServiceVersionRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetServiceVersionTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetServiceVersionRequest $request
+     * @return GetServiceVersionResult
+     */
+    public function getServiceVersion (
+            GetServiceVersionRequest $request
+    ): GetServiceVersionResult {
+        return $this->getServiceVersionAsync(
             $request
         )->wait();
     }

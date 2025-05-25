@@ -63,6 +63,8 @@ use Gs2\Deploy\Request\DeleteStackResourcesRequest;
 use Gs2\Deploy\Result\DeleteStackResourcesResult;
 use Gs2\Deploy\Request\DeleteStackEntityRequest;
 use Gs2\Deploy\Result\DeleteStackEntityResult;
+use Gs2\Deploy\Request\GetServiceVersionRequest;
+use Gs2\Deploy\Result\GetServiceVersionResult;
 use Gs2\Deploy\Request\DescribeResourcesRequest;
 use Gs2\Deploy\Result\DescribeResourcesResult;
 use Gs2\Deploy\Request\GetResourceRequest;
@@ -1185,6 +1187,61 @@ class DeleteStackEntityTask extends Gs2RestSessionTask {
     }
 }
 
+class GetServiceVersionTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetServiceVersionRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetServiceVersionTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetServiceVersionRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetServiceVersionRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetServiceVersionResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "deploy", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/version";
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeResourcesTask extends Gs2RestSessionTask {
 
     /**
@@ -2020,6 +2077,33 @@ class Gs2DeployRestClient extends AbstractGs2Client {
             DeleteStackEntityRequest $request
     ): DeleteStackEntityResult {
         return $this->deleteStackEntityAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetServiceVersionRequest $request
+     * @return PromiseInterface
+     */
+    public function getServiceVersionAsync(
+            GetServiceVersionRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetServiceVersionTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetServiceVersionRequest $request
+     * @return GetServiceVersionResult
+     */
+    public function getServiceVersion (
+            GetServiceVersionRequest $request
+    ): GetServiceVersionResult {
+        return $this->getServiceVersionAsync(
             $request
         )->wait();
     }

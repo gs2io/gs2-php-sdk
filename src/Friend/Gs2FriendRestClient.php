@@ -105,6 +105,10 @@ use Gs2\Friend\Request\GetFriendRequest;
 use Gs2\Friend\Result\GetFriendResult;
 use Gs2\Friend\Request\GetFriendByUserIdRequest;
 use Gs2\Friend\Result\GetFriendByUserIdResult;
+use Gs2\Friend\Request\AddFriendRequest;
+use Gs2\Friend\Result\AddFriendResult;
+use Gs2\Friend\Request\AddFriendByUserIdRequest;
+use Gs2\Friend\Result\AddFriendByUserIdResult;
 use Gs2\Friend\Request\DeleteFriendRequest;
 use Gs2\Friend\Result\DeleteFriendResult;
 use Gs2\Friend\Request\DeleteFriendByUserIdRequest;
@@ -2616,6 +2620,131 @@ class GetFriendByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class AddFriendTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddFriendRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddFriendTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddFriendRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddFriendRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddFriendResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/friend/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class AddFriendByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var AddFriendByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * AddFriendByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param AddFriendByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        AddFriendByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            AddFriendByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/friend/{targetUserId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteFriendTask extends Gs2RestSessionTask {
 
     /**
@@ -4865,6 +4994,60 @@ class Gs2FriendRestClient extends AbstractGs2Client {
             GetFriendByUserIdRequest $request
     ): GetFriendByUserIdResult {
         return $this->getFriendByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AddFriendRequest $request
+     * @return PromiseInterface
+     */
+    public function addFriendAsync(
+            AddFriendRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddFriendTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AddFriendRequest $request
+     * @return AddFriendResult
+     */
+    public function addFriend (
+            AddFriendRequest $request
+    ): AddFriendResult {
+        return $this->addFriendAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param AddFriendByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function addFriendByUserIdAsync(
+            AddFriendByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new AddFriendByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param AddFriendByUserIdRequest $request
+     * @return AddFriendByUserIdResult
+     */
+    public function addFriendByUserId (
+            AddFriendByUserIdRequest $request
+    ): AddFriendByUserIdResult {
+        return $this->addFriendByUserIdAsync(
             $request
         )->wait();
     }

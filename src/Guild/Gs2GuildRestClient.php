@@ -350,6 +350,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getChangeRoleScript() !== null) {
             $json["changeRoleScript"] = $this->request->getChangeRoleScript()->toJson();
         }
+        if ($this->request->getDeleteGuildScript() !== null) {
+            $json["deleteGuildScript"] = $this->request->getDeleteGuildScript()->toJson();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -557,6 +560,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getChangeRoleScript() !== null) {
             $json["changeRoleScript"] = $this->request->getChangeRoleScript()->toJson();
+        }
+        if ($this->request->getDeleteGuildScript() !== null) {
+            $json["deleteGuildScript"] = $this->request->getDeleteGuildScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

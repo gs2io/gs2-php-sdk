@@ -49,6 +49,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $leaveGuildScript;
     /** @var ScriptSetting */
     private $changeRoleScript;
+    /** @var ScriptSetting */
+    private $deleteGuildScript;
     /** @var LogSetting */
     private $logSetting;
 	public function getNamespaceName(): ?string {
@@ -181,6 +183,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->changeRoleScript = $changeRoleScript;
 		return $this;
 	}
+	public function getDeleteGuildScript(): ?ScriptSetting {
+		return $this->deleteGuildScript;
+	}
+	public function setDeleteGuildScript(?ScriptSetting $deleteGuildScript) {
+		$this->deleteGuildScript = $deleteGuildScript;
+	}
+	public function withDeleteGuildScript(?ScriptSetting $deleteGuildScript): UpdateNamespaceRequest {
+		$this->deleteGuildScript = $deleteGuildScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -210,6 +222,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withJoinGuildScript(array_key_exists('joinGuildScript', $data) && $data['joinGuildScript'] !== null ? ScriptSetting::fromJson($data['joinGuildScript']) : null)
             ->withLeaveGuildScript(array_key_exists('leaveGuildScript', $data) && $data['leaveGuildScript'] !== null ? ScriptSetting::fromJson($data['leaveGuildScript']) : null)
             ->withChangeRoleScript(array_key_exists('changeRoleScript', $data) && $data['changeRoleScript'] !== null ? ScriptSetting::fromJson($data['changeRoleScript']) : null)
+            ->withDeleteGuildScript(array_key_exists('deleteGuildScript', $data) && $data['deleteGuildScript'] !== null ? ScriptSetting::fromJson($data['deleteGuildScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -228,6 +241,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "joinGuildScript" => $this->getJoinGuildScript() !== null ? $this->getJoinGuildScript()->toJson() : null,
             "leaveGuildScript" => $this->getLeaveGuildScript() !== null ? $this->getLeaveGuildScript()->toJson() : null,
             "changeRoleScript" => $this->getChangeRoleScript() !== null ? $this->getChangeRoleScript()->toJson() : null,
+            "deleteGuildScript" => $this->getDeleteGuildScript() !== null ? $this->getDeleteGuildScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

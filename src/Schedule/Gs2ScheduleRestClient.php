@@ -77,8 +77,12 @@ use Gs2\Schedule\Request\GetTriggerByUserIdRequest;
 use Gs2\Schedule\Result\GetTriggerByUserIdResult;
 use Gs2\Schedule\Request\TriggerByUserIdRequest;
 use Gs2\Schedule\Result\TriggerByUserIdResult;
+use Gs2\Schedule\Request\ExtendTriggerByUserIdRequest;
+use Gs2\Schedule\Result\ExtendTriggerByUserIdResult;
 use Gs2\Schedule\Request\TriggerByStampSheetRequest;
 use Gs2\Schedule\Result\TriggerByStampSheetResult;
+use Gs2\Schedule\Request\ExtendTriggerByStampSheetRequest;
+use Gs2\Schedule\Result\ExtendTriggerByStampSheetResult;
 use Gs2\Schedule\Request\DeleteTriggerRequest;
 use Gs2\Schedule\Result\DeleteTriggerResult;
 use Gs2\Schedule\Request\DeleteTriggerByUserIdRequest;
@@ -1651,6 +1655,72 @@ class TriggerByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class ExtendTriggerByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ExtendTriggerByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ExtendTriggerByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ExtendTriggerByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ExtendTriggerByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ExtendTriggerByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/trigger/{triggerName}/extend";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{triggerName}", $this->request->getTriggerName() === null|| strlen($this->request->getTriggerName()) == 0 ? "null" : $this->request->getTriggerName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getExtendSeconds() !== null) {
+            $json["extendSeconds"] = $this->request->getExtendSeconds();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class TriggerByStampSheetTask extends Gs2RestSessionTask {
 
     /**
@@ -1683,6 +1753,65 @@ class TriggerByStampSheetTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/trigger";
+
+        $json = [];
+        if ($this->request->getStampSheet() !== null) {
+            $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ExtendTriggerByStampSheetTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ExtendTriggerByStampSheetRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ExtendTriggerByStampSheetTask constructor.
+     * @param Gs2RestSession $session
+     * @param ExtendTriggerByStampSheetRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ExtendTriggerByStampSheetRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ExtendTriggerByStampSheetResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "schedule", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/trigger/extend";
 
         $json = [];
         if ($this->request->getStampSheet() !== null) {
@@ -3626,6 +3755,33 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param ExtendTriggerByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function extendTriggerByUserIdAsync(
+            ExtendTriggerByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ExtendTriggerByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ExtendTriggerByUserIdRequest $request
+     * @return ExtendTriggerByUserIdResult
+     */
+    public function extendTriggerByUserId (
+            ExtendTriggerByUserIdRequest $request
+    ): ExtendTriggerByUserIdResult {
+        return $this->extendTriggerByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param TriggerByStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -3648,6 +3804,33 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
             TriggerByStampSheetRequest $request
     ): TriggerByStampSheetResult {
         return $this->triggerByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ExtendTriggerByStampSheetRequest $request
+     * @return PromiseInterface
+     */
+    public function extendTriggerByStampSheetAsync(
+            ExtendTriggerByStampSheetRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ExtendTriggerByStampSheetTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ExtendTriggerByStampSheetRequest $request
+     * @return ExtendTriggerByStampSheetResult
+     */
+    public function extendTriggerByStampSheet (
+            ExtendTriggerByStampSheetRequest $request
+    ): ExtendTriggerByStampSheetResult {
+        return $this->extendTriggerByStampSheetAsync(
             $request
         )->wait();
     }

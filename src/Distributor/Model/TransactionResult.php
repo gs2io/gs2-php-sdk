@@ -46,6 +46,10 @@ class TransactionResult implements IModel {
 	 */
 	private $acquireResults;
 	/**
+     * @var bool
+	 */
+	private $hasError;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -113,6 +117,16 @@ class TransactionResult implements IModel {
 		$this->acquireResults = $acquireResults;
 		return $this;
 	}
+	public function getHasError(): ?bool {
+		return $this->hasError;
+	}
+	public function setHasError(?bool $hasError) {
+		$this->hasError = $hasError;
+	}
+	public function withHasError(?bool $hasError): TransactionResult {
+		$this->hasError = $hasError;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -160,6 +174,7 @@ class TransactionResult implements IModel {
                 },
                 $data['acquireResults']
             ))
+            ->withHasError(array_key_exists('hasError', $data) ? $data['hasError'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -187,6 +202,7 @@ class TransactionResult implements IModel {
                 },
                 $this->getAcquireResults()
             ),
+            "hasError" => $this->getHasError(),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );

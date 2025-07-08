@@ -30,6 +30,8 @@ class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
     private $category;
     /** @var string */
     private $userId;
+    /** @var string */
+    private $pageToken;
     /** @var int */
     private $limit;
     /** @var string */
@@ -84,6 +86,16 @@ class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+	public function withPageToken(?string $pageToken): DescribeLatestMessagesByUserIdRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
@@ -115,6 +127,7 @@ class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withCategory(array_key_exists('category', $data) && $data['category'] !== null ? $data['category'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -126,6 +139,7 @@ class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
             "password" => $this->getPassword(),
             "category" => $this->getCategory(),
             "userId" => $this->getUserId(),
+            "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

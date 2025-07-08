@@ -23,6 +23,8 @@ use Gs2\Chat\Model\Message;
 class DescribeLatestMessagesResult implements IResult {
     /** @var array */
     private $items;
+    /** @var string */
+    private $nextPageToken;
 
 	public function getItems(): ?array {
 		return $this->items;
@@ -37,6 +39,19 @@ class DescribeLatestMessagesResult implements IResult {
 		return $this;
 	}
 
+	public function getNextPageToken(): ?string {
+		return $this->nextPageToken;
+	}
+
+	public function setNextPageToken(?string $nextPageToken) {
+		$this->nextPageToken = $nextPageToken;
+	}
+
+	public function withNextPageToken(?string $nextPageToken): DescribeLatestMessagesResult {
+		$this->nextPageToken = $nextPageToken;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?DescribeLatestMessagesResult {
         if ($data === null) {
             return null;
@@ -47,7 +62,8 @@ class DescribeLatestMessagesResult implements IResult {
                     return Message::fromJson($item);
                 },
                 $data['items']
-            ));
+            ))
+            ->withNextPageToken(array_key_exists('nextPageToken', $data) && $data['nextPageToken'] !== null ? $data['nextPageToken'] : null);
     }
 
     public function toJson(): array {
@@ -58,6 +74,7 @@ class DescribeLatestMessagesResult implements IResult {
                 },
                 $this->getItems()
             ),
+            "nextPageToken" => $this->getNextPageToken(),
         );
     }
 }

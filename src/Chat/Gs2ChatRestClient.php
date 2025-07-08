@@ -1749,6 +1749,9 @@ class DescribeLatestMessagesTask extends Gs2RestSessionTask {
         if ($this->request->getCategory() !== null) {
             $queryStrings["category"] = $this->request->getCategory();
         }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
         if ($this->request->getLimit() !== null) {
             $queryStrings["limit"] = $this->request->getLimit();
         }
@@ -1821,6 +1824,9 @@ class DescribeLatestMessagesByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getUserId() !== null) {
             $queryStrings["userId"] = $this->request->getUserId();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
         }
         if ($this->request->getLimit() !== null) {
             $queryStrings["limit"] = $this->request->getLimit();

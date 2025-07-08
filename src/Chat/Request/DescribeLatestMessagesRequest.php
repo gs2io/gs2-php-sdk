@@ -30,6 +30,8 @@ class DescribeLatestMessagesRequest extends Gs2BasicRequest {
     private $category;
     /** @var string */
     private $accessToken;
+    /** @var string */
+    private $pageToken;
     /** @var int */
     private $limit;
 	public function getNamespaceName(): ?string {
@@ -82,6 +84,16 @@ class DescribeLatestMessagesRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+	public function getPageToken(): ?string {
+		return $this->pageToken;
+	}
+	public function setPageToken(?string $pageToken) {
+		$this->pageToken = $pageToken;
+	}
+	public function withPageToken(?string $pageToken): DescribeLatestMessagesRequest {
+		$this->pageToken = $pageToken;
+		return $this;
+	}
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
@@ -103,6 +115,7 @@ class DescribeLatestMessagesRequest extends Gs2BasicRequest {
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withCategory(array_key_exists('category', $data) && $data['category'] !== null ? $data['category'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
@@ -113,6 +126,7 @@ class DescribeLatestMessagesRequest extends Gs2BasicRequest {
             "password" => $this->getPassword(),
             "category" => $this->getCategory(),
             "accessToken" => $this->getAccessToken(),
+            "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
         );
     }

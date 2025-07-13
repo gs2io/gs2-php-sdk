@@ -44,6 +44,10 @@ class Mutex implements IModel {
 	/**
      * @var int
 	 */
+	private $ttlAt;
+	/**
+     * @var int
+	 */
 	private $revision;
 	public function getMutexId(): ?string {
 		return $this->mutexId;
@@ -95,6 +99,16 @@ class Mutex implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getTtlAt(): ?int {
+		return $this->ttlAt;
+	}
+	public function setTtlAt(?int $ttlAt) {
+		$this->ttlAt = $ttlAt;
+	}
+	public function withTtlAt(?int $ttlAt): Mutex {
+		$this->ttlAt = $ttlAt;
+		return $this;
+	}
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
@@ -116,6 +130,7 @@ class Mutex implements IModel {
             ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withTtlAt(array_key_exists('ttlAt', $data) && $data['ttlAt'] !== null ? $data['ttlAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
@@ -126,6 +141,7 @@ class Mutex implements IModel {
             "propertyId" => $this->getPropertyId(),
             "transactionId" => $this->getTransactionId(),
             "createdAt" => $this->getCreatedAt(),
+            "ttlAt" => $this->getTtlAt(),
             "revision" => $this->getRevision(),
         );
     }

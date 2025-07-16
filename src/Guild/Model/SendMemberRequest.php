@@ -33,6 +33,10 @@ class SendMemberRequest implements IModel {
      * @var string
 	 */
 	private $metadata;
+	/**
+     * @var int
+	 */
+	private $createdAt;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -63,6 +67,16 @@ class SendMemberRequest implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+	public function getCreatedAt(): ?int {
+		return $this->createdAt;
+	}
+	public function setCreatedAt(?int $createdAt) {
+		$this->createdAt = $createdAt;
+	}
+	public function withCreatedAt(?int $createdAt): SendMemberRequest {
+		$this->createdAt = $createdAt;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?SendMemberRequest {
         if ($data === null) {
@@ -71,7 +85,8 @@ class SendMemberRequest implements IModel {
         return (new SendMemberRequest())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetGuildName(array_key_exists('targetGuildName', $data) && $data['targetGuildName'] !== null ? $data['targetGuildName'] : null)
-            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null);
+            ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
     }
 
     public function toJson(): array {
@@ -79,6 +94,7 @@ class SendMemberRequest implements IModel {
             "userId" => $this->getUserId(),
             "targetGuildName" => $this->getTargetGuildName(),
             "metadata" => $this->getMetadata(),
+            "createdAt" => $this->getCreatedAt(),
         );
     }
 }

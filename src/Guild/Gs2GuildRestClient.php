@@ -344,6 +344,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getJoinGuildScript() !== null) {
             $json["joinGuildScript"] = $this->request->getJoinGuildScript()->toJson();
         }
+        if ($this->request->getReceiveJoinRequestScript() !== null) {
+            $json["receiveJoinRequestScript"] = $this->request->getReceiveJoinRequestScript()->toJson();
+        }
         if ($this->request->getLeaveGuildScript() !== null) {
             $json["leaveGuildScript"] = $this->request->getLeaveGuildScript()->toJson();
         }
@@ -554,6 +557,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getJoinGuildScript() !== null) {
             $json["joinGuildScript"] = $this->request->getJoinGuildScript()->toJson();
+        }
+        if ($this->request->getReceiveJoinRequestScript() !== null) {
+            $json["receiveJoinRequestScript"] = $this->request->getReceiveJoinRequestScript()->toJson();
         }
         if ($this->request->getLeaveGuildScript() !== null) {
             $json["leaveGuildScript"] = $this->request->getLeaveGuildScript()->toJson();

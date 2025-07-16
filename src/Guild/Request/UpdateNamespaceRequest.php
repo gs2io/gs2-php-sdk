@@ -46,6 +46,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     /** @var ScriptSetting */
     private $joinGuildScript;
     /** @var ScriptSetting */
+    private $receiveJoinRequestScript;
+    /** @var ScriptSetting */
     private $leaveGuildScript;
     /** @var ScriptSetting */
     private $changeRoleScript;
@@ -163,6 +165,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->joinGuildScript = $joinGuildScript;
 		return $this;
 	}
+	public function getReceiveJoinRequestScript(): ?ScriptSetting {
+		return $this->receiveJoinRequestScript;
+	}
+	public function setReceiveJoinRequestScript(?ScriptSetting $receiveJoinRequestScript) {
+		$this->receiveJoinRequestScript = $receiveJoinRequestScript;
+	}
+	public function withReceiveJoinRequestScript(?ScriptSetting $receiveJoinRequestScript): UpdateNamespaceRequest {
+		$this->receiveJoinRequestScript = $receiveJoinRequestScript;
+		return $this;
+	}
 	public function getLeaveGuildScript(): ?ScriptSetting {
 		return $this->leaveGuildScript;
 	}
@@ -220,6 +232,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withCreateGuildScript(array_key_exists('createGuildScript', $data) && $data['createGuildScript'] !== null ? ScriptSetting::fromJson($data['createGuildScript']) : null)
             ->withUpdateGuildScript(array_key_exists('updateGuildScript', $data) && $data['updateGuildScript'] !== null ? ScriptSetting::fromJson($data['updateGuildScript']) : null)
             ->withJoinGuildScript(array_key_exists('joinGuildScript', $data) && $data['joinGuildScript'] !== null ? ScriptSetting::fromJson($data['joinGuildScript']) : null)
+            ->withReceiveJoinRequestScript(array_key_exists('receiveJoinRequestScript', $data) && $data['receiveJoinRequestScript'] !== null ? ScriptSetting::fromJson($data['receiveJoinRequestScript']) : null)
             ->withLeaveGuildScript(array_key_exists('leaveGuildScript', $data) && $data['leaveGuildScript'] !== null ? ScriptSetting::fromJson($data['leaveGuildScript']) : null)
             ->withChangeRoleScript(array_key_exists('changeRoleScript', $data) && $data['changeRoleScript'] !== null ? ScriptSetting::fromJson($data['changeRoleScript']) : null)
             ->withDeleteGuildScript(array_key_exists('deleteGuildScript', $data) && $data['deleteGuildScript'] !== null ? ScriptSetting::fromJson($data['deleteGuildScript']) : null)
@@ -239,6 +252,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "createGuildScript" => $this->getCreateGuildScript() !== null ? $this->getCreateGuildScript()->toJson() : null,
             "updateGuildScript" => $this->getUpdateGuildScript() !== null ? $this->getUpdateGuildScript()->toJson() : null,
             "joinGuildScript" => $this->getJoinGuildScript() !== null ? $this->getJoinGuildScript()->toJson() : null,
+            "receiveJoinRequestScript" => $this->getReceiveJoinRequestScript() !== null ? $this->getReceiveJoinRequestScript()->toJson() : null,
             "leaveGuildScript" => $this->getLeaveGuildScript() !== null ? $this->getLeaveGuildScript()->toJson() : null,
             "changeRoleScript" => $this->getChangeRoleScript() !== null ? $this->getChangeRoleScript()->toJson() : null,
             "deleteGuildScript" => $this->getDeleteGuildScript() !== null ? $this->getDeleteGuildScript()->toJson() : null,

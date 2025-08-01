@@ -113,6 +113,30 @@ use Gs2\Chat\Request\UnsubscribeRequest;
 use Gs2\Chat\Result\UnsubscribeResult;
 use Gs2\Chat\Request\UnsubscribeByUserIdRequest;
 use Gs2\Chat\Result\UnsubscribeByUserIdResult;
+use Gs2\Chat\Request\DescribeCategoryModelsRequest;
+use Gs2\Chat\Result\DescribeCategoryModelsResult;
+use Gs2\Chat\Request\GetCategoryModelRequest;
+use Gs2\Chat\Result\GetCategoryModelResult;
+use Gs2\Chat\Request\DescribeCategoryModelMastersRequest;
+use Gs2\Chat\Result\DescribeCategoryModelMastersResult;
+use Gs2\Chat\Request\CreateCategoryModelMasterRequest;
+use Gs2\Chat\Result\CreateCategoryModelMasterResult;
+use Gs2\Chat\Request\GetCategoryModelMasterRequest;
+use Gs2\Chat\Result\GetCategoryModelMasterResult;
+use Gs2\Chat\Request\UpdateCategoryModelMasterRequest;
+use Gs2\Chat\Result\UpdateCategoryModelMasterResult;
+use Gs2\Chat\Request\DeleteCategoryModelMasterRequest;
+use Gs2\Chat\Result\DeleteCategoryModelMasterResult;
+use Gs2\Chat\Request\ExportMasterRequest;
+use Gs2\Chat\Result\ExportMasterResult;
+use Gs2\Chat\Request\GetCurrentModelMasterRequest;
+use Gs2\Chat\Result\GetCurrentModelMasterResult;
+use Gs2\Chat\Request\PreUpdateCurrentModelMasterRequest;
+use Gs2\Chat\Result\PreUpdateCurrentModelMasterResult;
+use Gs2\Chat\Request\UpdateCurrentModelMasterRequest;
+use Gs2\Chat\Result\UpdateCurrentModelMasterResult;
+use Gs2\Chat\Request\UpdateCurrentModelMasterFromGitHubRequest;
+use Gs2\Chat\Result\UpdateCurrentModelMasterFromGitHubResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -2927,6 +2951,745 @@ class UnsubscribeByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeCategoryModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeCategoryModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeCategoryModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeCategoryModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeCategoryModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeCategoryModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetCategoryModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetCategoryModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetCategoryModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetCategoryModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetCategoryModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetCategoryModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/{category}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{category}", $this->request->getCategory() === null ? "null" : $this->request->getCategory(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeCategoryModelMastersTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeCategoryModelMastersRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeCategoryModelMastersTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeCategoryModelMastersRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeCategoryModelMastersRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeCategoryModelMastersResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateCategoryModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateCategoryModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateCategoryModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateCategoryModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateCategoryModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateCategoryModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getCategory() !== null) {
+            $json["category"] = $this->request->getCategory();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getRejectAccessTokenPost() !== null) {
+            $json["rejectAccessTokenPost"] = $this->request->getRejectAccessTokenPost();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetCategoryModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetCategoryModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetCategoryModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetCategoryModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetCategoryModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetCategoryModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{category}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{category}", $this->request->getCategory() === null ? "null" : $this->request->getCategory(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateCategoryModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateCategoryModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateCategoryModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateCategoryModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateCategoryModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateCategoryModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{category}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{category}", $this->request->getCategory() === null ? "null" : $this->request->getCategory(), $url);
+
+        $json = [];
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getRejectAccessTokenPost() !== null) {
+            $json["rejectAccessTokenPost"] = $this->request->getRejectAccessTokenPost();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteCategoryModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteCategoryModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteCategoryModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteCategoryModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteCategoryModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteCategoryModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/model/{category}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{category}", $this->request->getCategory() === null ? "null" : $this->request->getCategory(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ExportMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ExportMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ExportMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param ExportMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ExportMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ExportMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/export";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetCurrentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetCurrentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetCurrentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetCurrentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetCurrentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetCurrentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PreUpdateCurrentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreUpdateCurrentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreUpdateCurrentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreUpdateCurrentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreUpdateCurrentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreUpdateCurrentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateCurrentModelMasterTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateCurrentModelMasterRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateCurrentModelMasterTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateCurrentModelMasterRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateCurrentModelMasterRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateCurrentModelMasterResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+        if ($this->request->getSettings() !== null) {
+            $req = new PreUpdateCurrentModelMasterRequest();
+            if ($this->request->getContextStack() !== null) {
+                $req->setContextStack($this->request->getContextStack());
+            }
+            if ($this->request->getNamespaceName() !== null) {
+                $req->setNamespaceName($this->request->getNamespaceName());
+            }
+            $task = new PreUpdateCurrentModelMasterTask(
+                $this->session,
+                $req
+            );
+            /** @var PreUpdateCurrentModelMasterResult $res */
+            $res = $this->session->execute($task)->wait();
+
+            (new \GuzzleHttp\Client())
+                ->put($res->getUploadUrl(), [
+                    'timeout' => 60,
+                    'body' => $this->request->getSettings(),
+                    'headers' => [
+                        "Content-Type" => "application/json",
+                    ],
+                ]);
+            $this->request = $this->request
+                ->withMode("preUpload")
+                ->withUploadToken($res->getUploadToken())
+                ->withSettings(null);
+        }
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getMode() !== null) {
+            $json["mode"] = $this->request->getMode();
+        }
+        if ($this->request->getSettings() !== null) {
+            $json["settings"] = $this->request->getSettings();
+        }
+        if ($this->request->getUploadToken() !== null) {
+            $json["uploadToken"] = $this->request->getUploadToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateCurrentModelMasterFromGitHubTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateCurrentModelMasterFromGitHubRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateCurrentModelMasterFromGitHubTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateCurrentModelMasterFromGitHubRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateCurrentModelMasterFromGitHubResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "chat", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/master/from_git_hub";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getCheckoutSetting() !== null) {
+            $json["checkoutSetting"] = $this->request->getCheckoutSetting()->toJson();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Chat API クライアント
  *
@@ -4074,6 +4837,330 @@ class Gs2ChatRestClient extends AbstractGs2Client {
             UnsubscribeByUserIdRequest $request
     ): UnsubscribeByUserIdResult {
         return $this->unsubscribeByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeCategoryModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeCategoryModelsAsync(
+            DescribeCategoryModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeCategoryModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeCategoryModelsRequest $request
+     * @return DescribeCategoryModelsResult
+     */
+    public function describeCategoryModels (
+            DescribeCategoryModelsRequest $request
+    ): DescribeCategoryModelsResult {
+        return $this->describeCategoryModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetCategoryModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getCategoryModelAsync(
+            GetCategoryModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetCategoryModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetCategoryModelRequest $request
+     * @return GetCategoryModelResult
+     */
+    public function getCategoryModel (
+            GetCategoryModelRequest $request
+    ): GetCategoryModelResult {
+        return $this->getCategoryModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeCategoryModelMastersRequest $request
+     * @return PromiseInterface
+     */
+    public function describeCategoryModelMastersAsync(
+            DescribeCategoryModelMastersRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeCategoryModelMastersTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeCategoryModelMastersRequest $request
+     * @return DescribeCategoryModelMastersResult
+     */
+    public function describeCategoryModelMasters (
+            DescribeCategoryModelMastersRequest $request
+    ): DescribeCategoryModelMastersResult {
+        return $this->describeCategoryModelMastersAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateCategoryModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function createCategoryModelMasterAsync(
+            CreateCategoryModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateCategoryModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateCategoryModelMasterRequest $request
+     * @return CreateCategoryModelMasterResult
+     */
+    public function createCategoryModelMaster (
+            CreateCategoryModelMasterRequest $request
+    ): CreateCategoryModelMasterResult {
+        return $this->createCategoryModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetCategoryModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getCategoryModelMasterAsync(
+            GetCategoryModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetCategoryModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetCategoryModelMasterRequest $request
+     * @return GetCategoryModelMasterResult
+     */
+    public function getCategoryModelMaster (
+            GetCategoryModelMasterRequest $request
+    ): GetCategoryModelMasterResult {
+        return $this->getCategoryModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateCategoryModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateCategoryModelMasterAsync(
+            UpdateCategoryModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCategoryModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateCategoryModelMasterRequest $request
+     * @return UpdateCategoryModelMasterResult
+     */
+    public function updateCategoryModelMaster (
+            UpdateCategoryModelMasterRequest $request
+    ): UpdateCategoryModelMasterResult {
+        return $this->updateCategoryModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteCategoryModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteCategoryModelMasterAsync(
+            DeleteCategoryModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteCategoryModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteCategoryModelMasterRequest $request
+     * @return DeleteCategoryModelMasterResult
+     */
+    public function deleteCategoryModelMaster (
+            DeleteCategoryModelMasterRequest $request
+    ): DeleteCategoryModelMasterResult {
+        return $this->deleteCategoryModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param ExportMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function exportMasterAsync(
+            ExportMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ExportMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param ExportMasterRequest $request
+     * @return ExportMasterResult
+     */
+    public function exportMaster (
+            ExportMasterRequest $request
+    ): ExportMasterResult {
+        return $this->exportMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetCurrentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function getCurrentModelMasterAsync(
+            GetCurrentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetCurrentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetCurrentModelMasterRequest $request
+     * @return GetCurrentModelMasterResult
+     */
+    public function getCurrentModelMaster (
+            GetCurrentModelMasterRequest $request
+    ): GetCurrentModelMasterResult {
+        return $this->getCurrentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param PreUpdateCurrentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function preUpdateCurrentModelMasterAsync(
+            PreUpdateCurrentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreUpdateCurrentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param PreUpdateCurrentModelMasterRequest $request
+     * @return PreUpdateCurrentModelMasterResult
+     */
+    public function preUpdateCurrentModelMaster (
+            PreUpdateCurrentModelMasterRequest $request
+    ): PreUpdateCurrentModelMasterResult {
+        return $this->preUpdateCurrentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateCurrentModelMasterRequest $request
+     * @return PromiseInterface
+     */
+    public function updateCurrentModelMasterAsync(
+            UpdateCurrentModelMasterRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCurrentModelMasterTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateCurrentModelMasterRequest $request
+     * @return UpdateCurrentModelMasterResult
+     */
+    public function updateCurrentModelMaster (
+            UpdateCurrentModelMasterRequest $request
+    ): UpdateCurrentModelMasterResult {
+        return $this->updateCurrentModelMasterAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
+     * @return PromiseInterface
+     */
+    public function updateCurrentModelMasterFromGitHubAsync(
+            UpdateCurrentModelMasterFromGitHubRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateCurrentModelMasterFromGitHubTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateCurrentModelMasterFromGitHubRequest $request
+     * @return UpdateCurrentModelMasterFromGitHubResult
+     */
+    public function updateCurrentModelMasterFromGitHub (
+            UpdateCurrentModelMasterFromGitHubRequest $request
+    ): UpdateCurrentModelMasterFromGitHubResult {
+        return $this->updateCurrentModelMasterFromGitHubAsync(
             $request
         )->wait();
     }

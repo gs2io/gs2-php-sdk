@@ -34,8 +34,6 @@ class CreateSubscribeRankingModelMasterRequest extends Gs2BasicRequest {
     private $maximumValue;
     /** @var bool */
     private $sum;
-    /** @var int */
-    private $scoreTtlDays;
     /** @var string */
     private $orderDirection;
     /** @var string */
@@ -112,16 +110,6 @@ class CreateSubscribeRankingModelMasterRequest extends Gs2BasicRequest {
 		$this->sum = $sum;
 		return $this;
 	}
-	public function getScoreTtlDays(): ?int {
-		return $this->scoreTtlDays;
-	}
-	public function setScoreTtlDays(?int $scoreTtlDays) {
-		$this->scoreTtlDays = $scoreTtlDays;
-	}
-	public function withScoreTtlDays(?int $scoreTtlDays): CreateSubscribeRankingModelMasterRequest {
-		$this->scoreTtlDays = $scoreTtlDays;
-		return $this;
-	}
 	public function getOrderDirection(): ?string {
 		return $this->orderDirection;
 	}
@@ -165,7 +153,6 @@ class CreateSubscribeRankingModelMasterRequest extends Gs2BasicRequest {
             ->withMinimumValue(array_key_exists('minimumValue', $data) && $data['minimumValue'] !== null ? $data['minimumValue'] : null)
             ->withMaximumValue(array_key_exists('maximumValue', $data) && $data['maximumValue'] !== null ? $data['maximumValue'] : null)
             ->withSum(array_key_exists('sum', $data) ? $data['sum'] : null)
-            ->withScoreTtlDays(array_key_exists('scoreTtlDays', $data) && $data['scoreTtlDays'] !== null ? $data['scoreTtlDays'] : null)
             ->withOrderDirection(array_key_exists('orderDirection', $data) && $data['orderDirection'] !== null ? $data['orderDirection'] : null)
             ->withEntryPeriodEventId(array_key_exists('entryPeriodEventId', $data) && $data['entryPeriodEventId'] !== null ? $data['entryPeriodEventId'] : null)
             ->withAccessPeriodEventId(array_key_exists('accessPeriodEventId', $data) && $data['accessPeriodEventId'] !== null ? $data['accessPeriodEventId'] : null);
@@ -180,7 +167,6 @@ class CreateSubscribeRankingModelMasterRequest extends Gs2BasicRequest {
             "minimumValue" => $this->getMinimumValue(),
             "maximumValue" => $this->getMaximumValue(),
             "sum" => $this->getSum(),
-            "scoreTtlDays" => $this->getScoreTtlDays(),
             "orderDirection" => $this->getOrderDirection(),
             "entryPeriodEventId" => $this->getEntryPeriodEventId(),
             "accessPeriodEventId" => $this->getAccessPeriodEventId(),

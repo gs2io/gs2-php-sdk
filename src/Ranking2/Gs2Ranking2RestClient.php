@@ -3417,9 +3417,6 @@ class CreateClusterRankingModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getSum() !== null) {
             $json["sum"] = $this->request->getSum();
         }
-        if ($this->request->getScoreTtlDays() !== null) {
-            $json["scoreTtlDays"] = $this->request->getScoreTtlDays();
-        }
         if ($this->request->getOrderDirection() !== null) {
             $json["orderDirection"] = $this->request->getOrderDirection();
         }
@@ -3571,9 +3568,6 @@ class UpdateClusterRankingModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getSum() !== null) {
             $json["sum"] = $this->request->getSum();
-        }
-        if ($this->request->getScoreTtlDays() !== null) {
-            $json["scoreTtlDays"] = $this->request->getScoreTtlDays();
         }
         if ($this->request->getOrderDirection() !== null) {
             $json["orderDirection"] = $this->request->getOrderDirection();
@@ -5562,9 +5556,6 @@ class CreateSubscribeRankingModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getSum() !== null) {
             $json["sum"] = $this->request->getSum();
         }
-        if ($this->request->getScoreTtlDays() !== null) {
-            $json["scoreTtlDays"] = $this->request->getScoreTtlDays();
-        }
         if ($this->request->getOrderDirection() !== null) {
             $json["orderDirection"] = $this->request->getOrderDirection();
         }
@@ -5702,9 +5693,6 @@ class UpdateSubscribeRankingModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getSum() !== null) {
             $json["sum"] = $this->request->getSum();
-        }
-        if ($this->request->getScoreTtlDays() !== null) {
-            $json["scoreTtlDays"] = $this->request->getScoreTtlDays();
         }
         if ($this->request->getOrderDirection() !== null) {
             $json["orderDirection"] = $this->request->getOrderDirection();

@@ -26,6 +26,8 @@ class SetUserIdRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var bool */
     private $allowConcurrentAccess;
+    /** @var bool */
+    private $force;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -58,6 +60,16 @@ class SetUserIdRequest extends Gs2BasicRequest {
 		$this->allowConcurrentAccess = $allowConcurrentAccess;
 		return $this;
 	}
+	public function getForce(): ?bool {
+		return $this->force;
+	}
+	public function setForce(?bool $force) {
+		$this->force = $force;
+	}
+	public function withForce(?bool $force): SetUserIdRequest {
+		$this->force = $force;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -79,7 +91,8 @@ class SetUserIdRequest extends Gs2BasicRequest {
         return (new SetUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withAllowConcurrentAccess(array_key_exists('allowConcurrentAccess', $data) ? $data['allowConcurrentAccess'] : null);
+            ->withAllowConcurrentAccess(array_key_exists('allowConcurrentAccess', $data) ? $data['allowConcurrentAccess'] : null)
+            ->withForce(array_key_exists('force', $data) ? $data['force'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class SetUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "allowConcurrentAccess" => $this->getAllowConcurrentAccess(),
+            "force" => $this->getForce(),
         );
     }
 }

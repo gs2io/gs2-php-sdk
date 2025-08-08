@@ -26,6 +26,8 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var bool */
     private $allowConcurrentAccess;
+    /** @var bool */
+    private $force;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
@@ -60,6 +62,16 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
 		$this->allowConcurrentAccess = $allowConcurrentAccess;
 		return $this;
 	}
+	public function getForce(): ?bool {
+		return $this->force;
+	}
+	public function setForce(?bool $force) {
+		$this->force = $force;
+	}
+	public function withForce(?bool $force): SetUserIdByUserIdRequest {
+		$this->force = $force;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -92,6 +104,7 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withAllowConcurrentAccess(array_key_exists('allowConcurrentAccess', $data) ? $data['allowConcurrentAccess'] : null)
+            ->withForce(array_key_exists('force', $data) ? $data['force'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -100,6 +113,7 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "allowConcurrentAccess" => $this->getAllowConcurrentAccess(),
+            "force" => $this->getForce(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

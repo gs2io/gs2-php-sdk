@@ -18,10 +18,103 @@
 namespace Gs2\Schedule\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Schedule\Model\RepeatSetting;
+use Gs2\Schedule\Model\Event;
+use Gs2\Schedule\Model\RepeatSchedule;
 
 class VerifyEventByStampTaskResult implements IResult {
+    /** @var Event */
+    private $item;
+    /** @var bool */
+    private $inSchedule;
+    /** @var int */
+    private $scheduleStartAt;
+    /** @var int */
+    private $scheduleEndAt;
+    /** @var RepeatSchedule */
+    private $repeatSchedule;
+    /** @var bool */
+    private $isGlobalSchedule;
     /** @var string */
     private $newContextStack;
+
+	public function getItem(): ?Event {
+		return $this->item;
+	}
+
+	public function setItem(?Event $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Event $item): VerifyEventByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
+
+	public function getInSchedule(): ?bool {
+		return $this->inSchedule;
+	}
+
+	public function setInSchedule(?bool $inSchedule) {
+		$this->inSchedule = $inSchedule;
+	}
+
+	public function withInSchedule(?bool $inSchedule): VerifyEventByStampTaskResult {
+		$this->inSchedule = $inSchedule;
+		return $this;
+	}
+
+	public function getScheduleStartAt(): ?int {
+		return $this->scheduleStartAt;
+	}
+
+	public function setScheduleStartAt(?int $scheduleStartAt) {
+		$this->scheduleStartAt = $scheduleStartAt;
+	}
+
+	public function withScheduleStartAt(?int $scheduleStartAt): VerifyEventByStampTaskResult {
+		$this->scheduleStartAt = $scheduleStartAt;
+		return $this;
+	}
+
+	public function getScheduleEndAt(): ?int {
+		return $this->scheduleEndAt;
+	}
+
+	public function setScheduleEndAt(?int $scheduleEndAt) {
+		$this->scheduleEndAt = $scheduleEndAt;
+	}
+
+	public function withScheduleEndAt(?int $scheduleEndAt): VerifyEventByStampTaskResult {
+		$this->scheduleEndAt = $scheduleEndAt;
+		return $this;
+	}
+
+	public function getRepeatSchedule(): ?RepeatSchedule {
+		return $this->repeatSchedule;
+	}
+
+	public function setRepeatSchedule(?RepeatSchedule $repeatSchedule) {
+		$this->repeatSchedule = $repeatSchedule;
+	}
+
+	public function withRepeatSchedule(?RepeatSchedule $repeatSchedule): VerifyEventByStampTaskResult {
+		$this->repeatSchedule = $repeatSchedule;
+		return $this;
+	}
+
+	public function getIsGlobalSchedule(): ?bool {
+		return $this->isGlobalSchedule;
+	}
+
+	public function setIsGlobalSchedule(?bool $isGlobalSchedule) {
+		$this->isGlobalSchedule = $isGlobalSchedule;
+	}
+
+	public function withIsGlobalSchedule(?bool $isGlobalSchedule): VerifyEventByStampTaskResult {
+		$this->isGlobalSchedule = $isGlobalSchedule;
+		return $this;
+	}
 
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
@@ -41,11 +134,23 @@ class VerifyEventByStampTaskResult implements IResult {
             return null;
         }
         return (new VerifyEventByStampTaskResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Event::fromJson($data['item']) : null)
+            ->withInSchedule(array_key_exists('inSchedule', $data) ? $data['inSchedule'] : null)
+            ->withScheduleStartAt(array_key_exists('scheduleStartAt', $data) && $data['scheduleStartAt'] !== null ? $data['scheduleStartAt'] : null)
+            ->withScheduleEndAt(array_key_exists('scheduleEndAt', $data) && $data['scheduleEndAt'] !== null ? $data['scheduleEndAt'] : null)
+            ->withRepeatSchedule(array_key_exists('repeatSchedule', $data) && $data['repeatSchedule'] !== null ? RepeatSchedule::fromJson($data['repeatSchedule']) : null)
+            ->withIsGlobalSchedule(array_key_exists('isGlobalSchedule', $data) ? $data['isGlobalSchedule'] : null)
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
+            "inSchedule" => $this->getInSchedule(),
+            "scheduleStartAt" => $this->getScheduleStartAt(),
+            "scheduleEndAt" => $this->getScheduleEndAt(),
+            "repeatSchedule" => $this->getRepeatSchedule() !== null ? $this->getRepeatSchedule()->toJson() : null,
+            "isGlobalSchedule" => $this->getIsGlobalSchedule(),
             "newContextStack" => $this->getNewContextStack(),
         );
     }

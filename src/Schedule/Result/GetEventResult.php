@@ -33,6 +33,8 @@ class GetEventResult implements IResult {
     private $scheduleEndAt;
     /** @var RepeatSchedule */
     private $repeatSchedule;
+    /** @var bool */
+    private $isGlobalSchedule;
 
 	public function getItem(): ?Event {
 		return $this->item;
@@ -99,6 +101,19 @@ class GetEventResult implements IResult {
 		return $this;
 	}
 
+	public function getIsGlobalSchedule(): ?bool {
+		return $this->isGlobalSchedule;
+	}
+
+	public function setIsGlobalSchedule(?bool $isGlobalSchedule) {
+		$this->isGlobalSchedule = $isGlobalSchedule;
+	}
+
+	public function withIsGlobalSchedule(?bool $isGlobalSchedule): GetEventResult {
+		$this->isGlobalSchedule = $isGlobalSchedule;
+		return $this;
+	}
+
     public static function fromJson(?array $data): ?GetEventResult {
         if ($data === null) {
             return null;
@@ -108,7 +123,8 @@ class GetEventResult implements IResult {
             ->withInSchedule(array_key_exists('inSchedule', $data) ? $data['inSchedule'] : null)
             ->withScheduleStartAt(array_key_exists('scheduleStartAt', $data) && $data['scheduleStartAt'] !== null ? $data['scheduleStartAt'] : null)
             ->withScheduleEndAt(array_key_exists('scheduleEndAt', $data) && $data['scheduleEndAt'] !== null ? $data['scheduleEndAt'] : null)
-            ->withRepeatSchedule(array_key_exists('repeatSchedule', $data) && $data['repeatSchedule'] !== null ? RepeatSchedule::fromJson($data['repeatSchedule']) : null);
+            ->withRepeatSchedule(array_key_exists('repeatSchedule', $data) && $data['repeatSchedule'] !== null ? RepeatSchedule::fromJson($data['repeatSchedule']) : null)
+            ->withIsGlobalSchedule(array_key_exists('isGlobalSchedule', $data) ? $data['isGlobalSchedule'] : null);
     }
 
     public function toJson(): array {
@@ -118,6 +134,7 @@ class GetEventResult implements IResult {
             "scheduleStartAt" => $this->getScheduleStartAt(),
             "scheduleEndAt" => $this->getScheduleEndAt(),
             "repeatSchedule" => $this->getRepeatSchedule() !== null ? $this->getRepeatSchedule()->toJson() : null,
+            "isGlobalSchedule" => $this->getIsGlobalSchedule(),
         );
     }
 }

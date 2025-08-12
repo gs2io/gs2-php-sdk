@@ -24,6 +24,8 @@ class DescribeSendRequestsRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $accessToken;
+    /** @var bool */
+    private $withProfile;
     /** @var string */
     private $pageToken;
     /** @var int */
@@ -46,6 +48,16 @@ class DescribeSendRequestsRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): DescribeSendRequestsRequest {
 		$this->accessToken = $accessToken;
+		return $this;
+	}
+	public function getWithProfile(): ?bool {
+		return $this->withProfile;
+	}
+	public function setWithProfile(?bool $withProfile) {
+		$this->withProfile = $withProfile;
+	}
+	public function withWithProfile(?bool $withProfile): DescribeSendRequestsRequest {
+		$this->withProfile = $withProfile;
 		return $this;
 	}
 	public function getPageToken(): ?string {
@@ -76,6 +88,7 @@ class DescribeSendRequestsRequest extends Gs2BasicRequest {
         return (new DescribeSendRequestsRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
@@ -84,6 +97,7 @@ class DescribeSendRequestsRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
+            "withProfile" => $this->getWithProfile(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
         );

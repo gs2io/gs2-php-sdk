@@ -26,6 +26,8 @@ class GetSendRequestByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $targetUserId;
+    /** @var bool */
+    private $withProfile;
     /** @var string */
     private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
@@ -58,6 +60,16 @@ class GetSendRequestByUserIdRequest extends Gs2BasicRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+	public function getWithProfile(): ?bool {
+		return $this->withProfile;
+	}
+	public function setWithProfile(?bool $withProfile) {
+		$this->withProfile = $withProfile;
+	}
+	public function withWithProfile(?bool $withProfile): GetSendRequestByUserIdRequest {
+		$this->withProfile = $withProfile;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -77,6 +89,7 @@ class GetSendRequestByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null)
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -85,6 +98,7 @@ class GetSendRequestByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "targetUserId" => $this->getTargetUserId(),
+            "withProfile" => $this->getWithProfile(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

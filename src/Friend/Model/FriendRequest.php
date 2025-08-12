@@ -29,6 +29,10 @@ class FriendRequest implements IModel {
      * @var string
 	 */
 	private $targetUserId;
+	/**
+     * @var string
+	 */
+	private $publicProfile;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -49,6 +53,16 @@ class FriendRequest implements IModel {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+	public function getPublicProfile(): ?string {
+		return $this->publicProfile;
+	}
+	public function setPublicProfile(?string $publicProfile) {
+		$this->publicProfile = $publicProfile;
+	}
+	public function withPublicProfile(?string $publicProfile): FriendRequest {
+		$this->publicProfile = $publicProfile;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?FriendRequest {
         if ($data === null) {
@@ -56,13 +70,15 @@ class FriendRequest implements IModel {
         }
         return (new FriendRequest())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null);
+            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null)
+            ->withPublicProfile(array_key_exists('publicProfile', $data) && $data['publicProfile'] !== null ? $data['publicProfile'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
             "targetUserId" => $this->getTargetUserId(),
+            "publicProfile" => $this->getPublicProfile(),
         );
     }
 }

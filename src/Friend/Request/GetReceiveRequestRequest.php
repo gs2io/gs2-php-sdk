@@ -26,6 +26,8 @@ class GetReceiveRequestRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $fromUserId;
+    /** @var bool */
+    private $withProfile;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,6 +58,16 @@ class GetReceiveRequestRequest extends Gs2BasicRequest {
 		$this->fromUserId = $fromUserId;
 		return $this;
 	}
+	public function getWithProfile(): ?bool {
+		return $this->withProfile;
+	}
+	public function setWithProfile(?bool $withProfile) {
+		$this->withProfile = $withProfile;
+	}
+	public function withWithProfile(?bool $withProfile): GetReceiveRequestRequest {
+		$this->withProfile = $withProfile;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?GetReceiveRequestRequest {
         if ($data === null) {
@@ -64,7 +76,8 @@ class GetReceiveRequestRequest extends Gs2BasicRequest {
         return (new GetReceiveRequestRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withFromUserId(array_key_exists('fromUserId', $data) && $data['fromUserId'] !== null ? $data['fromUserId'] : null);
+            ->withFromUserId(array_key_exists('fromUserId', $data) && $data['fromUserId'] !== null ? $data['fromUserId'] : null)
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null);
     }
 
     public function toJson(): array {
@@ -72,6 +85,7 @@ class GetReceiveRequestRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "fromUserId" => $this->getFromUserId(),
+            "withProfile" => $this->getWithProfile(),
         );
     }
 }

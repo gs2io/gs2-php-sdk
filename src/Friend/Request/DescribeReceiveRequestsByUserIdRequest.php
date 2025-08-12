@@ -24,6 +24,8 @@ class DescribeReceiveRequestsByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $userId;
+    /** @var bool */
+    private $withProfile;
     /** @var string */
     private $pageToken;
     /** @var int */
@@ -48,6 +50,16 @@ class DescribeReceiveRequestsByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withUserId(?string $userId): DescribeReceiveRequestsByUserIdRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+	public function getWithProfile(): ?bool {
+		return $this->withProfile;
+	}
+	public function setWithProfile(?bool $withProfile) {
+		$this->withProfile = $withProfile;
+	}
+	public function withWithProfile(?bool $withProfile): DescribeReceiveRequestsByUserIdRequest {
+		$this->withProfile = $withProfile;
 		return $this;
 	}
 	public function getPageToken(): ?string {
@@ -88,6 +100,7 @@ class DescribeReceiveRequestsByUserIdRequest extends Gs2BasicRequest {
         return (new DescribeReceiveRequestsByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
@@ -97,6 +110,7 @@ class DescribeReceiveRequestsByUserIdRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
+            "withProfile" => $this->getWithProfile(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),

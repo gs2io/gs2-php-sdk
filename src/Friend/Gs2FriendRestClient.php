@@ -2913,6 +2913,9 @@ class DescribeSendRequestsTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
+        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -2979,6 +2982,9 @@ class DescribeSendRequestsByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -3047,6 +3053,9 @@ class GetSendRequestTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);
@@ -3108,6 +3117,9 @@ class GetSendRequestByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
 
         if (count($queryStrings) > 0) {
@@ -3423,6 +3435,9 @@ class DescribeReceiveRequestsTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
+        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -3489,6 +3504,9 @@ class DescribeReceiveRequestsByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -3557,6 +3575,9 @@ class GetReceiveRequestTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);
@@ -3618,6 +3639,9 @@ class GetReceiveRequestByUserIdTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getWithProfile() !== null) {
+            $queryStrings["withProfile"] = $this->request->getWithProfile() ? "true" : "false";
         }
 
         if (count($queryStrings) > 0) {

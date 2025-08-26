@@ -30,8 +30,6 @@ class FreezeMasterDataBySignedTimestampRequest extends Gs2BasicRequest {
     private $signature;
     /** @var string */
     private $keyId;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -80,19 +78,6 @@ class FreezeMasterDataBySignedTimestampRequest extends Gs2BasicRequest {
 	}
 	public function withKeyId(?string $keyId): FreezeMasterDataBySignedTimestampRequest {
 		$this->keyId = $keyId;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): FreezeMasterDataBySignedTimestampRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

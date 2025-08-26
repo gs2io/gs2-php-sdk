@@ -30,8 +30,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $transactionSetting;
     /** @var string */
     private $lotteryTriggerScriptId;
-    /** @var string */
-    private $choicePrizeTableScriptId;
     /** @var LogSetting */
     private $logSetting;
     /** @var string */
@@ -76,16 +74,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withLotteryTriggerScriptId(?string $lotteryTriggerScriptId): UpdateNamespaceRequest {
 		$this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
-		return $this;
-	}
-	public function getChoicePrizeTableScriptId(): ?string {
-		return $this->choicePrizeTableScriptId;
-	}
-	public function setChoicePrizeTableScriptId(?string $choicePrizeTableScriptId) {
-		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
-	}
-	public function withChoicePrizeTableScriptId(?string $choicePrizeTableScriptId): UpdateNamespaceRequest {
-		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
 		return $this;
 	}
 	public function getLogSetting(): ?LogSetting {
@@ -146,7 +134,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withLotteryTriggerScriptId(array_key_exists('lotteryTriggerScriptId', $data) && $data['lotteryTriggerScriptId'] !== null ? $data['lotteryTriggerScriptId'] : null)
-            ->withChoicePrizeTableScriptId(array_key_exists('choicePrizeTableScriptId', $data) && $data['choicePrizeTableScriptId'] !== null ? $data['choicePrizeTableScriptId'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null)
             ->withKeyId(array_key_exists('keyId', $data) && $data['keyId'] !== null ? $data['keyId'] : null);
@@ -158,7 +145,6 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "lotteryTriggerScriptId" => $this->getLotteryTriggerScriptId(),
-            "choicePrizeTableScriptId" => $this->getChoicePrizeTableScriptId(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "queueNamespaceId" => $this->getQueueNamespaceId(),
             "keyId" => $this->getKeyId(),

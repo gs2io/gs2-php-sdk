@@ -24,8 +24,6 @@ class ApplyBuffRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $accessToken;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -44,19 +42,6 @@ class ApplyBuffRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): ApplyBuffRequest {
 		$this->accessToken = $accessToken;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): ApplyBuffRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

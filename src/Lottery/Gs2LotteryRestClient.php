@@ -237,9 +237,6 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getLotteryTriggerScriptId() !== null) {
             $json["lotteryTriggerScriptId"] = $this->request->getLotteryTriggerScriptId();
         }
-        if ($this->request->getChoicePrizeTableScriptId() !== null) {
-            $json["choicePrizeTableScriptId"] = $this->request->getChoicePrizeTableScriptId();
-        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -426,9 +423,6 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getLotteryTriggerScriptId() !== null) {
             $json["lotteryTriggerScriptId"] = $this->request->getLotteryTriggerScriptId();
-        }
-        if ($this->request->getChoicePrizeTableScriptId() !== null) {
-            $json["choicePrizeTableScriptId"] = $this->request->getChoicePrizeTableScriptId();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();

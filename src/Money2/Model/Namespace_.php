@@ -54,6 +54,10 @@ class Namespace_ implements IModel {
 	 */
 	private $withdrawBalanceScript;
 	/**
+     * @var ScriptSetting
+	 */
+	private $verifyReceiptScript;
+	/**
      * @var string
 	 */
 	private $subscribeScript;
@@ -169,6 +173,16 @@ class Namespace_ implements IModel {
 		$this->withdrawBalanceScript = $withdrawBalanceScript;
 		return $this;
 	}
+	public function getVerifyReceiptScript(): ?ScriptSetting {
+		return $this->verifyReceiptScript;
+	}
+	public function setVerifyReceiptScript(?ScriptSetting $verifyReceiptScript) {
+		$this->verifyReceiptScript = $verifyReceiptScript;
+	}
+	public function withVerifyReceiptScript(?ScriptSetting $verifyReceiptScript): Namespace_ {
+		$this->verifyReceiptScript = $verifyReceiptScript;
+		return $this;
+	}
 	public function getSubscribeScript(): ?string {
 		return $this->subscribeScript;
 	}
@@ -273,6 +287,7 @@ class Namespace_ implements IModel {
             ->withPlatformSetting(array_key_exists('platformSetting', $data) && $data['platformSetting'] !== null ? PlatformSetting::fromJson($data['platformSetting']) : null)
             ->withDepositBalanceScript(array_key_exists('depositBalanceScript', $data) && $data['depositBalanceScript'] !== null ? ScriptSetting::fromJson($data['depositBalanceScript']) : null)
             ->withWithdrawBalanceScript(array_key_exists('withdrawBalanceScript', $data) && $data['withdrawBalanceScript'] !== null ? ScriptSetting::fromJson($data['withdrawBalanceScript']) : null)
+            ->withVerifyReceiptScript(array_key_exists('verifyReceiptScript', $data) && $data['verifyReceiptScript'] !== null ? ScriptSetting::fromJson($data['verifyReceiptScript']) : null)
             ->withSubscribeScript(array_key_exists('subscribeScript', $data) && $data['subscribeScript'] !== null ? $data['subscribeScript'] : null)
             ->withRenewScript(array_key_exists('renewScript', $data) && $data['renewScript'] !== null ? $data['renewScript'] : null)
             ->withUnsubscribeScript(array_key_exists('unsubscribeScript', $data) && $data['unsubscribeScript'] !== null ? $data['unsubscribeScript'] : null)
@@ -294,6 +309,7 @@ class Namespace_ implements IModel {
             "platformSetting" => $this->getPlatformSetting() !== null ? $this->getPlatformSetting()->toJson() : null,
             "depositBalanceScript" => $this->getDepositBalanceScript() !== null ? $this->getDepositBalanceScript()->toJson() : null,
             "withdrawBalanceScript" => $this->getWithdrawBalanceScript() !== null ? $this->getWithdrawBalanceScript()->toJson() : null,
+            "verifyReceiptScript" => $this->getVerifyReceiptScript() !== null ? $this->getVerifyReceiptScript()->toJson() : null,
             "subscribeScript" => $this->getSubscribeScript(),
             "renewScript" => $this->getRenewScript(),
             "unsubscribeScript" => $this->getUnsubscribeScript(),

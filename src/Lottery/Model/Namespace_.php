@@ -42,10 +42,6 @@ class Namespace_ implements IModel {
 	 */
 	private $lotteryTriggerScriptId;
 	/**
-     * @var string
-	 */
-	private $choicePrizeTableScriptId;
-	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -117,16 +113,6 @@ class Namespace_ implements IModel {
 	}
 	public function withLotteryTriggerScriptId(?string $lotteryTriggerScriptId): Namespace_ {
 		$this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
-		return $this;
-	}
-	public function getChoicePrizeTableScriptId(): ?string {
-		return $this->choicePrizeTableScriptId;
-	}
-	public function setChoicePrizeTableScriptId(?string $choicePrizeTableScriptId) {
-		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
-	}
-	public function withChoicePrizeTableScriptId(?string $choicePrizeTableScriptId): Namespace_ {
-		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
 		return $this;
 	}
 	public function getLogSetting(): ?LogSetting {
@@ -218,7 +204,6 @@ class Namespace_ implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withLotteryTriggerScriptId(array_key_exists('lotteryTriggerScriptId', $data) && $data['lotteryTriggerScriptId'] !== null ? $data['lotteryTriggerScriptId'] : null)
-            ->withChoicePrizeTableScriptId(array_key_exists('choicePrizeTableScriptId', $data) && $data['choicePrizeTableScriptId'] !== null ? $data['choicePrizeTableScriptId'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -234,7 +219,6 @@ class Namespace_ implements IModel {
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "lotteryTriggerScriptId" => $this->getLotteryTriggerScriptId(),
-            "choicePrizeTableScriptId" => $this->getChoicePrizeTableScriptId(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

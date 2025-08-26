@@ -26,8 +26,6 @@ class FreezeMasterDataByTimestampRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var int */
     private $timestamp;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,19 +54,6 @@ class FreezeMasterDataByTimestampRequest extends Gs2BasicRequest {
 	}
 	public function withTimestamp(?int $timestamp): FreezeMasterDataByTimestampRequest {
 		$this->timestamp = $timestamp;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): FreezeMasterDataByTimestampRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

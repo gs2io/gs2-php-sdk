@@ -24,8 +24,6 @@ class FreezeMasterDataRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $accessToken;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -44,19 +42,6 @@ class FreezeMasterDataRequest extends Gs2BasicRequest {
 	}
 	public function withAccessToken(?string $accessToken): FreezeMasterDataRequest {
 		$this->accessToken = $accessToken;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): FreezeMasterDataRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

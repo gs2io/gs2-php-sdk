@@ -272,6 +272,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getWithdrawBalanceScript() !== null) {
             $json["withdrawBalanceScript"] = $this->request->getWithdrawBalanceScript()->toJson();
         }
+        if ($this->request->getVerifyReceiptScript() !== null) {
+            $json["verifyReceiptScript"] = $this->request->getVerifyReceiptScript()->toJson();
+        }
         if ($this->request->getSubscribeScript() !== null) {
             $json["subscribeScript"] = $this->request->getSubscribeScript();
         }
@@ -473,6 +476,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getWithdrawBalanceScript() !== null) {
             $json["withdrawBalanceScript"] = $this->request->getWithdrawBalanceScript()->toJson();
+        }
+        if ($this->request->getVerifyReceiptScript() !== null) {
+            $json["verifyReceiptScript"] = $this->request->getVerifyReceiptScript()->toJson();
         }
         if ($this->request->getSubscribeScript() !== null) {
             $json["subscribeScript"] = $this->request->getSubscribeScript();

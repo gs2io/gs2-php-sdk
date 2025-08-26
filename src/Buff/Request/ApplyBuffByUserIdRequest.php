@@ -26,8 +26,6 @@ class ApplyBuffByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var string */
     private $timeOffsetToken;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -56,19 +54,6 @@ class ApplyBuffByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withTimeOffsetToken(?string $timeOffsetToken): ApplyBuffByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): ApplyBuffByUserIdRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

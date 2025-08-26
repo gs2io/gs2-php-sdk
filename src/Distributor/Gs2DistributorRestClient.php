@@ -2117,9 +2117,6 @@ class FreezeMasterDataTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2175,9 +2172,6 @@ class FreezeMasterDataByUserIdTask extends Gs2RestSessionTask {
 
         if ($this->request->getRequestId() !== null) {
             $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
@@ -2310,9 +2304,6 @@ class FreezeMasterDataBySignedTimestampTask extends Gs2RestSessionTask {
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
         }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
-        }
 
         return parent::executeImpl();
     }
@@ -2373,9 +2364,6 @@ class FreezeMasterDataByTimestampTask extends Gs2RestSessionTask {
         }
         if ($this->request->getAccessToken() !== null) {
             $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
-        }
-        if ($this->request->getDuplicationAvoider() !== null) {
-            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
         }
 
         return parent::executeImpl();

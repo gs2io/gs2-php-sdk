@@ -30,8 +30,6 @@ class FindPlatformIdByUserIdRequest extends Gs2BasicRequest {
     private $userIdentifier;
     /** @var string */
     private $timeOffsetToken;
-    /** @var string */
-    private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
@@ -80,19 +78,6 @@ class FindPlatformIdByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withTimeOffsetToken(?string $timeOffsetToken): FindPlatformIdByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
-		return $this;
-	}
-
-	public function getDuplicationAvoider(): ?string {
-		return $this->duplicationAvoider;
-	}
-
-	public function setDuplicationAvoider(?string $duplicationAvoider) {
-		$this->duplicationAvoider = $duplicationAvoider;
-	}
-
-	public function withDuplicationAvoider(?string $duplicationAvoider): FindPlatformIdByUserIdRequest {
-		$this->duplicationAvoider = $duplicationAvoider;
 		return $this;
 	}
 

@@ -18,18 +18,36 @@
 namespace Gs2\Experience\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Experience\Model\Status;
 
 class VerifyRankByUserIdResult implements IResult {
+    /** @var Status */
+    private $item;
+
+	public function getItem(): ?Status {
+		return $this->item;
+	}
+
+	public function setItem(?Status $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Status $item): VerifyRankByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyRankByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyRankByUserIdResult());
+        return (new VerifyRankByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Status::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

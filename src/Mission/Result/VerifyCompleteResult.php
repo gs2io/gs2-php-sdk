@@ -18,18 +18,36 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\Complete;
 
 class VerifyCompleteResult implements IResult {
+    /** @var Complete */
+    private $item;
+
+	public function getItem(): ?Complete {
+		return $this->item;
+	}
+
+	public function setItem(?Complete $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Complete $item): VerifyCompleteResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyCompleteResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyCompleteResult());
+        return (new VerifyCompleteResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Complete::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

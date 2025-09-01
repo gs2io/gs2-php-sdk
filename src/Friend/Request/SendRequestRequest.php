@@ -26,6 +26,8 @@ class SendRequestRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string */
     private $targetUserId;
+    /** @var bool */
+    private $withProfile;
     /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
@@ -58,6 +60,16 @@ class SendRequestRequest extends Gs2BasicRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+	public function getWithProfile(): ?bool {
+		return $this->withProfile;
+	}
+	public function setWithProfile(?bool $withProfile) {
+		$this->withProfile = $withProfile;
+	}
+	public function withWithProfile(?bool $withProfile): SendRequestRequest {
+		$this->withProfile = $withProfile;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -79,7 +91,8 @@ class SendRequestRequest extends Gs2BasicRequest {
         return (new SendRequestRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null);
+            ->withTargetUserId(array_key_exists('targetUserId', $data) && $data['targetUserId'] !== null ? $data['targetUserId'] : null)
+            ->withWithProfile(array_key_exists('withProfile', $data) ? $data['withProfile'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class SendRequestRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "targetUserId" => $this->getTargetUserId(),
+            "withProfile" => $this->getWithProfile(),
         );
     }
 }

@@ -18,18 +18,36 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\SimpleItem;
 
 class VerifySimpleItemResult implements IResult {
+    /** @var SimpleItem */
+    private $item;
+
+	public function getItem(): ?SimpleItem {
+		return $this->item;
+	}
+
+	public function setItem(?SimpleItem $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?SimpleItem $item): VerifySimpleItemResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifySimpleItemResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifySimpleItemResult());
+        return (new VerifySimpleItemResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SimpleItem::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

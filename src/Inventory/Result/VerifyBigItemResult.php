@@ -18,18 +18,36 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\BigItem;
 
 class VerifyBigItemResult implements IResult {
+    /** @var BigItem */
+    private $item;
+
+	public function getItem(): ?BigItem {
+		return $this->item;
+	}
+
+	public function setItem(?BigItem $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?BigItem $item): VerifyBigItemResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyBigItemResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyBigItemResult());
+        return (new VerifyBigItemResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? BigItem::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

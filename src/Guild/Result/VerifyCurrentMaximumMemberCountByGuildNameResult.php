@@ -18,18 +18,38 @@
 namespace Gs2\Guild\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Guild\Model\RoleModel;
+use Gs2\Guild\Model\Member;
+use Gs2\Guild\Model\Guild;
 
 class VerifyCurrentMaximumMemberCountByGuildNameResult implements IResult {
+    /** @var Guild */
+    private $item;
+
+	public function getItem(): ?Guild {
+		return $this->item;
+	}
+
+	public function setItem(?Guild $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Guild $item): VerifyCurrentMaximumMemberCountByGuildNameResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyCurrentMaximumMemberCountByGuildNameResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyCurrentMaximumMemberCountByGuildNameResult());
+        return (new VerifyCurrentMaximumMemberCountByGuildNameResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Guild::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

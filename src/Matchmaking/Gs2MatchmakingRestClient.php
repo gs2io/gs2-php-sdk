@@ -3417,11 +3417,13 @@ class DescribeSeasonGatheringsTask extends Gs2RestSessionTask {
         $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
         $url = str_replace("{seasonName}", $this->request->getSeasonName() === null|| strlen($this->request->getSeasonName()) == 0 ? "null" : $this->request->getSeasonName(), $url);
         $url = str_replace("{season}", $this->request->getSeason() === null ? "null" : $this->request->getSeason(), $url);
-        $url = str_replace("{tier}", $this->request->getTier() === null ? "null" : $this->request->getTier(), $url);
 
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getTier() !== null) {
+            $queryStrings["tier"] = $this->request->getTier();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();

@@ -18,10 +18,26 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\Complete;
 
 class VerifyCompleteByStampTaskResult implements IResult {
+    /** @var Complete */
+    private $item;
     /** @var string */
     private $newContextStack;
+
+	public function getItem(): ?Complete {
+		return $this->item;
+	}
+
+	public function setItem(?Complete $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Complete $item): VerifyCompleteByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
 
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
@@ -41,11 +57,13 @@ class VerifyCompleteByStampTaskResult implements IResult {
             return null;
         }
         return (new VerifyCompleteByStampTaskResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Complete::fromJson($data['item']) : null)
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
             "newContextStack" => $this->getNewContextStack(),
         );
     }

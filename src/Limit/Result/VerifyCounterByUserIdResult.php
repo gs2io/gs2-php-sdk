@@ -18,18 +18,36 @@
 namespace Gs2\Limit\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Limit\Model\Counter;
 
 class VerifyCounterByUserIdResult implements IResult {
+    /** @var Counter */
+    private $item;
+
+	public function getItem(): ?Counter {
+		return $this->item;
+	}
+
+	public function setItem(?Counter $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Counter $item): VerifyCounterByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyCounterByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyCounterByUserIdResult());
+        return (new VerifyCounterByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Counter::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

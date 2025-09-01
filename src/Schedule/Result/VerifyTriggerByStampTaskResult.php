@@ -18,10 +18,26 @@
 namespace Gs2\Schedule\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Schedule\Model\Trigger;
 
 class VerifyTriggerByStampTaskResult implements IResult {
+    /** @var Trigger */
+    private $item;
     /** @var string */
     private $newContextStack;
+
+	public function getItem(): ?Trigger {
+		return $this->item;
+	}
+
+	public function setItem(?Trigger $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Trigger $item): VerifyTriggerByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
 
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
@@ -41,11 +57,13 @@ class VerifyTriggerByStampTaskResult implements IResult {
             return null;
         }
         return (new VerifyTriggerByStampTaskResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Trigger::fromJson($data['item']) : null)
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
             "newContextStack" => $this->getNewContextStack(),
         );
     }

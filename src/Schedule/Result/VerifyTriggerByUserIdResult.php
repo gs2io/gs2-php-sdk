@@ -18,18 +18,36 @@
 namespace Gs2\Schedule\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Schedule\Model\Trigger;
 
 class VerifyTriggerByUserIdResult implements IResult {
+    /** @var Trigger */
+    private $item;
+
+	public function getItem(): ?Trigger {
+		return $this->item;
+	}
+
+	public function setItem(?Trigger $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Trigger $item): VerifyTriggerByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyTriggerByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyTriggerByUserIdResult());
+        return (new VerifyTriggerByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Trigger::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

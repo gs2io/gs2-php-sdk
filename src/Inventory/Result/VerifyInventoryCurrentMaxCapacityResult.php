@@ -18,18 +18,36 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\Inventory;
 
 class VerifyInventoryCurrentMaxCapacityResult implements IResult {
+    /** @var Inventory */
+    private $item;
+
+	public function getItem(): ?Inventory {
+		return $this->item;
+	}
+
+	public function setItem(?Inventory $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Inventory $item): VerifyInventoryCurrentMaxCapacityResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyInventoryCurrentMaxCapacityResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyInventoryCurrentMaxCapacityResult());
+        return (new VerifyInventoryCurrentMaxCapacityResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Inventory::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

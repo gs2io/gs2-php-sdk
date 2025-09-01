@@ -18,18 +18,46 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\ItemSet;
 
 class VerifyItemSetResult implements IResult {
+    /** @var array */
+    private $items;
+
+	public function getItems(): ?array {
+		return $this->items;
+	}
+
+	public function setItems(?array $items) {
+		$this->items = $items;
+	}
+
+	public function withItems(?array $items): VerifyItemSetResult {
+		$this->items = $items;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyItemSetResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyItemSetResult());
+        return (new VerifyItemSetResult())
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
+                function ($item) {
+                    return ItemSet::fromJson($item);
+                },
+                $data['items']
+            ));
     }
 
     public function toJson(): array {
         return array(
+            "items" => $this->getItems() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems()
+            ),
         );
     }
 }

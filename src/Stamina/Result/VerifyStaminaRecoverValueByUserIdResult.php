@@ -18,18 +18,36 @@
 namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Stamina\Model\Stamina;
 
 class VerifyStaminaRecoverValueByUserIdResult implements IResult {
+    /** @var Stamina */
+    private $item;
+
+	public function getItem(): ?Stamina {
+		return $this->item;
+	}
+
+	public function setItem(?Stamina $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Stamina $item): VerifyStaminaRecoverValueByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyStaminaRecoverValueByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyStaminaRecoverValueByUserIdResult());
+        return (new VerifyStaminaRecoverValueByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Stamina::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

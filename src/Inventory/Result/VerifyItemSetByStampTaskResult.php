@@ -18,10 +18,26 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\ItemSet;
 
 class VerifyItemSetByStampTaskResult implements IResult {
+    /** @var array */
+    private $items;
     /** @var string */
     private $newContextStack;
+
+	public function getItems(): ?array {
+		return $this->items;
+	}
+
+	public function setItems(?array $items) {
+		$this->items = $items;
+	}
+
+	public function withItems(?array $items): VerifyItemSetByStampTaskResult {
+		$this->items = $items;
+		return $this;
+	}
 
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
@@ -41,11 +57,23 @@ class VerifyItemSetByStampTaskResult implements IResult {
             return null;
         }
         return (new VerifyItemSetByStampTaskResult())
+            ->withItems(!array_key_exists('items', $data) || $data['items'] === null ? null : array_map(
+                function ($item) {
+                    return ItemSet::fromJson($item);
+                },
+                $data['items']
+            ))
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "items" => $this->getItems() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getItems()
+            ),
             "newContextStack" => $this->getNewContextStack(),
         );
     }

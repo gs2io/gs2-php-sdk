@@ -18,10 +18,26 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\BigItem;
 
 class VerifyBigItemByStampTaskResult implements IResult {
+    /** @var BigItem */
+    private $item;
     /** @var string */
     private $newContextStack;
+
+	public function getItem(): ?BigItem {
+		return $this->item;
+	}
+
+	public function setItem(?BigItem $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?BigItem $item): VerifyBigItemByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
 
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
@@ -41,11 +57,13 @@ class VerifyBigItemByStampTaskResult implements IResult {
             return null;
         }
         return (new VerifyBigItemByStampTaskResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? BigItem::fromJson($data['item']) : null)
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
             "newContextStack" => $this->getNewContextStack(),
         );
     }

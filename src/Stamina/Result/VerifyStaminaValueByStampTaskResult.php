@@ -18,10 +18,26 @@
 namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Stamina\Model\Stamina;
 
 class VerifyStaminaValueByStampTaskResult implements IResult {
+    /** @var Stamina */
+    private $item;
     /** @var string */
     private $newContextStack;
+
+	public function getItem(): ?Stamina {
+		return $this->item;
+	}
+
+	public function setItem(?Stamina $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Stamina $item): VerifyStaminaValueByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
 
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
@@ -41,11 +57,13 @@ class VerifyStaminaValueByStampTaskResult implements IResult {
             return null;
         }
         return (new VerifyStaminaValueByStampTaskResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Stamina::fromJson($data['item']) : null)
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
             "newContextStack" => $this->getNewContextStack(),
         );
     }

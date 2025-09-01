@@ -18,18 +18,36 @@
 namespace Gs2\Grade\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Grade\Model\Status;
 
 class VerifyGradeResult implements IResult {
+    /** @var Status */
+    private $item;
+
+	public function getItem(): ?Status {
+		return $this->item;
+	}
+
+	public function setItem(?Status $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Status $item): VerifyGradeResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyGradeResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyGradeResult());
+        return (new VerifyGradeResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Status::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

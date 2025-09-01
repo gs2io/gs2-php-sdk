@@ -18,18 +18,37 @@
 namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Mission\Model\ScopedValue;
+use Gs2\Mission\Model\Counter;
 
 class VerifyCounterValueByUserIdResult implements IResult {
+    /** @var Counter */
+    private $item;
+
+	public function getItem(): ?Counter {
+		return $this->item;
+	}
+
+	public function setItem(?Counter $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?Counter $item): VerifyCounterValueByUserIdResult {
+		$this->item = $item;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?VerifyCounterValueByUserIdResult {
         if ($data === null) {
             return null;
         }
-        return (new VerifyCounterValueByUserIdResult());
+        return (new VerifyCounterValueByUserIdResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? Counter::fromJson($data['item']) : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
         );
     }
 }

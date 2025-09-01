@@ -18,10 +18,26 @@
 namespace Gs2\Matchmaking\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Matchmaking\Model\SeasonGathering;
 
 class VerifyIncludeParticipantByStampTaskResult implements IResult {
+    /** @var SeasonGathering */
+    private $item;
     /** @var string */
     private $newContextStack;
+
+	public function getItem(): ?SeasonGathering {
+		return $this->item;
+	}
+
+	public function setItem(?SeasonGathering $item) {
+		$this->item = $item;
+	}
+
+	public function withItem(?SeasonGathering $item): VerifyIncludeParticipantByStampTaskResult {
+		$this->item = $item;
+		return $this;
+	}
 
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
@@ -41,11 +57,13 @@ class VerifyIncludeParticipantByStampTaskResult implements IResult {
             return null;
         }
         return (new VerifyIncludeParticipantByStampTaskResult())
+            ->withItem(array_key_exists('item', $data) && $data['item'] !== null ? SeasonGathering::fromJson($data['item']) : null)
             ->withNewContextStack(array_key_exists('newContextStack', $data) && $data['newContextStack'] !== null ? $data['newContextStack'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "item" => $this->getItem() !== null ? $this->getItem()->toJson() : null,
             "newContextStack" => $this->getNewContextStack(),
         );
     }

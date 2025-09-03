@@ -18,6 +18,7 @@
 namespace Gs2\Schedule\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Schedule\Model\TransactionSetting;
 use Gs2\Schedule\Model\LogSetting;
 use Gs2\Schedule\Model\Namespace_;
 

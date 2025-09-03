@@ -34,6 +34,10 @@ class Namespace_ implements IModel {
 	 */
 	private $description;
 	/**
+     * @var TransactionSetting
+	 */
+	private $transactionSetting;
+	/**
      * @var bool
 	 */
 	private $changePasswordIfTakeOver;
@@ -109,6 +113,16 @@ class Namespace_ implements IModel {
 	}
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getChangePasswordIfTakeOver(): ?bool {
@@ -240,6 +254,7 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withChangePasswordIfTakeOver(array_key_exists('changePasswordIfTakeOver', $data) ? $data['changePasswordIfTakeOver'] : null)
             ->withDifferentUserIdForLoginAndDataRetention(array_key_exists('differentUserIdForLoginAndDataRetention', $data) ? $data['differentUserIdForLoginAndDataRetention'] : null)
             ->withCreateAccountScript(array_key_exists('createAccountScript', $data) && $data['createAccountScript'] !== null ? ScriptSetting::fromJson($data['createAccountScript']) : null)
@@ -259,6 +274,7 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "changePasswordIfTakeOver" => $this->getChangePasswordIfTakeOver(),
             "differentUserIdForLoginAndDataRetention" => $this->getDifferentUserIdForLoginAndDataRetention(),
             "createAccountScript" => $this->getCreateAccountScript() !== null ? $this->getCreateAccountScript()->toJson() : null,

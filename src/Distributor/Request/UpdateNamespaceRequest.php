@@ -18,6 +18,7 @@
 namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Distributor\Model\TransactionSetting;
 use Gs2\Distributor\Model\NotificationSetting;
 use Gs2\Distributor\Model\LogSetting;
 
@@ -26,6 +27,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var string */
     private $assumeUserId;
     /** @var NotificationSetting */
@@ -52,6 +55,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getAssumeUserId(): ?string {
@@ -102,6 +115,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withAssumeUserId(array_key_exists('assumeUserId', $data) && $data['assumeUserId'] !== null ? $data['assumeUserId'] : null)
             ->withAutoRunStampSheetNotification(array_key_exists('autoRunStampSheetNotification', $data) && $data['autoRunStampSheetNotification'] !== null ? NotificationSetting::fromJson($data['autoRunStampSheetNotification']) : null)
             ->withAutoRunTransactionNotification(array_key_exists('autoRunTransactionNotification', $data) && $data['autoRunTransactionNotification'] !== null ? NotificationSetting::fromJson($data['autoRunTransactionNotification']) : null)
@@ -112,6 +126,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "assumeUserId" => $this->getAssumeUserId(),
             "autoRunStampSheetNotification" => $this->getAutoRunStampSheetNotification() !== null ? $this->getAutoRunStampSheetNotification()->toJson() : null,
             "autoRunTransactionNotification" => $this->getAutoRunTransactionNotification() !== null ? $this->getAutoRunTransactionNotification()->toJson() : null,

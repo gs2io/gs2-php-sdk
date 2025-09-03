@@ -18,6 +18,7 @@
 namespace Gs2\Chat\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Chat\Model\TransactionSetting;
 use Gs2\Chat\Model\ScriptSetting;
 use Gs2\Chat\Model\NotificationSetting;
 use Gs2\Chat\Model\LogSetting;

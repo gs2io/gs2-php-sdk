@@ -18,6 +18,7 @@
 namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Matchmaking\Model\TransactionSetting;
 use Gs2\Matchmaking\Model\ScriptSetting;
 use Gs2\Matchmaking\Model\NotificationSetting;
 use Gs2\Matchmaking\Model\LogSetting;
@@ -27,6 +28,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var bool */
     private $enableRating;
     /** @var string */
@@ -81,6 +84,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getEnableRating(): ?bool {
@@ -271,6 +284,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withEnableRating(array_key_exists('enableRating', $data) ? $data['enableRating'] : null)
             ->withEnableDisconnectDetection(array_key_exists('enableDisconnectDetection', $data) && $data['enableDisconnectDetection'] !== null ? $data['enableDisconnectDetection'] : null)
             ->withDisconnectDetectionTimeoutSeconds(array_key_exists('disconnectDetectionTimeoutSeconds', $data) && $data['disconnectDetectionTimeoutSeconds'] !== null ? $data['disconnectDetectionTimeoutSeconds'] : null)
@@ -295,6 +309,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "enableRating" => $this->getEnableRating(),
             "enableDisconnectDetection" => $this->getEnableDisconnectDetection(),
             "disconnectDetectionTimeoutSeconds" => $this->getDisconnectDetectionTimeoutSeconds(),

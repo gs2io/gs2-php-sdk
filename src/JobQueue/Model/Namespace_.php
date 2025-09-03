@@ -34,6 +34,10 @@ class Namespace_ implements IModel {
 	 */
 	private $description;
 	/**
+     * @var TransactionSetting
+	 */
+	private $transactionSetting;
+	/**
      * @var bool
 	 */
 	private $enableAutoRun;
@@ -89,6 +93,16 @@ class Namespace_ implements IModel {
 	}
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getEnableAutoRun(): ?bool {
@@ -170,6 +184,7 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withEnableAutoRun(array_key_exists('enableAutoRun', $data) ? $data['enableAutoRun'] : null)
             ->withRunNotification(array_key_exists('runNotification', $data) && $data['runNotification'] !== null ? NotificationSetting::fromJson($data['runNotification']) : null)
             ->withPushNotification(array_key_exists('pushNotification', $data) && $data['pushNotification'] !== null ? NotificationSetting::fromJson($data['pushNotification']) : null)
@@ -184,6 +199,7 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "enableAutoRun" => $this->getEnableAutoRun(),
             "runNotification" => $this->getRunNotification() !== null ? $this->getRunNotification()->toJson() : null,
             "pushNotification" => $this->getPushNotification() !== null ? $this->getPushNotification()->toJson() : null,

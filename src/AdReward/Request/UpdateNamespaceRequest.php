@@ -18,6 +18,7 @@
 namespace Gs2\AdReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\AdReward\Model\TransactionSetting;
 use Gs2\AdReward\Model\AdMob;
 use Gs2\AdReward\Model\UnityAd;
 use Gs2\AdReward\Model\AppLovinMax;
@@ -30,6 +31,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var AdMob */
     private $admob;
     /** @var UnityAd */
@@ -62,6 +65,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getAdmob(): ?AdMob {
@@ -142,6 +155,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withAdmob(array_key_exists('admob', $data) && $data['admob'] !== null ? AdMob::fromJson($data['admob']) : null)
             ->withUnityAd(array_key_exists('unityAd', $data) && $data['unityAd'] !== null ? UnityAd::fromJson($data['unityAd']) : null)
             ->withAppLovinMaxes(!array_key_exists('appLovinMaxes', $data) || $data['appLovinMaxes'] === null ? null : array_map(
@@ -160,6 +174,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "admob" => $this->getAdmob() !== null ? $this->getAdmob()->toJson() : null,
             "unityAd" => $this->getUnityAd() !== null ? $this->getUnityAd()->toJson() : null,
             "appLovinMaxes" => $this->getAppLovinMaxes() === null ? null : array_map(

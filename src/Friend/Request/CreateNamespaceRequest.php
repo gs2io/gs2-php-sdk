@@ -18,6 +18,7 @@
 namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Friend\Model\TransactionSetting;
 use Gs2\Friend\Model\ScriptSetting;
 use Gs2\Friend\Model\NotificationSetting;
 use Gs2\Friend\Model\LogSetting;
@@ -27,6 +28,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var ScriptSetting */
     private $followScript;
     /** @var ScriptSetting */
@@ -75,6 +78,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getFollowScript(): ?ScriptSetting {
@@ -235,6 +248,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withFollowScript(array_key_exists('followScript', $data) && $data['followScript'] !== null ? ScriptSetting::fromJson($data['followScript']) : null)
             ->withUnfollowScript(array_key_exists('unfollowScript', $data) && $data['unfollowScript'] !== null ? ScriptSetting::fromJson($data['unfollowScript']) : null)
             ->withSendRequestScript(array_key_exists('sendRequestScript', $data) && $data['sendRequestScript'] !== null ? ScriptSetting::fromJson($data['sendRequestScript']) : null)
@@ -256,6 +270,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "followScript" => $this->getFollowScript() !== null ? $this->getFollowScript()->toJson() : null,
             "unfollowScript" => $this->getUnfollowScript() !== null ? $this->getUnfollowScript()->toJson() : null,
             "sendRequestScript" => $this->getSendRequestScript() !== null ? $this->getSendRequestScript()->toJson() : null,

@@ -18,6 +18,7 @@
 namespace Gs2\AdReward\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\AdReward\Model\TransactionSetting;
 use Gs2\AdReward\Model\AdMob;
 use Gs2\AdReward\Model\UnityAd;
 use Gs2\AdReward\Model\AppLovinMax;

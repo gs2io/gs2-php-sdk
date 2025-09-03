@@ -18,6 +18,7 @@
 namespace Gs2\Money\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Money\Model\TransactionSetting;
 use Gs2\Money\Model\ScriptSetting;
 use Gs2\Money\Model\LogSetting;
 use Gs2\Money\Model\Namespace_;

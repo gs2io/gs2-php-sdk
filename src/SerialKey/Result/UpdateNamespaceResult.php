@@ -18,6 +18,7 @@
 namespace Gs2\SerialKey\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\SerialKey\Model\TransactionSetting;
 use Gs2\SerialKey\Model\LogSetting;
 use Gs2\SerialKey\Model\Namespace_;
 

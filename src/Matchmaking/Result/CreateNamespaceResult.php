@@ -18,6 +18,7 @@
 namespace Gs2\Matchmaking\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Matchmaking\Model\TransactionSetting;
 use Gs2\Matchmaking\Model\ScriptSetting;
 use Gs2\Matchmaking\Model\NotificationSetting;
 use Gs2\Matchmaking\Model\LogSetting;

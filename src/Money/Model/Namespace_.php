@@ -34,6 +34,10 @@ class Namespace_ implements IModel {
 	 */
 	private $description;
 	/**
+     * @var TransactionSetting
+	 */
+	private $transactionSetting;
+	/**
      * @var string
 	 */
 	private $priority;
@@ -117,6 +121,16 @@ class Namespace_ implements IModel {
 	}
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getPriority(): ?string {
@@ -268,6 +282,7 @@ class Namespace_ implements IModel {
             ->withNamespaceId(array_key_exists('namespaceId', $data) && $data['namespaceId'] !== null ? $data['namespaceId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withPriority(array_key_exists('priority', $data) && $data['priority'] !== null ? $data['priority'] : null)
             ->withShareFree(array_key_exists('shareFree', $data) ? $data['shareFree'] : null)
             ->withCurrency(array_key_exists('currency', $data) && $data['currency'] !== null ? $data['currency'] : null)
@@ -289,6 +304,7 @@ class Namespace_ implements IModel {
             "namespaceId" => $this->getNamespaceId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "priority" => $this->getPriority(),
             "shareFree" => $this->getShareFree(),
             "currency" => $this->getCurrency(),

@@ -155,6 +155,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
         }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
+        }
         if ($this->request->getServerType() !== null) {
             $json["serverType"] = $this->request->getServerType();
         }
@@ -338,6 +341,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getServerType() !== null) {
             $json["serverType"] = $this->request->getServerType();

@@ -18,6 +18,7 @@
 namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Chat\Model\TransactionSetting;
 use Gs2\Chat\Model\ScriptSetting;
 use Gs2\Chat\Model\NotificationSetting;
 use Gs2\Chat\Model\LogSetting;
@@ -27,6 +28,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var bool */
     private $allowCreateRoom;
     /** @var int */
@@ -63,6 +66,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getAllowCreateRoom(): ?bool {
@@ -163,6 +176,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withAllowCreateRoom(array_key_exists('allowCreateRoom', $data) ? $data['allowCreateRoom'] : null)
             ->withMessageLifeTimeDays(array_key_exists('messageLifeTimeDays', $data) && $data['messageLifeTimeDays'] !== null ? $data['messageLifeTimeDays'] : null)
             ->withPostMessageScript(array_key_exists('postMessageScript', $data) && $data['postMessageScript'] !== null ? ScriptSetting::fromJson($data['postMessageScript']) : null)
@@ -178,6 +192,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "allowCreateRoom" => $this->getAllowCreateRoom(),
             "messageLifeTimeDays" => $this->getMessageLifeTimeDays(),
             "postMessageScript" => $this->getPostMessageScript() !== null ? $this->getPostMessageScript()->toJson() : null,

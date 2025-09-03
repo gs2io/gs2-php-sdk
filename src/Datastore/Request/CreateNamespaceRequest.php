@@ -18,6 +18,7 @@
 namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Datastore\Model\TransactionSetting;
 use Gs2\Datastore\Model\LogSetting;
 use Gs2\Datastore\Model\ScriptSetting;
 
@@ -26,6 +27,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var LogSetting */
     private $logSetting;
     /** @var ScriptSetting */
@@ -48,6 +51,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getLogSetting(): ?LogSetting {
@@ -78,6 +91,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withDoneUploadScript(array_key_exists('doneUploadScript', $data) && $data['doneUploadScript'] !== null ? ScriptSetting::fromJson($data['doneUploadScript']) : null);
     }
@@ -86,6 +100,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "doneUploadScript" => $this->getDoneUploadScript() !== null ? $this->getDoneUploadScript()->toJson() : null,
         );

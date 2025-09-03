@@ -18,6 +18,7 @@
 namespace Gs2\Friend\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Friend\Model\TransactionSetting;
 use Gs2\Friend\Model\ScriptSetting;
 use Gs2\Friend\Model\NotificationSetting;
 use Gs2\Friend\Model\LogSetting;

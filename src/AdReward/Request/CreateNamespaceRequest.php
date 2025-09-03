@@ -18,6 +18,7 @@
 namespace Gs2\AdReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\AdReward\Model\TransactionSetting;
 use Gs2\AdReward\Model\AdMob;
 use Gs2\AdReward\Model\UnityAd;
 use Gs2\AdReward\Model\AppLovinMax;
@@ -28,14 +29,16 @@ use Gs2\AdReward\Model\LogSetting;
 class CreateNamespaceRequest extends Gs2BasicRequest {
     /** @var string */
     private $name;
+    /** @var string */
+    private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var AdMob */
     private $admob;
     /** @var UnityAd */
     private $unityAd;
     /** @var array */
     private $appLovinMaxes;
-    /** @var string */
-    private $description;
     /** @var ScriptSetting */
     private $acquirePointScript;
     /** @var ScriptSetting */
@@ -52,6 +55,26 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
+		return $this;
+	}
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+	public function setDescription(?string $description) {
+		$this->description = $description;
+	}
+	public function withDescription(?string $description): CreateNamespaceRequest {
+		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getAdmob(): ?AdMob {
@@ -82,16 +105,6 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withAppLovinMaxes(?array $appLovinMaxes): CreateNamespaceRequest {
 		$this->appLovinMaxes = $appLovinMaxes;
-		return $this;
-	}
-	public function getDescription(): ?string {
-		return $this->description;
-	}
-	public function setDescription(?string $description) {
-		$this->description = $description;
-	}
-	public function withDescription(?string $description): CreateNamespaceRequest {
-		$this->description = $description;
 		return $this;
 	}
 	public function getAcquirePointScript(): ?ScriptSetting {
@@ -141,6 +154,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         }
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
+            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withAdmob(array_key_exists('admob', $data) && $data['admob'] !== null ? AdMob::fromJson($data['admob']) : null)
             ->withUnityAd(array_key_exists('unityAd', $data) && $data['unityAd'] !== null ? UnityAd::fromJson($data['unityAd']) : null)
             ->withAppLovinMaxes(!array_key_exists('appLovinMaxes', $data) || $data['appLovinMaxes'] === null ? null : array_map(
@@ -149,7 +164,6 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
                 },
                 $data['appLovinMaxes']
             ))
-            ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withAcquirePointScript(array_key_exists('acquirePointScript', $data) && $data['acquirePointScript'] !== null ? ScriptSetting::fromJson($data['acquirePointScript']) : null)
             ->withConsumePointScript(array_key_exists('consumePointScript', $data) && $data['consumePointScript'] !== null ? ScriptSetting::fromJson($data['consumePointScript']) : null)
             ->withChangePointNotification(array_key_exists('changePointNotification', $data) && $data['changePointNotification'] !== null ? NotificationSetting::fromJson($data['changePointNotification']) : null)
@@ -159,6 +173,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "name" => $this->getName(),
+            "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "admob" => $this->getAdmob() !== null ? $this->getAdmob()->toJson() : null,
             "unityAd" => $this->getUnityAd() !== null ? $this->getUnityAd()->toJson() : null,
             "appLovinMaxes" => $this->getAppLovinMaxes() === null ? null : array_map(
@@ -167,7 +183,6 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
                 },
                 $this->getAppLovinMaxes()
             ),
-            "description" => $this->getDescription(),
             "acquirePointScript" => $this->getAcquirePointScript() !== null ? $this->getAcquirePointScript()->toJson() : null,
             "consumePointScript" => $this->getConsumePointScript() !== null ? $this->getConsumePointScript()->toJson() : null,
             "changePointNotification" => $this->getChangePointNotification() !== null ? $this->getChangePointNotification()->toJson() : null,

@@ -18,6 +18,7 @@
 namespace Gs2\Stamina\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Stamina\Model\TransactionSetting;
 use Gs2\Stamina\Model\LogSetting;
 use Gs2\Stamina\Model\Namespace_;
 

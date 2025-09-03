@@ -18,6 +18,7 @@
 namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Inventory\Model\TransactionSetting;
 use Gs2\Inventory\Model\ScriptSetting;
 use Gs2\Inventory\Model\LogSetting;
 use Gs2\Inventory\Model\Namespace_;

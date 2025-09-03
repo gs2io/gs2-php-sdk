@@ -18,6 +18,7 @@
 namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Account\Model\TransactionSetting;
 use Gs2\Account\Model\ScriptSetting;
 use Gs2\Account\Model\LogSetting;
 
@@ -26,6 +27,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var bool */
     private $changePasswordIfTakeOver;
     /** @var ScriptSetting */
@@ -60,6 +63,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getChangePasswordIfTakeOver(): ?bool {
@@ -150,6 +163,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return (new UpdateNamespaceRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withChangePasswordIfTakeOver(array_key_exists('changePasswordIfTakeOver', $data) ? $data['changePasswordIfTakeOver'] : null)
             ->withCreateAccountScript(array_key_exists('createAccountScript', $data) && $data['createAccountScript'] !== null ? ScriptSetting::fromJson($data['createAccountScript']) : null)
             ->withAuthenticationScript(array_key_exists('authenticationScript', $data) && $data['authenticationScript'] !== null ? ScriptSetting::fromJson($data['authenticationScript']) : null)
@@ -164,6 +178,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "changePasswordIfTakeOver" => $this->getChangePasswordIfTakeOver(),
             "createAccountScript" => $this->getCreateAccountScript() !== null ? $this->getCreateAccountScript()->toJson() : null,
             "authenticationScript" => $this->getAuthenticationScript() !== null ? $this->getAuthenticationScript()->toJson() : null,

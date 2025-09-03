@@ -172,6 +172,12 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getName() !== null) {
             $json["name"] = $this->request->getName();
         }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
+        }
         if ($this->request->getAdmob() !== null) {
             $json["admob"] = $this->request->getAdmob()->toJson();
         }
@@ -185,9 +191,6 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["appLovinMaxes"] = $array;
-        }
-        if ($this->request->getDescription() !== null) {
-            $json["description"] = $this->request->getDescription();
         }
         if ($this->request->getAcquirePointScript() !== null) {
             $json["acquirePointScript"] = $this->request->getAcquirePointScript()->toJson();
@@ -372,6 +375,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getDescription() !== null) {
             $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getTransactionSetting() !== null) {
+            $json["transactionSetting"] = $this->request->getTransactionSetting()->toJson();
         }
         if ($this->request->getAdmob() !== null) {
             $json["admob"] = $this->request->getAdmob()->toJson();

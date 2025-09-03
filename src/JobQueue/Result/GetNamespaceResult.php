@@ -18,6 +18,7 @@
 namespace Gs2\JobQueue\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\JobQueue\Model\TransactionSetting;
 use Gs2\JobQueue\Model\NotificationSetting;
 use Gs2\JobQueue\Model\LogSetting;
 use Gs2\JobQueue\Model\Namespace_;

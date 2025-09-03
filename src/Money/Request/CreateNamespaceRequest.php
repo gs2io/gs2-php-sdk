@@ -18,6 +18,7 @@
 namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Money\Model\TransactionSetting;
 use Gs2\Money\Model\ScriptSetting;
 use Gs2\Money\Model\LogSetting;
 
@@ -26,6 +27,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var string */
     private $priority;
     /** @var bool */
@@ -64,6 +67,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getPriority(): ?string {
@@ -174,6 +187,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withPriority(array_key_exists('priority', $data) && $data['priority'] !== null ? $data['priority'] : null)
             ->withShareFree(array_key_exists('shareFree', $data) ? $data['shareFree'] : null)
             ->withCurrency(array_key_exists('currency', $data) && $data['currency'] !== null ? $data['currency'] : null)
@@ -190,6 +204,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "priority" => $this->getPriority(),
             "shareFree" => $this->getShareFree(),
             "currency" => $this->getCurrency(),

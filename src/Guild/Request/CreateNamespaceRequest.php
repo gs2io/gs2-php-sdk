@@ -18,6 +18,7 @@
 namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Guild\Model\TransactionSetting;
 use Gs2\Guild\Model\NotificationSetting;
 use Gs2\Guild\Model\ScriptSetting;
 use Gs2\Guild\Model\LogSetting;
@@ -27,6 +28,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $name;
     /** @var string */
     private $description;
+    /** @var TransactionSetting */
+    private $transactionSetting;
     /** @var NotificationSetting */
     private $changeNotification;
     /** @var NotificationSetting */
@@ -73,6 +76,16 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 	}
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
+		return $this;
+	}
+	public function getTransactionSetting(): ?TransactionSetting {
+		return $this->transactionSetting;
+	}
+	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
+		$this->transactionSetting = $transactionSetting;
+	}
+	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
+		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
 	public function getChangeNotification(): ?NotificationSetting {
@@ -223,6 +236,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return (new CreateNamespaceRequest())
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withChangeNotification(array_key_exists('changeNotification', $data) && $data['changeNotification'] !== null ? NotificationSetting::fromJson($data['changeNotification']) : null)
             ->withJoinNotification(array_key_exists('joinNotification', $data) && $data['joinNotification'] !== null ? NotificationSetting::fromJson($data['joinNotification']) : null)
             ->withLeaveNotification(array_key_exists('leaveNotification', $data) && $data['leaveNotification'] !== null ? NotificationSetting::fromJson($data['leaveNotification']) : null)
@@ -243,6 +257,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
         return array(
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "changeNotification" => $this->getChangeNotification() !== null ? $this->getChangeNotification()->toJson() : null,
             "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
             "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,

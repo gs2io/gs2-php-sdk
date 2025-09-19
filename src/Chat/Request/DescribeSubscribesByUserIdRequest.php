@@ -23,7 +23,7 @@ class DescribeSubscribesByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
-    private $namePrefix;
+    private $roomNamePrefix;
     /** @var string */
     private $userId;
     /** @var string */
@@ -42,14 +42,14 @@ class DescribeSubscribesByUserIdRequest extends Gs2BasicRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
-	public function getNamePrefix(): ?string {
-		return $this->namePrefix;
+	public function getRoomNamePrefix(): ?string {
+		return $this->roomNamePrefix;
 	}
-	public function setNamePrefix(?string $namePrefix) {
-		$this->namePrefix = $namePrefix;
+	public function setRoomNamePrefix(?string $roomNamePrefix) {
+		$this->roomNamePrefix = $roomNamePrefix;
 	}
-	public function withNamePrefix(?string $namePrefix): DescribeSubscribesByUserIdRequest {
-		$this->namePrefix = $namePrefix;
+	public function withRoomNamePrefix(?string $roomNamePrefix): DescribeSubscribesByUserIdRequest {
+		$this->roomNamePrefix = $roomNamePrefix;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -99,7 +99,7 @@ class DescribeSubscribesByUserIdRequest extends Gs2BasicRequest {
         }
         return (new DescribeSubscribesByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withNamePrefix(array_key_exists('namePrefix', $data) && $data['namePrefix'] !== null ? $data['namePrefix'] : null)
+            ->withRoomNamePrefix(array_key_exists('roomNamePrefix', $data) && $data['roomNamePrefix'] !== null ? $data['roomNamePrefix'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null)
@@ -109,7 +109,7 @@ class DescribeSubscribesByUserIdRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "namePrefix" => $this->getNamePrefix(),
+            "roomNamePrefix" => $this->getRoomNamePrefix(),
             "userId" => $this->getUserId(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),

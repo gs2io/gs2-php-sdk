@@ -2271,8 +2271,8 @@ class DescribeSubscribesTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
-        if ($this->request->getNamePrefix() !== null) {
-            $queryStrings["namePrefix"] = $this->request->getNamePrefix();
+        if ($this->request->getRoomNamePrefix() !== null) {
+            $queryStrings["roomNamePrefix"] = $this->request->getRoomNamePrefix();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
@@ -2341,8 +2341,8 @@ class DescribeSubscribesByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
-        if ($this->request->getNamePrefix() !== null) {
-            $queryStrings["namePrefix"] = $this->request->getNamePrefix();
+        if ($this->request->getRoomNamePrefix() !== null) {
+            $queryStrings["roomNamePrefix"] = $this->request->getRoomNamePrefix();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();

@@ -21,9 +21,21 @@ use Gs2\Core\Control\Gs2BasicRequest;
 
 class DescribeStacksRequest extends Gs2BasicRequest {
     /** @var string */
+    private $namePrefix;
+    /** @var string */
     private $pageToken;
     /** @var int */
     private $limit;
+	public function getNamePrefix(): ?string {
+		return $this->namePrefix;
+	}
+	public function setNamePrefix(?string $namePrefix) {
+		$this->namePrefix = $namePrefix;
+	}
+	public function withNamePrefix(?string $namePrefix): DescribeStacksRequest {
+		$this->namePrefix = $namePrefix;
+		return $this;
+	}
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
@@ -50,12 +62,14 @@ class DescribeStacksRequest extends Gs2BasicRequest {
             return null;
         }
         return (new DescribeStacksRequest())
+            ->withNamePrefix(array_key_exists('namePrefix', $data) && $data['namePrefix'] !== null ? $data['namePrefix'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "namePrefix" => $this->getNamePrefix(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),
         );

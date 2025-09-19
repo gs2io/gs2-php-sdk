@@ -23,6 +23,8 @@ class DescribeSubscribesRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
+    private $namePrefix;
+    /** @var string */
     private $accessToken;
     /** @var string */
     private $pageToken;
@@ -36,6 +38,16 @@ class DescribeSubscribesRequest extends Gs2BasicRequest {
 	}
 	public function withNamespaceName(?string $namespaceName): DescribeSubscribesRequest {
 		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+	public function getNamePrefix(): ?string {
+		return $this->namePrefix;
+	}
+	public function setNamePrefix(?string $namePrefix) {
+		$this->namePrefix = $namePrefix;
+	}
+	public function withNamePrefix(?string $namePrefix): DescribeSubscribesRequest {
+		$this->namePrefix = $namePrefix;
 		return $this;
 	}
 	public function getAccessToken(): ?string {
@@ -75,6 +87,7 @@ class DescribeSubscribesRequest extends Gs2BasicRequest {
         }
         return (new DescribeSubscribesRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withNamePrefix(array_key_exists('namePrefix', $data) && $data['namePrefix'] !== null ? $data['namePrefix'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
@@ -83,6 +96,7 @@ class DescribeSubscribesRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
+            "namePrefix" => $this->getNamePrefix(),
             "accessToken" => $this->getAccessToken(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),

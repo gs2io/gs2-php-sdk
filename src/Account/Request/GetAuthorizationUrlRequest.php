@@ -22,8 +22,6 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class GetAuthorizationUrlRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
-    /** @var string */
-    private $accessToken;
     /** @var int */
     private $type;
 	public function getNamespaceName(): ?string {
@@ -34,16 +32,6 @@ class GetAuthorizationUrlRequest extends Gs2BasicRequest {
 	}
 	public function withNamespaceName(?string $namespaceName): GetAuthorizationUrlRequest {
 		$this->namespaceName = $namespaceName;
-		return $this;
-	}
-	public function getAccessToken(): ?string {
-		return $this->accessToken;
-	}
-	public function setAccessToken(?string $accessToken) {
-		$this->accessToken = $accessToken;
-	}
-	public function withAccessToken(?string $accessToken): GetAuthorizationUrlRequest {
-		$this->accessToken = $accessToken;
 		return $this;
 	}
 	public function getType(): ?int {
@@ -63,14 +51,12 @@ class GetAuthorizationUrlRequest extends Gs2BasicRequest {
         }
         return (new GetAuthorizationUrlRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
-            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null);
     }
 
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
-            "accessToken" => $this->getAccessToken(),
             "type" => $this->getType(),
         );
     }

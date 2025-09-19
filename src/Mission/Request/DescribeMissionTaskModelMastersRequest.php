@@ -23,6 +23,8 @@ class DescribeMissionTaskModelMastersRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
+    private $namePrefix;
+    /** @var string */
     private $missionGroupName;
     /** @var string */
     private $pageToken;
@@ -36,6 +38,16 @@ class DescribeMissionTaskModelMastersRequest extends Gs2BasicRequest {
 	}
 	public function withNamespaceName(?string $namespaceName): DescribeMissionTaskModelMastersRequest {
 		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+	public function getNamePrefix(): ?string {
+		return $this->namePrefix;
+	}
+	public function setNamePrefix(?string $namePrefix) {
+		$this->namePrefix = $namePrefix;
+	}
+	public function withNamePrefix(?string $namePrefix): DescribeMissionTaskModelMastersRequest {
+		$this->namePrefix = $namePrefix;
 		return $this;
 	}
 	public function getMissionGroupName(): ?string {
@@ -75,6 +87,7 @@ class DescribeMissionTaskModelMastersRequest extends Gs2BasicRequest {
         }
         return (new DescribeMissionTaskModelMastersRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withNamePrefix(array_key_exists('namePrefix', $data) && $data['namePrefix'] !== null ? $data['namePrefix'] : null)
             ->withMissionGroupName(array_key_exists('missionGroupName', $data) && $data['missionGroupName'] !== null ? $data['missionGroupName'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null);
@@ -83,6 +96,7 @@ class DescribeMissionTaskModelMastersRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
+            "namePrefix" => $this->getNamePrefix(),
             "missionGroupName" => $this->getMissionGroupName(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),

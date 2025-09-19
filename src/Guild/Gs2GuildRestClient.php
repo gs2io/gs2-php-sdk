@@ -253,6 +253,9 @@ class DescribeNamespacesTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getNamePrefix() !== null) {
+            $queryStrings["namePrefix"] = $this->request->getNamePrefix();
+        }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();
         }
@@ -1164,6 +1167,9 @@ class DescribeGuildModelMastersTask extends Gs2RestSessionTask {
         $queryStrings = [];
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getNamePrefix() !== null) {
+            $queryStrings["namePrefix"] = $this->request->getNamePrefix();
         }
         if ($this->request->getPageToken() !== null) {
             $queryStrings["pageToken"] = $this->request->getPageToken();

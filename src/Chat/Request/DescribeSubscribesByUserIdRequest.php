@@ -23,6 +23,8 @@ class DescribeSubscribesByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $namespaceName;
     /** @var string */
+    private $namePrefix;
+    /** @var string */
     private $userId;
     /** @var string */
     private $pageToken;
@@ -38,6 +40,16 @@ class DescribeSubscribesByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withNamespaceName(?string $namespaceName): DescribeSubscribesByUserIdRequest {
 		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+	public function getNamePrefix(): ?string {
+		return $this->namePrefix;
+	}
+	public function setNamePrefix(?string $namePrefix) {
+		$this->namePrefix = $namePrefix;
+	}
+	public function withNamePrefix(?string $namePrefix): DescribeSubscribesByUserIdRequest {
+		$this->namePrefix = $namePrefix;
 		return $this;
 	}
 	public function getUserId(): ?string {
@@ -87,6 +99,7 @@ class DescribeSubscribesByUserIdRequest extends Gs2BasicRequest {
         }
         return (new DescribeSubscribesByUserIdRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withNamePrefix(array_key_exists('namePrefix', $data) && $data['namePrefix'] !== null ? $data['namePrefix'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withPageToken(array_key_exists('pageToken', $data) && $data['pageToken'] !== null ? $data['pageToken'] : null)
             ->withLimit(array_key_exists('limit', $data) && $data['limit'] !== null ? $data['limit'] : null)
@@ -96,6 +109,7 @@ class DescribeSubscribesByUserIdRequest extends Gs2BasicRequest {
     public function toJson(): array {
         return array(
             "namespaceName" => $this->getNamespaceName(),
+            "namePrefix" => $this->getNamePrefix(),
             "userId" => $this->getUserId(),
             "pageToken" => $this->getPageToken(),
             "limit" => $this->getLimit(),

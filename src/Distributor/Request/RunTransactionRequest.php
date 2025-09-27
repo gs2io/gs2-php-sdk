@@ -18,6 +18,16 @@
 namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Core\Model\TriggerAsync;
+use Gs2\Core\Model\TriggerDoneScript;
+use Gs2\Core\Model\TriggerNotification;
+use Gs2\Core\Model\Uncommitted;
+use Gs2\Core\Model\VerifyActionResult;
+use Gs2\Core\Model\ConsumeActionResult;
+use Gs2\Core\Model\AcquireActionResult;
+use Gs2\Core\Model\TransactionResult;
+use Gs2\Core\Model\ScriptTransactionResult;
+use Gs2\Core\Model\ResultMetadata;
 
 class RunTransactionRequest extends Gs2BasicRequest {
     /** @var string */

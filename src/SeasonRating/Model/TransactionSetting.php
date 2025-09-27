@@ -32,6 +32,10 @@ class TransactionSetting implements IModel {
 	/**
      * @var bool
 	 */
+	private $commitScriptResultInUseDistributor;
+	/**
+     * @var bool
+	 */
 	private $acquireActionUseJobQueue;
 	/**
      * @var string
@@ -59,6 +63,16 @@ class TransactionSetting implements IModel {
 	}
 	public function withTransactionUseDistributor(?bool $transactionUseDistributor): TransactionSetting {
 		$this->transactionUseDistributor = $transactionUseDistributor;
+		return $this;
+	}
+	public function getCommitScriptResultInUseDistributor(): ?bool {
+		return $this->commitScriptResultInUseDistributor;
+	}
+	public function setCommitScriptResultInUseDistributor(?bool $commitScriptResultInUseDistributor) {
+		$this->commitScriptResultInUseDistributor = $commitScriptResultInUseDistributor;
+	}
+	public function withCommitScriptResultInUseDistributor(?bool $commitScriptResultInUseDistributor): TransactionSetting {
+		$this->commitScriptResultInUseDistributor = $commitScriptResultInUseDistributor;
 		return $this;
 	}
 	public function getAcquireActionUseJobQueue(): ?bool {
@@ -99,6 +113,7 @@ class TransactionSetting implements IModel {
         return (new TransactionSetting())
             ->withEnableAtomicCommit(array_key_exists('enableAtomicCommit', $data) ? $data['enableAtomicCommit'] : null)
             ->withTransactionUseDistributor(array_key_exists('transactionUseDistributor', $data) ? $data['transactionUseDistributor'] : null)
+            ->withCommitScriptResultInUseDistributor(array_key_exists('commitScriptResultInUseDistributor', $data) ? $data['commitScriptResultInUseDistributor'] : null)
             ->withAcquireActionUseJobQueue(array_key_exists('acquireActionUseJobQueue', $data) ? $data['acquireActionUseJobQueue'] : null)
             ->withDistributorNamespaceId(array_key_exists('distributorNamespaceId', $data) && $data['distributorNamespaceId'] !== null ? $data['distributorNamespaceId'] : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null);
@@ -108,6 +123,7 @@ class TransactionSetting implements IModel {
         return array(
             "enableAtomicCommit" => $this->getEnableAtomicCommit(),
             "transactionUseDistributor" => $this->getTransactionUseDistributor(),
+            "commitScriptResultInUseDistributor" => $this->getCommitScriptResultInUseDistributor(),
             "acquireActionUseJobQueue" => $this->getAcquireActionUseJobQueue(),
             "distributorNamespaceId" => $this->getDistributorNamespaceId(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),

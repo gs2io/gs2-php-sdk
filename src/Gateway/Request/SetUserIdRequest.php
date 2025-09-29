@@ -26,6 +26,8 @@ class SetUserIdRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var bool */
     private $allowConcurrentAccess;
+    /** @var string */
+    private $sessionId;
     /** @var bool */
     private $force;
     /** @var string */
@@ -60,6 +62,16 @@ class SetUserIdRequest extends Gs2BasicRequest {
 		$this->allowConcurrentAccess = $allowConcurrentAccess;
 		return $this;
 	}
+	public function getSessionId(): ?string {
+		return $this->sessionId;
+	}
+	public function setSessionId(?string $sessionId) {
+		$this->sessionId = $sessionId;
+	}
+	public function withSessionId(?string $sessionId): SetUserIdRequest {
+		$this->sessionId = $sessionId;
+		return $this;
+	}
 	public function getForce(): ?bool {
 		return $this->force;
 	}
@@ -92,6 +104,7 @@ class SetUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
             ->withAllowConcurrentAccess(array_key_exists('allowConcurrentAccess', $data) ? $data['allowConcurrentAccess'] : null)
+            ->withSessionId(array_key_exists('sessionId', $data) && $data['sessionId'] !== null ? $data['sessionId'] : null)
             ->withForce(array_key_exists('force', $data) ? $data['force'] : null);
     }
 
@@ -100,6 +113,7 @@ class SetUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "allowConcurrentAccess" => $this->getAllowConcurrentAccess(),
+            "sessionId" => $this->getSessionId(),
             "force" => $this->getForce(),
         );
     }

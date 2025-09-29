@@ -38,6 +38,10 @@ class WebSocketSession implements IModel {
 	 */
 	private $userId;
 	/**
+     * @var string
+	 */
+	private $sessionId;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -89,6 +93,16 @@ class WebSocketSession implements IModel {
 		$this->userId = $userId;
 		return $this;
 	}
+	public function getSessionId(): ?string {
+		return $this->sessionId;
+	}
+	public function setSessionId(?string $sessionId) {
+		$this->sessionId = $sessionId;
+	}
+	public function withSessionId(?string $sessionId): WebSocketSession {
+		$this->sessionId = $sessionId;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -129,6 +143,7 @@ class WebSocketSession implements IModel {
             ->withConnectionId(array_key_exists('connectionId', $data) && $data['connectionId'] !== null ? $data['connectionId'] : null)
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withSessionId(array_key_exists('sessionId', $data) && $data['sessionId'] !== null ? $data['sessionId'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -140,6 +155,7 @@ class WebSocketSession implements IModel {
             "connectionId" => $this->getConnectionId(),
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
+            "sessionId" => $this->getSessionId(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

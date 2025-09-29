@@ -26,6 +26,8 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
     private $userId;
     /** @var bool */
     private $allowConcurrentAccess;
+    /** @var string */
+    private $sessionId;
     /** @var bool */
     private $force;
     /** @var string */
@@ -60,6 +62,16 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withAllowConcurrentAccess(?bool $allowConcurrentAccess): SetUserIdByUserIdRequest {
 		$this->allowConcurrentAccess = $allowConcurrentAccess;
+		return $this;
+	}
+	public function getSessionId(): ?string {
+		return $this->sessionId;
+	}
+	public function setSessionId(?string $sessionId) {
+		$this->sessionId = $sessionId;
+	}
+	public function withSessionId(?string $sessionId): SetUserIdByUserIdRequest {
+		$this->sessionId = $sessionId;
 		return $this;
 	}
 	public function getForce(): ?bool {
@@ -104,6 +116,7 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withAllowConcurrentAccess(array_key_exists('allowConcurrentAccess', $data) ? $data['allowConcurrentAccess'] : null)
+            ->withSessionId(array_key_exists('sessionId', $data) && $data['sessionId'] !== null ? $data['sessionId'] : null)
             ->withForce(array_key_exists('force', $data) ? $data['force'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
@@ -113,6 +126,7 @@ class SetUserIdByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "allowConcurrentAccess" => $this->getAllowConcurrentAccess(),
+            "sessionId" => $this->getSessionId(),
             "force" => $this->getForce(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );

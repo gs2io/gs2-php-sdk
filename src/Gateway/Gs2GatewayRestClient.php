@@ -1099,6 +1099,9 @@ class SetUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getAllowConcurrentAccess() !== null) {
             $json["allowConcurrentAccess"] = $this->request->getAllowConcurrentAccess();
         }
+        if ($this->request->getSessionId() !== null) {
+            $json["sessionId"] = $this->request->getSessionId();
+        }
         if ($this->request->getForce() !== null) {
             $json["force"] = $this->request->getForce();
         }
@@ -1166,6 +1169,9 @@ class SetUserIdByUserIdTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getAllowConcurrentAccess() !== null) {
             $json["allowConcurrentAccess"] = $this->request->getAllowConcurrentAccess();
+        }
+        if ($this->request->getSessionId() !== null) {
+            $json["sessionId"] = $this->request->getSessionId();
         }
         if ($this->request->getForce() !== null) {
             $json["force"] = $this->request->getForce();

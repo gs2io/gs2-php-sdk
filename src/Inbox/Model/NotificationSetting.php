@@ -33,6 +33,10 @@ class NotificationSetting implements IModel {
      * @var string
 	 */
 	private $sound;
+	/**
+     * @var string
+	 */
+	private $enable;
 	public function getGatewayNamespaceId(): ?string {
 		return $this->gatewayNamespaceId;
 	}
@@ -63,6 +67,16 @@ class NotificationSetting implements IModel {
 		$this->sound = $sound;
 		return $this;
 	}
+	public function getEnable(): ?string {
+		return $this->enable;
+	}
+	public function setEnable(?string $enable) {
+		$this->enable = $enable;
+	}
+	public function withEnable(?string $enable): NotificationSetting {
+		$this->enable = $enable;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?NotificationSetting {
         if ($data === null) {
@@ -71,7 +85,8 @@ class NotificationSetting implements IModel {
         return (new NotificationSetting())
             ->withGatewayNamespaceId(array_key_exists('gatewayNamespaceId', $data) && $data['gatewayNamespaceId'] !== null ? $data['gatewayNamespaceId'] : null)
             ->withEnableTransferMobileNotification(array_key_exists('enableTransferMobileNotification', $data) ? $data['enableTransferMobileNotification'] : null)
-            ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null);
+            ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null)
+            ->withEnable(array_key_exists('enable', $data) && $data['enable'] !== null ? $data['enable'] : null);
     }
 
     public function toJson(): array {
@@ -79,6 +94,7 @@ class NotificationSetting implements IModel {
             "gatewayNamespaceId" => $this->getGatewayNamespaceId(),
             "enableTransferMobileNotification" => $this->getEnableTransferMobileNotification(),
             "sound" => $this->getSound(),
+            "enable" => $this->getEnable(),
         );
     }
 }

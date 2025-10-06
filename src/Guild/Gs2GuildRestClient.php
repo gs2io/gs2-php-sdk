@@ -335,6 +335,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getChangeMemberNotification() !== null) {
             $json["changeMemberNotification"] = $this->request->getChangeMemberNotification()->toJson();
         }
+        if ($this->request->getChangeMemberNotificationIgnoreChangeMetadata() !== null) {
+            $json["changeMemberNotificationIgnoreChangeMetadata"] = $this->request->getChangeMemberNotificationIgnoreChangeMetadata();
+        }
         if ($this->request->getReceiveRequestNotification() !== null) {
             $json["receiveRequestNotification"] = $this->request->getReceiveRequestNotification()->toJson();
         }
@@ -551,6 +554,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getChangeMemberNotification() !== null) {
             $json["changeMemberNotification"] = $this->request->getChangeMemberNotification()->toJson();
+        }
+        if ($this->request->getChangeMemberNotificationIgnoreChangeMetadata() !== null) {
+            $json["changeMemberNotificationIgnoreChangeMetadata"] = $this->request->getChangeMemberNotificationIgnoreChangeMetadata();
         }
         if ($this->request->getReceiveRequestNotification() !== null) {
             $json["receiveRequestNotification"] = $this->request->getReceiveRequestNotification()->toJson();

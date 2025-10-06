@@ -54,6 +54,10 @@ class Namespace_ implements IModel {
 	 */
 	private $changeMemberNotification;
 	/**
+     * @var bool
+	 */
+	private $changeMemberNotificationIgnoreChangeMetadata;
+	/**
      * @var NotificationSetting
 	 */
 	private $receiveRequestNotification;
@@ -183,6 +187,16 @@ class Namespace_ implements IModel {
 	}
 	public function withChangeMemberNotification(?NotificationSetting $changeMemberNotification): Namespace_ {
 		$this->changeMemberNotification = $changeMemberNotification;
+		return $this;
+	}
+	public function getChangeMemberNotificationIgnoreChangeMetadata(): ?bool {
+		return $this->changeMemberNotificationIgnoreChangeMetadata;
+	}
+	public function setChangeMemberNotificationIgnoreChangeMetadata(?bool $changeMemberNotificationIgnoreChangeMetadata) {
+		$this->changeMemberNotificationIgnoreChangeMetadata = $changeMemberNotificationIgnoreChangeMetadata;
+	}
+	public function withChangeMemberNotificationIgnoreChangeMetadata(?bool $changeMemberNotificationIgnoreChangeMetadata): Namespace_ {
+		$this->changeMemberNotificationIgnoreChangeMetadata = $changeMemberNotificationIgnoreChangeMetadata;
 		return $this;
 	}
 	public function getReceiveRequestNotification(): ?NotificationSetting {
@@ -329,6 +343,7 @@ class Namespace_ implements IModel {
             ->withJoinNotification(array_key_exists('joinNotification', $data) && $data['joinNotification'] !== null ? NotificationSetting::fromJson($data['joinNotification']) : null)
             ->withLeaveNotification(array_key_exists('leaveNotification', $data) && $data['leaveNotification'] !== null ? NotificationSetting::fromJson($data['leaveNotification']) : null)
             ->withChangeMemberNotification(array_key_exists('changeMemberNotification', $data) && $data['changeMemberNotification'] !== null ? NotificationSetting::fromJson($data['changeMemberNotification']) : null)
+            ->withChangeMemberNotificationIgnoreChangeMetadata(array_key_exists('changeMemberNotificationIgnoreChangeMetadata', $data) ? $data['changeMemberNotificationIgnoreChangeMetadata'] : null)
             ->withReceiveRequestNotification(array_key_exists('receiveRequestNotification', $data) && $data['receiveRequestNotification'] !== null ? NotificationSetting::fromJson($data['receiveRequestNotification']) : null)
             ->withRemoveRequestNotification(array_key_exists('removeRequestNotification', $data) && $data['removeRequestNotification'] !== null ? NotificationSetting::fromJson($data['removeRequestNotification']) : null)
             ->withCreateGuildScript(array_key_exists('createGuildScript', $data) && $data['createGuildScript'] !== null ? ScriptSetting::fromJson($data['createGuildScript']) : null)
@@ -354,6 +369,7 @@ class Namespace_ implements IModel {
             "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
             "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,
             "changeMemberNotification" => $this->getChangeMemberNotification() !== null ? $this->getChangeMemberNotification()->toJson() : null,
+            "changeMemberNotificationIgnoreChangeMetadata" => $this->getChangeMemberNotificationIgnoreChangeMetadata(),
             "receiveRequestNotification" => $this->getReceiveRequestNotification() !== null ? $this->getReceiveRequestNotification()->toJson() : null,
             "removeRequestNotification" => $this->getRemoveRequestNotification() !== null ? $this->getRemoveRequestNotification()->toJson() : null,
             "createGuildScript" => $this->getCreateGuildScript() !== null ? $this->getCreateGuildScript()->toJson() : null,

@@ -38,6 +38,10 @@ class Namespace_ implements IModel {
 	 */
 	private $transactionSetting;
 	/**
+     * @var ScriptSetting
+	 */
+	private $countUpScript;
+	/**
      * @var LogSetting
 	 */
 	private $logSetting;
@@ -93,6 +97,16 @@ class Namespace_ implements IModel {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+	public function getCountUpScript(): ?ScriptSetting {
+		return $this->countUpScript;
+	}
+	public function setCountUpScript(?ScriptSetting $countUpScript) {
+		$this->countUpScript = $countUpScript;
+	}
+	public function withCountUpScript(?ScriptSetting $countUpScript): Namespace_ {
+		$this->countUpScript = $countUpScript;
+		return $this;
+	}
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
@@ -143,6 +157,7 @@ class Namespace_ implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withCountUpScript(array_key_exists('countUpScript', $data) && $data['countUpScript'] !== null ? ScriptSetting::fromJson($data['countUpScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -155,6 +170,7 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "countUpScript" => $this->getCountUpScript() !== null ? $this->getCountUpScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

@@ -3148,6 +3148,9 @@ class FindPlatformIdByUserIdTask extends Gs2RestSessionTask {
         if ($this->request->getContextStack() !== null) {
             $queryStrings["contextStack"] = $this->request->getContextStack();
         }
+        if ($this->request->getDontResolveDataOwner() !== null) {
+            $queryStrings["dontResolveDataOwner"] = $this->request->getDontResolveDataOwner() ? "true" : "false";
+        }
 
         if (count($queryStrings) > 0) {
             $url .= '?'. http_build_query($queryStrings);

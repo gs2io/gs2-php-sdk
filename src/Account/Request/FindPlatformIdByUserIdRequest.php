@@ -28,6 +28,8 @@ class FindPlatformIdByUserIdRequest extends Gs2BasicRequest {
     private $type;
     /** @var string */
     private $userIdentifier;
+    /** @var bool */
+    private $dontResolveDataOwner;
     /** @var string */
     private $timeOffsetToken;
 	public function getNamespaceName(): ?string {
@@ -70,6 +72,16 @@ class FindPlatformIdByUserIdRequest extends Gs2BasicRequest {
 		$this->userIdentifier = $userIdentifier;
 		return $this;
 	}
+	public function getDontResolveDataOwner(): ?bool {
+		return $this->dontResolveDataOwner;
+	}
+	public function setDontResolveDataOwner(?bool $dontResolveDataOwner) {
+		$this->dontResolveDataOwner = $dontResolveDataOwner;
+	}
+	public function withDontResolveDataOwner(?bool $dontResolveDataOwner): FindPlatformIdByUserIdRequest {
+		$this->dontResolveDataOwner = $dontResolveDataOwner;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -90,6 +102,7 @@ class FindPlatformIdByUserIdRequest extends Gs2BasicRequest {
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
             ->withUserIdentifier(array_key_exists('userIdentifier', $data) && $data['userIdentifier'] !== null ? $data['userIdentifier'] : null)
+            ->withDontResolveDataOwner(array_key_exists('dontResolveDataOwner', $data) ? $data['dontResolveDataOwner'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -99,6 +112,7 @@ class FindPlatformIdByUserIdRequest extends Gs2BasicRequest {
             "userId" => $this->getUserId(),
             "type" => $this->getType(),
             "userIdentifier" => $this->getUserIdentifier(),
+            "dontResolveDataOwner" => $this->getDontResolveDataOwner(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

@@ -21,20 +21,44 @@ class HttpTask {
      */
     private $handler;
 
+    /**
+     * @var bool
+     */
+    private $enableCompressRequest;
+
+    /**
+     * @var bool
+     */
+    private $enableDecompressResponse;
+
     public function __construct(
         string $method,
         string $url,
-        IResponseHandler $handler
+        IResponseHandler $handler,
+        bool $enableCompressRequest = true,
+        bool $enableDecompressResponse = true
     ) {
         $this->request = new Request($method, $url);
         $this->handler = $handler;
+        $this->enableCompressRequest = $enableCompressRequest;
+        $this->enableDecompressResponse = $enableDecompressResponse;
+
+        if ($enableDecompressResponse) {
+            $this->request = $this->request->withHeader('Accept-Encoding', 'gzip');
+        }
     }
 
     /**
      * 最大1回までしか呼べません
      */
     public function send(): PromiseInterface {
-        return (new Client())->sendAsync($this->request);
+        $options = [];
+        if ($this->enableDecompressResponse) {
+            $options['decode_content'] = 'gzip';
+        } else {
+            $options['decode_content'] = false;
+        }
+        return (new Client())->sendAsync($this->request, $options);
     }
 
     /**
@@ -49,10 +73,15 @@ class HttpTask {
      * @param array $body
      */
     public function setBody(array $body) {
-        if (count($body) == 0) {
-            $this->request = $this->request->withBody(Utils::streamFor("{}"));
+        $jsonBody = count($body) == 0 ? "{}" : json_encode($body, JSON_UNESCAPED_SLASHES);
+
+        if ($this->enableCompressRequest) {
+            $compressedBody = gzencode($jsonBody);
+            $this->request = $this->request
+                ->withHeader('Content-Encoding', 'gzip')
+                ->withBody(Utils::streamFor($compressedBody));
         } else {
-            $this->request = $this->request->withBody(Utils::streamFor(json_encode($body, JSON_UNESCAPED_SLASHES)));
+            $this->request = $this->request->withBody(Utils::streamFor($jsonBody));
         }
     }
 }

@@ -89,6 +89,16 @@ abstract class Gs2Session {
     private $m_Gs2SessionIdTaskGenerator;
 
     /**
+     * @var bool リクエストボディをgzip圧縮するかどうか
+     */
+    private $m_EnableCompressRequest = true;
+
+    /**
+     * @var bool レスポンスのgzip展開を受け入れるかどうか
+     */
+    private $m_EnableDecompressResponse = true;
+
+    /**
      * @param AsyncAction<AsyncResult<OpenResult>>[] $openCallbackList
      * @param Gs2Exception|null $result
      */
@@ -466,6 +476,38 @@ abstract class Gs2Session {
      */
     public function getRegion(): string {
         return $this->m_Region;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCompressRequestEnabled(): bool {
+        return $this->m_EnableCompressRequest;
+    }
+
+    /**
+     * @param bool $enable
+     * @return $this
+     */
+    public function withEnableCompressRequest(bool $enable): self {
+        $this->m_EnableCompressRequest = $enable;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDecompressResponseEnabled(): bool {
+        return $this->m_EnableDecompressResponse;
+    }
+
+    /**
+     * @param bool $enable
+     * @return $this
+     */
+    public function withEnableDecompressResponse(bool $enable): self {
+        $this->m_EnableDecompressResponse = $enable;
+        return $this;
     }
 
     /**

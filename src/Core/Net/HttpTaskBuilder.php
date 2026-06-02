@@ -31,6 +31,16 @@ class HttpTaskBuilder
      */
     private $handler;
 
+    /**
+     * @var bool
+     */
+    private $enableCompressRequest = true;
+
+    /**
+     * @var bool
+     */
+    private $enableDecompressResponse = true;
+
     private function __construct() {}
 
     /**
@@ -87,10 +97,34 @@ class HttpTaskBuilder
     }
 
     /**
+     * @param bool $enable
+     * @return HttpTaskBuilder
+     */
+    public function setEnableCompressRequest(bool $enable): HttpTaskBuilder {
+        $this->enableCompressRequest = $enable;
+        return $this;
+    }
+
+    /**
+     * @param bool $enable
+     * @return HttpTaskBuilder
+     */
+    public function setEnableDecompressResponse(bool $enable): HttpTaskBuilder {
+        $this->enableDecompressResponse = $enable;
+        return $this;
+    }
+
+    /**
      *
      */
     public function build(): HttpTask {
-        $httpTask = new HttpTask($this->method, $this->url, $this->handler);
+        $httpTask = new HttpTask(
+            $this->method,
+            $this->url,
+            $this->handler,
+            $this->enableCompressRequest,
+            $this->enableDecompressResponse
+        );
         foreach ($this->headers as $key => $value) {
             $httpTask->addHeaderEntry($key, $value);
         }

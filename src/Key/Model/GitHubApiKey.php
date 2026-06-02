@@ -36,6 +36,10 @@ class GitHubApiKey implements IModel {
 	/**
      * @var string
 	 */
+	private $apiKey;
+	/**
+     * @var string
+	 */
 	private $encryptionKeyName;
 	/**
      * @var int
@@ -77,6 +81,16 @@ class GitHubApiKey implements IModel {
 	}
 	public function withDescription(?string $description): GitHubApiKey {
 		$this->description = $description;
+		return $this;
+	}
+	public function getApiKey(): ?string {
+		return $this->apiKey;
+	}
+	public function setApiKey(?string $apiKey) {
+		$this->apiKey = $apiKey;
+	}
+	public function withApiKey(?string $apiKey): GitHubApiKey {
+		$this->apiKey = $apiKey;
 		return $this;
 	}
 	public function getEncryptionKeyName(): ?string {
@@ -128,6 +142,7 @@ class GitHubApiKey implements IModel {
             ->withApiKeyId(array_key_exists('apiKeyId', $data) && $data['apiKeyId'] !== null ? $data['apiKeyId'] : null)
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
+            ->withApiKey(array_key_exists('apiKey', $data) && $data['apiKey'] !== null ? $data['apiKey'] : null)
             ->withEncryptionKeyName(array_key_exists('encryptionKeyName', $data) && $data['encryptionKeyName'] !== null ? $data['encryptionKeyName'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
@@ -139,6 +154,7 @@ class GitHubApiKey implements IModel {
             "apiKeyId" => $this->getApiKeyId(),
             "name" => $this->getName(),
             "description" => $this->getDescription(),
+            "apiKey" => $this->getApiKey(),
             "encryptionKeyName" => $this->getEncryptionKeyName(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

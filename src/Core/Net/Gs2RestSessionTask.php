@@ -57,6 +57,8 @@ class Gs2RestSessionTask extends Gs2SessionTask {
     public function prepareImpl() {
         $this->builder->setHeader("X-GS2-CLIENT-ID", $this->getGs2Session()->getGs2Credential()->getClientId());
         $this->builder->setHeader("Authorization", "Bearer ". $this->getProjectToken());
+        $this->builder->setEnableCompressRequest($this->getGs2Session()->isCompressRequestEnabled());
+        $this->builder->setEnableDecompressResponse($this->getGs2Session()->isDecompressResponseEnabled());
     }
 
     /**

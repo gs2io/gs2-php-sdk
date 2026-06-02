@@ -75,6 +75,44 @@ use Gs2\Log\Request\GetInsightRequest;
 use Gs2\Log\Result\GetInsightResult;
 use Gs2\Log\Request\DeleteInsightRequest;
 use Gs2\Log\Result\DeleteInsightResult;
+use Gs2\Log\Request\DescribeFacetModelsRequest;
+use Gs2\Log\Result\DescribeFacetModelsResult;
+use Gs2\Log\Request\CreateFacetModelRequest;
+use Gs2\Log\Result\CreateFacetModelResult;
+use Gs2\Log\Request\GetFacetModelRequest;
+use Gs2\Log\Result\GetFacetModelResult;
+use Gs2\Log\Request\UpdateFacetModelRequest;
+use Gs2\Log\Result\UpdateFacetModelResult;
+use Gs2\Log\Request\DeleteFacetModelRequest;
+use Gs2\Log\Result\DeleteFacetModelResult;
+use Gs2\Log\Request\DescribeDashboardsRequest;
+use Gs2\Log\Result\DescribeDashboardsResult;
+use Gs2\Log\Request\CreateDashboardRequest;
+use Gs2\Log\Result\CreateDashboardResult;
+use Gs2\Log\Request\GetDashboardRequest;
+use Gs2\Log\Result\GetDashboardResult;
+use Gs2\Log\Request\UpdateDashboardRequest;
+use Gs2\Log\Result\UpdateDashboardResult;
+use Gs2\Log\Request\DuplicateDashboardRequest;
+use Gs2\Log\Result\DuplicateDashboardResult;
+use Gs2\Log\Request\DeleteDashboardRequest;
+use Gs2\Log\Result\DeleteDashboardResult;
+use Gs2\Log\Request\QueryLogRequest;
+use Gs2\Log\Result\QueryLogResult;
+use Gs2\Log\Request\GetLogRequest;
+use Gs2\Log\Result\GetLogResult;
+use Gs2\Log\Request\QueryFacetsRequest;
+use Gs2\Log\Result\QueryFacetsResult;
+use Gs2\Log\Request\QueryTimeseriesRequest;
+use Gs2\Log\Result\QueryTimeseriesResult;
+use Gs2\Log\Request\GetTraceRequest;
+use Gs2\Log\Result\GetTraceResult;
+use Gs2\Log\Request\QueryMetricsTimeseriesRequest;
+use Gs2\Log\Result\QueryMetricsTimeseriesResult;
+use Gs2\Log\Request\DescribeMetricsRequest;
+use Gs2\Log\Result\DescribeMetricsResult;
+use Gs2\Log\Request\DescribeLabelValuesRequest;
+use Gs2\Log\Result\DescribeLabelValuesResult;
 
 class DescribeNamespacesTask extends Gs2RestSessionTask {
 
@@ -1768,6 +1806,1258 @@ class DeleteInsightTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeFacetModelsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeFacetModelsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeFacetModelsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeFacetModelsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeFacetModelsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeFacetModelsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/facet";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getNamePrefix() !== null) {
+            $queryStrings["namePrefix"] = $this->request->getNamePrefix();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateFacetModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateFacetModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateFacetModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateFacetModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateFacetModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateFacetModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/facet";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getField() !== null) {
+            $json["field"] = $this->request->getField();
+        }
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getDisplayName() !== null) {
+            $json["displayName"] = $this->request->getDisplayName();
+        }
+        if ($this->request->getOrder() !== null) {
+            $json["order"] = $this->request->getOrder();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetFacetModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetFacetModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetFacetModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetFacetModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetFacetModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetFacetModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/facet/{field}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{field}", $this->request->getField() === null|| strlen($this->request->getField()) == 0 ? "null" : $this->request->getField(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateFacetModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateFacetModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateFacetModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateFacetModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateFacetModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateFacetModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/facet/{field}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{field}", $this->request->getField() === null|| strlen($this->request->getField()) == 0 ? "null" : $this->request->getField(), $url);
+
+        $json = [];
+        if ($this->request->getType() !== null) {
+            $json["type"] = $this->request->getType();
+        }
+        if ($this->request->getDisplayName() !== null) {
+            $json["displayName"] = $this->request->getDisplayName();
+        }
+        if ($this->request->getOrder() !== null) {
+            $json["order"] = $this->request->getOrder();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteFacetModelTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteFacetModelRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteFacetModelTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteFacetModelRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteFacetModelRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteFacetModelResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/facet/{field}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{field}", $this->request->getField() === null|| strlen($this->request->getField()) == 0 ? "null" : $this->request->getField(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeDashboardsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeDashboardsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeDashboardsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeDashboardsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeDashboardsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeDashboardsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/dashboard";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getNamePrefix() !== null) {
+            $queryStrings["namePrefix"] = $this->request->getNamePrefix();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CreateDashboardTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CreateDashboardRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CreateDashboardTask constructor.
+     * @param Gs2RestSession $session
+     * @param CreateDashboardRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CreateDashboardRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CreateDashboardResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/dashboard";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getDisplayName() !== null) {
+            $json["displayName"] = $this->request->getDisplayName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetDashboardTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetDashboardRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetDashboardTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetDashboardRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetDashboardRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetDashboardResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/dashboard/{dashboardName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{dashboardName}", $this->request->getDashboardName() === null|| strlen($this->request->getDashboardName()) == 0 ? "null" : $this->request->getDashboardName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class UpdateDashboardTask extends Gs2RestSessionTask {
+
+    /**
+     * @var UpdateDashboardRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * UpdateDashboardTask constructor.
+     * @param Gs2RestSession $session
+     * @param UpdateDashboardRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        UpdateDashboardRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            UpdateDashboardResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/dashboard/{dashboardName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{dashboardName}", $this->request->getDashboardName() === null|| strlen($this->request->getDashboardName()) == 0 ? "null" : $this->request->getDashboardName(), $url);
+
+        $json = [];
+        if ($this->request->getDisplayName() !== null) {
+            $json["displayName"] = $this->request->getDisplayName();
+        }
+        if ($this->request->getDescription() !== null) {
+            $json["description"] = $this->request->getDescription();
+        }
+        if ($this->request->getPayload() !== null) {
+            $json["payload"] = $this->request->getPayload();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DuplicateDashboardTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DuplicateDashboardRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DuplicateDashboardTask constructor.
+     * @param Gs2RestSession $session
+     * @param DuplicateDashboardRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DuplicateDashboardRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DuplicateDashboardResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/dashboard/{dashboardName}/copy";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{dashboardName}", $this->request->getDashboardName() === null|| strlen($this->request->getDashboardName()) == 0 ? "null" : $this->request->getDashboardName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DeleteDashboardTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DeleteDashboardRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DeleteDashboardTask constructor.
+     * @param Gs2RestSession $session
+     * @param DeleteDashboardRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DeleteDashboardRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DeleteDashboardResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/dashboard/{dashboardName}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{dashboardName}", $this->request->getDashboardName() === null|| strlen($this->request->getDashboardName()) == 0 ? "null" : $this->request->getDashboardName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class QueryLogTask extends Gs2RestSessionTask {
+
+    /**
+     * @var QueryLogRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * QueryLogTask constructor.
+     * @param Gs2RestSession $session
+     * @param QueryLogRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        QueryLogRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            QueryLogResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/log/v2/query";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getBegin() !== null) {
+            $json["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $json["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getQuery() !== null) {
+            $json["query"] = $this->request->getQuery();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $json["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $json["limit"] = $this->request->getLimit();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetLogTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetLogRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetLogTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetLogRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetLogRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetLogResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/log/v2/query/{logRequestId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{logRequestId}", $this->request->getLogRequestId() === null|| strlen($this->request->getLogRequestId()) == 0 ? "null" : $this->request->getLogRequestId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class QueryFacetsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var QueryFacetsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * QueryFacetsTask constructor.
+     * @param Gs2RestSession $session
+     * @param QueryFacetsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        QueryFacetsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            QueryFacetsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/log/v2/query/facet";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getBegin() !== null) {
+            $json["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $json["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getQuery() !== null) {
+            $json["query"] = $this->request->getQuery();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class QueryTimeseriesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var QueryTimeseriesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * QueryTimeseriesTask constructor.
+     * @param Gs2RestSession $session
+     * @param QueryTimeseriesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        QueryTimeseriesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            QueryTimeseriesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/log/v2/timeseries";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getBegin() !== null) {
+            $json["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $json["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getQuery() !== null) {
+            $json["query"] = $this->request->getQuery();
+        }
+        if ($this->request->getGroupBy() !== null) {
+            $array = [];
+            foreach ($this->request->getGroupBy() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["groupBy"] = $array;
+        }
+        if ($this->request->getAggregation() !== null) {
+            $json["aggregation"] = $this->request->getAggregation()->toJson();
+        }
+        if ($this->request->getInterval() !== null) {
+            $json["interval"] = $this->request->getInterval();
+        }
+        if ($this->request->getSeriesLimit() !== null) {
+            $json["seriesLimit"] = $this->request->getSeriesLimit();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $json["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $json["limit"] = $this->request->getLimit();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class GetTraceTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetTraceRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetTraceTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetTraceRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetTraceRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetTraceResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/log/v2/trace/{traceId}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{traceId}", $this->request->getTraceId() === null|| strlen($this->request->getTraceId()) == 0 ? "null" : $this->request->getTraceId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getBegin() !== null) {
+            $queryStrings["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $queryStrings["end"] = $this->request->getEnd();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class QueryMetricsTimeseriesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var QueryMetricsTimeseriesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * QueryMetricsTimeseriesTask constructor.
+     * @param Gs2RestSession $session
+     * @param QueryMetricsTimeseriesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        QueryMetricsTimeseriesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            QueryMetricsTimeseriesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/metrics/timeseries";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getBegin() !== null) {
+            $json["begin"] = $this->request->getBegin();
+        }
+        if ($this->request->getEnd() !== null) {
+            $json["end"] = $this->request->getEnd();
+        }
+        if ($this->request->getQuery() !== null) {
+            $json["query"] = $this->request->getQuery();
+        }
+        if ($this->request->getGroupBy() !== null) {
+            $array = [];
+            foreach ($this->request->getGroupBy() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["groupBy"] = $array;
+        }
+        if ($this->request->getAggregations() !== null) {
+            $array = [];
+            foreach ($this->request->getAggregations() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["aggregations"] = $array;
+        }
+        if ($this->request->getInterval() !== null) {
+            $json["interval"] = $this->request->getInterval();
+        }
+        if ($this->request->getSeriesLimit() !== null) {
+            $json["seriesLimit"] = $this->request->getSeriesLimit();
+        }
+        if ($this->request->getOrderKey() !== null) {
+            $json["orderKey"] = $this->request->getOrderKey();
+        }
+        if ($this->request->getOrderBy() !== null) {
+            $json["orderBy"] = $this->request->getOrderBy();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeMetricsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeMetricsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeMetricsTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeMetricsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeMetricsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeMetricsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/metrics";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getNamePrefix() !== null) {
+            $queryStrings["namePrefix"] = $this->request->getNamePrefix();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeLabelValuesTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeLabelValuesRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeLabelValuesTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeLabelValuesRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeLabelValuesRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeLabelValuesResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "log", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/model/metrics/{metricName}/label";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{metricName}", $this->request->getMetricName() === null|| strlen($this->request->getMetricName()) == 0 ? "null" : $this->request->getMetricName(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getLabelNamePrefix() !== null) {
+            $queryStrings["labelNamePrefix"] = $this->request->getLabelNamePrefix();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 /**
  * GS2 Log API クライアント
  *
@@ -2402,6 +3692,519 @@ class Gs2LogRestClient extends AbstractGs2Client {
             DeleteInsightRequest $request
     ): DeleteInsightResult {
         return $this->deleteInsightAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeFacetModelsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeFacetModelsAsync(
+            DescribeFacetModelsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeFacetModelsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeFacetModelsRequest $request
+     * @return DescribeFacetModelsResult
+     */
+    public function describeFacetModels (
+            DescribeFacetModelsRequest $request
+    ): DescribeFacetModelsResult {
+        return $this->describeFacetModelsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateFacetModelRequest $request
+     * @return PromiseInterface
+     */
+    public function createFacetModelAsync(
+            CreateFacetModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateFacetModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateFacetModelRequest $request
+     * @return CreateFacetModelResult
+     */
+    public function createFacetModel (
+            CreateFacetModelRequest $request
+    ): CreateFacetModelResult {
+        return $this->createFacetModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetFacetModelRequest $request
+     * @return PromiseInterface
+     */
+    public function getFacetModelAsync(
+            GetFacetModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetFacetModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetFacetModelRequest $request
+     * @return GetFacetModelResult
+     */
+    public function getFacetModel (
+            GetFacetModelRequest $request
+    ): GetFacetModelResult {
+        return $this->getFacetModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateFacetModelRequest $request
+     * @return PromiseInterface
+     */
+    public function updateFacetModelAsync(
+            UpdateFacetModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateFacetModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateFacetModelRequest $request
+     * @return UpdateFacetModelResult
+     */
+    public function updateFacetModel (
+            UpdateFacetModelRequest $request
+    ): UpdateFacetModelResult {
+        return $this->updateFacetModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteFacetModelRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteFacetModelAsync(
+            DeleteFacetModelRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteFacetModelTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteFacetModelRequest $request
+     * @return DeleteFacetModelResult
+     */
+    public function deleteFacetModel (
+            DeleteFacetModelRequest $request
+    ): DeleteFacetModelResult {
+        return $this->deleteFacetModelAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeDashboardsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeDashboardsAsync(
+            DescribeDashboardsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeDashboardsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeDashboardsRequest $request
+     * @return DescribeDashboardsResult
+     */
+    public function describeDashboards (
+            DescribeDashboardsRequest $request
+    ): DescribeDashboardsResult {
+        return $this->describeDashboardsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param CreateDashboardRequest $request
+     * @return PromiseInterface
+     */
+    public function createDashboardAsync(
+            CreateDashboardRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CreateDashboardTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param CreateDashboardRequest $request
+     * @return CreateDashboardResult
+     */
+    public function createDashboard (
+            CreateDashboardRequest $request
+    ): CreateDashboardResult {
+        return $this->createDashboardAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetDashboardRequest $request
+     * @return PromiseInterface
+     */
+    public function getDashboardAsync(
+            GetDashboardRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetDashboardTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetDashboardRequest $request
+     * @return GetDashboardResult
+     */
+    public function getDashboard (
+            GetDashboardRequest $request
+    ): GetDashboardResult {
+        return $this->getDashboardAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param UpdateDashboardRequest $request
+     * @return PromiseInterface
+     */
+    public function updateDashboardAsync(
+            UpdateDashboardRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new UpdateDashboardTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param UpdateDashboardRequest $request
+     * @return UpdateDashboardResult
+     */
+    public function updateDashboard (
+            UpdateDashboardRequest $request
+    ): UpdateDashboardResult {
+        return $this->updateDashboardAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DuplicateDashboardRequest $request
+     * @return PromiseInterface
+     */
+    public function duplicateDashboardAsync(
+            DuplicateDashboardRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DuplicateDashboardTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DuplicateDashboardRequest $request
+     * @return DuplicateDashboardResult
+     */
+    public function duplicateDashboard (
+            DuplicateDashboardRequest $request
+    ): DuplicateDashboardResult {
+        return $this->duplicateDashboardAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DeleteDashboardRequest $request
+     * @return PromiseInterface
+     */
+    public function deleteDashboardAsync(
+            DeleteDashboardRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DeleteDashboardTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DeleteDashboardRequest $request
+     * @return DeleteDashboardResult
+     */
+    public function deleteDashboard (
+            DeleteDashboardRequest $request
+    ): DeleteDashboardResult {
+        return $this->deleteDashboardAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param QueryLogRequest $request
+     * @return PromiseInterface
+     */
+    public function queryLogAsync(
+            QueryLogRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new QueryLogTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param QueryLogRequest $request
+     * @return QueryLogResult
+     */
+    public function queryLog (
+            QueryLogRequest $request
+    ): QueryLogResult {
+        return $this->queryLogAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetLogRequest $request
+     * @return PromiseInterface
+     */
+    public function getLogAsync(
+            GetLogRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetLogTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetLogRequest $request
+     * @return GetLogResult
+     */
+    public function getLog (
+            GetLogRequest $request
+    ): GetLogResult {
+        return $this->getLogAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param QueryFacetsRequest $request
+     * @return PromiseInterface
+     */
+    public function queryFacetsAsync(
+            QueryFacetsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new QueryFacetsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param QueryFacetsRequest $request
+     * @return QueryFacetsResult
+     */
+    public function queryFacets (
+            QueryFacetsRequest $request
+    ): QueryFacetsResult {
+        return $this->queryFacetsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param QueryTimeseriesRequest $request
+     * @return PromiseInterface
+     */
+    public function queryTimeseriesAsync(
+            QueryTimeseriesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new QueryTimeseriesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param QueryTimeseriesRequest $request
+     * @return QueryTimeseriesResult
+     */
+    public function queryTimeseries (
+            QueryTimeseriesRequest $request
+    ): QueryTimeseriesResult {
+        return $this->queryTimeseriesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetTraceRequest $request
+     * @return PromiseInterface
+     */
+    public function getTraceAsync(
+            GetTraceRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetTraceTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetTraceRequest $request
+     * @return GetTraceResult
+     */
+    public function getTrace (
+            GetTraceRequest $request
+    ): GetTraceResult {
+        return $this->getTraceAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param QueryMetricsTimeseriesRequest $request
+     * @return PromiseInterface
+     */
+    public function queryMetricsTimeseriesAsync(
+            QueryMetricsTimeseriesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new QueryMetricsTimeseriesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param QueryMetricsTimeseriesRequest $request
+     * @return QueryMetricsTimeseriesResult
+     */
+    public function queryMetricsTimeseries (
+            QueryMetricsTimeseriesRequest $request
+    ): QueryMetricsTimeseriesResult {
+        return $this->queryMetricsTimeseriesAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeMetricsRequest $request
+     * @return PromiseInterface
+     */
+    public function describeMetricsAsync(
+            DescribeMetricsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeMetricsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeMetricsRequest $request
+     * @return DescribeMetricsResult
+     */
+    public function describeMetrics (
+            DescribeMetricsRequest $request
+    ): DescribeMetricsResult {
+        return $this->describeMetricsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeLabelValuesRequest $request
+     * @return PromiseInterface
+     */
+    public function describeLabelValuesAsync(
+            DescribeLabelValuesRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeLabelValuesTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeLabelValuesRequest $request
+     * @return DescribeLabelValuesResult
+     */
+    public function describeLabelValues (
+            DescribeLabelValuesRequest $request
+    ): DescribeLabelValuesResult {
+        return $this->describeLabelValuesAsync(
             $request
         )->wait();
     }

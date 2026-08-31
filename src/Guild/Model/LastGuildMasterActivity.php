@@ -29,6 +29,10 @@ class LastGuildMasterActivity implements IModel {
      * @var int
 	 */
 	private $updatedAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -49,6 +53,16 @@ class LastGuildMasterActivity implements IModel {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): LastGuildMasterActivity {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?LastGuildMasterActivity {
         if ($data === null) {
@@ -56,13 +70,15 @@ class LastGuildMasterActivity implements IModel {
         }
         return (new LastGuildMasterActivity())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
+            ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
             "updatedAt" => $this->getUpdatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

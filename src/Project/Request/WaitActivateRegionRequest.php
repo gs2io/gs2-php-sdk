@@ -21,9 +21,21 @@ use Gs2\Core\Control\Gs2BasicRequest;
 
 class WaitActivateRegionRequest extends Gs2BasicRequest {
     /** @var string */
+    private $ownerId;
+    /** @var string */
     private $projectName;
     /** @var string */
     private $regionName;
+	public function getOwnerId(): ?string {
+		return $this->ownerId;
+	}
+	public function setOwnerId(?string $ownerId) {
+		$this->ownerId = $ownerId;
+	}
+	public function withOwnerId(?string $ownerId): WaitActivateRegionRequest {
+		$this->ownerId = $ownerId;
+		return $this;
+	}
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
@@ -50,12 +62,14 @@ class WaitActivateRegionRequest extends Gs2BasicRequest {
             return null;
         }
         return (new WaitActivateRegionRequest())
+            ->withOwnerId(array_key_exists('ownerId', $data) && $data['ownerId'] !== null ? $data['ownerId'] : null)
             ->withProjectName(array_key_exists('projectName', $data) && $data['projectName'] !== null ? $data['projectName'] : null)
             ->withRegionName(array_key_exists('regionName', $data) && $data['regionName'] !== null ? $data['regionName'] : null);
     }
 
     public function toJson(): array {
         return array(
+            "ownerId" => $this->getOwnerId(),
             "projectName" => $this->getProjectName(),
             "regionName" => $this->getRegionName(),
         );

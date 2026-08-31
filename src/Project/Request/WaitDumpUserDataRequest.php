@@ -27,8 +27,6 @@ class WaitDumpUserDataRequest extends Gs2BasicRequest {
     /** @var string */
     private $userId;
     /** @var string */
-    private $microserviceName;
-    /** @var string */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
@@ -60,16 +58,6 @@ class WaitDumpUserDataRequest extends Gs2BasicRequest {
 	}
 	public function withUserId(?string $userId): WaitDumpUserDataRequest {
 		$this->userId = $userId;
-		return $this;
-	}
-	public function getMicroserviceName(): ?string {
-		return $this->microserviceName;
-	}
-	public function setMicroserviceName(?string $microserviceName) {
-		$this->microserviceName = $microserviceName;
-	}
-	public function withMicroserviceName(?string $microserviceName): WaitDumpUserDataRequest {
-		$this->microserviceName = $microserviceName;
 		return $this;
 	}
 	public function getTimeOffsetToken(): ?string {
@@ -104,7 +92,6 @@ class WaitDumpUserDataRequest extends Gs2BasicRequest {
             ->withOwnerId(array_key_exists('ownerId', $data) && $data['ownerId'] !== null ? $data['ownerId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withMicroserviceName(array_key_exists('microserviceName', $data) && $data['microserviceName'] !== null ? $data['microserviceName'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -113,7 +100,6 @@ class WaitDumpUserDataRequest extends Gs2BasicRequest {
             "ownerId" => $this->getOwnerId(),
             "transactionId" => $this->getTransactionId(),
             "userId" => $this->getUserId(),
-            "microserviceName" => $this->getMicroserviceName(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

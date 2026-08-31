@@ -49,6 +49,8 @@ use Gs2\Project\Request\DisableMfaRequest;
 use Gs2\Project\Result\DisableMfaResult;
 use Gs2\Project\Request\DeleteAccountRequest;
 use Gs2\Project\Result\DeleteAccountResult;
+use Gs2\Project\Request\GetServiceVersionRequest;
+use Gs2\Project\Result\GetServiceVersionResult;
 use Gs2\Project\Request\DescribeProjectsRequest;
 use Gs2\Project\Result\DescribeProjectsResult;
 use Gs2\Project\Request\CreateProjectRequest;
@@ -81,6 +83,8 @@ use Gs2\Project\Request\DescribeReceiptsRequest;
 use Gs2\Project\Result\DescribeReceiptsResult;
 use Gs2\Project\Request\DescribeBillingsRequest;
 use Gs2\Project\Result\DescribeBillingsResult;
+use Gs2\Project\Request\GetBillingsRequest;
+use Gs2\Project\Result\GetBillingsResult;
 use Gs2\Project\Request\DescribeDumpProgressesRequest;
 use Gs2\Project\Result\DescribeDumpProgressesResult;
 use Gs2\Project\Request\GetDumpProgressRequest;
@@ -716,6 +720,61 @@ class DeleteAccountTask extends Gs2RestSessionTask {
     }
 }
 
+class GetServiceVersionTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetServiceVersionRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetServiceVersionTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetServiceVersionRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetServiceVersionRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetServiceVersionResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/version";
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeProjectsTask extends Gs2RestSessionTask {
 
     /**
@@ -1210,8 +1269,9 @@ class WaitActivateRegionTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project/{projectName}/region/{regionName}/activate/wait";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/{ownerId}/project/region/{regionName}/activate/wait";
 
+        $url = str_replace("{ownerId}", $this->request->getOwnerId() === null|| strlen($this->request->getOwnerId()) == 0 ? "null" : $this->request->getOwnerId(), $url);
         $url = str_replace("{projectName}", $this->request->getProjectName() === null|| strlen($this->request->getProjectName()) == 0 ? "null" : $this->request->getProjectName(), $url);
         $url = str_replace("{regionName}", $this->request->getRegionName() === null|| strlen($this->request->getRegionName()) == 0 ? "null" : $this->request->getRegionName(), $url);
 
@@ -1740,6 +1800,67 @@ class DescribeBillingsTask extends Gs2RestSessionTask {
     }
 }
 
+class GetBillingsTask extends Gs2RestSessionTask {
+
+    /**
+     * @var GetBillingsRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * GetBillingsTask constructor.
+     * @param Gs2RestSession $session
+     * @param GetBillingsRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        GetBillingsRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            GetBillingsResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/billing/{year}/{month}";
+
+        $url = str_replace("{year}", $this->request->getYear() === null ? "null" : $this->request->getYear(), $url);
+        $url = str_replace("{month}", $this->request->getMonth() === null ? "null" : $this->request->getMonth(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getService() !== null) {
+            $queryStrings["service"] = $this->request->getService();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeDumpProgressesTask extends Gs2RestSessionTask {
 
     /**
@@ -1897,9 +2018,6 @@ class WaitDumpUserDataTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getUserId() !== null) {
             $json["userId"] = $this->request->getUserId();
-        }
-        if ($this->request->getMicroserviceName() !== null) {
-            $json["microserviceName"] = $this->request->getMicroserviceName();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2249,16 +2367,14 @@ class WaitCleanUserDataTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project/clean/progress/{transactionId}/wait";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/{ownerId}/project/clean/progress/{transactionId}/wait";
 
+        $url = str_replace("{ownerId}", $this->request->getOwnerId() === null|| strlen($this->request->getOwnerId()) == 0 ? "null" : $this->request->getOwnerId(), $url);
         $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
 
         $json = [];
         if ($this->request->getUserId() !== null) {
             $json["userId"] = $this->request->getUserId();
-        }
-        if ($this->request->getMicroserviceName() !== null) {
-            $json["microserviceName"] = $this->request->getMicroserviceName();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2495,16 +2611,14 @@ class WaitImportUserDataTask extends Gs2RestSessionTask {
 
     public function executeImpl(): PromiseInterface {
 
-        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/account/me/project/import/progress/{transactionId}/wait";
+        $url = str_replace('{service}', "project", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/system/{ownerId}/project/import/progress/{transactionId}/wait";
 
+        $url = str_replace("{ownerId}", $this->request->getOwnerId() === null|| strlen($this->request->getOwnerId()) == 0 ? "null" : $this->request->getOwnerId(), $url);
         $url = str_replace("{transactionId}", $this->request->getTransactionId() === null|| strlen($this->request->getTransactionId()) == 0 ? "null" : $this->request->getTransactionId(), $url);
 
         $json = [];
         if ($this->request->getUserId() !== null) {
             $json["userId"] = $this->request->getUserId();
-        }
-        if ($this->request->getMicroserviceName() !== null) {
-            $json["microserviceName"] = $this->request->getMicroserviceName();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -3065,6 +3179,33 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * @param GetServiceVersionRequest $request
+     * @return PromiseInterface
+     */
+    public function getServiceVersionAsync(
+            GetServiceVersionRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetServiceVersionTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetServiceVersionRequest $request
+     * @return GetServiceVersionResult
+     */
+    public function getServiceVersion (
+            GetServiceVersionRequest $request
+    ): GetServiceVersionResult {
+        return $this->getServiceVersionAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * @param DescribeProjectsRequest $request
      * @return PromiseInterface
      */
@@ -3492,6 +3633,33 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
             DescribeBillingsRequest $request
     ): DescribeBillingsResult {
         return $this->describeBillingsAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param GetBillingsRequest $request
+     * @return PromiseInterface
+     */
+    public function getBillingsAsync(
+            GetBillingsRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new GetBillingsTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param GetBillingsRequest $request
+     * @return GetBillingsResult
+     */
+    public function getBillings (
+            GetBillingsRequest $request
+    ): GetBillingsResult {
+        return $this->getBillingsAsync(
             $request
         )->wait();
     }

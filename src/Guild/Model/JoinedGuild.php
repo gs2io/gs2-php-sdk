@@ -41,6 +41,10 @@ class JoinedGuild implements IModel {
      * @var int
 	 */
 	private $createdAt;
+	/**
+     * @var int
+	 */
+	private $revision;
 	public function getJoinedGuildId(): ?string {
 		return $this->joinedGuildId;
 	}
@@ -91,6 +95,16 @@ class JoinedGuild implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+	public function getRevision(): ?int {
+		return $this->revision;
+	}
+	public function setRevision(?int $revision) {
+		$this->revision = $revision;
+	}
+	public function withRevision(?int $revision): JoinedGuild {
+		$this->revision = $revision;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?JoinedGuild {
         if ($data === null) {
@@ -101,7 +115,8 @@ class JoinedGuild implements IModel {
             ->withGuildModelName(array_key_exists('guildModelName', $data) && $data['guildModelName'] !== null ? $data['guildModelName'] : null)
             ->withGuildName(array_key_exists('guildName', $data) && $data['guildName'] !== null ? $data['guildName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
-            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
+            ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
     public function toJson(): array {
@@ -111,6 +126,7 @@ class JoinedGuild implements IModel {
             "guildName" => $this->getGuildName(),
             "userId" => $this->getUserId(),
             "createdAt" => $this->getCreatedAt(),
+            "revision" => $this->getRevision(),
         );
     }
 }

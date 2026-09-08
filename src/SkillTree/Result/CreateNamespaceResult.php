@@ -19,6 +19,7 @@ namespace Gs2\SkillTree\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\SkillTree\Model\TransactionSetting;
+use Gs2\SkillTree\Model\TransactionSettingV2;
 use Gs2\SkillTree\Model\ScriptSetting;
 use Gs2\SkillTree\Model\LogSetting;
 use Gs2\SkillTree\Model\Namespace_;

@@ -19,6 +19,7 @@ namespace Gs2\Enchant\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\TransactionSetting;
+use Gs2\Enchant\Model\TransactionSettingV2;
 use Gs2\Enchant\Model\LogSetting;
 use Gs2\Enchant\Model\Namespace_;
 

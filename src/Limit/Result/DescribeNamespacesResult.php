@@ -19,6 +19,7 @@ namespace Gs2\Limit\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\TransactionSetting;
+use Gs2\Limit\Model\TransactionSettingV2;
 use Gs2\Limit\Model\ScriptSetting;
 use Gs2\Limit\Model\LogSetting;
 use Gs2\Limit\Model\Namespace_;

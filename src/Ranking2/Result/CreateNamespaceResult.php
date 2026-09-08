@@ -19,6 +19,7 @@ namespace Gs2\Ranking2\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\TransactionSetting;
+use Gs2\Ranking2\Model\TransactionSettingV2;
 use Gs2\Ranking2\Model\LogSetting;
 use Gs2\Ranking2\Model\Namespace_;
 

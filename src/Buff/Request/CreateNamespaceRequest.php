@@ -19,6 +19,7 @@ namespace Gs2\Buff\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Buff\Model\TransactionSetting;
+use Gs2\Buff\Model\TransactionSettingV2;
 use Gs2\Buff\Model\ScriptSetting;
 use Gs2\Buff\Model\LogSetting;
 
@@ -29,6 +30,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $description;
     /** @var TransactionSetting */
     private $transactionSetting;
+    /** @var TransactionSettingV2 */
+    private $transactionSettingV2;
     /** @var ScriptSetting */
     private $applyBuffScript;
     /** @var LogSetting */
@@ -53,14 +56,33 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getTransactionSettingV2(): ?TransactionSettingV2 {
+		return $this->transactionSettingV2;
+	}
+	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
+		$this->transactionSettingV2 = $transactionSettingV2;
+	}
+	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
+		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
 	public function getApplyBuffScript(): ?ScriptSetting {
@@ -92,6 +114,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withApplyBuffScript(array_key_exists('applyBuffScript', $data) && $data['applyBuffScript'] !== null ? ScriptSetting::fromJson($data['applyBuffScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
@@ -101,6 +124,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "applyBuffScript" => $this->getApplyBuffScript() !== null ? $this->getApplyBuffScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );

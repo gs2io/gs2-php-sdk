@@ -19,6 +19,7 @@ namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Money2\Model\TransactionSetting;
+use Gs2\Money2\Model\TransactionSettingV2;
 use Gs2\Money2\Model\AppleAppStoreSetting;
 use Gs2\Money2\Model\GooglePlaySetting;
 use Gs2\Money2\Model\FakeSetting;
@@ -36,6 +37,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $description;
     /** @var TransactionSetting */
     private $transactionSetting;
+    /** @var TransactionSettingV2 */
+    private $transactionSettingV2;
     /** @var bool */
     private $sharedFreeCurrency;
     /** @var PlatformSetting */
@@ -88,14 +91,33 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getTransactionSettingV2(): ?TransactionSettingV2 {
+		return $this->transactionSettingV2;
+	}
+	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
+		$this->transactionSettingV2 = $transactionSettingV2;
+	}
+	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
+		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
 	public function getSharedFreeCurrency(): ?bool {
@@ -218,6 +240,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withCurrencyUsagePriority(array_key_exists('currencyUsagePriority', $data) && $data['currencyUsagePriority'] !== null ? $data['currencyUsagePriority'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withSharedFreeCurrency(array_key_exists('sharedFreeCurrency', $data) ? $data['sharedFreeCurrency'] : null)
             ->withPlatformSetting(array_key_exists('platformSetting', $data) && $data['platformSetting'] !== null ? PlatformSetting::fromJson($data['platformSetting']) : null)
             ->withDepositBalanceScript(array_key_exists('depositBalanceScript', $data) && $data['depositBalanceScript'] !== null ? ScriptSetting::fromJson($data['depositBalanceScript']) : null)
@@ -237,6 +260,7 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "currencyUsagePriority" => $this->getCurrencyUsagePriority(),
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "sharedFreeCurrency" => $this->getSharedFreeCurrency(),
             "platformSetting" => $this->getPlatformSetting() !== null ? $this->getPlatformSetting()->toJson() : null,
             "depositBalanceScript" => $this->getDepositBalanceScript() !== null ? $this->getDepositBalanceScript()->toJson() : null,

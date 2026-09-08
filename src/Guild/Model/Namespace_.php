@@ -38,6 +38,10 @@ class Namespace_ implements IModel {
 	 */
 	private $transactionSetting;
 	/**
+     * @var TransactionSettingV2
+	 */
+	private $transactionSettingV2;
+	/**
      * @var NotificationSetting
 	 */
 	private $changeNotification;
@@ -139,14 +143,33 @@ class Namespace_ implements IModel {
 		$this->description = $description;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getTransactionSettingV2(): ?TransactionSettingV2 {
+		return $this->transactionSettingV2;
+	}
+	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
+		$this->transactionSettingV2 = $transactionSettingV2;
+	}
+	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): Namespace_ {
+		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
 	public function getChangeNotification(): ?NotificationSetting {
@@ -339,6 +362,7 @@ class Namespace_ implements IModel {
             ->withName(array_key_exists('name', $data) && $data['name'] !== null ? $data['name'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withChangeNotification(array_key_exists('changeNotification', $data) && $data['changeNotification'] !== null ? NotificationSetting::fromJson($data['changeNotification']) : null)
             ->withJoinNotification(array_key_exists('joinNotification', $data) && $data['joinNotification'] !== null ? NotificationSetting::fromJson($data['joinNotification']) : null)
             ->withLeaveNotification(array_key_exists('leaveNotification', $data) && $data['leaveNotification'] !== null ? NotificationSetting::fromJson($data['leaveNotification']) : null)
@@ -365,6 +389,7 @@ class Namespace_ implements IModel {
             "name" => $this->getName(),
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "changeNotification" => $this->getChangeNotification() !== null ? $this->getChangeNotification()->toJson() : null,
             "joinNotification" => $this->getJoinNotification() !== null ? $this->getJoinNotification()->toJson() : null,
             "leaveNotification" => $this->getLeaveNotification() !== null ? $this->getLeaveNotification()->toJson() : null,

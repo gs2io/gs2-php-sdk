@@ -19,6 +19,7 @@ namespace Gs2\Idle\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Idle\Model\TransactionSetting;
+use Gs2\Idle\Model\TransactionSettingV2;
 use Gs2\Idle\Model\ScriptSetting;
 use Gs2\Idle\Model\LogSetting;
 use Gs2\Idle\Model\Namespace_;

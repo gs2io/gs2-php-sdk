@@ -19,6 +19,7 @@ namespace Gs2\Gateway\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Gateway\Model\TransactionSetting;
+use Gs2\Gateway\Model\TransactionSettingV2;
 use Gs2\Gateway\Model\LogSetting;
 use Gs2\Gateway\Model\Namespace_;
 

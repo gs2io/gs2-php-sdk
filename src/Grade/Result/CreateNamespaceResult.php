@@ -19,6 +19,7 @@ namespace Gs2\Grade\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\TransactionSetting;
+use Gs2\Grade\Model\TransactionSettingV2;
 use Gs2\Grade\Model\ScriptSetting;
 use Gs2\Grade\Model\LogSetting;
 use Gs2\Grade\Model\Namespace_;

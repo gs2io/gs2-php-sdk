@@ -42,6 +42,10 @@ class Namespace_ implements IModel {
 	 */
 	private $transactionSetting;
 	/**
+     * @var TransactionSettingV2
+	 */
+	private $transactionSettingV2;
+	/**
      * @var ScriptSetting
 	 */
 	private $startScript;
@@ -113,14 +117,33 @@ class Namespace_ implements IModel {
 		$this->supportSpeculativeExecution = $supportSpeculativeExecution;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getTransactionSettingV2(): ?TransactionSettingV2 {
+		return $this->transactionSettingV2;
+	}
+	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
+		$this->transactionSettingV2 = $transactionSettingV2;
+	}
+	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): Namespace_ {
+		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
 	public function getStartScript(): ?ScriptSetting {
@@ -214,6 +237,7 @@ class Namespace_ implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withSupportSpeculativeExecution(array_key_exists('supportSpeculativeExecution', $data) && $data['supportSpeculativeExecution'] !== null ? $data['supportSpeculativeExecution'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withStartScript(array_key_exists('startScript', $data) && $data['startScript'] !== null ? ScriptSetting::fromJson($data['startScript']) : null)
             ->withPassScript(array_key_exists('passScript', $data) && $data['passScript'] !== null ? ScriptSetting::fromJson($data['passScript']) : null)
             ->withErrorScript(array_key_exists('errorScript', $data) && $data['errorScript'] !== null ? ScriptSetting::fromJson($data['errorScript']) : null)
@@ -231,6 +255,7 @@ class Namespace_ implements IModel {
             "description" => $this->getDescription(),
             "supportSpeculativeExecution" => $this->getSupportSpeculativeExecution(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "startScript" => $this->getStartScript() !== null ? $this->getStartScript()->toJson() : null,
             "passScript" => $this->getPassScript() !== null ? $this->getPassScript()->toJson() : null,
             "errorScript" => $this->getErrorScript() !== null ? $this->getErrorScript()->toJson() : null,

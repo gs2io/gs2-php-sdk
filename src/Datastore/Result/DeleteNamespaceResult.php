@@ -19,6 +19,7 @@ namespace Gs2\Datastore\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\TransactionSetting;
+use Gs2\Datastore\Model\TransactionSettingV2;
 use Gs2\Datastore\Model\ScriptSetting;
 use Gs2\Datastore\Model\LogSetting;
 use Gs2\Datastore\Model\Namespace_;

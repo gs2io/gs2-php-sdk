@@ -42,6 +42,10 @@ class Namespace_ implements IModel {
 	 */
 	private $transactionSetting;
 	/**
+     * @var TransactionSettingV2
+	 */
+	private $transactionSettingV2;
+	/**
      * @var ScriptSetting
 	 */
 	private $receiveMessageScript;
@@ -121,14 +125,33 @@ class Namespace_ implements IModel {
 		$this->isAutomaticDeletingEnabled = $isAutomaticDeletingEnabled;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getTransactionSettingV2(): ?TransactionSettingV2 {
+		return $this->transactionSettingV2;
+	}
+	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
+		$this->transactionSettingV2 = $transactionSettingV2;
+	}
+	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): Namespace_ {
+		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
 	public function getReceiveMessageScript(): ?ScriptSetting {
@@ -260,6 +283,7 @@ class Namespace_ implements IModel {
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withIsAutomaticDeletingEnabled(array_key_exists('isAutomaticDeletingEnabled', $data) ? $data['isAutomaticDeletingEnabled'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withReceiveMessageScript(array_key_exists('receiveMessageScript', $data) && $data['receiveMessageScript'] !== null ? ScriptSetting::fromJson($data['receiveMessageScript']) : null)
             ->withReadMessageScript(array_key_exists('readMessageScript', $data) && $data['readMessageScript'] !== null ? ScriptSetting::fromJson($data['readMessageScript']) : null)
             ->withDeleteMessageScript(array_key_exists('deleteMessageScript', $data) && $data['deleteMessageScript'] !== null ? ScriptSetting::fromJson($data['deleteMessageScript']) : null)
@@ -279,6 +303,7 @@ class Namespace_ implements IModel {
             "description" => $this->getDescription(),
             "isAutomaticDeletingEnabled" => $this->getIsAutomaticDeletingEnabled(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "receiveMessageScript" => $this->getReceiveMessageScript() !== null ? $this->getReceiveMessageScript()->toJson() : null,
             "readMessageScript" => $this->getReadMessageScript() !== null ? $this->getReadMessageScript()->toJson() : null,
             "deleteMessageScript" => $this->getDeleteMessageScript() !== null ? $this->getDeleteMessageScript()->toJson() : null,

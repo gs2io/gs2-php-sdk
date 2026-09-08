@@ -19,6 +19,7 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Formation\Model\TransactionSetting;
+use Gs2\Formation\Model\TransactionSettingV2;
 use Gs2\Formation\Model\ScriptSetting;
 use Gs2\Formation\Model\LogSetting;
 
@@ -29,6 +30,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $description;
     /** @var TransactionSetting */
     private $transactionSetting;
+    /** @var TransactionSettingV2 */
+    private $transactionSettingV2;
     /** @var ScriptSetting */
     private $updateMoldScript;
     /** @var ScriptSetting */
@@ -57,14 +60,33 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getTransactionSettingV2(): ?TransactionSettingV2 {
+		return $this->transactionSettingV2;
+	}
+	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
+		$this->transactionSettingV2 = $transactionSettingV2;
+	}
+	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
+		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
 	public function getUpdateMoldScript(): ?ScriptSetting {
@@ -116,6 +138,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withUpdateMoldScript(array_key_exists('updateMoldScript', $data) && $data['updateMoldScript'] !== null ? ScriptSetting::fromJson($data['updateMoldScript']) : null)
             ->withUpdateFormScript(array_key_exists('updateFormScript', $data) && $data['updateFormScript'] !== null ? ScriptSetting::fromJson($data['updateFormScript']) : null)
             ->withUpdatePropertyFormScript(array_key_exists('updatePropertyFormScript', $data) && $data['updatePropertyFormScript'] !== null ? ScriptSetting::fromJson($data['updatePropertyFormScript']) : null)
@@ -127,6 +150,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "description" => $this->getDescription(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "updateMoldScript" => $this->getUpdateMoldScript() !== null ? $this->getUpdateMoldScript()->toJson() : null,
             "updateFormScript" => $this->getUpdateFormScript() !== null ? $this->getUpdateFormScript()->toJson() : null,
             "updatePropertyFormScript" => $this->getUpdatePropertyFormScript() !== null ? $this->getUpdatePropertyFormScript()->toJson() : null,

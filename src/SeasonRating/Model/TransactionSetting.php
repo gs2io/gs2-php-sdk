@@ -38,6 +38,10 @@ class TransactionSetting implements IModel {
 	 */
 	private $acquireActionUseJobQueue;
 	/**
+     * @var bool
+	 */
+	private $enableSequentialExecution;
+	/**
      * @var string
 	 */
 	private $distributorNamespaceId;
@@ -85,6 +89,16 @@ class TransactionSetting implements IModel {
 		$this->acquireActionUseJobQueue = $acquireActionUseJobQueue;
 		return $this;
 	}
+	public function getEnableSequentialExecution(): ?bool {
+		return $this->enableSequentialExecution;
+	}
+	public function setEnableSequentialExecution(?bool $enableSequentialExecution) {
+		$this->enableSequentialExecution = $enableSequentialExecution;
+	}
+	public function withEnableSequentialExecution(?bool $enableSequentialExecution): TransactionSetting {
+		$this->enableSequentialExecution = $enableSequentialExecution;
+		return $this;
+	}
 	public function getDistributorNamespaceId(): ?string {
 		return $this->distributorNamespaceId;
 	}
@@ -115,6 +129,7 @@ class TransactionSetting implements IModel {
             ->withTransactionUseDistributor(array_key_exists('transactionUseDistributor', $data) ? $data['transactionUseDistributor'] : null)
             ->withCommitScriptResultInUseDistributor(array_key_exists('commitScriptResultInUseDistributor', $data) ? $data['commitScriptResultInUseDistributor'] : null)
             ->withAcquireActionUseJobQueue(array_key_exists('acquireActionUseJobQueue', $data) ? $data['acquireActionUseJobQueue'] : null)
+            ->withEnableSequentialExecution(array_key_exists('enableSequentialExecution', $data) ? $data['enableSequentialExecution'] : null)
             ->withDistributorNamespaceId(array_key_exists('distributorNamespaceId', $data) && $data['distributorNamespaceId'] !== null ? $data['distributorNamespaceId'] : null)
             ->withQueueNamespaceId(array_key_exists('queueNamespaceId', $data) && $data['queueNamespaceId'] !== null ? $data['queueNamespaceId'] : null);
     }
@@ -125,6 +140,7 @@ class TransactionSetting implements IModel {
             "transactionUseDistributor" => $this->getTransactionUseDistributor(),
             "commitScriptResultInUseDistributor" => $this->getCommitScriptResultInUseDistributor(),
             "acquireActionUseJobQueue" => $this->getAcquireActionUseJobQueue(),
+            "enableSequentialExecution" => $this->getEnableSequentialExecution(),
             "distributorNamespaceId" => $this->getDistributorNamespaceId(),
             "queueNamespaceId" => $this->getQueueNamespaceId(),
         );

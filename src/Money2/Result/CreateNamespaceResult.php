@@ -19,6 +19,7 @@ namespace Gs2\Money2\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Money2\Model\TransactionSetting;
+use Gs2\Money2\Model\TransactionSettingV2;
 use Gs2\Money2\Model\AppleAppStoreSetting;
 use Gs2\Money2\Model\GooglePlaySetting;
 use Gs2\Money2\Model\FakeSetting;

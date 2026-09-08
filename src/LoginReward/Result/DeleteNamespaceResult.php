@@ -19,6 +19,7 @@ namespace Gs2\LoginReward\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\LoginReward\Model\TransactionSetting;
+use Gs2\LoginReward\Model\TransactionSettingV2;
 use Gs2\LoginReward\Model\ScriptSetting;
 use Gs2\LoginReward\Model\LogSetting;
 use Gs2\LoginReward\Model\Namespace_;

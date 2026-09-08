@@ -19,6 +19,7 @@ namespace Gs2\Dictionary\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\TransactionSetting;
+use Gs2\Dictionary\Model\TransactionSettingV2;
 use Gs2\Dictionary\Model\ScriptSetting;
 use Gs2\Dictionary\Model\LogSetting;
 use Gs2\Dictionary\Model\Namespace_;

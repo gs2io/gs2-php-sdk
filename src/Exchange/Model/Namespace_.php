@@ -46,6 +46,10 @@ class Namespace_ implements IModel {
 	 */
 	private $transactionSetting;
 	/**
+     * @var TransactionSettingV2
+	 */
+	private $transactionSettingV2;
+	/**
      * @var ScriptSetting
 	 */
 	private $exchangeScript;
@@ -131,14 +135,33 @@ class Namespace_ implements IModel {
 		$this->enableAwaitExchange = $enableAwaitExchange;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getTransactionSettingV2(): ?TransactionSettingV2 {
+		return $this->transactionSettingV2;
+	}
+	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
+		$this->transactionSettingV2 = $transactionSettingV2;
+	}
+	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): Namespace_ {
+		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
 	public function getExchangeScript(): ?ScriptSetting {
@@ -261,6 +284,7 @@ class Namespace_ implements IModel {
             ->withEnableDirectExchange(array_key_exists('enableDirectExchange', $data) ? $data['enableDirectExchange'] : null)
             ->withEnableAwaitExchange(array_key_exists('enableAwaitExchange', $data) ? $data['enableAwaitExchange'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withExchangeScript(array_key_exists('exchangeScript', $data) && $data['exchangeScript'] !== null ? ScriptSetting::fromJson($data['exchangeScript']) : null)
             ->withIncrementalExchangeScript(array_key_exists('incrementalExchangeScript', $data) && $data['incrementalExchangeScript'] !== null ? ScriptSetting::fromJson($data['incrementalExchangeScript']) : null)
             ->withAcquireAwaitScript(array_key_exists('acquireAwaitScript', $data) && $data['acquireAwaitScript'] !== null ? ScriptSetting::fromJson($data['acquireAwaitScript']) : null)
@@ -280,6 +304,7 @@ class Namespace_ implements IModel {
             "enableDirectExchange" => $this->getEnableDirectExchange(),
             "enableAwaitExchange" => $this->getEnableAwaitExchange(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "exchangeScript" => $this->getExchangeScript() !== null ? $this->getExchangeScript()->toJson() : null,
             "incrementalExchangeScript" => $this->getIncrementalExchangeScript() !== null ? $this->getIncrementalExchangeScript()->toJson() : null,
             "acquireAwaitScript" => $this->getAcquireAwaitScript() !== null ? $this->getAcquireAwaitScript()->toJson() : null,

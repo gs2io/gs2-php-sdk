@@ -19,6 +19,7 @@ namespace Gs2\Formation\Result;
 
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\TransactionSetting;
+use Gs2\Formation\Model\TransactionSettingV2;
 use Gs2\Formation\Model\ScriptSetting;
 use Gs2\Formation\Model\LogSetting;
 use Gs2\Formation\Model\Namespace_;

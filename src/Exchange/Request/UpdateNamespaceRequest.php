@@ -19,6 +19,7 @@ namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\TransactionSetting;
+use Gs2\Exchange\Model\TransactionSettingV2;
 use Gs2\Exchange\Model\ScriptSetting;
 use Gs2\Exchange\Model\LogSetting;
 
@@ -33,6 +34,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $enableDirectExchange;
     /** @var TransactionSetting */
     private $transactionSetting;
+    /** @var TransactionSettingV2 */
+    private $transactionSettingV2;
     /** @var ScriptSetting */
     private $exchangeScript;
     /** @var ScriptSetting */
@@ -85,14 +88,33 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->enableDirectExchange = $enableDirectExchange;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
+    /**
+     * @deprecated
+     */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
+		return $this;
+	}
+	public function getTransactionSettingV2(): ?TransactionSettingV2 {
+		return $this->transactionSettingV2;
+	}
+	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
+		$this->transactionSettingV2 = $transactionSettingV2;
+	}
+	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
+		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
 	public function getExchangeScript(): ?ScriptSetting {
@@ -184,6 +206,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withEnableAwaitExchange(array_key_exists('enableAwaitExchange', $data) ? $data['enableAwaitExchange'] : null)
             ->withEnableDirectExchange(array_key_exists('enableDirectExchange', $data) ? $data['enableDirectExchange'] : null)
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
+            ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withExchangeScript(array_key_exists('exchangeScript', $data) && $data['exchangeScript'] !== null ? ScriptSetting::fromJson($data['exchangeScript']) : null)
             ->withIncrementalExchangeScript(array_key_exists('incrementalExchangeScript', $data) && $data['incrementalExchangeScript'] !== null ? ScriptSetting::fromJson($data['incrementalExchangeScript']) : null)
             ->withAcquireAwaitScript(array_key_exists('acquireAwaitScript', $data) && $data['acquireAwaitScript'] !== null ? ScriptSetting::fromJson($data['acquireAwaitScript']) : null)
@@ -199,6 +222,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "enableAwaitExchange" => $this->getEnableAwaitExchange(),
             "enableDirectExchange" => $this->getEnableDirectExchange(),
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
+            "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "exchangeScript" => $this->getExchangeScript() !== null ? $this->getExchangeScript()->toJson() : null,
             "incrementalExchangeScript" => $this->getIncrementalExchangeScript() !== null ? $this->getIncrementalExchangeScript()->toJson() : null,
             "acquireAwaitScript" => $this->getAcquireAwaitScript() !== null ? $this->getAcquireAwaitScript()->toJson() : null,

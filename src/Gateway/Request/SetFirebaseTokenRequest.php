@@ -27,6 +27,8 @@ class SetFirebaseTokenRequest extends Gs2BasicRequest {
     /** @var string */
     private $token;
     /** @var string */
+    private $locale;
+    /** @var string */
     private $duplicationAvoider;
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -58,6 +60,16 @@ class SetFirebaseTokenRequest extends Gs2BasicRequest {
 		$this->token = $token;
 		return $this;
 	}
+	public function getLocale(): ?string {
+		return $this->locale;
+	}
+	public function setLocale(?string $locale) {
+		$this->locale = $locale;
+	}
+	public function withLocale(?string $locale): SetFirebaseTokenRequest {
+		$this->locale = $locale;
+		return $this;
+	}
 
 	public function getDuplicationAvoider(): ?string {
 		return $this->duplicationAvoider;
@@ -79,7 +91,8 @@ class SetFirebaseTokenRequest extends Gs2BasicRequest {
         return (new SetFirebaseTokenRequest())
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
-            ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null);
+            ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null)
+            ->withLocale(array_key_exists('locale', $data) && $data['locale'] !== null ? $data['locale'] : null);
     }
 
     public function toJson(): array {
@@ -87,6 +100,7 @@ class SetFirebaseTokenRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "accessToken" => $this->getAccessToken(),
             "token" => $this->getToken(),
+            "locale" => $this->getLocale(),
         );
     }
 }

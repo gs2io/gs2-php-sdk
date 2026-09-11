@@ -27,6 +27,8 @@ class SetFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
     private $token;
     /** @var string */
+    private $locale;
+    /** @var string */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
@@ -58,6 +60,16 @@ class SetFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
 	}
 	public function withToken(?string $token): SetFirebaseTokenByUserIdRequest {
 		$this->token = $token;
+		return $this;
+	}
+	public function getLocale(): ?string {
+		return $this->locale;
+	}
+	public function setLocale(?string $locale) {
+		$this->locale = $locale;
+	}
+	public function withLocale(?string $locale): SetFirebaseTokenByUserIdRequest {
+		$this->locale = $locale;
 		return $this;
 	}
 	public function getTimeOffsetToken(): ?string {
@@ -92,6 +104,7 @@ class SetFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
             ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null)
+            ->withLocale(array_key_exists('locale', $data) && $data['locale'] !== null ? $data['locale'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -100,6 +113,7 @@ class SetFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
             "namespaceName" => $this->getNamespaceName(),
             "userId" => $this->getUserId(),
             "token" => $this->getToken(),
+            "locale" => $this->getLocale(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

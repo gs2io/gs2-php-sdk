@@ -34,6 +34,10 @@ class FirebaseToken implements IModel {
 	 */
 	private $token;
 	/**
+     * @var string
+	 */
+	private $locale;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -75,6 +79,16 @@ class FirebaseToken implements IModel {
 		$this->token = $token;
 		return $this;
 	}
+	public function getLocale(): ?string {
+		return $this->locale;
+	}
+	public function setLocale(?string $locale) {
+		$this->locale = $locale;
+	}
+	public function withLocale(?string $locale): FirebaseToken {
+		$this->locale = $locale;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -114,6 +128,7 @@ class FirebaseToken implements IModel {
             ->withFirebaseTokenId(array_key_exists('firebaseTokenId', $data) && $data['firebaseTokenId'] !== null ? $data['firebaseTokenId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
             ->withToken(array_key_exists('token', $data) && $data['token'] !== null ? $data['token'] : null)
+            ->withLocale(array_key_exists('locale', $data) && $data['locale'] !== null ? $data['locale'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -124,6 +139,7 @@ class FirebaseToken implements IModel {
             "firebaseTokenId" => $this->getFirebaseTokenId(),
             "userId" => $this->getUserId(),
             "token" => $this->getToken(),
+            "locale" => $this->getLocale(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
             "revision" => $this->getRevision(),

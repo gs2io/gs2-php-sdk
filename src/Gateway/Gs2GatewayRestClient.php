@@ -199,6 +199,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getFirebaseSecret() !== null) {
             $json["firebaseSecret"] = $this->request->getFirebaseSecret();
         }
+        if ($this->request->getFirebaseProjectId() !== null) {
+            $json["firebaseProjectId"] = $this->request->getFirebaseProjectId();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -382,6 +385,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getFirebaseSecret() !== null) {
             $json["firebaseSecret"] = $this->request->getFirebaseSecret();
+        }
+        if ($this->request->getFirebaseProjectId() !== null) {
+            $json["firebaseProjectId"] = $this->request->getFirebaseProjectId();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -1441,6 +1447,9 @@ class SetFirebaseTokenTask extends Gs2RestSessionTask {
         if ($this->request->getToken() !== null) {
             $json["token"] = $this->request->getToken();
         }
+        if ($this->request->getLocale() !== null) {
+            $json["locale"] = $this->request->getLocale();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -1505,6 +1514,9 @@ class SetFirebaseTokenByUserIdTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getToken() !== null) {
             $json["token"] = $this->request->getToken();
+        }
+        if ($this->request->getLocale() !== null) {
+            $json["locale"] = $this->request->getLocale();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

@@ -33,6 +33,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $transactionSettingV2;
     /** @var string */
     private $firebaseSecret;
+    /** @var string */
+    private $firebaseProjectId;
     /** @var LogSetting */
     private $logSetting;
 	public function getNamespaceName(): ?string {
@@ -84,14 +86,33 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /**
+     * @deprecated
+     */
 	public function getFirebaseSecret(): ?string {
 		return $this->firebaseSecret;
 	}
+    /**
+     * @deprecated
+     */
 	public function setFirebaseSecret(?string $firebaseSecret) {
 		$this->firebaseSecret = $firebaseSecret;
 	}
+    /**
+     * @deprecated
+     */
 	public function withFirebaseSecret(?string $firebaseSecret): UpdateNamespaceRequest {
 		$this->firebaseSecret = $firebaseSecret;
+		return $this;
+	}
+	public function getFirebaseProjectId(): ?string {
+		return $this->firebaseProjectId;
+	}
+	public function setFirebaseProjectId(?string $firebaseProjectId) {
+		$this->firebaseProjectId = $firebaseProjectId;
+	}
+	public function withFirebaseProjectId(?string $firebaseProjectId): UpdateNamespaceRequest {
+		$this->firebaseProjectId = $firebaseProjectId;
 		return $this;
 	}
 	public function getLogSetting(): ?LogSetting {
@@ -115,6 +136,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withTransactionSetting(array_key_exists('transactionSetting', $data) && $data['transactionSetting'] !== null ? TransactionSetting::fromJson($data['transactionSetting']) : null)
             ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withFirebaseSecret(array_key_exists('firebaseSecret', $data) && $data['firebaseSecret'] !== null ? $data['firebaseSecret'] : null)
+            ->withFirebaseProjectId(array_key_exists('firebaseProjectId', $data) && $data['firebaseProjectId'] !== null ? $data['firebaseProjectId'] : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -125,6 +147,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "transactionSetting" => $this->getTransactionSetting() !== null ? $this->getTransactionSetting()->toJson() : null,
             "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "firebaseSecret" => $this->getFirebaseSecret(),
+            "firebaseProjectId" => $this->getFirebaseProjectId(),
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

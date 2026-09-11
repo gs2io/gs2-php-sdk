@@ -21,6 +21,7 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Inbox\Model\TransactionSetting;
 use Gs2\Inbox\Model\TransactionSettingV2;
 use Gs2\Inbox\Model\ScriptSetting;
+use Gs2\Inbox\Model\MobileNotificationMessage;
 use Gs2\Inbox\Model\NotificationSetting;
 use Gs2\Inbox\Model\LogSetting;
 

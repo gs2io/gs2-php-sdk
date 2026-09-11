@@ -34,6 +34,10 @@ class NotificationSetting implements IModel {
 	 */
 	private $sound;
 	/**
+     * @var array
+	 */
+	private $mobileNotificationMessages;
+	/**
      * @var string
 	 */
 	private $enable;
@@ -67,6 +71,16 @@ class NotificationSetting implements IModel {
 		$this->sound = $sound;
 		return $this;
 	}
+	public function getMobileNotificationMessages(): ?array {
+		return $this->mobileNotificationMessages;
+	}
+	public function setMobileNotificationMessages(?array $mobileNotificationMessages) {
+		$this->mobileNotificationMessages = $mobileNotificationMessages;
+	}
+	public function withMobileNotificationMessages(?array $mobileNotificationMessages): NotificationSetting {
+		$this->mobileNotificationMessages = $mobileNotificationMessages;
+		return $this;
+	}
 	public function getEnable(): ?string {
 		return $this->enable;
 	}
@@ -86,6 +100,12 @@ class NotificationSetting implements IModel {
             ->withGatewayNamespaceId(array_key_exists('gatewayNamespaceId', $data) && $data['gatewayNamespaceId'] !== null ? $data['gatewayNamespaceId'] : null)
             ->withEnableTransferMobileNotification(array_key_exists('enableTransferMobileNotification', $data) ? $data['enableTransferMobileNotification'] : null)
             ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null)
+            ->withMobileNotificationMessages(!array_key_exists('mobileNotificationMessages', $data) || $data['mobileNotificationMessages'] === null ? null : array_map(
+                function ($item) {
+                    return MobileNotificationMessage::fromJson($item);
+                },
+                $data['mobileNotificationMessages']
+            ))
             ->withEnable(array_key_exists('enable', $data) && $data['enable'] !== null ? $data['enable'] : null);
     }
 
@@ -94,6 +114,12 @@ class NotificationSetting implements IModel {
             "gatewayNamespaceId" => $this->getGatewayNamespaceId(),
             "enableTransferMobileNotification" => $this->getEnableTransferMobileNotification(),
             "sound" => $this->getSound(),
+            "mobileNotificationMessages" => $this->getMobileNotificationMessages() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getMobileNotificationMessages()
+            ),
             "enable" => $this->getEnable(),
         );
     }

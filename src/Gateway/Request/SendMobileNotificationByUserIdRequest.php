@@ -18,6 +18,7 @@
 namespace Gs2\Gateway\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Gateway\Model\MobileNotificationMessage;
 
 class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
     /** @var string */
@@ -30,6 +31,8 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
     private $payload;
     /** @var string */
     private $sound;
+    /** @var array */
+    private $mobileNotificationMessages;
     /** @var string */
     private $timeOffsetToken;
     /** @var string */
@@ -84,6 +87,16 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
 		$this->sound = $sound;
 		return $this;
 	}
+	public function getMobileNotificationMessages(): ?array {
+		return $this->mobileNotificationMessages;
+	}
+	public function setMobileNotificationMessages(?array $mobileNotificationMessages) {
+		$this->mobileNotificationMessages = $mobileNotificationMessages;
+	}
+	public function withMobileNotificationMessages(?array $mobileNotificationMessages): SendMobileNotificationByUserIdRequest {
+		$this->mobileNotificationMessages = $mobileNotificationMessages;
+		return $this;
+	}
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
@@ -118,6 +131,12 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
             ->withSubject(array_key_exists('subject', $data) && $data['subject'] !== null ? $data['subject'] : null)
             ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null)
             ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null)
+            ->withMobileNotificationMessages(!array_key_exists('mobileNotificationMessages', $data) || $data['mobileNotificationMessages'] === null ? null : array_map(
+                function ($item) {
+                    return MobileNotificationMessage::fromJson($item);
+                },
+                $data['mobileNotificationMessages']
+            ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -128,6 +147,12 @@ class SendMobileNotificationByUserIdRequest extends Gs2BasicRequest {
             "subject" => $this->getSubject(),
             "payload" => $this->getPayload(),
             "sound" => $this->getSound(),
+            "mobileNotificationMessages" => $this->getMobileNotificationMessages() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getMobileNotificationMessages()
+            ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

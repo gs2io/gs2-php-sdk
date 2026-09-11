@@ -20,6 +20,7 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\TransactionSetting;
 use Gs2\Distributor\Model\TransactionSettingV2;
+use Gs2\Distributor\Model\MobileNotificationMessage;
 use Gs2\Distributor\Model\NotificationSetting;
 use Gs2\Distributor\Model\LogSetting;
 use Gs2\Distributor\Model\Namespace_;

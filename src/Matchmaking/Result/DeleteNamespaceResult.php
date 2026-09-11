@@ -21,6 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\TransactionSetting;
 use Gs2\Matchmaking\Model\TransactionSettingV2;
 use Gs2\Matchmaking\Model\ScriptSetting;
+use Gs2\Matchmaking\Model\MobileNotificationMessage;
 use Gs2\Matchmaking\Model\NotificationSetting;
 use Gs2\Matchmaking\Model\LogSetting;
 use Gs2\Matchmaking\Model\Namespace_;

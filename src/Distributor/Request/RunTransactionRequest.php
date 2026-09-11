@@ -20,6 +20,7 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Core\Model\TriggerAsync;
 use Gs2\Core\Model\TriggerDoneScript;
+use Gs2\Chat\Model\MobileNotificationMessage;
 use Gs2\Core\Model\TriggerNotification;
 use Gs2\Core\Model\Uncommitted;
 use Gs2\Core\Model\VerifyActionResult;

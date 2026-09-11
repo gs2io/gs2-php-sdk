@@ -1262,6 +1262,14 @@ class SendNotificationTask extends Gs2RestSessionTask {
         if ($this->request->getSound() !== null) {
             $json["sound"] = $this->request->getSound();
         }
+        if ($this->request->getMobileNotificationMessages() !== null) {
+            $array = [];
+            foreach ($this->request->getMobileNotificationMessages() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["mobileNotificationMessages"] = $array;
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -1836,6 +1844,14 @@ class SendMobileNotificationByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getSound() !== null) {
             $json["sound"] = $this->request->getSound();
+        }
+        if ($this->request->getMobileNotificationMessages() !== null) {
+            $array = [];
+            foreach ($this->request->getMobileNotificationMessages() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["mobileNotificationMessages"] = $array;
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

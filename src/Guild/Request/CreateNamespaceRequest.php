@@ -20,6 +20,7 @@ namespace Gs2\Guild\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Guild\Model\TransactionSetting;
 use Gs2\Guild\Model\TransactionSettingV2;
+use Gs2\Guild\Model\MobileNotificationMessage;
 use Gs2\Guild\Model\NotificationSetting;
 use Gs2\Guild\Model\ScriptSetting;
 use Gs2\Guild\Model\LogSetting;

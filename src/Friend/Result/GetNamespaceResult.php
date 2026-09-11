@@ -21,6 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\TransactionSetting;
 use Gs2\Friend\Model\TransactionSettingV2;
 use Gs2\Friend\Model\ScriptSetting;
+use Gs2\Friend\Model\MobileNotificationMessage;
 use Gs2\Friend\Model\NotificationSetting;
 use Gs2\Friend\Model\LogSetting;
 use Gs2\Friend\Model\Namespace_;

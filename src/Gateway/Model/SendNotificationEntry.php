@@ -45,6 +45,10 @@ class SendNotificationEntry implements IModel {
      * @var string
 	 */
 	private $sound;
+	/**
+     * @var array
+	 */
+	private $mobileNotificationMessages;
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
@@ -105,6 +109,16 @@ class SendNotificationEntry implements IModel {
 		$this->sound = $sound;
 		return $this;
 	}
+	public function getMobileNotificationMessages(): ?array {
+		return $this->mobileNotificationMessages;
+	}
+	public function setMobileNotificationMessages(?array $mobileNotificationMessages) {
+		$this->mobileNotificationMessages = $mobileNotificationMessages;
+	}
+	public function withMobileNotificationMessages(?array $mobileNotificationMessages): SendNotificationEntry {
+		$this->mobileNotificationMessages = $mobileNotificationMessages;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?SendNotificationEntry {
         if ($data === null) {
@@ -116,7 +130,13 @@ class SendNotificationEntry implements IModel {
             ->withSubject(array_key_exists('subject', $data) && $data['subject'] !== null ? $data['subject'] : null)
             ->withPayload(array_key_exists('payload', $data) && $data['payload'] !== null ? $data['payload'] : null)
             ->withEnableTransferMobileNotification(array_key_exists('enableTransferMobileNotification', $data) ? $data['enableTransferMobileNotification'] : null)
-            ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null);
+            ->withSound(array_key_exists('sound', $data) && $data['sound'] !== null ? $data['sound'] : null)
+            ->withMobileNotificationMessages(!array_key_exists('mobileNotificationMessages', $data) || $data['mobileNotificationMessages'] === null ? null : array_map(
+                function ($item) {
+                    return MobileNotificationMessage::fromJson($item);
+                },
+                $data['mobileNotificationMessages']
+            ));
     }
 
     public function toJson(): array {
@@ -127,6 +147,12 @@ class SendNotificationEntry implements IModel {
             "payload" => $this->getPayload(),
             "enableTransferMobileNotification" => $this->getEnableTransferMobileNotification(),
             "sound" => $this->getSound(),
+            "mobileNotificationMessages" => $this->getMobileNotificationMessages() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getMobileNotificationMessages()
+            ),
         );
     }
 }

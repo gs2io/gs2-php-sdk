@@ -25,6 +25,7 @@ use Gs2\Money2\Model\GooglePlaySetting;
 use Gs2\Money2\Model\FakeSetting;
 use Gs2\Money2\Model\PlatformSetting;
 use Gs2\Money2\Model\ScriptSetting;
+use Gs2\Money2\Model\MobileNotificationMessage;
 use Gs2\Money2\Model\NotificationSetting;
 use Gs2\Money2\Model\LogSetting;
 

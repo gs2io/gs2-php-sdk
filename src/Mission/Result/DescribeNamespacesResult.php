@@ -21,6 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\TransactionSetting;
 use Gs2\Mission\Model\TransactionSettingV2;
 use Gs2\Mission\Model\ScriptSetting;
+use Gs2\Mission\Model\MobileNotificationMessage;
 use Gs2\Mission\Model\NotificationSetting;
 use Gs2\Mission\Model\LogSetting;
 use Gs2\Mission\Model\Namespace_;

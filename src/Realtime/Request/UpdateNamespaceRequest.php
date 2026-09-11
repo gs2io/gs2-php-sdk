@@ -20,6 +20,7 @@ namespace Gs2\Realtime\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Realtime\Model\TransactionSetting;
 use Gs2\Realtime\Model\TransactionSettingV2;
+use Gs2\Realtime\Model\MobileNotificationMessage;
 use Gs2\Realtime\Model\NotificationSetting;
 use Gs2\Realtime\Model\LogSetting;
 

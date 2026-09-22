@@ -66,6 +66,10 @@ class Project implements IModel {
 	 */
 	private $eventBridgeAwsRegion;
 	/**
+     * @var string
+	 */
+	private $dataStoreKeyScheme;
+	/**
      * @var int
 	 */
 	private $createdAt;
@@ -183,6 +187,16 @@ class Project implements IModel {
 		$this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
 		return $this;
 	}
+	public function getDataStoreKeyScheme(): ?string {
+		return $this->dataStoreKeyScheme;
+	}
+	public function setDataStoreKeyScheme(?string $dataStoreKeyScheme) {
+		$this->dataStoreKeyScheme = $dataStoreKeyScheme;
+	}
+	public function withDataStoreKeyScheme(?string $dataStoreKeyScheme): Project {
+		$this->dataStoreKeyScheme = $dataStoreKeyScheme;
+		return $this;
+	}
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
@@ -225,6 +239,7 @@ class Project implements IModel {
             ->withCurrency(array_key_exists('currency', $data) && $data['currency'] !== null ? $data['currency'] : null)
             ->withEventBridgeAwsAccountId(array_key_exists('eventBridgeAwsAccountId', $data) && $data['eventBridgeAwsAccountId'] !== null ? $data['eventBridgeAwsAccountId'] : null)
             ->withEventBridgeAwsRegion(array_key_exists('eventBridgeAwsRegion', $data) && $data['eventBridgeAwsRegion'] !== null ? $data['eventBridgeAwsRegion'] : null)
+            ->withDataStoreKeyScheme(array_key_exists('dataStoreKeyScheme', $data) && $data['dataStoreKeyScheme'] !== null ? $data['dataStoreKeyScheme'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null);
     }
@@ -247,6 +262,7 @@ class Project implements IModel {
             "currency" => $this->getCurrency(),
             "eventBridgeAwsAccountId" => $this->getEventBridgeAwsAccountId(),
             "eventBridgeAwsRegion" => $this->getEventBridgeAwsRegion(),
+            "dataStoreKeyScheme" => $this->getDataStoreKeyScheme(),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),
         );

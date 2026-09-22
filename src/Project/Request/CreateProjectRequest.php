@@ -40,6 +40,8 @@ class CreateProjectRequest extends Gs2BasicRequest {
     private $eventBridgeAwsAccountId;
     /** @var string */
     private $eventBridgeAwsRegion;
+    /** @var string */
+    private $dataStoreKeyScheme;
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
@@ -140,6 +142,16 @@ class CreateProjectRequest extends Gs2BasicRequest {
 		$this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
 		return $this;
 	}
+	public function getDataStoreKeyScheme(): ?string {
+		return $this->dataStoreKeyScheme;
+	}
+	public function setDataStoreKeyScheme(?string $dataStoreKeyScheme) {
+		$this->dataStoreKeyScheme = $dataStoreKeyScheme;
+	}
+	public function withDataStoreKeyScheme(?string $dataStoreKeyScheme): CreateProjectRequest {
+		$this->dataStoreKeyScheme = $dataStoreKeyScheme;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateProjectRequest {
         if ($data === null) {
@@ -155,7 +167,8 @@ class CreateProjectRequest extends Gs2BasicRequest {
             ->withBillingMethodName(array_key_exists('billingMethodName', $data) && $data['billingMethodName'] !== null ? $data['billingMethodName'] : null)
             ->withEnableEventBridge(array_key_exists('enableEventBridge', $data) && $data['enableEventBridge'] !== null ? $data['enableEventBridge'] : null)
             ->withEventBridgeAwsAccountId(array_key_exists('eventBridgeAwsAccountId', $data) && $data['eventBridgeAwsAccountId'] !== null ? $data['eventBridgeAwsAccountId'] : null)
-            ->withEventBridgeAwsRegion(array_key_exists('eventBridgeAwsRegion', $data) && $data['eventBridgeAwsRegion'] !== null ? $data['eventBridgeAwsRegion'] : null);
+            ->withEventBridgeAwsRegion(array_key_exists('eventBridgeAwsRegion', $data) && $data['eventBridgeAwsRegion'] !== null ? $data['eventBridgeAwsRegion'] : null)
+            ->withDataStoreKeyScheme(array_key_exists('dataStoreKeyScheme', $data) && $data['dataStoreKeyScheme'] !== null ? $data['dataStoreKeyScheme'] : null);
     }
 
     public function toJson(): array {
@@ -170,6 +183,7 @@ class CreateProjectRequest extends Gs2BasicRequest {
             "enableEventBridge" => $this->getEnableEventBridge(),
             "eventBridgeAwsAccountId" => $this->getEventBridgeAwsAccountId(),
             "eventBridgeAwsRegion" => $this->getEventBridgeAwsRegion(),
+            "dataStoreKeyScheme" => $this->getDataStoreKeyScheme(),
         );
     }
 }

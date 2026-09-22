@@ -6,9 +6,8 @@ namespace Gs2\Core\Net;
 
 use Gs2\Core\Model\AsyncAction;
 use Gs2\Core\Model\AsyncResult;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
-use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
 use ReflectionMethod;
 
 /**
@@ -35,6 +34,11 @@ class Gs2RestSessionTask extends Gs2SessionTask {
     private $clazz;
 
     /**
+     * @var Gs2RestSession
+     */
+    private $gs2RestSession;
+
+    /**
      * Gs2RestSessionTask constructor.
      * @template T
      * @param Gs2RestSession $gs2RestSession
@@ -47,6 +51,7 @@ class Gs2RestSessionTask extends Gs2SessionTask {
     {
         parent::__construct($gs2RestSession);
 
+        $this->gs2RestSession = $gs2RestSession;
         $this->builder = HttpTaskBuilder::create();
         $this->clazz = $clazz;
     }
@@ -65,13 +70,14 @@ class Gs2RestSessionTask extends Gs2SessionTask {
      *
      */
     public function executeImpl(): PromiseInterface {
-        return $this->builder->build()->send()->then(
-            function (Response $response) {
+        // ★送信はセッションに任せる（Steady 宛なら接続段階の上限と、接続段階の失敗の 1 回だけの再送）
+        return $this->gs2RestSession->sendHttpTask($this->builder)->then(
+            function (ResponseInterface $response) {
                 return (new ReflectionMethod($this->clazz, 'fromJson'))->invoke(null, json_decode($response->getBody()->getContents(), true));
             },
-            function (RequestException $response) {
-                $gs2Response = new Gs2RestResponse($response->getResponse()->getBody()->getContents(), $response->getResponse()->getStatusCode());
-                throw $gs2Response->getGs2Exception();
+            function ($e) {
+                // 応答のある失敗は従来どおりステータス→例外の写像、それ以外（接続失敗など）はそのまま
+                throw Gs2RestSession::mapRejection($e);
             }
         );
     }

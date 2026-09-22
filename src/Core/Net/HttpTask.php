@@ -5,6 +5,7 @@ namespace Gs2\Core\Net;
 
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Utils;
@@ -50,15 +51,21 @@ class HttpTask {
 
     /**
      * 最大1回までしか呼べません
+     *
+     * @param ClientInterface|null $client 送信に使う Guzzle クライアント（null なら都度生成）
+     * @param array $options Guzzle のリクエストオプションに追加するもの（例: connect_timeout）
+     * @return PromiseInterface
      */
-    public function send(): PromiseInterface {
-        $options = [];
+    public function send(ClientInterface $client = null, array $options = []): PromiseInterface {
         if ($this->enableDecompressResponse) {
             $options['decode_content'] = 'gzip';
         } else {
             $options['decode_content'] = false;
         }
-        return (new Client())->sendAsync($this->request, $options);
+        if ($client === null) {
+            $client = new Client();
+        }
+        return $client->sendAsync($this->request, $options);
     }
 
     /**

@@ -903,6 +903,9 @@ class CreateProjectTask extends Gs2RestSessionTask {
         if ($this->request->getEventBridgeAwsRegion() !== null) {
             $json["eventBridgeAwsRegion"] = $this->request->getEventBridgeAwsRegion();
         }
+        if ($this->request->getDataStoreKeyScheme() !== null) {
+            $json["dataStoreKeyScheme"] = $this->request->getDataStoreKeyScheme();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

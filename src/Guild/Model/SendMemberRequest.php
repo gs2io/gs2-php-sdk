@@ -28,6 +28,10 @@ class SendMemberRequest implements IModel {
 	/**
      * @var string
 	 */
+	private $targetGuildModelName;
+	/**
+     * @var string
+	 */
 	private $targetGuildName;
 	/**
      * @var string
@@ -45,6 +49,16 @@ class SendMemberRequest implements IModel {
 	}
 	public function withUserId(?string $userId): SendMemberRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+	public function getTargetGuildModelName(): ?string {
+		return $this->targetGuildModelName;
+	}
+	public function setTargetGuildModelName(?string $targetGuildModelName) {
+		$this->targetGuildModelName = $targetGuildModelName;
+	}
+	public function withTargetGuildModelName(?string $targetGuildModelName): SendMemberRequest {
+		$this->targetGuildModelName = $targetGuildModelName;
 		return $this;
 	}
 	public function getTargetGuildName(): ?string {
@@ -84,6 +98,7 @@ class SendMemberRequest implements IModel {
         }
         return (new SendMemberRequest())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withTargetGuildModelName(array_key_exists('targetGuildModelName', $data) && $data['targetGuildModelName'] !== null ? $data['targetGuildModelName'] : null)
             ->withTargetGuildName(array_key_exists('targetGuildName', $data) && $data['targetGuildName'] !== null ? $data['targetGuildName'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null);
@@ -92,6 +107,7 @@ class SendMemberRequest implements IModel {
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
+            "targetGuildModelName" => $this->getTargetGuildModelName(),
             "targetGuildName" => $this->getTargetGuildName(),
             "metadata" => $this->getMetadata(),
             "createdAt" => $this->getCreatedAt(),

@@ -103,6 +103,10 @@ use Gs2\Distributor\Request\FreezeMasterDataByTimestampRequest;
 use Gs2\Distributor\Result\FreezeMasterDataByTimestampResult;
 use Gs2\Distributor\Request\BatchExecuteApiRequest;
 use Gs2\Distributor\Result\BatchExecuteApiResult;
+use Gs2\Distributor\Request\DescribeUserDataRequest;
+use Gs2\Distributor\Result\DescribeUserDataResult;
+use Gs2\Distributor\Request\DescribeUserDataByUserIdRequest;
+use Gs2\Distributor\Result\DescribeUserDataByUserIdResult;
 use Gs2\Distributor\Request\IfExpressionByUserIdRequest;
 use Gs2\Distributor\Result\IfExpressionByUserIdResult;
 use Gs2\Distributor\Request\AndExpressionByUserIdRequest;
@@ -2449,6 +2453,136 @@ class BatchExecuteApiTask extends Gs2RestSessionTask {
     }
 }
 
+class DescribeUserDataTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeUserDataRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeUserDataTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeUserDataRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeUserDataRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeUserDataResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/me/data";
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class DescribeUserDataByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var DescribeUserDataByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * DescribeUserDataByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param DescribeUserDataByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        DescribeUserDataByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            DescribeUserDataByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "distributor", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/user/{userId}/data";
+
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+        if ($this->request->getPageToken() !== null) {
+            $queryStrings["pageToken"] = $this->request->getPageToken();
+        }
+        if ($this->request->getLimit() !== null) {
+            $queryStrings["limit"] = $this->request->getLimit();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("GET")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class IfExpressionByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -4180,6 +4314,60 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
             BatchExecuteApiRequest $request
     ): BatchExecuteApiResult {
         return $this->batchExecuteApiAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeUserDataRequest $request
+     * @return PromiseInterface
+     */
+    public function describeUserDataAsync(
+            DescribeUserDataRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeUserDataTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeUserDataRequest $request
+     * @return DescribeUserDataResult
+     */
+    public function describeUserData (
+            DescribeUserDataRequest $request
+    ): DescribeUserDataResult {
+        return $this->describeUserDataAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * @param DescribeUserDataByUserIdRequest $request
+     * @return PromiseInterface
+     */
+    public function describeUserDataByUserIdAsync(
+            DescribeUserDataByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new DescribeUserDataByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * @param DescribeUserDataByUserIdRequest $request
+     * @return DescribeUserDataByUserIdResult
+     */
+    public function describeUserDataByUserId (
+            DescribeUserDataByUserIdRequest $request
+    ): DescribeUserDataByUserIdResult {
+        return $this->describeUserDataByUserIdAsync(
             $request
         )->wait();
     }
